@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://market.bb610.com.ua/contracts/order-create-request.schema.json",
+  "title":"BB610 Market Order Create Request",
+  "type":"object",
+  "required":["client_request_id","customer","fulfillment","currency","items","source"],
+  "properties":{
+    "client_request_id":{"type":"string","minLength":8,"maxLength":128},
+    "customer":{"type":"object","required":["name","phone"],"properties":{"name":{"type":"string","minLength":2,"maxLength":120},"phone":{"type":"string","minLength":7,"maxLength":40},"email":{"type":["string","null"],"format":"email"}},"additionalProperties":false},
+    "fulfillment":{"type":"object","required":["method"],"properties":{"method":{"enum":["pickup_dnipro","delivery_dnipro","shipping_ukraine"]},"destination":{"type":["string","null"],"maxLength":300}},"additionalProperties":false},
+    "comment":{"type":["string","null"],"maxLength":1000},
+    "currency":{"const":"UAH"},
+    "items":{"type":"array","minItems":1,"maxItems":100,"items":{"type":"object","required":["sku","quantity"],"properties":{"sku":{"type":"string","minLength":3,"maxLength":128},"quantity":{"type":"integer","minimum":1,"maximum":999}},"additionalProperties":false}},
+    "source":{"type":"object","required":["channel","site"],"properties":{"channel":{"const":"web"},"site":{"const":"market.bb610.com.ua"}},"additionalProperties":false}
+  },
+  "additionalProperties":false
+}

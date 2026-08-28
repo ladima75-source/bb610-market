@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bb610-market-catalog-core-v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "categories",
+    "products",
+    "variants",
+    "skus",
+    "solutions",
+    "bundles"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "brand",
+          "category_id",
+          "canonical_product_url"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "slug": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default_sku_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "product_id",
+          "label",
+          "status"
+        ]
+      }
+    },
+    "skus": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "sku",
+          "product_id",
+          "variant_id",
+          "price",
+          "currency",
+          "availability",
+          "url",
+          "offer_status",
+          "feed_eligible",
+          "commercial_status",
+          "pack_source_status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sku": {
+            "type": "string",
+            "minLength": 1
+          },
+          "gtin_ean": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "price": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "feed_eligible": {
+            "type": "boolean"
+          },
+          "commercial_status": {
+            "type": "string",
+            "enum": [
+              "not-configured",
+              "configured",
+              "active",
+              "paused"
+            ]
+          },
+          "pack_source_status": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "solutions": {
+      "type": "array"
+    },
+    "bundles": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "ui_tuning": "complete",
+  "architecture_stages_1_6_changed": false,
+  "product_compact": true,
+  "favorites_uses_catalog_cardV2": true,
+  "compare_product_headers": true,
+  "compare_mobile_horizontal_scroll": true,
+  "cart_compact_rows": true,
+  "checkout_compare_bar_removed": true,
+  "purchase_backend_gated": true,
+  "ad_providers_still_disabled": true,
+  "new_features_added": false
+}

@@ -1,0 +1,16 @@
+{
+  "stage": "6",
+  "status": "foundation-ready-not-activated",
+  "checks": {
+    "gtm_disabled_default": true,
+    "ga4_id_unset": true,
+    "google_ads_id_unset": true,
+    "meta_pixel_id_unset": true,
+    "purchase_backend_gated": true,
+    "purchase_dedupe_marker": true,
+    "purchase_event_id": true,
+    "remove_from_cart": true,
+    "begin_checkout_checkout_only": true,
+    "all_html_have_analytics": true
+  }
+}

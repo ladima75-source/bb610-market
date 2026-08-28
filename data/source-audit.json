@@ -1,0 +1,191 @@
+[
+  {
+    "id": "master-13-40-13",
+    "name": "MASTER 13-40-13",
+    "brand": "Valagro",
+    "source": {
+      "title": "Valagro / Syngenta Biologicals — Master Line",
+      "url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+      "verifiedAt": "2026-08-28",
+      "primary": true
+    },
+    "verification": {
+      "status": "verified-primary-source",
+      "verified": true,
+      "verifiedAt": "2026-08-28",
+      "scope": "Дані продукту виробника",
+      "note": "Комерційні параметри BB610 не верифіковані та не заповнені."
+    },
+    "officialImageSourceUrl": "",
+    "localImage": "assets/img/product-master.svg",
+    "imageStatus": "local-placeholder"
+  },
+  {
+    "id": "master-20-20-20",
+    "name": "MASTER 20-20-20",
+    "brand": "Valagro",
+    "source": {
+      "title": "Valagro / Syngenta Biologicals — Master Line",
+      "url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+      "verifiedAt": "2026-08-28",
+      "primary": true
+    },
+    "verification": {
+      "status": "verified-primary-source",
+      "verified": true,
+      "verifiedAt": "2026-08-28",
+      "scope": "Дані продукту виробника",
+      "note": "Комерційні параметри BB610 не верифіковані та не заповнені."
+    },
+    "officialImageSourceUrl": "",
+    "localImage": "assets/img/product-npk.svg",
+    "imageStatus": "local-placeholder"
+  },
+  {
+    "id": "plantafol-20-20-20",
+    "name": "PLANTAFOL 20-20-20",
+    "brand": "Valagro",
+    "source": {
+      "title": "Valagro Farm Catalogue 2018 — Plantafol Line",
+      "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+      "verifiedAt": "2026-08-28",
+      "primary": true
+    },
+    "verification": {
+      "status": "verified-primary-source",
+      "verified": true,
+      "verifiedAt": "2026-08-28",
+      "scope": "Дані продукту виробника",
+      "note": "Комерційні параметри BB610 не верифіковані та не заповнені."
+    },
+    "officialImageSourceUrl": "",
+    "localImage": "assets/img/product-plantafol.svg",
+    "imageStatus": "local-placeholder"
+  },
+  {
+    "id": "megafol",
+    "name": "MEGAFOL™",
+    "brand": "Valagro",
+    "source": {
+      "title": "Syngenta Biologicals / Valagro — MEGAFOL™",
+      "url": "https://www.valagro.com/en/products/farm/plant-biostimulants/megafol/",
+      "verifiedAt": "2026-08-28",
+      "primary": true
+    },
+    "verification": {
+      "status": "verified-primary-source",
+      "verified": true,
+      "verifiedAt": "2026-08-28",
+      "scope": "Дані продукту виробника",
+      "note": "Комерційні параметри BB610 не верифіковані та не заповнені."
+    },
+    "officialImageSourceUrl": "https://www.valagro.com/media/filer_public/46/32/4632f991-0685-4bb3-a6d0-8f3edcd9cd4a/megafol_and_regenerative_agriculture.pdf",
+    "localImage": "assets/img/product-megafol.svg",
+    "imageStatus": "official-image-import-pending"
+  },
+  {
+    "id": "kendal-root",
+    "name": "KENDAL™ ROOT",
+    "brand": "Valagro",
+    "source": {
+      "title": "Valagro — KENDAL ROOT official leaflet",
+      "url": "https://www.valagro.com/media/filer_public/8b/c3/8bc37f5d-8ede-4bba-ad7a-d23b5d7c2ea1/valagro_red_kendal_root.pdf",
+      "verifiedAt": "2026-08-28",
+      "primary": true
+    },
+    "verification": {
+      "status": "verified-primary-source",
+      "verified": true,
+      "verifiedAt": "2026-08-28",
+      "scope": "Дані продукту виробника",
+      "note": "Комерційні параметри BB610 не верифіковані та не заповнені."
+    },
+    "officialImageSourceUrl": "",
+    "localImage": "assets/img/product-biostim.svg",
+    "imageStatus": "local-placeholder"
+  },
+  {
+    "id": "switch-625-wg",
+    "name": "СВІТЧ® 62,5 WG, в. г.",
+    "brand": "Syngenta",
+    "source": {
+      "title": "Сингента Україна — СВІТЧ® 62,5 WG",
+      "url": "https://www.syngenta.ua/product/crop-protection/svitch-625-wg-v-g",
+      "verifiedAt": "2026-08-28",
+      "primary": true
+    },
+    "verification": {
+      "status": "verified-primary-source",
+      "verified": true,
+      "verifiedAt": "2026-08-28",
+      "scope": "Дані продукту виробника",
+      "note": "Комерційні параметри BB610 не верифіковані та не заповнені."
+    },
+    "officialImageSourceUrl": "https://admin.store.syngenta.ua/images/cache/PdProducts/PdProduct159/249bb7bdac-1.webp",
+    "localImage": "assets/img/product-protection.svg",
+    "imageStatus": "official-image-import-pending"
+  },
+  {
+    "id": "aktara-25-wg",
+    "name": "АКТАРА® 25 WG, в. г.",
+    "brand": "Syngenta",
+    "source": {
+      "title": "Сингента Україна — АКТАРА® 25 WG",
+      "url": "https://www.syngenta.ua/product/crop-protection/insektytsydy/aktarar-25-wg-v-h",
+      "verifiedAt": "2026-08-28",
+      "primary": true
+    },
+    "verification": {
+      "status": "verified-primary-source",
+      "verified": true,
+      "verifiedAt": "2026-08-28",
+      "scope": "Дані продукту виробника",
+      "note": "Комерційні параметри BB610 не верифіковані та не заповнені."
+    },
+    "officialImageSourceUrl": "https://admin.store.syngenta.ua/images/cache/PdProducts/PdProduct55/ea097b0373-1.webp",
+    "localImage": "assets/img/product-protection.svg",
+    "imageStatus": "official-image-import-pending"
+  },
+  {
+    "id": "plantlogic-25-round-1308125",
+    "name": "NEW 25 Liter Round Pot",
+    "brand": "Plantlogic",
+    "source": {
+      "title": "Plantlogic — NEW 25 Liter Round Pot",
+      "url": "https://getplantlogic.com/portfolio-items/new-25-liter-round-pot/",
+      "verifiedAt": "2026-08-28",
+      "primary": true
+    },
+    "verification": {
+      "status": "verified-primary-source",
+      "verified": true,
+      "verifiedAt": "2026-08-28",
+      "scope": "Дані продукту виробника",
+      "note": "Комерційні параметри BB610 не верифіковані та не заповнені."
+    },
+    "officialImageSourceUrl": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/25L-Round-pot_Item_1308125.jpg?ssl=1&w=669",
+    "localImage": "assets/img/product-container.svg",
+    "imageStatus": "official-image-import-pending"
+  },
+  {
+    "id": "plantlogic-40-round-ugroove-1308041",
+    "name": "40 Liter Round Pot with U-Grooves",
+    "brand": "Plantlogic",
+    "source": {
+      "title": "Plantlogic — 40 Liter Round Pot with U-Grooves",
+      "url": "https://getplantlogic.com/portfolio-items/40l-round-pot-with-u-grooves/",
+      "verifiedAt": "2026-08-28",
+      "primary": true
+    },
+    "verification": {
+      "status": "verified-primary-source",
+      "verified": true,
+      "verifiedAt": "2026-08-28",
+      "scope": "Дані продукту виробника",
+      "note": "Комерційні параметри BB610 не верифіковані та не заповнені."
+    },
+    "officialImageSourceUrl": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/07/Maceta-redonda-40-litros-para-arandanos.jpg?ssl=1&w=669",
+    "localImage": "assets/img/product-container45.svg",
+    "imageStatus": "official-image-import-pending"
+  }
+]

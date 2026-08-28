@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: BB610 Market Orders API
+  version: 1.0.0-draft
+  description: Provider-neutral contract for the BB610 Market static frontend.
+servers:
+  - url: https://api.market.bb610.com.ua
+    description: Future production API; not configured yet
+paths:
+  /api/v1/orders:
+    post:
+      summary: Create an order from current SKU quantities
+      description: The backend MUST ignore any client-side price as authoritative and re-resolve price and availability by SKU.
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './contracts/order-create-request.schema.json'
+      responses:
+        '201':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: './contracts/order-create-response.schema.json'
+        '409':
+          description: SKU unavailable, price changed, or order conflict
+        '422':
+          description: Validation error
+  /api/v1/orders/{orderId}:
+    get:
+      summary: Read public confirmation state for one order
+      parameters:
+        - in: path
+          name: orderId
+          required: true
+          schema: { type: string }
+        - in: query
+          name: token
+          required: false
+          schema: { type: string }
+      responses:
+        '200':
+          description: Public order status; may set analytics.purchase_ready only when purchase may be emitted; analytics.event_id should be stable for browser/server deduplication
+          content:
+            application/json:
+              schema:
+                $ref: './contracts/order-create-response.schema.json'
+        '404':
+          description: Order not found
+webhooks:
+  paymentStatus:
+    post:
+      summary: Payment provider webhook handled by backend only
+      description: Provider signature must be verified server-side. Browser success URL is never payment truth.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200': { description: Accepted }

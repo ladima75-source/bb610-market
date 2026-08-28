@@ -1,0 +1,9 @@
+document.addEventListener('DOMContentLoaded',()=>{
+  const root=document.getElementById('compare-root');
+  const ids=BB610.get(BB610.LS.compare,[]),ps=ids.map(BB610.byId).filter(Boolean);
+  if(!ps.length){root.innerHTML='<div class="empty">Додайте 2–4 товари через кнопку ⇄ у каталозі.</div>';return}
+  const head=p=>{const s=BB610.defaultSku(p.id);return `<div class="compare-product-header"><a class="compare-product-image" href="${BB610.productUrl(p)}"><img src="${p.image}" alt="${p.name}"></a><div class="compare-product-meta"><a class="compare-product-name" href="${BB610.productUrl(p)}">${p.name}</a><span>${p.manufacturer||p.brand}</span><span>${s?.variant||p.pack||'Фасовка уточнюється'}</span><b>${BB610.money(s?.price??p.price)}</b><small>${s?.stock_label||p.stockLabel||'Наявність уточнюється'}</small></div><button class="compare-remove" data-remove="${p.id}" aria-label="Прибрати ${p.name}">×</button></div>`};
+  const rows=[['Виробник',p=>p.brand],['Категорія',p=>p.categoryLabel],['Склад / NPK',p=>p.npk||'—'],['Призначення виробника',p=>p.manufacturerUse],['Культури',p=>p.cultures.join(', ')],['Норма застосування',p=>p.rate],['Фасовка',p=>p.pack],['Ціна',p=>BB610.money(p.price)],['Ціна за одиницю',p=>BB610.unitPrice(p)||'Уточнюється'],['Наявність',p=>p.stockLabel],['Походження',p=>`${p.manufacturer}; ${p.country}; постачальник: ${p.supplier}`]];
+  root.innerHTML=`<div class="compare-hint">На смартфоні таблицю можна гортати горизонтально.</div><div class="compare-table-wrap" tabindex="0"><table class="compare-table"><thead><tr><th>Товар</th>${ps.map(p=>`<th>${head(p)}</th>`).join('')}</tr></thead><tbody>${rows.map(([n,f])=>`<tr><td>${n}</td>${ps.map(p=>`<td>${f(p)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  root.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{BB610.toggleCompare(b.dataset.remove);location.reload()});
+});

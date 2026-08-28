@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://market.bb610.com.ua/contracts/order-create-response.schema.json",
+  "title": "BB610 Market Order Create Response",
+  "type": "object",
+  "required": [
+    "order_id",
+    "order_number",
+    "status",
+    "currency",
+    "items",
+    "payment"
+  ],
+  "properties": {
+    "order_id": {
+      "type": "string"
+    },
+    "order_number": {
+      "type": "string"
+    },
+    "public_token": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "created",
+        "confirmed",
+        "awaiting_payment",
+        "paid",
+        "cancelled",
+        "failed"
+      ]
+    },
+    "currency": {
+      "const": "UAH"
+    },
+    "subtotal": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "delivery_total": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "total": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sku",
+          "quantity",
+          "name",
+          "variant",
+          "unit_price"
+        ],
+        "properties": {
+          "sku": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "brand": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "category": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "variant": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "unit_price": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "payment": {
+      "type": "object",
+      "required": [
+        "required",
+        "status"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "provider": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "not_required",
+            "not_started",
+            "pending",
+            "paid",
+            "failed",
+            "cancelled"
+          ]
+        },
+        "redirect_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      },
+      "additionalProperties": true
+    },
+    "confirmation_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "analytics": {
+      "type": "object",
+      "properties": {
+        "purchase_ready": {
+          "type": "boolean"
+        },
+        "event_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Stable event id for browser/server purchase deduplication (e.g. Meta CAPI)."
+        }
+      },
+      "additionalProperties": true
+    },
+    "clear_cart": {
+      "type": "boolean"
+    },
+    "customer_message": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

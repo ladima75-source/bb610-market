@@ -29,3 +29,25 @@ All current BB610 SKU remain commercially unconfigured, so order creation reject
 ## Stage 12 — Automation & AI
 
 The Commerce API now includes an event/rules/AI-job/approval/audit layer. AI is disabled by default and requires a backend-only provider adapter. High-risk order cancellation is routed through the approval queue.
+
+## Local `.env` loading
+`backend/.env` is loaded automatically when the `backend` package starts. Existing OS/environment values take priority over the file, so production secret managers can override local values safely.
+
+Never commit `backend/.env`. The root `.gitignore` excludes it, the local virtual environment, and SQLite runtime files.
+
+### Local notification setup
+Copy `.env.example` to `.env` and configure backend-only secrets:
+- `BB610_TELEGRAM_BOT_TOKEN`
+- `BB610_TELEGRAM_CHAT_ID`
+- `BB610_SMTP_PASSWORD`
+
+The default notification mailbox is `admin.bb610@gmail.com` and the public sender is `market.bb610@gmail.com`.
+
+### Remove the Stage-12 local test order
+From the site root:
+
+```bash
+python backend/tools_cleanup_test_order.py
+```
+
+The script only targets `TEST-001` and is safe to run repeatedly.

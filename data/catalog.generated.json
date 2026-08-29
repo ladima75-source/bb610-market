@@ -872,6 +872,63 @@
       "default_sku_id": "BB610-PLT-1308041-EA",
       "store_content_status": "sku-model-ready",
       "seo": {}
+    },
+    {
+      "id": "bb610-order-test",
+      "slug": "bb610-order-test",
+      "name": "BB610 TEST ORDER",
+      "official_name": "BB610 TEST ORDER",
+      "brand": "BB610",
+      "manufacturer": "BB610",
+      "country": "Україна",
+      "category_id": "biostimulation",
+      "product_type": "Службовий тестовий товар",
+      "form": "Службовий запис",
+      "npk": "—",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "технічне тестування checkout"
+      ],
+      "manufacturer_use": "Службовий товар для наскрізної перевірки оформлення замовлення. Не є реальною товарною пропозицією.",
+      "application": "Не застосовується.",
+      "rate": "",
+      "restrictions": "Не продається.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [
+        "1 тестова одиниця"
+      ],
+      "documents": [],
+      "source": {
+        "title": "BB610 internal diagnostic",
+        "url": "",
+        "verifiedAt": "2026-08-29",
+        "primary": false
+      },
+      "image": {
+        "local": "assets/bb610-market-logo.png",
+        "officialSourceUrl": "",
+        "status": "internal-test"
+      },
+      "verification": {
+        "status": "internal-test",
+        "verified": false,
+        "verifiedAt": "2026-08-29",
+        "scope": "Технічний тест",
+        "note": "Не є товаром каталогу."
+      },
+      "selected_by_bb610": false,
+      "canonical_product_url": "",
+      "legacy_url": "",
+      "default_sku_id": "BB610-TEST-ORDER-001",
+      "store_content_status": "internal-test",
+      "seo": {},
+      "internal_only": true
     }
   ],
   "variants": [
@@ -1042,6 +1099,15 @@
       "quantity": 1,
       "unit": "ea",
       "status": "manufacturer-pack-confirmed"
+    },
+    {
+      "id": "bb610-order-test--1",
+      "product_id": "bb610-order-test",
+      "label": "1 тестова одиниця",
+      "quantity": 1,
+      "unit": "pcs",
+      "status": "internal-test",
+      "internal_only": true
     }
   ],
   "skus": [
@@ -1492,6 +1558,39 @@
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
       "seo": {}
+    },
+    {
+      "id": "BB610-TEST-ORDER-001",
+      "sku": "BB610-TEST-ORDER-001",
+      "product_id": "bb610-order-test",
+      "variant_id": "bb610-order-test--1",
+      "slug": "bb610-order-test-001",
+      "variant": "1 тестова одиниця",
+      "volume_weight": {
+        "value": 1,
+        "unit": "pcs"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": 100,
+      "currency": "UAH",
+      "availability": "in_stock",
+      "stock_label": "TEST — доступний",
+      "offer_status": "active",
+      "feed_eligible": false,
+      "url": "/products/bb610-order-test-001/",
+      "image": "assets/bb610-market-logo.png",
+      "supplier": "BB610 internal",
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Тільки технічний тест. Реальне відправлення не виконується."
+      ],
+      "commercial_status": "active",
+      "commercial_note": "INTERNAL TEST SKU. Не публікувати як товарну пропозицію.",
+      "pack_source_status": "internal-test",
+      "seo": {},
+      "internal_only": true
     }
   ],
   "solutions": [],

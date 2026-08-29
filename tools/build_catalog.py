@@ -175,8 +175,10 @@ def render_product_page(p,sku=None):
     out=products_dir/slug/'index.html';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(content,encoding='utf-8')
 
 for p in master['products']:
+    if p.get('internal_only'): continue
     render_product_page(p,None)
 for s in master['skus']:
+    if s.get('internal_only') or prod[s['product_id']].get('internal_only'): continue
     render_product_page(prod[s['product_id']],s)
 
 # legacy dynamic product endpoint should never be indexed
@@ -248,8 +250,8 @@ for s in master['skus']:
 # ---------- sitemap / robots ----------
 urls=[SITE+'/',SITE+'/catalog.html',SITE+'/about.html']
 urls += [SITE+'/categories/'+c['slug']+'/' for c in master['categories'] if c.get('enabled')]
-urls += [SITE+'/products/'+p['slug']+'/' for p in master['products']]
-urls += [SITE+s['url'] for s in master['skus'] if sku_indexable(s)]
+urls += [SITE+'/products/'+p['slug']+'/' for p in master['products'] if not p.get('internal_only')]
+urls += [SITE+s['url'] for s in master['skus'] if sku_indexable(s) and not s.get('internal_only') and not prod[s['product_id']].get('internal_only')]
 sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{esc(u)}</loc></url>\n' for u in urls)+'</urlset>\n'
 (ROOT/'sitemap.xml').write_text(sitemap,encoding='utf-8')
 (ROOT/'robots.txt').write_text(f'''User-agent: *\nAllow: /\nDisallow: /cart.html\nDisallow: /checkout.html\nDisallow: /compare.html\nDisallow: /favorites.html\nDisallow: /tools/\n\nSitemap: {SITE}/sitemap.xml\n''',encoding='utf-8')

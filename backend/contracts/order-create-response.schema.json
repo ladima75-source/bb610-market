@@ -31,7 +31,11 @@
         "awaiting_payment",
         "paid",
         "cancelled",
-        "failed"
+        "failed",
+        "new",
+        "preparing",
+        "shipped",
+        "completed"
       ]
     },
     "currency": {

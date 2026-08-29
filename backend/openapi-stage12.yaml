@@ -1,0 +1,21 @@
+openapi: 3.1.0
+info:
+  title: BB610 Market Automation & AI API
+  version: Stage 12
+paths:
+  /api/v1/admin/automation/summary:
+    get: {summary: Automation dashboard summary}
+  /api/v1/admin/automation/rules:
+    get: {summary: List automation rules}
+  /api/v1/admin/automation/rules/{rule_id}:
+    patch: {summary: Enable or disable one automation rule}
+  /api/v1/admin/automation/jobs:
+    get: {summary: List AI jobs}
+  /api/v1/admin/automation/approvals:
+    get: {summary: List approval requests}
+  /api/v1/admin/automation/approvals/{approval_id}:
+    patch: {summary: Approve or reject a pending action}
+  /api/v1/admin/automation/audit:
+    get: {summary: Read automation audit log}
+  /api/v1/admin/orders/{order_id}/cancel-request:
+    post: {summary: Request human-approved order cancellation}

@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: BB610 Market Commerce API
+  version: "stage-9"
+  description: Orders + delivery + provider-neutral payment contract. No live acquiring credentials are bundled.
+paths:
+  /api/v1/payments/methods:
+    get:
+      summary: Return payment methods currently enabled by backend configuration
+      responses:
+        "200": {description: Payment capabilities}
+  /api/v1/orders:
+    post:
+      summary: Create order from server-validated SKU lines and selected payment method
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: {type: string}
+      responses:
+        "201": {description: Order created; may contain payment.redirect_url}
+        "409": {description: SKU/catalog/idempotency conflict}
+        "503": {description: Selected payment method is not configured}
+  /api/v1/orders/{order_id}:
+    get:
+      summary: Public confirmation state guarded by public token
+      parameters:
+        - in: path
+          name: order_id
+          required: true
+          schema: {type: string}
+        - in: query
+          name: token
+          required: true
+          schema: {type: string}
+      responses:
+        "200": {description: Confirmed server-side order/payment state}
+  /api/v1/payments/webhooks/{provider}:
+    post:
+      summary: Payment-provider webhook; adapter must authenticate/signature-verify before state mutation
+      parameters:
+        - in: path
+          name: provider
+          required: true
+          schema: {type: string}
+      responses:
+        "200": {description: Idempotently processed}
+        "401": {description: Invalid signature}
+        "503": {description: Provider adapter not configured}
+  /api/v1/admin/orders/{order_id}/payment:
+    patch:
+      summary: Manual COD collection/cancellation update only; online-card paid state is webhook-owned
+      security: [{AdminBearer: []}]
+      responses:
+        "200": {description: Payment updated}
+components:
+  securitySchemes:
+    AdminBearer:
+      type: http
+      scheme: bearer

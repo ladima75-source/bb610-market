@@ -1,0 +1,20 @@
+openapi: 3.1.0
+info:
+  title: BB610 Market Orders & Delivery API
+  version: stage8
+paths:
+  /api/v1/delivery/providers:
+    get:
+      summary: Delivery provider capabilities
+  /api/v1/delivery/{provider}/cities:
+    get:
+      summary: Search carrier cities when live lookup is configured
+  /api/v1/delivery/{provider}/branches:
+    get:
+      summary: Search carrier branches/lockers when live lookup is configured
+  /api/v1/admin/orders/{order_id}/delivery/tracking:
+    post:
+      summary: Attach tracking number/TTN to an order
+  /api/v1/admin/orders/{order_id}/delivery/refresh:
+    post:
+      summary: Refresh tracking via configured carrier adapter

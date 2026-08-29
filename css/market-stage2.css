@@ -293,3 +293,21 @@ body{color:var(--text)}
   .cart-v2 .cart-side{grid-column:2;grid-row:auto;display:flex;justify-content:space-between;width:100%;min-width:0}
   .checkout-v2 .checkout-layout{grid-template-columns:1fr}
 }
+/* Stage 8 — delivery checkout */
+.checkout-v2 .delivery-card{position:relative}.delivery-static{display:grid;gap:3px;padding:10px 12px;border:1px solid #3b3e3d;border-radius:8px;background:#252726}.delivery-static span,.delivery-api-note{font-size:11px;line-height:1.45;color:#989d9e}.delivery-api-note:empty{display:none}.delivery-suggest{display:grid;position:relative;z-index:4}.delivery-suggest button{appearance:none;text-align:left;border:1px solid #414440;border-top:0;background:#292b29;color:#eee;padding:8px 10px;cursor:pointer;font-size:12px}.delivery-suggest button:first-child{border-top:1px solid #414440;border-radius:7px 7px 0 0}.delivery-suggest button:last-child{border-radius:0 0 7px 7px}.delivery-suggest button:hover{background:#33352f}.delivery-summary{font-size:12px;color:#9da1a2}
+
+/* Stage 9 — payment method component */
+.payment-card h2{margin-bottom:12px}
+#payment-methods{display:grid;gap:8px}
+.payment-option{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(255,255,255,.025);cursor:pointer}
+.payment-option input{margin-top:3px;accent-color:#f4b000}.payment-option span{display:grid;gap:2px}.payment-option small{color:var(--muted);line-height:1.35}
+.payment-option:has(input:checked){border-color:rgba(244,176,0,.55);background:rgba(244,176,0,.06)}
+.payment-option.is-disabled{opacity:.52;cursor:not-allowed}
+
+/* Stage 10 — Store Operations & Legal */
+.policy-hero{padding:38px 0 18px}.policy-hero h1{font-size:clamp(34px,5vw,54px);margin:8px 0}.policy-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:28px;align-items:start}.policy-card{background:#202324;border:1px solid #35393a;border-radius:18px;padding:22px;margin-bottom:14px}.policy-card h2{font-size:20px;margin:0 0 10px}.policy-card p,.policy-card li{color:#b4b9b6}.policy-card ul{padding-left:20px}.policy-alert{border:1px solid #6d5b2d;background:#2a2518;color:#e7cf87;border-radius:14px;padding:14px 16px;margin:16px 0}.policy-nav{position:sticky;top:132px;background:#1d2021;border:1px solid #343839;border-radius:16px;padding:16px}.policy-nav a{display:block;color:#abb1ae;padding:8px 0}.policy-nav a:hover{color:var(--market)}.seller-grid{display:grid;grid-template-columns:180px 1fr;gap:8px 14px}.seller-grid div:nth-child(odd){color:#818784}.launch-blocker{display:inline-flex;gap:8px;align-items:center;padding:7px 10px;border-radius:999px;background:#302816;border:1px solid #695625;color:#f0cf70;font-size:12px;font-weight:800}.footer-merchant{margin-top:14px;color:#8e9491;font-size:12px}.footer-merchant strong{color:#d5dad7}@media(max-width:800px){.policy-layout{grid-template-columns:1fr}.policy-nav{position:static}.seller-grid{grid-template-columns:1fr}.seller-grid div:nth-child(odd){margin-top:8px}}
+
+.checkout-consent{padding-top:16px;padding-bottom:16px}.consent-row{display:flex;gap:10px;align-items:flex-start}.consent-row input{margin-top:4px}.consent-row span{font-size:13px;line-height:1.45;color:#aeb4b1}.consent-row a{color:var(--market);text-decoration:underline;text-underline-offset:2px}
+
+/* Legal/store operations published content */
+.policy-version{color:#7f8582;font-size:12px;margin:0 0 18px}.policy-card strong{color:#eef1ef}.policy-card a,.footer-merchant a{color:#d4b85f}.policy-card a:hover,.footer-merchant a:hover{color:#f0cf70}.launch-ok{display:inline-flex;gap:8px;align-items:center;padding:7px 10px;border-radius:999px;background:#1d3025;border:1px solid #355d43;color:#9ed7ae;font-size:12px;font-weight:800}.policy-card li{margin:6px 0;line-height:1.45}.policy-card p{line-height:1.55;margin:7px 0}.policy-card h2{line-height:1.25}.policy-card{padding:20px 22px}.policy-hero{padding-bottom:34px}

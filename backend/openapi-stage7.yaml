@@ -1,0 +1,78 @@
+openapi: 3.1.0
+info:
+  title: BB610 Market Orders Core API
+  version: 2.0.0-stage7
+servers:
+  - url: https://api.market.bb610.com.ua
+paths:
+  /api/v1/health:
+    get:
+      summary: Service health
+      responses: {'200': {description: OK}}
+  /api/v1/orders:
+    post:
+      summary: Create immutable order from authoritative SKU data
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: {type: string}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: './contracts/order-create-request.schema.json'}
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: {$ref: './contracts/order-create-response.schema.json'}
+        '409': {description: SKU or idempotency conflict}
+        '422': {description: Validation error}
+  /api/v1/orders/{orderId}:
+    get:
+      summary: Public confirmation state; requires public token
+      parameters:
+        - {in: path, name: orderId, required: true, schema: {type: string}}
+        - {in: query, name: token, required: true, schema: {type: string}}
+      responses:
+        '200': {description: Order confirmation}
+        '404': {description: Not found or invalid token}
+  /api/v1/admin/orders:
+    get:
+      summary: List orders
+      security: [{adminBearer: []}]
+      parameters:
+        - {in: query, name: status, schema: {type: string}}
+        - {in: query, name: limit, schema: {type: integer, minimum: 1, maximum: 500}}
+      responses: {'200': {description: Order list}, '401': {description: Unauthorized}}
+  /api/v1/admin/orders/{orderId}:
+    get:
+      summary: Order operational detail
+      security: [{adminBearer: []}]
+      parameters:
+        - {in: path, name: orderId, required: true, schema: {type: string}}
+      responses: {'200': {description: Order detail}, '404': {description: Not found}}
+  /api/v1/admin/orders/{orderId}/status:
+    patch:
+      summary: Apply controlled order status transition
+      security: [{adminBearer: []}]
+      parameters:
+        - {in: path, name: orderId, required: true, schema: {type: string}}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status: {enum: [new, confirmed, preparing, shipped, completed, cancelled]}
+                note: {type: [string, 'null']}
+      responses: {'200': {description: Updated}, '409': {description: Invalid transition}}
+components:
+  securitySchemes:
+    adminBearer:
+      type: http
+      scheme: bearer

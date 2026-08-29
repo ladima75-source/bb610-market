@@ -1,56 +1,45 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  const root=document.getElementById('checkout-app');
-  if(!root)return;
+  const root=document.getElementById('checkout-app'); if(!root)return;
   const cart=BB610.get(BB610.LS.cart,[]).map(row=>({row,sku:BB610.sku(row.sku)})).filter(x=>x.sku).map(x=>({...x,p:BB610.byId(x.sku.product_id)}));
   const orderable=x=>x.sku.commercial_status==='active'&&x.sku.offer_status==='active'&&x.sku.price!==null&&x.sku.price!==undefined&&x.sku.availability!=='unknown'&&x.sku.availability!=='out_of_stock';
-  const allOrderable=cart.length>0&&cart.every(orderable);
-  const total=cart.reduce((s,x)=>s+(x.sku.price==null?0:Number(x.sku.price)*x.row.qty),0);
-  const configured=BB610OrderClient.configured();
+  const allOrderable=cart.length>0&&cart.every(orderable), total=cart.reduce((s,x)=>s+(x.sku.price==null?0:Number(x.sku.price)*x.row.qty),0), configured=BB610OrderClient.configured();
   if(cart.length)BB610.pushEvent('begin_checkout',{ecommerce:{currency:'UAH',value:cart.every(x=>x.sku.price!=null)?total:undefined,items:cart.map(x=>BB610.commerceItem(x.sku,x.row.qty))}});
 
-  root.innerHTML=`<div class="checkout-layout">
-    <form id="checkout-form" class="checkout-form" novalidate>
-      <div class="info-card checkout-card"><div class="eyebrow">КОНТАКТНІ ДАНІ</div><h2>Оформлення без реєстрації</h2>
-        <div class="field-grid"><label><span>Ім’я *</span><input name="name" autocomplete="name" required></label><label><span>Телефон *</span><input name="phone" inputmode="tel" autocomplete="tel" placeholder="+380..." required></label></div>
-        <label><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="Необов’язково"></label>
-      </div>
-      <div class="info-card checkout-card"><div class="eyebrow">ОТРИМАННЯ</div><h2>Спосіб отримання</h2>
-        <label><span>Спосіб *</span><select name="method" required><option value="pickup_dnipro">Самовивіз у Дніпрі</option><option value="delivery_dnipro">Доставка по Дніпру</option><option value="shipping_ukraine">Відправка по Україні</option></select></label>
-        <label><span>Місто / відділення / адреса</span><input name="destination" autocomplete="street-address" placeholder="Уточнюється залежно від способу"></label>
-        <label><span>Коментар</span><textarea name="comment" rows="3" placeholder="Необов’язково"></textarea></label>
-      </div>
-      <div class="checkout-system-note ${configured&&allOrderable?'ready':'blocked'}">
-        ${!configured?'<b>Backend замовлень ще не підключений.</b><span>Форма та API-контракт готові, але реальний заказ зараз не відправляється.</span>':!allOrderable?'<b>Не всі SKU готові до продажу.</b><span>Для оформлення потрібні активні SKU, підтверджені ціни та наявність.</span>':'<b>Замовлення готове до відправки.</b><span>Перед створенням замовлення backend повторно перевірить ціну та наявність.</span>'}
-      </div>
-      <button id="submit-order" class="btn checkout-submit" type="submit" ${configured&&allOrderable?'':'disabled'}>ПІДТВЕРДИТИ ЗАМОВЛЕННЯ</button>
-      <div id="checkout-error" class="checkout-error" hidden></div>
-    </form>
-    <aside class="summary-card checkout-summary"><div class="eyebrow">ВАШЕ ЗАМОВЛЕННЯ</div>${cart.length?cart.map(x=>`<div class="checkout-line"><div><b>${x.p.name}</b><span>${x.sku.variant} · SKU ${x.sku.id}</span></div><span>${x.row.qty} × ${BB610.money(x.sku.price)}</span></div>`).join(''):'<div class="empty">Кошик порожній.</div>'}<div class="summary-row"><b>Разом</b><b>${cart.length&&cart.every(x=>x.sku.price!=null)?BB610.money(total):'Ціна уточнюється'}</b></div><p class="checkout-disclaimer">Фінальна сума, доступність і умови доставки підтверджуються backend під час створення замовлення.</p></aside>
-  </div>`;
+  root.innerHTML=`<div class="checkout-layout"><form id="checkout-form" class="checkout-form" novalidate>
+    <div class="info-card checkout-card"><div class="eyebrow">КОНТАКТНІ ДАНІ</div><h2>Оформлення без реєстрації</h2><div class="field-grid"><label><span>Ім’я *</span><input name="name" autocomplete="name" required></label><label><span>Телефон *</span><input name="phone" inputmode="tel" autocomplete="tel" placeholder="+380..." required></label></div><label><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="Необов’язково"></label></div>
+    <div class="info-card checkout-card delivery-card"><div class="eyebrow">ДОСТАВКА</div><h2>Спосіб отримання</h2><label><span>Служба / спосіб *</span><select name="provider" id="delivery-provider" required><option value="pickup_dnipro">Самовивіз у Дніпрі</option><option value="delivery_dnipro">Доставка по Дніпру</option><option value="nova_poshta">Нова пошта</option><option value="ukrposhta">Укрпошта</option></select></label><div id="delivery-fields"></div><div id="delivery-api-note" class="delivery-api-note"></div></div>
+    <div class="info-card checkout-card payment-card"><div class="eyebrow">ОПЛАТА</div><h2>Спосіб оплати</h2><div id="payment-methods"><label class="payment-option is-disabled"><input type="radio" name="payment_method" value="cod" disabled><span><b>Післяплата</b><small>Буде доступна після активації на backend.</small></span></label><label class="payment-option is-disabled"><input type="radio" name="payment_method" value="online_card" disabled><span><b>Оплата карткою онлайн</b><small>Платіжний провайдер ще не підключений.</small></span></label></div><div id="payment-note" class="delivery-api-note"></div></div>
+    <div class="info-card checkout-card"><label><span>Коментар</span><textarea name="comment" rows="2" placeholder="Необов’язково"></textarea></label></div>
+    <div class="info-card checkout-card checkout-consent"><label class="consent-row"><input type="checkbox" name="terms_accept" required><span>Підтверджую, що ознайомився(-лась) з <a href="terms.html" target="_blank" rel="noopener">умовами продажу</a>, <a href="delivery.html" target="_blank" rel="noopener">доставкою</a>, <a href="returns.html" target="_blank" rel="noopener">поверненням</a> та <a href="privacy.html" target="_blank" rel="noopener">політикою конфіденційності</a>.</span></label></div>
+    <div class="checkout-system-note ${configured&&allOrderable?'ready':'blocked'}">${!configured?'<b>Backend замовлень ще не підключений.</b><span>Доставка та замовлення готові архітектурно, але реальний заказ зараз не відправляється.</span>':!allOrderable?'<b>Не всі SKU готові до продажу.</b><span>Для оформлення потрібні активні SKU, підтверджені ціни та наявність.</span>':'<b>Замовлення готове до відправки.</b><span>Backend повторно перевірить SKU, ціну, наявність і структуру доставки.</span>'}</div>
+    <button id="submit-order" class="btn checkout-submit" type="submit" disabled>ПІДТВЕРДИТИ ЗАМОВЛЕННЯ</button><div id="checkout-error" class="checkout-error" hidden></div></form>
+    <aside class="summary-card checkout-summary"><div class="eyebrow">ВАШЕ ЗАМОВЛЕННЯ</div>${cart.length?cart.map(x=>`<div class="checkout-line"><div><b>${x.p.name}</b><span>${x.sku.variant} · SKU ${x.sku.id}</span></div><span>${x.row.qty} × ${BB610.money(x.sku.price)}</span></div>`).join(''):'<div class="empty">Кошик порожній.</div>'}<div class="summary-row"><b>Товари</b><b>${cart.length&&cart.every(x=>x.sku.price!=null)?BB610.money(total):'Ціна уточнюється'}</b></div><div class="summary-row delivery-summary"><span>Доставка</span><span>Розраховується окремо</span></div><p class="checkout-disclaimer">Фінальна сума, доступність і вартість доставки підтверджуються backend під час створення замовлення.</p></aside></div>`;
 
-  const form=document.getElementById('checkout-form'), btn=document.getElementById('submit-order'), err=document.getElementById('checkout-error');
-  form.addEventListener('submit',async e=>{
-    e.preventDefault();
-    if(!form.reportValidity()||!configured||!allOrderable)return;
-    err.hidden=true;btn.disabled=true;btn.textContent='СТВОРЕННЯ ЗАМОВЛЕННЯ…';
-    const fd=new FormData(form);
-    const payload={
-      customer:{name:String(fd.get('name')||'').trim(),phone:String(fd.get('phone')||'').trim(),email:String(fd.get('email')||'').trim()||null},
-      fulfillment:{method:String(fd.get('method')||''),destination:String(fd.get('destination')||'').trim()||null},
-      comment:String(fd.get('comment')||'').trim()||null,
-      currency:'UAH',
-      items:cart.map(x=>({sku:x.sku.id,quantity:x.row.qty})),
-      source:{channel:'web',site:'market.bb610.com.ua'}
-    };
-    try{
-      const result=await BB610OrderClient.createOrder(payload);
-      sessionStorage.setItem('bb610_pending_order',JSON.stringify({order_id:result.order_id,public_token:result.public_token||null}));
-      if(result.payment?.redirect_url){location.href=result.payment.redirect_url;return}
-      const success=result.confirmation_url||`order/success/?order=${encodeURIComponent(result.order_id)}${result.public_token?`&token=${encodeURIComponent(result.public_token)}`:''}`;
-      location.href=success;
-    }catch(ex){
-      err.hidden=false;err.textContent=ex.code==='BACKEND_NOT_CONFIGURED'?'Backend замовлень не налаштований.':(ex.data?.message||ex.message||'Не вдалося створити замовлення.');
-      btn.disabled=false;btn.textContent='ПІДТВЕРДИТИ ЗАМОВЛЕННЯ';
-    }
+  const form=document.getElementById('checkout-form'), btn=document.getElementById('submit-order'), err=document.getElementById('checkout-error'), provider=document.getElementById('delivery-provider'), fields=document.getElementById('delivery-fields'), apiNote=document.getElementById('delivery-api-note');
+  let selectedCity=null,selectedBranch=null,capabilities={},paymentCapabilities=[];
+  const paymentBox=document.getElementById('payment-methods'),paymentNote=document.getElementById('payment-note');
+  if(configured)BB610OrderClient.paymentMethods().then(r=>{paymentCapabilities=r.methods||[];renderPayments()}).catch(()=>{paymentNote.textContent='Не вдалося отримати доступні способи оплати.'});
+  function renderPayments(){if(!paymentBox)return;paymentBox.innerHTML=paymentCapabilities.map(m=>`<label class="payment-option ${m.enabled?'':'is-disabled'}"><input type="radio" name="payment_method" value="${m.id}" ${m.enabled?'required':'disabled'}><span><b>${m.label}</b><small>${m.id==='online_card'?(m.enabled?'Після створення замовлення відкриється захищена сторінка платіжного провайдера.':'Платіжний провайдер ще не підключений.'):(m.enabled?'Оплата при отриманні згідно з умовами перевізника.':'Післяплата ще не активована.')}</small></span></label>`).join('');const first=paymentBox.querySelector('input:not(:disabled)');if(first)first.checked=true;paymentNote.textContent=first?'Спосіб оплати буде повторно перевірено backend під час створення замовлення.':'Жоден реальний спосіб оплати ще не активований.';updateSubmit()}
+  function paymentReady(){return !!form.elements.payment_method?.value}
+  function updateSubmit(){btn.disabled=!(configured&&allOrderable&&paymentReady())}
+  if(BB610DeliveryClient.configured())BB610DeliveryClient.providers().then(r=>{(r.providers||[]).forEach(x=>capabilities[x.provider]=x);renderDelivery()}).catch(()=>{});
+  function note(text){apiNote.textContent=text||''}
+  function renderDelivery(){selectedCity=null;selectedBranch=null;const p=provider.value,cap=capabilities[p];
+    if(p==='pickup_dnipro'){fields.innerHTML='<div class="delivery-static"><b>Дніпро</b><span>Адреса та час самовивозу будуть вказані після підтвердження замовлення.</span></div>';note('');return}
+    if(p==='delivery_dnipro'){fields.innerHTML='<label><span>Адреса доставки *</span><input name="address_line" autocomplete="street-address" placeholder="Вулиця, будинок, квартира" required></label>';note('');return}
+    const service=p==='nova_poshta'?`<label><span>Тип отримання *</span><select name="service"><option value="branch">Відділення</option><option value="locker">Поштомат</option></select></label>`:'<input type="hidden" name="service" value="branch">';
+    fields.innerHTML=`${service}<label><span>Населений пункт *</span><input id="delivery-city" name="city" autocomplete="address-level2" placeholder="Почніть вводити місто" required><div class="delivery-suggest" id="city-suggest"></div></label><label><span>${p==='nova_poshta'?'Відділення / поштомат':'Відділення'} *</span><input id="delivery-branch" name="branch" placeholder="Номер або адреса відділення" required><div class="delivery-suggest" id="branch-suggest"></div></label><input type="hidden" name="city_ref"><input type="hidden" name="branch_ref"><label><span>Поштовий індекс</span><input name="postal_code" inputmode="numeric" placeholder="За наявності"></label>`;
+    const live=cap?.live_lookup; note(live?'Довідник перевізника підключений. Місто та відділення можна вибрати зі списку.':'API-довідник ще не активований. Місто та відділення можна ввести вручну; після підключення ключа форма автоматично використовуватиме довідник.');
+    if(live)bindLookup(p);
+  }
+  function bindLookup(p){const city=document.getElementById('delivery-city'),branch=document.getElementById('delivery-branch'),cs=document.getElementById('city-suggest'),bs=document.getElementById('branch-suggest');let timer;
+    city.addEventListener('input',()=>{selectedCity=null;form.elements.city_ref.value='';clearTimeout(timer);if(city.value.trim().length<2){cs.innerHTML='';return}timer=setTimeout(async()=>{try{const r=await BB610DeliveryClient.cities(p,city.value.trim());cs.innerHTML=(r.items||[]).slice(0,12).map((x,i)=>`<button type="button" data-i="${i}">${x.name}</button>`).join('');[...cs.children].forEach((b,i)=>b.onclick=()=>{const x=r.items[i];selectedCity=x;city.value=x.name;form.elements.city_ref.value=x.ref||'';if(x.postal_code)form.elements.postal_code.value=x.postal_code;cs.innerHTML='';branch.value='';form.elements.branch_ref.value='';branch.focus()})}catch(e){note('Не вдалося завантажити довідник. Дані можна ввести вручну.')};},300)});
+    branch.addEventListener('input',()=>{selectedBranch=null;form.elements.branch_ref.value='';clearTimeout(timer);if(!selectedCity?.ref){bs.innerHTML='';return}timer=setTimeout(async()=>{try{const r=await BB610DeliveryClient.branches(p,selectedCity.ref,branch.value.trim());const service=form.elements.service?.value||'branch';const rows=(r.items||[]).filter(x=>p!=='nova_poshta'||!x.service||x.service===service);bs.innerHTML=rows.slice(0,15).map((x,i)=>`<button type="button" data-i="${i}">${x.name}</button>`).join('');[...bs.children].forEach((b,i)=>b.onclick=()=>{const x=rows[i];selectedBranch=x;branch.value=x.name;form.elements.branch_ref.value=x.ref||'';bs.innerHTML=''})}catch(e){note('Не вдалося завантажити відділення. Дані можна ввести вручну.')};},250)});
+  }
+  provider.addEventListener('change',renderDelivery);renderDelivery();
+  form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity()||!configured||!allOrderable||!paymentReady())return;err.hidden=true;btn.disabled=true;btn.textContent='СТВОРЕННЯ ЗАМОВЛЕННЯ…';const fd=new FormData(form),p=String(fd.get('provider')||'');
+    const fulfillment={method:p,provider:p,service:String(fd.get('service')||({pickup_dnipro:'pickup',delivery_dnipro:'courier',nova_poshta:'branch',ukrposhta:'branch'}[p]||'')),city:String(fd.get('city')||'').trim()||null,city_ref:String(fd.get('city_ref')||'').trim()||null,branch:String(fd.get('branch')||'').trim()||null,branch_ref:String(fd.get('branch_ref')||'').trim()||null,postal_code:String(fd.get('postal_code')||'').trim()||null,address_line:String(fd.get('address_line')||'').trim()||null};
+    const payload={payment:{method:String(fd.get('payment_method')||'')},customer:{name:String(fd.get('name')||'').trim(),phone:String(fd.get('phone')||'').trim(),email:String(fd.get('email')||'').trim()||null},fulfillment,comment:String(fd.get('comment')||'').trim()||null,currency:'UAH',items:cart.map(x=>({sku:x.sku.id,quantity:x.row.qty})),source:{channel:'web',site:'market.bb610.com.ua'}};
+    try{const result=await BB610OrderClient.createOrder(payload);sessionStorage.setItem('bb610_pending_order',JSON.stringify({order_id:result.order_id,public_token:result.public_token||null}));if(result.payment?.redirect_url){location.href=result.payment.redirect_url;return}const success=result.confirmation_url||`order/success/?order=${encodeURIComponent(result.order_id)}${result.public_token?`&token=${encodeURIComponent(result.public_token)}`:''}`;location.href=success}catch(ex){err.hidden=false;err.textContent=ex.code==='BACKEND_NOT_CONFIGURED'?'Backend замовлень не налаштований.':(ex.data?.detail||ex.data?.message||ex.message||'Не вдалося створити замовлення.');btn.disabled=false;btn.textContent='ПІДТВЕРДИТИ ЗАМОВЛЕННЯ'}
   });
 });

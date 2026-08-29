@@ -1,17 +1,31 @@
-# Backend boundary (Stage 5)
+# BB610 Market Orders backend — Stage 7 reference implementation
 
-No backend is bundled or required to browse the current static BB610 Market site.
+This folder is now a runnable Orders Core reference backend, not only an API contract.
 
-For production ordering, implement the provider-neutral API described by `openapi-stage5.yaml`, then set only the public API origin in `config/commerce-config.js`.
+## Local run
+From the site root:
 
-Required backend responsibilities:
-1. Validate request schema and Idempotency-Key.
-2. Resolve SKU from authoritative commerce storage.
-3. Re-check commercial status, current price, stock and currency.
-4. Reject or return explicit conflict when a line cannot be sold.
-5. Create immutable order snapshots and unique transaction/order IDs.
-6. Create payment sessions server-side when applicable.
-7. Verify payment webhooks server-side.
-8. Return a public confirmation state safe for the success page.
-9. Decide when `analytics.purchase_ready` and `clear_cart` may become true.
-10. Never expose provider secret keys to the static frontend.
+```bash
+python -m pip install -r backend/requirements.txt
+export BB610_ADMIN_TOKEN='use-a-long-random-secret'
+export BB610_CORS_ORIGINS='http://127.0.0.1:8000,http://localhost:8000,https://market.bb610.com.ua'
+python -m backend.run_local
+```
+
+API: `http://127.0.0.1:8610`
+Swagger: `http://127.0.0.1:8610/docs`
+
+Set the storefront's public API origin in `config/commerce-config.js` only when a real backend is deployed. For admin UI, enter the API URL + admin token at `/admin/`.
+
+## Persistence
+Default DB: `backend/runtime/bb610-orders.sqlite3`. In production set `BB610_DB_PATH` to a persistent mounted volume and include it in backups.
+
+## Notifications
+All notification integrations are opt-in environment settings. See `.env.example`. Telegram/email are notifications, never the source of truth. The database is the source of truth.
+
+## Current limitation by design
+All current BB610 SKU remain commercially unconfigured, so order creation rejects them. This is correct until actual prices and stock are entered.
+
+## Stage 12 — Automation & AI
+
+The Commerce API now includes an event/rules/AI-job/approval/audit layer. AI is disabled by default and requires a backend-only provider adapter. High-risk order cancellation is routed through the approval queue.

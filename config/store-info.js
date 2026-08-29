@@ -1,0 +1,23 @@
+window.BB610_STORE_INFO = {
+  launch_ready:false,
+  legal_name:"ФОП Лахно Марина Анатоліївна",
+  public_name:"BB610 MARKET",
+  entity_type:"ФОП",
+  edrpou_or_tax_id:"2560502404",
+  vat_id:null,
+  registered_address:"м. Дніпро",
+  actual_address:"м. Дніпро",
+  returns_address:"м. Дніпро, вул. М. Рильського, 106",
+  phone:"+380 (77) 017 97 70",
+  email:"market.bb610@gmail.com",
+  orders_email:"market.bb610@gmail.com",
+  returns_email:"market.bb610@gmail.com",
+  support_hours:"09:00–18:00",
+  telegram_bot:"@bb610_market_bot",
+  telegram_url:"https://t.me/bb610_market_bot",
+  seller_notice:"Продавець: ФОП Лахно Марина Анатоліївна, РНОКПП 2560502404, м. Дніпро.",
+  data_retention_years:5,
+  returns:{window_days:14, return_method:"після погодження з BB610 MARKET", return_shipping_payer:"buyer", refund_timing:"3 банківські дні після прийняття та перевірки повернення"},
+  delivery:{nova_poshta:true, ukrposhta:true, local_dnipro:true},
+  payment:{cod:true, online_card:false, online_provider:"mono", fiscal_provider:"Checkbox"}
+};

@@ -18,6 +18,10 @@ const BB610OrderClient = (() => {
       return data;
     }finally{clearTimeout(timeout)}
   }
+  async function paymentMethods(){
+    if(!configured()) return {methods:[]};
+    return fetchJson(endpoint('paymentMethods'));
+  }
   async function createOrder(payload){
     if(!configured()) throw Object.assign(new Error('BACKEND_NOT_CONFIGURED'),{code:'BACKEND_NOT_CONFIGURED'});
     const id=requestId();
@@ -31,5 +35,5 @@ const BB610OrderClient = (() => {
     return fetchJson(u.toString());
   }
   function resetRequestId(){sessionStorage.removeItem('bb610_checkout_request_id')}
-  return {configured,createOrder,getOrder,requestId,resetRequestId};
+  return {configured,paymentMethods,createOrder,getOrder,requestId,resetRequestId};
 })();

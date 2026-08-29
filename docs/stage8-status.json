@@ -1,0 +1,12 @@
+{
+  "stage": 8,
+  "name": "Delivery Core",
+  "architecture_preserved": true,
+  "providers": ["pickup_dnipro", "delivery_dnipro", "nova_poshta", "ukrposhta"],
+  "nova_poshta_live_directory": "enabled when server API key is configured",
+  "ukrposhta_live_directory": "reserved until production token/contract mapping",
+  "shipment_creation": "locked until sender/cargo/payment parameters are confirmed",
+  "tracking_attachment": true,
+  "purchase_analytics_changed": false,
+  "tests": ["python_compile", "node_check", "migration_idempotency", "app_import", "delivery_normalization"]
+}

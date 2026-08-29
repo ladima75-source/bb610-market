@@ -1,0 +1,17 @@
+{
+  "stage": 9,
+  "name": "Payment Core",
+  "live_payment_enabled": false,
+  "cod_enabled_by_default": false,
+  "online_card_provider": "unconfigured",
+  "purchase_policy": {
+    "cod": "server-created order when COD explicitly enabled",
+    "online_card": "signature-verified paid webhook only"
+  },
+  "preserved": [
+    "Stages 1-8 architecture",
+    "stable SKU/item_id",
+    "backend-confirmed purchase",
+    "GTM disabled by default"
+  ]
+}

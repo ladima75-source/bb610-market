@@ -1,0 +1,11 @@
+Stage 9 validation
+- Python backend compile: PASS
+- JavaScript syntax (checkout/order-client/admin): PASS
+- FastAPI payment routes import: PASS
+- SQLite migrations 001+002+003: PASS
+- COD test order with server-side SKU snapshot: PASS
+- Idempotent duplicate order request: PASS
+- COD collection transition pending -> paid: PASS
+- purchase_ready for explicitly enabled COD order: PASS
+- Online-card order rejected while provider is unconfigured: PASS
+- Live payment credentials bundled: NO

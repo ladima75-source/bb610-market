@@ -1,0 +1,22 @@
+{
+  "updated_at": "2026-08-29",
+  "public_phone": "+380 (77) 017 97 70",
+  "admin_security_phone": "+380 (67) 568 55 36",
+  "public_email": "market.bb610@gmail.com",
+  "admin_security_email": "admin.bb610@gmail.com",
+  "telegram_bot": "@bb610_market_bot",
+  "telegram_operations_group": "BB610 Market — Operations",
+  "telegram_chat_id": "-1004349892585",
+  "telegram_bot_token_stored": false,
+  "smtp": {
+    "provider": "Gmail",
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "credentials_configured": false
+  },
+  "public_exposure": {
+    "admin_email": false,
+    "admin_phone": false,
+    "operations_chat_id": false
+  }
+}

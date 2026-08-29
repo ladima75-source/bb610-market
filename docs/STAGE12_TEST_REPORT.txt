@@ -1,0 +1,15 @@
+BB610 Market — Stage 12 test report
+
+PASS — migrations 001..004 apply to a clean SQLite database
+PASS — order.created event is stored and processed
+PASS — AI provider disabled by default
+PASS — order.created creates a blocked AI job instead of silently failing
+PASS — default order triage job payload contains no customer phone/email
+PASS — order.cancel_requested creates a high-risk pending approval
+PASS — approval decision is auditable
+PASS — approved cancellation executes the existing Orders transition to cancelled
+PASS — Stage 12 admin/API routes are present
+PASS — Python modules compile
+PASS — admin JavaScript syntax check
+
+No external AI provider or credentials were activated.

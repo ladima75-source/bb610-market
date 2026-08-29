@@ -1,0 +1,167 @@
+{
+  "stage": 11,
+  "launch_ready": false,
+  "summary": {
+    "total_checks": 20,
+    "pass": 10,
+    "blocked": 8,
+    "fail": 0,
+    "manual": 2,
+    "review": 0,
+    "blocking_count": 9
+  },
+  "blocking_ids": [
+    "catalog.active_skus",
+    "legal.seller",
+    "legal.returns",
+    "payments.live_provider",
+    "delivery.credentials",
+    "security.https",
+    "security.backup",
+    "qa.mobile_checkout",
+    "qa.live_order"
+  ],
+  "checks": [
+    {
+      "id": "static.required_pages",
+      "area": "Frontend",
+      "status": "PASS",
+      "blocking": false,
+      "detail": "Все обязательные публичные/служебные страницы существуют."
+    },
+    {
+      "id": "static.local_links",
+      "area": "Frontend",
+      "status": "PASS",
+      "blocking": false,
+      "detail": "Проверено 46 HTML; битых локальных href/src: 0."
+    },
+    {
+      "id": "code.javascript_syntax",
+      "area": "Code",
+      "status": "PASS",
+      "blocking": false,
+      "detail": "JS syntax: 17/17 OK."
+    },
+    {
+      "id": "code.python_compile",
+      "area": "Code",
+      "status": "PASS",
+      "blocking": false,
+      "detail": "Python compile: 18/18 OK."
+    },
+    {
+      "id": "catalog.identities",
+      "area": "Commerce",
+      "status": "PASS",
+      "blocking": false,
+      "detail": "PRODUCT: 11; SKU: 14. Стабильная SKU-модель присутствует."
+    },
+    {
+      "id": "catalog.active_skus",
+      "area": "Commerce",
+      "status": "BLOCKED",
+      "blocking": true,
+      "detail": "Нет активных коммерческих SKU с реальной ценой/наличием. Магазин нельзя считать продающим."
+    },
+    {
+      "id": "feeds.eligible",
+      "area": "Advertising",
+      "status": "BLOCKED",
+      "blocking": false,
+      "detail": "Merchant/Meta feeds корректно не содержат продаваемых SKU, пока коммерческие данные не активированы."
+    },
+    {
+      "id": "legal.seller",
+      "area": "Legal",
+      "status": "BLOCKED",
+      "blocking": true,
+      "detail": "Не заполнены реквизиты: legal_name, edrpou_or_tax_id, registered_address, phone, email"
+    },
+    {
+      "id": "legal.returns",
+      "area": "Legal",
+      "status": "BLOCKED",
+      "blocking": true,
+      "detail": "Не определены правила возврата: window_days, return_method, return_shipping_payer, refund_timing"
+    },
+    {
+      "id": "backend.core",
+      "area": "Operations",
+      "status": "PASS",
+      "blocking": false,
+      "detail": "Orders/Delivery/Payment/Admin skeleton присутствует."
+    },
+    {
+      "id": "payments.live_provider",
+      "area": "Payments",
+      "status": "BLOCKED",
+      "blocking": true,
+      "detail": "Реальный online payment provider и merchant credentials ещё не подключены. Это ожидаемый launch blocker."
+    },
+    {
+      "id": "delivery.credentials",
+      "area": "Delivery",
+      "status": "BLOCKED",
+      "blocking": true,
+      "detail": "Нова пошта/Укрпошта требуют реальные account/API credentials и параметры отправителя перед live-работой."
+    },
+    {
+      "id": "analytics.activation",
+      "area": "Analytics",
+      "status": "PASS",
+      "blocking": false,
+      "detail": "Analytics/ads интеграции остаются подготовленными, но не активированы — правильно до live launch."
+    },
+    {
+      "id": "analytics.purchase_gate",
+      "area": "Analytics",
+      "status": "PASS",
+      "blocking": false,
+      "detail": "purchase остаётся backend-confirmed и требует transaction_id."
+    },
+    {
+      "id": "seo.robots_sitemap",
+      "area": "SEO",
+      "status": "PASS",
+      "blocking": false,
+      "detail": "robots.txt и sitemap.xml присутствуют и связаны."
+    },
+    {
+      "id": "security.no_embedded_secrets",
+      "area": "Security",
+      "status": "PASS",
+      "blocking": false,
+      "detail": "Явных production secrets в публичных файлах не обнаружено."
+    },
+    {
+      "id": "security.https",
+      "area": "Security",
+      "status": "MANUAL",
+      "blocking": true,
+      "detail": "Перед live запуском backend и storefront должны работать только через HTTPS; проверяется после deployment."
+    },
+    {
+      "id": "security.backup",
+      "area": "Operations",
+      "status": "BLOCKED",
+      "blocking": true,
+      "detail": "Не настроено реальное резервное копирование Orders DB и проверка восстановления."
+    },
+    {
+      "id": "qa.mobile_checkout",
+      "area": "QA",
+      "status": "MANUAL",
+      "blocking": true,
+      "detail": "Нужен ручной тест 360–430 px: landing → product → cart → checkout → confirmation."
+    },
+    {
+      "id": "qa.live_order",
+      "area": "QA",
+      "status": "BLOCKED",
+      "blocking": true,
+      "detail": "Live end-to-end заказ нельзя выполнить до активации хотя бы одного SKU, delivery credentials и payment method."
+    }
+  ],
+  "conclusion": "Architecture skeleton is coherent, but the store is not launch-ready until merchant identity/policies, active SKU commercial data, live delivery/payment credentials, HTTPS deployment, backups and mobile/live E2E are completed."
+}

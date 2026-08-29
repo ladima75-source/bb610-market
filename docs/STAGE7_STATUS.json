@@ -1,0 +1,13 @@
+{
+  "stage": 7,
+  "name": "Orders Core",
+  "architecture_stages_1_6_changed": false,
+  "order_database": "sqlite-reference",
+  "admin_api": "implemented-disabled-until-admin-token",
+  "admin_ui": "/admin/",
+  "notifications": {"telegram": "adapter-disabled-until-env", "email": "adapter-disabled-until-env"},
+  "delivery_integrations": "not-implemented-stage8",
+  "payment_integrations": "not-implemented-stage9",
+  "purchase_ready_stage7": false,
+  "current_commercial_skus": "draft-so-real-order-creation-remains-blocked"
+}

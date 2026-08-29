@@ -1,0 +1,21 @@
+{
+  "stage": 12,
+  "name": "Automation & AI Foundation",
+  "status": "foundation_ready",
+  "ai_provider_enabled": false,
+  "architecture": {
+    "event_bus": true,
+    "rules_engine": true,
+    "ai_job_queue": true,
+    "approval_queue": true,
+    "audit_log": true,
+    "privacy_minimized_ai_context": true
+  },
+  "seed_rules": [
+    "order.created -> AI PREPARE order_triage",
+    "payment.paid -> AUTO audit",
+    "order.cancel_requested -> HUMAN APPROVAL"
+  ],
+  "high_risk_example_enforced": "order cancellation",
+  "external_ai_calls": false
+}

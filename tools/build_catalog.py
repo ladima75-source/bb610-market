@@ -246,7 +246,7 @@ for s in master['skus']:
 (feeds/'feed-status.json').write_text(json.dumps({'generated_from':'data/catalog.master.json','base_url':SITE,'eligible_count':len(eligible),'items':status},ensure_ascii=False,indent=2),encoding='utf-8')
 
 # ---------- sitemap / robots ----------
-urls=[SITE+'/',SITE+'/catalog.html']
+urls=[SITE+'/',SITE+'/catalog.html',SITE+'/about.html']
 urls += [SITE+'/categories/'+c['slug']+'/' for c in master['categories'] if c.get('enabled')]
 urls += [SITE+'/products/'+p['slug']+'/' for p in master['products']]
 urls += [SITE+s['url'] for s in master['skus'] if sku_indexable(s)]

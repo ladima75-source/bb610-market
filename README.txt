@@ -85,3 +85,13 @@ Analytics activation foundation is in:
 - docs/ANALYTICS_QA_CHECKLIST.md
 
 All external account/container IDs remain unset. GTM loading is disabled by default.
+
+STAGE 7 — ORDERS CORE
+- Runnable reference Orders API under backend/
+- Persistent order DB model + immutable SKU snapshots
+- Admin Orders panel under /admin/ (API-protected)
+- Order status history + notification adapters/log
+- No delivery/payment provider activated yet
+
+STAGE 9 — PAYMENT CORE
+Provider-neutral payment layer added. Cash on delivery and online card payment are disabled by default until server configuration/provider credentials are supplied. Online payment status can only be confirmed by a signature-verified backend webhook. See STAGE9_PAYMENT_CORE.md.

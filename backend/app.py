@@ -10,6 +10,7 @@ from .services.delivery_service import provider_capabilities,search_cities,searc
 from .services.delivery import DeliveryNotConfigured,DeliveryUpstreamError
 from .services.payment_service import methods as payment_methods,admin_update_cod,process_webhook
 from .services.payment import PaymentNotConfigured,PaymentSignatureError
+from .services.product_commerce import seed_from_catalog, public_catalog, admin_products, update_product
 from .services.automation import emit,list_rules,set_rule_enabled,list_jobs,list_approvals,decide_approval,list_audit,summary as automation_summary,approval_for_source
 import json
 
@@ -18,7 +19,9 @@ origins=[x.strip() for x in os.getenv('BB610_CORS_ORIGINS','https://market.bb610
 app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=False,allow_methods=['GET','POST','PATCH','OPTIONS'],allow_headers=['Content-Type','Idempotency-Key','Authorization'])
 
 @app.on_event('startup')
-def startup(): migrate()
+def startup():
+    migrate()
+    seed_from_catalog()
 
 class Customer(BaseModel):
     name:str=Field(min_length=2,max_length=120); phone:str=Field(min_length=7,max_length=40); email:Optional[str]=None
@@ -35,6 +38,15 @@ class CreateOrder(BaseModel):
 class StatusUpdate(BaseModel): status:str; note:Optional[str]=Field(default=None,max_length=500)
 class TrackingAttach(BaseModel): tracking_number:str=Field(min_length=4,max_length=100); note:Optional[str]=Field(default=None,max_length=500)
 class PaymentAdminUpdate(BaseModel): status:str; note:Optional[str]=Field(default=None,max_length=500)
+
+class ProductCommerceUpdate(BaseModel):
+    price:Optional[float]=Field(default=None,ge=0)
+    sale_price:Optional[float]=Field(default=None,ge=0)
+    clear_sale_price:bool=False
+    availability:Optional[str]=None
+    stock_qty:Optional[int]=Field(default=None,ge=0)
+    clear_stock_qty:bool=False
+    enabled:Optional[bool]=None
 
 def admin_auth(authorization:Optional[str]):
     expected=os.getenv('BB610_ADMIN_TOKEN')
@@ -83,6 +95,9 @@ def orders_get(order_id:str,token:Optional[str]=Query(default=None)):
 
 @app.get('/api/v1/payments/methods')
 def payments_methods(): return {'methods':payment_methods()}
+
+@app.get('/api/v1/catalog/commerce')
+def catalog_commerce(): return {'items':public_catalog()}
 
 @app.post('/api/v1/payments/webhooks/{provider}')
 async def payments_webhook(provider:str,request:Request):
@@ -150,6 +165,19 @@ def admin_order_payment(order_id:str,body:PaymentAdminUpdate,authorization:Optio
     try:r=admin_update_cod(order_id,body.status,body.note)
     except ValueError as e: raise HTTPException(409,str(e))
     if not r: raise HTTPException(404,'Order/payment not found')
+    return r
+
+@app.get('/api/v1/admin/products')
+def admin_products_list(authorization:Optional[str]=Header(default=None)):
+    admin_auth(authorization); return {'products':admin_products()}
+
+@app.patch('/api/v1/admin/products/{sku}')
+def admin_product_update(sku:str,body:ProductCommerceUpdate,authorization:Optional[str]=Header(default=None)):
+    admin_auth(authorization)
+    try:
+        r=update_product(sku,price=body.price,sale_price=body.sale_price,sale_price_set=(body.sale_price is not None or body.clear_sale_price),availability=body.availability,stock_qty=body.stock_qty,stock_qty_set=(body.stock_qty is not None or body.clear_stock_qty),enabled=body.enabled)
+    except ValueError as e: raise HTTPException(422,str(e))
+    if not r: raise HTTPException(404,'SKU not found')
     return r
 
 @app.get('/api/v1/admin/orders')

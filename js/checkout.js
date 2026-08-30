@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.refresh();
   const root=document.getElementById('checkout-app'); if(!root)return;
   const cart=BB610.get(BB610.LS.cart,[]).map(row=>({row,sku:BB610.sku(row.sku)})).filter(x=>x.sku).map(x=>({...x,p:BB610.byId(x.sku.product_id)}));
   const orderable=x=>x.sku.commercial_status==='active'&&x.sku.offer_status==='active'&&x.sku.price!==null&&x.sku.price!==undefined&&x.sku.availability!=='unknown'&&x.sku.availability!=='out_of_stock';

@@ -1,0 +1,37 @@
+BB610 MARKET — PRODUCTS ADMIN V1 DEPLOY
+======================================
+
+WHAT THIS PATCH ADDS
+- /admin/products.html — quick SKU price/stock/status editor
+- SQLite sku_commerce table (migration 005)
+- GET /api/v1/catalog/commerce
+- GET /api/v1/admin/products
+- PATCH /api/v1/admin/products/{sku}
+- storefront runtime overlay from api.market.bb610.com.ua
+- checkout resolves authoritative price/availability from SQLite
+- Megafol 25 ml = 50 UAH, 100 ml = 172 UAH (availability intentionally unknown)
+- Telegram UTF-8 fix preserved
+- root .env added to .gitignore
+
+DEPLOY ORDER
+1) Upload/extract this patch into the ROOT of GitHub repo ladima75-source/bb610-market and commit all files.
+2) On VPS:
+   cd /opt/bb610-market
+   git status --short
+   git reset --hard HEAD
+   git pull origin main
+   systemctl restart bb610-market
+   systemctl status bb610-market --no-pager
+3) Verify:
+   curl https://api.market.bb610.com.ua/api/v1/health
+   curl https://api.market.bb610.com.ua/api/v1/catalog/commerce
+4) Open:
+   https://market.bb610.com.ua/admin/products.html
+   Enter BB610_ADMIN_TOKEN and click "Підключити".
+5) For Megafol, set availability to "В наявності" only when stock is actually confirmed.
+
+NOTES
+- .env and SQLite runtime DB are not replaced by git pull.
+- Existing order DB remains intact; migration 005 adds a new table only.
+- Admin token is kept in sessionStorage in the browser tab/session; it is not written into static files.
+- Do not publish the BB610_ADMIN_TOKEN in GitHub.

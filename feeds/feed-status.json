@@ -156,6 +156,29 @@
         "price_missing",
         "availability_unknown"
       ]
+    },
+    {
+      "sku": "BB610-TEST-ORDER-001",
+      "included": false,
+      "reasons": [
+        "feed_eligible_false"
+      ]
+    },
+    {
+      "sku": "BB610-VLG-MEGAFOL-25ML",
+      "included": false,
+      "reasons": [
+        "feed_eligible_false",
+        "availability_unknown"
+      ]
+    },
+    {
+      "sku": "BB610-VLG-MEGAFOL-100ML",
+      "included": false,
+      "reasons": [
+        "feed_eligible_false",
+        "availability_unknown"
+      ]
     }
   ]
 }

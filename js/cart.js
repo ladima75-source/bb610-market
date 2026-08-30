@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.refresh();
   const root=document.getElementById('cart-root');
   function rows(){return BB610.get(BB610.LS.cart,[]).map(x=>({row:x,sku:BB610.sku(x.sku)})).filter(x=>x.sku).map(x=>({...x,p:BB610.byId(x.sku.product_id)}))}
   function render(){

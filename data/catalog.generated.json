@@ -385,7 +385,7 @@
       "selected_by_bb610": true,
       "canonical_product_url": "/products/megafol/",
       "legacy_url": "product.html?id=megafol",
-      "default_sku_id": "BB610-VLG-MEGAFOL-1L",
+      "default_sku_id": "BB610-VLG-MEGAFOL-100ML",
       "store_content_status": "sku-model-ready",
       "seo": {}
     },
@@ -1108,6 +1108,24 @@
       "unit": "pcs",
       "status": "internal-test",
       "internal_only": true
+    },
+    {
+      "id": "megafol--25ml",
+      "product_id": "megafol",
+      "label": "25 мл",
+      "volume_weight": {
+        "value": 25,
+        "unit": "ml"
+      }
+    },
+    {
+      "id": "megafol--100ml",
+      "product_id": "megafol",
+      "label": "100 мл",
+      "volume_weight": {
+        "value": 100,
+        "unit": "ml"
+      }
     }
   ],
   "skus": [
@@ -1591,6 +1609,70 @@
       "pack_source_status": "internal-test",
       "seo": {},
       "internal_only": true
+    },
+    {
+      "id": "BB610-VLG-MEGAFOL-25ML",
+      "sku": "BB610-VLG-MEGAFOL-25ML",
+      "product_id": "megafol",
+      "variant_id": "megafol--25ml",
+      "slug": "megafol-25ml",
+      "variant": "25 мл",
+      "volume_weight": {
+        "value": 25,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": 50,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "active",
+      "feed_eligible": false,
+      "url": "/products/megafol-25ml/",
+      "image": "assets/img/real/megafol-25ml.png",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Відправка по Україні — умови уточнюються"
+      ],
+      "commercial_status": "active",
+      "commercial_note": "Ціна BB610 підтверджена; фактична наявність ще не вказана.",
+      "pack_source_status": "bb610-retail-pack",
+      "seo": {}
+    },
+    {
+      "id": "BB610-VLG-MEGAFOL-100ML",
+      "sku": "BB610-VLG-MEGAFOL-100ML",
+      "product_id": "megafol",
+      "variant_id": "megafol--100ml",
+      "slug": "megafol-100ml",
+      "variant": "100 мл",
+      "volume_weight": {
+        "value": 100,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": 172,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "active",
+      "feed_eligible": false,
+      "url": "/products/megafol-100ml/",
+      "image": "assets/img/real/megafol-100ml.png",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Відправка по Україні — умови уточнюються"
+      ],
+      "commercial_status": "active",
+      "commercial_note": "Ціна BB610 підтверджена; фактична наявність ще не вказана.",
+      "pack_source_status": "bb610-retail-pack",
+      "seo": {}
     }
   ],
   "solutions": [],

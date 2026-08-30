@@ -4,7 +4,8 @@ window.BB610_COMMERCE_CONFIG = Object.freeze({
   endpoints: {
     createOrder: '/api/v1/orders',
     getOrder: '/api/v1/orders/{orderId}',
-    paymentMethods: '/api/v1/payments/methods'
+    paymentMethods: '/api/v1/payments/methods',
+    commercialCatalog: '/api/v1/catalog/commerce'
   },
   checkoutMode: 'backend-required',
   paymentMode: 'backend-directed',

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.refresh();
  const grid=document.getElementById('catalog-grid'),count=document.getElementById('result-count'),empty=document.getElementById('catalog-empty');const params=new URLSearchParams(location.search);
  const q=document.getElementById('f-q'),culture=document.getElementById('f-culture'),brand=document.getElementById('f-brand'),npk=document.getElementById('f-npk'),active=document.getElementById('f-active'),dnipro=document.getElementById('f-dnipro'),sort=document.getElementById('sort');
  const catGroup=document.querySelector('input[name=cat]')?.closest('.filter-group');if(catGroup){catGroup.innerHTML='<b>Категорія</b><label><input type="radio" name="cat" value="" checked> Усі</label>'+BB610_DATA_SOURCE.categories().filter(c=>c.enabled).sort((a,b)=>a.order-b.order).map(c=>`<label><input type="radio" name="cat" value="${c.id}"> ${c.short_name||c.name}</label>`).join('')}

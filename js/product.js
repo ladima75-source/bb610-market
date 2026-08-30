@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.refresh();
   const q=window.BB610_SKU_ID||window.BB610_PRODUCT_ID||new URLSearchParams(location.search).get('id');
   const selectedFromUrl=BB610.sku(window.BB610_SKU_ID||q);
   const p=BB610.byId(window.BB610_PRODUCT_ID||(selectedFromUrl?.product_id)||q);
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   const szr=p.category==='protection'?`<div class="info-card product-detail-card szr-card"><h2>ДАНІ ДЛЯ ЗЗР / СЗР</h2><div class="kv"><span>Діюча речовина</span><b>${p.activeIngredient||'—'}</b></div><div class="kv"><span>Концентрація</span><b>${p.concentration||'—'}</b></div><div class="kv"><span>Шкідник / хвороба</span><b>${p.target||'—'}</b></div><div class="kv"><span>Строк очікування</span><b>${p.waitingPeriod||'—'}</b></div><div class="kv"><span>Клас небезпеки</span><b>${p.hazardClass||'—'}</b></div></div>`:'';
 
   root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${p.categoryLabel.toUpperCase()} / ${p.name}</div>
-  <div class="product-layout"><div class="product-gallery"><img src="${p.image}" alt="${p.name}"></div>
+  <div class="product-layout"><div class="product-gallery"><img id="product-main-image" src="${selectedSku?.image||p.image}" alt="${p.name}"></div>
   <div class="product-summary"><div class="eyebrow">${p.categoryLabel}</div><h1>${p.name}</h1><div class="brand">${p.brand}</div>
   <div class="selected-variant" id="selected-variant"></div>
   <div class="price" id="selected-price"></div><div class="unit-price" id="selected-unit"></div><div class="stock" id="selected-stock" style="margin-top:12px"></div>
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const price=document.getElementById('selected-price'), unit=document.getElementById('selected-unit'), stock=document.getElementById('selected-stock'), variant=document.getElementById('selected-variant'), shipping=document.getElementById('selected-shipping');
     if(!selectedSku){variant.textContent='Фасовка BB610 ще не визначена';price.textContent='Ціна уточнюється';unit.textContent='';stock.textContent='Наявність уточнюється';shipping.innerHTML='<span>Відправка по Україні — умови уточнюються</span>';document.getElementById('buy').disabled=true;return}
     variant.textContent=selectedSku.variant||'';price.textContent=BB610.money(selectedSku.price);unit.textContent=selectedSku.price==null?'Комерційна ціна BB610 ще не визначена':BB610.unitPrice({...p,unit:selectedSku.volume_weight?.unit},selectedSku.price,selectedSku.volume_weight?.value);stock.textContent=selectedSku.stock_label||'Наявність уточнюється';shipping.innerHTML=(selectedSku.shipping||[]).map(x=>`<span>${x}</span>`).join('');
-    document.getElementById('selected-packer').textContent=selectedSku.packer||'Уточнюється';document.getElementById('selected-supplier').textContent=selectedSku.supplier||'Уточнюється';document.getElementById('selected-sku').textContent=selectedSku.id;document.getElementById('selected-gtin').textContent=selectedSku.gtin_ean||'Не вказано';
+    document.getElementById('product-main-image').src=selectedSku.image||p.image;document.getElementById('selected-packer').textContent=selectedSku.packer||'Уточнюється';document.getElementById('selected-supplier').textContent=selectedSku.supplier||'Уточнюється';document.getElementById('selected-sku').textContent=selectedSku.id;document.getElementById('selected-gtin').textContent=selectedSku.gtin_ean||'Не вказано';
     document.querySelectorAll('[data-sku-select]').forEach(b=>b.classList.toggle('active',b.dataset.skuSelect===selectedSku.id));document.getElementById('buy').disabled=false;
   }
   document.querySelectorAll('[data-sku-select]').forEach(b=>b.onclick=()=>{selectedSku=BB610.sku(b.dataset.skuSelect);updateSkuUI();trackView();if(selectedSku?.url&&location.protocol!=='file:')history.replaceState({sku:selectedSku.id},'',selectedSku.url)});

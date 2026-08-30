@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.refresh();
-  const q=window.BB610_SKU_ID||window.BB610_PRODUCT_ID||new URLSearchParams(location.search).get('id');
-  const selectedFromUrl=BB610.sku(window.BB610_SKU_ID||q);
+  const params=new URLSearchParams(location.search);
+  const q=window.BB610_SKU_ID||window.BB610_PRODUCT_ID||params.get('id');
+  const selectedFromUrl=BB610.sku(window.BB610_SKU_ID||params.get('sku')||q);
   const p=BB610.byId(window.BB610_PRODUCT_ID||(selectedFromUrl?.product_id)||q);
   const root=document.getElementById('product-root');
   if(!p){root.innerHTML='<div class="empty">Товар не знайдено. <a class="link" href="catalog.html">Повернутися до каталогу</a></div>';return}
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   const szr=p.category==='protection'?`<div class="info-card product-detail-card szr-card"><h2>ДАНІ ДЛЯ ЗЗР / СЗР</h2><div class="kv"><span>Діюча речовина</span><b>${p.activeIngredient||'—'}</b></div><div class="kv"><span>Концентрація</span><b>${p.concentration||'—'}</b></div><div class="kv"><span>Шкідник / хвороба</span><b>${p.target||'—'}</b></div><div class="kv"><span>Строк очікування</span><b>${p.waitingPeriod||'—'}</b></div><div class="kv"><span>Клас небезпеки</span><b>${p.hazardClass||'—'}</b></div></div>`:'';
 
   root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${p.categoryLabel.toUpperCase()} / ${p.name}</div>
-  <div class="product-layout"><div class="product-gallery"><img id="product-main-image" src="${selectedSku?.image||p.image}" alt="${p.name}"></div>
+  <div class="product-layout"><div class="product-gallery"><img id="product-main-image" src="${selectedSku?.image||p.image}" alt="${p.name}">${(p.gallery||[]).length?`<div class="product-gallery-thumbs">${[p.image,...p.gallery].filter(Boolean).map((im,i)=>`<button type="button" class="gallery-thumb" data-gallery-img="${im}"><img src="${im}" alt="${p.name} ${i+1}"></button>`).join('')}</div>`:''}</div>
   <div class="product-summary"><div class="eyebrow">${p.categoryLabel}</div><h1>${p.name}</h1><div class="brand">${p.brand}</div>
   <div class="selected-variant" id="selected-variant"></div>
   <div class="price" id="selected-price"></div><div class="unit-price" id="selected-unit"></div><div class="stock" id="selected-stock" style="margin-top:12px"></div>
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   <div class="info-card product-detail-card composition-card"><h2>СКЛАД</h2>${(p.composition||[]).map(x=>`<div class="kv"><span>Параметр</span><b>${x}</b></div>`).join('')}<div class="kv"><span>NPK</span><b>${p.npk||'—'}</b></div></div>
   <div class="info-card product-detail-card origin-card"><h2>ПОХОДЖЕННЯ</h2><div class="kv"><span>Виробник</span><b>${p.manufacturer||'—'}</b></div><div class="kv"><span>Країна</span><b>${p.country||'—'}</b></div><div class="kv"><span>Фасувальник BB610 offer</span><b id="selected-packer">Уточнюється</b></div><div class="kv"><span>Постачальник BB610</span><b id="selected-supplier">Уточнюється</b></div><div class="kv"><span>SKU</span><b id="selected-sku">—</b></div><div class="kv"><span>GTIN / EAN</span><b id="selected-gtin">—</b></div></div>${szr}</div>`;
 
+  document.querySelectorAll('[data-gallery-img]').forEach(b=>b.onclick=()=>{document.getElementById('product-main-image').src=b.dataset.galleryImg});
   function updateSkuUI(){
     const price=document.getElementById('selected-price'), unit=document.getElementById('selected-unit'), stock=document.getElementById('selected-stock'), variant=document.getElementById('selected-variant'), shipping=document.getElementById('selected-shipping');
     if(!selectedSku){variant.textContent='Фасовка BB610 ще не визначена';price.textContent='Ціна уточнюється';unit.textContent='';stock.textContent='Наявність уточнюється';shipping.innerHTML='<span>Відправка по Україні — умови уточнюються</span>';document.getElementById('buy').disabled=true;return}

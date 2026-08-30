@@ -1,0 +1,23 @@
+BB610 MARKET — PRODUCTS & ORDERS ADMIN V2
+
+1) Upload PATCH contents to GitHub repository root and commit.
+
+2) On VPS:
+   cd /opt/bb610-market
+   git pull
+   source .venv/bin/activate
+   pip install -r backend/requirements.txt
+   systemctl restart bb610-market
+   systemctl status bb610-market --no-pager
+
+3) Verify:
+   curl https://api.market.bb610.com.ua/api/v1/health
+   curl https://api.market.bb610.com.ua/api/v1/catalog/content
+
+4) Open:
+   https://market.bb610.com.ua/admin/
+   https://market.bb610.com.ua/admin/products.html
+   https://market.bb610.com.ua/admin/catalog.html
+
+5) Do not upload .env to GitHub.
+6) Before production use, verify backups include backend/runtime/media in addition to SQLite DB.

@@ -99,7 +99,7 @@ def admin_detail(order_id, con=None):
         items=[dict(x) for x in con.execute('SELECT sku,product_id,name,brand,category,variant,unit_price,quantity,line_total,currency FROM order_items WHERE order_id=? ORDER BY id',(order_id,))]
         hist=[dict(x) for x in con.execute('SELECT from_status,to_status,note,actor,created_at FROM order_status_history WHERE order_id=? ORDER BY id DESC',(order_id,))]
         notices=[dict(x) for x in con.execute('SELECT channel,status,attempted_at,error FROM notification_log WHERE order_id=? ORDER BY id DESC',(order_id,))]
-        return {**dict(row),'items':items,'history':hist,'notifications':notices,'delivery':get_delivery(con,order_id),'payment':get_payment(con,order_id),'delivery_events':[dict(x) for x in con.execute('SELECT provider,event_type,carrier_status,message,created_at FROM delivery_events WHERE order_id=? ORDER BY id DESC',(order_id,))]}
+        return {**dict(row),'items':items,'history':hist,'notifications':notices,'admin_notes':[dict(x) for x in con.execute('SELECT id,note,actor,created_at FROM order_admin_notes WHERE order_id=? ORDER BY id DESC',(order_id,))],'delivery':get_delivery(con,order_id),'payment':get_payment(con,order_id),'delivery_events':[dict(x) for x in con.execute('SELECT provider,event_type,carrier_status,message,created_at FROM delivery_events WHERE order_id=? ORDER BY id DESC',(order_id,))]}
     finally:
         if own: con.close()
 
@@ -120,3 +120,12 @@ def update_status(order_id,new_status,note,actor='admin'):
     emit('order.status_changed','order',order_id,{'from_status':old,'to_status':new_status},source=actor)
     audit('order.status_changed','order',order_id,{'from_status':old,'to_status':new_status,'note':note},actor_type=actor)
     return result
+
+
+def add_admin_note(order_id,note,actor='admin'):
+    note=(note or '').strip()
+    if not note: raise ValueError('EMPTY_NOTE')
+    with connect() as con:
+        if not con.execute('SELECT 1 FROM orders WHERE id=?',(order_id,)).fetchone(): return None
+        con.execute('INSERT INTO order_admin_notes(order_id,note,actor,created_at) VALUES(?,?,?,?)',(order_id,note,actor,now())); con.commit()
+        return admin_detail(order_id,con)

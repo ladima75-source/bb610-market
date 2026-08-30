@@ -33,10 +33,23 @@ def public_catalog() -> list[dict]:
 
 def admin_products() -> list[dict]:
     data=load_catalog(); products={p['id']:p for p in data.get('products',[])}; cm=commerce_map(); result=[]
-    for s in data.get('skus',[]):
-        p=products.get(s.get('product_id'),{}); c=cm.get(s['id'],{})
-        result.append({'sku':s['id'],'product_id':s.get('product_id'),'name':p.get('name') or s['id'],'brand':p.get('brand'),
-                       'variant':s.get('variant'),'currency':s.get('currency','UAH'),'image':s.get('image') or p.get('image',{}).get('local'),
+    skus=list(data.get('skus',[]))
+    try:
+        from .catalog_cms import _dynamic_skus, _overrides
+        ov=_overrides()
+        for pid,c in ov.items():
+            if pid in products: products[pid]={**products[pid],**{k:v for k,v in c.items() if not k.startswith('cms_')}}
+            else: products[pid]=c
+        skus += _dynamic_skus()
+    except Exception:
+        pass
+    seen=set()
+    for s in skus:
+        sid=s.get('id') or s.get('sku')
+        if not sid or sid in seen: continue
+        seen.add(sid); p=products.get(s.get('product_id'),{}); c=cm.get(sid,{})
+        result.append({'sku':sid,'product_id':s.get('product_id'),'name':p.get('name') or sid,'brand':p.get('brand'),
+                       'variant':s.get('variant'),'currency':s.get('currency','UAH'),'image':s.get('image') or (p.get('image',{}).get('local') if isinstance(p.get('image'),dict) else p.get('image')),
                        'price':c.get('price'),'sale_price':c.get('sale_price'),'effective_price':c.get('effective_price'),
                        'availability':c.get('availability','unknown'),'stock_qty':c.get('stock_qty'),'enabled':bool(c.get('enabled')),
                        'updated_at':c.get('updated_at')})

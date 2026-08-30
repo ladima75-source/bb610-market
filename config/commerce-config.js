@@ -1,5 +1,5 @@
 window.BB610_COMMERCE_CONFIG = Object.freeze({
-  apiBaseUrl: 'https://bb610-market-api.onrender.com',
+  apiBaseUrl: 'https://api.market.bb610.com.ua',
   apiVersion: 'v1',
   endpoints: {
     createOrder: '/api/v1/orders',

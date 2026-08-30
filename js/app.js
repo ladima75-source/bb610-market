@@ -29,5 +29,18 @@ const BB610 = (() => {
   function renderCategoryNav(){document.querySelectorAll('.nav .container').forEach(nav=>{const catLinks=[...nav.querySelectorAll('a[href*="category="]')];if(!catLinks.length)return;const first=catLinks[0];C().categories.filter(c=>c.enabled).sort((a,b)=>a.order-b.order).forEach((c,i)=>{let a=catLinks[i];if(!a){a=document.createElement('a');first.parentNode.insertBefore(a,catLinks[catLinks.length-1]?.nextSibling||null)}a.href='catalog.html?category='+encodeURIComponent(c.id);a.textContent=c.short_name||c.name});catLinks.slice(C().categories.filter(c=>c.enabled).length).forEach(a=>a.remove())})}
   function migrateLegacyCart(){if(localStorage.getItem(LS.cart))return;const legacy=get('bb610_market_cart',[]);const migrated=[];legacy.forEach(x=>{const s=defaultSku(x.id);if(s)migrated.push({sku:s.id,qty:x.qty||1})});if(migrated.length)set(LS.cart,migrated)}
   function init(){migrateLegacyCart();renderCategoryNav();updateBadges();updateCompareBar();document.querySelectorAll('[data-search-form]').forEach(f=>f.onsubmit=e=>{e.preventDefault();searchSubmit(f)});document.querySelectorAll('[data-mobile-filter]').forEach(b=>b.onclick=()=>document.querySelector('.filters')?.classList.toggle('open'))}
-  return {LS,money,get,set,products,byId,sku,defaultSku,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,init};
+  function openPhoto(src,alt='Фото товару'){
+    if(!src)return;
+    let d=document.getElementById('bb610-photo-lightbox');
+    if(!d){
+      d=document.createElement('dialog');d.id='bb610-photo-lightbox';d.className='bb610-photo-lightbox';
+      d.innerHTML='<button class="photo-lightbox-close" type="button" aria-label="Закрити">×</button><div class="photo-lightbox-stage"><img alt=""></div>';
+      document.body.appendChild(d);
+      d.querySelector('.photo-lightbox-close').onclick=()=>d.close();
+      d.addEventListener('click',e=>{if(e.target===d)d.close()});
+    }
+    const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
+    if(typeof d.showModal==='function')d.showModal();
+  }
+  return {LS,money,get,set,products,byId,sku,defaultSku,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);

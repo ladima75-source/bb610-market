@@ -387,7 +387,11 @@
       "legacy_url": "product.html?id=megafol",
       "default_sku_id": "BB610-VLG-MEGAFOL-100ML",
       "store_content_status": "sku-model-ready",
-      "seo": {}
+      "seo": {},
+      "gallery": [
+        "assets/img/real/megafol-25ml.png",
+        "assets/img/real/megafol-100ml.png"
+      ]
     },
     {
       "id": "radifarm",

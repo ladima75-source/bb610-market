@@ -1,6 +1,6 @@
 from __future__ import annotations
 import os
-from typing import Optional
+from typing import Optional, Union
 from fastapi import FastAPI, Header, HTTPException, Query, Request, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -12,13 +12,17 @@ from .services.delivery import DeliveryNotConfigured,DeliveryUpstreamError
 from .services.payment_service import methods as payment_methods,admin_update_cod,process_webhook
 from .services.payment import PaymentNotConfigured,PaymentSignatureError
 from .services.product_commerce import seed_from_catalog, public_catalog, admin_products, update_product
-from .services.catalog_cms import public_content, admin_list_products, admin_detail as admin_catalog_detail, save_product, create_product, create_sku, save_upload, MEDIA_DIR
+from .services.catalog_cms import (
+    public_content, admin_list_products, admin_detail as admin_catalog_detail,
+    save_product, create_product, create_sku, save_upload, MEDIA_DIR,
+    update_catalog_sku, delete_catalog_sku, duplicate_product
+)
 from .services.automation import emit,list_rules,set_rule_enabled,list_jobs,list_approvals,decide_approval,list_audit,summary as automation_summary,approval_for_source
 import json
 
 app=FastAPI(title='BB610 Market Commerce API',version='Stage 12')
 origins=[x.strip() for x in os.getenv('BB610_CORS_ORIGINS','https://market.bb610.com.ua').split(',') if x.strip()]
-app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=False,allow_methods=['GET','POST','PATCH','OPTIONS'],allow_headers=['Content-Type','Idempotency-Key','Authorization'])
+app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=False,allow_methods=['GET','POST','PATCH','DELETE','OPTIONS'],allow_headers=['Content-Type','Idempotency-Key','Authorization'])
 app.mount('/media/products', StaticFiles(directory=str(MEDIA_DIR)), name='product-media')
 
 @app.on_event('startup')
@@ -47,13 +51,21 @@ class PaymentAdminUpdate(BaseModel): status:str; note:Optional[str]=Field(defaul
 class CatalogProductBody(BaseModel):
     id:Optional[str]=None; slug:Optional[str]=None; name:str=Field(min_length=2,max_length=180); official_name:Optional[str]=None
     brand:Optional[str]=''; manufacturer:Optional[str]=''; country:Optional[str]=''; category_id:Optional[str]='nutrition'; product_type:Optional[str]=''; form:Optional[str]=''; npk:Optional[str]='—'; active_ingredient:Optional[str]='—'; concentration:Optional[str]=''
-    short_description:Optional[str]=''; composition:Optional[list[str]|str]=None; cultures:Optional[list[str]|str]=None; purposes:Optional[list[str]|str]=None
+    short_description:Optional[str]=''; composition:Optional[Union[list[str], str]]=None; cultures:Optional[Union[list[str], str]]=None; purposes:Optional[Union[list[str], str]]=None
     manufacturer_use:Optional[str]=''; application:Optional[str]=''; rate:Optional[str]=''; restrictions:Optional[str]=''; target:Optional[str]=''; waiting_period:Optional[str]=''; hazard_class:Optional[str]=''; registration:Optional[str]=''
-    factory_packs:Optional[list[str]|str]=None; image:Optional[str]=''; gallery:Optional[list[str]|str]=None; source_title:Optional[str]=''; source_url:Optional[str]=''; verified:Optional[bool]=False; published:Optional[bool]=False
+    factory_packs:Optional[Union[list[str], str]]=None; image:Optional[str]=''; gallery:Optional[Union[list[str], str]]=None; source_title:Optional[str]=''; source_url:Optional[str]=''; verified:Optional[bool]=False; published:Optional[bool]=False
     initial_sku:Optional[dict]=None
 
 class CatalogSkuBody(BaseModel):
     sku:str; variant:str; volume_value:Optional[float]=None; volume_unit:Optional[str]='pcs'; image:Optional[str]=None; currency:Optional[str]='UAH'; price:Optional[float]=Field(default=None,ge=0); sale_price:Optional[float]=Field(default=None,ge=0); availability:Optional[str]='unknown'; stock_qty:Optional[int]=Field(default=None,ge=0); enabled:Optional[bool]=False
+
+class CatalogSkuUpdateBody(BaseModel):
+    variant:Optional[str]=None; volume_value:Optional[float]=None; volume_unit:Optional[str]=None; image:Optional[str]=None
+    price:Optional[float]=Field(default=None,ge=0); sale_price:Optional[float]=Field(default=None,ge=0); clear_sale_price:bool=False
+    availability:Optional[str]=None; stock_qty:Optional[int]=Field(default=None,ge=0); clear_stock_qty:bool=False; enabled:Optional[bool]=None
+
+class CatalogDuplicateBody(BaseModel):
+    id:Optional[str]=None; name:Optional[str]=None
 
 class ProductCommerceUpdate(BaseModel):
     price:Optional[float]=Field(default=None,ge=0)
@@ -146,6 +158,28 @@ def admin_catalog_update(product_id:str,body:CatalogProductBody,authorization:Op
 def admin_catalog_add_sku(product_id:str,body:CatalogSkuBody,authorization:Optional[str]=Header(default=None)):
     admin_auth(authorization)
     try:return create_sku(product_id,body.model_dump(exclude_none=True))
+    except ValueError as e: raise HTTPException(422,str(e))
+
+@app.patch('/api/v1/admin/catalog/products/{product_id}/skus/{sku}')
+def admin_catalog_update_sku(product_id:str,sku:str,body:CatalogSkuUpdateBody,authorization:Optional[str]=Header(default=None)):
+    admin_auth(authorization)
+    try:r=update_catalog_sku(product_id,sku,body.model_dump(exclude_none=True))
+    except ValueError as e: raise HTTPException(422,str(e))
+    if not r: raise HTTPException(404,'SKU not found')
+    return r
+
+@app.delete('/api/v1/admin/catalog/products/{product_id}/skus/{sku}')
+def admin_catalog_delete_sku(product_id:str,sku:str,authorization:Optional[str]=Header(default=None)):
+    admin_auth(authorization)
+    try:r=delete_catalog_sku(product_id,sku)
+    except ValueError as e: raise HTTPException(422,str(e))
+    if not r: raise HTTPException(404,'SKU not found')
+    return {'ok':True,'sku':sku}
+
+@app.post('/api/v1/admin/catalog/products/{product_id}/duplicate',status_code=201)
+def admin_catalog_duplicate(product_id:str,body:CatalogDuplicateBody,authorization:Optional[str]=Header(default=None)):
+    admin_auth(authorization)
+    try:return duplicate_product(product_id,body.model_dump(exclude_none=True))
     except ValueError as e: raise HTTPException(422,str(e))
 
 @app.post('/api/v1/admin/catalog/media',status_code=201)

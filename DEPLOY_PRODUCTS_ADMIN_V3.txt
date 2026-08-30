@@ -1,0 +1,17 @@
+BB610 Market Products Admin V3
+
+GitHub:
+- Upload the CONTENTS of this patch to repository root, preserving folders.
+
+VPS IMPORTANT:
+backend/app.py was manually changed on the VPS earlier for Python 3.9 compatibility.
+V3 already includes that compatibility fix, so before git pull use:
+
+cd /opt/bb610-market
+git restore backend/app.py
+git pull
+systemctl restart bb610-market
+systemctl status bb610-market --no-pager
+curl https://api.market.bb610.com.ua/api/v1/health
+
+No new pip packages and no new SQLite migration are required for V3.

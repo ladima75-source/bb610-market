@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Optional
 from ..db import connect, BASE_DIR
 from ..catalog_provider import load_catalog
-from .product_commerce import commerce_map
+from .product_commerce import commerce_map, update_product
 
 MEDIA_DIR = BASE_DIR / 'runtime' / 'media' / 'products'
 MEDIA_DIR.mkdir(parents=True, exist_ok=True)
@@ -105,7 +105,15 @@ def admin_detail(product_id:str):
     p=dict(static_products.get(product_id,{})); c=ov.get(product_id)
     if c: p.update({k:v for k,v in c.items() if not k.startswith('cms_')})
     p['id']=product_id; p['published']=bool(c.get('cms_published')) if c else True; p['cms_source']='cms' if product_id not in static_products else ('override' if c else 'static')
-    p['skus']=[s for s in static_skus.values() if s.get('product_id')==product_id]+_dynamic_skus(product_id)
+    cm=commerce_map(); merged_static=[]
+    for skurow in static_skus.values():
+        if skurow.get('product_id')!=product_id: continue
+        sr=dict(skurow); cc=cm.get(sr.get('id'),{})
+        sr['base_price']=cc.get('price'); sr['sale_price']=cc.get('sale_price'); sr['price']=cc.get('effective_price')
+        sr['availability']=cc.get('availability','unknown'); sr['stock_qty']=cc.get('stock_qty'); sr['enabled']=bool(cc.get('enabled'))
+        sr['offer_status']='active' if cc.get('enabled') else 'draft'; sr['commercial_status']='active' if cc.get('enabled') else 'paused'; sr['runtime_dynamic']=False
+        merged_static.append(sr)
+    p['skus']=merged_static+_dynamic_skus(product_id)
     return p
 
 def save_product(product_id:str, body:dict, *, create=False):
@@ -158,3 +166,82 @@ def save_upload(filename:str, content:bytes)->str:
     if len(content)>8*1024*1024: raise ValueError('Image is larger than 8 MB')
     name=uuid.uuid4().hex+ext; (MEDIA_DIR/name).write_bytes(content)
     return '/media/products/'+name
+
+
+def _find_sku(product_id:str, sku:str):
+    _,_,static_skus=_static()
+    if sku in static_skus and static_skus[sku].get('product_id')==product_id:
+        return 'static', static_skus[sku]
+    with connect() as con:
+        row=con.execute('SELECT sku,product_id,variant,volume_value,volume_unit,image,currency FROM dynamic_skus WHERE sku=? AND product_id=?',(sku,product_id)).fetchone()
+    return ('dynamic',dict(row)) if row else (None,None)
+
+def update_catalog_sku(product_id:str, sku:str, body:dict):
+    kind,row=_find_sku(product_id,sku)
+    if not kind: return None
+    # Commercial fields are editable for both static and dynamic SKU records.
+    commerce_keys={'price','sale_price','clear_sale_price','availability','stock_qty','clear_stock_qty','enabled'}
+    cbody={k:v for k,v in body.items() if k in commerce_keys}
+    if cbody:
+        updated=update_product(
+            sku,
+            price=cbody.get('price'),
+            sale_price=cbody.get('sale_price'),
+            sale_price_set=('sale_price' in cbody or cbody.get('clear_sale_price',False)),
+            availability=cbody.get('availability'),
+            stock_qty=cbody.get('stock_qty'),
+            stock_qty_set=('stock_qty' in cbody or cbody.get('clear_stock_qty',False)),
+            enabled=cbody.get('enabled')
+        )
+        if not updated: raise ValueError('SKU commerce record not found')
+    # Structural fields can only be changed on dynamic SKUs. Static catalog SKU identity remains immutable.
+    if kind=='dynamic':
+        fields=[]; vals=[]
+        for key,col in [('variant','variant'),('volume_value','volume_value'),('volume_unit','volume_unit'),('image','image')]:
+            if key in body:
+                fields.append(col+'=?'); vals.append(body.get(key))
+        if fields:
+            fields.append('updated_at=?'); vals.append(_now()); vals.extend([sku,product_id])
+            with connect() as con:
+                con.execute('UPDATE dynamic_skus SET '+','.join(fields)+' WHERE sku=? AND product_id=?',vals); con.commit()
+    detail=admin_detail(product_id)
+    return next((x for x in (detail or {}).get('skus',[]) if (x.get('id') or x.get('sku'))==sku),None)
+
+def delete_catalog_sku(product_id:str, sku:str):
+    kind,row=_find_sku(product_id,sku)
+    if not kind: return False
+    if kind=='static':
+        raise ValueError('Static catalog SKU cannot be deleted. Disable sale instead.')
+    with connect() as con:
+        con.execute('DELETE FROM dynamic_skus WHERE sku=? AND product_id=?',(sku,product_id))
+        con.execute('DELETE FROM sku_commerce WHERE sku=?',(sku,))
+        # If this was the default SKU, clear it. A new default can be selected later.
+        pr=con.execute('SELECT content_json FROM product_content WHERE product_id=?',(product_id,)).fetchone()
+        if pr:
+            c=json.loads(pr['content_json'])
+            if c.get('default_sku_id')==sku:
+                c['default_sku_id']=''
+                con.execute('UPDATE product_content SET content_json=?,updated_at=? WHERE product_id=?',(json.dumps(c,ensure_ascii=False),_now(),product_id))
+        con.commit()
+    return True
+
+def duplicate_product(product_id:str, body:dict=None):
+    src=admin_detail(product_id)
+    if not src: raise ValueError('Product not found')
+    body=body or {}
+    raw_id=body.get('id') or (product_id+'-copy')
+    new_id=_slug(raw_id)
+    i=2
+    while admin_detail(new_id):
+        new_id=_slug(raw_id+'-'+str(i)); i+=1
+    clone={k:v for k,v in src.items() if k not in {'id','skus','cms_source','published'}}
+    clone['id']=new_id
+    clone['slug']=new_id
+    clone['name']=body.get('name') or ((src.get('name') or product_id)+' — копія')
+    clone['published']=False
+    clone['verified']=False
+    srcmeta=src.get('source') or {}
+    clone['source_title']=srcmeta.get('title','') if isinstance(srcmeta,dict) else ''
+    clone['source_url']=srcmeta.get('url','') if isinstance(srcmeta,dict) else ''
+    # Keep descriptive content and images, but never copy SKU identities or publish automatically.
+    return create_product(clone)

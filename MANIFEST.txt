@@ -1,0 +1,15 @@
+BB610 MARKET — MEGAFOL MASTER CARD PATCH v1
+
+Scope:
+- MEGAFOL card only
+- SEO/Search/Merchant-ready metadata
+- confirmed technical data updated from current Syngenta/Valagro sources
+- prices and stock are NOT changed
+- backend/admin/SQLite/Telegram are NOT changed
+
+Install:
+Copy data/catalog.master.json into the project's data/ folder, replacing the existing file.
+Then run the existing tools/build_catalog.py to regenerate runtime/generated catalog files.
+
+Photo rendering requirement:
+Main product image: object-fit: contain; no cropping. Existing click-preview remains unchanged.

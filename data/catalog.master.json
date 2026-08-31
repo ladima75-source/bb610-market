@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "generated_contract": {
     "master_file": "data/catalog.master.json",
     "runtime_file": "data/catalog.runtime.js",
@@ -14,7 +14,11 @@
       "name": "Живлення рослин",
       "short_name": "Живлення",
       "order": 10,
-      "enabled": true
+      "enabled": true,
+      "seo": {
+        "title": "Живлення рослин · BB610 Market",
+        "description": "Живлення рослин у BB610 Market. Професійний відібраний асортимент, дані виробників і перевірене походження."
+      }
     },
     {
       "id": "biostimulation",
@@ -22,7 +26,11 @@
       "name": "Біостимуляція",
       "short_name": "Біостимуляція",
       "order": 20,
-      "enabled": true
+      "enabled": true,
+      "seo": {
+        "title": "Біостимуляція · BB610 Market",
+        "description": "Біостимуляція у BB610 Market. Професійний відібраний асортимент, дані виробників і перевірене походження."
+      }
     },
     {
       "id": "protection",
@@ -30,7 +38,11 @@
       "name": "Захист рослин",
       "short_name": "Захист рослин",
       "order": 30,
-      "enabled": true
+      "enabled": true,
+      "seo": {
+        "title": "Захист рослин · BB610 Market",
+        "description": "Захист рослин у BB610 Market. Професійний відібраний асортимент, дані виробників і перевірене походження."
+      }
     },
     {
       "id": "containers",
@@ -38,7 +50,11 @@
       "name": "Контейнери / горщики",
       "short_name": "Контейнери",
       "order": 40,
-      "enabled": true
+      "enabled": true,
+      "seo": {
+        "title": "Контейнери / горщики · BB610 Market",
+        "description": "Контейнери / горщики у BB610 Market. Професійний відібраний асортимент, дані виробників і перевірене походження."
+      }
     }
   ],
   "brands": [
@@ -135,7 +151,8 @@
       "canonical_product_url": "/products/master-13-40-13/",
       "legacy_url": "product.html?id=master-13-40-13",
       "default_sku_id": null,
-      "store_content_status": "product-only-no-bb610-sku"
+      "store_content_status": "product-only-no-bb610-sku",
+      "seo": {}
     },
     {
       "id": "master-20-20-20",
@@ -214,7 +231,8 @@
       "canonical_product_url": "/products/master-20-20-20/",
       "legacy_url": "product.html?id=master-20-20-20",
       "default_sku_id": null,
-      "store_content_status": "product-only-no-bb610-sku"
+      "store_content_status": "product-only-no-bb610-sku",
+      "seo": {}
     },
     {
       "id": "plantafol-20-20-20",
@@ -295,7 +313,8 @@
       "canonical_product_url": "/products/plantafol-20-20-20/",
       "legacy_url": "product.html?id=plantafol-20-20-20",
       "default_sku_id": "BB610-VLG-PLANTAFOL202020-1KG",
-      "store_content_status": "sku-model-ready"
+      "store_content_status": "sku-model-ready",
+      "seo": {}
     },
     {
       "id": "megafol",
@@ -366,8 +385,13 @@
       "selected_by_bb610": true,
       "canonical_product_url": "/products/megafol/",
       "legacy_url": "product.html?id=megafol",
-      "default_sku_id": "BB610-VLG-MEGAFOL-1L",
-      "store_content_status": "sku-model-ready"
+      "default_sku_id": "BB610-VLG-MEGAFOL-100ML",
+      "store_content_status": "sku-model-ready",
+      "seo": {},
+      "gallery": [
+        "assets/img/real/megafol-25ml.png",
+        "assets/img/real/megafol-100ml.png"
+      ]
     },
     {
       "id": "radifarm",
@@ -431,7 +455,8 @@
       "canonical_product_url": "/products/radifarm/",
       "legacy_url": "product.html?id=radifarm",
       "default_sku_id": null,
-      "store_content_status": "product-only-no-bb610-sku"
+      "store_content_status": "product-only-no-bb610-sku",
+      "seo": {}
     },
     {
       "id": "brexil-mix",
@@ -495,7 +520,8 @@
       "canonical_product_url": "/products/brexil-mix/",
       "legacy_url": "product.html?id=brexil-mix",
       "default_sku_id": null,
-      "store_content_status": "product-only-no-bb610-sku"
+      "store_content_status": "product-only-no-bb610-sku",
+      "seo": {}
     },
     {
       "id": "kendal-root",
@@ -564,7 +590,8 @@
       "canonical_product_url": "/products/kendal-root/",
       "legacy_url": "product.html?id=kendal-root",
       "default_sku_id": "BB610-VLG-KENDALROOT-10L",
-      "store_content_status": "sku-model-ready"
+      "store_content_status": "sku-model-ready",
+      "seo": {}
     },
     {
       "id": "switch-625-wg",
@@ -635,7 +662,8 @@
       "canonical_product_url": "/products/switch-62-5-wg/",
       "legacy_url": "product.html?id=switch-625-wg",
       "default_sku_id": "BB610-SYN-SWITCH625-10G",
-      "store_content_status": "sku-model-ready"
+      "store_content_status": "sku-model-ready",
+      "seo": {}
     },
     {
       "id": "aktara-25-wg",
@@ -703,7 +731,8 @@
       "canonical_product_url": "/products/aktara-25-wg/",
       "legacy_url": "product.html?id=aktara-25-wg",
       "default_sku_id": "BB610-SYN-AKTARA25-250G",
-      "store_content_status": "sku-model-ready"
+      "store_content_status": "sku-model-ready",
+      "seo": {}
     },
     {
       "id": "plantlogic-25-round-1308125",
@@ -773,7 +802,8 @@
       "canonical_product_url": "/products/plantlogic-25l-1308125/",
       "legacy_url": "product.html?id=plantlogic-25-round-1308125",
       "default_sku_id": "BB610-PLT-1308125-EA",
-      "store_content_status": "sku-model-ready"
+      "store_content_status": "sku-model-ready",
+      "seo": {}
     },
     {
       "id": "plantlogic-40-round-ugroove-1308041",
@@ -844,7 +874,65 @@
       "canonical_product_url": "/products/plantlogic-40l-1308041/",
       "legacy_url": "product.html?id=plantlogic-40-round-ugroove-1308041",
       "default_sku_id": "BB610-PLT-1308041-EA",
-      "store_content_status": "sku-model-ready"
+      "store_content_status": "sku-model-ready",
+      "seo": {}
+    },
+    {
+      "id": "bb610-order-test",
+      "slug": "bb610-order-test",
+      "name": "BB610 TEST ORDER",
+      "official_name": "BB610 TEST ORDER",
+      "brand": "BB610",
+      "manufacturer": "BB610",
+      "country": "Україна",
+      "category_id": "biostimulation",
+      "product_type": "Службовий тестовий товар",
+      "form": "Службовий запис",
+      "npk": "—",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "технічне тестування checkout"
+      ],
+      "manufacturer_use": "Службовий товар для наскрізної перевірки оформлення замовлення. Не є реальною товарною пропозицією.",
+      "application": "Не застосовується.",
+      "rate": "",
+      "restrictions": "Не продається.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [
+        "1 тестова одиниця"
+      ],
+      "documents": [],
+      "source": {
+        "title": "BB610 internal diagnostic",
+        "url": "",
+        "verifiedAt": "2026-08-29",
+        "primary": false
+      },
+      "image": {
+        "local": "assets/bb610-market-logo.png",
+        "officialSourceUrl": "",
+        "status": "internal-test"
+      },
+      "verification": {
+        "status": "internal-test",
+        "verified": false,
+        "verifiedAt": "2026-08-29",
+        "scope": "Технічний тест",
+        "note": "Не є товаром каталогу."
+      },
+      "selected_by_bb610": false,
+      "canonical_product_url": "",
+      "legacy_url": "",
+      "default_sku_id": "BB610-TEST-ORDER-001",
+      "store_content_status": "internal-test",
+      "seo": {},
+      "internal_only": true
     }
   ],
   "variants": [
@@ -1015,6 +1103,33 @@
       "quantity": 1,
       "unit": "ea",
       "status": "manufacturer-pack-confirmed"
+    },
+    {
+      "id": "bb610-order-test--1",
+      "product_id": "bb610-order-test",
+      "label": "1 тестова одиниця",
+      "quantity": 1,
+      "unit": "pcs",
+      "status": "internal-test",
+      "internal_only": true
+    },
+    {
+      "id": "megafol--25ml",
+      "product_id": "megafol",
+      "label": "25 мл",
+      "volume_weight": {
+        "value": 25,
+        "unit": "ml"
+      }
+    },
+    {
+      "id": "megafol--100ml",
+      "product_id": "megafol",
+      "label": "100 мл",
+      "volume_weight": {
+        "value": 100,
+        "unit": "ml"
+      }
     }
   ],
   "skus": [
@@ -1047,7 +1162,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-VLG-PLANTAFOL202020-5KG",
@@ -1078,7 +1194,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-VLG-PLANTAFOL202020-25KG",
@@ -1109,7 +1226,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-VLG-MEGAFOL-1L",
@@ -1140,7 +1258,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-VLG-MEGAFOL-10L",
@@ -1171,7 +1290,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-VLG-MEGAFOL-20L",
@@ -1202,7 +1322,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-VLG-MEGAFOL-1000L",
@@ -1233,7 +1354,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-VLG-KENDALROOT-10L",
@@ -1264,7 +1386,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-SYN-SWITCH625-10G",
@@ -1295,7 +1418,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-SYN-SWITCH625-100G",
@@ -1326,7 +1450,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-SYN-SWITCH625-1KG",
@@ -1357,7 +1482,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-SYN-AKTARA25-250G",
@@ -1388,7 +1514,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-PLT-1308125-EA",
@@ -1419,7 +1546,8 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
     },
     {
       "id": "BB610-PLT-1308041-EA",
@@ -1450,7 +1578,105 @@
       ],
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed"
+      "pack_source_status": "manufacturer-pack-confirmed",
+      "seo": {}
+    },
+    {
+      "id": "BB610-TEST-ORDER-001",
+      "sku": "BB610-TEST-ORDER-001",
+      "product_id": "bb610-order-test",
+      "variant_id": "bb610-order-test--1",
+      "slug": "bb610-order-test-001",
+      "variant": "1 тестова одиниця",
+      "volume_weight": {
+        "value": 1,
+        "unit": "pcs"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": 100,
+      "currency": "UAH",
+      "availability": "in_stock",
+      "stock_label": "TEST — доступний",
+      "offer_status": "active",
+      "feed_eligible": false,
+      "url": "/products/bb610-order-test-001/",
+      "image": "assets/bb610-market-logo.png",
+      "supplier": "BB610 internal",
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Тільки технічний тест. Реальне відправлення не виконується."
+      ],
+      "commercial_status": "active",
+      "commercial_note": "INTERNAL TEST SKU. Не публікувати як товарну пропозицію.",
+      "pack_source_status": "internal-test",
+      "seo": {},
+      "internal_only": true
+    },
+    {
+      "id": "BB610-VLG-MEGAFOL-25ML",
+      "sku": "BB610-VLG-MEGAFOL-25ML",
+      "product_id": "megafol",
+      "variant_id": "megafol--25ml",
+      "slug": "megafol-25ml",
+      "variant": "25 мл",
+      "volume_weight": {
+        "value": 25,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": 50,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "active",
+      "feed_eligible": false,
+      "url": "/products/megafol-25ml/",
+      "image": "assets/img/real/megafol-25ml.png",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Відправка по Україні — умови уточнюються"
+      ],
+      "commercial_status": "active",
+      "commercial_note": "Ціна BB610 підтверджена; фактична наявність ще не вказана.",
+      "pack_source_status": "bb610-retail-pack",
+      "seo": {}
+    },
+    {
+      "id": "BB610-VLG-MEGAFOL-100ML",
+      "sku": "BB610-VLG-MEGAFOL-100ML",
+      "product_id": "megafol",
+      "variant_id": "megafol--100ml",
+      "slug": "megafol-100ml",
+      "variant": "100 мл",
+      "volume_weight": {
+        "value": 100,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": 172,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "active",
+      "feed_eligible": false,
+      "url": "/products/megafol-100ml/",
+      "image": "assets/img/real/megafol-100ml.png",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Відправка по Україні — умови уточнюються"
+      ],
+      "commercial_status": "active",
+      "commercial_note": "Ціна BB610 підтверджена; фактична наявність ще не вказана.",
+      "pack_source_status": "bb610-retail-pack",
+      "seo": {}
     }
   ],
   "solutions": [],
@@ -1475,5 +1701,11 @@
     "principle": "Manufacturer-confirmed pack != active BB610 offer. SKU becomes sellable only after BB610 price/availability/supply are confirmed.",
     "price_policy": "Never use zero or invented prices. Null renders as Ціна уточнюється.",
     "availability_policy": "Unknown until BB610 stock/supplier state is confirmed."
+  },
+  "site": {
+    "base_url": "https://market.bb610.com.ua",
+    "name": "BB610 Market",
+    "default_locale": "uk-UA",
+    "default_currency": "UAH"
   }
 }

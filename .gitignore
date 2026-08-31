@@ -1,0 +1,16 @@
+
+# BB610 Market — server/runtime files
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Runtime database — never store in Git
+backend/runtime/*.sqlite3
+backend/runtime/*.sqlite3-shm
+backend/runtime/*.sqlite3-wal
+
+# OS/editor junk
+.DS_Store
+Thumbs.db

@@ -29,3 +29,15 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Generated catalog/build output
+/products/
+/categories/
+data/catalog.generated.json
+data/catalog.runtime.js
+feeds/google-merchant.csv
+feeds/meta-catalog.csv
+feeds/merchant-meta-template.csv
+feeds/feed-status.json
+sitemap.xml
+robots.txt

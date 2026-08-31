@@ -1,16 +1,31 @@
+# ============================================================
+# BB610 Market
+# Git contains source code and source catalog only.
+# Server runtime data must NEVER be stored in Git.
+# ============================================================
 
-# BB610 Market — server/runtime files
+# Environment / secrets
 .env
+.env.*
+!.env.example
+
+# Python virtual environments
 .venv/
 venv/
+
+# Python cache
 __pycache__/
 *.py[cod]
 
-# Runtime database — never store in Git
-backend/runtime/*.sqlite3
-backend/runtime/*.sqlite3-shm
-backend/runtime/*.sqlite3-wal
+# BB610 Market runtime data
+# Orders database, uploaded product images and other live data.
+backend/runtime/
 
-# OS/editor junk
+# OS / editor junk
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
+
+# Logs
+*.log

@@ -5,8 +5,16 @@ from fastapi import APIRouter, Header, HTTPException, Query
 from pydantic import BaseModel, Field
 from .services.delivery.base import DeliveryNotConfigured, DeliveryUpstreamError
 from .services.integrations import nova_poshta_status, save_nova_poshta_settings, test_nova_poshta, nova_poshta_sender_options
+from .services.payment_settings import payment_settings_status, save_payment_settings
 
 router=APIRouter(prefix='/api/v1/admin/integrations',tags=['admin-integrations'])
+class PaymentSettingsPatch(BaseModel):
+    cod_enabled:Optional[bool]=None
+    bank_transfer_enabled:Optional[bool]=None
+    bank_recipient:Optional[str]=Field(default=None,max_length=200)
+    bank_iban:Optional[str]=Field(default=None,max_length=64)
+    bank_purpose:Optional[str]=Field(default=None,max_length=200)
+
 class NovaPoshtaSettingsPatch(BaseModel):
     api_key:Optional[str]=Field(default=None,min_length=8,max_length=512)
     api_url:Optional[str]=Field(default=None,min_length=8,max_length=500)
@@ -22,7 +30,15 @@ def _admin_auth(authorization:Optional[str]):
     if not expected:raise HTTPException(503,'Admin API is disabled until BB610_ADMIN_TOKEN is configured')
     if not authorization or authorization!='Bearer '+expected:raise HTTPException(401,'Unauthorized')
 @router.get('')
-def list_integrations(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return {'integrations':[nova_poshta_status()]}
+def list_integrations(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return {'integrations':[nova_poshta_status(),payment_settings_status()]}
+@router.get('/payments')
+def get_payments(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return payment_settings_status()
+@router.patch('/payments')
+def patch_payments(body:PaymentSettingsPatch,authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    try:return save_payment_settings(**body.model_dump(exclude_unset=True))
+    except ValueError as e:raise HTTPException(422,str(e))
+    except RuntimeError as e:raise HTTPException(500,str(e))
 @router.get('/nova-poshta')
 def get_np(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return nova_poshta_status()
 @router.patch('/nova-poshta')

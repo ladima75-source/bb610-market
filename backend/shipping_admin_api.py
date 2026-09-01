@@ -16,6 +16,24 @@ def _admin_auth(authorization:Optional[str]):
 
 def _now(): return datetime.now(timezone.utc).isoformat()
 
+
+@router.post('/{order_id}/delivery/validate-shipment')
+def validate_shipment(order_id:str,authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    with connect() as con:
+        order=con.execute('SELECT * FROM orders WHERE id=?',(order_id,)).fetchone()
+        if not order: raise HTTPException(404,'Order not found')
+        d=get_delivery(con,order_id)
+        if not d: raise HTTPException(422,'Delivery data missing')
+        if d.get('provider')!='nova_poshta': raise HTTPException(422,'TTN validation is supported only for Nova Poshta')
+        a=adapter('nova_poshta')
+        if not a: raise HTTPException(503,'Nova Poshta adapter unavailable')
+        payload={**dict(order),'delivery':d,'customer':{'name':order['customer_name'],'phone':order['customer_phone'],'email':order['customer_email']},'payment':{'method':order['payment_method'],'status':order['payment_status']}}
+        try:return a.validate_shipment(payload)
+        except DeliveryNotConfigured as e: raise HTTPException(503,str(e))
+        except DeliveryUpstreamError as e: raise HTTPException(502,str(e))
+        except ValueError as e: raise HTTPException(422,str(e))
+
 @router.post('/{order_id}/delivery/create-shipment')
 def create_shipment(order_id:str,authorization:Optional[str]=Header(default=None)):
     _admin_auth(authorization)

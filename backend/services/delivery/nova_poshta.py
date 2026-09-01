@@ -187,6 +187,37 @@ class NovaPoshtaAdapter(DeliveryAdapter):
             raise DeliveryUpstreamError('Nova Poshta did not return recipient contact Ref')
         return recipient_ref,contact_ref,phone
 
+
+    def validate_shipment(self,order):
+        """Read-only readiness check. Does not create Recipient and does not call InternetDocument.save."""
+        if not self.capability().shipment_creation:
+            raise DeliveryNotConfigured('Nova Poshta sender configuration is incomplete')
+        delivery=order.get('delivery') or {}
+        if not delivery.get('city_ref') or not delivery.get('branch_ref'):
+            raise ValueError('RECIPIENT_CITY_OR_BRANCH_REF_MISSING')
+        if delivery.get('service') not in ('branch','locker'):
+            raise ValueError('UNSUPPORTED_NOVA_POSHTA_SERVICE')
+        contact,address,sender_phone,city_sender=self._selected_sender()
+        customer=order.get('customer') or {}
+        recipient_phone=_phone(customer.get('phone') or order.get('customer_phone') or delivery.get('recipient_phone'))
+        recipient_name=customer.get('name') or order.get('customer_name') or delivery.get('recipient_name')
+        if not recipient_phone or len(recipient_phone)!=12 or not recipient_phone.startswith('380'):
+            raise ValueError('RECIPIENT_PHONE_INVALID')
+        if not (recipient_name or '').strip():
+            raise ValueError('RECIPIENT_NAME_MISSING')
+        wh=self._call('Address','getWarehouses',{'Ref':delivery['branch_ref'],'Page':'1','Limit':'1'})
+        if not wh:
+            raise ValueError('RECIPIENT_BRANCH_REF_NOT_FOUND')
+        amount=max(1.0,float(order.get('total') or 0))
+        payment_method=(order.get('payment') or {}).get('method') or order.get('payment_method')
+        return {
+          'ok':True,'read_only':True,'creates_ttn':False,'creates_recipient':False,
+          'sender':{'contact':contact.get('label'),'address':address.get('label'),'phone':sender_phone,'city_ref_present':bool(city_sender)},
+          'recipient':{'name':recipient_name,'phone':recipient_phone,'city':delivery.get('city'),'branch':delivery.get('branch'),'branch_ref_valid':True,'service':delivery.get('service')},
+          'shipment':{'weight':self.shipment_weight,'description':self.shipment_description,'payer_type':self.payer_type,'payment_method':self.payment_method,'declared_cost':round(amount,2),'afterpayment':round(amount,2) if payment_method=='cod' else None,'service_type':'WarehouseWarehouse'},
+          'note':'Перевірка виконана без створення отримувача та без InternetDocument.save.'
+        }
+
     def create_shipment(self,order):
         if not self.capability().shipment_creation:
             raise DeliveryNotConfigured('Nova Poshta sender configuration is incomplete')

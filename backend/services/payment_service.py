@@ -5,6 +5,7 @@ from ..db import connect
 from .payment import PaymentNotConfigured, PaymentSignatureError
 from .payment.unconfigured import UnconfiguredPaymentAdapter
 from .automation import emit,audit
+from .payment_settings import payment_settings_status, bank_transfer_instructions
 
 PAYMENT_STATUSES=('not_required','pending','requires_action','paid','failed','cancelled','refunded','partially_refunded')
 
@@ -17,9 +18,10 @@ def adapter():
     return UnconfiguredPaymentAdapter()
 
 def methods():
-    a=adapter(); cod=env_bool('BB610_PAYMENT_COD_ENABLED',False)
+    a=adapter(); st=payment_settings_status(a.configured(),a.provider if a.configured() else None)
     return [
-      {'id':'cod','label':'Післяплата','enabled':cod,'provider':'carrier','requires_redirect':False},
+      {'id':'cod','label':'Післяплата','enabled':bool(st['cod']['enabled']),'provider':'carrier','requires_redirect':False},
+      {'id':'bank_transfer','label':'Оплата на рахунок','enabled':bool(st['bank_transfer']['ready']),'provider':'bank','requires_redirect':False},
       {'id':'online_card','label':'Оплата карткою онлайн','enabled':a.configured(),'provider':a.provider if a.configured() else None,'requires_redirect':True}
     ]
 
@@ -28,6 +30,7 @@ def validate_method(method:str):
     if not m: raise ValueError('UNSUPPORTED_PAYMENT_METHOD')
     if not m['enabled']:
         if method=='online_card': raise PaymentNotConfigured('Online payment provider is not configured')
+        if method=='bank_transfer': raise PaymentNotConfigured('Bank transfer is disabled or payment details are incomplete')
         raise PaymentNotConfigured('Cash on delivery is disabled')
     return m
 
@@ -40,6 +43,13 @@ def initialize_payment(con,order_id:str,method:str,amount:float,currency:str,ord
         con.execute('UPDATE orders SET payment_method=?,payment_status=?,purchase_ready=1,clear_cart=1 WHERE id=?',('cod','pending',order_id))
         con.execute('INSERT INTO payment_events(order_id,provider,event_type,from_status,to_status,payload_json,created_at) VALUES(?,?,?,?,?,?,?)',(order_id,'carrier','payment_initialized',None,'pending','{}',ts))
         return {'required':True,'method':'cod','provider':'carrier','status':'pending','redirect_url':None}
+    if method=='bank_transfer':
+        ins=bank_transfer_instructions(order_number)
+        raw={'instructions':ins}
+        con.execute('INSERT INTO order_payments(order_id,method,provider,status,amount,currency,last_event_at,raw_json) VALUES(?,?,?,?,?,?,?,?)',(order_id,'bank_transfer','bank','pending',amount,currency,ts,json.dumps(raw,ensure_ascii=False)))
+        con.execute('UPDATE orders SET payment_method=?,payment_status=?,purchase_ready=0,clear_cart=1 WHERE id=?',('bank_transfer','pending',order_id))
+        con.execute('INSERT INTO payment_events(order_id,provider,event_type,from_status,to_status,payload_json,created_at) VALUES(?,?,?,?,?,?,?)',(order_id,'bank','payment_initialized',None,'pending',json.dumps(raw,ensure_ascii=False),ts))
+        return {'required':True,'method':'bank_transfer','provider':'bank','status':'pending','redirect_url':None,'instructions':ins}
     a=adapter()
     return_url=(os.getenv('BB610_PUBLIC_SITE_URL','https://market.bb610.com.ua').rstrip('/')+f'/order/success/?order={order_id}&token={public_token}')
     s=a.create_session(order_id=order_id,order_number=order_number,amount=amount,currency=currency,return_url=return_url,customer=customer)
@@ -51,7 +61,12 @@ def initialize_payment(con,order_id:str,method:str,amount:float,currency:str,ord
 def get_payment(con,order_id:str):
     r=con.execute('SELECT * FROM order_payments WHERE order_id=?',(order_id,)).fetchone()
     if not r:return {'required':False,'method':None,'provider':None,'status':'not_required','redirect_url':None}
-    return {'required':True,'method':r['method'],'provider':r['provider'],'status':r['status'],'amount':r['amount'],'currency':r['currency'],'redirect_url':r['checkout_url'],'provider_payment_id':r['provider_payment_id'],'paid_at':r['paid_at'],'refunded_at':r['refunded_at']}
+    out={'required':True,'method':r['method'],'provider':r['provider'],'status':r['status'],'amount':r['amount'],'currency':r['currency'],'redirect_url':r['checkout_url'],'provider_payment_id':r['provider_payment_id'],'paid_at':r['paid_at'],'refunded_at':r['refunded_at']}
+    if r['method']=='bank_transfer':
+        try: raw=json.loads(r['raw_json'] or '{}')
+        except Exception: raw={}
+        out['instructions']=(raw or {}).get('instructions') or {}
+    return out
 
 def _apply_status(con,order_id,new_status,event_type,provider='system',provider_event_id=None,payload=None,actor='system'):
     if new_status not in PAYMENT_STATUSES: raise ValueError('INVALID_PAYMENT_STATUS')
@@ -68,7 +83,8 @@ def _apply_status(con,order_id,new_status,event_type,provider='system',provider_
     }
     if new_status not in allowed.get(old,set()): raise ValueError('INVALID_PAYMENT_TRANSITION')
     paid_at=ts if new_status=='paid' else p['paid_at']; refunded_at=ts if new_status=='refunded' else p['refunded_at']
-    con.execute('UPDATE order_payments SET status=?,paid_at=?,refunded_at=?,last_event_at=?,raw_json=COALESCE(?,raw_json) WHERE order_id=?',(new_status,paid_at,refunded_at,ts,json.dumps(payload,ensure_ascii=False) if payload is not None else None,order_id))
+    raw_update=None if p['method']=='bank_transfer' else (json.dumps(payload,ensure_ascii=False) if payload is not None else None)
+    con.execute('UPDATE order_payments SET status=?,paid_at=?,refunded_at=?,last_event_at=?,raw_json=COALESCE(?,raw_json) WHERE order_id=?',(new_status,paid_at,refunded_at,ts,raw_update,order_id))
     # Online payment unlocks ecommerce purchase only after server-confirmed paid.
     # COD purchase is unlocked at accepted order creation; marking collection does not emit a second purchase.
     method=p['method']
@@ -82,11 +98,12 @@ def admin_update_cod(order_id,status:str,note:str|None=None):
     with connect() as con:
         p=con.execute('SELECT * FROM order_payments WHERE order_id=?',(order_id,)).fetchone()
         if not p:return None
-        if p['method']!='cod': raise ValueError('ONLINE_PAYMENT_STATUS_IS_WEBHOOK_OWNED')
-        if status not in ('paid','cancelled'): raise ValueError('INVALID_COD_PAYMENT_STATUS')
+        if p['method'] not in ('cod','bank_transfer'): raise ValueError('ONLINE_PAYMENT_STATUS_IS_WEBHOOK_OWNED')
+        if status not in ('paid','cancelled'): raise ValueError('INVALID_MANUAL_PAYMENT_STATUS')
         r=_apply_status(con,order_id,status,'admin_cod_update','carrier',payload={'note':note},actor='admin'); con.commit()
-    emit('payment.'+status,'order',order_id,{'method':'cod','status':status},source='admin')
-    audit('payment.status_changed','order',order_id,{'method':'cod','status':status,'note':note},actor_type='admin')
+    method=p['method']
+    emit('payment.'+status,'order',order_id,{'method':method,'status':status},source='admin')
+    audit('payment.status_changed','order',order_id,{'method':method,'status':status,'note':note},actor_type='admin')
     return r
 
 def process_webhook(provider:str,headers:dict[str,str],body:bytes):

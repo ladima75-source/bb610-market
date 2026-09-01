@@ -11,9 +11,9 @@ from .automation import emit,audit
 ORDER_STATUSES=('new','confirmed','preparing','shipped','completed','cancelled')
 TRANSITIONS={
  'new':{'confirmed','cancelled'},
- 'confirmed':{'preparing','cancelled'},
- 'preparing':{'shipped','cancelled'},
- 'shipped':{'completed'},
+ 'confirmed':{'new','preparing','cancelled'},
+ 'preparing':{'confirmed','shipped','cancelled'},
+ 'shipped':{'preparing','completed'},
  'completed':set(), 'cancelled':set()
 }
 

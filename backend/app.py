@@ -318,3 +318,7 @@ app.include_router(integrations_router)
 # BB610_STAGE13B2_SHIPPING_ADMIN_ROUTER
 from .shipping_admin_api import router as shipping_admin_router
 app.include_router(shipping_admin_router)
+
+# Stage 15A
+from .media_api import router as media_router
+app.include_router(media_router)

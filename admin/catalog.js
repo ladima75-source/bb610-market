@@ -22,7 +22,23 @@ async function uploadOne(f){const fd=new FormData();fd.append('file',f);const r=
 function renderGallery(){$('gallery-preview').innerHTML=gallery.map((x,i)=>`<div class="gallery-item"><img class="zoomable-admin-photo" data-zoom-src="${esc(imageUrl(x))}" src="${esc(imageUrl(x))}"><div class="gallery-actions"><button type="button" data-main="${i}">Головне</button><button type="button" class="secondary" data-left="${i}" ${i===0?'disabled':''}>←</button><button type="button" class="secondary" data-right="${i}" ${i===gallery.length-1?'disabled':''}>→</button><button type="button" class="danger" data-gdel="${i}">×</button></div></div>`).join('');document.querySelectorAll('[data-gdel]').forEach(b=>b.onclick=()=>{gallery.splice(+b.dataset.gdel,1);renderGallery()});document.querySelectorAll('[data-left]').forEach(b=>b.onclick=()=>movePhoto(+b.dataset.left,-1));document.querySelectorAll('[data-right]').forEach(b=>b.onclick=()=>movePhoto(+b.dataset.right,1));document.querySelectorAll('[data-main]').forEach(b=>b.onclick=()=>makeMain(+b.dataset.main))}
 function movePhoto(i,d){const j=i+d;if(j<0||j>=gallery.length)return;[gallery[i],gallery[j]]=[gallery[j],gallery[i]];renderGallery()}
 function makeMain(i){const chosen=gallery.splice(i,1)[0],old=$('f-image').value.trim();if(old&&old!==chosen)gallery.unshift(old);$('f-image').value=chosen;$('preview').src=imageUrl(chosen);renderGallery()}
-async function saveSku(row){const id=row.dataset.sku,dyn=row.dataset.dynamic==='1',get=k=>row.querySelector(`[data-k="${k}"]`),payload={price:get('price').value===''?null:Number(get('price').value),sale_price:get('sale_price').value===''?null:Number(get('sale_price').value),clear_sale_price:get('sale_price').value==='',availability:get('availability').value,stock_qty:get('stock_qty').value===''?null:Number(get('stock_qty').value),clear_stock_qty:get('stock_qty').value==='',enabled:get('enabled').checked};if(dyn){payload.variant=get('variant').value.trim();payload.image=get('image').value.trim()||null}try{await req(ep+'/'+encodeURIComponent(current.id)+'/skus/'+encodeURIComponent(id),{method:'PATCH',body:JSON.stringify(payload)});fill(await req(ep+'/'+encodeURIComponent(current.id)));await load();$('save-state').textContent='SKU збережено'}catch(e){alert(e.message)}}
+async function saveSku(row){
+ const id=row.dataset.sku,dyn=row.dataset.dynamic==='1',get=k=>row.querySelector(`[data-k="${k}"]`),btn=row.querySelector('[data-skusave]');
+ const val=n=>n.value===''?null:Number(n.value);
+ const payload={price:val(get('price')),sale_price:val(get('sale_price')),clear_sale_price:get('sale_price').value==='',availability:get('availability').value,stock_qty:val(get('stock_qty')),clear_stock_qty:get('stock_qty').value==='',enabled:get('enabled').checked};
+ if(dyn){payload.variant=get('variant').value.trim();payload.image=get('image').value.trim()||null}
+ const expected={price:payload.price,sale_price:payload.sale_price,availability:payload.availability,stock_qty:payload.stock_qty,enabled:payload.enabled};
+ btn.disabled=true;const oldText=btn.textContent;btn.textContent='Збереження…';$('save-state').textContent='Перевіряю запис SKU…';
+ try{
+   await req(ep+'/'+encodeURIComponent(current.id)+'/skus/'+encodeURIComponent(id),{method:'PATCH',body:JSON.stringify(payload)});
+   const fresh=await req(ep+'/'+encodeURIComponent(current.id));
+   const got=(fresh.skus||[]).find(x=>(x.id||x.sku)===id); if(!got)throw new Error('SKU зник після запису');
+   const actual={price:basePrice(got),sale_price:got.sale_price??null,availability:got.availability??'unknown',stock_qty:got.stock_qty??null,enabled:!!got.enabled};
+   const same=Object.keys(expected).every(k=>actual[k]===expected[k]);
+   if(!same)throw new Error('Backend не підтвердив зміни. Очікувалось '+JSON.stringify(expected)+', отримано '+JSON.stringify(actual));
+   fill(fresh);await load();$('save-state').textContent='✓ SKU реально збережено і перевірено';
+ }catch(e){$('save-state').textContent='✕ SKU НЕ збережено: '+e.message;alert('SKU НЕ збережено\n\n'+e.message)}finally{btn.disabled=false;btn.textContent=oldText}
+}
 async function deleteSku(row){const id=row.dataset.sku;if(!confirm('Видалити SKU '+id+'?'))return;try{await req(ep+'/'+encodeURIComponent(current.id)+'/skus/'+encodeURIComponent(id),{method:'DELETE'});fill(await req(ep+'/'+encodeURIComponent(current.id)));await load()}catch(e){alert(e.message)}}
 function norm(s){return String(s||'').toUpperCase().normalize('NFKD').replace(/[^A-Z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
 function generateSku(){const brand=norm($('f-brand').value).slice(0,5)||'SKU',prod=norm($('f-id').value||$('f-slug').value||$('f-name').value).slice(0,24)||'PRODUCT',variant=norm($('sku-variant').value).slice(0,16)||'1';$('sku-code').value=`BB610-${brand}-${prod}-${variant}`}

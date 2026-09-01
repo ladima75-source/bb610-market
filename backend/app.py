@@ -308,3 +308,13 @@ def admin_refresh_tracking(order_id:str,authorization:Optional[str]=Header(defau
     try:return refresh_tracking(order_id)
     except (DeliveryNotConfigured,DeliveryUpstreamError) as e: delivery_error(e)
     except ValueError as e:raise HTTPException(422,str(e))
+
+
+# BB610_STAGE13A_INTEGRATIONS_ROUTER
+from .integrations_api import router as integrations_router
+app.include_router(integrations_router)
+
+
+# BB610_STAGE13B2_SHIPPING_ADMIN_ROUTER
+from .shipping_admin_api import router as shipping_admin_router
+app.include_router(shipping_admin_router)

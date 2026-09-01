@@ -13,6 +13,10 @@ class NovaPoshtaSettingsPatch(BaseModel):
     sender_ref:Optional[str]=Field(default=None,max_length=200)
     sender_contact_ref:Optional[str]=Field(default=None,max_length=200)
     sender_address_ref:Optional[str]=Field(default=None,max_length=200)
+    shipment_weight:Optional[float]=Field(default=None,gt=0,le=1000)
+    shipment_description:Optional[str]=Field(default=None,max_length=120)
+    payer_type:Optional[str]=Field(default=None,max_length=20)
+    payment_method:Optional[str]=Field(default=None,max_length=20)
 def _admin_auth(authorization:Optional[str]):
     expected=os.getenv('BB610_ADMIN_TOKEN')
     if not expected:raise HTTPException(503,'Admin API is disabled until BB610_ADMIN_TOKEN is configured')

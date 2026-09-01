@@ -3,10 +3,13 @@ import os,re,uuid
 from pathlib import Path
 from ..db import connect
 MEDIA_ROOT=Path(os.getenv('BB610_MEDIA_ROOT','/opt/bb610-market/var/media'))
+MEDIA_PUBLIC_BASE=os.getenv('BB610_MEDIA_PUBLIC_BASE','https://api.market.bb610.com.ua').rstrip('/')
 ALLOWED={'image/jpeg':('.jpg','image'),'image/png':('.png','image'),'image/webp':('.webp','image'),'image/avif':('.avif','image'),'image/gif':('.gif','image'),'video/mp4':('.mp4','video'),'video/webm':('.webm','video')}
 PLACEMENTS={'home_hero','home_promo','catalog_top','category_top'}
+def public_media_url(stored_name):
+ return f'{MEDIA_PUBLIC_BASE}/media/{stored_name}'
 def pub(r):
- d=dict(r);d['url']='/media/'+d['stored_name'];return d
+ d=dict(r);d['url']=public_media_url(d['stored_name']);return d
 def save_media(filename,mime,content,title='',alt_text='',tags='',category=''):
  mime=(mime or '').split(';')[0].lower();
  if mime not in ALLOWED: raise ValueError('Unsupported media type')
@@ -48,7 +51,7 @@ def list_banners(admin=True,placement=None):
  q+=' ORDER BY b.sort_order,b.created_at DESC'
  with connect() as c:r=c.execute(q,a).fetchall()
  out=[]
- for x in r:d=dict(x);d['media_url']='/media/'+d['stored_name'];out.append(d)
+ for x in r:d=dict(x);d['media_url']=public_media_url(d['stored_name']);out.append(d)
  return out
 def create_banner(p):
  if p['placement'] not in PLACEMENTS:raise ValueError('Unsupported placement')

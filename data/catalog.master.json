@@ -103,8 +103,8 @@
     {
       "id": "master-13-40-13",
       "slug": "master-13-40-13",
-      "name": "Master (Мастер) 13-40-13, водорозчинне мінеральне добриво",
-      "official_name": "MASTER 13-40-13",
+      "name": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво",
+      "official_name": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво",
       "brand": "Valagro",
       "manufacturer": "Valagro S.p.A. / Syngenta Biologicals",
       "country": "Італія",
@@ -161,9 +161,9 @@
         "primary": true
       },
       "image": {
-        "local": "assets/img/real/master-13-40-13.webp",
-        "officialSourceUrl": "",
-        "status": "local-imported-photo"
+        "local": "assets/img/real/stage16b/master-13-40-13.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-13-40-13-valagro",
+        "status": "local-imported-product-photo"
       },
       "verification": {
         "status": "verified-primary-source",
@@ -178,30 +178,33 @@
       "default_sku_id": "BB610-VLG-MASTER134013-1KG",
       "store_content_status": "launch-card-ready",
       "seo": {
-        "title": "Master (Мастер) 13-40-13, водорозчинне мінеральне добриво — Valagro",
-        "description": "Фосфорна формула лінійки Master для фертигації та стартових фаз розвитку. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво — Valagro",
+        "description": "Фосфорна формула лінійки Master для фертигації та стартових фаз розвитку. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "short_description": "Фосфорна формула лінійки Master для фертигації та стартових фаз розвитку.",
       "launch_matrix_priority": "A",
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "feed": {
-        "title": "Master (Мастер) 13-40-13, водорозчинне мінеральне добриво — Valagro",
+        "title": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво — Valagro",
         "description": "Фосфорна формула лінійки Master для фертигації та стартових фаз розвитку.",
         "brand_required": true
       },
-      "image_alt": "Master (Мастер) 13-40-13, водорозчинне мінеральне добриво",
+      "image_alt": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво",
       "feed_image_ready": true,
       "launch_sku_ids": [
         "BB610-VLG-MASTER134013-1KG",
         "BB610-VLG-MASTER134013-250G"
-      ]
+      ],
+      "stage16b_image_query": "Master Мастер NPK 13-40-13 1 кг Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-13-40-13-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "master-20-20-20",
       "slug": "master-20-20-20",
-      "name": "Master (Мастер) 20-20-20, водорозчинне мінеральне добриво",
-      "official_name": "MASTER 20-20-20",
+      "name": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво",
+      "official_name": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -259,9 +262,9 @@
         "primary": true
       },
       "image": {
-        "local": "assets/img/real/master-13-40-13.webp",
-        "officialSourceUrl": "",
-        "status": "local-imported-photo"
+        "local": "assets/img/real/stage16b/master-20-20-20.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-20-20-20-valagro",
+        "status": "local-imported-product-photo"
       },
       "verification": {
         "status": "verified-primary-source",
@@ -276,30 +279,33 @@
       "default_sku_id": "BB610-VLG-MASTER202020-1KG",
       "store_content_status": "launch-card-ready",
       "seo": {
-        "title": "Master (Мастер) 20-20-20, водорозчинне мінеральне добриво — Valagro",
-        "description": "Збалансована формула лінійки Master для фертигації. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво — Valagro",
+        "description": "Збалансована формула лінійки Master для фертигації. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "short_description": "Збалансована формула лінійки Master для фертигації.",
       "launch_matrix_priority": "A",
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "feed": {
-        "title": "Master (Мастер) 20-20-20, водорозчинне мінеральне добриво — Valagro",
+        "title": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво — Valagro",
         "description": "Збалансована формула лінійки Master для фертигації.",
         "brand_required": true
       },
-      "image_alt": "Master (Мастер) 20-20-20, водорозчинне мінеральне добриво",
+      "image_alt": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво",
       "feed_image_ready": true,
       "launch_sku_ids": [
         "BB610-VLG-MASTER202020-1KG",
         "BB610-VLG-MASTER202020-250G"
-      ]
+      ],
+      "stage16b_image_query": "Master Мастер NPK 20-20-20 1 кг Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-20-20-20-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "plantafol-20-20-20",
       "slug": "plantafol-20-20-20",
-      "name": "Plantafol (Плантафол) 20-20-20, добриво для позакореневого живлення",
-      "official_name": "PLANTAFOL 20-20-20",
+      "name": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення",
+      "official_name": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення",
       "brand": "Valagro",
       "manufacturer": "Valagro S.p.A. / Syngenta Biologicals",
       "country": "Італія",
@@ -359,9 +365,9 @@
         "primary": true
       },
       "image": {
-        "local": "assets/img/real/plantafol-20-20-20.webp",
-        "officialSourceUrl": "",
-        "status": "local-imported-photo"
+        "local": "assets/img/real/stage16b/plantafol-20-20-20.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-20-20-20-valagro",
+        "status": "local-imported-product-photo"
       },
       "verification": {
         "status": "verified-primary-source",
@@ -376,29 +382,31 @@
       "default_sku_id": "BB610-VLG-PLANTAFOL202020-250G",
       "store_content_status": "launch-card-ready",
       "seo": {
-        "title": "Plantafol (Плантафол) 20-20-20, добриво для позакореневого живлення — Valagro",
-        "description": "Збалансована формула Plantafol для позакореневого живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення — Valagro",
+        "description": "Збалансована формула Plantafol для позакореневого живлення. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "short_description": "Збалансована формула Plantafol для позакореневого живлення.",
       "launch_matrix_priority": "B",
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "feed": {
-        "title": "Plantafol (Плантафол) 20-20-20, добриво для позакореневого живлення — Valagro",
+        "title": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення — Valagro",
         "description": "Збалансована формула Plantafol для позакореневого живлення.",
         "brand_required": true
       },
-      "image_alt": "Plantafol (Плантафол) 20-20-20, добриво для позакореневого живлення",
+      "image_alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення",
       "feed_image_ready": true,
       "launch_sku_ids": [
         "BB610-VLG-PLANTAFOL202020-250G"
-      ]
+      ],
+      "stage16b_image_query": "Plantafol Плантафол NPK 20-20-20 250 г Valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "megafol",
       "slug": "megafol",
       "name": "Megafol (Мегафол), біостимулятор-антистрес",
-      "official_name": "MEGAFOL™",
+      "official_name": "Megafol (Мегафол), біостимулятор-антистрес",
       "brand": "Valagro",
       "manufacturer": "Valagro S.p.A. / Syngenta Biologicals",
       "country": "Італія",
@@ -449,9 +457,9 @@
         "primary": true
       },
       "image": {
-        "local": "assets/img/real/megafol.webp",
-        "officialSourceUrl": "https://www.valagro.com/media/filer_public/46/32/4632f991-0685-4bb3-a6d0-8f3edcd9cd4a/megafol_and_regenerative_agriculture.pdf",
-        "status": "local-imported-photo"
+        "local": "assets/img/real/stage16b/megafol.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-100-ml-valagro",
+        "status": "local-imported-product-photo"
       },
       "verification": {
         "status": "verified-primary-source",
@@ -467,7 +475,7 @@
       "store_content_status": "launch-card-ready",
       "seo": {
         "title": "Megafol (Мегафол), біостимулятор-антистрес — Valagro",
-        "description": "Біостимулятор-антистрес для підтримки рослин за абіотичного стресу. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "description": "Біостимулятор-антистрес для підтримки рослин за абіотичного стресу. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "gallery": [
         "assets/img/real/megafol-25ml.png",
@@ -487,13 +495,16 @@
       "launch_sku_ids": [
         "BB610-VLG-MEGAFOL-100ML",
         "BB610-VLG-MEGAFOL-25ML"
-      ]
+      ],
+      "stage16b_image_query": "Megafol Мегафол біостимулятор антистрес 100 мл Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-100-ml-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "radifarm",
       "slug": "radifarm",
-      "name": "Radifarm (Радіфарм), біостимулятор розвитку кореневої системи",
-      "official_name": "RADIFARM®",
+      "name": "Radifarm (Радіфарм), біостимулятор росту кореневої системи (укорінювач)",
+      "official_name": "Radifarm (Радіфарм), біостимулятор росту кореневої системи (укорінювач)",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -536,9 +547,9 @@
         "primary": false
       },
       "image": {
-        "local": "assets/img/real/radifarm.webp",
-        "officialSourceUrl": "",
-        "status": "local-imported-photo"
+        "local": "assets/img/real/stage16b/radifarm.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/biostymulyatory/biodobryva-biologichni/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor4",
+        "status": "local-imported-product-photo"
       },
       "verification": {
         "status": "partial-primary-source-pending",
@@ -553,29 +564,32 @@
       "default_sku_id": "BB610-VLG-RADIFARM-25ML",
       "store_content_status": "launch-card-ready",
       "seo": {
-        "title": "Radifarm (Радіфарм), біостимулятор розвитку кореневої системи — Valagro",
-        "description": "Біостимулятор для старту рослин і підтримки розвитку кореневої системи. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Radifarm (Радіфарм), біостимулятор росту кореневої системи (укорінювач) — Valagro",
+        "description": "Біостимулятор для старту рослин і підтримки розвитку кореневої системи. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "short_description": "Біостимулятор для старту рослин і підтримки розвитку кореневої системи.",
       "launch_matrix_priority": "A",
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "feed": {
-        "title": "Radifarm (Радіфарм), біостимулятор розвитку кореневої системи — Valagro",
+        "title": "Radifarm (Радіфарм), біостимулятор росту кореневої системи (укорінювач) — Valagro",
         "description": "Біостимулятор для старту рослин і підтримки розвитку кореневої системи.",
         "brand_required": true
       },
-      "image_alt": "Radifarm (Радіфарм), біостимулятор розвитку кореневої системи",
+      "image_alt": "Radifarm (Радіфарм), біостимулятор росту кореневої системи (укорінювач)",
       "feed_image_ready": true,
       "launch_sku_ids": [
         "BB610-VLG-RADIFARM-25ML"
-      ]
+      ],
+      "stage16b_image_query": "Radifarm Радіфарм біостимулятор кореневої системи 25 мл Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/biodobryva-biologichni/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor4",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "brexil-mix",
       "slug": "brexil-mix",
-      "name": "BREXIL MIX",
-      "official_name": "BREXIL MIX",
+      "name": "Brexil Mix (Брексіл Мікс), мікроелементи в хелатній формі",
+      "official_name": "Brexil Mix (Брексіл Мікс), мікроелементи в хелатній формі",
       "brand": "Valagro",
       "manufacturer": "Valagro S.p.A.",
       "country": "Італія",
@@ -618,9 +632,9 @@
         "primary": false
       },
       "image": {
-        "local": "assets/img/real/brexil-mix.webp",
-        "officialSourceUrl": "",
-        "status": "local-imported-photo"
+        "local": "assets/img/real/stage16b/brexil-mix.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-v-helatnij-formi-15-g-valagro",
+        "status": "local-imported-product-photo"
       },
       "verification": {
         "status": "partial-primary-source-pending",
@@ -634,7 +648,18 @@
       "legacy_url": "product.html?id=brexil-mix",
       "default_sku_id": null,
       "store_content_status": "product-only-no-bb610-sku",
-      "seo": {}
+      "seo": {
+        "title": "Brexil Mix (Брексіл Мікс), мікроелементи в хелатній формі — Valagro",
+        "description": "Комплексне мікродобриво. Частина полів очікує підтвердження за офіційним джерелом виробника. Ціна та наявність — для вибраної фасовки в BB610 Market."
+      },
+      "image_alt": "Brexil Mix (Брексіл Мікс), мікроелементи в хелатній формі",
+      "feed": {
+        "title": "Brexil Mix (Брексіл Мікс), мікроелементи в хелатній формі — Valagro",
+        "description": "Комплексне мікродобриво. Частина полів очікує підтвердження за офіційним джерелом виробника."
+      },
+      "stage16b_image_query": "Brexil Mix Брексіл Мікс 15 г Valagro",
+      "stage16b_content_status": "complete",
+      "feed_image_ready": true
     },
     {
       "id": "kendal-root",
@@ -709,8 +734,8 @@
     {
       "id": "switch-625-wg",
       "slug": "switch-62-5-wg",
-      "name": "СВІТЧ® 62,5 WG, в. г.",
-      "official_name": "СВІТЧ® 62,5 WG, в. г.",
+      "name": "Світч 62,5 WG, в. г., фунгіцид",
+      "official_name": "Світч 62,5 WG, в. г., фунгіцид",
       "brand": "Syngenta",
       "manufacturer": "Не вказано окремо у використаному джерелі; реєстрант — ТОВ «Сингента»",
       "country": "Не вказано у використаному джерелі",
@@ -760,9 +785,9 @@
         "primary": true
       },
       "image": {
-        "local": "assets/img/product-protection.svg",
-        "officialSourceUrl": "https://admin.store.syngenta.ua/images/cache/PdProducts/PdProduct159/249bb7bdac-1.webp",
-        "status": "official-image-import-pending"
+        "local": "assets/img/real/stage16b/switch-625-wg.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/zasobi-zahistu-roslin/svitch-10-g-fungicyd-kontaktno-pronykayuchoyi-diyi-syngenta",
+        "status": "local-imported-product-photo"
       },
       "verification": {
         "status": "verified-primary-source",
@@ -776,13 +801,25 @@
       "legacy_url": "product.html?id=switch-625-wg",
       "default_sku_id": "BB610-SYN-SWITCH625-10G",
       "store_content_status": "sku-model-ready",
-      "seo": {}
+      "seo": {
+        "title": "Світч 62,5 WG, в. г., фунгіцид — Syngenta",
+        "description": "Двокомпонентний фунгіцид контактно-проникаючої дії для контролю комплексу хвороб, зокрема сірої та плодових гнилей. Ціна та наявність — для вибраної фасовки в BB610 Market."
+      },
+      "image_alt": "Світч 62,5 WG, в. г., фунгіцид",
+      "feed": {
+        "title": "Світч 62,5 WG, в. г., фунгіцид — Syngenta",
+        "description": "Двокомпонентний фунгіцид контактно-проникаючої дії для контролю комплексу хвороб, зокрема сірої та плодових гнилей."
+      },
+      "stage16b_image_query": "Світч 62,5 WG фунгіцид 10 г Syngenta",
+      "stage16b_content_status": "complete",
+      "feed_policy": "review-required",
+      "feed_image_ready": true
     },
     {
       "id": "aktara-25-wg",
       "slug": "aktara-25-wg",
-      "name": "АКТАРА® 25 WG, в. г.",
-      "official_name": "АКТАРА® 25 WG, в. г.",
+      "name": "Актара 25 WG, в. г., системний інсектицид",
+      "official_name": "Актара 25 WG, в. г., системний інсектицид",
       "brand": "Syngenta",
       "manufacturer": "Не вказано окремо у використаному джерелі; реєстрант — ТОВ «Сингента»",
       "country": "Не вказано у використаному джерелі",
@@ -829,9 +866,9 @@
         "primary": true
       },
       "image": {
-        "local": "assets/img/product-protection.svg",
-        "officialSourceUrl": "https://admin.store.syngenta.ua/images/cache/PdProducts/PdProduct55/ea097b0373-1.webp",
-        "status": "official-image-import-pending"
+        "local": "assets/img/real/stage16b/aktara-25-wg.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/zasobi-zahistu-roslin/aktara-6-g-insektycyd-kyshkovo-kontaknyj-diyi-syngenta",
+        "status": "local-imported-product-photo"
       },
       "verification": {
         "status": "verified-primary-source",
@@ -845,13 +882,25 @@
       "legacy_url": "product.html?id=aktara-25-wg",
       "default_sku_id": "BB610-SYN-AKTARA25-250G",
       "store_content_status": "sku-model-ready",
-      "seo": {}
+      "seo": {
+        "title": "Актара 25 WG, в. г., системний інсектицид — Syngenta",
+        "description": "Системний інсектицид; офіційна реєстрація включає низку польових, овочевих, плодових та інших культур. Ціна та наявність — для вибраної фасовки в BB610 Market."
+      },
+      "image_alt": "Актара 25 WG, в. г., системний інсектицид",
+      "feed": {
+        "title": "Актара 25 WG, в. г., системний інсектицид — Syngenta",
+        "description": "Системний інсектицид; офіційна реєстрація включає низку польових, овочевих, плодових та інших культур."
+      },
+      "stage16b_image_query": "Актара 25 WG інсектицид Syngenta",
+      "stage16b_content_status": "complete",
+      "feed_policy": "review-required",
+      "feed_image_ready": true
     },
     {
       "id": "plantlogic-25-round-1308125",
       "slug": "plantlogic-25l-1308125",
-      "name": "NEW 25 Liter Round Pot",
-      "official_name": "NEW 25 Liter Round Pot",
+      "name": "Plantlogic NEW 25 Liter Round Pot, контейнер 25 л для субстратного вирощування",
+      "official_name": "Plantlogic NEW 25 Liter Round Pot, контейнер 25 л для субстратного вирощування",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic, LLC",
       "country": "Країна виробництва не вказана на сторінці товару",
@@ -900,9 +949,9 @@
         "primary": true
       },
       "image": {
-        "local": "assets/img/product-container.svg",
-        "officialSourceUrl": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/25L-Round-pot_Item_1308125.jpg?ssl=1&w=669",
-        "status": "official-image-import-pending"
+        "local": "assets/img/real/stage16b/plantlogic-25-round-1308125.webp",
+        "officialSourceUrl": "https://getplantlogic.com/portfolio-items/new-25-liter-round-pot/",
+        "status": "local-imported-product-photo"
       },
       "verification": {
         "status": "verified-primary-source",
@@ -916,13 +965,24 @@
       "legacy_url": "product.html?id=plantlogic-25-round-1308125",
       "default_sku_id": "BB610-PLT-1308125-EA",
       "store_content_status": "sku-model-ready",
-      "seo": {}
+      "seo": {
+        "title": "Plantlogic NEW 25 Liter Round Pot, контейнер 25 л для субстратного вирощування — Plantlogic",
+        "description": "Виробник позиціонує контейнер як рішення для вирощування лохини в субстраті. Ціна та наявність — для вибраної фасовки в BB610 Market."
+      },
+      "image_alt": "Plantlogic NEW 25 Liter Round Pot, контейнер 25 л для субстратного вирощування",
+      "feed": {
+        "title": "Plantlogic NEW 25 Liter Round Pot, контейнер 25 л для субстратного вирощування — Plantlogic",
+        "description": "Виробник позиціонує контейнер як рішення для вирощування лохини в субстраті."
+      },
+      "stage16b_image_query": "Plantlogic NEW 25 Liter Round Pot 1308125",
+      "stage16b_content_status": "complete",
+      "feed_image_ready": true
     },
     {
       "id": "plantlogic-40-round-ugroove-1308041",
       "slug": "plantlogic-40l-1308041",
-      "name": "40 Liter Round Pot with U-Grooves",
-      "official_name": "40 Liter Round Pot with U-Grooves",
+      "name": "Plantlogic 40 Liter Round Pot with U-Grooves, контейнер 40 л для субстратного вирощування",
+      "official_name": "Plantlogic 40 Liter Round Pot with U-Grooves, контейнер 40 л для субстратного вирощування",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic, LLC",
       "country": "Країна виробництва не вказана на сторінці товару",
@@ -972,9 +1032,9 @@
         "primary": true
       },
       "image": {
-        "local": "assets/img/product-container45.svg",
-        "officialSourceUrl": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/07/Maceta-redonda-40-litros-para-arandanos.jpg?ssl=1&w=669",
-        "status": "official-image-import-pending"
+        "local": "assets/img/real/stage16b/plantlogic-40-round-ugroove-1308041.jpg",
+        "officialSourceUrl": "https://getplantlogic.com/portfolio-items/40l-round-pot-with-u-grooves/",
+        "status": "local-imported-product-photo"
       },
       "verification": {
         "status": "verified-primary-source",
@@ -988,7 +1048,18 @@
       "legacy_url": "product.html?id=plantlogic-40-round-ugroove-1308041",
       "default_sku_id": "BB610-PLT-1308041-EA",
       "store_content_status": "sku-model-ready",
-      "seo": {}
+      "seo": {
+        "title": "Plantlogic 40 Liter Round Pot with U-Grooves, контейнер 40 л для субстратного вирощування — Plantlogic",
+        "description": "Професійний контейнер для субстратного вирощування з акцентом на дренаж, вентиляцію кореневої зони та розміщення поливних трубок. Ціна та наявність — для вибраної фасовки в BB610 Market."
+      },
+      "image_alt": "Plantlogic 40 Liter Round Pot with U-Grooves, контейнер 40 л для субстратного вирощування",
+      "feed": {
+        "title": "Plantlogic 40 Liter Round Pot with U-Grooves, контейнер 40 л для субстратного вирощування — Plantlogic",
+        "description": "Професійний контейнер для субстратного вирощування з акцентом на дренаж, вентиляцію кореневої зони та розміщення поливних трубок."
+      },
+      "stage16b_image_query": "Plantlogic 40 Liter Round Pot U-Grooves 1308041",
+      "stage16b_content_status": "complete",
+      "feed_image_ready": true
     },
     {
       "id": "bb610-order-test",
@@ -1051,7 +1122,7 @@
       "id": "control-dmp",
       "slug": "control-dmp",
       "name": "Control DMP (Контроль ДМП), регулятор кислотності та прилипач",
-      "official_name": "Control DMP (Контроль ДМП)",
+      "official_name": "Control DMP (Контроль ДМП), регулятор кислотності та прилипач",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -1066,7 +1137,7 @@
       "feed_policy": "allowed",
       "seo": {
         "title": "Control DMP (Контроль ДМП), регулятор кислотності та прилипач — Valagro",
-        "description": "Засіб для коригування кислотності робочого розчину та покращення якості обробки. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "description": "Засіб для коригування кислотності робочого розчину та покращення якості обробки. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
         "title": "Control DMP (Контроль ДМП), регулятор кислотності та прилипач — Valagro",
@@ -1105,24 +1176,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-protection.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/control-dmp.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/zasobi-zahistu-roslin/control-dmp-kontrol-dmp-pidkyslyuvach-prylypach-100-ml-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/control-dmp/",
       "legacy_url": "product.html?id=control-dmp",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-CONTROLDMP-100ML",
       "launch_sku_ids": [
         "BB610-VLG-CONTROLDMP-100ML"
-      ]
+      ],
+      "stage16b_image_query": "Control DMP Контроль ДМП 100 мл Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/zasobi-zahistu-roslin/control-dmp-kontrol-dmp-pidkyslyuvach-prylypach-100-ml-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "pekacid-0-60-20",
       "slug": "pekacid-0-60-20",
-      "name": "PeKacid (Пекацид) 0-60-20, фосфорно-калійне добриво",
-      "official_name": "PeKacid (Пекацид) 0-60-20",
+      "name": "PeKacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво",
+      "official_name": "PeKacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво",
       "brand": "ICL",
       "manufacturer": "ICL",
       "country": "Ізраїль",
@@ -1136,15 +1210,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "PeKacid (Пекацид) 0-60-20, фосфорно-калійне добриво — ICL",
-        "description": "Концентроване водорозчинне добриво для фосфорно-калійного живлення та роботи з лужною/жорсткою водою. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "PeKacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво — ICL",
+        "description": "Концентроване водорозчинне добриво для фосфорно-калійного живлення та роботи з лужною/жорсткою водою. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "PeKacid (Пекацид) 0-60-20, фосфорно-калійне добриво — ICL",
+        "title": "PeKacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво — ICL",
         "description": "Концентроване водорозчинне добриво для фосфорно-калійного живлення та роботи з лужною/жорсткою водою.",
         "brand_required": true
       },
-      "image_alt": "PeKacid (Пекацид) 0-60-20, фосфорно-калійне добриво",
+      "image_alt": "PeKacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -1176,11 +1250,11 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/pekacid-0-60-20.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-mineralne-dobryvo-npk-0-60-20-1-kg",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/pekacid-0-60-20/",
       "legacy_url": "product.html?id=pekacid-0-60-20",
       "store_content_status": "launch-card-ready",
@@ -1188,13 +1262,16 @@
       "launch_sku_ids": [
         "BB610-ICL-PEKACID-1KG",
         "BB610-ICL-PEKACID-100G"
-      ]
+      ],
+      "stage16b_image_query": "PeKacid Пекацид NPK 0-60-20 1 кг",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-mineralne-dobryvo-npk-0-60-20-1-kg",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "kendal",
       "slug": "kendal",
-      "name": "Kendal (Кендал), біостимулятор",
-      "official_name": "Kendal (Кендал)",
+      "name": "Kendal (Кендал), біостимулятор для підтримки імунної системи рослин",
+      "official_name": "Kendal (Кендал), біостимулятор для підтримки імунної системи рослин",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -1208,15 +1285,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Kendal (Кендал), біостимулятор — Valagro",
-        "description": "Біостимулятор для підтримки рослин у технологіях вирощування; застосування звіряється з актуальною етикеткою. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Kendal (Кендал), біостимулятор для підтримки імунної системи рослин — Valagro",
+        "description": "Біостимулятор для підтримки рослин у технологіях вирощування; застосування звіряється з актуальною етикеткою. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Kendal (Кендал), біостимулятор — Valagro",
+        "title": "Kendal (Кендал), біостимулятор для підтримки імунної системи рослин — Valagro",
         "description": "Біостимулятор для підтримки рослин у технологіях вирощування; застосування звіряється з актуальною етикеткою.",
         "brand_required": true
       },
-      "image_alt": "Kendal (Кендал), біостимулятор",
+      "image_alt": "Kendal (Кендал), біостимулятор для підтримки імунної системи рослин",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -1248,24 +1325,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-biostim.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/kendal.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostymulyator-profilaktyka-hvorob-100-ml-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/kendal/",
       "legacy_url": "product.html?id=kendal",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-KENDAL-25ML",
       "launch_sku_ids": [
         "BB610-VLG-KENDAL-25ML"
-      ]
+      ],
+      "stage16b_image_query": "Kendal Кендал біостимулятор 100 мл Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostymulyator-profilaktyka-hvorob-100-ml-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "viva",
       "slug": "viva",
       "name": "Viva (Віва), біостимулятор та активатор ґрунтової мікрофлори",
-      "official_name": "Viva (Віва)",
+      "official_name": "Viva (Віва), біостимулятор та активатор ґрунтової мікрофлори",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -1280,7 +1360,7 @@
       "feed_policy": "allowed",
       "seo": {
         "title": "Viva (Віва), біостимулятор та активатор ґрунтової мікрофлори — Valagro",
-        "description": "Біостимулятор для підтримки кореневої зони та ґрунтової біологічної активності. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "description": "Біостимулятор для підтримки кореневої зони та ґрунтової біологічної активності. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
         "title": "Viva (Віва), біостимулятор та активатор ґрунтової мікрофлори — Valagro",
@@ -1319,24 +1399,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-biostim.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/viva.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-100-ml-vala",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/viva/",
       "legacy_url": "product.html?id=viva",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-VIVA-100ML",
       "launch_sku_ids": [
         "BB610-VLG-VIVA-100ML"
-      ]
+      ],
+      "stage16b_image_query": "Viva Віва біостимулятор активатор ґрунтової мікрофлори 100 мл Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-100-ml-vala",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "osmocote-landscape-16-9-12",
       "slug": "osmocote-landscape-16-9-12",
-      "name": "Osmocote Landscape 16-9-12 (3–4 міс.), добриво контрольованої дії",
-      "official_name": "Osmocote Landscape 16-9-12 (3–4 міс.)",
+      "name": "Osmocote Landscape 16-9-12, добриво контрольованої дії 3–4 міс.",
+      "official_name": "Osmocote Landscape 16-9-12, добриво контрольованої дії 3–4 міс.",
       "brand": "ICL",
       "manufacturer": "ICL",
       "country": "—",
@@ -1350,15 +1433,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Osmocote Landscape 16-9-12 (3–4 міс.), добриво контрольованої дії — ICL",
-        "description": "Гранульоване добриво контрольованої дії для тривалого живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Osmocote Landscape 16-9-12, добриво контрольованої дії 3–4 міс. — ICL",
+        "description": "Гранульоване добриво контрольованої дії для тривалого живлення. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Osmocote Landscape 16-9-12 (3–4 міс.), добриво контрольованої дії — ICL",
+        "title": "Osmocote Landscape 16-9-12, добриво контрольованої дії 3–4 міс. — ICL",
         "description": "Гранульоване добриво контрольованої дії для тривалого живлення.",
         "brand_required": true
       },
-      "image_alt": "Osmocote Landscape 16-9-12 (3–4 міс.), добриво контрольованої дії",
+      "image_alt": "Osmocote Landscape 16-9-12, добриво контрольованої дії 3–4 міс.",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -1390,24 +1473,26 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/osmocote-landscape-16-9-12.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-landshaft-osmocote-16-9-12-3-4m-200-g",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/osmocote-landscape-16-9-12/",
       "legacy_url": "product.html?id=osmocote-landscape-16-9-12",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-ICL-OSMOCOTE-LANDSCAPE-200G",
       "launch_sku_ids": [
         "BB610-ICL-OSMOCOTE-LANDSCAPE-200G"
-      ]
+      ],
+      "stage16b_image_query": "Osmocote Landscape 16-9-12 200 г",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "osmocote-quick-start-22-5-6",
       "slug": "osmocote-quick-start-22-5-6",
-      "name": "Osmocote Quick Start 22-5-6 (4–5 міс.), добриво контрольованої дії",
-      "official_name": "Osmocote Quick Start 22-5-6 (4–5 міс.)",
+      "name": "Osmocote Quick Start 22-5-6, добриво контрольованої дії 4–5 міс.",
+      "official_name": "Osmocote Quick Start 22-5-6, добриво контрольованої дії 4–5 міс.",
       "brand": "ICL",
       "manufacturer": "ICL",
       "country": "—",
@@ -1421,15 +1506,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Osmocote Quick Start 22-5-6 (4–5 міс.), добриво контрольованої дії — ICL",
-        "description": "Гранульоване добриво контрольованої дії з акцентом на стартове живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Osmocote Quick Start 22-5-6, добриво контрольованої дії 4–5 міс. — ICL",
+        "description": "Гранульоване добриво контрольованої дії з акцентом на стартове живлення. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Osmocote Quick Start 22-5-6 (4–5 міс.), добриво контрольованої дії — ICL",
+        "title": "Osmocote Quick Start 22-5-6, добриво контрольованої дії 4–5 міс. — ICL",
         "description": "Гранульоване добриво контрольованої дії з акцентом на стартове живлення.",
         "brand_required": true
       },
-      "image_alt": "Osmocote Quick Start 22-5-6 (4–5 міс.), добриво контрольованої дії",
+      "image_alt": "Osmocote Quick Start 22-5-6, добриво контрольованої дії 4–5 міс.",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -1461,24 +1546,26 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/osmocote-quick-start-22-5-6.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-shvydkyj-start-osmocote-22-5-6-4-5m-200-g",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/osmocote-quick-start-22-5-6/",
       "legacy_url": "product.html?id=osmocote-quick-start-22-5-6",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-ICL-OSMOCOTE-QUICKSTART-200G",
       "launch_sku_ids": [
         "BB610-ICL-OSMOCOTE-QUICKSTART-200G"
-      ]
+      ],
+      "stage16b_image_query": "Osmocote Quick Start 22-5-6 200 г",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "plantafol-10-54-10",
       "slug": "plantafol-10-54-10",
-      "name": "Plantafol (Плантафол) 10-54-10, добриво для позакореневого живлення",
-      "official_name": "Plantafol (Плантафол) 10-54-10",
+      "name": "Plantafol (Плантафол) NPK 10-54-10, мінеральне добриво для позакореневого живлення",
+      "official_name": "Plantafol (Плантафол) NPK 10-54-10, мінеральне добриво для позакореневого живлення",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -1492,15 +1579,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Plantafol (Плантафол) 10-54-10, добриво для позакореневого живлення — Valagro",
-        "description": "Фосфорна формула Plantafol для позакореневого живлення у відповідні фази розвитку. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Plantafol (Плантафол) NPK 10-54-10, мінеральне добриво для позакореневого живлення — Valagro",
+        "description": "Фосфорна формула Plantafol для позакореневого живлення у відповідні фази розвитку. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Plantafol (Плантафол) 10-54-10, добриво для позакореневого живлення — Valagro",
+        "title": "Plantafol (Плантафол) NPK 10-54-10, мінеральне добриво для позакореневого живлення — Valagro",
         "description": "Фосфорна формула Plantafol для позакореневого живлення у відповідні фази розвитку.",
         "brand_required": true
       },
-      "image_alt": "Plantafol (Плантафол) 10-54-10, добриво для позакореневого живлення",
+      "image_alt": "Plantafol (Плантафол) NPK 10-54-10, мінеральне добриво для позакореневого живлення",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -1532,24 +1619,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/plantafol-10-54-10.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-10-54-10-v",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/plantafol-10-54-10/",
       "legacy_url": "product.html?id=plantafol-10-54-10",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-PLANTAFOL105410-250G",
       "launch_sku_ids": [
         "BB610-VLG-PLANTAFOL105410-250G"
-      ]
+      ],
+      "stage16b_image_query": "Plantafol Плантафол NPK 10-54-10 250 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-10-54-10-v",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "plantafol-30-10-10",
       "slug": "plantafol-30-10-10",
-      "name": "Plantafol (Плантафол) 30-10-10, добриво для позакореневого живлення",
-      "official_name": "Plantafol (Плантафол) 30-10-10",
+      "name": "Plantafol (Плантафол) NPK 30-10-10, мінеральне добриво для позакореневого живлення",
+      "official_name": "Plantafol (Плантафол) NPK 30-10-10, мінеральне добриво для позакореневого живлення",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -1563,15 +1653,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Plantafol (Плантафол) 30-10-10, добриво для позакореневого живлення — Valagro",
-        "description": "Азотна формула Plantafol для позакореневого живлення та вегетативного росту. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Plantafol (Плантафол) NPK 30-10-10, мінеральне добриво для позакореневого живлення — Valagro",
+        "description": "Азотна формула Plantafol для позакореневого живлення та вегетативного росту. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Plantafol (Плантафол) 30-10-10, добриво для позакореневого живлення — Valagro",
+        "title": "Plantafol (Плантафол) NPK 30-10-10, мінеральне добриво для позакореневого живлення — Valagro",
         "description": "Азотна формула Plantafol для позакореневого живлення та вегетативного росту.",
         "brand_required": true
       },
-      "image_alt": "Plantafol (Плантафол) 30-10-10, добриво для позакореневого живлення",
+      "image_alt": "Plantafol (Плантафол) NPK 30-10-10, мінеральне добриво для позакореневого живлення",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -1603,24 +1693,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/plantafol-30-10-10.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-30-10-10-v",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/plantafol-30-10-10/",
       "legacy_url": "product.html?id=plantafol-30-10-10",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-PLANTAFOL301010-250G",
       "launch_sku_ids": [
         "BB610-VLG-PLANTAFOL301010-250G"
-      ]
+      ],
+      "stage16b_image_query": "Plantafol Плантафол NPK 30-10-10 250 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-30-10-10-v",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "plantafol-5-15-45",
       "slug": "plantafol-5-15-45",
-      "name": "Plantafol (Плантафол) 5-15-45, добриво для позакореневого живлення",
-      "official_name": "Plantafol (Плантафол) 5-15-45",
+      "name": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення",
+      "official_name": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -1634,15 +1727,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Plantafol (Плантафол) 5-15-45, добриво для позакореневого живлення — Valagro",
-        "description": "Калійна формула Plantafol для позакореневого живлення у період формування та достигання плодів. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення — Valagro",
+        "description": "Калійна формула Plantafol для позакореневого живлення у період формування та достигання плодів. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Plantafol (Плантафол) 5-15-45, добриво для позакореневого живлення — Valagro",
+        "title": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення — Valagro",
         "description": "Калійна формула Plantafol для позакореневого живлення у період формування та достигання плодів.",
         "brand_required": true
       },
-      "image_alt": "Plantafol (Плантафол) 5-15-45, добриво для позакореневого живлення",
+      "image_alt": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -1674,24 +1767,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/plantafol-5-15-45.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-5-15-45-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/plantafol-5-15-45/",
       "legacy_url": "product.html?id=plantafol-5-15-45",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-PLANTAFOL51545-250G",
       "launch_sku_ids": [
         "BB610-VLG-PLANTAFOL51545-250G"
-      ]
+      ],
+      "stage16b_image_query": "Plantafol Плантафол NPK 5-15-45 250 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-5-15-45-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "haifa-mkp-0-52-34",
       "slug": "haifa-mkp-0-52-34",
-      "name": "Haifa MKP (Хайфа) 0-52-34, монокалійфосфат",
-      "official_name": "Haifa MKP (Хайфа) 0-52-34",
+      "name": "Haifa MKP 0-52-34, монокалійфосфат — водорозчинне добриво",
+      "official_name": "Haifa MKP 0-52-34, монокалійфосфат — водорозчинне добриво",
       "brand": "Haifa Group",
       "manufacturer": "Haifa Group",
       "country": "Ізраїль",
@@ -1705,15 +1801,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Haifa MKP (Хайфа) 0-52-34, монокалійфосфат — Haifa Group",
-        "description": "Монокалійфосфат для забезпечення рослин фосфором і калієм. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Haifa MKP 0-52-34, монокалійфосфат — водорозчинне добриво — Haifa Group",
+        "description": "Монокалійфосфат для забезпечення рослин фосфором і калієм. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Haifa MKP (Хайфа) 0-52-34, монокалійфосфат — Haifa Group",
+        "title": "Haifa MKP 0-52-34, монокалійфосфат — водорозчинне добриво — Haifa Group",
         "description": "Монокалійфосфат для забезпечення рослин фосфором і калієм.",
         "brand_required": true
       },
-      "image_alt": "Haifa MKP (Хайфа) 0-52-34, монокалійфосфат",
+      "image_alt": "Haifa MKP 0-52-34, монокалійфосфат — водорозчинне добриво",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -1745,24 +1841,26 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/haifa-mkp-0-52-34.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/haifa-hajfa-mkr-0-52-34-mineralne-dobryvo-200-g",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/haifa-mkp-0-52-34/",
       "legacy_url": "product.html?id=haifa-mkp-0-52-34",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-HAIFA-MKP005234-200G",
       "launch_sku_ids": [
         "BB610-HAIFA-MKP005234-200G"
-      ]
+      ],
+      "stage16b_image_query": "Haifa MKP 0-52-34 200 г монокалійфосфат",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "solupotasse",
       "slug": "solupotasse",
       "name": "SoluPotasse (Солюпотас), сульфат калію",
-      "official_name": "SoluPotasse (Солюпотас)",
+      "official_name": "SoluPotasse (Солюпотас), сульфат калію",
       "brand": "SoluPotasse",
       "manufacturer": "",
       "country": "—",
@@ -1777,7 +1875,7 @@
       "feed_policy": "allowed",
       "seo": {
         "title": "SoluPotasse (Солюпотас), сульфат калію — SoluPotasse",
-        "description": "Сульфат калію для калійного живлення культур. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "description": "Сульфат калію для калійного живлення культур. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
         "title": "SoluPotasse (Солюпотас), сульфат калію — SoluPotasse",
@@ -1816,24 +1914,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/solupotasse.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/solupotasse-solyupotass-sulfat-kaliyu-1-kg",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/solupotasse/",
       "legacy_url": "product.html?id=solupotasse",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-SOLUPOTASSE-K2SO4-1KG",
       "launch_sku_ids": [
         "BB610-SOLUPOTASSE-K2SO4-1KG"
-      ]
+      ],
+      "stage16b_image_query": "SoluPotasse Солюпотас сульфат калію 1 кг",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/solupotasse-solyupotass-sulfat-kaliyu-1-kg",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "magnesium-sulfate",
       "slug": "magnesium-sulfate",
-      "name": "Сульфат магнію, водорозчинне добриво",
-      "official_name": "Сульфат магнію",
+      "name": "Сульфат магнію, водорозчинне магнієво-сірчане добриво",
+      "official_name": "Сульфат магнію, водорозчинне магнієво-сірчане добриво",
       "brand": "ALVENTA",
       "manufacturer": "ALVENTA",
       "country": "Польща",
@@ -1847,15 +1948,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Сульфат магнію, водорозчинне добриво — ALVENTA",
-        "description": "Водорозчинне джерело магнію та сірки для живлення рослин. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Сульфат магнію, водорозчинне магнієво-сірчане добриво — ALVENTA",
+        "description": "Водорозчинне джерело магнію та сірки для живлення рослин. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Сульфат магнію, водорозчинне добриво — ALVENTA",
+        "title": "Сульфат магнію, водорозчинне магнієво-сірчане добриво — ALVENTA",
         "description": "Водорозчинне джерело магнію та сірки для живлення рослин.",
         "brand_required": true
       },
-      "image_alt": "Сульфат магнію, водорозчинне добриво",
+      "image_alt": "Сульфат магнію, водорозчинне магнієво-сірчане добриво",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -1887,24 +1988,26 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/magnesium-sulfate.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/mineralni-dobriva",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/magnesium-sulfate/",
       "legacy_url": "product.html?id=magnesium-sulfate",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-ALVENTA-MGSO4-1KG",
       "launch_sku_ids": [
         "BB610-ALVENTA-MGSO4-1KG"
-      ]
+      ],
+      "stage16b_image_query": "Сульфат магнію 1 кг ALVENTA",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "boroplus",
       "slug": "boroplus",
-      "name": "Boroplus (Бороплюс), борне добриво",
-      "official_name": "Boroplus (Бороплюс)",
+      "name": "Boroplus (Бороплюс), хелат бору",
+      "official_name": "Boroplus (Бороплюс), хелат бору",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -1918,15 +2021,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Boroplus (Бороплюс), борне добриво — Valagro",
-        "description": "Борне мікродобриво для технологій живлення рослин. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Boroplus (Бороплюс), хелат бору — Valagro",
+        "description": "Борне мікродобриво для технологій живлення рослин. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Boroplus (Бороплюс), борне добриво — Valagro",
+        "title": "Boroplus (Бороплюс), хелат бору — Valagro",
         "description": "Борне мікродобриво для технологій живлення рослин.",
         "brand_required": true
       },
-      "image_alt": "Boroplus (Бороплюс), борне добриво",
+      "image_alt": "Boroplus (Бороплюс), хелат бору",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -1958,24 +2061,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/boroplus.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/boroplus-boroplyus-helat-boru-100-ml-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/boroplus/",
       "legacy_url": "product.html?id=boroplus",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-BOROPLUS-100ML",
       "launch_sku_ids": [
         "BB610-VLG-BOROPLUS-100ML"
-      ]
+      ],
+      "stage16b_image_query": "Boroplus Бороплюс хелат бору 100 мл Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/boroplus-boroplyus-helat-boru-100-ml-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "brexil-combi",
       "slug": "brexil-combi",
-      "name": "Brexil Combi (Брексіл Комбі), комплекс мікроелементів",
-      "official_name": "Brexil Combi (Брексіл Комбі)",
+      "name": "Brexil Combi (Брексіл Комбі), мікроелементи в хелатній формі",
+      "official_name": "Brexil Combi (Брексіл Комбі), мікроелементи в хелатній формі",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -1989,15 +2095,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Brexil Combi (Брексіл Комбі), комплекс мікроелементів — Valagro",
-        "description": "Комплекс мікроелементів для позакореневого живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Brexil Combi (Брексіл Комбі), мікроелементи в хелатній формі — Valagro",
+        "description": "Комплекс мікроелементів для позакореневого живлення. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Brexil Combi (Брексіл Комбі), комплекс мікроелементів — Valagro",
+        "title": "Brexil Combi (Брексіл Комбі), мікроелементи в хелатній формі — Valagro",
         "description": "Комплекс мікроелементів для позакореневого живлення.",
         "brand_required": true
       },
-      "image_alt": "Brexil Combi (Брексіл Комбі), комплекс мікроелементів",
+      "image_alt": "Brexil Combi (Брексіл Комбі), мікроелементи в хелатній формі",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2029,24 +2135,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/brexil-combi.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-combi-breksil-kombi-mikroelementy-15-g-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/brexil-combi/",
       "legacy_url": "product.html?id=brexil-combi",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-BREXILCOMBI-15G",
       "launch_sku_ids": [
         "BB610-VLG-BREXILCOMBI-15G"
-      ]
+      ],
+      "stage16b_image_query": "Brexil Combi Брексіл Комбі 15 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-combi-breksil-kombi-mikroelementy-15-g-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "brexil-fe",
       "slug": "brexil-fe",
-      "name": "Brexil Fe (Брексіл Залізо), мікродобриво із залізом",
-      "official_name": "Brexil Fe (Брексіл Залізо)",
+      "name": "Brexil Fe (Брексіл Залізо), мікроелементи в хелатній формі",
+      "official_name": "Brexil Fe (Брексіл Залізо), мікроелементи в хелатній формі",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -2060,15 +2169,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Brexil Fe (Брексіл Залізо), мікродобриво із залізом — Valagro",
-        "description": "Спеціалізоване мікродобриво із залізом для технологій живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Brexil Fe (Брексіл Залізо), мікроелементи в хелатній формі — Valagro",
+        "description": "Спеціалізоване мікродобриво із залізом для технологій живлення. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Brexil Fe (Брексіл Залізо), мікродобриво із залізом — Valagro",
+        "title": "Brexil Fe (Брексіл Залізо), мікроелементи в хелатній формі — Valagro",
         "description": "Спеціалізоване мікродобриво із залізом для технологій живлення.",
         "brand_required": true
       },
-      "image_alt": "Brexil Fe (Брексіл Залізо), мікродобриво із залізом",
+      "image_alt": "Brexil Fe (Брексіл Залізо), мікроелементи в хелатній формі",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2100,24 +2209,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/brexil-fe.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-fe-breksil-zalizo-mikroelementy-v-helatnij-formi-15-g-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/brexil-fe/",
       "legacy_url": "product.html?id=brexil-fe",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-BREXILFE-15G",
       "launch_sku_ids": [
         "BB610-VLG-BREXILFE-15G"
-      ]
+      ],
+      "stage16b_image_query": "Brexil Fe Брексіл Залізо 15 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-fe-breksil-zalizo-mikroelementy-v-helatnij-formi-15-g-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "ferrilene",
       "slug": "ferrilene",
-      "name": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза",
-      "official_name": "Ferrilene (Феррілен) 4",
+      "name": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза EDDHA",
+      "official_name": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза EDDHA",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -2131,15 +2243,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза — Valagro",
-        "description": "Хелат заліза для кореневого внесення та корекції залізного живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза EDDHA — Valagro",
+        "description": "Хелат заліза для кореневого внесення та корекції залізного живлення. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза — Valagro",
+        "title": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза EDDHA — Valagro",
         "description": "Хелат заліза для кореневого внесення та корекції залізного живлення.",
         "brand_required": true
       },
-      "image_alt": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза",
+      "image_alt": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза EDDHA",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2171,24 +2283,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/ferrilene.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/ferrilene-ferrilen-48-orto-orto-helat-zheleza-10-g-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/ferrilene/",
       "legacy_url": "product.html?id=ferrilene",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-FERRILENE-10G",
       "launch_sku_ids": [
         "BB610-VLG-FERRILENE-10G"
-      ]
+      ],
+      "stage16b_image_query": "Ferrilene Феррілен 4,8 ortho ortho 10 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/ferrilene-ferrilen-48-orto-orto-helat-zheleza-10-g-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "master-15-5-30",
       "slug": "master-15-5-30",
-      "name": "Master (Мастер) 15-5-30, водорозчинне мінеральне добриво",
-      "official_name": "Master (Мастер) 15-5-30",
+      "name": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво",
+      "official_name": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -2202,15 +2317,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Master (Мастер) 15-5-30, водорозчинне мінеральне добриво — Valagro",
-        "description": "Калійна формула лінійки Master для фертигації у продуктивні фази. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво — Valagro",
+        "description": "Калійна формула лінійки Master для фертигації у продуктивні фази. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Master (Мастер) 15-5-30, водорозчинне мінеральне добриво — Valagro",
+        "title": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво — Valagro",
         "description": "Калійна формула лінійки Master для фертигації у продуктивні фази.",
         "brand_required": true
       },
-      "image_alt": "Master (Мастер) 15-5-30, водорозчинне мінеральне добриво",
+      "image_alt": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2242,11 +2357,11 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/master-15-5-30.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-15-5-30-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/master-15-5-30/",
       "legacy_url": "product.html?id=master-15-5-30",
       "store_content_status": "launch-card-ready",
@@ -2254,13 +2369,16 @@
       "launch_sku_ids": [
         "BB610-VLG-MASTER15530-1KG",
         "BB610-VLG-MASTER15530-250G"
-      ]
+      ],
+      "stage16b_image_query": "Master Мастер NPK 15-5-30 250 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-15-5-30-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "master-3-11-38",
       "slug": "master-3-11-38",
-      "name": "Master (Мастер) 3-11-38, водорозчинне мінеральне добриво",
-      "official_name": "Master (Мастер) 3-11-38",
+      "name": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво",
+      "official_name": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -2274,15 +2392,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Master (Мастер) 3-11-38, водорозчинне мінеральне добриво — Valagro",
-        "description": "Висококалійна формула лінійки Master для фертигації. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво — Valagro",
+        "description": "Висококалійна формула лінійки Master для фертигації. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Master (Мастер) 3-11-38, водорозчинне мінеральне добриво — Valagro",
+        "title": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво — Valagro",
         "description": "Висококалійна формула лінійки Master для фертигації.",
         "brand_required": true
       },
-      "image_alt": "Master (Мастер) 3-11-38, водорозчинне мінеральне добриво",
+      "image_alt": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2314,11 +2432,11 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/master-3-11-38.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-3-11-38-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/master-3-11-38/",
       "legacy_url": "product.html?id=master-3-11-38",
       "store_content_status": "launch-card-ready",
@@ -2326,14 +2444,17 @@
       "launch_sku_ids": [
         "BB610-VLG-MASTER31138-1KG",
         "BB610-VLG-MASTER31138-250G"
-      ]
+      ],
+      "stage16b_image_query": "Master Мастер NPK 3-11-38 250 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-3-11-38-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "kemira-rooter",
       "slug": "kemira-rooter",
       "name": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи",
-      "official_name": "Кеміра Укорінювач",
-      "brand": "Кеміра",
+      "official_name": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи",
+      "brand": "Organic Planet",
       "manufacturer": "",
       "country": "—",
       "category_id": "biostimulation",
@@ -2346,11 +2467,11 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи — Кеміра",
-        "description": "Продукт для підтримки укорінення та розвитку кореневої системи. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи — Organic Planet",
+        "description": "Продукт для підтримки укорінення та розвитку кореневої системи. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи — Кеміра",
+        "title": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи — Organic Planet",
         "description": "Продукт для підтримки укорінення та розвитку кореневої системи.",
         "brand_required": true
       },
@@ -2386,24 +2507,26 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-biostim.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/kemira-rooter.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-ukorinnyuvach-100-ml-organic-planet",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/kemira-rooter/",
       "legacy_url": "product.html?id=kemira-rooter",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-KEMIRA-ROOTER-100ML",
       "launch_sku_ids": [
         "BB610-KEMIRA-ROOTER-100ML"
-      ]
+      ],
+      "stage16b_image_query": "Кеміра Укорінювач 100 мл Organic Planet",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "benefit-pz",
       "slug": "benefit-pz",
       "name": "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів",
-      "official_name": "Benefit PZ (Бенефіт ПЗ)",
+      "official_name": "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -2418,7 +2541,7 @@
       "feed_policy": "allowed",
       "seo": {
         "title": "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів — Valagro",
-        "description": "Біостимулятор для технологій формування та росту плодів. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "description": "Біостимулятор для технологій формування та росту плодів. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
         "title": "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів — Valagro",
@@ -2457,24 +2580,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-biostim.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/benefit-pz.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/biostymulyatory/benefit-pz-benefit-pz-biostimulyator-uvelicheniya-plodov-25",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/benefit-pz/",
       "legacy_url": "product.html?id=benefit-pz",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-BENEFITPZ-25ML",
       "launch_sku_ids": [
         "BB610-VLG-BENEFITPZ-25ML"
-      ]
+      ],
+      "stage16b_image_query": "Benefit Pz Бенефіт ПЗ 25 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/benefit-pz-benefit-pz-biostimulyator-uvelicheniya-plodov-25",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "blackjak",
       "slug": "blackjak",
-      "name": "BlackJak (Блекджек), біостимулятор розвитку кореневої системи",
-      "official_name": "BlackJak (Блекджек)",
+      "name": "BlackJak (БлекДжек), біостимулятор розвитку кореневої системи",
+      "official_name": "BlackJak (БлекДжек), біостимулятор розвитку кореневої системи",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -2488,15 +2614,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "BlackJak (Блекджек), біостимулятор розвитку кореневої системи — Valagro",
-        "description": "Біостимулятор для підтримки кореневої системи. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "BlackJak (БлекДжек), біостимулятор розвитку кореневої системи — Valagro",
+        "description": "Біостимулятор для підтримки кореневої системи. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "BlackJak (Блекджек), біостимулятор розвитку кореневої системи — Valagro",
+        "title": "BlackJak (БлекДжек), біостимулятор розвитку кореневої системи — Valagro",
         "description": "Біостимулятор для підтримки кореневої системи.",
         "brand_required": true
       },
-      "image_alt": "BlackJak (Блекджек), біостимулятор розвитку кореневої системи",
+      "image_alt": "BlackJak (БлекДжек), біостимулятор розвитку кореневої системи",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2528,25 +2654,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-biostim.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/blackjak.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/biostymulyatory/blekdzhek-blackjak-biostimulyator-kornevoj-sistemy-ukorenite",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/blackjak/",
       "legacy_url": "product.html?id=blackjak",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-BLACKJAK-100ML",
       "launch_sku_ids": [
         "BB610-VLG-BLACKJAK-100ML"
-      ]
+      ],
+      "stage16b_image_query": "BlackJak БлекДжек біостимулятор 100 мл Valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "maxicrop-cream",
       "slug": "maxicrop-cream",
-      "name": "Maxicrop Cream (Максікроп Крем), біостимулятор",
-      "official_name": "Maxicrop Cream (Максікроп Крем)",
-      "brand": "Maxicrop",
+      "name": "Maxicrop Cream (Максікроп Крем), біостимулятор на основі екстракту водоростей",
+      "official_name": "Maxicrop Cream (Максікроп Крем), біостимулятор на основі екстракту водоростей",
+      "brand": "Valagro",
       "manufacturer": "Maxicrop / Syngenta Biologicals",
       "country": "—",
       "category_id": "biostimulation",
@@ -2559,15 +2687,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Maxicrop Cream (Максікроп Крем), біостимулятор — Maxicrop",
-        "description": "Біостимулятор для загальної підтримки росту та розвитку рослин. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Maxicrop Cream (Максікроп Крем), біостимулятор на основі екстракту водоростей — Valagro",
+        "description": "Біостимулятор для загальної підтримки росту та розвитку рослин. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Maxicrop Cream (Максікроп Крем), біостимулятор — Maxicrop",
+        "title": "Maxicrop Cream (Максікроп Крем), біостимулятор на основі екстракту водоростей — Valagro",
         "description": "Біостимулятор для загальної підтримки росту та розвитку рослин.",
         "brand_required": true
       },
-      "image_alt": "Maxicrop Cream (Максікроп Крем), біостимулятор",
+      "image_alt": "Maxicrop Cream (Максікроп Крем), біостимулятор на основі екстракту водоростей",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2599,24 +2727,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-biostim.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/maxicrop-cream.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-cream-maksikrop-krem-biostimulyator-25-ml-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/maxicrop-cream/",
       "legacy_url": "product.html?id=maxicrop-cream",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-MAXICROP-CREAM-25ML",
       "launch_sku_ids": [
         "BB610-MAXICROP-CREAM-25ML"
-      ]
+      ],
+      "stage16b_image_query": "Maxicrop Cream Максікроп Крем 25 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-cream-maksikrop-krem-biostimulyator-25-ml-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "neocore",
       "slug": "neocore",
-      "name": "NeoCore (НеоКор), біостимулятор розвитку кореневої системи",
-      "official_name": "NeoCore (НеоКор)",
+      "name": "NeoCore (НеоКор), біостимулятор росту кореневої системи, біоактивний екстракт торфу",
+      "official_name": "NeoCore (НеоКор), біостимулятор росту кореневої системи, біоактивний екстракт торфу",
       "brand": "Neova",
       "manufacturer": "Neova",
       "country": "—",
@@ -2630,15 +2761,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "NeoCore (НеоКор), біостимулятор розвитку кореневої системи — Neova",
-        "description": "Біостимулятор для підтримки розвитку кореневої системи. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "NeoCore (НеоКор), біостимулятор росту кореневої системи, біоактивний екстракт торфу — Neova",
+        "description": "Біостимулятор для підтримки розвитку кореневої системи. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "NeoCore (НеоКор), біостимулятор розвитку кореневої системи — Neova",
+        "title": "NeoCore (НеоКор), біостимулятор росту кореневої системи, біоактивний екстракт торфу — Neova",
         "description": "Біостимулятор для підтримки розвитку кореневої системи.",
         "brand_required": true
       },
-      "image_alt": "NeoCore (НеоКор), біостимулятор розвитку кореневої системи",
+      "image_alt": "NeoCore (НеоКор), біостимулятор росту кореневої системи, біоактивний екстракт торфу",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2670,24 +2801,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-biostim.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/neocore.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/biostymulyatory/neocore-neokor-biostymulyator-rostu-korenevoyi-systemy-bioaktyvnyj-ekstrakt-torfu-30-ml-neova",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/neocore/",
       "legacy_url": "product.html?id=neocore",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-NEOVA-NEOCORE-30ML",
       "launch_sku_ids": [
         "BB610-NEOVA-NEOCORE-30ML"
-      ]
+      ],
+      "stage16b_image_query": "NeoCore НеоКор 30 мл Neova",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neocore-neokor-biostymulyator-rostu-korenevoyi-systemy-bioaktyvnyj-ekstrakt-torfu-30-ml-neova",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "sweet",
       "slug": "sweet",
-      "name": "Sweet (Світ), біостимулятор достигання та забарвлення плодів",
-      "official_name": "Sweet (Світ)",
+      "name": "Sweet (Світ), біостимулятор дозрівання та забарвлення плодів",
+      "official_name": "Sweet (Світ), біостимулятор дозрівання та забарвлення плодів",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -2701,15 +2835,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Sweet (Світ), біостимулятор достигання та забарвлення плодів — Valagro",
-        "description": "Біостимулятор для технологій достигання та формування забарвлення плодів. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Sweet (Світ), біостимулятор дозрівання та забарвлення плодів — Valagro",
+        "description": "Біостимулятор для технологій достигання та формування забарвлення плодів. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Sweet (Світ), біостимулятор достигання та забарвлення плодів — Valagro",
+        "title": "Sweet (Світ), біостимулятор дозрівання та забарвлення плодів — Valagro",
         "description": "Біостимулятор для технологій достигання та формування забарвлення плодів.",
         "brand_required": true
       },
-      "image_alt": "Sweet (Світ), біостимулятор достигання та забарвлення плодів",
+      "image_alt": "Sweet (Світ), біостимулятор дозрівання та забарвлення плодів",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2741,24 +2875,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-biostim.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/sweet.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/biostymulyatory/sweet-svit-biostimulyator-okraski-plodov-100-ml-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/sweet/",
       "legacy_url": "product.html?id=sweet",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-SWEET-25ML",
       "launch_sku_ids": [
         "BB610-VLG-SWEET-25ML"
-      ]
+      ],
+      "stage16b_image_query": "Sweet Світ біостимулятор 100 мл Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/sweet-svit-biostimulyator-okraski-plodov-100-ml-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "osmocote-potassium-12-8-19",
       "slug": "osmocote-potassium-12-8-19",
-      "name": "Osmocote Potassium 12-8-19 (3–4 міс.), добриво контрольованої дії",
-      "official_name": "Osmocote Potassium 12-8-19 (3–4 міс.)",
+      "name": "Osmocote Potassium 12-8-19, добриво контрольованої дії 3–4 міс.",
+      "official_name": "Osmocote Potassium 12-8-19, добриво контрольованої дії 3–4 міс.",
       "brand": "ICL",
       "manufacturer": "ICL",
       "country": "—",
@@ -2772,15 +2909,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Osmocote Potassium 12-8-19 (3–4 міс.), добриво контрольованої дії — ICL",
-        "description": "Калійна формула добрива контрольованої дії для тривалого живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Osmocote Potassium 12-8-19, добриво контрольованої дії 3–4 міс. — ICL",
+        "description": "Калійна формула добрива контрольованої дії для тривалого живлення. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Osmocote Potassium 12-8-19 (3–4 міс.), добриво контрольованої дії — ICL",
+        "title": "Osmocote Potassium 12-8-19, добриво контрольованої дії 3–4 міс. — ICL",
         "description": "Калійна формула добрива контрольованої дії для тривалого живлення.",
         "brand_required": true
       },
-      "image_alt": "Osmocote Potassium 12-8-19 (3–4 міс.), добриво контрольованої дії",
+      "image_alt": "Osmocote Potassium 12-8-19, добриво контрольованої дії 3–4 міс.",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2812,24 +2949,26 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/osmocote-potassium-12-8-19.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-kalijnyj-osmocote-12-8-19-3-4m-200-g",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/osmocote-potassium-12-8-19/",
       "legacy_url": "product.html?id=osmocote-potassium-12-8-19",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-ICL-OSMOCOTE-POTASSIUM-200G",
       "launch_sku_ids": [
         "BB610-ICL-OSMOCOTE-POTASSIUM-200G"
-      ]
+      ],
+      "stage16b_image_query": "Osmocote Potassium 12-8-19 200 г",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "osmocote-flowering-12-7-18",
       "slug": "osmocote-flowering-12-7-18",
-      "name": "Osmocote Flowering 12-7-18 (2–3 міс.), добриво контрольованої дії",
-      "official_name": "Osmocote Flowering 12-7-18 (2–3 міс.)",
+      "name": "Osmocote Flowering 12-7-18, добриво контрольованої дії 2–3 міс.",
+      "official_name": "Osmocote Flowering 12-7-18, добриво контрольованої дії 2–3 міс.",
       "brand": "ICL",
       "manufacturer": "ICL",
       "country": "—",
@@ -2843,15 +2982,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Osmocote Flowering 12-7-18 (2–3 міс.), добриво контрольованої дії — ICL",
-        "description": "Формула добрива контрольованої дії для квітучих культур. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Osmocote Flowering 12-7-18, добриво контрольованої дії 2–3 міс. — ICL",
+        "description": "Формула добрива контрольованої дії для квітучих культур. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Osmocote Flowering 12-7-18 (2–3 міс.), добриво контрольованої дії — ICL",
+        "title": "Osmocote Flowering 12-7-18, добриво контрольованої дії 2–3 міс. — ICL",
         "description": "Формула добрива контрольованої дії для квітучих культур.",
         "brand_required": true
       },
-      "image_alt": "Osmocote Flowering 12-7-18 (2–3 міс.), добриво контрольованої дії",
+      "image_alt": "Osmocote Flowering 12-7-18, добриво контрольованої дії 2–3 міс.",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2883,24 +3022,26 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/osmocote-flowering-12-7-18.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-kvituchyj-osmocote-12-7-18-2-3m-200-g",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/osmocote-flowering-12-7-18/",
       "legacy_url": "product.html?id=osmocote-flowering-12-7-18",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-ICL-OSMOCOTE-FLOWERING-200G",
       "launch_sku_ids": [
         "BB610-ICL-OSMOCOTE-FLOWERING-200G"
-      ]
+      ],
+      "stage16b_image_query": "Osmocote Flowering 12-7-18 200 г",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "plantafol-0-25-50",
       "slug": "plantafol-0-25-50",
-      "name": "Plantafol (Плантафол) 0-25-50, добриво для позакореневого живлення",
-      "official_name": "Plantafol (Плантафол) 0-25-50",
+      "name": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення",
+      "official_name": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -2914,15 +3055,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Plantafol (Плантафол) 0-25-50, добриво для позакореневого живлення — Valagro",
-        "description": "Висококалійна формула Plantafol для позакореневого живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення — Valagro",
+        "description": "Висококалійна формула Plantafol для позакореневого живлення. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Plantafol (Плантафол) 0-25-50, добриво для позакореневого живлення — Valagro",
+        "title": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення — Valagro",
         "description": "Висококалійна формула Plantafol для позакореневого живлення.",
         "brand_required": true
       },
-      "image_alt": "Plantafol (Плантафол) 0-25-50, добриво для позакореневого живлення",
+      "image_alt": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -2954,24 +3095,26 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/plantafol-0-25-50.png",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-0-25-50-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/plantafol-0-25-50/",
       "legacy_url": "product.html?id=plantafol-0-25-50",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-PLANTAFOL02550-250G",
       "launch_sku_ids": [
         "BB610-VLG-PLANTAFOL02550-250G"
-      ]
+      ],
+      "stage16b_image_query": "Plantafol Плантафол NPK 0-25-50 250 г Valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "brexil-ca",
       "slug": "brexil-ca",
-      "name": "Brexil Ca (Брексіл Кальцій), мікродобриво з кальцієм",
-      "official_name": "Brexil Ca (Брексіл Кальцій)",
+      "name": "Brexil Ca (Брексіл Кальцій), мікроелементи в хелатній формі",
+      "official_name": "Brexil Ca (Брексіл Кальцій), мікроелементи в хелатній формі",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -2985,15 +3128,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Brexil Ca (Брексіл Кальцій), мікродобриво з кальцієм — Valagro",
-        "description": "Спеціалізоване мікродобриво з кальцієм. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Brexil Ca (Брексіл Кальцій), мікроелементи в хелатній формі — Valagro",
+        "description": "Спеціалізоване мікродобриво з кальцієм. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Brexil Ca (Брексіл Кальцій), мікродобриво з кальцієм — Valagro",
+        "title": "Brexil Ca (Брексіл Кальцій), мікроелементи в хелатній формі — Valagro",
         "description": "Спеціалізоване мікродобриво з кальцієм.",
         "brand_required": true
       },
-      "image_alt": "Brexil Ca (Брексіл Кальцій), мікродобриво з кальцієм",
+      "image_alt": "Brexil Ca (Брексіл Кальцій), мікроелементи в хелатній формі",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -3025,24 +3168,27 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/brexil-ca.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-ca-breksil-kalcij-mikroelementy-15-g-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/brexil-ca/",
       "legacy_url": "product.html?id=brexil-ca",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-BREXILCA-15G",
       "launch_sku_ids": [
         "BB610-VLG-BREXILCA-15G"
-      ]
+      ],
+      "stage16b_image_query": "Brexil Ca Брексіл Кальцій 15 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-ca-breksil-kalcij-mikroelementy-15-g-valagro",
+      "stage16b_content_status": "complete"
     },
     {
       "id": "brexil-zn",
       "slug": "brexil-zn",
-      "name": "Brexil Zn (Брексіл Цинк), мікродобриво з цинком",
-      "official_name": "Brexil Zn (Брексіл Цинк)",
+      "name": "Brexil Zn (Брексіл Цинк), мікроелементи в хелатній формі",
+      "official_name": "Brexil Zn (Брексіл Цинк), мікроелементи в хелатній формі",
       "brand": "Valagro",
       "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
@@ -3056,15 +3202,15 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "seo": {
-        "title": "Brexil Zn (Брексіл Цинк), мікродобриво з цинком — Valagro",
-        "description": "Спеціалізоване мікродобриво з цинком. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+        "title": "Brexil Zn (Брексіл Цинк), мікроелементи в хелатній формі — Valagro",
+        "description": "Спеціалізоване мікродобриво з цинком. Ціна та наявність — для вибраної фасовки в BB610 Market."
       },
       "feed": {
-        "title": "Brexil Zn (Брексіл Цинк), мікродобриво з цинком — Valagro",
+        "title": "Brexil Zn (Брексіл Цинк), мікроелементи в хелатній формі — Valagro",
         "description": "Спеціалізоване мікродобриво з цинком.",
         "brand_required": true
       },
-      "image_alt": "Brexil Zn (Брексіл Цинк), мікродобриво з цинком",
+      "image_alt": "Brexil Zn (Брексіл Цинк), мікроелементи в хелатній формі",
       "active_ingredient": "—",
       "concentration": "",
       "composition": [],
@@ -3096,18 +3242,21 @@
         "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
       },
       "image": {
-        "local": "assets/img/product-npk.svg",
-        "officialSourceUrl": "",
-        "status": "category-placeholder"
+        "local": "assets/img/real/stage16b/brexil-zn.jpg",
+        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-zn-breksil-cynk-mikroelementy-v-helatnij-formi-15-g-valagro",
+        "status": "local-imported-product-photo"
       },
-      "feed_image_ready": false,
+      "feed_image_ready": true,
       "canonical_product_url": "/products/brexil-zn/",
       "legacy_url": "product.html?id=brexil-zn",
       "store_content_status": "launch-card-ready",
       "default_sku_id": "BB610-VLG-BREXILZN-15G",
       "launch_sku_ids": [
         "BB610-VLG-BREXILZN-15G"
-      ]
+      ],
+      "stage16b_image_query": "Brexil Zn Брексіл Цинк 15 г Valagro",
+      "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-zn-breksil-cynk-mikroelementy-v-helatnij-formi-15-g-valagro",
+      "stage16b_content_status": "complete"
     }
   ],
   "variants": [
@@ -3648,7 +3797,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення, 1 кг — Valagro"
+      },
+      "image_alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення, 1 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-PLANTAFOL202020-5KG",
@@ -3680,7 +3834,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення, 5 кг — Valagro"
+      },
+      "image_alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення, 5 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-PLANTAFOL202020-25KG",
@@ -3712,7 +3871,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення, 25 кг — Valagro"
+      },
+      "image_alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення, 25 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MEGAFOL-1L",
@@ -3744,7 +3908,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Megafol (Мегафол), біостимулятор-антистрес, 1 л — Valagro"
+      },
+      "image_alt": "Megafol (Мегафол), біостимулятор-антистрес, 1 л",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MEGAFOL-10L",
@@ -3776,7 +3945,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Megafol (Мегафол), біостимулятор-антистрес, 10 л — Valagro"
+      },
+      "image_alt": "Megafol (Мегафол), біостимулятор-антистрес, 10 л",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MEGAFOL-20L",
@@ -3808,7 +3982,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Megafol (Мегафол), біостимулятор-антистрес, 20 л — Valagro"
+      },
+      "image_alt": "Megafol (Мегафол), біостимулятор-антистрес, 20 л",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MEGAFOL-1000L",
@@ -3840,7 +4019,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Megafol (Мегафол), біостимулятор-антистрес, 1000 л — Valagro"
+      },
+      "image_alt": "Megafol (Мегафол), біостимулятор-антистрес, 1000 л",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-KENDALROOT-10L",
@@ -3872,7 +4056,11 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "KENDAL™ ROOT, 10 л — Valagro"
+      },
+      "image_alt": "KENDAL™ ROOT, 10 л"
     },
     {
       "id": "BB610-SYN-SWITCH625-10G",
@@ -3894,7 +4082,7 @@
       "offer_status": "draft",
       "feed_eligible": false,
       "url": "/products/switch-62-5-wg-10g/",
-      "image": "assets/img/product-protection.svg",
+      "image": null,
       "supplier": null,
       "importer": null,
       "packer": null,
@@ -3904,7 +4092,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Світч 62,5 WG, в. г., фунгіцид, 10 г — Syngenta"
+      },
+      "image_alt": "Світч 62,5 WG, в. г., фунгіцид, 10 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-SYN-SWITCH625-100G",
@@ -3926,7 +4119,7 @@
       "offer_status": "draft",
       "feed_eligible": false,
       "url": "/products/switch-62-5-wg-100g/",
-      "image": "assets/img/product-protection.svg",
+      "image": null,
       "supplier": null,
       "importer": null,
       "packer": null,
@@ -3936,7 +4129,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Світч 62,5 WG, в. г., фунгіцид, 100 г — Syngenta"
+      },
+      "image_alt": "Світч 62,5 WG, в. г., фунгіцид, 100 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-SYN-SWITCH625-1KG",
@@ -3958,7 +4156,7 @@
       "offer_status": "draft",
       "feed_eligible": false,
       "url": "/products/switch-62-5-wg-1kg/",
-      "image": "assets/img/product-protection.svg",
+      "image": null,
       "supplier": null,
       "importer": null,
       "packer": null,
@@ -3968,7 +4166,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Світч 62,5 WG, в. г., фунгіцид, 1 кг — Syngenta"
+      },
+      "image_alt": "Світч 62,5 WG, в. г., фунгіцид, 1 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-SYN-AKTARA25-250G",
@@ -3990,7 +4193,7 @@
       "offer_status": "draft",
       "feed_eligible": false,
       "url": "/products/aktara-25-wg-250g/",
-      "image": "assets/img/product-protection.svg",
+      "image": null,
       "supplier": null,
       "importer": null,
       "packer": null,
@@ -4000,7 +4203,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Актара 25 WG, в. г., системний інсектицид, 0,25 кг — Syngenta"
+      },
+      "image_alt": "Актара 25 WG, в. г., системний інсектицид, 0,25 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-PLT-1308125-EA",
@@ -4022,7 +4230,7 @@
       "offer_status": "draft",
       "feed_eligible": false,
       "url": "/products/plantlogic-25l-1308125-1ea/",
-      "image": "assets/img/product-container.svg",
+      "image": null,
       "supplier": null,
       "importer": null,
       "packer": null,
@@ -4032,7 +4240,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Plantlogic NEW 25 Liter Round Pot, контейнер 25 л для субстратного вирощування, 25 л · #1308125 — Plantlogic"
+      },
+      "image_alt": "Plantlogic NEW 25 Liter Round Pot, контейнер 25 л для субстратного вирощування, 25 л · #1308125",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-PLT-1308041-EA",
@@ -4054,7 +4267,7 @@
       "offer_status": "draft",
       "feed_eligible": false,
       "url": "/products/plantlogic-40l-1308041-1ea/",
-      "image": "assets/img/product-container45.svg",
+      "image": null,
       "supplier": null,
       "importer": null,
       "packer": null,
@@ -4064,7 +4277,12 @@
       "commercial_status": "not-configured",
       "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
       "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {}
+      "seo": {},
+      "feed": {
+        "title": "Plantlogic 40 Liter Round Pot with U-Grooves, контейнер 40 л для субстратного вирощування, 40 л · #1308041 — Plantlogic"
+      },
+      "image_alt": "Plantlogic 40 Liter Round Pot with U-Grooves, контейнер 40 л для субстратного вирощування, 40 л · #1308041",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-TEST-ORDER-001",
@@ -4097,7 +4315,11 @@
       "commercial_note": "INTERNAL TEST SKU. Не публікувати як товарну пропозицію.",
       "pack_source_status": "internal-test",
       "seo": {},
-      "internal_only": true
+      "internal_only": true,
+      "feed": {
+        "title": "BB610 TEST ORDER, 1 тестова одиниця — BB610"
+      },
+      "image_alt": "BB610 TEST ORDER, 1 тестова одиниця"
     },
     {
       "id": "BB610-VLG-MEGAFOL-25ML",
@@ -4134,7 +4356,11 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "feed_image_ready": true
+      "feed_image_ready": true,
+      "feed": {
+        "title": "Megafol (Мегафол), біостимулятор-антистрес, 25 мл — Valagro"
+      },
+      "image_alt": "Megafol (Мегафол), біостимулятор-антистрес, 25 мл"
     },
     {
       "id": "BB610-VLG-MEGAFOL-100ML",
@@ -4171,7 +4397,11 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "feed_image_ready": true
+      "feed_image_ready": true,
+      "feed": {
+        "title": "Megafol (Мегафол), біостимулятор-антистрес, 100 мл — Valagro"
+      },
+      "image_alt": "Megafol (Мегафол), біостимулятор-антистрес, 100 мл"
     },
     {
       "id": "BB610-VLG-CONTROLDMP-100ML",
@@ -4206,7 +4436,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Control DMP (Контроль ДМП), регулятор кислотності та прилипач, 100 мл — Valagro"
+      },
+      "image_alt": "Control DMP (Контроль ДМП), регулятор кислотності та прилипач, 100 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-ICL-PEKACID-1KG",
@@ -4241,7 +4476,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "PeKacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво, 1 кг — ICL"
+      },
+      "image_alt": "PeKacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво, 1 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-ICL-PEKACID-100G",
@@ -4276,7 +4516,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "PeKacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво, 100 г — ICL"
+      },
+      "image_alt": "PeKacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво, 100 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-KENDAL-25ML",
@@ -4311,7 +4556,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Kendal (Кендал), біостимулятор для підтримки імунної системи рослин, 25 мл — Valagro"
+      },
+      "image_alt": "Kendal (Кендал), біостимулятор для підтримки імунної системи рослин, 25 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-RADIFARM-25ML",
@@ -4346,7 +4596,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Radifarm (Радіфарм), біостимулятор росту кореневої системи (укорінювач), 25 мл — Valagro"
+      },
+      "image_alt": "Radifarm (Радіфарм), біостимулятор росту кореневої системи (укорінювач), 25 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-VIVA-100ML",
@@ -4381,7 +4636,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Viva (Віва), біостимулятор та активатор ґрунтової мікрофлори, 100 мл — Valagro"
+      },
+      "image_alt": "Viva (Віва), біостимулятор та активатор ґрунтової мікрофлори, 100 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-ICL-OSMOCOTE-LANDSCAPE-200G",
@@ -4416,7 +4676,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Osmocote Landscape 16-9-12, добриво контрольованої дії 3–4 міс., 200 г — ICL"
+      },
+      "image_alt": "Osmocote Landscape 16-9-12, добриво контрольованої дії 3–4 міс., 200 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-ICL-OSMOCOTE-QUICKSTART-200G",
@@ -4451,7 +4716,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Osmocote Quick Start 22-5-6, добриво контрольованої дії 4–5 міс., 200 г — ICL"
+      },
+      "image_alt": "Osmocote Quick Start 22-5-6, добриво контрольованої дії 4–5 міс., 200 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-PLANTAFOL105410-250G",
@@ -4486,7 +4756,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Plantafol (Плантафол) NPK 10-54-10, мінеральне добриво для позакореневого живлення, 250 г — Valagro"
+      },
+      "image_alt": "Plantafol (Плантафол) NPK 10-54-10, мінеральне добриво для позакореневого живлення, 250 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-PLANTAFOL301010-250G",
@@ -4521,7 +4796,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Plantafol (Плантафол) NPK 30-10-10, мінеральне добриво для позакореневого живлення, 250 г — Valagro"
+      },
+      "image_alt": "Plantafol (Плантафол) NPK 30-10-10, мінеральне добриво для позакореневого живлення, 250 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-PLANTAFOL51545-250G",
@@ -4556,7 +4836,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення, 250 г — Valagro"
+      },
+      "image_alt": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення, 250 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-HAIFA-MKP005234-200G",
@@ -4591,7 +4876,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Haifa MKP 0-52-34, монокалійфосфат — водорозчинне добриво, 200 г — Haifa Group"
+      },
+      "image_alt": "Haifa MKP 0-52-34, монокалійфосфат — водорозчинне добриво, 200 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-SOLUPOTASSE-K2SO4-1KG",
@@ -4626,7 +4916,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "SoluPotasse (Солюпотас), сульфат калію, 1 кг — SoluPotasse"
+      },
+      "image_alt": "SoluPotasse (Солюпотас), сульфат калію, 1 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-ALVENTA-MGSO4-1KG",
@@ -4661,7 +4956,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Сульфат магнію, водорозчинне магнієво-сірчане добриво, 1 кг — ALVENTA"
+      },
+      "image_alt": "Сульфат магнію, водорозчинне магнієво-сірчане добриво, 1 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-BOROPLUS-100ML",
@@ -4696,7 +4996,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Boroplus (Бороплюс), хелат бору, 100 мл — Valagro"
+      },
+      "image_alt": "Boroplus (Бороплюс), хелат бору, 100 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-BREXILCOMBI-15G",
@@ -4731,7 +5036,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Brexil Combi (Брексіл Комбі), мікроелементи в хелатній формі, 15 г — Valagro"
+      },
+      "image_alt": "Brexil Combi (Брексіл Комбі), мікроелементи в хелатній формі, 15 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-BREXILFE-15G",
@@ -4766,7 +5076,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Brexil Fe (Брексіл Залізо), мікроелементи в хелатній формі, 15 г — Valagro"
+      },
+      "image_alt": "Brexil Fe (Брексіл Залізо), мікроелементи в хелатній формі, 15 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-FERRILENE-10G",
@@ -4801,7 +5116,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза EDDHA, 10 г — Valagro"
+      },
+      "image_alt": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза EDDHA, 10 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MASTER134013-1KG",
@@ -4836,7 +5156,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво, 1 кг — Valagro"
+      },
+      "image_alt": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво, 1 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MASTER134013-250G",
@@ -4871,7 +5196,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво, 250 г — Valagro"
+      },
+      "image_alt": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво, 250 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MASTER15530-1KG",
@@ -4906,7 +5236,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво, 1 кг — Valagro"
+      },
+      "image_alt": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво, 1 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MASTER15530-250G",
@@ -4941,7 +5276,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво, 250 г — Valagro"
+      },
+      "image_alt": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво, 250 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MASTER202020-1KG",
@@ -4976,7 +5316,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво, 1 кг — Valagro"
+      },
+      "image_alt": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво, 1 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MASTER202020-250G",
@@ -5011,7 +5356,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво, 250 г — Valagro"
+      },
+      "image_alt": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво, 250 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MASTER31138-1KG",
@@ -5046,7 +5396,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво, 1 кг — Valagro"
+      },
+      "image_alt": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво, 1 кг",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MASTER31138-250G",
@@ -5081,7 +5436,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво, 250 г — Valagro"
+      },
+      "image_alt": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво, 250 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-KEMIRA-ROOTER-100ML",
@@ -5116,7 +5476,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи, 100 мл — Organic Planet"
+      },
+      "image_alt": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи, 100 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-BENEFITPZ-25ML",
@@ -5151,7 +5516,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів, 25 мл — Valagro"
+      },
+      "image_alt": "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів, 25 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-BLACKJAK-100ML",
@@ -5186,7 +5556,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "BlackJak (БлекДжек), біостимулятор розвитку кореневої системи, 100 мл — Valagro"
+      },
+      "image_alt": "BlackJak (БлекДжек), біостимулятор розвитку кореневої системи, 100 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-MAXICROP-CREAM-25ML",
@@ -5221,7 +5596,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Maxicrop Cream (Максікроп Крем), біостимулятор на основі екстракту водоростей, 25 мл — Valagro"
+      },
+      "image_alt": "Maxicrop Cream (Максікроп Крем), біостимулятор на основі екстракту водоростей, 25 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-NEOVA-NEOCORE-30ML",
@@ -5256,7 +5636,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "NeoCore (НеоКор), біостимулятор росту кореневої системи, біоактивний екстракт торфу, 30 мл — Neova"
+      },
+      "image_alt": "NeoCore (НеоКор), біостимулятор росту кореневої системи, біоактивний екстракт торфу, 30 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-SWEET-25ML",
@@ -5291,7 +5676,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Sweet (Світ), біостимулятор дозрівання та забарвлення плодів, 25 мл — Valagro"
+      },
+      "image_alt": "Sweet (Світ), біостимулятор дозрівання та забарвлення плодів, 25 мл",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-ICL-OSMOCOTE-POTASSIUM-200G",
@@ -5326,7 +5716,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Osmocote Potassium 12-8-19, добриво контрольованої дії 3–4 міс., 200 г — ICL"
+      },
+      "image_alt": "Osmocote Potassium 12-8-19, добриво контрольованої дії 3–4 міс., 200 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-ICL-OSMOCOTE-FLOWERING-200G",
@@ -5361,7 +5756,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Osmocote Flowering 12-7-18, добриво контрольованої дії 2–3 міс., 200 г — ICL"
+      },
+      "image_alt": "Osmocote Flowering 12-7-18, добриво контрольованої дії 2–3 міс., 200 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-PLANTAFOL02550-250G",
@@ -5396,7 +5796,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення, 250 г — Valagro"
+      },
+      "image_alt": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення, 250 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-PLANTAFOL202020-250G",
@@ -5431,7 +5836,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення, 250 г — Valagro"
+      },
+      "image_alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення, 250 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-BREXILCA-15G",
@@ -5466,7 +5876,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Brexil Ca (Брексіл Кальцій), мікроелементи в хелатній формі, 15 г — Valagro"
+      },
+      "image_alt": "Brexil Ca (Брексіл Кальцій), мікроелементи в хелатній формі, 15 г",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-BREXILZN-15G",
@@ -5501,7 +5916,12 @@
       "launch_matrix_2026": true,
       "feed_policy": "allowed",
       "identifier_status": "unverified",
-      "image": null
+      "image": null,
+      "feed": {
+        "title": "Brexil Zn (Брексіл Цинк), мікроелементи в хелатній формі, 15 г — Valagro"
+      },
+      "image_alt": "Brexil Zn (Брексіл Цинк), мікроелементи в хелатній формі, 15 г",
+      "feed_image_ready": true
     }
   ],
   "solutions": [],

@@ -57,7 +57,10 @@ def _real_image_ready(p,s):
 
 
 def _title(p,s):
-    base=((p.get('feed') or {}).get('title') or p.get('name') or s.get('product_id') or s.get('id')).strip()
+    sku_title=((s.get('feed') or {}).get('title') or '').strip()
+    if sku_title:
+        return sku_title[:150]
+    base=((p.get('feed') or {}).get('title') or p.get('official_name') or p.get('name') or s.get('product_id') or s.get('id')).strip()
     variant=(s.get('variant') or '').strip()
     return (base+' '+variant).strip()[:150]
 

@@ -3,7 +3,7 @@ import os
 from fastapi import APIRouter,UploadFile,File,Header,HTTPException
 from fastapi.responses import Response
 from pydantic import BaseModel
-from .services.catalog_import import preview,apply,rollback,history,export_csv,export_xlsx,template_csv
+from .services.catalog_import import preview,apply,rollback,history,provenance,export_csv,export_xlsx,template_csv
 router=APIRouter()
 def auth(a):
     if not os.getenv('BB610_ADMIN_TOKEN') or a!='Bearer '+os.getenv('BB610_ADMIN_TOKEN'):raise HTTPException(401,'Unauthorized')
@@ -34,3 +34,8 @@ def rb(body:RollbackBody,authorization:Optional[str]=Header(None)):
     except Exception as e:raise HTTPException(422,str(e))
 @router.get('/api/v1/admin/catalog-import/history')
 def hist(authorization:Optional[str]=Header(None)):auth(authorization);return {'items':history()}
+
+@router.get('/api/v1/admin/catalog-import/provenance')
+def prov(authorization:Optional[str]=Header(None)):
+    auth(authorization)
+    return {'items':provenance()}

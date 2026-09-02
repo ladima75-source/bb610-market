@@ -8,6 +8,7 @@ DATA=ROOT/'data'/'catalog.master.json'
 VAR=ROOT/'var'/'catalog-import'
 SESS=VAR/'sessions'; BACKUPS=VAR/'backups'; HISTORY=VAR/'history.json'
 MEDIA=ROOT/'assets'/'img'/'imported'
+PROVENANCE=VAR/'provenance.json'
 for p in (SESS,BACKUPS,MEDIA):p.mkdir(parents=True,exist_ok=True)
 
 HEADERS=['sku_id','product_id','title_uk','brand','manufacturer','category','product_type','pack','description_uk','short_description_uk','image','image_alt','gtin','mpn','feed_policy','price','promo_price','availability','stock','sale_enabled']
@@ -151,12 +152,41 @@ def apply_commerce(rows):
         changed+=1
     con.commit();con.close();return changed
 
+def _provenance():
+    if PROVENANCE.exists():
+        try:
+            return json.loads(PROVENANCE.read_text(encoding='utf-8'))
+        except:
+            pass
+    return {}
+
+def _save_provenance(data):
+    PROVENANCE.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
+
+def provenance():
+    return _provenance()
+
+def _publish_public_catalog(batch_id, filename):
+    status={'master_updated':True,'public_rebuilt':True,'git_commit':False,'git_push':False,'published':False,'commit':None}
+    subprocess.run(['git','add','data/catalog.master.json','catalog.html','feeds','sitemap.xml','robots.txt','js','assets/img/imported'],cwd=ROOT,check=False,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    subprocess.run(['git','add','-f','products','categories'],cwd=ROOT,check=False,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    subprocess.run(['git','add','-u'],cwd=ROOT,check=True)
+    diff=subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT)
+    if diff.returncode != 0:
+        subprocess.run(['git','commit','-m',f'Catalog import {batch_id}: {filename}'],cwd=ROOT,check=True)
+    status['git_commit']=True
+    status['commit']=subprocess.run(['git','rev-parse','--short','HEAD'],cwd=ROOT,check=True,capture_output=True,text=True).stdout.strip()
+    subprocess.run(['git','push'],cwd=ROOT,check=True)
+    status['git_push']=True
+    status['published']=True
+    return status
+
 def apply(token,mode='content',rebuild=True):
     sd=SESS/token
     if not sd.exists():raise ValueError('Preview token не знайдено')
     rows=json.loads((sd/'rows.json').read_text(encoding='utf-8'));errors,_=validate(rows)
     if errors:raise ValueError('Файл має помилки')
-    bid=_backup();content_count=commerce_count=images=0
+    bid=_backup();batch_id=uuid.uuid4().hex[:12];content_count=commerce_count=images=0
     if mode in ('content','all'):
         d=load_master();products={p.get('id'):p for p in d.get('products',[])};skus={s.get('id') or s.get('sku'):s for s in d.get('skus',[])}
         for r in rows:
@@ -184,11 +214,23 @@ def apply(token,mode='content',rebuild=True):
                     dest=MEDIA/(re.sub(r'[^a-zA-Z0-9_-]+','-',sid)+pkg.suffix.lower());shutil.copy2(pkg,dest);s['image']=dest.relative_to(ROOT).as_posix();s['feed_image_ready']=True;images+=1
                 elif not im.startswith('http'):s['image']=im
             content_count+=1
+        prov=_provenance()
+        now=time.time()
+        filename=json.loads((sd/'meta.json').read_text())['filename']
+        for rr in rows:
+            sid=_txt(rr.get('sku_id'))
+            if sid:
+                prov[sid]={'sku_id':sid,'product_id':_txt(rr.get('product_id')),'source':'import','updated_at':now,'filename':filename,'batch_id':batch_id,'mode':mode}
+        _save_provenance(prov)
         save_master(d)
     if mode in ('commerce','all'):commerce_count=apply_commerce(rows)
     if rebuild:subprocess.run([str(ROOT/'.venv/bin/python'),str(ROOT/'tools/build_catalog.py'),str(ROOT)],check=True)
-    _history({'time':time.time(),'filename':json.loads((sd/'meta.json').read_text())['filename'],'backup':bid,'mode':mode,'content_rows':content_count,'commerce_rows':commerce_count,'images':images})
-    return {'ok':True,'backup':bid,'content_rows':content_count,'commerce_rows':commerce_count,'images':images}
+    filename=json.loads((sd/'meta.json').read_text())['filename']
+    publish_status={'master_updated':True,'public_rebuilt':bool(rebuild),'git_commit':False,'git_push':False,'published':False,'commit':None}
+    if rebuild:
+        publish_status=_publish_public_catalog(batch_id,filename)
+    _history({'time':time.time(),'filename':filename,'backup':bid,'mode':mode,'content_rows':content_count,'commerce_rows':commerce_count,'images':images,'batch_id':batch_id,'publish':publish_status})
+    return {'ok':True,'backup':bid,'batch_id':batch_id,'content_rows':content_count,'commerce_rows':commerce_count,'images':images,'publish':publish_status}
 
 def rollback(backup_id=None):
     h=_history();bid=backup_id or (h[0].get('backup') if h else None)

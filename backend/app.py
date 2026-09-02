@@ -342,3 +342,7 @@ app.include_router(admin_dashboard_router)
 # BB610_STAGE18B_CATALOG_WORKBENCH
 from .catalog_workbench_api import router as catalog_workbench_router
 app.include_router(catalog_workbench_router)
+
+# BB610_STAGE18C_CATALOG_ORDER
+from .catalog_order_api import router as catalog_order_router
+app.include_router(catalog_order_router)

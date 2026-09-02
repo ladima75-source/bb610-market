@@ -346,3 +346,7 @@ app.include_router(catalog_workbench_router)
 # BB610_STAGE18C_CATALOG_ORDER
 from .catalog_order_api import router as catalog_order_router
 app.include_router(catalog_order_router)
+
+# BB610_STAGE18D_HOMEPAGE_SHOWCASE
+from .homepage_showcase_api import router as homepage_showcase_router
+app.include_router(homepage_showcase_router)

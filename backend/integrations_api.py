@@ -4,7 +4,7 @@ from typing import Optional
 from fastapi import APIRouter, Header, HTTPException, Query
 from pydantic import BaseModel, Field
 from .services.delivery.base import DeliveryNotConfigured, DeliveryUpstreamError
-from .services.integrations import nova_poshta_status, save_nova_poshta_settings, test_nova_poshta, nova_poshta_sender_options
+from .services.integrations import nova_poshta_status, save_nova_poshta_settings, test_nova_poshta, nova_poshta_sender_options, nova_poshta_sender_cities
 from .services.payment_settings import payment_settings_status, save_payment_settings
 
 router=APIRouter(prefix='/api/v1/admin/integrations',tags=['admin-integrations'])
@@ -20,6 +20,7 @@ class NovaPoshtaSettingsPatch(BaseModel):
     api_url:Optional[str]=Field(default=None,min_length=8,max_length=500)
     sender_ref:Optional[str]=Field(default=None,max_length=200)
     sender_contact_ref:Optional[str]=Field(default=None,max_length=200)
+    sender_city_ref:Optional[str]=Field(default=None,max_length=200)
     sender_address_ref:Optional[str]=Field(default=None,max_length=200)
     shipment_weight:Optional[float]=Field(default=None,gt=0,le=1000)
     shipment_description:Optional[str]=Field(default=None,max_length=120)
@@ -59,7 +60,13 @@ def np_senders(authorization:Optional[str]=Header(default=None)):
     try:return nova_poshta_sender_options()
     except (DeliveryNotConfigured,DeliveryUpstreamError) as e:raise HTTPException(502,str(e))
 @router.get('/nova-poshta/sender-options')
-def np_sender_options(sender_ref:str=Query(min_length=2,max_length=200),authorization:Optional[str]=Header(default=None)):
+def np_sender_options(sender_ref:str=Query(min_length=2,max_length=200),city_ref:Optional[str]=Query(default=None,max_length=200),authorization:Optional[str]=Header(default=None)):
     _admin_auth(authorization)
-    try:return nova_poshta_sender_options(sender_ref)
+    try:return nova_poshta_sender_options(sender_ref,city_ref)
+    except (DeliveryNotConfigured,DeliveryUpstreamError) as e:raise HTTPException(502,str(e))
+
+@router.get('/nova-poshta/cities')
+def np_sender_cities(q:Optional[str]=Query(default=None,max_length=100),city_ref:Optional[str]=Query(default=None,max_length=200),authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    try:return nova_poshta_sender_cities(q,city_ref)
     except (DeliveryNotConfigured,DeliveryUpstreamError) as e:raise HTTPException(502,str(e))

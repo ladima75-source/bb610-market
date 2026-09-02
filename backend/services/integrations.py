@@ -13,6 +13,7 @@ def nova_poshta_status()->dict[str,Any]:
     sender_values={
       'sender_ref':get_value('nova_poshta.sender_ref'),
       'sender_contact_ref':get_value('nova_poshta.sender_contact_ref'),
+      'sender_city_ref':get_value('nova_poshta.sender_city_ref'),
       'sender_address_ref':get_value('nova_poshta.sender_address_ref'),
     }
     sender={**sender_values,'configured':{k:bool(v) for k,v in sender_values.items()}}
@@ -34,15 +35,16 @@ def nova_poshta_status()->dict[str,Any]:
       'shipment_blocker':None if (api_key_ok and sender_ready) else 'sender_configuration',
     }
 
-def save_nova_poshta_settings(*,api_key=None,api_url=None,sender_ref=None,sender_contact_ref=None,sender_address_ref=None,shipment_weight=None,shipment_description=None,payer_type=None,payment_method=None):
-    trio=(sender_ref,sender_contact_ref,sender_address_ref)
-    if any(v not in (None,'') for v in trio) and not all(str(v or '').strip() for v in trio):
-        raise ValueError('Оберіть відправника, контактну особу та адресу / точку відправлення')
+def save_nova_poshta_settings(*,api_key=None,api_url=None,sender_ref=None,sender_contact_ref=None,sender_city_ref=None,sender_address_ref=None,shipment_weight=None,shipment_description=None,payer_type=None,payment_method=None):
+    quartet=(sender_ref,sender_contact_ref,sender_city_ref,sender_address_ref)
+    if any(v not in (None,'') for v in quartet) and not all(str(v or '').strip() for v in quartet):
+        raise ValueError('Оберіть відправника, контактну особу, місто та відділення відправлення')
     values={}
     if api_key is not None: values['nova_poshta.api_key']=api_key
     if api_url is not None: values['nova_poshta.api_url']=api_url or NP_DEFAULT_URL
     if sender_ref is not None: values['nova_poshta.sender_ref']=sender_ref
     if sender_contact_ref is not None: values['nova_poshta.sender_contact_ref']=sender_contact_ref
+    if sender_city_ref is not None: values['nova_poshta.sender_city_ref']=sender_city_ref
     if sender_address_ref is not None: values['nova_poshta.sender_address_ref']=sender_address_ref
     if shipment_weight is not None: values['nova_poshta.shipment_weight']=str(shipment_weight or '1.0')
     if shipment_description is not None: values['nova_poshta.shipment_description']=shipment_description or 'Товари для вирощування'
@@ -50,10 +52,10 @@ def save_nova_poshta_settings(*,api_key=None,api_url=None,sender_ref=None,sender
     if payment_method is not None: values['nova_poshta.payment_method']=payment_method if payment_method in ('Cash','NonCash') else 'Cash'
     if values:set_values(values)
     status=nova_poshta_status()
-    if all(str(v or '').strip() for v in trio):
+    if all(str(v or '').strip() for v in quartet):
         saved=status.get('sender') or {}
-        expected=[str(v).strip() for v in trio]
-        actual=[saved.get('sender_ref',''),saved.get('sender_contact_ref',''),saved.get('sender_address_ref','')]
+        expected=[str(v).strip() for v in quartet]
+        actual=[saved.get('sender_ref',''),saved.get('sender_contact_ref',''),saved.get('sender_city_ref',''),saved.get('sender_address_ref','')]
         if actual!=expected:
             raise RuntimeError('Nova Poshta sender settings were not persisted completely')
     return status
@@ -63,9 +65,22 @@ def test_nova_poshta():
     rows=NovaPoshtaAdapter().search_cities('Дніпро',5)
     return {'ok':True,'provider':'nova_poshta','checked_at':now(),'results':len(rows),'sample':[{'name':x.get('name'),'ref_present':bool(x.get('ref'))} for x in rows[:3]]}
 
-def nova_poshta_sender_options(sender_ref: str|None=None):
+def nova_poshta_sender_options(sender_ref: str|None=None, city_ref: str|None=None):
     from .delivery.nova_poshta import NovaPoshtaAdapter
     a=NovaPoshtaAdapter()
     if not sender_ref:
         return {'senders':a.sender_counterparties()}
-    return {'contacts':a.sender_contacts(sender_ref),'addresses':a.sender_warehouses(sender_ref),'address_source':'warehouses'}
+    contacts=a.sender_contacts(sender_ref)
+    addresses=a.sender_warehouses_for_city(city_ref) if city_ref else []
+    return {'contacts':contacts,'addresses':addresses,'address_source':'warehouses_by_city','city_ref':city_ref or ''}
+
+def nova_poshta_sender_cities(q: str|None=None, city_ref: str|None=None):
+    from .delivery.nova_poshta import NovaPoshtaAdapter
+    a=NovaPoshtaAdapter()
+    if city_ref:
+        row=a.city_by_ref(city_ref)
+        return {'cities':[row] if row else []}
+    query=(q or '').strip()
+    if len(query)<2:
+        return {'cities':[]}
+    return {'cities':a.search_cities(query,20)}

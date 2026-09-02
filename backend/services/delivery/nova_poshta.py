@@ -47,6 +47,8 @@ class NovaPoshtaAdapter(DeliveryAdapter):
     @property
     def sender_contact_ref(self): return get_value('nova_poshta.sender_contact_ref','')
     @property
+    def sender_city_ref(self): return get_value('nova_poshta.sender_city_ref','')
+    @property
     def sender_address_ref(self): return get_value('nova_poshta.sender_address_ref','')
     @property
     def shipment_weight(self):
@@ -61,7 +63,7 @@ class NovaPoshtaAdapter(DeliveryAdapter):
 
     def capability(self):
         live=bool(self.api_key)
-        create=live and all((self.sender_ref,self.sender_contact_ref,self.sender_address_ref))
+        create=live and all((self.sender_ref,self.sender_contact_ref,self.sender_city_ref,self.sender_address_ref))
         return DeliveryCapability(self.provider,self.label,live,live,create,live,('branch','locker'))
 
     def _call(self,model,method,props):
@@ -92,6 +94,18 @@ class NovaPoshtaAdapter(DeliveryAdapter):
                         out.append({'ref':ref,'name':name,'region':x.get('Area') or x.get('Region'),'postal_code':None})
             return out[:limit]
         return _cached(key,300,load)
+
+
+    def city_by_ref(self,city_ref):
+        city_ref=(city_ref or '').strip()
+        if not city_ref:return None
+        rows=self._call('Address','getCities',{'Ref':city_ref,'Page':'1','Limit':'1'})
+        if not rows:return None
+        x=rows[0]
+        ref=x.get('Ref') or city_ref
+        name=x.get('Description') or x.get('DescriptionRu') or x.get('SettlementTypeDescription') or ref
+        region=x.get('AreaDescription') or x.get('RegionDescription') or ''
+        return {'ref':ref,'name':name,'region':region,'postal_code':None}
 
     def search_branches(self,city_ref,q='',limit=100):
         city_ref=(city_ref or '').strip(); q=(q or '').strip()
@@ -136,26 +150,13 @@ class NovaPoshtaAdapter(DeliveryAdapter):
         if not sender_ref:return None
         return next((x for x in self.sender_counterparties() if x.get('ref')==sender_ref),None)
 
-    def sender_warehouses(self,sender_ref,limit=100):
-        """Return Nova Poshta branch dispatch points for the sender city.
-
-        A business sender may have no rows in Counterparty.getCounterpartyAddresses
-        when shipments are handed over at a Nova Poshta branch. For the
-        WarehouseWarehouse service SenderAddress must therefore be selected from
-        Address.getWarehouses for the sender's city.
-        """
-        sender=self._sender_record(sender_ref)
-        if not sender:return []
-        city_ref=(sender.get('city_ref') or '').strip()
-        if not city_ref and (sender.get('city') or '').strip():
-            cities=self.search_cities(sender.get('city'),10)
-            if cities: city_ref=(cities[0].get('ref') or '').strip()
+    def sender_warehouses_for_city(self,city_ref,limit=100):
+        """Return branch dispatch points for an explicitly selected Nova Poshta city."""
+        city_ref=(city_ref or '').strip()
         if not city_ref:return []
         rows=self.search_branches(city_ref,'',limit)
         out=[]
         for x in rows:
-            # Dispatch from a branch. Parcel lockers are recipient points and are
-            # intentionally not offered as sender dispatch points here.
             if x.get('service')!='branch':
                 continue
             ref=x.get('ref')
@@ -164,24 +165,29 @@ class NovaPoshtaAdapter(DeliveryAdapter):
             label=x.get('name') or x.get('address') or ref
             if number and str(number) not in str(label):
                 label=f'Відділення №{number} · {label}'
-            out.append({'ref':ref,'label':label,'city_ref':city_ref,'city':sender.get('city'),'number':number,'address':x.get('address'),'source':'warehouse'})
+            out.append({'ref':ref,'label':label,'city_ref':city_ref,'number':number,'address':x.get('address'),'source':'warehouse'})
         return out
 
-    # Compatibility name used by older integration code. From Stage 15A.3 a
-    # sender "address" means the Nova Poshta warehouse/branch dispatch point.
+    def sender_warehouses(self,sender_ref,limit=100):
+        """Compatibility helper. Stage 15A.4 uses the explicitly saved sender_city_ref."""
+        if not sender_ref:return []
+        city_ref=(self.sender_city_ref or '').strip()
+        if not city_ref:return []
+        return self.sender_warehouses_for_city(city_ref,limit)
+
     def sender_addresses(self,sender_ref):
         return self.sender_warehouses(sender_ref)
 
     def _selected_sender(self):
+        sender=self._sender_record(self.sender_ref)
         contacts=self.sender_contacts(self.sender_ref)
-        warehouses=self.sender_warehouses(self.sender_ref)
+        warehouses=self.sender_warehouses_for_city(self.sender_city_ref)
         contact=next((x for x in contacts if x.get('ref')==self.sender_contact_ref),None)
         address=next((x for x in warehouses if x.get('ref')==self.sender_address_ref),None)
-        sender=self._sender_record(self.sender_ref)
         if not contact or not address or not sender:
-            raise DeliveryNotConfigured('Nova Poshta sender contact/dispatch branch is no longer available')
+            raise DeliveryNotConfigured('Nova Poshta sender/contact/city/dispatch branch is no longer available')
         phone=_phone(contact.get('phone'))
-        city_ref=(sender.get('city_ref') or address.get('city_ref') or '').strip()
+        city_ref=(self.sender_city_ref or '').strip()
         if not phone or not city_ref:
             raise DeliveryNotConfigured('Nova Poshta sender phone/city is incomplete')
         return contact,address,phone,city_ref

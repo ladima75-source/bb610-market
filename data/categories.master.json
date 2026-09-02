@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "updated_at": 1788374976.721143,
+  "categories": [
+    {
+      "id": "category-3ee88e85",
+      "name": "Біостимуляція",
+      "enabled": true,
+      "order": 10,
+      "parent_id": "",
+      "image": "",
+      "seo_title": "",
+      "seo_description": "",
+      "product_count": 10
+    },
+    {
+      "id": "category-2161c3a7",
+      "name": "Живлення",
+      "enabled": true,
+      "order": 20,
+      "parent_id": "",
+      "image": "",
+      "seo_title": "",
+      "seo_description": "",
+      "product_count": 21
+    },
+    {
+      "id": "category-11d75626",
+      "name": "Захист рослин",
+      "enabled": true,
+      "order": 30,
+      "parent_id": "",
+      "image": "",
+      "seo_title": "",
+      "seo_description": "",
+      "product_count": 3
+    },
+    {
+      "id": "category-fff8f00d",
+      "name": "Контейнери",
+      "enabled": true,
+      "order": 40,
+      "parent_id": "",
+      "image": "",
+      "seo_title": "",
+      "seo_description": "",
+      "product_count": 4
+    }
+  ]
+}

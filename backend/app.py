@@ -350,3 +350,7 @@ app.include_router(catalog_order_router)
 # BB610_STAGE18D_HOMEPAGE_SHOWCASE
 from .homepage_showcase_api import router as homepage_showcase_router
 app.include_router(homepage_showcase_router)
+
+# BB610_STAGE18E_CATEGORY_MANAGER
+from .category_manager_api import router as category_manager_router
+app.include_router(category_manager_router)

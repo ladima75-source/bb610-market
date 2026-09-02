@@ -322,3 +322,7 @@ app.include_router(shipping_admin_router)
 # Stage 15A
 from .media_api import router as media_router
 app.include_router(media_router)
+
+# BB610_STAGE16A_LIVE_FEEDS
+from .feed_api import router as feed_router
+app.include_router(feed_router)

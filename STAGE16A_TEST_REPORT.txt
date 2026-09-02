@@ -1,0 +1,13 @@
+BB610 Market — Stage 16A local test report
+
+PASS — launch seed creates exactly 40 launch SKU
+PASS — 29 priority A + 11 priority B
+PASS — supplier/RRP prices are not imported into static commercial fields
+PASS — default launch SKU commercial status remains not-configured / draft
+PASS — live Google feed uses backend commerce override for price/availability/enabled
+PASS — one synthetic Megafol 100 ml with price + in_stock + enabled enters Google feed
+PASS — placeholder-image product remains blocked from advertising feed
+PASS — GTIN/MPN are not fabricated; missing identifiers are warnings
+PASS — Python package files compile
+
+Production install additionally runs build_catalog.py, service restart, route registration and live feed-status smoke checks.

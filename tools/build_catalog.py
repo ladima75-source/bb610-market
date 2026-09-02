@@ -52,13 +52,23 @@ def abs_url(path):
 def esc(x): return html.escape(str(x or ''), quote=True)
 
 def description_for(p, sku=None):
-    base=p.get('manufacturer_use') or p.get('product_type') or p.get('form') or ''
-    text=f"{p['name']} — {base}".strip(' —')
-    if sku: text=f"{p['name']} {sku.get('variant','')} — {base}".strip(' —')
-    return text[:300]
+    base=(p.get('seo') or {}).get('description') or p.get('short_description') or p.get('manufacturer_use') or p.get('product_type') or p.get('form') or ''
+    if sku and sku.get('variant'):
+        text=f"{p['name']} {sku.get('variant')}. {base}".strip()
+    else:
+        text=f"{p['name']}. {base}".strip()
+    return text[:320]
 
 def title_for(p,sku=None):
-    return f"{p['name']} {sku.get('variant','')} · BB610 Market" if sku else f"{p['name']} · BB610 Market"
+    base=(p.get('seo') or {}).get('title') or p['name']
+    return f"{base} {sku.get('variant','')} · BB610 Market" if sku else f"{base} · BB610 Market"
+
+def feed_title_for(p,sku):
+    base=(p.get('feed') or {}).get('title') or p.get('name','')
+    return (base+' '+sku.get('variant','')).strip()[:150]
+
+def feed_description_for(p,sku):
+    return ((p.get('feed') or {}).get('description') or p.get('short_description') or p.get('manufacturer_use') or description_for(p,sku))[:5000]
 
 def product_image(p,sku=None):
     return (sku or {}).get('image') or p.get('image',{}).get('local') or ''
@@ -217,8 +227,8 @@ for s in eligible:
     p=prod[s['product_id']]
     rows.append({
       'id':s['id'],
-      'title':(p['name']+' '+s.get('variant','')).strip(),
-      'description':description_for(p,s),
+      'title':feed_title_for(p,s),
+      'description':feed_description_for(p,s),
       'availability':availability_feed(s.get('availability')),
       'condition':'new',
       'price':f"{s['price']} {s.get('currency','UAH')}",

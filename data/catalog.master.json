@@ -72,20 +72,45 @@
       "id": "plantlogic",
       "name": "Plantlogic",
       "enabled": true
+    },
+    {
+      "id": "icl",
+      "name": "ICL",
+      "enabled": true
+    },
+    {
+      "id": "haifa",
+      "name": "Haifa Group",
+      "enabled": true
+    },
+    {
+      "id": "alventa",
+      "name": "ALVENTA",
+      "enabled": true
+    },
+    {
+      "id": "neova",
+      "name": "Neova",
+      "enabled": true
+    },
+    {
+      "id": "maxicrop",
+      "name": "Maxicrop",
+      "enabled": true
     }
   ],
   "products": [
     {
       "id": "master-13-40-13",
       "slug": "master-13-40-13",
-      "name": "MASTER 13-40-13",
+      "name": "Master (Мастер) 13-40-13, водорозчинне мінеральне добриво",
       "official_name": "MASTER 13-40-13",
       "brand": "Valagro",
-      "manufacturer": "Valagro S.p.A.",
+      "manufacturer": "Valagro S.p.A. / Syngenta Biologicals",
       "country": "Італія",
       "category_id": "nutrition",
-      "product_type": "Водорозчинні мікрокристали",
-      "form": "Водорозчинні мікрокристали",
+      "product_type": "Водорозчинне комплексне добриво",
+      "form": "Мікрокристалічне",
       "npk": "13-40-13",
       "active_ingredient": "—",
       "concentration": "",
@@ -150,21 +175,39 @@
       "selected_by_bb610": true,
       "canonical_product_url": "/products/master-13-40-13/",
       "legacy_url": "product.html?id=master-13-40-13",
-      "default_sku_id": null,
-      "store_content_status": "product-only-no-bb610-sku",
-      "seo": {}
+      "default_sku_id": "BB610-VLG-MASTER134013-1KG",
+      "store_content_status": "launch-card-ready",
+      "seo": {
+        "title": "Master (Мастер) 13-40-13, водорозчинне мінеральне добриво — Valagro",
+        "description": "Фосфорна формула лінійки Master для фертигації та стартових фаз розвитку. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "short_description": "Фосфорна формула лінійки Master для фертигації та стартових фаз розвитку.",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "feed": {
+        "title": "Master (Мастер) 13-40-13, водорозчинне мінеральне добриво — Valagro",
+        "description": "Фосфорна формула лінійки Master для фертигації та стартових фаз розвитку.",
+        "brand_required": true
+      },
+      "image_alt": "Master (Мастер) 13-40-13, водорозчинне мінеральне добриво",
+      "feed_image_ready": true,
+      "launch_sku_ids": [
+        "BB610-VLG-MASTER134013-1KG",
+        "BB610-VLG-MASTER134013-250G"
+      ]
     },
     {
       "id": "master-20-20-20",
       "slug": "master-20-20-20",
-      "name": "MASTER 20-20-20",
+      "name": "Master (Мастер) 20-20-20, водорозчинне мінеральне добриво",
       "official_name": "MASTER 20-20-20",
       "brand": "Valagro",
-      "manufacturer": "Valagro S.p.A.",
+      "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
       "category_id": "nutrition",
-      "product_type": "Водорозчинні мікрокристали",
-      "form": "Водорозчинні мікрокристали",
+      "product_type": "Водорозчинне комплексне добриво",
+      "form": "Мікрокристалічне",
       "npk": "20-20-20",
       "active_ingredient": "—",
       "concentration": "",
@@ -230,21 +273,39 @@
       "selected_by_bb610": true,
       "canonical_product_url": "/products/master-20-20-20/",
       "legacy_url": "product.html?id=master-20-20-20",
-      "default_sku_id": null,
-      "store_content_status": "product-only-no-bb610-sku",
-      "seo": {}
+      "default_sku_id": "BB610-VLG-MASTER202020-1KG",
+      "store_content_status": "launch-card-ready",
+      "seo": {
+        "title": "Master (Мастер) 20-20-20, водорозчинне мінеральне добриво — Valagro",
+        "description": "Збалансована формула лінійки Master для фертигації. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "short_description": "Збалансована формула лінійки Master для фертигації.",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "feed": {
+        "title": "Master (Мастер) 20-20-20, водорозчинне мінеральне добриво — Valagro",
+        "description": "Збалансована формула лінійки Master для фертигації.",
+        "brand_required": true
+      },
+      "image_alt": "Master (Мастер) 20-20-20, водорозчинне мінеральне добриво",
+      "feed_image_ready": true,
+      "launch_sku_ids": [
+        "BB610-VLG-MASTER202020-1KG",
+        "BB610-VLG-MASTER202020-250G"
+      ]
     },
     {
       "id": "plantafol-20-20-20",
       "slug": "plantafol-20-20-20",
-      "name": "PLANTAFOL 20-20-20",
+      "name": "Plantafol (Плантафол) 20-20-20, добриво для позакореневого живлення",
       "official_name": "PLANTAFOL 20-20-20",
       "brand": "Valagro",
-      "manufacturer": "Valagro S.p.A.",
+      "manufacturer": "Valagro S.p.A. / Syngenta Biologicals",
       "country": "Італія",
       "category_id": "nutrition",
-      "product_type": "Водорозчинні кристали для листкового внесення",
-      "form": "Водорозчинні кристали для листкового внесення",
+      "product_type": "Мінеральне водорозчинне добриво для листкового живлення",
+      "form": "Водорозчинне",
       "npk": "20-20-20",
       "active_ingredient": "—",
       "concentration": "",
@@ -312,21 +373,38 @@
       "selected_by_bb610": true,
       "canonical_product_url": "/products/plantafol-20-20-20/",
       "legacy_url": "product.html?id=plantafol-20-20-20",
-      "default_sku_id": "BB610-VLG-PLANTAFOL202020-1KG",
-      "store_content_status": "sku-model-ready",
-      "seo": {}
+      "default_sku_id": "BB610-VLG-PLANTAFOL202020-250G",
+      "store_content_status": "launch-card-ready",
+      "seo": {
+        "title": "Plantafol (Плантафол) 20-20-20, добриво для позакореневого живлення — Valagro",
+        "description": "Збалансована формула Plantafol для позакореневого живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "short_description": "Збалансована формула Plantafol для позакореневого живлення.",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "feed": {
+        "title": "Plantafol (Плантафол) 20-20-20, добриво для позакореневого живлення — Valagro",
+        "description": "Збалансована формула Plantafol для позакореневого живлення.",
+        "brand_required": true
+      },
+      "image_alt": "Plantafol (Плантафол) 20-20-20, добриво для позакореневого живлення",
+      "feed_image_ready": true,
+      "launch_sku_ids": [
+        "BB610-VLG-PLANTAFOL202020-250G"
+      ]
     },
     {
       "id": "megafol",
       "slug": "megafol",
-      "name": "MEGAFOL™",
+      "name": "Megafol (Мегафол), біостимулятор-антистрес",
       "official_name": "MEGAFOL™",
       "brand": "Valagro",
-      "manufacturer": "Valagro S.p.A.",
+      "manufacturer": "Valagro S.p.A. / Syngenta Biologicals",
       "country": "Італія",
       "category_id": "biostimulation",
       "product_type": "Рідкий біостимулятор",
-      "form": "Рідкий біостимулятор",
+      "form": "Рідкий",
       "npk": "—",
       "active_ingredient": "—",
       "concentration": "",
@@ -386,24 +464,42 @@
       "canonical_product_url": "/products/megafol/",
       "legacy_url": "product.html?id=megafol",
       "default_sku_id": "BB610-VLG-MEGAFOL-100ML",
-      "store_content_status": "sku-model-ready",
-      "seo": {},
+      "store_content_status": "launch-card-ready",
+      "seo": {
+        "title": "Megafol (Мегафол), біостимулятор-антистрес — Valagro",
+        "description": "Біостимулятор-антистрес для підтримки рослин за абіотичного стресу. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
       "gallery": [
         "assets/img/real/megafol-25ml.png",
         "assets/img/real/megafol-100ml.png"
+      ],
+      "short_description": "Біостимулятор-антистрес для підтримки рослин за абіотичного стресу.",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "feed": {
+        "title": "Megafol (Мегафол), біостимулятор-антистрес — Valagro",
+        "description": "Біостимулятор-антистрес для підтримки рослин за абіотичного стресу.",
+        "brand_required": true
+      },
+      "image_alt": "Megafol (Мегафол), біостимулятор-антистрес",
+      "feed_image_ready": true,
+      "launch_sku_ids": [
+        "BB610-VLG-MEGAFOL-100ML",
+        "BB610-VLG-MEGAFOL-25ML"
       ]
     },
     {
       "id": "radifarm",
       "slug": "radifarm",
-      "name": "RADIFARM®",
+      "name": "Radifarm (Радіфарм), біостимулятор розвитку кореневої системи",
       "official_name": "RADIFARM®",
       "brand": "Valagro",
-      "manufacturer": "Valagro S.p.A.",
+      "manufacturer": "Valagro / Syngenta Biologicals",
       "country": "Італія",
       "category_id": "biostimulation",
-      "product_type": "Рідкий біостимулятор",
-      "form": "Рідкий біостимулятор",
+      "product_type": "Біостимулятор кореневої системи",
+      "form": "Рідкий",
       "npk": "—",
       "active_ingredient": "—",
       "concentration": "",
@@ -454,9 +550,26 @@
       "selected_by_bb610": true,
       "canonical_product_url": "/products/radifarm/",
       "legacy_url": "product.html?id=radifarm",
-      "default_sku_id": null,
-      "store_content_status": "product-only-no-bb610-sku",
-      "seo": {}
+      "default_sku_id": "BB610-VLG-RADIFARM-25ML",
+      "store_content_status": "launch-card-ready",
+      "seo": {
+        "title": "Radifarm (Радіфарм), біостимулятор розвитку кореневої системи — Valagro",
+        "description": "Біостимулятор для старту рослин і підтримки розвитку кореневої системи. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "short_description": "Біостимулятор для старту рослин і підтримки розвитку кореневої системи.",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "feed": {
+        "title": "Radifarm (Радіфарм), біостимулятор розвитку кореневої системи — Valagro",
+        "description": "Біостимулятор для старту рослин і підтримки розвитку кореневої системи.",
+        "brand_required": true
+      },
+      "image_alt": "Radifarm (Радіфарм), біостимулятор розвитку кореневої системи",
+      "feed_image_ready": true,
+      "launch_sku_ids": [
+        "BB610-VLG-RADIFARM-25ML"
+      ]
     },
     {
       "id": "brexil-mix",
@@ -933,6 +1046,2068 @@
       "store_content_status": "internal-test",
       "seo": {},
       "internal_only": true
+    },
+    {
+      "id": "control-dmp",
+      "slug": "control-dmp",
+      "name": "Control DMP (Контроль ДМП), регулятор кислотності та прилипач",
+      "official_name": "Control DMP (Контроль ДМП)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "protection",
+      "product_type": "Регулятор кислотності / ад’ювант",
+      "form": "Рідкий",
+      "npk": "—",
+      "short_description": "Засіб для коригування кислотності робочого розчину та покращення якості обробки.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Control DMP (Контроль ДМП), регулятор кислотності та прилипач — Valagro",
+        "description": "Засіб для коригування кислотності робочого розчину та покращення якості обробки. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Control DMP (Контроль ДМП), регулятор кислотності та прилипач — Valagro",
+        "description": "Засіб для коригування кислотності робочого розчину та покращення якості обробки.",
+        "brand_required": true
+      },
+      "image_alt": "Control DMP (Контроль ДМП), регулятор кислотності та прилипач",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "якість води / pH / ад’ювант"
+      ],
+      "manufacturer_use": "Засіб для коригування кислотності робочого розчину та покращення якості обробки.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-protection.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/control-dmp/",
+      "legacy_url": "product.html?id=control-dmp",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-CONTROLDMP-100ML",
+      "launch_sku_ids": [
+        "BB610-VLG-CONTROLDMP-100ML"
+      ]
+    },
+    {
+      "id": "pekacid-0-60-20",
+      "slug": "pekacid-0-60-20",
+      "name": "PeKacid (Пекацид) 0-60-20, фосфорно-калійне добриво",
+      "official_name": "PeKacid (Пекацид) 0-60-20",
+      "brand": "ICL",
+      "manufacturer": "ICL",
+      "country": "Ізраїль",
+      "category_id": "nutrition",
+      "product_type": "Водорозчинне фосфорно-калійне добриво з підкислювальним ефектом",
+      "form": "Порошкове водорозчинне",
+      "npk": "0-60-20",
+      "short_description": "Концентроване водорозчинне добриво для фосфорно-калійного живлення та роботи з лужною/жорсткою водою.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "PeKacid (Пекацид) 0-60-20, фосфорно-калійне добриво — ICL",
+        "description": "Концентроване водорозчинне добриво для фосфорно-калійного живлення та роботи з лужною/жорсткою водою. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "PeKacid (Пекацид) 0-60-20, фосфорно-калійне добриво — ICL",
+        "description": "Концентроване водорозчинне добриво для фосфорно-калійного живлення та роботи з лужною/жорсткою водою.",
+        "brand_required": true
+      },
+      "image_alt": "PeKacid (Пекацид) 0-60-20, фосфорно-калійне добриво",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "підкислення / фосфор / калій"
+      ],
+      "manufacturer_use": "Концентроване водорозчинне добриво для фосфорно-калійного живлення та роботи з лужною/жорсткою водою.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/pekacid-0-60-20/",
+      "legacy_url": "product.html?id=pekacid-0-60-20",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-ICL-PEKACID-1KG",
+      "launch_sku_ids": [
+        "BB610-ICL-PEKACID-1KG",
+        "BB610-ICL-PEKACID-100G"
+      ]
+    },
+    {
+      "id": "kendal",
+      "slug": "kendal",
+      "name": "Kendal (Кендал), біостимулятор",
+      "official_name": "Kendal (Кендал)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "biostimulation",
+      "product_type": "Біостимулятор",
+      "form": "Рідкий",
+      "npk": "—",
+      "short_description": "Біостимулятор для підтримки рослин у технологіях вирощування; застосування звіряється з актуальною етикеткою.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Kendal (Кендал), біостимулятор — Valagro",
+        "description": "Біостимулятор для підтримки рослин у технологіях вирощування; застосування звіряється з актуальною етикеткою. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Kendal (Кендал), біостимулятор — Valagro",
+        "description": "Біостимулятор для підтримки рослин у технологіях вирощування; застосування звіряється з актуальною етикеткою.",
+        "brand_required": true
+      },
+      "image_alt": "Kendal (Кендал), біостимулятор",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "біостимуляція / підтримка рослин"
+      ],
+      "manufacturer_use": "Біостимулятор для підтримки рослин у технологіях вирощування; застосування звіряється з актуальною етикеткою.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-biostim.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/kendal/",
+      "legacy_url": "product.html?id=kendal",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-KENDAL-25ML",
+      "launch_sku_ids": [
+        "BB610-VLG-KENDAL-25ML"
+      ]
+    },
+    {
+      "id": "viva",
+      "slug": "viva",
+      "name": "Viva (Віва), біостимулятор та активатор ґрунтової мікрофлори",
+      "official_name": "Viva (Віва)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "biostimulation",
+      "product_type": "Біостимулятор",
+      "form": "Рідкий",
+      "npk": "—",
+      "short_description": "Біостимулятор для підтримки кореневої зони та ґрунтової біологічної активності.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Viva (Віва), біостимулятор та активатор ґрунтової мікрофлори — Valagro",
+        "description": "Біостимулятор для підтримки кореневої зони та ґрунтової біологічної активності. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Viva (Віва), біостимулятор та активатор ґрунтової мікрофлори — Valagro",
+        "description": "Біостимулятор для підтримки кореневої зони та ґрунтової біологічної активності.",
+        "brand_required": true
+      },
+      "image_alt": "Viva (Віва), біостимулятор та активатор ґрунтової мікрофлори",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "ґрунт / корені / біостимуляція"
+      ],
+      "manufacturer_use": "Біостимулятор для підтримки кореневої зони та ґрунтової біологічної активності.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-biostim.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/viva/",
+      "legacy_url": "product.html?id=viva",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-VIVA-100ML",
+      "launch_sku_ids": [
+        "BB610-VLG-VIVA-100ML"
+      ]
+    },
+    {
+      "id": "osmocote-landscape-16-9-12",
+      "slug": "osmocote-landscape-16-9-12",
+      "name": "Osmocote Landscape 16-9-12 (3–4 міс.), добриво контрольованої дії",
+      "official_name": "Osmocote Landscape 16-9-12 (3–4 міс.)",
+      "brand": "ICL",
+      "manufacturer": "ICL",
+      "country": "—",
+      "category_id": "nutrition",
+      "product_type": "Добриво контрольованої дії",
+      "form": "Гранули",
+      "npk": "16-9-12",
+      "short_description": "Гранульоване добриво контрольованої дії для тривалого живлення.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Osmocote Landscape 16-9-12 (3–4 міс.), добриво контрольованої дії — ICL",
+        "description": "Гранульоване добриво контрольованої дії для тривалого живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Osmocote Landscape 16-9-12 (3–4 міс.), добриво контрольованої дії — ICL",
+        "description": "Гранульоване добриво контрольованої дії для тривалого живлення.",
+        "brand_required": true
+      },
+      "image_alt": "Osmocote Landscape 16-9-12 (3–4 міс.), добриво контрольованої дії",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "тривале живлення"
+      ],
+      "manufacturer_use": "Гранульоване добриво контрольованої дії для тривалого живлення.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/osmocote-landscape-16-9-12/",
+      "legacy_url": "product.html?id=osmocote-landscape-16-9-12",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-ICL-OSMOCOTE-LANDSCAPE-200G",
+      "launch_sku_ids": [
+        "BB610-ICL-OSMOCOTE-LANDSCAPE-200G"
+      ]
+    },
+    {
+      "id": "osmocote-quick-start-22-5-6",
+      "slug": "osmocote-quick-start-22-5-6",
+      "name": "Osmocote Quick Start 22-5-6 (4–5 міс.), добриво контрольованої дії",
+      "official_name": "Osmocote Quick Start 22-5-6 (4–5 міс.)",
+      "brand": "ICL",
+      "manufacturer": "ICL",
+      "country": "—",
+      "category_id": "nutrition",
+      "product_type": "Добриво контрольованої дії",
+      "form": "Гранули",
+      "npk": "22-5-6",
+      "short_description": "Гранульоване добриво контрольованої дії з акцентом на стартове живлення.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Osmocote Quick Start 22-5-6 (4–5 міс.), добриво контрольованої дії — ICL",
+        "description": "Гранульоване добриво контрольованої дії з акцентом на стартове живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Osmocote Quick Start 22-5-6 (4–5 міс.), добриво контрольованої дії — ICL",
+        "description": "Гранульоване добриво контрольованої дії з акцентом на стартове живлення.",
+        "brand_required": true
+      },
+      "image_alt": "Osmocote Quick Start 22-5-6 (4–5 міс.), добриво контрольованої дії",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "старт / тривале живлення"
+      ],
+      "manufacturer_use": "Гранульоване добриво контрольованої дії з акцентом на стартове живлення.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/osmocote-quick-start-22-5-6/",
+      "legacy_url": "product.html?id=osmocote-quick-start-22-5-6",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-ICL-OSMOCOTE-QUICKSTART-200G",
+      "launch_sku_ids": [
+        "BB610-ICL-OSMOCOTE-QUICKSTART-200G"
+      ]
+    },
+    {
+      "id": "plantafol-10-54-10",
+      "slug": "plantafol-10-54-10",
+      "name": "Plantafol (Плантафол) 10-54-10, добриво для позакореневого живлення",
+      "official_name": "Plantafol (Плантафол) 10-54-10",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Мінеральне водорозчинне добриво для листкового живлення",
+      "form": "Водорозчинне",
+      "npk": "10-54-10",
+      "short_description": "Фосфорна формула Plantafol для позакореневого живлення у відповідні фази розвитку.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Plantafol (Плантафол) 10-54-10, добриво для позакореневого живлення — Valagro",
+        "description": "Фосфорна формула Plantafol для позакореневого живлення у відповідні фази розвитку. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Plantafol (Плантафол) 10-54-10, добриво для позакореневого живлення — Valagro",
+        "description": "Фосфорна формула Plantafol для позакореневого живлення у відповідні фази розвитку.",
+        "brand_required": true
+      },
+      "image_alt": "Plantafol (Плантафол) 10-54-10, добриво для позакореневого живлення",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "листкове живлення / фосфор"
+      ],
+      "manufacturer_use": "Фосфорна формула Plantafol для позакореневого живлення у відповідні фази розвитку.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/plantafol-10-54-10/",
+      "legacy_url": "product.html?id=plantafol-10-54-10",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-PLANTAFOL105410-250G",
+      "launch_sku_ids": [
+        "BB610-VLG-PLANTAFOL105410-250G"
+      ]
+    },
+    {
+      "id": "plantafol-30-10-10",
+      "slug": "plantafol-30-10-10",
+      "name": "Plantafol (Плантафол) 30-10-10, добриво для позакореневого живлення",
+      "official_name": "Plantafol (Плантафол) 30-10-10",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Мінеральне водорозчинне добриво для листкового живлення",
+      "form": "Водорозчинне",
+      "npk": "30-10-10",
+      "short_description": "Азотна формула Plantafol для позакореневого живлення та вегетативного росту.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Plantafol (Плантафол) 30-10-10, добриво для позакореневого живлення — Valagro",
+        "description": "Азотна формула Plantafol для позакореневого живлення та вегетативного росту. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Plantafol (Плантафол) 30-10-10, добриво для позакореневого живлення — Valagro",
+        "description": "Азотна формула Plantafol для позакореневого живлення та вегетативного росту.",
+        "brand_required": true
+      },
+      "image_alt": "Plantafol (Плантафол) 30-10-10, добриво для позакореневого живлення",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "листкове живлення / вегетативний ріст"
+      ],
+      "manufacturer_use": "Азотна формула Plantafol для позакореневого живлення та вегетативного росту.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/plantafol-30-10-10/",
+      "legacy_url": "product.html?id=plantafol-30-10-10",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-PLANTAFOL301010-250G",
+      "launch_sku_ids": [
+        "BB610-VLG-PLANTAFOL301010-250G"
+      ]
+    },
+    {
+      "id": "plantafol-5-15-45",
+      "slug": "plantafol-5-15-45",
+      "name": "Plantafol (Плантафол) 5-15-45, добриво для позакореневого живлення",
+      "official_name": "Plantafol (Плантафол) 5-15-45",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Мінеральне водорозчинне добриво для листкового живлення",
+      "form": "Водорозчинне",
+      "npk": "5-15-45",
+      "short_description": "Калійна формула Plantafol для позакореневого живлення у період формування та достигання плодів.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Plantafol (Плантафол) 5-15-45, добриво для позакореневого живлення — Valagro",
+        "description": "Калійна формула Plantafol для позакореневого живлення у період формування та достигання плодів. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Plantafol (Плантафол) 5-15-45, добриво для позакореневого живлення — Valagro",
+        "description": "Калійна формула Plantafol для позакореневого живлення у період формування та достигання плодів.",
+        "brand_required": true
+      },
+      "image_alt": "Plantafol (Плантафол) 5-15-45, добриво для позакореневого живлення",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "листкове живлення / калій"
+      ],
+      "manufacturer_use": "Калійна формула Plantafol для позакореневого живлення у період формування та достигання плодів.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/plantafol-5-15-45/",
+      "legacy_url": "product.html?id=plantafol-5-15-45",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-PLANTAFOL51545-250G",
+      "launch_sku_ids": [
+        "BB610-VLG-PLANTAFOL51545-250G"
+      ]
+    },
+    {
+      "id": "haifa-mkp-0-52-34",
+      "slug": "haifa-mkp-0-52-34",
+      "name": "Haifa MKP (Хайфа) 0-52-34, монокалійфосфат",
+      "official_name": "Haifa MKP (Хайфа) 0-52-34",
+      "brand": "Haifa Group",
+      "manufacturer": "Haifa Group",
+      "country": "Ізраїль",
+      "category_id": "nutrition",
+      "product_type": "Водорозчинне фосфорно-калійне добриво",
+      "form": "Кристалічне водорозчинне",
+      "npk": "0-52-34",
+      "short_description": "Монокалійфосфат для забезпечення рослин фосфором і калієм.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Haifa MKP (Хайфа) 0-52-34, монокалійфосфат — Haifa Group",
+        "description": "Монокалійфосфат для забезпечення рослин фосфором і калієм. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Haifa MKP (Хайфа) 0-52-34, монокалійфосфат — Haifa Group",
+        "description": "Монокалійфосфат для забезпечення рослин фосфором і калієм.",
+        "brand_required": true
+      },
+      "image_alt": "Haifa MKP (Хайфа) 0-52-34, монокалійфосфат",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "фосфор / калій / фертигація"
+      ],
+      "manufacturer_use": "Монокалійфосфат для забезпечення рослин фосфором і калієм.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/haifa-mkp-0-52-34/",
+      "legacy_url": "product.html?id=haifa-mkp-0-52-34",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-HAIFA-MKP005234-200G",
+      "launch_sku_ids": [
+        "BB610-HAIFA-MKP005234-200G"
+      ]
+    },
+    {
+      "id": "solupotasse",
+      "slug": "solupotasse",
+      "name": "SoluPotasse (Солюпотас), сульфат калію",
+      "official_name": "SoluPotasse (Солюпотас)",
+      "brand": "SoluPotasse",
+      "manufacturer": "",
+      "country": "—",
+      "category_id": "nutrition",
+      "product_type": "Калійне мінеральне добриво",
+      "form": "Водорозчинне",
+      "npk": "—",
+      "short_description": "Сульфат калію для калійного живлення культур.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "SoluPotasse (Солюпотас), сульфат калію — SoluPotasse",
+        "description": "Сульфат калію для калійного живлення культур. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "SoluPotasse (Солюпотас), сульфат калію — SoluPotasse",
+        "description": "Сульфат калію для калійного живлення культур.",
+        "brand_required": true
+      },
+      "image_alt": "SoluPotasse (Солюпотас), сульфат калію",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "калій / плодоношення"
+      ],
+      "manufacturer_use": "Сульфат калію для калійного живлення культур.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/solupotasse/",
+      "legacy_url": "product.html?id=solupotasse",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-SOLUPOTASSE-K2SO4-1KG",
+      "launch_sku_ids": [
+        "BB610-SOLUPOTASSE-K2SO4-1KG"
+      ]
+    },
+    {
+      "id": "magnesium-sulfate",
+      "slug": "magnesium-sulfate",
+      "name": "Сульфат магнію, водорозчинне добриво",
+      "official_name": "Сульфат магнію",
+      "brand": "ALVENTA",
+      "manufacturer": "ALVENTA",
+      "country": "Польща",
+      "category_id": "nutrition",
+      "product_type": "Магнієво-сірчане водорозчинне добриво",
+      "form": "Порошкове",
+      "npk": "—",
+      "short_description": "Водорозчинне джерело магнію та сірки для живлення рослин.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Сульфат магнію, водорозчинне добриво — ALVENTA",
+        "description": "Водорозчинне джерело магнію та сірки для живлення рослин. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Сульфат магнію, водорозчинне добриво — ALVENTA",
+        "description": "Водорозчинне джерело магнію та сірки для живлення рослин.",
+        "brand_required": true
+      },
+      "image_alt": "Сульфат магнію, водорозчинне добриво",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "магній / сірка"
+      ],
+      "manufacturer_use": "Водорозчинне джерело магнію та сірки для живлення рослин.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/magnesium-sulfate/",
+      "legacy_url": "product.html?id=magnesium-sulfate",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-ALVENTA-MGSO4-1KG",
+      "launch_sku_ids": [
+        "BB610-ALVENTA-MGSO4-1KG"
+      ]
+    },
+    {
+      "id": "boroplus",
+      "slug": "boroplus",
+      "name": "Boroplus (Бороплюс), борне добриво",
+      "official_name": "Boroplus (Бороплюс)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Мікродобриво з бором",
+      "form": "Рідкий",
+      "npk": "—",
+      "short_description": "Борне мікродобриво для технологій живлення рослин.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Boroplus (Бороплюс), борне добриво — Valagro",
+        "description": "Борне мікродобриво для технологій живлення рослин. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Boroplus (Бороплюс), борне добриво — Valagro",
+        "description": "Борне мікродобриво для технологій живлення рослин.",
+        "brand_required": true
+      },
+      "image_alt": "Boroplus (Бороплюс), борне добриво",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "бор / цвітіння"
+      ],
+      "manufacturer_use": "Борне мікродобриво для технологій живлення рослин.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/boroplus/",
+      "legacy_url": "product.html?id=boroplus",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-BOROPLUS-100ML",
+      "launch_sku_ids": [
+        "BB610-VLG-BOROPLUS-100ML"
+      ]
+    },
+    {
+      "id": "brexil-combi",
+      "slug": "brexil-combi",
+      "name": "Brexil Combi (Брексіл Комбі), комплекс мікроелементів",
+      "official_name": "Brexil Combi (Брексіл Комбі)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Комплексне мікродобриво",
+      "form": "Водорозчинні мікрогранули",
+      "npk": "—",
+      "short_description": "Комплекс мікроелементів для позакореневого живлення.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Brexil Combi (Брексіл Комбі), комплекс мікроелементів — Valagro",
+        "description": "Комплекс мікроелементів для позакореневого живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Brexil Combi (Брексіл Комбі), комплекс мікроелементів — Valagro",
+        "description": "Комплекс мікроелементів для позакореневого живлення.",
+        "brand_required": true
+      },
+      "image_alt": "Brexil Combi (Брексіл Комбі), комплекс мікроелементів",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "мікроелементи"
+      ],
+      "manufacturer_use": "Комплекс мікроелементів для позакореневого живлення.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/brexil-combi/",
+      "legacy_url": "product.html?id=brexil-combi",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-BREXILCOMBI-15G",
+      "launch_sku_ids": [
+        "BB610-VLG-BREXILCOMBI-15G"
+      ]
+    },
+    {
+      "id": "brexil-fe",
+      "slug": "brexil-fe",
+      "name": "Brexil Fe (Брексіл Залізо), мікродобриво із залізом",
+      "official_name": "Brexil Fe (Брексіл Залізо)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Мікродобриво із залізом",
+      "form": "Водорозчинні мікрогранули",
+      "npk": "—",
+      "short_description": "Спеціалізоване мікродобриво із залізом для технологій живлення.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Brexil Fe (Брексіл Залізо), мікродобриво із залізом — Valagro",
+        "description": "Спеціалізоване мікродобриво із залізом для технологій живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Brexil Fe (Брексіл Залізо), мікродобриво із залізом — Valagro",
+        "description": "Спеціалізоване мікродобриво із залізом для технологій живлення.",
+        "brand_required": true
+      },
+      "image_alt": "Brexil Fe (Брексіл Залізо), мікродобриво із залізом",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "залізо / хлороз"
+      ],
+      "manufacturer_use": "Спеціалізоване мікродобриво із залізом для технологій живлення.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/brexil-fe/",
+      "legacy_url": "product.html?id=brexil-fe",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-BREXILFE-15G",
+      "launch_sku_ids": [
+        "BB610-VLG-BREXILFE-15G"
+      ]
+    },
+    {
+      "id": "ferrilene",
+      "slug": "ferrilene",
+      "name": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза",
+      "official_name": "Ferrilene (Феррілен) 4",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Хелат заліза",
+      "form": "Водорозчинне",
+      "npk": "—",
+      "short_description": "Хелат заліза для кореневого внесення та корекції залізного живлення.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза — Valagro",
+        "description": "Хелат заліза для кореневого внесення та корекції залізного живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза — Valagro",
+        "description": "Хелат заліза для кореневого внесення та корекції залізного живлення.",
+        "brand_required": true
+      },
+      "image_alt": "Ferrilene (Феррілен) 4,8% ortho-ortho, хелат заліза",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "залізо / хлороз"
+      ],
+      "manufacturer_use": "Хелат заліза для кореневого внесення та корекції залізного живлення.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/ferrilene/",
+      "legacy_url": "product.html?id=ferrilene",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-FERRILENE-10G",
+      "launch_sku_ids": [
+        "BB610-VLG-FERRILENE-10G"
+      ]
+    },
+    {
+      "id": "master-15-5-30",
+      "slug": "master-15-5-30",
+      "name": "Master (Мастер) 15-5-30, водорозчинне мінеральне добриво",
+      "official_name": "Master (Мастер) 15-5-30",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Водорозчинне комплексне добриво",
+      "form": "Мікрокристалічне",
+      "npk": "15-5-30",
+      "short_description": "Калійна формула лінійки Master для фертигації у продуктивні фази.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Master (Мастер) 15-5-30, водорозчинне мінеральне добриво — Valagro",
+        "description": "Калійна формула лінійки Master для фертигації у продуктивні фази. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Master (Мастер) 15-5-30, водорозчинне мінеральне добриво — Valagro",
+        "description": "Калійна формула лінійки Master для фертигації у продуктивні фази.",
+        "brand_required": true
+      },
+      "image_alt": "Master (Мастер) 15-5-30, водорозчинне мінеральне добриво",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "фертигація / калій"
+      ],
+      "manufacturer_use": "Калійна формула лінійки Master для фертигації у продуктивні фази.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/master-15-5-30/",
+      "legacy_url": "product.html?id=master-15-5-30",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-MASTER15530-1KG",
+      "launch_sku_ids": [
+        "BB610-VLG-MASTER15530-1KG",
+        "BB610-VLG-MASTER15530-250G"
+      ]
+    },
+    {
+      "id": "master-3-11-38",
+      "slug": "master-3-11-38",
+      "name": "Master (Мастер) 3-11-38, водорозчинне мінеральне добриво",
+      "official_name": "Master (Мастер) 3-11-38",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Водорозчинне комплексне добриво",
+      "form": "Мікрокристалічне",
+      "npk": "3-11-38",
+      "short_description": "Висококалійна формула лінійки Master для фертигації.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Master (Мастер) 3-11-38, водорозчинне мінеральне добриво — Valagro",
+        "description": "Висококалійна формула лінійки Master для фертигації. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Master (Мастер) 3-11-38, водорозчинне мінеральне добриво — Valagro",
+        "description": "Висококалійна формула лінійки Master для фертигації.",
+        "brand_required": true
+      },
+      "image_alt": "Master (Мастер) 3-11-38, водорозчинне мінеральне добриво",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "фертигація / калій / плодоношення"
+      ],
+      "manufacturer_use": "Висококалійна формула лінійки Master для фертигації.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/master-3-11-38/",
+      "legacy_url": "product.html?id=master-3-11-38",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-MASTER31138-1KG",
+      "launch_sku_ids": [
+        "BB610-VLG-MASTER31138-1KG",
+        "BB610-VLG-MASTER31138-250G"
+      ]
+    },
+    {
+      "id": "kemira-rooter",
+      "slug": "kemira-rooter",
+      "name": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи",
+      "official_name": "Кеміра Укорінювач",
+      "brand": "Кеміра",
+      "manufacturer": "",
+      "country": "—",
+      "category_id": "biostimulation",
+      "product_type": "Біостимулятор кореневої системи",
+      "form": "Рідкий",
+      "npk": "—",
+      "short_description": "Продукт для підтримки укорінення та розвитку кореневої системи.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи — Кеміра",
+        "description": "Продукт для підтримки укорінення та розвитку кореневої системи. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи — Кеміра",
+        "description": "Продукт для підтримки укорінення та розвитку кореневої системи.",
+        "brand_required": true
+      },
+      "image_alt": "Кеміра Укорінювач, біостимулятор розвитку кореневої системи",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "коренева система / укорінення"
+      ],
+      "manufacturer_use": "Продукт для підтримки укорінення та розвитку кореневої системи.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-biostim.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/kemira-rooter/",
+      "legacy_url": "product.html?id=kemira-rooter",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-KEMIRA-ROOTER-100ML",
+      "launch_sku_ids": [
+        "BB610-KEMIRA-ROOTER-100ML"
+      ]
+    },
+    {
+      "id": "benefit-pz",
+      "slug": "benefit-pz",
+      "name": "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів",
+      "official_name": "Benefit PZ (Бенефіт ПЗ)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "biostimulation",
+      "product_type": "Біостимулятор",
+      "form": "Рідкий",
+      "npk": "—",
+      "short_description": "Біостимулятор для технологій формування та росту плодів.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів — Valagro",
+        "description": "Біостимулятор для технологій формування та росту плодів. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів — Valagro",
+        "description": "Біостимулятор для технологій формування та росту плодів.",
+        "brand_required": true
+      },
+      "image_alt": "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "формування / ріст плодів"
+      ],
+      "manufacturer_use": "Біостимулятор для технологій формування та росту плодів.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-biostim.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/benefit-pz/",
+      "legacy_url": "product.html?id=benefit-pz",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-BENEFITPZ-25ML",
+      "launch_sku_ids": [
+        "BB610-VLG-BENEFITPZ-25ML"
+      ]
+    },
+    {
+      "id": "blackjak",
+      "slug": "blackjak",
+      "name": "BlackJak (Блекджек), біостимулятор розвитку кореневої системи",
+      "official_name": "BlackJak (Блекджек)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "biostimulation",
+      "product_type": "Біостимулятор кореневої системи",
+      "form": "Рідкий",
+      "npk": "—",
+      "short_description": "Біостимулятор для підтримки кореневої системи.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "BlackJak (Блекджек), біостимулятор розвитку кореневої системи — Valagro",
+        "description": "Біостимулятор для підтримки кореневої системи. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "BlackJak (Блекджек), біостимулятор розвитку кореневої системи — Valagro",
+        "description": "Біостимулятор для підтримки кореневої системи.",
+        "brand_required": true
+      },
+      "image_alt": "BlackJak (Блекджек), біостимулятор розвитку кореневої системи",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "коренева система"
+      ],
+      "manufacturer_use": "Біостимулятор для підтримки кореневої системи.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-biostim.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/blackjak/",
+      "legacy_url": "product.html?id=blackjak",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-BLACKJAK-100ML",
+      "launch_sku_ids": [
+        "BB610-VLG-BLACKJAK-100ML"
+      ]
+    },
+    {
+      "id": "maxicrop-cream",
+      "slug": "maxicrop-cream",
+      "name": "Maxicrop Cream (Максікроп Крем), біостимулятор",
+      "official_name": "Maxicrop Cream (Максікроп Крем)",
+      "brand": "Maxicrop",
+      "manufacturer": "Maxicrop / Syngenta Biologicals",
+      "country": "—",
+      "category_id": "biostimulation",
+      "product_type": "Біостимулятор",
+      "form": "Рідкий",
+      "npk": "—",
+      "short_description": "Біостимулятор для загальної підтримки росту та розвитку рослин.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Maxicrop Cream (Максікроп Крем), біостимулятор — Maxicrop",
+        "description": "Біостимулятор для загальної підтримки росту та розвитку рослин. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Maxicrop Cream (Максікроп Крем), біостимулятор — Maxicrop",
+        "description": "Біостимулятор для загальної підтримки росту та розвитку рослин.",
+        "brand_required": true
+      },
+      "image_alt": "Maxicrop Cream (Максікроп Крем), біостимулятор",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "біостимуляція"
+      ],
+      "manufacturer_use": "Біостимулятор для загальної підтримки росту та розвитку рослин.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-biostim.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/maxicrop-cream/",
+      "legacy_url": "product.html?id=maxicrop-cream",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-MAXICROP-CREAM-25ML",
+      "launch_sku_ids": [
+        "BB610-MAXICROP-CREAM-25ML"
+      ]
+    },
+    {
+      "id": "neocore",
+      "slug": "neocore",
+      "name": "NeoCore (НеоКор), біостимулятор розвитку кореневої системи",
+      "official_name": "NeoCore (НеоКор)",
+      "brand": "Neova",
+      "manufacturer": "Neova",
+      "country": "—",
+      "category_id": "biostimulation",
+      "product_type": "Біостимулятор кореневої системи",
+      "form": "Рідкий",
+      "npk": "—",
+      "short_description": "Біостимулятор для підтримки розвитку кореневої системи.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "NeoCore (НеоКор), біостимулятор розвитку кореневої системи — Neova",
+        "description": "Біостимулятор для підтримки розвитку кореневої системи. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "NeoCore (НеоКор), біостимулятор розвитку кореневої системи — Neova",
+        "description": "Біостимулятор для підтримки розвитку кореневої системи.",
+        "brand_required": true
+      },
+      "image_alt": "NeoCore (НеоКор), біостимулятор розвитку кореневої системи",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "коренева система"
+      ],
+      "manufacturer_use": "Біостимулятор для підтримки розвитку кореневої системи.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-biostim.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/neocore/",
+      "legacy_url": "product.html?id=neocore",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-NEOVA-NEOCORE-30ML",
+      "launch_sku_ids": [
+        "BB610-NEOVA-NEOCORE-30ML"
+      ]
+    },
+    {
+      "id": "sweet",
+      "slug": "sweet",
+      "name": "Sweet (Світ), біостимулятор достигання та забарвлення плодів",
+      "official_name": "Sweet (Світ)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "biostimulation",
+      "product_type": "Біостимулятор",
+      "form": "Рідкий",
+      "npk": "—",
+      "short_description": "Біостимулятор для технологій достигання та формування забарвлення плодів.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Sweet (Світ), біостимулятор достигання та забарвлення плодів — Valagro",
+        "description": "Біостимулятор для технологій достигання та формування забарвлення плодів. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Sweet (Світ), біостимулятор достигання та забарвлення плодів — Valagro",
+        "description": "Біостимулятор для технологій достигання та формування забарвлення плодів.",
+        "brand_required": true
+      },
+      "image_alt": "Sweet (Світ), біостимулятор достигання та забарвлення плодів",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "достигання / забарвлення плодів"
+      ],
+      "manufacturer_use": "Біостимулятор для технологій достигання та формування забарвлення плодів.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-biostim.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/sweet/",
+      "legacy_url": "product.html?id=sweet",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-SWEET-25ML",
+      "launch_sku_ids": [
+        "BB610-VLG-SWEET-25ML"
+      ]
+    },
+    {
+      "id": "osmocote-potassium-12-8-19",
+      "slug": "osmocote-potassium-12-8-19",
+      "name": "Osmocote Potassium 12-8-19 (3–4 міс.), добриво контрольованої дії",
+      "official_name": "Osmocote Potassium 12-8-19 (3–4 міс.)",
+      "brand": "ICL",
+      "manufacturer": "ICL",
+      "country": "—",
+      "category_id": "nutrition",
+      "product_type": "Добриво контрольованої дії",
+      "form": "Гранули",
+      "npk": "12-8-19",
+      "short_description": "Калійна формула добрива контрольованої дії для тривалого живлення.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Osmocote Potassium 12-8-19 (3–4 міс.), добриво контрольованої дії — ICL",
+        "description": "Калійна формула добрива контрольованої дії для тривалого живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Osmocote Potassium 12-8-19 (3–4 міс.), добриво контрольованої дії — ICL",
+        "description": "Калійна формула добрива контрольованої дії для тривалого живлення.",
+        "brand_required": true
+      },
+      "image_alt": "Osmocote Potassium 12-8-19 (3–4 міс.), добриво контрольованої дії",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "тривале живлення / калій"
+      ],
+      "manufacturer_use": "Калійна формула добрива контрольованої дії для тривалого живлення.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/osmocote-potassium-12-8-19/",
+      "legacy_url": "product.html?id=osmocote-potassium-12-8-19",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-ICL-OSMOCOTE-POTASSIUM-200G",
+      "launch_sku_ids": [
+        "BB610-ICL-OSMOCOTE-POTASSIUM-200G"
+      ]
+    },
+    {
+      "id": "osmocote-flowering-12-7-18",
+      "slug": "osmocote-flowering-12-7-18",
+      "name": "Osmocote Flowering 12-7-18 (2–3 міс.), добриво контрольованої дії",
+      "official_name": "Osmocote Flowering 12-7-18 (2–3 міс.)",
+      "brand": "ICL",
+      "manufacturer": "ICL",
+      "country": "—",
+      "category_id": "nutrition",
+      "product_type": "Добриво контрольованої дії",
+      "form": "Гранули",
+      "npk": "12-7-18",
+      "short_description": "Формула добрива контрольованої дії для квітучих культур.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Osmocote Flowering 12-7-18 (2–3 міс.), добриво контрольованої дії — ICL",
+        "description": "Формула добрива контрольованої дії для квітучих культур. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Osmocote Flowering 12-7-18 (2–3 міс.), добриво контрольованої дії — ICL",
+        "description": "Формула добрива контрольованої дії для квітучих культур.",
+        "brand_required": true
+      },
+      "image_alt": "Osmocote Flowering 12-7-18 (2–3 міс.), добриво контрольованої дії",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "тривале живлення / цвітіння"
+      ],
+      "manufacturer_use": "Формула добрива контрольованої дії для квітучих культур.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/osmocote-flowering-12-7-18/",
+      "legacy_url": "product.html?id=osmocote-flowering-12-7-18",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-ICL-OSMOCOTE-FLOWERING-200G",
+      "launch_sku_ids": [
+        "BB610-ICL-OSMOCOTE-FLOWERING-200G"
+      ]
+    },
+    {
+      "id": "plantafol-0-25-50",
+      "slug": "plantafol-0-25-50",
+      "name": "Plantafol (Плантафол) 0-25-50, добриво для позакореневого живлення",
+      "official_name": "Plantafol (Плантафол) 0-25-50",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Мінеральне водорозчинне добриво для листкового живлення",
+      "form": "Водорозчинне",
+      "npk": "0-25-50",
+      "short_description": "Висококалійна формула Plantafol для позакореневого живлення.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Plantafol (Плантафол) 0-25-50, добриво для позакореневого живлення — Valagro",
+        "description": "Висококалійна формула Plantafol для позакореневого живлення. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Plantafol (Плантафол) 0-25-50, добриво для позакореневого живлення — Valagro",
+        "description": "Висококалійна формула Plantafol для позакореневого живлення.",
+        "brand_required": true
+      },
+      "image_alt": "Plantafol (Плантафол) 0-25-50, добриво для позакореневого живлення",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "листкове живлення / калій"
+      ],
+      "manufacturer_use": "Висококалійна формула Plantafol для позакореневого живлення.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/plantafol-0-25-50/",
+      "legacy_url": "product.html?id=plantafol-0-25-50",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-PLANTAFOL02550-250G",
+      "launch_sku_ids": [
+        "BB610-VLG-PLANTAFOL02550-250G"
+      ]
+    },
+    {
+      "id": "brexil-ca",
+      "slug": "brexil-ca",
+      "name": "Brexil Ca (Брексіл Кальцій), мікродобриво з кальцієм",
+      "official_name": "Brexil Ca (Брексіл Кальцій)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Кальцієве мікродобриво",
+      "form": "Водорозчинні мікрогранули",
+      "npk": "—",
+      "short_description": "Спеціалізоване мікродобриво з кальцієм.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Brexil Ca (Брексіл Кальцій), мікродобриво з кальцієм — Valagro",
+        "description": "Спеціалізоване мікродобриво з кальцієм. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Brexil Ca (Брексіл Кальцій), мікродобриво з кальцієм — Valagro",
+        "description": "Спеціалізоване мікродобриво з кальцієм.",
+        "brand_required": true
+      },
+      "image_alt": "Brexil Ca (Брексіл Кальцій), мікродобриво з кальцієм",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "кальцій"
+      ],
+      "manufacturer_use": "Спеціалізоване мікродобриво з кальцієм.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/brexil-ca/",
+      "legacy_url": "product.html?id=brexil-ca",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-BREXILCA-15G",
+      "launch_sku_ids": [
+        "BB610-VLG-BREXILCA-15G"
+      ]
+    },
+    {
+      "id": "brexil-zn",
+      "slug": "brexil-zn",
+      "name": "Brexil Zn (Брексіл Цинк), мікродобриво з цинком",
+      "official_name": "Brexil Zn (Брексіл Цинк)",
+      "brand": "Valagro",
+      "manufacturer": "Valagro / Syngenta Biologicals",
+      "country": "Італія",
+      "category_id": "nutrition",
+      "product_type": "Цинкове мікродобриво",
+      "form": "Водорозчинні мікрогранули",
+      "npk": "—",
+      "short_description": "Спеціалізоване мікродобриво з цинком.",
+      "selected_by_bb610": true,
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "seo": {
+        "title": "Brexil Zn (Брексіл Цинк), мікродобриво з цинком — Valagro",
+        "description": "Спеціалізоване мікродобриво з цинком. Купити в BB610 Market з доставкою по Україні. Фактичні ціна та наявність відображаються для конкретної фасовки."
+      },
+      "feed": {
+        "title": "Brexil Zn (Брексіл Цинк), мікродобриво з цинком — Valagro",
+        "description": "Спеціалізоване мікродобриво з цинком.",
+        "brand_required": true
+      },
+      "image_alt": "Brexil Zn (Брексіл Цинк), мікродобриво з цинком",
+      "active_ingredient": "—",
+      "concentration": "",
+      "composition": [],
+      "cultures": [],
+      "purposes": [
+        "цинк"
+      ],
+      "manufacturer_use": "Спеціалізоване мікродобриво з цинком.",
+      "application": "Застосовувати відповідно до актуальної етикетки/інструкції для конкретної культури та способу внесення.",
+      "rate": "Норма внесення залежить від культури, фази розвитку та способу застосування; звіряти з актуальною етикеткою.",
+      "restrictions": "Перед застосуванням перевірити актуальну етикетку, сумісність та локальні вимоги. Не перевищувати регламент виробника.",
+      "target": "",
+      "waiting_period": "",
+      "hazard_class": "",
+      "registration": "",
+      "factory_packs": [],
+      "documents": [],
+      "source": {
+        "title": "Organic Planet — стартова матриця BB610: назва та фасування",
+        "url": "https://organicplanet.com.ua/",
+        "verifiedAt": "2026-09-02",
+        "primary": false
+      },
+      "verification": {
+        "status": "supplier-matrix-verified",
+        "verified": false,
+        "verifiedAt": "2026-09-02",
+        "scope": "Назва та фасування підтверджені матрицею постачальника; технічні твердження потребують первинного джерела",
+        "note": "BB610 не вигадує технічні характеристики, GTIN або MPN."
+      },
+      "image": {
+        "local": "assets/img/product-npk.svg",
+        "officialSourceUrl": "",
+        "status": "category-placeholder"
+      },
+      "feed_image_ready": false,
+      "canonical_product_url": "/products/brexil-zn/",
+      "legacy_url": "product.html?id=brexil-zn",
+      "store_content_status": "launch-card-ready",
+      "default_sku_id": "BB610-VLG-BREXILZN-15G",
+      "launch_sku_ids": [
+        "BB610-VLG-BREXILZN-15G"
+      ]
     }
   ],
   "variants": [
@@ -1120,7 +3295,10 @@
       "volume_weight": {
         "value": 25,
         "unit": "ml"
-      }
+      },
+      "quantity": 25,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
     },
     {
       "id": "megafol--100ml",
@@ -1129,7 +3307,314 @@
       "volume_weight": {
         "value": 100,
         "unit": "ml"
-      }
+      },
+      "quantity": 100,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "control-dmp--100ml",
+      "product_id": "control-dmp",
+      "label": "100 мл",
+      "quantity": 100,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "pekacid-0-60-20--1kg",
+      "product_id": "pekacid-0-60-20",
+      "label": "1 кг",
+      "quantity": 1,
+      "unit": "kg",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "pekacid-0-60-20--100g",
+      "product_id": "pekacid-0-60-20",
+      "label": "100 г",
+      "quantity": 100,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "kendal--25ml",
+      "product_id": "kendal",
+      "label": "25 мл",
+      "quantity": 25,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "radifarm--25ml",
+      "product_id": "radifarm",
+      "label": "25 мл",
+      "quantity": 25,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "viva--100ml",
+      "product_id": "viva",
+      "label": "100 мл",
+      "quantity": 100,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "osmocote-landscape-16-9-12--200g",
+      "product_id": "osmocote-landscape-16-9-12",
+      "label": "200 г",
+      "quantity": 200,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "osmocote-quick-start-22-5-6--200g",
+      "product_id": "osmocote-quick-start-22-5-6",
+      "label": "200 г",
+      "quantity": 200,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "plantafol-10-54-10--250g",
+      "product_id": "plantafol-10-54-10",
+      "label": "250 г",
+      "quantity": 250,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "plantafol-30-10-10--250g",
+      "product_id": "plantafol-30-10-10",
+      "label": "250 г",
+      "quantity": 250,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "plantafol-5-15-45--250g",
+      "product_id": "plantafol-5-15-45",
+      "label": "250 г",
+      "quantity": 250,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "haifa-mkp-0-52-34--200g",
+      "product_id": "haifa-mkp-0-52-34",
+      "label": "200 г",
+      "quantity": 200,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "solupotasse--1kg",
+      "product_id": "solupotasse",
+      "label": "1 кг",
+      "quantity": 1,
+      "unit": "kg",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "magnesium-sulfate--1kg",
+      "product_id": "magnesium-sulfate",
+      "label": "1 кг",
+      "quantity": 1,
+      "unit": "kg",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "boroplus--100ml",
+      "product_id": "boroplus",
+      "label": "100 мл",
+      "quantity": 100,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "brexil-combi--15g",
+      "product_id": "brexil-combi",
+      "label": "15 г",
+      "quantity": 15,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "brexil-fe--15g",
+      "product_id": "brexil-fe",
+      "label": "15 г",
+      "quantity": 15,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "ferrilene--10g",
+      "product_id": "ferrilene",
+      "label": "10 г",
+      "quantity": 10,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "master-13-40-13--1kg",
+      "product_id": "master-13-40-13",
+      "label": "1 кг",
+      "quantity": 1,
+      "unit": "kg",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "master-13-40-13--250g",
+      "product_id": "master-13-40-13",
+      "label": "250 г",
+      "quantity": 250,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "master-15-5-30--1kg",
+      "product_id": "master-15-5-30",
+      "label": "1 кг",
+      "quantity": 1,
+      "unit": "kg",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "master-15-5-30--250g",
+      "product_id": "master-15-5-30",
+      "label": "250 г",
+      "quantity": 250,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "master-20-20-20--1kg",
+      "product_id": "master-20-20-20",
+      "label": "1 кг",
+      "quantity": 1,
+      "unit": "kg",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "master-20-20-20--250g",
+      "product_id": "master-20-20-20",
+      "label": "250 г",
+      "quantity": 250,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "master-3-11-38--1kg",
+      "product_id": "master-3-11-38",
+      "label": "1 кг",
+      "quantity": 1,
+      "unit": "kg",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "master-3-11-38--250g",
+      "product_id": "master-3-11-38",
+      "label": "250 г",
+      "quantity": 250,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "kemira-rooter--100ml",
+      "product_id": "kemira-rooter",
+      "label": "100 мл",
+      "quantity": 100,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "benefit-pz--25ml",
+      "product_id": "benefit-pz",
+      "label": "25 мл",
+      "quantity": 25,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "blackjak--100ml",
+      "product_id": "blackjak",
+      "label": "100 мл",
+      "quantity": 100,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "maxicrop-cream--25ml",
+      "product_id": "maxicrop-cream",
+      "label": "25 мл",
+      "quantity": 25,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "neocore--30ml",
+      "product_id": "neocore",
+      "label": "30 мл",
+      "quantity": 30,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "sweet--25ml",
+      "product_id": "sweet",
+      "label": "25 мл",
+      "quantity": 25,
+      "unit": "ml",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "osmocote-potassium-12-8-19--200g",
+      "product_id": "osmocote-potassium-12-8-19",
+      "label": "200 г",
+      "quantity": 200,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "osmocote-flowering-12-7-18--200g",
+      "product_id": "osmocote-flowering-12-7-18",
+      "label": "200 г",
+      "quantity": 200,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "plantafol-0-25-50--250g",
+      "product_id": "plantafol-0-25-50",
+      "label": "250 г",
+      "quantity": 250,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "plantafol-20-20-20--250g",
+      "product_id": "plantafol-20-20-20",
+      "label": "250 г",
+      "quantity": 250,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "brexil-ca--15g",
+      "product_id": "brexil-ca",
+      "label": "15 г",
+      "quantity": 15,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
+    },
+    {
+      "id": "brexil-zn--15g",
+      "product_id": "brexil-zn",
+      "label": "15 г",
+      "quantity": 15,
+      "unit": "g",
+      "status": "supplier-matrix-confirmed"
     }
   ],
   "skus": [
@@ -1627,11 +4112,11 @@
       },
       "gtin_ean": null,
       "mpn": null,
-      "price": 50,
+      "price": null,
       "currency": "UAH",
       "availability": "unknown",
       "stock_label": "Наявність уточнюється",
-      "offer_status": "active",
+      "offer_status": "draft",
       "feed_eligible": false,
       "url": "/products/megafol-25ml/",
       "image": "assets/img/real/megafol-25ml.png",
@@ -1639,12 +4124,17 @@
       "importer": null,
       "packer": null,
       "shipping": [
-        "Відправка по Україні — умови уточнюються"
+        "Доставка по Україні згідно з умовами BB610 Market"
       ],
-      "commercial_status": "active",
-      "commercial_note": "Ціна BB610 підтверджена; фактична наявність ще не вказана.",
-      "pack_source_status": "bb610-retail-pack",
-      "seo": {}
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "seo": {},
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "feed_image_ready": true
     },
     {
       "id": "BB610-VLG-MEGAFOL-100ML",
@@ -1659,11 +4149,11 @@
       },
       "gtin_ean": null,
       "mpn": null,
-      "price": 172,
+      "price": null,
       "currency": "UAH",
       "availability": "unknown",
       "stock_label": "Наявність уточнюється",
-      "offer_status": "active",
+      "offer_status": "draft",
       "feed_eligible": false,
       "url": "/products/megafol-100ml/",
       "image": "assets/img/real/megafol-100ml.png",
@@ -1671,12 +4161,1347 @@
       "importer": null,
       "packer": null,
       "shipping": [
-        "Відправка по Україні — умови уточнюються"
+        "Доставка по Україні згідно з умовами BB610 Market"
       ],
-      "commercial_status": "active",
-      "commercial_note": "Ціна BB610 підтверджена; фактична наявність ще не вказана.",
-      "pack_source_status": "bb610-retail-pack",
-      "seo": {}
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "seo": {},
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "feed_image_ready": true
+    },
+    {
+      "id": "BB610-VLG-CONTROLDMP-100ML",
+      "sku": "BB610-VLG-CONTROLDMP-100ML",
+      "product_id": "control-dmp",
+      "variant_id": "control-dmp--100ml",
+      "slug": "control-dmp-100ml",
+      "variant": "100 мл",
+      "volume_weight": {
+        "value": 100,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/control-dmp-100ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-ICL-PEKACID-1KG",
+      "sku": "BB610-ICL-PEKACID-1KG",
+      "product_id": "pekacid-0-60-20",
+      "variant_id": "pekacid-0-60-20--1kg",
+      "slug": "pekacid-0-60-20-1kg",
+      "variant": "1 кг",
+      "volume_weight": {
+        "value": 1,
+        "unit": "kg"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/pekacid-0-60-20-1kg/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-ICL-PEKACID-100G",
+      "sku": "BB610-ICL-PEKACID-100G",
+      "product_id": "pekacid-0-60-20",
+      "variant_id": "pekacid-0-60-20--100g",
+      "slug": "pekacid-0-60-20-100g",
+      "variant": "100 г",
+      "volume_weight": {
+        "value": 100,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/pekacid-0-60-20-100g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-KENDAL-25ML",
+      "sku": "BB610-VLG-KENDAL-25ML",
+      "product_id": "kendal",
+      "variant_id": "kendal--25ml",
+      "slug": "kendal-25ml",
+      "variant": "25 мл",
+      "volume_weight": {
+        "value": 25,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/kendal-25ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-RADIFARM-25ML",
+      "sku": "BB610-VLG-RADIFARM-25ML",
+      "product_id": "radifarm",
+      "variant_id": "radifarm--25ml",
+      "slug": "radifarm-25ml",
+      "variant": "25 мл",
+      "volume_weight": {
+        "value": 25,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/radifarm-25ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-VIVA-100ML",
+      "sku": "BB610-VLG-VIVA-100ML",
+      "product_id": "viva",
+      "variant_id": "viva--100ml",
+      "slug": "viva-100ml",
+      "variant": "100 мл",
+      "volume_weight": {
+        "value": 100,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/viva-100ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-ICL-OSMOCOTE-LANDSCAPE-200G",
+      "sku": "BB610-ICL-OSMOCOTE-LANDSCAPE-200G",
+      "product_id": "osmocote-landscape-16-9-12",
+      "variant_id": "osmocote-landscape-16-9-12--200g",
+      "slug": "osmocote-landscape-16-9-12-200g",
+      "variant": "200 г",
+      "volume_weight": {
+        "value": 200,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/osmocote-landscape-16-9-12-200g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-ICL-OSMOCOTE-QUICKSTART-200G",
+      "sku": "BB610-ICL-OSMOCOTE-QUICKSTART-200G",
+      "product_id": "osmocote-quick-start-22-5-6",
+      "variant_id": "osmocote-quick-start-22-5-6--200g",
+      "slug": "osmocote-quick-start-22-5-6-200g",
+      "variant": "200 г",
+      "volume_weight": {
+        "value": 200,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/osmocote-quick-start-22-5-6-200g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL105410-250G",
+      "sku": "BB610-VLG-PLANTAFOL105410-250G",
+      "product_id": "plantafol-10-54-10",
+      "variant_id": "plantafol-10-54-10--250g",
+      "slug": "plantafol-10-54-10-250g",
+      "variant": "250 г",
+      "volume_weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/plantafol-10-54-10-250g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL301010-250G",
+      "sku": "BB610-VLG-PLANTAFOL301010-250G",
+      "product_id": "plantafol-30-10-10",
+      "variant_id": "plantafol-30-10-10--250g",
+      "slug": "plantafol-30-10-10-250g",
+      "variant": "250 г",
+      "volume_weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/plantafol-30-10-10-250g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL51545-250G",
+      "sku": "BB610-VLG-PLANTAFOL51545-250G",
+      "product_id": "plantafol-5-15-45",
+      "variant_id": "plantafol-5-15-45--250g",
+      "slug": "plantafol-5-15-45-250g",
+      "variant": "250 г",
+      "volume_weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/plantafol-5-15-45-250g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-HAIFA-MKP005234-200G",
+      "sku": "BB610-HAIFA-MKP005234-200G",
+      "product_id": "haifa-mkp-0-52-34",
+      "variant_id": "haifa-mkp-0-52-34--200g",
+      "slug": "haifa-mkp-0-52-34-200g",
+      "variant": "200 г",
+      "volume_weight": {
+        "value": 200,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/haifa-mkp-0-52-34-200g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-SOLUPOTASSE-K2SO4-1KG",
+      "sku": "BB610-SOLUPOTASSE-K2SO4-1KG",
+      "product_id": "solupotasse",
+      "variant_id": "solupotasse--1kg",
+      "slug": "solupotasse-1kg",
+      "variant": "1 кг",
+      "volume_weight": {
+        "value": 1,
+        "unit": "kg"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/solupotasse-1kg/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-ALVENTA-MGSO4-1KG",
+      "sku": "BB610-ALVENTA-MGSO4-1KG",
+      "product_id": "magnesium-sulfate",
+      "variant_id": "magnesium-sulfate--1kg",
+      "slug": "magnesium-sulfate-1kg",
+      "variant": "1 кг",
+      "volume_weight": {
+        "value": 1,
+        "unit": "kg"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/magnesium-sulfate-1kg/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-BOROPLUS-100ML",
+      "sku": "BB610-VLG-BOROPLUS-100ML",
+      "product_id": "boroplus",
+      "variant_id": "boroplus--100ml",
+      "slug": "boroplus-100ml",
+      "variant": "100 мл",
+      "volume_weight": {
+        "value": 100,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/boroplus-100ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-BREXILCOMBI-15G",
+      "sku": "BB610-VLG-BREXILCOMBI-15G",
+      "product_id": "brexil-combi",
+      "variant_id": "brexil-combi--15g",
+      "slug": "brexil-combi-15g",
+      "variant": "15 г",
+      "volume_weight": {
+        "value": 15,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/brexil-combi-15g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-BREXILFE-15G",
+      "sku": "BB610-VLG-BREXILFE-15G",
+      "product_id": "brexil-fe",
+      "variant_id": "brexil-fe--15g",
+      "slug": "brexil-fe-15g",
+      "variant": "15 г",
+      "volume_weight": {
+        "value": 15,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/brexil-fe-15g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-FERRILENE-10G",
+      "sku": "BB610-VLG-FERRILENE-10G",
+      "product_id": "ferrilene",
+      "variant_id": "ferrilene--10g",
+      "slug": "ferrilene-10g",
+      "variant": "10 г",
+      "volume_weight": {
+        "value": 10,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/ferrilene-10g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-MASTER134013-1KG",
+      "sku": "BB610-VLG-MASTER134013-1KG",
+      "product_id": "master-13-40-13",
+      "variant_id": "master-13-40-13--1kg",
+      "slug": "master-13-40-13-1kg",
+      "variant": "1 кг",
+      "volume_weight": {
+        "value": 1,
+        "unit": "kg"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/master-13-40-13-1kg/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-MASTER134013-250G",
+      "sku": "BB610-VLG-MASTER134013-250G",
+      "product_id": "master-13-40-13",
+      "variant_id": "master-13-40-13--250g",
+      "slug": "master-13-40-13-250g",
+      "variant": "250 г",
+      "volume_weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/master-13-40-13-250g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-MASTER15530-1KG",
+      "sku": "BB610-VLG-MASTER15530-1KG",
+      "product_id": "master-15-5-30",
+      "variant_id": "master-15-5-30--1kg",
+      "slug": "master-15-5-30-1kg",
+      "variant": "1 кг",
+      "volume_weight": {
+        "value": 1,
+        "unit": "kg"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/master-15-5-30-1kg/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-MASTER15530-250G",
+      "sku": "BB610-VLG-MASTER15530-250G",
+      "product_id": "master-15-5-30",
+      "variant_id": "master-15-5-30--250g",
+      "slug": "master-15-5-30-250g",
+      "variant": "250 г",
+      "volume_weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/master-15-5-30-250g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-MASTER202020-1KG",
+      "sku": "BB610-VLG-MASTER202020-1KG",
+      "product_id": "master-20-20-20",
+      "variant_id": "master-20-20-20--1kg",
+      "slug": "master-20-20-20-1kg",
+      "variant": "1 кг",
+      "volume_weight": {
+        "value": 1,
+        "unit": "kg"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/master-20-20-20-1kg/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-MASTER202020-250G",
+      "sku": "BB610-VLG-MASTER202020-250G",
+      "product_id": "master-20-20-20",
+      "variant_id": "master-20-20-20--250g",
+      "slug": "master-20-20-20-250g",
+      "variant": "250 г",
+      "volume_weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/master-20-20-20-250g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-MASTER31138-1KG",
+      "sku": "BB610-VLG-MASTER31138-1KG",
+      "product_id": "master-3-11-38",
+      "variant_id": "master-3-11-38--1kg",
+      "slug": "master-3-11-38-1kg",
+      "variant": "1 кг",
+      "volume_weight": {
+        "value": 1,
+        "unit": "kg"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/master-3-11-38-1kg/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-MASTER31138-250G",
+      "sku": "BB610-VLG-MASTER31138-250G",
+      "product_id": "master-3-11-38",
+      "variant_id": "master-3-11-38--250g",
+      "slug": "master-3-11-38-250g",
+      "variant": "250 г",
+      "volume_weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/master-3-11-38-250g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-KEMIRA-ROOTER-100ML",
+      "sku": "BB610-KEMIRA-ROOTER-100ML",
+      "product_id": "kemira-rooter",
+      "variant_id": "kemira-rooter--100ml",
+      "slug": "kemira-rooter-100ml",
+      "variant": "100 мл",
+      "volume_weight": {
+        "value": 100,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/kemira-rooter-100ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "A",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-BENEFITPZ-25ML",
+      "sku": "BB610-VLG-BENEFITPZ-25ML",
+      "product_id": "benefit-pz",
+      "variant_id": "benefit-pz--25ml",
+      "slug": "benefit-pz-25ml",
+      "variant": "25 мл",
+      "volume_weight": {
+        "value": 25,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/benefit-pz-25ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-BLACKJAK-100ML",
+      "sku": "BB610-VLG-BLACKJAK-100ML",
+      "product_id": "blackjak",
+      "variant_id": "blackjak--100ml",
+      "slug": "blackjak-100ml",
+      "variant": "100 мл",
+      "volume_weight": {
+        "value": 100,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/blackjak-100ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-MAXICROP-CREAM-25ML",
+      "sku": "BB610-MAXICROP-CREAM-25ML",
+      "product_id": "maxicrop-cream",
+      "variant_id": "maxicrop-cream--25ml",
+      "slug": "maxicrop-cream-25ml",
+      "variant": "25 мл",
+      "volume_weight": {
+        "value": 25,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/maxicrop-cream-25ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-NEOVA-NEOCORE-30ML",
+      "sku": "BB610-NEOVA-NEOCORE-30ML",
+      "product_id": "neocore",
+      "variant_id": "neocore--30ml",
+      "slug": "neocore-30ml",
+      "variant": "30 мл",
+      "volume_weight": {
+        "value": 30,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/neocore-30ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-SWEET-25ML",
+      "sku": "BB610-VLG-SWEET-25ML",
+      "product_id": "sweet",
+      "variant_id": "sweet--25ml",
+      "slug": "sweet-25ml",
+      "variant": "25 мл",
+      "volume_weight": {
+        "value": 25,
+        "unit": "ml"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/sweet-25ml/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-ICL-OSMOCOTE-POTASSIUM-200G",
+      "sku": "BB610-ICL-OSMOCOTE-POTASSIUM-200G",
+      "product_id": "osmocote-potassium-12-8-19",
+      "variant_id": "osmocote-potassium-12-8-19--200g",
+      "slug": "osmocote-potassium-12-8-19-200g",
+      "variant": "200 г",
+      "volume_weight": {
+        "value": 200,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/osmocote-potassium-12-8-19-200g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-ICL-OSMOCOTE-FLOWERING-200G",
+      "sku": "BB610-ICL-OSMOCOTE-FLOWERING-200G",
+      "product_id": "osmocote-flowering-12-7-18",
+      "variant_id": "osmocote-flowering-12-7-18--200g",
+      "slug": "osmocote-flowering-12-7-18-200g",
+      "variant": "200 г",
+      "volume_weight": {
+        "value": 200,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/osmocote-flowering-12-7-18-200g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL02550-250G",
+      "sku": "BB610-VLG-PLANTAFOL02550-250G",
+      "product_id": "plantafol-0-25-50",
+      "variant_id": "plantafol-0-25-50--250g",
+      "slug": "plantafol-0-25-50-250g",
+      "variant": "250 г",
+      "volume_weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/plantafol-0-25-50-250g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL202020-250G",
+      "sku": "BB610-VLG-PLANTAFOL202020-250G",
+      "product_id": "plantafol-20-20-20",
+      "variant_id": "plantafol-20-20-20--250g",
+      "slug": "plantafol-20-20-20-250g",
+      "variant": "250 г",
+      "volume_weight": {
+        "value": 250,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/plantafol-20-20-20-250g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-BREXILCA-15G",
+      "sku": "BB610-VLG-BREXILCA-15G",
+      "product_id": "brexil-ca",
+      "variant_id": "brexil-ca--15g",
+      "slug": "brexil-ca-15g",
+      "variant": "15 г",
+      "volume_weight": {
+        "value": 15,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/brexil-ca-15g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
+    },
+    {
+      "id": "BB610-VLG-BREXILZN-15G",
+      "sku": "BB610-VLG-BREXILZN-15G",
+      "product_id": "brexil-zn",
+      "variant_id": "brexil-zn--15g",
+      "slug": "brexil-zn-15g",
+      "variant": "15 г",
+      "volume_weight": {
+        "value": 15,
+        "unit": "g"
+      },
+      "gtin_ean": null,
+      "mpn": null,
+      "price": null,
+      "currency": "UAH",
+      "availability": "unknown",
+      "stock_label": "Наявність уточнюється",
+      "offer_status": "draft",
+      "feed_eligible": false,
+      "url": "/products/brexil-zn-15g/",
+      "supplier": null,
+      "importer": null,
+      "packer": null,
+      "shipping": [
+        "Доставка по Україні згідно з умовами BB610 Market"
+      ],
+      "commercial_status": "not-configured",
+      "commercial_note": "Stage 16A: картка підготовлена; ціну, фактичну наявність, кількість і Продаж оператор задає вручну в адмінці.",
+      "pack_source_status": "supplier-matrix-confirmed",
+      "launch_matrix_priority": "B",
+      "launch_matrix_2026": true,
+      "feed_policy": "allowed",
+      "identifier_status": "unverified",
+      "image": null
     }
   ],
   "solutions": [],
@@ -1707,5 +5532,17 @@
     "name": "BB610 Market",
     "default_locale": "uk-UA",
     "default_currency": "UAH"
+  },
+  "launch_matrices": {
+    "organic_planet_2026": {
+      "name": "BB610 Market — стартова матриця Organic Planet 2026",
+      "updated_at": "2026-09-02",
+      "sku_count": 40,
+      "priority_a_count": 29,
+      "priority_b_count": 11,
+      "pricing": "manual-admin",
+      "stock": "manual-admin",
+      "note": "Stage 16A does not import supplier wholesale/RRP values into live commerce."
+    }
   }
 }

@@ -1,0 +1,58 @@
+/* BB610 Market — Stage 16A.3
+   Final prices header fix:
+   - keep the real THEAD in its correct table position;
+   - use an independent fixed visual clone while the table scrolls under admin topbar.
+*/
+
+.bb610-price-fixed-head{
+  position:fixed;
+  z-index:5000;
+  display:none;
+  overflow:hidden;
+  pointer-events:none;
+  background:#141a1e;
+  border-left:1px solid #283036;
+  border-right:1px solid #283036;
+  border-bottom:1px solid #39474e;
+  box-shadow:0 8px 16px rgba(0,0,0,.28);
+}
+
+.bb610-price-fixed-head.is-visible{display:block}
+
+.bb610-price-fixed-head table{
+  border-collapse:collapse;
+  table-layout:fixed;
+  margin:0;
+  background:#141a1e;
+}
+
+.bb610-price-fixed-head th{
+  box-sizing:border-box;
+  padding:11px;
+  border-bottom:0;
+  text-align:left;
+  vertical-align:middle;
+  font-size:12px;
+  color:#879299;
+  text-transform:uppercase;
+  background:#141a1e;
+  white-space:nowrap;
+
+  /* Neutralise the original sticky rule on the cloned TH. */
+  position:static !important;
+  top:auto !important;
+  z-index:auto !important;
+}
+
+/* The real header remains a normal part of the table.
+   Do not let old runtime hotfix classes affect it. */
+.table-wrap thead,
+.table-wrap thead tr{
+  position:relative !important;
+  transform:none !important;
+}
+
+.table-wrap thead th{
+  /* Native header is shown in the correct place before first SKU row. */
+  background:#141a1e !important;
+}

@@ -41,3 +41,4 @@ feeds/merchant-meta-template.csv
 feeds/feed-status.json
 sitemap.xml
 robots.txt
+.bb610-secrets/

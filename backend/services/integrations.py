@@ -35,6 +35,9 @@ def nova_poshta_status()->dict[str,Any]:
     }
 
 def save_nova_poshta_settings(*,api_key=None,api_url=None,sender_ref=None,sender_contact_ref=None,sender_address_ref=None,shipment_weight=None,shipment_description=None,payer_type=None,payment_method=None):
+    trio=(sender_ref,sender_contact_ref,sender_address_ref)
+    if any(v not in (None,'') for v in trio) and not all(str(v or '').strip() for v in trio):
+        raise ValueError('Оберіть відправника, контактну особу та адресу / точку відправлення')
     values={}
     if api_key is not None: values['nova_poshta.api_key']=api_key
     if api_url is not None: values['nova_poshta.api_url']=api_url or NP_DEFAULT_URL
@@ -46,7 +49,14 @@ def save_nova_poshta_settings(*,api_key=None,api_url=None,sender_ref=None,sender
     if payer_type is not None: values['nova_poshta.payer_type']=payer_type if payer_type in ('Sender','Recipient') else 'Recipient'
     if payment_method is not None: values['nova_poshta.payment_method']=payment_method if payment_method in ('Cash','NonCash') else 'Cash'
     if values:set_values(values)
-    return nova_poshta_status()
+    status=nova_poshta_status()
+    if all(str(v or '').strip() for v in trio):
+        saved=status.get('sender') or {}
+        expected=[str(v).strip() for v in trio]
+        actual=[saved.get('sender_ref',''),saved.get('sender_contact_ref',''),saved.get('sender_address_ref','')]
+        if actual!=expected:
+            raise RuntimeError('Nova Poshta sender settings were not persisted completely')
+    return status
 
 def test_nova_poshta():
     from .delivery.nova_poshta import NovaPoshtaAdapter

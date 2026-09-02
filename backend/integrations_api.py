@@ -45,6 +45,7 @@ def get_np(authorization:Optional[str]=Header(default=None)):_admin_auth(authori
 def patch_np(body:NovaPoshtaSettingsPatch,authorization:Optional[str]=Header(default=None)):
     _admin_auth(authorization)
     try:return save_nova_poshta_settings(**body.model_dump(exclude_unset=True))
+    except ValueError as e:raise HTTPException(422,str(e))
     except RuntimeError as e:raise HTTPException(500,str(e))
 @router.post('/nova-poshta/test')
 def test_np(authorization:Optional[str]=Header(default=None)):

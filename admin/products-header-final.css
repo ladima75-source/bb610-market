@@ -56,3 +56,19 @@
   /* Native header is shown in the correct place before first SKU row. */
   background:#141a1e !important;
 }
+
+/* ROOT-CAUSE FIX:
+   products.css has `th { position: sticky; top:64px }`.
+   That rule shifts the REAL header 64px down inside .table-wrap and exposes
+   the first product row above it. The real THEAD must stay in normal flow.
+*/
+.table-wrap thead th{
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: auto !important;
+  transform: none !important;
+  background:#141a1e !important;
+}

@@ -8,6 +8,11 @@
     const header=document.querySelector('body > header, header');
     if(!header) return 0;
     const r=header.getBoundingClientRect();
+    const cs=getComputedStyle(header);
+    // The admin header is sticky at top:0; use its actual rendered height.
+    if(cs.position === 'sticky' || cs.position === 'fixed'){
+      return Math.max(0, Math.round(r.height));
+    }
     return Math.max(0, Math.round(r.bottom));
   }
 

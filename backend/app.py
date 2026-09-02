@@ -326,3 +326,7 @@ app.include_router(media_router)
 # BB610_STAGE16A_LIVE_FEEDS
 from .feed_api import router as feed_router
 app.include_router(feed_router)
+
+# BB610_STAGE17A_CATALOG_IMPORT
+from .catalog_import_api import router as catalog_import_router
+app.include_router(catalog_import_router)

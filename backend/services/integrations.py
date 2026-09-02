@@ -68,4 +68,4 @@ def nova_poshta_sender_options(sender_ref: str|None=None):
     a=NovaPoshtaAdapter()
     if not sender_ref:
         return {'senders':a.sender_counterparties()}
-    return {'contacts':a.sender_contacts(sender_ref),'addresses':a.sender_addresses(sender_ref)}
+    return {'contacts':a.sender_contacts(sender_ref),'addresses':a.sender_warehouses(sender_ref),'address_source':'warehouses'}

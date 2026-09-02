@@ -1,0 +1,24 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Каталог · BB610 Market Admin</title><link rel="stylesheet" href="catalog-workbench.css?v=18b"></head><body>
+<header><a class="brand" href="dashboard.html"><span>BB610</span> MARKET ADMIN</a><nav><a href="dashboard.html">Огляд</a><a href="orders.html">Замовлення</a><a class="on" href="catalog-workbench.html">Каталог</a><a href="catalog-import.html">Імпорт</a><a href="content.html">Контент</a><a href="integrations.html">Інтеграції</a></nav><div class="auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></header>
+<main>
+<div class="head"><div><h1>Каталог</h1><p>Єдиний робочий екран товарів, SKU, цін, залишків і публікації.</p></div><div class="head-actions"><button id="refresh">Оновити</button><a href="catalog-import.html">Імпорт / експорт</a></div></div>
+
+<section class="toolbar">
+<input id="search" placeholder="Пошук: товар, SKU, бренд…">
+<select id="category"><option value="">Усі категорії</option></select>
+<select id="state"><option value="">Усі стани</option><option value="sale">Продаж увімкнено</option><option value="no-price">Без ціни</option><option value="in-stock">В наявності</option><option value="out">Немає в наявності</option><option value="review">На перевірці</option></select>
+<label><input type="checkbox" id="onlySelected"> Тільки вибрані</label>
+<span id="count">—</span>
+</section>
+
+<section class="bulk">
+<b>Масові дії</b><span id="selectedCount">0 SKU</span>
+<button data-bulk="enable">Увімкнути продаж</button><button data-bulk="disable">Вимкнути продаж</button>
+<button data-bulk="in_stock">В наявності</button><button data-bulk="out_of_stock">Немає</button>
+<button id="clearSelection">Очистити вибір</button>
+</section>
+
+<section id="list" class="list"><div class="empty">Завантаження…</div></section>
+</main>
+<script src="catalog-workbench.js?v=18b"></script></body></html>

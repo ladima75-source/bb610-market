@@ -338,3 +338,7 @@ app.include_router(product_maintenance_router)
 # BB610_STAGE18A_ADMIN_DASHBOARD
 from .admin_dashboard_api import router as admin_dashboard_router
 app.include_router(admin_dashboard_router)
+
+# BB610_STAGE18B_CATALOG_WORKBENCH
+from .catalog_workbench_api import router as catalog_workbench_router
+app.include_router(catalog_workbench_router)

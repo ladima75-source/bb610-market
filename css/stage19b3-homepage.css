@@ -1,0 +1,45 @@
+
+/* Stage 19B.3 — homepage polish */
+.bb19b3-section-tight{padding-top:18px!important}
+.bb19b3-category-grid, .bb19b3-culture-grid{display:grid!important;gap:14px!important}
+.bb19b3-category-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.bb19b3-cat-card{position:relative!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;gap:10px!important;min-height:174px!important;padding:18px 18px 16px!important;border-radius:14px!important;background:linear-gradient(135deg, rgba(255,255,255,.03), rgba(255,255,255,.01))!important;border:1px solid rgba(255,255,255,.10)!important;box-shadow:0 12px 28px rgba(0,0,0,.18)!important;overflow:hidden!important}
+.bb19b3-cat-card .bb19b3-card-number{display:none!important}
+.bb19b3-cat-card .bb19b3-card-icon{width:40px!important;height:40px!important;border-radius:10px!important;display:flex!important;align-items:center!important;justify-content:center!important;border:1px solid rgba(180,210,70,.28)!important;background:rgba(139,195,74,.05)!important;color:#9fce46!important;flex:0 0 auto!important}
+.bb19b3-cat-card .bb19b3-card-title{font-size:18px!important;line-height:1.2!important;font-weight:800!important;color:#fff!important;margin:0!important}
+.bb19b3-cat-card .bb19b3-card-desc{font-size:14px!important;line-height:1.45!important;color:rgba(255,255,255,.76)!important;max-width:95%!important;min-height:42px!important}
+.bb19b3-cat-card .bb19b3-card-link{margin-top:auto!important;font-size:13px!important;font-weight:700!important;color:#efb437!important;text-decoration:none!important}
+
+.bb19b3-product-grid{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:14px!important;align-items:stretch!important}
+.bb19b3-product-card{display:flex!important;flex-direction:column!important;height:100%!important;min-height:100%!important}
+.bb19b3-product-card .bb19b3-body{display:flex!important;flex-direction:column!important;flex:1 1 auto!important;min-height:0!important}
+.bb19b3-product-card .bb19b3-main{display:block!important}
+.bb19b3-product-card .bb19b3-commerce{margin-top:auto!important;padding-top:12px!important;border-top:1px solid rgba(255,255,255,.08)!important;display:flex!important;flex-direction:column!important;gap:8px!important}
+.bb19b3-product-card .bb19b3-price{font-size:14px!important;line-height:1.15!important;font-weight:800!important;color:#fff!important}
+.bb19b3-product-card .bb19b3-availability{font-size:12px!important;line-height:1.3!important;color:#91d86c!important;order:-1!important}
+.bb19b3-product-card .bb19b3-note{font-size:11px!important;line-height:1.35!important;color:rgba(255,255,255,.45)!important}
+.bb19b3-product-card .bb19b3-actions{display:flex!important;gap:8px!important;align-items:stretch!important}
+.bb19b3-product-card .bb19b3-actions > *{margin-top:0!important}
+
+.bb19b3-culture-section .bb19b3-culture-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.bb19b3-culture-card{position:relative!important;min-height:118px!important;border-radius:12px!important;overflow:hidden!important;border:1px solid rgba(255,255,255,.10)!important;display:flex!important;align-items:flex-end!important;padding:16px!important;background-color:#12181a!important;background-size:cover!important;background-position:center right!important;box-shadow:0 10px 25px rgba(0,0,0,.22)!important;isolation:isolate!important}
+.bb19b3-culture-card::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(4,8,10,.92) 0%, rgba(8,12,15,.78) 45%, rgba(8,12,15,.28) 100%);z-index:-1}
+.bb19b3-culture-card::after{content:'';position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.22));z-index:-1}
+.bb19b3-culture-card .bb19b3-culture-title{font-size:28px!important;line-height:1.05!important;font-weight:900!important;color:#fff!important;text-shadow:0 2px 10px rgba(0,0,0,.36)!important;letter-spacing:-.02em!important}
+
+.bb19b3-verified-badge, .bb19b3-verified-title{color:#9fce46!important;font-weight:800!important;letter-spacing:.04em!important;text-transform:uppercase!important}
+.bb19b3-verified-section .bb19b3-hidden-feature{display:none!important}
+
+@media (max-width: 1280px){
+  .bb19b3-product-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+@media (max-width: 1100px){
+  .bb19b3-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .bb19b3-culture-section .bb19b3-culture-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .bb19b3-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media (max-width: 760px){
+  .bb19b3-category-grid,.bb19b3-culture-section .bb19b3-culture-grid,.bb19b3-product-grid{grid-template-columns:1fr!important}
+  .bb19b3-culture-card{min-height:110px!important}
+  .bb19b3-culture-card .bb19b3-culture-title{font-size:24px!important}
+}

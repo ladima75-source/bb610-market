@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Резервні копії — BB610 Market Admin</title>
+<link rel="stylesheet" href="admin.css">
+<link rel="stylesheet" href="admin-master-nav.css?v=19b8">
+<style>
+body{margin:0;background:#080d0f;color:#e8edef;font-family:Arial,sans-serif}.page{margin-left:230px;padding:26px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.top h1{font-size:28px;margin:0}.sub{color:#819097;font-size:12px;margin-top:6px}.auth{display:flex;gap:8px}.auth input{background:#10191d;border:1px solid #314149;border-radius:7px;color:#fff;padding:8px 10px}.auth button{background:#efae2c;border:0;border-radius:7px;padding:8px 14px;font-weight:800}.card{border:1px solid #2a373d;border-radius:10px;overflow:hidden}.head,.row{display:grid;grid-template-columns:1.3fr 1.6fr .8fr .8fr;gap:12px;padding:11px 14px;align-items:center}.head{background:#111b20;color:#7f929a;font-size:10px;font-weight:800}.row{border-top:1px solid #263238;font-size:12px}.row small{display:block;color:#708087;margin-top:3px}.empty{padding:24px;color:#819097}.note{margin:0 0 14px;padding:10px 12px;background:#10191d;border:1px solid #2e3c42;border-radius:8px;color:#8e9ca2;font-size:11px}@media(max-width:900px){.page{margin-left:0;padding:16px}.head,.row{grid-template-columns:1fr}.auth{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<aside class="bb610-admin-sidebar"></aside>
+<main class="page">
+  <div class="top"><div><h1>Резервні копії</h1><div class="sub">Існуючі backup-каталоги проєкту. Екран лише для перегляду.</div></div><div class="auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></div>
+  <div class="note">Видалення та відновлення з цього екрана навмисно вимкнені. Спочатку перевіряємо склад резервної копії.</div>
+  <div class="card"><div class="head"><div>КОПІЯ</div><div>ШЛЯХ</div><div>ДАТА</div><div>РОЗМІР</div></div><div id="rows"></div></div>
+</main>
+<script src="admin-master-nav.js?v=19b8"></script>
+<script>
+const API='https://api.market.bb610.com.ua';
+const token=document.querySelector('#token');
+token.value=localStorage.getItem('bb610_admin_token')||'';
+document.querySelector('#connect').onclick=()=>{localStorage.setItem('bb610_admin_token',token.value);load()};
+async function load(){const rows=document.querySelector('#rows');rows.innerHTML='<div class="empty">Завантаження…</div>';try{const r=await fetch(API+'/api/v1/admin/backups',{headers:{Authorization:'Bearer '+token.value}});const x=await r.json();if(!r.ok)throw new Error(x.detail||'Помилка');rows.innerHTML=(x.items||[]).length?(x.items||[]).map(a=>`<div class="row"><div><b>${a.name}</b></div><div>${a.path}</div><div>${a.modified.replace('T',' ')}</div><div>${a.size}</div></div>`).join(''):'<div class="empty">Резервних копій не знайдено.</div>'}catch(e){rows.innerHTML='<div class="empty">'+e.message+'</div>'}}
+if(token.value)load();
+</script>
+</body></html>

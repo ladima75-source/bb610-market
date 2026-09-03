@@ -398,3 +398,7 @@ app.include_router(homepage_blocks_router)
 # BB610_STAGE19B8_PRICES_RECOVERY
 from .admin_prices_recovery_api import router as admin_prices_recovery_router
 app.include_router(admin_prices_recovery_router)
+
+# BB610_STAGE19B9_BACKUPS
+from .admin_backups_api import router as admin_backups_router
+app.include_router(admin_backups_router)

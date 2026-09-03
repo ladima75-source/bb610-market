@@ -2,7 +2,7 @@
 from typing import Optional
 import os
 from fastapi import APIRouter, Header, HTTPException
-from .services.admin_prices_recovery import rows, diagnostics
+from .services.admin_backups import backups
 
 router=APIRouter()
 
@@ -11,7 +11,7 @@ def auth(a):
     if not token or a!="Bearer "+token:
         raise HTTPException(401,"Unauthorized")
 
-@router.get("/api/v1/admin/prices-stock-recovery")
-def prices_stock_recovery(authorization:Optional[str]=Header(None)):
+@router.get("/api/v1/admin/backups")
+def list_backups(authorization:Optional[str]=Header(None)):
     auth(authorization)
-    return {"rows":rows(),"diagnostics":diagnostics()}
+    return {"items":backups()}

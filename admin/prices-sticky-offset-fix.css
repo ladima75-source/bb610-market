@@ -1,0 +1,40 @@
+
+/* BB610 Market — Stage 19C.2
+   Fix sticky position of prices/stock table header only.
+*/
+
+#bb19cCommerce{
+  position:relative!important;
+  overflow:visible!important;
+}
+
+/* The admin page top area needs breathing room.
+   Keep the table header below the visible top chrome instead of at viewport 0. */
+#bb19cCommerce .bb19c-head{
+  position:sticky!important;
+  top:58px!important;
+  z-index:45!important;
+  background:#111b20!important;
+  box-shadow:
+    0 1px 0 #314047,
+    0 6px 12px rgba(0,0,0,.22)!important;
+}
+
+/* Do not make unrelated toolbars sticky — that caused competing offsets. */
+body:has(#bb19cCommerce) .admin-toolbar,
+body:has(#bb19cCommerce) .toolbar,
+body:has(#bb19cCommerce) [class*="filters-row"]{
+  position:static!important;
+}
+
+/* Slight spacer visually separates sticky header from viewport chrome. */
+#bb19cCommerce .bb19c-head::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:-6px;
+  height:6px;
+  background:#080d0f;
+  pointer-events:none;
+}

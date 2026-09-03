@@ -16,30 +16,33 @@ DEFAULT_HERO = {
   "image": "",
   "source_image": "",
   "title": "",
+  "accent_text": "",
   "subtitle": "",
   "button_text": "",
   "button_url": "catalog.html",
   "align": "left",
-  "overlay": True
+  "overlay": True,
+  "title_color": "#ffffff",
+  "accent_color": "#86b93e",
+  "subtitle_color": "#d1d7d2",
+  "title_size": 56,
+  "subtitle_size": 17
 }
 
 def _load_json(p, default):
-    try:
-        return json.loads(p.read_text(encoding='utf-8'))
-    except:
-        return default
+    try:return json.loads(p.read_text(encoding='utf-8'))
+    except:return default
 
 def _save_json(p, obj):
     p.parent.mkdir(parents=True, exist_ok=True)
     tmp=p.with_suffix(p.suffix+'.tmp')
-    tmp.write_text(json.dumps(obj, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    tmp.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     tmp.replace(p)
 
 def _history(add=None):
     h=_load_json(HISTORY,[])
     if add:
-        h.insert(0,add)
-        _save_json(HISTORY,h[:300])
+        h.insert(0,add);_save_json(HISTORY,h[:300])
     return h
 
 def _showcase():
@@ -62,22 +65,19 @@ def _media_array():
 def _norm_media_path(item):
     for key in ('url','path','src','public_url','file_url'):
         v=item.get(key)
-        if isinstance(v,str) and v.strip():
-            return v.strip().replace('\\','/')
+        if isinstance(v,str) and v.strip():return v.strip().replace('\\','/')
     name=item.get('filename') or item.get('file')
-    if name:return f'assets/media/{name}'
-    return ''
+    return f'assets/media/{name}' if name else ''
 
-def _url_to_rel(value:str):
+def _url_to_rel(value):
     value=unquote(str(value or '').strip())
     if not value:return ''
-    if value.startswith('http://') or value.startswith('https://'):
-        value=urlparse(value).path
+    if value.startswith('http://') or value.startswith('https://'):value=urlparse(value).path
     value=value.split('?',1)[0].split('#',1)[0].replace('\\','/').lstrip('/')
     if '..' in Path(value).parts:return ''
     return value
 
-def _resolve_local(value:str):
+def _resolve_local(value):
     rel=_url_to_rel(value)
     if not rel:return None
     p=(ROOT/rel).resolve()
@@ -97,8 +97,7 @@ def media_items():
         out.append({
           'id':str(x.get('id') or x.get('media_id') or i),
           'name':x.get('name') or x.get('title') or x.get('filename') or Path(_url_to_rel(url)).name,
-          'url':url,
-          'exists':bool(p),
+          'url':url,'exists':bool(p),
           'size':p.stat().st_size if p else (x.get('size') or x.get('bytes') or 0)
         })
     return out
@@ -110,14 +109,11 @@ def admin_data():
 def public_data():
     return {'hero':_showcase()['hero']}
 
-def _copy_to_public(source_value:str):
+def _copy_to_public(source_value):
     src=_resolve_local(source_value)
-    if not src:
-        raise ValueError(f'Файл медіатеки не знайдено на сервері: {source_value}')
+    if not src:raise ValueError(f'Файл медіатеки не знайдено на сервері: {source_value}')
     ext=src.suffix.lower()
-    if ext not in ('.jpg','.jpeg','.png','.webp','.avif'):
-        raise ValueError('Для HERO використовуйте JPG, PNG, WEBP або AVIF')
-    # Remove previous stable hero variants.
+    if ext not in ('.jpg','.jpeg','.png','.webp','.avif'):raise ValueError('Для HERO використовуйте JPG, PNG, WEBP або AVIF')
     for p in PUBLIC_HERO_DIR.glob('homepage-hero.*'):
         try:p.unlink()
         except:pass
@@ -125,35 +121,37 @@ def _copy_to_public(source_value:str):
     shutil.copy2(src,dst)
     return dst.relative_to(ROOT).as_posix()
 
-def save_hero(hero:dict,publish_git=True):
-    s=_showcase()
-    clean=dict(DEFAULT_HERO)
+def _hex(v,default):
+    v=str(v or '').strip()
+    if len(v)==7 and v.startswith('#') and all(c in '0123456789abcdefABCDEF' for c in v[1:]):return v
+    return default
+
+def _size(v,default,minv,maxv):
+    try:x=int(float(v))
+    except:return default
+    return max(minv,min(maxv,x))
+
+def save_hero(hero,publish_git=True):
+    s=_showcase();clean=dict(DEFAULT_HERO)
     for k in clean:
         if k in hero:clean[k]=hero[k]
     clean['enabled']=bool(clean.get('enabled'))
     clean['overlay']=bool(clean.get('overlay'))
     clean['align']=clean.get('align') if clean.get('align') in ('left','center','right') else 'left'
-    clean['title']=str(clean.get('title') or '').strip()
-    clean['subtitle']=str(clean.get('subtitle') or '').strip()
-    clean['button_text']=str(clean.get('button_text') or '').strip()
+    for k in ('title','accent_text','subtitle','button_text'):
+        clean[k]=str(clean.get(k) or '').strip()
     clean['button_url']=str(clean.get('button_url') or '').strip() or 'catalog.html'
+    clean['title_color']=_hex(clean.get('title_color'),'#ffffff')
+    clean['accent_color']=_hex(clean.get('accent_color'),'#86b93e')
+    clean['subtitle_color']=_hex(clean.get('subtitle_color'),'#d1d7d2')
+    clean['title_size']=_size(clean.get('title_size'),56,32,88)
+    clean['subtitle_size']=_size(clean.get('subtitle_size'),17,12,30)
 
     requested=str(hero.get('source_image') or hero.get('image') or '').strip()
     if clean['enabled']:
-        if not requested:
-            raise ValueError('Оберіть зображення HERO з медіатеки')
+        if not requested:raise ValueError('Оберіть зображення HERO з медіатеки')
         clean['source_image']=requested
         clean['image']=_copy_to_public(requested)
-    else:
-        clean['source_image']=requested
-        clean['image']=str(clean.get('image') or '').strip()
-
-    backup=None
-    if SHOWCASE.exists():
-        b=ROOT/'var'/'homepage-showcase'/'backups'/time.strftime('%Y%m%d-%H%M%S')
-        b.mkdir(parents=True,exist_ok=True)
-        backup=b/'homepage.showcase.json'
-        shutil.copy2(SHOWCASE,backup)
 
     s['hero']=clean
     _save_json(SHOWCASE,s)
@@ -162,9 +160,9 @@ def save_hero(hero:dict,publish_git=True):
     if publish_git:
         subprocess.run(['git','add','data/homepage.showcase.json','assets/img/hero'],cwd=ROOT,check=True)
         if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode!=0:
-            subprocess.run(['git','commit','-m','Update managed homepage HERO'],cwd=ROOT,check=True)
+            subprocess.run(['git','commit','-m','Update HERO typography controls'],cwd=ROOT,check=True)
         commit=subprocess.run(['git','rev-parse','--short','HEAD'],cwd=ROOT,check=True,capture_output=True,text=True).stdout.strip()
         subprocess.run(['git','push'],cwd=ROOT,check=True)
 
-    _history({'time':time.time(),'action':'save_hero','source_image':requested,'public_image':clean['image'],'commit':commit,'backup':str(backup) if backup else None})
+    _history({'time':time.time(),'action':'save_hero_typography','commit':commit})
     return {'ok':True,'hero':clean,'commit':commit}

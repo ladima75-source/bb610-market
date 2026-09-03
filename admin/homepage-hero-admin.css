@@ -41,3 +41,10 @@
 
 .bb19a3-media-card.missing{border-color:#733a3d;opacity:.72}
 .bb19a4-missing{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:#241719;color:#ffabab;font-size:10px}
+
+.bb19a5-color-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;grid-column:1/-1}
+.bb19a5-color label{display:flex;flex-direction:column;gap:5px}
+.bb19a5-color input[type=color]{height:38px;padding:3px}
+.bb19a5-size-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;grid-column:1/-1}
+.bb19a5-size-row input{width:100%}
+@media(max-width:850px){.bb19a5-color-row{grid-template-columns:1fr}.bb19a5-size-row{grid-template-columns:1fr}}

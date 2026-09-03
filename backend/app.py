@@ -402,3 +402,7 @@ app.include_router(admin_prices_recovery_router)
 # BB610_STAGE19B9_BACKUPS
 from .admin_backups_api import router as admin_backups_router
 app.include_router(admin_backups_router)
+
+# BB610_STAGE19C_PRODUCT_MANAGEMENT
+from .admin_product_management_api import router as admin_product_management_router
+app.include_router(admin_product_management_router)

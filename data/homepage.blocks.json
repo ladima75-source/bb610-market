@@ -43,66 +43,61 @@
         "enabled": true,
         "title": "Лохина",
         "url": "catalog.html?culture=лохина",
-        "image": ""
+        "image": "assets/culture/blueberry.svg"
       },
       {
         "enabled": true,
         "title": "Полуниця",
         "url": "catalog.html?culture=полуниця",
-        "image": ""
+        "image": "assets/culture/strawberry.svg"
       },
       {
         "enabled": true,
         "title": "Малина",
         "url": "catalog.html?culture=малина",
-        "image": ""
+        "image": "assets/culture/raspberry.svg"
       },
       {
         "enabled": true,
         "title": "Овочі",
         "url": "catalog.html?culture=овочі",
-        "image": ""
+        "image": "assets/culture/vegetables.svg"
       },
       {
         "enabled": true,
         "title": "Сад",
         "url": "catalog.html?culture=сад",
-        "image": ""
+        "image": "assets/culture/orchard.svg"
       },
       {
         "enabled": true,
         "title": "Хвойні",
         "url": "catalog.html?culture=хвойні",
-        "image": ""
+        "image": "assets/culture/conifers.svg"
       },
       {
         "enabled": true,
         "title": "Газон",
         "url": "catalog.html?culture=газон",
-        "image": ""
+        "image": "assets/culture/lawn.svg"
       }
     ]
   },
   "trust": {
     "enabled": true,
     "kicker": "BB610",
-    "title": "Перевірені дані про товар",
-    "description": "Походження та ключова інформація про товар перевіряються перед публікацією.",
+    "title": "Перевірено BB610",
+    "description": "Картка товару звірена магазином за доступними даними виробника та офіційними матеріалами.",
     "items": [
       {
         "enabled": true,
         "title": "Виробник",
-        "description": "Хто фактично виробляє продукт"
+        "description": "Виробник товару вказаний у картці."
       },
       {
         "enabled": true,
         "title": "Джерело даних",
-        "description": "Інструкція, TDS, етикетка або офіційний матеріал"
-      },
-      {
-        "enabled": true,
-        "title": "Постачальник BB610",
-        "description": "Ланцюг постачання до магазину"
+        "description": "Інструкція, етикетка, TDS або офіційний матеріал виробника."
       }
     ]
   },

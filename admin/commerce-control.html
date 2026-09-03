@@ -1,0 +1,74 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Commerce Control · BB610 Market Admin</title>
+<link rel="stylesheet" href="admin-shell.css?v=18i1"><link rel="stylesheet" href="admin-sticky-tables.css?v=18k1"><link rel="stylesheet" href="commerce-control.css?v=18m"></head><body>
+<header><a class="brand" href="dashboard.html"><span>BB610</span> MARKET ADMIN</a><div class="auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></header>
+<main>
+<div class="head"><div><h1>Commerce Control</h1><p>Публікація, залишки, резерви, повернення, клієнти та оперативні попередження.</p></div><button id="refresh">Оновити</button></div>
+
+<section class="kpis">
+<div><small>Чернетки</small><b id="kDrafts">—</b></div>
+<div><small>Відкриті повернення</small><b id="kReturns">—</b></div>
+<div><small>SKU у складі</small><b id="kStock">—</b></div>
+<div class="danger"><small>Negative available</small><b id="kNegative">—</b></div>
+<div class="warning"><small>Alerts</small><b id="kAlerts">—</b></div>
+<div class="danger"><small>Critical</small><b id="kCritical">—</b></div>
+</section>
+
+<div class="tabs">
+<button class="active" data-tab="alerts">Alerts</button>
+<button data-tab="drafts">Draft / Publish</button>
+<button data-tab="stock">Stock & Reservation</button>
+<button data-tab="returns">Returns</button>
+<button data-tab="customers">Customers</button>
+</div>
+
+<section id="tab-alerts" class="tabpane"><div class="panel"><div class="panel-head"><h2>Operational Alerts</h2><span id="alertCount">—</span></div><div id="alerts"></div></div></section>
+
+<section id="tab-drafts" class="tabpane" hidden>
+<div class="split">
+<div class="panel">
+<div class="panel-head"><h2>Створити чернетку</h2></div>
+<label>Тип<select id="entityType"><option value="product">Товар</option><option value="category">Категорія</option><option value="showcase">Головна / Вітрина</option></select></label>
+<label>Пошук<input id="entitySearch" placeholder="Назва / ID"></label>
+<div id="entities" class="entity-list"></div>
+</div>
+<div class="panel">
+<div class="panel-head"><h2>Чернетки</h2><span id="draftCount">—</span></div>
+<div id="drafts"></div>
+</div>
+</div>
+<div id="editor" class="panel editor" hidden>
+<div class="panel-head"><div><h2 id="editorTitle">Draft</h2><small id="editorMeta"></small></div><div class="row-actions"><button id="discardDraft" class="danger-btn">Відхилити</button><button id="saveDraft">Зберегти draft</button><button id="publishDraft" class="primary">Опублікувати</button></div></div>
+<div class="preview-grid"><div><h3>JSON draft</h3><textarea id="draftJson"></textarea></div><div><h3>Preview / current diff</h3><div id="draftPreview" class="preview"></div></div></div>
+</div>
+</section>
+
+<section id="tab-stock" class="tabpane" hidden>
+<div class="panel">
+<div class="panel-head"><div><h2>Stock & Reservation</h2><small>Фізичний − резерв = доступно до продажу</small></div><div class="row-actions"><button id="syncStock">Синхронізувати physical з catalog</button><button id="rebuildReservations">Перебудувати резерви з відкритих замовлень</button></div></div>
+<div class="toolbar"><input id="stockSearch" placeholder="SKU / товар"><span id="stockCount">—</span></div>
+<div class="table-wrap"><table><thead><tr><th>SKU</th><th>Товар</th><th>Physical</th><th>Reserved</th><th>Available</th><th>Source</th><th></th></tr></thead><tbody id="stockRows"></tbody></table></div>
+</div>
+<div class="panel"><div class="panel-head"><h2>Останні рухи</h2></div><div class="table-wrap"><table><thead><tr><th>Дата</th><th>SKU</th><th>Тип</th><th>Qty</th><th>До</th><th>Після</th><th>Примітка</th></tr></thead><tbody id="moveRows"></tbody></table></div></div>
+</section>
+
+<section id="tab-returns" class="tabpane" hidden>
+<div class="split">
+<div class="panel"><div class="panel-head"><h2>Нове повернення</h2></div>
+<label>Order ID<input id="retOrder"></label>
+<label>Причина<textarea id="retReason"></textarea></label>
+<label>Refund amount<input id="retAmount" type="number" step="0.01"></label>
+<label class="check"><input id="retRestock" type="checkbox"> Повернути товар на склад після завершення</label>
+<label>Items — по одному SKU у рядку: <code>SKU,qty</code><textarea id="retItems" placeholder="SKU-001,1&#10;SKU-002,2"></textarea></label>
+<button id="createReturn" class="primary">Створити повернення</button>
+</div>
+<div class="panel"><div class="panel-head"><h2>Повернення</h2><span id="returnCount">—</span></div><div id="returns"></div></div>
+</div>
+</section>
+
+<section id="tab-customers" class="tabpane" hidden>
+<div class="panel"><div class="panel-head"><h2>Customer Cards</h2></div><div class="toolbar"><input id="customerSearch" placeholder="Ім’я / телефон / email"><span id="customerCount">—</span></div><div id="customers" class="customer-grid"></div></div>
+</section>
+</main>
+<script src="admin-shell.js?v=18i"></script><script src="commerce-control-nav.js?v=18m"></script><script src="commerce-control.js?v=18m"></script>
+</body></html>

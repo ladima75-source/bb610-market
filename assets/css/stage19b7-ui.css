@@ -1,0 +1,136 @@
+
+/* BB610 Market — Stage 19B.7 */
+
+/* ---------- TRUST BLOCK ---------- */
+.bb19b7-trust{
+  width:min(1280px,calc(100% - 48px));
+  margin:22px auto 24px;
+  display:grid;
+  grid-template-columns:1.35fr .9fr .9fr;
+  border:1px solid #31393c;
+  border-radius:12px;
+  overflow:hidden;
+  background:#1b2022;
+}
+.bb19b7-trust-main{padding:22px 24px}
+.bb19b7-trust-tag{
+  color:#9fce46;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.bb19b7-trust-main h2{
+  margin:10px 0 8px;
+  color:#f5f6f3;
+  font-size:21px;
+  line-height:1.18;
+}
+.bb19b7-trust-main p{
+  margin:0;
+  color:#99a4a7;
+  font-size:12px;
+  line-height:1.5;
+  max-width:560px;
+}
+.bb19b7-trust-item{
+  border-left:1px solid #31393c;
+  padding:20px 22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.bb19b7-trust-item b{
+  color:#f3f4f1;
+  font-size:13px;
+}
+.bb19b7-trust-item span{
+  margin-top:7px;
+  color:#879297;
+  font-size:11px;
+  line-height:1.45;
+}
+
+/* ---------- PRODUCT CARD COMMERCIAL ALIGNMENT ---------- */
+.bb19b7-card{
+  height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.bb19b7-card-body{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.bb19b7-availability-anchor{
+  margin-top:auto!important;
+  padding-top:10px!important;
+}
+.bb19b7-price-anchor{
+  margin-top:8px!important;
+}
+.bb19b7-actions-anchor{
+  margin-top:8px!important;
+}
+.bb19b7-card .bb19b7-availability-anchor,
+.bb19b7-card .bb19b7-availability-anchor *{
+  color:#87d867!important;
+}
+.bb19b7-card .bb19b7-price-anchor,
+.bb19b7-card .bb19b7-price-anchor *{
+  line-height:1.15!important;
+}
+.bb19b7-card .bb19b7-actions-anchor{
+  min-height:38px!important;
+  display:flex!important;
+  align-items:stretch!important;
+  gap:7px!important;
+}
+.bb19b7-card .bb19b7-actions-anchor > *{
+  margin-top:0!important;
+}
+
+/* ---------- CATALOG FILTER READABILITY ---------- */
+.bb19b7-filter{
+  font-size:13px!important;
+}
+.bb19b7-filter h2,
+.bb19b7-filter h3,
+.bb19b7-filter [class*="title"]{
+  font-size:15px!important;
+  line-height:1.2!important;
+}
+.bb19b7-filter label,
+.bb19b7-filter .filter-label,
+.bb19b7-filter [class*="label"]{
+  font-size:13px!important;
+  line-height:1.35!important;
+}
+.bb19b7-filter input,
+.bb19b7-filter select,
+.bb19b7-filter option{
+  font-size:13px!important;
+}
+.bb19b7-filter input[type="radio"],
+.bb19b7-filter input[type="checkbox"]{
+  width:15px!important;
+  height:15px!important;
+}
+.bb19b7-filter select,
+.bb19b7-filter input[type="text"],
+.bb19b7-filter input[type="search"],
+.bb19b7-filter input[type="number"]{
+  min-height:38px!important;
+}
+.bb19b7-filter .filter-group,
+.bb19b7-filter [class*="filter-group"],
+.bb19b7-filter fieldset{
+  padding-top:13px!important;
+  padding-bottom:13px!important;
+}
+
+@media(max-width:900px){
+  .bb19b7-trust{grid-template-columns:1fr}
+  .bb19b7-trust-item{border-left:0;border-top:1px solid #31393c}
+}

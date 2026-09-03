@@ -1,0 +1,9 @@
+
+.bb19b2-homepage-stack{width:100%;display:flex;flex-direction:column;gap:16px;box-sizing:border-box}
+.bb19b2-homepage-stack>.bb19a3-hero-admin,.bb19b2-homepage-stack>.bb19a5-hero-admin,.bb19b2-homepage-stack>.bb19b-admin{width:100%!important;max-width:none!important;margin:0!important;box-sizing:border-box!important;float:none!important;clear:both!important}
+.bb19b2-homepage-stack .bb19a3-grid{grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr)!important;gap:20px!important}
+.bb19b2-homepage-stack .bb19b-item-grid{grid-template-columns:76px minmax(190px,.8fr) minmax(300px,1.5fr) minmax(190px,.8fr)!important;gap:10px!important}
+.bb19b2-page-intro{width:100%!important;max-width:none!important;margin:0 0 4px!important}
+.bb19b1-stack-root{display:block!important}
+.bb19b1-stack-root>.bb19a3-hero-admin,.bb19b1-stack-root>.bb19a5-hero-admin,.bb19b1-stack-root>.bb19b-admin{order:initial!important}
+@media(max-width:1100px){.bb19b2-homepage-stack .bb19a3-grid{grid-template-columns:1fr!important}.bb19b2-homepage-stack .bb19b-item-grid{grid-template-columns:1fr!important}}

@@ -1,0 +1,23 @@
+
+/* Stage 19C.1 — sticky prices header */
+#bb19cCommerce{
+  position:relative!important;
+  overflow:visible!important;
+}
+
+#bb19cCommerce .bb19c-head{
+  position:sticky!important;
+  top:0!important;
+  z-index:60!important;
+  background:#111b20!important;
+  box-shadow:0 1px 0 #314047,0 5px 12px rgba(0,0,0,.22)!important;
+}
+
+/* keep the top search/actions bar visible as well when possible */
+body:has(#bb19cCommerce) .admin-toolbar,
+body:has(#bb19cCommerce) .toolbar,
+body:has(#bb19cCommerce) [class*="filters-row"]{
+  position:sticky;
+  top:0;
+  z-index:65;
+}

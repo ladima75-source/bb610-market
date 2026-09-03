@@ -26,5 +26,4 @@ document.querySelector('#connect').onclick=()=>{localStorage.setItem('bb610_admi
 async function load(){const rows=document.querySelector('#rows');rows.innerHTML='<div class="empty">Завантаження…</div>';try{const r=await fetch(API+'/api/v1/admin/backups',{headers:{Authorization:'Bearer '+token.value}});const x=await r.json();if(!r.ok)throw new Error(x.detail||'Помилка');rows.innerHTML=(x.items||[]).length?(x.items||[]).map(a=>`<div class="row"><div><b>${a.name}</b></div><div>${a.path}</div><div>${a.modified.replace('T',' ')}</div><div>${a.size}</div></div>`).join(''):'<div class="empty">Резервних копій не знайдено.</div>'}catch(e){rows.innerHTML='<div class="empty">'+e.message+'</div>'}}
 if(token.value)load();
 </script>
-<script src="stage19c-nav.js?v=19c"></script>
 </body></html>

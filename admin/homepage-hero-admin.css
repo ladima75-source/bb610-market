@@ -1,0 +1,40 @@
+
+.bb19a3-hero-admin{
+  background:#0d1418;border:1px solid #29363c;border-radius:10px;
+  padding:14px;margin:0 0 16px;
+}
+.bb19a3-hero-admin h2{margin:0;font-size:18px}
+.bb19a3-hero-admin .sub{color:#8e9ca3;font-size:11px;margin-top:4px}
+.bb19a3-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:13px}
+.bb19a3-fields{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.bb19a3-fields label{display:flex;flex-direction:column;gap:5px;color:#8e9ca3;font-size:10px}
+.bb19a3-fields .wide{grid-column:1/-1}
+.bb19a3-fields input,.bb19a3-fields select{
+  background:#111a1f;color:#fff;border:1px solid #35434a;border-radius:7px;padding:8px 10px;width:100%
+}
+.bb19a3-check{display:flex!important;flex-direction:row!important;align-items:center;gap:7px!important;color:#e3e8ea!important}
+.bb19a3-check input{width:18px!important;height:18px!important}
+.bb19a3-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.bb19a3-primary{background:#f1b02c!important;color:#111!important;border-color:#f1b02c!important}
+.bb19a3-media{
+  max-height:420px;overflow:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:7px
+}
+.bb19a3-media-card{
+  border:1px solid #2b393f;background:#10191e;border-radius:8px;overflow:hidden;cursor:pointer
+}
+.bb19a3-media-card.active{border-color:#f1b02c;box-shadow:0 0 0 1px #f1b02c inset}
+.bb19a3-media-card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#eee}
+.bb19a3-media-card span{display:block;padding:6px;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bb19a3-preview{
+  margin-top:10px;border:1px solid #2b393f;border-radius:9px;overflow:hidden;position:relative;background:#090d0f;
+  aspect-ratio:16/5
+}
+.bb19a3-preview img{width:100%;height:100%;object-fit:cover;display:block}
+.bb19a3-preview-copy{position:absolute;inset:0;display:flex;align-items:center;padding:8%;pointer-events:none}
+.bb19a3-preview-copy.center{justify-content:center;text-align:center}
+.bb19a3-preview-copy.right{justify-content:flex-end;text-align:right}
+.bb19a3-preview-content{max-width:48%}
+.bb19a3-preview-content h3{margin:0;color:#fff;font-size:22px;line-height:1.05}
+.bb19a3-preview-content p{margin:7px 0 0;color:#d1d6d3;font-size:10px}
+.bb19a3-preview-content b{display:inline-block;margin-top:9px;background:#d6a52e;color:#111;border-radius:5px;padding:7px 10px;font-size:9px}
+@media(max-width:1000px){.bb19a3-grid{grid-template-columns:1fr}.bb19a3-media{grid-template-columns:repeat(2,1fr)}}

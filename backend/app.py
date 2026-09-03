@@ -386,3 +386,7 @@ app.include_router(backup_center_router)
 # BB610_STAGE18M_COMMERCE_CONTROL
 from .commerce_control_api import router as commerce_control_router
 app.include_router(commerce_control_router)
+
+# BB610_STAGE19A3_ADMIN_HERO
+from .homepage_hero_api import router as homepage_hero_router
+app.include_router(homepage_hero_router)

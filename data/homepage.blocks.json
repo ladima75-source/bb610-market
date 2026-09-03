@@ -43,43 +43,43 @@
         "enabled": true,
         "title": "Лохина",
         "url": "catalog.html?culture=лохина",
-        "image": "assets/culture/blueberry.svg"
+        "image": "assets/culture/photos/blueberry.jpg"
       },
       {
         "enabled": true,
         "title": "Полуниця",
         "url": "catalog.html?culture=полуниця",
-        "image": "assets/culture/strawberry.svg"
+        "image": "assets/culture/photos/strawberry.jpg"
       },
       {
         "enabled": true,
         "title": "Малина",
         "url": "catalog.html?culture=малина",
-        "image": "assets/culture/raspberry.svg"
+        "image": "assets/culture/photos/raspberry.jpg"
       },
       {
         "enabled": true,
         "title": "Овочі",
         "url": "catalog.html?culture=овочі",
-        "image": "assets/culture/vegetables.svg"
+        "image": "assets/culture/photos/vegetables.jpg"
       },
       {
         "enabled": true,
         "title": "Сад",
         "url": "catalog.html?culture=сад",
-        "image": "assets/culture/orchard.svg"
+        "image": "assets/culture/photos/orchard.jpg"
       },
       {
         "enabled": true,
         "title": "Хвойні",
         "url": "catalog.html?culture=хвойні",
-        "image": "assets/culture/conifers.svg"
+        "image": "assets/culture/photos/conifers.jpg"
       },
       {
         "enabled": true,
         "title": "Газон",
         "url": "catalog.html?culture=газон",
-        "image": "assets/culture/lawn.svg"
+        "image": "assets/culture/photos/lawn.jpg"
       }
     ]
   },

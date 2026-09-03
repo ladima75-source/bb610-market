@@ -1,0 +1,105 @@
+
+/* BB610 Market — Stage 19B.5
+   Compact real-photo culture navigation tiles.
+*/
+
+.bb19b-cultures{
+  padding:22px 0 24px!important;
+}
+
+.bb19b-cultures .intro{
+  margin-bottom:12px!important;
+}
+
+.bb19b-cultures h2{
+  font-size:24px!important;
+  line-height:1.08!important;
+}
+
+.bb19b-cultures p{
+  margin-top:5px!important;
+  font-size:12px!important;
+  line-height:1.4!important;
+  max-width:620px!important;
+}
+
+.bb19b-culture-grid{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:10px!important;
+}
+
+.bb19b-culture{
+  position:relative!important;
+  min-height:86px!important;
+  height:86px!important;
+  border-radius:10px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  background-color:#14191b!important;
+  background-position:center!important;
+  background-size:cover!important;
+  box-shadow:none!important;
+  transition:transform .16s ease,border-color .16s ease!important;
+}
+
+.bb19b-culture:hover{
+  transform:translateY(-1px)!important;
+  border-color:rgba(157,203,70,.42)!important;
+}
+
+.bb19b-culture-bg{
+  position:absolute!important;
+  inset:0!important;
+  background-size:cover!important;
+  background-position:center!important;
+  filter:saturate(.92) contrast(1.03) brightness(.78)!important;
+  transform:scale(1.015)!important;
+}
+
+.bb19b-culture::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:
+    linear-gradient(90deg,
+      rgba(4,8,10,.90) 0%,
+      rgba(5,9,11,.70) 37%,
+      rgba(5,9,11,.27) 70%,
+      rgba(5,9,11,.12) 100%)!important;
+}
+
+.bb19b-culture span{
+  position:absolute!important;
+  z-index:3!important;
+  left:14px!important;
+  bottom:12px!important;
+  color:#fff!important;
+  font-size:17px!important;
+  line-height:1!important;
+  font-weight:800!important;
+  letter-spacing:-.01em!important;
+  text-shadow:0 1px 8px rgba(0,0,0,.70)!important;
+}
+
+@media(max-width:1050px){
+  .bb19b-culture-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+}
+
+@media(max-width:760px){
+  .bb19b-culture-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .bb19b-culture{
+    height:82px!important;
+    min-height:82px!important;
+  }
+}
+
+@media(max-width:480px){
+  .bb19b-culture-grid{
+    grid-template-columns:1fr!important;
+  }
+}

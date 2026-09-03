@@ -4,11 +4,11 @@
 <link rel="stylesheet" href="dashboard.css?v=18a">
 </head><body>
 <header class="top"><a class="brand" href="dashboard.html"><span>BB610</span> MARKET ADMIN</a><nav><a href="media-manager.html">Медіатека</a><a href="categories-manager.html">Категорії</a><a href="homepage-showcase.html">Головна / Вітрина</a>
-<a class="on" href="dashboard.html">Огляд</a><a href="orders.html">Замовлення</a><a href="products.html">Ціни</a><a href="catalog-workbench.html">Каталог</a><a href="catalog-import.html">Імпорт каталогу</a><a href="content.html">Контент</a><a href="integrations.html">Інтеграції</a>
+<a class="on" href="dashboard.html">Огляд</a><a href="orders-center.html">Замовлення</a><a href="products.html">Ціни</a><a href="catalog-workbench.html">Каталог</a><a href="catalog-import.html">Імпорт каталогу</a><a href="content.html">Контент</a><a href="integrations.html">Інтеграції</a>
 </nav><div class="auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></header>
 
 <main>
-<section class="hero"><div><h1>Огляд магазину</h1><p id="updated">Завантаження даних…</p></div><div class="hero-actions"><button id="refresh">Оновити</button><a href="orders.html">Нові замовлення</a></div></section>
+<section class="hero"><div><h1>Огляд магазину</h1><p id="updated">Завантаження даних…</p></div><div class="hero-actions"><button id="refresh">Оновити</button><a href="orders-center.html">Нові замовлення</a></div></section>
 
 <section class="kpi-grid">
 <div class="kpi"><span>Замовлення сьогодні</span><b id="ordersToday">—</b><small id="revenueToday">—</small></div>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="columns">
-<section class="panel"><div class="panel-head"><h2>Останні замовлення</h2><a href="orders.html">Усі замовлення →</a></div><div class="table-wrap"><table><thead><tr><th>№</th><th>Дата</th><th>Клієнт</th><th>Статус</th><th>Сума</th></tr></thead><tbody id="recentOrders"><tr><td colspan="5">Завантаження…</td></tr></tbody></table></div></section>
+<section class="panel"><div class="panel-head"><h2>Останні замовлення</h2><a href="orders-center.html">Усі замовлення →</a></div><div class="table-wrap"><table><thead><tr><th>№</th><th>Дата</th><th>Клієнт</th><th>Статус</th><th>Сума</th></tr></thead><tbody id="recentOrders"><tr><td colspan="5">Завантаження…</td></tr></tbody></table></div></section>
 <section class="panel"><div class="panel-head"><h2>Статуси замовлень</h2></div><div id="orderStatuses" class="status-list"></div></section>
 </div>
 
@@ -39,7 +39,7 @@
 <a href="products.html"><b>Ціни та залишки</b><span>Оперативне керування продажем</span></a>
 <a href="catalog-import.html"><b>Імпорт / експорт</b><span>Масові зміни каталогу</span></a>
 <a href="content.html"><b>Контент</b><span>Банери та медіатека</span></a>
-<a href="orders.html"><b>Замовлення</b><span>Обробка та відправлення</span></a>
+<a href="orders-center.html"><b>Замовлення</b><span>Обробка та відправлення</span></a>
 <a href="integrations.html"><b>Інтеграції</b><span>Нова пошта, фіди, Telegram</span></a>
 </div></section>
 </main>

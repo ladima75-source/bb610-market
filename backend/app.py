@@ -358,3 +358,7 @@ app.include_router(category_manager_router)
 # BB610_STAGE18F_MEDIA_MANAGER
 from .media_manager_api import router as media_manager_router
 app.include_router(media_manager_router)
+
+# BB610_STAGE18G_ORDER_CENTER
+from .order_center_api import router as order_center_router
+app.include_router(order_center_router)

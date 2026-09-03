@@ -9,8 +9,7 @@ router=APIRouter()
 
 def auth(a):
     token=os.getenv('BB610_ADMIN_TOKEN')
-    if not token or a!='Bearer '+token:
-        raise HTTPException(401,'Unauthorized')
+    if not token or a!='Bearer '+token:raise HTTPException(401,'Unauthorized')
 
 class HeroBody(BaseModel):
     hero:dict[str,Any]

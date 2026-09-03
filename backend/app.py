@@ -354,3 +354,7 @@ app.include_router(homepage_showcase_router)
 # BB610_STAGE18E_CATEGORY_MANAGER
 from .category_manager_api import router as category_manager_router
 app.include_router(category_manager_router)
+
+# BB610_STAGE18F_MEDIA_MANAGER
+from .media_manager_api import router as media_manager_router
+app.include_router(media_manager_router)

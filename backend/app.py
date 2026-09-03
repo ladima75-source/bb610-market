@@ -374,3 +374,7 @@ app.include_router(shop_settings_router)
 # BB610_STAGE18J_CATALOG_HEALTH
 from .catalog_health_api import router as catalog_health_router
 app.include_router(catalog_health_router)
+
+# BB610_STAGE18K_AUDIT_LOG
+from .audit_log_api import router as audit_log_router
+app.include_router(audit_log_router)

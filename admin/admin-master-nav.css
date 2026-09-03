@@ -1,0 +1,44 @@
+
+/* BB610 Market — Stage 19B.8 MASTER admin sidebar */
+.bb19b8-nav-group-title{
+  margin:14px 10px 6px;
+  color:#69808a;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.bb19b8-nav-link{
+  display:flex!important;
+  align-items:center!important;
+  gap:9px!important;
+  min-height:34px!important;
+  padding:8px 10px!important;
+  border-radius:7px!important;
+  color:#d8dfe1!important;
+  text-decoration:none!important;
+  font-size:12px!important;
+  line-height:1.2!important;
+  box-sizing:border-box!important;
+}
+.bb19b8-nav-link:hover{background:#121d22!important}
+.bb19b8-nav-link.active{
+  background:#16242a!important;
+  color:#f2b331!important;
+}
+.bb19b8-nav-icon{
+  width:16px;height:16px;flex:0 0 16px;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.bb19b8-nav-icon svg{
+  width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.bb19b8-sidebar-master{
+  display:flex!important;
+  flex-direction:column!important;
+}
+.bb19b8-sidebar-divider{
+  margin:10px 6px 2px;
+  height:1px;background:#263238;
+}

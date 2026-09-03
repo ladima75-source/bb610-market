@@ -378,3 +378,7 @@ app.include_router(catalog_health_router)
 # BB610_STAGE18K_AUDIT_LOG
 from .audit_log_api import router as audit_log_router
 app.include_router(audit_log_router)
+
+# BB610_STAGE18L_BACKUP_CENTER
+from .backup_center_api import router as backup_center_router
+app.include_router(backup_center_router)

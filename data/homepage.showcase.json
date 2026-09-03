@@ -34,9 +34,9 @@
     "enabled": true,
     "image": "assets/img/hero/homepage-hero.png",
     "source_image": "assets/media/Изображение-Codex-3-сент.-2026-г.--09_56_11.png",
-    "title": "",
-    "subtitle": "",
-    "button_text": "",
+    "title": "Професійні товари для вирощування",
+    "subtitle": "Добрива, біостимулятори та професійні рішення для живлення рослин",
+    "button_text": "Перейти до каталогу",
     "button_url": "catalog.html",
     "align": "left",
     "overlay": true

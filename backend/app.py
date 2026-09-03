@@ -370,3 +370,7 @@ app.include_router(sales_channels_router)
 # BB610_STAGE18I_SHOP_SETTINGS
 from .shop_settings_api import router as shop_settings_router
 app.include_router(shop_settings_router)
+
+# BB610_STAGE18J_CATALOG_HEALTH
+from .catalog_health_api import router as catalog_health_router
+app.include_router(catalog_health_router)

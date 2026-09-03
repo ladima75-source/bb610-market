@@ -1,0 +1,28 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Здоров’я каталогу · BB610 Market Admin</title>
+<link rel="stylesheet" href="admin-shell.css?v=18i1"><link rel="stylesheet" href="catalog-health.css?v=18j"></head><body>
+<header><a class="brand" href="dashboard.html"><span>BB610</span> MARKET ADMIN</a><div class="auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></header>
+<main>
+<div class="head"><div><h1>Здоров’я каталогу</h1><p>Помилки карток, SKU та ймовірні дублікати.</p></div><button id="refresh">Оновити</button></div>
+
+<section class="score-grid">
+<div><small>Товарів</small><b id="products">—</b></div><div><small>SKU</small><b id="skus">—</b></div>
+<div class="critical"><small>Критичні</small><b id="critical">—</b></div>
+<div class="warning"><small>Попередження</small><b id="warning">—</b></div>
+<div><small>Інформаційні</small><b id="info">—</b></div>
+<div><small>Груп дублювання</small><b id="dups">—</b></div>
+</section>
+
+<div class="tabs"><button class="active" data-tab="issues">Проблеми каталогу</button><button data-tab="duplicates">Дублікати</button></div>
+
+<section id="issuesTab">
+<div class="toolbar"><input id="issueSearch" placeholder="Пошук: товар, SKU, проблема…"><select id="severity"><option value="">Усі рівні</option><option value="critical">Критичні</option><option value="warning">Попередження</option><option value="info">Інформаційні</option></select><select id="code"><option value="">Усі типи</option></select><span id="issueCount">—</span></div>
+<div class="table-wrap"><table><thead><tr><th>Рівень</th><th>Товар</th><th>SKU</th><th>Проблема</th><th>Деталі</th><th></th></tr></thead><tbody id="issueRows"></tbody></table></div>
+</section>
+
+<section id="duplicatesTab" hidden>
+<div class="toolbar"><input id="dupSearch" placeholder="Пошук у дублікатах…"><select id="dupKind"><option value="">Усі типи</option><option value="exact_title_brand">Точна назва + бренд</option><option value="same_image">Однакове фото</option><option value="similar_title">Схожі назви</option></select><span id="dupCount">—</span></div>
+<div id="duplicateGroups" class="duplicate-groups"></div>
+</section>
+</main>
+<script src="admin-shell.js?v=18i"></script><script src="catalog-health.js?v=18j"></script><script src="catalog-health-nav.js?v=18j"></script>\n</body></html>

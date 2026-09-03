@@ -1,0 +1,11 @@
+(()=>{'use strict';
+const target='catalog-health.html';
+if(document.querySelector(`.bb610-admin-sidebar a[href="${target}"]`))return;
+const links=[...document.querySelectorAll('.bb610-admin-sidebar nav section')];
+const catalog=links.find(s=>s.querySelector('h4')?.textContent.trim()==='Каталог');
+if(!catalog)return;
+const a=document.createElement('a');a.href=target;
+a.className=location.pathname.endsWith('/'+target)?'active':'';
+a.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/><path d="M17 8h2v2"/></svg><span>Здоров’я каталогу</span>';
+catalog.appendChild(a);
+})();

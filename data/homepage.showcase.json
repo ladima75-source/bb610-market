@@ -1,1 +1,44 @@
-{"version":1,"updated_at":null,"blocks":[{"id":"recommended","title":"Рекомендуємо","enabled":true,"mode":"recommended","limit":8,"order":10,"product_ids":[]},{"id":"new","title":"Новинки","enabled":true,"mode":"new","limit":8,"order":20,"product_ids":[]},{"id":"bestsellers","title":"Хіти продажу","enabled":true,"mode":"bestseller","limit":8,"order":30,"product_ids":[]}]}
+{
+  "version": 1,
+  "updated_at": null,
+  "blocks": [
+    {
+      "id": "recommended",
+      "title": "Рекомендуємо",
+      "enabled": true,
+      "mode": "recommended",
+      "limit": 8,
+      "order": 10,
+      "product_ids": []
+    },
+    {
+      "id": "new",
+      "title": "Новинки",
+      "enabled": true,
+      "mode": "new",
+      "limit": 8,
+      "order": 20,
+      "product_ids": []
+    },
+    {
+      "id": "bestsellers",
+      "title": "Хіти продажу",
+      "enabled": true,
+      "mode": "bestseller",
+      "limit": 8,
+      "order": 30,
+      "product_ids": []
+    }
+  ],
+  "hero": {
+    "enabled": true,
+    "image": "assets/media/Изображение-Codex-3-сент.-2026-г.--09_56_11.png",
+    "title": "",
+    "subtitle": "",
+    "button_text": "",
+    "button_url": "catalog.html",
+    "align": "left",
+    "overlay": true
+  },
+  "sections": []
+}

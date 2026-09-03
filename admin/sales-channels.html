@@ -1,5 +1,5 @@
 <!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Канали продажів · BB610 Market Admin</title><link rel="stylesheet" href="sales-channels.css?v=18h"></head><body>
+<title>Канали продажів · BB610 Market Admin</title><link rel="stylesheet" href="sales-channels.css?v=18h"><link rel="stylesheet" href="admin-shell.css?v=18i">\n</head><body>
 <header><a class="brand" href="dashboard.html"><span>BB610</span> MARKET ADMIN</a><nav><a href="dashboard.html">Огляд</a><a href="orders-center.html">Замовлення</a><a href="catalog-workbench.html">Каталог</a><a href="categories-manager.html">Категорії</a><a href="homepage-showcase.html">Головна / Вітрина</a><a href="media-manager.html">Медіатека</a><a class="on" href="sales-channels.html">Канали</a></nav><div class="auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></header>
 <main><div class="head"><div><h1>Канали продажів</h1><p>Google Merchant, Meta Catalog і готовність товарів до експорту.</p></div><button id="refresh">Оновити</button></div>
 
@@ -13,4 +13,4 @@
 <section class="toolbar"><input id="search" placeholder="Пошук: SKU, товар, бренд…"><select id="state"><option value="">Усі стани</option><option value="eligible">Допущено</option><option value="blocked">Заблоковано</option><option value="review_required">На перевірці</option></select><select id="reason"><option value="">Усі причини</option></select><span id="count">—</span></section>
 
 <div class="layout"><section class="table-wrap"><table><thead><tr><th>SKU</th><th>Товар</th><th>Бренд</th><th>Ціна</th><th>Наявність</th><th>Feed policy</th><th>Стан</th></tr></thead><tbody id="rows"></tbody></table></section><aside><h2>Причини блокування</h2><div id="reasons"></div><p class="note">GTIN/MPN не вигадуємо. Якщо їх немає — це попередження, а не причина автоматично підставляти значення.</p><p class="note">ЗЗР з policy <b>review-required</b> не допускаються автоматично.</p></aside></div>
-</main><script src="sales-channels.js?v=18h"></script></body></html>
+</main><script src="sales-channels.js?v=18h"></script><script src="admin-shell.js?v=18i"></script>\n</body></html>

@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "updated_at": null,
+  "store": {
+    "name": "BB610 Market",
+    "currency": "UAH",
+    "min_order_amount": 0,
+    "phone": "",
+    "email": "",
+    "telegram": "",
+    "working_hours": ""
+  },
+  "delivery": {
+    "nova_poshta_branch": true,
+    "nova_poshta_postomat": true,
+    "nova_poshta_courier": true,
+    "ukrposhta_branch": true,
+    "ukrposhta_courier": true
+  },
+  "payment": {
+    "cod": true,
+    "bank_transfer": false,
+    "online_payment": false,
+    "cod_customer_pays_fee": true
+  },
+  "legal": {
+    "seller_name": "",
+    "edrpou": "",
+    "address": "",
+    "return_days": 14,
+    "privacy_url": "/privacy.html",
+    "terms_url": "/terms.html"
+  },
+  "seo": {
+    "title": "BB610 Market",
+    "description": "",
+    "og_image": ""
+  }
+}

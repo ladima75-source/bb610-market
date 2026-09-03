@@ -366,3 +366,7 @@ app.include_router(order_center_router)
 # BB610_STAGE18H_SALES_CHANNELS
 from .sales_channels_api import router as sales_channels_router
 app.include_router(sales_channels_router)
+
+# BB610_STAGE18I_SHOP_SETTINGS
+from .shop_settings_api import router as shop_settings_router
+app.include_router(shop_settings_router)

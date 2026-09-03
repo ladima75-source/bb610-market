@@ -1,0 +1,34 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Налаштування · BB610 Market Admin</title>
+<link rel="stylesheet" href="admin-shell.css?v=18i"><link rel="stylesheet" href="settings.css?v=18i"></head><body>
+<header><a class="brand" href="dashboard.html"><span>BB610</span> MARKET ADMIN</a><div class="auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></header>
+<main>
+<div class="head"><div><h1>Налаштування магазину</h1><p>Контакти, доставка, оплата, юридична інформація та SEO.</p></div><button id="save" class="primary">Зберегти та опублікувати</button></div>
+
+<div class="layout">
+<section class="settings-grid">
+<article class="panel"><h2>Магазин</h2><label>Назва<input id="store_name"></label><label>Валюта<select id="currency"><option value="UAH">UAH</option></select></label><label>Мінімальне замовлення<input id="min_order" type="number" step="1"></label><label>Телефон<input id="phone"></label><label>Email<input id="email" type="email"></label><label>Telegram<input id="telegram"></label><label>Графік роботи<input id="hours"></label></article>
+
+<article class="panel"><h2>Доставка</h2>
+<label class="switch"><input id="np_branch" type="checkbox"> Нова пошта · відділення</label>
+<label class="switch"><input id="np_postomat" type="checkbox"> Нова пошта · поштомат</label>
+<label class="switch"><input id="np_courier" type="checkbox"> Нова пошта · кур’єр</label>
+<label class="switch"><input id="up_branch" type="checkbox"> Укрпошта · відділення</label>
+<label class="switch"><input id="up_courier" type="checkbox"> Укрпошта · кур’єр</label></article>
+
+<article class="panel"><h2>Оплата</h2>
+<label class="switch"><input id="cod" type="checkbox"> Післяплата</label>
+<label class="switch"><input id="bank" type="checkbox"> Оплата на рахунок</label>
+<label class="switch"><input id="online" type="checkbox"> Онлайн-оплата</label>
+<label class="switch"><input id="cod_fee" type="checkbox"> Комісію післяплати сплачує покупець</label>
+<div class="hint">API-ключі тут не зберігаються. Сторінка лише керує дозволеними способами оплати.</div></article>
+
+<article class="panel"><h2>Юридичні дані</h2><label>Продавець<input id="seller"></label><label>ЄДРПОУ / ІПН<input id="edrpou"></label><label>Адреса<input id="address"></label><label>Повернення, днів<input id="return_days" type="number"></label><label>Політика конфіденційності<input id="privacy"></label><label>Умови продажу<input id="terms"></label></article>
+
+<article class="panel wide"><h2>SEO за замовчуванням</h2><label>Title<input id="seo_title"></label><label>Description<textarea id="seo_desc"></textarea></label><label>OG image<input id="og_image" placeholder="assets/..."></label></article>
+</section>
+
+<aside class="panel integrations"><h2>Інтеграції</h2><div id="integrations"></div><h2 class="history-title">Останні зміни</h2><div id="history"></div></aside>
+</div>
+</main>
+<script src="admin-shell.js?v=18i"></script><script src="settings.js?v=18i"></script></body></html>

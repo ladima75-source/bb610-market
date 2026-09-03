@@ -1,6 +1,7 @@
 <!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#17191a"><link rel="icon" href="favicon.ico"><link rel="stylesheet" href="css/styles.css"><link rel="stylesheet" href="css/market-stage2.css"><title>BB610 Market · професійні товари для вирощування</title><link rel="canonical" href="https://market.bb610.com.ua/"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:site_name" content="BB610 Market"><meta property="og:url" content="https://market.bb610.com.ua/"><meta property="og:title" content="BB610 Market · професійні товари для вирощування"><meta property="og:image" content="https://market.bb610.com.ua/assets/bb610-market-logo.png"><meta name="description" content="BB610 Market — професійні добрива, біостимулятори, засоби захисту рослин та контейнери. Перевірене походження та інформація виробника."><link rel="stylesheet" href="css/banners.css"><link rel="stylesheet" href="assets/css/homepage-showcase.css?v=18d">
 
 <link rel="stylesheet" href="assets/css/homepage-stage19a6.css?v=19a6">
+<link rel="stylesheet" href="assets/css/homepage-stage19a7.css?v=19a7">
 </head><body class="design-v2">
 <header class="header market-header"><div class="container header-main"><a class="logo" href="index.html"><img src="assets/bb610-market-logo.png" alt="BB610 Market"></a><form class="search" data-search-form><input aria-label="Пошук" placeholder="Назва / виробник / культура / діюча речовина"><button aria-label="Знайти">⌕</button></form><div class="header-actions"><a class="header-action" href="compare.html">Порівняння <span data-count="compare">0</span></a><a class="header-action" href="favorites.html">Обране <span data-count="fav">0</span></a><a class="header-action cart-link" href="cart.html">Кошик <span data-count="cart">0</span></a></div></div><nav class="nav"><div class="container"><a class="nav-primary" href="catalog.html">Каталог</a><a href="catalog.html?category=nutrition">Живлення</a><a href="catalog.html?category=biostimulation">Біостимуляція</a><a href="catalog.html?category=protection">Захист рослин</a><a href="catalog.html?category=containers">Контейнери</a><a href="#verified">BB610 Verified</a></div></nav></header>
 <main>
@@ -19,4 +20,35 @@
 <script src="assets/js/storefront-settings.js?v=18i"></script>
 
 <script src="assets/js/homepage-stage19a6.js?v=19a6"></script>
+
+<script id="bb19a7-aligner">
+(()=>{'use strict';
+const norm=s=>(s||'').replace(/\s+/g,' ').trim();
+function run(){
+  const dir=document.querySelector('.bb19a6-directions');
+  if(!dir)return;
+
+  let n=dir.nextElementSibling;
+  while(n){
+    if(!n.matches('script,style,link')){
+      const text=norm(n.textContent);
+      if(text || n.querySelector?.('img,.product-card,[class*="product-card"]')){
+        n.classList.add('bb19a7-align','bb19a7-home-section');
+      }
+    }
+    n=n.nextElementSibling;
+  }
+
+  const heading=[...document.querySelectorAll('h1,h2,h3')]
+    .find(x=>/ПОПУЛЯРНІ\s+ТОВАРИ/i.test(norm(x.textContent)));
+  if(heading){
+    const sec=heading.closest('section')||heading.parentElement;
+    if(sec)sec.classList.add('bb19a7-align','bb19a7-popular','bb19a7-home-section');
+  }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);
+else run();
+})();
+</script>
+
 </body></html>

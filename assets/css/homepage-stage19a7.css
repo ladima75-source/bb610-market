@@ -1,0 +1,68 @@
+
+/* BB610 Market — Stage 19A.7 Grid & Density Polish */
+:root{--bb19a7-content:1280px;--bb19a7-gutter:24px}
+
+.bb19a6-hero,.bb19a6-directions{
+  width:min(var(--bb19a7-content),calc(100% - (var(--bb19a7-gutter) * 2)))!important;
+}
+
+.bb19a6-directions{padding:26px 0 28px!important}
+.bb19a6-head{margin-bottom:14px!important;align-items:center!important}
+.bb19a6-kicker{margin-bottom:5px!important;font-size:10px!important}
+.bb19a6-head h2{font-size:27px!important;line-height:1.05!important}
+.bb19a6-head a{font-size:12px!important;line-height:1!important}
+
+.bb19a6-grid{gap:12px!important}
+.bb19a6-card{
+  min-height:154px!important;
+  padding:16px 17px 15px!important;
+  border-radius:10px!important;
+}
+.bb19a6-top{
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:11px!important;
+}
+.bb19a6-icon{
+  width:38px!important;height:38px!important;flex:0 0 38px!important;border-radius:8px!important;
+}
+.bb19a6-icon svg{width:23px!important;height:23px!important}
+.bb19a6-num{
+  margin-left:auto!important;align-self:center!important;font-size:10px!important;line-height:1!important;
+  letter-spacing:.08em!important;opacity:.82!important;
+}
+.bb19a6-card h3{
+  margin:11px 0 6px!important;font-size:17px!important;line-height:1.15!important;
+}
+.bb19a6-card p{
+  margin:0!important;min-height:0!important;font-size:13px!important;line-height:1.38!important;color:#a7afb2!important;
+}
+.bb19a6-action{
+  margin-top:auto!important;padding-top:11px!important;font-size:12px!important;line-height:1!important;
+}
+
+.bb19a7-align{
+  width:min(var(--bb19a7-content),calc(100% - (var(--bb19a7-gutter) * 2)))!important;
+  margin-left:auto!important;margin-right:auto!important;
+}
+.bb19a7-popular{padding-top:22px!important}
+.bb19a7-popular h2,.bb19a7-popular h3{line-height:1.1!important}
+.bb19a7-popular .product-card,.bb19a7-popular [class*="product-card"]{border-radius:10px!important}
+.bb19a7-home-section{margin-top:0!important;margin-bottom:0!important}
+
+@media(min-width:1051px){
+  .bb19a6-hero,.bb19a6-directions,.bb19a7-align{
+    width:min(var(--bb19a7-content),calc(100% - 48px))!important;
+  }
+}
+@media(max-width:1050px){
+  :root{--bb19a7-gutter:18px}
+  .bb19a6-card{min-height:146px!important}
+}
+@media(max-width:680px){
+  :root{--bb19a7-gutter:14px}
+  .bb19a6-directions{padding:22px 0 24px!important}
+  .bb19a6-card{min-height:138px!important;padding:15px!important}
+  .bb19a6-card p{font-size:13px!important}
+  .bb19a6-action{font-size:12px!important}
+}

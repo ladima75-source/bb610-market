@@ -406,3 +406,7 @@ app.include_router(admin_backups_router)
 # BB610_STAGE19C_PRODUCT_MANAGEMENT
 from .admin_product_management_api import router as admin_product_management_router
 app.include_router(admin_product_management_router)
+
+# BB610_STAGE20A_MASTER_PRODUCT_CARD
+from .master_product_card_api import router as master_product_card_router
+app.include_router(master_product_card_router)

@@ -301,7 +301,15 @@
       "stage16b_image_query": "Master Мастер NPK 20-20-20 1 кг Valagro",
       "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-20-20-20-valagro",
       "stage16b_content_status": "complete",
-      "category": "Живлення"
+      "category": "Живлення",
+      "display": {
+        "global_order": 2,
+        "category_order": 2,
+        "pinned": false,
+        "new": false,
+        "recommended": false,
+        "bestseller": false
+      }
     },
     {
       "id": "plantafol-20-20-20",
@@ -502,7 +510,15 @@
       "stage16b_image_query": "Megafol Мегафол біостимулятор антистрес 100 мл Valagro",
       "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-100-ml-valagro",
       "stage16b_content_status": "complete",
-      "category": "Біостимуляція"
+      "category": "Біостимуляція",
+      "display": {
+        "global_order": 4,
+        "category_order": 4,
+        "pinned": false,
+        "new": false,
+        "recommended": true,
+        "bestseller": false
+      }
     },
     {
       "id": "radifarm",
@@ -589,158 +605,6 @@
       "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/biodobryva-biologichni/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor4",
       "stage16b_content_status": "complete",
       "category": "Біостимуляція"
-    },
-    {
-      "id": "brexil-mix",
-      "slug": "brexil-mix",
-      "name": "Brexil Mix (Брексіл Мікс), мікроелементи в хелатній формі",
-      "official_name": "Brexil Mix (Брексіл Мікс), мікроелементи в хелатній формі",
-      "brand": "Valagro",
-      "manufacturer": "Valagro S.p.A.",
-      "country": "Італія",
-      "category_id": "nutrition",
-      "product_type": "Водорозчинні мікрогранули / мікродобриво",
-      "form": "Водорозчинні мікрогранули / мікродобриво",
-      "npk": "—",
-      "active_ingredient": "—",
-      "concentration": "",
-      "composition": [],
-      "cultures": [
-        "лохина",
-        "полуниця",
-        "малина",
-        "овочі",
-        "сад"
-      ],
-      "purposes": [
-        "живлення",
-        "мікроелементи",
-        "листкове живлення"
-      ],
-      "manufacturer_use": "Комплексне мікродобриво. Частина полів очікує підтвердження за офіційним джерелом виробника.",
-      "application": "Потребує підтвердження за офіційною інструкцією виробника.",
-      "rate": "Потребує підтвердження.",
-      "restrictions": "Не всі характеристики заповнені; перевірка триває.",
-      "target": "",
-      "waiting_period": "",
-      "hazard_class": "",
-      "registration": "",
-      "factory_packs": [
-        "1 кг",
-        "5 кг — потребує підтвердження"
-      ],
-      "documents": [],
-      "source": {
-        "title": "Valagro / Syngenta Biologicals — official source pending verification",
-        "url": "",
-        "verifiedAt": "2026-08-28",
-        "primary": false
-      },
-      "image": {
-        "local": "assets/img/real/stage16b/brexil-mix.jpg",
-        "officialSourceUrl": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-v-helatnij-formi-15-g-valagro",
-        "status": "local-imported-product-photo"
-      },
-      "verification": {
-        "status": "partial-primary-source-pending",
-        "verified": false,
-        "verifiedAt": "2026-08-28",
-        "scope": "Товар реальний; заповнення картки триває",
-        "note": "Назва, бренд і візуал заповнені для оцінки каталогу. Частина технічних полів очікує підтвердження за офіційним джерелом виробника."
-      },
-      "selected_by_bb610": true,
-      "canonical_product_url": "/products/brexil-mix/",
-      "legacy_url": "product.html?id=brexil-mix",
-      "default_sku_id": null,
-      "store_content_status": "product-only-no-bb610-sku",
-      "seo": {
-        "title": "Brexil Mix (Брексіл Мікс), мікроелементи в хелатній формі — Valagro",
-        "description": "Комплексне мікродобриво. Частина полів очікує підтвердження за офіційним джерелом виробника. Ціна та наявність — для вибраної фасовки в BB610 Market."
-      },
-      "image_alt": "Brexil Mix (Брексіл Мікс), мікроелементи в хелатній формі",
-      "feed": {
-        "title": "Brexil Mix (Брексіл Мікс), мікроелементи в хелатній формі — Valagro",
-        "description": "Комплексне мікродобриво. Частина полів очікує підтвердження за офіційним джерелом виробника."
-      },
-      "stage16b_image_query": "Brexil Mix Брексіл Мікс 15 г Valagro",
-      "stage16b_content_status": "complete",
-      "feed_image_ready": true
-    },
-    {
-      "id": "kendal-root",
-      "slug": "kendal-root",
-      "name": "Kendal Root (Кендал Рут), біостимулятор-антистрес для кореневої системи",
-      "official_name": "Kendal Root (Кендал Рут), біостимулятор-антистрес для кореневої системи",
-      "brand": "Valagro",
-      "manufacturer": "Valagro S.p.A.",
-      "country": "Італія",
-      "category_id": "biostimulation",
-      "product_type": "Рідкий біостимулятор",
-      "form": "Рідкий біостимулятор",
-      "npk": "—",
-      "active_ingredient": "—",
-      "concentration": "",
-      "composition": [],
-      "cultures": [
-        "лохина",
-        "полуниця",
-        "малина",
-        "овочі",
-        "сад",
-        "хвойні",
-        "газон"
-      ],
-      "purposes": [
-        "біостимуляція",
-        "коренева система"
-      ],
-      "manufacturer_use": "Специфічний біостимулятор для несприятливих ґрунтових умов; виробник описує підвищення сили коренів, швидше відновлення та підтримання продуктивності за стресових умов.",
-      "application": "Фертигація для всіх культур; верхнє внесення для овочевих і польових культур з достатнім об’ємом води, щоб продукт досяг ґрунту та коренів.",
-      "rate": "5–20 л/га залежно від тяжкості пошкодження коренів і частоти внесення.",
-      "restrictions": "5 л/га при невеликому пошкодженні або внесенні кожні 7 днів; 20 л/га при сильному пошкодженні або інтервалі 20 днів — за офіційним leaflet.",
-      "target": "",
-      "waiting_period": "",
-      "hazard_class": "",
-      "registration": "",
-      "factory_packs": [
-        "10 л — у використаному офіційному матеріалі; інші ринки можуть відрізнятися"
-      ],
-      "documents": [
-        {
-          "title": "KENDAL ROOT official leaflet",
-          "url": "https://www.valagro.com/media/filer_public/8b/c3/8bc37f5d-8ede-4bba-ad7a-d23b5d7c2ea1/valagro_red_kendal_root.pdf"
-        }
-      ],
-      "source": {
-        "title": "Valagro — KENDAL ROOT official leaflet",
-        "url": "https://www.valagro.com/media/filer_public/8b/c3/8bc37f5d-8ede-4bba-ad7a-d23b5d7c2ea1/valagro_red_kendal_root.pdf",
-        "verifiedAt": "2026-08-28",
-        "primary": true
-      },
-      "image": {
-        "local": "assets/img/product-biostim.svg",
-        "officialSourceUrl": "",
-        "status": "local-placeholder"
-      },
-      "verification": {
-        "status": "verified-primary-source",
-        "verified": true,
-        "verifiedAt": "2026-08-28",
-        "scope": "Дані продукту виробника",
-        "note": "Комерційні параметри BB610 не верифіковані та не заповнені."
-      },
-      "selected_by_bb610": true,
-      "canonical_product_url": "/products/kendal-root/",
-      "legacy_url": "product.html?id=kendal-root",
-      "default_sku_id": "BB610-VLG-KENDALROOT-10L",
-      "store_content_status": "sku-model-ready",
-      "seo": {},
-      "category": "Біостимуляція",
-      "short_description": "Біостимулятор для підтримки кореневої системи рослин за несприятливих ґрунтових і стресових умов.",
-      "feed": {
-        "description": "Специфічний біостимулятор для несприятливих ґрунтових умов; виробник описує підвищення сили коренів, швидше відновлення та підтримання продуктивності за стресових умов."
-      },
-      "image_alt": "Kendal Root (Кендал Рут), біостимулятор-антистрес для кореневої системи, 10 л"
     },
     {
       "id": "switch-625-wg",
@@ -1353,7 +1217,7 @@
       "feed_image_ready": true,
       "canonical_product_url": "/products/kendal/",
       "legacy_url": "product.html?id=kendal",
-      "store_content_status": "launch-card-ready",
+      "store_content_status": "master-product-card-v1",
       "default_sku_id": "BB610-VLG-KENDAL-25ML",
       "launch_sku_ids": [
         "BB610-VLG-KENDAL-25ML"
@@ -1361,7 +1225,68 @@
       "stage16b_image_query": "Kendal Кендал біостимулятор 100 мл Valagro",
       "stage16b_source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostymulyator-profilaktyka-hvorob-100-ml-valagro",
       "stage16b_content_status": "complete",
-      "category": "Біостимуляція"
+      "category": "Біостимуляція",
+      "product_card_v1": {
+        "version": "1.0",
+        "enabled": true,
+        "eyebrow": "БІОСТИМУЛЯЦІЯ · VALAGRO",
+        "display_name": "Kendal™",
+        "subtitle": "Біостимулятор для підтримки рослин у несприятливих умовах вирощування",
+        "lead": "Допомагає рослинам зберігати життєздатність у несприятливих умовах та підтримує їх продуктивність і якість.",
+        "why": [
+          {
+            "title": "НЕСПРИЯТЛИВІ УМОВИ",
+            "text": "Допомагає рослинам зберігати життєздатність у несприятливих умовах вирощування."
+          },
+          {
+            "title": "ПІДТРИМКА РОСЛИНИ",
+            "text": "Формула KENDAL™ підтримує рослину під час дії стресових факторів."
+          },
+          {
+            "title": "ПРОДУКТИВНІСТЬ І ЯКІСТЬ",
+            "text": "Допомагає підтримувати продуктивність рослин та якість урожаю."
+          }
+        ],
+        "how_it_works": {
+          "title": "Як працює",
+          "text": "KENDAL™ містить ексклюзивний комплекс GEA 249. За інформацією виробника, він підтримує систему рослини за дії стресових факторів та сприяє антиоксидантним функціям у клітинах рослини.",
+          "badge": "GEA 249"
+        },
+        "application": {
+          "enabled": true,
+          "intro": "Норми та схема застосування заповнюються тільки після звірки з етикеткою або офіційною інструкцією для товару, що постачається на український ринок.",
+          "rows": [],
+          "market_note": "Реєстраційний статус, маркування та вимоги до застосування можуть відрізнятися за ринками. Пріоритет має актуальна етикетка поставлюваного товару."
+        },
+        "specs": [],
+        "origin": {
+          "brand": "Valagro",
+          "company": "Syngenta Biologicals",
+          "manufacturer": "Valagro S.p.A.",
+          "country": "Італія",
+          "official_url": "https://www.valagro.com/usa/en-us/products/farm/biostimulants/kendal/"
+        },
+        "documents": [
+          {
+            "type": "official",
+            "title": "Офіційна сторінка виробника",
+            "url": "https://www.valagro.com/usa/en-us/products/farm/biostimulants/kendal/"
+          }
+        ],
+        "sources": {
+          "source_url": "https://www.valagro.com/usa/en-us/products/farm/biostimulants/kendal/",
+          "source_pdf": "",
+          "source_revision": "",
+          "verified_date": "2026-09-03"
+        },
+        "cross_sell": [],
+        "similar": [],
+        "trust_message": {
+          "title": "Дані про товар — з перевірених першоджерел",
+          "text": "Ключові характеристики та твердження звіряємо з етикеткою, матеріалами виробника та постачальника."
+        },
+        "sku_overrides": {}
+      }
     },
     {
       "id": "viva",
@@ -1510,7 +1435,15 @@
       ],
       "stage16b_image_query": "Osmocote Landscape 16-9-12 200 г",
       "stage16b_content_status": "complete",
-      "category": "Живлення"
+      "category": "Живлення",
+      "display": {
+        "global_order": 15,
+        "category_order": 15,
+        "pinned": false,
+        "new": false,
+        "recommended": true,
+        "bestseller": false
+      }
     },
     {
       "id": "osmocote-quick-start-22-5-6",
@@ -1883,7 +1816,15 @@
       ],
       "stage16b_image_query": "Haifa MKP 0-52-34 200 г монокалійфосфат",
       "stage16b_content_status": "complete",
-      "category": "Живлення"
+      "category": "Живлення",
+      "display": {
+        "global_order": 20,
+        "category_order": 20,
+        "pinned": false,
+        "new": false,
+        "recommended": true,
+        "bestseller": false
+      }
     },
     {
       "id": "solupotasse",
@@ -2332,7 +2273,15 @@
       "stage16b_image_query": "Ferrilene Феррілен 4,8 ortho ortho 10 г Valagro",
       "stage16b_source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/ferrilene-ferrilen-48-orto-orto-helat-zheleza-10-g-valagro",
       "stage16b_content_status": "complete",
-      "category": "Живлення"
+      "category": "Живлення",
+      "display": {
+        "global_order": 26,
+        "category_order": 26,
+        "pinned": false,
+        "new": false,
+        "recommended": true,
+        "bestseller": false
+      }
     },
     {
       "id": "master-15-5-30",
@@ -4079,43 +4028,6 @@
       },
       "image_alt": "Megafol (Мегафол), біостимулятор-антистрес, 1000 л",
       "feed_image_ready": true,
-      "feed_policy": "allowed"
-    },
-    {
-      "id": "BB610-VLG-KENDALROOT-10L",
-      "sku": "BB610-VLG-KENDALROOT-10L",
-      "product_id": "kendal-root",
-      "variant_id": "kendal-root--10l",
-      "slug": "kendal-root-10l",
-      "variant": "10 л",
-      "volume_weight": {
-        "value": 10,
-        "unit": "l"
-      },
-      "gtin_ean": null,
-      "mpn": null,
-      "price": null,
-      "currency": "UAH",
-      "availability": "unknown",
-      "stock_label": "Наявність уточнюється",
-      "offer_status": "draft",
-      "feed_eligible": false,
-      "url": "/products/kendal-root-10l/",
-      "image": "assets/img/real/stage16b/kendal-root.png",
-      "supplier": null,
-      "importer": null,
-      "packer": null,
-      "shipping": [
-        "Відправка по Україні — умови уточнюються"
-      ],
-      "commercial_status": "not-configured",
-      "commercial_note": "SKU підготовлений архітектурно; ціна, фактична наявність і постачання BB610 ще не підтверджені.",
-      "pack_source_status": "manufacturer-pack-confirmed",
-      "seo": {},
-      "feed": {
-        "title": "KENDAL™ ROOT, 10 л — Valagro"
-      },
-      "image_alt": "Kendal Root (Кендал Рут), біостимулятор-антистрес для кореневої системи, 10 л",
       "feed_policy": "allowed"
     },
     {

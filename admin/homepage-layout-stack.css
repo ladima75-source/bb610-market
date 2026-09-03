@@ -1,0 +1,90 @@
+
+/* BB610 Market — Stage 19B.1
+   Homepage admin: stack HERO and managed blocks vertically.
+*/
+
+body .bb19a3-hero-admin,
+body .bb19a5-hero-admin,
+body .bb19b-admin{
+  width:100%!important;
+  max-width:none!important;
+  box-sizing:border-box!important;
+  float:none!important;
+  clear:both!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* Main admin content must be a single vertical flow on this page. */
+body.bb19b1-homepage-admin main,
+body.bb19b1-homepage-admin .admin-main,
+body.bb19b1-homepage-admin .admin-content,
+body.bb19b1-homepage-admin .content{
+  min-width:0;
+}
+
+/* Force the direct content region containing H1/HERO/blocks into one column.
+   JS adds this class only to the resolved parent on homepage-showcase. */
+.bb19b1-stack-root{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:14px!important;
+  grid-template-columns:1fr!important;
+}
+
+/* Heading should stay first and take full width. */
+.bb19b1-stack-root > .bb19b1-page-head{
+  width:100%!important;
+  max-width:none!important;
+}
+
+/* HERO gets more usable internal width. */
+.bb19b1-stack-root > .bb19a3-hero-admin,
+.bb19b1-stack-root > .bb19a5-hero-admin{
+  order:10!important;
+}
+
+/* Managed homepage blocks directly below HERO. */
+.bb19b1-stack-root > .bb19b-admin{
+  order:20!important;
+}
+
+/* Existing controls / showcase sections follow below. */
+.bb19b1-stack-root > :not(.bb19b1-page-head):not(.bb19a3-hero-admin):not(.bb19a5-hero-admin):not(.bb19b-admin){
+  order:30;
+}
+
+/* Improve forms once they get the full width. */
+.bb19b1-stack-root .bb19a3-grid{
+  grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr)!important;
+  gap:18px!important;
+}
+
+.bb19b1-stack-root .bb19b-admin{
+  padding:16px!important;
+}
+
+.bb19b1-stack-root .bb19b-pane{
+  width:100%!important;
+}
+
+.bb19b1-stack-root .bb19b-item-grid{
+  grid-template-columns:72px minmax(180px,.8fr) minmax(280px,1.5fr) minmax(190px,.8fr)!important;
+}
+
+/* Keep action buttons visible and not squeezed into a thin side column. */
+.bb19b1-stack-root .bb19a3-actions,
+.bb19b1-stack-root .bb19b-actions{
+  width:100%!important;
+}
+
+/* Tablet: still stacked, forms become simpler. */
+@media(max-width:1100px){
+  .bb19b1-stack-root .bb19a3-grid{
+    grid-template-columns:1fr!important;
+  }
+  .bb19b1-stack-root .bb19b-item-grid{
+    grid-template-columns:1fr!important;
+  }
+}

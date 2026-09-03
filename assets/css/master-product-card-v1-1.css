@@ -1,0 +1,84 @@
+
+/* Stage 20A.1 — commercial hero refinement */
+.mpc-hero{
+  grid-template-columns:minmax(330px,.82fr) minmax(0,1.18fr)!important;
+  gap:30px!important;
+  padding:24px!important;
+  align-items:stretch!important;
+}
+.mpc-image{min-height:400px!important}
+.mpc-image img{max-height:385px!important}
+.mpc-hero h1{
+  font-size:50px!important;
+  letter-spacing:-.035em!important;
+  margin:8px 0 8px!important;
+}
+.mpc-subtitle{
+  font-size:19px!important;
+  max-width:650px!important;
+}
+.mpc-lead{
+  font-size:14px!important;
+  max-width:650px!important;
+  margin-top:12px!important;
+}
+.mpc-variants{
+  margin-top:20px!important;
+  padding-top:17px!important;
+  border-top:1px solid var(--mpc-line)!important;
+}
+.mpc-variant{
+  min-width:64px!important;
+  font-size:13px!important;
+  font-weight:800!important;
+}
+.mpc-commerce{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  grid-template-areas:
+   "price buy"
+   "stock buy"
+   "sku buy";
+  column-gap:24px!important;
+  align-items:center!important;
+  margin-top:17px!important;
+  padding-top:17px!important;
+}
+.mpc-price{grid-area:price;font-size:42px!important;line-height:1!important;letter-spacing:-.035em}
+.mpc-old-price{font-size:15px;color:#7f8b90;text-decoration:line-through;margin-bottom:5px}
+.mpc-stock{grid-area:stock;margin-top:8px!important;font-size:13px}
+#mpcSku{grid-area:sku!important;margin-top:5px!important}
+.mpc-buy-row{grid-area:buy;margin:0!important;align-items:stretch!important}
+.mpc-buy{min-width:145px!important;padding:13px 22px!important;font-size:13px!important}
+.mpc-qty button,.mpc-qty span{width:40px!important}
+.mpc-trust-mini{
+  padding:12px 14px!important;
+  margin-top:17px!important;
+  border:1px solid #344145!important;
+  border-radius:9px!important;
+  background:#101719!important;
+  font-size:12px!important;
+}
+.mpc-original{
+  color:var(--mpc-green)!important;
+  font-weight:800!important;
+}
+.mpc-application-pending{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding:14px;
+  border:1px solid #344145;
+  border-radius:9px;
+  background:#101719;
+}
+.mpc-application-pending strong{display:block;color:#fff;margin-bottom:4px}
+.mpc-application-pending span{color:#94a3a8;font-size:12px;line-height:1.45}
+.mpc-section{margin-top:22px!important}
+@media(max-width:900px){
+  .mpc-commerce{
+    grid-template-columns:1fr!important;
+    grid-template-areas:"price" "stock" "sku" "buy"!important;
+  }
+  .mpc-buy-row{margin-top:14px!important}
+}

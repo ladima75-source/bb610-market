@@ -1,0 +1,42 @@
+
+/* Stage 19B */
+.bb19b-directions,.bb19b-cultures,.bb19b-trust,.bb19b-availability{
+  width:min(1280px,calc(100% - 48px));margin-left:auto;margin-right:auto
+}
+.bb19b-directions{padding:24px 0 26px}
+.bb19b-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:14px}
+.bb19b-kicker{color:#d2aa45;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:5px}
+.bb19b-head h2{margin:0;color:#f4f5f3;font-size:27px;line-height:1.05}
+.bb19b-head>a{color:#d5dbd7;text-decoration:none;font-size:12px}
+.bb19b-dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.bb19b-dir-card{min-height:145px;padding:15px 16px;border:1px solid #303638;border-radius:10px;background:linear-gradient(145deg,#191e20,#15191b);text-decoration:none!important;display:flex;flex-direction:column}
+.bb19b-dir-row{display:flex;align-items:center;gap:10px}
+.bb19b-dir-icon{width:36px;height:36px;border:1px solid #3d4938;border-radius:8px;display:grid;place-items:center;color:#8cba42}.bb19b-dir-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7}
+.bb19b-dir-card h3{margin:0;color:#f3f4f1;font-size:17px}.bb19b-dir-num{margin-left:auto;color:#707c81;font-size:10px}
+.bb19b-dir-card p{margin:9px 0 0;color:#a7afb2;font-size:13px;line-height:1.38}.bb19b-dir-link{margin-top:auto;padding-top:10px;color:#d8ad43;font-size:12px;font-weight:700}
+
+.bb19b-cultures{padding:34px 0}
+.bb19b-cultures .intro{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:16px}
+.bb19b-cultures h2{margin:0;color:#f3f4f1;font-size:26px}.bb19b-cultures p{margin:7px 0 0;color:#929da1;font-size:13px}
+.bb19b-culture-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.bb19b-culture{position:relative;min-height:112px;border-radius:10px;overflow:hidden;border:1px solid #313a3c;background:#171c1e;text-decoration:none!important}
+.bb19b-culture-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.02)}
+.bb19b-culture::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,9,.18),rgba(7,9,9,.78))}
+.bb19b-culture span{position:absolute;left:15px;bottom:13px;z-index:2;color:#fff;font-size:17px;font-weight:800;text-shadow:0 1px 5px #000}
+.bb19b-culture:not(.has-image){background:linear-gradient(145deg,#1a2022,#121718)}
+
+.bb19b-trust{margin-top:24px;margin-bottom:20px;border:1px solid #32393b;border-radius:11px;background:#1b2022;display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;overflow:hidden}
+.bb19b-trust-main{padding:22px 24px}.bb19b-trust-main .tag{color:#99ca55;font-size:11px;font-weight:800;letter-spacing:.08em}.bb19b-trust-main h2{margin:11px 0 8px;color:#f3f4f1;font-size:21px}.bb19b-trust-main p{margin:0;color:#9ba5a8;font-size:12px;line-height:1.45}
+.bb19b-trust-item{padding:20px;border-left:1px solid #32393b;display:flex;flex-direction:column;justify-content:center}.bb19b-trust-item b{color:#f0f2ef;font-size:13px}.bb19b-trust-item small{margin-top:7px;color:#859095;font-size:11px;line-height:1.4}
+
+.bb19b-availability{margin-top:18px;margin-bottom:28px;border:1px solid #31393b;border-radius:10px;background:#1a1f21;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.bb19b-availability h2{margin:0;color:#f2f4f1;font-size:20px}.bb19b-availability .chips{display:flex;gap:7px;flex-wrap:wrap}.bb19b-availability .chips span{border:1px solid #384145;padding:8px 10px;color:#d3d9d6;font-size:11px}
+
+.bb19b-bottom-align .product-card,.bb19b-bottom-align [class*="product-card"]{display:flex!important;flex-direction:column!important;height:100%!important}
+.bb19b-bottom-align .product-card .product-card__body,.bb19b-bottom-align [class*="product-card"] [class*="body"]{display:flex!important;flex-direction:column!important;flex:1!important}
+.bb19b-bottom-align .product-card .product-card__actions,.bb19b-bottom-align [class*="product-card"] [class*="actions"]{margin-top:auto!important}
+.bb19b-bottom-align .product-card [class*="price"],.bb19b-bottom-align [class*="product-card"] [class*="price"]{margin-top:auto}
+.bb19b-popular{padding-top:16px!important}
+
+@media(max-width:1050px){.bb19b-dir-grid,.bb19b-culture-grid{grid-template-columns:1fr 1fr}.bb19b-trust{grid-template-columns:1fr 1fr}.bb19b-trust-item{border-top:1px solid #32393b}}
+@media(max-width:680px){.bb19b-directions,.bb19b-cultures,.bb19b-trust,.bb19b-availability{width:calc(100% - 28px)}.bb19b-dir-grid,.bb19b-culture-grid{grid-template-columns:1fr}.bb19b-trust{grid-template-columns:1fr}.bb19b-availability{align-items:flex-start;flex-direction:column}}

@@ -1,0 +1,133 @@
+{
+  "directions": {
+    "enabled": true,
+    "title": "Основні напрямки",
+    "kicker": "Каталог",
+    "items": [
+      {
+        "enabled": true,
+        "title": "Живлення",
+        "description": "Добрива та професійні формуляції для живлення рослин.",
+        "url": "catalog.html",
+        "icon": "leaf"
+      },
+      {
+        "enabled": true,
+        "title": "Біостимуляція",
+        "description": "Біостимулятори та рішення для підтримки росту й стійкості рослин.",
+        "url": "catalog.html",
+        "icon": "nodes"
+      },
+      {
+        "enabled": true,
+        "title": "Захист рослин",
+        "description": "Препарати та професійні рішення для захисту рослин.",
+        "url": "catalog.html",
+        "icon": "shield"
+      },
+      {
+        "enabled": true,
+        "title": "Контейнери",
+        "description": "Професійні горщики та контейнери для вирощування.",
+        "url": "catalog.html",
+        "icon": "pot"
+      }
+    ]
+  },
+  "cultures": {
+    "enabled": true,
+    "title": "Пошук за культурою",
+    "subtitle": "Оберіть культуру, щоб швидше перейти до відповідних товарів.",
+    "items": [
+      {
+        "enabled": true,
+        "title": "Лохина",
+        "url": "catalog.html?culture=лохина",
+        "image": ""
+      },
+      {
+        "enabled": true,
+        "title": "Полуниця",
+        "url": "catalog.html?culture=полуниця",
+        "image": ""
+      },
+      {
+        "enabled": true,
+        "title": "Малина",
+        "url": "catalog.html?culture=малина",
+        "image": ""
+      },
+      {
+        "enabled": true,
+        "title": "Овочі",
+        "url": "catalog.html?culture=овочі",
+        "image": ""
+      },
+      {
+        "enabled": true,
+        "title": "Сад",
+        "url": "catalog.html?culture=сад",
+        "image": ""
+      },
+      {
+        "enabled": true,
+        "title": "Хвойні",
+        "url": "catalog.html?culture=хвойні",
+        "image": ""
+      },
+      {
+        "enabled": true,
+        "title": "Газон",
+        "url": "catalog.html?culture=газон",
+        "image": ""
+      }
+    ]
+  },
+  "trust": {
+    "enabled": true,
+    "kicker": "BB610",
+    "title": "Перевірені дані про товар",
+    "description": "Походження та ключова інформація про товар перевіряються перед публікацією.",
+    "items": [
+      {
+        "enabled": true,
+        "title": "Виробник",
+        "description": "Хто фактично виробляє продукт"
+      },
+      {
+        "enabled": true,
+        "title": "Джерело даних",
+        "description": "Інструкція, TDS, етикетка або офіційний матеріал"
+      },
+      {
+        "enabled": true,
+        "title": "Постачальник BB610",
+        "description": "Ланцюг постачання до магазину"
+      }
+    ]
+  },
+  "availability": {
+    "enabled": true,
+    "kicker": "BB610 MARKET · ДНІПРО",
+    "title": "Є у Дніпрі. Самовивіз. Відправка по Україні.",
+    "items": [
+      {
+        "enabled": true,
+        "title": "Є у Дніпрі"
+      },
+      {
+        "enabled": true,
+        "title": "Самовивіз"
+      },
+      {
+        "enabled": true,
+        "title": "Відправка по Україні"
+      }
+    ]
+  },
+  "products": {
+    "popular_title": "Популярні товари",
+    "recommended_title": "Рекомендуємо",
+    "card_bottom_align": true
+  }
+}

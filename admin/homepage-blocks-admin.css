@@ -1,0 +1,27 @@
+
+.bb19b-admin{
+  border:1px solid #2a373e;background:#0d1418;border-radius:10px;padding:14px;margin:14px 0;
+}
+.bb19b-admin h2{margin:0;font-size:18px}
+.bb19b-admin .sub{color:#8f9ca2;font-size:11px;margin-top:4px}
+.bb19b-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0}
+.bb19b-tab{padding:7px 10px;border:1px solid #34434a;background:#11191e;color:#dfe5e7;border-radius:7px;cursor:pointer}
+.bb19b-tab.active{border-color:#f1b02c;color:#f1b02c}
+.bb19b-pane{display:none}.bb19b-pane.active{display:block}
+.bb19b-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px}
+.bb19b-row label{display:flex;flex-direction:column;gap:5px;color:#8e9ca3;font-size:10px}
+.bb19b-row input,.bb19b-row textarea,.bb19b-row select{
+  width:100%;background:#111a1f;color:#fff;border:1px solid #35434a;border-radius:7px;padding:8px 10px
+}
+.bb19b-check{display:flex!important;flex-direction:row!important;align-items:center;gap:7px!important;color:#e3e8ea!important}
+.bb19b-check input{width:18px!important;height:18px!important}
+.bb19b-list{display:grid;gap:8px}
+.bb19b-item{border:1px solid #2b383e;border-radius:8px;padding:9px;background:#10181d}
+.bb19b-item-grid{display:grid;grid-template-columns:70px 1fr 1.3fr 1fr;gap:8px;align-items:center}
+.bb19b-item-grid input,.bb19b-item-grid textarea{width:100%;background:#111a1f;color:#fff;border:1px solid #35434a;border-radius:6px;padding:7px}
+.bb19b-media{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:8px}
+.bb19b-media-card{border:1px solid #2c393f;border-radius:7px;overflow:hidden;cursor:pointer;background:#11191d}
+.bb19b-media-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.bb19b-media-card span{display:block;padding:5px;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bb19b-primary{background:#f1b02c!important;color:#111!important;border-color:#f1b02c!important}
+@media(max-width:1000px){.bb19b-row{grid-template-columns:1fr}.bb19b-item-grid{grid-template-columns:1fr}.bb19b-media{grid-template-columns:1fr 1fr}}

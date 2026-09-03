@@ -390,3 +390,7 @@ app.include_router(commerce_control_router)
 # BB610_STAGE19A3_ADMIN_HERO
 from .homepage_hero_api import router as homepage_hero_router
 app.include_router(homepage_hero_router)
+
+# BB610_STAGE19B_HOMEPAGE_BLOCKS
+from .homepage_blocks_api import router as homepage_blocks_router
+app.include_router(homepage_blocks_router)

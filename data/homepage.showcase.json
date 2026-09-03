@@ -32,7 +32,8 @@
   ],
   "hero": {
     "enabled": true,
-    "image": "assets/media/Изображение-Codex-3-сент.-2026-г.--09_56_11.png",
+    "image": "assets/img/hero/homepage-hero.png",
+    "source_image": "assets/media/Изображение-Codex-3-сент.-2026-г.--09_56_11.png",
     "title": "",
     "subtitle": "",
     "button_text": "",

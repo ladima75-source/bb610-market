@@ -1,0 +1,80 @@
+
+/* BB610 Market — Stage 18K.1
+   Global sticky table headers for admin workspaces.
+   UI-only patch. */
+
+/* Keep the top page bar visible. */
+body > header,
+body > .top {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 60 !important;
+  background: #0e1519 !important;
+}
+
+/* Desktop: allow table header to stick to viewport while the page scrolls. */
+@media (min-width: 1101px) {
+  .table-wrap {
+    overflow: visible !important;
+  }
+
+  .table-wrap table {
+    width: 100%;
+  }
+
+  .table-wrap thead th,
+  table thead th {
+    position: sticky !important;
+    top: 64px !important;
+    z-index: 45 !important;
+    background: #10181c !important;
+    box-shadow:
+      0 1px 0 #29363c,
+      0 -1px 0 #29363c;
+  }
+
+  /* Prevent content visually bleeding through the sticky header. */
+  .table-wrap thead,
+  table thead {
+    background: #10181c !important;
+  }
+}
+
+/* Tablet/mobile: horizontal scrolling remains available.
+   Header is sticky inside the table scroll area when possible. */
+@media (max-width: 1100px) {
+  .table-wrap {
+    overflow-x: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-wrap thead th,
+  table thead th {
+    position: sticky !important;
+    top: 64px !important;
+    z-index: 45 !important;
+    background: #10181c !important;
+    box-shadow: 0 1px 0 #29363c;
+  }
+}
+
+/* Pages with no explicit .table-wrap still get sticky headers. */
+main table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+/* Sticky headers need opaque cells. */
+main thead th {
+  color: #8e9ca3;
+  background-clip: padding-box !important;
+}
+
+/* Make the first column slightly easier to track in long operational tables. */
+@media (min-width: 1101px) {
+  .table-wrap table tbody tr:hover td,
+  table tbody tr:hover td {
+    background-color: #121c21;
+  }
+}

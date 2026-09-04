@@ -62,7 +62,7 @@ function mount(){
  const why=parse(whyEl.value,[]), app=parse(appEl?.value,[]), specs=parse(specsEl?.value,[]), docs=parse(docsEl.value,[]);
  const box=document.createElement('section'); box.className='bb610-mpc-native-wrap';
  box.innerHTML=`
- <div class=bb610-mpc-native-head><div><h3>MASTER PRODUCT CARD</h3><small>Структурований редактор — без JSON</small></div><label><input id=bm_enabled type=checkbox ${enabled?.checked?'checked':''}> Увімкнено</label></div>
+ <div class=bb610-mpc-native-head><div><h3>MASTER PRODUCT CARD</h3><small>Структурований редактор — без JSON</small></div><div style="display:flex;gap:8px;align-items:center"><button type=button id=bm_kendal_pack class=bb610-mpc-native-add style="margin:0;display:none">Заповнити й зберегти KENDAL</button><label><input id=bm_enabled type=checkbox ${enabled?.checked?'checked':''}> Увімкнено</label></div></div>
  <div class=bb610-mpc-native-tabs>${['Hero','Чому продукт','Як працює','Застосування','Характеристики','Документи','Джерела','Cross-sell'].map((x,i)=>`<button type=button class="bb610-mpc-native-tab ${i===0?'active':''}" data-i=${i}>${x}</button>`).join('')}</div>
  <div class="bb610-mpc-native-panel active"><div class=bb610-mpc-native-grid>
   <label class=bb610-mpc-native-field><span>Eyebrow</span><input id=bm_eyebrow value="${esc(eyebrow?.value||'')}"></label>
@@ -118,6 +118,84 @@ function mount(){
   }catch(err){st.textContent=err.message;st.className='bb610-mpc-native-status err'}
  };
 }
+
+/* === BB610 STAGE20B2 KENDAL CONTENT PACK === */
+const BB610_KENDAL_PACK = {
+  eyebrow: "БІОСТИМУЛЯЦІЯ · VALAGRO",
+  h1: "Kendal™",
+  subtitle: "Біостимулятор для підтримки рослин у несприятливих умовах вирощування",
+  lead: "KENDAL™ допомагає рослинам зберігати життєздатність і продуктивність у періоди стресу. Формула з комплексом GEA 249 підтримує систему рослини під час дії несприятливих факторів та сприяє антиоксидантним функціям у клітинах. Продукт призначений для професійних програм живлення і не є фунгіцидом чи засобом захисту рослин.",
+  why: [
+    {title:"НЕСПРИЯТЛИВІ УМОВИ",text:"Допомагає рослинам зберігати життєздатність під час несприятливих умов вирощування та швидше повертатися до нормального розвитку після стресового періоду."},
+    {title:"ПІДТРИМКА РОСЛИНИ",text:"Комплекс GEA 249 підтримує фізіологічні процеси рослини за дії стресових факторів і сприяє антиоксидантним функціям у клітинах."},
+    {title:"ПРОДУКТИВНІСТЬ І ЯКІСТЬ",text:"За інформацією виробника, KENDAL™ допомагає підтримувати продуктивність рослин та якість урожаю в умовах, коли рослина зазнає стресу."}
+  ],
+  badge: "GEA 249",
+  how: "KENDAL™ створений для підтримки рослини в умовах стресу. Його ключовою технологічною основою є ексклюзивний комплекс GEA 249 — комплекс біологічно активних компонентів, відібраних і оброблених Valagro. За даними виробника, GEA 249 посилює підтримку системи рослини за наявності стресорів та сприяє антиоксидантним функціям усередині рослинних клітин. Це допомагає рослині зберігати активність і потенціал продуктивності в періоди несприятливих умов. KENDAL™ є біостимулятором: його не слід описувати як фунгіцид, лікувальний препарат або продукт, що «підвищує імунітет».",
+  application: [
+    {crop:"Плодові дерева та виноград",method:"Позакореневе внесення",rate:"250–300 мл на 100 л води / 10 соток",period:"У періоди стресу та за програмою живлення",frequency:"Кожні 7–10 днів"},
+    {crop:"Овочеві, листові та квіткові культури",method:"Позакореневе внесення",rate:"150–200 мл на 100 л води / 10 соток",period:"У періоди стресу та за програмою живлення",frequency:"Кожні 7–10 днів"},
+    {crop:"Технічні культури",method:"Позакореневе внесення",rate:"50–100 мл на 100 л води",period:"Протягом вегетації за потреби",frequency:"1–3 обробки за сезон"},
+    {crop:"Плодові, овочеві, виноград, квіти",method:"Фертигація",rate:"0,75–1,0 л на 100 л води / 10 соток",period:"У періоди стресу та за програмою живлення",frequency:"За програмою живлення"},
+    {crop:"Дерева",method:"Локальне кореневе внесення",rate:"350–400 мл на 100 л води / 10 соток; 10–40 мл робочого розчину на рослину",period:"За потреби локальної підтримки",frequency:"За програмою живлення"},
+    {crop:"Овочеві",method:"Локальне кореневе внесення",rate:"300–400 мл на 100 л води; 100–200 мл робочого розчину на рослину",period:"За потреби локальної підтримки",frequency:"За програмою живлення"}
+  ],
+  specs: [
+    {label:"Тип продукту",value:"Біостимулятор"},
+    {label:"Технологія",value:"GEA 249"},
+    {label:"Форма",value:"Рідина"},
+    {label:"pH 1% розчину",value:"6,7"},
+    {label:"Густина при 20 °C",value:"1,2 г/см³"},
+    {label:"Колір",value:"Коричневий"},
+    {label:"Способи внесення",value:"Позакоренево, фертигація, локальне кореневе внесення"},
+    {label:"Бренд",value:"Valagro"},
+    {label:"Компанія",value:"Syngenta Biologicals"},
+    {label:"Виробник",value:"Valagro S.p.A."},
+    {label:"Країна виробництва",value:"Італія"}
+  ],
+  docs: [
+    {type:"official",title:"Офіційна сторінка KENDAL™ — Syngenta Biologicals / Valagro",url:"https://www.syngentabiologicals.com/usa/en-us/products/farm/biostimulants/kendal/"},
+    {type:"official",title:"Valagro Farm Solutions Catalogue — технічні характеристики",url:"https://www.valagro.com/media/media_articles/attachments/Catalogo_Soluzioni_Valagro_IT_2020.pdf"}
+  ],
+  source_url: "https://www.syngentabiologicals.com/usa/en-us/products/farm/biostimulants/kendal/",
+  source_pdf: "https://www.valagro.com/media/media_articles/attachments/Catalogo_Soluzioni_Valagro_IT_2020.pdf",
+  source_revision: "Перевірено 2026-09-04; застосування для України звірено з даними постачальника Organic Planet",
+  verified: "2026-09-04"
+};
+
+function bb610KendalSelected(){
+  const slug = String(document.querySelector('#f_slug')?.value || document.querySelector('#f_id')?.value || '').trim().toLowerCase();
+  if (slug === 'kendal') return true;
+  const title = String(document.querySelector('#f_name')?.value || '').toLowerCase();
+  return title.includes('kendal') || title.includes('кендал');
+}
+
+function bb610WireKendalPack(){
+  const box = document.querySelector('.bb610-mpc-native-wrap');
+  const kp = document.querySelector('#bm_kendal_pack');
+  if (!box || !kp || !bb610KendalSelected()) return;
+  kp.style.display = '';
+  kp.onclick = () => {
+    if (!confirm('Заповнити MASTER PRODUCT CARD KENDAL перевіреним контентом і передати у штатне збереження?')) return;
+    $('#bm_eyebrow',box).value=BB610_KENDAL_PACK.eyebrow;
+    $('#bm_h1',box).value=BB610_KENDAL_PACK.h1;
+    $('#bm_subtitle',box).value=BB610_KENDAL_PACK.subtitle;
+    $('#bm_lead',box).value=BB610_KENDAL_PACK.lead;
+    $('#bm_why',box).innerHTML=BB610_KENDAL_PACK.why.map(rowWhy).join('');
+    $('#bm_badge',box).value=BB610_KENDAL_PACK.badge;
+    $('#bm_verified',box).value=BB610_KENDAL_PACK.verified;
+    $('#bm_how',box).value=BB610_KENDAL_PACK.how;
+    $('#bm_app',box).innerHTML=BB610_KENDAL_PACK.application.map(rowApp).join('');
+    $('#bm_specs',box).innerHTML=BB610_KENDAL_PACK.specs.map(rowSpec).join('');
+    $('#bm_docs',box).innerHTML=BB610_KENDAL_PACK.docs.map(rowDoc).join('');
+    $('#bm_source_url',box).value=BB610_KENDAL_PACK.source_url;
+    $('#bm_source_pdf',box).value=BB610_KENDAL_PACK.source_pdf;
+    $('#bm_source_rev',box).value=BB610_KENDAL_PACK.source_revision;
+    $('#bm_save',box).click();
+  };
+}
+setTimeout(bb610WireKendalPack,100);
+
 new MutationObserver(()=>setTimeout(mount,20)).observe(document.documentElement,{childList:true,subtree:true});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();

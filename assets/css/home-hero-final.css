@@ -1,0 +1,13 @@
+/* Stage 21A HERO FINAL */
+.bb610-hero-final-green{color:var(--green,#84d91c)}
+.bb610-hero-final-subtitle{max-width:760px}
+.bb610-hero-final-meta{
+  margin-top:10px;
+  color:#aeb9bd;
+  font-size:12px;
+  line-height:1.45;
+  font-weight:650;
+}
+@media(max-width:720px){
+  .bb610-hero-final-meta{font-size:11px}
+}

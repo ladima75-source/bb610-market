@@ -74,3 +74,120 @@ def update_product(sku:str, *, price:Optional[float]=None, sale_price:Optional[f
     with connect() as con:
         con.execute('UPDATE sku_commerce SET '+','.join(fields)+' WHERE sku=?',values); con.commit()
     return next((x for x in admin_products() if x['sku']==sku),None)
+
+
+# === BB610 STAGE20A3 FIX2 CATALOG SKU COMMERCE AUTOCREATE ===
+_bb610_seed_from_catalog_base = seed_from_catalog
+_bb610_update_product_base = update_product
+
+def _bb610_catalog_products():
+    import json as _json
+    from pathlib import Path as _Path
+    root=_Path(__file__).resolve().parents[2]
+    path=root/"data"/"catalog.master.json"
+    raw=_json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(raw,list):
+        return raw
+    if isinstance(raw,dict):
+        for k in ("products","items","catalog"):
+            if isinstance(raw.get(k),list):
+                return raw[k]
+    return []
+
+def _bb610_catalog_sku_map():
+    result={}
+    for product in _bb610_catalog_products():
+        if not isinstance(product,dict):
+            continue
+        pid=str(product.get("id") or product.get("slug") or "").strip()
+        skus=[]
+        for k in ("default_sku_id","sku"):
+            v=product.get(k)
+            if isinstance(v,str) and v.strip():
+                skus.append(v.strip())
+        for k in ("launch_sku_ids","sku_ids"):
+            arr=product.get(k)
+            if isinstance(arr,list):
+                skus.extend(str(x).strip() for x in arr if str(x).strip())
+        arr=product.get("skus")
+        if isinstance(arr,list):
+            for item in arr:
+                if isinstance(item,dict):
+                    v=item.get("sku") or item.get("id")
+                    if v:
+                        skus.append(str(v).strip())
+                elif isinstance(item,str) and item.strip():
+                    skus.append(item.strip())
+        for sku in skus:
+            if sku:
+                result.setdefault(sku, pid or sku)
+    return result
+
+def _bb610_insert_missing_commerce_row(sku):
+    import datetime as _dt
+    sku=str(sku or "").strip()
+    if not sku:
+        return False
+    sku_map=_bb610_catalog_sku_map()
+    if sku not in sku_map:
+        return False
+    with connect() as con:
+        if con.execute("SELECT 1 FROM sku_commerce WHERE sku=?",(sku,)).fetchone():
+            return False
+        cols=con.execute("PRAGMA table_info(sku_commerce)").fetchall()
+        if not cols:
+            raise RuntimeError("sku_commerce table not found")
+        info={row[1]:row for row in cols}
+        candidates={
+            "sku":sku,
+            "product_id":sku_map.get(sku) or sku,
+            "price":None,
+            "sale_price":None,
+            "availability":"unknown",
+            "stock_qty":None,
+            "enabled":0,
+            "updated_at":_dt.datetime.now(_dt.timezone.utc).isoformat(),
+        }
+        fields=[c for c in info if c in candidates]
+        missing_required=[]
+        for col,row in info.items():
+            cid,name,ctype,notnull,dflt,pk=row
+            if pk:
+                continue
+            if notnull and dflt is None and col not in fields:
+                missing_required.append(col)
+        if missing_required:
+            raise RuntimeError("unsupported required sku_commerce columns: "+", ".join(missing_required))
+        vals=[candidates[c] for c in fields]
+        sql=("INSERT OR IGNORE INTO sku_commerce ("+", ".join(fields)+") VALUES ("+", ".join("?" for _ in fields)+")")
+        con.execute(sql, vals)
+        con.commit()
+        return bool(con.execute("SELECT 1 FROM sku_commerce WHERE sku=?",(sku,)).fetchone())
+
+def _bb610_sync_catalog_skus_to_commerce():
+    sku_map=_bb610_catalog_sku_map()
+    created=[]
+    for sku in sku_map:
+        if _bb610_insert_missing_commerce_row(sku):
+            created.append(sku)
+    return {"seen":len(sku_map),"created":len(created),"created_skus":created}
+
+def seed_from_catalog():
+    _bb610_seed_from_catalog_base()
+    return _bb610_sync_catalog_skus_to_commerce()
+
+def update_product(sku:str, *, price=None, sale_price=None, sale_price_set=False,
+                   availability=None, stock_qty=None, stock_qty_set=False,
+                   enabled=None):
+    _bb610_insert_missing_commerce_row(sku)
+    return _bb610_update_product_base(
+        sku,
+        price=price,
+        sale_price=sale_price,
+        sale_price_set=sale_price_set,
+        availability=availability,
+        stock_qty=stock_qty,
+        stock_qty_set=stock_qty_set,
+        enabled=enabled,
+    )
+

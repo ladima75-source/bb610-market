@@ -22,7 +22,7 @@ import json
 
 app=FastAPI(title='BB610 Market Commerce API',version='Stage 12')
 origins=[x.strip() for x in os.getenv('BB610_CORS_ORIGINS','https://market.bb610.com.ua').split(',') if x.strip()]
-app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=False,allow_methods=['GET','POST','PATCH','DELETE','OPTIONS'],allow_headers=['Content-Type','Idempotency-Key','Authorization'])
+app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=False,allow_methods=['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS', 'PUT'],allow_headers=['Content-Type','Idempotency-Key','Authorization'])
 app.mount('/media/products', StaticFiles(directory=str(MEDIA_DIR)), name='product-media')
 
 @app.on_event('startup')

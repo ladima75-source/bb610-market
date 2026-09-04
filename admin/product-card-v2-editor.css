@@ -364,3 +364,75 @@
   }
 }
 
+
+/* BB610 STAGE20C FIX4 — COMPACT DESKTOP */
+#editor .pcv2,
+.pc-editor .pcv2,
+.product-editor .pcv2{
+  margin-top:14px !important;
+  margin-bottom:22px !important;
+}
+#editor .pcv2-head,
+.pc-editor .pcv2-head,
+.product-editor .pcv2-head{
+  padding:12px 14px !important;
+  min-height:54px !important;
+}
+#editor .pcv2-head h3,
+.pc-editor .pcv2-head h3,
+.product-editor .pcv2-head h3{
+  font-size:18px !important;
+}
+#editor .pcv2-tabs,
+.pc-editor .pcv2-tabs,
+.product-editor .pcv2-tabs{
+  padding:8px 12px !important;
+  gap:5px !important;
+}
+#editor .pcv2-tab,
+.pc-editor .pcv2-tab,
+.product-editor .pcv2-tab{
+  min-height:30px !important;
+  padding:6px 9px !important;
+  font-size:11px !important;
+}
+#editor .pcv2-panel,
+.pc-editor .pcv2-panel,
+.product-editor .pcv2-panel{
+  padding:14px !important;
+}
+#editor .pcv2-grid,
+.pc-editor .pcv2-grid,
+.product-editor .pcv2-grid{
+  gap:10px 12px !important;
+}
+#editor .pcv2 input:not([type="checkbox"]),
+#editor .pcv2 textarea,
+#editor .pcv2 select,
+.pc-editor .pcv2 input:not([type="checkbox"]),
+.pc-editor .pcv2 textarea,
+.pc-editor .pcv2 select,
+.product-editor .pcv2 input:not([type="checkbox"]),
+.product-editor .pcv2 textarea,
+.product-editor .pcv2 select{
+  padding:8px 9px !important;
+  font-size:12px !important;
+}
+#editor #v2_lead,
+.pc-editor #v2_lead,
+.product-editor #v2_lead{min-height:88px !important}
+#editor #v2_short,
+.pc-editor #v2_short,
+.product-editor #v2_short{min-height:96px !important}
+#editor #v2_full,
+.pc-editor #v2_full,
+.product-editor #v2_full{min-height:300px !important}
+#editor #v2_how,
+.pc-editor #v2_how,
+.product-editor #v2_how{min-height:130px !important}
+#editor .pcv2-actions,
+.pc-editor .pcv2-actions,
+.product-editor .pcv2-actions{
+  padding:9px 12px !important;
+}
+

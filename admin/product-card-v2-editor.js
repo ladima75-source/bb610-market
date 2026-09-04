@@ -35,10 +35,16 @@ function collect(box,id,map){return $$(id+' .pcv2-row',box).map(r=>{const o={};$
 function hideLegacy(){
  $$('section,div,form').forEach(x=>{const t=norm(x.textContent);if(t.includes('master product card v1.0')||t.includes('structured editor — без json'))x.classList.add('pcv2-legacy-hidden')})
 }
+/* BB610 STAGE20C FIX4 DEDUPE COMPACT */
+let __pcv2MountingId='';
 async function mount(){
  const id=currentId(); if(!id)return;
+ if(__pcv2MountingId===id) return;
  const editor=$('#editor,.pc-editor,.product-editor'); if(!editor)return;
- if($('.pcv2')?.dataset.id===id)return;
+ const existing=[...document.querySelectorAll('.pcv2')];
+ if(existing.some(x=>x.dataset.id===id)) return;
+ existing.forEach(x=>x.remove());
+ __pcv2MountingId=id;
  $('.pcv2')?.remove(); hideLegacy();
  let d; try{
   d=await api('/api/v1/admin/product-card-v2/'+encodeURIComponent(id))
@@ -51,6 +57,7 @@ async function mount(){
     editor.appendChild(err);
   }
   err.textContent='PRODUCT CARD v2 не завантажено: '+e.message;
+  __pcv2MountingId='';
   return
 }
  document.querySelector('#bb610-pcv2-load-error')?.remove();
@@ -69,7 +76,7 @@ async function mount(){
  <div class=pcv2-panel><div class=pcv2-grid><label class=pcv2-wide>Source URL<input id=v2_src_url value="${esc(src.source_url||'')}"></label><label class=pcv2-wide>Source PDF<input id=v2_src_pdf value="${esc(src.source_pdf||'')}"></label><label>Revision<input id=v2_revision value="${esc(src.revision||'')}"></label><label>Дата перевірки<input id=v2_verified type=date value="${esc(src.verified_date||'')}"></label></div></div>
  <div class=pcv2-panel><div id=v2_variants class=pcv2-list>${(d.variants||[]).map(rowVariant).join('')}</div><button class=pcv2-add data-add=variant type=button>+ Додати SKU</button></div>
  <div class=pcv2-actions><button class=pcv2-save id=v2_save type=button>Зберегти PRODUCT CARD v2</button><span id=v2_status class=pcv2-status></span></div>`;
- editor.appendChild(box);hideLegacy();
+ editor.appendChild(box);hideLegacy();__pcv2MountingId='';
  const tabs=$$('.pcv2-tab',box),panels=$$('.pcv2-panel',box);tabs.forEach((b,i)=>b.onclick=()=>{tabs.forEach(x=>x.classList.remove('active'));panels.forEach(x=>x.classList.remove('active'));b.classList.add('active');panels[i].classList.add('active')});
  box.onclick=e=>{if(e.target.matches('.pcv2-remove'))e.target.closest('.pcv2-row')?.remove();let a=e.target.dataset.add;if(a==='why')$('#v2_why',box).insertAdjacentHTML('beforeend',row2());if(a==='app')$('#v2_app',box).insertAdjacentHTML('beforeend',rowApp());if(a==='spec')$('#v2_specs',box).insertAdjacentHTML('beforeend',row2());if(a==='doc')$('#v2_docs',box).insertAdjacentHTML('beforeend',row2());if(a==='variant')$('#v2_variants',box).insertAdjacentHTML('beforeend',rowVariant())};
  $('#v2_save',box).onclick=async()=>{const st=$('#v2_status',box);st.textContent='Збереження…';try{const data={...d,id,version:'2.0',enabled:$('#v2_enabled',box).checked,eyebrow:$('#v2_eyebrow',box).value.trim(),name:$('#v2_name',box).value.trim(),subtitle:$('#v2_subtitle',box).value.trim(),lead:$('#v2_lead',box).value.trim(),short_description:$('#v2_short',box).value.trim(),full_description:$('#v2_full',box).value.trim(),why:collect(box,'#v2_why',o=>({title:o.title,text:o.text})),how_it_works:{badge:$('#v2_badge',box).value.trim(),text:$('#v2_how',box).value.trim()},application:{intro:$('#v2_app_intro',box).value.trim(),rows:collect(box,'#v2_app'),note:$('#v2_app_note',box).value.trim()},specs:collect(box,'#v2_specs',o=>({label:o.title,value:o.text})),origin:{brand:$('#v2_brand',box).value.trim(),company:$('#v2_company',box).value.trim(),manufacturer:$('#v2_manufacturer',box).value.trim(),country:$('#v2_country',box).value.trim(),official_url:$('#v2_official',box).value.trim()},documents:collect(box,'#v2_docs',o=>({title:o.title,url:o.text})),sources:{source_url:$('#v2_src_url',box).value.trim(),source_pdf:$('#v2_src_pdf',box).value.trim(),revision:$('#v2_revision',box).value.trim(),verified_date:$('#v2_verified',box).value},variants:collect(box,'#v2_variants')};d=await api('/api/v1/admin/product-card-v2/'+encodeURIComponent(id),{method:'PUT',body:JSON.stringify({data})});st.textContent='Збережено';st.className='pcv2-status ok'}catch(e){st.textContent=e.message;st.className='pcv2-status err'}};
@@ -77,5 +84,4 @@ async function mount(){
 new MutationObserver(()=>setTimeout(mount,80)).observe(document.documentElement,{childList:true,subtree:true});
 document.addEventListener('click',()=>setTimeout(mount,100),true);
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
-setInterval(()=>mount(),1500);
 })();

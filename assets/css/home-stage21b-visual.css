@@ -1,0 +1,84 @@
+/* BB610 Market Stage 21B — homepage visual tuning only */
+
+/* Search by crop: slightly wider scene, lighter overlay */
+.bb610-culture-tuned{
+  --bb610-crop-overlay: rgba(4,9,10,.34);
+}
+.bb610-culture-tuned .bb610-culture-card-tuned{
+  position:relative;
+  overflow:hidden;
+  background-size:108% auto !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+}
+.bb610-culture-tuned .bb610-culture-card-tuned::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(3,7,8,.36), rgba(3,7,8,.20));
+  pointer-events:none;
+  z-index:1;
+}
+.bb610-culture-tuned .bb610-culture-card-tuned > *{
+  position:relative;
+  z-index:2;
+}
+.bb610-culture-tuned .bb610-culture-img-tuned{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  transform:scale(.94);
+  transform-origin:center center;
+  filter:brightness(1.10);
+}
+.bb610-culture-tuned .bb610-culture-card-tuned{
+  filter:brightness(1.04);
+}
+
+/* Official information block: remove excess empty height */
+.bb610-official-info.bb610-official-info-compact{
+  min-height:0 !important;
+  height:auto !important;
+  padding-top:0 !important;
+  padding-bottom:0 !important;
+  align-items:flex-start !important;
+}
+.bb610-official-info-compact .bb610-official-info__inner,
+.bb610-official-info-compact .bb610-official-info__inner-compact{
+  min-height:0 !important;
+  height:auto !important;
+  padding:12px 18px 12px 22px !important;
+}
+.bb610-official-info-compact .bb610-official-info__kicker{
+  margin:0 0 4px !important;
+}
+.bb610-official-info-compact h2{
+  margin:0 0 6px !important;
+  line-height:1.15 !important;
+}
+.bb610-official-info-compact p{
+  margin:0 !important;
+  line-height:1.45 !important;
+}
+.bb610-official-info-compact .bb610-official-info__items{
+  margin-top:8px !important;
+  gap:6px 16px !important;
+}
+.bb610-official-info-compact::before{
+  top:10px !important;
+  bottom:10px !important;
+}
+
+@media(max-width:720px){
+  .bb610-culture-tuned .bb610-culture-card-tuned{
+    background-size:112% auto !important;
+  }
+  .bb610-culture-tuned .bb610-culture-img-tuned{
+    transform:scale(.96);
+  }
+  .bb610-official-info-compact .bb610-official-info__inner,
+  .bb610-official-info-compact .bb610-official-info__inner-compact{
+    padding:12px 14px 12px 18px !important;
+  }
+}

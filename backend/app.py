@@ -414,3 +414,6 @@ app.include_router(master_product_card_router)
 # BB610_STAGE20A1_PRODUCT_COMMERCE
 from .master_product_card_commerce_api import router as master_product_card_commerce_router
 app.include_router(master_product_card_commerce_router)
+
+from .product_cards_v2_api import router as product_cards_v2_router
+app.include_router(product_cards_v2_router)

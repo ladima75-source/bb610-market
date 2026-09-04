@@ -28,7 +28,7 @@ function currentId(){
   }
   return '';
 }
-function row2(x={}){return `<div class="pcv2-row two"><input data-k=title value="${esc(x.title||x.label||'')}" placeholder="Назва"><input data-k=text value="${esc(x.text||x.value||'')}" placeholder="Значення / текст"><button type=button class=pcv2-remove>×</button></div>`}
+function row2(x={}){return `<div class="pcv2-row two"><input data-k=title value="${esc(x.title||x.label||'')}" placeholder="Назва"><input data-k=text value="${esc(x.text||x.value||x.url||'')}" placeholder="Значення / текст"><button type=button class=pcv2-remove>×</button></div>`}
 function rowApp(x={}){return `<div class="pcv2-row app"><input data-k=crop value="${esc(x.crop||'')}" placeholder="Культура"><input data-k=method value="${esc(x.method||'')}" placeholder="Спосіб"><input data-k=rate value="${esc(x.rate||'')}" placeholder="Норма"><input data-k=period value="${esc(x.period||'')}" placeholder="Період"><input data-k=frequency value="${esc(x.frequency||'')}" placeholder="Кратність"><button type=button class=pcv2-remove>×</button></div>`}
 function rowVariant(x={}){return `<div class="pcv2-row variant"><input data-k=sku value="${esc(x.sku||'')}" placeholder="SKU"><input data-k=label value="${esc(x.label||'')}" placeholder="25 мл"><input data-k=image value="${esc(x.image||'')}" placeholder="/assets/..."><button type=button class=pcv2-remove>×</button></div>`}
 function collect(box,id,map){return $$(id+' .pcv2-row',box).map(r=>{const o={};$$('[data-k]',r).forEach(e=>o[e.dataset.k]=e.value.trim());return map?map(o):o}).filter(o=>Object.values(o).some(Boolean))}

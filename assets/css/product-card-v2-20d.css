@@ -1,0 +1,8 @@
+/* BB610 Stage 20D */
+.mpc-longcopy{white-space:pre-line;line-height:1.72;color:#d8e0e2;font-size:15px}
+.mpc-intro{color:#b9c4c8;line-height:1.6;margin:0 0 16px}
+.mpc-market-note{margin:14px 0 0;color:#7f9299;font-size:12px;line-height:1.5}
+.mpc-table-wrap{overflow-x:auto}
+.mpc-docs{display:flex;flex-direction:column;gap:8px}
+.mpc-doc{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:12px 14px;border:1px solid #34454a;border-radius:8px;color:#fff;text-decoration:none}
+.mpc-doc:hover{border-color:#e9a92d}

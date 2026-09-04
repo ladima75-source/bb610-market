@@ -66,10 +66,41 @@ function findControl(label,tag,root=document){
  }
  return null;
 }
+/* BB610 STAGE20B3 FIX2 ROBUST KENDAL DETECTION */
 function selectedKendal(){
- if($$('input').some(i=>norm(i.value)==='kendal')) return true;
- const left=$$('body *').find(x=>x.children.length===0&&/Kendal\s*\(Кендал\)/i.test(x.textContent||''));
- return !!left;
+  const editor = document.querySelector('#editor,.pc-editor,.product-editor');
+
+  const scope = editor || document;
+  const values = [...scope.querySelectorAll('input,textarea,select')]
+    .map(el => String(el.value || '').trim().toLowerCase());
+
+  if (values.some(v => v === 'kendal')) return true;
+  if (values.some(v => v.includes('kendal (кендал)'))) return true;
+  if (values.some(v => v.includes('bb610-vlg-kendal-'))) return true;
+
+  if (editor) {
+    const txt = String(editor.textContent || '').toLowerCase();
+    if (txt.includes('kendal') || txt.includes('кендал')) return true;
+  }
+
+  const active = document.querySelector(
+    '.pc-list .active,.pc-list .selected,.pc-list [aria-selected="true"],' +
+    '#list .active,#list .selected,#list [aria-selected="true"]'
+  );
+  if (active) {
+    const txt = String(active.textContent || '').toLowerCase();
+    if (txt.includes('kendal') || txt.includes('кендал')) return true;
+  }
+
+  const ids = [...scope.querySelectorAll('input')]
+    .filter(el => {
+      const n = String(el.name || '').toLowerCase();
+      const i = String(el.id || '').toLowerCase();
+      return n.includes('slug') || i.includes('slug') || n === 'id' || i === 'id';
+    })
+    .map(el => String(el.value || '').trim().toLowerCase());
+
+  return ids.includes('kendal');
 }
 function oldMaster(){
  return $$('section,div,form').find(x=>{const t=norm(x.textContent);return t.includes('master product card v1.0')&&t.includes('зберегти master card')})||null;
@@ -139,5 +170,10 @@ function addAction(){
  target.insertAdjacentElement('beforebegin',b);addPhotoPanel();
 }
 new MutationObserver(()=>setTimeout(addAction,80)).observe(document.documentElement,{childList:true,subtree:true});
+
+// Re-check after product selection, tab switch, or field update.
+document.addEventListener('click',()=>setTimeout(addAction,120),true);
+document.addEventListener('change',()=>setTimeout(addAction,120),true);
+
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(addAction,150));else setTimeout(addAction,150);
 })();

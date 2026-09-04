@@ -1,0 +1,3 @@
+/* BB610 Stage 20F.1 FINAL */
+html[data-bb610-product-card] main [data-bb610-legacy-hidden="1"]{display:none!important}
+.mpc-variant-list{display:flex;flex-wrap:wrap;gap:8px}

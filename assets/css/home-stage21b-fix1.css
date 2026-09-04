@@ -1,0 +1,57 @@
+/* BB610 Market Stage 21B FIX1 */
+
+/* Crop cards: force a slightly more distant and brighter image treatment. */
+.bb610-crops-fix1 .bb610-crop-card-fix1{
+  position:relative!important;
+  background-color:#11191b!important;
+}
+.bb610-crops-fix1 .bb610-crop-card-fix1::before,
+.bb610-crops-fix1 .bb610-crop-card-fix1::after{
+  background:rgba(2,7,8,.16)!important;
+  opacity:.55!important;
+}
+.bb610-crops-fix1 .bb610-crop-img-fix1{
+  transform:scale(.92)!important;
+  filter:brightness(1.16) saturate(1.03)!important;
+}
+
+/* Official info: compact height and spacing. */
+.bb610-official-fix1{
+  min-height:0!important;
+  height:auto!important;
+}
+.bb610-official-fix1 .bb610-official-info__inner{
+  min-height:0!important;
+  height:auto!important;
+  padding:10px 16px 10px 20px!important;
+}
+.bb610-official-fix1 .bb610-official-info__kicker{
+  margin-bottom:3px!important;
+}
+.bb610-official-fix1 h2,
+.bb610-official-fix1 h3{
+  margin-top:0!important;
+  margin-bottom:5px!important;
+  line-height:1.15!important;
+}
+.bb610-official-fix1 p{
+  margin:0!important;
+  line-height:1.35!important;
+}
+.bb610-official-fix1 .bb610-official-info__items{
+  margin-top:6px!important;
+  gap:4px 14px!important;
+}
+.bb610-official-fix1::before{
+  top:8px!important;
+  bottom:8px!important;
+}
+
+@media(max-width:720px){
+  .bb610-crops-fix1 .bb610-crop-img-fix1{
+    transform:scale(.95)!important;
+  }
+  .bb610-official-fix1 .bb610-official-info__inner{
+    padding:10px 12px 10px 16px!important;
+  }
+}

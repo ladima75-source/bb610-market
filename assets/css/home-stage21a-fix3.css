@@ -1,0 +1,42 @@
+/* BB610 Market Stage 21A FIX3 — exact current homepage */
+.bb610-home-green{color:var(--green,#84d91c)}
+.bb610-home-hero-subtitle{max-width:760px}
+.bb610-home-hero-meta{
+  margin:10px 0 0;
+  color:#aeb9bd;
+  font-size:12px;
+  line-height:1.45;
+  font-weight:650
+}
+.bb610-official-info{
+  position:relative!important;
+  border:1px solid #3a494f!important;
+  border-radius:10px!important;
+  background:#151c1f!important;
+}
+.bb610-official-info:before{
+  content:"";position:absolute;left:0;top:16px;bottom:16px;width:3px;
+  border-radius:3px;background:var(--accent,#e9a92d)
+}
+.bb610-official-info__inner{padding:20px 24px 20px 28px}
+.bb610-official-info__kicker{
+  color:var(--accent,#e9a92d);font-size:10px;font-weight:900;
+  letter-spacing:.08em;margin-bottom:8px
+}
+.bb610-official-info h2{margin:0 0 10px!important;max-width:940px}
+.bb610-official-info p{margin:0!important;max-width:980px;color:#c5ced1;line-height:1.6}
+.bb610-official-info__items{
+  margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 18px;
+  font-size:10px;font-weight:850;letter-spacing:.04em
+}
+.bb610-official-info__items span{position:relative;padding-left:11px}
+.bb610-official-info__items span:before{
+  content:"";position:absolute;left:0;top:50%;width:5px;height:5px;
+  border-radius:50%;background:var(--green,#84d91c);transform:translateY(-50%)
+}
+@media(max-width:720px){
+  .bb610-home-hero-meta{font-size:11px}
+  .bb610-official-info__inner{padding:18px 18px 18px 22px}
+  .bb610-official-info__items{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+}
+@media(max-width:420px){.bb610-official-info__items{grid-template-columns:1fr}}

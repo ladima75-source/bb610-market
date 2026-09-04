@@ -23,14 +23,12 @@ def update_rows(changes):
             continue
 
         kwargs={}
-
         if "price" in ch:
             v=ch.get("price")
             kwargs["price"]=None if v in ("",None) else float(v)
 
         if "sale_price" in ch:
             v=ch.get("sale_price")
-            # update_product requires explicit sale_price_set flag
             kwargs["sale_price"]=None if v in ("",None) else float(v)
             kwargs["sale_price_set"]=True
 
@@ -39,35 +37,33 @@ def update_rows(changes):
             if v:
                 kwargs["availability"]=v
 
-        # UI sends qty, service expects stock_qty + stock_qty_set
         if "qty" in ch or "quantity" in ch:
             v=ch.get("qty",ch.get("quantity"))
             kwargs["stock_qty"]=None if v in ("",None) else int(float(v))
             kwargs["stock_qty_set"]=True
 
-        # UI sends sale_enabled, service expects enabled
         if "sale_enabled" in ch:
             kwargs["enabled"]=bool(ch.get("sale_enabled"))
         elif "enabled" in ch:
             kwargs["enabled"]=bool(ch.get("enabled"))
 
-        before=None
-        try:
-            current=pc.commerce_map()
-            if isinstance(current,dict):
-                before=deepcopy(current.get(sku))
-        except Exception:
-            pass
+        before=deepcopy(pc.commerce_map().get(sku))
+        returned=fn(sku,**kwargs)
 
-        result=fn(sku,**kwargs)
-        if result is None:
-            raise ValueError(f"SKU не знайдено у commerce: {sku}")
+        # Important:
+        # legacy update_product() may return None even after a successful SQL UPDATE,
+        # because its return value is based on legacy admin_products().
+        # Verify success from the authoritative commerce_map instead.
+        after=deepcopy(pc.commerce_map().get(sku))
+        if after is None:
+            raise ValueError(f"SKU не знайдено у commerce після збереження: {sku}")
 
         results.append({
             "sku":sku,
             "before":before,
             "updated":kwargs,
-            "result":result
+            "result":after,
+            "legacy_return_was_none": returned is None,
         })
 
     return results

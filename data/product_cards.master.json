@@ -9316,23 +9316,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "AgriFlex / CityMax",
+      "eyebrow": "ВЕЛИКЕ ФАСУВАННЯ · AGRIFLEX",
       "name": "Agriflex Humic (Гумат калію)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Водорозчинний гумат калію з гуміновими та фульвовими кислотами",
+      "lead": "Концентрований органо-мінеральний продукт для ґрунту, кореневої зони та антистресових програм.",
+      "short_description": "Agriflex Humic — водорозчинний гумат калію лінійки AgriFlex / CityMax. У відкритих українських товарних джерелах стабільно наводиться склад: 72% гумінових кислот, 15% фульвових кислот і 12% K₂O.",
+      "full_description": "Agriflex Humic — водорозчинний гумат калію лінійки AgriFlex / CityMax. У відкритих українських товарних джерелах стабільно наводиться склад: 72% гумінових кислот, 15% фульвових кислот і 12% K₂O.\n\nПродукт застосовують для покращення властивостей ґрунту, підтримки корисної мікрофлори та підвищення доступності поживних речовин.\n\nОкремої актуальної офіційної manufacturer-page CityMax у відкритому доступі не знайдено, тому джерело в картці чесно позначене як market/supplier source; перед публікацією бажано звірити етикетку конкретної партії.",
+      "why": [
+        {
+          "title": "72% ГУМІНОВИХ КИСЛОТ",
+          "text": "Висока частка гумінових речовин."
+        },
+        {
+          "title": "15% ФУЛЬВОВИХ КИСЛОТ",
+          "text": "Доповнює гуміновий комплекс швидшою фульвовою фракцією."
+        },
+        {
+          "title": "12% K₂O",
+          "text": "Додаткове калійне живлення."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "AgriFlex",
+        "company": "XI'AN CITYMAX AGROCHEMICAL CO., LTD.",
+        "manufacturer": "XI'AN CITYMAX AGROCHEMICAL CO., LTD.",
+        "country": "Китай",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Agriflex Humic — товарна картка",
+          "url": "https://gryadka.ua/h-jumik-total-gumat-kalija-leili.html"
+        },
+        {
+          "title": "Реєстраційні дані лінійки AgriFlex Humic",
+          "url": "https://dspace.nuft.edu.ua/server/api/core/bitstreams/77bbc2ee-77cf-4f49-9e32-d2125722aa42/content"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://gryadka.ua/h-jumik-total-gumat-kalija-leili.html",
+        "source_type": "supplier_market_product_page",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -9361,8 +9390,60 @@
       "import_meta": {
         "source_row": 73,
         "source_note": "Тільки у «Велике фасування»",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "07",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "AGRIFLEX",
+        "text": "Гумінові та фульвові кислоти взаємодіють із ґрунтовим середовищем і поживними елементами, підтримуючи їх доступність і активність кореневої зони."
+      },
+      "application": {
+        "intro": "Орієнтири з українських товарних карток:",
+        "rows": [
+          {
+            "crop": "Позакореневе внесення",
+            "period": "3–4 рази з інтервалом близько 20 днів",
+            "dose": "50–100 г / 100 л води"
+          },
+          {
+            "crop": "Фертигація",
+            "period": "2–3 рази з інтервалом близько 20 днів",
+            "dose": "8 кг/га"
+          }
+        ],
+        "note": "Перед комерційною публікацією звірити норму з етикеткою конкретної партії."
+      },
+      "specs": [
+        {
+          "label": "Гумінові кислоти",
+          "value": "72%"
+        },
+        {
+          "label": "Фульвові кислоти",
+          "value": "15%"
+        },
+        {
+          "label": "K₂O",
+          "value": "12%"
+        },
+        {
+          "label": "pH",
+          "value": "9–11"
+        },
+        {
+          "label": "Форма",
+          "value": "Водорозчинний порошок"
+        },
+        {
+          "label": "Бренд",
+          "value": "AgriFlex"
+        },
+        {
+          "label": "Виробник / лінія",
+          "value": "XI'AN CITYMAX AGROCHEMICAL CO., LTD."
+        }
+      ]
     },
     "agriflex-amino-aminokysloty-50": {
       "id": "agriflex-amino-aminokysloty-50",
@@ -9370,23 +9451,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "AgriFlex / CityMax",
+      "eyebrow": "ВЕЛИКЕ ФАСУВАННЯ · AGRIFLEX",
       "name": "Agriflex Amino (Амінокислоти 50%)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Водорозчинний амінокислотний антистресант із L-амінокислотами",
+      "lead": "Підтримує ріст, відновлення після стресу та засвоєння елементів живлення.",
+      "short_description": "Agriflex Amino — органо-мінеральний водорозчинний продукт на основі вільних L-амінокислот. Українські товарні джерела стабільно наводять 40–50% вільних амінокислот у L-формі та 7–9% карбогідратів.",
+      "full_description": "Agriflex Amino — органо-мінеральний водорозчинний продукт на основі вільних L-амінокислот. Українські товарні джерела стабільно наводять 40–50% вільних амінокислот у L-формі та 7–9% карбогідратів.\n\nПродукт використовують як антистресант, для підтримки ростових процесів і як компонент бакових сумішей. Реєстраційні матеріали по лінійці AgriFlex Amino підтверджують присутність амінокислот, розчинних цукрів і мікроелементів у діапазонах, але конкретний SKU слід звіряти по етикетці.\n\nТому точний остаточний склад конкретної партії не розширюємо понад підтверджені товарною карткою значення.",
+      "why": [
+        {
+          "title": "40–50% L-АМІНОКИСЛОТ",
+          "text": "Висока частка вільних амінокислот."
+        },
+        {
+          "title": "АНТИСТРЕС",
+          "text": "Підтримує рослину після несприятливих умов та обробок."
+        },
+        {
+          "title": "ВОДОРОЗЧИННЕ",
+          "text": "Підходить для листкового внесення та фертигації."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "AgriFlex",
+        "company": "XI'AN CITYMAX AGROCHEMICAL CO., LTD.",
+        "manufacturer": "XI'AN CITYMAX AGROCHEMICAL CO., LTD.",
+        "country": "Китай",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Agriflex Amino — товарна картка",
+          "url": "https://gryadka.ua/amino-total-aminokisloty-s-azotom-leili.html"
+        },
+        {
+          "title": "Реєстраційні дані лінійки AgriFlex Amino",
+          "url": "https://dspace.nuft.edu.ua/server/api/core/bitstreams/77bbc2ee-77cf-4f49-9e32-d2125722aa42/content"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://gryadka.ua/amino-total-aminokisloty-s-azotom-leili.html",
+        "source_type": "supplier_market_product_page",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -9415,8 +9525,56 @@
       "import_meta": {
         "source_row": 74,
         "source_note": "Тільки у «Велике фасування»",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "07",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "AGRIFLEX",
+        "text": "Вільні L-амінокислоти можуть швидко включатися у метаболічні процеси рослини, знижуючи енергетичні витрати на власний синтез у стресовий період."
+      },
+      "application": {
+        "intro": "Орієнтири з українських товарних карток:",
+        "rows": [
+          {
+            "crop": "Листкове внесення",
+            "period": "активний ріст / налив",
+            "dose": "0,5 кг/га"
+          },
+          {
+            "crop": "Фертигація",
+            "period": "протягом вегетації",
+            "dose": "1 кг/га або 100 г/сотку"
+          }
+        ],
+        "note": "Рекомендовано кілька внесень за сезон; конкретну схему звіряти з етикеткою."
+      },
+      "specs": [
+        {
+          "label": "Вільні L-амінокислоти",
+          "value": "40–50%"
+        },
+        {
+          "label": "Карбогідрати / розчинні цукри",
+          "value": "7–9%"
+        },
+        {
+          "label": "Форма",
+          "value": "Порошок"
+        },
+        {
+          "label": "pH",
+          "value": "близько 4–6 у товарних джерелах"
+        },
+        {
+          "label": "Бренд",
+          "value": "AgriFlex"
+        },
+        {
+          "label": "Виробник / лінія",
+          "value": "XI'AN CITYMAX AGROCHEMICAL CO., LTD."
+        }
+      ]
     },
     "agriflex-aminovix": {
       "id": "agriflex-aminovix",
@@ -9424,23 +9582,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "AgriFlex / CityMax",
+      "eyebrow": "ВЕЛИКЕ ФАСУВАННЯ · AGRIFLEX",
       "name": "Agriflex AminoVix",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Амінокислотний комплекс із мікроелементами у водорозчинній формі",
+      "lead": "Поєднує 25% вільних L-амінокислот із Fe, Zn, Mn, Mg, B та Cu для антистресових і коригувальних програм.",
+      "short_description": "Agriflex AminoVix — повністю водорозчинний органо-мінеральний продукт AgriFlex / CityMax. Українська реєстраційна база наводить його у лінійці AgriFlex Amino, а ринкові картки підтверджують конкретну формулу з 25% вільних L-амінокислот та комплексом мікроелементів.",
+      "full_description": "Agriflex AminoVix — повністю водорозчинний органо-мінеральний продукт AgriFlex / CityMax. Українська реєстраційна база наводить його у лінійці AgriFlex Amino, а ринкові картки підтверджують конкретну формулу з 25% вільних L-амінокислот та комплексом мікроелементів.\n\nПродукт орієнтований на періоди активного росту, цвітіння та стресу, коли одночасно потрібні амінокислоти і швидка корекція мікроелементного живлення.",
+      "why": [
+        {
+          "title": "25% L-АМІНОКИСЛОТ",
+          "text": "Амінокислотна основа продукту."
+        },
+        {
+          "title": "MICRO",
+          "text": "Fe, Zn, Mn, Mg, B і Cu в одній формулі."
+        },
+        {
+          "title": "РЕЄСТРАЦІЙНІ ДАНІ",
+          "text": "Назва AgriFlex AminoVix присутня у реєстраційних джерелах."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "AgriFlex",
+        "company": "XI'AN CITYMAX AGROCHEMICAL CO., LTD.",
+        "manufacturer": "XI'AN CITYMAX AGROCHEMICAL CO., LTD.",
+        "country": "Китай",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "AgriFlex AminoVix — реєстраційна база",
+          "url": "https://agrarii-razom.com.ua/preparations/agriflex-aminovix"
+        },
+        {
+          "title": "Реєстраційні дані лінійки AgriFlex Amino",
+          "url": "https://dspace.nuft.edu.ua/server/api/core/bitstreams/77bbc2ee-77cf-4f49-9e32-d2125722aa42/content"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://agrarii-razom.com.ua/preparations/agriflex-aminovix",
+        "source_type": "registration_database_plus_market",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -9455,8 +9642,72 @@
       "import_meta": {
         "source_row": 75,
         "source_note": "Тільки у «Велике фасування»",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "07",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "AGRIFLEX",
+        "text": "Амінокислоти працюють як органічний носій і антистресовий компонент, а мікроелементи підтримують ферментативні та фотосинтетичні процеси."
+      },
+      "application": {
+        "intro": "Орієнтири з української картки продукту:",
+        "rows": [
+          {
+            "crop": "Листкове внесення",
+            "period": "2–3 рази з інтервалом 7–14 днів",
+            "dose": "150–200 г / 100 л води"
+          },
+          {
+            "crop": "Фертигація",
+            "period": "2–5 разів з інтервалом близько 10 днів",
+            "dose": "1–2 кг/га"
+          }
+        ],
+        "note": "Пріоритет має актуальна етикетка конкретної партії."
+      },
+      "specs": [
+        {
+          "label": "Вільні L-амінокислоти",
+          "value": "25%"
+        },
+        {
+          "label": "Fe",
+          "value": "3,5%"
+        },
+        {
+          "label": "Zn",
+          "value": "2,5%"
+        },
+        {
+          "label": "Mn",
+          "value": "1,0%"
+        },
+        {
+          "label": "Mg",
+          "value": "1,5%"
+        },
+        {
+          "label": "B",
+          "value": "1,0%"
+        },
+        {
+          "label": "Cu",
+          "value": "0,5%"
+        },
+        {
+          "label": "Форма",
+          "value": "Водорозчинний порошок"
+        },
+        {
+          "label": "Бренд",
+          "value": "AgriFlex"
+        },
+        {
+          "label": "Виробник / лінія",
+          "value": "XI'AN CITYMAX AGROCHEMICAL CO., LTD."
+        }
+      ]
     },
     "agriflex-zn": {
       "id": "agriflex-zn",
@@ -9464,23 +9715,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "AgriFlex / CityMax",
+      "eyebrow": "ВЕЛИКЕ ФАСУВАННЯ · AGRIFLEX",
       "name": "Agriflex Zn",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Водорозчинне цинкове мікродобриво AgriFlex",
+      "lead": "Концентрована цинкова формула для швидкої корекції дефіциту Zn.",
+      "short_description": "Agriflex Zn — спеціалізоване мікродобриво лінійки AgriFlex / CityMax. Українські товарні каталоги стабільно позначають продукт як Zn 10% у фасуваннях 1 кг і 5 кг.",
+      "full_description": "Agriflex Zn — спеціалізоване мікродобриво лінійки AgriFlex / CityMax. Українські товарні каталоги стабільно позначають продукт як Zn 10% у фасуваннях 1 кг і 5 кг.\n\nОкремої актуальної офіційної manufacturer-page CityMax у відкритому доступі не знайдено. Тому в картку заносимо лише підтверджену ринковими джерелами концентрацію Zn 10%, без вигаданих додаткових елементів або норм.\n\nПеред публікацією норми внесення потрібна етикетка конкретної партії.",
+      "why": [
+        {
+          "title": "Zn 10%",
+          "text": "Цільове цинкове живлення."
+        },
+        {
+          "title": "ВОДОРОЗЧИННЕ",
+          "text": "Підходить для приготування робочих розчинів."
+        },
+        {
+          "title": "2 ФАСУВАННЯ",
+          "text": "1 кг і 5 кг уже є як варіанти."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "AgriFlex",
+        "company": "XI'AN CITYMAX AGROCHEMICAL CO., LTD.",
+        "manufacturer": "XI'AN CITYMAX AGROCHEMICAL CO., LTD.",
+        "country": "Китай",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "CityMax / AgriFlex Zn — український товарний каталог",
+          "url": "https://semena-online.com.ua/dobriva/organo-mineralni-dobriva/"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://semena-online.com.ua/dobriva/organo-mineralni-dobriva/",
+        "source_type": "supplier_market_catalogue",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -9502,8 +9778,41 @@
       "import_meta": {
         "source_row": 76,
         "source_note": "Тільки у «Велике фасування»",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "07",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "AGRIFLEX",
+        "text": "Водорозчинний цинк використовується для корекції дефіциту Zn, пов'язаного з ростом, ферментативними процесами та розвитком молодих тканин."
+      },
+      "application": {
+        "intro": "Застосування — за етикеткою конкретної партії.",
+        "rows": [],
+        "note": "Не публікувати універсальну норму до перевірки етикетки."
+      },
+      "specs": [
+        {
+          "label": "Тип",
+          "value": "Цинкове мікродобриво"
+        },
+        {
+          "label": "Zn",
+          "value": "10% за українськими товарними джерелами"
+        },
+        {
+          "label": "Форма",
+          "value": "Водорозчинний порошок"
+        },
+        {
+          "label": "Бренд",
+          "value": "AgriFlex"
+        },
+        {
+          "label": "Виробник / лінія",
+          "value": "XI'AN CITYMAX AGROCHEMICAL CO., LTD."
+        }
+      ]
     },
     "agriflex-fulvix-fulvokysloty-60": {
       "id": "agriflex-fulvix-fulvokysloty-60",
@@ -9511,23 +9820,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "AgriFlex / CityMax",
+      "eyebrow": "ВЕЛИКЕ ФАСУВАННЯ · AGRIFLEX",
       "name": "Agriflex Fulvix (Фульвокислоти 60%)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Водорозчинний фульвокислотний біостимулятор із калієм",
+      "lead": "Підвищує доступність елементів живлення та підтримує ґрунтові й листкові програми.",
+      "short_description": "Agriflex Fulvix — водорозчинний продукт лінійки AgriFlex Humic на основі фульвових кислот. У товарній матриці BB610 продукт зафіксований як «Фульвокислоти 60%», що також зустрічається в українських ринкових джерелах.",
+      "full_description": "Agriflex Fulvix — водорозчинний продукт лінійки AgriFlex Humic на основі фульвових кислот. У товарній матриці BB610 продукт зафіксований як «Фульвокислоти 60%», що також зустрічається в українських ринкових джерелах.\n\nВодночас окремі локальні продавці наводять 50% фульвових кислот і 12% K₂O, тобто між комерційними картками є розбіжність. Через це BB610 не повинен приховувати невизначеність: до звірки конкретної етикетки в назві зберігаємо 60%, а в характеристиках явно зазначаємо, що фактичний відсоток потребує перевірки партії.\n\nФункціонально продукт використовують для підвищення доступності живлення, листкового внесення та фертигації.",
+      "why": [
+        {
+          "title": "ФУЛЬВОКИСЛОТИ",
+          "text": "Швидка низькомолекулярна фракція гумінових речовин."
+        },
+        {
+          "title": "ЖИВЛЕННЯ",
+          "text": "Підтримує доступність і транспорт елементів."
+        },
+        {
+          "title": "ПОТРІБНА ЕТИКЕТКА",
+          "text": "Ринкові джерела дають 50–60%, тому остаточну цифру треба звірити."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "AgriFlex",
+        "company": "XI'AN CITYMAX AGROCHEMICAL CO., LTD.",
+        "manufacturer": "XI'AN CITYMAX AGROCHEMICAL CO., LTD.",
+        "country": "Китай",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Agriflex Fulvix — локальна товарна картка",
+          "url": "https://10sotok.com.ua/ua/agrifleks-fulviks-agriflex-fulvix-1-kg.html/"
+        },
+        {
+          "title": "Реєстраційні дані лінійки AgriFlex Humic",
+          "url": "https://dspace.nuft.edu.ua/server/api/core/bitstreams/77bbc2ee-77cf-4f49-9e32-d2125722aa42/content"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://10sotok.com.ua/ua/agrifleks-fulviks-agriflex-fulvix-1-kg.html/",
+        "source_type": "supplier_market_product_page_with_conflict",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -9549,8 +9887,57 @@
       "import_meta": {
         "source_row": 77,
         "source_note": "Тільки у «Велике фасування»",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "07",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "AGRIFLEX",
+        "text": "Фульвокислоти мають низьку молекулярну масу та можуть взаємодіяти з мінеральними елементами, підтримуючи їх розчинність і транспорт."
+      },
+      "application": {
+        "intro": "Орієнтири з українських товарних карток:",
+        "rows": [
+          {
+            "crop": "Польові / овочеві",
+            "period": "листково",
+            "dose": "100–150 г/га"
+          },
+          {
+            "crop": "Плодові / виноград",
+            "period": "листково",
+            "dose": "200–300 г/га"
+          },
+          {
+            "crop": "Фертигація",
+            "period": "разом з поливом",
+            "dose": "0,5–1 кг / 10 т води"
+          }
+        ],
+        "note": "Через розбіжність 50% vs 60% склад і норму обов'язково звірити з етикеткою конкретної партії."
+      },
+      "specs": [
+        {
+          "label": "Фульвокислоти",
+          "value": "60% у матриці BB610; 50% у частині локальних карток — потребує звірки"
+        },
+        {
+          "label": "K₂O",
+          "value": "12% у частині локальних товарних джерел"
+        },
+        {
+          "label": "Форма",
+          "value": "Водорозчинний порошок"
+        },
+        {
+          "label": "Бренд",
+          "value": "AgriFlex"
+        },
+        {
+          "label": "Виробник / лінія",
+          "value": "XI'AN CITYMAX AGROCHEMICAL CO., LTD."
+        }
+      ]
     }
   }
 }

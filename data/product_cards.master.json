@@ -3310,23 +3310,41 @@
         {
           "sku": "BB610-OP-BREXIL-COMBI-15G",
           "label": "15 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-combi.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591501+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BREXIL-COMBI-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-combi.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591539+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BREXIL-COMBI-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-combi.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591565+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -3464,30 +3482,54 @@
         {
           "sku": "BB610-OP-BREXIL-CA-15G",
           "label": "15 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-ca.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591592+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BREXIL-CA-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-ca.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591616+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BREXIL-CA-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-ca.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591639+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BREXIL-CA-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-ca.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591662+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -3625,30 +3667,54 @@
         {
           "sku": "BB610-OP-BREXIL-FE-15G",
           "label": "15 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-fe.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591685+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BREXIL-FE-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-fe.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591732+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BREXIL-FE-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-fe.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591755+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BREXIL-FE-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-fe.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591780+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -4107,23 +4173,41 @@
         {
           "sku": "BB610-OP-BREXIL-ZN-15G",
           "label": "15 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-zn.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591810+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BREXIL-ZN-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-zn.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591837+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BREXIL-ZN-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/brexil-zn.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591860+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -4336,30 +4420,54 @@
         {
           "sku": "BB610-OP-BOROPLUS-15ML",
           "label": "15 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/boroplus.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591883+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BOROPLUS-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/boroplus.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591906+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BOROPLUS-1L",
           "label": "1 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/boroplus.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591931+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BOROPLUS-10L",
           "label": "10 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/boroplus.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591954+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -4756,16 +4864,28 @@
         {
           "sku": "BB610-OP-HAIFA-MKP-0-52-34-20G",
           "label": "20 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/haifa-mkp-0-52-34.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.591978+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-HAIFA-MKP-0-52-34-200G",
           "label": "200 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/haifa-mkp-0-52-34.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592001+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -5824,30 +5944,54 @@
         {
           "sku": "BB610-OP-NEOCORE-30ML",
           "label": "30 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/neocore.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592024+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-NEOCORE-1L",
           "label": "1 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/neocore.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592047+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-NEOCORE-5L",
           "label": "5 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/neocore.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592071+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-NEOCORE-20L",
           "label": "20 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/neocore.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592094+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -6504,9 +6648,15 @@
         {
           "sku": "BB610-OP-BLACKJAK-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/blackjak.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592120+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -6594,37 +6744,67 @@
         {
           "sku": "BB610-OP-VIVA-25ML",
           "label": "25 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/viva.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592144+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-VIVA-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/viva.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592168+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-VIVA-1L",
           "label": "1 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/viva.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592232+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-VIVA-10L",
           "label": "10 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/viva.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592259+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-VIVA-20L",
           "label": "20 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/viva.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592284+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -6947,16 +7127,28 @@
         {
           "sku": "BB610-OP-MAXICROP-CREAM-25ML",
           "label": "25 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/maxicrop-cream.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592391+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-MAXICROP-CREAM-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/maxicrop-cream.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592417+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -7173,30 +7365,54 @@
         {
           "sku": "BB610-OP-BENEFIT-PZ-25ML",
           "label": "25 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/benefit-pz.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592441+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BENEFIT-PZ-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/benefit-pz.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592464+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BENEFIT-PZ-1L",
           "label": "1 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/benefit-pz.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592488+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-BENEFIT-PZ-10L",
           "label": "10 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/benefit-pz.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592512+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -7304,30 +7520,54 @@
         {
           "sku": "BB610-OP-SWEET-25ML",
           "label": "25 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/sweet.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592535+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-SWEET-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/sweet.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592557+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-SWEET-1L",
           "label": "1 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/sweet.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592580+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-SWEET-10L",
           "label": "10 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/sweet.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592603+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {
@@ -7419,23 +7659,41 @@
         {
           "sku": "BB610-OP-CONTROL-DMP-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/control-dmp.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592910+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-CONTROL-DMP-1L",
           "label": "1 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/control-dmp.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592942+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         },
         {
           "sku": "BB610-OP-CONTROL-DMP-10L",
           "label": "10 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/control-dmp.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22f_fix1_auto_media_apply",
+            "assigned_at": "2026-09-05T21:21:46.592970+00:00",
+            "source_queue": "stage22e_fix1_auto_media_queue_latest.csv",
+            "confidence": "HIGH"
+          }
         }
       ],
       "import_meta": {

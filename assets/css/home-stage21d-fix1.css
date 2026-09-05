@@ -1,0 +1,206 @@
+/* BB610 Market — Stage 21D FIX1 correction
+   Keeps the good upper-page density from 21D,
+   fixes crops / lower gaps / official-info / delivery / footer.
+*/
+
+/* ---------- keep good upper-page density ---------- */
+@media(min-width:1100px){
+  .bb610-21d1-hero{
+    min-height:0!important;
+    padding-top:12px!important;
+    padding-bottom:12px!important;
+  }
+  .bb610-21d1-hero img{
+    max-height:455px!important;
+    object-fit:cover!important;
+  }
+  .bb610-21d1-hero h1{margin-bottom:7px!important;line-height:1!important}
+  .bb610-21d1-hero p{margin-top:4px!important;margin-bottom:7px!important;line-height:1.3!important}
+
+  .bb610-21d1-directions,
+  .bb610-21d1-popular{
+    margin-top:16px!important;
+    margin-bottom:16px!important;
+  }
+  .bb610-21d1-directions h2,
+  .bb610-21d1-popular h2{
+    margin-top:0!important;
+    margin-bottom:10px!important;
+  }
+
+  .bb610-21d1-directions [class*="card"]{
+    min-height:0!important;
+    padding-top:14px!important;
+    padding-bottom:14px!important;
+  }
+
+  .bb610-21d1-product-card{
+    min-height:0!important;
+  }
+  .bb610-21d1-product-card figure,
+  .bb610-21d1-product-card [class*="image"],
+  .bb610-21d1-product-card [class*="photo"]{
+    min-height:0!important;
+    max-height:190px!important;
+  }
+  .bb610-21d1-product-card figure img,
+  .bb610-21d1-product-card [class*="image"] img,
+  .bb610-21d1-product-card [class*="photo"] img{
+    max-height:178px!important;
+    object-fit:contain!important;
+  }
+  .bb610-21d1-product-card h3{
+    margin-top:4px!important;
+    margin-bottom:5px!important;
+    line-height:1.16!important;
+  }
+  .bb610-21d1-product-card p{
+    margin-top:3px!important;
+    margin-bottom:3px!important;
+  }
+}
+
+/* ---------- crop search: restore photographic cards ---------- */
+.bb610-21d1-crops{
+  min-height:0!important;
+  height:auto!important;
+  margin-top:16px!important;
+  margin-bottom:14px!important;
+  padding-bottom:0!important;
+}
+.bb610-21d1-crops .bb610-21d1-crop-card{
+  position:relative!important;
+  overflow:hidden!important;
+  min-width:0!important;
+  min-height:74px!important;
+  height:74px!important;
+  border-radius:8px!important;
+  background-color:#172022!important;
+}
+.bb610-21d1-crops .bb610-21d1-crop-bg{
+  background-size:cover!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  filter:brightness(1.10)!important;
+}
+.bb610-21d1-crops .bb610-21d1-crop-card::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(90deg,rgba(3,7,8,.22),rgba(3,7,8,.10))!important;
+  z-index:1!important;
+}
+.bb610-21d1-crops .bb610-21d1-crop-img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  transform:scale(.94)!important;
+  transform-origin:center center!important;
+  filter:brightness(1.12) saturate(1.02)!important;
+}
+.bb610-21d1-crops .bb610-21d1-crop-label{
+  position:relative!important;
+  z-index:3!important;
+}
+.bb610-21d1-crops .bb610-21d1-crop-card > *:not(img){
+  position:relative!important;
+  z-index:3!important;
+}
+
+/* ---------- official info: compact the section AND the box ---------- */
+.bb610-21d1-official-section{
+  min-height:0!important;
+  height:auto!important;
+  margin-top:14px!important;
+  margin-bottom:14px!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+.bb610-21d1-official-box{
+  min-height:0!important;
+  height:auto!important;
+  margin-top:0!important;
+  margin-bottom:0!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+.bb610-21d1-official-box .bb610-official-info__inner,
+.bb610-21d1-official-box > div{
+  min-height:0!important;
+  height:auto!important;
+  padding-top:10px!important;
+  padding-bottom:10px!important;
+}
+.bb610-21d1-official-box h2,
+.bb610-21d1-official-box h3{margin:0 0 5px!important;line-height:1.12!important}
+.bb610-21d1-official-box p{margin:0!important;line-height:1.35!important}
+.bb610-21d1-official-box .bb610-official-info__items{margin-top:6px!important;gap:4px 14px!important}
+
+/* ---------- delivery strip: remove phantom vertical space ---------- */
+.bb610-21d1-delivery-section{
+  min-height:0!important;
+  height:auto!important;
+  margin-top:14px!important;
+  margin-bottom:14px!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+.bb610-21d1-delivery-box{
+  min-height:0!important;
+  height:auto!important;
+  margin-top:0!important;
+  margin-bottom:0!important;
+  padding-top:12px!important;
+  padding-bottom:12px!important;
+}
+
+/* ---------- recommend: pull it up, no giant gap ---------- */
+.bb610-21d1-recommend{
+  min-height:0!important;
+  height:auto!important;
+  margin-top:18px!important;
+  margin-bottom:18px!important;
+  padding-top:0!important;
+}
+.bb610-21d1-recommend h2,
+.bb610-21d1-recommend h3{
+  margin-top:0!important;
+  margin-bottom:10px!important;
+}
+
+/* ---------- footer: keep every contact, remove dead air ---------- */
+.bb610-21d1-footer{
+  margin-top:18px!important;
+  padding-top:18px!important;
+  padding-bottom:10px!important;
+  min-height:0!important;
+  height:auto!important;
+}
+.bb610-21d1-footer p,
+.bb610-21d1-footer li,
+.bb610-21d1-footer a{
+  line-height:1.28!important;
+}
+.bb610-21d1-footer ul{
+  margin-top:5px!important;
+  margin-bottom:5px!important;
+}
+.bb610-21d1-footer-junk{
+  display:none!important;
+}
+.bb610-21d1-footer > *:last-child{
+  margin-bottom:0!important;
+  padding-bottom:0!important;
+}
+
+@media(max-width:1099px){
+  .bb610-21d1-crops .bb610-21d1-crop-card{
+    min-height:70px!important;
+    height:70px!important;
+  }
+  .bb610-21d1-crops .bb610-21d1-crop-img{
+    transform:scale(.96)!important;
+  }
+}

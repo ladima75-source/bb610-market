@@ -1,0 +1,162 @@
+/* BB610 Market — Stage 21D FIX2
+   Corrects only the four lower-homepage zones marked by user.
+*/
+
+/* 1. Search by crop: full photo cards, normal grid, no giant empty zone */
+.bb610-21d2-crops{
+  min-height:0!important;
+  height:auto!important;
+  padding-bottom:0!important;
+  margin-bottom:14px!important;
+}
+.bb610-21d2-old-crop-hidden{
+  display:none!important;
+}
+.bb610-21d2-crop-grid{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:10px!important;
+  margin-top:10px!important;
+  width:100%!important;
+}
+.bb610-21d2-crop-card{
+  position:relative!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  min-height:86px!important;
+  height:86px!important;
+  border:1px solid #344247!important;
+  border-radius:8px!important;
+  overflow:hidden!important;
+  text-decoration:none!important;
+  background-color:#172022!important;
+  background-size:cover!important;
+  background-position:center center!important;
+}
+.bb610-21d2-crop-card::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(90deg,rgba(3,7,8,.22),rgba(3,7,8,.08))!important;
+  z-index:1!important;
+}
+.bb610-21d2-crop-card img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  transform:scale(.94)!important;
+  transform-origin:center center!important;
+  filter:brightness(1.14) saturate(1.02)!important;
+}
+.bb610-21d2-crop-card span{
+  position:relative!important;
+  z-index:2!important;
+  display:inline-block!important;
+  padding:0 12px 10px!important;
+  color:#fff!important;
+  font-weight:800!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.85)!important;
+}
+
+/* 2. Official information: use horizontal space, remove dead right half */
+.bb610-21d2-official{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.6fr) minmax(320px,.9fr)!important;
+  column-gap:24px!important;
+  align-items:center!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:12px 18px 12px 22px!important;
+  margin-top:12px!important;
+  margin-bottom:12px!important;
+}
+.bb610-21d2-official .bb610-official-info__inner{
+  display:contents!important;
+}
+.bb610-21d2-official .bb610-official-info__kicker,
+.bb610-21d2-official h2,
+.bb610-21d2-official h3,
+.bb610-21d2-official p{
+  grid-column:1!important;
+}
+.bb610-21d2-official .bb610-official-info__kicker{
+  margin:0 0 3px!important;
+}
+.bb610-21d2-official h2,
+.bb610-21d2-official h3{
+  margin:0 0 5px!important;
+  line-height:1.12!important;
+}
+.bb610-21d2-official p{
+  margin:0!important;
+  line-height:1.35!important;
+}
+.bb610-21d2-official .bb610-official-info__items,
+.bb610-21d2-official .bb610-21d2-official-items{
+  grid-column:2!important;
+  grid-row:1 / span 4!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:10px 16px!important;
+  align-content:center!important;
+  margin:0!important;
+}
+.bb610-21d2-official .bb610-official-info__items span{
+  white-space:nowrap!important;
+}
+
+/* 3. Dnipro strip: keep one compact row, no wide empty middle */
+.bb610-21d2-delivery{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:center!important;
+  gap:18px!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:10px 16px!important;
+  margin-top:12px!important;
+  margin-bottom:12px!important;
+}
+.bb610-21d2-delivery > *{
+  margin-top:0!important;
+  margin-bottom:0!important;
+}
+
+/* 4. Footer: retain data, kill dead vertical air */
+.bb610-21d2-footer{
+  min-height:0!important;
+  height:auto!important;
+  margin-top:18px!important;
+  padding-top:18px!important;
+  padding-bottom:12px!important;
+}
+.bb610-21d2-footer p,
+.bb610-21d2-footer li,
+.bb610-21d2-footer a{
+  line-height:1.28!important;
+}
+.bb610-21d2-footer p{
+  margin-top:4px!important;
+  margin-bottom:4px!important;
+}
+.bb610-21d2-footer ul{
+  margin-top:5px!important;
+  margin-bottom:5px!important;
+}
+.bb610-21d2-footer-junk{
+  display:none!important;
+}
+.bb610-21d2-footer > *:last-child{
+  margin-bottom:0!important;
+  padding-bottom:0!important;
+}
+
+@media(max-width:900px){
+  .bb610-21d2-crop-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .bb610-21d2-official{display:block!important}
+  .bb610-21d2-official .bb610-official-info__items{display:flex!important;margin-top:8px!important}
+  .bb610-21d2-delivery{display:block!important}
+}

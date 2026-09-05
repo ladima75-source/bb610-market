@@ -1,0 +1,185 @@
+/* BB610 Market — Stage 21D FINAL
+   Final homepage closure:
+   - crop images slightly zoomed out and lighter;
+   - official-info block compact;
+   - desktop vertical density improved;
+   - no redesign, no data changes.
+*/
+
+/* ---------- crop search ---------- */
+.bb610-21d-crops .bb610-21d-crop-card{
+  position:relative!important;
+  overflow:hidden!important;
+  background-color:#172022!important;
+  filter:brightness(1.08)!important;
+}
+.bb610-21d-crops .bb610-21d-crop-card::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(90deg,rgba(3,7,8,.18),rgba(3,7,8,.08))!important;
+  opacity:.75!important;
+  z-index:1!important;
+}
+.bb610-21d-crops .bb610-21d-crop-card > *{
+  position:relative!important;
+  z-index:2!important;
+}
+.bb610-21d-crops .bb610-21d-crop-img{
+  transform:scale(.91)!important;
+  filter:brightness(1.14) saturate(1.02)!important;
+}
+
+/* ---------- official information ---------- */
+.bb610-21d-official{
+  min-height:0!important;
+  height:auto!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+  margin-top:12px!important;
+  margin-bottom:12px!important;
+}
+.bb610-21d-official .bb610-official-info__inner,
+.bb610-21d-official > div{
+  min-height:0!important;
+  height:auto!important;
+  padding-top:10px!important;
+  padding-bottom:10px!important;
+}
+.bb610-21d-official .bb610-official-info__kicker{
+  margin:0 0 3px!important;
+}
+.bb610-21d-official h2,
+.bb610-21d-official h3{
+  margin:0 0 5px!important;
+  line-height:1.12!important;
+}
+.bb610-21d-official p{
+  margin:0!important;
+  line-height:1.35!important;
+}
+.bb610-21d-official .bb610-official-info__items{
+  margin-top:6px!important;
+  gap:4px 14px!important;
+}
+.bb610-21d-official::before{
+  top:8px!important;
+  bottom:8px!important;
+}
+
+/* ---------- desktop density ---------- */
+@media (min-width:1100px){
+
+  /* Hero: keep the approved image, reduce only excess vertical footprint */
+  .bb610-21d-hero{
+    min-height:0!important;
+    padding-top:12px!important;
+    padding-bottom:12px!important;
+  }
+  .bb610-21d-hero img{
+    max-height:455px!important;
+    object-fit:cover!important;
+  }
+  .bb610-21d-hero h1{
+    margin-bottom:7px!important;
+    line-height:1!important;
+  }
+  .bb610-21d-hero p{
+    margin-top:4px!important;
+    margin-bottom:7px!important;
+    line-height:1.3!important;
+  }
+
+  /* General section rhythm */
+  .bb610-21d-directions,
+  .bb610-21d-popular,
+  .bb610-21d-crops,
+  .bb610-21d-official,
+  .bb610-21d-delivery,
+  .bb610-21d-recommend{
+    margin-top:16px!important;
+    margin-bottom:16px!important;
+  }
+
+  .bb610-21d-directions h2,
+  .bb610-21d-popular h2,
+  .bb610-21d-crops h2,
+  .bb610-21d-recommend h2{
+    margin-top:0!important;
+    margin-bottom:10px!important;
+  }
+
+  /* Direction cards */
+  .bb610-21d-directions article,
+  .bb610-21d-directions [class*="card"]{
+    min-height:0!important;
+  }
+  .bb610-21d-directions [class*="card"]{
+    padding-top:14px!important;
+    padding-bottom:14px!important;
+  }
+
+  /* Popular + recommended cards */
+  .bb610-21d-product-card{
+    min-height:0!important;
+  }
+  .bb610-21d-product-card figure,
+  .bb610-21d-product-card [class*="image"],
+  .bb610-21d-product-card [class*="photo"]{
+    min-height:0!important;
+    max-height:190px!important;
+  }
+  .bb610-21d-product-card figure img,
+  .bb610-21d-product-card [class*="image"] img,
+  .bb610-21d-product-card [class*="photo"] img{
+    max-height:178px!important;
+    object-fit:contain!important;
+  }
+  .bb610-21d-product-card h3{
+    margin-top:4px!important;
+    margin-bottom:5px!important;
+    line-height:1.16!important;
+  }
+  .bb610-21d-product-card p{
+    margin-top:3px!important;
+    margin-bottom:3px!important;
+  }
+
+  /* Crop row itself */
+  .bb610-21d-crops .bb610-21d-crop-card{
+    min-height:68px!important;
+    height:68px!important;
+  }
+
+  /* Delivery strip */
+  .bb610-21d-delivery{
+    min-height:0!important;
+    height:auto!important;
+    padding-top:12px!important;
+    padding-bottom:12px!important;
+  }
+
+  /* Footer: keep all contacts, remove excess vertical air only */
+  .bb610-21d-footer{
+    margin-top:22px!important;
+    padding-top:20px!important;
+    padding-bottom:16px!important;
+  }
+  .bb610-21d-footer p,
+  .bb610-21d-footer li,
+  .bb610-21d-footer a{
+    line-height:1.3!important;
+  }
+  .bb610-21d-footer ul{
+    margin-top:6px!important;
+    margin-bottom:6px!important;
+  }
+}
+
+/* Mobile/tablet: keep existing adaptive layout, only preserve the two requested visual fixes. */
+@media (max-width:1099px){
+  .bb610-21d-crops .bb610-21d-crop-img{
+    transform:scale(.95)!important;
+  }
+}

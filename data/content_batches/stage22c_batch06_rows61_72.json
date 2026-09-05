@@ -1,0 +1,896 @@
+[
+  {
+    "source_row": 61,
+    "brand": "Valagro",
+    "category": "nutrition",
+    "eyebrow": "СТАРТЕРНЕ ЖИВЛЕННЯ · VALAGRO",
+    "name": "Micro NP",
+    "subtitle": "Мікрогранульоване NP 4-30 добриво із цинком для локального внесення під час сівби",
+    "lead": "Стартова формула для сильного початкового розвитку сходів навіть за несприятливих умов.",
+    "short_description": "MICRO NP — мікрогранульоване стартове NP 4-30 добриво Valagro із цинком для локального внесення.",
+    "full_description": "MICRO NP спеціально розроблений для локального внесення під час сівби або пересадки. Офіційний каталог Valagro описує продукт як стартове добриво, що підтримує ранній розвиток рослин навіть за несприятливих умов.\n\nФормула містить 4% загального амонійного азоту, 30% P₂O₅ (з них 27% водорозчинного) та цинк. Мікрогранульована форма дозволяє розміщувати живлення безпосередньо поблизу насіння або кореневої зони.",
+    "why": [
+      {
+        "title": "СТАРТЕР",
+        "text": "Підтримує швидкий і рівномірний старт культури."
+      },
+      {
+        "title": "4-30 + Zn",
+        "text": "Високофосфорна стартова формула з цинком."
+      },
+      {
+        "title": "ЛОКАЛЬНЕ ВНЕСЕННЯ",
+        "text": "Призначений для внесення близько до насіння/кореня."
+      }
+    ],
+    "how_it_works": {
+      "badge": "MICRO NP",
+      "text": "Мікрогранули локально формують зону доступного фосфору й амонійного азоту біля молодої кореневої системи."
+    },
+    "application": {
+      "intro": "Офіційні орієнтири Valagro:",
+      "rows": [
+        {
+          "crop": "Польові культури",
+          "period": "локально під час сівби",
+          "dose": "25–40 кг/га"
+        },
+        {
+          "crop": "Овочі / квіти",
+          "period": "локальне внесення",
+          "dose": "25–40 кг/га"
+        },
+        {
+          "crop": "Плодові",
+          "period": "локальне внесення",
+          "dose": "30–40 кг/га"
+        }
+      ],
+      "note": "Не перевищувати локальну норму без агрономічного розрахунку."
+    },
+    "specs": [
+      {
+        "label": "Формула",
+        "value": "NP 4-30 + Zn"
+      },
+      {
+        "label": "Загальний N",
+        "value": "4%"
+      },
+      {
+        "label": "Амонійний N",
+        "value": "4%"
+      },
+      {
+        "label": "P₂O₅",
+        "value": "30% (27% водорозчинного)"
+      },
+      {
+        "label": "Zn EDTA",
+        "value": "0,8%"
+      },
+      {
+        "label": "Zn водорозчинний",
+        "value": "0,2%"
+      },
+      {
+        "label": "Форма",
+        "value": "Мікрогранули"
+      },
+      {
+        "label": "pH 1%",
+        "value": "4,0"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Valagro / Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf",
+      "source_type": "manufacturer_catalogue",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 62,
+    "brand": "Valagro",
+    "category": "nutrition",
+    "eyebrow": "ВЕЛИКЕ ФАСУВАННЯ · VALAGRO",
+    "name": "Actiwin 20-5-10",
+    "subtitle": "Гранульоване NPK-добриво 20-5-10 для ґрунтового живлення",
+    "lead": "Високоазотна NPK-формула для програм основного або підживлювального внесення.",
+    "short_description": "Actiwin 20-5-10 — гранульоване NPK-добриво з підвищеною часткою азоту.",
+    "full_description": "У вихідній матриці BB610 продукт представлений як Actiwin 20-5-10 у фасуванні 22,7 кг. Актуальну окрему офіційну сторінку продукту у відкритому каталозі Valagro підтвердити не вдалося.\n\nТому в картку заносимо тільки базову підтверджену формулу з матриці та не вигадуємо додаткові мікроелементи, технології чи норми внесення. Перед публікацією потрібна перевірка фактичної етикетки мішка.",
+    "why": [
+      {
+        "title": "20-5-10",
+        "text": "Висока частка азоту в NPK-формулі."
+      },
+      {
+        "title": "ГРАНУЛЬОВАНЕ",
+        "text": "Орієнтоване на ґрунтове внесення."
+      },
+      {
+        "title": "LEGACY",
+        "text": "Точний актуальний склад і норми потребують етикетки."
+      }
+    ],
+    "how_it_works": {
+      "badge": "ACTIWIN",
+      "text": "Гранульована NPK-формула поступово забезпечує культуру основними елементами живлення після внесення в ґрунт."
+    },
+    "application": {
+      "intro": "Норма внесення — за фактичною етикеткою Actiwin 20-5-10.",
+      "rows": [],
+      "note": "Не публікувати універсальну норму без етикетки конкретної партії."
+    },
+    "specs": [
+      {
+        "label": "Формула NPK",
+        "value": "20-5-10"
+      },
+      {
+        "label": "Форма",
+        "value": "Гранульована"
+      },
+      {
+        "label": "Статус джерела",
+        "value": "Legacy / потребує етикетку"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Valagro / Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": ""
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf",
+      "source_type": "supplier_legacy_reference",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 63,
+    "brand": "Valagro",
+    "category": "nutrition",
+    "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
+    "name": "Brexil Mn",
+    "subtitle": "Марганцеве мікродобриво у LSA-комплексі для листкового внесення",
+    "lead": "Цільова корекція дефіциту марганцю у мікрогранульованій водорозчинній формі.",
+    "short_description": "Brexil Mn — спеціалізоване марганцеве мікродобриво лінійки Brexil®.",
+    "full_description": "Офіційні каталоги Valagro підтверджують Brexil Mn як мікрогранульоване мікродобриво з LSA-комплексуванням і 100% комплексованою фракцією. Продукт призначений для швидкого постачання марганцю через листкову поверхню.\n\nТочну концентрацію Mn для конкретної актуальної етикетки перед публікацією слід звірити з партією, тому безпечно не переносимо цифру з іншого ринку.",
+    "why": [
+      {
+        "title": "Mn",
+        "text": "Цільове марганцеве живлення."
+      },
+      {
+        "title": "LSA",
+        "text": "Марганець комплексований LSA."
+      },
+      {
+        "title": "ЛИСТКОВО",
+        "text": "Формула для позакореневого внесення."
+      }
+    ],
+    "how_it_works": {
+      "badge": "BREXIL® MN",
+      "text": "LSA-комплекс сприяє проникненню марганцю через листкову поверхню."
+    },
+    "application": {
+      "intro": "Застосовувати листково за культурою та актуальною етикеткою.",
+      "rows": [],
+      "note": "Точну норму й відсоток Mn звірити з етикеткою конкретної фасовки."
+    },
+    "specs": [
+      {
+        "label": "Тип",
+        "value": "Мікродобриво"
+      },
+      {
+        "label": "Елемент",
+        "value": "Марганець (Mn)"
+      },
+      {
+        "label": "Комплексоутворювач",
+        "value": "LSA"
+      },
+      {
+        "label": "Комплексована фракція",
+        "value": "100%"
+      },
+      {
+        "label": "Форма",
+        "value": "Мікрогранули"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Valagro / Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/en/products/farm/micronutrients/"
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/en/products/farm/micronutrients/"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/en/products/farm/micronutrients/",
+      "source_type": "manufacturer_product_family",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 64,
+    "brand": "Valagro",
+    "category": "nutrition",
+    "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
+    "name": "Brexil Duo",
+    "subtitle": "Кальцій-магнієве мікродобриво з бором і мікроелементами",
+    "lead": "Комплексна листкова формула Brexil® для підтримки кальцієво-магнієвого живлення.",
+    "short_description": "Brexil Duo — мікрогранульоване мікродобриво Valagro з CaO 18%, MgO 4% і мікроелементами у LSA-комплексі.",
+    "full_description": "Brexil Duo входить до офіційної лінійки Brexil®. Каталог Valagro підтверджує мікрогранульовану форму, LSA-комплексування і склад із 18% CaO, 4% MgO та мікроелементами.\n\nПродукт використовують листково в програмах, де одночасно потрібні кальцій і магній.",
+    "why": [
+      {
+        "title": "18% CaO",
+        "text": "Висока частка кальцію."
+      },
+      {
+        "title": "4% MgO",
+        "text": "Додаткове магнієве живлення."
+      },
+      {
+        "title": "LSA",
+        "text": "Мікроелементи у LSA-комплексі."
+      }
+    ],
+    "how_it_works": {
+      "badge": "BREXIL® DUO",
+      "text": "LSA-комплекс і розчинні мікрогранули допомагають доставляти Ca, Mg та мікроелементи через листок."
+    },
+    "application": {
+      "intro": "Застосування — листково за культурою та етикеткою.",
+      "rows": [],
+      "note": "Для винограду офіційні матеріали Valagro наводять 2 кг/га в окремих фазах; локальну схему звіряти."
+    },
+    "specs": [
+      {
+        "label": "CaO",
+        "value": "18%"
+      },
+      {
+        "label": "MgO",
+        "value": "4%"
+      },
+      {
+        "label": "B",
+        "value": "0,5%"
+      },
+      {
+        "label": "Cu",
+        "value": "0,5%"
+      },
+      {
+        "label": "Комплексоутворювач",
+        "value": "LSA"
+      },
+      {
+        "label": "Форма",
+        "value": "Мікрогранули"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Valagro / Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf",
+      "source_type": "manufacturer_catalogue",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 65,
+    "brand": "Valagro",
+    "category": "nutrition",
+    "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
+    "name": "Brexil Nutre",
+    "subtitle": "Багатокомпонентне мікродобриво Brexil® для листкового живлення",
+    "lead": "Комплекс мікроелементів у LSA-формі для підтримки збалансованого мікроелементного статусу.",
+    "short_description": "Brexil Nutre — продукт лінійки Brexil® з комплексованими LSA мікроелементами.",
+    "full_description": "Офіційний каталог Valagro підтверджує Brexil Nutre як мікрогранульований продукт лінійки Brexil® з 100% комплексованою фракцією LSA.\n\nОскільки точна актуальна формула Nutre відрізнялася між ринками й версіями каталогу, у цій картці не вигадуємо відсотки окремих елементів до перевірки етикетки конкретної партії.",
+    "why": [
+      {
+        "title": "MULTI",
+        "text": "Комплексне мікроелементне живлення."
+      },
+      {
+        "title": "LSA",
+        "text": "Комплексування LSA."
+      },
+      {
+        "title": "МІКРОГРАНУЛИ",
+        "text": "Водорозчинна форма для листкового внесення."
+      }
+    ],
+    "how_it_works": {
+      "badge": "BREXIL® NUTRE",
+      "text": "Комплекс LSA полегшує листкове засвоєння набору мікроелементів."
+    },
+    "application": {
+      "intro": "Листкове внесення за актуальною етикеткою.",
+      "rows": [],
+      "note": "Перед публікацією складу у відсотках перевірити конкретну фасовку 1/5 кг."
+    },
+    "specs": [
+      {
+        "label": "Тип",
+        "value": "Комплексне мікродобриво"
+      },
+      {
+        "label": "Комплексоутворювач",
+        "value": "LSA"
+      },
+      {
+        "label": "Комплексована фракція",
+        "value": "100%"
+      },
+      {
+        "label": "Форма",
+        "value": "Мікрогранули"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Valagro / Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf",
+      "source_type": "manufacturer_catalogue",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 66,
+    "brand": "Valagro",
+    "category": "biostimulation",
+    "eyebrow": "БІОСТИМУЛЯЦІЯ · VALAGRO",
+    "name": "Actiwave",
+    "subtitle": "Кореневий біостимулятор для підвищення поглинання поживних речовин",
+    "lead": "Покращує здатність кореневої системи поглинати елементи живлення та допомагає ефективніше використовувати добрива.",
+    "short_description": "ACTIWAVE® — біостимулятор Valagro для підвищення поглинання поживних речовин.",
+    "full_description": "ACTIWAVE® створений для посилення поглинання поживних речовин із ґрунту та оптимізації мінерального живлення. Офіційні матеріали Valagro описують технологію Caidrine, яка впливає на доступність елементів у ґрунті, їх поглинання коренями та включення в метаболічні процеси.\n\nПродукт застосовують у кореневу зону за добре розвиненої кореневої системи.",
+    "why": [
+      {
+        "title": "ПОГЛИНАННЯ",
+        "text": "Підсилює здатність коренів поглинати поживні речовини."
+      },
+      {
+        "title": "CAIDRINE",
+        "text": "Патентована біоактивна концепція Valagro."
+      },
+      {
+        "title": "ЕФЕКТИВНІСТЬ ДОБРИВ",
+        "text": "Допомагає оптимізувати використання мінерального живлення."
+      }
+    ],
+    "how_it_works": {
+      "badge": "ACTIWAVE®",
+      "text": "Caidrine діє на механізми доступності, поглинання та використання поживних речовин."
+    },
+    "application": {
+      "intro": "Офіційний орієнтир Valagro:",
+      "rows": [
+        {
+          "crop": "Усі культури",
+          "period": "через фертигацію при розвиненій кореневій системі",
+          "dose": "15–25 л/га"
+        }
+      ],
+      "note": "Точну локальну схему звіряти з етикеткою."
+    },
+    "specs": [
+      {
+        "label": "Тип",
+        "value": "Кореневий біостимулятор"
+      },
+      {
+        "label": "Технологія",
+        "value": "Caidrine / GEA839 (залежно від каталогу)"
+      },
+      {
+        "label": "Форма",
+        "value": "Рідка"
+      },
+      {
+        "label": "pH",
+        "value": "≈6,4 за каталогом Valagro"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Valagro / Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+      "source_type": "manufacturer_catalogue",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 67,
+    "brand": "Valagro / Syngenta Biologicals",
+    "category": "biostimulation",
+    "eyebrow": "БІОСТИМУЛЯЦІЯ · VALAGRO",
+    "name": "Maxicrop Extra",
+    "subtitle": "Мікрогранульований біостимулятор на основі екстракту морських водоростей",
+    "lead": "Концентрований продукт лінійки Maxicrop / MC для підтримки метаболізму і стресостійкості.",
+    "short_description": "Maxicrop Extra у старіших каталогах Valagro відповідає MC EXTRA — мікрогранульованому біостимулятору.",
+    "full_description": "Актуальна італійська технічна таблиця Valagro містить MC EXTRA як мікрогранульований біостимулятор. Історична комерційна назва Maxicrop Extra у матриці BB610 розглядається як legacy-назва цього продуктового напряму.\n\nБез актуальної локальної етикетки не переносимо точні норми або склад із іншого ринку.",
+    "why": [
+      {
+        "title": "SEAWEED",
+        "text": "Продукт лінійки Maxicrop / MC на основі морських водоростей."
+      },
+      {
+        "title": "МІКРОГРАНУЛИ",
+        "text": "Концентрована суха форма."
+      },
+      {
+        "title": "LEGACY MATCH",
+        "text": "Технічна прив'язка до MC EXTRA."
+      }
+    ],
+    "how_it_works": {
+      "badge": "MC EXTRA",
+      "text": "Біоактивні компоненти морських водоростей підтримують фізіологічні процеси рослини."
+    },
+    "application": {
+      "intro": "Застосування — за етикеткою фактичної партії Maxicrop Extra / MC Extra.",
+      "rows": [],
+      "note": "Не публікувати норму без звірки конкретної фасовки."
+    },
+    "specs": [
+      {
+        "label": "Форма",
+        "value": "Мікрогранули"
+      },
+      {
+        "label": "Актуальна технічна назва",
+        "value": "MC EXTRA"
+      },
+      {
+        "label": "pH 1%",
+        "value": "≈9,2 за Valagro Italia"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro / Syngenta Biologicals",
+      "company": "Valagro / Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/media/media_articles/attachments/Catalogo_Soluzioni_Valagro_IT_2020.pdf"
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/media/media_articles/attachments/Catalogo_Soluzioni_Valagro_IT_2020.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/media_articles/attachments/Catalogo_Soluzioni_Valagro_IT_2020.pdf",
+      "source_type": "manufacturer_technical_match",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 68,
+    "brand": "Valagro / Syngenta Biologicals",
+    "category": "nutrition",
+    "eyebrow": "ХЕЛАТ ЗАЛІЗА · SYNGENTA BIOLOGICALS",
+    "name": "Ferrilene Trium",
+    "subtitle": "Багатостратегічний хелат заліза для профілактики та корекції залізного хлорозу",
+    "lead": "Поєднує Fe-EDDHA/EDDHSA, Mn-EDTA і калій для ефективної роботи у кореневій зоні.",
+    "short_description": "FERRILENE TRIUM — сучасний хелат заліза Valagro / Syngenta Biologicals із технологією GEA098.",
+    "full_description": "Актуальна сторінка Syngenta Italia підтверджує Ferrilene Trium як розчинний мікрогранульований хелат заліза з EDDHA/EDDHSA та біоактивною технологією GEA098.\n\nОфіційна монографія вказує 6% водорозчинного Fe, 1% Mn-EDTA, 6% K₂O та повністю хелатовану фракцію.",
+    "why": [
+      {
+        "title": "Fe 6%",
+        "text": "Хелатоване залізо для корекції хлорозу."
+      },
+      {
+        "title": "Mn + K",
+        "text": "Додатково марганець і калій."
+      },
+      {
+        "title": "GEA098",
+        "text": "Багатостратегічний підхід Valagro."
+      }
+    ],
+    "how_it_works": {
+      "badge": "FERRILENE TRIUM",
+      "text": "EDDHA/EDDHSA утримують Fe у доступній формі в кореневій зоні; GEA098 оптимізує кореневе використання мінеральної частини."
+    },
+    "application": {
+      "intro": "Актуальні орієнтири Syngenta Italia:",
+      "rows": [
+        {
+          "crop": "Плодові",
+          "period": "фертигація",
+          "dose": "10–25 кг/га"
+        },
+        {
+          "crop": "Овочеві / польові",
+          "period": "фертигація",
+          "dose": "5–12 кг/га"
+        },
+        {
+          "crop": "Горщикові",
+          "period": "у субстрат",
+          "dose": "0,5–1,5 г/рослину"
+        }
+      ],
+      "note": "Повторення кожні 7–15 днів або при перших ознаках дефіциту — за локальною етикеткою."
+    },
+    "specs": [
+      {
+        "label": "Fe водорозчинне",
+        "value": "6%"
+      },
+      {
+        "label": "Хелатуючі агенти",
+        "value": "EDDHA / EDDHSA"
+      },
+      {
+        "label": "Mn-EDTA",
+        "value": "1%"
+      },
+      {
+        "label": "K₂O",
+        "value": "6%"
+      },
+      {
+        "label": "Форма",
+        "value": "Розчинні мікрогранули"
+      },
+      {
+        "label": "Технологія",
+        "value": "GEA098"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro / Syngenta Biologicals",
+      "company": "Valagro / Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/ferrilene-trium"
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/ferrilene-trium"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/ferrilene-trium",
+      "source_type": "current_official_product_page",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 69,
+    "brand": "Valagro",
+    "category": "nutrition",
+    "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
+    "name": "Valagro EDTA 5SG",
+    "subtitle": "Хелатоване EDTA-мікродобриво для водорозчинних програм живлення",
+    "lead": "Суміш мікроелементів у хелатованій EDTA-формі для корекції мікроелементного живлення.",
+    "short_description": "Valagro EDTA 5SG — продукт лінійки Valagro EDTA.",
+    "full_description": "Syngenta Biologicals / Valagro підтверджує продуктову лінійку Valagro EDTA як суміші або окремі мікроелементи, хелатовані EDTA.\n\nДля Valagro EDTA 5SG у матриці BB610 точна фасовка є, але актуальну окрему продуктову сторінку для цього SKU у відкритому каталозі не підтверджено. Тому точні додаткові елементи й норми не вигадуємо.",
+    "why": [
+      {
+        "title": "EDTA",
+        "text": "Стабільна хелатна форма мікроелементів."
+      },
+      {
+        "title": "СУМІШ МІКРОЕЛЕМЕНТІВ",
+        "text": "Ключова функція — суміш мікроелементів."
+      },
+      {
+        "title": "ВОДОРОЗЧИННЕ",
+        "text": "Для приготування робочих розчинів."
+      }
+    ],
+    "how_it_works": {
+      "badge": "VALAGRO EDTA",
+      "text": "EDTA утримує мікроелементи в розчинній і доступній формі."
+    },
+    "application": {
+      "intro": "Застосування — за етикеткою конкретної фасовки.",
+      "rows": [],
+      "note": "Точну норму і склад звірити перед публікацією."
+    },
+    "specs": [
+      {
+        "label": "Тип",
+        "value": "Хелатоване EDTA-мікродобриво"
+      },
+      {
+        "label": "Формула/назва",
+        "value": "EDTA 5SG"
+      },
+      {
+        "label": "Форма",
+        "value": "Водорозчинна"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Valagro / Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/en/products/farm/micronutrients/"
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/en/products/farm/micronutrients/"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/en/products/farm/micronutrients/",
+      "source_type": "manufacturer_product_family",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 70,
+    "brand": "Valagro",
+    "category": "nutrition",
+    "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
+    "name": "Valagro EDTA Fe 13%",
+    "subtitle": "Хелатоване EDTA-мікродобриво для водорозчинних програм живлення",
+    "lead": "Залізо у хелатованій EDTA-формі для корекції мікроелементного живлення.",
+    "short_description": "Valagro EDTA Fe 13% — продукт лінійки Valagro EDTA.",
+    "full_description": "Syngenta Biologicals / Valagro підтверджує продуктову лінійку Valagro EDTA як суміші або окремі мікроелементи, хелатовані EDTA.\n\nДля Valagro EDTA Fe 13% у матриці BB610 точна фасовка є, але актуальну окрему продуктову сторінку для цього SKU у відкритому каталозі не підтверджено. Тому точні додаткові елементи й норми не вигадуємо.",
+    "why": [
+      {
+        "title": "EDTA",
+        "text": "Стабільна хелатна форма мікроелементів."
+      },
+      {
+        "title": "ЗАЛІЗО",
+        "text": "Ключова функція — залізо."
+      },
+      {
+        "title": "ВОДОРОЗЧИННЕ",
+        "text": "Для приготування робочих розчинів."
+      }
+    ],
+    "how_it_works": {
+      "badge": "VALAGRO EDTA",
+      "text": "EDTA утримує мікроелементи в розчинній і доступній формі."
+    },
+    "application": {
+      "intro": "Застосування — за етикеткою конкретної фасовки.",
+      "rows": [],
+      "note": "Точну норму і склад звірити перед публікацією."
+    },
+    "specs": [
+      {
+        "label": "Тип",
+        "value": "Хелатоване EDTA-мікродобриво"
+      },
+      {
+        "label": "Формула/назва",
+        "value": "Fe-EDTA 13%"
+      },
+      {
+        "label": "Форма",
+        "value": "Водорозчинна"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Valagro / Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/en/products/farm/micronutrients/"
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/en/products/farm/micronutrients/"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/en/products/farm/micronutrients/",
+      "source_type": "manufacturer_product_family",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 71,
+    "brand": "Valagro / legacy",
+    "category": "biostimulation",
+    "eyebrow": "ВЕЛИКЕ ФАСУВАННЯ · LEGACY",
+    "name": "MAX 600 SEASAILER",
+    "subtitle": "Біостимулюючий продукт великого фасування — потребує підтвердження актуальної етикетки",
+    "lead": "Карточка створена як структура без вигаданого складу до перевірки фактичного товару.",
+    "short_description": "MAX 600 SEASAILER присутній у вихідній товарній матриці BB610 у фасуваннях 1 кг і 20 кг.",
+    "full_description": "Для назви MAX 600 SEASAILER не вдалося підтвердити однозначну актуальну офіційну продуктову сторінку Valagro/Syngenta Biologicals. Щоб не змішувати характеристики схожих продуктів або чужих торгових назв, картка залишається у статусі legacy/review.\n\nПісля отримання фото мішка або етикетки можна безпечно доповнити склад, застосування та виробника.",
+    "why": [
+      {
+        "title": "БЕЗ ВИГАДОК",
+        "text": "Склад і норми не заповнюються без підтвердження."
+      },
+      {
+        "title": "2 ФАСУВАННЯ",
+        "text": "1 кг і 20 кг уже збережені як варіанти."
+      },
+      {
+        "title": "REVIEW",
+        "text": "Потрібна етикетка конкретного товару."
+      }
+    ],
+    "how_it_works": {
+      "badge": "LEGACY / REVIEW",
+      "text": "До верифікації етикетки технічний механізм дії не заявляється."
+    },
+    "application": {
+      "intro": "Застосування не публікувати до перевірки етикетки.",
+      "rows": [],
+      "note": "Потрібне фото передньої та задньої сторони упаковки."
+    },
+    "specs": [
+      {
+        "label": "Статус",
+        "value": "Потребує верифікації"
+      },
+      {
+        "label": "Фасування в матриці",
+        "value": "1 кг / 20 кг"
+      }
+    ],
+    "origin": {
+      "brand": "MAX 600 SEASAILER",
+      "company": "",
+      "manufacturer": "",
+      "country": "",
+      "official_url": ""
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf",
+      "source_type": "unverified_legacy_name",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 72,
+    "brand": "Valagro / legacy",
+    "category": "biostimulation",
+    "eyebrow": "ВЕЛИКЕ ФАСУВАННЯ · LEGACY",
+    "name": "Agriflex Bio",
+    "subtitle": "Біостимулюючий продукт 1 кг — технічні дані очікують верифікації етикетки",
+    "lead": "Карточка збережена в каталозі без вигаданого складу та норм до підтвердження походження.",
+    "short_description": "Agriflex Bio присутній у вихідній матриці BB610 у фасуванні 1 кг.",
+    "full_description": "Для Agriflex Bio не вдалося однозначно підтвердити актуальну офіційну сторінку виробника у відкритих матеріалах Valagro/Syngenta Biologicals. Назва може бути локальною, старою або належати іншому виробнику.\n\nТому картка навмисно містить лише нейтральну структурну інформацію. Склад, виробник і норми мають бути внесені після перевірки фактичної етикетки.",
+    "why": [
+      {
+        "title": "БЕЗ ВИГАДОК",
+        "text": "Не підставляємо характеристики іншого продукту."
+      },
+      {
+        "title": "1 КГ",
+        "text": "Варіант фасування вже існує."
+      },
+      {
+        "title": "REVIEW",
+        "text": "Потрібна етикетка або офіційний документ."
+      }
+    ],
+    "how_it_works": {
+      "badge": "LEGACY / REVIEW",
+      "text": "Механізм дії не заявляється до верифікації продукту."
+    },
+    "application": {
+      "intro": "Не публікувати норми до перевірки етикетки.",
+      "rows": [],
+      "note": "Потрібне фото упаковки або PDF виробника."
+    },
+    "specs": [
+      {
+        "label": "Статус",
+        "value": "Потребує верифікації"
+      },
+      {
+        "label": "Фасування в матриці",
+        "value": "1 кг"
+      }
+    ],
+    "origin": {
+      "brand": "Agriflex Bio",
+      "company": "",
+      "manufacturer": "",
+      "country": "",
+      "official_url": ""
+    },
+    "documents": [
+      {
+        "title": "Джерело даних",
+        "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf",
+      "source_type": "unverified_legacy_name",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  }
+]

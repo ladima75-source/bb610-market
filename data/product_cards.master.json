@@ -4053,23 +4053,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
       "name": "Brexil Zn",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Цинкове мікродобриво з 10% Zn у комплексі з LSA",
+      "lead": "Спеціалізована формула для профілактики та корекції дефіциту цинку при листковому внесенні.",
+      "short_description": "Brexil Zn — мікродобриво Valagro з 10% цинку у комплексі з LSA для позакореневого живлення.",
+      "full_description": "Brexil Zn — спеціалізоване мікродобриво лінійки Brexil® для забезпечення культури цинком. В українському каталозі Syngenta вказано 10% Zn у комплексі з LSA.\n\nLSA-комплексування використовується в лінійці Brexil® для полегшення проникнення мікроелементів через листкову поверхню. Продукт застосовують у програмах профілактики та корекції цинкового дефіциту.\n\nКонкретні норми та фази внесення залежать від культури; перед застосуванням необхідно звірити актуальну українську етикетку.",
+      "why": [
+        {
+          "title": "10% Zn",
+          "text": "Висока концентрація цинку для цільової корекції дефіциту."
+        },
+        {
+          "title": "LSA",
+          "text": "Цинк знаходиться у комплексі з LSA."
+        },
+        {
+          "title": "ЛИСТКОВЕ ЖИВЛЕННЯ",
+          "text": "Продукт орієнтований на позакореневе внесення."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.syngenta.ua/sites/g/files/kgtney1466/files/media/document/2024/02/13/%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_new_0902.pdf"
+      },
+      "documents": [
+        {
+          "title": "Syngenta Україна — каталог Brexil Zn",
+          "url": "https://www.syngenta.ua/sites/g/files/kgtney1466/files/media/document/2024/02/13/%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_new_0902.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.syngenta.ua/sites/g/files/kgtney1466/files/media/document/2024/02/13/%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3_new_0902.pdf",
+        "source_type": "official_local_catalogue",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4098,8 +4123,45 @@
       "import_meta": {
         "source_row": 25,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "BREXIL® ZN",
+        "text": "LSA-комплекс допомагає доставляти цинк через листкову поверхню та підтримувати доступність елемента для рослини."
+      },
+      "application": {
+        "intro": "Застосовувати по листу відповідно до культури й актуальної етикетки.",
+        "rows": [],
+        "note": "Не переносити норми з інших продуктів Brexil."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Мікродобриво"
+        },
+        {
+          "label": "Діюча речовина",
+          "value": "Цинк (Zn) 10%"
+        },
+        {
+          "label": "Комплексоутворювач",
+          "value": "LSA"
+        },
+        {
+          "label": "Препаративна форма",
+          "value": "Водорозчинні гранули / розчинний концентрат — звірити етикетку конкретної фасовки"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        }
+      ]
     },
     "ferrilene-4-8-orto-orto": {
       "id": "ferrilene-4-8-orto-orto",
@@ -4107,23 +4169,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
       "name": "Ferrilene 4.8 Orto-Orto",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Хелат заліза EDDHA для профілактики та корекції залізного хлорозу",
+      "lead": "Мікрогранульований хелат заліза зі стабільною ortho-ortho фракцією для роботи у складних ґрунтових умовах.",
+      "short_description": "Ferrilene 4.8 Orto-Orto — продукт лінійки Ferrilene для забезпечення рослин доступним залізом і корекції залізного хлорозу.",
+      "full_description": "Ferrilene 4.8 Orto-Orto належить до лінійки Ferrilene Valagro — хелатів заліза для профілактики й лікування залізного хлорозу. Офіційна монографія лінійки описує стабільні EDDHA-хелати, що зберігають ефективність у складних ґрунтових умовах і забезпечують швидку та тривалу дію.\n\nПозначення 4.8 Orto-Orto відноситься до частки заліза, хелатованого стабільним ortho-ortho ізомером. Продукт використовується для ґрунтового внесення/фертигації в культурах, схильних до залізного хлорозу.\n\nНорми залежать від культури, віку рослини, ступеня дефіциту та pH ґрунту; пріоритет має актуальна етикетка конкретної фасовки.",
+      "why": [
+        {
+          "title": "Fe-EDDHA",
+          "text": "Стабільна хелатна форма заліза для складних ґрунтових умов."
+        },
+        {
+          "title": "ORTHO-ORTHO",
+          "text": "Висока стабільність активної фракції хелату."
+        },
+        {
+          "title": "ХЛОРОЗ",
+          "text": "Призначений для профілактики та корекції дефіциту заліза."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/filer_public/4c/e5/4ce5d4ef-8601-481c-8822-445fba6038bf/monografia_ferrilene_line_2021_spa_castilian_spanish.pdf"
+      },
+      "documents": [
+        {
+          "title": "Ferrilene line monograph — Valagro",
+          "url": "https://www.valagro.com/media/filer_public/4c/e5/4ce5d4ef-8601-481c-8822-445fba6038bf/monografia_ferrilene_line_2021_spa_castilian_spanish.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/filer_public/4c/e5/4ce5d4ef-8601-481c-8822-445fba6038bf/monografia_ferrilene_line_2021_spa_castilian_spanish.pdf",
+        "source_type": "manufacturer_monograph",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4145,8 +4232,49 @@
       "import_meta": {
         "source_row": 26,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "FERRILENE",
+        "text": "EDDHA утримує залізо в доступній для рослини формі в широкому діапазоні ґрунтових умов, зменшуючи ризик швидкого зв'язування Fe."
+      },
+      "application": {
+        "intro": "Ґрунтове внесення/фертигація за культурою та ступенем дефіциту.",
+        "rows": [],
+        "note": "Норми визначати за актуальною етикеткою Ferrilene 4.8 та умовами ґрунту."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Хелат заліза"
+        },
+        {
+          "label": "Хелатуючий агент",
+          "value": "EDDHA"
+        },
+        {
+          "label": "Ключова фракція",
+          "value": "ortho-ortho"
+        },
+        {
+          "label": "Призначення",
+          "value": "Профілактика та корекція залізного хлорозу"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні мікрогранули"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        }
+      ]
     },
     "boroplus": {
       "id": "boroplus",
@@ -4154,23 +4282,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Valagro / Syngenta",
+      "eyebrow": "МІКРОЕЛЕМЕНТИ · SYNGENTA",
       "name": "Boroplus",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Рідке мікродобриво з 11% бору, комплексованого етаноламіном",
+      "lead": "Швидкодоступна форма бору для профілактики та корекції дефіциту на чутливих культурах.",
+      "short_description": "Boroplus — рідкий концентрат із 11% бору (150 г/л), комплексованого етаноламіном.",
+      "full_description": "Boroplus — мікродобриво з високим вмістом бору. На офіційній сторінці Syngenta Україна вказано 11% B, або 150 г/л, комплексованого етаноламіном.\n\nПродукт призначений для попередження та подолання дефіциту бору. Етаноламінова форма сприяє проникненню бору в тканини рослини та знижує ризик фітотоксичності порівняно з кислотно-сольовими формами.\n\nЗареєстровані норми відрізняються за культурами та фазами розвитку; для використання орієнтуватися на актуальну українську етикетку.",
+      "why": [
+        {
+          "title": "11% B",
+          "text": "150 г/л бору у рідкій концентрованій формі."
+        },
+        {
+          "title": "ЕТАНОЛАМІН",
+          "text": "Бор комплексований етаноламіном для кращої доступності."
+        },
+        {
+          "title": "ОФІЦІЙНА РЕЄСТРАЦІЯ",
+          "text": "Продукт має актуальну українську реєстрацію та норми по культурах."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Boroplus",
+        "company": "Syngenta",
+        "manufacturer": "Valagro / Syngenta Biologicals",
+        "country": "",
+        "official_url": "https://www.syngenta.ua/product/crop-protection/mikroelementy/boroplyustm"
+      },
+      "documents": [
+        {
+          "title": "Boroplus — офіційна сторінка Syngenta Україна",
+          "url": "https://www.syngenta.ua/product/crop-protection/mikroelementy/boroplyustm"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.syngenta.ua/product/crop-protection/mikroelementy/boroplyustm",
+        "source_type": "official_local_product_page",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4206,8 +4359,80 @@
       "import_meta": {
         "source_row": 27,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "BOROPLUS",
+        "text": "Етаноламіновий комплекс полегшує проникнення бору через кутикулу та його поглинання клітинами."
+      },
+      "application": {
+        "intro": "Офіційні норми Syngenta Україна:",
+        "rows": [
+          {
+            "crop": "Цукрові буряки",
+            "period": "5 листків — змикання міжрядь",
+            "dose": "1 л/га"
+          },
+          {
+            "crop": "Овочі / картопля",
+            "period": "від початку формування продуктивних органів",
+            "dose": "1–2 кг/га або 0,15 л/100 л"
+          },
+          {
+            "crop": "Ріпак",
+            "period": "4–9 листків; стеблування; бутонізація",
+            "dose": "0,5–1 л/га"
+          },
+          {
+            "crop": "Садові",
+            "period": "бутонізація — після цвітіння",
+            "dose": "1–2 л/га або 0,1 л/100 л"
+          },
+          {
+            "crop": "Соняшник",
+            "period": "6–8 листків — початок цвітіння",
+            "dose": "1 л/га"
+          },
+          {
+            "crop": "Соя",
+            "period": "2–3 трійчастих листки; цвітіння",
+            "dose": "1 л/га"
+          }
+        ],
+        "note": "Оптимальна температура застосування за Syngenta: +12…25 °C."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Мікродобриво"
+        },
+        {
+          "label": "Бор (B)",
+          "value": "11%"
+        },
+        {
+          "label": "Концентрація бору",
+          "value": "150 г/л"
+        },
+        {
+          "label": "Комплексування",
+          "value": "Етаноламін"
+        },
+        {
+          "label": "Препаративна форма",
+          "value": "Розчинний концентрат"
+        },
+        {
+          "label": "Клас токсичності",
+          "value": "III"
+        },
+        {
+          "label": "Офіційна упаковка",
+          "value": "1 л, 10 л"
+        }
+      ]
     },
     "sulfat-mahniyu": {
       "id": "sulfat-mahniyu",
@@ -4215,23 +4440,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Organic Planet / Alventa",
+      "eyebrow": "ЖИВЛЕННЯ · МАГНІЙ",
       "name": "Сульфат магнію",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Водорозчинне джерело магнію та сірки для фертигації й листкового живлення",
+      "lead": "Порошкове добриво MgO 16% + SO₃ 32% для корекції дефіциту магнію та приготування робочих розчинів.",
+      "short_description": "Сульфат магнію — водорозчинне порошкове добриво з 16% MgO і 32% SO₃.",
+      "full_description": "Сульфат магнію у фасуваннях Organic Planet — повністю водорозчинне порошкове добриво для фертигації та позакореневого живлення. У картці постачальника вказано 16% MgO та 32% SO₃.\n\nМагній є центральним елементом молекули хлорофілу, а сірка бере участь у синтезі амінокислот і білків. Продукт може використовуватися як джерело Mg і S у програмах живлення та як компонент робочого розчину.\n\nЦя картка стосується конкретного постачальницького продукту Organic Planet / Alventa; дані не слід автоматично переносити на будь-який технічний сульфат магнію.",
+      "why": [
+        {
+          "title": "16% MgO",
+          "text": "Джерело магнію для програм живлення."
+        },
+        {
+          "title": "32% SO₃",
+          "text": "Одночасно постачає сірку."
+        },
+        {
+          "title": "ВОДОРОЗЧИННИЙ",
+          "text": "Підходить для фертигації та листкового застосування."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Organic Planet",
+        "company": "Alventa",
+        "manufacturer": "Alventa",
+        "country": "Польща",
+        "official_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/sulfat-magniyu-100-g-alverniya-alwernia-polshcha"
+      },
+      "documents": [
+        {
+          "title": "Organic Planet — картка Сульфат магнію",
+          "url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/sulfat-magniyu-100-g-alverniya-alwernia-polshcha"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/sulfat-magniyu-100-g-alverniya-alwernia-polshcha",
+        "source_type": "supplier_product_page",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4260,8 +4510,51 @@
       "import_meta": {
         "source_row": 28,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "Mg + S",
+        "text": "Після розчинення у воді продукт постачає магній і сірку у доступній формі для кореневого або листкового живлення."
+      },
+      "application": {
+        "intro": "Норма з картки Organic Planet:",
+        "rows": [
+          {
+            "crop": "Усі види рослин",
+            "period": "кореневе/листкове внесення",
+            "dose": "20 г / 10 л води"
+          }
+        ],
+        "note": "Сумісність у баковій суміші перевіряти окремо; не змішувати концентровані маточні розчини з джерелами кальцію без перевірки."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне магнієве добриво"
+        },
+        {
+          "label": "MgO",
+          "value": "16%"
+        },
+        {
+          "label": "SO₃",
+          "value": "32%"
+        },
+        {
+          "label": "Форма",
+          "value": "Порошок"
+        },
+        {
+          "label": "Виробник у картці постачальника",
+          "value": "Alventa, Польща"
+        },
+        {
+          "label": "Торгова марка у фасуванні",
+          "value": "Organic Planet"
+        }
+      ]
     },
     "solupotasse-sulfat-kaliyu": {
       "id": "solupotasse-sulfat-kaliyu",
@@ -4269,23 +4562,53 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "SoluPotasse / Tessenderlo Kerley",
+      "eyebrow": "ЖИВЛЕННЯ · КАЛІЙ",
       "name": "SoluPotasse — сульфат калію",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Високорозчинний сульфат калію для фертигації",
+      "lead": "Концентроване джерело калію та сірки без азоту, з дуже низьким вмістом хлоридів.",
+      "short_description": "SoluPotasse — преміальний водорозчинний сульфат калію з 51,5% K₂O і 18,7% S для фертигації.",
+      "full_description": "SoluPotasse® — водорозчинний sulfate of potash (SOP) від Tessenderlo Kerley. Офіційні матеріали виробника вказують 51,5% K₂O і 18,7% S.\n\nПродукт не містить азоту та має дуже низький вміст хлоридів, тому підходить для фаз, де потрібні калій і сірка без додаткового N. Швидко розчиняється і призначений для фертигації через крапельні, мікроспринклерні, дощувальні та інші системи.\n\nSoluPotasse несумісний у концентрованій суміші з кальцієвими добривами через ризик утворення сульфату кальцію.",
+      "why": [
+        {
+          "title": "51,5% K₂O",
+          "text": "Висока концентрація водорозчинного калію."
+        },
+        {
+          "title": "18,7% S",
+          "text": "Додаткове живлення сіркою."
+        },
+        {
+          "title": "БЕЗ АЗОТУ",
+          "text": "Підходить для фаз, де азот небажаний."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "SoluPotasse",
+        "company": "Tessenderlo Kerley",
+        "manufacturer": "Tessenderlo Kerley",
+        "country": "",
+        "official_url": "https://www.tessenderlokerley.com/north-america/products/crop-nutrition/solupotasse"
+      },
+      "documents": [
+        {
+          "title": "SoluPotasse — офіційна сторінка Tessenderlo Kerley",
+          "url": "https://www.tessenderlokerley.com/north-america/products/crop-nutrition/solupotasse"
+        },
+        {
+          "title": "SoluPotasse Application Guide",
+          "url": "https://www.cropvitality.com/sites/cropvitality/files/files/2024-09/cv-solupotasse-application-guide-digital.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.tessenderlokerley.com/north-america/products/crop-nutrition/solupotasse",
+        "source_pdf": "https://www.cropvitality.com/sites/cropvitality/files/files/2024-09/cv-solupotasse-application-guide-digital.pdf",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4314,8 +4637,59 @@
       "import_meta": {
         "source_row": 29,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "SoluPotasse®",
+        "text": "Після розчинення постачає калій і сірку в сульфатній формі. Розчин має кислу реакцію, що може покращувати доступність деяких елементів."
+      },
+      "application": {
+        "intro": "Офіційна інструкція Tessenderlo Kerley:",
+        "rows": [
+          {
+            "crop": "Маточний розчин",
+            "period": "фертигація",
+            "dose": "не перевищувати 10 кг / 100 л води"
+          }
+        ],
+        "note": "SoluPotasse рекомендується розчиняти першим; не змішувати в концентрованому маточному розчині з кальцієвими добривами."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинний сульфат калію (SOP)"
+        },
+        {
+          "label": "K₂O",
+          "value": "51,5%"
+        },
+        {
+          "label": "K",
+          "value": "≈42%"
+        },
+        {
+          "label": "S",
+          "value": "18,7%"
+        },
+        {
+          "label": "SO₃",
+          "value": "≈46%"
+        },
+        {
+          "label": "Азот",
+          "value": "0%"
+        },
+        {
+          "label": "Макс. рекомендована концентрація маточного розчину",
+          "value": "100 г/л"
+        },
+        {
+          "label": "Виробник",
+          "value": "Tessenderlo Kerley"
+        }
+      ]
     },
     "haifa-mkp-0-52-34": {
       "id": "haifa-mkp-0-52-34",
@@ -4323,23 +4697,53 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Haifa Group",
+      "eyebrow": "ЖИВЛЕННЯ · HAIFA",
       "name": "Haifa MKP 0-52-34",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Монокалійфосфат — водорозчинне PK-добриво",
+      "lead": "Чисте джерело фосфору та калію без азоту для фертигації, листкового живлення та приготування поживних розчинів.",
+      "short_description": "Haifa MKP™ 0-52-34 — повністю водорозчинний монокалійфосфат із 52% P₂O₅ і 34% K₂O.",
+      "full_description": "Haifa MKP™ — монокалійфосфат 0-52-34 від Haifa Group. Продукт містить 52% P₂O₅ і 34% K₂O та не містить азоту.\n\nВисока чистота і розчинність роблять його придатним для фертигації (Nutrigation™), листкового внесення, приготування поживних розчинів і сумішей добрив. Офіційний каталог також відзначає низький сольовий індекс і відсутність небажаних хлоридів та натрію.\n\nHaifa окремо попереджає не змішувати MKP у концентрованих розчинах із кальцієвими або магнієвими добривами.",
+      "why": [
+        {
+          "title": "0-52-34",
+          "text": "Концентроване PK-живлення без азоту."
+        },
+        {
+          "title": "ВОДОРОЗЧИННИЙ",
+          "text": "Підходить для фертигації та листкового внесення."
+        },
+        {
+          "title": "ЧИСТОТА",
+          "text": "Низький вміст хлоридів, натрію та нерозчинних домішок."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Haifa MKP",
+        "company": "Haifa Group",
+        "manufacturer": "Haifa Group",
+        "country": "",
+        "official_url": "https://www.haifa-group.com/haifa-mkp%E2%84%A2-mono-potassium-phosphate-0-52-34"
+      },
+      "documents": [
+        {
+          "title": "Haifa MKP 0-52-34 — офіційна сторінка",
+          "url": "https://www.haifa-group.com/haifa-mkp%E2%84%A2-mono-potassium-phosphate-0-52-34"
+        },
+        {
+          "title": "Haifa Group Catalogue — MKP",
+          "url": "https://www.haifa-group.com/files/Products/Haifa_Group_Catlog.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.haifa-group.com/haifa-mkp%E2%84%A2-mono-potassium-phosphate-0-52-34",
+        "source_pdf": "https://www.haifa-group.com/files/Products/Haifa_Group_Catlog.pdf",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4361,8 +4765,53 @@
       "import_meta": {
         "source_row": 30,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "Haifa MKP™",
+        "text": "KH₂PO₄ швидко розчиняється у воді та забезпечує рослини фосфором і калієм без внесення азоту."
+      },
+      "application": {
+        "intro": "Використовують у фертигації, листковому живленні та для приготування поживних розчинів.",
+        "rows": [],
+        "note": "Не змішувати концентровані розчини з кальцієвими або магнієвими добривами."
+      },
+      "specs": [
+        {
+          "label": "Формула NPK",
+          "value": "0-52-34"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "52%"
+        },
+        {
+          "label": "K₂O",
+          "value": "34%"
+        },
+        {
+          "label": "Хімічна формула",
+          "value": "KH₂PO₄"
+        },
+        {
+          "label": "Молекулярна маса",
+          "value": "136,09"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "≈4,6"
+        },
+        {
+          "label": "Форма",
+          "value": "Білі кристали"
+        },
+        {
+          "label": "Виробник",
+          "value": "Haifa Group"
+        }
+      ]
     },
     "osmocote-decor-16-8-12-56m": {
       "id": "osmocote-decor-16-8-12-56m",
@@ -4370,23 +4819,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "ICL / Osmocote",
+      "eyebrow": "КОНТРОЛЬОВАНЕ ЖИВЛЕННЯ · ICL",
       "name": "Osmocote Decor 16-8-12 (5–6M)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Контрольоване живлення для контейнерних декоративних культур",
+      "lead": "5-е покоління Osmocote з 16-8-12 + 2,2 MgO + TE на період 5–6 місяців.",
+      "short_description": "Osmocote Decor 16-8-12 (5–6M) — контрольовано-вивільнюване гранульоване добриво ICL з формулою 16-8-12 та заявленою тривалістю 5–6 місяців.",
+      "full_description": "Osmocote Decor 16-8-12 (5–6M) у матриці BB610 відповідає формулі 16-8-12 та тривалості 5–6 місяців. Для технічних характеристик використано актуальний офіційний продукт ICL «Osmocote 5 5-6M» з відповідною формулою/тривалістю.\n\nOsmocote® — лінійка контрольовано-вивільнюваних добрив для контейнерних і декоративних культур. Поживні елементи вивільняються поступово з гранул, що дозволяє забезпечувати рослини протягом заданого періоду.\n\nНазва «Decor» з матриці постачальника є комерційною/legacy-назвою; актуальна офіційна технічна прив'язка ICL — Osmocote 5 5-6M.\n\nНорму внесення визначають за об'ємом контейнера, культурою, субстратом і додатковим водорозчинним живленням.",
+      "why": [
+        {
+          "title": "CRF",
+          "text": "Контрольоване вивільнення поживних речовин."
+        },
+        {
+          "title": "5–6 МІСЯЦІВ",
+          "text": "Заявлена тривалість живлення для відповідного продукту."
+        },
+        {
+          "title": "NPK + TE",
+          "text": "Комплексне NPK-живлення з магнієм/мікроелементами залежно від формули."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Osmocote",
+        "company": "ICL Growing Solutions",
+        "manufacturer": "ICL",
+        "country": "",
+        "official_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-5-5-6m/"
+      },
+      "documents": [
+        {
+          "title": "Osmocote 5 5-6M — офіційна сторінка ICL",
+          "url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-5-5-6m/"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-5-5-6m/",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4408,8 +4882,53 @@
       "import_meta": {
         "source_row": 31,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "OSMOCOTE®",
+        "text": "Полімерне покриття гранул регулює вивільнення поживних речовин у субстрат протягом заявленого періоду."
+      },
+      "application": {
+        "intro": "Вноситься у субстрат або поверхнево залежно від конкретного продукту ICL.",
+        "rows": [],
+        "note": "Точну норму в г/л визначати за офіційною таблицею ICL та культурою."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Контрольовано-вивільнюване добриво (CRF)"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "16-8-12"
+        },
+        {
+          "label": "Тривалість",
+          "value": "5–6 місяців"
+        },
+        {
+          "label": "Офіційний продукт для технічної прив'язки",
+          "value": "Osmocote 5 5-6M"
+        },
+        {
+          "label": "MgO",
+          "value": "2,2%"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "TE / OTEA-system"
+        },
+        {
+          "label": "Бренд",
+          "value": "Osmocote"
+        },
+        {
+          "label": "Виробник",
+          "value": "ICL Growing Solutions"
+        }
+      ]
     },
     "osmocote-bloom-12-7-18-23m": {
       "id": "osmocote-bloom-12-7-18-23m",
@@ -4417,23 +4936,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "ICL / Osmocote",
+      "eyebrow": "КОНТРОЛЬОВАНЕ ЖИВЛЕННЯ · ICL",
       "name": "Osmocote Bloom 12-7-18 (2–3M)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Контрольовано-вивільнюване добриво для однорічників і невеликих контейнерів",
+      "lead": "Формула для культур із коротким 6–12-тижневим виробничим циклом.",
+      "short_description": "Osmocote Bloom 12-7-18 (2–3M) — контрольовано-вивільнюване гранульоване добриво ICL з формулою 12-7-18 та заявленою тривалістю 2–3 місяці.",
+      "full_description": "Osmocote Bloom 12-7-18 (2–3M) у матриці BB610 відповідає формулі 12-7-18 та тривалості 2–3 місяці. Для технічних характеристик використано актуальний офіційний продукт ICL «Osmocote Bloom 2-3M» з відповідною формулою/тривалістю.\n\nOsmocote® — лінійка контрольовано-вивільнюваних добрив для контейнерних і декоративних культур. Поживні елементи вивільняються поступово з гранул, що дозволяє забезпечувати рослини протягом заданого періоду.\n\nНорму внесення визначають за об'ємом контейнера, культурою, субстратом і додатковим водорозчинним живленням.",
+      "why": [
+        {
+          "title": "CRF",
+          "text": "Контрольоване вивільнення поживних речовин."
+        },
+        {
+          "title": "2–3 МІСЯЦІ",
+          "text": "Заявлена тривалість живлення для відповідного продукту."
+        },
+        {
+          "title": "NPK + TE",
+          "text": "Комплексне NPK-живлення з магнієм/мікроелементами залежно від формули."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Osmocote",
+        "company": "ICL Growing Solutions",
+        "manufacturer": "ICL",
+        "country": "",
+        "official_url": "https://icl-growingsolutions.com/en-us/ornamental-horticulture/products/osmocote-special-products-osmocote-bloom-2-3-m/"
+      },
+      "documents": [
+        {
+          "title": "Osmocote Bloom 2-3M — офіційна сторінка ICL",
+          "url": "https://icl-growingsolutions.com/en-us/ornamental-horticulture/products/osmocote-special-products-osmocote-bloom-2-3-m/"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://icl-growingsolutions.com/en-us/ornamental-horticulture/products/osmocote-special-products-osmocote-bloom-2-3-m/",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4455,8 +4999,53 @@
       "import_meta": {
         "source_row": 32,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "OSMOCOTE®",
+        "text": "Полімерне покриття гранул регулює вивільнення поживних речовин у субстрат протягом заявленого періоду."
+      },
+      "application": {
+        "intro": "Вноситься у субстрат або поверхнево залежно від конкретного продукту ICL.",
+        "rows": [],
+        "note": "Точну норму в г/л визначати за офіційною таблицею ICL та культурою."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Контрольовано-вивільнюване добриво (CRF)"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "12-7-18"
+        },
+        {
+          "label": "Тривалість",
+          "value": "2–3 місяці"
+        },
+        {
+          "label": "Офіційний продукт для технічної прив'язки",
+          "value": "Osmocote Bloom 2-3M"
+        },
+        {
+          "label": "Mg",
+          "value": "≈1%"
+        },
+        {
+          "label": "Призначення",
+          "value": "Bedding plants / small containers"
+        },
+        {
+          "label": "Бренд",
+          "value": "Osmocote"
+        },
+        {
+          "label": "Виробник",
+          "value": "ICL Growing Solutions"
+        }
+      ]
     },
     "osmocote-potassium-12-8-19-34m": {
       "id": "osmocote-potassium-12-8-19-34m",
@@ -4464,23 +5053,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "ICL / Osmocote",
+      "eyebrow": "КОНТРОЛЬОВАНЕ ЖИВЛЕННЯ · ICL",
       "name": "Osmocote Potassium 12-8-19 (3–4M)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Висококалійна CRF-формула для компактного росту",
+      "lead": "Підвищений калій для горщикових культур, яким потрібне компактне зростання.",
+      "short_description": "Osmocote Potassium 12-8-19 (3–4M) — контрольовано-вивільнюване гранульоване добриво ICL з формулою 12-8-19 та заявленою тривалістю 3–4 місяці.",
+      "full_description": "Osmocote Potassium 12-8-19 (3–4M) у матриці BB610 відповідає формулі 12-8-19 та тривалості 3–4 місяці. Для технічних характеристик використано актуальний офіційний продукт ICL «Osmocote Exact High K 3-4M» з відповідною формулою/тривалістю.\n\nOsmocote® — лінійка контрольовано-вивільнюваних добрив для контейнерних і декоративних культур. Поживні елементи вивільняються поступово з гранул, що дозволяє забезпечувати рослини протягом заданого періоду.\n\nНазва «Potassium» з матриці BB610 технічно зіставлена з актуальним Osmocote Exact High K 3-4M.\n\nНорму внесення визначають за об'ємом контейнера, культурою, субстратом і додатковим водорозчинним живленням.",
+      "why": [
+        {
+          "title": "CRF",
+          "text": "Контрольоване вивільнення поживних речовин."
+        },
+        {
+          "title": "3–4 МІСЯЦІ",
+          "text": "Заявлена тривалість живлення для відповідного продукту."
+        },
+        {
+          "title": "NPK + TE",
+          "text": "Комплексне NPK-живлення з магнієм/мікроелементами залежно від формули."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Osmocote",
+        "company": "ICL Growing Solutions",
+        "manufacturer": "ICL",
+        "country": "",
+        "official_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-exact-high-k-3-4m/"
+      },
+      "documents": [
+        {
+          "title": "Osmocote Exact High K 3-4M — офіційна сторінка ICL",
+          "url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-exact-high-k-3-4m/"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-exact-high-k-3-4m/",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4502,8 +5116,57 @@
       "import_meta": {
         "source_row": 33,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "OSMOCOTE®",
+        "text": "Полімерне покриття гранул регулює вивільнення поживних речовин у субстрат протягом заявленого періоду."
+      },
+      "application": {
+        "intro": "Вноситься у субстрат або поверхнево залежно від конкретного продукту ICL.",
+        "rows": [],
+        "note": "Точну норму в г/л визначати за офіційною таблицею ICL та культурою."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Контрольовано-вивільнюване добриво (CRF)"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "12-8-19"
+        },
+        {
+          "label": "Тривалість",
+          "value": "3–4 місяці"
+        },
+        {
+          "label": "Офіційний продукт для технічної прив'язки",
+          "value": "Osmocote Exact High K 3-4M"
+        },
+        {
+          "label": "MgO",
+          "value": "1,8%"
+        },
+        {
+          "label": "SO₃",
+          "value": "21,2%"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "TE"
+        },
+        {
+          "label": "Бренд",
+          "value": "Osmocote"
+        },
+        {
+          "label": "Виробник",
+          "value": "ICL Growing Solutions"
+        }
+      ]
     },
     "osmocote-start-11-11-17-1-5m": {
       "id": "osmocote-start-11-11-17-1-5m",
@@ -4511,23 +5174,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "ICL / Osmocote",
+      "eyebrow": "КОНТРОЛЬОВАНЕ ЖИВЛЕННЯ · ICL",
       "name": "Osmocote Start 11-11-17 (1,5M)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Короткострокове контрольоване живлення для молодих і чутливих культур",
+      "lead": "Формула для короткого циклу, молодих рослин і культур, чутливих до солей.",
+      "short_description": "Osmocote Start 11-11-17 (1,5M) — контрольовано-вивільнюване гранульоване добриво ICL з формулою 11-11-17 та заявленою тривалістю близько 1–1,5 місяця.",
+      "full_description": "Osmocote Start 11-11-17 (1,5M) у матриці BB610 відповідає формулі 11-11-17 та тривалості близько 1–1,5 місяця. Для технічних характеристик використано актуальний офіційний продукт ICL «Osmocote Start 11-11-17» з відповідною формулою/тривалістю.\n\nOsmocote® — лінійка контрольовано-вивільнюваних добрив для контейнерних і декоративних культур. Поживні елементи вивільняються поступово з гранул, що дозволяє забезпечувати рослини протягом заданого періоду.\n\nНорму внесення визначають за об'ємом контейнера, культурою, субстратом і додатковим водорозчинним живленням.",
+      "why": [
+        {
+          "title": "CRF",
+          "text": "Контрольоване вивільнення поживних речовин."
+        },
+        {
+          "title": "БЛИЗЬКО 1–1,5 МІСЯЦЯ",
+          "text": "Заявлена тривалість живлення для відповідного продукту."
+        },
+        {
+          "title": "NPK + TE",
+          "text": "Комплексне NPK-живлення з магнієм/мікроелементами залежно від формули."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Osmocote",
+        "company": "ICL Growing Solutions",
+        "manufacturer": "ICL",
+        "country": "",
+        "official_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-start/"
+      },
+      "documents": [
+        {
+          "title": "Osmocote Start 11-11-17 — офіційна сторінка ICL",
+          "url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-start/"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-start/",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4549,8 +5237,53 @@
       "import_meta": {
         "source_row": 34,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "OSMOCOTE®",
+        "text": "Полімерне покриття гранул регулює вивільнення поживних речовин у субстрат протягом заявленого періоду."
+      },
+      "application": {
+        "intro": "Вноситься у субстрат або поверхнево залежно від конкретного продукту ICL.",
+        "rows": [],
+        "note": "Точну норму в г/л визначати за офіційною таблицею ICL та культурою."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Контрольовано-вивільнюване добриво (CRF)"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "11-11-17"
+        },
+        {
+          "label": "Тривалість",
+          "value": "близько 1–1,5 місяця"
+        },
+        {
+          "label": "Офіційний продукт для технічної прив'язки",
+          "value": "Osmocote Start 11-11-17"
+        },
+        {
+          "label": "MgO",
+          "value": "2,0%"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "TE"
+        },
+        {
+          "label": "Бренд",
+          "value": "Osmocote"
+        },
+        {
+          "label": "Виробник",
+          "value": "ICL Growing Solutions"
+        }
+      ]
     },
     "osmocote-landscape-16-9-12-34m": {
       "id": "osmocote-landscape-16-9-12-34m",
@@ -4558,23 +5291,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "ICL / Osmocote",
+      "eyebrow": "КОНТРОЛЬОВАНЕ ЖИВЛЕННЯ · ICL",
       "name": "Osmocote Landscape 16-9-12 (3–4M)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Стандартна CRF-формула для коротких циклів вирощування",
+      "lead": "Рівномірне контрольоване живлення 16-9-12 + MgO + TE протягом 3–4 місяців.",
+      "short_description": "Osmocote Landscape 16-9-12 (3–4M) — контрольовано-вивільнюване гранульоване добриво ICL з формулою 16-9-12 та заявленою тривалістю 3–4 місяці.",
+      "full_description": "Osmocote Landscape 16-9-12 (3–4M) у матриці BB610 відповідає формулі 16-9-12 та тривалості 3–4 місяці. Для технічних характеристик використано актуальний офіційний продукт ICL «Osmocote Exact Standard 3-4M» з відповідною формулою/тривалістю.\n\nOsmocote® — лінійка контрольовано-вивільнюваних добрив для контейнерних і декоративних культур. Поживні елементи вивільняються поступово з гранул, що дозволяє забезпечувати рослини протягом заданого періоду.\n\nНазва «Landscape» у матриці BB610 зіставлена за формулою та тривалістю з Osmocote Exact Standard 3-4M.\n\nНорму внесення визначають за об'ємом контейнера, культурою, субстратом і додатковим водорозчинним живленням.",
+      "why": [
+        {
+          "title": "CRF",
+          "text": "Контрольоване вивільнення поживних речовин."
+        },
+        {
+          "title": "3–4 МІСЯЦІ",
+          "text": "Заявлена тривалість живлення для відповідного продукту."
+        },
+        {
+          "title": "NPK + TE",
+          "text": "Комплексне NPK-живлення з магнієм/мікроелементами залежно від формули."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Osmocote",
+        "company": "ICL Growing Solutions",
+        "manufacturer": "ICL",
+        "country": "",
+        "official_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-exact-standard-3-4m/"
+      },
+      "documents": [
+        {
+          "title": "Osmocote Exact Standard 3-4M — офіційна сторінка ICL",
+          "url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-exact-standard-3-4m/"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-exact-standard-3-4m/",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -4596,8 +5354,53 @@
       "import_meta": {
         "source_row": 35,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "OSMOCOTE®",
+        "text": "Полімерне покриття гранул регулює вивільнення поживних речовин у субстрат протягом заявленого періоду."
+      },
+      "application": {
+        "intro": "Вноситься у субстрат або поверхнево залежно від конкретного продукту ICL.",
+        "rows": [],
+        "note": "Точну норму в г/л визначати за офіційною таблицею ICL та культурою."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Контрольовано-вивільнюване добриво (CRF)"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "16-9-12"
+        },
+        {
+          "label": "Тривалість",
+          "value": "3–4 місяці"
+        },
+        {
+          "label": "Офіційний продукт для технічної прив'язки",
+          "value": "Osmocote Exact Standard 3-4M"
+        },
+        {
+          "label": "MgO",
+          "value": "2,0%"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "TE"
+        },
+        {
+          "label": "Бренд",
+          "value": "Osmocote"
+        },
+        {
+          "label": "Виробник",
+          "value": "ICL Growing Solutions"
+        }
+      ]
     },
     "osmocote-quick-start-22-5-6-45m": {
       "id": "osmocote-quick-start-22-5-6-45m",
@@ -4605,24 +5408,54 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "ICL / Osmocote",
+      "eyebrow": "КОНТРОЛЬОВАНЕ ЖИВЛЕННЯ · ICL",
       "name": "Osmocote Quick Start 22-5-6 (4–5M)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Високоазотна контрольована формула 22-5-6 для стартового/поверхневого живлення",
+      "lead": "Формула 22-5-6 з акцентом на азот; актуальний ICL продукт із цією формулою і тривалістю — Osmocote Topdress FT 4-5M.",
+      "short_description": "Osmocote Quick Start 22-5-6 (4–5M) — контрольовано-вивільнюване гранульоване добриво ICL з формулою 22-5-6 та заявленою тривалістю 4–5 місяців.",
+      "full_description": "Osmocote Quick Start 22-5-6 (4–5M) у матриці BB610 відповідає формулі 22-5-6 та тривалості 4–5 місяців. Для технічних характеристик використано актуальний офіційний продукт ICL «Osmocote Topdress FT 4-5M» з відповідною формулою/тривалістю.\n\nOsmocote® — лінійка контрольовано-вивільнюваних добрив для контейнерних і декоративних культур. Поживні елементи вивільняються поступово з гранул, що дозволяє забезпечувати рослини протягом заданого періоду.\n\nТочна актуальна офіційна назва «Osmocote Quick Start» не підтверджена. Для складу використана офіційна ICL формула 22-5-6 / 4-5M — Osmocote Topdress FT. Перед публікацією назву і етикетку конкретної фасовки потрібно звірити.\n\nНорму внесення визначають за об'ємом контейнера, культурою, субстратом і додатковим водорозчинним живленням.",
+      "why": [
+        {
+          "title": "CRF",
+          "text": "Контрольоване вивільнення поживних речовин."
+        },
+        {
+          "title": "4–5 МІСЯЦІВ",
+          "text": "Заявлена тривалість живлення для відповідного продукту."
+        },
+        {
+          "title": "NPK + TE",
+          "text": "Комплексне NPK-живлення з магнієм/мікроелементами залежно від формули."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Osmocote",
+        "company": "ICL Growing Solutions",
+        "manufacturer": "ICL",
+        "country": "",
+        "official_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-topdress-topdress-ft-4-5m/"
+      },
+      "documents": [
+        {
+          "title": "Osmocote Topdress FT 4-5M — офіційна сторінка ICL",
+          "url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-topdress-topdress-ft-4-5m/"
+        },
+        {
+          "title": "Osmocote Topdress FT 4-5M — Product Info PDF",
+          "url": "https://multisite-assets.icl-growingsolutions.com/wp-content/uploads/2026/04/30150553/Osmocote%C2%AE-Topdress-FT-4-5M-24997-1-3.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
-        "verified_date": "2026-09-05"
+        "source_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-topdress-topdress-ft-4-5m/",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
+        "verified_date": "2026-09-05",
+        "source_pdf": "https://multisite-assets.icl-growingsolutions.com/wp-content/uploads/2026/04/30150553/Osmocote%C2%AE-Topdress-FT-4-5M-24997-1-3.pdf"
       },
       "variants": [
         {
@@ -4643,8 +5476,57 @@
       "import_meta": {
         "source_row": 36,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "03",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "OSMOCOTE®",
+        "text": "Полімерне покриття гранул регулює вивільнення поживних речовин у субстрат протягом заявленого періоду."
+      },
+      "application": {
+        "intro": "Вноситься у субстрат або поверхнево залежно від конкретного продукту ICL.",
+        "rows": [],
+        "note": "Точну норму в г/л визначати за офіційною таблицею ICL та культурою."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Контрольовано-вивільнюване добриво (CRF)"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "22-5-6"
+        },
+        {
+          "label": "Тривалість",
+          "value": "4–5 місяців"
+        },
+        {
+          "label": "Офіційний продукт для технічної прив'язки",
+          "value": "Osmocote Topdress FT 4-5M"
+        },
+        {
+          "label": "MgO",
+          "value": "2,0%"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "TE"
+        },
+        {
+          "label": "Технологія",
+          "value": "Fusion Technology / topdress"
+        },
+        {
+          "label": "Бренд",
+          "value": "Osmocote"
+        },
+        {
+          "label": "Виробник",
+          "value": "ICL Growing Solutions"
+        }
+      ]
     },
     "osmocote-granula-max-14-8-11-te-56m": {
       "id": "osmocote-granula-max-14-8-11-te-56m",

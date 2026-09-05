@@ -1,0 +1,91 @@
+/* Stage 21D FIX3 — side-by-side lower cards and compact footer contacts */
+
+.bb610-21d3-pair{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.35fr) minmax(340px,.9fr)!important;
+  gap:18px!important;
+  align-items:stretch!important;
+  margin:14px 0 18px!important;
+}
+.bb610-21d3-card{
+  border:1px solid rgba(114,141,150,.28)!important;
+  border-radius:12px!important;
+  background:linear-gradient(180deg,rgba(20,28,31,.96),rgba(17,23,26,.96))!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.015) inset!important;
+  min-height:0!important;
+  height:auto!important;
+}
+.bb610-21d3-official{
+  padding:16px 18px 14px 20px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.2fr) minmax(250px,.8fr)!important;
+  gap:18px!important;
+  align-items:center!important;
+  margin:0!important;
+}
+.bb610-21d3-official h2,
+.bb610-21d3-official h3{margin:0 0 8px!important;line-height:1.1!important}
+.bb610-21d3-official p{margin:0!important;line-height:1.38!important}
+.bb610-21d3-official .bb610-21d3-official-items,
+.bb610-21d3-official .bb610-official-info__items,
+.bb610-21d3-official .bb610-21d2-official-items{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:10px 18px!important;
+  align-content:center!important;
+  margin:0!important;
+}
+.bb610-21d3-official .bb610-official-info__items span,
+.bb610-21d3-official .bb610-21d2-official-items span{white-space:nowrap!important}
+
+.bb610-21d3-delivery{
+  padding:16px 18px 14px 18px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:space-between!important;
+  margin:0!important;
+}
+.bb610-21d3-delivery h2,
+.bb610-21d3-delivery h3,
+.bb610-21d3-delivery p,
+.bb610-21d3-delivery strong{margin-top:0!important;margin-bottom:0!important}
+.bb610-21d3-delivery-actions{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:8px!important;
+  margin-top:14px!important;
+}
+.bb610-21d3-delivery-actions a,
+.bb610-21d3-delivery-actions button,
+.bb610-21d3-delivery-actions [role="button"]{
+  min-width:auto!important;
+}
+
+/* footer */
+.bb610-21d3-footer{padding-bottom:12px!important}
+.bb610-21d3-hide{display:none!important}
+.bb610-21d3-brandbox .bb610-21d3-tagline{margin-bottom:10px!important}
+.bb610-21d3-contact-row{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.2fr) minmax(180px,.8fr)!important;
+  gap:20px!important;
+  align-items:start!important;
+  margin-top:8px!important;
+}
+.bb610-21d3-seller,
+.bb610-21d3-contacts{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:6px!important;
+}
+.bb610-21d3-seller p,.bb610-21d3-seller a,.bb610-21d3-seller div,.bb610-21d3-seller span,
+.bb610-21d3-contacts p,.bb610-21d3-contacts a,.bb610-21d3-contacts div,.bb610-21d3-contacts span{
+  margin:0!important;
+  line-height:1.32!important;
+}
+
+@media (max-width: 980px){
+  .bb610-21d3-pair{grid-template-columns:1fr!important}
+  .bb610-21d3-official{grid-template-columns:1fr!important}
+  .bb610-21d3-contact-row{grid-template-columns:1fr!important}
+}

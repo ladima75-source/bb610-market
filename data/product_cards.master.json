@@ -268,23 +268,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Master NPK 15-5-30",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "MASTER 15-5-30+2",
+      "subtitle": "Водорозчинне добриво для фертигації з підвищеним вмістом калію та магнієм",
+      "lead": "Формула з акцентом на калій для програм живлення у фазах підвищеної потреби в K.",
+      "short_description": "MASTER 15-5-30+2 — водорозчинне мікрокристалічне добриво лінійки MASTER® для систем фертигації. Формула 15-5-30 + 2 MgO доповнена хелатованими мікроелементами EDTA.",
+      "full_description": "MASTER 15-5-30+2 належить до лінійки MASTER® Valagro — водорозчинних мікрокристалічних добрив для фертигації. За офіційними матеріалами виробника, продукти MASTER® мають повну та швидку розчинність, придатні для різних систем фертигації та містять мікроелементи у хелатній формі EDTA.\n\nФормула 15-5-30 + 2 MgO дає можливість включати продукт у програму живлення відповідно до фази розвитку культури та співвідношення потрібних елементів. Конкретні норми внесення залежать від культури, якості води, субстрату або ґрунту та загальної програми живлення.\n\nУ BB610 Market не переносимо універсальні норми між культурами без локальної перевірки. Перед застосуванням пріоритет має актуальна етикетка фактично поставленого продукту та агрономічний розрахунок.",
+      "why": [
+        {
+          "title": "КАЛІЙ",
+          "text": "30% K₂O для програм із підвищеною потребою культури в калії."
+        },
+        {
+          "title": "МАГНІЙ",
+          "text": "Містить 2% MgO як додатковий елемент живлення."
+        },
+        {
+          "title": "ФЕРТИГАЦІЯ",
+          "text": "Повністю водорозчинна мікрокристалічна формула для систем фертигації."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+      },
+      "documents": [
+        {
+          "title": "MASTER® line — офіційна сторінка Valagro / Syngenta Biologicals",
+          "url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+        },
+        {
+          "title": "Valagro Farm Catalogue — MASTER® / WATER SOLUBLE NUTRITION",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -320,8 +349,77 @@
       "import_meta": {
         "source_row": 1,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "MASTER®",
+        "text": "Мікрокристалічна водорозчинна формула швидко переходить у робочий розчин. Лінійка MASTER® призначена для фертигації; співвідношення N:P₂O₅:K₂O та супутніх елементів дає змогу підбирати формулу під конкретний етап живлення."
+      },
+      "application": {
+        "intro": "MASTER® застосовують у системах фертигації. Точна концентрація та добова/сезонна норма визначаються культурою, фазою розвитку, водою та програмою живлення.",
+        "rows": [],
+        "note": "Не використовувати універсальну норму без розрахунку. Пріоритет має актуальна етикетка фактично поставленого товару та рекомендації агронома."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне мікрокристалічне добриво для фертигації"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "15-5-30 + 2 MgO"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні мікрокристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "15%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "5%"
+        },
+        {
+          "label": "K₂O",
+          "value": "30%"
+        },
+        {
+          "label": "MgO",
+          "value": "2%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "5,6"
+        },
+        {
+          "label": "Розчинність",
+          "value": "35 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "червоний"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        },
+        {
+          "label": "Країна виробника",
+          "value": "Італія"
+        }
+      ]
     },
     "master-npk-13-40-13": {
       "id": "master-npk-13-40-13",
@@ -329,23 +427,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Master NPK 13-40-13",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "MASTER 13-40-13",
+      "subtitle": "Фосфорна водорозчинна формула для фертигації",
+      "lead": "Високий вміст фосфору робить формулу придатною для програм, де потрібен підвищений рівень P.",
+      "short_description": "MASTER 13-40-13 — водорозчинне мікрокристалічне добриво лінійки MASTER® для систем фертигації. Формула 13-40-13 доповнена хелатованими мікроелементами EDTA.",
+      "full_description": "MASTER 13-40-13 належить до лінійки MASTER® Valagro — водорозчинних мікрокристалічних добрив для фертигації. За офіційними матеріалами виробника, продукти MASTER® мають повну та швидку розчинність, придатні для різних систем фертигації та містять мікроелементи у хелатній формі EDTA.\n\nФормула 13-40-13 дає можливість включати продукт у програму живлення відповідно до фази розвитку культури та співвідношення потрібних елементів. Конкретні норми внесення залежать від культури, якості води, субстрату або ґрунту та загальної програми живлення.\n\nУ BB610 Market не переносимо універсальні норми між культурами без локальної перевірки. Перед застосуванням пріоритет має актуальна етикетка фактично поставленого продукту та агрономічний розрахунок.",
+      "why": [
+        {
+          "title": "ФОСФОР",
+          "text": "40% P₂O₅ — виражений фосфорний акцент формули."
+        },
+        {
+          "title": "СТАРТОВІ ПРОГРАМИ",
+          "text": "Може використовуватися там, де агрономічна схема передбачає підвищену частку фосфору."
+        },
+        {
+          "title": "МІКРОЕЛЕМЕНТИ",
+          "text": "Лінійка MASTER® містить мікроелементи, хелатовані EDTA."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+      },
+      "documents": [
+        {
+          "title": "MASTER® line — офіційна сторінка Valagro / Syngenta Biologicals",
+          "url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+        },
+        {
+          "title": "Valagro Farm Catalogue — MASTER® / WATER SOLUBLE NUTRITION",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -381,8 +508,73 @@
       "import_meta": {
         "source_row": 2,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "MASTER®",
+        "text": "Мікрокристалічна водорозчинна формула швидко переходить у робочий розчин. Лінійка MASTER® призначена для фертигації; співвідношення N:P₂O₅:K₂O та супутніх елементів дає змогу підбирати формулу під конкретний етап живлення."
+      },
+      "application": {
+        "intro": "MASTER® застосовують у системах фертигації. Точна концентрація та добова/сезонна норма визначаються культурою, фазою розвитку, водою та програмою живлення.",
+        "rows": [],
+        "note": "Не використовувати універсальну норму без розрахунку. Пріоритет має актуальна етикетка фактично поставленого товару та рекомендації агронома."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне мікрокристалічне добриво для фертигації"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "13-40-13"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні мікрокристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "13%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "40%"
+        },
+        {
+          "label": "K₂O",
+          "value": "13%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "4,7"
+        },
+        {
+          "label": "Розчинність",
+          "value": "42 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "помаранчевий"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        },
+        {
+          "label": "Країна виробника",
+          "value": "Італія"
+        }
+      ]
     },
     "master-npk-20-20-20": {
       "id": "master-npk-20-20-20",
@@ -390,23 +582,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Master NPK 20-20-20",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "MASTER 20-20-20",
+      "subtitle": "Збалансоване водорозчинне NPK-добриво для фертигації",
+      "lead": "Рівне співвідношення N, P₂O₅ і K₂O для збалансованих програм живлення.",
+      "short_description": "MASTER 20-20-20 — водорозчинне мікрокристалічне добриво лінійки MASTER® для систем фертигації. Формула 20-20-20 доповнена хелатованими мікроелементами EDTA.",
+      "full_description": "MASTER 20-20-20 належить до лінійки MASTER® Valagro — водорозчинних мікрокристалічних добрив для фертигації. За офіційними матеріалами виробника, продукти MASTER® мають повну та швидку розчинність, придатні для різних систем фертигації та містять мікроелементи у хелатній формі EDTA.\n\nФормула 20-20-20 дає можливість включати продукт у програму живлення відповідно до фази розвитку культури та співвідношення потрібних елементів. Конкретні норми внесення залежать від культури, якості води, субстрату або ґрунту та загальної програми живлення.\n\nУ BB610 Market не переносимо універсальні норми між культурами без локальної перевірки. Перед застосуванням пріоритет має актуальна етикетка фактично поставленого продукту та агрономічний розрахунок.",
+      "why": [
+        {
+          "title": "ЗБАЛАНСОВАНА ФОРМУЛА",
+          "text": "20-20-20 забезпечує однакову частку трьох основних елементів."
+        },
+        {
+          "title": "УНІВЕРСАЛЬНІСТЬ",
+          "text": "Підходить як базова формула в програмах фертигації, де потрібне збалансоване NPK."
+        },
+        {
+          "title": "РОЗЧИННІСТЬ",
+          "text": "Висока розчинність — до 55 г/100 мл за даними каталогу Valagro."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+      },
+      "documents": [
+        {
+          "title": "MASTER® line — офіційна сторінка Valagro / Syngenta Biologicals",
+          "url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+        },
+        {
+          "title": "Valagro Farm Catalogue — MASTER® / WATER SOLUBLE NUTRITION",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -449,8 +670,73 @@
       "import_meta": {
         "source_row": 3,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "MASTER®",
+        "text": "Мікрокристалічна водорозчинна формула швидко переходить у робочий розчин. Лінійка MASTER® призначена для фертигації; співвідношення N:P₂O₅:K₂O та супутніх елементів дає змогу підбирати формулу під конкретний етап живлення."
+      },
+      "application": {
+        "intro": "MASTER® застосовують у системах фертигації. Точна концентрація та добова/сезонна норма визначаються культурою, фазою розвитку, водою та програмою живлення.",
+        "rows": [],
+        "note": "Не використовувати універсальну норму без розрахунку. Пріоритет має актуальна етикетка фактично поставленого товару та рекомендації агронома."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне мікрокристалічне добриво для фертигації"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "20-20-20"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні мікрокристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "20%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "20%"
+        },
+        {
+          "label": "K₂O",
+          "value": "20%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "5,1"
+        },
+        {
+          "label": "Розчинність",
+          "value": "55 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "синій"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        },
+        {
+          "label": "Країна виробника",
+          "value": "Італія"
+        }
+      ]
     },
     "master-npk-3-11-38": {
       "id": "master-npk-3-11-38",
@@ -458,23 +744,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Master NPK 3-11-38",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "MASTER 3-11-38",
+      "subtitle": "Калійна формула для фертигації з магнієм і сіркою",
+      "lead": "Низький азот і високий калій — для програм, де потрібен акцент на K без надлишкового N.",
+      "short_description": "MASTER 3-11-38 — водорозчинне мікрокристалічне добриво лінійки MASTER® для систем фертигації. Формула 3-11-38 + 4 MgO доповнена хелатованими мікроелементами EDTA.",
+      "full_description": "MASTER 3-11-38 належить до лінійки MASTER® Valagro — водорозчинних мікрокристалічних добрив для фертигації. За офіційними матеріалами виробника, продукти MASTER® мають повну та швидку розчинність, придатні для різних систем фертигації та містять мікроелементи у хелатній формі EDTA.\n\nФормула 3-11-38 + 4 MgO дає можливість включати продукт у програму живлення відповідно до фази розвитку культури та співвідношення потрібних елементів. Конкретні норми внесення залежать від культури, якості води, субстрату або ґрунту та загальної програми живлення.\n\nУ BB610 Market не переносимо універсальні норми між культурами без локальної перевірки. Перед застосуванням пріоритет має актуальна етикетка фактично поставленого продукту та агрономічний розрахунок.",
+      "why": [
+        {
+          "title": "ВИСОКИЙ K",
+          "text": "38% K₂O — головний акцент формули."
+        },
+        {
+          "title": "Mg + S",
+          "text": "Офіційний каталог вказує 4% MgO та 25% SO₃."
+        },
+        {
+          "title": "НИЗЬКИЙ N",
+          "text": "3% загального азоту дозволяє зберігати низьку азотну частку програми."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+      },
+      "documents": [
+        {
+          "title": "MASTER® line — офіційна сторінка Valagro / Syngenta Biologicals",
+          "url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+        },
+        {
+          "title": "Valagro Farm Catalogue — MASTER® / WATER SOLUBLE NUTRITION",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -510,8 +825,81 @@
       "import_meta": {
         "source_row": 4,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "MASTER®",
+        "text": "Мікрокристалічна водорозчинна формула швидко переходить у робочий розчин. Лінійка MASTER® призначена для фертигації; співвідношення N:P₂O₅:K₂O та супутніх елементів дає змогу підбирати формулу під конкретний етап живлення."
+      },
+      "application": {
+        "intro": "MASTER® застосовують у системах фертигації. Точна концентрація та добова/сезонна норма визначаються культурою, фазою розвитку, водою та програмою живлення.",
+        "rows": [],
+        "note": "Не використовувати універсальну норму без розрахунку. Пріоритет має актуальна етикетка фактично поставленого товару та рекомендації агронома."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне мікрокристалічне добриво для фертигації"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "3-11-38 + 4 MgO"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні мікрокристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "3%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "11%"
+        },
+        {
+          "label": "K₂O",
+          "value": "38%"
+        },
+        {
+          "label": "MgO",
+          "value": "4%"
+        },
+        {
+          "label": "SO₃",
+          "value": "25%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "3,4"
+        },
+        {
+          "label": "Розчинність",
+          "value": "10 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "білий"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        },
+        {
+          "label": "Країна виробника",
+          "value": "Італія"
+        }
+      ]
     },
     "master-npk-18-18-18": {
       "id": "master-npk-18-18-18",
@@ -519,23 +907,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Master NPK 18-18-18",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "MASTER 18-18-18",
+      "subtitle": "Збалансована NPK-формула з магнієм і сіркою",
+      "lead": "Рівне співвідношення NPK із додатковими MgO та SO₃ для комплексної програми фертигації.",
+      "short_description": "MASTER 18-18-18 — водорозчинне мікрокристалічне добриво лінійки MASTER® для систем фертигації. Формула 18-18-18 + 3 MgO + 6 SO₃ доповнена хелатованими мікроелементами EDTA.",
+      "full_description": "MASTER 18-18-18 належить до лінійки MASTER® Valagro — водорозчинних мікрокристалічних добрив для фертигації. За офіційними матеріалами виробника, продукти MASTER® мають повну та швидку розчинність, придатні для різних систем фертигації та містять мікроелементи у хелатній формі EDTA.\n\nФормула 18-18-18 + 3 MgO + 6 SO₃ дає можливість включати продукт у програму живлення відповідно до фази розвитку культури та співвідношення потрібних елементів. Конкретні норми внесення залежать від культури, якості води, субстрату або ґрунту та загальної програми живлення.\n\nУ BB610 Market не переносимо універсальні норми між культурами без локальної перевірки. Перед застосуванням пріоритет має актуальна етикетка фактично поставленого продукту та агрономічний розрахунок.",
+      "why": [
+        {
+          "title": "18-18-18",
+          "text": "Рівні частки N, P₂O₅ та K₂O."
+        },
+        {
+          "title": "МАГНІЙ",
+          "text": "3% MgO у складі формули."
+        },
+        {
+          "title": "СІРКА",
+          "text": "6% SO₃ за офіційним каталогом Valagro."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+      },
+      "documents": [
+        {
+          "title": "MASTER® line — офіційна сторінка Valagro / Syngenta Biologicals",
+          "url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+        },
+        {
+          "title": "Valagro Farm Catalogue — MASTER® / WATER SOLUBLE NUTRITION",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -564,8 +981,81 @@
       "import_meta": {
         "source_row": 5,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "MASTER®",
+        "text": "Мікрокристалічна водорозчинна формула швидко переходить у робочий розчин. Лінійка MASTER® призначена для фертигації; співвідношення N:P₂O₅:K₂O та супутніх елементів дає змогу підбирати формулу під конкретний етап живлення."
+      },
+      "application": {
+        "intro": "MASTER® застосовують у системах фертигації. Точна концентрація та добова/сезонна норма визначаються культурою, фазою розвитку, водою та програмою живлення.",
+        "rows": [],
+        "note": "Не використовувати універсальну норму без розрахунку. Пріоритет має актуальна етикетка фактично поставленого товару та рекомендації агронома."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне мікрокристалічне добриво для фертигації"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "18-18-18 + 3 MgO + 6 SO₃"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні мікрокристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "18%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "18%"
+        },
+        {
+          "label": "K₂O",
+          "value": "18%"
+        },
+        {
+          "label": "MgO",
+          "value": "3%"
+        },
+        {
+          "label": "SO₃",
+          "value": "6%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "4,3"
+        },
+        {
+          "label": "Розчинність",
+          "value": "20 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "білий"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        },
+        {
+          "label": "Країна виробника",
+          "value": "Італія"
+        }
+      ]
     },
     "master-npk-17-6-18": {
       "id": "master-npk-17-6-18",
@@ -573,23 +1063,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Master NPK 17-6-18",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "MASTER 17-6-18",
+      "subtitle": "Водорозчинна NPK-формула для фертигації з акцентом на азот і калій",
+      "lead": "Формула 17-6-18 для програм, де потрібна вища частка N і K порівняно з фосфором.",
+      "short_description": "MASTER 17-6-18 — водорозчинне мікрокристалічне добриво лінійки MASTER® для систем фертигації. Формула 17-6-18 доповнена хелатованими мікроелементами EDTA.",
+      "full_description": "MASTER 17-6-18 належить до лінійки MASTER® Valagro — водорозчинних мікрокристалічних добрив для фертигації. За офіційними матеріалами виробника, продукти MASTER® мають повну та швидку розчинність, придатні для різних систем фертигації та містять мікроелементи у хелатній формі EDTA.\n\nФормула 17-6-18 дає можливість включати продукт у програму живлення відповідно до фази розвитку культури та співвідношення потрібних елементів. Конкретні норми внесення залежать від культури, якості води, субстрату або ґрунту та загальної програми живлення.\n\nУ BB610 Market не переносимо універсальні норми між культурами без локальної перевірки. Перед застосуванням пріоритет має актуальна етикетка фактично поставленого продукту та агрономічний розрахунок.",
+      "why": [
+        {
+          "title": "N + K",
+          "text": "17% N і 18% K₂O формують основний баланс живлення."
+        },
+        {
+          "title": "НИЖЧИЙ P",
+          "text": "6% P₂O₅ — помірна фосфорна частка."
+        },
+        {
+          "title": "ФЕРТИГАЦІЯ",
+          "text": "Мікрокристалічна формула з високою розчинністю для робочих розчинів."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+      },
+      "documents": [
+        {
+          "title": "MASTER® line — офіційна сторінка Valagro / Syngenta Biologicals",
+          "url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/"
+        },
+        {
+          "title": "Valagro Farm Catalogue — MASTER® / WATER SOLUBLE NUTRITION",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -618,8 +1137,73 @@
       "import_meta": {
         "source_row": 6,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "MASTER®",
+        "text": "Мікрокристалічна водорозчинна формула швидко переходить у робочий розчин. Лінійка MASTER® призначена для фертигації; співвідношення N:P₂O₅:K₂O та супутніх елементів дає змогу підбирати формулу під конкретний етап живлення."
+      },
+      "application": {
+        "intro": "MASTER® застосовують у системах фертигації. Точна концентрація та добова/сезонна норма визначаються культурою, фазою розвитку, водою та програмою живлення.",
+        "rows": [],
+        "note": "Не використовувати універсальну норму без розрахунку. Пріоритет має актуальна етикетка фактично поставленого товару та рекомендації агронома."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне мікрокристалічне добриво для фертигації"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "17-6-18"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні мікрокристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "17%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "6%"
+        },
+        {
+          "label": "K₂O",
+          "value": "18%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "5,2"
+        },
+        {
+          "label": "Розчинність",
+          "value": "45 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "зелений"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        },
+        {
+          "label": "Країна виробника",
+          "value": "Італія"
+        }
+      ]
     },
     "plantafol-npk-30-10-10": {
       "id": "plantafol-npk-30-10-10",
@@ -627,23 +1211,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Plantafol NPK 30-10-10",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "PLANTAFOL 30-10-10",
+      "subtitle": "Азотна листкова формула для періодів активного вегетативного росту",
+      "lead": "30% азоту робить формулу найбільш азотно-орієнтованою в цій стартовій групі.",
+      "short_description": "PLANTAFOL 30-10-10 — водорозчинне листкове добриво Valagro з формулою NPK 30-10-10 та хелатованими мікроелементами.",
+      "full_description": "PLANTAFOL 30-10-10 належить до лінійки PLANTAFOL® — високорозчинних листкових добрив Valagro. Офіційний каталог описує лінійку як добрива для швидкого та повного поглинання через листок; формули містять мікроелементи, хелатовані EDTA.\n\nСпіввідношення NPK 30-10-10 дає змогу включати продукт у листкову програму відповідно до поточної потреби культури. PLANTAFOL® може використовуватися в різні фази вегетації; вибір конкретної формули визначається ціллю живлення.\n\nНаведені нижче норми — загальні орієнтири для лінійки з офіційного каталогу Valagro. Для фактичного застосування в Україні пріоритет має актуальна етикетка конкретного товару.",
+      "why": [
+        {
+          "title": "АЗОТ",
+          "text": "30% N для листкових програм із підвищеною потребою в азоті."
+        },
+        {
+          "title": "ЛИСТКОВЕ ВНЕСЕННЯ",
+          "text": "PLANTAFOL® розроблений для позакореневого живлення."
+        },
+        {
+          "title": "МІКРОЕЛЕМЕНТИ",
+          "text": "Формула доповнена B, Cu, Fe, Mn і Zn."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Farm Catalogue — PLANTAFOL® line",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        },
+        {
+          "title": "Valagro Catalogue — склад і фізичні властивості PLANTAFOL®",
+          "url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -679,8 +1292,90 @@
       "import_meta": {
         "source_row": 7,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "PLANTAFOL®",
+        "text": "Розчинні кристали формують робочий розчин для позакореневого внесення. Лінійка поєднує NPK різних співвідношень із мікроелементами; Cu, Fe, Mn і Zn хелатовані EDTA."
+      },
+      "application": {
+        "intro": "Орієнтири з офіційного каталогу PLANTAFOL® для листкового застосування:",
+        "rows": [
+          {
+            "crop": "Плодові культури",
+            "period": "протягом циклу вирощування",
+            "dose": "2,5–4,0 кг/га"
+          },
+          {
+            "crop": "Овочеві культури",
+            "period": "протягом циклу вирощування",
+            "dose": "2,5–3,5 кг/га"
+          },
+          {
+            "crop": "Польові культури",
+            "period": "протягом циклу вирощування",
+            "dose": "3,0–3,5 кг/га"
+          },
+          {
+            "crop": "Квіти",
+            "period": "протягом циклу вирощування",
+            "dose": "150–250 г/гл"
+          }
+        ],
+        "note": "Це міжнародні орієнтири лінійки з каталогу виробника. Перед застосуванням звірити з етикеткою фактично поставленого продукту."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне листкове NPK-добриво"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "30-10-10"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні кристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "30%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "10%"
+        },
+        {
+          "label": "K₂O",
+          "value": "10%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "4,8"
+        },
+        {
+          "label": "Розчинність",
+          "value": "40 г/100 мл"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "B, Cu, Fe, Mn, Zn; Cu/Fe/Mn/Zn — EDTA"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        }
+      ]
     },
     "plantafol-npk-10-54-10": {
       "id": "plantafol-npk-10-54-10",
@@ -688,23 +1383,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Plantafol NPK 10-54-10",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "PLANTAFOL 10-54-10",
+      "subtitle": "Фосфорна листкова формула з 54% P₂O₅",
+      "lead": "Високофосфорна формула для програм, де потрібен виражений акцент на фосфор.",
+      "short_description": "PLANTAFOL 10-54-10 — водорозчинне листкове добриво Valagro з формулою NPK 10-54-10 та хелатованими мікроелементами.",
+      "full_description": "PLANTAFOL 10-54-10 належить до лінійки PLANTAFOL® — високорозчинних листкових добрив Valagro. Офіційний каталог описує лінійку як добрива для швидкого та повного поглинання через листок; формули містять мікроелементи, хелатовані EDTA.\n\nСпіввідношення NPK 10-54-10 дає змогу включати продукт у листкову програму відповідно до поточної потреби культури. PLANTAFOL® може використовуватися в різні фази вегетації; вибір конкретної формули визначається ціллю живлення.\n\nНаведені нижче норми — загальні орієнтири для лінійки з офіційного каталогу Valagro. Для фактичного застосування в Україні пріоритет має актуальна етикетка конкретного товару.",
+      "why": [
+        {
+          "title": "54% P₂O₅",
+          "text": "Найвищий фосфорний показник серед цих формул PLANTAFOL®."
+        },
+        {
+          "title": "ЛИСТКОВЕ ЖИВЛЕННЯ",
+          "text": "Швидкорозчинна кристалічна форма для позакореневого внесення."
+        },
+        {
+          "title": "EDTA",
+          "text": "Мікроелементи Cu, Fe, Mn і Zn — у хелатній формі EDTA."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Farm Catalogue — PLANTAFOL® line",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        },
+        {
+          "title": "Valagro Catalogue — склад і фізичні властивості PLANTAFOL®",
+          "url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -740,8 +1464,90 @@
       "import_meta": {
         "source_row": 8,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "PLANTAFOL®",
+        "text": "Розчинні кристали формують робочий розчин для позакореневого внесення. Лінійка поєднує NPK різних співвідношень із мікроелементами; Cu, Fe, Mn і Zn хелатовані EDTA."
+      },
+      "application": {
+        "intro": "Орієнтири з офіційного каталогу PLANTAFOL® для листкового застосування:",
+        "rows": [
+          {
+            "crop": "Плодові культури",
+            "period": "протягом циклу вирощування",
+            "dose": "2,5–4,0 кг/га"
+          },
+          {
+            "crop": "Овочеві культури",
+            "period": "протягом циклу вирощування",
+            "dose": "2,5–3,5 кг/га"
+          },
+          {
+            "crop": "Польові культури",
+            "period": "протягом циклу вирощування",
+            "dose": "3,0–3,5 кг/га"
+          },
+          {
+            "crop": "Квіти",
+            "period": "протягом циклу вирощування",
+            "dose": "150–250 г/гл"
+          }
+        ],
+        "note": "Це міжнародні орієнтири лінійки з каталогу виробника. Перед застосуванням звірити з етикеткою фактично поставленого продукту."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне листкове NPK-добриво"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "10-54-10"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні кристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "10%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "54%"
+        },
+        {
+          "label": "K₂O",
+          "value": "10%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "4,5"
+        },
+        {
+          "label": "Розчинність",
+          "value": "30 г/100 мл"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "B, Cu, Fe, Mn, Zn; Cu/Fe/Mn/Zn — EDTA"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        }
+      ]
     },
     "plantafol-npk-20-20-20": {
       "id": "plantafol-npk-20-20-20",
@@ -749,23 +1555,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Plantafol NPK 20-20-20",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "PLANTAFOL 20-20-20",
+      "subtitle": "Збалансоване листкове NPK-добриво",
+      "lead": "Рівне співвідношення 20-20-20 для збалансованих листкових програм.",
+      "short_description": "PLANTAFOL 20-20-20 — водорозчинне листкове добриво Valagro з формулою NPK 20-20-20 та хелатованими мікроелементами.",
+      "full_description": "PLANTAFOL 20-20-20 належить до лінійки PLANTAFOL® — високорозчинних листкових добрив Valagro. Офіційний каталог описує лінійку як добрива для швидкого та повного поглинання через листок; формули містять мікроелементи, хелатовані EDTA.\n\nСпіввідношення NPK 20-20-20 дає змогу включати продукт у листкову програму відповідно до поточної потреби культури. PLANTAFOL® може використовуватися в різні фази вегетації; вибір конкретної формули визначається ціллю живлення.\n\nНаведені нижче норми — загальні орієнтири для лінійки з офіційного каталогу Valagro. Для фактичного застосування в Україні пріоритет має актуальна етикетка конкретного товару.",
+      "why": [
+        {
+          "title": "20-20-20",
+          "text": "Однакові частки N, P₂O₅ і K₂O."
+        },
+        {
+          "title": "ЗБАЛАНСОВАНЕ ЖИВЛЕННЯ",
+          "text": "Підходить для ситуацій, де не потрібен різкий акцент на одному макроелементі."
+        },
+        {
+          "title": "РОЗЧИННІ КРИСТАЛИ",
+          "text": "Форма, призначена для приготування листкового робочого розчину."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Farm Catalogue — PLANTAFOL® line",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        },
+        {
+          "title": "Valagro Catalogue — склад і фізичні властивості PLANTAFOL®",
+          "url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -801,8 +1636,90 @@
       "import_meta": {
         "source_row": 9,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "PLANTAFOL®",
+        "text": "Розчинні кристали формують робочий розчин для позакореневого внесення. Лінійка поєднує NPK різних співвідношень із мікроелементами; Cu, Fe, Mn і Zn хелатовані EDTA."
+      },
+      "application": {
+        "intro": "Орієнтири з офіційного каталогу PLANTAFOL® для листкового застосування:",
+        "rows": [
+          {
+            "crop": "Плодові культури",
+            "period": "протягом циклу вирощування",
+            "dose": "2,5–4,0 кг/га"
+          },
+          {
+            "crop": "Овочеві культури",
+            "period": "протягом циклу вирощування",
+            "dose": "2,5–3,5 кг/га"
+          },
+          {
+            "crop": "Польові культури",
+            "period": "протягом циклу вирощування",
+            "dose": "3,0–3,5 кг/га"
+          },
+          {
+            "crop": "Квіти",
+            "period": "протягом циклу вирощування",
+            "dose": "150–250 г/гл"
+          }
+        ],
+        "note": "Це міжнародні орієнтири лінійки з каталогу виробника. Перед застосуванням звірити з етикеткою фактично поставленого продукту."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне листкове NPK-добриво"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "20-20-20"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні кристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "20%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "20%"
+        },
+        {
+          "label": "K₂O",
+          "value": "20%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "4,5"
+        },
+        {
+          "label": "Розчинність",
+          "value": "30 г/100 мл"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "B, Cu, Fe, Mn, Zn; Cu/Fe/Mn/Zn — EDTA"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        }
+      ]
     },
     "plantafol-npk-5-15-45": {
       "id": "plantafol-npk-5-15-45",
@@ -810,23 +1727,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Plantafol NPK 5-15-45",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "PLANTAFOL 5-15-45",
+      "subtitle": "Калійна листкова формула з 45% K₂O",
+      "lead": "Високий калій і низький азот для програм із підвищеною потребою в K.",
+      "short_description": "PLANTAFOL 5-15-45 — водорозчинне листкове добриво Valagro з формулою NPK 5-15-45 та хелатованими мікроелементами.",
+      "full_description": "PLANTAFOL 5-15-45 належить до лінійки PLANTAFOL® — високорозчинних листкових добрив Valagro. Офіційний каталог описує лінійку як добрива для швидкого та повного поглинання через листок; формули містять мікроелементи, хелатовані EDTA.\n\nСпіввідношення NPK 5-15-45 дає змогу включати продукт у листкову програму відповідно до поточної потреби культури. PLANTAFOL® може використовуватися в різні фази вегетації; вибір конкретної формули визначається ціллю живлення.\n\nНаведені нижче норми — загальні орієнтири для лінійки з офіційного каталогу Valagro. Для фактичного застосування в Україні пріоритет має актуальна етикетка конкретного товару.",
+      "why": [
+        {
+          "title": "45% K₂O",
+          "text": "Виражений калійний акцент."
+        },
+        {
+          "title": "НИЗЬКИЙ N",
+          "text": "5% азоту дозволяє не перевантажувати листкову програму азотом."
+        },
+        {
+          "title": "МІКРОЕЛЕМЕНТИ",
+          "text": "B, Cu, Fe, Mn і Zn доповнюють NPK-формулу."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Farm Catalogue — PLANTAFOL® line",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        },
+        {
+          "title": "Valagro Catalogue — склад і фізичні властивості PLANTAFOL®",
+          "url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -862,8 +1808,90 @@
       "import_meta": {
         "source_row": 10,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "PLANTAFOL®",
+        "text": "Розчинні кристали формують робочий розчин для позакореневого внесення. Лінійка поєднує NPK різних співвідношень із мікроелементами; Cu, Fe, Mn і Zn хелатовані EDTA."
+      },
+      "application": {
+        "intro": "Орієнтири з офіційного каталогу PLANTAFOL® для листкового застосування:",
+        "rows": [
+          {
+            "crop": "Плодові культури",
+            "period": "протягом циклу вирощування",
+            "dose": "2,5–4,0 кг/га"
+          },
+          {
+            "crop": "Овочеві культури",
+            "period": "протягом циклу вирощування",
+            "dose": "2,5–3,5 кг/га"
+          },
+          {
+            "crop": "Польові культури",
+            "period": "протягом циклу вирощування",
+            "dose": "3,0–3,5 кг/га"
+          },
+          {
+            "crop": "Квіти",
+            "period": "протягом циклу вирощування",
+            "dose": "150–250 г/гл"
+          }
+        ],
+        "note": "Це міжнародні орієнтири лінійки з каталогу виробника. Перед застосуванням звірити з етикеткою фактично поставленого продукту."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне листкове NPK-добриво"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "5-15-45"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні кристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "5%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "15%"
+        },
+        {
+          "label": "K₂O",
+          "value": "45%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "6,3"
+        },
+        {
+          "label": "Розчинність",
+          "value": "10 г/100 мл"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "B, Cu, Fe, Mn, Zn; Cu/Fe/Mn/Zn — EDTA"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        }
+      ]
     },
     "plantafol-npk-0-25-50": {
       "id": "plantafol-npk-0-25-50",
@@ -871,23 +1899,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Plantafol NPK 0-25-50",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "ЖИВЛЕННЯ · VALAGRO",
+      "name": "PLANTAFOL 0-25-50",
+      "subtitle": "Безазотна фосфорно-калійна листкова формула",
+      "lead": "0% N, 25% P₂O₅ і 50% K₂O — для програм, де потрібні P і K без внесення азоту.",
+      "short_description": "PLANTAFOL 0-25-50 — водорозчинне листкове добриво Valagro з формулою NPK 0-25-50 та хелатованими мікроелементами.",
+      "full_description": "PLANTAFOL 0-25-50 належить до лінійки PLANTAFOL® — високорозчинних листкових добрив Valagro. Офіційний каталог описує лінійку як добрива для швидкого та повного поглинання через листок; формули містять мікроелементи, хелатовані EDTA.\n\nСпіввідношення NPK 0-25-50 дає змогу включати продукт у листкову програму відповідно до поточної потреби культури. PLANTAFOL® може використовуватися в різні фази вегетації; вибір конкретної формули визначається ціллю живлення.\n\nНаведені нижче норми — загальні орієнтири для лінійки з офіційного каталогу Valagro. Для фактичного застосування в Україні пріоритет має актуальна етикетка конкретного товару.",
+      "why": [
+        {
+          "title": "БЕЗ АЗОТУ",
+          "text": "Формула не містить загального азоту."
+        },
+        {
+          "title": "50% K₂O",
+          "text": "Високий вміст водорозчинного калію."
+        },
+        {
+          "title": "P + K",
+          "text": "Поєднання фосфору й калію для спеціалізованих листкових програм."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Farm Catalogue — PLANTAFOL® line",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        },
+        {
+          "title": "Valagro Catalogue — склад і фізичні властивості PLANTAFOL®",
+          "url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -916,8 +1973,90 @@
       "import_meta": {
         "source_row": 11,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "PLANTAFOL®",
+        "text": "Розчинні кристали формують робочий розчин для позакореневого внесення. Лінійка поєднує NPK різних співвідношень із мікроелементами; Cu, Fe, Mn і Zn хелатовані EDTA."
+      },
+      "application": {
+        "intro": "Орієнтири з офіційного каталогу PLANTAFOL® для листкового застосування:",
+        "rows": [
+          {
+            "crop": "Плодові культури",
+            "period": "протягом циклу вирощування",
+            "dose": "2,5–4,0 кг/га"
+          },
+          {
+            "crop": "Овочеві культури",
+            "period": "протягом циклу вирощування",
+            "dose": "2,5–3,5 кг/га"
+          },
+          {
+            "crop": "Польові культури",
+            "period": "протягом циклу вирощування",
+            "dose": "3,0–3,5 кг/га"
+          },
+          {
+            "crop": "Квіти",
+            "period": "протягом циклу вирощування",
+            "dose": "150–250 г/гл"
+          }
+        ],
+        "note": "Це міжнародні орієнтири лінійки з каталогу виробника. Перед застосуванням звірити з етикеткою фактично поставленого продукту."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне листкове NPK-добриво"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "0-25-50"
+        },
+        {
+          "label": "Форма",
+          "value": "Розчинні кристали"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "0%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "25%"
+        },
+        {
+          "label": "K₂O",
+          "value": "50%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "7,5"
+        },
+        {
+          "label": "Розчинність",
+          "value": "10 г/100 мл"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "B, Cu, Fe, Mn, Zn; Cu/Fe/Mn/Zn — EDTA"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        },
+        {
+          "label": "Виробник",
+          "value": "Valagro S.p.A."
+        }
+      ]
     },
     "pekacid-npk-0-60-20": {
       "id": "pekacid-npk-0-60-20",
@@ -925,23 +2064,52 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Pekacid NPK 0-60-20",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "nutrition",
+      "brand": "ICL",
+      "eyebrow": "ЖИВЛЕННЯ · ICL",
+      "name": "Nova PeKacid 0-60-20",
+      "subtitle": "Кисле водорозчинне PK-добриво для фертигації",
+      "lead": "Водорозчинне джерело фосфору й калію з підкислювальним ефектом для жорсткої води та систем фертигації.",
+      "short_description": "Nova PeKacid 0-60-20 — запатентоване водорозчинне PK-добриво ICL у сухій кристалічній формі. Підкислює робочий розчин і допомагає запобігати відкладенням у системах фертигації.",
+      "full_description": "Nova PeKacid 0-60-20 — водорозчинне фосфорно-калійне добриво ICL для фертигації у відкритому ґрунті та безґрунтових системах. Офіційна українська сторінка ICL описує продукт як тверду форму фосфорної кислоти, збагачену калієм.\n\nФормула містить 60% водорозчинного P₂O₅ і 20% водорозчинного K₂O, не містить азоту та хлоридів і має низький вміст натрію. Розчинність — до 670 г/л води при 20 °C.\n\nПідкислювальна дія допомагає знижувати вплив бікарбонатів і підтримувати чистоту крапельних ліній. ICL також допускає короткочасне використання Nova PeKacid для очищення іригаційних труб за офіційною схемою виробника.",
+      "why": [
+        {
+          "title": "P + K",
+          "text": "60% P₂O₅ і 20% K₂O у водорозчинній формі."
+        },
+        {
+          "title": "ПІДКИСЛЕННЯ",
+          "text": "Підкислювальна дія допомагає працювати з жорсткою водою та бікарбонатами."
+        },
+        {
+          "title": "СИСТЕМА ФЕРТИГАЦІЇ",
+          "text": "Допомагає запобігати забиванню ліній та може використовуватися для короткого очищення системи за схемою ICL."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "ICL",
+        "company": "ICL Growing Solutions",
+        "manufacturer": "ICL",
+        "country": "",
+        "official_url": "https://icl-growingsolutions.com/uk-ua/agriculture/products/nova-pekacid/"
+      },
+      "documents": [
+        {
+          "title": "Nova PeKacid — офіційна сторінка ICL Україна",
+          "url": "https://icl-growingsolutions.com/uk-ua/agriculture/products/nova-pekacid/"
+        },
+        {
+          "title": "Nova PeKacid — офіційний PDF ICL Україна",
+          "url": "https://icl-growingsolutions.com/uk-ua/wp-content/themes/icl-v2-repo/pdf-creator/pdf-getter.php?id=9846"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://icl-growingsolutions.com/uk-ua/agriculture/products/nova-pekacid/",
+        "source_pdf": "https://icl-growingsolutions.com/uk-ua/wp-content/themes/icl-v2-repo/pdf-creator/pdf-getter.php?id=9846",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -977,8 +2145,72 @@
       "import_meta": {
         "source_row": 12,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "01",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "Nova PeKacid",
+        "text": "Кисла кристалічна PK-формула розчиняється у воді, постачає фосфор і калій та нейтралізує частину бікарбонатів. За даними ICL, 1 г продукту нейтралізує приблизно 4,2 ммоль HCO₃."
+      },
+      "application": {
+        "intro": "Офіційні орієнтири ICL:",
+        "rows": [
+          {
+            "crop": "Маточний розчин",
+            "period": "для фертигації",
+            "dose": "10–15 кг / 100 л води"
+          },
+          {
+            "crop": "Очищення іригаційних труб",
+            "period": "короткочасно між культурами",
+            "dose": "3,5–5 кг/м³; 15 хв, потім 15 хв промивання чистою водою"
+          }
+        ],
+        "note": "Перед зміною концентрації або схеми ICL рекомендує провести тест у малому масштабі."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне PK-добриво з підкислювальною дією"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "0-60-20"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "0%"
+        },
+        {
+          "label": "P₂O₅ водорозчинний",
+          "value": "60%"
+        },
+        {
+          "label": "K₂O водорозчинний",
+          "value": "20%"
+        },
+        {
+          "label": "Розчинність",
+          "value": "670 г/л води при 20 °C"
+        },
+        {
+          "label": "Хлориди",
+          "value": "0"
+        },
+        {
+          "label": "Натрій",
+          "value": "низький вміст"
+        },
+        {
+          "label": "Бренд",
+          "value": "Nova / ICL"
+        },
+        {
+          "label": "Виробник",
+          "value": "ICL Growing Solutions"
+        }
+      ]
     },
     "kemira-lyuks-npk-14-11-25": {
       "id": "kemira-lyuks-npk-14-11-25",

@@ -139,7 +139,11 @@
         }
       ],
       "cross_sell": [],
-      "similar": []
+      "similar": [],
+      "import_meta": {
+        "organic_planet_source_row": 48,
+        "organic_planet_structure_checked": "2026-09-05"
+      }
     },
     "megafol": {
       "id": "megafol",
@@ -252,7 +256,3802 @@
         }
       ],
       "cross_sell": [],
-      "similar": []
+      "similar": [],
+      "import_meta": {
+        "organic_planet_source_row": 53,
+        "organic_planet_structure_checked": "2026-09-05"
+      }
+    },
+    "master-npk-15-5-30": {
+      "id": "master-npk-15-5-30",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Master NPK 15-5-30",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MASTER-NPK-15-5-30-20G",
+          "label": "20 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-15-5-30-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-15-5-30-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-15-5-30-25KG",
+          "label": "25 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 1,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "master-npk-13-40-13": {
+      "id": "master-npk-13-40-13",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Master NPK 13-40-13",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MASTER-NPK-13-40-13-20G",
+          "label": "20 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-13-40-13-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-13-40-13-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-13-40-13-25KG",
+          "label": "25 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 2,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "master-npk-20-20-20": {
+      "id": "master-npk-20-20-20",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Master NPK 20-20-20",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MASTER-NPK-20-20-20-20G",
+          "label": "20 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-20-20-20-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-20-20-20-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-20-20-20-10KG",
+          "label": "10 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-20-20-20-25KG",
+          "label": "25 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 3,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "master-npk-3-11-38": {
+      "id": "master-npk-3-11-38",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Master NPK 3-11-38",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MASTER-NPK-3-11-38-20G",
+          "label": "20 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-3-11-38-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-3-11-38-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-3-11-38-25KG",
+          "label": "25 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 4,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "master-npk-18-18-18": {
+      "id": "master-npk-18-18-18",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Master NPK 18-18-18",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MASTER-NPK-18-18-18-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-18-18-18-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-18-18-18-25KG",
+          "label": "25 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 5,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "master-npk-17-6-18": {
+      "id": "master-npk-17-6-18",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Master NPK 17-6-18",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MASTER-NPK-17-6-18-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-17-6-18-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MASTER-NPK-17-6-18-25KG",
+          "label": "25 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 6,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "plantafol-npk-30-10-10": {
+      "id": "plantafol-npk-30-10-10",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Plantafol NPK 30-10-10",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-25G",
+          "label": "25 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 7,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "plantafol-npk-10-54-10": {
+      "id": "plantafol-npk-10-54-10",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Plantafol NPK 10-54-10",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-25G",
+          "label": "25 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 8,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "plantafol-npk-20-20-20": {
+      "id": "plantafol-npk-20-20-20",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Plantafol NPK 20-20-20",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-25G",
+          "label": "25 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 9,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "plantafol-npk-5-15-45": {
+      "id": "plantafol-npk-5-15-45",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Plantafol NPK 5-15-45",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-25G",
+          "label": "25 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 10,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "plantafol-npk-0-25-50": {
+      "id": "plantafol-npk-0-25-50",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Plantafol NPK 0-25-50",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-0-25-50-25G",
+          "label": "25 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-0-25-50-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PLANTAFOL-NPK-0-25-50-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 11,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "pekacid-npk-0-60-20": {
+      "id": "pekacid-npk-0-60-20",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Pekacid NPK 0-60-20",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-PEKACID-NPK-0-60-20-15G",
+          "label": "15 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PEKACID-NPK-0-60-20-100G",
+          "label": "100 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PEKACID-NPK-0-60-20-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-PEKACID-NPK-0-60-20-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 12,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "kemira-lyuks-npk-14-11-25": {
+      "id": "kemira-lyuks-npk-14-11-25",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Кеміра Люкс NPK 14-11-25",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-KEMIRA-LYUKS-NPK-14-11-25-20G",
+          "label": "20 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KEMIRA-LYUKS-NPK-14-11-25-100G",
+          "label": "100 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KEMIRA-LYUKS-NPK-14-11-25-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 13,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "kemira-grunt-kropker-npk-11-11-21": {
+      "id": "kemira-grunt-kropker-npk-11-11-21",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Кеміра Ґрунт (Кропкер) NPK 11-11-21",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-KEMIRA-GRUNT-KROPKER-NPK-11-11-21-20G",
+          "label": "20 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KEMIRA-GRUNT-KROPKER-NPK-11-11-21-100G",
+          "label": "100 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KEMIRA-GRUNT-KROPKER-NPK-11-11-21-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 14,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "kemira-dlya-hazonu-npk-12-11-18": {
+      "id": "kemira-dlya-hazonu-npk-12-11-18",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Кеміра для газону NPK 12-11-18",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-KEMIRA-DLYA-HAZONU-NPK-12-11-18-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 15,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "kemira-npk-12-46-8": {
+      "id": "kemira-npk-12-46-8",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Кеміра NPK 12-46-8",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-KEMIRA-NPK-12-46-8-25G",
+          "label": "25 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KEMIRA-NPK-12-46-8-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KEMIRA-NPK-12-46-8-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 16,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "kemira-npk-18-18-18": {
+      "id": "kemira-npk-18-18-18",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Кеміра NPK 18-18-18",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-KEMIRA-NPK-18-18-18-25G",
+          "label": "25 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KEMIRA-NPK-18-18-18-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KEMIRA-NPK-18-18-18-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 17,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "kemira-zav-yaz": {
+      "id": "kemira-zav-yaz",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Кеміра Зав'язь",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-KEMIRA-ZAV-YAZ-5G",
+          "label": "5 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 18,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "spidfol-amino-vehetatsiya": {
+      "id": "spidfol-amino-vehetatsiya",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Спідфол Аміно Вегетація",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-SPIDFOL-AMINO-VEHETATSIYA-20ML",
+          "label": "20 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 19,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "brexil-combi": {
+      "id": "brexil-combi",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Brexil Combi",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BREXIL-COMBI-15G",
+          "label": "15 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-COMBI-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-COMBI-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 20,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "brexil-ca": {
+      "id": "brexil-ca",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Brexil Ca",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BREXIL-CA-15G",
+          "label": "15 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-CA-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-CA-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-CA-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 21,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "brexil-fe": {
+      "id": "brexil-fe",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Brexil Fe",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BREXIL-FE-15G",
+          "label": "15 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-FE-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-FE-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-FE-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 22,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "brexil-mix": {
+      "id": "brexil-mix",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Brexil Mix",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BREXIL-MIX-15G",
+          "label": "15 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-MIX-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-MIX-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-MIX-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 23,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "brexil-multi": {
+      "id": "brexil-multi",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Brexil Multi",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BREXIL-MULTI-15G",
+          "label": "15 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-MULTI-250G",
+          "label": "250 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-MULTI-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-MULTI-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 24,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "brexil-zn": {
+      "id": "brexil-zn",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Brexil Zn",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BREXIL-ZN-15G",
+          "label": "15 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-ZN-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-ZN-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 25,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "ferrilene-4-8-orto-orto": {
+      "id": "ferrilene-4-8-orto-orto",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Ferrilene 4.8 Orto-Orto",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-FERRILENE-4-8-ORTO-ORTO-10G",
+          "label": "10 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-FERRILENE-4-8-ORTO-ORTO-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 26,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "boroplus": {
+      "id": "boroplus",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Boroplus",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BOROPLUS-15ML",
+          "label": "15 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BOROPLUS-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BOROPLUS-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BOROPLUS-10L",
+          "label": "10 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 27,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "sulfat-mahniyu": {
+      "id": "sulfat-mahniyu",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Сульфат магнію",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-SULFAT-MAHNIYU-100G",
+          "label": "100 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-SULFAT-MAHNIYU-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-SULFAT-MAHNIYU-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 28,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "solupotasse-sulfat-kaliyu": {
+      "id": "solupotasse-sulfat-kaliyu",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "SoluPotasse — сульфат калію",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-SOLUPOTASSE-SULFAT-KALIYU-100G",
+          "label": "100 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-SOLUPOTASSE-SULFAT-KALIYU-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-SOLUPOTASSE-SULFAT-KALIYU-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 29,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "haifa-mkp-0-52-34": {
+      "id": "haifa-mkp-0-52-34",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Haifa MKP 0-52-34",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-HAIFA-MKP-0-52-34-20G",
+          "label": "20 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-HAIFA-MKP-0-52-34-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 30,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "osmocote-decor-16-8-12-56m": {
+      "id": "osmocote-decor-16-8-12-56m",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Osmocote Decor 16-8-12 (5–6M)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-OSMOCOTE-DECOR-16-8-12-56M-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-OSMOCOTE-DECOR-16-8-12-56M-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 31,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "osmocote-bloom-12-7-18-23m": {
+      "id": "osmocote-bloom-12-7-18-23m",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Osmocote Bloom 12-7-18 (2–3M)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-OSMOCOTE-BLOOM-12-7-18-23M-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-OSMOCOTE-BLOOM-12-7-18-23M-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 32,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "osmocote-potassium-12-8-19-34m": {
+      "id": "osmocote-potassium-12-8-19-34m",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Osmocote Potassium 12-8-19 (3–4M)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-OSMOCOTE-POTASSIUM-12-8-19-34M-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-OSMOCOTE-POTASSIUM-12-8-19-34M-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 33,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "osmocote-start-11-11-17-1-5m": {
+      "id": "osmocote-start-11-11-17-1-5m",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Osmocote Start 11-11-17 (1,5M)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-OSMOCOTE-START-11-11-17-1-5M-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-OSMOCOTE-START-11-11-17-1-5M-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 34,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "osmocote-landscape-16-9-12-34m": {
+      "id": "osmocote-landscape-16-9-12-34m",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Osmocote Landscape 16-9-12 (3–4M)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-OSMOCOTE-LANDSCAPE-16-9-12-34M-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-OSMOCOTE-LANDSCAPE-16-9-12-34M-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 35,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "osmocote-quick-start-22-5-6-45m": {
+      "id": "osmocote-quick-start-22-5-6-45m",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Osmocote Quick Start 22-5-6 (4–5M)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-OSMOCOTE-QUICK-START-22-5-6-45M-200G",
+          "label": "200 г",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-OSMOCOTE-QUICK-START-22-5-6-45M-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 36,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "osmocote-granula-max-14-8-11-te-56m": {
+      "id": "osmocote-granula-max-14-8-11-te-56m",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Osmocote Granula-MAX 14-8-11+TE (5–6M)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-OSMOCOTE-GRANULA-MAX-14-8-11-TE-56M-10PCS",
+          "label": "10 шт",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 37,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "agroblen-granula-max-14-20-5-te-56m": {
+      "id": "agroblen-granula-max-14-20-5-te-56m",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Agroblen Granula-MAX 14-20-5+TE (5–6M)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-AGROBLEN-GRANULA-MAX-14-20-5-TE-56M-20PCS",
+          "label": "20 шт",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 38,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "neocore": {
+      "id": "neocore",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "NeoCore",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-NEOCORE-30ML",
+          "label": "30 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-NEOCORE-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-NEOCORE-5L",
+          "label": "5 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-NEOCORE-20L",
+          "label": "20 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 39,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "neovivo": {
+      "id": "neovivo",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "NeoVivo",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-NEOVIVO-30ML",
+          "label": "30 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-NEOVIVO-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-NEOVIVO-5L",
+          "label": "5 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-NEOVIVO-20L",
+          "label": "20 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 40,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "neoflora": {
+      "id": "neoflora",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "NeoFlora",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-NEOFLORA-30ML",
+          "label": "30 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-NEOFLORA-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-NEOFLORA-5L",
+          "label": "5 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-NEOFLORA-20L",
+          "label": "20 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 41,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "radifarm": {
+      "id": "radifarm",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Radifarm",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-RADIFARM-25ML",
+          "label": "25 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-RADIFARM-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-RADIFARM-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-RADIFARM-10L",
+          "label": "10 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 42,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "kemira-ukorinyuvach": {
+      "id": "kemira-ukorinyuvach",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Кеміра Укорінювач",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-KEMIRA-UKORINYUVACH-20ML",
+          "label": "20 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KEMIRA-UKORINYUVACH-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KEMIRA-UKORINYUVACH-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 43,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "blackjak": {
+      "id": "blackjak",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "BlackJak",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BLACKJAK-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 44,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "viva": {
+      "id": "viva",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Viva",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-VIVA-25ML",
+          "label": "25 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-VIVA-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-VIVA-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-VIVA-10L",
+          "label": "10 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-VIVA-20L",
+          "label": "20 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 45,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "kendal-root": {
+      "id": "kendal-root",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Kendal Root",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-KENDAL-ROOT-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KENDAL-ROOT-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 46,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "kendal-te": {
+      "id": "kendal-te",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Kendal TE",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-KENDAL-TE-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-KENDAL-TE-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 47,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "maxicrop-cream": {
+      "id": "maxicrop-cream",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Maxicrop Cream",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MAXICROP-CREAM-25ML",
+          "label": "25 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MAXICROP-CREAM-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 49,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "maxicrop-set-maksikrop-zav-yaz": {
+      "id": "maxicrop-set-maksikrop-zav-yaz",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Maxicrop Set / Максікроп Зав'язь",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MAXICROP-SET-MAKSIKROP-ZAV-YAZ-25ML",
+          "label": "25 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MAXICROP-SET-MAKSIKROP-ZAV-YAZ-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 50,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "benefit-pz": {
+      "id": "benefit-pz",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Benefit PZ",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BENEFIT-PZ-25ML",
+          "label": "25 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BENEFIT-PZ-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BENEFIT-PZ-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BENEFIT-PZ-10L",
+          "label": "10 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 51,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "sweet": {
+      "id": "sweet",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Sweet",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-SWEET-25ML",
+          "label": "25 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-SWEET-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-SWEET-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-SWEET-10L",
+          "label": "10 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 52,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "control-dmp": {
+      "id": "control-dmp",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Control DMP",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-CONTROL-DMP-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-CONTROL-DMP-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-CONTROL-DMP-10L",
+          "label": "10 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 54,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "sprei-eid": {
+      "id": "sprei-eid",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Спрей-Ейд",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-SPREI-EID-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 55,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "terra-sorb": {
+      "id": "terra-sorb",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Terra-Sorb",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-TERRA-SORB-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 56,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "eraiz": {
+      "id": "eraiz",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Ерайз",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-ERAIZ-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 57,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "kemira-balans-nitrate-balancer": {
+      "id": "kemira-balans-nitrate-balancer",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Кеміра Баланс / Nitrate Balancer",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-KEMIRA-BALANS-NITRATE-BALANCER-100ML",
+          "label": "100 мл",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 58,
+        "source_note": "",
+        "structure_only": true
+      }
+    },
+    "neoterra-organic-c": {
+      "id": "neoterra-organic-c",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "NeoTerra Organic-C",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-NEOTERRA-ORGANIC-C-25KG",
+          "label": "25 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 59,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "neoterra-aqua": {
+      "id": "neoterra-aqua",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "NeoTerra Aqua",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-NEOTERRA-AQUA-25KG",
+          "label": "25 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 60,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "micro-np": {
+      "id": "micro-np",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Micro NP",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MICRO-NP-10KG",
+          "label": "10 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 61,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "actiwin-20-5-10": {
+      "id": "actiwin-20-5-10",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Actiwin 20-5-10",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-ACTIWIN-20-5-10-22P7KG",
+          "label": "22,7 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 62,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "brexil-mn": {
+      "id": "brexil-mn",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Brexil Mn",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BREXIL-MN-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 63,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "brexil-duo": {
+      "id": "brexil-duo",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Brexil Duo",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BREXIL-DUO-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 64,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "brexil-nutre": {
+      "id": "brexil-nutre",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Brexil Nutre",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-BREXIL-NUTRE-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-BREXIL-NUTRE-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 65,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "actiwave": {
+      "id": "actiwave",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Actiwave",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-ACTIWAVE-1L",
+          "label": "1 л",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 66,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "maxicrop-extra": {
+      "id": "maxicrop-extra",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Maxicrop Extra",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MAXICROP-EXTRA-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 67,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "ferrilen-trium": {
+      "id": "ferrilen-trium",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Ferrilen Trium",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-FERRILEN-TRIUM-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-FERRILEN-TRIUM-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 68,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "valagro-edta-5sg": {
+      "id": "valagro-edta-5sg",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Valagro EDTA 5SG",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-VALAGRO-EDTA-5SG-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-VALAGRO-EDTA-5SG-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 69,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "valagro-edta-fe-13": {
+      "id": "valagro-edta-fe-13",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Valagro EDTA Fe 13%",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-VALAGRO-EDTA-FE-13-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 70,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "max-600-seasailer": {
+      "id": "max-600-seasailer",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "MAX 600 SEASAILER",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-MAX-600-SEASAILER-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-MAX-600-SEASAILER-20KG",
+          "label": "20 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 71,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "agriflex-bio": {
+      "id": "agriflex-bio",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Agriflex Bio",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-AGRIFLEX-BIO-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 72,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "agriflex-humic-humat-kaliyu": {
+      "id": "agriflex-humic-humat-kaliyu",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Agriflex Humic (Гумат калію)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-AGRIFLEX-HUMIC-HUMAT-KALIYU-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-AGRIFLEX-HUMIC-HUMAT-KALIYU-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-AGRIFLEX-HUMIC-HUMAT-KALIYU-25KG",
+          "label": "25 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 73,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "agriflex-amino-aminokysloty-50": {
+      "id": "agriflex-amino-aminokysloty-50",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Agriflex Amino (Амінокислоти 50%)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-AGRIFLEX-AMINO-AMINOKYSLOTY-50-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-AGRIFLEX-AMINO-AMINOKYSLOTY-50-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-AGRIFLEX-AMINO-AMINOKYSLOTY-50-25KG",
+          "label": "25 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 74,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "agriflex-aminovix": {
+      "id": "agriflex-aminovix",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Agriflex AminoVix",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-AGRIFLEX-AMINOVIX-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 75,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "agriflex-zn": {
+      "id": "agriflex-zn",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Agriflex Zn",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-AGRIFLEX-ZN-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-AGRIFLEX-ZN-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 76,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
+    },
+    "agriflex-fulvix-fulvokysloty-60": {
+      "id": "agriflex-fulvix-fulvokysloty-60",
+      "version": "2.0",
+      "enabled": true,
+      "publication_status": "draft",
+      "feed_policy": "blocked",
+      "category": "",
+      "brand": "",
+      "eyebrow": "",
+      "name": "Agriflex Fulvix (Фульвокислоти 60%)",
+      "subtitle": "",
+      "lead": "",
+      "short_description": "",
+      "full_description": "",
+      "why": [],
+      "how": [],
+      "applications": [],
+      "characteristics": [],
+      "origin": {},
+      "documents": [],
+      "sources": {
+        "source": "Organic Planet 2026 + Велике фасування 2026",
+        "revision": "mass structure import",
+        "verified_date": "2026-09-05"
+      },
+      "variants": [
+        {
+          "sku": "BB610-OP-AGRIFLEX-FULVIX-FULVOKYSLOTY-60-1KG",
+          "label": "1 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        },
+        {
+          "sku": "BB610-OP-AGRIFLEX-FULVIX-FULVOKYSLOTY-60-5KG",
+          "label": "5 кг",
+          "image": "",
+          "enabled": false,
+          "import_source": "Organic Planet structure import 2026"
+        }
+      ],
+      "import_meta": {
+        "source_row": 77,
+        "source_note": "Тільки у «Велике фасування»",
+        "structure_only": true
+      }
     }
   }
 }

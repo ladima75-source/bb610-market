@@ -1,0 +1,1555 @@
+{
+  "version": "1.0",
+  "cards": [
+    {
+      "source_row": 1,
+      "name": "Master NPK 15-5-30",
+      "canonical_id": "master-npk-15-5-30",
+      "variants": [
+        {
+          "label": "20 г",
+          "sku": "BB610-OP-MASTER-NPK-15-5-30-20G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-MASTER-NPK-15-5-30-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-MASTER-NPK-15-5-30-1KG"
+        },
+        {
+          "label": "25 кг",
+          "sku": "BB610-OP-MASTER-NPK-15-5-30-25KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 2,
+      "name": "Master NPK 13-40-13",
+      "canonical_id": "master-npk-13-40-13",
+      "variants": [
+        {
+          "label": "20 г",
+          "sku": "BB610-OP-MASTER-NPK-13-40-13-20G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-MASTER-NPK-13-40-13-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-MASTER-NPK-13-40-13-1KG"
+        },
+        {
+          "label": "25 кг",
+          "sku": "BB610-OP-MASTER-NPK-13-40-13-25KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 3,
+      "name": "Master NPK 20-20-20",
+      "canonical_id": "master-npk-20-20-20",
+      "variants": [
+        {
+          "label": "20 г",
+          "sku": "BB610-OP-MASTER-NPK-20-20-20-20G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-MASTER-NPK-20-20-20-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-MASTER-NPK-20-20-20-1KG"
+        },
+        {
+          "label": "10 кг",
+          "sku": "BB610-OP-MASTER-NPK-20-20-20-10KG"
+        },
+        {
+          "label": "25 кг",
+          "sku": "BB610-OP-MASTER-NPK-20-20-20-25KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 4,
+      "name": "Master NPK 3-11-38",
+      "canonical_id": "master-npk-3-11-38",
+      "variants": [
+        {
+          "label": "20 г",
+          "sku": "BB610-OP-MASTER-NPK-3-11-38-20G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-MASTER-NPK-3-11-38-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-MASTER-NPK-3-11-38-1KG"
+        },
+        {
+          "label": "25 кг",
+          "sku": "BB610-OP-MASTER-NPK-3-11-38-25KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 5,
+      "name": "Master NPK 18-18-18",
+      "canonical_id": "master-npk-18-18-18",
+      "variants": [
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-MASTER-NPK-18-18-18-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-MASTER-NPK-18-18-18-1KG"
+        },
+        {
+          "label": "25 кг",
+          "sku": "BB610-OP-MASTER-NPK-18-18-18-25KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 6,
+      "name": "Master NPK 17-6-18",
+      "canonical_id": "master-npk-17-6-18",
+      "variants": [
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-MASTER-NPK-17-6-18-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-MASTER-NPK-17-6-18-1KG"
+        },
+        {
+          "label": "25 кг",
+          "sku": "BB610-OP-MASTER-NPK-17-6-18-25KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 7,
+      "name": "Plantafol NPK 30-10-10",
+      "canonical_id": "plantafol-npk-30-10-10",
+      "variants": [
+        {
+          "label": "25 г",
+          "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-25G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 8,
+      "name": "Plantafol NPK 10-54-10",
+      "canonical_id": "plantafol-npk-10-54-10",
+      "variants": [
+        {
+          "label": "25 г",
+          "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-25G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 9,
+      "name": "Plantafol NPK 20-20-20",
+      "canonical_id": "plantafol-npk-20-20-20",
+      "variants": [
+        {
+          "label": "25 г",
+          "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-25G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 10,
+      "name": "Plantafol NPK 5-15-45",
+      "canonical_id": "plantafol-npk-5-15-45",
+      "variants": [
+        {
+          "label": "25 г",
+          "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-25G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 11,
+      "name": "Plantafol NPK 0-25-50",
+      "canonical_id": "plantafol-npk-0-25-50",
+      "variants": [
+        {
+          "label": "25 г",
+          "sku": "BB610-OP-PLANTAFOL-NPK-0-25-50-25G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-PLANTAFOL-NPK-0-25-50-250G"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-PLANTAFOL-NPK-0-25-50-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 12,
+      "name": "Pekacid NPK 0-60-20",
+      "canonical_id": "pekacid-npk-0-60-20",
+      "variants": [
+        {
+          "label": "15 г",
+          "sku": "BB610-OP-PEKACID-NPK-0-60-20-15G"
+        },
+        {
+          "label": "100 г",
+          "sku": "BB610-OP-PEKACID-NPK-0-60-20-100G"
+        },
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-PEKACID-NPK-0-60-20-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-PEKACID-NPK-0-60-20-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 13,
+      "name": "Кеміра Люкс NPK 14-11-25",
+      "canonical_id": "kemira-lyuks-npk-14-11-25",
+      "variants": [
+        {
+          "label": "20 г",
+          "sku": "BB610-OP-KEMIRA-LYUKS-NPK-14-11-25-20G"
+        },
+        {
+          "label": "100 г",
+          "sku": "BB610-OP-KEMIRA-LYUKS-NPK-14-11-25-100G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-KEMIRA-LYUKS-NPK-14-11-25-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 14,
+      "name": "Кеміра Ґрунт (Кропкер) NPK 11-11-21",
+      "canonical_id": "kemira-grunt-kropker-npk-11-11-21",
+      "variants": [
+        {
+          "label": "20 г",
+          "sku": "BB610-OP-KEMIRA-GRUNT-KROPKER-NPK-11-11-21-20G"
+        },
+        {
+          "label": "100 г",
+          "sku": "BB610-OP-KEMIRA-GRUNT-KROPKER-NPK-11-11-21-100G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-KEMIRA-GRUNT-KROPKER-NPK-11-11-21-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 15,
+      "name": "Кеміра для газону NPK 12-11-18",
+      "canonical_id": "kemira-dlya-hazonu-npk-12-11-18",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-KEMIRA-DLYA-HAZONU-NPK-12-11-18-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 16,
+      "name": "Кеміра NPK 12-46-8",
+      "canonical_id": "kemira-npk-12-46-8",
+      "variants": [
+        {
+          "label": "25 г",
+          "sku": "BB610-OP-KEMIRA-NPK-12-46-8-25G"
+        },
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-KEMIRA-NPK-12-46-8-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-KEMIRA-NPK-12-46-8-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 17,
+      "name": "Кеміра NPK 18-18-18",
+      "canonical_id": "kemira-npk-18-18-18",
+      "variants": [
+        {
+          "label": "25 г",
+          "sku": "BB610-OP-KEMIRA-NPK-18-18-18-25G"
+        },
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-KEMIRA-NPK-18-18-18-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-KEMIRA-NPK-18-18-18-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 18,
+      "name": "Кеміра Зав'язь",
+      "canonical_id": "kemira-zav-yaz",
+      "variants": [
+        {
+          "label": "5 г",
+          "sku": "BB610-OP-KEMIRA-ZAV-YAZ-5G"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 19,
+      "name": "Спідфол Аміно Вегетація",
+      "canonical_id": "spidfol-amino-vehetatsiya",
+      "variants": [
+        {
+          "label": "20 мл",
+          "sku": "BB610-OP-SPIDFOL-AMINO-VEHETATSIYA-20ML"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 20,
+      "name": "Brexil Combi",
+      "canonical_id": "brexil-combi",
+      "variants": [
+        {
+          "label": "15 г",
+          "sku": "BB610-OP-BREXIL-COMBI-15G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-BREXIL-COMBI-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-BREXIL-COMBI-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 21,
+      "name": "Brexil Ca",
+      "canonical_id": "brexil-ca",
+      "variants": [
+        {
+          "label": "15 г",
+          "sku": "BB610-OP-BREXIL-CA-15G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-BREXIL-CA-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-BREXIL-CA-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-BREXIL-CA-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 22,
+      "name": "Brexil Fe",
+      "canonical_id": "brexil-fe",
+      "variants": [
+        {
+          "label": "15 г",
+          "sku": "BB610-OP-BREXIL-FE-15G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-BREXIL-FE-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-BREXIL-FE-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-BREXIL-FE-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 23,
+      "name": "Brexil Mix",
+      "canonical_id": "brexil-mix",
+      "variants": [
+        {
+          "label": "15 г",
+          "sku": "BB610-OP-BREXIL-MIX-15G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-BREXIL-MIX-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-BREXIL-MIX-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-BREXIL-MIX-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 24,
+      "name": "Brexil Multi",
+      "canonical_id": "brexil-multi",
+      "variants": [
+        {
+          "label": "15 г",
+          "sku": "BB610-OP-BREXIL-MULTI-15G"
+        },
+        {
+          "label": "250 г",
+          "sku": "BB610-OP-BREXIL-MULTI-250G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-BREXIL-MULTI-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-BREXIL-MULTI-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 25,
+      "name": "Brexil Zn",
+      "canonical_id": "brexil-zn",
+      "variants": [
+        {
+          "label": "15 г",
+          "sku": "BB610-OP-BREXIL-ZN-15G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-BREXIL-ZN-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-BREXIL-ZN-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 26,
+      "name": "Ferrilene 4.8 Orto-Orto",
+      "canonical_id": "ferrilene-4-8-orto-orto",
+      "variants": [
+        {
+          "label": "10 г",
+          "sku": "BB610-OP-FERRILENE-4-8-ORTO-ORTO-10G"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-FERRILENE-4-8-ORTO-ORTO-5KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 27,
+      "name": "Boroplus",
+      "canonical_id": "boroplus",
+      "variants": [
+        {
+          "label": "15 мл",
+          "sku": "BB610-OP-BOROPLUS-15ML"
+        },
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-BOROPLUS-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-BOROPLUS-1L"
+        },
+        {
+          "label": "10 л",
+          "sku": "BB610-OP-BOROPLUS-10L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 28,
+      "name": "Сульфат магнію",
+      "canonical_id": "sulfat-mahniyu",
+      "variants": [
+        {
+          "label": "100 г",
+          "sku": "BB610-OP-SULFAT-MAHNIYU-100G"
+        },
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-SULFAT-MAHNIYU-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-SULFAT-MAHNIYU-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 29,
+      "name": "SoluPotasse — сульфат калію",
+      "canonical_id": "solupotasse-sulfat-kaliyu",
+      "variants": [
+        {
+          "label": "100 г",
+          "sku": "BB610-OP-SOLUPOTASSE-SULFAT-KALIYU-100G"
+        },
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-SOLUPOTASSE-SULFAT-KALIYU-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-SOLUPOTASSE-SULFAT-KALIYU-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 30,
+      "name": "Haifa MKP 0-52-34",
+      "canonical_id": "haifa-mkp-0-52-34",
+      "variants": [
+        {
+          "label": "20 г",
+          "sku": "BB610-OP-HAIFA-MKP-0-52-34-20G"
+        },
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-HAIFA-MKP-0-52-34-200G"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 31,
+      "name": "Osmocote Decor 16-8-12 (5–6M)",
+      "canonical_id": "osmocote-decor-16-8-12-56m",
+      "variants": [
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-OSMOCOTE-DECOR-16-8-12-56M-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-OSMOCOTE-DECOR-16-8-12-56M-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 32,
+      "name": "Osmocote Bloom 12-7-18 (2–3M)",
+      "canonical_id": "osmocote-bloom-12-7-18-23m",
+      "variants": [
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-OSMOCOTE-BLOOM-12-7-18-23M-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-OSMOCOTE-BLOOM-12-7-18-23M-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 33,
+      "name": "Osmocote Potassium 12-8-19 (3–4M)",
+      "canonical_id": "osmocote-potassium-12-8-19-34m",
+      "variants": [
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-OSMOCOTE-POTASSIUM-12-8-19-34M-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-OSMOCOTE-POTASSIUM-12-8-19-34M-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 34,
+      "name": "Osmocote Start 11-11-17 (1,5M)",
+      "canonical_id": "osmocote-start-11-11-17-1-5m",
+      "variants": [
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-OSMOCOTE-START-11-11-17-1-5M-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-OSMOCOTE-START-11-11-17-1-5M-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 35,
+      "name": "Osmocote Landscape 16-9-12 (3–4M)",
+      "canonical_id": "osmocote-landscape-16-9-12-34m",
+      "variants": [
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-OSMOCOTE-LANDSCAPE-16-9-12-34M-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-OSMOCOTE-LANDSCAPE-16-9-12-34M-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 36,
+      "name": "Osmocote Quick Start 22-5-6 (4–5M)",
+      "canonical_id": "osmocote-quick-start-22-5-6-45m",
+      "variants": [
+        {
+          "label": "200 г",
+          "sku": "BB610-OP-OSMOCOTE-QUICK-START-22-5-6-45M-200G"
+        },
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-OSMOCOTE-QUICK-START-22-5-6-45M-1KG"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 37,
+      "name": "Osmocote Granula-MAX 14-8-11+TE (5–6M)",
+      "canonical_id": "osmocote-granula-max-14-8-11-te-56m",
+      "variants": [
+        {
+          "label": "10 шт",
+          "sku": "BB610-OP-OSMOCOTE-GRANULA-MAX-14-8-11-TE-56M-10PCS"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 38,
+      "name": "Agroblen Granula-MAX 14-20-5+TE (5–6M)",
+      "canonical_id": "agroblen-granula-max-14-20-5-te-56m",
+      "variants": [
+        {
+          "label": "20 шт",
+          "sku": "BB610-OP-AGROBLEN-GRANULA-MAX-14-20-5-TE-56M-20PCS"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 39,
+      "name": "NeoCore",
+      "canonical_id": "neocore",
+      "variants": [
+        {
+          "label": "30 мл",
+          "sku": "BB610-OP-NEOCORE-30ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-NEOCORE-1L"
+        },
+        {
+          "label": "5 л",
+          "sku": "BB610-OP-NEOCORE-5L"
+        },
+        {
+          "label": "20 л",
+          "sku": "BB610-OP-NEOCORE-20L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 40,
+      "name": "NeoVivo",
+      "canonical_id": "neovivo",
+      "variants": [
+        {
+          "label": "30 мл",
+          "sku": "BB610-OP-NEOVIVO-30ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-NEOVIVO-1L"
+        },
+        {
+          "label": "5 л",
+          "sku": "BB610-OP-NEOVIVO-5L"
+        },
+        {
+          "label": "20 л",
+          "sku": "BB610-OP-NEOVIVO-20L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 41,
+      "name": "NeoFlora",
+      "canonical_id": "neoflora",
+      "variants": [
+        {
+          "label": "30 мл",
+          "sku": "BB610-OP-NEOFLORA-30ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-NEOFLORA-1L"
+        },
+        {
+          "label": "5 л",
+          "sku": "BB610-OP-NEOFLORA-5L"
+        },
+        {
+          "label": "20 л",
+          "sku": "BB610-OP-NEOFLORA-20L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 42,
+      "name": "Radifarm",
+      "canonical_id": "radifarm",
+      "variants": [
+        {
+          "label": "25 мл",
+          "sku": "BB610-OP-RADIFARM-25ML"
+        },
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-RADIFARM-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-RADIFARM-1L"
+        },
+        {
+          "label": "10 л",
+          "sku": "BB610-OP-RADIFARM-10L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 43,
+      "name": "Кеміра Укорінювач",
+      "canonical_id": "kemira-ukorinyuvach",
+      "variants": [
+        {
+          "label": "20 мл",
+          "sku": "BB610-OP-KEMIRA-UKORINYUVACH-20ML"
+        },
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-KEMIRA-UKORINYUVACH-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-KEMIRA-UKORINYUVACH-1L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 44,
+      "name": "BlackJak",
+      "canonical_id": "blackjak",
+      "variants": [
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-BLACKJAK-100ML"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 45,
+      "name": "Viva",
+      "canonical_id": "viva",
+      "variants": [
+        {
+          "label": "25 мл",
+          "sku": "BB610-OP-VIVA-25ML"
+        },
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-VIVA-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-VIVA-1L"
+        },
+        {
+          "label": "10 л",
+          "sku": "BB610-OP-VIVA-10L"
+        },
+        {
+          "label": "20 л",
+          "sku": "BB610-OP-VIVA-20L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 46,
+      "name": "Kendal Root",
+      "canonical_id": "kendal-root",
+      "variants": [
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-KENDAL-ROOT-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-KENDAL-ROOT-1L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 47,
+      "name": "Kendal TE",
+      "canonical_id": "kendal-te",
+      "variants": [
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-KENDAL-TE-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-KENDAL-TE-1L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 48,
+      "name": "Kendal",
+      "canonical_id": "kendal",
+      "variants": [
+        {
+          "label": "25 мл",
+          "sku": "BB610-OP-KENDAL-25ML"
+        },
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-KENDAL-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-KENDAL-1L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 49,
+      "name": "Maxicrop Cream",
+      "canonical_id": "maxicrop-cream",
+      "variants": [
+        {
+          "label": "25 мл",
+          "sku": "BB610-OP-MAXICROP-CREAM-25ML"
+        },
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-MAXICROP-CREAM-100ML"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 50,
+      "name": "Maxicrop Set / Максікроп Зав'язь",
+      "canonical_id": "maxicrop-set-maksikrop-zav-yaz",
+      "variants": [
+        {
+          "label": "25 мл",
+          "sku": "BB610-OP-MAXICROP-SET-MAKSIKROP-ZAV-YAZ-25ML"
+        },
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-MAXICROP-SET-MAKSIKROP-ZAV-YAZ-100ML"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 51,
+      "name": "Benefit PZ",
+      "canonical_id": "benefit-pz",
+      "variants": [
+        {
+          "label": "25 мл",
+          "sku": "BB610-OP-BENEFIT-PZ-25ML"
+        },
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-BENEFIT-PZ-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-BENEFIT-PZ-1L"
+        },
+        {
+          "label": "10 л",
+          "sku": "BB610-OP-BENEFIT-PZ-10L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 52,
+      "name": "Sweet",
+      "canonical_id": "sweet",
+      "variants": [
+        {
+          "label": "25 мл",
+          "sku": "BB610-OP-SWEET-25ML"
+        },
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-SWEET-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-SWEET-1L"
+        },
+        {
+          "label": "10 л",
+          "sku": "BB610-OP-SWEET-10L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 53,
+      "name": "Megafol",
+      "canonical_id": "megafol",
+      "variants": [
+        {
+          "label": "25 мл",
+          "sku": "BB610-OP-MEGAFOL-25ML"
+        },
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-MEGAFOL-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-MEGAFOL-1L"
+        },
+        {
+          "label": "10 л",
+          "sku": "BB610-OP-MEGAFOL-10L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 54,
+      "name": "Control DMP",
+      "canonical_id": "control-dmp",
+      "variants": [
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-CONTROL-DMP-100ML"
+        },
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-CONTROL-DMP-1L"
+        },
+        {
+          "label": "10 л",
+          "sku": "BB610-OP-CONTROL-DMP-10L"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 55,
+      "name": "Спрей-Ейд",
+      "canonical_id": "sprei-eid",
+      "variants": [
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-SPREI-EID-100ML"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 56,
+      "name": "Terra-Sorb",
+      "canonical_id": "terra-sorb",
+      "variants": [
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-TERRA-SORB-100ML"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 57,
+      "name": "Ерайз",
+      "canonical_id": "eraiz",
+      "variants": [
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-ERAIZ-100ML"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 58,
+      "name": "Кеміра Баланс / Nitrate Balancer",
+      "canonical_id": "kemira-balans-nitrate-balancer",
+      "variants": [
+        {
+          "label": "100 мл",
+          "sku": "BB610-OP-KEMIRA-BALANS-NITRATE-BALANCER-100ML"
+        }
+      ],
+      "note": "",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 59,
+      "name": "NeoTerra Organic-C",
+      "canonical_id": "neoterra-organic-c",
+      "variants": [
+        {
+          "label": "25 кг",
+          "sku": "BB610-OP-NEOTERRA-ORGANIC-C-25KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 60,
+      "name": "NeoTerra Aqua",
+      "canonical_id": "neoterra-aqua",
+      "variants": [
+        {
+          "label": "25 кг",
+          "sku": "BB610-OP-NEOTERRA-AQUA-25KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 61,
+      "name": "Micro NP",
+      "canonical_id": "micro-np",
+      "variants": [
+        {
+          "label": "10 кг",
+          "sku": "BB610-OP-MICRO-NP-10KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 62,
+      "name": "Actiwin 20-5-10",
+      "canonical_id": "actiwin-20-5-10",
+      "variants": [
+        {
+          "label": "22,7 кг",
+          "sku": "BB610-OP-ACTIWIN-20-5-10-22P7KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 63,
+      "name": "Brexil Mn",
+      "canonical_id": "brexil-mn",
+      "variants": [
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-BREXIL-MN-5KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 64,
+      "name": "Brexil Duo",
+      "canonical_id": "brexil-duo",
+      "variants": [
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-BREXIL-DUO-5KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 65,
+      "name": "Brexil Nutre",
+      "canonical_id": "brexil-nutre",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-BREXIL-NUTRE-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-BREXIL-NUTRE-5KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 66,
+      "name": "Actiwave",
+      "canonical_id": "actiwave",
+      "variants": [
+        {
+          "label": "1 л",
+          "sku": "BB610-OP-ACTIWAVE-1L"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 67,
+      "name": "Maxicrop Extra",
+      "canonical_id": "maxicrop-extra",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-MAXICROP-EXTRA-1KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 68,
+      "name": "Ferrilen Trium",
+      "canonical_id": "ferrilen-trium",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-FERRILEN-TRIUM-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-FERRILEN-TRIUM-5KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 69,
+      "name": "Valagro EDTA 5SG",
+      "canonical_id": "valagro-edta-5sg",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-VALAGRO-EDTA-5SG-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-VALAGRO-EDTA-5SG-5KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 70,
+      "name": "Valagro EDTA Fe 13%",
+      "canonical_id": "valagro-edta-fe-13",
+      "variants": [
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-VALAGRO-EDTA-FE-13-5KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 71,
+      "name": "MAX 600 SEASAILER",
+      "canonical_id": "max-600-seasailer",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-MAX-600-SEASAILER-1KG"
+        },
+        {
+          "label": "20 кг",
+          "sku": "BB610-OP-MAX-600-SEASAILER-20KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 72,
+      "name": "Agriflex Bio",
+      "canonical_id": "agriflex-bio",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-AGRIFLEX-BIO-1KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 73,
+      "name": "Agriflex Humic (Гумат калію)",
+      "canonical_id": "agriflex-humic-humat-kaliyu",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-AGRIFLEX-HUMIC-HUMAT-KALIYU-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-AGRIFLEX-HUMIC-HUMAT-KALIYU-5KG"
+        },
+        {
+          "label": "25 кг",
+          "sku": "BB610-OP-AGRIFLEX-HUMIC-HUMAT-KALIYU-25KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 74,
+      "name": "Agriflex Amino (Амінокислоти 50%)",
+      "canonical_id": "agriflex-amino-aminokysloty-50",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-AGRIFLEX-AMINO-AMINOKYSLOTY-50-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-AGRIFLEX-AMINO-AMINOKYSLOTY-50-5KG"
+        },
+        {
+          "label": "25 кг",
+          "sku": "BB610-OP-AGRIFLEX-AMINO-AMINOKYSLOTY-50-25KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 75,
+      "name": "Agriflex AminoVix",
+      "canonical_id": "agriflex-aminovix",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-AGRIFLEX-AMINOVIX-1KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 76,
+      "name": "Agriflex Zn",
+      "canonical_id": "agriflex-zn",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-AGRIFLEX-ZN-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-AGRIFLEX-ZN-5KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    },
+    {
+      "source_row": 77,
+      "name": "Agriflex Fulvix (Фульвокислоти 60%)",
+      "canonical_id": "agriflex-fulvix-fulvokysloty-60",
+      "variants": [
+        {
+          "label": "1 кг",
+          "sku": "BB610-OP-AGRIFLEX-FULVIX-FULVOKYSLOTY-60-1KG"
+        },
+        {
+          "label": "5 кг",
+          "sku": "BB610-OP-AGRIFLEX-FULVIX-FULVOKYSLOTY-60-5KG"
+        }
+      ],
+      "note": "Тільки у «Велике фасування»",
+      "source": "Organic Planet 2026 + Велике фасування 2026",
+      "publish_default": false
+    }
+  ]
+}

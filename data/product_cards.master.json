@@ -2218,23 +2218,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Kemira / Yara",
+      "eyebrow": "ЖИВЛЕННЯ · KEMIRA",
       "name": "Кеміра Люкс NPK 14-11-25",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Водорозчинне комплексне добриво з магнієм, сіркою та мікроелементами",
+      "lead": "Формула з підвищеною часткою калію для розсади, овочевих і квіткових культур.",
+      "short_description": "Кеміра Люкс NPK 14-11-25 — мінеральне добриво з формулою 14-11-25. Дані картки сформовані за матеріалами постачальника Organic Planet; для фактичної партії склад і виробника звіряти з етикеткою.",
+      "full_description": "Кеміра Люкс NPK 14-11-25 — комплексне мінеральне добриво з формулою 14-11-25. У поточному асортименті BB610 Market продукт представлений у фасуваннях із матриці Organic Planet.\n\nДля лінійки Kemira на українському ринку зустрічається історичне та перефасоване маркування, тому BB610 не переносить автоматично дані з інших формул або упаковок. Наведені характеристики взяті з картки постачальника Organic Planet для відповідної формули.\n\nПеред застосуванням пріоритет має етикетка фактично поставленої партії. Якщо маркування конкретної упаковки відрізняється, дані картки повинні бути скориговані під фактичний товар.",
+      "why": [
+        {
+          "title": "K + Mg",
+          "text": "Підвищена частка калію доповнена магнієм і сіркою."
+        },
+        {
+          "title": "МІКРОЕЛЕМЕНТИ",
+          "text": "Містить B, Fe, Mn, Cu, Zn і Mo."
+        },
+        {
+          "title": "ВОДОРОЗЧИННА ФОРМА",
+          "text": "Може використовуватися для кореневого, листкового внесення та фертигації."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Kemira",
+        "company": "Yara (за даними картки постачальника)",
+        "manufacturer": "Yara — потребує звірки з етикеткою конкретної фасовки",
+        "country": "",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Картка товару / постачальник Organic Planet",
+          "url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-lyuks-mineralnoe-udobrenie-npk-14-11-25-1-kg"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-lyuks-mineralnoe-udobrenie-npk-14-11-25-1-kg",
+        "source_type": "supplier",
+        "official_source_status": "legacy product — official current product page not confirmed",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2263,8 +2289,105 @@
       "import_meta": {
         "source_row": 13,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "KEMIRA",
+        "text": "Мінеральна формула постачає основні елементи живлення у співвідношенні, заданому NPK. Спосіб внесення залежить від конкретної формули: водорозчинні продукти використовують для кореневого/листкового живлення або фертигації, гранульовані — для внесення у ґрунт."
+      },
+      "application": {
+        "intro": "Орієнтири з картки Organic Planet:",
+        "rows": [
+          {
+            "crop": "Відкритий ґрунт, кореневе внесення",
+            "period": "підживлення",
+            "dose": "20 г / 10 л води"
+          },
+          {
+            "crop": "Фертигація",
+            "period": "теплиці / відкритий ґрунт",
+            "dose": "100–200 г / 100 л води"
+          },
+          {
+            "crop": "Листкове внесення",
+            "period": "протягом вегетації",
+            "dose": "0,3–0,5 кг / 10 соток"
+          }
+        ],
+        "note": "Перед застосуванням звірити з етикеткою конкретної фасовки."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне мінеральне NPK-добриво"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "14-11-25"
+        },
+        {
+          "label": "Азот (N)",
+          "value": "14%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "11,5%"
+        },
+        {
+          "label": "K₂O",
+          "value": "25,3%"
+        },
+        {
+          "label": "Mg",
+          "value": "1,4%"
+        },
+        {
+          "label": "S",
+          "value": "5,6%"
+        },
+        {
+          "label": "B",
+          "value": "0,02%"
+        },
+        {
+          "label": "Fe",
+          "value": "0,1%"
+        },
+        {
+          "label": "Mn",
+          "value": "0,1%"
+        },
+        {
+          "label": "Cu",
+          "value": "0,01%"
+        },
+        {
+          "label": "Zn",
+          "value": "0,01%"
+        },
+        {
+          "label": "Mo",
+          "value": "0,002%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "4,7"
+        },
+        {
+          "label": "Бренд / торгова назва",
+          "value": "Kemira"
+        },
+        {
+          "label": "Виробник у джерелі постачальника",
+          "value": "Yara"
+        },
+        {
+          "label": "Джерело даних",
+          "value": "Organic Planet; звірити з етикеткою фактичної партії"
+        }
+      ]
     },
     "kemira-grunt-kropker-npk-11-11-21": {
       "id": "kemira-grunt-kropker-npk-11-11-21",
@@ -2272,23 +2395,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Kemira / Yara",
+      "eyebrow": "ЖИВЛЕННЯ · KEMIRA",
       "name": "Кеміра Ґрунт (Кропкер) NPK 11-11-21",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Гранульоване комплексне добриво для основного і передпосівного внесення",
+      "lead": "Гранульована NPK-формула з підвищеною часткою калію для ґрунтового живлення.",
+      "short_description": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — мінеральне добриво з формулою 11-11-21. Дані картки сформовані за матеріалами постачальника Organic Planet; для фактичної партії склад і виробника звіряти з етикеткою.",
+      "full_description": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — комплексне мінеральне добриво з формулою 11-11-21. У поточному асортименті BB610 Market продукт представлений у фасуваннях із матриці Organic Planet.\n\nДля лінійки Kemira на українському ринку зустрічається історичне та перефасоване маркування, тому BB610 не переносить автоматично дані з інших формул або упаковок. Наведені характеристики взяті з картки постачальника Organic Planet для відповідної формули.\n\nПеред застосуванням пріоритет має етикетка фактично поставленої партії. Якщо маркування конкретної упаковки відрізняється, дані картки повинні бути скориговані під фактичний товар.",
+      "why": [
+        {
+          "title": "ГРАНУЛЬОВАНЕ",
+          "text": "Призначене для внесення у ґрунт."
+        },
+        {
+          "title": "КАЛІЙ",
+          "text": "21% K₂O — найбільша частка серед основних NPK."
+        },
+        {
+          "title": "КУЛЬТУРИ",
+          "text": "У картці постачальника вказані овочі, ягоди, квіти, декоративні та інші культури."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Kemira",
+        "company": "Yara (за даними картки постачальника)",
+        "manufacturer": "Yara — потребує звірки з етикеткою конкретної фасовки",
+        "country": "",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Картка товару / постачальник Organic Planet",
+          "url": "https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/kemira-grunt-mineralne-dobryvo-v-granulah-npk-npk-11-11-21-1-kg"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/kemira-grunt-mineralne-dobryvo-v-granulah-npk-npk-11-11-21-1-kg",
+        "source_type": "supplier",
+        "official_source_status": "legacy product — official current product page not confirmed",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2317,8 +2466,61 @@
       "import_meta": {
         "source_row": 14,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "KEMIRA",
+        "text": "Мінеральна формула постачає основні елементи живлення у співвідношенні, заданому NPK. Спосіб внесення залежить від конкретної формули: водорозчинні продукти використовують для кореневого/листкового живлення або фертигації, гранульовані — для внесення у ґрунт."
+      },
+      "application": {
+        "intro": "Застосування — внесення у ґрунт; точну норму визначати за культурою та етикеткою.",
+        "rows": [],
+        "note": "Не переносити норми з мішка 25 кг або інших версій Cropcare без звірки з конкретною фасовкою."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Гранульоване комплексне мінеральне добриво"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "11-11-21"
+        },
+        {
+          "label": "Азот (N)",
+          "value": "11%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "≈11%"
+        },
+        {
+          "label": "K₂O",
+          "value": "≈21%"
+        },
+        {
+          "label": "Форма",
+          "value": "Гранули"
+        },
+        {
+          "label": "Хлор",
+          "value": "У картці постачальника заявлено як безхлорне / для чутливих до хлору культур"
+        },
+        {
+          "label": "Бренд / торгова назва",
+          "value": "Kemira"
+        },
+        {
+          "label": "Виробник у джерелі постачальника",
+          "value": "Yara"
+        },
+        {
+          "label": "Джерело даних",
+          "value": "Organic Planet; звірити з етикеткою фактичної партії"
+        }
+      ]
     },
     "kemira-dlya-hazonu-npk-12-11-18": {
       "id": "kemira-dlya-hazonu-npk-12-11-18",
@@ -2326,23 +2528,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Kemira / Yara",
+      "eyebrow": "ЖИВЛЕННЯ · KEMIRA",
       "name": "Кеміра для газону NPK 12-11-18",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Гранульоване весняно-літнє добриво для газонів",
+      "lead": "Збалансоване гранульоване живлення для різних типів газону.",
+      "short_description": "Кеміра для газону NPK 12-11-18 — мінеральне добриво з формулою 12-11-18. Дані картки сформовані за матеріалами постачальника Organic Planet; для фактичної партії склад і виробника звіряти з етикеткою.",
+      "full_description": "Кеміра для газону NPK 12-11-18 — комплексне мінеральне добриво з формулою 12-11-18. У поточному асортименті BB610 Market продукт представлений у фасуваннях із матриці Organic Planet.\n\nДля лінійки Kemira на українському ринку зустрічається історичне та перефасоване маркування, тому BB610 не переносить автоматично дані з інших формул або упаковок. Наведені характеристики взяті з картки постачальника Organic Planet для відповідної формули.\n\nПеред застосуванням пріоритет має етикетка фактично поставленої партії. Якщо маркування конкретної упаковки відрізняється, дані картки повинні бути скориговані під фактичний товар.",
+      "why": [
+        {
+          "title": "ДЛЯ ГАЗОНУ",
+          "text": "Формула спеціально позиціонується для весняно-літнього живлення газонів."
+        },
+        {
+          "title": "N + K",
+          "text": "12% N підтримує ріст, 18% K₂O — калійне живлення."
+        },
+        {
+          "title": "МІКРОЕЛЕМЕНТИ",
+          "text": "Містить Mg, S, B, Fe, Mn і Zn."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Kemira",
+        "company": "Yara (за даними картки постачальника)",
+        "manufacturer": "Yara — потребує звірки з етикеткою конкретної фасовки",
+        "country": "",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Картка товару / постачальник Organic Planet",
+          "url": "https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/kemira-dlya-gazonu-vesna-lito-mineralne-dobryvo-v-granulah-npk-12-11-18-1-kg"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/kemira-dlya-gazonu-vesna-lito-mineralne-dobryvo-v-granulah-npk-12-11-18-1-kg",
+        "source_type": "supplier",
+        "official_source_status": "legacy product — official current product page not confirmed",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2357,8 +2585,87 @@
       "import_meta": {
         "source_row": 15,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "KEMIRA",
+        "text": "Мінеральна формула постачає основні елементи живлення у співвідношенні, заданому NPK. Спосіб внесення залежить від конкретної формули: водорозчинні продукти використовують для кореневого/листкового живлення або фертигації, гранульовані — для внесення у ґрунт."
+      },
+      "application": {
+        "intro": "Норма з картки Organic Planet:",
+        "rows": [
+          {
+            "crop": "Газон",
+            "period": "весна–літо",
+            "dose": "2–4 кг / 100 м²"
+          }
+        ],
+        "note": "Після внесення гранул забезпечити полив; звірити норму з етикеткою фактичної партії."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Гранульоване добриво для газону"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "12-11-18"
+        },
+        {
+          "label": "Азот (N)",
+          "value": "12%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "11%"
+        },
+        {
+          "label": "K₂O",
+          "value": "18%"
+        },
+        {
+          "label": "Mg",
+          "value": "1,6%"
+        },
+        {
+          "label": "S",
+          "value": "8%"
+        },
+        {
+          "label": "B",
+          "value": "0,015%"
+        },
+        {
+          "label": "Fe",
+          "value": "0,20%"
+        },
+        {
+          "label": "Mn",
+          "value": "0,02%"
+        },
+        {
+          "label": "Zn",
+          "value": "0,02%"
+        },
+        {
+          "label": "Форма",
+          "value": "Гранули"
+        },
+        {
+          "label": "Бренд / торгова назва",
+          "value": "Kemira"
+        },
+        {
+          "label": "Виробник у джерелі постачальника",
+          "value": "Yara"
+        },
+        {
+          "label": "Джерело даних",
+          "value": "Organic Planet; звірити з етикеткою фактичної партії"
+        }
+      ]
     },
     "kemira-npk-12-46-8": {
       "id": "kemira-npk-12-46-8",
@@ -2366,23 +2673,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Kemira / Yara",
+      "eyebrow": "ЖИВЛЕННЯ · KEMIRA",
       "name": "Кеміра NPK 12-46-8",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Високофосфорне водорозчинне добриво з мікроелементами",
+      "lead": "46% фосфору в заявленій формулі — виражений акцент для ранніх фаз і програм із підвищеною потребою в P.",
+      "short_description": "Кеміра NPK 12-46-8 — мінеральне добриво з формулою 12-46-8. Дані картки сформовані за матеріалами постачальника Organic Planet; для фактичної партії склад і виробника звіряти з етикеткою.",
+      "full_description": "Кеміра NPK 12-46-8 — комплексне мінеральне добриво з формулою 12-46-8. У поточному асортименті BB610 Market продукт представлений у фасуваннях із матриці Organic Planet.\n\nДля лінійки Kemira на українському ринку зустрічається історичне та перефасоване маркування, тому BB610 не переносить автоматично дані з інших формул або упаковок. Наведені характеристики взяті з картки постачальника Organic Planet для відповідної формули.\n\nПеред застосуванням пріоритет має етикетка фактично поставленої партії. Якщо маркування конкретної упаковки відрізняється, дані картки повинні бути скориговані під фактичний товар.",
+      "why": [
+        {
+          "title": "46% P₂O₅",
+          "text": "Високофосфорна формула."
+        },
+        {
+          "title": "ВОДОРОЗЧИННЕ",
+          "text": "Призначене для приготування робочого розчину."
+        },
+        {
+          "title": "МІКРОЕЛЕМЕНТИ",
+          "text": "Формула доповнена Mg, S, B, Cu, Fe, Mn, Mo і Zn."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Kemira",
+        "company": "Yara (за даними картки постачальника)",
+        "manufacturer": "Yara — потребує звірки з етикеткою конкретної фасовки",
+        "country": "",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Картка товару / постачальник Organic Planet",
+          "url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-12-46-8-1-kg"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-12-46-8-1-kg",
+        "source_type": "supplier",
+        "official_source_status": "legacy product — official current product page not confirmed",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2411,8 +2744,101 @@
       "import_meta": {
         "source_row": 16,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "KEMIRA",
+        "text": "Мінеральна формула постачає основні елементи живлення у співвідношенні, заданому NPK. Спосіб внесення залежить від конкретної формули: водорозчинні продукти використовують для кореневого/листкового живлення або фертигації, гранульовані — для внесення у ґрунт."
+      },
+      "application": {
+        "intro": "Орієнтири з картки Organic Planet:",
+        "rows": [
+          {
+            "crop": "Листкове внесення",
+            "period": "за програмою живлення",
+            "dose": "50–200 г / 10 л води"
+          },
+          {
+            "crop": "Фертигація, закритий ґрунт",
+            "period": "за програмою",
+            "dose": "50–200 г / 100 л"
+          },
+          {
+            "crop": "Фертигація, відкритий ґрунт",
+            "period": "за програмою",
+            "dose": "100–200 г / 100 л"
+          }
+        ],
+        "note": "Перед застосуванням провести локальну перевірку сумісності та звірити етикетку."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне мінеральне добриво"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "12-46-8"
+        },
+        {
+          "label": "Азот (N)",
+          "value": "12%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "46%"
+        },
+        {
+          "label": "K₂O",
+          "value": "8%"
+        },
+        {
+          "label": "Mg",
+          "value": "0,8%"
+        },
+        {
+          "label": "S",
+          "value": "2,1%"
+        },
+        {
+          "label": "B",
+          "value": "0,02%"
+        },
+        {
+          "label": "Cu",
+          "value": "0,1%"
+        },
+        {
+          "label": "Fe",
+          "value": "0,2%"
+        },
+        {
+          "label": "Mn",
+          "value": "0,1%"
+        },
+        {
+          "label": "Mo",
+          "value": "0,01%"
+        },
+        {
+          "label": "Zn",
+          "value": "0,02%"
+        },
+        {
+          "label": "Бренд / торгова назва",
+          "value": "Kemira"
+        },
+        {
+          "label": "Виробник у джерелі постачальника",
+          "value": "Yara"
+        },
+        {
+          "label": "Джерело даних",
+          "value": "Organic Planet; звірити з етикеткою фактичної партії"
+        }
+      ]
     },
     "kemira-npk-18-18-18": {
       "id": "kemira-npk-18-18-18",
@@ -2420,23 +2846,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Kemira / Yara",
+      "eyebrow": "ЖИВЛЕННЯ · KEMIRA",
       "name": "Кеміра NPK 18-18-18",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Збалансоване водорозчинне NPK-добриво",
+      "lead": "Рівні частки азоту, фосфору та калію для універсальних програм живлення.",
+      "short_description": "Кеміра NPK 18-18-18 — мінеральне добриво з формулою 18-18-18. Дані картки сформовані за матеріалами постачальника Organic Planet; для фактичної партії склад і виробника звіряти з етикеткою.",
+      "full_description": "Кеміра NPK 18-18-18 — комплексне мінеральне добриво з формулою 18-18-18. У поточному асортименті BB610 Market продукт представлений у фасуваннях із матриці Organic Planet.\n\nДля лінійки Kemira на українському ринку зустрічається історичне та перефасоване маркування, тому BB610 не переносить автоматично дані з інших формул або упаковок. Наведені характеристики взяті з картки постачальника Organic Planet для відповідної формули.\n\nПеред застосуванням пріоритет має етикетка фактично поставленої партії. Якщо маркування конкретної упаковки відрізняється, дані картки повинні бути скориговані під фактичний товар.",
+      "why": [
+        {
+          "title": "18-18-18",
+          "text": "Збалансоване співвідношення NPK."
+        },
+        {
+          "title": "ВОДОРОЗЧИННА ФОРМА",
+          "text": "Може застосовуватися по листу та через системи поливу."
+        },
+        {
+          "title": "МІКРОЕЛЕМЕНТИ",
+          "text": "Містить Mg, S та набір мікроелементів."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Kemira",
+        "company": "Yara (за даними картки постачальника)",
+        "manufacturer": "Yara — потребує звірки з етикеткою конкретної фасовки",
+        "country": "",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Картка товару / постачальник Organic Planet",
+          "url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-18-18-18-1-kg"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-18-18-18-1-kg",
+        "source_type": "supplier",
+        "official_source_status": "legacy product — official current product page not confirmed",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2465,8 +2917,100 @@
       "import_meta": {
         "source_row": 17,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "KEMIRA",
+        "text": "Мінеральна формула постачає основні елементи живлення у співвідношенні, заданому NPK. Спосіб внесення залежить від конкретної формули: водорозчинні продукти використовують для кореневого/листкового живлення або фертигації, гранульовані — для внесення у ґрунт."
+      },
+      "application": {
+        "intro": "Орієнтири з картки Organic Planet для листкового внесення:",
+        "rows": [
+          {
+            "crop": "Польові культури",
+            "period": "листкове внесення",
+            "dose": "2–5 кг/га; 200–300 л робочого розчину/га"
+          },
+          {
+            "crop": "Сади",
+            "period": "листкове внесення",
+            "dose": "2–5 кг/га; близько 1000 л робочого розчину/га"
+          }
+        ],
+        "note": "Також заявлено можливість внесення через системи поливу; конкретну концентрацію звірити з етикеткою."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне мінеральне добриво"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "18-18-18"
+        },
+        {
+          "label": "Азот (N)",
+          "value": "18%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "18%"
+        },
+        {
+          "label": "K₂O",
+          "value": "18%"
+        },
+        {
+          "label": "Mg",
+          "value": "1,5%"
+        },
+        {
+          "label": "S",
+          "value": "5–10%"
+        },
+        {
+          "label": "B",
+          "value": "0,02%"
+        },
+        {
+          "label": "Cu",
+          "value": "0,1%"
+        },
+        {
+          "label": "Fe",
+          "value": "0,2%"
+        },
+        {
+          "label": "Mn",
+          "value": "0,1%"
+        },
+        {
+          "label": "Mo",
+          "value": "0,01%"
+        },
+        {
+          "label": "Zn",
+          "value": "0,02%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "3,2–4,5"
+        },
+        {
+          "label": "Бренд / торгова назва",
+          "value": "Kemira"
+        },
+        {
+          "label": "Виробник у джерелі постачальника",
+          "value": "Yara"
+        },
+        {
+          "label": "Джерело даних",
+          "value": "Organic Planet; звірити з етикеткою фактичної партії"
+        }
+      ]
     },
     "kemira-zav-yaz": {
       "id": "kemira-zav-yaz",
@@ -2474,23 +3018,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Kemira / Yara",
+      "eyebrow": "ЖИВЛЕННЯ · KEMIRA",
       "name": "Кеміра Зав'язь",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Безазотне водорозчинне фосфорно-калійне добриво",
+      "lead": "Формула без азоту для фаз, де потрібні фосфор і калій без додаткового N.",
+      "short_description": "Кеміра Зав'язь — мінеральне добриво з формулою 0-52-34. Дані картки сформовані за матеріалами постачальника Organic Planet; для фактичної партії склад і виробника звіряти з етикеткою.",
+      "full_description": "Кеміра Зав'язь — комплексне мінеральне добриво з формулою 0-52-34. У поточному асортименті BB610 Market продукт представлений у фасуваннях із матриці Organic Planet.\n\nДля лінійки Kemira на українському ринку зустрічається історичне та перефасоване маркування, тому BB610 не переносить автоматично дані з інших формул або упаковок. Наведені характеристики взяті з картки постачальника Organic Planet для відповідної формули.\n\nПеред застосуванням пріоритет має етикетка фактично поставленої партії. Якщо маркування конкретної упаковки відрізняється, дані картки повинні бути скориговані під фактичний товар.",
+      "why": [
+        {
+          "title": "БЕЗ АЗОТУ",
+          "text": "0% N — не додає азот у програму."
+        },
+        {
+          "title": "P + K",
+          "text": "52% P₂O₅ і 34% K₂O."
+        },
+        {
+          "title": "КОМПАКТНА ФАСОВКА",
+          "text": "У матриці BB610 ця картка має фасовку 5 г."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Kemira",
+        "company": "Yara (за даними картки постачальника)",
+        "manufacturer": "Yara — потребує звірки з етикеткою конкретної фасовки",
+        "country": "",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Картка товару / постачальник Organic Planet",
+          "url": "https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/kemira-zav-yaz-5-g-dobryvo-dlya-kimnatnyh-roslyn-organic-planet"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/kemira-zav-yaz-5-g-dobryvo-dlya-kimnatnyh-roslyn-organic-planet",
+        "source_type": "supplier",
+        "official_source_status": "legacy product — official current product page not confirmed",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2505,8 +3075,61 @@
       "import_meta": {
         "source_row": 18,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "KEMIRA",
+        "text": "Мінеральна формула постачає основні елементи живлення у співвідношенні, заданому NPK. Спосіб внесення залежить від конкретної формули: водорозчинні продукти використовують для кореневого/листкового живлення або фертигації, гранульовані — для внесення у ґрунт."
+      },
+      "application": {
+        "intro": "За даними постачальника, продукт застосовують для кореневого та позакореневого живлення.",
+        "rows": [],
+        "note": "Фасовка 5 г; концентрацію готувати лише за етикеткою конкретної упаковки."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Водорозчинне PK-добриво"
+        },
+        {
+          "label": "Формула NPK",
+          "value": "0-52-34"
+        },
+        {
+          "label": "Азот (N)",
+          "value": "0%"
+        },
+        {
+          "label": "P₂O₅",
+          "value": "52%"
+        },
+        {
+          "label": "K₂O",
+          "value": "34%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "4,5"
+        },
+        {
+          "label": "Форма",
+          "value": "Водорозчинні кристали"
+        },
+        {
+          "label": "Бренд / торгова назва",
+          "value": "Kemira"
+        },
+        {
+          "label": "Виробник у джерелі постачальника",
+          "value": "Yara"
+        },
+        {
+          "label": "Джерело даних",
+          "value": "Organic Planet; звірити з етикеткою фактичної партії"
+        }
+      ]
     },
     "spidfol-amino-vehetatsiya": {
       "id": "spidfol-amino-vehetatsiya",
@@ -2514,23 +3137,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
-      "name": "Спідфол Аміно Вегетація",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "category": "biostimulation",
+      "brand": "Terral Tarsa",
+      "eyebrow": "БІОСТИМУЛЯЦІЯ · TERRAL TARSA",
+      "name": "Speedfol Amino Vegetative",
+      "subtitle": "Амінокислотний коректор живлення для вегетативної фази",
+      "lead": "Рідка формула з NPK, мікроелементами, L-амінокислотами та фітогормональними компонентами для підтримки активної вегетації.",
+      "short_description": "Speedfol Amino Vegetative — продукт лінійки Speedfol Amino для вегетативного етапу. Виробник Terral Tarsa позиціонує його як коректор живлення зі стимулювальним ефектом.",
+      "full_description": "Speedfol Amino Vegetative входить до лінійки Speedfol Amino від Terral Tarsa. На офіційній сторінці виробника продукт описаний як коректор живлення, що поєднує макро- і мікроелементи зі значною концентрацією L-амінокислот та фітогормональних компонентів.\n\nФормула орієнтована на період активної вегетації. За доступними реєстраційними даними склад включає N 16,5%, P₂O₅ 7,6%, K₂O 12,0%, SO₃ 2,3%, мікроелементи, амінокислоти та гормональні компоненти.\n\nТочну норму внесення для культури необхідно брати з етикетки фактично поставленої партії або локальної рекомендації виробника/дистриб'ютора.",
+      "why": [
+        {
+          "title": "VEGETATIVE",
+          "text": "Формула створена для вегетативної фази росту."
+        },
+        {
+          "title": "AMINO",
+          "text": "Містить L-амінокислоти як частину стимулювального комплексу."
+        },
+        {
+          "title": "NPK + MICRO",
+          "text": "Поєднує макроелементи та набір мікроелементів."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Speedfol",
+        "company": "Terral Tarsa",
+        "manufacturer": "Terral Tarsa",
+        "country": "",
+        "official_url": "https://terratarsa.com/en/universal-nutrient-correctors-with-stimulating-effect/"
+      },
+      "documents": [
+        {
+          "title": "Speedfol Amino — офіційна сторінка Terral Tarsa",
+          "url": "https://terratarsa.com/en/universal-nutrient-correctors-with-stimulating-effect/"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://terratarsa.com/en/universal-nutrient-correctors-with-stimulating-effect/",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2545,8 +3193,61 @@
       "import_meta": {
         "source_row": 19,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "SPEEDFOL AMINO",
+        "text": "Живильні елементи поєднані з амінокислотами та фітогормональними компонентами, щоб підтримувати живлення й фізіологічні процеси у фазу активного вегетативного росту."
+      },
+      "application": {
+        "intro": "Застосування — за етикеткою конкретної партії та програмою культури.",
+        "rows": [],
+        "note": "Не переносити норми з інших формул Speedfol Amino Starter / Flower&Fruit."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Коректор живлення зі стимулювальним ефектом"
+        },
+        {
+          "label": "Формула",
+          "value": "N 16,5%; P₂O₅ 7,6%; K₂O 12,0%; SO₃ 2,3%"
+        },
+        {
+          "label": "B",
+          "value": "0,101%"
+        },
+        {
+          "label": "Fe",
+          "value": "0,051%"
+        },
+        {
+          "label": "Mo",
+          "value": "0,005%"
+        },
+        {
+          "label": "Zn",
+          "value": "0,051%"
+        },
+        {
+          "label": "Mn",
+          "value": "0,021%"
+        },
+        {
+          "label": "Cu",
+          "value": "0,021%"
+        },
+        {
+          "label": "Амінокислоти",
+          "value": "0,8% (за реєстраційними даними)"
+        },
+        {
+          "label": "Бренд / виробник",
+          "value": "Terral Tarsa"
+        }
+      ]
     },
     "brexil-combi": {
       "id": "brexil-combi",
@@ -2554,23 +3255,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
       "name": "Brexil Combi",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Комплекс мікроелементів LSA для листкового внесення",
+      "lead": "Комбінація Fe, Mn, Zn, B, Cu та Mo для комплексної корекції мікроелементного живлення.",
+      "short_description": "Brexil Combi — мікрогранульований продукт лінійки Brexil® на основі мікроелементів, комплексованих LSA, для позакореневого внесення.",
+      "full_description": "Brexil Combi входить до лінійки Brexil® Valagro. За офіційним каталогом, Brexil® — це мікрогранульовані продукти з мікроелементами, комплексованими LSA (амонійний лігносульфонат) природного походження.\n\nЛінійка призначена насамперед для профілактики та корекції дефіцитів мікроелементів при листковому внесенні. Виробник підкреслює швидке та безпечне проникнення через листкову поверхню.\n\nНорми нижче взяті з офіційного Farm Catalogue 2018 і є загальними міжнародними орієнтирами; перед застосуванням в Україні потрібно звіряти актуальну етикетку конкретного продукту.",
+      "why": [
+        {
+          "title": "LSA",
+          "text": "Мікроелементи комплексовані LSA природного походження."
+        },
+        {
+          "title": "ЛИСТКОВЕ ВНЕСЕННЯ",
+          "text": "Лінійка Brexil® розроблена для позакореневого внесення."
+        },
+        {
+          "title": "МІКРОГРАНУЛИ",
+          "text": "Розчинна мікрогранульована форма для приготування робочого розчину."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Farm Catalogue — Brexil® line",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2599,8 +3326,82 @@
       "import_meta": {
         "source_row": 20,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "BREXIL®",
+        "text": "LSA-комплексування та спеціальний носій сприяють проникненню мікроелементів через листкову поверхню і їх подальшому переміщенню в тканинах."
+      },
+      "application": {
+        "intro": "Орієнтири Valagro Farm Catalogue 2018:",
+        "rows": [
+          {
+            "crop": "Плодові",
+            "period": "листково",
+            "dose": "200–300 г/гл"
+          },
+          {
+            "crop": "Овочі",
+            "period": "листково",
+            "dose": "150–200 г/гл"
+          },
+          {
+            "crop": "Квіти",
+            "period": "листково",
+            "dose": "150–200 г/гл"
+          },
+          {
+            "crop": "Польові культури",
+            "period": "листково",
+            "dose": "1,5–2,5 кг/га"
+          }
+        ],
+        "note": "Для Brexil Mix/Multi виробник окремо вказує дотримуватися рекомендацій етикетки."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Мікродобриво для листкового внесення"
+        },
+        {
+          "label": "Форма",
+          "value": "Мікрогранули"
+        },
+        {
+          "label": "Комплексоутворювач",
+          "value": "LSA"
+        },
+        {
+          "label": "Комплексована фракція",
+          "value": "100%"
+        },
+        {
+          "label": "Склад",
+          "value": "B 0,9%; Cu 0,3%; Fe 6,8%; Mn 2,6%; Mo 0,2%; Zn 1,1%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "3,9"
+        },
+        {
+          "label": "Розчинність",
+          "value": "35 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "коричневий"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        }
+      ]
     },
     "brexil-ca": {
       "id": "brexil-ca",
@@ -2608,23 +3409,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
       "name": "Brexil Ca",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Кальцієве мікродобриво з бором для листкового внесення",
+      "lead": "20% CaO у комплексі з 0,5% бору для програм кальцієвого живлення по листу.",
+      "short_description": "Brexil Ca — мікрогранульований продукт лінійки Brexil® на основі мікроелементів, комплексованих LSA, для позакореневого внесення.",
+      "full_description": "Brexil Ca входить до лінійки Brexil® Valagro. За офіційним каталогом, Brexil® — це мікрогранульовані продукти з мікроелементами, комплексованими LSA (амонійний лігносульфонат) природного походження.\n\nЛінійка призначена насамперед для профілактики та корекції дефіцитів мікроелементів при листковому внесенні. Виробник підкреслює швидке та безпечне проникнення через листкову поверхню.\n\nНорми нижче взяті з офіційного Farm Catalogue 2018 і є загальними міжнародними орієнтирами; перед застосуванням в Україні потрібно звіряти актуальну етикетку конкретного продукту.",
+      "why": [
+        {
+          "title": "LSA",
+          "text": "Мікроелементи комплексовані LSA природного походження."
+        },
+        {
+          "title": "ЛИСТКОВЕ ВНЕСЕННЯ",
+          "text": "Лінійка Brexil® розроблена для позакореневого внесення."
+        },
+        {
+          "title": "МІКРОГРАНУЛИ",
+          "text": "Розчинна мікрогранульована форма для приготування робочого розчину."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Farm Catalogue — Brexil® line",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2660,8 +3487,82 @@
       "import_meta": {
         "source_row": 21,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "BREXIL®",
+        "text": "LSA-комплексування та спеціальний носій сприяють проникненню мікроелементів через листкову поверхню і їх подальшому переміщенню в тканинах."
+      },
+      "application": {
+        "intro": "Орієнтири Valagro Farm Catalogue 2018:",
+        "rows": [
+          {
+            "crop": "Плодові",
+            "period": "листково",
+            "dose": "2,5–3,0 кг/га"
+          },
+          {
+            "crop": "Овочі",
+            "period": "листково",
+            "dose": "2,5–3,0 кг/га"
+          },
+          {
+            "crop": "Квіти",
+            "period": "листково",
+            "dose": "250–300 г/гл"
+          },
+          {
+            "crop": "Польові культури",
+            "period": "листково",
+            "dose": "2,5–3,0 кг/га"
+          }
+        ],
+        "note": "Для Brexil Mix/Multi виробник окремо вказує дотримуватися рекомендацій етикетки."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Мікродобриво для листкового внесення"
+        },
+        {
+          "label": "Форма",
+          "value": "Мікрогранули"
+        },
+        {
+          "label": "Комплексоутворювач",
+          "value": "LSA"
+        },
+        {
+          "label": "Комплексована фракція",
+          "value": "100%"
+        },
+        {
+          "label": "Склад",
+          "value": "CaO 20%; B 0,5%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "6,5"
+        },
+        {
+          "label": "Розчинність",
+          "value": "25 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "коричневий"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        }
+      ]
     },
     "brexil-fe": {
       "id": "brexil-fe",
@@ -2669,23 +3570,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
       "name": "Brexil Fe",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Залізо 10% у LSA-комплексі для листкового внесення",
+      "lead": "Спеціалізована формула Brexil® для профілактики та корекції дефіциту заліза.",
+      "short_description": "Brexil Fe — мікрогранульований продукт лінійки Brexil® на основі мікроелементів, комплексованих LSA, для позакореневого внесення.",
+      "full_description": "Brexil Fe входить до лінійки Brexil® Valagro. За офіційним каталогом, Brexil® — це мікрогранульовані продукти з мікроелементами, комплексованими LSA (амонійний лігносульфонат) природного походження.\n\nЛінійка призначена насамперед для профілактики та корекції дефіцитів мікроелементів при листковому внесенні. Виробник підкреслює швидке та безпечне проникнення через листкову поверхню.\n\nНорми нижче взяті з офіційного Farm Catalogue 2018 і є загальними міжнародними орієнтирами; перед застосуванням в Україні потрібно звіряти актуальну етикетку конкретного продукту.",
+      "why": [
+        {
+          "title": "LSA",
+          "text": "Мікроелементи комплексовані LSA природного походження."
+        },
+        {
+          "title": "ЛИСТКОВЕ ВНЕСЕННЯ",
+          "text": "Лінійка Brexil® розроблена для позакореневого внесення."
+        },
+        {
+          "title": "МІКРОГРАНУЛИ",
+          "text": "Розчинна мікрогранульована форма для приготування робочого розчину."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Farm Catalogue — Brexil® line",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2721,8 +3648,82 @@
       "import_meta": {
         "source_row": 22,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "BREXIL®",
+        "text": "LSA-комплексування та спеціальний носій сприяють проникненню мікроелементів через листкову поверхню і їх подальшому переміщенню в тканинах."
+      },
+      "application": {
+        "intro": "Орієнтири Valagro Farm Catalogue 2018:",
+        "rows": [
+          {
+            "crop": "Плодові",
+            "period": "листково",
+            "dose": "2,0–2,5 кг/га"
+          },
+          {
+            "crop": "Овочі",
+            "period": "листково",
+            "dose": "2,5–3,0 кг/га"
+          },
+          {
+            "crop": "Квіти",
+            "period": "листково",
+            "dose": "150–200 г/гл"
+          },
+          {
+            "crop": "Польові культури",
+            "period": "листково",
+            "dose": "2,5–3,0 кг/га"
+          }
+        ],
+        "note": "Для Brexil Mix/Multi виробник окремо вказує дотримуватися рекомендацій етикетки."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Мікродобриво для листкового внесення"
+        },
+        {
+          "label": "Форма",
+          "value": "Мікрогранули"
+        },
+        {
+          "label": "Комплексоутворювач",
+          "value": "LSA"
+        },
+        {
+          "label": "Комплексована фракція",
+          "value": "100%"
+        },
+        {
+          "label": "Склад",
+          "value": "Fe 10%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "3,3"
+        },
+        {
+          "label": "Розчинність",
+          "value": "40 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "коричневий"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        }
+      ]
     },
     "brexil-mix": {
       "id": "brexil-mix",
@@ -2730,23 +3731,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
       "name": "Brexil Mix",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Багатокомпонентний комплекс мікроелементів для листкового живлення",
+      "lead": "Комбінація Mg, Zn, B, Cu, Fe, Mn і Mo для комплексного мікроелементного живлення.",
+      "short_description": "Brexil Mix — мікрогранульований продукт лінійки Brexil® на основі мікроелементів, комплексованих LSA, для позакореневого внесення.",
+      "full_description": "Brexil Mix входить до лінійки Brexil® Valagro. За офіційним каталогом, Brexil® — це мікрогранульовані продукти з мікроелементами, комплексованими LSA (амонійний лігносульфонат) природного походження.\n\nЛінійка призначена насамперед для профілактики та корекції дефіцитів мікроелементів при листковому внесенні. Виробник підкреслює швидке та безпечне проникнення через листкову поверхню.\n\nНорми нижче взяті з офіційного Farm Catalogue 2018 і є загальними міжнародними орієнтирами; перед застосуванням в Україні потрібно звіряти актуальну етикетку конкретного продукту.",
+      "why": [
+        {
+          "title": "LSA",
+          "text": "Мікроелементи комплексовані LSA природного походження."
+        },
+        {
+          "title": "ЛИСТКОВЕ ВНЕСЕННЯ",
+          "text": "Лінійка Brexil® розроблена для позакореневого внесення."
+        },
+        {
+          "title": "МІКРОГРАНУЛИ",
+          "text": "Розчинна мікрогранульована форма для приготування робочого розчину."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.syngenta.ua/sites/g/files/kgtney1466/files/media/document/2025/01/20/catalog2025.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Farm Catalogue — Brexil® line",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.syngenta.ua/sites/g/files/kgtney1466/files/media/document/2025/01/20/catalog2025.pdf",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2782,8 +3809,82 @@
       "import_meta": {
         "source_row": 23,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "BREXIL®",
+        "text": "LSA-комплексування та спеціальний носій сприяють проникненню мікроелементів через листкову поверхню і їх подальшому переміщенню в тканинах."
+      },
+      "application": {
+        "intro": "Орієнтири Valagro Farm Catalogue 2018:",
+        "rows": [
+          {
+            "crop": "Плодові",
+            "period": "листково",
+            "dose": "200–300 г/гл"
+          },
+          {
+            "crop": "Овочі",
+            "period": "листково",
+            "dose": "150–200 г/гл"
+          },
+          {
+            "crop": "Квіти",
+            "period": "листково",
+            "dose": "150–200 г/гл"
+          },
+          {
+            "crop": "Польові культури",
+            "period": "листково",
+            "dose": "1,5–2,5 кг/га"
+          }
+        ],
+        "note": "Для Brexil Mix/Multi виробник окремо вказує дотримуватися рекомендацій етикетки."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Мікродобриво для листкового внесення"
+        },
+        {
+          "label": "Форма",
+          "value": "Мікрогранули"
+        },
+        {
+          "label": "Комплексоутворювач",
+          "value": "LSA"
+        },
+        {
+          "label": "Комплексована фракція",
+          "value": "100%"
+        },
+        {
+          "label": "Склад",
+          "value": "MgO 6%; B 1,2%; Cu 0,8%; Fe 0,6%; Mn 0,7%; Mo 1,0%; Zn 5,0%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "4,6"
+        },
+        {
+          "label": "Розчинність",
+          "value": "30 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "коричневий"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        }
+      ]
     },
     "brexil-multi": {
       "id": "brexil-multi",
@@ -2791,23 +3892,49 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "Valagro",
+      "eyebrow": "МІКРОЕЛЕМЕНТИ · VALAGRO",
       "name": "Brexil Multi",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Мультиелементне мікродобриво з магнієм для листкового внесення",
+      "lead": "MgO 8,5% у поєднанні з Fe, Mn, Zn і B для комплексних листкових програм.",
+      "short_description": "Brexil Multi — мікрогранульований продукт лінійки Brexil® на основі мікроелементів, комплексованих LSA, для позакореневого внесення.",
+      "full_description": "Brexil Multi входить до лінійки Brexil® Valagro. За офіційним каталогом, Brexil® — це мікрогранульовані продукти з мікроелементами, комплексованими LSA (амонійний лігносульфонат) природного походження.\n\nЛінійка призначена насамперед для профілактики та корекції дефіцитів мікроелементів при листковому внесенні. Виробник підкреслює швидке та безпечне проникнення через листкову поверхню.\n\nНорми нижче взяті з офіційного Farm Catalogue 2018 і є загальними міжнародними орієнтирами; перед застосуванням в Україні потрібно звіряти актуальну етикетку конкретного продукту.",
+      "why": [
+        {
+          "title": "LSA",
+          "text": "Мікроелементи комплексовані LSA природного походження."
+        },
+        {
+          "title": "ЛИСТКОВЕ ВНЕСЕННЯ",
+          "text": "Лінійка Brexil® розроблена для позакореневого внесення."
+        },
+        {
+          "title": "МІКРОГРАНУЛИ",
+          "text": "Розчинна мікрогранульована форма для приготування робочого розчину."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Farm Catalogue — Brexil® line",
+          "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "source_pdf": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+        "source_type": "manufacturer",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -2843,8 +3970,82 @@
       "import_meta": {
         "source_row": 24,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "02",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "BREXIL®",
+        "text": "LSA-комплексування та спеціальний носій сприяють проникненню мікроелементів через листкову поверхню і їх подальшому переміщенню в тканинах."
+      },
+      "application": {
+        "intro": "Орієнтири Valagro Farm Catalogue 2018:",
+        "rows": [
+          {
+            "crop": "Плодові",
+            "period": "листково",
+            "dose": "2,5–3,0 кг/га"
+          },
+          {
+            "crop": "Овочі",
+            "period": "листково",
+            "dose": "1,5–2,0 кг/га"
+          },
+          {
+            "crop": "Квіти",
+            "period": "листково",
+            "dose": "150–200 г/гл"
+          },
+          {
+            "crop": "Польові культури",
+            "period": "листково",
+            "dose": "2,5–3,0 кг/га"
+          }
+        ],
+        "note": "Для Brexil Mix/Multi виробник окремо вказує дотримуватися рекомендацій етикетки."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Мікродобриво для листкового внесення"
+        },
+        {
+          "label": "Форма",
+          "value": "Мікрогранули"
+        },
+        {
+          "label": "Комплексоутворювач",
+          "value": "LSA"
+        },
+        {
+          "label": "Комплексована фракція",
+          "value": "100%"
+        },
+        {
+          "label": "Склад",
+          "value": "MgO 8,5%; B 0,5%; Fe 4,0%; Mn 4,0%; Zn 1,5%"
+        },
+        {
+          "label": "pH 1% розчину",
+          "value": "3,2"
+        },
+        {
+          "label": "Розчинність",
+          "value": "30 г/100 мл"
+        },
+        {
+          "label": "Колір",
+          "value": "коричневий"
+        },
+        {
+          "label": "Бренд",
+          "value": "Valagro"
+        },
+        {
+          "label": "Компанія",
+          "value": "Syngenta Biologicals"
+        }
+      ]
     },
     "brexil-zn": {
       "id": "brexil-zn",

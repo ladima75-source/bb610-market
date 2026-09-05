@@ -1,0 +1,965 @@
+[
+  {
+    "source_row": 49,
+    "brand": "Valagro / Syngenta Biologicals",
+    "category": "biostimulation",
+    "eyebrow": "БІОСТИМУЛЯЦІЯ · SYNGENTA BIOLOGICALS",
+    "name": "Maxicrop Cream",
+    "subtitle": "Біостимулятор на основі Ascophyllum nodosum для підтримки фотосинтезу та росту",
+    "lead": "Підсилює метаболічну й фотосинтетичну активність та допомагає культурі ефективніше використовувати світлову енергію.",
+    "short_description": "Maxicrop Cream у матриці BB610 технічно прив'язаний до актуального MC CREAM (GEA644) Syngenta Biologicals.",
+    "full_description": "Назва «Maxicrop Cream» у матриці постачальника відповідає лінійці MC CREAM. Актуальна офіційна сторінка Syngenta описує MC CREAM як кремову формуляцію з високою концентрацією активних фітоінгредієнтів Ascophyllum nodosum.\n\nПродукт стимулює метаболічну та фотосинтетичну активність, підтримує ріст і може застосовуватися в періоди активного формування врожаю.\n\nДля BB610 зберігаємо комерційну назву з матриці, але технічні характеристики прив'язуємо до актуального MC CREAM.",
+    "why": [
+      {
+        "title": "ФОТОСИНТЕЗ",
+        "text": "Підтримує фотосинтетичну активність за різної інтенсивності освітлення."
+      },
+      {
+        "title": "ASCOPHYLLUM NODOSUM",
+        "text": "Активні фітоінгредієнти отримані з морської водорості."
+      },
+      {
+        "title": "РІСТ",
+        "text": "Сприяє метаболічній активності та росту рослини."
+      }
+    ],
+    "how_it_works": {
+      "badge": "MC CREAM / GEA644",
+      "text": "Біоактивні компоненти Ascophyllum nodosum підтримують фотосинтетичні й метаболічні процеси, підвищуючи доступність енергії для росту."
+    },
+    "application": {
+      "intro": "Актуальна офіційна норма Syngenta Italia:",
+      "rows": [
+        {
+          "crop": "Усі культури",
+          "period": "листково, 2–3 обробки кожні 7–10 днів",
+          "dose": "2–3 л/га"
+        }
+      ],
+      "note": "Локальну українську норму перед продажем звірити з етикеткою конкретної партії."
+    },
+    "specs": [
+      {
+        "label": "Тип продукту",
+        "value": "Біостимулятор"
+      },
+      {
+        "label": "Сировина",
+        "value": "Ascophyllum nodosum"
+      },
+      {
+        "label": "Технологія",
+        "value": "GEA644"
+      },
+      {
+        "label": "Форма",
+        "value": "Кремова / рідка"
+      },
+      {
+        "label": "Актуальна офіційна назва",
+        "value": "MC CREAM"
+      }
+    ],
+    "origin": {
+      "brand": "Syngenta Biologicals / Valagro",
+      "company": "Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/mc-cream"
+    },
+    "documents": [
+      {
+        "title": "MC CREAM — офіційна сторінка Syngenta Italia",
+        "url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/mc-cream"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/mc-cream",
+      "source_type": "current_manufacturer_product_page",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 50,
+    "brand": "Valagro / Syngenta Biologicals",
+    "category": "biostimulation",
+    "eyebrow": "БІОСТИМУЛЯЦІЯ · SYNGENTA BIOLOGICALS",
+    "name": "Maxicrop Set / Максікроп Зав'язь",
+    "subtitle": "Біостимулятор для підтримки цвітіння та зав'язування плодів",
+    "lead": "Фітоінгредієнти Ascophyllum nodosum, бор і цинк підтримують процеси цвітіння та зав'язування.",
+    "short_description": "Maxicrop Set у матриці BB610 технічно прив'язаний до актуального MC SET (GEA524) Syngenta Biologicals.",
+    "full_description": "Актуальний MC SET — рідкий біостимулятор на основі активних фітоінгредієнтів Ascophyllum nodosum, збагачений бором і цинком. Syngenta позиціонує його для стимуляції та покращення процесів цвітіння і зав'язування плодів.\n\nУ BB610 назва «Maxicrop Set / Максікроп Зав'язь» зберігається як комерційна назва з матриці, але технічна картка спирається на MC SET.",
+    "why": [
+      {
+        "title": "ЦВІТІННЯ",
+        "text": "Підтримує фізіологічні процеси фази цвітіння."
+      },
+      {
+        "title": "ЗАВ'ЯЗУВАННЯ",
+        "text": "Спрямований на покращення зав'язування плодів."
+      },
+      {
+        "title": "B + Zn",
+        "text": "Формула збагачена бором і цинком."
+      }
+    ],
+    "how_it_works": {
+      "badge": "MC SET / GEA524",
+      "text": "Біомолекули Ascophyllum nodosum у поєднанні з бором і цинком підтримують процеси, пов'язані з цвітінням і формуванням зав'язі."
+    },
+    "application": {
+      "intro": "Актуальна офіційна норма Syngenta Italia:",
+      "rows": [
+        {
+          "crop": "Усі культури",
+          "period": "від передцвітіння, 2 внесення через 7 днів",
+          "dose": "1–2 л/га або 150–200 мл/гл"
+        }
+      ],
+      "note": "Для України пріоритет має етикетка фактичної партії."
+    },
+    "specs": [
+      {
+        "label": "Тип продукту",
+        "value": "Біостимулятор"
+      },
+      {
+        "label": "Сировина",
+        "value": "Ascophyllum nodosum"
+      },
+      {
+        "label": "Мінеральна фракція",
+        "value": "Бор + цинк"
+      },
+      {
+        "label": "Технологія",
+        "value": "GEA524"
+      },
+      {
+        "label": "Форма",
+        "value": "Рідка"
+      },
+      {
+        "label": "Актуальна офіційна назва",
+        "value": "MC SET"
+      }
+    ],
+    "origin": {
+      "brand": "Syngenta Biologicals / Valagro",
+      "company": "Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/mc-set"
+    },
+    "documents": [
+      {
+        "title": "MC SET — офіційна сторінка Syngenta Italia",
+        "url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/mc-set"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/mc-set",
+      "source_type": "current_manufacturer_product_page",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 51,
+    "brand": "Valagro / Syngenta Biologicals",
+    "category": "biostimulation",
+    "eyebrow": "БІОСТИМУЛЯЦІЯ · VALAGRO",
+    "name": "Benefit PZ",
+    "subtitle": "Біостимулятор для збільшення та вирівнювання розміру плодів",
+    "lead": "Підтримує клітинний поділ і розтягнення на ранніх етапах формування плоду.",
+    "short_description": "Benefit PZ — біостимулятор Valagro, розроблений для збільшення маси й вирівнювання калібру плодів.",
+    "full_description": "За офіційним каталогом Valagro BENEFIT PZ застосовують від початку цвітіння. Продукт стимулює клітинний поділ і розтягнення, збільшуючи кількість та розмір клітин у плоді.\n\nУ складі технологічної концепції виробник вказує вітаміни, білки та вільні амінокислоти. Продукт орієнтований на плодово-ягідні та овочеві культури.",
+    "why": [
+      {
+        "title": "КАЛІБР ПЛОДІВ",
+        "text": "Сприяє збільшенню та вирівнюванню розміру плодів."
+      },
+      {
+        "title": "КЛІТИННИЙ ПОДІЛ",
+        "text": "Працює на ранніх етапах розвитку плоду."
+      },
+      {
+        "title": "ЯКІСТЬ",
+        "text": "Не повинен погіршувати щільність і лежкість плодів за офіційним описом."
+      }
+    ],
+    "how_it_works": {
+      "badge": "BENEFIT PZ / GEA708",
+      "text": "Біоактивні компоненти підтримують клітинний поділ та подальше розтягнення клітин у період формування плоду."
+    },
+    "application": {
+      "intro": "Офіційні орієнтири Valagro:",
+      "rows": [
+        {
+          "crop": "Плодові",
+          "period": "2–3 обробки кожні 5–7 днів від початку цвітіння",
+          "dose": "3–4 л/га"
+        },
+        {
+          "crop": "Овочі",
+          "period": "від першого цвітіння кожні 7–10 днів",
+          "dose": "3–4 л/га"
+        },
+        {
+          "crop": "Дині / кавуни",
+          "period": "щотижня від першого цвітіння",
+          "dose": "3–4 л/га"
+        }
+      ],
+      "note": "Локальну етикетку конкретної партії перевірити перед публікацією."
+    },
+    "specs": [
+      {
+        "label": "Тип продукту",
+        "value": "Біостимулятор"
+      },
+      {
+        "label": "Технологія",
+        "value": "GEA708"
+      },
+      {
+        "label": "Ключові компоненти",
+        "value": "Вітаміни, білки, вільні амінокислоти"
+      },
+      {
+        "label": "Спосіб внесення",
+        "value": "Листковий"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+    },
+    "documents": [
+      {
+        "title": "Valagro Farm Catalogue — BENEFIT PZ",
+        "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf",
+      "source_type": "manufacturer_catalogue",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 52,
+    "brand": "Valagro / Syngenta Biologicals",
+    "category": "biostimulation",
+    "eyebrow": "БІОСТИМУЛЯЦІЯ · VALAGRO",
+    "name": "Sweet",
+    "subtitle": "Біостимулятор дозрівання та якості плодів",
+    "lead": "Підтримує накопичення цукрів, сухих речовин, забарвлення і товарні показники плодів у період дозрівання.",
+    "short_description": "SWEET® — біостимулятор Valagro для підтримки процесів дозрівання й якості плодів.",
+    "full_description": "Офіційний Farm Catalogue описує SWEET® як біостимулятор, що сприяє утворенню цукрів і прискорює біохімічні процеси дозрівання завдяки кальцію, магнію, мікроелементам і специфічним полісахаридам.\n\nВиробник заявляє підвищення рівня цукрів і сухих речовин, покращення Brix, щільності плодів та зменшення частки непридатних до продажу плодів.",
+    "why": [
+      {
+        "title": "ДОЗРІВАННЯ",
+        "text": "Підтримує біохімічні процеси дозрівання."
+      },
+      {
+        "title": "ЦУКРИ / BRIX",
+        "text": "Сприяє накопиченню цукрів і сухих речовин."
+      },
+      {
+        "title": "ЯКІСТЬ",
+        "text": "Підтримує щільність, забарвлення та товарні характеристики плодів."
+      }
+    ],
+    "how_it_works": {
+      "badge": "SWEET® / GEA395",
+      "text": "Кальцій, магній, мікроелементи та специфічні полісахариди підтримують фізіологічні процеси дозрівання й формування якості плодів."
+    },
+    "application": {
+      "intro": "Листкове застосування відповідно до культури та етикетки.",
+      "rows": [],
+      "note": "Valagro також рекомендує синергію SWEET® + MEGAFOL®; точну норму для України звірити з локальною етикеткою."
+    },
+    "specs": [
+      {
+        "label": "Тип продукту",
+        "value": "Біостимулятор дозрівання"
+      },
+      {
+        "label": "Ключові компоненти",
+        "value": "Кальцій, магній, мікроелементи, специфічні полісахариди"
+      },
+      {
+        "label": "Технологія",
+        "value": "GEA395"
+      },
+      {
+        "label": "Спосіб внесення",
+        "value": "Листковий"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+    },
+    "documents": [
+      {
+        "title": "Valagro Farm Catalogue — SWEET",
+        "url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+      "source_type": "manufacturer_catalogue",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 53,
+    "brand": "Valagro / Syngenta Biologicals",
+    "category": "biostimulation",
+    "eyebrow": "БІОСТИМУЛЯЦІЯ · SYNGENTA BIOLOGICALS",
+    "name": "Megafol",
+    "subtitle": "Антистресовий біостимулятор та активатор росту",
+    "lead": "Підтримує збалансований вегетативний розвиток і допомагає рослинам швидше відновлюватися після абіотичного стресу.",
+    "short_description": "MEGAFOL™ — біостимулятор Syngenta Biologicals на основі вітамінів, амінокислот, білків, бетаїнів і факторів росту.",
+    "full_description": "Актуальна офіційна сторінка Syngenta Biologicals описує MEGAFOL™ як антистресовий активатор росту. Регулярне застосування підтримує збалансований вегетативний розвиток і продуктивність.\n\nПід час стресу — заморозків, асфіксії коренів, граду та інших несприятливих факторів — синергія бетаїнів і амінокислот допомагає рослинам швидше відновлювати ріст.\n\nMEGAFOL також використовується як носій у листкових бакових сумішах.",
+    "why": [
+      {
+        "title": "АНТИСТРЕС",
+        "text": "Підтримка рослини під час абіотичного стресу."
+      },
+      {
+        "title": "АМІНОКИСЛОТИ + БЕТАЇНИ",
+        "text": "Ключова частина біоактивного комплексу."
+      },
+      {
+        "title": "СУМІШІ",
+        "text": "Може покращувати ефективність листкових обробок як носій."
+      }
+    ],
+    "how_it_works": {
+      "badge": "MEGAFOL™",
+      "text": "Бетаїни, амінокислоти, білки, вітаміни та фактори росту підтримують метаболізм і відновлення рослини під час стресу."
+    },
+    "application": {
+      "intro": "Застосування — листково за культурою та локальною етикеткою.",
+      "rows": [],
+      "note": "Не переносити універсальну дозу між культурами без перевірки актуальної етикетки."
+    },
+    "specs": [
+      {
+        "label": "Тип продукту",
+        "value": "Антистресовий біостимулятор"
+      },
+      {
+        "label": "Ключові компоненти",
+        "value": "Вітаміни, амінокислоти, білки, бетаїни, фактори росту"
+      },
+      {
+        "label": "Спосіб внесення",
+        "value": "Листковий"
+      }
+    ],
+    "origin": {
+      "brand": "Syngenta Biologicals / Valagro",
+      "company": "Syngenta Biologicals",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/en/products/farm/plant-biostimulants/megafol/"
+    },
+    "documents": [
+      {
+        "title": "MEGAFOL — офіційна сторінка Syngenta Biologicals",
+        "url": "https://www.valagro.com/en/products/farm/plant-biostimulants/megafol/"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/en/products/farm/plant-biostimulants/megafol/",
+      "source_type": "current_manufacturer_product_page",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 54,
+    "brand": "Valagro",
+    "category": "nutrition",
+    "eyebrow": "ТЕХНОЛОГІЧНИЙ ПРОДУКТ · VALAGRO",
+    "name": "Control DMP",
+    "subtitle": "Кислотний кондиціонер робочого розчину та покращувач листкового внесення",
+    "lead": "Знижує pH бакової суміші, покращує сумісність компонентів і змочування листкової поверхні.",
+    "short_description": "CONTROL DMP — рідке NP-добриво 3-17 з підкислювальною та ад'ювантною функцією.",
+    "full_description": "Офіційна етикетка Valagro визначає CONTROL DMP як добриво з підкислювальною дією. Формула містить 3% загального азоту та 17% водорозчинного P₂O₅.\n\nПродукт знижує pH робочого розчину, зменшує поверхневий натяг, сприяє проникненню розчину в рослину та може покращувати сумісність бакових сумішей.",
+    "why": [
+      {
+        "title": "pH",
+        "text": "Підкислює робочий розчин."
+      },
+      {
+        "title": "ЗМОЧУВАННЯ",
+        "text": "Зменшує поверхневий натяг і покращує покриття."
+      },
+      {
+        "title": "СУМІСНІСТЬ",
+        "text": "Працює як диспергатор у складних бакових сумішах."
+      }
+    ],
+    "how_it_works": {
+      "badge": "CONTROL DMP",
+      "text": "Підкислювальна формула змінює хімічне середовище бакової суміші й одночасно покращує фізичне змочування листкової поверхні."
+    },
+    "application": {
+      "intro": "Офіційна етикетка Valagro:",
+      "rows": [
+        {
+          "crop": "Плодові, овочеві, декоративні",
+          "period": "листково",
+          "dose": "20–200 мл / 100 л"
+        }
+      ],
+      "note": "Дозу для корекції pH визначають за початковим pH і жорсткістю води."
+    },
+    "specs": [
+      {
+        "label": "Тип продукту",
+        "value": "NP-добриво з підкислювальною дією"
+      },
+      {
+        "label": "Азот (N)",
+        "value": "3%"
+      },
+      {
+        "label": "P₂O₅ водорозчинний",
+        "value": "17%"
+      },
+      {
+        "label": "Форма",
+        "value": "Рідка"
+      }
+    ],
+    "origin": {
+      "brand": "Valagro",
+      "company": "Syngenta Biologicals / Valagro",
+      "manufacturer": "Valagro S.p.A.",
+      "country": "Італія",
+      "official_url": "https://www.valagro.com/media/restricted_area/documents/4141109F87P1F9_02_CONTROL_DMP_1_L_A.pdf"
+    },
+    "documents": [
+      {
+        "title": "CONTROL DMP — офіційна етикетка Valagro",
+        "url": "https://www.valagro.com/media/restricted_area/documents/4141109F87P1F9_02_CONTROL_DMP_1_L_A.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.valagro.com/media/restricted_area/documents/4141109F87P1F9_02_CONTROL_DMP_1_L_A.pdf",
+      "source_type": "manufacturer_label",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 55,
+    "brand": "Miller Chemical",
+    "category": "other",
+    "eyebrow": "АД'ЮВАНТ · MILLER CHEMICAL",
+    "name": "Спрей-Ейд",
+    "subtitle": "Багатофункціональний ад'ювант, підкислювач і покращувач сумісності бакових сумішей",
+    "lead": "Знижує pH, покращує сумісність препаратів, змочування та покриття і допомагає підтримувати чистоту форсунок і ліній.",
+    "short_description": "Spray-Aide® — багатофункціональний ад'ювант Miller Chemical для кондиціонування робочого розчину.",
+    "full_description": "Актуальна офіційна сторінка Miller Chemical описує Spray-Aide® як сумісник, підкислювач, сурфактант і розтікач в одній формулі.\n\nПродукт допомагає працювати з лужною водою, знижує pH, стабілізує складні бакові суміші, покращує розтікання крапель і зменшує накопичення відкладень у баку, лініях та форсунках.\n\nSpray-Aide додають у бак до пестицидів відповідно до етикетки.",
+    "why": [
+      {
+        "title": "5 В 1",
+        "text": "Сумісність, підкислення, сурфактант, розтікання, допомога проти ґрунтової кірки."
+      },
+      {
+        "title": "ЛУЖНА ВОДА",
+        "text": "Підтримує стабільність pH-чутливих компонентів."
+      },
+      {
+        "title": "ОБЛАДНАННЯ",
+        "text": "Допомагає зменшувати відкладення у форсунках і лініях."
+      }
+    ],
+    "how_it_works": {
+      "badge": "SPRAY-AIDE®",
+      "text": "Кислотні та поверхнево-активні компоненти одночасно коригують pH і знижують поверхневий натяг робочого розчину."
+    },
+    "application": {
+      "intro": "Офіційна етикетка Miller:",
+      "rows": [
+        {
+          "crop": "Бакові суміші",
+          "period": "перед додаванням пестицидів",
+          "dose": "177–475 мл / 380 л робочого розчину"
+        }
+      ],
+      "note": "Завжди додавати відповідно до актуальної етикетки та порядку змішування Miller Chemical."
+    },
+    "specs": [
+      {
+        "label": "Тип продукту",
+        "value": "Ад'ювант / підкислювач / сурфактант"
+      },
+      {
+        "label": "Основні функціональні агенти",
+        "value": "Polyethylene glycol alkyl ether phosphate та калієві солі"
+      },
+      {
+        "label": "Частка функціональних агентів",
+        "value": "75% за етикеткою"
+      }
+    ],
+    "origin": {
+      "brand": "Miller Chemical",
+      "company": "Miller Chemical & Fertilizer, LLC",
+      "manufacturer": "Miller Chemical & Fertilizer, LLC",
+      "country": "США",
+      "official_url": "https://www.millerchemical.com/products/adjuvants/spray-aide"
+    },
+    "documents": [
+      {
+        "title": "Spray-Aide — офіційна сторінка Miller Chemical",
+        "url": "https://www.millerchemical.com/products/adjuvants/spray-aide"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.millerchemical.com/products/adjuvants/spray-aide",
+      "source_type": "current_manufacturer_product_page",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 56,
+    "brand": "Bioiberica",
+    "category": "biostimulation",
+    "eyebrow": "БІОСТИМУЛЯЦІЯ · BIOIBERICA",
+    "name": "Terra-Sorb",
+    "subtitle": "Амінокислотний листковий біостимулятор з мікроелементами",
+    "lead": "Високий вміст вільних L-α-амінокислот допомагає культурі швидше відновлюватися після стресу та підтримує критичні фази розвитку.",
+    "short_description": "Terra-Sorb® complex — концентрований амінокислотний біостимулятор Bioiberica для листкового внесення.",
+    "full_description": "Актуальна сторінка Bioiberica описує Terra-Sorb® complex як формуляцію з L-α-амінокислотами Enzyneer® і мікроелементами.\n\nПродукт підвищує фотосинтетичну активність і вміст хлорофілу, підтримує швидке відновлення після стресових ситуацій та містить підвищену частку бору для підтримки зав'язування.",
+    "why": [
+      {
+        "title": "20% АМІНОКИСЛОТ",
+        "text": "Висока концентрація вільних амінокислот."
+      },
+      {
+        "title": "АНТИСТРЕС",
+        "text": "Швидка підтримка у критичних ситуаціях."
+      },
+      {
+        "title": "MICRO",
+        "text": "Комплекс Mg, B, Fe, Mn, Mo і Zn."
+      }
+    ],
+    "how_it_works": {
+      "badge": "TERRA-SORB® COMPLEX",
+      "text": "Вільні L-α-амінокислоти швидко включаються у метаболічні процеси, зменшуючи витрати рослини на власний синтез під час стресу."
+    },
+    "application": {
+      "intro": "Офіційна норма Bioiberica:",
+      "rows": [
+        {
+          "crop": "Усі типи культур",
+          "period": "стресові та критичні фази",
+          "dose": "2–3 мл/л або 2–3 л/га"
+        }
+      ],
+      "note": "Листкове застосування."
+    },
+    "specs": [
+      {
+        "label": "Вільні амінокислоти",
+        "value": "20%"
+      },
+      {
+        "label": "Загальний азот",
+        "value": "5,5%"
+      },
+      {
+        "label": "Органічний азот",
+        "value": "5%"
+      },
+      {
+        "label": "MgO",
+        "value": "0,8%"
+      },
+      {
+        "label": "B",
+        "value": "1,5%"
+      },
+      {
+        "label": "Fe",
+        "value": "1,0%"
+      },
+      {
+        "label": "Mn",
+        "value": "0,1%"
+      },
+      {
+        "label": "Mo",
+        "value": "0,001%"
+      },
+      {
+        "label": "Zn",
+        "value": "0,1%"
+      },
+      {
+        "label": "Органічна речовина",
+        "value": "25%"
+      }
+    ],
+    "origin": {
+      "brand": "Terra-Sorb",
+      "company": "Bioiberica",
+      "manufacturer": "Bioiberica",
+      "country": "Іспанія",
+      "official_url": "https://www.bioiberica.com/en/products/plants-health/terra-sorb-complex"
+    },
+    "documents": [
+      {
+        "title": "Terra-Sorb complex — офіційна сторінка Bioiberica",
+        "url": "https://www.bioiberica.com/en/products/plants-health/terra-sorb-complex"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.bioiberica.com/en/products/plants-health/terra-sorb-complex",
+      "source_type": "current_manufacturer_product_page",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 57,
+    "brand": "Miller Chemical and Fertilizer LLC",
+    "category": "biostimulation",
+    "eyebrow": "РЕГУЛЯТОР РОСТУ · MILLER",
+    "name": "Ерайз",
+    "subtitle": "Мультикомпонентний регулятор росту для старту вегетації та обробки насіння",
+    "lead": "Поєднує брасинолід, гіберелінову кислоту, IBA та цинк для підтримки раннього розвитку рослин.",
+    "short_description": "Ерайз — регулятор росту на основі фітогормонів; дані картки наразі спираються на локальну картку Organic Planet.",
+    "full_description": "За карткою Organic Planet Ерайз містить синтетичні фітогормони трьох функціональних напрямків: брасинолід, гіберелінову кислоту та 1H-індол-3-бутанову кислоту (IBA), а також цинк.\n\nПродукт може використовуватися для передпосівної обробки насіння та по вегетації. У відкритому актуальному каталозі Miller окрему продуктову сторінку Eraise не підтверджено, тому статус джерела позначений як supplier/local.",
+    "why": [
+      {
+        "title": "ФІТОГОРМОНИ",
+        "text": "Поєднання кількох регуляторних компонентів."
+      },
+      {
+        "title": "НАСІННЯ + ВЕГЕТАЦІЯ",
+        "text": "Може застосовуватися передпосівно й по рослині."
+      },
+      {
+        "title": "Zn",
+        "text": "Містить 0,5% цинку за карткою постачальника."
+      }
+    ],
+    "how_it_works": {
+      "badge": "ERAISE",
+      "text": "Комбінація регуляторних речовин впливає на процеси проростання, раннього росту та розвитку вегетативних органів."
+    },
+    "application": {
+      "intro": "Норми з картки Organic Planet:",
+      "rows": [
+        {
+          "crop": "Передпосівна обробка насіння",
+          "period": "до висіву",
+          "dose": "2 мл/л води"
+        },
+        {
+          "crop": "По вегетації",
+          "period": "за програмою",
+          "dose": "30–35 мл / 10 л води"
+        }
+      ],
+      "note": "Перед комерційною публікацією бажано звірити актуальну етикетку Miller."
+    },
+    "specs": [
+      {
+        "label": "Брасинолід",
+        "value": "0,0032%"
+      },
+      {
+        "label": "Гіберелінова кислота GA3",
+        "value": "0,0010%"
+      },
+      {
+        "label": "1H-індол-3-бутанова кислота",
+        "value": "0,0120%"
+      },
+      {
+        "label": "Zn",
+        "value": "0,5000%"
+      },
+      {
+        "label": "Форма",
+        "value": "Розчин"
+      }
+    ],
+    "origin": {
+      "brand": "Miller",
+      "company": "Miller Chemical and Fertilizer LLC",
+      "manufacturer": "Miller Chemical and Fertilizer LLC",
+      "country": "США",
+      "official_url": ""
+    },
+    "documents": [
+      {
+        "title": "Organic Planet — Ерайз",
+        "url": "https://organicplanet.com.ua/katalog/biostymulyatory/erajz-biostymulyator-rosta-i-nachala-vegetacii-100-ml"
+      }
+    ],
+    "sources": {
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/erajz-biostymulyator-rosta-i-nachala-vegetacii-100-ml",
+      "source_type": "supplier_product_page",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 58,
+    "brand": "Organic Planet",
+    "category": "biostimulation",
+    "eyebrow": "РЕГУЛЯТОР РОСТУ · ORGANIC PLANET",
+    "name": "Кеміра Баланс / Nitrate Balancer",
+    "subtitle": "Регулятор для перерозподілу вуглеводів і підтримки холодостійкості",
+    "lead": "Бор-молібденова формула для фінальних фаз розвитку, визрівання тканин і контролю надмірного вегетативного росту.",
+    "short_description": "Кеміра Баланс / Nitrate Balancer — продукт Organic Planet із 9% B та 0,005% Mo.",
+    "full_description": "За карткою Organic Planet продукт активує переміщення вуглеводів від вегетативних органів до запасаючих тканин і застосовується на фінальних етапах розвитку.\n\nПостачальник позиціонує продукт для покращення холодостійкості, визрівання тканин, товарних показників коренеплодів і контролю надмірного вегетативного росту.",
+    "why": [
+      {
+        "title": "9% B",
+        "text": "Високий вміст бору."
+      },
+      {
+        "title": "Mo",
+        "text": "Містить 0,005% молібдену."
+      },
+      {
+        "title": "ФІНАЛЬНІ ФАЗИ",
+        "text": "Орієнтований на перерозподіл асимілятів і визрівання тканин."
+      }
+    ],
+    "how_it_works": {
+      "badge": "NITRATE BALANCER",
+      "text": "Бор і молібден використовуються як частина програми регуляції фізіологічних процесів, пов'язаних із транспортом асимілятів та формуванням запасаючих органів."
+    },
+    "application": {
+      "intro": "Норми з картки Organic Planet:",
+      "rows": [
+        {
+          "crop": "Ягідні / плодові",
+          "period": "за місяць до листопаду для холодостійкості",
+          "dose": "25 мл / 10 л"
+        },
+        {
+          "crop": "Коренеплоди / цибулини / бульби",
+          "period": "за 21 день до збирання",
+          "dose": "25 мл / 10 л"
+        },
+        {
+          "crop": "Ягідні",
+          "period": "навесні для контролю надмірного росту",
+          "dose": "25 мл / 10 л"
+        }
+      ],
+      "note": "Дані джерела — Organic Planet; фактичну етикетку конкретної партії перевірити."
+    },
+    "specs": [
+      {
+        "label": "B",
+        "value": "9%"
+      },
+      {
+        "label": "Mo",
+        "value": "0,005%"
+      },
+      {
+        "label": "Спосіб внесення",
+        "value": "Позакореневий"
+      }
+    ],
+    "origin": {
+      "brand": "Organic Planet",
+      "company": "Organic Planet",
+      "manufacturer": "Organic Planet / заявлений виробник на локальній картці",
+      "country": "Україна",
+      "official_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-balans-100-ml-organic-planet"
+    },
+    "documents": [
+      {
+        "title": "Organic Planet — Кеміра Баланс / Nitrate Balancer",
+        "url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-balans-100-ml-organic-planet"
+      }
+    ],
+    "sources": {
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-balans-100-ml-organic-planet",
+      "source_type": "supplier_brand_product_page",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 59,
+    "brand": "Neova",
+    "category": "nutrition",
+    "eyebrow": "КОНДИЦІОНЕР ҐРУНТУ · NEOVA",
+    "name": "NeoTerra Organic-C",
+    "subtitle": "Органічний кондиціонер ґрунту з високим вмістом органічної речовини",
+    "lead": "Підвищує органічний вуглець, покращує структуру ґрунту та підтримує мікробіологічну активність.",
+    "short_description": "NeoTerra Organic-C™ — органічний кондиціонер ґрунту Neova з добірного фінського торфу.",
+    "full_description": "NeoTerra Organic-C™ виробляється з чистого ретельно відібраного органічного торфу. За офіційним матеріалом Neova продукт має високий вміст органічної речовини та здатність підвищувати концентрацію органічного вуглецю в ґрунті.\n\nВиробник також заявляє пребіотичний ефект, що підтримує встановлення та активність ґрунтової мікрофлори, і покращення фізичних характеристик ґрунту.",
+    "why": [
+      {
+        "title": "ОРГАНІЧНИЙ ВУГЛЕЦЬ",
+        "text": "Підвищує запас органічного вуглецю в ґрунті."
+      },
+      {
+        "title": "СТРУКТУРА",
+        "text": "Покращує фізичну структуру ґрунту."
+      },
+      {
+        "title": "МІКРОБІОТА",
+        "text": "Стимулює мікробіологічну активність."
+      }
+    ],
+    "how_it_works": {
+      "badge": "NEOTERRA ORGANIC-C™",
+      "text": "Органічна торфова матриця додає стабільну органічну речовину та гумінові сполуки, підтримуючи структуру й мікробіологію ґрунту."
+    },
+    "application": {
+      "intro": "Внесення — відповідно до типу ґрунту, культури та офіційної рекомендації Neova.",
+      "rows": [],
+      "note": "Фасовка в матриці BB610: 25 кг. Норму не вигадувати без локальної етикетки."
+    },
+    "specs": [
+      {
+        "label": "Тип продукту",
+        "value": "Органічний кондиціонер ґрунту"
+      },
+      {
+        "label": "Сировина",
+        "value": "Відібраний органічний торф"
+      },
+      {
+        "label": "Походження",
+        "value": "Фінляндія"
+      },
+      {
+        "label": "Ключова функція",
+        "value": "Органічний вуглець + структура + мікробіота"
+      }
+    ],
+    "origin": {
+      "brand": "NeoTerra",
+      "company": "Neova Group",
+      "manufacturer": "Neova",
+      "country": "Фінляндія",
+      "official_url": "https://www.neova-group.com/products/soil-conditioners/"
+    },
+    "documents": [
+      {
+        "title": "NeoTerra Soil Conditioners — Neova",
+        "url": "https://www.neova-group.com/products/soil-conditioners/"
+      },
+      {
+        "title": "NeoTerra Organic-C — офіційний PDF",
+        "url": "https://www.neova-group.com/wp-content/uploads/2025/08/neoterra_organic_c_eng_a4.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.neova-group.com/products/soil-conditioners/",
+      "source_pdf": "https://www.neova-group.com/wp-content/uploads/2025/08/neoterra_organic_c_eng_a4.pdf",
+      "source_type": "current_manufacturer_product_family",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  },
+  {
+    "source_row": 60,
+    "brand": "Neova",
+    "category": "nutrition",
+    "eyebrow": "КОНДИЦІОНЕР ҐРУНТУ · NEOVA",
+    "name": "NeoTerra Aqua",
+    "subtitle": "Органічний кондиціонер ґрунту з підвищеною водоутримувальною здатністю",
+    "lead": "Покращує утримання та доступність води, структуру ґрунту, органічний вуглець і мікробіологічну активність.",
+    "short_description": "NeoTerra Aqua у матриці BB610 технічно прив'язаний до актуального NeoTerra Aquafix™ від Neova.",
+    "full_description": "Актуальна продуктова лінійка Neova використовує назву NeoTerra Aquafix™. Це органічний кондиціонер ґрунту з чистого відібраного торфу з високою водоутримувальною здатністю.\n\nВиробник заявляє покращення утримання і доступності води, підвищення органічного вуглецю, покращення структури ґрунту та пребіотичну підтримку мікробіоти.\n\nНазва «NeoTerra Aqua» у вихідній матриці BB610 зберігається як legacy/commercial name до звірки фактичної етикетки, але технічні характеристики беруться з актуального Aquafix™.",
+    "why": [
+      {
+        "title": "ВОДОУТРИМАННЯ",
+        "text": "Покращує водоутримувальну здатність ґрунту."
+      },
+      {
+        "title": "ОРГАНІЧНИЙ ВУГЛЕЦЬ",
+        "text": "Підвищує вміст органічного вуглецю."
+      },
+      {
+        "title": "МІКРОБІОТА",
+        "text": "Має пребіотичний ефект для ґрунтової мікрофлори."
+      }
+    ],
+    "how_it_works": {
+      "badge": "NEOTERRA AQUAFIX™",
+      "text": "Пориста органічна торфова матриця утримує воду та одночасно підтримує фізичну структуру й біологічну активність ґрунту."
+    },
+    "application": {
+      "intro": "Внесення — за типом ґрунту та рекомендацією Neova.",
+      "rows": [],
+      "note": "Фасовка в матриці BB610: 25 кг. Актуальна офіційна назва — NeoTerra Aquafix™."
+    },
+    "specs": [
+      {
+        "label": "Тип продукту",
+        "value": "Органічний кондиціонер ґрунту"
+      },
+      {
+        "label": "Сировина",
+        "value": "Відібраний органічний торф"
+      },
+      {
+        "label": "Ключова функція",
+        "value": "Водоутримання + органічний вуглець + структура ґрунту"
+      },
+      {
+        "label": "Актуальна офіційна назва",
+        "value": "NeoTerra Aquafix™"
+      }
+    ],
+    "origin": {
+      "brand": "NeoTerra",
+      "company": "Neova Group",
+      "manufacturer": "Neova",
+      "country": "Фінляндія",
+      "official_url": "https://www.neova-group.com/products/soil-conditioners/"
+    },
+    "documents": [
+      {
+        "title": "NeoTerra Soil Conditioners — Neova",
+        "url": "https://www.neova-group.com/products/soil-conditioners/"
+      },
+      {
+        "title": "NeoTerra Aquafix — офіційний PDF",
+        "url": "https://www.neova-group.com/wp-content/uploads/2025/09/neoterra_aquafix.pdf"
+      }
+    ],
+    "sources": {
+      "source_url": "https://www.neova-group.com/products/soil-conditioners/",
+      "source_pdf": "https://www.neova-group.com/wp-content/uploads/2025/09/neoterra_aquafix.pdf",
+      "source_type": "current_manufacturer_technical_match",
+      "revision": "Перевірено 2026-09-05",
+      "verified_date": "2026-09-05"
+    }
+  }
+]

@@ -119,7 +119,8 @@
         "source_url": "https://www.valagro.com/usa/en-us/products/farm/biostimulants/kendal/",
         "source_pdf": "https://www.valagro.com/media/media_articles/attachments/valagro_farm_catalogue_2016.pdf",
         "revision": "Перевірено 2026-09-04",
-        "verified_date": "2026-09-04"
+        "verified_date": "2026-09-04",
+        "source_type": "manufacturer_product_page"
       },
       "variants": [
         {
@@ -142,7 +143,9 @@
       "similar": [],
       "import_meta": {
         "organic_planet_source_row": 48,
-        "organic_planet_structure_checked": "2026-09-05"
+        "organic_planet_structure_checked": "2026-09-05",
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
       }
     },
     "megafol": {
@@ -5534,23 +5537,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "ICL / Osmocote",
+      "eyebrow": "КОНТРОЛЬОВАНЕ ЖИВЛЕННЯ · ICL",
       "name": "Osmocote Granula-MAX 14-8-11+TE (5–6M)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Таблетоване контрольовано-вивільнюване добриво 14-8-11+2MgO+TE на 5–6 місяців",
+      "lead": "Точне дозування поживних речовин безпосередньо в контейнері або субстраті.",
+      "short_description": "Osmocote Granula-MAX у матриці BB610 технічно відповідає Osmocote Exact Tablet 5-6M 14-8-11+2MgO+TE.",
+      "full_description": "У матриці постачальника продукт названий «Osmocote Granula-MAX 14-8-11+TE (5–6M)». За формулою, строком дії та таблетованою фасовкою технічна прив'язка відповідає актуальному офіційному продукту ICL Osmocote Exact Tablet 5-6M.\n\nТаблетки мають конічну форму, вносяться безпосередньо в субстрат і забезпечують контрольоване вивільнення поживних речовин протягом 5–6 місяців при 21 °C.\n\nНазву «Granula-MAX» вважаємо комерційною назвою фасування; перед публікацією фото/етикетку конкретної партії потрібно звірити.",
+      "why": [
+        {
+          "title": "ТОЧНЕ ДОЗУВАННЯ",
+          "text": "Однакова доза поживних речовин у кожному контейнері."
+        },
+        {
+          "title": "5–6 МІСЯЦІВ",
+          "text": "Контрольоване вивільнення протягом заявленого періоду."
+        },
+        {
+          "title": "14-8-11 + Mg + TE",
+          "text": "Комплексна формула з магнієм і мікроелементами."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Osmocote",
+        "company": "ICL Growing Solutions",
+        "manufacturer": "ICL",
+        "country": "",
+        "official_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-exact-tablet-tablet-5-6m/"
+      },
+      "documents": [
+        {
+          "title": "Osmocote Exact Tablet 5-6M — офіційна сторінка ICL",
+          "url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-exact-tablet-tablet-5-6m/"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://icl-growingsolutions.com/ornamental-horticulture/products/osmocote-exact-tablet-tablet-5-6m/",
+        "source_type": "manufacturer_technical_match",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -5565,8 +5593,57 @@
       "import_meta": {
         "source_row": 37,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "OSMOCOTE® EXACT TABLET",
+        "text": "Покриті гранули в таблетці поступово вивільняють елементи після зволоження субстрату; швидкість залежить від температури."
+      },
+      "application": {
+        "intro": "Офіційні орієнтири ICL для 5–6M:",
+        "rows": [
+          {
+            "crop": "Контейнерні розсадники",
+            "period": "5–6M",
+            "dose": "3–4 г/л субстрату"
+          },
+          {
+            "crop": "Горщикові рослини",
+            "period": "5–6M",
+            "dose": "3–4 г/л"
+          },
+          {
+            "crop": "Підвісні кошики",
+            "period": "5–6M",
+            "dose": "3–5 г/л"
+          }
+        ],
+        "note": "Тривалість визначена при 21 °C; при нижчій температурі діє довше, при вищій — коротше."
+      },
+      "specs": [
+        {
+          "label": "Формула NPK",
+          "value": "14-8-11"
+        },
+        {
+          "label": "MgO",
+          "value": "2,0%"
+        },
+        {
+          "label": "Мікроелементи",
+          "value": "TE"
+        },
+        {
+          "label": "Тривалість",
+          "value": "5–6 місяців при 21 °C"
+        },
+        {
+          "label": "Форма",
+          "value": "Таблетки 5 г або 7,5 г (офіційний ICL продукт)"
+        }
+      ]
     },
     "agroblen-granula-max-14-20-5-te-56m": {
       "id": "agroblen-granula-max-14-20-5-te-56m",
@@ -5574,23 +5651,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "nutrition",
+      "brand": "ICL / Agroblen",
+      "eyebrow": "КОНТРОЛЬОВАНЕ ЖИВЛЕННЯ · ICL",
       "name": "Agroblen Granula-MAX 14-20-5+TE (5–6M)",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Таблетоване контрольовано-вивільнюване NPK 14-20-5+2MgO+TE на 5–6 місяців",
+      "lead": "Формула з підвищеним фосфором для посадкових ям, молодих насаджень і розвитку кореневої системи.",
+      "short_description": "Agroblen Granula-MAX технічно відповідає Agroblen Tablet 14-20-5+2MgO+TE 5-6M від ICL.",
+      "full_description": "За формулою 14-20-5+2MgO+TE, строком дії та таблетованим форматом продукт у матриці BB610 відповідає офіційному Agroblen Tablet 5-6M.\n\nICL позиціонує цю формулу для нових лісових, садових і виноградних насаджень. Усі NPK-гранули вкриті оболонкою Resin Release Technology, що забезпечує контрольоване та поступове живлення.\n\nНазва «Granula-MAX» є комерційним маркуванням фасування; технічні дані в картці прив'язані до офіційного Agroblen Tablet.",
+      "why": [
+        {
+          "title": "14-20-5",
+          "text": "Підвищена частка фосфору для молодих насаджень."
+        },
+        {
+          "title": "2% MgO + TE",
+          "text": "Додатково магній та мікроелементи."
+        },
+        {
+          "title": "5–6M",
+          "text": "Контрольоване вивільнення протягом 5–6 місяців."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Agroblen",
+        "company": "ICL Growing Solutions",
+        "manufacturer": "ICL",
+        "country": "",
+        "official_url": "https://icl-growingsolutions.com/agriculture/products/agroblen-tablet-14-20-52mgote/"
+      },
+      "documents": [
+        {
+          "title": "Agroblen Tablet 14-20-5+2MgO+TE 5-6M — ICL",
+          "url": "https://icl-growingsolutions.com/agriculture/products/agroblen-tablet-14-20-52mgote/"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://icl-growingsolutions.com/agriculture/products/agroblen-tablet-14-20-52mgote/",
+        "source_type": "manufacturer_technical_match",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -5605,8 +5707,65 @@
       "import_meta": {
         "source_row": 38,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "AGROBLEN® TABLET",
+        "text": "100% вкриті гранули NPK поступово віддають поживні речовини біля кореневої зони."
+      },
+      "application": {
+        "intro": "Офіційні орієнтири ICL:",
+        "rows": [
+          {
+            "crop": "Лісові саджанці",
+            "period": "при посадці",
+            "dose": "2–3 таблетки/рослину"
+          },
+          {
+            "crop": "Нові сади",
+            "period": "при посадці",
+            "dose": "2–6 таблеток/рослину"
+          },
+          {
+            "crop": "Виноград / ягідні",
+            "period": "при посадці",
+            "dose": "1–2 таблетки/рослину"
+          }
+        ],
+        "note": "Перед зміною норми ICL рекомендує локальну пробу."
+      },
+      "specs": [
+        {
+          "label": "Формула NPK",
+          "value": "14-20-5"
+        },
+        {
+          "label": "MgO",
+          "value": "2%"
+        },
+        {
+          "label": "Fe",
+          "value": "0,05%"
+        },
+        {
+          "label": "Mo",
+          "value": "0,002%"
+        },
+        {
+          "label": "Zn",
+          "value": "0,002%"
+        },
+        {
+          "label": "Технологія",
+          "value": "Resin Release Technology"
+        },
+        {
+          "label": "Тривалість",
+          "value": "5–6 місяців"
+        }
+      ]
     },
     "neocore": {
       "id": "neocore",
@@ -5614,23 +5773,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "Neova",
+      "eyebrow": "БІОСТИМУЛЯЦІЯ · NEOVA",
       "name": "NeoCore",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Біоактивний екстракт торфу для розвитку кореневої системи та ґрунтової мікрофлори",
+      "lead": "Стимулює ріст коренів, покращує доступність поживних речовин і підтримує мікробіологічну активність ґрунту.",
+      "short_description": "NeoCore — біоактивний екстракт чистого органічного торфу. За даними Organic Planet, природний комплекс біоактивних сполук впливає на метаболізм рослин, гормональну та ферментативну активність.",
+      "full_description": "NeoCore — біоактивний екстракт чистого органічного торфу. За даними Organic Planet, природний комплекс біоактивних сполук впливає на метаболізм рослин, гормональну та ферментативну активність.\n\nПродукт збільшує довжину коренів і біомасу, сприяє поглинанню води та поживних речовин, має пребіотичний ефект для корисної мікрофлори та може покращувати структуру й вологоутримання ґрунту.",
+      "why": [
+        {
+          "title": "КОРЕНІ",
+          "text": "Підтримує збільшення довжини коренів і кореневої біомаси."
+        },
+        {
+          "title": "ПРЕБІОТИЧНИЙ ЕФЕКТ",
+          "text": "Стимулює активність корисної ґрунтової мікрофлори."
+        },
+        {
+          "title": "ГУМІНОВІ РЕЧОВИНИ",
+          "text": "15% загальних гумінових речовин у заявленому складі."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Neova",
+        "company": "Neova",
+        "manufacturer": "Neova",
+        "country": "Фінляндія",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Картка постачальника Organic Planet",
+          "url": "https://organicplanet.com.ua/katalog/biostymulyatory/neocore-neokor-biostymulyator-rostu-korenevoyi-systemy-bioaktyvnyj-ekstrakt-torfu-30-ml-neova"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neocore-neokor-biostymulyator-rostu-korenevoyi-systemy-bioaktyvnyj-ekstrakt-torfu-30-ml-neova",
+        "source_type": "supplier_product_page",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -5666,8 +5850,75 @@
       "import_meta": {
         "source_row": 39,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "NEOVA",
+        "text": "Біоактивні сполуки рослинного або торф'яного походження підтримують фізіологічні процеси рослини відповідно до цільової фази продукту."
+      },
+      "application": {
+        "intro": "Норми з картки постачальника Organic Planet:",
+        "rows": [
+          {
+            "crop": "Листові культури",
+            "period": "увесь цикл",
+            "dose": "10–30 мл / 10 л"
+          },
+          {
+            "crop": "Овочі",
+            "period": "від висадки до цвітіння",
+            "dose": "20–40 мл / 10 л"
+          },
+          {
+            "crop": "Ягоди",
+            "period": "від висадки до цвітіння",
+            "dose": "20–40 мл / 10 л"
+          },
+          {
+            "crop": "Виноград",
+            "period": "розпускання бруньок — цвітіння",
+            "dose": "50–60 мл / 10 л"
+          },
+          {
+            "crop": "Плодові дерева",
+            "period": "від початку вегетації",
+            "dose": "60–80 мл / 10 л"
+          }
+        ],
+        "note": "Дані джерела — картка постачальника; перед комерційною публікацією бажано звірити етикетку фактичної партії Neova."
+      },
+      "specs": [
+        {
+          "label": "Загальні гумінові речовини",
+          "value": "15%"
+        },
+        {
+          "label": "K₂O загальний",
+          "value": "4,2%"
+        },
+        {
+          "label": "K₂O водорозчинний",
+          "value": "4,2%"
+        },
+        {
+          "label": "Органічний вуглець",
+          "value": "6,8%"
+        },
+        {
+          "label": "Суха речовина",
+          "value": "20%"
+        },
+        {
+          "label": "Виробник",
+          "value": "Neova"
+        },
+        {
+          "label": "Країна / регіон",
+          "value": "Фінляндія / Північна Європа (за даними постачальника)"
+        }
+      ]
     },
     "neovivo": {
       "id": "neovivo",
@@ -5675,23 +5926,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "Neova",
+      "eyebrow": "БІОСТИМУЛЯЦІЯ · NEOVA",
       "name": "NeoVivo",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Рослинний біостимулятор росту з антистресовою дією",
+      "lead": "Підтримує ріст і розвиток протягом вегетації та допомагає рослинам долати несприятливі умови.",
+      "short_description": "NeoVivo створений на основі відібраних сполук рослинного походження для підтримки росту і розвитку протягом вегетаційного циклу. За даними Organic Planet, продукт має антистресову дію та допомагає рослинам протидіяти несприятливим умовам.",
+      "full_description": "NeoVivo створений на основі відібраних сполук рослинного походження для підтримки росту і розвитку протягом вегетаційного циклу. За даними Organic Planet, продукт має антистресову дію та допомагає рослинам протидіяти несприятливим умовам.\n\nУ складі заявлено органічний азот, органічний вуглець та Fe, Zn, Mn у водорозчинній EDTA-хелатній формі.",
+      "why": [
+        {
+          "title": "АНТИСТРЕС",
+          "text": "Підтримує рослини за несприятливих умов."
+        },
+        {
+          "title": "РОСЛИННЕ ПОХОДЖЕННЯ",
+          "text": "Містить гідролізований рослинний білок."
+        },
+        {
+          "title": "EDTA MICRO",
+          "text": "Fe, Zn і Mn заявлені в EDTA-хелатній формі."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Neova",
+        "company": "Neova",
+        "manufacturer": "Neova",
+        "country": "Фінляндія",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Картка постачальника Organic Planet",
+          "url": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-1-l-neova"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-1-l-neova",
+        "source_type": "supplier_product_page",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -5727,8 +6003,53 @@
       "import_meta": {
         "source_row": 40,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "NEOVA",
+        "text": "Біоактивні сполуки рослинного або торф'яного походження підтримують фізіологічні процеси рослини відповідно до цільової фази продукту."
+      },
+      "application": {
+        "intro": "Норми з картки постачальника Organic Planet:",
+        "rows": [],
+        "note": "Дані джерела — картка постачальника; перед комерційною публікацією бажано звірити етикетку фактичної партії Neova."
+      },
+      "specs": [
+        {
+          "label": "Загальний азот (N)",
+          "value": "2,5%"
+        },
+        {
+          "label": "Органічний азот",
+          "value": "2,5%"
+        },
+        {
+          "label": "Органічний вуглець",
+          "value": "14%"
+        },
+        {
+          "label": "Fe EDTA",
+          "value": "0,07%"
+        },
+        {
+          "label": "Zn EDTA",
+          "value": "0,07%"
+        },
+        {
+          "label": "Mn EDTA",
+          "value": "0,07%"
+        },
+        {
+          "label": "Виробник",
+          "value": "Neova"
+        },
+        {
+          "label": "Країна / регіон",
+          "value": "Фінляндія / Північна Європа (за даними постачальника)"
+        }
+      ]
     },
     "neoflora": {
       "id": "neoflora",
@@ -5736,23 +6057,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "Neova",
+      "eyebrow": "БІОСТИМУЛЯЦІЯ · NEOVA",
       "name": "NeoFlora",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Біостимулятор для фаз цвітіння та зав'язування плодів",
+      "lead": "Підтримує репродуктивний розвиток, якість цвітіння та зав'язування плодів.",
+      "short_description": "NeoFlora — поєднання екстрактів торфу та морських водоростей Ascophyllum nodosum. За даними Organic Planet, продукт впливає на метаболічні процеси у фазах цвітіння та зав'язування плодів.",
+      "full_description": "NeoFlora — поєднання екстрактів торфу та морських водоростей Ascophyllum nodosum. За даними Organic Planet, продукт впливає на метаболічні процеси у фазах цвітіння та зав'язування плодів.\n\nФормула підтримує утворення більшої кількості квітів, покращує зав'язування та утримання плодів.",
+      "why": [
+        {
+          "title": "ЦВІТІННЯ",
+          "text": "Підтримує якість та інтенсивність цвітіння."
+        },
+        {
+          "title": "ЗАВ'ЯЗУВАННЯ",
+          "text": "Сприяє зав'язуванню та утриманню плодів."
+        },
+        {
+          "title": "ASCOPHYLLUM NODOSUM",
+          "text": "Містить екстракт морських водоростей."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Neova",
+        "company": "Neova",
+        "manufacturer": "Neova",
+        "country": "Фінляндія",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Картка постачальника Organic Planet",
+          "url": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-1-l-neova"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-1-l-neova",
+        "source_type": "supplier_product_page",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -5788,8 +6134,74 @@
       "import_meta": {
         "source_row": 41,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "NEOVA",
+        "text": "Біоактивні сполуки рослинного або торф'яного походження підтримують фізіологічні процеси рослини відповідно до цільової фази продукту."
+      },
+      "application": {
+        "intro": "Норми з картки постачальника Organic Planet:",
+        "rows": [
+          {
+            "crop": "Листові культури",
+            "period": "репродуктивна фаза",
+            "dose": "1–3 л/га (40–100 мл / 10 л)"
+          },
+          {
+            "crop": "Овочі",
+            "period": "цвітіння/зав'язування",
+            "dose": "2–4 л/га (70–130 мл / 10 л)"
+          },
+          {
+            "crop": "Ягоди",
+            "period": "цвітіння/зав'язування",
+            "dose": "2–4 л/га (70–130 мл / 10 л)"
+          },
+          {
+            "crop": "Плодові дерева",
+            "period": "репродуктивний період",
+            "dose": "6–8 л/га (60–100 мл / 10 л)"
+          }
+        ],
+        "note": "Дані джерела — картка постачальника; перед комерційною публікацією бажано звірити етикетку фактичної партії Neova."
+      },
+      "specs": [
+        {
+          "label": "K₂O",
+          "value": "5,8%"
+        },
+        {
+          "label": "Загальний азот (N)",
+          "value": "1,7%"
+        },
+        {
+          "label": "Органічний азот",
+          "value": "1,7%"
+        },
+        {
+          "label": "Органічний вуглець",
+          "value": "3,1%"
+        },
+        {
+          "label": "Бор (B)",
+          "value": "1,1%"
+        },
+        {
+          "label": "Інгредієнти",
+          "value": "Гумат калію + екстракт Ascophyllum nodosum"
+        },
+        {
+          "label": "Виробник",
+          "value": "Neova"
+        },
+        {
+          "label": "Країна / регіон",
+          "value": "Фінляндія / Північна Європа (за даними постачальника)"
+        }
+      ]
     },
     "radifarm": {
       "id": "radifarm",
@@ -5797,23 +6209,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "Valagro",
+      "eyebrow": "БІОСТИМУЛЯЦІЯ · VALAGRO",
       "name": "Radifarm",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Біостимулятор розвитку кореневої системи та зниження стресу після пересадки",
+      "lead": "Стимулює формування нових поглинаючих коренів і допомагає рослині швидше пройти післяпересадковий стрес.",
+      "short_description": "Radifarm — кореневий біостимулятор Valagro для застосування під час пересадки та на ранніх етапах розвитку.",
+      "full_description": "RADIFARM® розроблений для застосування під час пересадки та/або на початкових фазах розвитку. За офіційним каталогом Valagro, продукт сприяє формуванню розвиненої кореневої системи, подовженню наявних коренів та утворенню нових поглинаючих коренів.\n\nДослідження Valagro пов'язують дію біомолекул RADIFARM із модуляцією сигналінгу ауксинів, що підтримує формування бокових коренів.",
+      "why": [
+        {
+          "title": "КОРЕНЕУТВОРЕННЯ",
+          "text": "Стимулює розвиток нових поглинаючих коренів."
+        },
+        {
+          "title": "ПЕРЕСАДКА",
+          "text": "Допомагає скоротити період післяпересадкового стресу."
+        },
+        {
+          "title": "GEAPOWER",
+          "text": "Біоактивний комплекс створений на технологічній платформі Valagro."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/products/product_family/document/Valagro_Catalogue_USA_2019_s0nR3ol.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Catalogue — RADIFARM",
+          "url": "https://www.valagro.com/media/products/product_family/document/Valagro_Catalogue_USA_2019_s0nR3ol.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/products/product_family/document/Valagro_Catalogue_USA_2019_s0nR3ol.pdf",
+        "source_type": "manufacturer_catalogue",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -5849,8 +6286,48 @@
       "import_meta": {
         "source_row": 42,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "RADIFARM®",
+        "text": "Біомолекули продукту підтримують гормональні сигнали, пов'язані з розвитком кореневої системи."
+      },
+      "application": {
+        "intro": "Офіційні орієнтири Valagro:",
+        "rows": [
+          {
+            "crop": "Овочі з фертигацією",
+            "period": "після пересадки і через 7 днів",
+            "dose": "за локальною етикеткою; офіційні каталоги відрізняються за ринками"
+          },
+          {
+            "crop": "Плодові",
+            "period": "при пересадці / через 7 днів / старт вегетації",
+            "dose": "5 л/га у каталозі USA 2019"
+          }
+        ],
+        "note": "Через різницю норм між локальними реєстраціями точну дозу для України брати з етикетки конкретної партії."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Кореневий біостимулятор"
+        },
+        {
+          "label": "Форма",
+          "value": "Рідка"
+        },
+        {
+          "label": "Цільова фаза",
+          "value": "Пересадка та ранній розвиток"
+        },
+        {
+          "label": "Технологія",
+          "value": "GEAPOWER / біоактивні молекули Valagro"
+        }
+      ]
     },
     "kemira-ukorinyuvach": {
       "id": "kemira-ukorinyuvach",
@@ -5858,23 +6335,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "Organic Planet",
+      "eyebrow": "БІОСТИМУЛЯЦІЯ · ORGANIC PLANET",
       "name": "Кеміра Укорінювач",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Біоукорінювач для пересадки, розсади та посадкового матеріалу",
+      "lead": "Сприяє утворенню нових коренів і приживлюваності рослин після пересадки.",
+      "short_description": "Кеміра Укорінювач — рідкий біоукорінювач Organic Planet для кореневого внесення, обробки насіння та замочування саджанців.",
+      "full_description": "За карткою Organic Planet продукт сприяє утворенню нових корінців і приживлюваності розсади та пересаджених рослин. У складі заявлені органічні речовини, гумінові та фульвові кислоти, мікроелементи, вітаміни й амінокислоти.\n\nВиробник у картці постачальника — ТзОВ «Агроцентр-Технологій», Україна.",
+      "why": [
+        {
+          "title": "УКОРІНЕННЯ",
+          "text": "Підтримує формування нових корінців."
+        },
+        {
+          "title": "ПЕРЕСАДКА",
+          "text": "Призначений для підтримки приживлюваності."
+        },
+        {
+          "title": "ОРГАНІЧНИЙ КОМПЛЕКС",
+          "text": "Містить гумінові/фульвові речовини та амінокислоти."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Organic Planet",
+        "company": "ТзОВ «Агроцентр-Технологій»",
+        "manufacturer": "ТзОВ «Агроцентр-Технологій»",
+        "country": "Україна",
+        "official_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-ukorinnyuvach-1-l-organic-planet"
+      },
+      "documents": [
+        {
+          "title": "Organic Planet — Кеміра Укорінювач",
+          "url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-ukorinnyuvach-1-l-organic-planet"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-ukorinnyuvach-1-l-organic-planet",
+        "source_type": "supplier_brand_product_page",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -5903,8 +6405,47 @@
       "import_meta": {
         "source_row": 43,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "ORGANIC PLANET",
+        "text": "Органічні та гумінові компоненти підтримують кореневий розвиток і адаптацію після пересадки."
+      },
+      "application": {
+        "intro": "Норма з картки Organic Planet:",
+        "rows": [
+          {
+            "crop": "Усі види рослин",
+            "period": "кореневе живлення",
+            "dose": "20 мл / 10 л води"
+          }
+        ],
+        "note": "У цьому ж розчині постачальник допускає замочування посадкового матеріалу."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Біоукорінювач"
+        },
+        {
+          "label": "Спосіб внесення",
+          "value": "Кореневе, обробка насіння, замочування саджанців"
+        },
+        {
+          "label": "Органічні речовини у сухому залишку",
+          "value": "50–90%"
+        },
+        {
+          "label": "Солі гумінових кислот",
+          "value": "10–50%"
+        },
+        {
+          "label": "Солі фульвокислот",
+          "value": "10–50%"
+        }
+      ]
     },
     "blackjak": {
       "id": "blackjak",
@@ -5912,23 +6453,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "Valagro",
+      "eyebrow": "БІОСТИМУЛЯЦІЯ · VALAGRO",
       "name": "BlackJak",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Гуміновий біостимулятор для кореневої системи та ґрунту",
+      "lead": "Підтримує розвиток кореневої системи, ґрунтову активність і засвоєння поживних речовин.",
+      "short_description": "BlackJak — біостимулятор Valagro на основі гумінових компонентів, представлений у матриці Organic Planet.",
+      "full_description": "BlackJak належить до старіших продуктів Valagro, що використовувалися як гуміновий біостимулятор кореневої системи та ґрунту. У поточному відкритому каталозі Syngenta Biologicals окрему актуальну продуктову сторінку BlackJak не підтверджено.\n\nТому BB610 не переносить неперевірені точні концентрації або норми зі сторонніх описів. До появи актуальної етикетки картка містить лише підтверджену функціональну інформацію та статус legacy-source.",
+      "why": [
+        {
+          "title": "КОРЕНЕВА ЗОНА",
+          "text": "Орієнтований на підтримку кореневої системи."
+        },
+        {
+          "title": "ГУМІНОВИЙ КОМПЛЕКС",
+          "text": "Продукт історично позиціонувався як гуміновий біостимулятор."
+        },
+        {
+          "title": "LEGACY",
+          "text": "Точний актуальний склад потрібно підтвердити етикеткою партії."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals / Valagro",
+        "manufacturer": "Valagro S.p.A. — за legacy-маркуванням",
+        "country": "Італія",
+        "official_url": ""
+      },
+      "documents": [
+        {
+          "title": "Organic Planet — каталог біостимуляторів, BlackJak",
+          "url": "https://organicplanet.com.ua/katalog/biostymulyatory"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory",
+        "source_type": "supplier_legacy_reference",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -5943,8 +6509,33 @@
       "import_meta": {
         "source_row": 44,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "BLACKJAK",
+        "text": "Гумінові компоненти діють у кореневій зоні та підтримують фізико-хімічні процеси ґрунту."
+      },
+      "application": {
+        "intro": "Застосування — за етикеткою фактично поставленої партії.",
+        "rows": [],
+        "note": "Не публікувати точну норму до перевірки актуальної етикетки."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Гуміновий біостимулятор"
+        },
+        {
+          "label": "Ціль",
+          "value": "Коренева система / ґрунт"
+        },
+        {
+          "label": "Статус джерела",
+          "value": "Legacy Valagro; актуальна офіційна сторінка не підтверджена"
+        }
+      ]
     },
     "viva": {
       "id": "viva",
@@ -5952,23 +6543,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "Valagro",
+      "eyebrow": "БІОСТИМУЛЯЦІЯ · VALAGRO",
       "name": "Viva",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Біостимулятор ризосфери та вегетативно-продуктивного балансу",
+      "lead": "Покращує структуру і біохімічну активність ризосфери та підтримує збалансований розвиток рослини.",
+      "short_description": "VIVA® — біостимулятор Valagro для покращення ефективності ризосфери та балансу між вегетативним і продуктивним розвитком.",
+      "full_description": "Офіційний каталог Valagro описує VIVA® як продукт, що ревіталізує ризосферу, покращує її структуру й біохімічну активність та підтримує правильний баланс між вегетативною і продуктивною частинами рослини.\n\nПродукт застосовують через фертигацію від післяпересадкових фаз до періоду після зав'язування плодів залежно від культури.",
+      "why": [
+        {
+          "title": "РИЗОСФЕРА",
+          "text": "Покращує структуру та біохімічну активність кореневої зони."
+        },
+        {
+          "title": "БАЛАНС",
+          "text": "Підтримує вегетативно-продуктивний баланс."
+        },
+        {
+          "title": "ФЕРТИГАЦІЯ",
+          "text": "Офіційні схеми Valagro передбачають кореневе внесення."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+      },
+      "documents": [
+        {
+          "title": "Valagro Catalogue — VIVA",
+          "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf",
+        "source_type": "manufacturer_catalogue",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -6011,8 +6627,49 @@
       "import_meta": {
         "source_row": 45,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "VIVA®",
+        "text": "Біоактивні компоненти підтримують процеси в ризосфері та фізіологічний баланс рослини."
+      },
+      "application": {
+        "intro": "Офіційні орієнтири Valagro:",
+        "rows": [
+          {
+            "crop": "Плодові",
+            "period": "від відновлення вегетації до після зав'язування, 2–3 внесення",
+            "dose": "20–30 л/га"
+          },
+          {
+            "crop": "Полуниця",
+            "period": "після пересадки, відновлення росту, після зав'язування",
+            "dose": "2–3 л / 1000 м²"
+          },
+          {
+            "crop": "Овочі",
+            "period": "після пересадки, вегетативний ріст, після зав'язування кожні 10–15 днів",
+            "dose": "2–3 л / 1000 м²"
+          }
+        ],
+        "note": "Точну локальну норму звірити з етикеткою для України."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Біостимулятор ризосфери"
+        },
+        {
+          "label": "Форма",
+          "value": "Рідка"
+        },
+        {
+          "label": "Спосіб внесення",
+          "value": "Фертигація"
+        }
+      ]
     },
     "kendal-root": {
       "id": "kendal-root",
@@ -6020,23 +6677,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "Valagro",
+      "eyebrow": "БІОСТИМУЛЯЦІЯ · VALAGRO",
       "name": "Kendal Root",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Спеціалізований біостимулятор для коренів у несприятливих ґрунтових умовах",
+      "lead": "Підвищує життєздатність кореневої системи та допомагає рослинам відновлюватися після пошкодження коренів.",
+      "short_description": "KENDAL ROOT — спеціалізований біостимулятор Valagro для роботи безпосередньо з кореневою системою у складних ґрунтових умовах.",
+      "full_description": "Офіційний матеріал Valagro описує KENDAL ROOT як продукт, що підвищує силу кореневої системи, сприяє швидшому відновленню та допомагає підтримувати продуктивність за несприятливих ґрунтових умов.\n\nДо таких умов виробник відносить механічні пошкодження, температурний шок коренів, ущільнення і низький газообмін, ґрунтові патогени, нематоди та хімічну токсичність.",
+      "why": [
+        {
+          "title": "СИЛЬНІШЕ КОРІННЯ",
+          "text": "Підтримує кореневу життєздатність."
+        },
+        {
+          "title": "ВІДНОВЛЕННЯ",
+          "text": "Допомагає рослині швидше відновитися після пошкодження коренів."
+        },
+        {
+          "title": "СКЛАДНІ ҐРУНТИ",
+          "text": "Розроблений для несприятливих умов кореневої зони."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.valagro.com/media/filer_public/8b/c3/8bc37f5d-8ede-4bba-ad7a-d23b5d7c2ea1/valagro_red_kendal_root.pdf"
+      },
+      "documents": [
+        {
+          "title": "Kendal Root — офіційний матеріал Valagro",
+          "url": "https://www.valagro.com/media/filer_public/8b/c3/8bc37f5d-8ede-4bba-ad7a-d23b5d7c2ea1/valagro_red_kendal_root.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.valagro.com/media/filer_public/8b/c3/8bc37f5d-8ede-4bba-ad7a-d23b5d7c2ea1/valagro_red_kendal_root.pdf",
+        "source_type": "manufacturer_product_pdf",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -6058,8 +6740,39 @@
       "import_meta": {
         "source_row": 46,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "KENDAL ROOT",
+        "text": "Біостимулюючий комплекс працює безпосередньо в кореневій зоні та підтримує відновлення кореневої системи."
+      },
+      "application": {
+        "intro": "Офіційний матеріал Valagro:",
+        "rows": [
+          {
+            "crop": "Усі культури",
+            "period": "залежно від пошкодження коренів",
+            "dose": "5–20 л/га через фертигацію"
+          }
+        ],
+        "note": "5 л/га — при слабкому пошкодженні або частих внесеннях; до 20 л/га — при сильному пошкодженні/рідших внесеннях за міжнародним матеріалом Valagro."
+      },
+      "specs": [
+        {
+          "label": "Тип продукту",
+          "value": "Кореневий біостимулятор"
+        },
+        {
+          "label": "Спосіб внесення",
+          "value": "Фертигація / внесення у кореневу зону"
+        },
+        {
+          "label": "Ціль",
+          "value": "Стрес і пошкодження кореневої системи"
+        }
+      ]
     },
     "kendal-te": {
       "id": "kendal-te",
@@ -6067,23 +6780,48 @@
       "enabled": true,
       "publication_status": "draft",
       "feed_policy": "blocked",
-      "category": "",
-      "brand": "",
-      "eyebrow": "",
+      "category": "biostimulation",
+      "brand": "Valagro",
+      "eyebrow": "БІОСТИМУЛЯЦІЯ · VALAGRO",
       "name": "Kendal TE",
-      "subtitle": "",
-      "lead": "",
-      "short_description": "",
-      "full_description": "",
-      "why": [],
+      "subtitle": "Біостимулюючий комплекс Kendal із Cu, Mn та Zn",
+      "lead": "Підтримує життєздатність рослин у несприятливих умовах і одночасно забезпечує мікроелементами.",
+      "short_description": "KENDAL TE — продукт Valagro із біоактивним комплексом та мікроелементами Cu, Mn і Zn.",
+      "full_description": "Актуальна етикетка Syngenta/Valagro 2025 підтверджує склад KENDAL TE: 23,0% загального Cu, 0,5% Mn та 0,5% Zn. У складі також зазначене борошно з Ascophyllum nodosum.\n\nПродукт підтримує ріст і постачає ключові мікроелементи; історичні каталоги Valagro позиціонують його як Kendal-комплекс для збереження життєздатності рослин у несприятливих умовах.",
+      "why": [
+        {
+          "title": "23% Cu",
+          "text": "Високий вміст міді."
+        },
+        {
+          "title": "Mn + Zn",
+          "text": "По 0,5% марганцю та цинку."
+        },
+        {
+          "title": "KENDAL TECHNOLOGY",
+          "text": "Поєднання живлення мікроелементами з біоактивною концепцією Kendal."
+        }
+      ],
       "how": [],
       "applications": [],
       "characteristics": [],
-      "origin": {},
-      "documents": [],
+      "origin": {
+        "brand": "Valagro",
+        "company": "Syngenta Biologicals",
+        "manufacturer": "Valagro S.p.A.",
+        "country": "Італія",
+        "official_url": "https://www.syngenta.gr/sites/g/files/kgtney1556/files/media/document/2025/05/15/ppe4230063-l1135635-kendal_te_1l_564_sl-hr-el.pdf"
+      },
+      "documents": [
+        {
+          "title": "Kendal TE 1L — етикетка Syngenta 2025",
+          "url": "https://www.syngenta.gr/sites/g/files/kgtney1556/files/media/document/2025/05/15/ppe4230063-l1135635-kendal_te_1l_564_sl-hr-el.pdf"
+        }
+      ],
       "sources": {
-        "source": "Organic Planet 2026 + Велике фасування 2026",
-        "revision": "mass structure import",
+        "source_url": "https://www.syngenta.gr/sites/g/files/kgtney1556/files/media/document/2025/05/15/ppe4230063-l1135635-kendal_te_1l_564_sl-hr-el.pdf",
+        "source_type": "current_official_label",
+        "revision": "Перевірено 2026-09-05",
         "verified_date": "2026-09-05"
       },
       "variants": [
@@ -6105,8 +6843,52 @@
       "import_meta": {
         "source_row": 47,
         "source_note": "",
-        "structure_only": true
-      }
+        "structure_only": false,
+        "stage22c_batch": "04",
+        "stage22c_content_date": "2026-09-05"
+      },
+      "how_it_works": {
+        "badge": "KENDAL TE",
+        "text": "Cu, Mn і Zn забезпечують мікроелементне живлення, а рослинні компоненти доповнюють формулу."
+      },
+      "application": {
+        "intro": "З етикетки Syngenta 2025:",
+        "rows": [
+          {
+            "crop": "Плодові / виноград / оливки",
+            "period": "листково кожні 7–10 днів",
+            "dose": "3,0–3,5 л/га"
+          },
+          {
+            "crop": "Овочі та ягоди",
+            "period": "листково кожні 7–10 днів",
+            "dose": "2–3 л/га"
+          }
+        ],
+        "note": "Для відкритих листових овочів та чутливих культур враховувати застереження актуальної етикетки."
+      },
+      "specs": [
+        {
+          "label": "Загальний Cu",
+          "value": "23,0% (345 г/л)"
+        },
+        {
+          "label": "Загальний Mn",
+          "value": "0,5% (7,5 г/л)"
+        },
+        {
+          "label": "Загальний Zn",
+          "value": "0,5% (7,5 г/л)"
+        },
+        {
+          "label": "Форма",
+          "value": "Суспензія"
+        },
+        {
+          "label": "Рослинний компонент",
+          "value": "Ascophyllum nodosum"
+        }
+      ]
     },
     "maxicrop-cream": {
       "id": "maxicrop-cream",

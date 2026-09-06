@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BB610 Market — Media Review</title>
+<link rel="stylesheet" href="media-review.css">
+</head>
+<body>
+<header class="top">
+  <div><b>BB610 MARKET ADMIN</b><span> · Media Review</span></div>
+  <div class="auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">STAGE 22H</div>
+      <h1>Перевірка зображень товарів</h1>
+      <p>Без нових аудитів. Тут закриваємо 41 картку з одним спільним кандидатом, 2 variant-specific картки та бачимо 19 карток без локального фото.</p>
+    </div>
+    <div id="stats" class="stats"></div>
+  </section>
+
+  <nav class="tabs">
+    <button data-tab="ONE_COMMON_IMAGE" class="active">Спільне фото</button>
+    <button data-tab="VARIANT_SPECIFIC">За фасуваннями</button>
+    <button data-tab="MISSING_ONLY">Фото відсутнє</button>
+  </nav>
+
+  <section id="cards" class="grid"></section>
+</main>
+
+<template id="cardTpl">
+  <article class="card">
+    <div class="card-head">
+      <div>
+        <div class="rownum"></div>
+        <h2></h2>
+        <div class="brand"></div>
+      </div>
+      <div class="badge"></div>
+    </div>
+    <div class="body">
+      <div class="preview"><img alt=""></div>
+      <div class="info">
+        <div class="candidate"></div>
+        <div class="variants"></div>
+        <div class="actions"></div>
+      </div>
+    </div>
+  </article>
+</template>
+
+<script src="media-review.js"></script>
+</body>
+</html>

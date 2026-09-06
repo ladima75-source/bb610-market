@@ -942,14 +942,16 @@
         {
           "sku": "BB610-OP-MASTER-NPK-3-11-38-25KG",
           "label": "25 кг",
-          "image": "assets/img/official-source/row04-master-3-11-38.jpg",
+          "image": "assets/img/manual-products/row04-master-3-11-38-bb610-op-master-npk-3-11-38-25kg.jpg",
           "enabled": false,
           "import_source": "Organic Planet structure import 2026",
           "media_meta": {
-            "assigned_by": "stage22k_exact_source_image_recovery",
+            "assigned_by": "stage22l_fix2_manual_sku",
             "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
             "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
-            "assigned_at": "2026-09-06T16:03:15.662493+00:00"
+            "assigned_at": "2026-09-06T18:12:34.611505+00:00",
+            "original_filename": "1067master3-11-3825kg-534x534.jpg",
+            "replaced_image": "assets/img/official-source/row04-master-3-11-38.jpg"
           }
         }
       ],

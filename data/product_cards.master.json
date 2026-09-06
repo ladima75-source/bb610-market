@@ -3611,14 +3611,16 @@
         {
           "sku": "BB610-OP-SPIDFOL-AMINO-VEHETATSIYA-20ML",
           "label": "20 мл",
-          "image": "assets/img/official-source/row19-speedfol-amino-vegetative.jpg",
+          "image": "assets/img/manual-products/row19-speedfol-amino-vegetative-bb610-op-spidfol-amino-vehetatsiya-20ml.jpg",
           "enabled": false,
           "import_source": "Organic Planet structure import 2026",
           "media_meta": {
-            "assigned_by": "stage22k_exact_source_image_recovery",
+            "assigned_by": "stage22l_fix2_manual_sku",
             "source_page": "https://terratarsa.com/en/universal-nutrient-correctors-with-stimulating-effect/",
             "source_image": "https://terratarsa.com/wp-content/uploads/2024/05/photo_2024-05-15_10-30-33.jpg",
-            "assigned_at": "2026-09-06T16:03:17.216774+00:00"
+            "assigned_at": "2026-09-06T19:45:03.369139+00:00",
+            "original_filename": "upakovki16-10-534x534.jpg",
+            "replaced_image": "assets/img/official-source/row19-speedfol-amino-vegetative.jpg"
           }
         }
       ],

@@ -1,7 +1,7 @@
 from __future__ import annotations
 from pathlib import Path
 from typing import Optional
-import base64, datetime, json, os, re, shutil
+import base64, datetime, json, os, re, shutil, subprocess
 
 from fastapi import APIRouter, Header, HTTPException
 from pydantic import BaseModel
@@ -102,6 +102,23 @@ def _decode_image(filename,content_base64):
         raise HTTPException(status_code=400,detail="Image must be <= 15 MB")
     return ext,raw
 
+def _git_publish(paths, message):
+    rels=[]
+    for p in paths:
+        p=Path(p)
+        rels.append(str(p.relative_to(ROOT)) if p.is_absolute() else str(p))
+    try:
+        subprocess.run(["git","add","-f",*rels],cwd=ROOT,check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+        diff=subprocess.run(["git","diff","--cached","--quiet"],cwd=ROOT)
+        if diff.returncode==0:
+            return {"ok":True,"committed":False,"message":"No git changes"}
+        c=subprocess.run(["git","commit","-m",message],cwd=ROOT,check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+        p=subprocess.run(["git","push"],cwd=ROOT,check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+        return {"ok":True,"committed":True,"commit_output":c.stdout.strip(),"push_output":p.stdout.strip()}
+    except subprocess.CalledProcessError as e:
+        err=(e.stderr or e.stdout or str(e)).strip()
+        raise HTTPException(status_code=500,detail=f"Saved locally, but git publish failed: {err}")
+
 @router.get("")
 def list_cards(authorization: Optional[str]=Header(default=None)):
     _auth(authorization)
@@ -159,18 +176,20 @@ def upload_sku(body:UploadSKUBody,authorization: Optional[str]=Header(default=No
     safe_sku=_slug(body.sku)
     name=f"row{body.source_row:02d}-{_slug(card.get('name',''))}-{safe_sku}{ext}"
     rel=f"assets/img/manual-products/{name}"
-    (ROOT/rel).write_bytes(raw)
+    img_path=ROOT/rel
+    img_path.write_bytes(raw)
 
     v["image"]=rel
     meta=v.setdefault("media_meta",{})
     if isinstance(meta,dict):
-        meta["assigned_by"]="stage22l_fix1_manual_sku"
+        meta["assigned_by"]="stage22l_fix2_manual_sku"
         meta["assigned_at"]=datetime.datetime.now(datetime.timezone.utc).isoformat()
         meta["original_filename"]=body.filename
         meta["replaced_image"]=old or ""
 
     _save(master,obj)
-    return {"ok":True,"sku":body.sku,"image":rel,"old_image":old,"backup":str(backup)}
+    pub=_git_publish([master,img_path], f"Update product image {body.sku}")
+    return {"ok":True,"sku":body.sku,"image":rel,"old_image":old,"backup":str(backup),"published":pub}
 
 class UploadCommonBody(BaseModel):
     source_row:int
@@ -194,15 +213,19 @@ def upload_common_missing(body:UploadCommonBody,authorization: Optional[str]=Hea
     outdir.mkdir(parents=True,exist_ok=True)
     name=f"row{body.source_row:02d}-{_slug(card.get('name',''))}-common{ext}"
     rel=f"assets/img/manual-products/{name}"
-    (ROOT/rel).write_bytes(raw)
+    img_path=ROOT/rel
+    img_path.write_bytes(raw)
+
     changed=[]
     for v in targets:
         v["image"]=rel
         meta=v.setdefault("media_meta",{})
         if isinstance(meta,dict):
-            meta["assigned_by"]="stage22l_fix1_manual_common_missing"
+            meta["assigned_by"]="stage22l_fix2_manual_common_missing"
             meta["assigned_at"]=datetime.datetime.now(datetime.timezone.utc).isoformat()
             meta["original_filename"]=body.filename
         changed.append(_sku(v))
+
     _save(master,obj)
-    return {"ok":True,"changed":len(changed),"skus":changed,"image":rel,"backup":str(backup)}
+    pub=_git_publish([master,img_path], f"Update product images row {body.source_row}")
+    return {"ok":True,"changed":len(changed),"skus":changed,"image":rel,"backup":str(backup),"published":pub}

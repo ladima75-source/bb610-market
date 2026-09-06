@@ -1458,12 +1458,15 @@
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-250G",
           "label": "250 г",
-          "image": "assets/img/real/stage16b/plantafol-30-10-10.jpg",
+          "image": "assets/img/manual-products/row07-plantafol-30-10-10-bb610-op-plantafol-npk-30-10-10-250g.png",
           "enabled": false,
           "import_source": "Organic Planet structure import 2026",
           "media_meta": {
-            "assigned_by": "stage22h_admin_common",
-            "source_candidate": "assets/img/real/stage16b/plantafol-30-10-10.jpg"
+            "assigned_by": "stage22l_fix2_manual_sku",
+            "source_candidate": "assets/img/real/stage16b/plantafol-30-10-10.jpg",
+            "assigned_at": "2026-09-06T18:23:24.686865+00:00",
+            "original_filename": "1214-534x534.png",
+            "replaced_image": "assets/img/real/stage16b/plantafol-30-10-10.jpg"
           }
         },
         {

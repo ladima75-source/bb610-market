@@ -420,3 +420,6 @@ app.include_router(product_cards_v2_router)
 
 from .stage22h_media_review_api import router as stage22h_media_review_router
 app.include_router(stage22h_media_review_router)
+
+from .stage22l_manual_media_api import router as stage22l_manual_media_router
+app.include_router(stage22l_manual_media_router)

@@ -115,11 +115,11 @@ def _log(entry: dict):
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 def _review_payload():
-    p = REPORTS / "stage22g_manual_media_review_latest.json"
+    p = REPORTS / "stage22j_exact_media_review_latest.json" if (REPORTS / "stage22j_exact_media_review_latest.json").exists() else REPORTS / "stage22g_manual_media_review_latest.json"
     if not p.exists():
         raise HTTPException(status_code=500, detail="Stage 22G report not found")
     data = _load_json(p)
-    detail_csv = REPORTS / "stage22g_manual_media_sku_review_latest.csv"
+    detail_csv = REPORTS / ("stage22j_exact_media_sku_review_latest.csv" if (REPORTS / "stage22j_exact_media_sku_review_latest.csv").exists() else "stage22g_manual_media_sku_review_latest.csv")
     details = []
     if detail_csv.exists():
         import csv

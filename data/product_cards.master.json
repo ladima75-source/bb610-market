@@ -517,12 +517,15 @@
         {
           "sku": "BB610-OP-MASTER-NPK-13-40-13-20G",
           "label": "20 г",
-          "image": "assets/img/real/stage16b/master-13-40-13.png",
+          "image": "assets/img/manual-products/row02-master-13-40-13-bb610-op-master-npk-13-40-13-20g.jpg",
           "enabled": false,
           "import_source": "Organic Planet structure import 2026",
           "media_meta": {
-            "assigned_by": "stage22h_admin_common",
-            "source_candidate": "assets/img/real/stage16b/master-13-40-13.png"
+            "assigned_by": "stage22l_fix2_manual_sku",
+            "source_candidate": "assets/img/real/stage16b/master-13-40-13.png",
+            "assigned_at": "2026-09-06T18:05:14.927113+00:00",
+            "original_filename": "masteer-534x534.jpg",
+            "replaced_image": "assets/img/real/stage16b/master-13-40-13.png"
           }
         },
         {

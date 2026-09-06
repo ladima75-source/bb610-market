@@ -2485,23 +2485,41 @@
         {
           "sku": "BB610-OP-KEMIRA-LYUKS-NPK-14-11-25-20G",
           "label": "20 г",
-          "image": "",
+          "image": "assets/img/manual-products/row13-npk-14-11-25-bb610-op-kemira-lyuks-npk-14-11-25-20g.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_fix1_manual_sku",
+            "assigned_at": "2026-09-06T17:42:47.346623+00:00",
+            "original_filename": "upakovki16-02-534x534.jpg",
+            "replaced_image": "assets/img/manual-products/row13-npk-14-11-25-bb610-op-kemira-lyuks-npk-14-11-25-20g.jpg"
+          }
         },
         {
           "sku": "BB610-OP-KEMIRA-LYUKS-NPK-14-11-25-100G",
           "label": "100 г",
-          "image": "",
+          "image": "assets/img/manual-products/row13-npk-14-11-25-bb610-op-kemira-lyuks-npk-14-11-25-100g.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_fix1_manual_sku",
+            "assigned_at": "2026-09-06T17:42:55.632478+00:00",
+            "original_filename": "1006-534x534.png",
+            "replaced_image": "assets/img/manual-products/row13-npk-14-11-25-bb610-op-kemira-lyuks-npk-14-11-25-100g.png"
+          }
         },
         {
           "sku": "BB610-OP-KEMIRA-LYUKS-NPK-14-11-25-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/manual-products/row13-npk-14-11-25-bb610-op-kemira-lyuks-npk-14-11-25-1kg.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_fix1_manual_sku",
+            "assigned_at": "2026-09-06T17:43:03.554547+00:00",
+            "original_filename": "1005-534x534.png",
+            "replaced_image": "assets/img/manual-products/row13-npk-14-11-25-bb610-op-kemira-lyuks-npk-14-11-25-1kg.png"
+          }
         }
       ],
       "import_meta": {
@@ -2662,23 +2680,38 @@
         {
           "sku": "BB610-OP-KEMIRA-GRUNT-KROPKER-NPK-11-11-21-20G",
           "label": "20 г",
-          "image": "",
+          "image": "assets/img/manual-products/row14-npk-11-11-21.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_manual_admin",
+            "assigned_at": "2026-09-06T16:25:15.898879+00:00",
+            "original_filename": "1006-534x534.png"
+          }
         },
         {
           "sku": "BB610-OP-KEMIRA-GRUNT-KROPKER-NPK-11-11-21-100G",
           "label": "100 г",
-          "image": "",
+          "image": "assets/img/manual-products/row14-npk-11-11-21.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_manual_admin",
+            "assigned_at": "2026-09-06T16:25:15.898895+00:00",
+            "original_filename": "1006-534x534.png"
+          }
         },
         {
           "sku": "BB610-OP-KEMIRA-GRUNT-KROPKER-NPK-11-11-21-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/manual-products/row14-npk-11-11-21.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_manual_admin",
+            "assigned_at": "2026-09-06T16:25:15.898899+00:00",
+            "original_filename": "1006-534x534.png"
+          }
         }
       ],
       "import_meta": {
@@ -2795,9 +2828,14 @@
         {
           "sku": "BB610-OP-KEMIRA-DLYA-HAZONU-NPK-12-11-18-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/manual-products/row15-npk-12-11-18.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_manual_admin",
+            "assigned_at": "2026-09-06T16:25:25.285409+00:00",
+            "original_filename": "1005-534x534.png"
+          }
         }
       ],
       "import_meta": {

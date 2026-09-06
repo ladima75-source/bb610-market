@@ -8,7 +8,7 @@ function imgUrl(p){
 }
 function headers(){return {"Authorization":"Bearer "+state.token,"Content-Type":"application/json"}}
 async function api(path,opts={}){
-  const r=await fetch("/api/v1/admin/media-review"+path,{...opts,headers:{...headers(),...(opts.headers||{})}});
+  const r=await fetch("https://api.market.bb610.com.ua/api/v1/admin/media-review"+path,{...opts,headers:{...headers(),...(opts.headers||{})}});
   const j=await r.json().catch(()=>({}));
   if(!r.ok)throw new Error(j.detail||("HTTP "+r.status));
   return j;

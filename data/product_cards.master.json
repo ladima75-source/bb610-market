@@ -3106,9 +3106,15 @@
         {
           "sku": "BB610-OP-KEMIRA-NPK-12-46-8-25G",
           "label": "25 г",
-          "image": "",
+          "image": "assets/img/manual-products/row16-npk-12-46-8-bb610-op-kemira-npk-12-46-8-25g.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_fix2_manual_sku",
+            "assigned_at": "2026-09-06T19:32:23.300462+00:00",
+            "original_filename": "kemira-534x534.jpg",
+            "replaced_image": ""
+          }
         },
         {
           "sku": "BB610-OP-KEMIRA-NPK-12-46-8-200G",

@@ -3487,9 +3487,15 @@
         {
           "sku": "BB610-OP-KEMIRA-ZAV-YAZ-5G",
           "label": "5 г",
-          "image": "",
+          "image": "assets/img/manual-products/row18-product-bb610-op-kemira-zav-yaz-5g.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_fix2_manual_sku",
+            "assigned_at": "2026-09-06T19:43:32.268659+00:00",
+            "original_filename": "upakovki16-16-534x534.jpg",
+            "replaced_image": ""
+          }
         }
       ],
       "import_meta": {

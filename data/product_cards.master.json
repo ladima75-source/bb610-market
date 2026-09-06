@@ -2706,13 +2706,14 @@
         {
           "sku": "BB610-OP-KEMIRA-GRUNT-KROPKER-NPK-11-11-21-1KG",
           "label": "1 кг",
-          "image": "assets/img/manual-products/row14-npk-11-11-21.png",
+          "image": "assets/img/manual-products/row14-npk-11-11-21-bb610-op-kemira-grunt-kropker-npk-11-11-21-1kg.png",
           "enabled": false,
           "import_source": "Organic Planet structure import 2026",
           "media_meta": {
-            "assigned_by": "stage22l_manual_admin",
-            "assigned_at": "2026-09-06T16:25:15.898899+00:00",
-            "original_filename": "1006-534x534.png"
+            "assigned_by": "stage22l_fix2_manual_sku",
+            "assigned_at": "2026-09-06T17:56:50.937213+00:00",
+            "original_filename": "kemiragrunt(2)-534x534.png",
+            "replaced_image": "assets/img/manual-products/row14-npk-11-11-21.png"
           }
         }
       ],

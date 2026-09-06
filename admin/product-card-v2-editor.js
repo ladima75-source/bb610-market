@@ -63,7 +63,16 @@ async function mount(){
  document.querySelector('#bb610-pcv2-load-error')?.remove();
  const box=document.createElement('section');box.className='pcv2';box.dataset.id=id;
  /* BB610_STAGE22M_FIX5_NESTED_V2_RENDER */
-const v=(d&&d.product_card_v2&&typeof d.product_card_v2==='object')?d.product_card_v2:d;
+/* BB610_STAGE22M_FIX6_FETCH_FULL_CARD */
+let v=(d&&d.product_card_v2&&typeof d.product_card_v2==='object')?d.product_card_v2:d;
+try{
+  const full=await api('/api/v1/admin/product-cards/'+encodeURIComponent(id));
+  if(full&&full.product_card_v2&&typeof full.product_card_v2==='object'){
+    v=full.product_card_v2;
+  }
+}catch(e){
+  console.warn('BB610 FIX6 full-card fetch failed',e);
+}
 const app=v.application||{}, how=v.how_it_works||{}, origin=v.origin||{}, src=(Array.isArray(v.sources)?(v.sources[0]||{}):(v.sources||{}));
  box.innerHTML=`<div class=pcv2-head><div><h3>PRODUCT CARD v2</h3><small>${esc(id)} · прямий редактор</small></div><label style="display:flex;align-items:center;gap:7px"><input id=v2_enabled type=checkbox ${v.enabled!==false?'checked':''}> Увімкнено</label></div>
  <div class=pcv2-tabs>${['Основне','Опис','Чому продукт','Як працює','Застосування','Характеристики','Походження','Документи','Джерела','SKU / Фото'].map((x,i)=>`<button class="pcv2-tab ${i===0?'active':''}" data-i=${i} type=button>${x}</button>`).join('')}</div>

@@ -3132,9 +3132,15 @@
         {
           "sku": "BB610-OP-KEMIRA-NPK-12-46-8-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/manual-products/row16-npk-12-46-8-bb610-op-kemira-npk-12-46-8-1kg.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_fix2_manual_sku",
+            "assigned_at": "2026-09-06T19:32:49.726949+00:00",
+            "original_filename": "kemipa-12-46-8-534x534.jpg",
+            "replaced_image": ""
+          }
         }
       ],
       "import_meta": {

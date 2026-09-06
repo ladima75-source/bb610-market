@@ -1886,12 +1886,15 @@
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-5KG",
           "label": "5 кг",
-          "image": "assets/img/real/stage16b/plantafol-20-20-20.png",
+          "image": "assets/img/manual-products/row09-plantafol-20-20-20-bb610-op-plantafol-npk-20-20-20-5kg.jpg",
           "enabled": false,
           "import_source": "Organic Planet structure import 2026",
           "media_meta": {
-            "assigned_by": "stage22h_admin_common",
-            "source_candidate": "assets/img/real/stage16b/plantafol-20-20-20.png"
+            "assigned_by": "stage22l_fix2_manual_sku",
+            "source_candidate": "assets/img/real/stage16b/plantafol-20-20-20.png",
+            "assigned_at": "2026-09-06T18:30:09.379469+00:00",
+            "original_filename": "1093plantafol20-20-205kg-534x534.jpg",
+            "replaced_image": "assets/img/real/stage16b/plantafol-20-20-20.png"
           }
         }
       ],

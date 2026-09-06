@@ -326,30 +326,54 @@
         {
           "sku": "BB610-OP-MASTER-NPK-15-5-30-20G",
           "label": "20 г",
-          "image": "",
+          "image": "assets/img/official-source/row01-master-15-5-30-2.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:15.242998+00:00"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-15-5-30-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/official-source/row01-master-15-5-30-2.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:15.243025+00:00"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-15-5-30-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/official-source/row01-master-15-5-30-2.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:15.243030+00:00"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-15-5-30-25KG",
           "label": "25 кг",
-          "image": "",
+          "image": "assets/img/official-source/row01-master-15-5-30-2.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:15.243034+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -485,30 +509,46 @@
         {
           "sku": "BB610-OP-MASTER-NPK-13-40-13-20G",
           "label": "20 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/master-13-40-13.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/master-13-40-13.png"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-13-40-13-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/master-13-40-13.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/master-13-40-13.png"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-13-40-13-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/master-13-40-13.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/master-13-40-13.png"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-13-40-13-25KG",
           "label": "25 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/master-13-40-13.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/master-13-40-13.png"
+          }
         }
       ],
       "import_meta": {
@@ -640,37 +680,57 @@
         {
           "sku": "BB610-OP-MASTER-NPK-20-20-20-20G",
           "label": "20 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/master-20-20-20.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/master-20-20-20.png"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-20-20-20-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/master-20-20-20.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/master-20-20-20.png"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-20-20-20-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/master-20-20-20.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/master-20-20-20.png"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-20-20-20-10KG",
           "label": "10 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/master-20-20-20.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/master-20-20-20.png"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-20-20-20-25KG",
           "label": "25 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/master-20-20-20.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/master-20-20-20.png"
+          }
         }
       ],
       "import_meta": {
@@ -802,30 +862,54 @@
         {
           "sku": "BB610-OP-MASTER-NPK-3-11-38-20G",
           "label": "20 г",
-          "image": "",
+          "image": "assets/img/official-source/row04-master-3-11-38.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:15.662456+00:00"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-3-11-38-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/official-source/row04-master-3-11-38.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:15.662484+00:00"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-3-11-38-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/official-source/row04-master-3-11-38.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:15.662489+00:00"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-3-11-38-25KG",
           "label": "25 кг",
-          "image": "",
+          "image": "assets/img/official-source/row04-master-3-11-38.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:15.662493+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -965,23 +1049,41 @@
         {
           "sku": "BB610-OP-MASTER-NPK-18-18-18-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/official-source/row05-master-18-18-18.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:16.089902+00:00"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-18-18-18-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/official-source/row05-master-18-18-18.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:16.089931+00:00"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-18-18-18-25KG",
           "label": "25 кг",
-          "image": "",
+          "image": "assets/img/official-source/row05-master-18-18-18.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:16.089936+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -1121,23 +1223,41 @@
         {
           "sku": "BB610-OP-MASTER-NPK-17-6-18-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/official-source/row06-master-17-6-18.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:16.502964+00:00"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-17-6-18-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/official-source/row06-master-17-6-18.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:16.502993+00:00"
+          }
         },
         {
           "sku": "BB610-OP-MASTER-NPK-17-6-18-25KG",
           "label": "25 кг",
-          "image": "",
+          "image": "assets/img/official-source/row06-master-17-6-18.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:16.502998+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -1269,30 +1389,46 @@
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-25G",
           "label": "25 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-30-10-10.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-30-10-10.jpg"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-30-10-10.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-30-10-10.jpg"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-30-10-10.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-30-10-10.jpg"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-30-10-10-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-30-10-10.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-30-10-10.jpg"
+          }
         }
       ],
       "import_meta": {
@@ -1441,30 +1577,46 @@
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-25G",
           "label": "25 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-10-54-10.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-10-54-10.jpg"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-10-54-10.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-10-54-10.jpg"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-10-54-10.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-10-54-10.jpg"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-10-54-10-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-10-54-10.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-10-54-10.jpg"
+          }
         }
       ],
       "import_meta": {
@@ -1613,30 +1765,46 @@
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-25G",
           "label": "25 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-20-20-20.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-20-20-20.png"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-20-20-20.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-20-20-20.png"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-20-20-20.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-20-20-20.png"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-20-20-20-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-20-20-20.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-20-20-20.png"
+          }
         }
       ],
       "import_meta": {
@@ -1785,30 +1953,46 @@
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-25G",
           "label": "25 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-5-15-45.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-5-15-45.png"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-5-15-45.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-5-15-45.png"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-5-15-45.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-5-15-45.png"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-5-15-45-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-5-15-45.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-5-15-45.png"
+          }
         }
       ],
       "import_meta": {
@@ -1957,23 +2141,35 @@
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-0-25-50-25G",
           "label": "25 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-0-25-50.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-0-25-50.png"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-0-25-50-250G",
           "label": "250 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-0-25-50.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-0-25-50.png"
+          }
         },
         {
           "sku": "BB610-OP-PLANTAFOL-NPK-0-25-50-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/plantafol-0-25-50.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/plantafol-0-25-50.png"
+          }
         }
       ],
       "import_meta": {
@@ -2122,30 +2318,46 @@
         {
           "sku": "BB610-OP-PEKACID-NPK-0-60-20-15G",
           "label": "15 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/pekacid-0-60-20.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/pekacid-0-60-20.jpg"
+          }
         },
         {
           "sku": "BB610-OP-PEKACID-NPK-0-60-20-100G",
           "label": "100 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/pekacid-0-60-20.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/pekacid-0-60-20.jpg"
+          }
         },
         {
           "sku": "BB610-OP-PEKACID-NPK-0-60-20-200G",
           "label": "200 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/pekacid-0-60-20.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/pekacid-0-60-20.jpg"
+          }
         },
         {
           "sku": "BB610-OP-PEKACID-NPK-0-60-20-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/pekacid-0-60-20.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/pekacid-0-60-20.jpg"
+          }
         }
       ],
       "import_meta": {
@@ -3191,9 +3403,15 @@
         {
           "sku": "BB610-OP-SPIDFOL-AMINO-VEHETATSIYA-20ML",
           "label": "20 мл",
-          "image": "",
+          "image": "assets/img/official-source/row19-speedfol-amino-vegetative.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://terratarsa.com/en/universal-nutrient-correctors-with-stimulating-effect/",
+            "source_image": "https://terratarsa.com/wp-content/uploads/2024/05/photo_2024-05-15_10-30-33.jpg",
+            "assigned_at": "2026-09-06T16:03:17.216774+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -4602,23 +4820,41 @@
         {
           "sku": "BB610-OP-SULFAT-MAHNIYU-100G",
           "label": "100 г",
-          "image": "",
+          "image": "assets/img/official-source/row28-сульфат-магнію.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/sulfat-magniyu-100-g-alverniya-alwernia-polshcha",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/products/919-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:18.208024+00:00"
+          }
         },
         {
           "sku": "BB610-OP-SULFAT-MAHNIYU-200G",
           "label": "200 г",
-          "image": "",
+          "image": "assets/img/official-source/row28-сульфат-магнію.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/sulfat-magniyu-100-g-alverniya-alwernia-polshcha",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/products/919-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:18.208052+00:00"
+          }
         },
         {
           "sku": "BB610-OP-SULFAT-MAHNIYU-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/official-source/row28-сульфат-магнію.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/sulfat-magniyu-100-g-alverniya-alwernia-polshcha",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/products/919-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:18.208057+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -4729,23 +4965,41 @@
         {
           "sku": "BB610-OP-SOLUPOTASSE-SULFAT-KALIYU-100G",
           "label": "100 г",
-          "image": "",
+          "image": "assets/img/official-source/row29-solupotasse-сульфат-калію.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.tessenderlokerley.com/north-america/products/crop-nutrition/solupotasse",
+            "source_image": "https://www.tessenderlokerley.com/sites/tg_kerley/files/styles/teaser_lg/public/images/2021-08/Product%20Cards7.jpg?itok=ZDuLv64R",
+            "assigned_at": "2026-09-06T16:03:18.669017+00:00"
+          }
         },
         {
           "sku": "BB610-OP-SOLUPOTASSE-SULFAT-KALIYU-200G",
           "label": "200 г",
-          "image": "",
+          "image": "assets/img/official-source/row29-solupotasse-сульфат-калію.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.tessenderlokerley.com/north-america/products/crop-nutrition/solupotasse",
+            "source_image": "https://www.tessenderlokerley.com/sites/tg_kerley/files/styles/teaser_lg/public/images/2021-08/Product%20Cards7.jpg?itok=ZDuLv64R",
+            "assigned_at": "2026-09-06T16:03:18.669045+00:00"
+          }
         },
         {
           "sku": "BB610-OP-SOLUPOTASSE-SULFAT-KALIYU-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/official-source/row29-solupotasse-сульфат-калію.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.tessenderlokerley.com/north-america/products/crop-nutrition/solupotasse",
+            "source_image": "https://www.tessenderlokerley.com/sites/tg_kerley/files/styles/teaser_lg/public/images/2021-08/Product%20Cards7.jpg?itok=ZDuLv64R",
+            "assigned_at": "2026-09-06T16:03:18.669050+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -5227,16 +5481,24 @@
         {
           "sku": "BB610-OP-OSMOCOTE-POTASSIUM-12-8-19-34M-200G",
           "label": "200 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/osmocote-potassium-12-8-19.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/osmocote-potassium-12-8-19.png"
+          }
         },
         {
           "sku": "BB610-OP-OSMOCOTE-POTASSIUM-12-8-19-34M-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/osmocote-potassium-12-8-19.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/osmocote-potassium-12-8-19.png"
+          }
         }
       ],
       "import_meta": {
@@ -5465,16 +5727,24 @@
         {
           "sku": "BB610-OP-OSMOCOTE-LANDSCAPE-16-9-12-34M-200G",
           "label": "200 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/osmocote-landscape-16-9-12.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/osmocote-landscape-16-9-12.png"
+          }
         },
         {
           "sku": "BB610-OP-OSMOCOTE-LANDSCAPE-16-9-12-34M-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/osmocote-landscape-16-9-12.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/osmocote-landscape-16-9-12.png"
+          }
         }
       ],
       "import_meta": {
@@ -5587,16 +5857,24 @@
         {
           "sku": "BB610-OP-OSMOCOTE-QUICK-START-22-5-6-45M-200G",
           "label": "200 г",
-          "image": "",
+          "image": "assets/img/real/stage16b/osmocote-quick-start-22-5-6.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/osmocote-quick-start-22-5-6.png"
+          }
         },
         {
           "sku": "BB610-OP-OSMOCOTE-QUICK-START-22-5-6-45M-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/real/stage16b/osmocote-quick-start-22-5-6.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/osmocote-quick-start-22-5-6.png"
+          }
         }
       ],
       "import_meta": {
@@ -6121,30 +6399,54 @@
         {
           "sku": "BB610-OP-NEOVIVO-30ML",
           "label": "30 мл",
-          "image": "",
+          "image": "assets/img/official-source/row40-neovivo.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-1-l-neova",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/neovivo1l-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:19.294033+00:00"
+          }
         },
         {
           "sku": "BB610-OP-NEOVIVO-1L",
           "label": "1 л",
-          "image": "",
+          "image": "assets/img/official-source/row40-neovivo.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-1-l-neova",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/neovivo1l-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:19.294063+00:00"
+          }
         },
         {
           "sku": "BB610-OP-NEOVIVO-5L",
           "label": "5 л",
-          "image": "",
+          "image": "assets/img/official-source/row40-neovivo.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-1-l-neova",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/neovivo1l-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:19.294068+00:00"
+          }
         },
         {
           "sku": "BB610-OP-NEOVIVO-20L",
           "label": "20 л",
-          "image": "",
+          "image": "assets/img/official-source/row40-neovivo.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-1-l-neova",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/neovivo1l-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:19.294073+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -6252,30 +6554,54 @@
         {
           "sku": "BB610-OP-NEOFLORA-30ML",
           "label": "30 мл",
-          "image": "",
+          "image": "assets/img/official-source/row41-neoflora.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-1-l-neova",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/neoflora1l-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:19.460572+00:00"
+          }
         },
         {
           "sku": "BB610-OP-NEOFLORA-1L",
           "label": "1 л",
-          "image": "",
+          "image": "assets/img/official-source/row41-neoflora.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-1-l-neova",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/neoflora1l-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:19.460611+00:00"
+          }
         },
         {
           "sku": "BB610-OP-NEOFLORA-5L",
           "label": "5 л",
-          "image": "",
+          "image": "assets/img/official-source/row41-neoflora.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-1-l-neova",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/neoflora1l-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:19.460617+00:00"
+          }
         },
         {
           "sku": "BB610-OP-NEOFLORA-20L",
           "label": "20 л",
-          "image": "",
+          "image": "assets/img/official-source/row41-neoflora.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-1-l-neova",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/neoflora1l-534x534.jpg",
+            "assigned_at": "2026-09-06T16:03:19.460621+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -6404,30 +6730,46 @@
         {
           "sku": "BB610-OP-RADIFARM-25ML",
           "label": "25 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/radifarm.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/radifarm.jpg"
+          }
         },
         {
           "sku": "BB610-OP-RADIFARM-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/radifarm.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/radifarm.jpg"
+          }
         },
         {
           "sku": "BB610-OP-RADIFARM-1L",
           "label": "1 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/radifarm.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/radifarm.jpg"
+          }
         },
         {
           "sku": "BB610-OP-RADIFARM-10L",
           "label": "10 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/radifarm.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/radifarm.jpg"
+          }
         }
       ],
       "import_meta": {
@@ -6530,23 +6872,35 @@
         {
           "sku": "BB610-OP-KEMIRA-UKORINYUVACH-20ML",
           "label": "20 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/kemira-rooter.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/kemira-rooter.png"
+          }
         },
         {
           "sku": "BB610-OP-KEMIRA-UKORINYUVACH-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/real/stage16b/kemira-rooter.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/kemira-rooter.png"
+          }
         },
         {
           "sku": "BB610-OP-KEMIRA-UKORINYUVACH-1L",
           "label": "1 л",
-          "image": "",
+          "image": "assets/img/real/stage16b/kemira-rooter.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22h_admin_common",
+            "source_candidate": "assets/img/real/stage16b/kemira-rooter.png"
+          }
         }
       ],
       "import_meta": {
@@ -7791,9 +8145,15 @@
         {
           "sku": "BB610-OP-SPREI-EID-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/official-source/row55-спрей-ейд.webp",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.millerchemical.com/products/adjuvants/spray-aide",
+            "source_image": "https://static.huberagrosolutions.com/dims4/default/9bcbe78/2147483647/strip/true/crop/1536x640+672+0/resize/1440x600!/format/webp/quality/90/?url=https%3A%2F%2Fk2-prod-huber.s3.us-east-1.amazonaws.com%2Fbrightspot%2F13%2F87%2Fce44a9044874b28e8ce551163acb%2Fadjuvants-hero-image-man-in-field-looking-at-sky.jpg",
+            "assigned_at": "2026-09-06T16:03:19.877070+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -7887,9 +8247,15 @@
         {
           "sku": "BB610-OP-TERRA-SORB-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/official-source/row56-terra-sorb.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.bioiberica.com/en/products/plants-health/terra-sorb-complex",
+            "source_image": "https://www.bioiberica.com/sites/default/files/styles/open_graph_image/public/content/image/2025/07/01/1/hannah-shedrow-EKaNVfRlYRU-unsplash.jpg",
+            "assigned_at": "2026-09-06T16:03:20.939169+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -8120,9 +8486,15 @@
         {
           "sku": "BB610-OP-KEMIRA-BALANS-NITRATE-BALANCER-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "assets/img/official-source/row58-кеміра-баланс-nitrate-balancer.png",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-balans-100-ml-organic-planet",
+            "source_image": "https://organicplanet.com.ua/image/cache/catalog/photo/1277-534x534.png",
+            "assigned_at": "2026-09-06T16:03:21.223887+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -8231,9 +8603,15 @@
         {
           "sku": "BB610-OP-NEOTERRA-ORGANIC-C-25KG",
           "label": "25 кг",
-          "image": "",
+          "image": "assets/img/official-source/row59-neoterra-organic-c.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.neova-group.com/products/soil-conditioners/",
+            "source_image": "https://www.neova-group.com/wp-content/uploads/2025/08/colourbox66173554-kopio-2048x1367.jpg",
+            "assigned_at": "2026-09-06T16:03:21.667238+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -8330,9 +8708,15 @@
         {
           "sku": "BB610-OP-NEOTERRA-AQUA-25KG",
           "label": "25 кг",
-          "image": "",
+          "image": "assets/img/official-source/row60-neoterra-aqua.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.neova-group.com/products/soil-conditioners/",
+            "source_image": "https://www.neova-group.com/wp-content/uploads/2025/08/colourbox66173554-kopio-2048x1367.jpg",
+            "assigned_at": "2026-09-06T16:03:22.109261+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -8640,9 +9024,15 @@
         {
           "sku": "BB610-OP-BREXIL-MN-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/official-source/row63-brexil-mn.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/micronutrients/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:22.516268+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -9256,16 +9646,28 @@
         {
           "sku": "BB610-OP-VALAGRO-EDTA-5SG-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/official-source/row69-valagro-edta-5sg.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/micronutrients/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:23.011074+00:00"
+          }
         },
         {
           "sku": "BB610-OP-VALAGRO-EDTA-5SG-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/official-source/row69-valagro-edta-5sg.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/micronutrients/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:23.011094+00:00"
+          }
         }
       ],
       "import_meta": {
@@ -9353,9 +9755,15 @@
         {
           "sku": "BB610-OP-VALAGRO-EDTA-FE-13-5KG",
           "label": "5 кг",
-          "image": "",
+          "image": "assets/img/official-source/row70-valagro-edta-fe-13.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22k_exact_source_image_recovery",
+            "source_page": "https://www.valagro.com/en/products/farm/micronutrients/",
+            "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+            "assigned_at": "2026-09-06T16:03:23.416095+00:00"
+          }
         }
       ],
       "import_meta": {

@@ -3323,9 +3323,15 @@
         {
           "sku": "BB610-OP-KEMIRA-NPK-18-18-18-1KG",
           "label": "1 кг",
-          "image": "",
+          "image": "assets/img/manual-products/row17-npk-18-18-18-bb610-op-kemira-npk-18-18-18-1kg.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "media_meta": {
+            "assigned_by": "stage22l_fix2_manual_sku",
+            "assigned_at": "2026-09-06T19:42:14.610390+00:00",
+            "original_filename": "kemira-18-18-18-534x534.jpg",
+            "replaced_image": ""
+          }
         }
       ],
       "import_meta": {

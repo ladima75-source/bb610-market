@@ -85,8 +85,25 @@ def _find_card(cards,row):
         if isinstance(c,dict) and _source_row(c)==row:return c
     raise HTTPException(status_code=404,detail="Card not found")
 
+def _find_variant(card,sku):
+    for v in _variants(card):
+        if _sku(v)==sku:return v
+    raise HTTPException(status_code=404,detail="SKU not found")
+
+def _decode_image(filename,content_base64):
+    ext=Path(filename or "").suffix.lower()
+    if ext not in ALLOWED_EXT:
+        raise HTTPException(status_code=400,detail="Allowed: JPG/JPEG/PNG/WEBP/AVIF")
+    try:
+        raw=base64.b64decode(content_base64,validate=True)
+    except Exception:
+        raise HTTPException(status_code=400,detail="Invalid image payload")
+    if not raw or len(raw)>MAX_BYTES:
+        raise HTTPException(status_code=400,detail="Image must be <= 15 MB")
+    return ext,raw
+
 @router.get("")
-def list_missing(authorization: Optional[str]=Header(default=None)):
+def list_cards(authorization: Optional[str]=Header(default=None)):
     _auth(authorization)
     obj=_load(_master_path())
     out=[]
@@ -95,66 +112,97 @@ def list_missing(authorization: Optional[str]=Header(default=None)):
         row=_source_row(c)
         if row is None: continue
         vv=_variants(c)
-        missing=[v for v in vv if _sku(v) and not _img(v)]
-        if not missing: continue
+        if not vv: continue
+        imgs=[_img(v) for v in vv if _sku(v)]
+        unique=sorted(set(x for x in imgs if x))
         out.append({
             "source_row":row,
             "name":c.get("name",""),
             "brand":c.get("brand",""),
             "total_variants":len(vv),
-            "missing_variants":len(missing),
+            "missing_variants":sum(1 for v in vv if _sku(v) and not _img(v)),
+            "same_image_for_all": bool(unique) and len(unique)==1 and all(_img(v) for v in vv if _sku(v)),
             "variants":[{
                 "sku":_sku(v),
                 "label":v.get("variant") or v.get("name") or v.get("label") or "",
                 "image":_img(v)
-            } for v in vv],
+            } for v in vv if _sku(v)],
             "source_url":((c.get("sources") or {}).get("source_url","") if isinstance(c.get("sources"),dict) else "")
         })
     out.sort(key=lambda x:x["source_row"])
     return {"ok":True,"count":len(out),"cards":out}
 
-class UploadBody(BaseModel):
+class UploadSKUBody(BaseModel):
     source_row:int
+    sku:str
     filename:str
     content_base64:str
+    replace_existing:bool=False
 
-@router.post("/upload")
-def upload(body:UploadBody,authorization: Optional[str]=Header(default=None)):
+@router.post("/upload-sku")
+def upload_sku(body:UploadSKUBody,authorization: Optional[str]=Header(default=None)):
     _auth(authorization)
-    ext=Path(body.filename or "").suffix.lower()
-    if ext not in ALLOWED_EXT:
-        raise HTTPException(status_code=400,detail="Allowed: JPG/JPEG/PNG/WEBP/AVIF")
-    try:
-        raw=base64.b64decode(body.content_base64,validate=True)
-    except Exception:
-        raise HTTPException(status_code=400,detail="Invalid image payload")
-    if not raw or len(raw)>MAX_BYTES:
-        raise HTTPException(status_code=400,detail="Image must be <= 15 MB")
+    ext,raw=_decode_image(body.filename,body.content_base64)
 
     master=_master_path()
     obj=_load(master)
     cards=[x for x in _collection(obj) if isinstance(x,dict)]
     card=_find_card(cards,body.source_row)
-    missing=[v for v in _variants(card) if _sku(v) and not _img(v)]
-    if not missing:
-        return {"ok":True,"changed":0,"message":"No missing variants"}
+    v=_find_variant(card,body.sku)
+    old=_img(v)
+    if old and not body.replace_existing:
+        raise HTTPException(status_code=409,detail=f"SKU already has image: {old}")
 
     backup=_backup(master)
     outdir=ROOT/"assets"/"img"/"manual-products"
     outdir.mkdir(parents=True,exist_ok=True)
-    name=f"row{body.source_row:02d}-{_slug(card.get('name',''))}{ext}"
+    safe_sku=_slug(body.sku)
+    name=f"row{body.source_row:02d}-{_slug(card.get('name',''))}-{safe_sku}{ext}"
     rel=f"assets/img/manual-products/{name}"
     (ROOT/rel).write_bytes(raw)
 
+    v["image"]=rel
+    meta=v.setdefault("media_meta",{})
+    if isinstance(meta,dict):
+        meta["assigned_by"]="stage22l_fix1_manual_sku"
+        meta["assigned_at"]=datetime.datetime.now(datetime.timezone.utc).isoformat()
+        meta["original_filename"]=body.filename
+        meta["replaced_image"]=old or ""
+
+    _save(master,obj)
+    return {"ok":True,"sku":body.sku,"image":rel,"old_image":old,"backup":str(backup)}
+
+class UploadCommonBody(BaseModel):
+    source_row:int
+    filename:str
+    content_base64:str
+
+@router.post("/upload-common-missing")
+def upload_common_missing(body:UploadCommonBody,authorization: Optional[str]=Header(default=None)):
+    _auth(authorization)
+    ext,raw=_decode_image(body.filename,body.content_base64)
+    master=_master_path()
+    obj=_load(master)
+    cards=[x for x in _collection(obj) if isinstance(x,dict)]
+    card=_find_card(cards,body.source_row)
+    targets=[v for v in _variants(card) if _sku(v) and not _img(v)]
+    if not targets:
+        return {"ok":True,"changed":0}
+
+    backup=_backup(master)
+    outdir=ROOT/"assets"/"img"/"manual-products"
+    outdir.mkdir(parents=True,exist_ok=True)
+    name=f"row{body.source_row:02d}-{_slug(card.get('name',''))}-common{ext}"
+    rel=f"assets/img/manual-products/{name}"
+    (ROOT/rel).write_bytes(raw)
     changed=[]
-    for v in missing:
+    for v in targets:
         v["image"]=rel
         meta=v.setdefault("media_meta",{})
         if isinstance(meta,dict):
-            meta["assigned_by"]="stage22l_manual_admin"
+            meta["assigned_by"]="stage22l_fix1_manual_common_missing"
             meta["assigned_at"]=datetime.datetime.now(datetime.timezone.utc).isoformat()
             meta["original_filename"]=body.filename
         changed.append(_sku(v))
-
     _save(master,obj)
     return {"ok":True,"changed":len(changed),"skus":changed,"image":rel,"backup":str(backup)}

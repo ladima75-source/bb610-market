@@ -1,13 +1,20 @@
 <!doctype html><html lang="uk"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BB610 Market — Manual Media</title><link rel="stylesheet" href="media-manual.css">
+<title>BB610 Market — Media by SKU</title><link rel="stylesheet" href="media-manual.css">
 </head><body>
-<header><b>BB610 MARKET ADMIN</b><span> · Ручне завантаження фото</span>
+<header><b>BB610 MARKET ADMIN</b><span> · Фото по фасуваннях / SKU</span>
 <div><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></header>
 <main>
-<div class="hero"><div><div class="eyebrow">MEDIA</div><h1>Картки без фото</h1>
-<p>Тут тільки залишок. Вибираєш правильне фото з комп'ютера — воно застосовується до всіх фасувань цієї картки, де фото ще немає.</p></div>
+<div class="hero"><div><div class="eyebrow">MEDIA FIX1</div><h1>Фото по кожній фасовці</h1>
+<p>Показані всі товарні картки, у тому числі ті, де раніше одне фото було призначено всім фасуванням. Для кожного SKU можна завантажити або замінити фото окремо.</p></div>
 <div class="counter"><b id="count">—</b><span>карток</span></div></div>
+
+<div class="toolbar">
+  <input id="search" type="search" placeholder="Пошук: товар / бренд / SKU">
+  <label><input id="onlySame" type="checkbox"> Тільки картки, де одне фото на всі SKU</label>
+  <label><input id="onlyMissing" type="checkbox"> Тільки з відсутніми фото</label>
+</div>
+
 <div id="list" class="grid"></div>
 </main>
 <script src="media-manual.js"></script></body></html>

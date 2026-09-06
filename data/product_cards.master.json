@@ -326,14 +326,16 @@
         {
           "sku": "BB610-OP-MASTER-NPK-15-5-30-20G",
           "label": "20 г",
-          "image": "assets/img/official-source/row01-master-15-5-30-2.jpg",
+          "image": "assets/img/manual-products/row01-master-15-5-30-2-bb610-op-master-npk-15-5-30-20g.jpg",
           "enabled": false,
           "import_source": "Organic Planet structure import 2026",
           "media_meta": {
-            "assigned_by": "stage22k_exact_source_image_recovery",
+            "assigned_by": "stage22l_fix2_manual_sku",
             "source_page": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
             "source_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
-            "assigned_at": "2026-09-06T16:03:15.242998+00:00"
+            "assigned_at": "2026-09-06T18:02:09.573327+00:00",
+            "original_filename": "master1-02_11zon-534x534.jpg",
+            "replaced_image": "assets/img/official-source/row01-master-15-5-30-2.jpg"
           }
         },
         {

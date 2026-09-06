@@ -700,12 +700,15 @@
         {
           "sku": "BB610-OP-MASTER-NPK-20-20-20-20G",
           "label": "20 г",
-          "image": "assets/img/real/stage16b/master-20-20-20.png",
+          "image": "assets/img/manual-products/row03-master-20-20-20-bb610-op-master-npk-20-20-20-20g.jpg",
           "enabled": false,
           "import_source": "Organic Planet structure import 2026",
           "media_meta": {
-            "assigned_by": "stage22h_admin_common",
-            "source_candidate": "assets/img/real/stage16b/master-20-20-20.png"
+            "assigned_by": "stage22l_fix2_manual_sku",
+            "source_candidate": "assets/img/real/stage16b/master-20-20-20.png",
+            "assigned_at": "2026-09-06T18:07:38.707754+00:00",
+            "original_filename": "upakovki16-05-534x534 (1).jpg",
+            "replaced_image": "assets/img/real/stage16b/master-20-20-20.png"
           }
         },
         {

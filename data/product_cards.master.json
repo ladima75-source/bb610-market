@@ -2458,12 +2458,15 @@
         {
           "sku": "BB610-OP-PEKACID-NPK-0-60-20-200G",
           "label": "200 г",
-          "image": "assets/img/real/stage16b/pekacid-0-60-20.jpg",
+          "image": "assets/img/manual-products/row12-nova-pekacid-0-60-20-bb610-op-pekacid-npk-0-60-20-200g.jpg",
           "enabled": false,
           "import_source": "Organic Planet structure import 2026",
           "media_meta": {
-            "assigned_by": "stage22h_admin_common",
-            "source_candidate": "assets/img/real/stage16b/pekacid-0-60-20.jpg"
+            "assigned_by": "stage22l_fix2_manual_sku",
+            "source_candidate": "assets/img/real/stage16b/pekacid-0-60-20.jpg",
+            "assigned_at": "2026-09-06T19:27:49.039652+00:00",
+            "original_filename": "pekacid-534x534.jpg",
+            "replaced_image": "assets/img/real/stage16b/pekacid-0-60-20.jpg"
           }
         },
         {

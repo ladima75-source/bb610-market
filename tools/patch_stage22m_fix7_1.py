@@ -1,18 +1,17 @@
-from typing import Optional,Any
-import os
-from fastapi import APIRouter,Header,HTTPException
-from pydantic import BaseModel
-from .services.master_product_card import schema,save_schema
+#!/usr/bin/env python3
+from pathlib import Path
+import re, sys
 
-router=APIRouter()
-def auth(a):
-    token=os.getenv('BB610_ADMIN_TOKEN')
-    if not token or a!='Bearer '+token: raise HTTPException(401,'Unauthorized')
+ROOT=Path(sys.argv[1] if len(sys.argv)>1 else "/opt/bb610-market")
+p=ROOT/"backend/master_product_card_api.py"
+t=p.read_text(encoding="utf-8")
 
-class Body(BaseModel):
-    data:dict[str,Any]
+marker="BB610_STAGE22M_FIX7_1_V1_BRIDGE"
+if marker in t:
+    print("OK: FIX7.1 already present")
+    raise SystemExit(0)
 
-
+helper = '''
 # BB610_STAGE22M_FIX7_1_V1_BRIDGE
 def _bb610_cards_collection(obj):
     if isinstance(obj, list):
@@ -54,7 +53,7 @@ def _bb610_text(v):
     if isinstance(v, (int,float)):
         return str(v)
     if isinstance(v, list):
-        return "\n".join(_bb610_text(x) for x in v if _bb610_text(x))
+        return "\\n".join(_bb610_text(x) for x in v if _bb610_text(x))
     if isinstance(v, dict):
         for k in ("text","body","description","intro","note","value"):
             x=_bb610_text(v.get(k))
@@ -158,23 +157,23 @@ def _bb610_bridge_v1(slug, current):
         "verified_date":_bb610_text(v.get("verified_date")),
         "verified":bool(v.get("verified",False)),
     }
+'''
 
-@router.get('/api/v1/storefront/product-card/{slug}')
-def public_card(slug:str):
-    s=schema(slug)
-    if not s or not s.get('enabled'): raise HTTPException(404,'Master product card not enabled')
-    return s
+route_pos=t.find("@router.")
+if route_pos<0:
+    raise SystemExit("ERROR: router decorator not found")
+t=t[:route_pos]+helper+"\n"+t[route_pos:]
 
-@router.get('/api/v1/admin/product-card-v1/{slug}')
-def admin_get(slug:str,authorization:Optional[str]=Header(None)):
-    auth(authorization)
-    s=schema(slug)
-    if not s: raise HTTPException(404,'Товар не знайдено')
-    return _bb610_bridge_v1(slug, s)
+pattern = re.compile(r'(@router\.get\([\'\"]/api/v1/admin/product-card-v1/\{slug\}[\'\"]\)\s*\ndef\s+admin_get\([^\n]*\):\s*\n(?:[^\n]*\n){0,10}?\s*)return\s+s')
+m=pattern.search(t)
+if not m:
+    raise SystemExit("ERROR: admin_get return s not found; refusing blind patch")
 
-@router.put('/api/v1/admin/product-card-v1/{slug}')
-def admin_save(slug:str,body:Body,authorization:Optional[str]=Header(None)):
-    auth(authorization)
-    try:return save_schema(slug,body.data)
-    except KeyError as e: raise HTTPException(404,str(e))
-    except Exception as e: raise HTTPException(422,str(e))
+t=t[:m.start()]+m.group(1)+"return _bb610_bridge_v1(slug, s)"+t[m.end():]
+
+if marker not in t or "_bb610_bridge_v1(slug, s)" not in t:
+    raise SystemExit("ERROR: FIX7.1 validation failed")
+
+p.write_text(t,encoding="utf-8")
+print("OK: admin product-card-v1 endpoint bridged")
+print("MARKER:",marker)

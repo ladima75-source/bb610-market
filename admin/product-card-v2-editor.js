@@ -73,6 +73,45 @@ try{
 }catch(e){
   console.warn('BB610 FIX6 full-card fetch failed',e);
 }
+/* BB610_STAGE22M_FIX9_V2_CONTENT_PHOTOS */
+try{
+  const card=await api('/api/v1/admin/product-cards/'+encodeURIComponent(id));
+  if(card && typeof card==='object'){
+    const empty=x=>x==null||x===''||(Array.isArray(x)&&x.length===0)||(x&&typeof x==='object'&&!Array.isArray(x)&&Object.keys(x).length===0);
+    const txt=x=>typeof x==='string'?x.trim():'';
+
+    if(empty(v.name)) v.name=card.official_name||card.name||card.title||'';
+    if(empty(v.short_description)) v.short_description=card.short_description||card.summary||'';
+    if(empty(v.subtitle)) v.subtitle=v.short_description||'';
+    if(empty(v.lead)) v.lead=v.short_description||'';
+    if(empty(v.full_description)) v.full_description=card.description||card.full_description||card.long_description||'';
+
+    if(empty(v.why) || (Array.isArray(v.why)&&!v.why.length)){
+      const w=card.why_product||card.why||card.benefits||'';
+      if(txt(w)) v.why=[{title:'Чому продукт',text:w}];
+    }
+    if(empty(v.how_it_works) || !txt(v.how_it_works?.text)){
+      const h=card.how_works||card.mechanism||card.mechanism_of_action||'';
+      if(txt(h)) v.how_it_works={title:'Як працює',badge:'Як працює',text:h};
+    }
+    if(empty(v.application) || !txt(v.application?.intro)){
+      const a=typeof card.application==='string'?card.application:(card.usage||card.use||card.recommendations||'');
+      if(txt(a)) v.application={enabled:true,intro:a,rows:[],note:'',market_note:''};
+    }
+    if(empty(v.specs) || !txt(v.specs?.intro)){
+      const s=typeof card.characteristics==='string'?card.characteristics:(card.specifications||card.properties||'');
+      if(txt(s)) v.specs={intro:s,rows:[{label:'Характеристики',value:s}],note:''};
+    }
+    if(empty(v.origin) || Object.keys(v.origin||{}).length===0){
+      v.origin={brand:card.brand||'',country:card.origin||card.country||'',company:'',manufacturer:'',official_url:''};
+    }
+    if(empty(v.documents)) v.documents=Array.isArray(card.documents)?card.documents:[];
+    if(empty(v.sources)) v.sources=card.sources||{};
+  }
+}catch(e){
+  console.warn('BB610 FIX9 content fallback failed',e);
+}
+
 const app=v.application||{}, how=v.how_it_works||{}, origin=v.origin||{}, src=(Array.isArray(v.sources)?(v.sources[0]||{}):(v.sources||{}));
  box.innerHTML=`<div class=pcv2-head><div><h3>PRODUCT CARD v2</h3><small>${esc(id)} · прямий редактор</small></div><label style="display:flex;align-items:center;gap:7px"><input id=v2_enabled type=checkbox ${v.enabled!==false?'checked':''}> Увімкнено</label></div>
  <div class=pcv2-tabs>${['Основне','Опис','Чому продукт','Як працює','Застосування','Характеристики','Походження','Документи','Джерела','SKU / Фото'].map((x,i)=>`<button class="pcv2-tab ${i===0?'active':''}" data-i=${i} type=button>${x}</button>`).join('')}</div>

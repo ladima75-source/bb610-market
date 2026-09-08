@@ -10,6 +10,7 @@ PY_FILES = [
     ROOT / 'backend' / 'product_cards_v3_api.py',
     ROOT / 'backend' / 'services' / 'product_cards_v3.py',
     ROOT / 'backend' / 'services' / 'product_cards_v3_media.py',
+    ROOT / 'backend' / 'tools_migrate_pcv3_batch01.py',
 ]
 JSON_FILES = [
     ROOT / 'data' / 'product_cards_v3' / 'product_card_v3.schema.json',
@@ -63,7 +64,7 @@ def main() -> None:
 
     index = loaded['index.json']
     if index.get('schema_version') != '3.0' or not isinstance(index.get('items'), list):
-        fail('invalid empty v3 index')
+        fail('invalid v3 index')
 
     cmap = loaded['commerce_map.json']
     if cmap.get('schema_version') != '1.0' or not isinstance(cmap.get('products'), list):
@@ -91,6 +92,11 @@ def main() -> None:
     if 'update_product(' in service_text or 'sku_commerce' in service_text:
         fail('v3 service contains commerce write path')
 
+    migration_text = (ROOT / 'backend' / 'tools_migrate_pcv3_batch01.py').read_text(encoding='utf-8')
+    for forbidden in ('update_product(', 'save_product(', 'create_sku(', 'DELETE FROM sku_commerce', 'UPDATE sku_commerce', 'INSERT INTO sku_commerce'):
+        if forbidden in migration_text:
+            fail('Batch 01 migrator contains commerce write path: ' + forbidden)
+
     media_path = ROOT / 'backend' / 'services' / 'product_cards_v3_media.py'
     media_text = media_path.read_text(encoding='utf-8')
     forbidden_media_writes = ('write_text(', 'write_bytes(', 'unlink(', 'replace(', 'shutil.', 'subprocess.')
@@ -98,8 +104,6 @@ def main() -> None:
     if bad_media:
         fail('v3 media picker is not read-only: ' + ', '.join(bad_media))
 
-    # Check executable imports, not comments/docstrings. Mentioning media_manager in a
-    # comment is allowed; importing/calling it is not because it can mutate media.library.json.
     tree = ast.parse(media_text, filename=str(media_path))
     for node in ast.walk(tree):
         if isinstance(node, ast.Import):
@@ -116,7 +120,7 @@ def main() -> None:
     print('JSON files: PASS')
     print('Schema version 3.0: PASS')
     print('No persisted legacy/commerce keys: PASS')
-    print('No commerce write API/service path: PASS')
+    print('No commerce write API/service/migration path: PASS')
     print('Media picker read-only: PASS')
 
 

@@ -5,19 +5,28 @@ const token=()=>$('#token')?.value||localStorage.getItem('bb610_admin_token')||'
 const norm=s=>String(s||'').replace(/\s+/g,' ').trim().toLowerCase();
 async function api(path,opt={}){const r=await fetch(API+path,{...opt,headers:{Authorization:'Bearer '+token(),'Content-Type':'application/json',...(opt.headers||{})}});const x=await r.json().catch(()=>({}));if(!r.ok)throw new Error(x.detail||('HTTP '+r.status));return x}
 
-/* BB610 STAGE20C FIX2 ADMIN MOUNT */
+/* BB610 STAGE22M FIX12.1 CANONICAL PRODUCT ID */
 function currentId(){
   const editor=document.querySelector('#editor,.pc-editor,.product-editor');
   if(!editor) return '';
 
+  const slugish=[];
+  const add=v=>{v=String(v||'').trim().toLowerCase();if(v&&/^[a-z0-9][a-z0-9._-]{1,160}$/.test(v)&&!slugish.includes(v))slugish.push(v)};
+
+  [editor,...editor.querySelectorAll('*')].forEach(el=>{
+    if(!el) return;
+    const ds=el.dataset||{};
+    add(ds.productId); add(ds.productSlug); add(ds.slug);
+  });
+
   const fields=[...editor.querySelectorAll('input')];
   for(const el of fields){
-    const id=String(el.id||'').toLowerCase();
-    const name=String(el.name||'').toLowerCase();
-    const ph=String(el.placeholder||'').toLowerCase();
-    const v=String(el.value||'').trim().toLowerCase();
-    if((id.includes('slug')||name.includes('slug')||ph.includes('slug')) && v) return v;
+    const key=(String(el.id||'')+' '+String(el.name||'')+' '+String(el.placeholder||'')).toLowerCase();
+    if(key.includes('product')&&key.includes('id')) add(el.value);
+    if(key.includes('slug')) add(el.value);
   }
+
+  if(slugish.length) return slugish[0];
 
   const values=fields.map(el=>String(el.value||'').trim().toLowerCase());
   if(values.includes('kendal')) return 'kendal';
@@ -28,6 +37,52 @@ function currentId(){
     if(txt.toLowerCase().includes('slug') && el.value) return String(el.value).trim().toLowerCase();
   }
   return '';
+}
+
+function cardScore(x){
+  if(!isObj(x)) return -1;
+  const v=isObj(x.product_card_v2)?x.product_card_v2:{};
+  const m=isObj(v.main)?v.main:{};
+  let n=0;
+  const vals=[v.name,x.name,m.short_description,x.short_description,m.full_description,x.full_description,v.why,x.why,v.how_it_works,x.how_it_works,v.application,x.application,v.specs,x.specs,v.origin,x.origin,v.documents,x.documents,v.sources,x.sources];
+  vals.forEach(z=>{if(!empty(z))n+=1});
+  const photos=Array.isArray(v.sku_photo)?v.sku_photo:(Array.isArray(x.sku_photo)?x.sku_photo:[]);
+  n+=Math.min(photos.length,5)*2;
+  return n;
+}
+
+async function resolveCanonicalId(rawId){
+  const candidates=[];
+  const add=v=>{v=String(v||'').trim().toLowerCase();if(v&&!candidates.includes(v))candidates.push(v)};
+  add(rawId);
+
+  const editor=document.querySelector('#editor,.pc-editor,.product-editor');
+  if(editor){
+    [editor,...editor.querySelectorAll('*')].forEach(el=>{
+      const ds=el?.dataset||{}; add(ds.productId); add(ds.productSlug); add(ds.slug);
+      if(el instanceof HTMLInputElement){
+        const key=(String(el.id||'')+' '+String(el.name||'')+' '+String(el.placeholder||'')).toLowerCase();
+        if((key.includes('product')&&key.includes('id'))||key.includes('slug')) add(el.value);
+      }
+    });
+  }
+
+  /* Current catalogue convention: MASTER NPK cards use canonical master-npk-* ids.
+     Keep this as a candidate only; the populated API response must win by score. */
+  if(/^master-(?!npk-)/.test(rawId)) add(rawId.replace(/^master-/,'master-npk-'));
+
+  let best={id:rawId,full:null,score:-1};
+  for(const cand of candidates.slice(0,8)){
+    try{
+      const full=await api('/api/v1/admin/product-cards/'+encodeURIComponent(cand));
+      const canonical=String(pick(full?.id,full?.product_card_v2?.id,cand)||cand).trim().toLowerCase();
+      const score=cardScore(full);
+      if(score>best.score) best={id:canonical,full,score};
+    }catch(e){
+      console.warn('BB610 FIX12.1 canonical candidate failed',cand,e);
+    }
+  }
+  return best;
 }
 
 function row2(x={}){return `<div class="pcv2-row two"><input data-k=title value="${esc(x.title||x.label||'')}" placeholder="Назва"><input data-k=text value="${esc(x.text||x.value||x.url||'')}" placeholder="Значення / текст"><button type=button class=pcv2-remove>×</button></div>`}
@@ -149,15 +204,17 @@ function normalizeResponse(root){
 
 let __pcv2MountingId='';
 async function mount(){
-  const id=currentId(); if(!id)return;
-  if(__pcv2MountingId===id) return;
+  const rawId=currentId(); if(!rawId)return;
+  if(__pcv2MountingId===rawId) return;
   const editor=$('#editor,.pc-editor,.product-editor'); if(!editor)return;
   const existing=[...document.querySelectorAll('.pcv2')];
-  if(existing.some(x=>x.dataset.id===id)) return;
+  if(existing.some(x=>x.dataset.rawId===rawId)) return;
   existing.forEach(x=>x.remove());
-  __pcv2MountingId=id;
+  __pcv2MountingId=rawId;
   $('.pcv2')?.remove(); hideLegacy();
 
+  const resolved=await resolveCanonicalId(rawId);
+  const id=resolved.id||rawId;
   let primary;
   try{
     primary=await api('/api/v1/admin/product-card-v2/'+encodeURIComponent(id));
@@ -175,11 +232,15 @@ async function mount(){
   }
 
   let combined=clone(primary)||{};
-  try{
-    const full=await api('/api/v1/admin/product-cards/'+encodeURIComponent(id));
-    combined=fillMissing(combined,full);
-  }catch(e){
-    console.warn('BB610 FIX12 full-card fallback fetch failed',e);
+  if(resolved.full){
+    combined=fillMissing(combined,resolved.full);
+  }else{
+    try{
+      const full=await api('/api/v1/admin/product-cards/'+encodeURIComponent(id));
+      combined=fillMissing(combined,full);
+    }catch(e){
+      console.warn('BB610 FIX12.1 full-card fallback fetch failed',e);
+    }
   }
 
   document.querySelector('#bb610-pcv2-load-error')?.remove();
@@ -188,8 +249,8 @@ async function mount(){
   const originalSku=Array.isArray(v.sku_photo)?v.sku_photo.map(clone):[];
   const app=v.application, how=v.how_it_works, origin=v.origin, src=v.sources;
 
-  const box=document.createElement('section');box.className='pcv2';box.dataset.id=id;
-  box.innerHTML=`<div class=pcv2-head><div><h3>PRODUCT CARD v2</h3><small>${esc(id)} · прямий редактор · FIX12 actual schema</small></div><label style="display:flex;align-items:center;gap:7px"><input id=v2_enabled type=checkbox ${v.enabled!==false?'checked':''}> Увімкнено</label></div>
+  const box=document.createElement('section');box.className='pcv2';box.dataset.id=id;box.dataset.rawId=rawId;
+  box.innerHTML=`<div class=pcv2-head><div><h3>PRODUCT CARD v2</h3><small>${esc(id)} · прямий редактор · FIX12.1 canonical ID</small></div><label style="display:flex;align-items:center;gap:7px"><input id=v2_enabled type=checkbox ${v.enabled!==false?'checked':''}> Увімкнено</label></div>
   <div class=pcv2-tabs>${['Основне','Опис','Чому продукт','Як працює','Застосування','Характеристики','Походження','Документи','Джерела','SKU / Фото'].map((x,i)=>`<button class="pcv2-tab ${i===0?'active':''}" data-i=${i} type=button>${x}</button>`).join('')}</div>
   <div class="pcv2-panel active"><div class=pcv2-grid><label>Eyebrow<input id=v2_eyebrow value="${esc(v.eyebrow||'')}"></label><label>H1<input id=v2_name value="${esc(v.name||'')}"></label><label class=pcv2-wide>Підзаголовок<input id=v2_subtitle value="${esc(v.subtitle||'')}"></label><label class=pcv2-wide>Lead<textarea id=v2_lead>${esc(v.lead||'')}</textarea></label></div></div>
   <div class=pcv2-panel><div class=pcv2-grid><label class=pcv2-wide>Короткий опис<textarea id=v2_short>${esc(v.short_description||'')}</textarea></label><label class=pcv2-wide>Повний опис<textarea id=v2_full style="min-height:320px">${esc(v.full_description||'')}</textarea></label></div></div>

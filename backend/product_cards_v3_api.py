@@ -7,6 +7,7 @@ from fastapi import APIRouter, Header, HTTPException
 from pydantic import BaseModel
 
 from .services import product_cards_v3 as svc
+from .services.product_cards_v3_media import list_existing_media
 
 router = APIRouter()
 
@@ -36,6 +37,12 @@ def admin_create(body: CardBody, authorization: Optional[str] = Header(default=N
         return svc.create(body.data)
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
+
+
+@router.get('/api/v1/admin/product-card-v3/media')
+def admin_media(authorization: Optional[str] = Header(default=None)):
+    _admin(authorization)
+    return list_existing_media()
 
 
 @router.get('/api/v1/admin/product-card-v3/{product_id}')

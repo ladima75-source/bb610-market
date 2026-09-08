@@ -14,7 +14,6 @@ MASTER_FILES = [
     ROOT / 'data' / 'product_cards.master.json',
     ROOT / 'data' / 'product-cards.master.json',
 ]
-IMAGE_KEYS = {'image', 'image_url', 'primary_image', 'main_image', 'photo', 'photo_url', 'thumbnail'}
 
 
 def _id_for(path: str) -> str:
@@ -28,16 +27,16 @@ def _looks_like_image(value: str) -> bool:
     return Path(raw).suffix.lower() in IMAGE_EXTS
 
 
-def _walk(value: Any, out: set[str], parent_key: str = '') -> None:
-    if isinstance(value, dict):
-        for key, child in value.items():
-            if key in IMAGE_KEYS and isinstance(child, str) and _looks_like_image(child):
-                out.add(child.strip())
-            else:
-                _walk(child, out, key)
+def _walk(value: Any, out: set[str]) -> None:
+    if isinstance(value, str):
+        if _looks_like_image(value):
+            out.add(value.strip())
+    elif isinstance(value, dict):
+        for child in value.values():
+            _walk(child, out)
     elif isinstance(value, list):
         for child in value:
-            _walk(child, out, parent_key)
+            _walk(child, out)
 
 
 def _scan_master_paths() -> set[str]:
@@ -80,11 +79,12 @@ def list_existing_media() -> dict:
         if path in by_path:
             continue
         by_path.add(path)
+        raw = path.split('?', 1)[0]
         items.append({
             'id': _id_for(path),
             'path': path,
-            'name': Path(path.split('?', 1)[0]).name,
-            'title': Path(path.split('?', 1)[0]).stem,
+            'name': Path(raw).name,
+            'title': Path(raw).stem,
             'kind': 'product',
             'source': 'existing-catalog-reference'
         })

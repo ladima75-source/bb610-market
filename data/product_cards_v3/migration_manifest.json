@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "batch": "VALAGRO-01",
+  "status": "NOT_STARTED",
+  "products": [
+    "Kendal",
+    "Megafol",
+    "MASTER 15-5-30+2",
+    "MASTER 13-40-13",
+    "MASTER 20-20-20",
+    "MASTER 3-11-38",
+    "MASTER 18-18-18",
+    "MASTER 17-6-18",
+    "PLANTAFOL 30-10-10",
+    "PLANTAFOL 10-54-10",
+    "PLANTAFOL 20-20-20",
+    "PLANTAFOL 5-15-45",
+    "PLANTAFOL 0-25-50",
+    "Nova PeKacid 0-60-20"
+  ]
+}

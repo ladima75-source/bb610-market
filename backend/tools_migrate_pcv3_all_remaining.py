@@ -18,15 +18,6 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def _identity(card: dict) -> set[str]:
-    out: set[str] = set()
-    for value in base._identity_values(card):
-        n = base._norm(value)
-        if n:
-            out.add(n)
-    return out
-
-
 def _legacy_index(cards: list[dict]) -> tuple[dict[str, list[dict]], dict[str, list[dict]]]:
     exact: dict[str, list[dict]] = {}
     names: dict[str, list[dict]] = {}
@@ -88,8 +79,8 @@ def _choose_legacy(catalog_id: str, detail: dict, exact: dict[str, list[dict]], 
             raise RuntimeError(f'{catalog_id}: ambiguous legacy source ({len(uniq)} equal candidates)')
         return uniq[0], 'legacy'
 
-    # Safe fallback: current catalog detail is already the canonical legacy/public source.
-    # This never invents price/stock/availability; commerce still comes only from exact catalog SKUs.
+    # Safe fallback: current catalog detail is already a real source record.
+    # Commerce is still bound only to exact existing catalog SKU keys.
     return deepcopy(detail), 'catalog-fallback'
 
 
@@ -104,14 +95,54 @@ def _eligible(row: dict, detail: dict) -> bool:
     return True
 
 
+def _enrich_from_catalog(card: dict, detail: dict) -> None:
+    c = card['content']
+    if not c.get('short_description'):
+        c['short_description'] = base._text(detail.get('short_description') or detail.get('manufacturer_use') or detail.get('product_type'))
+    if not c.get('description'):
+        c['description'] = base._text(detail.get('manufacturer_use') or detail.get('short_description'))
+    if not c.get('application'):
+        c['application'] = base._text(detail.get('application'))
+    if not c.get('composition'):
+        c['composition'] = base._text(detail.get('composition'))
+    if not c.get('characteristics'):
+        rows = []
+        for label, key in (
+            ('Тип', 'product_type'), ('Форма', 'form'), ('NPK', 'npk'),
+            ('Діюча речовина', 'active_ingredient'), ('Концентрація', 'concentration'),
+            ('Виробник', 'manufacturer'), ('Країна', 'country'),
+        ):
+            value = base._text(detail.get(key))
+            if value and value != '—':
+                rows.append({'label': label, 'value': value})
+        c['characteristics'] = rows
+    seo = detail.get('seo') if isinstance(detail.get('seo'), dict) else {}
+    if not c['seo'].get('title'):
+        c['seo']['title'] = base._text(seo.get('title'))
+    if not c['seo'].get('description'):
+        c['seo']['description'] = base._text(seo.get('description'))
+    svc.validate(card)
+
+
+def _exact_map_for_existing(product_id: str, catalog_id: str, detail: dict, card: dict) -> dict:
+    real_keys = {
+        str(x.get('id') or x.get('sku') or '').strip()
+        for x in (detail.get('skus') or []) if isinstance(x, dict)
+        if str(x.get('id') or x.get('sku') or '').strip()
+    }
+    links = []
+    for sku in (card.get('sku_media') or {}).get('skus', []):
+        code = str(sku.get('sku_code') or '').strip()
+        if code and code in real_keys:
+            links.append({'sku_id': sku['sku_id'], 'existing_commerce_sku_key': code})
+    return {'product_id': product_id, 'existing_product_key': catalog_id, 'skus': links}
+
+
 def _save_commerce_map(obj: dict) -> None:
     base._save(svc.COMMERCE_MAP, obj)
 
 
 def _manifest(previous: Any, batches: list[dict], totals: dict) -> dict:
-    history: list[dict] = []
-    if isinstance(previous, dict) and previous:
-        history.append(previous)
     return {
         'schema_version': '1.1',
         'scope': 'ALL_REAL_CATALOG_PRODUCTS',
@@ -120,7 +151,7 @@ def _manifest(previous: Any, batches: list[dict], totals: dict) -> dict:
         'batch_size': BATCH_SIZE,
         'totals': totals,
         'batches': batches,
-        'previous_manifest': history[-1] if history else None,
+        'previous_manifest': previous if isinstance(previous, dict) and previous else None,
     }
 
 
@@ -134,7 +165,7 @@ def main() -> None:
     cmap = svc.commerce_map()
     cmap.setdefault('schema_version', '1.0')
     cmap.setdefault('products', [])
-    mapped_product_keys = {str(x.get('existing_product_key') or '').strip(): x for x in cmap['products'] if isinstance(x, dict)}
+    mapped_by_key = {str(x.get('existing_product_key') or '').strip(): x for x in cmap['products'] if isinstance(x, dict)}
     mapped_product_ids = {str(x.get('product_id') or '').strip() for x in cmap['products'] if isinstance(x, dict)}
 
     created: list[dict] = []
@@ -153,30 +184,47 @@ def main() -> None:
             continue
 
         slug = str(row.get('slug') or detail.get('slug') or pid).strip().lower()
-        if pid in mapped_product_keys or slug in existing_by_slug:
-            card_row = existing_by_slug.get(slug)
-            skipped_existing.append({'catalog_id': pid, 'slug': slug, 'product_id': (card_row or {}).get('product_id') or mapped_product_keys.get(pid, {}).get('product_id')})
+        existing = existing_by_slug.get(slug)
+
+        # Recovery-safe path: a card may already exist while mapping was not yet saved.
+        if existing:
+            product_id = str(existing.get('product_id') or '')
+            card = svc.get(product_id)
+            if not card:
+                failures.append(f'{pid}: indexed v3 card missing on disk')
+                continue
+            if pid not in mapped_by_key:
+                card_map = _exact_map_for_existing(product_id, pid, detail, card)
+                cmap['products'].append(card_map)
+                mapped_by_key[pid] = card_map
+                mapped_product_ids.add(product_id)
+                _save_commerce_map(cmap)
+            skipped_existing.append({'catalog_id': pid, 'slug': slug, 'product_id': product_id})
+            continue
+
+        if pid in mapped_by_key:
+            failures.append(f'{pid}: commerce map exists but v3 card with slug {slug} is missing')
             continue
 
         try:
             legacy, source_kind = _choose_legacy(pid, detail, exact, names)
             card, card_map, report = r3._build_r3(pid, legacy, row, detail)
+            _enrich_from_catalog(card, detail)
             if card['product_id'] in mapped_product_ids:
-                skipped_existing.append({'catalog_id': pid, 'slug': slug, 'product_id': card['product_id']})
+                failures.append(f'{pid}: deterministic product_id collision {card["product_id"]}')
                 continue
             svc.create(card)
             cmap['products'].append(card_map)
             mapped_product_ids.add(card['product_id'])
-            mapped_product_keys.add(pid)
+            mapped_by_key[pid] = card_map
             existing_by_slug[slug] = {'slug': slug, 'product_id': card['product_id']}
+            _save_commerce_map(cmap)
             report['catalog_id'] = pid
             report['source_kind'] = source_kind
             report['status'] = 'GENERATED'
             created.append(report)
         except Exception as exc:
             failures.append(f'{pid}: {exc}')
-
-    _save_commerce_map(cmap)
 
     batches: list[dict] = []
     for i in range(0, len(created), BATCH_SIZE):

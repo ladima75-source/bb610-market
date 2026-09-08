@@ -1,18 +1,50 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Картки товарів — BB610 Market Admin</title>
-<link rel="stylesheet" href="admin-master-nav.css?v=19b8"><link rel="stylesheet" href="product-cards.css?v=19c"><link rel="stylesheet" href="product-cards-layout-fix.css?v=19c1">
-<link rel="stylesheet" href="master-product-card-admin.css?v=20a">
-<link rel="stylesheet" href="product-card-v2-editor.css?v=20e">
-<link rel="stylesheet" href="product-card-v2-media.css?v=20e">
-<link rel="stylesheet" href="product-card-v2-rollout.css?v=20e">
-</head><body>
-<aside class="bb610-admin-sidebar"></aside>
-<main class="pc-page">
-<div class="pc-top"><div><h1>Картки товарів</h1><p>Створення, редагування, фото, описи, SKU, архівування та безпечне видалення.</p></div><div class="pc-auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></div>
-<div class="pc-tools"><input id="search" placeholder="Пошук: товар, бренд, SKU…"><select id="state"><option value="">Усі</option><option value="active">Активні</option><option value="archived">Архівні</option></select><button id="new" class="primary">+ Додати товар</button></div>
-<div class="pc-layout"><section class="pc-list" id="list"></section><section class="pc-editor" id="editor"><div class="empty">Оберіть картку або створіть нову.</div></section></div>
-</main>
-<script src="admin-master-nav.js?v=19b8"></script><script src="product-cards.js?v=19c"></script>
-<script src="product-card-v2-editor.js?v=20e"></script>
-<script src="product-card-v2-media.js?v=20e"></script>
-<script src="product-card-v2-rollout.js?v=20e"></script>
-</body></html>
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Картки товарів — BB610 Market Admin</title>
+  <link rel="stylesheet" href="admin-master-nav.css?v=19b8">
+  <link rel="stylesheet" href="product-card-v3.css?v=pcv3-02">
+</head>
+<body>
+  <aside class="bb610-admin-sidebar"></aside>
+  <main class="pcv3-page">
+    <header class="pcv3-top">
+      <div>
+        <div class="pcv3-kicker">BB610 MARKET · КАРТКИ ТОВАРІВ</div>
+        <h1>Картки товарів</h1>
+        <p>Контент, SKU та фото товарів. Ціни, залишки, availability та publication керуються окремо.</p>
+      </div>
+      <div class="pcv3-auth">
+        <input id="token" type="password" placeholder="Admin token">
+        <button id="connect">Підключити</button>
+      </div>
+    </header>
+
+    <div id="status" class="pcv3-status">Не підключено.</div>
+
+    <section class="pcv3-toolbar">
+      <input id="search" placeholder="Пошук: назва, бренд, slug…">
+      <button id="refresh">Оновити</button>
+      <button id="new" class="primary">+ Додати товар</button>
+    </section>
+
+    <div class="pcv3-layout">
+      <aside class="pcv3-list" id="list"><div class="muted">Підключіться до API.</div></aside>
+      <section class="pcv3-editor" id="editor"><div class="empty">Оберіть картку або створіть нову.</div></section>
+    </div>
+  </main>
+
+  <div id="mediaModal" class="pcv3-modal" hidden>
+    <div class="pcv3-modal-card">
+      <div class="pcv3-modal-head"><strong>Медіатека</strong><button id="mediaClose">×</button></div>
+      <input id="mediaSearch" placeholder="Пошук у медіатеці…">
+      <div id="mediaGrid" class="pcv3-media-grid"></div>
+    </div>
+  </div>
+
+  <script src="admin-master-nav.js?v=19b8"></script>
+  <script src="product-card-v3.js?v=pcv3-02"></script>
+</body>
+</html>

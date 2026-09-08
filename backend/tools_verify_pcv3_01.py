@@ -91,12 +91,19 @@ def main() -> None:
     if 'update_product(' in service_text or 'sku_commerce' in service_text:
         fail('v3 service contains commerce write path')
 
+    media_text = (ROOT / 'backend' / 'services' / 'product_cards_v3_media.py').read_text(encoding='utf-8')
+    forbidden_media_writes = ('write_text(', 'write_bytes(', 'unlink(', 'replace(', 'shutil.', 'subprocess.', 'media_manager')
+    bad_media = [x for x in forbidden_media_writes if x in media_text]
+    if bad_media:
+        fail('v3 media picker is not read-only: ' + ', '.join(bad_media))
+
     print('PCV3-01 PREFLIGHT PASS')
     print('Python syntax: PASS')
     print('JSON files: PASS')
     print('Schema version 3.0: PASS')
     print('No persisted legacy/commerce keys: PASS')
     print('No commerce write API/service path: PASS')
+    print('Media picker read-only: PASS')
 
 
 if __name__ == '__main__':

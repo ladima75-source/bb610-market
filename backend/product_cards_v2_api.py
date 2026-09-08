@@ -4,8 +4,12 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException, Header
 from pydantic import BaseModel
 from .services import product_cards_v2 as svc
+from .product_cards_v3_api import router as product_cards_v3_router
 
 router=APIRouter()
+# PCV3-01: expose the new isolated v3 API through the already-mounted product-card router.
+# No v2 endpoint or storage behavior is changed by this include.
+router.include_router(product_cards_v3_router)
 
 class Payload(BaseModel):
     data: dict

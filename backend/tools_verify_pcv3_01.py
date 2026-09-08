@@ -91,11 +91,25 @@ def main() -> None:
     if 'update_product(' in service_text or 'sku_commerce' in service_text:
         fail('v3 service contains commerce write path')
 
-    media_text = (ROOT / 'backend' / 'services' / 'product_cards_v3_media.py').read_text(encoding='utf-8')
-    forbidden_media_writes = ('write_text(', 'write_bytes(', 'unlink(', 'replace(', 'shutil.', 'subprocess.', 'media_manager')
+    media_path = ROOT / 'backend' / 'services' / 'product_cards_v3_media.py'
+    media_text = media_path.read_text(encoding='utf-8')
+    forbidden_media_writes = ('write_text(', 'write_bytes(', 'unlink(', 'replace(', 'shutil.', 'subprocess.')
     bad_media = [x for x in forbidden_media_writes if x in media_text]
     if bad_media:
         fail('v3 media picker is not read-only: ' + ', '.join(bad_media))
+
+    # Check executable imports, not comments/docstrings. Mentioning media_manager in a
+    # comment is allowed; importing/calling it is not because it can mutate media.library.json.
+    tree = ast.parse(media_text, filename=str(media_path))
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                if alias.name.endswith('media_manager'):
+                    fail('v3 media picker imports media_manager')
+        elif isinstance(node, ast.ImportFrom):
+            module = node.module or ''
+            if module.endswith('media_manager'):
+                fail('v3 media picker imports media_manager')
 
     print('PCV3-01 PREFLIGHT PASS')
     print('Python syntax: PASS')

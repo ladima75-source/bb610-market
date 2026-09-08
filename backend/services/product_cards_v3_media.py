@@ -27,9 +27,22 @@ def _looks_like_image(value: str) -> bool:
     return Path(raw).suffix.lower() in IMAGE_EXTS
 
 
+def _is_resolvable(path: str) -> bool:
+    raw = (path or '').split('?', 1)[0].strip()
+    if not raw:
+        return False
+    if raw.startswith('http://') or raw.startswith('https://'):
+        return True
+    rel = raw.lstrip('/')
+    if rel.startswith('media/products/'):
+        filename = rel[len('media/products/'):]
+        return (ROOT / 'backend' / 'runtime' / 'media' / 'products' / filename).is_file()
+    return (ROOT / rel).is_file()
+
+
 def _walk(value: Any, out: set[str]) -> None:
     if isinstance(value, str):
-        if _looks_like_image(value):
+        if _looks_like_image(value) and _is_resolvable(value):
             out.add(value.strip())
     elif isinstance(value, dict):
         for child in value.values():
@@ -63,7 +76,7 @@ def list_existing_media() -> dict:
 
     for row in mm.get('items', []):
         path = str(row.get('path') or '').strip()
-        if not path or path in by_path:
+        if not path or path in by_path or not _is_resolvable(path):
             continue
         by_path.add(path)
         items.append({

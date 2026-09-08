@@ -5,10 +5,10 @@ import json
 from pathlib import Path
 from typing import Any
 
-from .media_manager import list_media as list_media_manager
-
 ROOT = Path(__file__).resolve().parents[2]
 IMAGE_EXTS = {'.jpg', '.jpeg', '.png', '.webp', '.avif', '.svg'}
+MEDIA_INDEX = ROOT / 'data' / 'media.library.json'
+MEDIA_ROOT = ROOT / 'assets' / 'media'
 MASTER_FILES = [
     ROOT / 'data' / 'catalog.master.json',
     ROOT / 'data' / 'product_cards.master.json',
@@ -18,6 +18,13 @@ MASTER_FILES = [
 
 def _id_for(path: str) -> str:
     return 'existing_' + hashlib.sha1(path.encode('utf-8')).hexdigest()[:16]
+
+
+def _load_json(path: Path, default: Any) -> Any:
+    try:
+        return json.loads(path.read_text(encoding='utf-8'))
+    except Exception:
+        return default
 
 
 def _looks_like_image(value: str) -> bool:
@@ -57,11 +64,25 @@ def _scan_master_paths() -> set[str]:
     for path in MASTER_FILES:
         if not path.exists():
             continue
-        try:
-            obj = json.loads(path.read_text(encoding='utf-8'))
-        except Exception:
-            continue
-        _walk(obj, out)
+        obj = _load_json(path, None)
+        if obj is not None:
+            _walk(obj, out)
+    return out
+
+
+def _index_items() -> list[dict]:
+    idx = _load_json(MEDIA_INDEX, {'items': []})
+    rows = idx.get('items', []) if isinstance(idx, dict) else []
+    return [x for x in rows if isinstance(x, dict)]
+
+
+def _scan_media_root() -> set[str]:
+    out: set[str] = set()
+    if not MEDIA_ROOT.exists():
+        return out
+    for path in MEDIA_ROOT.rglob('*'):
+        if path.is_file() and path.suffix.lower() in IMAGE_EXTS:
+            out.add(path.relative_to(ROOT).as_posix())
     return out
 
 
@@ -69,12 +90,9 @@ def list_existing_media() -> dict:
     items: list[dict] = []
     by_path: set[str] = set()
 
-    try:
-        mm = list_media_manager()
-    except Exception:
-        mm = {'items': []}
-
-    for row in mm.get('items', []):
+    # Read the existing library index without invoking media_manager._index(),
+    # because that function writes data/media.library.json as a side effect.
+    for row in _index_items():
         path = str(row.get('path') or '').strip()
         if not path or path in by_path or not _is_resolvable(path):
             continue
@@ -85,9 +103,24 @@ def list_existing_media() -> dict:
             'name': str(row.get('name') or Path(path).name),
             'title': str(row.get('title') or Path(path).stem),
             'kind': str(row.get('kind') or 'product'),
-            'source': 'media-manager'
+            'source': 'media-library-index'
         })
 
+    # Discover physical files read-only. No index file is created or updated.
+    for path in sorted(_scan_media_root()):
+        if path in by_path:
+            continue
+        by_path.add(path)
+        items.append({
+            'id': _id_for(path),
+            'path': path,
+            'name': Path(path).name,
+            'title': Path(path).stem,
+            'kind': 'product',
+            'source': 'media-filesystem-readonly'
+        })
+
+    # Include existing image references from the current/legacy masters.
     for path in sorted(_scan_master_paths()):
         if path in by_path:
             continue

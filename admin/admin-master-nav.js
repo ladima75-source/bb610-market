@@ -9,7 +9,7 @@ const groups=[
     ['catalog-workbench.html','Розширений каталог','adjust']
   ]},
   {title:'КАТАЛОГ',items:[
-    ['product-cards.html','Картки товарів','card'],
+    ['product-card-v3.html','Картки товарів v3','card'],
     ['products.html','Ціни та залишки','money'],
     ['categories-manager.html','Категорії','layers'],
     ['homepage-showcase.html','Головна / Вітрина','layout'],

@@ -2,7 +2,7 @@
 const API='https://api.market.bb610.com.ua';
 const SITE='https://market.bb610.com.ua/';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
 const token=()=>$('#token')?.value||localStorage.getItem('bb610_admin_token')||'';
 let cards=[], current=null, media=[], mediaTarget=null, activeTab='content';
 
@@ -108,7 +108,7 @@ async function loadCommerce(){
     $('#commerceBox').innerHTML=`<div class="pcv3-commerce">${skus.map(s=>`<div class="box"><span>${esc(s.id||s.sku||'SKU')}</span><b>${s.price==null?'—':esc(s.price)+' грн'}</b><small>${esc(s.availability||'unknown')} · stock: ${s.stock_qty==null?'—':esc(s.stock_qty)}</small></div>`).join('')}</div>`;
   }catch(e){$('#commerceBox').textContent='Не вдалося прочитати commerce: '+e.message}
 }
-async function ensureMedia(){if(media.length)return;const x=await api('/api/v1/admin/media-manager');media=x.items||[]}
+async function ensureMedia(){if(media.length)return;const x=await api('/api/v1/admin/product-card-v3/media');media=x.items||[]}
 async function openMedia(skuIndex){
   try{collectIntoCurrent();mediaTarget=skuIndex;await ensureMedia();$('#mediaModal').hidden=false;$('#mediaSearch').value='';renderMedia()}catch(e){setStatus('Медіатека: '+e.message,'bad')}
 }

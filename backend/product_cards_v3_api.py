@@ -17,9 +17,10 @@ class CardBody(BaseModel):
 
 def _admin(auth: Optional[str]) -> None:
     token = os.getenv('BB610_ADMIN_TOKEN', '')
-    if token:
-        if not auth or auth != f'Bearer {token}':
-            raise HTTPException(status_code=401, detail='Unauthorized')
+    if not token:
+        raise HTTPException(status_code=503, detail='Admin API is disabled until BB610_ADMIN_TOKEN is configured')
+    if not auth or auth != f'Bearer {token}':
+        raise HTTPException(status_code=401, detail='Unauthorized')
 
 
 @router.get('/api/v1/admin/product-card-v3')

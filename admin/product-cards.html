@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Картки товарів — BB610 Market Admin</title>
-  <link rel="stylesheet" href="admin-shell.css?v=20f1">
   <link rel="stylesheet" href="admin-master-nav.css?v=19b9">
   <link rel="stylesheet" href="product-card-v3.css?v=pcv3-03">
+  <link rel="stylesheet" href="product-cards-v3-ux.css?v=pcv3-ux1">
 </head>
 <body>
+  <aside class="bb610-admin-sidebar"></aside>
   <main class="pcv3-page">
     <header class="pcv3-top">
       <div>
         <div class="pcv3-kicker">BB610 MARKET · КАРТКИ ТОВАРІВ</div>
         <h1>Картки товарів</h1>
-        <p>Контент, SKU та фото. Ціни, залишки, наявність і публікація керуються окремо.</p>
+        <p>Контент, SKU та фото товарів. Ціни, залишки, availability та publication керуються окремо.</p>
       </div>
       <div class="pcv3-auth">
         <input id="token" type="password" placeholder="Admin token">
@@ -25,7 +26,7 @@
     <div id="status" class="pcv3-status">Не підключено.</div>
 
     <section class="pcv3-toolbar">
-      <input id="search" placeholder="Пошук: назва, бренд, slug…">
+      <input id="search" placeholder="Пошук: назва, бренд, категорія, slug…">
       <button id="refresh">Оновити</button>
       <button id="new" class="primary">+ Додати товар</button>
     </section>
@@ -44,8 +45,8 @@
     </div>
   </div>
 
-  <script src="admin-shell.js?v=20f1"></script>
   <script src="admin-master-nav.js?v=19b9"></script>
   <script src="product-card-v3.js?v=pcv3-03"></script>
+  <script src="product-cards-v3-ux.js?v=pcv3-ux1"></script>
 </body>
 </html>

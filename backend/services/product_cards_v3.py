@@ -71,6 +71,18 @@ def _require_str(obj: dict, key: str, *, nonempty: bool = False) -> str:
     return value
 
 
+def _validate_pair_list(items: Any, *, field: str, first: str, second: str) -> None:
+    if not isinstance(items, list):
+        raise ValueError(f'{field} must be an array')
+    for i, item in enumerate(items):
+        if not isinstance(item, dict):
+            raise ValueError(f'{field}[{i}] must be an object')
+        if set(item) != {first, second}:
+            raise ValueError(f'{field}[{i}] must contain only {first} and {second}')
+        if not isinstance(item.get(first), str) or not isinstance(item.get(second), str):
+            raise ValueError(f'{field}[{i}] values must be strings')
+
+
 def validate(card: dict) -> dict:
     if not isinstance(card, dict):
         raise ValueError('Card must be an object')
@@ -108,23 +120,25 @@ def validate(card: dict) -> dict:
     extra = set(content) - allowed_content
     if extra:
         raise ValueError('Unknown content fields: ' + ', '.join(sorted(extra)))
+    missing = allowed_content - set(content)
+    if missing:
+        raise ValueError('Missing content fields: ' + ', '.join(sorted(missing)))
     _require_str(content, 'title', nonempty=True)
     for key in ('brand', 'category', 'short_description', 'description', 'how_it_works', 'application', 'composition'):
         _require_str(content, key)
-    if not isinstance(content.get('benefits'), list):
-        raise ValueError('content.benefits must be an array')
-    if not isinstance(content.get('characteristics'), list):
-        raise ValueError('content.characteristics must be an array')
+    _validate_pair_list(content.get('benefits'), field='content.benefits', first='title', second='text')
+    _validate_pair_list(content.get('characteristics'), field='content.characteristics', first='label', second='value')
+
     seo = content.get('seo')
     if not isinstance(seo, dict):
         raise ValueError('content.seo must be an object')
-    if set(seo) - {'title', 'description'}:
-        raise ValueError('Unknown content.seo fields')
+    if set(seo) != {'title', 'description'}:
+        raise ValueError('content.seo must contain only title and description')
     _require_str(seo, 'title')
     _require_str(seo, 'description')
 
     sm = card.get('sku_media')
-    if not isinstance(sm, dict) or set(sm) - {'skus', 'media'}:
+    if not isinstance(sm, dict) or set(sm) != {'skus', 'media'}:
         raise ValueError('sku_media must contain only skus and media')
     skus = sm.get('skus')
     media = sm.get('media')
@@ -138,8 +152,8 @@ def validate(card: dict) -> dict:
         if not isinstance(item, dict):
             raise ValueError('Media item must be an object')
         allowed = {'media_id', 'path', 'alt', 'kind', 'sort_order'}
-        if set(item) - allowed:
-            raise ValueError('Unknown media item fields')
+        if set(item) != allowed:
+            raise ValueError('Media item must contain only media_id, path, alt, kind and sort_order')
         mid = _require_str(item, 'media_id', nonempty=True)
         if mid in media_ids:
             raise ValueError(f'Duplicate media_id: {mid}')
@@ -155,8 +169,8 @@ def validate(card: dict) -> dict:
         if not isinstance(item, dict):
             raise ValueError('SKU item must be an object')
         allowed = {'sku_id', 'sku_code', 'label', 'package', 'primary_media_id', 'gallery_media_ids', 'sort_order', 'enabled'}
-        if set(item) - allowed:
-            raise ValueError('Unknown SKU item fields')
+        if set(item) != allowed:
+            raise ValueError('SKU item has missing or unknown fields')
         sid = _require_str(item, 'sku_id', nonempty=True)
         if not SKU_ID_RE.fullmatch(sid):
             raise ValueError(f'Invalid sku_id: {sid}')
@@ -169,7 +183,11 @@ def validate(card: dict) -> dict:
         if primary is not None and (not isinstance(primary, str) or primary not in media_ids):
             raise ValueError(f'Unknown primary_media_id for {sid}')
         gallery = item.get('gallery_media_ids')
-        if not isinstance(gallery, list) or any(not isinstance(x, str) or x not in media_ids for x in gallery):
+        if not isinstance(gallery, list):
+            raise ValueError(f'Invalid gallery_media_ids for {sid}')
+        if len(gallery) != len(set(gallery)):
+            raise ValueError(f'Duplicate gallery_media_ids for {sid}')
+        if any(not isinstance(x, str) or x not in media_ids for x in gallery):
             raise ValueError(f'Invalid gallery_media_ids for {sid}')
         if not isinstance(item.get('sort_order'), int):
             raise ValueError('sku.sort_order must be integer')

@@ -8,6 +8,7 @@ from pydantic import BaseModel
 
 from .services import product_cards_v3 as svc
 from .services.product_cards_v3_media import list_existing_media
+from .services.product_cards_v3_runtime import storefront_runtime
 
 router = APIRouter()
 
@@ -22,6 +23,14 @@ def _admin(auth: Optional[str]) -> None:
         raise HTTPException(status_code=503, detail='Admin API is disabled until BB610_ADMIN_TOKEN is configured')
     if not auth or auth != f'Bearer {token}':
         raise HTTPException(status_code=401, detail='Unauthorized')
+
+
+@router.get('/api/v1/storefront/product-card-v3/{slug}')
+def storefront_get(slug: str):
+    data = storefront_runtime(slug)
+    if not data:
+        raise HTTPException(status_code=404, detail='Product card v3 not found')
+    return data
 
 
 @router.get('/api/v1/admin/product-card-v3')

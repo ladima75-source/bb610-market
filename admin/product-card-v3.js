@@ -2,7 +2,7 @@
 const API='https://api.market.bb610.com.ua';
 const SITE='https://market.bb610.com.ua/';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const token=()=>$('#token')?.value||localStorage.getItem('bb610_admin_token')||'';
 let cards=[], current=null, media=[], mediaTarget=null, activeTab='content';
 
@@ -21,6 +21,7 @@ function pathUrl(path){
   path=String(path||'').trim();
   if(!path) return '';
   if(/^https?:\/\//i.test(path)) return path;
+  if(/^\/?media\/products\//i.test(path)) return API+'/'+path.replace(/^\//,'');
   return SITE+path.replace(/^\//,'');
 }
 function rnd(prefix){

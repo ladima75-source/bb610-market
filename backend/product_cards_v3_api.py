@@ -25,6 +25,12 @@ def _admin(auth: Optional[str]) -> None:
         raise HTTPException(status_code=401, detail='Unauthorized')
 
 
+@router.get('/api/v1/storefront/product-card-v3-count')
+def storefront_count():
+    items = svc.list_cards()
+    return {'count': len(items)}
+
+
 @router.get('/api/v1/storefront/product-card-v3/{slug}')
 def storefront_get(slug: str):
     data = storefront_runtime(slug)

@@ -8,6 +8,7 @@ from pydantic import BaseModel
 
 from .services import product_cards_v3 as svc
 from .services.product_cards_v3_media import list_existing_media
+from .services.product_cards_v3_quality import quality_report
 from .services.product_cards_v3_runtime import storefront_runtime
 
 router = APIRouter()
@@ -58,6 +59,12 @@ def admin_create(body: CardBody, authorization: Optional[str] = Header(default=N
 def admin_media(authorization: Optional[str] = Header(default=None)):
     _admin(authorization)
     return list_existing_media()
+
+
+@router.get('/api/v1/admin/product-card-v3/quality')
+def admin_quality(authorization: Optional[str] = Header(default=None)):
+    _admin(authorization)
+    return quality_report()
 
 
 @router.get('/api/v1/admin/product-card-v3/{product_id}')

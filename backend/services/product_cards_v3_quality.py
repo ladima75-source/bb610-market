@@ -4,6 +4,7 @@ from collections import Counter
 from typing import Any
 
 from . import product_cards_v3 as cards
+from .product_cards_v3_master import find_master_for_card, source_metadata
 
 SELLABLE_AVAILABILITY = {'in_stock', 'preorder', 'backorder'}
 
@@ -39,11 +40,15 @@ def _card_quality(card: dict) -> dict:
     description_ok = check(len(_text(content.get('description'))) >= 80, 10, 'description_weak', 'Повний опис відсутній або занадто короткий', 'content', 'blocker')
     application_ok = check(len(_text(content.get('application'))) >= 20, 7, 'application_missing', 'Немає повного способу застосування', 'content', 'blocker')
     composition_ok = check(len(_text(content.get('composition'))) >= 10, 6, 'composition_missing', 'Не заповнено склад / формулу', 'content', 'blocker')
-    benefits_ok = check(bool(content.get('benefits')), 4, 'benefits_missing', 'Не заповнено переваги', 'content')
-    characteristics_ok = check(len(content.get('characteristics') or []) >= 2, 4, 'characteristics_weak', 'Менше двох характеристик', 'content')
-    how_ok = check(len(_text(content.get('how_it_works'))) >= 20, 4, 'how_it_works_missing', 'Не описано принцип дії', 'content')
+    check(bool(content.get('benefits')), 4, 'benefits_missing', 'Не заповнено переваги', 'content')
+    check(len(content.get('characteristics') or []) >= 2, 4, 'characteristics_weak', 'Менше двох характеристик', 'content')
+    check(len(_text(content.get('how_it_works'))) >= 20, 4, 'how_it_works_missing', 'Не описано принцип дії', 'content')
     seo = content.get('seo') or {}
-    seo_ok = check(bool(_text(seo.get('title'))) and len(_text(seo.get('description'))) >= 50, 4, 'seo_incomplete', 'SEO title / description не завершені', 'seo')
+    check(bool(_text(seo.get('title'))) and len(_text(seo.get('description'))) >= 50, 4, 'seo_incomplete', 'SEO title / description не завершені', 'seo')
+
+    master = find_master_for_card(card)
+    source = source_metadata(master)
+    source_verified = check(bool(source.get('verified')), 8, 'source_not_verified', 'Немає підтвердженої MASTER-картки з джерелом', 'source', 'blocker')
 
     sku_exists = check(bool(enabled_skus), 5, 'sku_missing', 'Немає активних SKU у картці', 'sku', 'blocker')
     sku_structure_ok = bool(enabled_skus) and all(_text(s.get('label')) and _text(s.get('package')) for s in enabled_skus)
@@ -71,7 +76,7 @@ def _card_quality(card: dict) -> dict:
     score = round(earned * 100 / total_weight)
 
     core_complete = all((enabled, brand_ok, category_ok, short_ok, description_ok, application_ok, composition_ok, sku_exists, sku_structure_ok))
-    publication_ready = core_complete and media_ok and mapped and published and bool(sellable)
+    publication_ready = core_complete and source_verified and media_ok and mapped and published and bool(sellable)
     if not core_complete:
         status = 'DRAFT'
     elif publication_ready and score >= 90:
@@ -91,6 +96,12 @@ def _card_quality(card: dict) -> dict:
         'publication_ready': publication_ready,
         'issues': issues,
         'issue_codes': [x['code'] for x in issues],
+        'source_matched': bool(source.get('matched')),
+        'source_verified': bool(source.get('verified')),
+        'source_verified_date': _text(source.get('verified_date')),
+        'source_count': int(source.get('source_count') or 0),
+        'source_master_file': _text(source.get('master_file')),
+        'source_row': source.get('source_row'),
         'sku_count': len(skus),
         'enabled_sku_count': len(enabled_skus),
         'sku_with_photo_count': enabled_media_count,
@@ -109,7 +120,8 @@ def quality_report() -> dict:
         if isinstance(card, dict):
             evaluated.append(_card_quality(card))
 
-    evaluated.sort(key=lambda x: (x.get('status') == 'READY', -(100 - int(x.get('score') or 0)), (x.get('title') or '').lower()))
+    status_rank = {'DRAFT': 0, 'REVIEW': 1, 'READY': 2}
+    evaluated.sort(key=lambda x: (status_rank.get(str(x.get('status')), 9), int(x.get('score') or 0), (x.get('title') or '').lower()))
     status_counts = Counter(x['status'] for x in evaluated)
     issue_counts: Counter[str] = Counter()
     issue_labels: dict[str, str] = {}
@@ -127,6 +139,8 @@ def quality_report() -> dict:
     mapped = sum(1 for x in evaluated if x.get('commerce_mapped'))
     published = sum(1 for x in evaluated if x.get('commerce_published'))
     sellable = sum(1 for x in evaluated if int(x.get('commerce_sellable_sku_count') or 0) > 0)
+    source_matched = sum(1 for x in evaluated if x.get('source_matched'))
+    source_verified = sum(1 for x in evaluated if x.get('source_verified'))
     average_score = round(sum(int(x.get('score') or 0) for x in evaluated) / total) if total else 0
     top_issues = [
         {'code': code, 'label': issue_labels.get(code, code), 'count': count}
@@ -134,7 +148,7 @@ def quality_report() -> dict:
     ]
 
     return {
-        'schema_version': '1.0',
+        'schema_version': '1.1',
         'summary': {
             'total': total,
             'draft': status_counts.get('DRAFT', 0),
@@ -143,6 +157,8 @@ def quality_report() -> dict:
             'average_score': average_score,
             'enabled_sku_total': sku_total,
             'sku_with_photo': sku_with_photo,
+            'source_matched': source_matched,
+            'source_verified': source_verified,
             'commerce_mapped': mapped,
             'commerce_published': published,
             'sellable_products': sellable,

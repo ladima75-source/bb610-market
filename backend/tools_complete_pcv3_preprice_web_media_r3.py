@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import json
 import sys
-from typing import Any
 
 from backend import tools_complete_pcv3_preprice_web_media as base
 from backend import tools_complete_pcv3_preprice_web_media_r2 as r2
@@ -32,7 +30,7 @@ FALLBACK_PAGES: dict[str, list[str]] = {
         'https://ahrotsentr.com.ua/ua/p1325625296-agriflex-amino-agrifleks.html',
         'https://prom.ua/p1642417077-agriflex-amino-agrifleks.html',
     ],
-    'prd_80835989fdad06e58': [
+    'prd_80835989fdad65422e': [
         'https://rozetka.com.ua/361659417/p361659417/',
         'https://supermarket-nasinnia.ua/uk/20816-agrifleks-bio-agriflex-bio-udobrenie-citymax.html',
         'https://agro-zahyst.com.ua/agrifleks-bio-agriflex-bio-1-kg-mikrodobrivo-biostimuljator-rostu-sitimaks-citymax-kitaj/',
@@ -51,9 +49,10 @@ FALLBACK_PAGES: dict[str, list[str]] = {
     ],
 }
 
-# Typo-safe alias: the live canonical id in the v1 manifest is this one.
-if 'prd_80835989fdad06e58' in FALLBACK_PAGES:
-    FALLBACK_PAGES['prd_80835989fdad65422e'] = FALLBACK_PAGES.pop('prd_80835989fdad06e58')
+# The old Ferrilene manifest row pointed at a Brexil Top page. Never accept that
+# direct image even if the remote server happens to return HTTP 200. Force the
+# exact Ferrilene 4.8 product pages above for provenance and product identity.
+FORCE_PAGE_ONLY = {'prd_ce79ead4ec1e824e73'}
 
 _ORIGINAL = base._resolve_product_image
 _CACHE: dict[str, tuple[bytes, str, str, str]] = {}
@@ -75,13 +74,24 @@ def _try_r2_direct(pid: str) -> tuple[bytes, str, str, str] | None:
     return None
 
 
+def _page_only(row: dict, page: str) -> tuple[bytes, str, str, str]:
+    candidate = dict(row)
+    candidate['image_url'] = ''
+    candidate['source_pages'] = [page]
+    return _ORIGINAL(candidate)
+
+
 def _resolve_r3(row: dict) -> tuple[bytes, str, str, str]:
     pid = str(row.get('product_id') or '')
     errors: list[str] = []
-    try:
-        return _ORIGINAL(row)
-    except Exception as exc:
-        errors.append(f'primary: {exc}')
+
+    if pid not in FORCE_PAGE_ONLY:
+        try:
+            return _ORIGINAL(row)
+        except Exception as exc:
+            errors.append(f'primary: {exc}')
+    else:
+        errors.append('primary skipped: known provenance mismatch in v1 manifest')
 
     direct = _try_r2_direct(pid)
     if direct:
@@ -90,11 +100,8 @@ def _resolve_r3(row: dict) -> tuple[bytes, str, str, str]:
     # Exact-page fallback: reuse the production resolver's og:image / product-img
     # extraction, but never inherit a bad direct URL from the original row.
     for page in FALLBACK_PAGES.get(pid, []):
-        candidate = dict(row)
-        candidate['image_url'] = ''
-        candidate['source_pages'] = [page]
         try:
-            return _ORIGINAL(candidate)
+            return _page_only(row, page)
         except Exception as exc:
             errors.append(f'{page}: {exc}')
 

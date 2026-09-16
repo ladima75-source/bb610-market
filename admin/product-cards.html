@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="admin-shell.css?v=20f2">
   <link rel="stylesheet" href="admin-master-nav.css?v=19b9">
   <link rel="stylesheet" href="product-card-v3.css?v=pcv3-04">
-  <link rel="stylesheet" href="product-cards-quality.css?v=qc3">
+  <link rel="stylesheet" href="product-cards-quality.css?v=qc4">
 </head>
 <body>
   <main class="pcv3-page">
@@ -29,12 +29,13 @@
       <div class="pcq-head">
         <div>
           <h2>Контроль якості каталогу</h2>
-          <p>DRAFT — картку треба наповнити. REVIEW — структура вже є, але залишився блокер джерела / фото / commerce / публікації. READY — підтверджена MASTER-картка, контент, SKU, media та commerce пройшли gate.</p>
+          <p>PRE-PRICE — контент, MASTER, SKU, медіа та прив’язки завершені до етапу цін. DRAFT / REVIEW / READY нижче — повний комерційний QA, де READY також вимагає ціну, доступність і публікацію.</p>
         </div>
         <div class="pcq-head-note" id="pcqNote">QA завантажиться після підключення.</div>
       </div>
       <div class="pcq-metrics" id="pcqMetrics">
         <button type="button" class="pcq-metric" data-q-status=""><span>Усього</span><b id="pcqTotal">—</b><small id="pcqTotalSub">карток v3</small></button>
+        <button type="button" class="pcq-metric pcq-preprice"><span>PRE-PRICE</span><b id="pcqPreprice">—</b><small id="pcqPrepriceSub">без цін / публікації</small></button>
         <button type="button" class="pcq-metric" data-q-status="DRAFT"><span>DRAFT</span><b id="pcqDraft">—</b><small id="pcqDraftSub">потрібне наповнення</small></button>
         <button type="button" class="pcq-metric" data-q-status="REVIEW"><span>REVIEW</span><b id="pcqReview">—</b><small id="pcqReviewSub">потрібна перевірка</small></button>
         <button type="button" class="pcq-metric" data-q-status="READY"><span>READY</span><b id="pcqReady">—</b><small id="pcqReadySub">готові до продажу</small></button>
@@ -79,6 +80,6 @@
   <script src="admin-master-nav.js?v=19b9"></script>
   <script src="api-no-cache.js?v=1"></script>
   <script src="product-card-v3.js?v=pcv3-04"></script>
-  <script src="product-cards-quality.js?v=qc3"></script>
+  <script src="product-cards-quality.js?v=qc4"></script>
 </body>
 </html>

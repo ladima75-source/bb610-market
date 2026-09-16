@@ -10,6 +10,7 @@ from .services import product_cards_v3 as svc
 from .services.product_cards_v3_media import list_existing_media
 from .services.product_cards_v3_quality import quality_report
 from .services.product_cards_v3_runtime import storefront_runtime
+from .services.product_cards_v3_preprice import preprice_report
 
 router = APIRouter()
 
@@ -30,6 +31,14 @@ def _admin(auth: Optional[str]) -> None:
 def storefront_count():
     items = svc.list_cards()
     return {'count': len(items)}
+
+
+@router.get('/api/v1/storefront/product-card-v3-preprice-status')
+def storefront_preprice_status():
+    # Temporary non-sensitive production diagnostic used while completing the
+    # catalog before the final price/go-live stage. Remove after 100% PASS.
+    report = preprice_report()
+    return {'summary': report['summary'], 'gaps': report['gaps']}
 
 
 @router.get('/api/v1/storefront/product-card-v3/{slug}')
@@ -65,6 +74,12 @@ def admin_media(authorization: Optional[str] = Header(default=None)):
 def admin_quality(authorization: Optional[str] = Header(default=None)):
     _admin(authorization)
     return quality_report()
+
+
+@router.get('/api/v1/admin/product-card-v3/preprice')
+def admin_preprice(authorization: Optional[str] = Header(default=None)):
+    _admin(authorization)
+    return preprice_report()
 
 
 @router.get('/api/v1/admin/product-card-v3/{product_id}')

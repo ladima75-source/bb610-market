@@ -1,0 +1,35 @@
+name: PCV3 Preprice Probe
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/pcv3_preprice_probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch production preprice status
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://api.market.bb610.com.ua/api/v1/storefront/product-card-v3-preprice-status'
+          curl --fail --silent --show-error --retry 3 --retry-delay 2 "$URL" -o preprice.json
+          python - <<'PY'
+          import json
+          p=json.load(open('preprice.json',encoding='utf-8'))
+          print('=== PCV3_PREPRICE_PRODUCTION ===')
+          print(json.dumps(p, ensure_ascii=False, indent=2))
+          print('=== END_PCV3_PREPRICE_PRODUCTION ===')
+          PY
+      - name: Upload probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcv3-preprice-production
+          path: preprice.json
+          retention-days: 3

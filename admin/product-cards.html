@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="admin-shell.css?v=20f2">
   <link rel="stylesheet" href="admin-master-nav.css?v=19b9">
   <link rel="stylesheet" href="product-card-v3.css?v=pcv3-04">
-  <link rel="stylesheet" href="product-cards-quality.css?v=qc1">
+  <link rel="stylesheet" href="product-cards-quality.css?v=qc2">
 </head>
 <body>
   <main class="pcv3-page">
@@ -29,7 +29,7 @@
       <div class="pcq-head">
         <div>
           <h2>Контроль якості каталогу</h2>
-          <p>DRAFT — картку треба наповнити. REVIEW — контент уже структурний, але є блокери фото / commerce / публікації. READY — картка пройшла основні контентні, SKU, media та commerce gate.</p>
+          <p>DRAFT — картку треба наповнити. REVIEW — структура вже є, але залишився блокер джерела / фото / commerce / публікації. READY — підтверджена MASTER-картка, контент, SKU, media та commerce пройшли gate.</p>
         </div>
         <div class="pcq-head-note" id="pcqNote">QA завантажиться після підключення.</div>
       </div>
@@ -39,6 +39,7 @@
         <button type="button" class="pcq-metric" data-q-status="REVIEW"><span>REVIEW</span><b id="pcqReview">—</b><small id="pcqReviewSub">потрібна перевірка</small></button>
         <button type="button" class="pcq-metric" data-q-status="READY"><span>READY</span><b id="pcqReady">—</b><small id="pcqReadySub">готові до продажу</small></button>
         <button type="button" class="pcq-metric"><span>Якість</span><b id="pcqScore">—</b><small id="pcqScoreSub">середня готовність</small></button>
+        <button type="button" class="pcq-metric"><span>MASTER</span><b id="pcqSources">—</b><small id="pcqSourcesSub">перевірене джерело</small></button>
         <button type="button" class="pcq-metric"><span>Фото SKU</span><b id="pcqPhotos">—</b><small id="pcqPhotosSub">SKU з основним фото</small></button>
         <button type="button" class="pcq-metric"><span>Commerce</span><b id="pcqMapped">—</b><small id="pcqMappedSub">commerce mapping</small></button>
         <button type="button" class="pcq-metric"><span>До продажу</span><b id="pcqSellable">—</b><small id="pcqSellableSub">є SKU до продажу</small></button>
@@ -77,6 +78,6 @@
   <script src="admin-master-nav.js?v=19b9"></script>
   <script src="api-no-cache.js?v=1"></script>
   <script src="product-card-v3.js?v=pcv3-04"></script>
-  <script src="product-cards-quality.js?v=qc1"></script>
+  <script src="product-cards-quality.js?v=qc2"></script>
 </body>
 </html>

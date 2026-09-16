@@ -13,6 +13,7 @@ from typing import Any
 from backend.db import DB_PATH, connect
 from backend.services import product_cards_v3 as cards
 from backend.tools_complete_pcv3_media_readiness import _pack_key
+from backend.tools_import_organic_planet_full_price_v3 import _full_cards as _organic_full_cards, _match_product as _organic_match_product, _source as _organic_source
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'data' / 'catalog_sources' / 'organic_planet_start_matrix_v1.json'
@@ -74,6 +75,29 @@ def _cards_by_slug() -> dict[str, dict]:
     return out
 
 
+def _organic_by_slug() -> dict[str, dict]:
+    return {
+        str(row.get('slug') or '').strip().lower(): row
+        for row in (_organic_source().get('products') or [])
+        if isinstance(row, dict) and str(row.get('slug') or '').strip()
+    }
+
+
+def _resolve_card(src: dict, by_slug: dict[str, dict], organic_rows: dict[str, dict], all_cards: list[dict]) -> tuple[dict | None, str]:
+    slug = str(src.get('slug') or '').strip().lower()
+    direct = by_slug.get(slug)
+    if direct:
+        return direct, 'exact-v3-slug'
+    organic = organic_rows.get(slug)
+    if organic:
+        matched = _organic_match_product(organic, all_cards)
+        if matched:
+            full = cards.get(str(matched.get('product_id') or ''))
+            if isinstance(full, dict):
+                return full, 'organic-source-match'
+    return None, 'none'
+
+
 def _mapping_by_pid() -> dict[str, dict]:
     cmap = cards.commerce_map()
     return {
@@ -108,6 +132,8 @@ def _find_v3_sku(card: dict, package: str) -> dict:
 def build_plan() -> dict:
     source = _load_source()
     by_slug = _cards_by_slug()
+    organic_rows = _organic_by_slug()
+    all_cards = _organic_full_cards()
     mappings = _mapping_by_pid()
     commerce = _commerce_rows()
     actions = []
@@ -115,7 +141,7 @@ def build_plan() -> dict:
 
     for src in source['items']:
         slug = str(src['slug']).strip().lower()
-        card = by_slug.get(slug)
+        card, match_method = _resolve_card(src, by_slug, organic_rows, all_cards)
         if not card:
             failures.append(f'{slug}/{src["package"]}: PCV3 card not found')
             continue
@@ -161,6 +187,8 @@ def build_plan() -> dict:
             'start_qty': int(src['start_qty']),
             'decision': src['decision'],
             'product_id': pid,
+            'resolved_v3_slug': str(card.get('slug') or ''),
+            'match_method': match_method,
             'commerce_product': str(mapping.get('existing_product_key') or ''),
             'sku_id': sku_id,
             'commerce_sku': commerce_key,
@@ -261,7 +289,7 @@ def write_reports(plan: dict, audit_result: dict, apply_result: dict | None, mod
     csv_path = REPORT_ROOT / f'start-matrix-prices-{stamp}.csv'
     json_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     with csv_path.open('w', newline='', encoding='utf-8-sig') as fh:
-        fields = ['priority','title','slug','package','commerce_sku','wholesale','rrp','start_qty','decision','current_price','action']
+        fields = ['priority','title','slug','resolved_v3_slug','match_method','package','commerce_sku','wholesale','rrp','start_qty','decision','current_price','action']
         wr = csv.DictWriter(fh, fieldnames=fields)
         wr.writeheader()
         for row in plan['actions']:

@@ -140,9 +140,13 @@
     {
       "product_id": "prd_ce79ead4ec1e824e73",
       "title": "Ferrilene 4.8 Orto-Orto",
-      "image_url": "https://static.wixstatic.com/media/0918ef_425933ae68414eb1b453ee7e3a85a9d8~mv2.jpg/v1/fill/w_799%2Ch_799%2Cal_c%2Cq_85%2Cenc_avif%2Cquality_auto/0918ef_425933ae68414eb1b453ee7e3a85a9d8~mv2.jpg",
-      "source_pages": ["https://magaza.onaltarimbucak.com/product-page/valagro-brexil-top-1-kg"],
-      "quality": "exact_product_image"
+      "image_url": "",
+      "source_pages": [
+        "https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/ferrilene-48",
+        "https://agrox.com.ua/dobryva/ferrilen",
+        "https://rozetka.com.ua/ua/440809412/p440809412/"
+      ],
+      "quality": "exact_product_page_official_first"
     },
     {
       "product_id": "prd_1967dc4031f4fbb990",

@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import shutil
+from collections import Counter
 from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
@@ -81,6 +82,8 @@ def build_plan() -> list[dict]:
             'source_row': source.get('source_row'),
             'verified_date': source.get('verified_date'),
             'source_count': source.get('source_count'),
+            'match_method': source.get('match_method') or '',
+            'organic_title': source.get('organic_title') or '',
             'before_content_sha': _json_sha(card.get('content') or {}),
             'after_content_sha': _json_sha(new_card.get('content') or {}),
             'protected_sha': protected_before,
@@ -96,9 +99,19 @@ def main() -> None:
     args = ap.parse_args()
 
     stamp = _stamp()
+    summaries = cards.list_cards()
     plan = build_plan()
     commerce_before = _file_sha(cards.COMMERCE_MAP)
-    product_ids = [x['product_id'] for x in plan]
+    matched_ids = {x['product_id'] for x in plan}
+    unmatched = [
+        {
+            'product_id': str(row.get('product_id') or ''),
+            'title': str(row.get('title') or ''),
+            'slug': str(row.get('slug') or ''),
+        }
+        for row in summaries
+        if str(row.get('product_id') or '') not in matched_ids
+    ]
     changed_ids = [x['product_id'] for x in plan if x['changed']]
     backup_dir = BACKUP_ROOT / f'master-enrich-{stamp}'
 
@@ -135,16 +148,20 @@ def main() -> None:
             clean['applied'] = False
         report_items.append(clean)
 
+    match_methods = Counter(str(x.get('match_method') or 'unknown') for x in plan)
     report = {
-        'schema_version': '1.0',
+        'schema_version': '1.1',
         'tool': 'tools_enrich_pcv3_from_master_cards',
         'timestamp_utc': stamp,
         'mode': 'APPLY' if args.apply else 'DRY_RUN',
         'master_source': 'data/content_batches/stage22c_batch*.json',
+        'identity_bridge_source': 'data/catalog_sources/organic_planet_full_price_v1.json',
         'matched_verified_cards': len(plan),
+        'match_methods': dict(match_methods),
+        'unmatched_cards': unmatched,
         'changed_cards': len(changed_ids),
         'unchanged_cards': len(plan) - len(changed_ids),
-        'total_v3_cards': len(cards.list_cards()),
+        'total_v3_cards': len(summaries),
         'commerce_map_sha_before': commerce_before,
         'commerce_map_sha_after': commerce_after,
         'commerce_unchanged': commerce_before == commerce_after,
@@ -159,6 +176,11 @@ def main() -> None:
     print('MODE:', report['mode'])
     print('V3 TOTAL:', report['total_v3_cards'])
     print('MASTER VERIFIED MATCHES:', report['matched_verified_cards'])
+    print('MATCH DIRECT:', match_methods.get('direct_master_identity', 0))
+    print('MATCH ORGANIC SOURCE ROW:', match_methods.get('organic_source_row', 0))
+    print('UNMATCHED MASTER:', len(unmatched))
+    for item in unmatched:
+        print('  UNMATCHED:', item['title'], '|', item['slug'])
     print('CONTENT CHANGES:', report['changed_cards'])
     print('COMMERCE WRITES: 0')
     print('COMMERCE UNCHANGED:', 'PASS' if report['commerce_unchanged'] else 'FAIL')

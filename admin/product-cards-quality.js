@@ -29,6 +29,7 @@ function renderSummary(){
   metric('pcqSources',s.source_verified+'/'+s.total,`MASTER matched: ${s.source_matched||0}`);
   metric('pcqPhotos',s.sku_with_photo+'/'+s.enabled_sku_total,'SKU з основним фото');
   metric('pcqMapped',s.commerce_mapped+'/'+s.total,'commerce mapping');
+  metric('pcqPriced',s.products_with_price+'/'+s.total,`${s.priced_sku_total||0} SKU з ціною`);
   metric('pcqSellable',s.sellable_products+'/'+s.total,'є SKU до продажу');
   const note=$('#pcqNote');if(note)note.textContent=`Автоматичний QA · проблем: ${s.issue_count||0}`;
   const box=$('#pcqTopIssues'); if(box){
@@ -82,7 +83,7 @@ function decorateEditor(){
   const box=document.createElement('div');box.className='pcq-card-quality';box.dataset.productId=String(q.product_id||'');
   const issues=(q.issues||[]).slice(0,10);
   const sourceText=q.source_verified?`MASTER verified${q.source_verified_date?' '+esc(q.source_verified_date):''} · ${esc(q.source_count)} джер.`:'MASTER source не підтверджено';
-  box.innerHTML=`<div class="pcq-card-line">${badge(q.status)}<strong>Готовність картки</strong><span class="pcq-card-score">${esc(q.score)}%</span>${sourceBadge(q)}<span class="pcq-card-commerce">${sourceText} · commerce: ${q.commerce_mapped?'mapped':'—'} · publication: ${q.commerce_published?'on':'off'} · sellable SKU: ${esc(q.commerce_sellable_sku_count)}</span></div>${issues.length?`<div class="pcq-card-issues">${issues.map(x=>`<span class="pcq-card-issue ${x.severity==='blocker'?'blocker':''}">${esc(x.label)}</span>`).join('')}</div>`:'<div class="pcq-card-ok">Блокуючих проблем QA не виявив.</div>'}`;
+  box.innerHTML=`<div class="pcq-card-line">${badge(q.status)}<strong>Готовність картки</strong><span class="pcq-card-score">${esc(q.score)}%</span>${sourceBadge(q)}<span class="pcq-card-commerce">${sourceText} · commerce: ${q.commerce_mapped?'mapped':'—'} · price SKU: ${esc(q.commerce_priced_sku_count||0)} · publication: ${q.commerce_published?'on':'off'} · sellable SKU: ${esc(q.commerce_sellable_sku_count)}</span></div>${issues.length?`<div class="pcq-card-issues">${issues.map(x=>`<span class="pcq-card-issue ${x.severity==='blocker'?'blocker':''}">${esc(x.label)}</span>`).join('')}</div>`:'<div class="pcq-card-ok">Блокуючих проблем QA не виявив.</div>'}`;
   head.insertAdjacentElement('afterend',box);
 }
 

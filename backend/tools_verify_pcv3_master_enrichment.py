@@ -26,10 +26,13 @@ def main() -> None:
     schema_errors: list[str] = []
     matched = 0
     verified = 0
+    unmatched: list[str] = []
+    unverified: list[str] = []
     content_mismatches: list[str] = []
 
     for row in cards.list_cards():
         product_id = str(row.get('product_id') or '')
+        title = str(row.get('title') or product_id)
         card = cards.get(product_id)
         if not isinstance(card, dict):
             schema_errors.append(f'{product_id}: missing card')
@@ -44,13 +47,15 @@ def main() -> None:
         master = find_master_for_card(card)
         source = source_metadata(master)
         if not master:
+            unmatched.append(title)
             continue
         matched += 1
         if not source.get('verified'):
+            unverified.append(title)
             continue
         verified += 1
         expected = content_from_master(master, card.get('content') or {})
-        # Rebuilding from the current card is idempotent after enrichment.
+        # Rebuilding from current state must be idempotent after enrichment.
         if expected != (card.get('content') or {}):
             content_mismatches.append(product_id)
 
@@ -69,16 +74,30 @@ def main() -> None:
                 report_ok = False
                 break
 
-    ok = not schema_errors and not content_mismatches and report_ok
+    full_source_coverage = matched == total and verified == total and not unmatched and not unverified
+    qa_source_coverage = int(summary.get('source_verified') or 0) == total
+    ok = (
+        not schema_errors
+        and not content_mismatches
+        and report_ok
+        and full_source_coverage
+        and qa_source_coverage
+    )
+
     print('BB610 PCV3 MASTER ENRICHMENT VERIFY')
     print('V3 TOTAL:', total)
     print('MASTER MATCHED:', matched)
     print('MASTER SOURCE VERIFIED:', verified)
     print('QA SOURCE VERIFIED:', summary.get('source_verified', 0))
+    print('FULL SOURCE COVERAGE:', 'PASS' if full_source_coverage else 'FAIL')
     print('SCHEMA ERRORS:', len(schema_errors))
     print('CONTENT MISMATCHES:', len(content_mismatches))
     print('LATEST ENRICH REPORT:', report_note)
     print('PROTECTED/COMMERCE SAFETY:', 'PASS' if report_ok else 'FAIL')
+    for item in unmatched[:20]:
+        print('  UNMATCHED:', item)
+    for item in unverified[:20]:
+        print('  UNVERIFIED:', item)
     if schema_errors:
         for item in schema_errors[:20]:
             print('  SCHEMA:', item)

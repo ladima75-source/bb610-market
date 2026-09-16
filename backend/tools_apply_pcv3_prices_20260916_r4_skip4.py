@@ -14,7 +14,6 @@ post-verify. The two Plantlogic pot SKU remain outside this price source.
 
 import argparse
 import json
-from datetime import datetime, timezone
 
 from backend.db import connect
 from backend import tools_apply_pcv3_prices_20260916 as base
@@ -30,13 +29,12 @@ def _skip_manual(row: dict) -> bool:
 
 
 def _is_manual_target(target: dict) -> bool:
-    n = base.norm(" ".join([
-        str(target.get("title") or ""),
-        str(target.get("package") or ""),
-    ]))
+    title = str(target.get("title") or "")
+    n = base.norm(title)
+    f = base.formula(title)
     return (
-        ("osmocote" in n and "potassium" in n and base.formula(n) == ("12", "8", "19"))
-        or ("osmocote" in n and "landscape" in n and base.formula(n) == ("16", "9", "12"))
+        ("osmocote" in n and "potassium" in n and f == ("12", "8", "19"))
+        or ("osmocote" in n and "landscape" in n and f == ("16", "9", "12"))
     )
 
 

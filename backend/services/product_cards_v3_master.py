@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 from copy import deepcopy
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Optional
 
@@ -43,7 +44,8 @@ def _load(path: Path) -> list[dict]:
     return [x for x in obj if isinstance(x, dict)] if isinstance(obj, list) else []
 
 
-def master_rows() -> list[dict]:
+@lru_cache(maxsize=1)
+def master_rows() -> tuple[dict, ...]:
     out: list[dict] = []
     seen: set[tuple[str, str]] = set()
     for path in sorted(CONTENT_BATCH_DIR.glob(MASTER_GLOB)):
@@ -56,16 +58,17 @@ def master_rows() -> list[dict]:
             item = deepcopy(row)
             item['_master_file'] = path.name
             out.append(item)
-    return out
+    return tuple(out)
 
 
-def master_index() -> dict[str, list[dict]]:
-    out: dict[str, list[dict]] = {}
+@lru_cache(maxsize=1)
+def master_index() -> dict[str, tuple[dict, ...]]:
+    grouped: dict[str, list[dict]] = {}
     for row in master_rows():
         key = normalize_name(row.get('name'))
         if key:
-            out.setdefault(key, []).append(row)
-    return out
+            grouped.setdefault(key, []).append(row)
+    return {key: tuple(rows) for key, rows in grouped.items()}
 
 
 def find_master_for_card(card: dict) -> Optional[dict]:
@@ -76,8 +79,7 @@ def find_master_for_card(card: dict) -> Optional[dict]:
     for key in keys:
         if not key:
             continue
-        rows = idx.get(key) or []
-        for row in rows:
+        for row in idx.get(key) or ():
             if row not in matches:
                 matches.append(row)
     return matches[0] if len(matches) == 1 else None
@@ -203,8 +205,8 @@ def _composition(row: dict, characteristics: list[dict]) -> str:
         return direct
     wanted = (
         'формула', 'npk', 'азот', 'nitrogen', 'p2o5', 'p₂o₅', 'k2o', 'k₂o',
-        'mgo', 'магній', 'magnesium', 'cao', 'кальцій', 'calcium', 'so3', 'sо3',
-        'бор', 'boron', 'fe', 'залізо', 'iron', 'mn', 'марган', 'zinc', 'цинк',
+        'mgo', 'магній', 'magnesium', 'cao', 'кальцій', 'calcium', 'so3',
+        'бор', 'boron', 'залізо', 'iron', 'марган', 'mangan', 'zinc', 'цинк',
         'мід', 'copper', 'моліб', 'molyb', 'активн', 'active ingredient', 'склад'
     )
     parts: list[str] = []

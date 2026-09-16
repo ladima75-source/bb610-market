@@ -4,8 +4,7 @@ import argparse
 import csv
 import json
 import math
-import shutil
-from copy import deepcopy
+import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -51,11 +50,15 @@ def _load_source() -> dict:
 def _backup_db(stamp: str) -> Path:
     dest = BACKUP_ROOT / f'start-matrix-price-import-{stamp}'
     dest.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(DB_PATH, dest / DB_PATH.name)
-    for suffix in ('-wal', '-shm'):
-        side = Path(str(DB_PATH) + suffix)
-        if side.exists():
-            shutil.copy2(side, dest / side.name)
+    src = sqlite3.connect(str(DB_PATH))
+    try:
+        dst = sqlite3.connect(str(dest / DB_PATH.name))
+        try:
+            src.backup(dst)
+        finally:
+            dst.close()
+    finally:
+        src.close()
     return dest
 
 

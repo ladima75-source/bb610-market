@@ -35,6 +35,35 @@ def _identity_groups(full_cards: list[dict]) -> tuple[dict[str, list[dict]], lis
     return groups, collisions
 
 
+def _content_issues(card: dict) -> list[str]:
+    content = card.get('content') or {}
+    issues: list[str] = []
+    if not card.get('enabled'):
+        issues.append('card_disabled')
+    if not _text(content.get('brand')):
+        issues.append('brand_missing')
+    if not _text(content.get('category')):
+        issues.append('category_missing')
+    if len(_text(content.get('short_description'))) < 30:
+        issues.append('short_description_weak')
+    if len(_text(content.get('description'))) < 80:
+        issues.append('description_weak')
+    if not content.get('benefits'):
+        issues.append('benefits_missing')
+    if len(_text(content.get('how_it_works'))) < 20:
+        issues.append('how_it_works_missing')
+    if len(_text(content.get('application'))) < 20:
+        issues.append('application_missing')
+    if len(_text(content.get('composition'))) < 10:
+        issues.append('composition_missing')
+    if len(content.get('characteristics') or []) < 2:
+        issues.append('characteristics_weak')
+    seo = content.get('seo') or {}
+    if not _text(seo.get('title')) or len(_text(seo.get('description'))) < 50:
+        issues.append('seo_incomplete')
+    return issues
+
+
 def preprice_report() -> dict:
     cmap = cards.commerce_map()
     map_by_pid = {
@@ -72,6 +101,7 @@ def preprice_report() -> dict:
             cards.validate(card)
         except Exception:
             card_issues.append('schema')
+        card_issues.extend(_content_issues(card))
         master_meta = source_metadata(find_master_for_card(card))
         if not master_meta.get('verified'):
             card_issues.append('source')
@@ -116,8 +146,6 @@ def preprice_report() -> dict:
                     issues.append('photo_invalid')
                 if not _text(media.get('alt')):
                     issues.append('photo_alt')
-            # A structurally clean SKU is not counted as pre-price ready while its
-            # product identity is duplicated. Product canonicalization comes first.
             if pid in duplicate_pids and 'identity_duplicate' not in issues:
                 issues.append('identity_duplicate')
             if issues:
@@ -166,7 +194,7 @@ def preprice_report() -> dict:
         not collisions
     )
     return {
-        'schema_version': '1.1',
+        'schema_version': '1.2',
         'price_gate': 'FROZEN_NOT_PART_OF_THIS_GATE',
         'summary': {
             'cards_total': total_cards,

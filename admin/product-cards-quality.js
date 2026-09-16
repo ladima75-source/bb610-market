@@ -3,7 +3,7 @@ const API='https://api.market.bb610.com.ua';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 let report=null, byId=new Map();
 const token=()=>$('#token')?.value||localStorage.getItem('bb610_admin_token')||'';
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 async function loadQuality(){
   if(!token()) return;

@@ -1,18 +1,32 @@
 (()=>{'use strict';
 const API='https://api.market.bb610.com.ua';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-let report=null, byId=new Map();
+let report=null, preprice=null, byId=new Map();
 const token=()=>$('#token')?.value||localStorage.getItem('bb610_admin_token')||'';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+async function apiJson(path){
+  const r=await fetch(API+path,{headers:{Authorization:'Bearer '+token()},cache:'no-store'});
+  const x=await r.json().catch(()=>({}));
+  if(!r.ok) throw new Error(x.detail||('HTTP '+r.status));
+  return x;
+}
 
 async function loadQuality(){
   if(!token()) return;
   try{
-    const r=await fetch(API+'/api/v1/admin/product-card-v3/quality',{headers:{Authorization:'Bearer '+token()},cache:'no-store'});
-    const x=await r.json().catch(()=>({}));
-    if(!r.ok) throw new Error(x.detail||('HTTP '+r.status));
-    report=x; byId=new Map((x.items||[]).map(v=>[String(v.product_id),v]));
+    const [qualityResult,prepriceResult]=await Promise.allSettled([
+      apiJson('/api/v1/admin/product-card-v3/quality'),
+      apiJson('/api/v1/admin/product-card-v3/preprice')
+    ]);
+    if(qualityResult.status!=='fulfilled') throw qualityResult.reason;
+    report=qualityResult.value;
+    preprice=prepriceResult.status==='fulfilled'?prepriceResult.value:null;
+    byId=new Map((report.items||[]).map(v=>[String(v.product_id),v]));
     renderSummary(); rebuildFilters(); decorateList(); decorateEditor(); applyFilters();
+    if(prepriceResult.status!=='fulfilled'){
+      const note=$('#pcqNote');if(note)note.textContent+=' · PRE-PRICE недоступний';
+    }
   }catch(e){
     const note=$('#pcqNote'); if(note) note.textContent='QA недоступний: '+e.message;
   }
@@ -20,8 +34,13 @@ async function loadQuality(){
 
 function metric(id,value,sub){const el=$('#'+id);if(el)el.textContent=String(value??0);const s=$('#'+id+'Sub');if(s&&sub!=null)s.textContent=String(sub)}
 function renderSummary(){
-  const s=report?.summary||{};
+  const s=report?.summary||{}, ps=preprice?.summary||{};
   metric('pcqTotal',s.total,'карток v3');
+  if(preprice){
+    metric('pcqPreprice',`${ps.cards_preprice_ready||0}/${ps.cards_total||0}`,ps.complete?`${ps.skus_preprice_ready||0}/${ps.skus_total||0} SKU · 100% до цін`:`${ps.skus_preprice_ready||0}/${ps.skus_total||0} SKU · gaps: ${ps.gaps_total||0}`);
+  }else{
+    metric('pcqPreprice','—','без цін / публікації');
+  }
   metric('pcqDraft',s.draft,'потрібне наповнення');
   metric('pcqReview',s.review,'потрібна перевірка');
   metric('pcqReady',s.ready,'готові до продажу');
@@ -31,7 +50,10 @@ function renderSummary(){
   metric('pcqMapped',s.commerce_mapped+'/'+s.total,'commerce mapping');
   metric('pcqPriced',s.products_with_price+'/'+s.total,`${s.priced_sku_total||0} SKU з ціною`);
   metric('pcqSellable',s.sellable_products+'/'+s.total,'є SKU до продажу');
-  const note=$('#pcqNote');if(note)note.textContent=`Автоматичний QA · проблем: ${s.issue_count||0}`;
+  const note=$('#pcqNote');if(note){
+    const pre=preprice?(ps.complete?'PRE-PRICE 100%':'PRE-PRICE '+(ps.cards_preprice_ready||0)+'/'+(ps.cards_total||0)):'';
+    note.textContent=`Автоматичний QA · проблем: ${s.issue_count||0}${pre?' · '+pre:''}`;
+  }
   const box=$('#pcqTopIssues'); if(box){
     const rows=(report?.top_issues||[]).slice(0,8);
     box.innerHTML='<span class="pcq-issues-label">Найчастіші проблеми</span>'+rows.map(x=>`<button type="button" class="pcq-issue-chip" data-q-issue="${esc(x.code)}">${esc(x.label)} <b>${esc(x.count)}</b></button>`).join('');

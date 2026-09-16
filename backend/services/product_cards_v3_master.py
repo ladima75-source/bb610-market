@@ -10,6 +10,7 @@ from typing import Any, Optional
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT_BATCH_DIR = ROOT / 'data' / 'content_batches'
 MASTER_GLOB = 'stage22c_batch*.json'
+ORGANIC_SOURCE = ROOT / 'data' / 'catalog_sources' / 'organic_planet_full_price_v1.json'
 
 
 def _text(value: Any) -> str:
@@ -71,18 +72,99 @@ def master_index() -> dict[str, tuple[dict, ...]]:
     return {key: tuple(rows) for key, rows in grouped.items()}
 
 
+@lru_cache(maxsize=1)
+def master_source_row_index() -> dict[int, dict]:
+    grouped: dict[int, list[dict]] = {}
+    for row in master_rows():
+        try:
+            source_row = int(row.get('source_row'))
+        except Exception:
+            continue
+        grouped.setdefault(source_row, []).append(row)
+    return {source_row: rows[0] for source_row, rows in grouped.items() if len(rows) == 1}
+
+
+@lru_cache(maxsize=1)
+def organic_products() -> tuple[dict, ...]:
+    try:
+        obj = json.loads(ORGANIC_SOURCE.read_text(encoding='utf-8'))
+    except Exception:
+        return tuple()
+    rows = obj.get('products') if isinstance(obj, dict) else None
+    if not isinstance(rows, list):
+        return tuple()
+    out: list[dict] = []
+    for i, row in enumerate(rows, start=1):
+        if not isinstance(row, dict):
+            continue
+        item = deepcopy(row)
+        # The approved stage22c MASTER was built from the same ordered source matrix.
+        # This row bridge is deterministic and avoids fuzzy product matching.
+        item['_source_row'] = i
+        out.append(item)
+    return tuple(out)
+
+
+@lru_cache(maxsize=1)
+def organic_identity_index() -> dict[str, tuple[dict, ...]]:
+    grouped: dict[str, list[dict]] = {}
+    for row in organic_products():
+        values: list[Any] = [row.get('title'), row.get('slug')]
+        aliases = row.get('aliases')
+        if isinstance(aliases, list):
+            values.extend(aliases)
+        for value in values:
+            key = normalize_name(value)
+            if key:
+                grouped.setdefault(key, []).append(row)
+    return {key: tuple(rows) for key, rows in grouped.items()}
+
+
+def _annotated(row: dict, method: str, organic_title: str = '') -> dict:
+    item = deepcopy(row)
+    item['_match_method'] = method
+    if organic_title:
+        item['_organic_title'] = organic_title
+    return item
+
+
 def find_master_for_card(card: dict) -> Optional[dict]:
     content = card.get('content') or {}
     keys = [normalize_name(content.get('title')), normalize_name(card.get('slug'))]
+
+    direct_matches: list[dict] = []
     idx = master_index()
-    matches: list[dict] = []
     for key in keys:
         if not key:
             continue
         for row in idx.get(key) or ():
-            if row not in matches:
-                matches.append(row)
-    return matches[0] if len(matches) == 1 else None
+            if row not in direct_matches:
+                direct_matches.append(row)
+    if len(direct_matches) == 1:
+        return _annotated(direct_matches[0], 'direct_master_identity')
+
+    # Imported Organic Planet cards can use a retail title/slug that differs from the
+    # editorial MASTER title. Bridge through the shared source-row identity rather
+    # than fuzzy text matching. Ambiguous retail aliases are refused.
+    organic_matches: list[dict] = []
+    organic_idx = organic_identity_index()
+    for key in keys:
+        if not key:
+            continue
+        for row in organic_idx.get(key) or ():
+            if row not in organic_matches:
+                organic_matches.append(row)
+    if len(organic_matches) != 1:
+        return None
+    organic = organic_matches[0]
+    try:
+        source_row = int(organic.get('_source_row'))
+    except Exception:
+        return None
+    master = master_source_row_index().get(source_row)
+    if not master:
+        return None
+    return _annotated(master, 'organic_source_row', _text(organic.get('title')))
 
 
 def source_metadata(row: Optional[dict]) -> dict:
@@ -94,6 +176,8 @@ def source_metadata(row: Optional[dict]) -> dict:
             'source_count': 0,
             'master_file': '',
             'source_row': None,
+            'match_method': '',
+            'organic_title': '',
             'urls': [],
         }
 
@@ -123,6 +207,8 @@ def source_metadata(row: Optional[dict]) -> dict:
         'source_count': len(urls),
         'master_file': _text(row.get('_master_file')),
         'source_row': row.get('source_row'),
+        'match_method': _text(row.get('_match_method')),
+        'organic_title': _text(row.get('_organic_title')),
         'urls': urls,
     }
 
@@ -167,9 +253,11 @@ def _application(row: dict) -> str:
     if isinstance(rows, list):
         for item in rows:
             if isinstance(item, dict):
-                left = _text(item.get('label') or item.get('culture') or item.get('title'))
-                right = _text(item.get('value') or item.get('rate') or item.get('text'))
-                line = ': '.join(x for x in (left, right) if x)
+                subject = _text(item.get('label') or item.get('culture') or item.get('crop') or item.get('title'))
+                period = _text(item.get('period') or item.get('stage') or item.get('timing'))
+                dose = _text(item.get('value') or item.get('rate') or item.get('dose') or item.get('norm') or item.get('text'))
+                head = ' — '.join(x for x in (subject, period) if x)
+                line = f'{head}: {dose}' if head and dose else head or dose
                 if line:
                     chunks.append(line)
             else:

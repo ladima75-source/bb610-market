@@ -3,7 +3,7 @@ const API='https://api.market.bb610.com.ua';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 let report=null, byId=new Map();
 const token=()=>$('#token')?.value||localStorage.getItem('bb610_admin_token')||'';
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
 
 async function loadQuality(){
   if(!token()) return;
@@ -26,6 +26,7 @@ function renderSummary(){
   metric('pcqReview',s.review,'потрібна перевірка');
   metric('pcqReady',s.ready,'готові до продажу');
   metric('pcqScore',s.average_score+'%','середня готовність');
+  metric('pcqSources',s.source_verified+'/'+s.total,`MASTER matched: ${s.source_matched||0}`);
   metric('pcqPhotos',s.sku_with_photo+'/'+s.enabled_sku_total,'SKU з основним фото');
   metric('pcqMapped',s.commerce_mapped+'/'+s.total,'commerce mapping');
   metric('pcqSellable',s.sellable_products+'/'+s.total,'є SKU до продажу');
@@ -48,13 +49,14 @@ function rebuildFilters(){
 }
 
 function badge(status){const low=String(status||'').toLowerCase();return `<span class="pcq-badge ${low}">${esc(status||'—')}</span>`}
+function sourceBadge(q){return q.source_verified?'<span class="pcq-source ok">MASTER ✓</span>':'<span class="pcq-source bad">MASTER —</span>'}
 function decorateList(){
   $$('.pcv3-item').forEach(el=>{
     const q=byId.get(String(el.dataset.id)); if(!q)return;
     el.dataset.pcqStatus=q.status||''; el.dataset.pcqBrand=q.brand||''; el.dataset.pcqIssues=(q.issue_codes||[]).join('|');
     $('.pcq-list-meta',el)?.remove();
     const meta=document.createElement('div');meta.className='pcq-list-meta';
-    meta.innerHTML=`${badge(q.status)}<span class="pcq-score">${esc(q.score)}%</span>${(q.issues||[]).length?`<span class="pcq-problem-count">${q.issues.length} проблем</span>`:''}`;
+    meta.innerHTML=`${badge(q.status)}<span class="pcq-score">${esc(q.score)}%</span>${sourceBadge(q)}${(q.issues||[]).length?`<span class="pcq-problem-count">${q.issues.length} проблем</span>`:''}`;
     el.appendChild(meta);
   });
 }
@@ -79,7 +81,8 @@ function decorateEditor(){
   existing?.remove();
   const box=document.createElement('div');box.className='pcq-card-quality';box.dataset.productId=String(q.product_id||'');
   const issues=(q.issues||[]).slice(0,10);
-  box.innerHTML=`<div class="pcq-card-line">${badge(q.status)}<strong>Готовність картки</strong><span class="pcq-card-score">${esc(q.score)}%</span><span class="pcq-card-commerce">commerce: ${q.commerce_mapped?'mapped':'—'} · publication: ${q.commerce_published?'on':'off'} · sellable SKU: ${esc(q.commerce_sellable_sku_count)}</span></div>${issues.length?`<div class="pcq-card-issues">${issues.map(x=>`<span class="pcq-card-issue ${x.severity==='blocker'?'blocker':''}">${esc(x.label)}</span>`).join('')}</div>`:'<div class="pcq-card-ok">Блокуючих проблем QA не виявив.</div>'}`;
+  const sourceText=q.source_verified?`MASTER verified${q.source_verified_date?' '+esc(q.source_verified_date):''} · ${esc(q.source_count)} джер.`:'MASTER source не підтверджено';
+  box.innerHTML=`<div class="pcq-card-line">${badge(q.status)}<strong>Готовність картки</strong><span class="pcq-card-score">${esc(q.score)}%</span>${sourceBadge(q)}<span class="pcq-card-commerce">${sourceText} · commerce: ${q.commerce_mapped?'mapped':'—'} · publication: ${q.commerce_published?'on':'off'} · sellable SKU: ${esc(q.commerce_sellable_sku_count)}</span></div>${issues.length?`<div class="pcq-card-issues">${issues.map(x=>`<span class="pcq-card-issue ${x.severity==='blocker'?'blocker':''}">${esc(x.label)}</span>`).join('')}</div>`:'<div class="pcq-card-ok">Блокуючих проблем QA не виявив.</div>'}`;
   head.insertAdjacentElement('afterend',box);
 }
 

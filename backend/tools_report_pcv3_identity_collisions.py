@@ -37,8 +37,7 @@ def main() -> None:
     report_groups = []
 
     print('BB610 PCV3 IDENTITY COLLISION DIAGNOSTIC')
-    print('CARDS:', len(full))
-    print('COLLISION GROUPS:', len(groups))
+    print('CARDS:', len(full), '| COLLISION GROUPS:', len(groups))
 
     for source_row, members in sorted(groups.items(), key=lambda kv: int(kv[0]) if kv[0].isdigit() else 10**9):
         try:
@@ -58,10 +57,7 @@ def main() -> None:
             'row_bridge_identity_ok': bridge_ok,
             'members': [],
         }
-        print(f'\nGROUP source_row={row_no}')
-        print('  MASTER :', master_name)
-        print('  ORGANIC:', organic_title)
-        print('  ROW BRIDGE:', 'PASS' if bridge_ok else 'FAIL')
+        print(f'ROW {row_no} | BRIDGE={"PASS" if bridge_ok else "FAIL"} | MASTER={master_name} | ORGANIC={organic_title}')
 
         for member in members:
             card = member['card']
@@ -79,11 +75,7 @@ def main() -> None:
                 'packages': packs,
             }
             item['members'].append(row)
-            print('  MEMBER :', row['title'])
-            print('           id=', row['product_id'])
-            print('           slug=', row['slug'])
-            print('           method=', row['match_method'], 'organic=', row['organic_title'])
-            print('           packs=', ', '.join(packs))
+            print(f"  {row['match_method']} | {row['title']} | {row['slug']} | packs={','.join(packs)}")
         report_groups.append(item)
 
     REPORT_ROOT.mkdir(parents=True, exist_ok=True)
@@ -95,7 +87,7 @@ def main() -> None:
         'groups': report_groups,
     }
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print('\nREPORT:', path)
+    print('REPORT:', path)
     print('RESULT: PASS (READ-ONLY)')
 
 

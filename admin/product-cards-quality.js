@@ -74,8 +74,10 @@ function decorateEditor(){
   const active=$('.pcv3-item.active'); if(!active)return;
   const q=byId.get(String(active.dataset.id)); if(!q)return;
   const editor=$('#editor'), head=$('.pcv3-card-head',editor); if(!editor||!head)return;
-  $('.pcq-card-quality',editor)?.remove();
-  const box=document.createElement('div');box.className='pcq-card-quality';
+  const existing=$('.pcq-card-quality',editor);
+  if(existing?.dataset.productId===String(q.product_id)) return;
+  existing?.remove();
+  const box=document.createElement('div');box.className='pcq-card-quality';box.dataset.productId=String(q.product_id||'');
   const issues=(q.issues||[]).slice(0,10);
   box.innerHTML=`<div class="pcq-card-line">${badge(q.status)}<strong>Готовність картки</strong><span class="pcq-card-score">${esc(q.score)}%</span><span class="pcq-card-commerce">commerce: ${q.commerce_mapped?'mapped':'—'} · publication: ${q.commerce_published?'on':'off'} · sellable SKU: ${esc(q.commerce_sellable_sku_count)}</span></div>${issues.length?`<div class="pcq-card-issues">${issues.map(x=>`<span class="pcq-card-issue ${x.severity==='blocker'?'blocker':''}">${esc(x.label)}</span>`).join('')}</div>`:'<div class="pcq-card-ok">Блокуючих проблем QA не виявив.</div>'}`;
   head.insertAdjacentElement('afterend',box);

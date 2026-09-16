@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Complete the final non-price media gate for the 25 products that remained without primary SKU media after canonicalization and local-media recovery.",
+  "rules": {
+    "price_writes": 0,
+    "commerce_writes": 0,
+    "publication_writes": 0,
+    "stock_writes": 0,
+    "availability_writes": 0,
+    "media_scope": "Exact product image may be shared by package SKUs of the same canonical product when no package-specific image is available; the image must not depict a different product.",
+    "provenance": "Every downloaded image is recorded with source page and resolved image URL in the runtime report."
+  },
+  "products": [
+    {
+      "product_id": "prd_2273230794658cc7a2",
+      "title": "Agriflex Amino (Амінокислоти 50%)",
+      "image_url": "https://10sotok.com.ua/content/images/13/1800x1800l80mc0/agrifleks-amino-agriflex-amino-1-kg-23962859519461.png",
+      "source_pages": ["https://10sotok.com.ua/ua/agrifleks-amino-agriflex-amino-1-kg.html/"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_46b00c114f407dc789",
+      "title": "Agriflex AminoVix",
+      "image_url": "https://pomidorka.com.ua/7065-large_default/stimulyator-zrostannya-amino-viks-aminokisloti-agriflex.webp",
+      "source_pages": ["https://pomidorka.com.ua/uk/stimulyatory-rosta/1285-stimulyator-zrostannya-amino-viks-aminokisloti-agriflex.html"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_26d11d78e0a89a32a6",
+      "title": "Agriflex Fulvix (Фульвокислоти 60%)",
+      "image_url": "https://10sotok.com.ua/content/images/16/500x500l80mc0/agrifleks-fulviks-agriflex-fulvix-1-kg-12605303986701.jpg",
+      "source_pages": ["https://10sotok.com.ua/ua/agrifleks-fulviks-agriflex-fulvix-1-kg.html/"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_7dda79d11cb1aa9313",
+      "title": "Agriflex Humic (Гумат калію)",
+      "image_url": "https://nekhairoste.ua/image/cache/catalog/image/cache/catalog/udobreniya/organo-mineralnie/48185-0-1150x1150.webp",
+      "source_pages": ["https://nekhairoste.ua/vodorozchinnij-gumat-kalyu-agrfleks-hyumk-agriflex-humic-1-kg-48185/"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_68aa697f0ab0cd8f82",
+      "title": "Agriflex Zn",
+      "image_url": "",
+      "source_pages": [
+        "https://prom.ua/ua/p2098814496-agriflex-agrifleks-amiino.html",
+        "https://agromax.in.ua/catalog/biostymulyatory/ahrifleks-amino-tsynk-agriflex-amino-zn-aminokysloty-30-mikrodobryvo",
+        "https://prom.ua/p1642417077-agriflex-amino-agrifleks.html"
+      ],
+      "quality": "exact_product_page"
+    },
+    {
+      "product_id": "prd_13295028754b43ea43",
+      "title": "Agroblen Granula-MAX 14-20-5+TE (5–6M)",
+      "image_url": "https://organicplanet.com.ua/image/cache/catalog/novinkifasovka/4488-534x534.png",
+      "source_pages": ["https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/mineralni-dobriva?page=8"],
+      "quality": "exact_retail_product"
+    },
+    {
+      "product_id": "prd_ebcd8049306f385841",
+      "title": "Osmocote Bloom 12-7-18 (2–3M)",
+      "image_url": "https://static.tildacdn.net/stor3639-6165-4661-a365-396463633634/30527716.jpg",
+      "source_pages": ["https://hidrostart.md/fertilizant/tproduct/438575947-342389004772-fertilizant-osmocot-bloom-02-03m-13-7-18"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_68973b6c92b8b1ee9c",
+      "title": "Osmocote Decor 16-8-12 (5–6M)",
+      "image_url": "https://greenpunkt.pl/sklep/520-large_default/icl-nawoz-otoczkowany-osmocote-5-s-curved-16812-2-mikro-5-6m-25kg.jpg",
+      "source_pages": ["https://greenpunkt.pl/sklep/osmocote/879-icl-nawoz-otoczkowany-osmocote-5-s-curved-16812-2-mikro-5-6m-25kg-8712994014605.html"],
+      "quality": "exact_formula_product"
+    },
+    {
+      "product_id": "prd_5ba57756e132c8db41",
+      "title": "Osmocote Granula-MAX 14-8-11+TE (5–6M)",
+      "image_url": "https://images.prom.ua/5840420225_w1280_h640_5840420225.jpg",
+      "source_pages": ["https://rozamimoza.com.ua/ua/p2217932883-udobrenie-osmokot-hobbi.html"],
+      "quality": "exact_formula_tablet_pack"
+    },
+    {
+      "product_id": "prd_7eb5a0722fb35ab76c",
+      "title": "Osmocote Start 11-11-17 (1,5M)",
+      "image_url": "https://www.darzaabc.lv/public/assets/images/products/ICL/meslojums-osmocote-start-11-11-17-2mgo-te-25kg.jpg",
+      "source_pages": ["https://www.darzaabc.lv/lv/prece/meslojums-osmocote-start-11-11-17-2mgo-te-25kg"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_720c9eeaa1405b0c8b",
+      "title": "Ерайз",
+      "image_url": "",
+      "source_pages": [
+        "https://www.eridon.ua/erajz",
+        "https://agroretail.com.ua/p1358642106-stimulyator-rostu-erajz"
+      ],
+      "quality": "exact_product_page"
+    },
+    {
+      "product_id": "prd_3cef04c64c5309656f",
+      "title": "Actiwave",
+      "image_url": "https://pomidorka.com.ua/7071-large_default/dobrivo-actiwave-aktivejv-valagro.webp",
+      "source_pages": ["https://pomidorka.com.ua/uk/stimulyatory-rosta/1773-dobrivo-actiwave-aktivejv-valagro.html"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_a8fb188da08e2c6c14",
+      "title": "Actiwin 20-5-10",
+      "image_url": "https://new-seeds.com.ua/media/catalog/product/cache/bb7cdb105112ee6fda01146380dec1b8/_/2/_20-5-10_new-seeds.jpg",
+      "source_pages": ["https://new-seeds.com.ua/ru/aktivin-20-5-10-valagro.html"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_4a3fa0053ea0604b26",
+      "title": "Brexil Duo",
+      "image_url": "https://growtonia.com/cdn/shop/files/101273_2_38262386-2350-4b2b-abaf-f5da5134498f.jpg?v=1724862597",
+      "source_pages": ["https://growtonia.com/products/valagro-brexil-duo-1kg"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_77fb57cecc3ee48423",
+      "title": "Brexil Mix",
+      "image_url": "https://c.cdnmp.net/465736621/p/m/0/brexil-mix-1kg-valagro-vitamini-i-minerali-za-biljke~23020.jpg",
+      "source_pages": ["https://www.alatioprema.rs/kupi/brexil-mix-1kg-valagro-vitamini-i-minerali-za-biljke-10311"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_cd48fb5e4a91512414",
+      "title": "Brexil Multi",
+      "image_url": "https://images.prom.ua/4106577010_w1280_h640_4106577010.jpg",
+      "source_pages": ["https://zelensvit.com/p1717707283-breksil-multi-brexil.html"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_917c0868db27798afd",
+      "title": "Brexil Nutre",
+      "image_url": "https://growtonia.com/cdn/shop/files/101283_2_03b81390-91da-4b4d-bfb8-cf2202866de4.jpg?v=1724862601",
+      "source_pages": ["https://growtonia.com/it/products/valagro-brexil-nutre-1kg"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_ce79ead4ec1e824e73",
+      "title": "Ferrilene 4.8 Orto-Orto",
+      "image_url": "https://static.wixstatic.com/media/0918ef_425933ae68414eb1b453ee7e3a85a9d8~mv2.jpg/v1/fill/w_799%2Ch_799%2Cal_c%2Cq_85%2Cenc_avif%2Cquality_auto/0918ef_425933ae68414eb1b453ee7e3a85a9d8~mv2.jpg",
+      "source_pages": ["https://magaza.onaltarimbucak.com/product-page/valagro-brexil-top-1-kg"],
+      "quality": "exact_product_image"
+    },
+    {
+      "product_id": "prd_1967dc4031f4fbb990",
+      "title": "Kendal TE",
+      "image_url": "https://agromanija.rs/media/catalog/product/3/6/36321_1.jpg?height=265&image-type=image&store=b2c_store_view&width=265",
+      "source_pages": ["https://agromanija.rs/valagro-kendal-te-11l-1289668"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_eddf96dc0cbdb06e58",
+      "title": "Micro NP",
+      "image_url": "https://www.online-gazda.hu/img/60224/00001335/00001335.webp",
+      "source_pages": ["https://www.online-gazda.hu/Micro-NP-Starter-10kg"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_80835989fdad65422e",
+      "title": "Agriflex Bio",
+      "image_url": "",
+      "source_pages": [
+        "https://rozetka.com.ua/361659417/p361659417/",
+        "https://prom.ua/ua/p3141874741-agriflex-bio-stimulyator.html",
+        "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-bio-stymulyator-rostu-1-kg-citymax"
+      ],
+      "quality": "exact_product_page"
+    },
+    {
+      "product_id": "prd_91199ba855dec3ae76",
+      "title": "MAX 600 SEASAILER",
+      "image_url": "https://godomall.speedycdn.net/799386f2acd83fa11c50a45a9f2fca51/goods/1000001713/image/detail/1000001713_detail_052.jpg",
+      "source_pages": ["https://www.nongdal.co.kr/goods/goods_view.php?goodsNo=1000001713"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_11a26f9d8b917e2d95",
+      "title": "Ferrilene Trium",
+      "image_url": "https://growtonia.com/cdn/shop/files/101288_2_cc0df069-9913-4647-91b8-0c46737cc77c.jpg?v=1724862603",
+      "source_pages": ["https://growtonia.com/products/valagro-ferrilene-trium-1kg"],
+      "quality": "exact_product"
+    },
+    {
+      "product_id": "prd_00d536def2bb328bd4",
+      "title": "Maxicrop Extra",
+      "image_url": "https://www.perfarelalbero.it/558190/mc-extra-valagro-organic-nitrogen-fertilizer-organic-farming.jpg",
+      "source_pages": ["https://www.perfarelalbero.it/en/fertilizers-fertilizers-microelements/492-mc-extra-valagro-organic-nitrogen-fertilizer-organic-farming.html"],
+      "quality": "exact_product_alias_mc_extra"
+    },
+    {
+      "product_id": "prd_e8587fd66355d79acd",
+      "title": "Maxicrop Set / Максікроп Зав'язь",
+      "image_url": "https://cdn.27.ua/sc--media--prod/default/5f/18/c0/5f18c001-9a26-4d6c-af6e-b6fca695541c.png",
+      "source_pages": ["https://epicentrk.ua/ua/shop/mplc-maksikrop-zav-az-valagro-biostimulator-antistres-100-ml-1f101e09-bd09-6826-a79b-f7172328cabc.html"],
+      "quality": "exact_retail_product"
+    }
+  ]
+}

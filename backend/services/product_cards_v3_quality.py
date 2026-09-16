@@ -102,6 +102,8 @@ def _card_quality(card: dict) -> dict:
         'source_count': int(source.get('source_count') or 0),
         'source_master_file': _text(source.get('master_file')),
         'source_row': source.get('source_row'),
+        'source_match_method': _text(source.get('match_method')),
+        'source_organic_title': _text(source.get('organic_title')),
         'sku_count': len(skus),
         'enabled_sku_count': len(enabled_skus),
         'sku_with_photo_count': enabled_media_count,
@@ -141,6 +143,7 @@ def quality_report() -> dict:
     sellable = sum(1 for x in evaluated if int(x.get('commerce_sellable_sku_count') or 0) > 0)
     source_matched = sum(1 for x in evaluated if x.get('source_matched'))
     source_verified = sum(1 for x in evaluated if x.get('source_verified'))
+    source_bridge = sum(1 for x in evaluated if x.get('source_match_method') == 'organic_source_row')
     average_score = round(sum(int(x.get('score') or 0) for x in evaluated) / total) if total else 0
     top_issues = [
         {'code': code, 'label': issue_labels.get(code, code), 'count': count}
@@ -148,7 +151,7 @@ def quality_report() -> dict:
     ]
 
     return {
-        'schema_version': '1.1',
+        'schema_version': '1.2',
         'summary': {
             'total': total,
             'draft': status_counts.get('DRAFT', 0),
@@ -159,6 +162,7 @@ def quality_report() -> dict:
             'sku_with_photo': sku_with_photo,
             'source_matched': source_matched,
             'source_verified': source_verified,
+            'source_bridge': source_bridge,
             'commerce_mapped': mapped,
             'commerce_published': published,
             'sellable_products': sellable,

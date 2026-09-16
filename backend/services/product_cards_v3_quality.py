@@ -66,9 +66,10 @@ def _card_quality(card: dict) -> dict:
     check(published, 4, 'commerce_unpublished', 'Товар не опублікований у commerce', 'commerce', 'blocker')
     commerce_skus = detail.get('skus') or []
     active_commerce = [s for s in commerce_skus if s.get('enabled')]
-    priced = [s for s in active_commerce if isinstance(s.get('price'), (int, float)) and s.get('price') > 0]
-    sellable = [s for s in priced if _text(s.get('availability')) in SELLABLE_AVAILABILITY]
-    check(bool(priced), 3, 'commerce_price_missing', 'Немає активного SKU з ціною', 'commerce', 'blocker')
+    priced = [s for s in commerce_skus if isinstance(s.get('price'), (int, float)) and s.get('price') > 0]
+    active_priced = [s for s in active_commerce if isinstance(s.get('price'), (int, float)) and s.get('price') > 0]
+    sellable = [s for s in active_priced if _text(s.get('availability')) in SELLABLE_AVAILABILITY]
+    check(bool(active_priced), 3, 'commerce_price_missing', 'Немає активного SKU з ціною', 'commerce', 'blocker')
     check(bool(sellable), 4, 'commerce_not_sellable', 'Немає SKU, доступного до продажу', 'commerce', 'blocker')
 
     total_weight = sum(weight for _, weight in checks) or 1
@@ -111,6 +112,8 @@ def _card_quality(card: dict) -> dict:
         'commerce_published': published,
         'commerce_sku_count': len(commerce_skus),
         'commerce_active_sku_count': len(active_commerce),
+        'commerce_priced_sku_count': len(priced),
+        'commerce_active_priced_sku_count': len(active_priced),
         'commerce_sellable_sku_count': len(sellable),
     }
 
@@ -140,6 +143,8 @@ def quality_report() -> dict:
     sku_with_photo = sum(int(x.get('sku_with_photo_count') or 0) for x in evaluated)
     mapped = sum(1 for x in evaluated if x.get('commerce_mapped'))
     published = sum(1 for x in evaluated if x.get('commerce_published'))
+    priced_sku_total = sum(int(x.get('commerce_priced_sku_count') or 0) for x in evaluated)
+    products_with_price = sum(1 for x in evaluated if int(x.get('commerce_priced_sku_count') or 0) > 0)
     sellable = sum(1 for x in evaluated if int(x.get('commerce_sellable_sku_count') or 0) > 0)
     source_matched = sum(1 for x in evaluated if x.get('source_matched'))
     source_verified = sum(1 for x in evaluated if x.get('source_verified'))
@@ -151,7 +156,7 @@ def quality_report() -> dict:
     ]
 
     return {
-        'schema_version': '1.2',
+        'schema_version': '1.3',
         'summary': {
             'total': total,
             'draft': status_counts.get('DRAFT', 0),
@@ -165,6 +170,8 @@ def quality_report() -> dict:
             'source_bridge': source_bridge,
             'commerce_mapped': mapped,
             'commerce_published': published,
+            'priced_sku_total': priced_sku_total,
+            'products_with_price': products_with_price,
             'sellable_products': sellable,
             'issue_count': sum(len(x.get('issues') or []) for x in evaluated),
         },

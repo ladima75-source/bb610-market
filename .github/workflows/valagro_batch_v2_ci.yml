@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Test dependency
+        run: python -m pip install --disable-pip-version-check python-dotenv
       - name: Syntax
         run: |
           python -m py_compile backend/update_valagro_batch_v2.py
@@ -106,7 +108,7 @@ jobs:
           before_media = copy.deepcopy(card['sku_media'])
           changed = m['_merge_spec_content'](card, spec)
           assert changed['sku_media'] == before_media
-          assert m['migrated_product_id']('master-13-40-13') == m['migrated_product_id']('master-13-40-13')
-          assert m['migrated_sku_id']('master-13-40-13', 'MASTER-13-40-13-250G') == bindings.keys().__iter__().__next__()
+          sid = m['migrated_sku_id']('master-13-40-13', 'MASTER-13-40-13-250G')
+          assert bindings[sid] == 'MASTER-13-40-13-250G'
           print('Valagro batch v2 migration contract: OK')
           PY

@@ -23,6 +23,19 @@
   $('#token').value=localStorage.getItem('bb610_admin_token')||'';
 
   // --- Main Product Card v3 + commerce CSV/XLSX importer ---
+  function setPcv3ApplyState(enabled=false,label='Застосувати імпорт'){
+    const b=$('#pcv3Apply');
+    if(!b)return;
+    b.disabled=!enabled;
+    b.textContent=label;
+  }
+  function resetPcv3PreviewSession(){
+    pcv3PreviewToken=null;
+    setPcv3ApplyState(false);
+  }
+  setPcv3ApplyState(false);
+  $('#pcv3File')?.addEventListener('change',resetPcv3PreviewSession);
+
   document.querySelectorAll('[data-pcv3-download]').forEach(b=>b.onclick=async()=>{
     try{await download(`${API}/api/v1/admin/product-card-import/${b.dataset.pcv3Download}`,b.dataset.pcv3Download);}catch(e){msg(e);}
   });
@@ -30,11 +43,12 @@
   $('#pcv3Preview').onclick=async()=>{
     const f=$('#pcv3File').files[0];
     if(!f)return alert('Оберіть CSV або XLSX');
+    resetPcv3PreviewSession();
     const fd=new FormData();fd.append('file',f);
     try{
       const r=await fetch(`${API}/api/v1/admin/product-card-import/preview`,{method:'POST',headers:headers(),body:fd});
       const x=await r.json();if(!r.ok)throw x;
-      pcv3PreviewToken=x.token;
+      pcv3PreviewToken=x.valid===true?x.token:null;
       $('#pcv3PreviewBox').hidden=false;
       const labels={
         products:'Товарів',create_products:'Нових карток',update_products:'Оновлення карток',
@@ -58,22 +72,29 @@
         <td>${esc(show(c.stock_before))} → <b>${esc(show(c.stock_after))}</b></td>
         <td>${esc(c.commerce_action)}</td>
       </tr>`).join('');
-      $('#pcv3Apply').disabled=!(x.valid===true);
-    }catch(e){msg(e);}
+      setPcv3ApplyState(x.valid===true);
+    }catch(e){resetPcv3PreviewSession();msg(e);}
   };
 
   $('#pcv3Apply').onclick=async()=>{
-    if(!pcv3PreviewToken)return alert('Спочатку зробіть Preview');
+    if(!pcv3PreviewToken)return;
     if(!confirm('Застосувати імпорт карток, SKU та заповнених commerce-полів? Перед змінами буде створено спільний backup. Publication не змінюється.'))return;
+    const applyToken=pcv3PreviewToken;
+    setPcv3ApplyState(false,'Застосування…');
     try{
       const r=await fetch(`${API}/api/v1/admin/product-card-import/apply`,{
-        method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({token:pcv3PreviewToken})
+        method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({token:applyToken})
       });
       const x=await r.json();if(!r.ok)throw x;
-      alert(`Готово та перевірено.\nКарток: ${x.applied_products}\nНових карток: ${x.create_products}\nОновлено карток: ${x.update_products}\nНових V3 SKU: ${x.create_skus}\nОновлено V3 SKU: ${x.update_skus}\nCommerce рядків: ${x.commerce_rows}\nНових commerce SKU: ${x.create_commerce_skus}\nBinding змін: ${x.binding_changes}\nVerify: ${x.verified?'PASS':'FAIL'}\nBackup: ${x.backup}`);
       pcv3PreviewToken=null;
+      setPcv3ApplyState(false,'Імпорт застосовано ✓');
+      alert(`Готово та перевірено.\nКарток: ${x.applied_products}\nНових карток: ${x.create_products}\nОновлено карток: ${x.update_products}\nНових V3 SKU: ${x.create_skus}\nОновлено V3 SKU: ${x.update_skus}\nCommerce рядків: ${x.commerce_rows}\nНових commerce SKU: ${x.create_commerce_skus}\nBinding змін: ${x.binding_changes}\nVerify: ${x.verified?'PASS':'FAIL'}\nBackup: ${x.backup}`);
       await loadPcv3History();
-    }catch(e){msg(e);}
+    }catch(e){
+      pcv3PreviewToken=applyToken;
+      setPcv3ApplyState(true);
+      msg(e);
+    }
   };
 
   async function loadPcv3History(){

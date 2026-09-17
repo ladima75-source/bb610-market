@@ -1,0 +1,75 @@
+name: MASTER Plantafol content v3 CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/product_content/master_plantafol_20260918.json'
+      - 'backend/update_master_plantafol_content_v3_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/master_plantafol_content_v3_ci.yml'
+  pull_request:
+    paths:
+      - 'data/product_content/master_plantafol_20260918.json'
+      - 'backend/update_master_plantafol_content_v3_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/master_plantafol_content_v3_ci.yml'
+
+jobs:
+  content-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: python -m py_compile backend/update_master_plantafol_content_v3_20260918.py
+      - name: Validate manifest and content-only overlay
+        run: |
+          python - <<'PY'
+          from copy import deepcopy
+          from backend import update_master_plantafol_content_v3_20260918 as u
+          from backend.services import product_cards_v3 as pcv3
+
+          doc = u.load_manifest()
+          rows = doc['products']
+          assert len(rows) == 11
+          assert len({x['slug'] for x in rows}) == 11
+          assert sum(x['slug'].startswith('master-') for x in rows) == 6
+          assert sum(x['slug'].startswith('plantafol-') for x in rows) == 5
+
+          def walk_keys(value):
+              if isinstance(value, dict):
+                  for k, v in value.items():
+                      yield k
+                      yield from walk_keys(v)
+              elif isinstance(value, list):
+                  for v in value:
+                      yield from walk_keys(v)
+
+          for spec in rows:
+              forbidden = set(walk_keys(spec['content'])) & pcv3.FORBIDDEN_KEYS
+              assert not forbidden, (spec['slug'], forbidden)
+
+              card = pcv3.empty_card('OLD TITLE', spec['slug'])
+              card['content']['brand'] = 'Valagro'
+              card['content']['category'] = 'nutrition'
+              before = deepcopy(card)
+              after = u.apply_content(card, spec)
+              pcv3.validate(after)
+
+              assert after['product_id'] == before['product_id']
+              assert after['slug'] == before['slug']
+              assert after['enabled'] == before['enabled']
+              assert after['sku_media'] == before['sku_media']
+              assert after['content']['brand'] == 'Valagro'
+              assert after['content']['category'] == 'nutrition'
+              assert after['content']['title'] == spec['content']['title']
+              assert len(after['content']['benefits']) >= 4
+              assert len(after['content']['characteristics']) >= 5
+              assert after['content']['seo']['title']
+              assert after['content']['seo']['description']
+
+          print('MASTER + PLANTAFOL CONTENT CONTRACT: PASS')
+          PY

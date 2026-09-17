@@ -58,7 +58,6 @@ jobs:
               before = pcv3.empty_card(str(row['name']), f'test-{i}')
               before['content']['brand'] = str(row.get('brand') or '')
               before['content']['category'] = str(row.get('category') or 'nutrition')
-              before['sku_media'] = []
 
               fake_before = FakePCV3([before])
               resolved_before = fixed._find_current_card(fake_before, row, [])

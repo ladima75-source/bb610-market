@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from .services.catalog_import import (
     preview, apply, rollback, history, provenance, export_csv, export_xlsx, template_csv
 )
-from .services import product_cards_v3_import as pcv3_import
+from .services import product_cards_v3_catalog_import as pcv3_import
 
 router = APIRouter()
 
@@ -110,15 +110,16 @@ def prov(authorization: Optional[str] = Header(None)):
     return {'items': provenance()}
 
 
-# Product Card v3 importer. This path is intentionally separate from the legacy
-# catalog importer above: it changes only v3 card JSON and never commerce data.
+# Main CSV/XLSX importer for Product Card v3 + exact commerce bindings/prices.
+# It never fuzzy-matches prices: commerce changes are applied only by explicit
+# commerce_product_key / commerce_sku_key or deterministic keys for new SKUs.
 @router.get('/api/v1/admin/product-card-import/template.csv')
 def pcv3_template_csv(authorization: Optional[str] = Header(None)):
     auth(authorization)
     return Response(
         pcv3_import.template_csv(),
         media_type='text/csv; charset=utf-8',
-        headers={'Content-Disposition': 'attachment; filename=bb610-product-card-v3-template.csv'},
+        headers={'Content-Disposition': 'attachment; filename=bb610-product-catalog-v3-template.csv'},
     )
 
 
@@ -128,7 +129,7 @@ def pcv3_template_xlsx(authorization: Optional[str] = Header(None)):
     return Response(
         pcv3_import.template_xlsx(),
         media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        headers={'Content-Disposition': 'attachment; filename=bb610-product-card-v3-template.xlsx'},
+        headers={'Content-Disposition': 'attachment; filename=bb610-product-catalog-v3-template.xlsx'},
     )
 
 
@@ -138,7 +139,7 @@ def pcv3_export_csv(authorization: Optional[str] = Header(None)):
     return Response(
         pcv3_import.export_csv(),
         media_type='text/csv; charset=utf-8',
-        headers={'Content-Disposition': 'attachment; filename=bb610-product-card-v3-export.csv'},
+        headers={'Content-Disposition': 'attachment; filename=bb610-product-catalog-v3-export.csv'},
     )
 
 
@@ -148,7 +149,7 @@ def pcv3_export_xlsx(authorization: Optional[str] = Header(None)):
     return Response(
         pcv3_import.export_xlsx(),
         media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        headers={'Content-Disposition': 'attachment; filename=bb610-product-card-v3-export.xlsx'},
+        headers={'Content-Disposition': 'attachment; filename=bb610-product-catalog-v3-export.xlsx'},
     )
 
 
@@ -159,7 +160,7 @@ async def pcv3_preview(file: UploadFile = File(...), authorization: Optional[str
     if len(raw) > 40 * 1024 * 1024:
         raise HTTPException(413, 'max 40 MB')
     try:
-        return pcv3_import.preview(file.filename or 'product-cards-v3.xlsx', raw)
+        return pcv3_import.preview(file.filename or 'product-catalog-v3.xlsx', raw)
     except Exception as e:
         raise HTTPException(422, str(e))
 

@@ -24,6 +24,8 @@
 .mpc-shell .mpc-image,
 .mpc-shell-adapted .mpc-image{
   min-height:480px;
+  padding:22px;
+  box-sizing:border-box;
   border-radius:11px;
   background:#f0f1ed;
   display:flex;
@@ -42,11 +44,15 @@
 }
 .mpc-shell .mpc-image img,
 .mpc-shell-adapted .mpc-image img{
-  width:100%;
-  height:100%;
-  max-height:520px;
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:436px;
   object-fit:contain;
-  padding:22px;
+  object-position:center center;
+  padding:0;
+  box-sizing:border-box;
 }
 
 .mpc-shell .mpc-summary,
@@ -293,14 +299,15 @@
 @media(max-width:980px){
   .mpc-shell,.mpc-shell-adapted{grid-template-columns:1fr;width:min(100% - 24px,820px)}
   .mpc-shell .mpc-hero,.mpc-shell-adapted .mpc-hero{grid-template-columns:1fr;gap:22px;padding:20px}
-  .mpc-shell .mpc-image,.mpc-shell-adapted .mpc-image{min-height:360px}
+  .mpc-shell .mpc-image,.mpc-shell-adapted .mpc-image{min-height:360px;padding:18px}
+  .mpc-shell .mpc-image img,.mpc-shell-adapted .mpc-image img{max-height:324px}
   .mpc-shell .mpc-section-application,.mpc-shell .mpc-section-composition,.mpc-shell .mpc-section-characteristics,.mpc-shell-adapted .mpc-section-application,.mpc-shell-adapted .mpc-section-composition,.mpc-shell-adapted .mpc-section-characteristics{grid-column:1/-1}
 }
 @media(max-width:680px){
   .mpc-shell,.mpc-shell-adapted{width:min(100% - 16px,680px);gap:12px}
   .mpc-shell .mpc-hero,.mpc-shell-adapted .mpc-hero{padding:14px;border-radius:10px}
-  .mpc-shell .mpc-image,.mpc-shell-adapted .mpc-image{min-height:290px}
-  .mpc-shell .mpc-image img,.mpc-shell-adapted .mpc-image img{padding:12px;max-height:330px}
+  .mpc-shell .mpc-image,.mpc-shell-adapted .mpc-image{min-height:290px;padding:12px}
+  .mpc-shell .mpc-image img,.mpc-shell-adapted .mpc-image img{max-height:266px}
   .mpc-shell h1,.mpc-shell-adapted h1{font-size:32px}
   .mpc-shell .mpc-price-row,.mpc-shell-adapted .mpc-price-row{align-items:stretch;flex-direction:column}
   .mpc-shell .mpc-buy,.mpc-shell-adapted .mpc-buy{width:100%}

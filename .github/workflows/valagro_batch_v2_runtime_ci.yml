@@ -4,10 +4,12 @@ on:
   push:
     paths:
       - 'backend/update_valagro_batch_v2_runtime.py'
+      - 'backend/services/product_cards_v3_runtime.py'
       - '.github/workflows/valagro_batch_v2_runtime_ci.yml'
   pull_request:
     paths:
       - 'backend/update_valagro_batch_v2_runtime.py'
+      - 'backend/services/product_cards_v3_runtime.py'
       - '.github/workflows/valagro_batch_v2_runtime_ci.yml'
 
 jobs:
@@ -19,7 +21,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Syntax
-        run: python -m py_compile backend/update_valagro_batch_v2_runtime.py
+        run: |
+          python -m py_compile backend/update_valagro_batch_v2_runtime.py
+          python -m py_compile backend/services/product_cards_v3_runtime.py
       - name: Runtime identity contract
         run: |
           python - <<'PY'
@@ -54,4 +58,71 @@ jobs:
           assert "'stock_qty':" not in blob
           assert set(bindings.values()) == codes
           print('Runtime fallback contract: OK')
+          PY
+      - name: Storefront live commerce source contract
+        run: |
+          python - <<'PY'
+          from backend.services import product_cards_v3_runtime as m
+
+          card = {
+              'product_id': 'prd_test',
+              'slug': 'test-product',
+              'enabled': True,
+              'content': {'title': 'Test'},
+              'sku_media': {
+                  'media': [],
+                  'skus': [
+                      {'sku_id': 'v3-a', 'sku_code': 'SKU-A', 'label': 'A', 'package': 'A', 'sort_order': 0, 'enabled': True},
+                      {'sku_id': 'v3-b', 'sku_code': 'SKU-B', 'label': 'B', 'package': 'B', 'sort_order': 1, 'enabled': True},
+                  ],
+              },
+          }
+          mapping = {
+              'schema_version': '1.0',
+              'products': [{
+                  'product_id': 'prd_test',
+                  'existing_product_key': 'legacy-missing-from-cms',
+                  'skus': [
+                      {'sku_id': 'v3-a', 'existing_commerce_sku_key': 'SKU-A'},
+                      {'sku_id': 'v3-b', 'existing_commerce_sku_key': 'SKU-B'},
+                  ],
+              }],
+          }
+
+          m.v3.list_cards = lambda: [{'product_id': 'prd_test', 'slug': 'test-product'}]
+          m.v3.get = lambda product_id: card if product_id == 'prd_test' else None
+          m.v3.commerce_map = lambda: mapping
+          m.catalog_detail = lambda product_id: None
+          m.live_commerce_map = lambda: {
+              'SKU-A': {
+                  'sku': 'SKU-A',
+                  'price': 100.0,
+                  'sale_price': 90.0,
+                  'effective_price': 90.0,
+                  'availability': 'in_stock',
+                  'stock_qty': 5,
+                  'enabled': True,
+              },
+              'SKU-B': {
+                  'sku': 'SKU-B',
+                  'price': 50.0,
+                  'sale_price': None,
+                  'effective_price': 50.0,
+                  'availability': 'preorder',
+                  'stock_qty': None,
+                  'enabled': True,
+              },
+          }
+
+          result = m.storefront_runtime('test-product')
+          assert result is not None
+          assert result['commerce_binding'] == {'total': 2, 'bound': 2, 'unbound': 0}
+          first = result['skus'][0]
+          assert first['commerce']['sku'] == 'SKU-A'
+          assert first['commerce']['price'] == 90.0
+          assert first['commerce']['base_price'] == 100.0
+          assert first['commerce']['sale_price'] == 90.0
+          assert first['commerce']['availability'] == 'in_stock'
+          assert first['commerce']['stock_qty'] == 5
+          print('Storefront live commerce source contract: OK')
           PY

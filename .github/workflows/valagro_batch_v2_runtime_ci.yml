@@ -1,0 +1,57 @@
+name: Valagro batch v2 runtime fallback CI
+
+on:
+  push:
+    paths:
+      - 'backend/update_valagro_batch_v2_runtime.py'
+      - '.github/workflows/valagro_batch_v2_runtime_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/update_valagro_batch_v2_runtime.py'
+      - '.github/workflows/valagro_batch_v2_runtime_ci.yml'
+
+jobs:
+  runtime-fallback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: python -m py_compile backend/update_valagro_batch_v2_runtime.py
+      - name: Runtime identity contract
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          path = Path('backend/update_valagro_batch_v2_runtime.py')
+          spec = importlib.util.spec_from_file_location('runtime_batch', path)
+          m = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(m)
+
+          expected = set(m.base.source.PRODUCTS)
+          for slug in expected:
+              detail = m.runtime_detail(slug)
+              assert detail['id'] == slug, (slug, detail.get('id'))
+              assert detail.get('skus'), slug
+              assert all((x.get('id') or x.get('sku')) for x in detail['skus']), slug
+
+          master = m.runtime_detail('master-13-40-13')
+          codes = {x.get('id') or x.get('sku') for x in master['skus']}
+          assert 'BB610-VLG-MASTER134013-1KG' in codes
+          assert 'BB610-VLG-MASTER134013-250G' in codes
+
+          card, bindings = m.base.build_migrated_card(
+              'master-13-40-13',
+              m.base.source.PRODUCTS['master-13-40-13'],
+              master,
+          )
+          blob = repr(card)
+          assert "'price':" not in blob
+          assert "'availability':" not in blob
+          assert "'stock_qty':" not in blob
+          assert set(bindings.values()) == codes
+          print('Runtime fallback contract: OK')
+          PY

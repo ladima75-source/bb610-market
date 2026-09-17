@@ -1,0 +1,78 @@
+name: Stage22c batch03 content v3 idempotency CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/update_stage22c_batch03_content_v3_20260918.py'
+      - 'backend/update_stage22c_batch03_content_v3_20260918_v2.py'
+      - 'data/content_batches/stage22c_batch03_rows25_36.json'
+      - 'data/product_content/stage22c_batch03_20260918.json'
+      - '.github/workflows/stage22c_batch03_content_v3_v2_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/update_stage22c_batch03_content_v3_20260918.py'
+      - 'backend/update_stage22c_batch03_content_v3_20260918_v2.py'
+      - 'data/content_batches/stage22c_batch03_rows25_36.json'
+      - 'data/product_content/stage22c_batch03_20260918.json'
+      - '.github/workflows/stage22c_batch03_content_v3_v2_ci.yml'
+
+jobs:
+  idempotent-resolver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: |
+          python -m py_compile backend/update_stage22c_batch03_content_v3_20260918.py
+          python -m py_compile backend/update_stage22c_batch03_content_v3_20260918_v2.py
+      - name: Validate pre/post title resolution and content-only contract
+        run: |
+          python - <<'PY'
+          from copy import deepcopy
+          from backend import update_stage22c_batch03_content_v3_20260918 as old
+          from backend import update_stage22c_batch03_content_v3_20260918_v2 as fixed
+          from backend.services import product_cards_v3 as pcv3
+
+          source = old.load_manifest()
+          assert len(source['rows']) == 12
+
+          class FakePCV3:
+              def __init__(self, cards):
+                  self.cards = {c['product_id']: deepcopy(c) for c in cards}
+              def commerce_map(self):
+                  return {'products': []}
+              def list_cards(self):
+                  return [
+                      {'product_id': c['product_id'], 'slug': c['slug'], 'title': c['content']['title']}
+                      for c in self.cards.values()
+                  ]
+              def get(self, pid):
+                  c = self.cards.get(pid)
+                  return deepcopy(c) if c else None
+
+          for i, row in enumerate(source['rows']):
+              before = pcv3.empty_card(str(row['name']), f'test-{i}')
+              before['content']['brand'] = str(row.get('brand') or '')
+              before['content']['category'] = str(row.get('category') or 'nutrition')
+              before['sku_media'] = []
+
+              fake_before = FakePCV3([before])
+              resolved_before = fixed._find_current_card(fake_before, row, [])
+              assert resolved_before['product_id'] == before['product_id']
+
+              after = old.apply_content(before, row)
+              pcv3.validate(after)
+              assert after['product_id'] == before['product_id']
+              assert after['slug'] == before['slug']
+              assert after['sku_media'] == before['sku_media']
+
+              fake_after = FakePCV3([after])
+              resolved_after = fixed._find_current_card(fake_after, row, [])
+              assert resolved_after['product_id'] == after['product_id']
+
+          print('STAGE22C BATCH03 IDEMPOTENT RESOLVER: PASS')
+          PY

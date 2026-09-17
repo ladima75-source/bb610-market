@@ -1,0 +1,83 @@
+name: Unified Catalog Import CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/catalog_import_ci.yml'
+      - 'backend/services/product_cards_v3_catalog_import.py'
+      - 'backend/services/product_cards_v3_import.py'
+      - 'backend/catalog_import_api.py'
+      - 'admin/catalog-import.js'
+      - 'admin/catalog-import.html'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  importer:
+    runs-on: ubuntu-latest
+    env:
+      BB610_DB_PATH: /tmp/bb610-catalog-import-ci.sqlite3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Syntax checks
+        run: |
+          python -m py_compile backend/services/product_cards_v3_catalog_import.py backend/catalog_import_api.py
+          node --check admin/catalog-import.js
+      - name: Preview Apply Verify Rollback smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import shutil
+          from pathlib import Path
+
+          from backend.db import migrate
+          migrate()
+
+          from backend.services import product_cards_v3 as pcv3
+          from backend.services import product_cards_v3_catalog_import as imp
+
+          # Keep the repository fixture isolated inside the ephemeral runner.
+          original = Path('/tmp/product_cards_v3_original')
+          if original.exists():
+              shutil.rmtree(original)
+          if pcv3.BASE.exists():
+              shutil.copytree(pcv3.BASE, original)
+
+          raw = imp.template_csv()
+          preview = imp.preview('template.csv', raw)
+          print(json.dumps(preview, ensure_ascii=False, indent=2))
+          assert preview['valid'] is True, preview['errors']
+          assert preview['summary']['products'] == 1
+          assert preview['summary']['sku_rows'] == 3
+          assert preview['summary']['create_commerce_products'] == 1
+          assert preview['summary']['create_commerce_skus'] == 3
+
+          result = imp.apply(preview['token'])
+          print(json.dumps(result, ensure_ascii=False, indent=2))
+          assert result['verified'] is True
+          assert result['applied_products'] == 1
+          assert result['commerce_rows'] == 3
+
+          rows = imp.export_rows()
+          example = [r for r in rows if r.get('slug') == 'example-product']
+          assert len(example) == 3
+          prices = sorted(float(r['price']) for r in example)
+          assert prices == [100.0, 300.0, 900.0]
+          assert all(r.get('commerce_sku_key') for r in example)
+
+          rb = imp.rollback(result['backup'])
+          print(json.dumps(rb, ensure_ascii=False, indent=2))
+          assert rb['restored'] == result['backup']
+          PY

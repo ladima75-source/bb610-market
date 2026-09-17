@@ -5,6 +5,7 @@ from typing import Any, Optional
 
 from . import product_cards_v3 as v3
 from .catalog_cms import admin_detail as catalog_detail
+from .product_commerce import commerce_map as live_commerce_map
 
 
 def _find_card_by_slug(slug: str) -> Optional[dict]:
@@ -28,7 +29,7 @@ def _mapping(product_id: str) -> Optional[dict]:
     )
 
 
-def _commerce_skus(detail: Optional[dict]) -> dict[str, dict]:
+def _detail_skus(detail: Optional[dict]) -> dict[str, dict]:
     out: dict[str, dict] = {}
     for row in (detail or {}).get('skus') or []:
         if not isinstance(row, dict):
@@ -47,23 +48,40 @@ def _media_map(card: dict) -> dict[str, dict]:
     }
 
 
-def _project_commerce(row: Optional[dict]) -> Optional[dict]:
+def _stock_label(availability: str) -> str:
+    return {
+        'in_stock': 'В наявності',
+        'out_of_stock': 'Немає в наявності',
+        'preorder': 'Передзамовлення',
+        'backorder': 'Під замовлення',
+    }.get(availability, 'Наявність уточнюється')
+
+
+def _project_commerce(row: Optional[dict], *, sku_key: str = '', meta: Optional[dict] = None) -> Optional[dict]:
     if not isinstance(row, dict):
         return None
-    # Read-only projection. Keep the live commerce source authoritative and
-    # expose only fields needed by the storefront. Nothing here is persisted.
+    meta = meta if isinstance(meta, dict) else {}
+    availability = str(row.get('availability') or 'unknown')
+    enabled = bool(row.get('enabled'))
+    effective_price = row.get('effective_price')
+    if effective_price is None:
+        effective_price = row.get('sale_price') if row.get('sale_price') is not None else row.get('price')
+
+    # Commercial values come only from sku_commerce/product_commerce. Catalog
+    # detail is optional presentation metadata and must never become a fallback
+    # source for price, stock, availability or enabled state.
     return {
-        'sku': str(row.get('id') or row.get('sku') or ''),
-        'price': row.get('price'),
-        'base_price': row.get('base_price'),
+        'sku': str(row.get('sku') or row.get('id') or sku_key),
+        'price': effective_price,
+        'base_price': row.get('price'),
         'sale_price': row.get('sale_price'),
-        'currency': row.get('currency') or 'UAH',
-        'availability': row.get('availability') or 'unknown',
+        'currency': meta.get('currency') or row.get('currency') or 'UAH',
+        'availability': availability,
         'stock_qty': row.get('stock_qty'),
-        'stock_label': row.get('stock_label') or '',
-        'offer_status': row.get('offer_status') or '',
-        'commercial_status': row.get('commercial_status') or '',
-        'url': row.get('url') or '',
+        'stock_label': meta.get('stock_label') or _stock_label(availability),
+        'offer_status': meta.get('offer_status') or ('active' if enabled else 'draft'),
+        'commercial_status': meta.get('commercial_status') or ('active' if enabled else 'paused'),
+        'url': meta.get('url') or '',
     }
 
 
@@ -77,9 +95,9 @@ def storefront_runtime(slug: str) -> Optional[dict]:
     existing_product_key = str(mapping.get('existing_product_key') or '').strip()
     detail = catalog_detail(existing_product_key) if existing_product_key else None
 
-    # Publication remains owned by the existing catalog/commerce layer.
-    # If that layer explicitly marks the product unpublished, v3 must not
-    # independently publish it through this endpoint.
+    # Publication remains owned by the existing catalog layer when that layer
+    # has an explicit record. Runtime-fallback products may legitimately have no
+    # catalog_cms detail, so absence alone must not hide an enabled V3 card.
     if isinstance(detail, dict) and detail.get('published') is False:
         return None
 
@@ -88,7 +106,13 @@ def storefront_runtime(slug: str) -> Optional[dict]:
         for x in (mapping.get('skus') or [])
         if isinstance(x, dict) and x.get('sku_id')
     }
-    live_by_key = _commerce_skus(detail)
+
+    # sku_commerce is the authoritative live source for price/availability/stock.
+    # Do not require catalog_cms.admin_detail() to exist just to resolve commerce:
+    # migrated legacy products can be present in runtime catalog identity while
+    # being absent from the CMS/static catalog resolver.
+    live_by_key = live_commerce_map()
+    detail_by_key = _detail_skus(detail)
     media_by_id = _media_map(card)
 
     runtime_skus: list[dict[str, Any]] = []
@@ -115,7 +139,11 @@ def storefront_runtime(slug: str) -> Optional[dict]:
             'gallery_media': deepcopy(gallery),
             'commerce_bound': bool(commerce_key and live),
             'commerce_key': commerce_key,
-            'commerce': _project_commerce(live),
+            'commerce': _project_commerce(
+                live,
+                sku_key=commerce_key,
+                meta=detail_by_key.get(commerce_key),
+            ),
         })
 
     content = deepcopy(card.get('content') or {})

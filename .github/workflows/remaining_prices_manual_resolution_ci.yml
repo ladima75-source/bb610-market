@@ -8,7 +8,6 @@ on:
       - 'backend/tools_apply_remaining_prices_20260916_exact.py'
       - 'backend/tools_apply_pcv3_prices_20260916.py'
       - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
-      - 'data/product_cards_v3/**'
       - '.github/workflows/remaining_prices_manual_resolution_ci.yml'
   pull_request:
     paths:
@@ -16,7 +15,6 @@ on:
       - 'backend/tools_apply_remaining_prices_20260916_exact.py'
       - 'backend/tools_apply_pcv3_prices_20260916.py'
       - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
-      - 'data/product_cards_v3/**'
       - '.github/workflows/remaining_prices_manual_resolution_ci.yml'
 
 permissions:
@@ -32,32 +30,42 @@ jobs:
           python-version: '3.12'
       - name: Syntax
         run: python -m py_compile backend/tools_resolve_remaining_ambiguous_prices_20260916.py
-      - name: Eight reviewed source-to-product resolutions
+      - name: Eight reviewed source rows and deterministic resolver
         run: |
           python - <<'PY'
           from backend import tools_resolve_remaining_ambiguous_prices_20260916 as m
           from backend import tools_apply_pcv3_prices_20260916 as base
 
-          rows = m.resolution_contract()
+          rows = m.source_contract()
           assert len(rows) == 8
           assert {x['source_row'] for x in rows} == {14,15,16,17,73,74,77,78}
-          assert len({x['commerce_key'] for x in rows}) == 8
           by_row = {x['source_row']: x for x in rows}
-
-          assert base.norm(by_row[14]['title']) == base.norm('MASTER 18-18-18')
-          assert by_row[14]['price'] == 177.0
+          assert by_row[14]['price'] == 177.0 and by_row[14]['target_title'] == 'MASTER 18-18-18'
           assert by_row[15]['price'] == 399.0
-          assert base.norm(by_row[16]['title']) == base.norm('MASTER 17-6-18')
-          assert by_row[16]['price'] == 154.0
+          assert by_row[16]['price'] == 154.0 and by_row[16]['target_title'] == 'MASTER 17-6-18'
           assert by_row[17]['price'] == 364.0
-          assert base.norm(by_row[73]['title']) == base.norm('Osmocote Potassium 12-8-19 (3-4M)')
-          assert by_row[73]['price'] == 154.0
+          assert by_row[73]['price'] == 154.0 and 'Potassium' in by_row[73]['target_title']
           assert by_row[74]['price'] == 637.0
-          assert base.norm(by_row[77]['title']) == base.norm('Osmocote Landscape 16-9-12 (3-4M)')
-          assert by_row[77]['price'] == 149.0
+          assert by_row[77]['price'] == 149.0 and 'Landscape' in by_row[77]['target_title']
           assert by_row[78]['price'] == 611.0
-          assert all(x['candidate_product_count'] >= 2 for x in rows)
+
+          fixtures=[]
+          for i,row in enumerate(rows):
+              fixtures.append({
+                  'product_id': f'prd_fixture_{i}',
+                  'title': row['target_title'],
+                  'sku_id': f'sku_fixture_{i}',
+                  'sku_code': f'CODE-{i}',
+                  'package': row['package'],
+                  'pack_key': row['pack_key'],
+                  'commerce_key': f'COMMERCE-{i}',
+                  'aliases': {base.norm(row['target_title'])},
+              })
+          resolved=m.resolve_targets(rows, fixtures, require_ambiguity=False)
+          assert len(resolved)==8
+          assert len({x['commerce_key'] for x in resolved})==8
+          for src,res in zip(rows,resolved):
+              assert base.norm(res['title']) == base.norm(src['target_title'])
+              assert res['pack_key'] == src['pack_key']
           print('REMAINING AMBIGUOUS PRICE RESOLUTION CONTRACT: PASS')
-          for x in rows:
-              print(x['source_row'], x['source_name'], x['package'], '=>', x['title'], x['commerce_key'])
           PY

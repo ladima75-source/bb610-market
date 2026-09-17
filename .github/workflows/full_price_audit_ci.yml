@@ -1,0 +1,68 @@
+name: Full 195-row price audit CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_audit_full_prices_20260916.py'
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'backend/tools_apply_remaining_prices_20260916_exact.py'
+      - 'backend/tools_resolve_remaining_ambiguous_prices_20260916.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/full_price_audit_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_audit_full_prices_20260916.py'
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'backend/tools_apply_remaining_prices_20260916_exact.py'
+      - 'backend/tools_resolve_remaining_ambiguous_prices_20260916.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/full_price_audit_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: python -m py_compile backend/tools_audit_full_prices_20260916.py
+      - name: Validate 195-row source contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from backend import tools_apply_valagro_prices_20260916_runtime as v
+          from backend import tools_apply_remaining_prices_20260916_exact as r
+          from backend import tools_resolve_remaining_ambiguous_prices_20260916 as m
+
+          p=Path('data/catalog_sources/bb610_market_prices_2026-09-16.json')
+          doc=json.loads(p.read_text(encoding='utf-8'))
+          rows=doc['rows']
+          assert doc['source_file']=='цены_сайт_Market_160926.xlsx'
+          assert doc['source_date']=='2026-09-16'
+          assert len(rows)==195
+          assert sum(1 for x in rows if float(x.get('price') or 0)>0)==194
+          assert sum(1 for x in rows if float(x.get('price') or 0)<=0)==1
+
+          vs=v.load_source()['target_rows']
+          assert len(vs)==49
+          assert sum(1 for x in vs if x['price']>0)==48
+          assert sum(1 for x in vs if x['price']<=0)==1
+
+          rem=r.load_source_rows()
+          assert len(rem)==146
+          reviewed=m.source_contract()
+          assert len(reviewed)==8
+          assert {x['source_row'] for x in reviewed}=={14,15,16,17,73,74,77,78}
+          assert all(x['price']>0 for x in reviewed)
+
+          print('FULL PRICE SOURCE CONTRACT: PASS')
+          print('195 total = 49 Valagro + 146 remaining; 194 positive + 1 zero-policy row')
+          PY

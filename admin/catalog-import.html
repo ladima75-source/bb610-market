@@ -34,7 +34,7 @@
       <button data-pcv3-download="export.csv">Експорт каталогу CSV</button>
       <button data-pcv3-download="export.xlsx">Експорт каталогу XLSX</button>
     </div>
-    <p class="muted">Рекомендований сценарій: «Експорт XLSX» → змінити потрібні клітинки → завантажити назад → Preview → Apply. Порожня клітинка = не змінювати існуюче значення. Поля <code>description</code>, <code>how_it_works</code>, <code>application</code>, <code>composition</code>, <code>benefits_json</code> і <code>characteristics_json</code> формують повну інформаційну картку товару. Щоб очистити <code>sale_price</code> або <code>stock_qty</code>, використовуйте <code>__CLEAR__</code>. Відсутні у файлі SKU не видаляються. Publication імпорт не вмикає і не вимикає.</p>
+    <p class="muted">Рекомендований сценарій: «Експорт XLSX» → змінити потрібні клітинки → завантажити назад → Preview → Apply. Порожня клітинка = не змінювати існуюче значення. Поля <code>description</code>, <code>how_it_works</code>, <code>application</code>, <code>composition</code>, <code>benefits_json</code> і <code>characteristics_json</code> формують повну інформаційну картку товару. У <code>application</code> можна додати офіційний URL виробника окремим рядком — на публічній картці він буде показаний окремо як «Офіційне джерело», а не як частина рецепту. Щоб очистити <code>sale_price</code> або <code>stock_qty</code>, використовуйте <code>__CLEAR__</code>. Відсутні у файлі SKU не видаляються. Publication імпорт не вмикає і не вимикає.</p>
     <div class="upload">
       <input id="pcv3File" type="file" accept=".csv,.xlsx">
       <button id="pcv3Preview" class="primary">Перевірити / Preview</button>

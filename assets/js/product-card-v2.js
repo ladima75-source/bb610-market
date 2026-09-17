@@ -63,15 +63,15 @@ function sourceMeta(content){
 }
 function recipeHtml(text){
   const raw=String(text||'').trim();
-  if(!raw)return '<p class="mpc-empty-copy">Рецепт застосування ще не заповнений.</p>';
-  const lines=raw.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
-  if(lines.length<2)return `<div class="mpc-longcopy">${rich(raw)}</div>`;
-  return `<div class="mpc-recipe-list">${lines.map((line,i)=>`<div class="mpc-recipe-step"><span>${i+1}</span><div>${rich(line)}</div></div>`).join('')}</div>`;
+  if(!raw)return '<p class="mpc-empty-copy">Рекомендації із застосування ще не заповнені.</p>';
+  const paragraphs=raw.split(/\r?\n\s*\r?\n/).map(x=>x.trim()).filter(Boolean);
+  return `<div class="mpc-application-copy" style="max-width:980px;color:#d9e0e2;font-size:15px;line-height:1.72">${paragraphs.map(p=>`<p style="margin:0 0 14px">${rich(p)}</p>`).join('')}</div>`;
 }
 function sourceHtml(c,meta){
   const brand=esc(c.brand||'виробника');
-  if(meta.url)return `<div class="mpc-source"><div><strong>Джерело рекомендацій:</strong> ${brand}. Норми та спосіб застосування потрібно звіряти з актуальною етикеткою виробника.</div><a target="_blank" rel="noopener noreferrer" href="${esc(meta.url)}">Офіційне джерело ↗</a></div>`;
-  return `<div class="mpc-source mpc-source-muted"><div><strong>Джерело рекомендацій:</strong> ${brand}. Посилання на сторінку або інструкцію виробника ще не додано.</div></div>`;
+  const link=meta.url?` <a target="_blank" rel="noopener noreferrer" href="${esc(meta.url)}" style="color:#ffc14a;text-decoration:underline;text-underline-offset:3px;font-weight:800">офіційне джерело виробника ↗</a>`:'';
+  const tail=meta.url?'':' Посилання на офіційне джерело ще не додано.';
+  return `<p class="mpc-application-source" style="max-width:980px;margin:18px 0 0;padding-top:14px;border-top:1px solid #334047;color:#91a1a6;font-size:12px;line-height:1.6"><strong style="color:#d9e0e2">Джерело:</strong> рекомендації виробника ${brand}.${link}${tail}</p>`;
 }
 function renderV3Content(shell,card){
   const c=card.content||{},meta=sourceMeta(c);
@@ -79,7 +79,7 @@ function renderV3Content(shell,card){
   const chars=meta.characteristics.filter(x=>x&&(x.label||x.value));
   const description=`${c.description?`<div class="mpc-longcopy">${rich(c.description)}</div>`:'<p class="mpc-empty-copy">Опис товару ще не заповнений.</p>'}${benefits.length?`<div class="mpc-subtitle-row">Ключові переваги</div><div class="mpc-three">${benefits.map(x=>`<div class="mpc-benefit"><b>${esc(x.title)}</b><p>${rich(x.text)}</p></div>`).join('')}</div>`:''}`;
   const additional=`<div class="mpc-additional-grid">${c.how_it_works?`<div class="mpc-subsection"><h3>Як працює</h3><div class="mpc-longcopy">${rich(c.how_it_works)}</div></div>`:''}${c.composition?`<div class="mpc-subsection"><h3>Склад</h3><div class="mpc-longcopy">${rich(c.composition)}</div></div>`:''}${!c.how_it_works&&!c.composition?'<p class="mpc-empty-copy">Додаткову інформацію буде додано після перевірки джерел.</p>':''}</div>`;
-  const application=`<div class="mpc-recipe-head"><div><span>РЕКОМЕНДАЦІЇ ВИРОБНИКА</span><h3>Рецепт застосування</h3></div></div>${recipeHtml(meta.application)}${sourceHtml(c,meta)}`;
+  const application=`<div class="mpc-recipe-head"><div><span>РЕКОМЕНДАЦІЇ ВИРОБНИКА</span><h3>Застосування</h3></div></div>${recipeHtml(meta.application)}${sourceHtml(c,meta)}`;
   const characteristics=chars.length?`<div class="mpc-specs mpc-specs-compact">${chars.map(x=>`<div class="mpc-spec"><span>${esc(x.label)}</span><b>${rich(x.value)}</b></div>`).join('')}</div>`:'<p class="mpc-empty-copy">Характеристики ще не заповнені.</p>';
   const tabs=[['description','Опис',description],['additional','Додатково',additional],['application','Застосування',application],['characteristics','Характеристики',characteristics]];
   shell.appendChild(sec(`<section class="mpc-info"><div class="mpc-tabs" role="tablist">${tabs.map((x,i)=>`<button type="button" class="mpc-tab${i===0?' active':''}" role="tab" aria-selected="${i===0?'true':'false'}" data-mpc-tab="${x[0]}">${x[1]}</button>`).join('')}</div><div class="mpc-panels">${tabs.map((x,i)=>`<div class="mpc-panel${i===0?' active':''}" role="tabpanel" data-mpc-panel="${x[0]}">${x[2]}</div>`).join('')}</div></section>`));

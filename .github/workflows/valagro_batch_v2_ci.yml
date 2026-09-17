@@ -4,10 +4,12 @@ on:
   push:
     paths:
       - 'backend/update_valagro_batch_v2.py'
+      - 'backend/update_valagro_batch_v2_migrate.py'
       - '.github/workflows/valagro_batch_v2_ci.yml'
   pull_request:
     paths:
       - 'backend/update_valagro_batch_v2.py'
+      - 'backend/update_valagro_batch_v2_migrate.py'
       - '.github/workflows/valagro_batch_v2_ci.yml'
 
 jobs:
@@ -19,7 +21,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Syntax
-        run: python -m py_compile backend/update_valagro_batch_v2.py
+        run: |
+          python -m py_compile backend/update_valagro_batch_v2.py
+          python -m py_compile backend/update_valagro_batch_v2_migrate.py
       - name: Batch content contract
         run: |
           python - <<'PY'
@@ -67,5 +71,42 @@ jobs:
           assert 'рослинних екстрактів' in products['megafol']['composition']
           assert 'Цинк (Zn), хелатований EDTA: 0,1%' in products['radifarm']['composition']
           assert 'Органічний вуглець (C): 8%' in products['viva']['composition']
-          print('Valagro batch v2 contract: OK')
+          print('Valagro batch v2 content contract: OK')
+          PY
+      - name: Missing-card migration contract
+        run: |
+          python - <<'PY'
+          import copy
+          import runpy
+
+          m = runpy.run_path('backend/update_valagro_batch_v2_migrate.py')
+          spec = m['source'].PRODUCTS['master-13-40-13']
+          legacy = {
+              'id': 'master-13-40-13',
+              'slug': 'master-13-40-13',
+              'name': 'Master NPK 13-40-13',
+              'brand': 'Valagro',
+              'category_id': 'nutrition',
+              'image': {'local': 'assets/img/master.png'},
+              'skus': [
+                  {'id': 'MASTER-13-40-13-250G', 'variant': '250 г', 'image': 'assets/img/master-250g.png', 'price': 111, 'availability': 'in_stock'},
+                  {'id': 'MASTER-13-40-13-1KG', 'variant': '1 кг', 'price': 333, 'availability': 'out_of_stock'},
+              ],
+          }
+          card, bindings = m['build_migrated_card']('master-13-40-13', spec, legacy)
+          assert card['slug'] == 'master-13-40-13'
+          assert card['product_id'] == m['migrated_product_id']('master-13-40-13')
+          assert len(card['sku_media']['skus']) == 2
+          assert set(bindings.values()) == {'MASTER-13-40-13-250G', 'MASTER-13-40-13-1KG'}
+          assert card['content']['composition'] == spec['composition']
+          assert card['content']['characteristics'] == spec['characteristics']
+          blob = repr(card)
+          assert "'price':" not in blob and "'availability':" not in blob and "'stock_qty':" not in blob
+
+          before_media = copy.deepcopy(card['sku_media'])
+          changed = m['_merge_spec_content'](card, spec)
+          assert changed['sku_media'] == before_media
+          assert m['migrated_product_id']('master-13-40-13') == m['migrated_product_id']('master-13-40-13')
+          assert m['migrated_sku_id']('master-13-40-13', 'MASTER-13-40-13-250G') == bindings.keys().__iter__().__next__()
+          print('Valagro batch v2 migration contract: OK')
           PY

@@ -2,7 +2,7 @@
 const API='https://api.market.bb610.com.ua';
 const SITE='https://market.bb610.com.ua/';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
 const rich=s=>esc(s).replace(/\r?\n/g,'<br>');
 const abs=p=>{p=String(p||'').trim();if(!p)return'';if(/^https?:\/\//i.test(p))return p;if(/^\/?media\/products\//i.test(p))return API+'/'+p.replace(/^\//,'');return SITE+p.replace(/^\//,'')};
 const slug=()=>window.BB610_PRODUCT_ID||((location.pathname.match(/\/products\/([^\/]+)\/?/i)||[])[1]||'');
@@ -73,12 +73,40 @@ function sourceHtml(c,meta){
   const tail=meta.url?'':' Посилання на офіційне джерело ще не додано.';
   return `<p class="mpc-application-source" style="max-width:980px;margin:18px 0 0;padding-top:14px;border-top:1px solid #334047;color:#91a1a6;font-size:12px;line-height:1.6"><strong style="color:#d9e0e2">Джерело:</strong> рекомендації виробника ${brand}.${link}${tail}</p>`;
 }
+const compositionLabel=label=>{
+  const s=String(label||'').trim().toLowerCase();
+  return /^(npk|формула npk|діюча речовина|активна речовина|действующее вещество|комплексоутворювач|комплексообразователь|n|p|k|n\s*\(%|p2o5|k2o|cao|mgo|so3|s|zn|fe|mn|cu|mo|b|бор|цинк|залізо|железо|марганець|марганец|мідь|медь|молібден|молибден|магній|магний|кальцій|кальций|сірка|сера)/i.test(s);
+};
+function parseComposition(text){
+  const raw=String(text||'').trim();
+  if(!raw)return [];
+  return raw.split(/[;\n]+/).map(x=>x.trim()).filter(Boolean).map(line=>{
+    const m=line.match(/^(.{1,60}?)[\s]*[:—–][\s]*(.+)$/);
+    return m?{label:m[1].trim(),value:m[2].trim()}:null;
+  }).filter(Boolean);
+}
+function compositionData(c,chars){
+  const rows=[...parseComposition(c.composition)];
+  for(const row of chars){
+    if(!row||!compositionLabel(row.label)||!String(row.value||'').trim())continue;
+    rows.push({label:String(row.label).trim(),value:String(row.value).trim()});
+  }
+  const seen=new Set();
+  return rows.filter(row=>{const key=(row.label+'\u0000'+row.value).toLowerCase();if(seen.has(key))return false;seen.add(key);return true});
+}
+function compositionHtml(c,chars){
+  const rows=compositionData(c,chars);
+  if(rows.length)return `<div class="mpc-specs mpc-specs-compact">${rows.map(x=>`<div class="mpc-spec"><span>${esc(x.label)}</span><b>${rich(x.value)}</b></div>`).join('')}</div>`;
+  if(c.composition)return `<div class="mpc-longcopy">${rich(c.composition)}</div>`;
+  return '<p class="mpc-empty-copy">Склад ще не заповнений.</p>';
+}
 function renderV3Content(shell,card){
   const c=card.content||{},meta=sourceMeta(c);
   const benefits=Array.isArray(c.benefits)?c.benefits.filter(x=>x&&(x.title||x.text)):[];
-  const chars=meta.characteristics.filter(x=>x&&(x.label||x.value));
+  const allChars=meta.characteristics.filter(x=>x&&(x.label||x.value));
+  const chars=allChars.filter(x=>!compositionLabel(x.label));
   const description=`${c.description?`<div class="mpc-longcopy">${rich(c.description)}</div>`:'<p class="mpc-empty-copy">Опис товару ще не заповнений.</p>'}${benefits.length?`<div class="mpc-subtitle-row">Ключові переваги</div><div class="mpc-three">${benefits.map(x=>`<div class="mpc-benefit"><b>${esc(x.title)}</b><p>${rich(x.text)}</p></div>`).join('')}</div>`:''}`;
-  const additional=`<div class="mpc-additional-grid">${c.how_it_works?`<div class="mpc-subsection"><h3>Як працює</h3><div class="mpc-longcopy">${rich(c.how_it_works)}</div></div>`:''}${c.composition?`<div class="mpc-subsection"><h3>Склад</h3><div class="mpc-longcopy">${rich(c.composition)}</div></div>`:''}${!c.how_it_works&&!c.composition?'<p class="mpc-empty-copy">Додаткову інформацію буде додано після перевірки джерел.</p>':''}</div>`;
+  const additional=`<div class="mpc-additional-grid">${c.how_it_works?`<div class="mpc-subsection"><h3>Як працює</h3><div class="mpc-longcopy">${rich(c.how_it_works)}</div></div>`:''}<div class="mpc-subsection"><h3>Склад</h3>${compositionHtml(c,allChars)}</div></div>`;
   const application=`<div class="mpc-recipe-head"><div><span>РЕКОМЕНДАЦІЇ ВИРОБНИКА</span><h3>Застосування</h3></div></div>${recipeHtml(meta.application)}${sourceHtml(c,meta)}`;
   const characteristics=chars.length?`<div class="mpc-specs mpc-specs-compact">${chars.map(x=>`<div class="mpc-spec"><span>${esc(x.label)}</span><b>${rich(x.value)}</b></div>`).join('')}</div>`:'<p class="mpc-empty-copy">Характеристики ще не заповнені.</p>';
   const tabs=[['description','Опис',description],['additional','Додатково',additional],['application','Застосування',application],['characteristics','Характеристики',characteristics]];

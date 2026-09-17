@@ -1,0 +1,71 @@
+name: Valagro batch v2 CI
+
+on:
+  push:
+    paths:
+      - 'backend/update_valagro_batch_v2.py'
+      - '.github/workflows/valagro_batch_v2_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/update_valagro_batch_v2.py'
+      - '.github/workflows/valagro_batch_v2_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: python -m py_compile backend/update_valagro_batch_v2.py
+      - name: Batch content contract
+        run: |
+          python - <<'PY'
+          import runpy
+
+          m = runpy.run_path('backend/update_valagro_batch_v2.py')
+          products = m['PRODUCTS']
+          deferred = m['DEFERRED']
+          expected = {
+              'master-13-40-13', 'master-20-20-20', 'master-15-5-30', 'master-3-11-38',
+              'plantafol-20-20-20', 'plantafol-10-54-10', 'plantafol-30-10-10',
+              'plantafol-5-15-45', 'plantafol-0-25-50',
+              'megafol', 'radifarm', 'viva',
+          }
+          assert set(products) == expected, (set(products) ^ expected)
+          assert deferred == {'blackjak': 'brand/manufacturer/source conflict — verify and correct separately before enrichment'}
+
+          required = {
+              'source', 'short_description', 'description', 'benefits', 'how_it_works',
+              'application', 'composition', 'seo', 'characteristics',
+          }
+          required_filters = {'Культури', 'Призначення', 'Спосіб застосування', 'Діюча речовина'}
+          npk_products = {x for x in expected if x.startswith('master-') or x.startswith('plantafol-')}
+
+          for slug, spec in products.items():
+              assert required <= set(spec), (slug, required - set(spec))
+              assert spec['source'].startswith('https://www.valagro.com/'), (slug, spec['source'])
+              assert spec['application'].rstrip().endswith(spec['source']), slug
+              assert len(spec['benefits']) >= 4, slug
+              assert all(x.get('title') and x.get('text') for x in spec['benefits']), slug
+              assert spec['composition'].strip(), slug
+              assert ':' in spec['composition'], slug
+              labels = {x['label'] for x in spec['characteristics']}
+              assert required_filters <= labels, (slug, labels)
+              if slug in npk_products:
+                  assert 'NPK' in labels, slug
+              else:
+                  assert 'NPK' not in labels, slug
+
+          assert 'Фосфор (P₂O₅): 40%' in products['master-13-40-13']['composition']
+          assert 'Магній (MgO): 2%' in products['master-15-5-30']['composition']
+          assert 'Сірчаний ангідрид (SO₃): 25%' in products['master-3-11-38']['composition']
+          assert 'Фосфор (P₂O₅): 54%' in products['plantafol-10-54-10']['composition']
+          assert 'Калій (K₂O): 50%' in products['plantafol-0-25-50']['composition']
+          assert 'рослинних екстрактів' in products['megafol']['composition']
+          assert 'Цинк (Zn), хелатований EDTA: 0,1%' in products['radifarm']['composition']
+          assert 'Органічний вуглець (C): 8%' in products['viva']['composition']
+          print('Valagro batch v2 contract: OK')
+          PY

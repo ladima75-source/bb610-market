@@ -1,0 +1,73 @@
+name: Valagro commerce activation CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_activate_valagro_commerce_20260917.py'
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/valagro_commerce_activation_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_activate_valagro_commerce_20260917.py'
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/valagro_commerce_activation_ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: |
+          python -m py_compile backend/tools_activate_valagro_commerce_20260917.py
+      - name: Activation policy contract
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          path = Path('backend/tools_activate_valagro_commerce_20260917.py')
+          spec = importlib.util.spec_from_file_location('valagro_activate', path)
+          m = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(m)
+
+          policy = m.expected_policy()
+          assert len(policy['source']['target_rows']) == 49
+          assert len(policy['positive']) == 48
+          assert len(policy['zero']) == 1
+          z = policy['zero'][0]
+          assert z['slug'] == 'master-15-5-30'
+          assert z['pack_key'] == '20g'
+          assert z['price'] == 0
+          assert all(float(x['price']) > 0 for x in policy['positive'])
+          print('VALAGRO COMMERCE ACTIVATION POLICY: PASS')
+          print('canonical=49 positive=48 disabled_zero=1')
+          PY
+      - name: Write-scope contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          text = Path('backend/tools_activate_valagro_commerce_20260917.py').read_text(encoding='utf-8')
+          assert 'UPDATE sku_commerce SET enabled=?, updated_at=? WHERE sku=?' in text
+          forbidden_updates = [
+              'UPDATE sku_commerce SET price=',
+              'UPDATE sku_commerce SET sale_price=',
+              'UPDATE sku_commerce SET availability=',
+              'UPDATE sku_commerce SET stock_qty=',
+          ]
+          for needle in forbidden_updates:
+              assert needle not in text, needle
+          assert 'protected_fields = ("price", "sale_price", "availability", "stock_qty")' in text
+          assert 'restore_db(backup_file, Path(DB_PATH))' in text
+          print('WRITE SCOPE: enabled only; rollback protected')
+          PY

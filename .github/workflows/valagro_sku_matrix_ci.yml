@@ -1,0 +1,168 @@
+name: Valagro canonical SKU matrix CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/update_valagro_sku_matrix_20260917.py'
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/valagro_sku_matrix_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/update_valagro_sku_matrix_20260917.py'
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/valagro_sku_matrix_ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  canonical-matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: |
+          python -m py_compile backend/update_valagro_sku_matrix_20260917.py
+          python -m py_compile backend/tools_apply_valagro_prices_20260916_runtime.py
+
+      - name: Approved 49-SKU source matrix contract
+        run: |
+          python - <<'PY'
+          from backend import update_valagro_sku_matrix_20260917 as m
+
+          source = m._source_by_slug()
+          assert set(source) == set(m.prices.ALLOWED_SLUGS)
+          assert sum(len(v) for v in source.values()) == 49
+
+          expected = {
+              'master-15-5-30': {'20g','250g','1kg','25kg'},
+              'master-13-40-13': {'20g','250g','1kg','25kg'},
+              'master-20-20-20': {'20g','250g','1kg','10kg','25kg'},
+              'master-3-11-38': {'20g','250g','1kg','25kg'},
+              'plantafol-30-10-10': {'25g','250g','1kg','5kg'},
+              'plantafol-10-54-10': {'25g','250g','1kg','5kg'},
+              'plantafol-20-20-20': {'25g','250g','1kg','5kg'},
+              'plantafol-5-15-45': {'25g','250g','1kg','5kg'},
+              'plantafol-0-25-50': {'25g','250g','5kg'},
+              'megafol': {'25ml','100ml','1l','10l'},
+              'radifarm': {'25ml','100ml','1l','10l'},
+              'viva': {'25ml','100ml','1l','10l','20l'},
+          }
+          for slug, keys in expected.items():
+              actual = {x['pack_key'] for x in source[slug]}
+              assert actual == keys, (slug, actual, keys)
+
+          zero = [x for rows in source.values() for x in rows if float(x['price']) <= 0]
+          assert len(zero) == 1
+          assert (zero[0]['slug'], zero[0]['pack_key']) == ('master-15-5-30', '20g')
+          print('APPROVED 49-SKU MATRIX: PASS')
+          PY
+
+      - name: Pure reconciliation, known-extra safety and idempotence
+        run: |
+          python - <<'PY'
+          from copy import deepcopy
+          from backend import update_valagro_sku_matrix_20260917 as m
+
+          card = {
+              'schema_version': '3.0',
+              'product_id': 'prd_fixture_001',
+              'slug': 'plantafol-20-20-20',
+              'enabled': True,
+              'content': {
+                  'title': 'PLANTAFOL 20-20-20', 'brand': 'Valagro', 'category': 'nutrition',
+                  'short_description': '', 'description': '', 'benefits': [], 'how_it_works': '',
+                  'application': '', 'composition': '', 'characteristics': [],
+                  'seo': {'title': '', 'description': ''},
+              },
+              'sku_media': {
+                  'media': [{'media_id':'med_fixture','path':'/x.jpg','alt':'x','kind':'image','sort_order':0}],
+                  'skus': [
+                      {
+                          'sku_id':'sku_fixture_250g','sku_code':'COM-250G','label':'250 г','package':'250 г',
+                          'primary_media_id':'med_fixture','gallery_media_ids':[],'sort_order':0,'enabled':True,
+                      },
+                      {
+                          'sku_id':'sku_fixture_25kg','sku_code':'EXTRA-25KG','label':'25 кг','package':'25 кг',
+                          'primary_media_id':'med_fixture','gallery_media_ids':[],'sort_order':1,'enabled':True,
+                      },
+                  ],
+              },
+          }
+          mapping = {
+              'product_id':'prd_fixture_001','existing_product_key':'legacy-fixture',
+              'skus':[
+                  {'sku_id':'sku_fixture_250g','existing_commerce_sku_key':'COM-250G'},
+                  {'sku_id':'sku_fixture_25kg','existing_commerce_sku_key':'EXTRA-25KG'},
+              ],
+          }
+          source = [
+              {'slug':'plantafol-20-20-20','package':'25 г','pack_key':'25g','price':29.0},
+              {'slug':'plantafol-20-20-20','package':'250 г','pack_key':'250g','price':188.0},
+              {'slug':'plantafol-20-20-20','package':'1 кг','pack_key':'1kg','price':345.0},
+              {'slug':'plantafol-20-20-20','package':'5 кг','pack_key':'5kg','price':1571.0},
+          ]
+          before_content = deepcopy(card['content'])
+          before_media = deepcopy(card['sku_media']['media'])
+          bound = {'COM-250G','EXTRA-25KG'}
+          commerce = {'COM-250G','EXTRA-25KG'}
+
+          result = m.reconcile_card(
+              card=card,
+              mapping_row=mapping,
+              source_rows=source,
+              bound_commerce_keys=bound,
+              commerce_keys=commerce,
+          )
+          assert len(result['added']) == 3
+          assert len(result['disabled']) == 1
+          assert result['disabled'][0]['pack_key'] == '25kg'
+          assert result['card']['content'] == before_content
+          assert result['card']['sku_media']['media'] == before_media
+          active = {
+              m.prices.pack_key(x['package'])
+              for x in result['card']['sku_media']['skus'] if x.get('enabled', True)
+          }
+          assert active == {'25g','250g','1kg','5kg'}
+          assert len(result['commerce_create']) == 3
+
+          # Rerun the already-reconciled state: no duplicate SKU, no new commerce,
+          # and the known extra stays preserved but disabled.
+          mapping2 = result['mapping_row']
+          bound2 = {
+              str(x['existing_commerce_sku_key']) for x in mapping2['skus']
+          }
+          commerce2 = set(commerce) | set(result['commerce_create'])
+          rerun = m.reconcile_card(
+              card=result['card'], mapping_row=mapping2, source_rows=source,
+              bound_commerce_keys=bound2, commerce_keys=commerce2,
+          )
+          assert rerun['added'] == []
+          assert rerun['disabled'] == []
+          assert rerun['commerce_create'] == []
+
+          # Any other active package outside the approved source must hard-fail.
+          bad = deepcopy(result['card'])
+          bad['sku_media']['skus'].append({
+              'sku_id':'sku_fixture_bad','sku_code':'BAD','label':'99 кг','package':'99 кг',
+              'primary_media_id':None,'gallery_media_ids':[],'sort_order':99,'enabled':True,
+          })
+          try:
+              m.reconcile_card(
+                  card=bad, mapping_row=mapping2, source_rows=source,
+                  bound_commerce_keys=set(bound2), commerce_keys=set(commerce2),
+              )
+          except RuntimeError as exc:
+              assert 'unexpected active SKU outside approved source' in str(exc)
+          else:
+              raise AssertionError('unexpected active extra did not fail')
+
+          print('RECONCILIATION + IDEMPOTENCE + EXTRA SAFETY: PASS')
+          PY

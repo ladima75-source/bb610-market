@@ -7,7 +7,17 @@ fail for cards that were resolved only by the pre-update title. This wrapper kee
 all original content-only protections and backup/rollback logic, while allowing the
 resolver to match either the reviewed source name or the already-applied managed
 title. No commerce, SKU, media or price logic is changed.
+
+This file is also safe to execute directly as:
+    python backend/update_stage22c_batch03_content_v3_20260918_v2.py
 """
+
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from backend import update_stage22c_batch03_content_v3_20260918 as base
 

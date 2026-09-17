@@ -1,0 +1,76 @@
+name: Valagro batch v1 CI
+
+on:
+  push:
+    paths:
+      - 'backend/update_valagro_batch_v1.py'
+      - '.github/workflows/valagro_batch_v1_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/update_valagro_batch_v1.py'
+      - '.github/workflows/valagro_batch_v1_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: python -m py_compile backend/update_valagro_batch_v1.py
+      - name: Batch content contract
+        run: |
+          python - <<'PY'
+          import runpy
+
+          m = runpy.run_path('backend/update_valagro_batch_v1.py')
+          products = m['PRODUCTS']
+          deferred = m['DEFERRED']
+
+          expected = {
+              'brexil-ca',
+              'brexil-combi',
+              'brexil-fe',
+              'brexil-mix',
+              'boroplus',
+              'benefit-pz',
+          }
+          assert set(products) == expected, set(products)
+          assert 'blackjak' in deferred
+          assert 'blackjak' not in products
+
+          required_labels = {
+              'Культури',
+              'Призначення',
+              'Спосіб застосування',
+              'Діюча речовина',
+          }
+          required_fields = {
+              'short_description', 'description', 'benefits', 'how_it_works',
+              'application', 'composition', 'seo', 'characteristics', 'source',
+          }
+
+          for slug, spec in products.items():
+              missing = required_fields - set(spec)
+              assert not missing, (slug, missing)
+              labels = {row['label'] for row in spec['characteristics']}
+              assert required_labels <= labels, (slug, labels)
+              assert 'NPK' not in labels, (slug, labels)
+              assert spec['composition'].strip(), slug
+              assert '\n' in spec['composition'], slug
+              assert spec['application'].rstrip().endswith(spec['source']), slug
+              assert spec['source'].startswith('https://'), slug
+              assert ('syngenta.ua' in spec['source']) or ('valagro.com' in spec['source']), spec['source']
+              assert len(spec['benefits']) >= 4, slug
+              assert all(x.get('title') and x.get('text') for x in spec['benefits']), slug
+
+          assert 'Кальцій (CaO): 20%' in products['brexil-ca']['composition']
+          assert 'Залізо (Fe): 10%' in products['brexil-fe']['composition']
+          assert 'Залізо (Fe): 6,8%' in products['brexil-combi']['composition']
+          assert 'Магній (MgO): 6,0%' in products['brexil-mix']['composition']
+          assert 'Бор (B): 11% (150 г/л)' in products['boroplus']['composition']
+          assert 'Органічний вуглець (C): 10,0%' in products['benefit-pz']['composition']
+          print('batch contract: OK')
+          PY

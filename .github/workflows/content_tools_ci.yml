@@ -21,3 +21,5 @@ jobs:
           python-version: '3.12'
       - name: Python syntax
         run: python -m py_compile backend/update_brexil_zn_application.py
+      - name: Standalone runtime smoke check
+        run: python backend/update_brexil_zn_application.py --help

@@ -4,8 +4,8 @@ from __future__ import annotations
 
 The broad importer intentionally refuses fuzzy/tied matches. This follow-up keeps
 that safety rule and resolves only eight reviewed source rows by stable product
-title identity + exact package identity. We deliberately do not hard-code PCV3
-product_id because migrated runtime cards may have deployment-specific IDs.
+title identity + exact package identity. Runtime product IDs are deliberately
+not hard-coded because migrated cards can be deployment-specific.
 
 Writes are limited to sku_commerce price, availability=in_stock, stock_qty=NULL
 and enabled=1. sale_price, Product Card v3 content/SKU/media and mappings are
@@ -31,9 +31,6 @@ from backend import tools_apply_remaining_prices_20260916_exact as remaining
 BACKUP_ROOT = ROOT / "var" / "release-backups"
 REPORT_ROOT = ROOT / "var" / "reports"
 
-# Source row numbers are Excel row numbers used by the approved manifest loader.
-# Target titles are stable catalogue identities reviewed from the production
-# ambiguous-candidate report. Exact package is always required as a second key.
 RESOLUTIONS: dict[int, dict[str, Any]] = {
     14: {"target_title": "MASTER 18-18-18", "name_fragment": "18-18-18", "package": "250 г", "price": 177.0},
     15: {"target_title": "MASTER 18-18-18", "name_fragment": "18-18-18", "package": "1 кг", "price": 399.0},
@@ -54,19 +51,13 @@ def now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def _source_map() -> dict[int, dict]:
-    return {int(x["source_row"]): x for x in remaining.load_source_rows()}
-
-
-def resolution_contract() -> list[dict]:
-    """Pure source/PCV3 contract check; does not require commerce DB state."""
-    src_by_row = _source_map()
-    targets = base.load_targets()
-    out: list[dict] = []
-
+def source_contract() -> list[dict]:
+    """Validate only the approved price source; safe for clean CI checkout."""
+    src_by_row = {int(x["source_row"]): x for x in remaining.load_source_rows()}
     if set(RESOLUTIONS) != {14, 15, 16, 17, 73, 74, 77, 78}:
         raise RuntimeError("manual resolution registry must contain exactly the eight reviewed rows")
 
+    out: list[dict] = []
     for row_no, spec in sorted(RESOLUTIONS.items()):
         src = src_by_row.get(row_no)
         if not src:
@@ -77,39 +68,57 @@ def resolution_contract() -> list[dict]:
             raise RuntimeError(f"row {row_no}: package drift: {src.get('package')!r}")
         if float(src.get("price")) != float(spec["price"]):
             raise RuntimeError(f"row {row_no}: price drift: {src.get('price')!r}")
+        out.append({**deepcopy(src), "target_title": spec["target_title"]})
+    return out
 
-        wanted_title = base.norm(spec["target_title"])
-        exact_target = [
+
+def resolve_targets(contract_rows: list[dict], targets: list[dict] | None = None, *, require_ambiguity: bool = True) -> list[dict]:
+    """Resolve reviewed rows against current runtime PCV3 targets.
+
+    In production `require_ambiguity=True` proves that the broad importer still
+    sees multiple >=900 candidates and that the reviewed target remains among
+    them. CI can unit-test the deterministic title+package resolver with a small
+    fixture without requiring runtime-generated cards to exist in Git.
+    """
+    targets = base.load_targets() if targets is None else targets
+    out: list[dict] = []
+
+    for src in contract_rows:
+        wanted_title = base.norm(src["target_title"])
+        matches = [
             t for t in targets
             if base.norm(t.get("title")) == wanted_title
             and str(t.get("pack_key") or "") == str(src.get("pack_key") or "")
         ]
-        if len(exact_target) != 1:
+        if len(matches) != 1:
             raise RuntimeError(
-                f"row {row_no}: expected one target for {spec['target_title']}/{src.get('pack_key')}; got {len(exact_target)}"
+                f"row {src['source_row']}: expected one runtime target for {src['target_title']}/{src.get('pack_key')}; got {len(matches)}"
             )
-        target = exact_target[0]
-
-        candidates = []
-        for t in targets:
-            if str(t.get("pack_key") or "") != str(src.get("pack_key") or ""):
-                continue
-            score = base.pair_score(src.get("source_name"), t.get("aliases") or set())
-            if score >= remaining.MIN_EXACT_SCORE:
-                candidates.append((score, t))
-        candidate_ids = {
-            (str(t.get("product_id") or ""), str(t.get("sku_id") or ""))
-            for _score, t in candidates
-        }
-        target_identity = (str(target.get("product_id") or ""), str(target.get("sku_id") or ""))
-        if target_identity not in candidate_ids:
-            raise RuntimeError(f"row {row_no}: reviewed target no longer appears in exact-candidate set")
-        if len({pid for pid, _sid in candidate_ids}) < 2:
-            raise RuntimeError(f"row {row_no}: source is no longer ambiguous; review registry before applying")
-
+        target = matches[0]
         commerce_key = str(target.get("commerce_key") or "").strip()
         if not commerce_key:
-            raise RuntimeError(f"row {row_no}: reviewed target has no commerce binding")
+            raise RuntimeError(f"row {src['source_row']}: reviewed target has no commerce binding")
+
+        candidate_product_count = None
+        if require_ambiguity:
+            candidates: list[tuple[float, dict]] = []
+            for t in targets:
+                if str(t.get("pack_key") or "") != str(src.get("pack_key") or ""):
+                    continue
+                score = base.pair_score(src.get("source_name"), t.get("aliases") or set())
+                if score >= remaining.MIN_EXACT_SCORE:
+                    candidates.append((score, t))
+            identities = {
+                (str(t.get("product_id") or ""), str(t.get("sku_id") or ""))
+                for _score, t in candidates
+            }
+            target_identity = (str(target.get("product_id") or ""), str(target.get("sku_id") or ""))
+            if target_identity not in identities:
+                raise RuntimeError(f"row {src['source_row']}: reviewed target no longer appears in exact-candidate set")
+            candidate_product_count = len({pid for pid, _sid in identities})
+            if candidate_product_count < 2:
+                raise RuntimeError(f"row {src['source_row']}: row is no longer ambiguous; review registry before applying")
+
         out.append({
             **deepcopy(src),
             "product_id": target.get("product_id"),
@@ -117,7 +126,7 @@ def resolution_contract() -> list[dict]:
             "sku_id": target.get("sku_id"),
             "sku_code": target.get("sku_code"),
             "commerce_key": commerce_key,
-            "candidate_product_count": len({pid for pid, _sid in candidate_ids}),
+            "candidate_product_count": candidate_product_count,
         })
 
     keys = [x["commerce_key"] for x in out]
@@ -129,7 +138,7 @@ def resolution_contract() -> list[dict]:
 def build_plan() -> dict:
     from backend.db import DB_PATH, connect
 
-    actions = resolution_contract()
+    actions = resolve_targets(source_contract())
     keys = [x["commerce_key"] for x in actions]
     with connect() as con:
         placeholders = ",".join("?" for _ in keys)

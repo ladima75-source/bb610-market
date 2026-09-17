@@ -9,7 +9,10 @@ on:
       - 'backend/services/product_cards_v3_catalog_import_facets.py'
       - 'backend/services/catalog_cms.py'
       - 'backend/catalog_import_api.py'
+      - 'backend/update_brexil_zn_application.py'
       - 'assets/js/product-card-v2.js'
+      - 'assets/js/product-card-v3-enhancements.js'
+      - 'products/brexil-zn/index.html'
   workflow_dispatch:
 
 permissions:
@@ -32,8 +35,9 @@ jobs:
         run: python -m pip install -r backend/requirements.txt
       - name: Syntax checks
         run: |
-          python -m py_compile backend/services/product_cards_v3_facets.py backend/services/product_cards_v3_catalog_import_facets.py backend/services/catalog_cms.py backend/catalog_import_api.py
+          python -m py_compile backend/services/product_cards_v3_facets.py backend/services/product_cards_v3_catalog_import_facets.py backend/services/catalog_cms.py backend/catalog_import_api.py backend/update_brexil_zn_application.py
           node --check assets/js/product-card-v2.js
+          node --check assets/js/product-card-v3-enhancements.js
       - name: Filter fields round-trip smoke
         run: |
           python - <<'PY'
@@ -100,6 +104,21 @@ jobs:
               assert x['activeIngredient'] == 'Zn 10%'
               assert 'Листова / внекоренева' in x['application']
           PY
+      - name: Brexil Zn content contract
+        run: |
+          python - <<'PY'
+          import runpy
+          ns = runpy.run_path('backend/update_brexil_zn_application.py')
+          labels = {x['label']: x['value'] for x in ns['MANAGED_CHARACTERISTICS']}
+          assert labels['Культури'] == 'Кукурудза; Картопля; Садові культури'
+          assert labels['Спосіб застосування'] == 'Позакореневе обприскування; листкове живлення'
+          assert labels['NPK'] == '—'
+          assert 'Цинк (Zn) 10%' in labels['Діюча речовина']
+          assert 'Цинк (Zn): 10%' in ns['COMPOSITION']
+          assert 'LSA' in ns['COMPOSITION']
+          assert ns['SOURCE_URL'].startswith('https://www.syngenta.ua/')
+          PY
+          grep -q 'product-card-v3-enhancements.js?v=20g' products/brexil-zn/index.html
       - name: Composition fallback guard
         run: |
           grep -q 'window.BB610_CATALOG' assets/js/product-card-v2.js

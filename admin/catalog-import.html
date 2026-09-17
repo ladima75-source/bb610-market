@@ -1,9 +1,90 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Імпорт каталогу · BB610 Market Admin</title><link rel="stylesheet" href="catalog-import.css?v=17a"><link rel="stylesheet" href="admin-shell.css?v=18i1">
-<link rel="stylesheet" href="admin-sticky-tables.css?v=18k1">
-<link rel="stylesheet" href="admin-master-nav.css?v=19b8">
-</head><body><header><b><span>BB610</span> MARKET ADMIN</b><nav><a href="sales-channels.html">Канали</a><a href="media-manager.html">Медіатека</a><a href="categories-manager.html">Категорії</a><a href="homepage-showcase.html">Головна / Вітрина</a><a href="dashboard.html">Огляд</a><a href="orders-center.html">Замовлення</a><a href="products.html">Ціни</a><a href="catalog-workbench.html">Каталог</a><a class="on" href="catalog-import.html">Імпорт каталогу</a><a href="content.html">Контент</a><a href="integrations.html">Інтеграції</a></nav></header><main><div class="title"><div><h1>Імпорт / експорт каталогу</h1><p>Масове оновлення товарів і SKU з dry-run, backup та rollback.</p></div><div class="connect"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></div><section><h2>1. Файл</h2><div class="actions"><button data-download="template.csv">Шаблон CSV</button><button data-download="export.csv">Експорт CSV</button><button data-download="export.xlsx">Експорт XLSX</button></div><p class="muted">Імпорт: CSV, XLSX або ZIP. ZIP має містити <b>catalog.csv</b> / <b>catalog.xlsx</b> та, за потреби, папку images.</p><div class="upload"><input id="file" type="file" accept=".csv,.xlsx,.zip"><button id="preview" class="primary">Перевірити / Preview</button></div></section><section id="previewBox" hidden><h2>2. Preview</h2><div id="summary" class="cards"></div><div id="errors"></div><div class="table"><table><thead><tr><th>Рядок</th><th>SKU</th><th>Товар</th><th>Дія</th><th>Назва: було → стане</th><th>Ціна: було → стане</th><th>Фото</th></tr></thead><tbody id="changes"></tbody></table></div><div class="apply"><label><input type="radio" name="mode" value="content" checked> Лише контент</label><label><input type="radio" name="mode" value="commerce"> Лише ціни / залишки</label><label><input type="radio" name="mode" value="all"> Все</label><label><input id="rebuild" type="checkbox" checked> Перебудувати public catalog</label><button id="apply" class="primary">Застосувати імпорт</button></div></section><section><h2>3. Історія / rollback</h2><button id="historyBtn">Оновити історію</button><div id="history" class="history"></div></section></main><script src="catalog-import.js?v=17a"></script><script src="admin-shell.js?v=18i"></script>
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Імпорт каталогу · BB610 Market Admin</title>
+  <link rel="stylesheet" href="catalog-import.css?v=20a">
+  <link rel="stylesheet" href="admin-shell.css?v=18i1">
+  <link rel="stylesheet" href="admin-sticky-tables.css?v=18k1">
+  <link rel="stylesheet" href="admin-master-nav.css?v=19b8">
+</head>
+<body>
+<header>
+  <b><span>BB610</span> MARKET ADMIN</b>
+  <nav>
+    <a href="sales-channels.html">Канали</a><a href="media-manager.html">Медіатека</a><a href="categories-manager.html">Категорії</a><a href="homepage-showcase.html">Головна / Вітрина</a><a href="dashboard.html">Огляд</a><a href="orders-center.html">Замовлення</a><a href="products.html">Ціни</a><a href="catalog-workbench.html">Каталог</a><a class="on" href="catalog-import.html">Імпорт каталогу</a><a href="content.html">Контент</a><a href="integrations.html">Інтеграції</a>
+  </nav>
+</header>
+<main>
+  <div class="title">
+    <div>
+      <h1>Імпорт / експорт каталогу</h1>
+      <p>Масове оновлення Product Card v3 та SKU з Preview, backup і rollback.</p>
+    </div>
+    <div class="connect"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div>
+  </div>
+
+  <section class="pcv3-import">
+    <h2>1. Product Card v3 — картки товарів</h2>
+    <p><b>Основний імпорт.</b> Одна картка = один товар, кожна фасовка = окремий SKU. Імпорт змінює тільки Product Card v3. Ціни, залишки, availability, sale та publication не змінюються.</p>
+    <div class="actions">
+      <button data-pcv3-download="template.csv">Шаблон CSV</button>
+      <button data-pcv3-download="template.xlsx">Шаблон XLSX</button>
+      <button data-pcv3-download="export.csv">Експорт поточних карток CSV</button>
+      <button data-pcv3-download="export.xlsx">Експорт поточних карток XLSX</button>
+    </div>
+    <p class="muted">Для редагування існуючих карток найзручніше: «Експорт XLSX» → змінити потрібні поля → завантажити назад → Preview → Apply. Порожні поля при оновленні не стирають існуючі дані. Відсутні у файлі SKU не видаляються.</p>
+    <div class="upload">
+      <input id="pcv3File" type="file" accept=".csv,.xlsx">
+      <button id="pcv3Preview" class="primary">Перевірити Product Card v3</button>
+    </div>
+  </section>
+
+  <section id="pcv3PreviewBox" hidden>
+    <h2>2. Preview Product Card v3</h2>
+    <div id="pcv3Summary" class="cards"></div>
+    <div id="pcv3Errors"></div>
+    <div class="table">
+      <table>
+        <thead><tr><th>Рядок</th><th>Товар</th><th>Slug</th><th>Product дія</th><th>SKU</th><th>Фасовка</th><th>SKU дія</th></tr></thead>
+        <tbody id="pcv3Changes"></tbody>
+      </table>
+    </div>
+    <div class="apply">
+      <span class="muted">Перед Apply автоматично створюється backup Product Card v3. Commerce не змінюється.</span>
+      <button id="pcv3Apply" class="primary">Застосувати Product Card v3</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Історія Product Card v3 / rollback</h2>
+    <button id="pcv3HistoryBtn">Оновити історію</button>
+    <div id="pcv3History" class="history"></div>
+  </section>
+
+  <details class="legacy-import">
+    <summary>Legacy catalog import — службовий старий імпорт</summary>
+    <section>
+      <h2>Legacy файл</h2>
+      <p class="muted">Не використовувати для Product Card v3. Залишено для сумісності зі старим каталогом.</p>
+      <div class="actions"><button data-download="template.csv">Шаблон CSV</button><button data-download="export.csv">Експорт CSV</button><button data-download="export.xlsx">Експорт XLSX</button></div>
+      <div class="upload"><input id="file" type="file" accept=".csv,.xlsx,.zip"><button id="preview" class="primary">Legacy Preview</button></div>
+    </section>
+    <section id="previewBox" hidden>
+      <h2>Legacy Preview</h2>
+      <div id="summary" class="cards"></div><div id="errors"></div>
+      <div class="table"><table><thead><tr><th>Рядок</th><th>SKU</th><th>Товар</th><th>Дія</th><th>Назва: було → стане</th><th>Ціна: було → стане</th><th>Фото</th></tr></thead><tbody id="changes"></tbody></table></div>
+      <div class="apply"><label><input type="radio" name="mode" value="content" checked> Лише контент</label><label><input type="radio" name="mode" value="commerce"> Лише ціни / залишки</label><label><input type="radio" name="mode" value="all"> Все</label><label><input id="rebuild" type="checkbox" checked> Перебудувати public catalog</label><button id="apply" class="primary">Застосувати legacy імпорт</button></div>
+    </section>
+    <section><h2>Legacy історія / rollback</h2><button id="historyBtn">Оновити історію</button><div id="history" class="history"></div></section>
+  </details>
+</main>
+<script src="catalog-import.js?v=20a"></script>
+<script src="admin-shell.js?v=18i"></script>
 <script src="audit-log-nav.js?v=18k"></script>
 <script src="backup-nav.js?v=18l"></script>
 <script src="commerce-control-nav.js?v=18m"></script>
 <script src="admin-master-nav.js?v=19b8"></script>
-</body></html>
+</body>
+</html>

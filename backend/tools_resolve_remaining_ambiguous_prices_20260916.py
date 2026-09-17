@@ -3,8 +3,9 @@ from __future__ import annotations
 """Resolve the eight remaining ambiguous 2026-09-16 price rows explicitly.
 
 The broad importer intentionally refuses fuzzy/tied matches. This follow-up keeps
-that safety rule and resolves only eight reviewed source rows by immutable
-Product Card v3 product_id + exact package identity.
+that safety rule and resolves only eight reviewed source rows by stable product
+title identity + exact package identity. We deliberately do not hard-code PCV3
+product_id because migrated runtime cards may have deployment-specific IDs.
 
 Writes are limited to sku_commerce price, availability=in_stock, stock_qty=NULL
 and enabled=1. sale_price, Product Card v3 content/SKU/media and mappings are
@@ -31,17 +32,17 @@ BACKUP_ROOT = ROOT / "var" / "release-backups"
 REPORT_ROOT = ROOT / "var" / "reports"
 
 # Source row numbers are Excel row numbers used by the approved manifest loader.
-# Each resolution was reviewed against the ambiguous candidate list printed by
-# the production audit. Product IDs are immutable PCV3 identities.
+# Target titles are stable catalogue identities reviewed from the production
+# ambiguous-candidate report. Exact package is always required as a second key.
 RESOLUTIONS: dict[int, dict[str, Any]] = {
-    14: {"product_id": "prd_6e7a3313ea58775a32", "name_fragment": "18-18-18", "package": "250 г", "price": 177.0},
-    15: {"product_id": "prd_6e7a3313ea58775a32", "name_fragment": "18-18-18", "package": "1 кг", "price": 399.0},
-    16: {"product_id": "prd_baf5c1ef7fa4701c96", "name_fragment": "17-6-18", "package": "250 г", "price": 154.0},
-    17: {"product_id": "prd_baf5c1ef7fa4701c96", "name_fragment": "17-6-18", "package": "1 кг", "price": 364.0},
-    73: {"product_id": "prd_b7bbdd33287bf023ab", "name_fragment": "12-8-19", "package": "200 г", "price": 154.0},
-    74: {"product_id": "prd_b7bbdd33287bf023ab", "name_fragment": "12-8-19", "package": "1 кг", "price": 637.0},
-    77: {"product_id": "prd_da9433665332b57d53", "name_fragment": "16-9-12", "package": "200 г", "price": 149.0},
-    78: {"product_id": "prd_da9433665332b57d53", "name_fragment": "16-9-12", "package": "1 кг", "price": 611.0},
+    14: {"target_title": "MASTER 18-18-18", "name_fragment": "18-18-18", "package": "250 г", "price": 177.0},
+    15: {"target_title": "MASTER 18-18-18", "name_fragment": "18-18-18", "package": "1 кг", "price": 399.0},
+    16: {"target_title": "MASTER 17-6-18", "name_fragment": "17-6-18", "package": "250 г", "price": 154.0},
+    17: {"target_title": "MASTER 17-6-18", "name_fragment": "17-6-18", "package": "1 кг", "price": 364.0},
+    73: {"target_title": "Osmocote Potassium 12-8-19 (3-4M)", "name_fragment": "12-8-19", "package": "200 г", "price": 154.0},
+    74: {"target_title": "Osmocote Potassium 12-8-19 (3-4M)", "name_fragment": "12-8-19", "package": "1 кг", "price": 637.0},
+    77: {"target_title": "Osmocote Landscape 16-9-12 (3-4M)", "name_fragment": "16-9-12", "package": "200 г", "price": 149.0},
+    78: {"target_title": "Osmocote Landscape 16-9-12 (3-4M)", "name_fragment": "16-9-12", "package": "1 кг", "price": 611.0},
 }
 
 
@@ -77,19 +78,18 @@ def resolution_contract() -> list[dict]:
         if float(src.get("price")) != float(spec["price"]):
             raise RuntimeError(f"row {row_no}: price drift: {src.get('price')!r}")
 
-        exact_package = [
+        wanted_title = base.norm(spec["target_title"])
+        exact_target = [
             t for t in targets
-            if str(t.get("product_id") or "") == spec["product_id"]
+            if base.norm(t.get("title")) == wanted_title
             and str(t.get("pack_key") or "") == str(src.get("pack_key") or "")
         ]
-        if len(exact_package) != 1:
+        if len(exact_target) != 1:
             raise RuntimeError(
-                f"row {row_no}: expected one target for {spec['product_id']}/{src.get('pack_key')}; got {len(exact_package)}"
+                f"row {row_no}: expected one target for {spec['target_title']}/{src.get('pack_key')}; got {len(exact_target)}"
             )
-        target = exact_package[0]
+        target = exact_target[0]
 
-        # The reviewed target must still be one of the deterministic >=900
-        # candidates that caused the broad importer to stop as ambiguous.
         candidates = []
         for t in targets:
             if str(t.get("pack_key") or "") != str(src.get("pack_key") or ""):
@@ -97,25 +97,32 @@ def resolution_contract() -> list[dict]:
             score = base.pair_score(src.get("source_name"), t.get("aliases") or set())
             if score >= remaining.MIN_EXACT_SCORE:
                 candidates.append((score, t))
-        candidate_pids = {str(t.get("product_id") or "") for _score, t in candidates}
-        if spec["product_id"] not in candidate_pids:
+        candidate_ids = {
+            (str(t.get("product_id") or ""), str(t.get("sku_id") or ""))
+            for _score, t in candidates
+        }
+        target_identity = (str(target.get("product_id") or ""), str(target.get("sku_id") or ""))
+        if target_identity not in candidate_ids:
             raise RuntimeError(f"row {row_no}: reviewed target no longer appears in exact-candidate set")
-        if len(candidate_pids) < 2:
+        if len({pid for pid, _sid in candidate_ids}) < 2:
             raise RuntimeError(f"row {row_no}: source is no longer ambiguous; review registry before applying")
 
+        commerce_key = str(target.get("commerce_key") or "").strip()
+        if not commerce_key:
+            raise RuntimeError(f"row {row_no}: reviewed target has no commerce binding")
         out.append({
             **deepcopy(src),
-            "product_id": spec["product_id"],
+            "product_id": target.get("product_id"),
             "title": target.get("title"),
             "sku_id": target.get("sku_id"),
             "sku_code": target.get("sku_code"),
-            "commerce_key": str(target.get("commerce_key") or "").strip(),
-            "candidate_product_count": len(candidate_pids),
+            "commerce_key": commerce_key,
+            "candidate_product_count": len({pid for pid, _sid in candidate_ids}),
         })
 
     keys = [x["commerce_key"] for x in out]
-    if any(not x for x in keys) or len(keys) != len(set(keys)):
-        raise RuntimeError("resolved commerce keys must be present and unique")
+    if len(keys) != len(set(keys)):
+        raise RuntimeError("resolved commerce keys must be unique")
     return out
 
 
@@ -136,7 +143,6 @@ def build_plan() -> dict:
     missing = [key for key in keys if key not in live]
     if missing:
         raise RuntimeError("resolved commerce rows missing: " + ", ".join(missing))
-
     for row in actions:
         row["before"] = deepcopy(live[row["commerce_key"]])
     return {"db_path": str(DB_PATH), "actions": actions}
@@ -231,13 +237,7 @@ def apply_plan(plan: dict) -> dict:
 
         if errors:
             raise RuntimeError("post-verify failed:\n- " + "\n- ".join(errors))
-
-        return {
-            "status": "PASS",
-            "updated": len(plan["actions"]),
-            "changed": changed,
-            "backup_dir": str(backup_dir),
-        }
+        return {"status": "PASS", "updated": len(plan["actions"]), "changed": changed, "backup_dir": str(backup_dir)}
     except Exception:
         restore_db(backup_file, Path(DB_PATH))
         raise

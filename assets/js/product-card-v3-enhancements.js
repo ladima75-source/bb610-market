@@ -91,9 +91,9 @@ function injectStyle(){
   .mpc-shell .mpc-panels,.mpc-shell .mpc-panel{height:auto!important;max-height:none!important;overflow:visible!important;scrollbar-width:none!important}
   .mpc-shell .mpc-info::-webkit-scrollbar,.mpc-shell .mpc-panels::-webkit-scrollbar,.mpc-shell .mpc-panel::-webkit-scrollbar{width:0!important;height:0!important;display:none!important}
   .mpc-shell .mpc-tabs{overflow-x:auto!important;overflow-y:hidden!important;border-radius:12px 12px 0 0}
-  .mpc-shell [data-mpc-panel="additional"] .mpc-subsection:last-child .mpc-specs-compact{grid-template-columns:1fr!important}
-  .mpc-shell [data-mpc-panel="additional"] .mpc-subsection:last-child .mpc-spec{grid-template-columns:minmax(155px,.72fr) minmax(0,1.28fr)!important;gap:18px}
-  .mpc-shell [data-mpc-panel="additional"] .mpc-subsection:last-child .mpc-spec b{overflow-wrap:anywhere}
+  .mpc-shell .bb610-composition-specs{display:grid!important;grid-template-columns:1fr!important}
+  .mpc-shell .bb610-composition-specs .mpc-spec{display:grid!important;grid-template-columns:minmax(155px,.72fr) minmax(0,1.28fr)!important;gap:18px}
+  .mpc-shell .bb610-composition-specs .mpc-spec b{overflow-wrap:anywhere;margin-left:0;min-width:0}
   .mpc-shell .mpc-panel[data-mpc-panel="characteristics"] .mpc-filter-facets{margin:0 0 24px;padding:0 0 20px;border-bottom:1px solid #314047}
   .mpc-shell .mpc-filter-facets-title{margin:0 0 12px;color:#9aa9ae;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
   .mpc-shell .mpc-filter-facet-row{display:grid;grid-template-columns:minmax(150px,.35fr) minmax(0,1fr);gap:16px;align-items:start;padding:8px 0}
@@ -104,7 +104,7 @@ function injectStyle(){
   .mpc-shell .mpc-characteristics-title{margin:2px 0 10px;color:#9aa9ae;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
   @media(max-width:680px){
     .mpc-shell .mpc-filter-facet-row{grid-template-columns:1fr;gap:6px}
-    .mpc-shell [data-mpc-panel="additional"] .mpc-subsection:last-child .mpc-spec{grid-template-columns:1fr!important;gap:4px}
+    .mpc-shell .bb610-composition-specs .mpc-spec{grid-template-columns:1fr!important;gap:4px}
   }
   `;
   document.head.appendChild(s);
@@ -136,6 +136,7 @@ function enhanceComposition(info){
   if(!subsection)return;
   const host=subsection.querySelector('.mpc-specs');
   if(!host){panel.dataset.bb610CompositionEnhanced='2';return;}
+  host.classList.add('bb610-composition-specs');
   const rows=[...host.querySelectorAll('.mpc-spec')].map(spec=>({
     spec,label:(spec.querySelector('span')?.textContent||'').trim(),value:(spec.querySelector('b')?.textContent||'').trim()
   }));

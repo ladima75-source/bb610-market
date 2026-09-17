@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "batch": "BB610 Product Card v3 content / stage22c batch03 rows25-36 / 2026-09-18",
+  "language": "uk",
+  "source_batch": "data/content_batches/stage22c_batch03_rows25_36.json",
+  "expected_source_rows": [25,26,27,28,29,30,31,32,33,34,35,36],
+  "policy": {
+    "mode": "content-only",
+    "resolver": "exact production card via commerce mapping or exact normalized title",
+    "protected": ["product_id","slug","enabled","brand","category","sku_media","commerce_map","sku_commerce","price","availability","stock"]
+  }
+}

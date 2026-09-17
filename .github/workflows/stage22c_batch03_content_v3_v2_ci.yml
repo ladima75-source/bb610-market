@@ -29,6 +29,8 @@ jobs:
         run: |
           python -m py_compile backend/update_stage22c_batch03_content_v3_20260918.py
           python -m py_compile backend/update_stage22c_batch03_content_v3_20260918_v2.py
+      - name: Direct execution import smoke
+        run: python backend/update_stage22c_batch03_content_v3_20260918_v2.py --help >/dev/null
       - name: Validate pre/post title resolution and content-only contract
         run: |
           python - <<'PY'

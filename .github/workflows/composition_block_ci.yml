@@ -1,0 +1,80 @@
+name: Universal Composition Block CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/composition_block_ci.yml'
+      - 'assets/js/product-card-v3-enhancements.js'
+      - 'assets/js/product-card-v2.js'
+      - 'products/brexil-zn/index.html'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  composition:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Syntax checks
+        run: |
+          node --check assets/js/product-card-v3-enhancements.js
+          node --check assets/js/product-card-v2.js
+      - name: Universal composition normalization
+        run: |
+          node <<'JS'
+          const assert=require('node:assert/strict');
+          global.window={};
+          global.document={readyState:'loading',addEventListener(){}};
+          global.MutationObserver=class{constructor(){} observe(){}};
+          require('./assets/js/product-card-v3-enhancements.js');
+          const normalize=window.BB610_COMPOSITION_BLOCK.normalizeRows;
+
+          let r=normalize([
+            {label:'Цинк (Zn)',value:'10%'},
+            {label:'Комплексоутворювач',value:'LSA (лігносульфонат амонію)'},
+            {label:'NPK',value:'—'},
+            {label:'Діюча речовина',value:'Цинк (Zn) 10% у комплексі з LSA'},
+            {label:'Комплексоутворювач',value:'LSA'},
+            {label:'Не містить',value:'Na, Cl та важких металів'}
+          ]);
+          assert.deepEqual(r.components.map(x=>x.label),['Цинк (Zn)','Комплексоутворювач']);
+          assert.equal(r.components[1].value,'LSA (лігносульфонат амонію)');
+          assert.deepEqual(r.properties.map(x=>x.label),['Не містить']);
+
+          r=normalize([
+            {label:'NPK',value:'13-40-13'},
+            {label:'N',value:'13%'},
+            {label:'P2O5',value:'40%'},
+            {label:'K2O',value:'13%'}
+          ]);
+          assert.deepEqual(r.components.map(x=>x.label),['NPK','N','P2O5','K2O']);
+          assert.equal(r.properties.length,0);
+
+          r=normalize([
+            {label:'Діюча речовина',value:'Азоксистробін 250 г/л'},
+            {label:'Клас токсичності',value:'III'},
+            {label:'Препаративна форма',value:'КС'}
+          ]);
+          assert.equal(r.components.length,1);
+          assert.equal(r.components[0].label,'Діюча речовина');
+          assert.deepEqual(r.properties.map(x=>x.label),['Клас токсичності','Препаративна форма']);
+
+          r=normalize([
+            {label:'Гліфосат',value:'480 г/л'},
+            {label:'Діюча речовина',value:'Гліфосат 480 г/л'}
+          ]);
+          assert.equal(r.components.length,1);
+          assert.equal(r.components[0].label,'Гліфосат');
+          console.log('Universal composition block: PASS');
+          JS
+      - name: Scroll and cache guards
+        run: |
+          grep -q 'scrollbar-width:none' assets/js/product-card-v3-enhancements.js
+          grep -q 'BB610_COMPOSITION_BLOCK' assets/js/product-card-v3-enhancements.js
+          grep -q 'product-card-v3-enhancements.js?v=20h' products/brexil-zn/index.html

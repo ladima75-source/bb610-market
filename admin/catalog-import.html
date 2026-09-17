@@ -34,7 +34,7 @@
       <button data-pcv3-download="export.csv">Експорт каталогу CSV</button>
       <button data-pcv3-download="export.xlsx">Експорт каталогу XLSX</button>
     </div>
-    <p class="muted">Рекомендований сценарій: «Експорт XLSX» → змінити потрібні клітинки → завантажити назад → Preview → Apply. Порожня клітинка = не змінювати існуюче значення. Щоб очистити <code>sale_price</code> або <code>stock_qty</code>, використовуйте <code>__CLEAR__</code>. Відсутні у файлі SKU не видаляються. Publication імпорт не вмикає і не вимикає.</p>
+    <p class="muted">Рекомендований сценарій: «Експорт XLSX» → змінити потрібні клітинки → завантажити назад → Preview → Apply. Порожня клітинка = не змінювати існуюче значення. Поля <code>description</code>, <code>how_it_works</code>, <code>application</code>, <code>composition</code>, <code>benefits_json</code> і <code>characteristics_json</code> формують повну інформаційну картку товару. Щоб очистити <code>sale_price</code> або <code>stock_qty</code>, використовуйте <code>__CLEAR__</code>. Відсутні у файлі SKU не видаляються. Publication імпорт не вмикає і не вимикає.</p>
     <div class="upload">
       <input id="pcv3File" type="file" accept=".csv,.xlsx">
       <button id="pcv3Preview" class="primary">Перевірити / Preview</button>
@@ -53,7 +53,7 @@
     </div>
     <div class="apply">
       <span class="muted">Перед Apply автоматично створюється єдиний backup Product Card v3 + SQLite commerce. Після запису виконується verify. При помилці — автоматичний rollback.</span>
-      <button id="pcv3Apply" class="primary">Застосувати імпорт</button>
+      <button id="pcv3Apply" class="primary" disabled>Застосувати імпорт</button>
     </div>
   </section>
 
@@ -80,7 +80,7 @@
     <section><h2>Legacy історія / rollback</h2><button id="historyBtn">Оновити історію</button><div id="history" class="history"></div></section>
   </details>
 </main>
-<script src="catalog-import.js?v=20b"></script>
+<script src="catalog-import.js?v=20c"></script>
 <script src="admin-shell.js?v=18i"></script>
 <script src="audit-log-nav.js?v=18k"></script>
 <script src="backup-nav.js?v=18l"></script>

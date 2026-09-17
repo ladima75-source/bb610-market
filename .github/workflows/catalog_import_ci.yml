@@ -28,6 +28,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Install backend dependencies
+        run: python -m pip install -r backend/requirements.txt
       - name: Syntax checks
         run: |
           python -m py_compile backend/services/product_cards_v3_catalog_import.py backend/catalog_import_api.py
@@ -38,22 +40,11 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           import json
-          import os
-          import shutil
-          from pathlib import Path
 
           from backend.db import migrate
           migrate()
 
-          from backend.services import product_cards_v3 as pcv3
           from backend.services import product_cards_v3_catalog_import as imp
-
-          # Keep the repository fixture isolated inside the ephemeral runner.
-          original = Path('/tmp/product_cards_v3_original')
-          if original.exists():
-              shutil.rmtree(original)
-          if pcv3.BASE.exists():
-              shutil.copytree(pcv3.BASE, original)
 
           raw = imp.template_csv()
           preview = imp.preview('template.csv', raw)

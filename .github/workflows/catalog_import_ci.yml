@@ -39,6 +39,8 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
+          import csv
+          import io
           import json
 
           from backend.db import migrate
@@ -46,6 +48,7 @@ jobs:
 
           from backend.services import product_cards_v3_catalog_import as imp
 
+          # 1) New product: three spreadsheet rows must become one card / three SKU.
           raw = imp.template_csv()
           preview = imp.preview('template.csv', raw)
           print(json.dumps(preview, ensure_ascii=False, indent=2))
@@ -68,6 +71,46 @@ jobs:
           assert prices == [100.0, 300.0, 900.0]
           assert all(r.get('commerce_sku_key') for r in example)
 
+          # 2) Critical regression: existing card/SKU, price-only CSV row.
+          # No title/package fuzzy matching is allowed or needed: exact product_id + sku_id
+          # resolves the v3 identity, and the saved commerce binding resolves the price row.
+          target = next(r for r in example if r.get('sku_code') == 'EXAMPLE-100G')
+          buf = io.StringIO(newline='')
+          writer = csv.DictWriter(buf, fieldnames=imp.HEADERS)
+          writer.writeheader()
+          row = {key: '' for key in imp.HEADERS}
+          row['product_id'] = target['product_id']
+          row['sku_id'] = target['sku_id']
+          row['price'] = '123.45'
+          writer.writerow(row)
+          price_only = ('\ufeff' + buf.getvalue()).encode('utf-8')
+
+          p2 = imp.preview('price-only.csv', price_only)
+          print(json.dumps(p2, ensure_ascii=False, indent=2))
+          assert p2['valid'] is True, p2['errors']
+          assert p2['summary']['products'] == 1
+          assert p2['summary']['update_products'] == 1
+          assert p2['summary']['sku_rows'] == 1
+          assert p2['summary']['update_skus'] == 1
+          assert p2['summary']['commerce_rows'] == 1
+          assert len(p2['changes']) == 1
+          assert float(p2['changes'][0]['price_before']) == 100.0
+          assert float(p2['changes'][0]['price_after']) == 123.45
+
+          r2 = imp.apply(p2['token'])
+          assert r2['verified'] is True
+          rows2 = imp.export_rows()
+          changed = next(r for r in rows2 if r.get('sku_id') == target['sku_id'])
+          assert float(changed['price']) == 123.45
+
+          # Price-only rollback must return the exact previous value.
+          rb2 = imp.rollback(r2['backup'])
+          assert rb2['restored'] == r2['backup']
+          rows3 = imp.export_rows()
+          restored = next(r for r in rows3 if r.get('sku_id') == target['sku_id'])
+          assert float(restored['price']) == 100.0
+
+          # Restore repository fixture state from before the whole smoke test.
           rb = imp.rollback(result['backup'])
           print(json.dumps(rb, ensure_ascii=False, indent=2))
           assert rb['restored'] == result['backup']

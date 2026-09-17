@@ -1,0 +1,62 @@
+name: Remaining ambiguous prices CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_resolve_remaining_ambiguous_prices_20260916.py'
+      - 'backend/tools_apply_remaining_prices_20260916_exact.py'
+      - 'backend/tools_apply_pcv3_prices_20260916.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - 'data/product_cards_v3/**'
+      - '.github/workflows/remaining_prices_manual_resolution_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_resolve_remaining_ambiguous_prices_20260916.py'
+      - 'backend/tools_apply_remaining_prices_20260916_exact.py'
+      - 'backend/tools_apply_pcv3_prices_20260916.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - 'data/product_cards_v3/**'
+      - '.github/workflows/remaining_prices_manual_resolution_ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reviewed-resolution-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: python -m py_compile backend/tools_resolve_remaining_ambiguous_prices_20260916.py
+      - name: Eight reviewed source-to-product resolutions
+        run: |
+          python - <<'PY'
+          from backend import tools_resolve_remaining_ambiguous_prices_20260916 as m
+
+          rows = m.resolution_contract()
+          assert len(rows) == 8
+          assert {x['source_row'] for x in rows} == {14,15,16,17,73,74,77,78}
+          assert len({x['commerce_key'] for x in rows}) == 8
+          by_row = {x['source_row']: x for x in rows}
+
+          assert by_row[14]['product_id'] == 'prd_6e7a3313ea58775a32'
+          assert by_row[14]['price'] == 177.0
+          assert by_row[15]['price'] == 399.0
+          assert by_row[16]['product_id'] == 'prd_baf5c1ef7fa4701c96'
+          assert by_row[16]['price'] == 154.0
+          assert by_row[17]['price'] == 364.0
+          assert by_row[73]['product_id'] == 'prd_b7bbdd33287bf023ab'
+          assert by_row[73]['price'] == 154.0
+          assert by_row[74]['price'] == 637.0
+          assert by_row[77]['product_id'] == 'prd_da9433665332b57d53'
+          assert by_row[77]['price'] == 149.0
+          assert by_row[78]['price'] == 611.0
+          assert all(x['candidate_product_count'] >= 2 for x in rows)
+          print('REMAINING AMBIGUOUS PRICE RESOLUTION CONTRACT: PASS')
+          for x in rows:
+              print(x['source_row'], x['source_name'], x['package'], '=>', x['title'], x['commerce_key'])
+          PY

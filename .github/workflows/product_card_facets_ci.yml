@@ -1,0 +1,107 @@
+name: Product Card Facets CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/product_card_facets_ci.yml'
+      - 'backend/services/product_cards_v3_facets.py'
+      - 'backend/services/product_cards_v3_catalog_import_facets.py'
+      - 'backend/services/catalog_cms.py'
+      - 'backend/catalog_import_api.py'
+      - 'assets/js/product-card-v2.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  facets:
+    runs-on: ubuntu-latest
+    env:
+      BB610_DB_PATH: /tmp/bb610-product-card-facets-ci.sqlite3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install backend dependencies
+        run: python -m pip install -r backend/requirements.txt
+      - name: Syntax checks
+        run: |
+          python -m py_compile backend/services/product_cards_v3_facets.py backend/services/product_cards_v3_catalog_import_facets.py backend/services/catalog_cms.py backend/catalog_import_api.py
+          node --check assets/js/product-card-v2.js
+      - name: Filter fields round-trip smoke
+        run: |
+          python - <<'PY'
+          import json
+          from backend.db import migrate
+          migrate()
+          from backend.services import product_cards_v3_catalog_import_facets as f
+
+          required = {
+              'filter_cultures', 'filter_purposes', 'filter_application_methods',
+              'filter_npk', 'filter_active_ingredient'
+          }
+          assert required.issubset(set(f.HEADERS))
+          row = {
+              'product_id': '',
+              'characteristics_json': '[{"label":"Форма","value":"порошок"}]',
+              'filter_cultures': 'лохина; полуниця',
+              'filter_purposes': 'живлення',
+              'filter_application_methods': 'Листова / внекоренева',
+              'filter_npk': '13-40-13',
+              'filter_active_ingredient': 'Цинк (Zn) 10%',
+          }
+          enriched = f.enrich_rows([row])[0]
+          chars = json.loads(enriched['characteristics_json'])
+          got = {x['label']: x['value'] for x in chars}
+          assert got['Форма'] == 'порошок'
+          assert got['Культури'] == 'лохина; полуниця'
+          assert got['Призначення'] == 'живлення'
+          assert got['Спосіб застосування'] == 'Листова / внекоренева'
+          assert got['NPK'] == '13-40-13'
+          assert got['Діюча речовина'] == 'Цинк (Zn) 10%'
+          assert f.template_xlsx()
+          PY
+      - name: Catalog overlay smoke
+        run: |
+          python - <<'PY'
+          import json, tempfile
+          from pathlib import Path
+          from backend.services import product_cards_v3_facets as f
+
+          with tempfile.TemporaryDirectory() as td:
+              root = Path(td)
+              products = root / 'products'; products.mkdir()
+              mapping = root / 'commerce_map.json'
+              (products / 'prd_test.json').write_text(json.dumps({
+                  'product_id':'prd_test','slug':'test-product','enabled':True,
+                  'content':{'brand':'Brand','application':'Листове внесення','characteristics':[
+                      {'label':'Культури','value':'лохина; полуниця'},
+                      {'label':'Призначення','value':'живлення'},
+                      {'label':'Спосіб застосування','value':'Листова / внекоренева'},
+                      {'label':'NPK','value':'13-40-13'},
+                      {'label':'Діюча речовина','value':'Zn 10%'}
+                  ]}
+              }), encoding='utf-8')
+              mapping.write_text(json.dumps({'products':[{'product_id':'prd_test','existing_product_key':'test-product','skus':[]}]}), encoding='utf-8')
+              f.PRODUCTS = products; f.COMMERCE_MAP = mapping
+              rows = f.catalog_overlays()
+              assert len(rows) == 1
+              x = rows[0]
+              assert x['id'] == 'test-product'
+              assert x['cultures'] == ['лохина','полуниця']
+              assert x['purposes'] == ['живлення']
+              assert x['npk'] == '13-40-13'
+              assert x['activeIngredient'] == 'Zn 10%'
+              assert 'Листова / внекоренева' in x['application']
+          PY
+      - name: Composition fallback guard
+        run: |
+          grep -q 'window.BB610_CATALOG' assets/js/product-card-v2.js
+          grep -q 'legacy.composition' assets/js/product-card-v2.js
+          grep -q 'Діюча речовина' assets/js/product-card-v2.js

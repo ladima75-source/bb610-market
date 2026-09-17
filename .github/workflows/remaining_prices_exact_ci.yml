@@ -1,0 +1,58 @@
+name: Remaining catalogue exact prices CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_apply_remaining_prices_20260916_exact.py'
+      - 'backend/tools_apply_pcv3_prices_20260916.py'
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/remaining_prices_exact_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_apply_remaining_prices_20260916_exact.py'
+      - 'backend/tools_apply_pcv3_prices_20260916.py'
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/remaining_prices_exact_ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: |
+          python -m py_compile backend/tools_apply_remaining_prices_20260916_exact.py
+      - name: Source partition contract
+        run: |
+          python - <<'PY'
+          from backend import tools_apply_remaining_prices_20260916_exact as m
+          rows=m.load_source_rows()
+          assert len(rows)==146, len(rows)
+          assert all(float(x['price']) >= 0 for x in rows)
+          assert all(x['pack_key'] for x in rows)
+          print('SOURCE PARTITION PASS: remaining=146')
+          PY
+      - name: Exact-only threshold contract
+        run: |
+          python - <<'PY'
+          from backend import tools_apply_pcv3_prices_20260916 as b
+          from backend import tools_apply_remaining_prices_20260916_exact as m
+
+          # Exact alias and deterministic containment are allowed.
+          assert b.pair_score('Brexil Combi', {'brexil combi'}) >= m.MIN_EXACT_SCORE
+          assert b.pair_score('Brexil Combi, мікроелементи', {'brexil combi'}) >= m.MIN_EXACT_SCORE
+
+          # Similar/fuzzy names must remain below auto-apply threshold.
+          assert b.pair_score('Brexil Combi', {'brexil calcium'}) < m.MIN_EXACT_SCORE
+          assert b.pair_score('Osmocote Decor 16-8-12', {'osmocote flowering 12-7-18'}) < m.MIN_EXACT_SCORE
+          print('EXACT-ONLY MATCH POLICY PASS')
+          PY

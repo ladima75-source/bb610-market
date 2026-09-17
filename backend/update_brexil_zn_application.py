@@ -6,8 +6,6 @@ from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 
-from backend.services import product_cards_v3 as pcv3
-
 SLUG = 'brexil-zn'
 SOURCE_URL = 'https://www.syngenta.ua/product/crop-protection/mikroelementy/breksiltm-zn'
 APPLICATION = '''Брексіл Zn застосовують позакоренево для профілактики та усунення дефіциту цинку, а також для покращення якості продукції.
@@ -27,19 +25,42 @@ APPLICATION = '''Брексіл Zn застосовують позакорене
 ''' + SOURCE_URL
 
 
-def _find_card() -> tuple[str, dict]:
-    for row in pcv3.list_cards():
-        if str(row.get('slug') or '').strip().lower() == SLUG:
-            product_id = str(row.get('product_id') or '').strip()
-            card = pcv3.get(product_id)
-            if isinstance(card, dict):
-                return product_id, card
-    raise SystemExit(f'Product Card v3 with slug {SLUG!r} was not found')
+def _root() -> Path:
+    return Path(__file__).resolve().parents[1]
+
+
+def _products_dir() -> Path:
+    return _root() / 'data' / 'product_cards_v3' / 'products'
+
+
+def _load(path: Path) -> dict:
+    obj = json.loads(path.read_text(encoding='utf-8'))
+    if not isinstance(obj, dict):
+        raise SystemExit(f'Invalid Product Card JSON: {path}')
+    return obj
+
+
+def _find_card() -> tuple[Path, dict]:
+    products = _products_dir()
+    if not products.exists():
+        raise SystemExit(f'Product Card v3 directory not found: {products}')
+    matches: list[tuple[Path, dict]] = []
+    for path in sorted(products.glob('prd_*.json')):
+        try:
+            card = _load(path)
+        except Exception:
+            continue
+        if str(card.get('slug') or '').strip().lower() == SLUG:
+            matches.append((path, card))
+    if not matches:
+        raise SystemExit(f'Product Card v3 with slug {SLUG!r} was not found in {products}')
+    if len(matches) != 1:
+        raise SystemExit(f'Expected exactly one {SLUG!r} card, found {len(matches)}')
+    return matches[0]
 
 
 def _backup(card: dict) -> Path:
-    root = Path(__file__).resolve().parents[1]
-    out_dir = root / 'var' / 'content_backups'
+    out_dir = _root() / 'var' / 'content_backups'
     out_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     path = out_dir / f'{SLUG}-{stamp}.json'
@@ -47,24 +68,45 @@ def _backup(card: dict) -> Path:
     return path
 
 
+def _save_atomic(path: Path, card: dict) -> None:
+    tmp = path.with_suffix(path.suffix + '.tmp')
+    tmp.write_text(json.dumps(card, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    tmp.replace(path)
+
+
+def _without_application(card: dict) -> dict:
+    out = deepcopy(card)
+    content = out.get('content')
+    if isinstance(content, dict):
+        content['application'] = '__IGNORED__'
+    return out
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description='Safely update only Brexil Zn application copy in Product Card v3.')
     parser.add_argument('--apply', action='store_true', help='Write the change. Without this flag only preview is printed.')
     args = parser.parse_args()
 
-    product_id, current = _find_card()
+    path, current = _find_card()
+    content = current.get('content')
+    if not isinstance(content, dict):
+        raise SystemExit('Invalid card: content must be an object')
+
     updated = deepcopy(current)
-    updated.setdefault('content', {})['application'] = APPLICATION
-    pcv3.validate(updated)
+    updated['content']['application'] = APPLICATION
+
+    if _without_application(current) != _without_application(updated):
+        raise SystemExit('SAFETY CHECK FAILED: fields other than content.application would change')
 
     print(json.dumps({
-        'product_id': product_id,
+        'product_id': updated.get('product_id'),
         'slug': updated.get('slug'),
         'title': (updated.get('content') or {}).get('title'),
+        'file': str(path),
         'field': 'content.application',
         'source': SOURCE_URL,
         'apply': bool(args.apply),
-        'characters_before': len(str((current.get('content') or {}).get('application') or '')),
+        'characters_before': len(str(content.get('application') or '')),
         'characters_after': len(APPLICATION),
     }, ensure_ascii=False, indent=2))
 
@@ -73,21 +115,27 @@ def main() -> int:
         return 0
 
     backup = _backup(current)
-    saved = pcv3.put(product_id, updated)
-    verify = pcv3.get(product_id)
-    if not isinstance(verify, dict) or (verify.get('content') or {}).get('application') != APPLICATION:
-        pcv3.put(product_id, current)
-        raise SystemExit('VERIFY FAILED: original card restored')
+    try:
+        _save_atomic(path, updated)
+        verify = _load(path)
+        if (verify.get('content') or {}).get('application') != APPLICATION:
+            raise RuntimeError('application text mismatch after write')
+        if _without_application(verify) != _without_application(current):
+            raise RuntimeError('a field other than content.application changed')
+    except Exception as exc:
+        _save_atomic(path, current)
+        raise SystemExit(f'VERIFY FAILED: original card restored: {exc}')
 
     print(json.dumps({
         'status': 'APPLIED',
         'backup': str(backup),
-        'product_id': saved.get('product_id'),
-        'slug': saved.get('slug'),
-        'sku_count': len((saved.get('sku_media') or {}).get('skus') or []),
+        'product_id': updated.get('product_id'),
+        'slug': updated.get('slug'),
+        'sku_count': len(((updated.get('sku_media') or {}).get('skus') or [])),
         'commerce_changed': False,
         'media_changed': False,
         'sku_changed': False,
+        'other_content_changed': False,
     }, ensure_ascii=False, indent=2))
     return 0
 

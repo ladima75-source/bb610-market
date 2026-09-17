@@ -41,15 +41,52 @@ function applicationRows(rows){
     return `<div class="mpc-spec"><span>${esc(label)}</span><b>${detail}</b></div>`;
   }).join('')}</div>`;
 }
-
+function sourceMeta(content){
+  const c=content||{},sourceRe=/(джерел|source|офіційн|інструкц.*вироб|виробник.*(url|посилан)|manufacturer.*(url|link))/i;
+  const appRaw=String(c.application||'');
+  const appUrls=appRaw.match(/https?:\/\/[^\s<>"']+/gi)||[];
+  let url=appUrls[0]?appUrls[0].replace(/[),.;]+$/,''):'';
+  let label='';
+  const characteristics=[];
+  for(const row of (Array.isArray(c.characteristics)?c.characteristics:[])){
+    const k=String(row?.label||'').trim(),v=String(row?.value||'').trim();
+    if(sourceRe.test(k)&&/^https?:\/\//i.test(v)){
+      if(!url){url=v;label=k}
+      continue;
+    }
+    characteristics.push(row);
+  }
+  let application=appRaw;
+  for(const raw of appUrls)application=application.replace(raw,'');
+  application=application.replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+  return {url,label,application,characteristics};
+}
+function recipeHtml(text){
+  const raw=String(text||'').trim();
+  if(!raw)return '<p class="mpc-empty-copy">Рецепт застосування ще не заповнений.</p>';
+  const lines=raw.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  if(lines.length<2)return `<div class="mpc-longcopy">${rich(raw)}</div>`;
+  return `<div class="mpc-recipe-list">${lines.map((line,i)=>`<div class="mpc-recipe-step"><span>${i+1}</span><div>${rich(line)}</div></div>`).join('')}</div>`;
+}
+function sourceHtml(c,meta){
+  const brand=esc(c.brand||'виробника');
+  if(meta.url)return `<div class="mpc-source"><div><strong>Джерело рекомендацій:</strong> ${brand}. Норми та спосіб застосування потрібно звіряти з актуальною етикеткою виробника.</div><a target="_blank" rel="noopener noreferrer" href="${esc(meta.url)}">Офіційне джерело ↗</a></div>`;
+  return `<div class="mpc-source mpc-source-muted"><div><strong>Джерело рекомендацій:</strong> ${brand}. Посилання на сторінку або інструкцію виробника ще не додано.</div></div>`;
+}
 function renderV3Content(shell,card){
-  const c=card.content||{},add=h=>shell.appendChild(sec(h));
-  if(c.description)add(`<section class="mpc-section"><h2>Про ${esc(c.title)}</h2><div class="mpc-longcopy">${rich(c.description)}</div></section>`);
-  if(c.benefits?.length)add(`<section class="mpc-section"><h2>Переваги</h2><div class="mpc-three">${c.benefits.map(x=>`<div class="mpc-benefit"><b>${esc(x.title)}</b><p>${rich(x.text)}</p></div>`).join('')}</div></section>`);
-  if(c.how_it_works)add(`<section class="mpc-section"><h2>Як працює</h2><div class="mpc-tech"><p>${rich(c.how_it_works)}</p></div></section>`);
-  if(c.application)add(`<section class="mpc-section"><h2>Застосування</h2><div class="mpc-longcopy">${rich(c.application)}</div></section>`);
-  if(c.composition)add(`<section class="mpc-section"><h2>Склад</h2><div class="mpc-longcopy">${rich(c.composition)}</div></section>`);
-  if(c.characteristics?.some(x=>x.label||x.value))add(`<section class="mpc-section"><h2>Характеристики</h2><div class="mpc-specs">${c.characteristics.filter(x=>x.label||x.value).map(x=>`<div class="mpc-spec"><span>${esc(x.label)}</span><b>${rich(x.value)}</b></div>`).join('')}</div></section>`);
+  const c=card.content||{},meta=sourceMeta(c);
+  const benefits=Array.isArray(c.benefits)?c.benefits.filter(x=>x&&(x.title||x.text)):[];
+  const chars=meta.characteristics.filter(x=>x&&(x.label||x.value));
+  const description=`${c.description?`<div class="mpc-longcopy">${rich(c.description)}</div>`:'<p class="mpc-empty-copy">Опис товару ще не заповнений.</p>'}${benefits.length?`<div class="mpc-subtitle-row">Ключові переваги</div><div class="mpc-three">${benefits.map(x=>`<div class="mpc-benefit"><b>${esc(x.title)}</b><p>${rich(x.text)}</p></div>`).join('')}</div>`:''}`;
+  const additional=`<div class="mpc-additional-grid">${c.how_it_works?`<div class="mpc-subsection"><h3>Як працює</h3><div class="mpc-longcopy">${rich(c.how_it_works)}</div></div>`:''}${c.composition?`<div class="mpc-subsection"><h3>Склад</h3><div class="mpc-longcopy">${rich(c.composition)}</div></div>`:''}${!c.how_it_works&&!c.composition?'<p class="mpc-empty-copy">Додаткову інформацію буде додано після перевірки джерел.</p>':''}</div>`;
+  const application=`<div class="mpc-recipe-head"><div><span>РЕКОМЕНДАЦІЇ ВИРОБНИКА</span><h3>Рецепт застосування</h3></div></div>${recipeHtml(meta.application)}${sourceHtml(c,meta)}`;
+  const characteristics=chars.length?`<div class="mpc-specs mpc-specs-compact">${chars.map(x=>`<div class="mpc-spec"><span>${esc(x.label)}</span><b>${rich(x.value)}</b></div>`).join('')}</div>`:'<p class="mpc-empty-copy">Характеристики ще не заповнені.</p>';
+  const tabs=[['description','Опис',description],['additional','Додатково',additional],['application','Застосування',application],['characteristics','Характеристики',characteristics]];
+  shell.appendChild(sec(`<section class="mpc-info"><div class="mpc-tabs" role="tablist">${tabs.map((x,i)=>`<button type="button" class="mpc-tab${i===0?' active':''}" role="tab" aria-selected="${i===0?'true':'false'}" data-mpc-tab="${x[0]}">${x[1]}</button>`).join('')}</div><div class="mpc-panels">${tabs.map((x,i)=>`<div class="mpc-panel${i===0?' active':''}" role="tabpanel" data-mpc-panel="${x[0]}">${x[2]}</div>`).join('')}</div></section>`));
+  $$('[data-mpc-tab]',shell).forEach(btn=>btn.onclick=()=>{
+    $$('[data-mpc-tab]',shell).forEach(x=>{const on=x===btn;x.classList.toggle('active',on);x.setAttribute('aria-selected',on?'true':'false')});
+    $$('[data-mpc-panel]',shell).forEach(x=>x.classList.toggle('active',x.dataset.mpcPanel===btn.dataset.mpcTab));
+  });
 }
 function bindV3(shell,card){
   const vs=[...(card.skus||[])].sort((a,b)=>qty(a)-qty(b)),list=$('.mpc-variant-list',shell),hero=$('#mpcImage',shell),cta=$('#mpcCtaHost .mpc-buy',shell);

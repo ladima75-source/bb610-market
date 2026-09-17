@@ -1,0 +1,65 @@
+name: Valagro runtime prices CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/valagro_prices_runtime_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/valagro_prices_runtime_ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: python -m py_compile backend/tools_apply_valagro_prices_20260916_runtime.py
+      - name: Approved source contract
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          path = Path('backend/tools_apply_valagro_prices_20260916_runtime.py')
+          spec = importlib.util.spec_from_file_location('valagro_prices_runtime', path)
+          m = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(m)
+
+          src = m.load_source()
+          assert len(src['rows']) == 195
+          assert len(src['target_rows']) == 49
+          assert set(x['slug'] for x in src['target_rows']) == set(m.ALLOWED_SLUGS)
+
+          by_key = {(x['slug'], x['pack_key']): x['price'] for x in src['target_rows']}
+          expected = {
+              ('master-13-40-13', '250g'): 175.0,
+              ('master-13-40-13', '1kg'): 408.0,
+              ('plantafol-20-20-20', '250g'): 188.0,
+              ('plantafol-20-20-20', '1kg'): 345.0,
+              ('plantafol-20-20-20', '5kg'): 1571.0,
+              ('megafol', '1l'): 768.0,
+              ('radifarm', '1l'): 1809.0,
+              ('viva', '20l'): 10104.0,
+          }
+          for key, price in expected.items():
+              assert by_key.get(key) == price, (key, by_key.get(key), price)
+
+          zero = [x for x in src['target_rows'] if x['price'] <= 0]
+          assert len(zero) == 1
+          assert zero[0]['slug'] == 'master-15-5-30'
+          assert zero[0]['pack_key'] == '20g'
+          print('VALAGRO PRICE SOURCE CONTRACT: PASS')
+          print('source_rows=195 target_rows=49 zero_rows=1')
+          PY

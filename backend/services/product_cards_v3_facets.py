@@ -74,11 +74,16 @@ def _mapping_by_product() -> dict[str, dict]:
 
 
 def catalog_overlays() -> list[dict]:
-    """Return content-only overlays used by the storefront catalog facets.
+    """Return content-only overlays used by storefront catalog facets.
 
     Packaging and availability intentionally stay out of this layer: they belong
     to SKU/commerce. V3 characteristics are the single source for curated
     cultures, purposes, application methods, NPK and active ingredient.
+
+    Presentation fields such as ``application`` and ``manufacturerUse`` are
+    intentionally NOT overwritten here. The catalog renderer can use the
+    explicit ``applicationMethods`` facet field while the product page keeps its
+    own concise legacy copy or its Product Card v3 recipe.
     """
     mappings = _mapping_by_product()
     out: list[dict] = []
@@ -106,25 +111,21 @@ def catalog_overlays() -> list[dict]:
 
         patch: dict[str, Any] = {'id': target, 'v3_facets': True}
         brand = str(content.get('brand') or '').strip()
-        application = str(content.get('application') or '').strip()
         if brand:
             patch['brand'] = brand
         if cultures:
             patch['cultures'] = cultures
         if purposes:
             patch['purposes'] = purposes
-        if npk:
+        if npk and npk != '—':
             patch['npk'] = npk
         if active:
             # Keep both spellings: catalog data is snake_case, the current
             # storefront facet reads camelCase.
             patch['active_ingredient'] = active
             patch['activeIngredient'] = active
-        if methods or application:
-            method_text = '; '.join(methods)
-            combined = '\n'.join(x for x in (method_text, application) if x)
-            patch['application'] = combined
-            patch['manufacturerUse'] = combined
-            patch['manufacturer_use'] = combined
+        if methods:
+            patch['applicationMethods'] = methods
+            patch['application_methods'] = methods
         out.append(patch)
     return out

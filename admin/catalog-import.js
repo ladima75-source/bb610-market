@@ -7,6 +7,7 @@
   const token=()=>($('#token')?.value||'').trim();
   const headers=(extra={})=>({Authorization:'Bearer '+token(),...extra});
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const show=v=>(v===null||v===undefined||v==='')?'—':v;
   function msg(e){alert(e?.detail||e?.message||String(e));}
   async function download(url,fallback){
     const r=await fetch(url,{headers:headers()});
@@ -21,7 +22,7 @@
   $('#connect').onclick=()=>{localStorage.setItem('bb610_admin_token',token());alert('Token збережено');};
   $('#token').value=localStorage.getItem('bb610_admin_token')||'';
 
-  // --- Product Card v3 ---
+  // --- Main Product Card v3 + commerce CSV/XLSX importer ---
   document.querySelectorAll('[data-pcv3-download]').forEach(b=>b.onclick=async()=>{
     try{await download(`${API}/api/v1/admin/product-card-import/${b.dataset.pcv3Download}`,b.dataset.pcv3Download);}catch(e){msg(e);}
   });
@@ -35,25 +36,41 @@
       const x=await r.json();if(!r.ok)throw x;
       pcv3PreviewToken=x.token;
       $('#pcv3PreviewBox').hidden=false;
-      const labels={products:'Товарів',create_products:'Нових товарів',update_products:'Оновлення товарів',sku_rows:'SKU рядків',create_skus:'Нових SKU',update_skus:'Оновлення SKU'};
+      const labels={
+        products:'Товарів',create_products:'Нових карток',update_products:'Оновлення карток',
+        sku_rows:'SKU рядків',create_skus:'Нових V3 SKU',update_skus:'Оновлення V3 SKU',
+        commerce_rows:'Рядків з commerce',create_commerce_products:'Нових commerce товарів',
+        create_commerce_skus:'Нових commerce SKU',binding_changes:'Змін binding'
+      };
       $('#pcv3Summary').innerHTML=Object.entries(x.summary||{}).map(([k,v])=>`<div class="card"><b>${esc(labels[k]||k)}</b><br>${esc(v)}</div>`).join('')+`<div class="card"><b>Рядків файлу</b><br>${esc(x.rows)}</div>`;
       $('#pcv3Errors').innerHTML=(x.errors||[]).length
         ?x.errors.map(e=>`<div class="err">Рядок ${esc(e.row)}: <b>${esc(e.field)}</b> — ${esc(e.message)}</div>`).join('')
-        :'<p class="ok">✓ Критичних помилок немає. Можна застосовувати.</p>';
-      $('#pcv3Changes').innerHTML=(x.changes||[]).map(c=>`<tr><td>${esc(c.row)}</td><td>${esc(c.title)}<br><small>${esc(c.product_id)}</small></td><td>${esc(c.slug)}</td><td>${esc(c.product_action)}</td><td>${esc(c.sku_code||c.sku_id)}<br><small>${esc(c.sku_id)}</small></td><td>${esc(c.package)}</td><td>${esc(c.sku_action)}</td></tr>`).join('');
+        :'<p class="ok">✓ Критичних помилок немає. Apply дозволено.</p>';
+      $('#pcv3Changes').innerHTML=(x.changes||[]).map(c=>`<tr>
+        <td>${esc(c.row)}</td>
+        <td>${esc(c.title)}<br><small>${esc(c.product_id)} · ${esc(c.product_action)}</small></td>
+        <td>${esc(c.sku_code||c.sku_id)}<br><small>${esc(c.sku_id)} · ${esc(c.sku_action)}</small></td>
+        <td>${esc(show(c.commerce_sku_key))}<br><small>${esc(show(c.commerce_product_key))}</small></td>
+        <td>${esc(show(c.package))}</td>
+        <td>${esc(show(c.price_before))} → <b>${esc(show(c.price_after))}</b></td>
+        <td>${esc(show(c.sale_price_before))} → <b>${esc(show(c.sale_price_after))}</b></td>
+        <td>${esc(show(c.availability_before))} → <b>${esc(show(c.availability_after))}</b></td>
+        <td>${esc(show(c.stock_before))} → <b>${esc(show(c.stock_after))}</b></td>
+        <td>${esc(c.commerce_action)}</td>
+      </tr>`).join('');
       $('#pcv3Apply').disabled=!(x.valid===true);
     }catch(e){msg(e);}
   };
 
   $('#pcv3Apply').onclick=async()=>{
     if(!pcv3PreviewToken)return alert('Спочатку зробіть Preview');
-    if(!confirm('Застосувати Product Card v3? Перед змінами буде створено backup. Ціни та commerce не змінюються.'))return;
+    if(!confirm('Застосувати імпорт карток, SKU та заповнених commerce-полів? Перед змінами буде створено спільний backup. Publication не змінюється.'))return;
     try{
       const r=await fetch(`${API}/api/v1/admin/product-card-import/apply`,{
         method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({token:pcv3PreviewToken})
       });
       const x=await r.json();if(!r.ok)throw x;
-      alert(`Готово.\nТоварів: ${x.applied_products}\nНових товарів: ${x.create_products}\nОновлено товарів: ${x.update_products}\nНових SKU: ${x.create_skus}\nОновлено SKU: ${x.update_skus}\nCommerce unchanged: ${x.commerce_unchanged?'YES':'NO'}\nBackup: ${x.backup}`);
+      alert(`Готово та перевірено.\nКарток: ${x.applied_products}\nНових карток: ${x.create_products}\nОновлено карток: ${x.update_products}\nНових V3 SKU: ${x.create_skus}\nОновлено V3 SKU: ${x.update_skus}\nCommerce рядків: ${x.commerce_rows}\nНових commerce SKU: ${x.create_commerce_skus}\nBinding змін: ${x.binding_changes}\nVerify: ${x.verified?'PASS':'FAIL'}\nBackup: ${x.backup}`);
       pcv3PreviewToken=null;
       await loadPcv3History();
     }catch(e){msg(e);}
@@ -63,12 +80,12 @@
     try{
       const r=await fetch(`${API}/api/v1/admin/product-card-import/history`,{headers:headers()});
       const x=await r.json();if(!r.ok)throw x;
-      $('#pcv3History').innerHTML=(x.items||[]).map(i=>`<div><span>${new Date((i.time||0)*1000).toLocaleString()}</span><b>${esc(i.action||'product_card_v3_import')}</b><span>${esc(i.filename||'')}</span><code>${esc(i.backup||i.restored||'')}</code>${i.backup?`<button data-pcv3-rb="${esc(i.backup)}">Rollback</button>`:''}</div>`).join('')||'<p class="muted">Історія поки порожня.</p>';
+      $('#pcv3History').innerHTML=(x.items||[]).map(i=>`<div><span>${new Date((i.time||0)*1000).toLocaleString()}</span><b>${esc(i.action||'catalog_import')}</b><span>${esc(i.filename||'')}</span><code>${esc(i.backup||i.restored||'')}</code>${i.backup?`<button data-pcv3-rb="${esc(i.backup)}">Rollback</button>`:''}</div>`).join('')||'<p class="muted">Історія поки порожня.</p>';
       document.querySelectorAll('[data-pcv3-rb]').forEach(b=>b.onclick=()=>doPcv3Rollback(b.dataset.pcv3Rb));
     }catch(e){msg(e);}
   }
   async function doPcv3Rollback(id){
-    if(!confirm(`Відкотити Product Card v3 до backup ${id}? Поточний стан також буде збережено окремим safety backup.`))return;
+    if(!confirm(`Відкотити картки та commerce до backup ${id}? Поточний стан спочатку буде збережено як safety backup.`))return;
     try{
       const r=await fetch(`${API}/api/v1/admin/product-card-import/rollback`,{
         method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({backup_id:id})

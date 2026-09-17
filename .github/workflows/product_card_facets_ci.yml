@@ -108,19 +108,28 @@ jobs:
               assert 'manufacturer_use' not in x
               assert 'LONG RECIPE' not in x['application']
           PY
-      - name: Brexil Zn content contract
+      - name: Brexil Zn master card contract
         run: |
           python - <<'PY'
           import runpy
           ns = runpy.run_path('backend/update_brexil_zn_application.py')
           labels = {x['label']: x['value'] for x in ns['MANAGED_CHARACTERISTICS']}
+          master = ns['MASTER_FIELDS']
+          assert len(master['description']) > 300
+          assert len(master['benefits']) == 5
+          assert all(x.get('title') and x.get('text') for x in master['benefits'])
+          assert len(master['how_it_works']) > 200
+          assert len(master['application']) > 1000
+          assert 'Цинк (Zn): 10%' in master['composition']
+          assert 'LSA' in master['composition']
+          assert 'Na, Cl та важких металів' in master['composition']
           assert labels['Культури'] == 'Кукурудза; Картопля; Садові культури'
           assert labels['Спосіб застосування'] == 'Позакореневе обприскування; листкове живлення'
-          assert labels['NPK'] == '—'
+          assert 'NPK' not in labels
           assert 'Цинк (Zn) 10%' in labels['Діюча речовина']
-          assert 'Цинк (Zn): 10%' in ns['COMPOSITION']
-          assert 'LSA' in ns['COMPOSITION']
+          assert labels['Реєстрант'] == 'ТОВ «Агрісол»'
           assert ns['SOURCE_URL'].startswith('https://www.syngenta.ua/')
+          assert 'BB610 Market' in master['seo']['title']
           PY
           grep -q 'product-card-v3-enhancements.js?v=20g' products/brexil-zn/index.html
       - name: Product Card render-race guard

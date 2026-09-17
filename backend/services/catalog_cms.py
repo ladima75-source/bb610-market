@@ -85,6 +85,21 @@ def public_content():
             if not c.get('cms_published'): continue
             merged={k:v for k,v in c.items() if not k.startswith('cms_')}; merged['id']=pid; merged['runtime_dynamic']=True; merged['runtime_hidden']=False; merged['selected_by_bb610']=True; merged['legacy_url']='product.html?id='+pid; merged['canonical_product_url']='product.html?id='+pid
         products.append(merged)
+    # Product Card v3 owns curated descriptive/filter attributes. Packaging and
+    # availability remain SKU/commerce data and are intentionally not duplicated.
+    try:
+        from .product_cards_v3_facets import catalog_overlays
+        positions={str(p.get('id') or ''):i for i,p in enumerate(products)}
+        for patch in catalog_overlays():
+            pid=str(patch.get('id') or '')
+            if not pid: continue
+            if pid in positions:
+                products[positions[pid]].update(patch)
+            else:
+                positions[pid]=len(products); products.append(patch)
+    except Exception:
+        # Catalog must stay available even if one content card is malformed.
+        pass
     return {'products':products,'skus':_dynamic_skus()}
 
 def admin_list_products():

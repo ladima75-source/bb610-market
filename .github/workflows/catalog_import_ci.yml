@@ -10,6 +10,8 @@ on:
       - 'backend/catalog_import_api.py'
       - 'admin/catalog-import.js'
       - 'admin/catalog-import.html'
+      - 'js/product.js'
+      - 'assets/js/product-card-v2.js'
   workflow_dispatch:
 
 permissions:
@@ -34,6 +36,8 @@ jobs:
         run: |
           python -m py_compile backend/services/product_cards_v3_catalog_import.py backend/catalog_import_api.py
           node --check admin/catalog-import.js
+          node --check js/product.js
+          node --check assets/js/product-card-v2.js
       - name: Preview Apply Verify Rollback smoke test
         shell: bash
         run: |
@@ -70,6 +74,15 @@ jobs:
           prices = sorted(float(r['price']) for r in example)
           assert prices == [100.0, 300.0, 900.0]
           assert all(r.get('commerce_sku_key') for r in example)
+          # Rich Product Card v3 content must remain exportable for CSV/XLSX round-trips.
+          required_content_columns = {
+              'description', 'benefits_json', 'how_it_works', 'application',
+              'composition', 'characteristics_json', 'seo_title', 'seo_description'
+          }
+          assert required_content_columns.issubset(set(imp.HEADERS))
+          assert example[0].get('description') == 'Повний опис товару'
+          assert json.loads(example[0].get('benefits_json') or '[]')
+          assert json.loads(example[0].get('characteristics_json') or '[]')
 
           # 2) Critical regression: existing card/SKU, price-only CSV row.
           # No title/package fuzzy matching is allowed or needed: exact product_id + sku_id

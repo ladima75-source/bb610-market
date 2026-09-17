@@ -131,7 +131,7 @@ jobs:
           assert ns['SOURCE_URL'].startswith('https://www.syngenta.ua/')
           assert 'BB610 Market' in master['seo']['title']
           PY
-          grep -q 'product-card-v3-enhancements.js?v=20g' products/brexil-zn/index.html
+          grep -q 'product-card-v3-enhancements.js?v=20h' products/brexil-zn/index.html
       - name: Product Card render-race guard
         run: |
           grep -q 'BB610_DATA_SOURCE?.refresh' assets/js/product-card-v2.js

@@ -3,6 +3,7 @@ const API='https://api.market.bb610.com.ua';
 const SITE='https://market.bb610.com.ua/';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rich=s=>esc(s).replace(/\r?\n/g,'<br>');
 const abs=p=>{p=String(p||'').trim();if(!p)return'';if(/^https?:\/\//i.test(p))return p;if(/^\/?media\/products\//i.test(p))return API+'/'+p.replace(/^\//,'');return SITE+p.replace(/^\//,'')};
 const slug=()=>window.BB610_PRODUCT_ID||((location.pathname.match(/\/products\/([^\/]+)\/?/i)||[])[1]||'');
 async function get(url,opt=false){const r=await fetch(url,{cache:'no-store'});if(opt&&r.status===404)return null;if(!r.ok)throw new Error(url+' -> HTTP '+r.status);return r.json()}
@@ -27,15 +28,28 @@ function hideLegacy(main=document){
   exact.forEach(sel=>$$(sel,main).forEach(el=>{if(!el.closest('.mpc-shell'))el.style.display='none'}));
   $$('section,div',main).forEach(el=>{if(el.closest('.mpc-shell'))return;const t=(el.querySelector(':scope > h2,:scope > h3')?.textContent||'').trim().toUpperCase();if(['ФАСОВКИ / SKU BB610','ВИРОБНИК РЕКОМЕНДУЄ','СКЛАД','ПОХОДЖЕННЯ'].includes(t))el.style.display='none'});
 }
+function applicationRows(rows){
+  if(!Array.isArray(rows)||!rows.length)return'';
+  const labels={crop:'Культура',culture:'Культура',stage:'Фаза',rate:'Норма',dose:'Норма',method:'Спосіб',water:'Вода',interval:'Інтервал',purpose:'Призначення'};
+  return `<div class="mpc-specs">${rows.map(row=>{
+    if(row===null||row===undefined)return'';
+    if(typeof row!=='object')return `<div class="mpc-spec"><span>Рекомендація</span><b>${rich(row)}</b></div>`;
+    const entries=Object.entries(row).filter(([,v])=>v!==null&&v!==undefined&&v!=='');
+    const first=entries[0]||['Рекомендація',''];
+    const label=labels[first[0]]||String(first[0]).replace(/_/g,' ');
+    const detail=entries.map(([k,v])=>`${esc(labels[k]||String(k).replace(/_/g,' '))}: ${rich(v)}`).join(' · ');
+    return `<div class="mpc-spec"><span>${esc(label)}</span><b>${detail}</b></div>`;
+  }).join('')}</div>`;
+}
 
 function renderV3Content(shell,card){
   const c=card.content||{},add=h=>shell.appendChild(sec(h));
-  if(c.description)add(`<section class="mpc-section"><h2>Про ${esc(c.title)}</h2><div class="mpc-longcopy">${esc(c.description)}</div></section>`);
-  if(c.benefits?.length)add(`<section class="mpc-section"><h2>Переваги</h2><div class="mpc-three">${c.benefits.map(x=>`<div class="mpc-benefit"><b>${esc(x.title)}</b><p>${esc(x.text)}</p></div>`).join('')}</div></section>`);
-  if(c.how_it_works)add(`<section class="mpc-section"><h2>Як працює</h2><div class="mpc-tech"><p>${esc(c.how_it_works)}</p></div></section>`);
-  if(c.application)add(`<section class="mpc-section"><h2>Застосування</h2><div class="mpc-longcopy">${esc(c.application)}</div></section>`);
-  if(c.composition)add(`<section class="mpc-section"><h2>Склад</h2><div class="mpc-longcopy">${esc(c.composition)}</div></section>`);
-  if(c.characteristics?.some(x=>x.label||x.value))add(`<section class="mpc-section"><h2>Характеристики</h2><div class="mpc-specs">${c.characteristics.filter(x=>x.label||x.value).map(x=>`<div class="mpc-spec"><span>${esc(x.label)}</span><b>${esc(x.value)}</b></div>`).join('')}</div></section>`);
+  if(c.description)add(`<section class="mpc-section"><h2>Про ${esc(c.title)}</h2><div class="mpc-longcopy">${rich(c.description)}</div></section>`);
+  if(c.benefits?.length)add(`<section class="mpc-section"><h2>Переваги</h2><div class="mpc-three">${c.benefits.map(x=>`<div class="mpc-benefit"><b>${esc(x.title)}</b><p>${rich(x.text)}</p></div>`).join('')}</div></section>`);
+  if(c.how_it_works)add(`<section class="mpc-section"><h2>Як працює</h2><div class="mpc-tech"><p>${rich(c.how_it_works)}</p></div></section>`);
+  if(c.application)add(`<section class="mpc-section"><h2>Застосування</h2><div class="mpc-longcopy">${rich(c.application)}</div></section>`);
+  if(c.composition)add(`<section class="mpc-section"><h2>Склад</h2><div class="mpc-longcopy">${rich(c.composition)}</div></section>`);
+  if(c.characteristics?.some(x=>x.label||x.value))add(`<section class="mpc-section"><h2>Характеристики</h2><div class="mpc-specs">${c.characteristics.filter(x=>x.label||x.value).map(x=>`<div class="mpc-spec"><span>${esc(x.label)}</span><b>${rich(x.value)}</b></div>`).join('')}</div></section>`);
 }
 function bindV3(shell,card){
   const vs=[...(card.skus||[])].sort((a,b)=>qty(a)-qty(b)),list=$('.mpc-variant-list',shell),hero=$('#mpcImage',shell),cta=$('#mpcCtaHost .mpc-buy',shell);
@@ -66,13 +80,13 @@ function ensureShellV2(card){return ensureShellBase(card.name,card.eyebrow,card.
 function mergeV2(card,commerce){const cm=new Map((commerce?.variants||[]).map(x=>[x.sku,x]));return (card.variants||[]).map(v=>({...v,...cm.get(v.sku),image:v.image||cm.get(v.sku)?.image})).sort((a,b)=>qty(a)-qty(b))}
 function renderV2Content(shell,d){
   const add=h=>shell.appendChild(sec(h));
-  if(d.full_description)add(`<section class="mpc-section"><h2>Про ${esc(d.name)}</h2><div class="mpc-longcopy">${esc(d.full_description)}</div></section>`);
-  if(d.why?.length)add(`<section class="mpc-section"><h2>Чому ${esc(d.name)}</h2><div class="mpc-three">${d.why.map(x=>`<div class="mpc-benefit"><b>${esc(x.title)}</b><p>${esc(x.text)}</p></div>`).join('')}</div></section>`);
-  if(d.how_it_works?.text)add(`<section class="mpc-section"><h2>Як працює</h2><div class="mpc-tech">${d.how_it_works.badge?`<div class="mpc-badge">${esc(d.how_it_works.badge)}</div>`:''}<p>${esc(d.how_it_works.text)}</p></div></section>`);
-  const app=d.application||{};if(app.intro||app.rows?.length)add(`<section class="mpc-section"><h2>Застосування</h2>${app.intro?`<p>${esc(app.intro)}</p>`:''}${app.note?`<p class="mpc-market-note">${esc(app.note)}</p>`:''}</section>`);
-  if(d.specs?.some(x=>x.label&&x.value))add(`<section class="mpc-section"><h2>Характеристики</h2><div class="mpc-specs">${d.specs.filter(x=>x.label&&x.value).map(x=>`<div class="mpc-spec"><span>${esc(x.label)}</span><b>${esc(x.value)}</b></div>`).join('')}</div></section>`);
+  if(d.full_description)add(`<section class="mpc-section"><h2>Про ${esc(d.name)}</h2><div class="mpc-longcopy">${rich(d.full_description)}</div></section>`);
+  if(d.why?.length)add(`<section class="mpc-section"><h2>Чому ${esc(d.name)}</h2><div class="mpc-three">${d.why.map(x=>`<div class="mpc-benefit"><b>${esc(x.title)}</b><p>${rich(x.text)}</p></div>`).join('')}</div></section>`);
+  if(d.how_it_works?.text)add(`<section class="mpc-section"><h2>Як працює</h2><div class="mpc-tech">${d.how_it_works.badge?`<div class="mpc-badge">${esc(d.how_it_works.badge)}</div>`:''}<p>${rich(d.how_it_works.text)}</p></div></section>`);
+  const app=d.application||{};if(app.intro||app.rows?.length||app.note)add(`<section class="mpc-section"><h2>Застосування</h2>${app.intro?`<p>${rich(app.intro)}</p>`:''}${applicationRows(app.rows)}${app.note?`<p class="mpc-market-note">${rich(app.note)}</p>`:''}</section>`);
+  if(d.specs?.some(x=>x.label&&x.value))add(`<section class="mpc-section"><h2>Характеристики</h2><div class="mpc-specs">${d.specs.filter(x=>x.label&&x.value).map(x=>`<div class="mpc-spec"><span>${esc(x.label)}</span><b>${rich(x.value)}</b></div>`).join('')}</div></section>`);
   const o=d.origin||{},src=d.sources||{};const rows=[['Бренд',o.brand],['Компанія',o.company],['Виробник',o.manufacturer],['Країна',o.country],['Дата перевірки',src.verified_date]].filter(x=>x[1]);
-  if(rows.length)add(`<section class="mpc-section"><h2>Походження</h2><div class="mpc-specs">${rows.map(x=>`<div class="mpc-spec"><span>${esc(x[0])}</span><b>${esc(x[1])}</b></div>`).join('')}</div></section>`);
+  if(rows.length)add(`<section class="mpc-section"><h2>Походження</h2><div class="mpc-specs">${rows.map(x=>`<div class="mpc-spec"><span>${esc(x[0])}</span><b>${rich(x[1])}</b></div>`).join('')}</div></section>`);
   const docs=(d.documents||[]).filter(x=>x.title&&x.url);if(docs.length)add(`<section class="mpc-section"><h2>Офіційні документи</h2><div class="mpc-docs">${docs.map(x=>`<a class="mpc-doc" target="_blank" rel="noopener" href="${esc(x.url)}"><span>${esc(x.title)}</span><span>↗</span></a>`).join('')}</div></section>`);
 }
 function bindV2(shell,d,c){

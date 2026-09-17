@@ -296,12 +296,148 @@
 .mpc-shell .mpc-doc,
 .mpc-shell-adapted .mpc-doc{display:flex;justify-content:space-between;color:#fff;text-decoration:none;border:1px solid #3d4b50;border-radius:7px;padding:11px 13px;background:#12191c}
 
+/* Product Card v3 — compact Organic-Planet-like information architecture */
+.mpc-shell .mpc-info{
+  grid-column:1/-1;
+  border:1px solid #334047;
+  border-radius:12px;
+  background:#171e21;
+  overflow:hidden;
+  min-width:0;
+}
+.mpc-shell .mpc-tabs{
+  display:flex;
+  gap:0;
+  overflow-x:auto;
+  border-bottom:1px solid #334047;
+  background:#111719;
+  scrollbar-width:thin;
+}
+.mpc-shell .mpc-tab{
+  appearance:none;
+  border:0;
+  border-right:1px solid #27343a;
+  background:transparent;
+  color:#8fa0a5;
+  padding:16px 22px;
+  min-width:max-content;
+  font-size:13px;
+  font-weight:900;
+  cursor:pointer;
+  position:relative;
+}
+.mpc-shell .mpc-tab:hover{color:#d9e0e2;background:#151d20}
+.mpc-shell .mpc-tab.active{color:#fff;background:#182125}
+.mpc-shell .mpc-tab.active:after{
+  content:'';
+  position:absolute;
+  height:3px;
+  left:18px;
+  right:18px;
+  bottom:-1px;
+  border-radius:3px 3px 0 0;
+  background:#e9a92d;
+}
+.mpc-shell .mpc-panels{min-height:0}
+.mpc-shell .mpc-panel{display:none;padding:24px 26px 26px}
+.mpc-shell .mpc-panel.active{display:block}
+.mpc-shell .mpc-empty-copy{margin:0;color:#7f9197;font-size:14px;line-height:1.6}
+.mpc-shell .mpc-subtitle-row{
+  margin:22px 0 11px;
+  padding-top:18px;
+  border-top:1px solid #2e3b40;
+  color:#9aa9ae;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.mpc-shell .mpc-additional-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:28px;
+}
+.mpc-shell .mpc-subsection{min-width:0}
+.mpc-shell .mpc-subsection + .mpc-subsection{border-left:1px solid #314047;padding-left:28px}
+.mpc-shell .mpc-subsection h3,
+.mpc-shell .mpc-recipe-head h3{
+  margin:0 0 12px;
+  font-size:20px;
+  line-height:1.2;
+}
+.mpc-shell .mpc-recipe-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:14px}
+.mpc-shell .mpc-recipe-head span{
+  display:block;
+  color:#e9a92d;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.09em;
+  margin-bottom:5px;
+}
+.mpc-shell .mpc-recipe-list{display:grid;gap:8px}
+.mpc-shell .mpc-recipe-step{
+  display:grid;
+  grid-template-columns:28px minmax(0,1fr);
+  gap:11px;
+  align-items:start;
+  padding:10px 0;
+  border-bottom:1px solid #2f3c41;
+  color:#d9e0e2;
+  line-height:1.6;
+}
+.mpc-shell .mpc-recipe-step:last-child{border-bottom:0}
+.mpc-shell .mpc-recipe-step>span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:#25200f;
+  border:1px solid #7e6529;
+  color:#ffc14a;
+  font-size:11px;
+  font-weight:900;
+}
+.mpc-shell .mpc-source{
+  margin-top:20px;
+  padding:13px 14px;
+  border:1px solid #35454b;
+  border-radius:8px;
+  background:#11181b;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  color:#aebbc0;
+  font-size:12px;
+  line-height:1.55;
+}
+.mpc-shell .mpc-source strong{color:#e1e7e9}
+.mpc-shell .mpc-source a{
+  flex:0 0 auto;
+  color:#ffc14a;
+  text-decoration:none;
+  border:1px solid #6e5927;
+  border-radius:7px;
+  padding:9px 11px;
+  font-weight:900;
+}
+.mpc-shell .mpc-source a:hover{border-color:#e9a92d;background:#2a200b}
+.mpc-shell .mpc-source-muted{color:#819197}
+.mpc-shell .mpc-info .mpc-three{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.mpc-shell .mpc-info .mpc-benefit{padding:13px 14px}
+.mpc-shell .mpc-info .mpc-specs-compact{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:30px}
+.mpc-shell .mpc-info .mpc-spec{grid-template-columns:minmax(140px,.75fr) minmax(0,1.25fr)}
+
 @media(max-width:980px){
   .mpc-shell,.mpc-shell-adapted{grid-template-columns:1fr;width:min(100% - 24px,820px)}
   .mpc-shell .mpc-hero,.mpc-shell-adapted .mpc-hero{grid-template-columns:1fr;gap:22px;padding:20px}
   .mpc-shell .mpc-image,.mpc-shell-adapted .mpc-image{min-height:360px;padding:18px}
   .mpc-shell .mpc-image img,.mpc-shell-adapted .mpc-image img{max-height:324px}
   .mpc-shell .mpc-section-application,.mpc-shell .mpc-section-composition,.mpc-shell .mpc-section-characteristics,.mpc-shell-adapted .mpc-section-application,.mpc-shell-adapted .mpc-section-composition,.mpc-shell-adapted .mpc-section-characteristics{grid-column:1/-1}
+  .mpc-shell .mpc-info .mpc-specs-compact{grid-template-columns:1fr}
+  .mpc-shell .mpc-subsection + .mpc-subsection{border-left:0;padding-left:0;border-top:1px solid #314047;padding-top:22px}
 }
 @media(max-width:680px){
   .mpc-shell,.mpc-shell-adapted{width:min(100% - 16px,680px);gap:12px}
@@ -314,4 +450,10 @@
   .mpc-shell .mpc-three,.mpc-shell-adapted .mpc-three,.mpc-shell .mpc-specs,.mpc-shell-adapted .mpc-specs{grid-template-columns:1fr}
   .mpc-shell .mpc-section,.mpc-shell-adapted .mpc-section{padding:18px}
   .mpc-shell .mpc-spec,.mpc-shell-adapted .mpc-spec{grid-template-columns:1fr;gap:5px}
+  .mpc-shell .mpc-panel{padding:19px 16px 21px}
+  .mpc-shell .mpc-tab{padding:14px 16px}
+  .mpc-shell .mpc-additional-grid{grid-template-columns:1fr;gap:20px}
+  .mpc-shell .mpc-source{align-items:stretch;flex-direction:column;gap:11px}
+  .mpc-shell .mpc-source a{text-align:center}
+  .mpc-shell .mpc-info .mpc-spec{grid-template-columns:1fr;gap:4px}
 }

@@ -2,7 +2,7 @@
 const API='https://api.market.bb610.com.ua';
 const SITE='https://market.bb610.com.ua/';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
 const rich=s=>esc(s).replace(/\r?\n/g,'<br>');
 const abs=p=>{p=String(p||'').trim();if(!p)return'';if(/^https?:\/\//i.test(p))return p;if(/^\/?media\/products\//i.test(p))return API+'/'+p.replace(/^\//,'');return SITE+p.replace(/^\//,'')};
 const slug=()=>window.BB610_PRODUCT_ID||((location.pathname.match(/\/products\/([^\/]+)\/?/i)||[])[1]||'');
@@ -91,8 +91,6 @@ function parseComposition(text){
 }
 function compositionData(c,chars,legacy){
   const rows=[];
-  // V3 content wins, but the verified legacy catalog remains a safe fallback for
-  // detailed chemistry until the same rows are explicitly migrated into V3.
   rows.push(...parseComposition(c.composition));
   if(legacy){
     rows.push(...parseComposition(legacy.composition));
@@ -152,7 +150,6 @@ async function renderV3(card){
   document.documentElement.dataset.bb610ProductCard='3';
   console.info('BB610 PRODUCT CARD v3 rendered',card.slug,card.commerce_binding||{});
 }
-
 function ensureShellV2(card){return ensureShellBase(card.name,card.eyebrow,card.subtitle,card.lead)}
 function mergeV2(card,commerce){const cm=new Map((commerce?.variants||[]).map(x=>[x.sku,x]));return (card.variants||[]).map(v=>({...v,...cm.get(v.sku),image:v.image||cm.get(v.sku)?.image})).sort((a,b)=>qty(a)-qty(b))}
 function renderV2Content(shell,d){
@@ -172,10 +169,10 @@ function bindV2(shell,d,c){
   list.innerHTML='';vs.forEach((v,i)=>{const b=document.createElement('button');b.type='button';b.className='mpc-variant'+(i===0?' active':'');b.textContent=v.label||v.sku;b.onclick=()=>{$$('.mpc-variant',list).forEach(x=>x.classList.remove('active'));b.classList.add('active');apply(v)};list.appendChild(b)});if(vs[0])apply(vs[0]);
 }
 async function renderV2(card,id){const commerce=await get(API+'/api/v1/storefront/product-commerce/'+encodeURIComponent(id),true);const shell=ensureShellV2(card);bindV2(shell,card,commerce||{});renderV2Content(shell,card);hideLegacy(document);document.documentElement.dataset.bb610ProductCard='20f-final';console.info('BB610 Stage20F FINAL rendered',id)}
-
 async function run(){
   const id=slug();if(!id)return;
   try{
+    if(window.BB610_DATA_SOURCE?.refresh)await window.BB610_DATA_SOURCE.refresh();
     const v3=await get(API+'/api/v1/storefront/product-card-v3/'+encodeURIComponent(id),true);
     if(v3){await renderV3(v3);return}
     const card=await get(API+'/api/v1/storefront/product-card-v2/'+encodeURIComponent(id),true);if(!card)return;

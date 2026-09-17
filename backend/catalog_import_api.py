@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from .services.catalog_import import (
     preview, apply, rollback, history, provenance, export_csv, export_xlsx, template_csv
 )
-from .services import product_cards_v3_catalog_import as pcv3_import
+from .services import product_cards_v3_catalog_import_facets as pcv3_import
 
 router = APIRouter()
 

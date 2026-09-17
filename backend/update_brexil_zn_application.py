@@ -18,11 +18,29 @@ APPLICATION = '''Брексіл Zn застосовують позакорене
 
 Рекомендована витрата робочого розчину: 100–300 л/га для польових культур і 800–1200 л/га для садових культур.
 
-Обприскування доцільно проводити профілактично, до появи виражених симптомів дефіциту. Не обробляти вологу листову поверхню та не проводити обробку, якщо протягом 1,5–2 годин очікуються опади. Працювати у ранкові або вечірні години в безвітряну погоду. Не застосовувати за температури повітря вище +25 °C та за відносної вологості повітря нижче 40 %. Робочий розчин використати протягом 24 годин після приготування.
+Обприскування доцільно проводити профілактично, до появи виражених симптомів дефіциту. Не обробляти вологу листову поверхню та не проводити обробку, якщо протягом 1,5–2 годин очікуються опади. Працювати у ранкові або вечірні години в безвітряну погоду. Оптимальна температура застосування — від +12 до +25 °C. Не застосовувати за температури повітря вище +25 °C та за відносної вологості повітря нижче 40 %. Робочий розчин використати протягом 24 годин після приготування.
 
 Препарат можна змішувати з іншими загальновживаними засобами захисту рослин на відповідній культурі, але перед баковим змішуванням у кожному конкретному випадку потрібно провести тест на сумісність.
 
 ''' + SOURCE_URL
+
+COMPOSITION = '''Цинк (Zn): 10%
+Комплексоутворювач: LSA (лігносульфонат амонію)'''
+
+MANAGED_CHARACTERISTICS = [
+    {'label': 'Культури', 'value': 'Кукурудза; Картопля; Садові культури'},
+    {'label': 'Призначення', 'value': 'Попередження й лікування дефіциту цинку; покращення якості продукції'},
+    {'label': 'Спосіб застосування', 'value': 'Позакореневе обприскування; листкове живлення'},
+    {'label': 'NPK', 'value': '—'},
+    {'label': 'Діюча речовина', 'value': 'Цинк (Zn) 10% у комплексі з LSA'},
+    {'label': 'Хімічна група', 'value': 'Мікродобрива'},
+    {'label': 'Препаративна форма', 'value': 'Водорозчинні гранули (ВГ)'},
+    {'label': 'Клас токсичності', 'value': 'IV (класифікація ВООЗ)'},
+    {'label': 'Реєстраційний номер', 'value': '13674, серія А 08553'},
+    {'label': 'Упаковка виробника', 'value': '5 кг'},
+    {'label': 'Температура застосування', 'value': '+12…25 °C'},
+]
+MANAGED_LABELS = {row['label'].casefold() for row in MANAGED_CHARACTERISTICS}
 
 
 def _root() -> Path:
@@ -74,16 +92,33 @@ def _save_atomic(path: Path, card: dict) -> None:
     tmp.replace(path)
 
 
-def _without_application(card: dict) -> dict:
+def _merge_characteristics(existing) -> list[dict]:
+    kept: list[dict] = []
+    for row in existing if isinstance(existing, list) else []:
+        if not isinstance(row, dict):
+            continue
+        label = str(row.get('label') or '').strip()
+        if label.casefold() in MANAGED_LABELS:
+            continue
+        kept.append(deepcopy(row))
+    return kept + deepcopy(MANAGED_CHARACTERISTICS)
+
+
+def _without_managed_content(card: dict) -> dict:
     out = deepcopy(card)
     content = out.get('content')
     if isinstance(content, dict):
         content['application'] = '__IGNORED__'
+        content['composition'] = '__IGNORED__'
+        content['characteristics'] = [
+            row for row in (content.get('characteristics') or [])
+            if isinstance(row, dict) and str(row.get('label') or '').strip().casefold() not in MANAGED_LABELS
+        ]
     return out
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description='Safely update only Brexil Zn application copy in Product Card v3.')
+    parser = argparse.ArgumentParser(description='Safely enrich Brexil Zn Product Card v3 content and filter facets.')
     parser.add_argument('--apply', action='store_true', help='Write the change. Without this flag only preview is printed.')
     args = parser.parse_args()
 
@@ -94,20 +129,25 @@ def main() -> int:
 
     updated = deepcopy(current)
     updated['content']['application'] = APPLICATION
+    updated['content']['composition'] = COMPOSITION
+    updated['content']['characteristics'] = _merge_characteristics(content.get('characteristics'))
 
-    if _without_application(current) != _without_application(updated):
-        raise SystemExit('SAFETY CHECK FAILED: fields other than content.application would change')
+    if _without_managed_content(current) != _without_managed_content(updated):
+        raise SystemExit('SAFETY CHECK FAILED: fields outside the managed Brexil content set would change')
 
     print(json.dumps({
         'product_id': updated.get('product_id'),
         'slug': updated.get('slug'),
         'title': (updated.get('content') or {}).get('title'),
         'file': str(path),
-        'field': 'content.application',
+        'fields': ['content.application', 'content.composition', 'content.characteristics(filter + technical)'],
         'source': SOURCE_URL,
         'apply': bool(args.apply),
-        'characters_before': len(str(content.get('application') or '')),
-        'characters_after': len(APPLICATION),
+        'application_characters_before': len(str(content.get('application') or '')),
+        'application_characters_after': len(APPLICATION),
+        'composition_before': content.get('composition'),
+        'composition_after': COMPOSITION,
+        'managed_characteristics': MANAGED_CHARACTERISTICS,
     }, ensure_ascii=False, indent=2))
 
     if not args.apply:
@@ -118,10 +158,17 @@ def main() -> int:
     try:
         _save_atomic(path, updated)
         verify = _load(path)
-        if (verify.get('content') or {}).get('application') != APPLICATION:
+        vcontent = verify.get('content') or {}
+        if vcontent.get('application') != APPLICATION:
             raise RuntimeError('application text mismatch after write')
-        if _without_application(verify) != _without_application(current):
-            raise RuntimeError('a field other than content.application changed')
+        if vcontent.get('composition') != COMPOSITION:
+            raise RuntimeError('composition mismatch after write')
+        got = {str(x.get('label') or ''): str(x.get('value') or '') for x in (vcontent.get('characteristics') or []) if isinstance(x, dict)}
+        for row in MANAGED_CHARACTERISTICS:
+            if got.get(row['label']) != row['value']:
+                raise RuntimeError(f"characteristic mismatch: {row['label']}")
+        if _without_managed_content(verify) != _without_managed_content(current):
+            raise RuntimeError('a field outside the managed Brexil content set changed')
     except Exception as exc:
         _save_atomic(path, current)
         raise SystemExit(f'VERIFY FAILED: original card restored: {exc}')
@@ -135,6 +182,7 @@ def main() -> int:
         'commerce_changed': False,
         'media_changed': False,
         'sku_changed': False,
+        'managed_content_changed': True,
         'other_content_changed': False,
     }, ensure_ascii=False, indent=2))
     return 0

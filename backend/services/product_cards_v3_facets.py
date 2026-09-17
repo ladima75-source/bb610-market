@@ -80,10 +80,10 @@ def catalog_overlays() -> list[dict]:
     to SKU/commerce. V3 characteristics are the single source for curated
     cultures, purposes, application methods, NPK and active ingredient.
 
-    Presentation fields such as ``application`` and ``manufacturerUse`` are
-    intentionally NOT overwritten here. The catalog renderer can use the
-    explicit ``applicationMethods`` facet field while the product page keeps its
-    own concise legacy copy or its Product Card v3 recipe.
+    The long Product Card v3 recipe is never copied into legacy presentation
+    fields. ``application`` receives only the short method taxonomy so the
+    current catalog filter can keep using its existing method detector without
+    polluting the hero/manufacturer recommendation copy.
     """
     mappings = _mapping_by_product()
     out: list[dict] = []
@@ -120,12 +120,11 @@ def catalog_overlays() -> list[dict]:
         if npk and npk != '—':
             patch['npk'] = npk
         if active:
-            # Keep both spellings: catalog data is snake_case, the current
-            # storefront facet reads camelCase.
             patch['active_ingredient'] = active
             patch['activeIngredient'] = active
         if methods:
             patch['applicationMethods'] = methods
             patch['application_methods'] = methods
+            patch['application'] = '; '.join(methods)
         out.append(patch)
     return out

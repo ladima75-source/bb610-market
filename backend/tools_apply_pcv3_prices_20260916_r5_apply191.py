@@ -9,11 +9,18 @@ Business decision for this run:
   additional untargeted SKU;
 - never invent prices for untargeted SKU.
 
-Safety retained from R1:
+Important safety change versus R1-R4:
+- price identity matching uses ONLY the current Product Card v3 title + slug.
+  Historical MASTER/Organic row-bridge aliases are deliberately excluded from
+  price matching because they caused cross-product Osmocote contamination.
+
+Safety retained:
 - source must contain exactly 195 rows;
 - exactly four known Osmocote source rows are skipped;
 - every remaining 191 source row must resolve to exactly one active v3 SKU by
-  package + product identity;
+  package + current product identity;
+- formula-bearing products must keep the same NPK formula between source and
+  current v3 title;
 - ambiguous/weak matches, duplicate commerce targets and missing commerce rows
   abort before writes;
 - DB backup, transactional update and post-verify are delegated to R1.
@@ -24,6 +31,21 @@ import json
 
 from backend.db import connect
 from backend import tools_apply_pcv3_prices_20260916 as base
+
+
+def _current_v3_aliases(card: dict, _master, _organic_by_row) -> set[str]:
+    """Return only authoritative current-v3 identity aliases."""
+    content = card.get("content") or {}
+    values = [content.get("title"), card.get("slug")]
+    out: set[str] = set()
+    for value in values:
+        out |= base.aliases(value)
+    return out
+
+
+# load_targets() resolves card_aliases dynamically from the base module, so this
+# removes historical alias contamination for the entire R5 preflight.
+base.card_aliases = _current_v3_aliases
 
 
 def _skip_manual_osmocote(row: dict) -> bool:
@@ -94,6 +116,16 @@ def build_plan_r5() -> dict:
                 f"{candidates[1][1]['title']}={second_score:.1f}"
             )
             continue
+
+        source_formula = base.formula(src_name)
+        target_formula = base.formula(top["title"])
+        if source_formula and target_formula and source_formula != target_formula:
+            problems.append(
+                f"row {row_no}: formula mismatch {src_name} / {package} -> {top['title']} "
+                f"({source_formula} != {target_formula})"
+            )
+            continue
+
         if not top["commerce_key"]:
             problems.append(
                 f"row {row_no}: matched SKU has no commerce binding: {top['title']} / {top['package']}"
@@ -179,6 +211,7 @@ def main() -> None:
     report = {"mode": "APPLY_SAFE" if args.apply_safe else "DRY_RUN", **plan}
 
     print("BB610 PCV3 PRICE IMPORT R5 — APPLY 191 VERIFIED ROWS")
+    print("IDENTITY MODE: CURRENT V3 TITLE + SLUG ONLY")
     print("SOURCE:", plan["source_file"])
     print("MATCHED PRICE ROWS:", len(plan["rows"]), "/ 191")
     print("MANUAL OSMOCOTE SOURCE ROWS:", len(plan["manual_source_rows"]))

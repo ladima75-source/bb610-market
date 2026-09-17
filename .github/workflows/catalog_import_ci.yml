@@ -12,6 +12,7 @@ on:
       - 'admin/catalog-import.html'
       - 'js/product.js'
       - 'assets/js/product-card-v2.js'
+      - 'assets/css/product-card-v2-20f1.css'
   workflow_dispatch:
 
 permissions:
@@ -38,6 +39,8 @@ jobs:
           node --check admin/catalog-import.js
           node --check js/product.js
           node --check assets/js/product-card-v2.js
+          grep -q '^\.mpc-shell,' assets/css/product-card-v2-20f1.css
+          grep -q 'grid-template-columns:minmax(0,1.15fr)' assets/css/product-card-v2-20f1.css
       - name: Preview Apply Verify Rollback smoke test
         shell: bash
         run: |

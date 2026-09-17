@@ -84,7 +84,7 @@ jobs:
               mapping = root / 'commerce_map.json'
               (products / 'prd_test.json').write_text(json.dumps({
                   'product_id':'prd_test','slug':'test-product','enabled':True,
-                  'content':{'brand':'Brand','application':'Листове внесення','characteristics':[
+                  'content':{'brand':'Brand','application':'LONG RECIPE MUST NOT LEAK','characteristics':[
                       {'label':'Культури','value':'лохина; полуниця'},
                       {'label':'Призначення','value':'живлення'},
                       {'label':'Спосіб застосування','value':'Листова / внекоренева'},
@@ -102,7 +102,11 @@ jobs:
               assert x['purposes'] == ['живлення']
               assert x['npk'] == '13-40-13'
               assert x['activeIngredient'] == 'Zn 10%'
-              assert 'Листова / внекоренева' in x['application']
+              assert x['applicationMethods'] == ['Листова / внекоренева']
+              assert x['application'] == 'Листова / внекоренева'
+              assert 'manufacturerUse' not in x
+              assert 'manufacturer_use' not in x
+              assert 'LONG RECIPE' not in x['application']
           PY
       - name: Brexil Zn content contract
         run: |
@@ -119,6 +123,10 @@ jobs:
           assert ns['SOURCE_URL'].startswith('https://www.syngenta.ua/')
           PY
           grep -q 'product-card-v3-enhancements.js?v=20g' products/brexil-zn/index.html
+      - name: Product Card render-race guard
+        run: |
+          grep -q 'BB610_DATA_SOURCE?.refresh' assets/js/product-card-v2.js
+          grep -q 'storefront/product-card-v3' assets/js/product-card-v2.js
       - name: Composition fallback guard
         run: |
           grep -q 'window.BB610_CATALOG' assets/js/product-card-v2.js

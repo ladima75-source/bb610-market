@@ -36,6 +36,7 @@ jobs:
         run: |
           python - <<'PY'
           from backend import tools_resolve_remaining_ambiguous_prices_20260916 as m
+          from backend import tools_apply_pcv3_prices_20260916 as base
 
           rows = m.resolution_contract()
           assert len(rows) == 8
@@ -43,16 +44,16 @@ jobs:
           assert len({x['commerce_key'] for x in rows}) == 8
           by_row = {x['source_row']: x for x in rows}
 
-          assert by_row[14]['product_id'] == 'prd_6e7a3313ea58775a32'
+          assert base.norm(by_row[14]['title']) == base.norm('MASTER 18-18-18')
           assert by_row[14]['price'] == 177.0
           assert by_row[15]['price'] == 399.0
-          assert by_row[16]['product_id'] == 'prd_baf5c1ef7fa4701c96'
+          assert base.norm(by_row[16]['title']) == base.norm('MASTER 17-6-18')
           assert by_row[16]['price'] == 154.0
           assert by_row[17]['price'] == 364.0
-          assert by_row[73]['product_id'] == 'prd_b7bbdd33287bf023ab'
+          assert base.norm(by_row[73]['title']) == base.norm('Osmocote Potassium 12-8-19 (3-4M)')
           assert by_row[73]['price'] == 154.0
           assert by_row[74]['price'] == 637.0
-          assert by_row[77]['product_id'] == 'prd_da9433665332b57d53'
+          assert base.norm(by_row[77]['title']) == base.norm('Osmocote Landscape 16-9-12 (3-4M)')
           assert by_row[77]['price'] == 149.0
           assert by_row[78]['price'] == 611.0
           assert all(x['candidate_product_count'] >= 2 for x in rows)

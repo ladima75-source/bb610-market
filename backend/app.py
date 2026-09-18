@@ -418,6 +418,11 @@ app.include_router(master_product_card_commerce_router)
 from .product_cards_v2_api import router as product_cards_v2_router
 app.include_router(product_cards_v2_router)
 
+# Product Card v3 is the current storefront card runtime. Keep its public and
+# admin routes mounted in the main production FastAPI application.
+from .product_cards_v3_api import router as product_cards_v3_router
+app.include_router(product_cards_v3_router)
+
 from .stage22h_media_review_api import router as stage22h_media_review_router
 app.include_router(stage22h_media_review_router)
 

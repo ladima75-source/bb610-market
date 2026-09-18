@@ -3,9 +3,10 @@ from __future__ import annotations
 """Bind only the two verified legacy Plantlogic commerce identities to V3 drafts.
 
 This tool does not create commerce rows and never changes price, sale price,
-stock, availability or enabled state. It only writes product_cards_v3/
-commerce_map.json after proving that the exact legacy product + SKU already
-exist in both catalog detail and live sku_commerce.
+stock, availability or enabled state. It writes only product_cards_v3/
+commerce_map.json after proving that the exact legacy SKU already exists in
+live sku_commerce. A legacy catalog parent is optional because storefront
+runtime resolves commercial state directly by exact sku_commerce key.
 """
 
 import argparse
@@ -65,7 +66,7 @@ def raw_live_commerce() -> dict[str, dict]:
     return out
 
 
-def legacy_catalog_index() -> tuple[dict[str, dict], dict[str, list[dict]]]:
+def legacy_catalog_index() -> tuple[dict[str, dict], dict[str, list[dict]], dict[str, set[str]]]:
     catalog = load_catalog()
     products = {
         str(x.get("id") or ""): x
@@ -73,13 +74,17 @@ def legacy_catalog_index() -> tuple[dict[str, dict], dict[str, list[dict]]]:
         if isinstance(x, dict) and x.get("id")
     }
     skus: dict[str, list[dict]] = {}
+    sku_parents: dict[str, set[str]] = {}
     for row in catalog.get("skus") or []:
         if not isinstance(row, dict):
             continue
-        pid = str(row.get("product_id") or "")
+        pid = str(row.get("product_id") or "").strip()
+        key = str(row.get("id") or row.get("sku") or "").strip()
         if pid:
             skus.setdefault(pid, []).append(row)
-    return products, skus
+        if pid and key:
+            sku_parents.setdefault(key, set()).add(pid)
+    return products, skus, sku_parents
 
 
 def mapping_index() -> dict[str, dict]:
@@ -92,7 +97,7 @@ def mapping_index() -> dict[str, dict]:
 
 def build_plan() -> dict:
     live = raw_live_commerce()
-    catalog_products, catalog_skus = legacy_catalog_index()
+    catalog_products, catalog_skus, sku_parents = legacy_catalog_index()
     mappings = mapping_index()
     actions = []
     verified = []
@@ -117,27 +122,20 @@ def build_plan() -> dict:
         if not sid:
             raise RuntimeError(f"{slug}: V3 sku_id missing")
 
-        legacy_key = spec["legacy_product_key"]
-        legacy = catalog_products.get(legacy_key)
-        if not isinstance(legacy, dict):
-            raise RuntimeError(f"{slug}: exact legacy product missing from catalog")
-
-        detail_keys = {
-            str(x.get("id") or x.get("sku") or "").strip()
-            for x in (catalog_skus.get(legacy_key) or [])
-            if isinstance(x, dict)
-        }
         key = spec["legacy_sku_key"]
-        if key not in detail_keys:
-            raise RuntimeError(
-                f"{slug}: exact legacy SKU {key} missing from {spec['legacy_product_key']}"
-            )
         if not isinstance(live.get(key), dict):
-            raise RuntimeError(f"{slug}: live sku_commerce row missing for {key}")
+            raise RuntimeError(f"{slug}: live sku_commerce row missing for exact SKU {key}")
+
+        parents = sorted(sku_parents.get(key) or [])
+        if len(parents) > 1:
+            raise RuntimeError(
+                f"{slug}: exact legacy SKU {key} belongs to multiple catalog parents: {parents}"
+            )
+        actual_parent = parents[0] if parents else ""
 
         desired = {
             "product_id": pid,
-            "existing_product_key": spec["legacy_product_key"],
+            "existing_product_key": actual_parent,
             "skus": [
                 {
                     "sku_id": sid,
@@ -155,7 +153,7 @@ def build_plan() -> dict:
                 for x in (other.get("skus") or [])
                 if isinstance(x, dict)
             }
-            if other_parent == spec["legacy_product_key"] or key in other_keys:
+            if key in other_keys or (actual_parent and other_parent == actual_parent):
                 raise RuntimeError(
                     f"{slug}: verified legacy identity is already mapped to {other_pid}"
                 )
@@ -163,12 +161,20 @@ def build_plan() -> dict:
         current = mappings.get(pid)
         if current is None:
             action = "CREATE_MAPPING"
-        elif current == desired:
-            action = "UNCHANGED"
         else:
-            raise RuntimeError(
-                f"{slug}: existing commerce mapping conflicts with verified legacy identity"
-            )
+            current_links = {
+                str(x.get("sku_id") or ""): str(x.get("existing_commerce_sku_key") or "").strip()
+                for x in (current.get("skus") or [])
+                if isinstance(x, dict) and x.get("sku_id")
+            }
+            if current_links.get(sid) != key:
+                raise RuntimeError(
+                    f"{slug}: existing commerce mapping conflicts with exact legacy SKU {key}"
+                )
+            # Preserve an already-established parent identity even when the
+            # current static catalog no longer contains that parent.
+            desired = deepcopy(current)
+            action = "UNCHANGED"
 
         actions.append({
             "action": action,
@@ -178,7 +184,9 @@ def build_plan() -> dict:
         })
         verified.append({
             "slug": slug,
-            "legacy_product_key": spec["legacy_product_key"],
+            "legacy_product_key": actual_parent,
+            "legacy_product_hint": spec["legacy_product_key"],
+            "catalog_parent_found": bool(actual_parent),
             "legacy_sku_key": key,
             "price": live[key].get("price"),
             "sale_price": live[key].get("sale_price"),

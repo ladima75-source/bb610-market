@@ -24,8 +24,8 @@ if str(ROOT) not in sys.path:
 
 from backend.services import product_cards_v3 as pcv3
 from backend.services.product_cards_v3_media import _is_resolvable
-from backend.services.product_commerce import commerce_map as live_commerce_map
-from backend.services.catalog_cms import admin_detail
+from backend.catalog_provider import load_catalog
+from backend.db import connect
 
 MANIFEST = ROOT / "data" / "product_content" / "plantlogic_pots_v1_20260918.json"
 REPORT_ROOT = ROOT / "var" / "reports"
@@ -51,6 +51,60 @@ def load_manifest() -> dict:
     if total_skus != EXPECTED_SKUS:
         raise RuntimeError(f"expected {EXPECTED_SKUS} Plantlogic SKU; got {total_skus}")
     return doc
+
+
+def raw_live_commerce() -> dict[str, dict]:
+    with connect() as con:
+        rows = con.execute(
+            "SELECT sku,price,sale_price,availability,stock_qty,enabled,updated_at "
+            "FROM sku_commerce"
+        ).fetchall()
+    out: dict[str, dict] = {}
+    for row in rows:
+        item = dict(row)
+        item["enabled"] = bool(item.get("enabled"))
+        item["effective_price"] = (
+            item.get("sale_price")
+            if item.get("sale_price") is not None
+            else item.get("price")
+        )
+        out[str(item.get("sku") or "")] = item
+    return out
+
+
+def legacy_catalog_detail_readonly(product_id: str) -> dict | None:
+    catalog = load_catalog()
+    product = next(
+        (
+            dict(x) for x in (catalog.get("products") or [])
+            if isinstance(x, dict) and str(x.get("id") or "") == product_id
+        ),
+        None,
+    )
+    if not isinstance(product, dict):
+        return None
+
+    with connect() as con:
+        row = con.execute(
+            "SELECT content_json,published FROM product_content WHERE product_id=?",
+            (product_id,),
+        ).fetchone()
+    if row:
+        try:
+            override = json.loads(row["content_json"])
+        except Exception:
+            override = {}
+        if isinstance(override, dict):
+            product.update(override)
+        product["published"] = bool(row["published"])
+    else:
+        product["published"] = True
+
+    product["skus"] = [
+        dict(x) for x in (catalog.get("skus") or [])
+        if isinstance(x, dict) and str(x.get("product_id") or "") == product_id
+    ]
+    return product
 
 
 def card_by_pid(pid: str) -> dict | None:
@@ -137,7 +191,7 @@ def legacy_media(detail: dict | None) -> list[str]:
 def main() -> int:
     doc = load_manifest()
     mappings = mapping_index()
-    live = live_commerce_map()
+    live = raw_live_commerce()
 
     rows = []
     missing = []
@@ -161,7 +215,7 @@ def main() -> int:
         commerce_bound += sum(1 for x in skus if x["commerce_bound"])
 
         legacy_key = KNOWN_LEGACY.get(slug)
-        legacy = admin_detail(legacy_key) if legacy_key else None
+        legacy = legacy_catalog_detail_readonly(legacy_key) if legacy_key else None
         legacy_images = legacy_media(legacy)
 
         rows.append({

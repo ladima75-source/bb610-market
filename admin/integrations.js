@@ -1,5 +1,5 @@
 (()=>{
- const cfg=window.BB610_ADMIN_CONFIG||{},base=(cfg.apiBaseUrl||'').replace(/\/$/,''),ep='/api/v1/admin/integrations/nova-poshta',payEp='/api/v1/admin/integrations/payments',tgEp='/api/v1/admin/integrations/telegram',$=id=>document.getElementById(id),token=$('token');token.value=sessionStorage.getItem('bb610_admin_token')||'';
+ const cfg=window.BB610_ADMIN_CONFIG||{},base=(cfg.apiBaseUrl||'').replace(/\/$/,''),ep='/api/v1/admin/integrations/nova-poshta',payEp='/api/v1/admin/integrations/payments',tgEp='/api/v1/admin/integrations/telegram',$=id=>document.getElementById(id),token=$('token');token.value=localStorage.getItem('bb610_admin_token')||sessionStorage.getItem('bb610_admin_token')||'';
  const H=()=>({'Authorization':'Bearer '+token.value.trim(),'Content-Type':'application/json','Accept':'application/json'});
  async function req(path,opt={}){const c=new AbortController(),t=setTimeout(()=>c.abort(),cfg.requestTimeoutMs||12000);try{const r=await fetch(base+path,{...opt,signal:c.signal,headers:{...H(),...(opt.headers||{})}});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.detail||`HTTP ${r.status}`);return d}finally{clearTimeout(t)}}
  const mark=(id,ok,yes='Готово',no='Не готово')=>{const e=$(id);e.textContent=ok?yes:no;e.className=ok?'ok':'warn'};
@@ -11,7 +11,7 @@
    $('sender-select').dataset.current=s.sender?.sender_ref||'';$('contact-select').dataset.current=s.sender?.sender_contact_ref||'';$('sender-city-select').dataset.current=s.sender?.sender_city_ref||'';$('address-select').dataset.current=s.sender?.sender_address_ref||'';
    const sh=s.shipping||{};$('shipment-weight').value=sh.weight||'1.0';$('shipment-description').value=sh.description||'Товари для вирощування';$('payer-type').value=sh.payer_type||'Recipient';$('payment-method').value=sh.payment_method||'Cash';
  }
- async function load(){sessionStorage.setItem('bb610_admin_token',token.value.trim());$('state').textContent='Завантаження…';const [s,p,tg]=await Promise.all([req(ep),req(payEp),req(tgEp)]);paint(s);paintPayments(p);paintTelegram(tg);if(s.api_ready){try{await loadSenderOptions(true)}catch(_){}}$('state').textContent=''}
+ async function load(){localStorage.setItem('bb610_admin_token',token.value.trim());sessionStorage.setItem('bb610_admin_token',token.value.trim());$('state').textContent='Завантаження…';const [s,p,tg]=await Promise.all([req(ep),req(payEp),req(tgEp)]);paint(s);paintPayments(p);paintTelegram(tg);if(s.api_ready){try{await loadSenderOptions(true)}catch(_){}}$('state').textContent=''}
  function paintPayments(p){const cod=!!p.cod?.enabled,bank=!!p.bank_transfer?.ready,bankEnabled=!!p.bank_transfer?.enabled,card=!!p.online_card?.enabled;mark('pay-cod-state',cod,'Активна','Вимкнена');mark('pay-bank-state',bank,'Готова',bankEnabled?'Не завершено':'Вимкнена');$('pay-bank-note').textContent=bank?'Реквізити заповнені.':(bankEnabled?'Заповніть отримувача та IBAN.':'');mark('pay-card-state',card,card?(p.online_card?.provider||'Активна'):'Stage 14B','Stage 14B');$('pay-status').textContent=(cod||bank||card)?'Налаштовано':'Не налаштовано';$('pay-status').className='badge '+((cod||bank||card)?'live':'draft');$('pay-cod-enabled').checked=cod;$('pay-bank-enabled').checked=bankEnabled;$('pay-bank-recipient').value=p.bank_transfer?.recipient||'';$('pay-bank-iban').value=p.bank_transfer?.iban||'';$('pay-bank-purpose').value=p.bank_transfer?.purpose||'Оплата замовлення {order_number}'}
  async function savePayments(){const body={cod_enabled:$('pay-cod-enabled').checked,bank_transfer_enabled:$('pay-bank-enabled').checked,bank_recipient:$('pay-bank-recipient').value.trim(),bank_iban:$('pay-bank-iban').value.trim(),bank_purpose:$('pay-bank-purpose').value.trim()};$('pay-state').textContent='Збереження…';const p=await req(payEp,{method:'PATCH',body:JSON.stringify(body)});paintPayments(p);$('pay-state').textContent='✓ Збережено'}
 
@@ -31,7 +31,7 @@
    $('tg-state').textContent='Збереження…';
    const t=await req(tgEp,{method:'PATCH',body:JSON.stringify(body)});
    $('tg-bot-token').value='';paintTelegram(t);
-   $('tg-state').textContent=t.price_request_notifications_ready?'✓ Telegram збережено':'✓ Налаштування збережено. Додайте Chat ID.';
+   $('tg-state').textContent=t.price_request_notifications_ready?'✓ Telegram збережено':'✓ Налаштування збережено. Додайте Bot token.';
  }
  async function testTelegram(){
    const b=$('tg-test');b.disabled=true;$('tg-state').textContent='Надсилаємо тест…';

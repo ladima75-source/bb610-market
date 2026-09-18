@@ -32,12 +32,13 @@ if str(ROOT) not in sys.path:
 
 MANIFEST = ROOT / "data" / "product_content" / "plantlogic_pots_v1_20260918.json"
 REPORT_ROOT = ROOT / "var" / "reports"
-EXPECTED_PRODUCTS = 34
-EXPECTED_SKUS = 37
+EXPECTED_PRODUCTS = 33
+EXPECTED_SKUS = 36
 
 # Exact current official product pages where the Product Master had a generic,
 # brochure or stale URL.
 SOURCE_OVERRIDES = {
+    "plantlogic-30l-round-u-groove-1308303": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-with-parallel-u-grooves/",
     "plantlogic-zephyr-v2": "https://getplantlogic.com/portfolio-items/zephyr-v2/",
     "plantlogic-25l-round-new-1308125": "https://getplantlogic.com/portfolio-items/new-25-liter-round-pot/",
     "plantlogic-25l-round-short-legs-1303025": "https://getplantlogic.com/portfolio-items/25-liter-round-pot-short-legs/",

@@ -14,6 +14,7 @@ const BB610 = (() => {
     ?'assets/img/product-container.svg'
     :(category==='biostimulation'?'assets/img/product-biostim.svg':'assets/img/product-npk.svg');
   const compactText=v=>String(v||'').replace(/\s+/g,' ').trim();
+  const cardTitle=p=>p.category==='containers'?compactText(p.name):(compactText(p.name).split(/,\s+/)[0]||compactText(p.name));
   const cardSummary=p=>{
     const candidates=[p.shortDescription,p.productType,p.manufacturerUse,(p.purposes||[]).join(' · ')];
     const name=compactText(p.name).toLowerCase();
@@ -63,6 +64,7 @@ const BB610 = (() => {
   function cardV2(p){
     const fav=get(LS.fav,[]).includes(p.id),cmp=get(LS.compare,[]).includes(p.id),s=displaySku(p.id);
     const keyMeta=s?.variant||(p.npk&&p.npk!=='—'?`NPK ${p.npk}`:(p.form||p.categoryLabel||''));
+    const title=cardTitle(p);
     const summary=cardSummary(p);
     const fallback=fallbackImage(p.category);
     const image=p.image||fallback;
@@ -75,7 +77,7 @@ const BB610 = (() => {
       <div class="product-body">
         <div class="product-card-main">
           <div class="product-brand">${p.brand}</div>
-          <a class="product-name" href="${productUrl(p)}" data-select-product="${p.id}">${p.name}</a>
+          <a class="product-name" href="${productUrl(p)}" data-select-product="${p.id}" title="${p.name}">${title}</a>
           ${summary?`<div class="product-summary">${summary}</div>`:''}
           <div class="product-spec">${keyMeta}</div>
         </div>

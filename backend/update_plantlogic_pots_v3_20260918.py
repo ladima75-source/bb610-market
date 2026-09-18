@@ -28,8 +28,8 @@ from backend.services import product_cards_v3 as pcv3
 MANIFEST = ROOT / "data" / "product_content" / "plantlogic_pots_v1_20260918.json"
 BACKUP_ROOT = ROOT / "var" / "content_backups"
 REPORT_ROOT = ROOT / "var" / "reports"
-EXPECTED_PRODUCTS = 33
-EXPECTED_SKUS = 36
+EXPECTED_PRODUCTS = 34
+EXPECTED_SKUS = 37
 
 
 def stamp() -> str:
@@ -54,7 +54,7 @@ def load_manifest() -> dict:
     for i, row in enumerate(products):
         if not isinstance(row, dict):
             raise RuntimeError(f"products[{i}] must be an object")
-        for key in ("product_id", "slug", "name", "family", "source_url"):
+        for key in ("product_id", "slug", "name", "official_name_en", "family", "source_url"):
             if not str(row.get(key) or "").strip():
                 raise RuntimeError(f"products[{i}].{key} is required")
         if not str(row["source_url"]).startswith("https://getplantlogic.com/"):
@@ -92,18 +92,18 @@ def load_manifest() -> dict:
 
 def _family_label(family: str) -> str:
     return {
-        "round": "круглий контейнер",
-        "square": "квадратний контейнер",
-        "short_legs": "круглий контейнер з короткими ніжками",
-        "square_short": "компактний квадратний контейнер",
-        "u_groove_round": "круглий контейнер з U-пазами",
-        "u_groove_square": "квадратний контейнер з U-пазами",
-        "v_rib": "круглий контейнер з V-ребрами",
-        "drainage_collection": "контейнер зі збором дренажу",
-        "drainage_collection_short": "контейнер зі збором дренажу та короткими ніжками",
-        "cold_storage": "контейнер для long-cane та холодного зберігання",
-        "zephyr": "контейнерна система Zephyr V2",
-    }.get(family, "контейнер для субстратного вирощування")
+        "round": "круглий горщик",
+        "square": "квадратний горщик",
+        "short_legs": "круглий горщик на коротких ніжках",
+        "square_short": "компактний квадратний горщик",
+        "u_groove_round": "круглий горщик з U-пазами",
+        "u_groove_square": "квадратний горщик з U-пазами",
+        "v_rib": "круглий горщик з V-ребрами",
+        "drainage_collection": "горщик зі збором дренажу",
+        "drainage_collection_short": "горщик зі збором дренажу та короткими ніжками",
+        "cold_storage": "горщик для long-cane та холодного зберігання",
+        "zephyr": "горщик серії Zephyr V2",
+    }.get(family, "горщик для субстратного вирощування")
 
 
 def _benefits(row: dict) -> list[dict]:
@@ -115,7 +115,7 @@ def _benefits(row: dict) -> list[dict]:
         },
         {
             "title": "Для субстратного вирощування",
-            "text": "Контейнер призначений для професійних технологій вирощування у торф'яних, кокосових та інших субстратах.",
+            "text": "Горщик призначений для професійних технологій вирощування у торф'яних, кокосових та інших субстратах.",
         },
         {
             "title": "Стабільне розміщення",
@@ -123,7 +123,7 @@ def _benefits(row: dict) -> list[dict]:
         },
         {
             "title": "Багаторазове використання",
-            "text": "Жорсткий контейнер розрахований на багатоциклову експлуатацію в професійному виробництві.",
+            "text": "Жорсткий горщик розрахований на багатоциклову експлуатацію в професійному виробництві.",
         },
     ]
 
@@ -135,7 +135,7 @@ def _benefits(row: dict) -> list[dict]:
     elif family == "v_rib":
         base[2] = {
             "title": "V-ребра проти закручування коренів",
-            "text": "Ребра на стінках допомагають зменшувати спіральний ріст коренів уздовж контейнера.",
+            "text": "Ребра на стінках допомагають зменшувати спіральний ріст коренів уздовж стінок горщика.",
         }
     elif family.startswith("drainage_collection"):
         base[0] = {
@@ -144,7 +144,7 @@ def _benefits(row: dict) -> list[dict]:
         }
         base[2] = {
             "title": "Контроль вологості в зоні вирощування",
-            "text": "Збір дренажу допомагає не залишати воду й добрива безпосередньо на поверхні під контейнером.",
+            "text": "Збір дренажу допомагає не залишати воду й добрива безпосередньо на поверхні під горщиком.",
         }
     elif family == "cold_storage":
         base[2] = {
@@ -154,7 +154,7 @@ def _benefits(row: dict) -> list[dict]:
     elif family == "zephyr":
         base[2] = {
             "title": "Високі ніжки та повітряний зазор",
-            "text": "Zephyr V2 створює збільшений повітряний зазор під контейнером для дренажу та повітряного підрізання коренів.",
+            "text": "Zephyr V2 створює збільшений повітряний зазор під горщиком для дренажу та повітряного підрізання коренів.",
         }
     return base
 
@@ -178,17 +178,17 @@ def _how_it_works(row: dict) -> str:
         )
     if family == "cold_storage":
         return (
-            "Компактна геометрія контейнера дає змогу ефективніше розміщувати long-cane рослини, а дренажна основа "
+            "Компактна геометрія горщика дає змогу ефективніше розміщувати long-cane рослини, а дренажна основа "
             "та центральні повітряні отвори підтримують водно-повітряний режим кореневої зони."
         )
     if family == "zephyr":
         return (
             "Zephyr V2 поєднує високу підняту основу, контрольований дренаж і вентиляцію кореневої зони. "
-            "Відведення води до країв і повітряний зазор під контейнером підтримують природне повітряне підрізання коренів."
+            "Відведення води до країв і повітряний зазор під горщиком підтримують природне повітряне підрізання коренів."
         )
     return (
         "Піднята дренажна основа відводить надлишкову воду до зон з більшим повітрообміном. "
-        "Центральні отвори підтримують надходження кисню в кореневу масу, а підняті ніжки відокремлюють контейнер від поверхні."
+        "Центральні отвори підтримують надходження кисню в кореневу масу, а підняті ніжки відокремлюють горщик від поверхні."
     )
 
 
@@ -199,32 +199,32 @@ def build_content(row: dict) -> dict:
     volume_text = ", ".join(volumes)
     use_cases = ", ".join(str(x) for x in (row.get("use_cases") or []))
     product_numbers = ", ".join(str(x["product_no"]) for x in row["skus"])
+    title = str(row["name"]).strip()
 
     if len(row["skus"]) == 1:
         short = (
-            f"Plantlogic {row['name']} — {family_label} {volume_text} для професійного субстратного вирощування "
+            f"{title}. Професійний горщик виробництва Plantlogic для субстратного вирощування "
             "з акцентом на дренаж і аерацію кореневої зони."
         )
     else:
         short = (
-            f"Plantlogic {row['name']} — {family_label} у варіантах {volume_text} для професійного "
-            "субстратного вирощування."
+            f"{title}. Професійний горщик виробництва Plantlogic у варіантах {volume_text} "
+            "для субстратного вирощування."
         )
 
     description = (
-        f"Plantlogic {row['name']} — {family_label} для професійного вирощування рослин у субстраті. "
-        "Конструкція контейнерів Plantlogic орієнтована на керований дренаж, доступ кисню до кореневої зони "
+        f"{title}. Професійний горщик виробництва Plantlogic для вирощування рослин у субстраті. "
+        "Конструкція орієнтована на керований дренаж, доступ кисню до кореневої зони "
         "та відокремлення коренів від поверхні ґрунту.\n\n"
-        f"Рекомендовані сценарії використання за поточним Product Master: {use_cases or 'субстратне вирощування'}. "
-        "Картка створена на основі офіційних матеріалів Plantlogic; комерційні ціни, залишки й медіа ведуться окремими шарами."
+        f"Рекомендовані сценарії використання: {use_cases or 'субстратне вирощування'}. "
+        "Характеристики звірені з офіційними матеріалами виробника."
     )
 
     characteristics = [
-        {"label": "Бренд", "value": "Plantlogic"},
-        {"label": "Модель", "value": str(row["name"])},
+        {"label": "Виробник", "value": "Plantlogic"},
         {"label": "Тип", "value": family_label.capitalize()},
         {"label": "Об'єм / варіанти", "value": volume_text},
-        {"label": "Product #", "value": product_numbers},
+        {"label": "Артикул виробника", "value": product_numbers},
         {"label": "Призначення", "value": use_cases or "Субстратне вирощування"},
     ]
     if row.get("dimensions"):
@@ -233,7 +233,7 @@ def build_content(row: dict) -> dict:
         characteristics.append({"label": "Офіційне джерело", "value": str(row["source_url"])})
 
     return {
-        "title": f"Plantlogic {row['name']} — контейнер для субстратного вирощування",
+        "title": title,
         "brand": "Plantlogic",
         "category": "Контейнери",
         "short_description": short,
@@ -241,18 +241,18 @@ def build_content(row: dict) -> dict:
         "benefits": _benefits(row),
         "how_it_works": _how_it_works(row),
         "application": (
-            "Для професійного субстратного вирощування. Підбір об'єму, форми контейнера, субстрату, кількості крапельниць "
+            "Для професійного субстратного вирощування. Підбір об'єму, форми горщика, субстрату, кількості крапельниць "
             "і режиму фертигації виконують під культуру, вік рослини та технологію господарства."
         ),
         "composition": (
-            "Жорсткий пластиковий контейнер Plantlogic з дренажно-вентиляційною геометрією. "
+            "Жорсткий пластиковий горщик виробництва Plantlogic з дренажно-вентиляційною геометрією. "
             "Точний склад полімеру для цієї моделі у використаному джерелі не специфікований."
         ),
         "characteristics": characteristics,
         "seo": {
-            "title": f"Plantlogic {row['name']} — контейнер для субстрату | BB610 Market",
+            "title": f"{title} | BB610 Market",
             "description": (
-                f"Plantlogic {row['name']}: {family_label}, {volume_text}. "
+                f"{title}. Виробник Plantlogic. {family_label.capitalize()}, {volume_text}. "
                 "Характеристики, призначення та конструктивні особливості для субстратного вирощування."
             ),
         },

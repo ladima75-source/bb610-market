@@ -95,5 +95,25 @@ jobs:
           assert score <= 25
           assert identity is False
 
+          # Exact model name without Product # is still high confidence when
+          # volume + shape are present on the already verified official page.
+          score,reasons,identity = c._candidate_score(
+              'https://getplantlogic.com/wp-content/uploads/20-liter-square-pot-main.jpg',
+              'img:src',
+              55,
+              '20 Liter Square Pot',
+              ['1309020'],
+              '20 Liter Square Pot',
+          )
+          assert score >= 100
+          assert identity is True
+          assert 'volume_match' in reasons
+          assert any(x.startswith('shape=') for x in reasons)
+
+          # New current official products are part of the managed master.
+          by_slug={x['slug']:x for x in doc['products']}
+          assert by_slug['plantlogic-30l-round-parallel-u-grooves-1308305']['product_no']=='1308305'
+          assert len(by_slug['plantlogic-40l-square-u-grooves-side-holes-13090400-13090440']['skus'])==2
+
           print('PLANTLOGIC OFFICIAL MEDIA COLLECTOR CONTRACT: PASS')
           PY

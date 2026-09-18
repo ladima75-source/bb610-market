@@ -1,0 +1,143 @@
+name: Admin attention counters CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/admin_dashboard_api.py'
+      - 'backend/services/admin_dashboard.py'
+      - 'admin/dashboard.html'
+      - 'admin/dashboard.js'
+      - 'admin/dashboard.css'
+      - 'admin/admin-master-nav.js'
+      - 'admin/admin-master-nav.css'
+      - 'admin/orders-center.js'
+      - 'admin/price-requests.js'
+      - 'admin/*.html'
+      - '.github/workflows/admin_attention_counts_ci.yml'
+  workflow_dispatch:
+
+jobs:
+  attention-counts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BB610_DB_PATH: /tmp/bb610-admin-attention.sqlite3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: |
+          python -m py_compile backend/admin_dashboard_api.py backend/services/admin_dashboard.py
+          node --check admin/dashboard.js
+          node --check admin/admin-master-nav.js
+          node --check admin/orders-center.js
+          node --check admin/price-requests.js
+
+      - name: Backend attention metrics
+        run: |
+          rm -f "$BB610_DB_PATH" var/test-admin-attention-orders.db
+          mkdir -p var
+          python - <<'PY'
+          import sqlite3
+          from pathlib import Path
+
+          from backend.db import migrate, connect
+          migrate()
+
+          with connect() as con:
+              now='2026-09-18T16:00:00+00:00'
+              rows=[
+                  ('PR-1','p1','s1','A','',1,'A','1','','','new',now,now),
+                  ('PR-2','p2','s2','B','',2,'B','2','','','new',now,now),
+                  ('PR-3','p3','s3','C','',3,'C','3','','','contacted',now,now),
+                  ('PR-4','p4','s4','D','',4,'D','4','','','won',now,now),
+              ]
+              con.executemany(
+                  """
+                  INSERT INTO price_requests(
+                    request_code,product_id,sku,product_name,variant,quantity,
+                    customer_name,contact,comment,source_url,status,created_at,updated_at
+                  ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)
+                  """,
+                  rows,
+              )
+              con.commit()
+
+          order_db=Path('var/test-admin-attention-orders.db')
+          con=sqlite3.connect(order_db)
+          con.execute(
+              "CREATE TABLE orders(id TEXT,created_at TEXT,status TEXT,total REAL,customer_name TEXT,customer_phone TEXT)"
+          )
+          con.executemany(
+              "INSERT INTO orders VALUES(?,?,?,?,?,?)",
+              [
+                  ('o1','2026-09-18T15:00:00+00:00','new',100,'A','1'),
+                  ('o2','2026-09-18T15:10:00+00:00','pending',200,'B','2'),
+                  ('o3','2026-09-18T15:20:00+00:00','confirmed',300,'C','3'),
+              ],
+          )
+          con.commit(); con.close()
+
+          from backend.services import admin_dashboard as d
+          pr=d._price_request_metrics()
+          assert pr['total']==4, pr
+          assert pr['unprocessed']==2, pr
+          assert pr['statuses']['new']==2, pr
+          assert pr['statuses']['contacted']==1, pr
+          assert pr['statuses']['won']==1, pr
+          assert len(pr['recent'])==4, pr
+
+          orders=d._orders_metrics()
+          assert orders['unprocessed']==2, orders
+          assert orders['statuses']['new']==1, orders
+          assert orders['statuses']['pending']==1, orders
+
+          summary=d.attention_summary()
+          assert summary['orders']['unprocessed']==2, summary
+          assert summary['price_requests']['unprocessed']==2, summary
+          assert summary['price_requests']['total']==4, summary
+
+          dashboard=d.dashboard()
+          assert dashboard['price_requests']['unprocessed']==2
+          assert dashboard['orders']['unprocessed']==2
+
+          print('ADMIN ATTENTION BACKEND: PASS')
+          PY
+
+      - name: Admin UI contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          dash=Path('admin/dashboard.html').read_text(encoding='utf-8')
+          dash_js=Path('admin/dashboard.js').read_text(encoding='utf-8')
+          nav=Path('admin/admin-master-nav.js').read_text(encoding='utf-8')
+          nav_css=Path('admin/admin-master-nav.css').read_text(encoding='utf-8')
+          api=Path('backend/admin_dashboard_api.py').read_text(encoding='utf-8')
+          orders=Path('admin/orders-center.js').read_text(encoding='utf-8')
+          requests=Path('admin/price-requests.js').read_text(encoding='utf-8')
+
+          assert 'Нові запити ціни' in dash
+          assert 'Останні запити ціни' in dash
+          assert 'priceRequestsNew' in dash
+          assert 'recentPriceRequests' in dash
+          assert "pr=x.price_requests||{}" in dash_js
+          assert "heroPriceRequests" in dash_js
+          assert "priceRequestStatuses" in dash_js
+
+          assert '/api/v1/admin/attention-summary' in api
+          assert "data.navFile=file" in nav
+          assert "applyCount('orders-center.html'" in nav
+          assert "applyCount('price-requests.html'" in nav
+          assert "bb19b8-nav-count" in nav_css
+          assert "setInterval(loadAttention,60000)" in nav
+          assert "bb610:attention-refresh" in nav
+          assert "bb610:attention-refresh" in orders
+          assert "bb610:attention-refresh" in requests
+
+          print('ADMIN ATTENTION UI CONTRACT: PASS')
+          PY

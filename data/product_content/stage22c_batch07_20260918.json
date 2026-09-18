@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "stage22c-batch07-content",
+  "batch": "BB610 Product Card v3 content / stage22c batch07 rows73-77 / 2026-09-18",
+  "language": "uk",
+  "source_batch": "data/content_batches/stage22c_batch07_rows73_77.json",
+  "expected_source_rows": [73,74,75,76,77],
+  "expected_target_count": 5,
+  "title_aliases_by_source_row": {
+    "73": ["Agriflex Humic (Гумат калію)"],
+    "74": ["Agriflex Amino (Амінокислоти 50%)", "Agriflex Amino (Амінокислот-50%)"],
+    "75": ["Agriflex AminoVix", "Agriflex AminоVix"],
+    "76": ["Agriflex Zn"],
+    "77": ["Agriflex Fulvix (Фульвокислоти 60%)", "Agriflex Fulvix (Фульвокислоти-60%)"]
+  },
+  "policy": {
+    "mode": "content-only",
+    "resolver": "exact normalized pre/post title aliases",
+    "protected": ["product_id","slug","enabled","brand","category","sku_media","commerce_map","sku_commerce","price","availability","stock","media"]
+  }
+}

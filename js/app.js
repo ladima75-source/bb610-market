@@ -4,7 +4,9 @@ const BB610 = (() => {
   const money=n=>n!==null&&n!==undefined&&Number.isFinite(Number(n))?new Intl.NumberFormat('uk-UA').format(Number(n))+' грн':'Ціна уточнюється';
   const get=(k,fallback)=>{try{return JSON.parse(localStorage.getItem(k))??fallback}catch{return fallback}};
   const set=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
-  const rawProducts=()=>BB610_DATA_SOURCE.products();
+  const HIDDEN_STOREFRONT_CATEGORIES=new Set(['protection']);
+  const categoryHidden=id=>HIDDEN_STOREFRONT_CATEGORIES.has(String(id||'').trim().toLowerCase());
+  const rawProducts=()=>BB610_DATA_SOURCE.products().filter(p=>!categoryHidden(p.category_id||p.category));
   const sku=id=>BB610_DATA_SOURCE.sku(id);
   const defaultSku=id=>BB610_DATA_SOURCE.defaultSku(id);
   const productSkus=id=>BB610_DATA_SOURCE.skusForProduct(id)||[];
@@ -75,7 +77,7 @@ const BB610 = (() => {
   function bindCards(scope=document){scope.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addCart(b.dataset.add));scope.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const on=toggleFav(b.dataset.fav);b.textContent=on?'♥':'♡'});scope.querySelectorAll('[data-compare]').forEach(b=>b.onclick=()=>{const on=toggleCompare(b.dataset.compare);if(on!==false)b.textContent=on?'✓':'⇄'});scope.querySelectorAll('[data-select-product]').forEach(a=>a.addEventListener('click',()=>trackSelect(a.dataset.selectProduct,a.closest('#home-products')?'home-popular':'catalog',a.closest('#home-products')?'Популярні товари':'Каталог')))}
   function updateCompareBar(){const arr=get(LS.compare,[]),bar=document.querySelector('.compare-bar');if(!bar)return;bar.classList.toggle('show',arr.length>0);bar.querySelector('[data-compare-bar-count]').textContent=arr.length}
   function searchSubmit(form){const q=form.querySelector('input').value.trim();pushEvent('search',{search_term:q});location.href='catalog.html?q='+encodeURIComponent(q);return false}
-  function renderCategoryNav(){document.querySelectorAll('.nav .container').forEach(nav=>{nav.querySelectorAll('a[href*="#verified"]').forEach(a=>a.remove());const catLinks=[...nav.querySelectorAll('a[href*="category="]')];if(!catLinks.length)return;const first=catLinks[0];C().categories.filter(c=>c.enabled).sort((a,b)=>(a.order||0)-(b.order||0)).forEach((c,i)=>{let a=catLinks[i];if(!a){a=document.createElement('a');first.parentNode.insertBefore(a,catLinks[catLinks.length-1]?.nextSibling||null)}a.href='catalog.html?category='+encodeURIComponent(c.id);a.textContent=c.short_name||c.name});catLinks.slice(C().categories.filter(c=>c.enabled).length).forEach(a=>a.remove())})}
+  function renderCategoryNav(){document.querySelectorAll('.nav .container').forEach(nav=>{nav.querySelectorAll('a[href*="#verified"]').forEach(a=>a.remove());const catLinks=[...nav.querySelectorAll('a[href*="category="]')];if(!catLinks.length)return;const first=catLinks[0];const visibleCategories=C().categories.filter(c=>c.enabled&&!categoryHidden(c.id)).sort((a,b)=>(a.order||0)-(b.order||0));visibleCategories.forEach((c,i)=>{let a=catLinks[i];if(!a){a=document.createElement('a');first.parentNode.insertBefore(a,catLinks[catLinks.length-1]?.nextSibling||null)}a.href='catalog.html?category='+encodeURIComponent(c.id);a.textContent=c.short_name||c.name});catLinks.slice(visibleCategories.length).forEach(a=>a.remove())})}
   function migrateLegacyCart(){if(localStorage.getItem(LS.cart))return;const legacy=get('bb610_market_cart',[]);const migrated=[];legacy.forEach(x=>{const s=displaySku(x.id);if(s&&canBuySku(s))migrated.push({sku:s.id,qty:x.qty||1})});if(migrated.length)set(LS.cart,migrated)}
   function ensureStorefrontCardCss(){if(document.querySelector('link[data-bb610-storefront-cards]'))return;const link=document.createElement('link');link.rel='stylesheet';link.href='/assets/css/storefront-product-cards.css?v=20260918';link.dataset.bb610StorefrontCards='1';document.head.appendChild(link)}
   function init(){ensureStorefrontCardCss();migrateLegacyCart();renderCategoryNav();updateBadges();updateCompareBar();document.querySelectorAll('[data-search-form]').forEach(f=>f.onsubmit=e=>{e.preventDefault();searchSubmit(f)});document.querySelectorAll('[data-mobile-filter]').forEach(b=>b.onclick=()=>document.querySelector('.filters')?.classList.toggle('open'))}
@@ -92,7 +94,7 @@ const BB610 = (() => {
     const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
     if(typeof d.showModal==='function')d.showModal();
   }
-  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,canBuySku,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
+  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,canBuySku,categoryHidden,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);
 
 function bb610LoadProductCardV3Enhancements(){

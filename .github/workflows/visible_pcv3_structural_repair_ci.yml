@@ -54,6 +54,26 @@ jobs:
           assert matches['sku_a']['id']=='BB610-A-1KG'
           assert matches['sku_b']['id']=='BB610-A-250G'
 
+          authoritative=t.merge_catalog_sources(
+            {
+              'products':[{'id':'master-13-40-13','slug':'master-13-40-13','name':'Old title'}],
+              'skus':[{'id':'BB610-A-1KG','product_id':'master-13-40-13','variant':'1 кг'}],
+            },
+            {
+              'master-13-40-13':{'name':'Master 13-40-13','slug':'master-13-40-13','cms_published':True},
+              'dynamic-product':{'name':'Dynamic product','slug':'dynamic-product','cms_published':True},
+            },
+            [
+              {'id':'BB610-A-250G','product_id':'master-13-40-13','variant':'250 г'},
+            ],
+          )
+          ap={x['id']:x for x in authoritative['products']}
+          asku={x['id']:x for x in authoritative['skus']}
+          assert ap['master-13-40-13']['name']=='Master 13-40-13'
+          assert 'cms_published' not in ap['master-13-40-13']
+          assert ap['dynamic-product']['id']=='dynamic-product'
+          assert set(asku)=={'BB610-A-1KG','BB610-A-250G'}
+
           protection={
             'content':{'brand':'Syngenta','category':'Захист рослин'},
             'slug':'switch-62-5-wg'
@@ -130,6 +150,9 @@ jobs:
           assert 'INSERT INTO sku_commerce' not in src
           assert 'commerce_snapshot()' in src
           assert 'repair not idempotent' in src
+          assert 'load_authoritative_catalog()' in src
+          assert 'load_runtime()' not in src
+          assert 'RUNTIME = ROOT' not in src
 
           svc=Path('backend/services/product_cards_v3.py').read_text(encoding='utf-8')
           assert "'mapped': True" in svc

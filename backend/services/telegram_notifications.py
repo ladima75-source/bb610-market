@@ -11,6 +11,8 @@ from .integration_secrets import configured, get_value, set_values, source_for
 
 TELEGRAM_API = "https://api.telegram.org"
 CHANNEL = "telegram"
+OPERATIONS_CHAT_ID = "-1004349892585"
+OPERATIONS_CHAT_LABEL = "BB610 Market — Operations"
 
 
 def _now() -> str:
@@ -19,7 +21,7 @@ def _now() -> str:
 
 def telegram_status() -> dict[str, Any]:
     token_ok = configured("telegram.bot_token")
-    chat_id = get_value("telegram.chat_id", "")
+    chat_id = get_value("telegram.chat_id", OPERATIONS_CHAT_ID) or OPERATIONS_CHAT_ID
     return {
         "id": "telegram",
         "label": "Telegram",
@@ -32,7 +34,8 @@ def telegram_status() -> dict[str, Any]:
         "chat_id": {
             "configured": bool(chat_id),
             "value": chat_id,
-            "source": source_for("telegram.chat_id"),
+            "label": OPERATIONS_CHAT_LABEL,
+            "source": source_for("telegram.chat_id") if configured("telegram.chat_id") else "operations_default",
         },
         "price_request_notifications_ready": bool(token_ok and chat_id),
     }
@@ -42,10 +45,11 @@ def save_telegram_settings(*, bot_token: str | None = None, chat_id: str | None 
     values: dict[str, str | None] = {}
     if bot_token is not None:
         values["telegram.bot_token"] = bot_token
-    if chat_id is not None:
-        values["telegram.chat_id"] = chat_id
-    if values:
-        set_values(values)
+    # Operations is the canonical destination for all BB610 Market operational
+    # notifications. Persisting the known ID makes the setting explicit while
+    # still allowing an environment/secure-store override in the future.
+    values["telegram.chat_id"] = OPERATIONS_CHAT_ID
+    set_values(values)
     return telegram_status()
 
 
@@ -80,9 +84,7 @@ def _api(method: str, payload: dict[str, Any]) -> Any:
 
 
 def test_telegram() -> dict[str, Any]:
-    chat_id = get_value("telegram.chat_id", "")
-    if not chat_id:
-        raise RuntimeError("Telegram chat ID is not configured")
+    chat_id = get_value("telegram.chat_id", OPERATIONS_CHAT_ID) or OPERATIONS_CHAT_ID
     result = _api(
         "sendMessage",
         {
@@ -173,7 +175,7 @@ def notify_price_request(row: dict[str, Any]) -> dict[str, Any]:
             "provider_message_id": "",
         }
 
-    chat_id = get_value("telegram.chat_id", "")
+    chat_id = get_value("telegram.chat_id", OPERATIONS_CHAT_ID) or OPERATIONS_CHAT_ID
     try:
         result = _api(
             "sendMessage",

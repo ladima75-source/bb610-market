@@ -120,6 +120,8 @@ async function loadAttention(){
 function start(){
   build();
   loadAttention();
+  document.addEventListener('bb610:attention-refresh',loadAttention);
+  window.BB610_ADMIN_ATTENTION_REFRESH=loadAttention;
   window.setInterval(loadAttention,60000);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();

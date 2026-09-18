@@ -12,7 +12,7 @@ from .services.delivery import DeliveryNotConfigured,DeliveryUpstreamError
 from .services.payment_service import methods as payment_methods,admin_update_cod,process_webhook
 from .services.payment import PaymentNotConfigured,PaymentSignatureError
 from .services.product_commerce import seed_from_catalog, public_catalog, admin_products, update_product
-from .services.price_requests import create_price_request, list_price_requests, update_price_request_status
+from .services.price_requests import create_price_request, list_price_requests, update_price_request_status, resend_price_request_notification
 from .services.catalog_cms import (
     public_content, admin_list_products, admin_detail as admin_catalog_detail,
     save_product, create_product, create_sku, save_upload, MEDIA_DIR,
@@ -163,6 +163,15 @@ def price_request_admin_status(request_code:str,body:PriceRequestStatusBody,auth
         row=update_price_request_status(request_code,body.status)
     except ValueError as e:
         raise HTTPException(422,str(e))
+    if not row:
+        raise HTTPException(404,'Price request not found')
+    return row
+
+
+@app.post('/api/v1/admin/price-requests/{request_code}/notify')
+def price_request_admin_notify(request_code:str,authorization:Optional[str]=Header(default=None)):
+    admin_auth(authorization)
+    row=resend_price_request_notification(request_code)
     if not row:
         raise HTTPException(404,'Price request not found')
     return row

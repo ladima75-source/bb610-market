@@ -9,8 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from backend.catalog_provider import load_catalog
-from backend.services.catalog_cms import public_content, MEDIA_DIR
+from backend.services.catalog_cms import MEDIA_DIR
+from backend.services.product_master_runtime import snapshot as product_master_snapshot
 
 CYRILLIC = re.compile(r"[А-Яа-яІіЇїЄєҐґ]")
 PLACEHOLDER = re.compile(r"(product-(?:biostim|npk|container|master|megafol|plantafol)\.svg|placeholder|default)", re.I)
@@ -36,29 +36,21 @@ def local_exists(value: str) -> bool:
 
 
 def main():
-    base = load_catalog()
-    products = {str(p.get("id")): dict(p) for p in base.get("products", []) if p.get("id")}
-    skus = {str(s.get("id") or s.get("sku")): dict(s) for s in base.get("skus", []) if s.get("id") or s.get("sku")}
-
-    live = public_content()
-    hidden = set()
-    for patch in live.get("products", []):
-        pid = str(patch.get("id") or "").strip()
-        if not pid:
-            continue
-        if patch.get("runtime_hidden"):
-            hidden.add(pid)
-            continue
-        products[pid] = {**products.get(pid, {}), **patch}
-    for row in live.get("skus", []):
-        sid = str(row.get("id") or row.get("sku") or "").strip()
-        if sid:
-            skus[sid] = {**skus.get(sid, {}), **row}
+    master = product_master_snapshot()
+    products = {
+        str(p.get("id")): dict(p)
+        for p in master.get("products", [])
+        if isinstance(p, dict) and p.get("id")
+    }
+    skus = {
+        str(s.get("id") or s.get("sku")): dict(s)
+        for s in master.get("skus", [])
+        if isinstance(s, dict) and (s.get("id") or s.get("sku"))
+    }
 
     visible = [
-        p for pid, p in products.items()
-        if pid not in hidden
-        and not p.get("internal_only")
+        p for p in products.values()
+        if not p.get("internal_only")
         and not p.get("runtime_hidden")
         and str(p.get("category_id") or p.get("category") or "").lower() != "protection"
     ]
@@ -72,6 +64,8 @@ def main():
     latin_name = []
     no_summary = []
     long_name = []
+    no_method = []
+    no_culture = []
 
     for p in visible:
         pid = str(p.get("id") or "")
@@ -83,6 +77,8 @@ def main():
         primary = sku_images[0] if sku_images else image_path(p.get("image"))
         name = str(p.get("name") or "").strip()
         summary = str(p.get("short_description") or p.get("product_type") or p.get("manufacturer_use") or "").strip()
+        methods = p.get("applicationMethods") or p.get("application_methods") or []
+        cultures = p.get("cultures") or []
 
         if not primary or not local_exists(primary):
             missing_photo.append((pid, name, primary or "—"))
@@ -94,10 +90,15 @@ def main():
             no_summary.append((pid, name))
         if len(name) > 105:
             long_name.append((pid, name))
+        if not methods:
+            no_method.append((pid, name))
+        if not cultures:
+            no_culture.append((pid, name))
 
     pots = [p for p in visible if str(p.get("category_id") or p.get("category") or "") == "containers"]
 
     print("===== CATALOG QUALITY AUDIT =====")
+    print(f"SOURCE={master.get('source','')}")
     print(f"VISIBLE_PRODUCTS={len(visible)}")
     print(f"NON_POT_PRODUCTS={len(visible)-len(pots)}")
     print(f"POTS={len(pots)}")
@@ -105,9 +106,12 @@ def main():
     print(f"FALLBACK_PHOTO={len(fallback_photo)}")
     print(f"LATIN_ONLY_NAME={len(latin_name)}")
     print(f"NO_SUMMARY={len(no_summary)}")
+    print(f"NO_METHOD={len(no_method)}")
+    print(f"NO_CULTURE={len(no_culture)}")
     print(f"LONG_NAME={len(long_name)}")
 
     report = {
+        "source": master.get("source"),
         "visible_products": len(visible),
         "non_pot_products": len(visible) - len(pots),
         "pots": len(pots),
@@ -115,6 +119,8 @@ def main():
         "fallback_photo": fallback_photo,
         "latin_only_name": latin_name,
         "no_summary": no_summary,
+        "no_method": no_method,
+        "no_culture": no_culture,
         "long_name": long_name,
     }
     report_dir = ROOT / "var" / "import-reports"
@@ -129,6 +135,8 @@ def main():
             ("FALLBACK PHOTO", fallback_photo),
             ("LATIN-ONLY NAME", latin_name),
             ("NO SUMMARY", no_summary),
+            ("NO METHOD", no_method),
+            ("NO CULTURE", no_culture),
             ("LONG NAME", long_name),
         ]:
             if not rows:

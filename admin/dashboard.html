@@ -1,21 +1,23 @@
 <!doctype html><html lang="uk"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Огляд · BB610 Market Admin</title>
-<link rel="stylesheet" href="dashboard.css?v=18a">
+<link rel="stylesheet" href="dashboard.css?v=20260918-attention-1">
 <link rel="stylesheet" href="admin-shell.css?v=18i1">
 <link rel="stylesheet" href="admin-sticky-tables.css?v=18k1">
-<link rel="stylesheet" href="admin-master-nav.css?v=20260918-market-test-1">
+<link rel="stylesheet" href="admin-master-nav.css?v=20260918-attention-1">
 </head><body>
 <header class="top"><a class="brand" href="dashboard.html"><span>BB610</span> MARKET ADMIN</a><nav><a href="sales-channels.html">Канали</a><a href="media-manager.html">Медіатека</a><a href="categories-manager.html">Категорії</a><a href="homepage-showcase.html">Головна / Вітрина</a>
 <a class="on" href="dashboard.html">Огляд</a><a href="orders-center.html">Замовлення</a><a href="products.html">Ціни</a><a href="catalog-workbench.html">Каталог</a><a href="catalog-import.html">Імпорт каталогу</a><a href="content.html">Контент</a><a href="integrations.html">Інтеграції</a>
 </nav><div class="auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></header>
 
 <main>
-<section class="hero"><div><h1>Огляд магазину</h1><p id="updated">Завантаження даних…</p></div><div class="hero-actions"><button id="refresh">Оновити</button><a href="orders-center.html">Нові замовлення</a></div></section>
+<section class="hero"><div><h1>Огляд магазину</h1><p id="updated">Завантаження даних…</p></div><div class="hero-actions"><button id="refresh">Оновити</button><a id="heroOrders" href="orders-center.html">Нові замовлення</a><a id="heroPriceRequests" href="price-requests.html">Запити ціни</a></div></section>
 
 <section class="kpi-grid">
 <div class="kpi"><span>Замовлення сьогодні</span><b id="ordersToday">—</b><small id="revenueToday">—</small></div>
 <div class="kpi"><span>Замовлення · 7 днів</span><b id="orders7">—</b><small id="revenue7">—</small></div>
+<div class="kpi kpi-attention"><span>Нові запити ціни</span><b id="priceRequestsNew">—</b><small id="priceRequestsTotal">—</small></div>
+<div class="kpi"><span>Запити ціни · успішні</span><b id="priceRequestsWon">—</b><small id="priceRequestsQuoted">—</small></div>
 <div class="kpi"><span>Оборот · 30 днів</span><b id="revenue30">—</b><small id="orders30">—</small></div>
 <div class="kpi"><span>Середній чек · 30 днів</span><b id="avg30">—</b><small>грн</small></div>
 <div class="kpi"><span>Товарів</span><b id="productsCount">—</b><small id="skuCount">—</small></div>
@@ -33,6 +35,11 @@
 </div>
 
 <div class="columns">
+<section class="panel"><div class="panel-head"><h2>Останні запити ціни</h2><a href="price-requests.html">Усі запити →</a></div><div class="table-wrap"><table><thead><tr><th>Код</th><th>Дата</th><th>Товар</th><th>К-сть</th><th>Статус</th></tr></thead><tbody id="recentPriceRequests"><tr><td colspan="5">Завантаження…</td></tr></tbody></table></div></section>
+<section class="panel"><div class="panel-head"><h2>Статуси запитів ціни</h2><a href="price-requests.html">Обробити →</a></div><div id="priceRequestStatuses" class="status-list"></div></section>
+</div>
+
+<div class="columns">
 <section class="panel"><div class="panel-head"><h2>Інтеграції</h2><a href="integrations.html">Налаштування →</a></div><div id="integrations" class="integrations"></div></section>
 <section class="panel"><div class="panel-head"><h2>Останні зміни</h2></div><div id="activity" class="activity"></div></section>
 </div>
@@ -42,15 +49,16 @@
 <a href="products.html"><b>Ціни та залишки</b><span>Оперативне керування продажем</span></a>
 <a href="catalog-import.html"><b>Імпорт / експорт</b><span>Масові зміни каталогу</span></a>
 <a href="content.html"><b>Контент</b><span>Банери та медіатека</span></a>
-<a href="orders-center.html"><b>Замовлення</b><span>Обробка та відправлення</span></a>
+<a href="orders-center.html"><b id="quickOrdersLabel">Замовлення</b><span>Обробка та відправлення</span></a>
+<a href="price-requests.html"><b id="quickPriceRequestsLabel">Запити ціни</b><span>Ліди з товарів «Ціна за запитом»</span></a>
 <a href="integrations.html"><b>Інтеграції</b><span>Нова пошта, фіди, Telegram</span></a>
 </div></section>
 </main>
-<script src="dashboard.js?v=18a"></script>
+<script src="dashboard.js?v=20260918-attention-1"></script>
 <script src="admin-shell.js?v=18i"></script>
 <script src="catalog-health-nav.js?v=18j"></script>
 <script src="audit-log-nav.js?v=18k"></script>
 <script src="backup-nav.js?v=18l"></script>
 <script src="commerce-control-nav.js?v=18m"></script>
-<script src="admin-master-nav.js?v=19c0"></script>
+<script src="admin-master-nav.js?v=20260918-attention-1"></script>
 </body></html>

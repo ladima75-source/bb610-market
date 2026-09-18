@@ -19,6 +19,8 @@ _ENV_FALLBACKS = {
     "nova_poshta.sender_contact_ref": "BB610_NOVA_POSHTA_SENDER_CONTACT_REF",
     "nova_poshta.sender_address_ref": "BB610_NOVA_POSHTA_SENDER_ADDRESS_REF",
     "payments.cod_enabled": "BB610_PAYMENT_COD_ENABLED",
+    "telegram.bot_token": "BB610_TELEGRAM_BOT_TOKEN",
+    "telegram.chat_id": "BB610_TELEGRAM_CHAT_ID",
 }
 
 

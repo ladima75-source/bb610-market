@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "stage22c-batch06-content",
+  "batch": "BB610 Product Card v3 content / stage22c batch06 rows61-72 / 2026-09-18",
+  "language": "uk",
+  "source_batch": "data/content_batches/stage22c_batch06_rows61_72.json",
+  "expected_source_rows": [61,62,63,64,65,66,67,68,69,70,71,72],
+  "expected_target_count": 12,
+  "title_aliases_by_source_row": {
+    "61": ["Micro NP"],
+    "62": ["Actiwin 20-5-10"],
+    "63": ["Brexil Mn"],
+    "64": ["Brexil Duo"],
+    "65": ["Brexil Nutre"],
+    "66": ["Actiwave"],
+    "67": ["Maxicrop Extra"],
+    "68": ["Ferrilen Trium", "Ferrilene Trium"],
+    "69": ["Valagro EDTA 5SG"],
+    "70": ["Valagro EDTA Fe 13%"],
+    "71": ["MAX 600 SEASAILER"],
+    "72": ["Agriflex Bio"]
+  },
+  "policy": {
+    "mode": "content-only",
+    "resolver": "exact normalized pre/post title aliases",
+    "protected": ["product_id","slug","enabled","brand","category","sku_media","commerce_map","sku_commerce","price","availability","stock","media"]
+  }
+}

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "batch": "Plantlogic pots Product Card v3 seed / 2026-09-18",
-  "status": "source-verified draft cards; prices and media intentionally excluded",
-  "source_policy": "official Plantlogic website/catalog only; cards are seeded disabled until media/commerce readiness",
+  "batch": "Plantlogic pots Product Card v3 master / current official assortment / 2026-09-18",
+  "status": "source-verified draft cards; current getplantlogic.com product pages; prices and media excluded",
+  "source_policy": "current official Plantlogic product pages first; Product Catalog used only as supporting source; cards remain disabled until media/commerce readiness",
   "products": [
     {
       "product_id": "prd_pl_zephyr_v2",
@@ -13,7 +13,7 @@
         "лохина",
         "субстратне вирощування"
       ],
-      "source_url": "https://getplantlogic.com/blueberry-production/",
+      "source_url": "https://getplantlogic.com/portfolio-items/zephyr-v2/",
       "skus": [
         {
           "sku_id": "sku_pl_1301144",
@@ -91,7 +91,7 @@
       "family": "round",
       "volume_l": 25,
       "product_no": "1308125",
-      "source_url": "https://getplantlogic.com/portfolio/",
+      "source_url": "https://getplantlogic.com/portfolio-items/new-25-liter-round-pot/",
       "use_cases": [
         "лохина",
         "субстратне вирощування"
@@ -105,7 +105,8 @@
           "package": "25 л",
           "product_no": "1308125"
         }
-      ]
+      ],
+      "dimensions": "385 мм ширина × 362 мм висота"
     },
     {
       "product_id": "prd_pl_1308025",
@@ -138,7 +139,7 @@
       "family": "short_legs",
       "volume_l": 25,
       "product_no": "1303025",
-      "source_url": "https://getplantlogic.com/blueberry-production/",
+      "source_url": "https://getplantlogic.com/portfolio-items/25-liter-round-pot-short-legs/",
       "use_cases": [
         "лохина",
         "субстратне вирощування"
@@ -151,7 +152,8 @@
           "package": "25 л",
           "product_no": "1303025"
         }
-      ]
+      ],
+      "dimensions": "399 мм ширина × 306 мм висота"
     },
     {
       "product_id": "prd_pl_1309025",
@@ -183,7 +185,7 @@
       "family": "u_groove_square",
       "volume_l": 25,
       "product_no": "1309026",
-      "source_url": "https://getplantlogic.com/portfolio/",
+      "source_url": "https://getplantlogic.com/portfolio-items/25-liter-square-pot-with-u-grooves/",
       "use_cases": [
         "лохина",
         "субстратне вирощування"
@@ -196,7 +198,8 @@
           "package": "25 л",
           "product_no": "1309026"
         }
-      ]
+      ],
+      "dimensions": "355 мм ширина × 322 мм висота"
     },
     {
       "product_id": "prd_pl_1308026",
@@ -205,7 +208,7 @@
       "family": "u_groove_round",
       "volume_l": 25,
       "product_no": "1308026",
-      "source_url": "https://getplantlogic.com/portfolio/",
+      "source_url": "https://getplantlogic.com/portfolio-items/25-liter-round-pot-with-u-grooves/",
       "use_cases": [
         "лохина",
         "субстратне вирощування"
@@ -218,7 +221,8 @@
           "package": "25 л",
           "product_no": "1308026"
         }
-      ]
+      ],
+      "dimensions": "385 мм ширина × 354 мм висота"
     },
     {
       "product_id": "prd_pl_1304125",
@@ -264,7 +268,8 @@
           "package": "25 л",
           "product_no": "1303125"
         }
-      ]
+      ],
+      "dimensions": "330 мм ширина × 329 мм висота"
     },
     {
       "product_id": "prd_pl_1308303",
@@ -291,13 +296,37 @@
       ]
     },
     {
+      "product_id": "prd_pl_1308305",
+      "slug": "plantlogic-30l-round-parallel-u-grooves-1308305",
+      "name": "30 Liter Round Pot with Parallel U-Grooves",
+      "family": "u_groove_round",
+      "volume_l": 30,
+      "product_no": "1308305",
+      "source_url": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-with-parallel-u-grooves/",
+      "use_cases": [
+        "лохина",
+        "малина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "407 мм ширина × 380 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1308305",
+          "sku_code": "PL-1308305",
+          "label": "30 Liter Round Pot with Parallel U-Grooves — 30 л",
+          "package": "30 л",
+          "product_no": "1308305"
+        }
+      ]
+    },
+    {
       "product_id": "prd_pl_1308031",
       "slug": "plantlogic-30l-round-v-rib-1308031",
       "name": "30 Liter Round Pot V-Rib",
       "family": "v_rib",
       "volume_l": 30,
       "product_no": "1308031",
-      "source_url": "https://getplantlogic.com/wp-content/uploads/2018/07/Email_1308031_Eng_Br.html",
+      "source_url": "https://getplantlogic.com/portfolio-items/30-liter-round-v-rib/",
       "use_cases": [
         "лохина",
         "субстратне вирощування"
@@ -310,7 +339,8 @@
           "package": "30 л",
           "product_no": "1308031"
         }
-      ]
+      ],
+      "dimensions": "407 мм ширина × 383 мм висота"
     },
     {
       "product_id": "prd_pl_1309030",
@@ -332,7 +362,8 @@
           "package": "30 л",
           "product_no": "1309030"
         }
-      ]
+      ],
+      "dimensions": "385 мм ширина × 324 мм висота"
     },
     {
       "product_id": "prd_pl_13090350",
@@ -364,7 +395,7 @@
       "family": "u_groove_round",
       "volume_l": 35,
       "product_no": "13080350",
-      "source_url": "https://getplantlogic.com/portfolio/",
+      "source_url": "https://getplantlogic.com/portfolio-items/35-liter-round-pot-with-u-grooves-for-blueberries/",
       "use_cases": [
         "лохина",
         "субстратне вирощування"
@@ -377,7 +408,8 @@
           "package": "35 л",
           "product_no": "13080350"
         }
-      ]
+      ],
+      "dimensions": "460 мм ширина × 340 мм висота"
     },
     {
       "product_id": "prd_pl_1308041",
@@ -428,6 +460,35 @@
       ]
     },
     {
+      "product_id": "prd_pl_40sq_ug_side",
+      "slug": "plantlogic-40l-square-u-grooves-side-holes-13090400-13090440",
+      "name": "40 Liter Square Pot with U-Grooves & Side Holes",
+      "family": "u_groove_square",
+      "volume_l": 40,
+      "source_url": "https://getplantlogic.com/portfolio-items/40l-square-pot-for-blueberries-with-side-holes/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "444 мм довжина × 459 мм ширина × 345 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_13090400",
+          "sku_code": "PL-13090400",
+          "label": "40 Liter Square Pot with U-Grooves & Side Holes — 16 мм U-пази",
+          "package": "40 л / U-пази 16 мм",
+          "product_no": "13090400"
+        },
+        {
+          "sku_id": "sku_pl_13090440",
+          "sku_code": "PL-13090440",
+          "label": "40 Liter Square Pot with U-Grooves & Side Holes — 20 мм U-пази",
+          "package": "40 л / U-пази 20 мм",
+          "product_no": "13090440"
+        }
+      ]
+    },
+    {
       "product_id": "prd_pl_1306003",
       "slug": "plantlogic-3l-square-1306003",
       "name": "3 Liter Square Pot",
@@ -474,7 +535,8 @@
           "package": "4,7 л",
           "product_no": "13050040"
         }
-      ]
+      ],
+      "dimensions": "198 мм ширина × 187 мм висота"
     },
     {
       "product_id": "prd_pl_1306051",
@@ -499,7 +561,8 @@
           "package": "5 л",
           "product_no": "1306051"
         }
-      ]
+      ],
+      "dimensions": "204 мм ширина × 322 мм висота"
     },
     {
       "product_id": "prd_pl_1306007",

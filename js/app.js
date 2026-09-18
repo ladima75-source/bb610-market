@@ -83,6 +83,85 @@ const BB610 = (() => {
   function migrateLegacyCart(){if(localStorage.getItem(LS.cart))return;const legacy=get('bb610_market_cart',[]);const migrated=[];legacy.forEach(x=>{const s=displaySku(x.id);if(s&&canBuySku(s))migrated.push({sku:s.id,qty:x.qty||1})});if(migrated.length)set(LS.cart,migrated)}
   function ensureStorefrontCardCss(){if(document.querySelector('link[data-bb610-storefront-cards]'))return;const link=document.createElement('link');link.rel='stylesheet';link.href='/assets/css/storefront-product-cards.css?v=20260918';link.dataset.bb610StorefrontCards='1';document.head.appendChild(link)}
   function init(){ensureStorefrontCardCss();migrateLegacyCart();renderCategoryNav();updateBadges();updateCompareBar();document.querySelectorAll('[data-search-form]').forEach(f=>f.onsubmit=e=>{e.preventDefault();searchSubmit(f)});document.querySelectorAll('[data-mobile-filter]').forEach(b=>b.onclick=()=>document.querySelector('.filters')?.classList.toggle('open'))}
+  function openPriceRequest(skuId,initialQty=1){
+    const s=sku(skuId);
+    if(!s||!isPriceRequestSku(s)){toast('Запит ціни для цього варіанта недоступний');return false}
+    const p=BB610_DATA_SOURCE.product(s.product_id);
+    if(!p){toast('Товар не знайдено');return false}
+    let d=document.getElementById('bb610-price-request');
+    if(!d){
+      d=document.createElement('dialog');
+      d.id='bb610-price-request';
+      d.className='bb610-price-request';
+      d.innerHTML='<form class="price-request-card" id="bb610-price-request-form">'+
+        '<button class="price-request-close" type="button" aria-label="Закрити">×</button>'+
+        '<div class="eyebrow">BB610 MARKET</div>'+
+        '<h2>Запросити ціну</h2>'+
+        '<p class="price-request-product" data-pr-product></p>'+
+        '<p class="price-request-note">Ціна залежить від моделі, кількості та умов постачання. Надішліть запит — ми уточнимо актуальні умови.</p>'+
+        '<label>Кількість<input name="quantity" type="number" min="1" max="100000" value="1" required></label>'+
+        '<label>Ваше ім’я<input name="customer_name" type="text" minlength="2" maxlength="160" autocomplete="name" required></label>'+
+        '<label>Телефон / Telegram / e-mail<input name="contact" type="text" minlength="3" maxlength="240" autocomplete="tel" required></label>'+
+        '<label>Коментар<textarea name="comment" maxlength="2000" rows="3" placeholder="Наприклад: 610 шт., доставка у Київ"></textarea></label>'+
+        '<button class="btn price-request-submit" type="submit">НАДІСЛАТИ ЗАПИТ</button>'+
+        '<div class="price-request-status" data-pr-status></div>'+
+        '<div class="price-request-alt">Або: <a data-pr-mail>Email</a> · <a href="https://t.me/bb610_market_bot" target="_blank" rel="noopener">Telegram</a></div>'+
+        '</form>';
+      document.body.appendChild(d);
+      d.querySelector('.price-request-close').onclick=()=>d.close();
+      d.addEventListener('click',e=>{if(e.target===d)d.close()});
+      d.querySelector('form').addEventListener('submit',async e=>{
+        e.preventDefault();
+        const form=e.currentTarget,status=d.querySelector('[data-pr-status]'),submit=form.querySelector('.price-request-submit');
+        const currentSku=sku(d.dataset.sku);
+        const currentProduct=currentSku?BB610_DATA_SOURCE.product(currentSku.product_id):null;
+        if(!currentSku||!currentProduct){status.textContent='Не вдалося визначити товар.';return}
+        const fd=new FormData(form);
+        const payload={
+          product_id:currentProduct.id,
+          sku:currentSku.id,
+          product_name:currentProduct.name,
+          variant:currentSku.variant||'',
+          quantity:Math.max(1,Number(fd.get('quantity')||1)),
+          customer_name:String(fd.get('customer_name')||'').trim(),
+          contact:String(fd.get('contact')||'').trim(),
+          comment:String(fd.get('comment')||'').trim(),
+          source_url:location.href
+        };
+        submit.disabled=true;
+        status.textContent='Надсилаємо запит…';
+        try{
+          const base=window.BB610_COMMERCE_CONFIG?.apiBaseUrl||'https://api.market.bb610.com.ua';
+          const r=await fetch(base.replace(/\/$/,'')+'/api/v1/price-requests',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+          if(!r.ok)throw new Error('HTTP '+r.status);
+          const result=await r.json();
+          status.textContent='Запит '+result.request_code+' прийнято. Ми зв’яжемося з вами для уточнення ціни та постачання.';
+          pushEvent('request_price',{sku:currentSku.id,product_id:currentProduct.id,quantity:payload.quantity,request_code:result.request_code});
+          submit.textContent='ЗАПИТ НАДІСЛАНО';
+          form.querySelectorAll('input,textarea').forEach(x=>x.disabled=true);
+        }catch(err){
+          status.textContent='Не вдалося надіслати форму. Напишіть нам у Telegram або e-mail.';
+          submit.disabled=false;
+        }
+      });
+    }
+    d.dataset.sku=s.id;
+    const form=d.querySelector('form');
+    form.reset();
+    form.querySelectorAll('input,textarea').forEach(x=>x.disabled=false);
+    form.querySelector('[name=quantity]').value=Math.max(1,Number(initialQty)||1);
+    form.querySelector('.price-request-submit').disabled=false;
+    form.querySelector('.price-request-submit').textContent='НАДІСЛАТИ ЗАПИТ';
+    d.querySelector('[data-pr-status]').textContent='';
+    d.querySelector('[data-pr-product]').textContent=p.name+(s.variant?' · '+s.variant:'');
+    const subject='Запит ціни BB610 Market: '+p.name;
+    const body='Товар: '+p.name+'\nSKU: '+s.id+'\nВаріант: '+(s.variant||'')+'\nКількість: '+Math.max(1,Number(initialQty)||1);
+    d.querySelector('[data-pr-mail]').href='mailto:market.bb610@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    pushEvent('request_price_open',{sku:s.id,product_id:p.id});
+    if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');
+    return true;
+  }
+
   function openPhoto(src,alt='Фото товару'){
     if(!src)return;
     let d=document.getElementById('bb610-photo-lightbox');
@@ -96,7 +175,7 @@ const BB610 = (() => {
     const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
     if(typeof d.showModal==='function')d.showModal();
   }
-  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,canBuySku,categoryHidden,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
+  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);
 
 function bb610LoadProductCardV3Enhancements(){

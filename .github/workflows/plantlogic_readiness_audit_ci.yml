@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'backend/tools_audit_plantlogic_readiness_20260918.py'
+      - 'backend/tools_prepare_plantlogic_draft_20260918.py'
       - 'backend/tools_bind_plantlogic_legacy_commerce_20260918.py'
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - 'backend/services/product_cards_v3.py'
@@ -15,6 +16,7 @@ on:
   pull_request:
     paths:
       - 'backend/tools_audit_plantlogic_readiness_20260918.py'
+      - 'backend/tools_prepare_plantlogic_draft_20260918.py'
       - 'backend/tools_bind_plantlogic_legacy_commerce_20260918.py'
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - 'backend/services/product_cards_v3.py'
@@ -36,6 +38,7 @@ jobs:
         run: |
           python -m py_compile backend/tools_audit_plantlogic_readiness_20260918.py
           python -m py_compile backend/tools_bind_plantlogic_legacy_commerce_20260918.py
+          python -m py_compile backend/tools_prepare_plantlogic_draft_20260918.py
 
       - name: Validate audit contract
         run: |
@@ -66,6 +69,19 @@ jobs:
           assert 'UPDATE sku_commerce' not in binder
           assert 'INSERT INTO sku_commerce' not in binder
           assert 'DELETE FROM sku_commerce' not in binder
+
+          runner=Path('backend/tools_prepare_plantlogic_draft_20260918.py').read_text(encoding='utf-8')
+          assert 'EXPECTED_PRODUCTS = 34' in runner
+          assert 'EXPECTED_SKUS = 37' in runner
+          assert 'EXPECTED_LEGACY_BINDINGS = 2' in runner
+          assert 'sync.apply_plan' in runner
+          assert 'media.apply_safe' in runner
+          assert 'binder.apply_plan' in runner
+          assert 'PLANTLOGIC DRAFT READY: PASS' in runner
+          assert 'UKRAINIAN STOREFRONT TITLES: PASS' in runner
+          assert 'UPDATE sku_commerce' not in runner
+          assert 'INSERT INTO sku_commerce' not in runner
+          assert 'DELETE FROM sku_commerce' not in runner
 
           print('PLANTLOGIC READINESS AUDIT CONTRACT: PASS')
           PY

@@ -1,0 +1,172 @@
+name: Plantlogic market-test CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/app.py'
+      - 'backend/migrations/009_price_requests.sql'
+      - 'backend/services/price_requests.py'
+      - 'backend/services/product_cards_v3_facets.py'
+      - 'backend/services/product_cards_v3_runtime.py'
+      - 'backend/services/catalog_cms.py'
+      - 'backend/tools_publish_plantlogic_market_test_20260918.py'
+      - 'data/product_content/plantlogic_pots_v1_20260918.json'
+      - 'js/app.js'
+      - 'js/product.js'
+      - 'assets/css/storefront-product-cards.css'
+      - 'index.html'
+      - 'catalog.html'
+      - 'product.html'
+      - '.github/workflows/plantlogic_market_test_ci.yml'
+  workflow_dispatch:
+
+jobs:
+  market-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: |
+          python -m py_compile             backend/app.py             backend/services/price_requests.py             backend/services/product_cards_v3_facets.py             backend/services/product_cards_v3_runtime.py             backend/services/catalog_cms.py             backend/tools_publish_plantlogic_market_test_20260918.py
+          node --check js/app.js
+          node --check js/product.js
+
+      - name: Storefront contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          app=Path('js/app.js').read_text(encoding='utf-8')
+          product=Path('js/product.js').read_text(encoding='utf-8')
+          css=Path('assets/css/storefront-product-cards.css').read_text(encoding='utf-8')
+
+          assert "isPriceRequestSku" in app
+          assert "ЗАПРОСИТИ ЦІНУ" in app
+          assert "Ціна за запитом" in app
+          assert "/api/v1/price-requests" in app
+          assert "data-request-price" in app
+          assert "openPriceRequest" in product
+          assert "Ціна за запитом" in product
+          assert "Під замовлення" in product
+          assert "bb610-price-request" in css
+
+          for page in ('index.html','catalog.html','product.html'):
+              text=Path(page).read_text(encoding='utf-8')
+              assert 'app.js?v=20260918-market-test-1' in text
+          assert 'product.js?v=20260918-market-test-1' in Path('product.html').read_text(encoding='utf-8')
+
+          print('PLANTLOGIC MARKET-TEST STOREFRONT CONTRACT: PASS')
+          PY
+
+      - name: Catalog projection and lead storage
+        env:
+          BB610_DB_PATH: /tmp/bb610-market-test-ci.sqlite3
+        run: |
+          rm -f /tmp/bb610-market-test-ci.sqlite3
+          python - <<'PY'
+          from copy import deepcopy
+          from pathlib import Path
+
+          from backend.db import migrate
+          migrate()
+
+          from backend import update_plantlogic_pots_v3_20260918 as master
+          from backend.services import product_cards_v3 as pcv3
+          from backend.services.product_cards_v3_facets import market_test_projection
+          from backend.services.price_requests import create_price_request, list_price_requests
+
+          doc=master.load_manifest()
+          assert len(doc['products'])==34
+          assert sum(len(x.get('skus') or []) for x in doc['products'])==37
+
+          managed={str(x['product_id']) for x in doc['products']}
+          for path in list(pcv3.PRODUCTS.glob('prd_*.json')):
+              card=pcv3._load(path,None)
+              if isinstance(card,dict) and str((card.get('content') or {}).get('brand') or '').lower()=='plantlogic' and str(card.get('product_id') or '') not in managed:
+                  path.unlink()
+
+          for spec in doc['products']:
+              card=master.build_card(spec)
+              card['enabled']=True
+              media_id='med_ci_'+spec['product_id']
+              card['sku_media']['media']=[{
+                  'media_id':media_id,
+                  'path':'media/products/ci-'+spec['product_id']+'.jpg',
+                  'alt':card['content']['title'],
+                  'kind':'product',
+                  'sort_order':0,
+              }]
+              for sku in card['sku_media']['skus']:
+                  sku['primary_media_id']=media_id
+              pcv3.validate(card)
+              pcv3._save(pcv3._product_path(card['product_id']),card)
+          pcv3._rebuild_index()
+
+          projection=market_test_projection()
+          products=projection['products']
+          skus=projection['skus']
+
+          assert len(products)==34
+          assert len({x['id'] for x in products})==34
+          assert len(skus)==37
+          assert all(x.get('market_test') is True for x in products)
+          assert all(x.get('price_request') is True for x in products)
+          assert all(x.get('price') is None and x.get('sale_price') is None for x in skus)
+          assert all(x.get('price_request') is True for x in skus)
+          assert all(x.get('availability')=='backorder' for x in skus)
+          assert all(x.get('stock_label')=='Під замовлення' for x in skus)
+          assert all(x.get('commercial_status')=='request-price' for x in skus)
+          assert all(x.get('offer_status')=='request-price' for x in skus)
+          assert all(str(x.get('image') or '').startswith('/media/products/') for x in skus)
+          assert all(not str(x.get('name') or '').startswith('Plantlogic') for x in products)
+
+          first=skus[0]
+          product=next(x for x in products if x['id']==first['product_id'])
+          lead=create_price_request({
+              'product_id':product['id'],
+              'sku':first['id'],
+              'product_name':'spoofed',
+              'variant':'spoofed',
+              'quantity':610,
+              'customer_name':'Тест',
+              'contact':'test@example.com',
+              'comment':'CI',
+              'source_url':'https://market.bb610.com.ua/catalog.html',
+          })
+          assert lead['status']=='new'
+          rows=list_price_requests(limit=10)
+          assert len(rows)==1
+          assert rows[0]['request_code']==lead['request_code']
+          assert rows[0]['product_name']==product['name']
+          assert rows[0]['variant']==first['variant']
+          assert rows[0]['quantity']==610
+
+          print('PLANTLOGIC MARKET-TEST PRODUCTS: 34/34 PASS')
+          print('PLANTLOGIC MARKET-TEST SKU: 37/37 PASS')
+          print('PLANTLOGIC REQUEST-PRICE SKU: 37/37 PASS')
+          print('PLANTLOGIC PRICE REQUEST LEAD STORAGE: PASS')
+          PY
+
+      - name: Publish tool safety contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text=Path('backend/tools_publish_plantlogic_market_test_20260918.py').read_text(encoding='utf-8')
+          assert 'EXPECTED_PRODUCTS = 34' in text
+          assert 'EXPECTED_SKUS = 37' in text
+          assert 'PRICE/STOCK WRITES: NONE' in text
+          assert 'COMMERCE/PRICES/STOCK UNCHANGED: PASS' in text
+          assert 'PLANTLOGIC MARKET-TEST READY: PASS' in text
+          assert '_snapshot_tables()' in text
+          assert 'pcv3.put' in text
+          assert 'UPDATE sku_commerce' not in text
+          assert 'INSERT INTO sku_commerce' not in text
+          assert 'DELETE FROM sku_commerce' not in text
+          print('PLANTLOGIC MARKET-TEST PUBLISH SAFETY: PASS')
+          PY

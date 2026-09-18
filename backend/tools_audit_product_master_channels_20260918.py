@@ -9,7 +9,12 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from backend.services.product_master_runtime import SOURCE_ID, snapshot as master_snapshot
+from backend.services.product_master_runtime import (
+    HIDDEN_PUBLIC_CATEGORIES,
+    HIDDEN_PUBLIC_PRODUCT_IDS,
+    SOURCE_ID,
+    snapshot as master_snapshot,
+)
 from backend.services.catalog_feeds import (
     channel_snapshot,
     google_csv_from_snapshot,
@@ -41,6 +46,22 @@ def main() -> int:
     ]
     duplicates = len(sku_ids) - len(set(sku_ids))
 
+    hidden_leaks = []
+    for row in products:
+        if not isinstance(row, dict):
+            continue
+        pid = str(row.get("id") or "").strip().lower()
+        slug = str(row.get("slug") or "").strip().lower()
+        category_id = str(row.get("category_id") or "").strip().lower()
+        category = str(row.get("category") or "").strip().lower()
+        if (
+            pid in HIDDEN_PUBLIC_PRODUCT_IDS
+            or slug in HIDDEN_PUBLIC_PRODUCT_IDS
+            or category_id in HIDDEN_PUBLIC_CATEGORIES
+            or category in HIDDEN_PUBLIC_CATEGORIES
+        ):
+            hidden_leaks.append(pid or slug or "?")
+
     google_count = csv_rows(google_csv_from_snapshot(channel))
     meta_count = csv_rows(meta_csv_from_snapshot(channel))
     counts = channel.get("counts") or {}
@@ -55,6 +76,7 @@ def main() -> int:
         "channel_total": int(counts.get("total") or 0) == len(set(sku_ids)),
         "google_parity": google_count == eligible,
         "meta_parity": meta_count == eligible,
+        "hidden_products": not hidden_leaks,
     }
 
     print("===== PRODUCT MASTER / CHANNELS AUDIT =====")
@@ -69,6 +91,9 @@ def main() -> int:
     print(f"REVIEW_REQUIRED={counts.get('review_required',0)}")
     print(f"GOOGLE_ROWS={google_count}")
     print(f"META_ROWS={meta_count}")
+    print(f"HIDDEN_PRODUCT_LEAKS={len(hidden_leaks)}")
+    if hidden_leaks:
+        print("HIDDEN_LEAK_IDS=" + ",".join(hidden_leaks))
     print("CHECKS=" + ("PASS" if all(checks.values()) else "FAIL"))
     if not all(checks.values()):
         print("FAILED=" + ",".join(k for k, ok in checks.items() if not ok))

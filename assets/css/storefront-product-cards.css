@@ -1,0 +1,133 @@
+/* BB610 storefront Product Card v2 — 2026-09-18
+   Stable two-zone layout for catalog/home cards.
+   Upper zone = product content. Lower zone = commerce + actions. */
+
+.nav a[href*="#verified"]{
+  display:none!important;
+}
+
+.product-card-v2{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+.product-card-v2 .product-media{
+  flex:0 0 auto;
+}
+
+.product-card-v2 .product-tags,
+.product-card-v2 .verified-tag{
+  display:none!important;
+}
+
+.product-card-v2 .product-body{
+  padding:0!important;
+  display:flex!important;
+  flex:1 1 auto;
+  min-height:0;
+  flex-direction:column;
+  gap:0!important;
+}
+
+.product-card-v2 .product-card-main{
+  flex:1 1 auto;
+  min-height:0;
+  padding:16px 16px 14px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.product-card-v2 .product-card-commerce{
+  flex:0 0 auto;
+  min-height:142px;
+  padding:12px 16px 14px;
+  border-top:1px solid #31383c;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  background:rgba(0,0,0,.06);
+}
+
+.product-card-v2 .stock{
+  min-height:18px;
+  margin:0;
+  font-size:12px;
+  line-height:18px;
+}
+
+.product-card-v2 .stock:empty{
+  visibility:hidden;
+}
+
+.product-card-v2 .price-row{
+  min-height:48px;
+  margin:0!important;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+}
+
+.product-card-v2 .price{
+  min-height:28px;
+  line-height:1.15;
+}
+
+.product-card-v2 .unit-price{
+  min-height:14px;
+  margin-top:3px;
+  line-height:1.2;
+}
+
+.product-card-v2 .unit-price:empty{
+  display:none;
+}
+
+.product-card-v2 .card-actions{
+  margin-top:auto;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 42px 42px!important;
+  gap:8px!important;
+  min-height:42px;
+  align-items:stretch;
+}
+
+.product-card-v2 .card-actions > .btn{
+  margin:0!important;
+  height:42px!important;
+  min-height:42px!important;
+  max-height:42px!important;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.product-card-v2 .buy-btn{
+  width:100%!important;
+  min-width:0!important;
+  padding:0 14px!important;
+  white-space:nowrap;
+}
+
+.product-card-v2 .fav-toggle,
+.product-card-v2 .compare-toggle{
+  width:42px!important;
+  min-width:42px!important;
+  padding:0!important;
+  font-size:18px;
+}
+
+.product-card-v2 .buy-btn:disabled{
+  opacity:.38;
+}
+
+@media(max-width:640px){
+  .product-card-v2 .product-card-main{
+    padding:14px 14px 12px;
+  }
+  .product-card-v2 .product-card-commerce{
+    padding:11px 14px 13px;
+  }
+}

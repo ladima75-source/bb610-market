@@ -5,13 +5,20 @@ on:
     branches: [main]
     paths:
       - 'backend/tools_apply_product_content_batch_runtime.py'
+      - 'backend/update_all_remaining_content_v3_20260918.py'
+      - 'backend/update_stage22c_batch04_content_v3_20260918.py'
+      - 'backend/update_stage22c_batch05_content_v3_20260918.py'
       - 'backend/update_stage22c_remaining_rows12_24_content_v3_20260918.py'
       - 'backend/update_stage22c_batch06_content_v3_20260918.py'
       - 'backend/update_stage22c_batch07_content_v3_20260918.py'
       - 'data/content_batches/stage22c_remaining_rows12_24.json'
+      - 'data/content_batches/stage22c_batch04_rows37_48.json'
+      - 'data/content_batches/stage22c_batch05_rows49_60.json'
       - 'data/content_batches/stage22c_batch06_rows61_72.json'
       - 'data/content_batches/stage22c_batch07_rows73_77.json'
       - 'data/product_content/stage22c_remaining_rows12_24_20260918.json'
+      - 'data/product_content/stage22c_batch04_remaining_20260918.json'
+      - 'data/product_content/stage22c_batch05_remaining_20260918.json'
       - 'data/product_content/stage22c_batch06_20260918.json'
       - 'data/product_content/stage22c_batch07_20260918.json'
       - 'backend/services/product_cards_v3.py'
@@ -19,13 +26,20 @@ on:
   pull_request:
     paths:
       - 'backend/tools_apply_product_content_batch_runtime.py'
+      - 'backend/update_all_remaining_content_v3_20260918.py'
+      - 'backend/update_stage22c_batch04_content_v3_20260918.py'
+      - 'backend/update_stage22c_batch05_content_v3_20260918.py'
       - 'backend/update_stage22c_remaining_rows12_24_content_v3_20260918.py'
       - 'backend/update_stage22c_batch06_content_v3_20260918.py'
       - 'backend/update_stage22c_batch07_content_v3_20260918.py'
       - 'data/content_batches/stage22c_remaining_rows12_24.json'
+      - 'data/content_batches/stage22c_batch04_rows37_48.json'
+      - 'data/content_batches/stage22c_batch05_rows49_60.json'
       - 'data/content_batches/stage22c_batch06_rows61_72.json'
       - 'data/content_batches/stage22c_batch07_rows73_77.json'
       - 'data/product_content/stage22c_remaining_rows12_24_20260918.json'
+      - 'data/product_content/stage22c_batch04_remaining_20260918.json'
+      - 'data/product_content/stage22c_batch05_remaining_20260918.json'
       - 'data/product_content/stage22c_batch06_20260918.json'
       - 'data/product_content/stage22c_batch07_20260918.json'
       - 'backend/services/product_cards_v3.py'
@@ -43,17 +57,22 @@ jobs:
       - name: Syntax
         run: |
           python -m py_compile backend/tools_apply_product_content_batch_runtime.py
+          python -m py_compile backend/update_all_remaining_content_v3_20260918.py
+          python -m py_compile backend/update_stage22c_batch04_content_v3_20260918.py
+          python -m py_compile backend/update_stage22c_batch05_content_v3_20260918.py
           python -m py_compile backend/update_stage22c_remaining_rows12_24_content_v3_20260918.py
           python -m py_compile backend/update_stage22c_batch06_content_v3_20260918.py
           python -m py_compile backend/update_stage22c_batch07_content_v3_20260918.py
 
       - name: Direct execution self-tests
         run: |
+          python backend/update_stage22c_batch04_content_v3_20260918.py --self-test
+          python backend/update_stage22c_batch05_content_v3_20260918.py --self-test
           python backend/update_stage22c_remaining_rows12_24_content_v3_20260918.py --self-test
           python backend/update_stage22c_batch06_content_v3_20260918.py --self-test
           python backend/update_stage22c_batch07_content_v3_20260918.py --self-test
 
-      - name: Validate total remaining row contract
+      - name: Validate all remaining 51 row contract
         run: |
           python - <<'PY'
           import json
@@ -61,9 +80,12 @@ jobs:
           from backend import tools_apply_product_content_batch_runtime as engine
           from backend import update_stage22c_batch03_content_v3_20260918 as content_base
           from backend.services import product_cards_v3 as pcv3
+          from backend import update_all_remaining_content_v3_20260918 as all_remaining
 
           manifests = [
               ('data/product_content/stage22c_remaining_rows12_24_20260918.json', list(range(12,25))),
+              ('data/product_content/stage22c_batch04_remaining_20260918.json', [37,38,39,40,41,43,44,46,47,48]),
+              ('data/product_content/stage22c_batch05_remaining_20260918.json', [49,50,51,52,54,55,56,57,58,59,60]),
               ('data/product_content/stage22c_batch06_20260918.json', list(range(61,73))),
               ('data/product_content/stage22c_batch07_20260918.json', list(range(73,78))),
           ]
@@ -97,7 +119,10 @@ jobs:
                   assert after['content']['seo']['title']
                   assert after['content']['seo']['description']
 
-          assert len(all_rows) == 30
-          assert len(set(all_rows)) == 30
-          print('REMAINING STAGE22C CONTENT CONTRACT: 30/30 PASS')
+          assert len(all_rows) == 51
+          assert len(set(all_rows)) == 51
+          assert len(all_remaining.MANIFESTS) == 5
+          assert all_remaining.EXPECTED_COUNTS == [13,10,11,12,5]
+          assert all_remaining.EXPECTED_TOTAL == 51
+          print('ALL REMAINING STAGE22C CONTENT CONTRACT: 51/51 PASS')
           PY

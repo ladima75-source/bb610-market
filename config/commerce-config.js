@@ -5,6 +5,7 @@ window.BB610_COMMERCE_CONFIG = Object.freeze({
     createOrder: '/api/v1/orders',
     getOrder: '/api/v1/orders/{orderId}',
     paymentMethods: '/api/v1/payments/methods',
+    productMaster: '/api/v1/catalog/master',
     commercialCatalog: '/api/v1/catalog/commerce',
     catalogContent: '/api/v1/catalog/content'
   },

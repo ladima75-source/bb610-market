@@ -43,6 +43,36 @@ def admin_products() -> list[dict]:
         skus += _dynamic_skus()
     except Exception:
         pass
+
+    # Product Card v3 can legitimately own a public product whose legacy
+    # catalog product row no longer exists while its stable SKU rows still do.
+    # Enrich the Prices admin from v3 mapping so such SKU are searchable/editable
+    # by the real product title instead of appearing only under the raw SKU code.
+    try:
+        from . import product_cards_v3 as _pcv3
+        for mapping in (_pcv3.commerce_map().get('products') or []):
+            if not isinstance(mapping,dict):
+                continue
+            legacy_key=str(mapping.get('existing_product_key') or '').strip()
+            v3_pid=str(mapping.get('product_id') or '').strip()
+            if not legacy_key or legacy_key in products or not v3_pid:
+                continue
+            card=_pcv3.get(v3_pid)
+            if not isinstance(card,dict):
+                continue
+            content=card.get('content') if isinstance(card.get('content'),dict) else {}
+            media=(card.get('sku_media') or {}).get('media') if isinstance(card.get('sku_media'),dict) else []
+            primary=next((x for x in (media or []) if isinstance(x,dict) and x.get('path')),None)
+            products[legacy_key]={
+                'id':legacy_key,
+                'name':content.get('title') or legacy_key,
+                'brand':content.get('brand') or '',
+                'category_id':content.get('category') or '',
+                'image':(primary or {}).get('path') if isinstance(primary,dict) else '',
+            }
+    except Exception:
+        pass
+
     seen=set()
     for s in skus:
         sid=s.get('id') or s.get('sku')

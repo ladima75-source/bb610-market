@@ -341,8 +341,7 @@ def snapshot(commerce_override: dict | None = None) -> dict:
     }
 
 
-def channel_audit(commerce_override: dict | None = None) -> dict:
-    snap = channel_snapshot(commerce_override)
+def channel_audit_from_snapshot(snap: dict) -> dict:
     return {
         "source": snap["source"],
         "generated_at": snap["generated_at"],
@@ -350,6 +349,10 @@ def channel_audit(commerce_override: dict | None = None) -> dict:
         "reasons": snap["reasons"],
         "rows": snap["audit_rows"],
     }
+
+
+def channel_audit(commerce_override: dict | None = None) -> dict:
+    return channel_audit_from_snapshot(channel_snapshot(commerce_override))
 
 
 def _csv(fields: list[str], rows: list[dict]) -> str:
@@ -360,8 +363,7 @@ def _csv(fields: list[str], rows: list[dict]) -> str:
     return "\ufeff" + buf.getvalue()
 
 
-def google_csv(commerce_override: dict | None = None) -> str:
-    snap = channel_snapshot(commerce_override)
+def google_csv_from_snapshot(snap: dict) -> str:
     out: list[dict] = []
     for base, availability in snap["feed_rows"]:
         row = dict(base)
@@ -370,8 +372,11 @@ def google_csv(commerce_override: dict | None = None) -> str:
     return _csv(GOOGLE_FIELDS, out)
 
 
-def meta_csv(commerce_override: dict | None = None) -> str:
-    snap = channel_snapshot(commerce_override)
+def google_csv(commerce_override: dict | None = None) -> str:
+    return google_csv_from_snapshot(channel_snapshot(commerce_override))
+
+
+def meta_csv_from_snapshot(snap: dict) -> str:
     out: list[dict] = []
     for base, availability in snap["feed_rows"]:
         row = dict(base)
@@ -380,8 +385,11 @@ def meta_csv(commerce_override: dict | None = None) -> str:
     return _csv(META_FIELDS, out)
 
 
-def feed_status(commerce_override: dict | None = None) -> dict:
-    snap = channel_snapshot(commerce_override)
+def meta_csv(commerce_override: dict | None = None) -> str:
+    return meta_csv_from_snapshot(channel_snapshot(commerce_override))
+
+
+def feed_status_from_snapshot(snap: dict) -> dict:
     launch = [
         row for row in snap["audit_rows"]
         if row.get("launch_priority") in ("A", "B")
@@ -400,3 +408,7 @@ def feed_status(commerce_override: dict | None = None) -> dict:
         ),
         "items": snap["audit_rows"],
     }
+
+
+def feed_status(commerce_override: dict | None = None) -> dict:
+    return feed_status_from_snapshot(channel_snapshot(commerce_override))

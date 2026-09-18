@@ -36,20 +36,28 @@ document.addEventListener('DOMContentLoaded',async()=>{
     {id:'root',label:'Під корінь',hint:'полив / коренево'}
   ];
 
-  function packageMetric(raw){
-    const t=norm(raw).replace(',','.');
-    let m=t.match(/(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml|шт|pcs?)/i);
-    if(!m)return null;
-    const n=Number(m[1]);
+  function metricFromUnit(value,unit){
+    const n=Number(String(value??'').replace(',','.'));
     if(!Number.isFinite(n))return null;
-    const unit=m[2].toLowerCase();
-    if(unit==='кг'||unit==='kg'||unit==='л'||unit==='l')return n*1000;
-    if(unit==='шт'||unit==='pc'||unit==='pcs')return n;
-    return n;
+    const u=norm(unit);
+    if(u==='кг'||u==='kg'||u==='л'||u==='l')return n*1000;
+    if(u==='г'||u==='гр'||u==='g'||u==='мл'||u==='ml')return n;
+    return null;
   }
 
-  function packageGroupForVariant(raw){
-    const n=packageMetric(raw);
+  function packageMetric(sku){
+    const vw=sku?.volume_weight;
+    if(vw&&vw.value!==null&&vw.value!==undefined){
+      const metric=metricFromUnit(vw.value,vw.unit);
+      if(metric!==null)return metric;
+    }
+    const t=norm(sku?.variant||'').replace(',','.');
+    const m=t.match(/(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml)\b/i);
+    return m?metricFromUnit(m[1],m[2]):null;
+  }
+
+  function packageGroupForSku(sku){
+    const n=packageMetric(sku);
     if(n===null)return '';
     if(n<=50)return 'small';
     if(n>=100&&n<=1000)return 'medium';
@@ -58,22 +66,23 @@ document.addEventListener('DOMContentLoaded',async()=>{
   }
 
   function packageGroupsFor(p){
-    return uniq(productSkus(p).map(x=>packageGroupForVariant(x.variant)).filter(Boolean));
+    return uniq(productSkus(p).map(packageGroupForSku).filter(Boolean));
   }
 
+  const methodAlias={
+    'фертигація':'fertigation',
+    'позакореневе внесення':'foliar',
+    'листкове внесення':'foliar',
+    'кореневе внесення':'root'
+  };
+
   function methodGroupsFor(p){
-    const t=norm([
-      p.application,
-      p.manufacturerUse,
-      ...(p.applicationMethods||[]),
-      ...(p.application_methods||[]),
-      ...(p.purposes||[])
-    ].join(' '));
-    const out=[];
-    if(/фертигац|крапель|капель|drip/.test(t))out.push('fertigation');
-    if(/позакорен|листков|по лист|обприск|foliar/.test(t))out.push('foliar');
-    if(/коренев|під корін|под корень|ґрунт|грунт|полив|root/.test(t))out.push('root');
-    return uniq(out);
+    const raw=[
+      ...(Array.isArray(p.applicationMethods)?p.applicationMethods:[]),
+      ...(Array.isArray(p.application_methods)?p.application_methods:[])
+    ];
+    if(!raw.length&&typeof p.application==='string')raw.push(...p.application.split(';'));
+    return uniq(raw.map(x=>methodAlias[norm(x)]||'').filter(Boolean));
   }
 
   const categories=BB610_DATA_SOURCE.categories().filter(c=>c.enabled&&!(BB610.categoryHidden&&BB610.categoryHidden(c.id))).sort((a,b)=>(a.order||0)-(b.order||0));
@@ -147,24 +156,51 @@ document.addEventListener('DOMContentLoaded',async()=>{
   }
   function matchesMulti(p,values,test){return !values.length||values.some(v=>test(p,v))}
 
+  function filterState(){
+    return {
+      qq:norm(q.value),
+      category:fixedCategory?[fixedCategory]:selected('category'),
+      packageGroup:selected('packageGroup'),
+      methodGroup:selected('methodGroup'),
+      culture:selected('culture'),
+      brand:selected('brand'),
+      stock:stock.checked
+    };
+  }
+
+  function matchesState(p,state,skip=''){
+    if(state.qq&&!productText(p).includes(state.qq))return false;
+    if(skip!=='category'&&!matchesMulti(p,state.category,(x,v)=>x.category===v))return false;
+    if(skip!=='packageGroup'&&!matchesMulti(p,state.packageGroup,(x,v)=>packageGroupsFor(x).includes(v)))return false;
+    if(skip!=='methodGroup'&&!matchesMulti(p,state.methodGroup,(x,v)=>methodGroupsFor(x).includes(v)))return false;
+    if(skip!=='culture'&&!matchesMulti(p,state.culture,(x,v)=>(x.cultures||[]).includes(v)))return false;
+    if(skip!=='brand'&&!matchesMulti(p,state.brand,(x,v)=>x.brand===v))return false;
+    if(
+      skip!=='category'
+      &&(state.packageGroup.length||state.methodGroup.length||state.culture.length)
+      &&p.category==='containers'
+    )return false;
+    if(state.stock&&!hasStock(p))return false;
+    return true;
+  }
+
+  function facetMatches(p,group,value){
+    if(group==='category')return p.category===value;
+    if(group==='brand')return p.brand===value;
+    if(group==='culture')return p.category!=='containers'&&(p.cultures||[]).includes(value);
+    if(group==='packageGroup')return p.category!=='containers'&&packageGroupsFor(p).includes(value);
+    if(group==='methodGroup')return p.category!=='containers'&&methodGroupsFor(p).includes(value);
+    return false;
+  }
+
+  function dynamicFacetCount(group,value){
+    const state=filterState();
+    return source.filter(p=>matchesState(p,state,group)&&facetMatches(p,group,value)).length;
+  }
+
   function applyFilters(list){
-    const qq=norm(q.value);
-    const cats=fixedCategory?[fixedCategory]:selected('category');
-    const packageSel=selected('packageGroup');
-    const methodSel=selected('methodGroup');
-    const cultureSel=selected('culture');
-    const brandSel=selected('brand');
-    return list.filter(p=>{
-      if(qq&&!productText(p).includes(qq))return false;
-      if(!matchesMulti(p,cats,(x,v)=>x.category===v))return false;
-      if((packageSel.length||methodSel.length||cultureSel.length)&&p.category==='containers')return false;
-      if(!matchesMulti(p,packageSel,(x,v)=>packageGroupsFor(x).includes(v)))return false;
-      if(!matchesMulti(p,methodSel,(x,v)=>methodGroupsFor(x).includes(v)))return false;
-      if(!matchesMulti(p,cultureSel,(x,v)=>(x.cultures||[]).includes(v)))return false;
-      if(!matchesMulti(p,brandSel,(x,v)=>x.brand===v))return false;
-      if(stock.checked&&!hasStock(p))return false;
-      return true;
-    });
+    const state=filterState();
+    return list.filter(p=>matchesState(p,state));
   }
 
   function chipData(){
@@ -192,46 +228,26 @@ document.addEventListener('DOMContentLoaded',async()=>{
   }
 
   function syncContainerFacetMode(){
-    const cats=fixedCategory?[fixedCategory]:selected('category');
+    const state=filterState();
+    const cats=state.category;
     const onlyContainers=cats.length===1&&cats[0]==='containers';
-    const context=cats.length?source.filter(p=>cats.includes(p.category)):source;
     aside.querySelectorAll('[data-non-container-facet]').forEach(x=>x.hidden=onlyContainers);
 
-    aside.querySelectorAll('[data-facet="brand"]').forEach(input=>{
-      const n=context.filter(p=>p.brand===input.value).length;
-      const row=input.closest('.facet-option');
-      const badge=row?.querySelector('.facet-count');
-      if(badge)badge.textContent=n;
-      if(row)row.hidden=!!cats.length&&!n;
-      if(!n)input.checked=false;
-    });
+    const syncFacet=(group,rowSelector,badgeSelector)=>{
+      aside.querySelectorAll(`[data-facet="${group}"]`).forEach(input=>{
+        const n=dynamicFacetCount(group,input.value);
+        const row=input.closest(rowSelector);
+        const badge=row?.querySelector(badgeSelector);
+        if(badge)badge.textContent=n;
+        if(row)row.hidden=!input.checked&&n===0;
+      });
+    };
 
-    aside.querySelectorAll('[data-facet="culture"]').forEach(input=>{
-      const n=context.filter(p=>p.category!=='containers'&&(p.cultures||[]).includes(input.value)).length;
-      const row=input.closest('.facet-option');
-      const badge=row?.querySelector('.facet-count');
-      if(badge)badge.textContent=n;
-      if(row)row.hidden=!!cats.length&&!n;
-      if(!n)input.checked=false;
-    });
-
-    aside.querySelectorAll('[data-facet="packageGroup"]').forEach(input=>{
-      const n=context.filter(p=>p.category!=='containers'&&packageGroupsFor(p).includes(input.value)).length;
-      const row=input.closest('.facet-pill-option');
-      const badge=row?.querySelector('.facet-pill-count');
-      if(badge)badge.textContent=n;
-      if(row)row.hidden=!!cats.length&&!n;
-      if(!n)input.checked=false;
-    });
-
-    aside.querySelectorAll('[data-facet="methodGroup"]').forEach(input=>{
-      const n=context.filter(p=>p.category!=='containers'&&methodGroupsFor(p).includes(input.value)).length;
-      const row=input.closest('.facet-pill-option');
-      const badge=row?.querySelector('.facet-pill-count');
-      if(badge)badge.textContent=n;
-      if(row)row.hidden=!!cats.length&&!n;
-      if(!n)input.checked=false;
-    });
+    if(!fixedCategory)syncFacet('category','.facet-option','.facet-count');
+    syncFacet('brand','.facet-option','.facet-count');
+    syncFacet('culture','.facet-option','.facet-count');
+    syncFacet('packageGroup','.facet-pill-option','.facet-pill-count');
+    syncFacet('methodGroup','.facet-pill-option','.facet-pill-count');
 
     if(onlyContainers){
       aside.querySelectorAll('[data-facet="culture"],[data-facet="packageGroup"],[data-facet="methodGroup"]').forEach(x=>x.checked=false);

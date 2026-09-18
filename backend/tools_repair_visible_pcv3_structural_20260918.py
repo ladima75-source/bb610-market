@@ -424,6 +424,80 @@ def current_links(mapping: dict | None) -> dict[str, str]:
     }
 
 
+def legacy_mapping_runtime_safe(card: dict, mapping: dict | None, live: dict[str, dict]) -> tuple[bool, list[str]]:
+    """Validate the storefront-supported legacy case with no catalog parent.
+
+    Product Card v3 runtime intentionally resolves commercial state from the
+    saved per-SKU commerce binding even when catalog_cms has no parent detail.
+    Treat that state as healthy only when every enabled V3 SKU has exactly one
+    binding, the target exists in live sku_commerce, any explicit sku_code
+    agrees with that binding, and all referenced local media are resolvable.
+    """
+    problems: list[str] = []
+    if not isinstance(mapping, dict):
+        return False, ["mapping_missing"]
+
+    rows = mapping_link_rows(mapping)
+    media = media_by_id(card)
+
+    for sku in enabled_v3_skus(card):
+        sid = str(sku.get("sku_id") or "").strip()
+        links = rows.get(sid) or []
+        if len(links) != 1:
+            problems.append(f"{sid or '-'}: mapping_links={len(links)}")
+            continue
+        commerce_key = str(links[0].get("existing_commerce_sku_key") or "").strip()
+        if not commerce_key or not isinstance(live.get(commerce_key), dict):
+            problems.append(f"{sid}: live_commerce_missing:{commerce_key or '-'}")
+            continue
+        sku_code = str(sku.get("sku_code") or "").strip()
+        if sku_code and sku_code != commerce_key:
+            problems.append(f"{sid}: sku_code_conflict:{sku_code}!={commerce_key}")
+
+        primary_id = str(sku.get("primary_media_id") or "").strip()
+        if primary_id:
+            primary = media.get(primary_id)
+            path = str((primary or {}).get("path") or "").strip()
+            if not isinstance(primary, dict) or not path or not _is_resolvable(path):
+                problems.append(f"{sid}: primary_media_unresolvable:{primary_id}")
+
+        for mid in sku.get("gallery_media_ids") or []:
+            item = media.get(str(mid))
+            path = str((item or {}).get("path") or "").strip()
+            if not isinstance(item, dict) or not path or not _is_resolvable(path):
+                problems.append(f"{sid}: gallery_media_unresolvable:{mid}")
+
+    return not problems and bool(enabled_v3_skus(card)), problems
+
+
+def patch_seo_from_existing_content(card: dict) -> tuple[dict, list[str]]:
+    """Repair SEO only by reusing text already present in the same V3 card."""
+    patched = deepcopy(card)
+    content = patched.get("content") or {}
+    seo = content.get("seo") or {}
+    changed: list[str] = []
+
+    if not str(seo.get("title") or "").strip():
+        title = str(content.get("title") or "").strip()
+        if title:
+            seo["title"] = title
+            changed.append("seo:title_from_existing_title")
+
+    if len(str(seo.get("description") or "").strip()) < 50:
+        candidates = [
+            str(content.get("short_description") or "").strip(),
+            str(content.get("description") or "").strip(),
+        ]
+        source = next((x for x in candidates if len(x) >= 50), "")
+        if source:
+            seo["description"] = source
+            changed.append("seo:description_from_existing_content")
+
+    content["seo"] = seo
+    patched["content"] = content
+    return patched, changed
+
+
 def merge_mapping_links(mapping: dict | None, desired_links: list[dict]) -> list[dict]:
     """Replace only target SKU links; preserve every non-target mapping row."""
     desired_by_sid = {
@@ -565,12 +639,41 @@ def build_plan() -> dict:
             sku_by_key=catalog_sku_by_key,
         )
         if not isinstance(rp, dict):
-            unresolved.append({
+            legacy_safe = False
+            legacy_problems: list[str] = []
+            if resolution == "existing_mapping_parent_missing":
+                legacy_safe, legacy_problems = legacy_mapping_runtime_safe(card, mapping, live)
+            if not legacy_safe:
+                unresolved.append({
+                    "product_id": pid,
+                    "slug": card.get("slug"),
+                    "reason": resolution or "no_exact_runtime_product_identity",
+                    "details": legacy_problems or None,
+                })
+                cards.append({"product_id": pid, "slug": card.get("slug"), "content_issues": content_gaps})
+                continue
+
+            patched, seo_changes = patch_seo_from_existing_content(card)
+            if seo_changes:
+                pcv3.validate(patched)
+                card_actions.append({
+                    "product_id": pid,
+                    "slug": card.get("slug"),
+                    "changes": sorted(set(seo_changes)),
+                    "card": patched,
+                })
+            cards.append({
                 "product_id": pid,
                 "slug": card.get("slug"),
-                "reason": resolution or "no_exact_runtime_product_identity",
+                "title": (card.get("content") or {}).get("title"),
+                "runtime_product": None,
+                "identity_resolution": "legacy_mapping_parent_absent_runtime_safe",
+                "enabled_skus": len(enabled_v3_skus(card)),
+                "package_matches": None,
+                "mapping_exists": True,
+                "content_issues": content_gaps,
+                "card_repairs": sorted(set(seo_changes)),
             })
-            cards.append({"product_id": pid, "slug": card.get("slug"), "content_issues": content_gaps})
             continue
 
         parent = str(rp.get("id") or "")
@@ -694,12 +797,12 @@ def build_plan() -> dict:
                         "desired": desired_mapping,
                     })
 
-        patched = deepcopy(card)
+        patched, seo_changes = patch_seo_from_existing_content(card)
         patched_skus = {
             str(x.get("sku_id") or ""): x
             for x in enabled_v3_skus(patched)
         }
-        changed: list[str] = []
+        changed: list[str] = list(seo_changes)
 
         for sid, rs in package_matches.items():
             sku = patched_skus.get(sid)

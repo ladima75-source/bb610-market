@@ -455,7 +455,9 @@ def legacy_mapping_runtime_safe(card: dict, mapping: dict | None, live: dict[str
             problems.append(f"{sid}: sku_code_conflict:{sku_code}!={commerce_key}")
 
         primary_id = str(sku.get("primary_media_id") or "").strip()
-        if primary_id:
+        if not primary_id:
+            problems.append(f"{sid}: primary_media_missing")
+        else:
             primary = media.get(primary_id)
             path = str((primary or {}).get("path") or "").strip()
             if not isinstance(primary, dict) or not path or not _is_resolvable(path):

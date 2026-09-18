@@ -75,15 +75,32 @@ def _normalize_content(body:dict, base:Optional[dict]=None):
 
 def public_content():
     d, static_products, static_skus=_static(); ov=_overrides(); products=[]
-    for pid,c in ov.items():
-        if pid in static_products:
-            if not c.get('cms_published'):
-                products.append({'id':pid,'runtime_hidden':True,'runtime_override':True})
-                continue
-            merged=dict(static_products[pid]); merged.update({k:v for k,v in c.items() if not k.startswith('cms_')}); merged['runtime_override']=True; merged['runtime_hidden']=False
+
+    # Canonical public Product Master projection: always start from the complete
+    # structural product row, then apply CMS and Product Card v3 ownership.
+    # Consumers must not have to reopen catalog.master.json to reconstruct fields.
+    for pid,base in static_products.items():
+        merged=dict(base)
+        c=ov.get(pid)
+        if c:
+            merged.update({k:v for k,v in c.items() if not k.startswith('cms_')})
+            merged['runtime_override']=True
+            merged['runtime_hidden']=not bool(c.get('cms_published'))
         else:
-            if not c.get('cms_published'): continue
-            merged={k:v for k,v in c.items() if not k.startswith('cms_')}; merged['id']=pid; merged['runtime_dynamic']=True; merged['runtime_hidden']=False; merged['selected_by_bb610']=True; merged['legacy_url']='product.html?id='+pid; merged['canonical_product_url']='product.html?id='+pid
+            merged['runtime_hidden']=bool(merged.get('runtime_hidden',False))
+        products.append(merged)
+
+    # CMS-native products that have no legacy/static structural row.
+    for pid,c in ov.items():
+        if pid in static_products or not c.get('cms_published'):
+            continue
+        merged={k:v for k,v in c.items() if not k.startswith('cms_')}
+        merged['id']=pid
+        merged['runtime_dynamic']=True
+        merged['runtime_hidden']=False
+        merged['selected_by_bb610']=True
+        merged['legacy_url']='product.html?id='+pid
+        merged['canonical_product_url']='product.html?id='+pid
         products.append(merged)
     # Product Card v3 owns curated descriptive/filter attributes. Packaging and
     # availability normally remain SKU/commerce data. Plantlogic market-test

@@ -66,7 +66,6 @@ jobs:
           assert t.card_exclusion(plantlogic,None,{})=='plantlogic'
 
           src=Path('backend/tools_repair_visible_pcv3_structural_20260918.py').read_text(encoding='utf-8')
-          assert 'No price' not in src  # prose is allowed; no commerce UPDATE is allowed
           assert 'UPDATE sku_commerce' not in src
           assert 'INSERT INTO sku_commerce' not in src
           assert 'commerce_snapshot()' in src

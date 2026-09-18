@@ -275,11 +275,11 @@
     {
       "product_id": "prd_pl_1308303",
       "slug": "plantlogic-30l-round-u-groove-1308303",
-      "name": "30 Liter Round Pot with Parallel U-Grooves",
+      "name": "30 Liter Round Pot with U-Grooves",
       "family": "u_groove_round",
       "volume_l": 30,
       "product_no": "1308303",
-      "source_url": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-with-parallel-u-grooves/",
+      "source_url": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-u-groove/",
       "use_cases": [
         "лохина",
         "малина",
@@ -290,9 +290,33 @@
         {
           "sku_id": "sku_pl_1308303",
           "sku_code": "PL-1308303",
-          "label": "30 Liter Round Pot with Parallel U-Grooves — 30 л",
+          "label": "30 Liter Round Pot with U-Grooves — 30 л",
           "package": "30 л",
           "product_no": "1308303"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1308305",
+      "slug": "plantlogic-30l-round-parallel-u-grooves-1308305",
+      "name": "30 Liter Round Pot with Parallel U-Grooves",
+      "family": "u_groove_round",
+      "volume_l": 30,
+      "product_no": "1308305",
+      "source_url": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-with-parallel-u-grooves/",
+      "use_cases": [
+        "лохина",
+        "малина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "407 мм ширина × 380 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1308305",
+          "sku_code": "PL-1308305",
+          "label": "30 Liter Round Pot with Parallel U-Grooves — 30 л",
+          "package": "30 л",
+          "product_no": "1308305"
         }
       ]
     },

@@ -21,8 +21,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from backend.services import product_cards_v3 as pcv3
-from backend.services.catalog_cms import admin_detail
-from backend.services.product_commerce import commerce_map as live_commerce_map
+from backend.catalog_provider import load_catalog
+from backend.db import connect
 from backend.tools_prepare_pcv3_release import _snapshot_tables
 
 BACKUP_ROOT = ROOT / "var" / "release-backups"
@@ -46,6 +46,42 @@ def stamp() -> str:
     return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
+def raw_live_commerce() -> dict[str, dict]:
+    with connect() as con:
+        rows = con.execute(
+            "SELECT sku,price,sale_price,availability,stock_qty,enabled,updated_at "
+            "FROM sku_commerce"
+        ).fetchall()
+    out: dict[str, dict] = {}
+    for row in rows:
+        item = dict(row)
+        item["enabled"] = bool(item.get("enabled"))
+        item["effective_price"] = (
+            item.get("sale_price")
+            if item.get("sale_price") is not None
+            else item.get("price")
+        )
+        out[str(item.get("sku") or "")] = item
+    return out
+
+
+def legacy_catalog_index() -> tuple[dict[str, dict], dict[str, list[dict]]]:
+    catalog = load_catalog()
+    products = {
+        str(x.get("id") or ""): x
+        for x in (catalog.get("products") or [])
+        if isinstance(x, dict) and x.get("id")
+    }
+    skus: dict[str, list[dict]] = {}
+    for row in catalog.get("skus") or []:
+        if not isinstance(row, dict):
+            continue
+        pid = str(row.get("product_id") or "")
+        if pid:
+            skus.setdefault(pid, []).append(row)
+    return products, skus
+
+
 def mapping_index() -> dict[str, dict]:
     return {
         str(x.get("product_id") or ""): x
@@ -55,7 +91,8 @@ def mapping_index() -> dict[str, dict]:
 
 
 def build_plan() -> dict:
-    live = live_commerce_map()
+    live = raw_live_commerce()
+    catalog_products, catalog_skus = legacy_catalog_index()
     mappings = mapping_index()
     actions = []
     verified = []
@@ -80,13 +117,14 @@ def build_plan() -> dict:
         if not sid:
             raise RuntimeError(f"{slug}: V3 sku_id missing")
 
-        legacy = admin_detail(spec["legacy_product_key"])
+        legacy_key = spec["legacy_product_key"]
+        legacy = catalog_products.get(legacy_key)
         if not isinstance(legacy, dict):
-            raise RuntimeError(f"{slug}: exact legacy product missing")
+            raise RuntimeError(f"{slug}: exact legacy product missing from catalog")
 
         detail_keys = {
             str(x.get("id") or x.get("sku") or "").strip()
-            for x in (legacy.get("skus") or [])
+            for x in (catalog_skus.get(legacy_key) or [])
             if isinstance(x, dict)
         }
         key = spec["legacy_sku_key"]
@@ -167,7 +205,7 @@ def restore_map(backup: Path) -> None:
 
 def apply_plan(plan: dict) -> dict:
     before_db = _snapshot_tables()
-    live_before = deepcopy(live_commerce_map())
+    live_before = deepcopy(raw_live_commerce())
     backup = backup_map(stamp())
 
     try:
@@ -199,7 +237,7 @@ def apply_plan(plan: dict) -> dict:
 
         if _snapshot_tables() != before_db:
             raise RuntimeError("commerce/database changed during legacy mapping bind")
-        if live_commerce_map() != live_before:
+        if raw_live_commerce() != live_before:
             raise RuntimeError("sku_commerce values changed during legacy mapping bind")
 
         after = mapping_index()
@@ -221,7 +259,7 @@ def apply_plan(plan: dict) -> dict:
         restore_map(backup)
         if _snapshot_tables() != before_db:
             raise RuntimeError("rollback restored map but commerce DB changed externally")
-        if live_commerce_map() != live_before:
+        if raw_live_commerce() != live_before:
             raise RuntimeError("rollback restored map but sku_commerce changed externally")
         raise
 

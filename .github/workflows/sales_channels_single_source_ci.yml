@@ -1,0 +1,159 @@
+name: Sales channels single-source CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/services/product_master_runtime.py'
+      - 'backend/services/catalog_cms.py'
+      - 'backend/services/catalog_feeds.py'
+      - 'backend/services/sales_channels.py'
+      - 'backend/feed_api.py'
+      - 'backend/sales_channels_api.py'
+      - '.github/workflows/sales_channels_single_source_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/services/product_master_runtime.py'
+      - 'backend/services/catalog_cms.py'
+      - 'backend/services/catalog_feeds.py'
+      - 'backend/services/sales_channels.py'
+      - 'backend/feed_api.py'
+      - 'backend/sales_channels_api.py'
+      - '.github/workflows/sales_channels_single_source_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: |
+          python -m py_compile             backend/services/product_master_runtime.py             backend/services/catalog_cms.py             backend/services/catalog_feeds.py             backend/services/sales_channels.py             backend/feed_api.py             backend/sales_channels_api.py
+
+      - name: No parallel catalog source in channels
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          feeds = Path('backend/services/catalog_feeds.py').read_text(encoding='utf-8')
+          sales = Path('backend/services/sales_channels.py').read_text(encoding='utf-8')
+          master = Path('backend/services/product_master_runtime.py').read_text(encoding='utf-8')
+          cms = Path('backend/services/catalog_cms.py').read_text(encoding='utf-8')
+
+          assert 'catalog.master.json' not in feeds
+          assert 'load_catalog' not in feeds
+          assert 'catalog.master.json' not in sales
+          assert 'load_catalog' not in sales
+          assert 'public_content' in master
+          assert 'commerce_map' in master
+          assert 'Product Card v3' in cms
+          assert 'Canonical public Product Master projection' in cms
+          assert 'channel_snapshot()' in sales
+          assert 'google_csv_from_snapshot(snap)' in sales
+          assert 'meta_csv_from_snapshot(snap)' in sales
+          assert 'feed_status_from_snapshot(snap)' in sales
+          print('SINGLE PRODUCT MASTER SOURCE CONTRACT: PASS')
+          PY
+
+      - name: Feed and admin snapshot parity
+        run: |
+          python - <<'PY'
+          import csv
+          import io
+
+          from backend.services import catalog_feeds
+          from backend.services import sales_channels
+
+          fixture = {
+              'source': 'product-master-v4-runtime',
+              'products': [
+                  {
+                      'id': 'p1',
+                      'name': 'MEGAFOL — біостимулятор',
+                      'official_name': 'MEGAFOL — біостимулятор',
+                      'brand': 'Valagro',
+                      'product_type': 'Біостимулятор',
+                      'short_description': 'Короткий опис з канонічного Product Master.',
+                      'feed_policy': 'allowed',
+                      'image': {'local': '/media/products/megafol.jpg'},
+                      'canonical_product_url': '/products/megafol/',
+                  },
+                  {
+                      'id': 'p2',
+                      'name': 'Review product',
+                      'brand': 'Brand',
+                      'product_type': 'Добриво',
+                      'short_description': 'Review',
+                      'feed_policy': 'review-required',
+                      'image': {'local': '/media/products/review.jpg'},
+                      'canonical_product_url': '/products/review/',
+                  },
+              ],
+              'skus': [
+                  {
+                      'id': 'SKU-1',
+                      'product_id': 'p1',
+                      'variant': '1 л',
+                      'gtin_ean': '1234567890123',
+                      'launch_matrix_priority': 'A',
+                  },
+                  {
+                      'id': 'SKU-2',
+                      'product_id': 'p2',
+                      'variant': '1 кг',
+                  },
+              ],
+              'commerce': {
+                  'SKU-1': {
+                      'effective_price': 999.0,
+                      'price': 999.0,
+                      'sale_price': None,
+                      'availability': 'in_stock',
+                      'stock_qty': 7,
+                      'enabled': True,
+                  },
+                  'SKU-2': {
+                      'effective_price': 100.0,
+                      'price': 100.0,
+                      'sale_price': None,
+                      'availability': 'in_stock',
+                      'stock_qty': 3,
+                      'enabled': True,
+                  },
+              },
+          }
+
+          catalog_feeds.master_snapshot = lambda commerce_override=None: fixture
+
+          snap = catalog_feeds.channel_snapshot()
+          assert snap['source'] == 'product-master-v4-runtime'
+          assert snap['counts']['total'] == 2
+          assert snap['counts']['eligible'] == 1
+          assert snap['counts']['review_required'] == 1
+          assert len(snap['feed_rows']) == 1
+
+          admin = sales_channels.channels_status()
+          assert admin['source'] == 'product-master-v4-runtime'
+          assert admin['audit']['counts']['eligible'] == 1
+          assert admin['channels']['google']['file']['rows'] == 1
+          assert admin['channels']['meta']['file']['rows'] == 1
+
+          google_text = catalog_feeds.google_csv()
+          meta_text = catalog_feeds.meta_csv()
+          google_rows = list(csv.DictReader(io.StringIO(google_text.lstrip('\ufeff'))))
+          meta_rows = list(csv.DictReader(io.StringIO(meta_text.lstrip('\ufeff'))))
+          assert len(google_rows) == 1
+          assert len(meta_rows) == 1
+          assert google_rows[0]['id'] == 'SKU-1'
+          assert google_rows[0]['title'] == 'MEGAFOL — біостимулятор 1 л'
+          assert google_rows[0]['price'] == '999.00 UAH'
+          assert google_rows[0]['availability'] == 'in_stock'
+          assert meta_rows[0]['availability'] == 'in stock'
+          assert google_rows[0]['image_link'] == 'https://api.market.bb610.com.ua/media/products/megafol.jpg'
+
+          print('CHANNEL ADMIN / GOOGLE / META SNAPSHOT PARITY: PASS')
+          PY

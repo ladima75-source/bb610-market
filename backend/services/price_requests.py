@@ -29,6 +29,33 @@ def create_price_request(payload: dict) -> dict:
 
     if not product_id or not sku or not product_name:
         raise ValueError("Product and SKU are required")
+
+    # Accept leads only for the explicit V3 market-test projection. Product
+    # identity, title and variant are re-derived server-side so the lead cannot
+    # spoof another catalog item.
+    from .product_cards_v3_facets import market_test_projection
+    projection = market_test_projection()
+    sku_row = next(
+        (
+            x for x in (projection.get("skus") or [])
+            if isinstance(x, dict)
+            and str(x.get("id") or x.get("sku") or "") == sku
+            and str(x.get("product_id") or "") == product_id
+            and x.get("price_request") is True
+        ),
+        None,
+    )
+    product_row = next(
+        (
+            x for x in (projection.get("products") or [])
+            if isinstance(x, dict) and str(x.get("id") or "") == product_id
+        ),
+        None,
+    )
+    if not isinstance(sku_row, dict) or not isinstance(product_row, dict):
+        raise ValueError("Price request is not enabled for this SKU")
+    product_name = str(product_row.get("name") or product_name).strip()
+    variant = str(sku_row.get("variant") or variant).strip()
     if len(customer_name) < 2:
         raise ValueError("Customer name is required")
     if len(contact) < 3:

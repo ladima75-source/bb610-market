@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   };
   const hasStock=p=>p.stockStatus==='in_stock'||p.stockStatus==='dnipro'||(p.sizes||[]).some(s=>s.availability==='in_stock');
 
-  const categories=BB610_DATA_SOURCE.categories().filter(c=>c.enabled).sort((a,b)=>(a.order||0)-(b.order||0));
+  const categories=BB610_DATA_SOURCE.categories().filter(c=>c.enabled&&!(BB610.categoryHidden&&BB610.categoryHidden(c.id))).sort((a,b)=>(a.order||0)-(b.order||0));
   const brands=uniq(source.map(p=>p.brand)).sort(natural);
   const cultures=uniq(source.flatMap(p=>p.cultures||[])).sort(natural);
   const purposes=uniq(source.flatMap(p=>p.purposes||[])).sort(natural);

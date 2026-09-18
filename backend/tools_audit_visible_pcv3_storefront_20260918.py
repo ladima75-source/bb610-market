@@ -142,7 +142,7 @@ def validate_runtime(card: dict, runtime: dict) -> list[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Read-only visible Product Card v3 storefront/API audit")
-    parser.add_argument("--base-url", default="http://127.0.0.1:8000")
+    parser.add_argument("--base-url", default="https://api.market.bb610.com.ua")
     parser.add_argument("--timeout", type=float, default=10.0)
     args = parser.parse_args()
 

@@ -948,6 +948,10 @@ def build_plan() -> dict:
                     "reason": "primary_media_missing_no_exact_source",
                     "media_resolution": media_method,
                     "candidates": media_candidates,
+                    "details": (
+                        f"method={media_method or 'none'}; "
+                        f"candidates={media_candidates}"
+                    ),
                 })
             elif valid_primary and not str(primary.get("alt") or "").strip() and alt:
                 primary["alt"] = alt

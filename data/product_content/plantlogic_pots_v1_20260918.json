@@ -1,0 +1,778 @@
+{
+  "schema_version": "1.0",
+  "batch": "Plantlogic pots Product Card v3 seed / 2026-09-18",
+  "status": "source-verified draft cards; prices and media intentionally excluded",
+  "source_policy": "official Plantlogic website/catalog only; cards are seeded disabled until media/commerce readiness",
+  "products": [
+    {
+      "product_id": "prd_pl_zephyr_v2",
+      "slug": "plantlogic-zephyr-v2",
+      "name": "Zephyr V2",
+      "family": "zephyr",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "source_url": "https://getplantlogic.com/blueberry-production/",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1301144",
+          "sku_code": "PL-1301144",
+          "label": "Zephyr V2 25 л",
+          "package": "25 л",
+          "product_no": "1301144"
+        },
+        {
+          "sku_id": "sku_pl_1301153",
+          "sku_code": "PL-1301153",
+          "label": "Zephyr V2 30 л",
+          "package": "30 л",
+          "product_no": "1301153"
+        },
+        {
+          "sku_id": "sku_pl_1301143",
+          "sku_code": "PL-1301143",
+          "label": "Zephyr V2 40 л",
+          "package": "40 л",
+          "product_no": "1301143"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1309020",
+      "slug": "plantlogic-20l-square-1309020",
+      "name": "20 Liter Square Pot",
+      "family": "square",
+      "volume_l": 20,
+      "product_no": "1309020",
+      "source_url": "https://getplantlogic.com/portfolio-items/20-liter-square-pot/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "326.2 мм ширина × 332.6 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1309020",
+          "sku_code": "PL-1309020",
+          "label": "20 Liter Square Pot — 20 л",
+          "package": "20 л",
+          "product_no": "1309020"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1308020",
+      "slug": "plantlogic-20l-round-1308020",
+      "name": "20 Liter Round Pot",
+      "family": "round",
+      "volume_l": 20,
+      "product_no": "1308020",
+      "source_url": "https://getplantlogic.com/portfolio-items/20-liter-round-pot/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "370 мм ширина × 303 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1308020",
+          "sku_code": "PL-1308020",
+          "label": "20 Liter Round Pot — 20 л",
+          "package": "20 л",
+          "product_no": "1308020"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1308125",
+      "slug": "plantlogic-25l-round-new-1308125",
+      "name": "NEW 25 Liter Round Pot",
+      "family": "round",
+      "volume_l": 25,
+      "product_no": "1308125",
+      "source_url": "https://getplantlogic.com/portfolio/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "legacy_catalog_key": "plantlogic-25-round-1308125",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1308125",
+          "sku_code": "PL-1308125",
+          "label": "NEW 25 Liter Round Pot — 25 л",
+          "package": "25 л",
+          "product_no": "1308125"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1308025",
+      "slug": "plantlogic-25l-round-wide-leg-1308025",
+      "name": "25 Liter Round Pot (Wide Legs)",
+      "family": "round",
+      "volume_l": 25,
+      "product_no": "1308025",
+      "source_url": "https://getplantlogic.com/portfolio-items/25-liter-round-pot-wide-leg/",
+      "use_cases": [
+        "лохина",
+        "малина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "387 мм ширина × 351 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1308025",
+          "sku_code": "PL-1308025",
+          "label": "25 Liter Round Pot (Wide Legs) — 25 л",
+          "package": "25 л",
+          "product_no": "1308025"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1303025",
+      "slug": "plantlogic-25l-round-short-legs-1303025",
+      "name": "25 Liter Round Pot (Short Legs)",
+      "family": "short_legs",
+      "volume_l": 25,
+      "product_no": "1303025",
+      "source_url": "https://getplantlogic.com/blueberry-production/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "skus": [
+        {
+          "sku_id": "sku_pl_1303025",
+          "sku_code": "PL-1303025",
+          "label": "25 Liter Round Pot (Short Legs) — 25 л",
+          "package": "25 л",
+          "product_no": "1303025"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1309025",
+      "slug": "plantlogic-25l-square-1309025",
+      "name": "25 Liter Square Pot",
+      "family": "square",
+      "volume_l": 25,
+      "product_no": "1309025",
+      "source_url": "https://getplantlogic.com/portfolio-items/25-liter-square-pot/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "355.4 мм ширина × 320 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1309025",
+          "sku_code": "PL-1309025",
+          "label": "25 Liter Square Pot — 25 л",
+          "package": "25 л",
+          "product_no": "1309025"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1309026",
+      "slug": "plantlogic-25l-square-u-grooves-1309026",
+      "name": "25 Liter Square Pot with U-Grooves",
+      "family": "u_groove_square",
+      "volume_l": 25,
+      "product_no": "1309026",
+      "source_url": "https://getplantlogic.com/portfolio/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "skus": [
+        {
+          "sku_id": "sku_pl_1309026",
+          "sku_code": "PL-1309026",
+          "label": "25 Liter Square Pot with U-Grooves — 25 л",
+          "package": "25 л",
+          "product_no": "1309026"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1308026",
+      "slug": "plantlogic-25l-round-u-grooves-1308026",
+      "name": "25 Liter Round Pot with U-Grooves",
+      "family": "u_groove_round",
+      "volume_l": 25,
+      "product_no": "1308026",
+      "source_url": "https://getplantlogic.com/portfolio/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "skus": [
+        {
+          "sku_id": "sku_pl_1308026",
+          "sku_code": "PL-1308026",
+          "label": "25 Liter Round Pot with U-Grooves — 25 л",
+          "package": "25 л",
+          "product_no": "1308026"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1304125",
+      "slug": "plantlogic-25l-round-drainage-1304125",
+      "name": "25 Liter Round Drainage Collection Pot",
+      "family": "drainage_collection",
+      "volume_l": 25,
+      "product_no": "1304125",
+      "source_url": "https://getplantlogic.com/portfolio-items/25-liter-round-drainage-collection-pot/",
+      "use_cases": [
+        "лохина",
+        "овочі",
+        "субстратне вирощування"
+      ],
+      "dimensions": "420 мм ширина × 320 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1304125",
+          "sku_code": "PL-1304125",
+          "label": "25 Liter Round Drainage Collection Pot — 25 л",
+          "package": "25 л",
+          "product_no": "1304125"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1303125",
+      "slug": "plantlogic-25l-round-drainage-short-1303125",
+      "name": "25 Liter Round Drainage Collection Pot (Short Legs)",
+      "family": "drainage_collection_short",
+      "volume_l": 25,
+      "product_no": "1303125",
+      "source_url": "https://getplantlogic.com/portfolio-items/25-liter-round-drainage-collection-pot-short-legs/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "skus": [
+        {
+          "sku_id": "sku_pl_1303125",
+          "sku_code": "PL-1303125",
+          "label": "25 Liter Round Drainage Collection Pot (Short Legs) — 25 л",
+          "package": "25 л",
+          "product_no": "1303125"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1308303",
+      "slug": "plantlogic-30l-round-u-groove-1308303",
+      "name": "30 Liter Round Pot with U-Grooves",
+      "family": "u_groove_round",
+      "volume_l": 30,
+      "product_no": "1308303",
+      "source_url": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-u-groove/",
+      "use_cases": [
+        "лохина",
+        "малина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "407 мм ширина × 380 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1308303",
+          "sku_code": "PL-1308303",
+          "label": "30 Liter Round Pot with U-Grooves — 30 л",
+          "package": "30 л",
+          "product_no": "1308303"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1308031",
+      "slug": "plantlogic-30l-round-v-rib-1308031",
+      "name": "30 Liter Round Pot V-Rib",
+      "family": "v_rib",
+      "volume_l": 30,
+      "product_no": "1308031",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2018/07/Email_1308031_Eng_Br.html",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "skus": [
+        {
+          "sku_id": "sku_pl_1308031",
+          "sku_code": "PL-1308031",
+          "label": "30 Liter Round Pot V-Rib — 30 л",
+          "package": "30 л",
+          "product_no": "1308031"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1309030",
+      "slug": "plantlogic-30l-square-1309030",
+      "name": "30 Liter Square Pot",
+      "family": "square",
+      "volume_l": 30,
+      "product_no": "1309030",
+      "source_url": "https://getplantlogic.com/portfolio-items/30-liter-square-pot/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "skus": [
+        {
+          "sku_id": "sku_pl_1309030",
+          "sku_code": "PL-1309030",
+          "label": "30 Liter Square Pot — 30 л",
+          "package": "30 л",
+          "product_no": "1309030"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_13090350",
+      "slug": "plantlogic-35l-square-u-grooves-13090350",
+      "name": "35 Liter Square Pot with U-Grooves",
+      "family": "u_groove_square",
+      "volume_l": 35,
+      "product_no": "13090350",
+      "source_url": "https://getplantlogic.com/portfolio-items/35-liter-square-pot-with-u-grooves-for-blueberries/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "425 мм ширина × 350 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_13090350",
+          "sku_code": "PL-13090350",
+          "label": "35 Liter Square Pot with U-Grooves — 35 л",
+          "package": "35 л",
+          "product_no": "13090350"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_13080350",
+      "slug": "plantlogic-35l-round-u-grooves-13080350",
+      "name": "35 Liter Round Pot with U-Grooves",
+      "family": "u_groove_round",
+      "volume_l": 35,
+      "product_no": "13080350",
+      "source_url": "https://getplantlogic.com/portfolio/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "skus": [
+        {
+          "sku_id": "sku_pl_13080350",
+          "sku_code": "PL-13080350",
+          "label": "35 Liter Round Pot with U-Grooves — 35 л",
+          "package": "35 л",
+          "product_no": "13080350"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1308041",
+      "slug": "plantlogic-40l-round-u-grooves-1308041",
+      "name": "40 Liter Round Pot with U-Grooves",
+      "family": "u_groove_round",
+      "volume_l": 40,
+      "product_no": "1308041",
+      "source_url": "https://getplantlogic.com/portfolio-items/40l-round-pot-with-u-grooves/",
+      "use_cases": [
+        "лохина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "474 мм ширина × 384 мм висота",
+      "legacy_catalog_key": "plantlogic-40-round-ugroove-1308041",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1308041",
+          "sku_code": "PL-1308041",
+          "label": "40 Liter Round Pot with U-Grooves — 40 л",
+          "package": "40 л",
+          "product_no": "1308041"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1308040",
+      "slug": "plantlogic-40l-round-1308040",
+      "name": "40 Liter Round Pot",
+      "family": "round",
+      "volume_l": 40,
+      "product_no": "1308040",
+      "source_url": "https://getplantlogic.com/portfolio-items/40-liter-round-pot/",
+      "use_cases": [
+        "лохина",
+        "малина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "462 мм ширина × 370.3 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1308040",
+          "sku_code": "PL-1308040",
+          "label": "40 Liter Round Pot — 40 л",
+          "package": "40 л",
+          "product_no": "1308040"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1306003",
+      "slug": "plantlogic-3l-square-1306003",
+      "name": "3 Liter Square Pot",
+      "family": "square",
+      "volume_l": 3,
+      "product_no": "1306003",
+      "source_url": "https://getplantlogic.com/portfolio-items/3-liter-square-pot/",
+      "use_cases": [
+        "малина",
+        "ожина",
+        "розсадник",
+        "субстратне вирощування"
+      ],
+      "dimensions": "150 мм ширина × 200 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1306003",
+          "sku_code": "PL-1306003",
+          "label": "3 Liter Square Pot — 3 л",
+          "package": "3 л",
+          "product_no": "1306003"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_13050040",
+      "slug": "plantlogic-4-7l-square-cold-storage-13050040",
+      "name": "4.7 Liter Square Pot for Cold Storage",
+      "family": "cold_storage",
+      "volume_l": 4.7,
+      "product_no": "13050040",
+      "source_url": "https://getplantlogic.com/portfolio-items/4-7-liter-square-pot-for-cold-storage/",
+      "use_cases": [
+        "малина",
+        "ожина",
+        "long cane",
+        "холодне зберігання"
+      ],
+      "skus": [
+        {
+          "sku_id": "sku_pl_13050040",
+          "sku_code": "PL-13050040",
+          "label": "4.7 Liter Square Pot for Cold Storage — 4.7 л",
+          "package": "4,7 л",
+          "product_no": "13050040"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1306051",
+      "slug": "plantlogic-5l-square-short-1306051",
+      "name": "5 Liter Square Short Pot",
+      "family": "square_short",
+      "volume_l": 5,
+      "product_no": "1306051",
+      "source_url": "https://getplantlogic.com/portfolio-items/5-liter-square-short-pot/",
+      "use_cases": [
+        "малина",
+        "ожина",
+        "розсадник",
+        "субстратне вирощування"
+      ],
+      "identity_note": "Окрема таблиця Plantlogic також містить 5L Square pot with legs #13060510; ця картка відповідає саме актуальній сторінці 5 Liter Square Short Pot #1306051.",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1306051",
+          "sku_code": "PL-1306051",
+          "label": "5 Liter Square Short Pot — 5 л",
+          "package": "5 л",
+          "product_no": "1306051"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1306007",
+      "slug": "plantlogic-7l-square-1306007",
+      "name": "7 Liter Square Pot",
+      "family": "square",
+      "volume_l": 7,
+      "product_no": "1306007",
+      "source_url": "https://getplantlogic.com/portfolio-items/7-liter-square-pot/",
+      "use_cases": [
+        "малина",
+        "ожина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "201 мм ширина × 285 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1306007",
+          "sku_code": "PL-1306007",
+          "label": "7 Liter Square Pot — 7 л",
+          "package": "7 л",
+          "product_no": "1306007"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1305071",
+      "slug": "plantlogic-7l-square-cold-storage-1305071",
+      "name": "7 Liter Square Pot for Cold Storage",
+      "family": "cold_storage",
+      "volume_l": 7,
+      "product_no": "1305071",
+      "source_url": "https://getplantlogic.com/portfolio-items/7-liter-square-pot-for-cold-storage/",
+      "use_cases": [
+        "малина",
+        "ожина",
+        "long cane",
+        "холодне зберігання"
+      ],
+      "dimensions": "198 мм ширина × 272 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1305071",
+          "sku_code": "PL-1305071",
+          "label": "7 Liter Square Pot for Cold Storage — 7 л",
+          "package": "7 л",
+          "product_no": "1305071"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1309008",
+      "slug": "plantlogic-8l-square-1309008",
+      "name": "8 Liter Square Pot",
+      "family": "square",
+      "volume_l": 8,
+      "product_no": "1309008",
+      "source_url": "https://getplantlogic.com/portfolio-items/8-liter-square-pot/",
+      "use_cases": [
+        "малина",
+        "ожина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "256 мм ширина × 211.6 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1309008",
+          "sku_code": "PL-1309008",
+          "label": "8 Liter Square Pot — 8 л",
+          "package": "8 л",
+          "product_no": "1309008"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1306010",
+      "slug": "plantlogic-10l-square-1306010",
+      "name": "10 Liter Square Pot",
+      "family": "square",
+      "volume_l": 10,
+      "product_no": "1306010",
+      "source_url": "https://getplantlogic.com/portfolio-items/10-liter-square-pot/",
+      "use_cases": [
+        "малина",
+        "ожина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "255 мм ширина × 255 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1306010",
+          "sku_code": "PL-1306010",
+          "label": "10 Liter Square Pot — 10 л",
+          "package": "10 л",
+          "product_no": "1306010"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1309015",
+      "slug": "plantlogic-15l-square-1309015",
+      "name": "15 Liter Square Pot",
+      "family": "square",
+      "volume_l": 15,
+      "product_no": "1309015",
+      "source_url": "https://getplantlogic.com/portfolio-items/15-liter-square-pot/",
+      "use_cases": [
+        "малина",
+        "ожина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "288 мм ширина × 338 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1309015",
+          "sku_code": "PL-1309015",
+          "label": "15 Liter Square Pot — 15 л",
+          "package": "15 л",
+          "product_no": "1309015"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1305005",
+      "slug": "plantlogic-5l-drainage-1305005",
+      "name": "5 Liter Drainage Collection Pot",
+      "family": "drainage_collection",
+      "volume_l": 5,
+      "product_no": "1305005",
+      "source_url": "https://getplantlogic.com/portfolio-items/5-liter-drainage-collection-pot/",
+      "use_cases": [
+        "малина",
+        "канабіс",
+        "субстратне вирощування"
+      ],
+      "dimensions": "208 мм ширина × 191 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1305005",
+          "sku_code": "PL-1305005",
+          "label": "5 Liter Drainage Collection Pot — 5 л",
+          "package": "5 л",
+          "product_no": "1305005"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1307107",
+      "slug": "plantlogic-7l-drainage-1307107",
+      "name": "7 Liter Drainage Collection Pot",
+      "family": "drainage_collection",
+      "volume_l": 7,
+      "product_no": "1307107",
+      "source_url": "https://getplantlogic.com/portfolio-items/7-liter-drainage-collection-pot/",
+      "use_cases": [
+        "малина",
+        "ожина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "206 мм ширина × 295 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1307107",
+          "sku_code": "PL-1307107",
+          "label": "7 Liter Drainage Collection Pot — 7 л",
+          "package": "7 л",
+          "product_no": "1307107"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1307110",
+      "slug": "plantlogic-10l-drainage-1307110",
+      "name": "10 Liter Drainage Collection Pot",
+      "family": "drainage_collection",
+      "volume_l": 10,
+      "product_no": "1307110",
+      "source_url": "https://getplantlogic.com/portfolio-items/10-liter-drainage-collection-pot/",
+      "use_cases": [
+        "малина",
+        "овочі",
+        "субстратне вирощування"
+      ],
+      "dimensions": "283 мм ширина × 256 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1307110",
+          "sku_code": "PL-1307110",
+          "label": "10 Liter Drainage Collection Pot — 10 л",
+          "package": "10 л",
+          "product_no": "1307110"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1304015",
+      "slug": "plantlogic-15l-round-drainage-1304015",
+      "name": "15 Liter Round Drainage Collection Pot",
+      "family": "drainage_collection",
+      "volume_l": 15,
+      "product_no": "1304015",
+      "source_url": "https://getplantlogic.com/portfolio-items/15-liter-round-drainage-collection-pot/",
+      "use_cases": [
+        "малина",
+        "субстратне вирощування"
+      ],
+      "dimensions": "330 мм ширина × 329 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1304015",
+          "sku_code": "PL-1304015",
+          "label": "15 Liter Round Drainage Collection Pot — 15 л",
+          "package": "15 л",
+          "product_no": "1304015"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1305117",
+      "slug": "plantlogic-17l-drainage-1305117",
+      "name": "17 Liter Drainage Collection Pot",
+      "family": "drainage_collection",
+      "volume_l": 17,
+      "product_no": "1305117",
+      "source_url": "https://getplantlogic.com/portfolio-items/17-liter-drainage-collection-pot/",
+      "use_cases": [
+        "овочі",
+        "суниця",
+        "субстратне вирощування"
+      ],
+      "dimensions": "325.6 мм ширина × 511.9 мм довжина",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1305117",
+          "sku_code": "PL-1305117",
+          "label": "17 Liter Drainage Collection Pot — 17 л",
+          "package": "17 л",
+          "product_no": "1305117"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1307133",
+      "slug": "plantlogic-30l-drainage-1307133",
+      "name": "30 Liter Drainage Collection Pot",
+      "family": "drainage_collection",
+      "volume_l": 30,
+      "product_no": "1307133",
+      "source_url": "https://getplantlogic.com/portfolio-items/30-liter-drainage-collection-pot/",
+      "use_cases": [
+        "канабіс",
+        "субстратне вирощування"
+      ],
+      "dimensions": "386 мм ширина × 343 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1307133",
+          "sku_code": "PL-1307133",
+          "label": "30 Liter Drainage Collection Pot — 30 л",
+          "package": "30 л",
+          "product_no": "1307133"
+        }
+      ]
+    }
+  ],
+  "deferred": [
+    {
+      "name": "40 Liter Drainage Collection Pot",
+      "reason": "present in earlier internal Product Master, but no current official Plantlogic page/product number was verified in this pass"
+    },
+    {
+      "name": "5 Liter Square Pot with Legs #13060510",
+      "reason": "official Plantlogic materials distinguish this from current 5 Liter Square Short Pot #1306051; keep separate until commercial assortment is confirmed"
+    }
+  ]
+}

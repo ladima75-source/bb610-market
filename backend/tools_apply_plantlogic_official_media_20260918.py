@@ -104,31 +104,43 @@ def choose_primary(spec: dict) -> dict:
         top = candidates[:5]
         raise RuntimeError(f"{slug}: no high-confidence official image; top={top}")
 
-    chosen = ready[0]
-    image_url = str(chosen["url"])
-    data, ctype, resolved_url = _fetch(
-        image_url,
-        referer=final_url,
-        accept="image/avif,image/webp,image/png,image/jpeg,*/*;q=0.8",
-    )
-    if len(data) > MAX_IMAGE_BYTES:
-        raise RuntimeError(f"{slug}: image too large")
-    kind = _image_kind(data, ctype, resolved_url)
-    if not kind:
-        raise RuntimeError(f"{slug}: candidate is not a supported product image")
-    if len(data) < 12_000:
-        raise RuntimeError(f"{slug}: candidate image file is suspiciously small")
+    attempts = []
+    for chosen in ready:
+        image_url = str(chosen["url"])
+        try:
+            data, ctype, resolved_url = _fetch(
+                image_url,
+                referer=final_url,
+                accept="image/avif,image/webp,image/png,image/jpeg,*/*;q=0.8",
+            )
+            if len(data) > MAX_IMAGE_BYTES:
+                raise RuntimeError("image too large")
+            kind = _image_kind(data, ctype, resolved_url)
+            if not kind:
+                raise RuntimeError("candidate is not a supported product image")
+            if len(data) < 12_000:
+                raise RuntimeError("candidate image file is suspiciously small")
+            return {
+                "slug": slug,
+                "source_page": final_url,
+                "product_numbers": numbers,
+                "candidate": chosen,
+                "bytes": data,
+                "resolved_url": resolved_url,
+                "kind": kind,
+                "sha256": _sha256(data),
+            }
+        except Exception as exc:
+            attempts.append({
+                "url": image_url,
+                "score": chosen.get("score"),
+                "error": f"{type(exc).__name__}: {exc}",
+            })
 
-    return {
-        "slug": slug,
-        "source_page": final_url,
-        "product_numbers": numbers,
-        "candidate": chosen,
-        "bytes": data,
-        "resolved_url": resolved_url,
-        "kind": kind,
-        "sha256": _sha256(data),
-    }
+    raise RuntimeError(
+        f"{slug}: all {len(ready)} high-confidence official image candidates failed download; "
+        f"attempts={attempts[:8]}"
+    )
 
 
 def build_preflight() -> dict:

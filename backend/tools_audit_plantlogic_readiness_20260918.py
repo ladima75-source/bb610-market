@@ -196,6 +196,12 @@ def main() -> int:
     rows = []
     missing = []
     total_skus = media_ready = commerce_bound = 0
+    managed_ids = {str(x.get("product_id") or "") for x in doc["products"]}
+    unmanaged_plantlogic = [
+        x for x in pcv3.list_cards()
+        if str(x.get("brand") or "").strip().lower() == "plantlogic"
+        and str(x.get("product_id") or "") not in managed_ids
+    ]
 
     for spec in doc["products"]:
         pid = str(spec["product_id"])
@@ -240,6 +246,7 @@ def main() -> int:
         not missing
         and len(rows) == EXPECTED_PRODUCTS
         and total_skus == EXPECTED_SKUS
+        and not unmanaged_plantlogic
     )
     media_ready_all = media_ready == EXPECTED_SKUS
     draft_state_safe = cards_enabled == 0
@@ -258,6 +265,7 @@ def main() -> int:
         "cards_with_any_media": sum(1 for x in rows if x["media_ready_sku"] > 0),
         "cards_with_any_commerce": sum(1 for x in rows if x["commerce_bound_sku"] > 0),
         "known_legacy_cards": sum(1 for x in rows if x["legacy_exists"]),
+        "unmanaged_plantlogic_cards": unmanaged_plantlogic,
         "structure_ready": structure_ready,
         "media_ready_all": media_ready_all,
         "draft_state_safe": draft_state_safe,
@@ -279,6 +287,7 @@ def main() -> int:
     print(f"CARDS WITH ANY MEDIA: {report['cards_with_any_media']}/{EXPECTED_PRODUCTS}")
     print(f"CARDS WITH ANY COMMERCE: {report['cards_with_any_commerce']}/{EXPECTED_PRODUCTS}")
     print(f"KNOWN LEGACY CARDS FOUND: {report['known_legacy_cards']}/{len(KNOWN_LEGACY)}")
+    print(f"UNMANAGED PLANTLOGIC V3: {len(unmanaged_plantlogic)}")
     print(f"STRUCTURE READY: {'PASS' if report['structure_ready'] else 'FAIL'}")
     print(f"MEDIA READY: {'PASS' if report['media_ready_all'] else 'PENDING'}")
     print(f"DRAFT STATE: {'PASS' if report['draft_state_safe'] else 'FAIL'}")
@@ -305,6 +314,10 @@ def main() -> int:
     if missing:
         print("MISSING:")
         for row in missing:
+            print(" ", row)
+    if unmanaged_plantlogic:
+        print("UNMANAGED PLANTLOGIC V3:")
+        for row in unmanaged_plantlogic:
             print(" ", row)
     print("REPORT:", path)
     if report["draft_ready"]:

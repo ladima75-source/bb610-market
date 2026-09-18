@@ -33,9 +33,33 @@ const cultures=[
 
 function patchNav(){
   document.querySelectorAll('.nav a[href*="category=protection"],header a[href*="category=protection"]').forEach(x=>x.remove());
-  document.querySelectorAll('.nav a[href*="category=containers"],header a[href*="category=containers"]').forEach(x=>{
-    x.textContent='Горщики';
-  });
+  document.querySelectorAll('.nav a[href*="category=containers"],header a[href*="category=containers"]').forEach(x=>x.textContent='Горщики');
+}
+
+function buildHero(){
+  const sec=document.createElement('section');
+  sec.className='bb22-hero';
+  sec.innerHTML=`
+    <img class="bb22-hero-image" src="assets/img/hero/homepage-hero.png" alt="Професійні товари для вирощування — BB610 Market">
+    <div class="bb22-hero-shade"></div>
+    <div class="bb22-hero-copy">
+      <div class="bb22-hero-kicker">BB610 MARKET</div>
+      <h1>Професійні товари<br><span>для вирощування</span></h1>
+      <p>Добрива, біостимулятори та професійні рішення для живлення рослин</p>
+      <a class="bb22-hero-btn" href="catalog.html">Перейти до каталогу →</a>
+    </div>`;
+  return sec;
+}
+
+function patchHero(){
+  const old=document.querySelector('.bb22-hero,.bb19a6-hero,.market-hero');
+  const fresh=buildHero();
+  if(old) old.replaceWith(fresh);
+  else {
+    const anchor=document.querySelector('.bb22-directions,.category-section');
+    if(anchor) anchor.insertAdjacentElement('beforebegin',fresh);
+    else document.querySelector('main')?.prepend(fresh);
+  }
 }
 
 function buildDirections(){
@@ -84,37 +108,23 @@ function buildCultures(){
 }
 
 function patchCultures(){
-  let old=document.querySelector('.bb22-cultures,.bb19b-cultures,.culture-section');
-  if(!old){
-    const h=[...document.querySelectorAll('h2,h3')].find(x=>/пошук за культурою|фільтр за застосуванням виробника/i.test(x.textContent||''));
-    old=h?.closest('section')||null;
-  }
+  const old=document.querySelector('.bb22-cultures,.bb19b-cultures,.culture-section');
   if(old) old.replaceWith(buildCultures());
 }
 
-function patchAvailability(){
-  document.querySelectorAll('.bb19b-availability').forEach(x=>x.remove());
-}
-
-function patchFooter(){
-  document.querySelectorAll('.footer-seller-static').forEach(x=>x.remove());
+function cleanupLegacy(){
+  document.querySelectorAll('.bb19b-availability,.footer-seller-static').forEach(x=>x.remove());
 }
 
 function apply(){
   patchNav();
+  patchHero();
   patchDirections();
   patchCultures();
-  patchAvailability();
-  patchFooter();
-  document.documentElement.dataset.bb610Homepage='22';
+  cleanupLegacy();
+  document.documentElement.dataset.bb610Homepage='22b';
 }
 
-function run(){
-  apply();
-  setTimeout(apply,180);
-  setTimeout(apply,850);
-}
-
-if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run);
-else run();
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',apply);
+else apply();
 })();

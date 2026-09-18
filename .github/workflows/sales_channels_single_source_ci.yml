@@ -96,6 +96,37 @@ jobs:
           print('SINGLE PRODUCT MASTER SOURCE CONTRACT: PASS')
           PY
 
+      - name: Product Master hidden category suppression
+        run: |
+          python - <<'PY'
+          from backend.services import product_master_runtime as pm
+
+          old_content = pm.public_content
+          old_commerce = pm.commerce_map
+          try:
+              pm.public_content = lambda: {
+                  'products': [
+                      {'id':'p-visible','category_id':'nutrition'},
+                      {'id':'p-protection','category_id':'protection'},
+                  ],
+                  'skus': [
+                      {'id':'SKU-V','product_id':'p-visible'},
+                      {'id':'SKU-P','product_id':'p-protection'},
+                  ],
+              }
+              pm.commerce_map = lambda: {
+                  'SKU-V': {'enabled':True},
+                  'SKU-P': {'enabled':True},
+              }
+              snap = pm.snapshot()
+              assert [x['id'] for x in snap['products']] == ['p-visible']
+              assert [x['id'] for x in snap['skus']] == ['SKU-V']
+              assert set(snap['commerce']) == {'SKU-V'}
+          finally:
+              pm.public_content = old_content
+              pm.commerce_map = old_commerce
+          print('PRODUCT MASTER HIDDEN CATEGORY SUPPRESSION: PASS')
+          PY
       - name: Feed and admin snapshot parity
         run: |
           python - <<'PY'

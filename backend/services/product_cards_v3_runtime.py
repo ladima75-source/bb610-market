@@ -139,6 +139,11 @@ def storefront_runtime(slug: str) -> Optional[dict]:
             'gallery_media': deepcopy(gallery),
             'commerce_bound': bool(commerce_key and live),
             'commerce_key': commerce_key,
+            'market_test': market_test,
+            'price_request': market_test,
+            'market_status': 'Під замовлення' if market_test else '',
+            'price_label': 'Ціна за запитом' if market_test else '',
+            'cta_label': 'Запросити ціну' if market_test else '',
             'commerce': _project_commerce(
                 live,
                 sku_key=commerce_key,
@@ -147,12 +152,20 @@ def storefront_runtime(slug: str) -> Optional[dict]:
         })
 
     content = deepcopy(card.get('content') or {})
+    market_test = str(content.get('brand') or '').strip().lower() == 'plantlogic'
     return {
         'runtime_version': '3.0',
         'source': 'product-card-v3',
         'product_id': product_id,
         'slug': card.get('slug'),
         'content': content,
+        'market_test': {
+            'enabled': market_test,
+            'status_label': 'Під замовлення' if market_test else '',
+            'price_label': 'Ціна за запитом' if market_test else '',
+            'cta_label': 'Запросити ціну' if market_test else '',
+            'cart_enabled': False if market_test else None,
+        },
         'skus': runtime_skus,
         'commerce_product_key': existing_product_key,
         'commerce_product_published': detail.get('published') if isinstance(detail, dict) else None,

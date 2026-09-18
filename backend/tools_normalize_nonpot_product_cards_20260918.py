@@ -123,6 +123,8 @@ def normalize_public_title(content: dict) -> bool:
 
 
 def method_values(master: dict, before_content: dict, after_content: dict) -> list[str]:
+    # Use only explicit wording already present in verified MASTER/current card.
+    # This expands taxonomy recognition without inventing agronomic properties.
     hay = norm(
         json.dumps(master.get("application") or "", ensure_ascii=False)
         + " "
@@ -130,18 +132,22 @@ def method_values(master: dict, before_content: dict, after_content: dict) -> li
         + " "
         + text(after_content.get("application"))
         + " "
+        + text(after_content.get("how_it_works"))
+        + " "
         + text(after_content.get("short_description"))
         + " "
         + characteristic_value(after_content, "Тип продукту", "Тип продукта", "Тип")
         + " "
-        + characteristic_value(before_content, "Спосіб застосування", "Способ применения", "Метод внесення")
+        + characteristic_value(before_content, "Спосіб застосування", "Способ применения", "Метод внесення", "Спосіб внесення")
+        + " "
+        + characteristic_value(after_content, "Спосіб застосування", "Способ применения", "Метод внесення", "Спосіб внесення")
     )
     out: list[str] = []
     if re.search(r"фертигац|крапель|капель|drip", hay):
         out.append("Фертигація")
     if re.search(r"позакорен|листков|по лист|обприск|foliar", hay):
         out.append("Позакореневе внесення")
-    if re.search(r"коренев|під корін|под корень|root|полив(?:ом|у|ати)?\b", hay):
+    if re.search(r"коренев|під корін|под корень|root|полив(?:ом|у|ати)?\b|ґрунт|грунт|субстрат|поверхнев", hay):
         out.append("Кореневе внесення")
     return out
 
@@ -151,23 +157,44 @@ def culture_values(master: dict, before_content: dict, after_content: dict) -> l
         json.dumps(master.get("application") or "", ensure_ascii=False),
         characteristic_value(before_content, "Культури", "Культуры", "Культура"),
         characteristic_value(after_content, "Культури", "Культуры", "Культура"),
+        text(after_content.get("short_description")),
     ]
     hay = norm(" ".join(parts))
-    if re.search(r"усі культури|всі культури|всіх культур|для всіх культур", hay):
+
+    if re.search(
+        r"усі культури|всі культури|всіх культур|для всіх культур|"
+        r"усі типи культур|всі типи культур|усі види рослин|всі види рослин|"
+        r"для всіх видів рослин|all crops|all cultures",
+        hay,
+    ):
         return list(ALL_CULTURES)
+
     out: list[str] = []
+
+    def add(value: str) -> None:
+        if value not in out:
+            out.append(value)
+
     mapping = [
         ("лохина", r"лохин|blueber"),
         ("полуниця", r"полуниц|суниц|strawber"),
         ("малина", r"малин|raspber"),
-        ("овочі", r"овоч|томат|огір|перець|баклаж|vegetab"),
+        ("овочі", r"овоч|томат|огір|перець|баклаж|картопл|коренеплод|цибул|дин[ія]|кавун|vegetab"),
         ("сад", r"плодов|садов|яблун|груш|виноград|orchard"),
         ("хвойні", r"хвой|conifer"),
         ("газон", r"газон|lawn|turf"),
     ]
     for value, pattern in mapping:
         if re.search(pattern, hay):
-            out.append(value)
+            add(value)
+
+    # "Ягідні" is a verified broad crop group. Map it only to the berry
+    # facets we actually expose; do not infer any other culture.
+    if re.search(r"ягід", hay):
+        add("лохина")
+        add("полуниця")
+        add("малина")
+
     return out
 
 

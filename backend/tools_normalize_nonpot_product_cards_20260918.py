@@ -47,6 +47,23 @@ def stamp() -> str:
     return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
+def sku_identity(card: dict) -> tuple:
+    rows = [
+        row for row in ((card.get("sku_media") or {}).get("skus") or [])
+        if isinstance(row, dict)
+    ]
+    return tuple(sorted(
+        (
+            text(row.get("sku_id")),
+            text(row.get("sku_code")),
+            text(row.get("label")),
+            text(row.get("package")),
+            bool(row.get("enabled", True)),
+        )
+        for row in rows
+    ))
+
+
 def characteristic_value(content: dict, *labels: str) -> str:
     wanted = {norm(x) for x in labels}
     for row in content.get("characteristics") or []:
@@ -112,6 +129,10 @@ def method_values(master: dict, before_content: dict, after_content: dict) -> li
         + text(before_content.get("application"))
         + " "
         + text(after_content.get("application"))
+        + " "
+        + text(after_content.get("short_description"))
+        + " "
+        + characteristic_value(after_content, "Тип продукту", "Тип продукта", "Тип")
         + " "
         + characteristic_value(before_content, "Спосіб застосування", "Способ применения", "Метод внесення")
     )
@@ -188,6 +209,7 @@ def run(apply: bool) -> dict:
         "cultures_normalized": 0,
         "media_alt_changed": 0,
         "primary_photo_changed": 0,
+        "sku_identity_unchanged": True,
     }
     unmatched: list[dict] = []
 
@@ -222,6 +244,7 @@ def run(apply: bool) -> dict:
         totals["verified_master"] += 1
         work = deepcopy(card)
         before = deepcopy(current)
+        identity_before = sku_identity(card)
         synced = content_from_master(master, work.get("content") or {})
         work["content"] = synced
 
@@ -258,6 +281,10 @@ def run(apply: bool) -> dict:
         n_photo, _photo_method = _fill_missing_primary(work, library)
         if n_photo:
             totals["primary_photo_changed"] += n_photo
+
+        if sku_identity(work) != identity_before:
+            totals["sku_identity_unchanged"] = False
+            raise RuntimeError(f"SKU identity changed during normalization: {pid}")
 
         if work != card:
             cards.validate(work)
@@ -308,6 +335,7 @@ def main() -> None:
     print("CULTURES NORMALIZED:", r["cultures_normalized"])
     print("MEDIA ALT CHANGED:", r["media_alt_changed"])
     print("PRIMARY PHOTO CHANGED:", r["primary_photo_changed"])
+    print("SKU IDENTITY UNCHANGED:", "PASS" if r["sku_identity_unchanged"] else "FAIL")
     print("COMMERCE DB UNCHANGED:", "PASS" if r["commerce_db_unchanged"] else "FAIL")
     print("COMMERCE MAP UNCHANGED:", "PASS" if r["commerce_map_unchanged"] else "FAIL")
     print("BACKUP:", r["backup_dir"])

@@ -6,6 +6,12 @@ on:
     paths:
       - 'backend/app.py'
       - 'backend/migrations/009_price_requests.sql'
+      - 'backend/migrations/010_price_request_notifications.sql'
+      - 'backend/services/telegram_notifications.py'
+      - 'backend/services/integration_secrets.py'
+      - 'backend/integrations_api.py'
+      - 'admin/integrations.html'
+      - 'admin/integrations.js'
       - 'backend/services/price_requests.py'
       - 'backend/services/product_cards_v3_facets.py'
       - 'backend/services/product_cards_v3_runtime.py'
@@ -42,13 +48,23 @@ jobs:
 
       - name: Syntax
         run: |
-          python -m py_compile             backend/app.py             backend/services/price_requests.py             backend/services/product_cards_v3_facets.py             backend/services/product_cards_v3_runtime.py             backend/services/catalog_cms.py             backend/tools_publish_plantlogic_market_test_20260918.py \
+          python -m py_compile \
+            backend/app.py \
+            backend/integrations_api.py \
+            backend/services/price_requests.py \
+            backend/services/telegram_notifications.py \
+            backend/services/integration_secrets.py \
+            backend/services/product_cards_v3_facets.py \
+            backend/services/product_cards_v3_runtime.py \
+            backend/services/catalog_cms.py \
+            backend/tools_publish_plantlogic_market_test_20260918.py \
             backend/tools_audit_plantlogic_market_test_20260918.py
           node --check js/app.js
           node --check js/product.js
           node --check js/favorites.js
           node --check js/compare.js
           node --check admin/price-requests.js
+          node --check admin/integrations.js
           node --check admin/admin-master-nav.js
 
       - name: Storefront contract
@@ -83,6 +99,16 @@ jobs:
           assert 'Запити ціни' in admin
           assert '/api/v1/admin/price-requests' in admin_js
           assert "price-requests.html','Запити ціни'" in nav
+          integrations=Path('admin/integrations.html').read_text(encoding='utf-8')
+          integrations_js=Path('admin/integrations.js').read_text(encoding='utf-8')
+          assert 'Telegram · сповіщення' in integrations
+          assert 'tg-bot-token' in integrations
+          assert 'tg-chat-id' in integrations
+          assert '/api/v1/admin/integrations/telegram' in integrations_js
+          assert 'tg-find-chats' in integrations_js
+          assert 'tg-test' in integrations_js
+          assert '/notify' in admin_js
+          assert 'telegram_status' in admin_js
 
           print('PLANTLOGIC MARKET-TEST STOREFRONT CONTRACT: PASS')
           PY
@@ -90,8 +116,10 @@ jobs:
       - name: Catalog projection and lead storage
         env:
           BB610_DB_PATH: /tmp/bb610-market-test-ci.sqlite3
+          BB610_SECRETS_DIR: /tmp/bb610-market-test-secrets
         run: |
           rm -f /tmp/bb610-market-test-ci.sqlite3
+          rm -rf /tmp/bb610-market-test-secrets
           python - <<'PY'
           from copy import deepcopy
           from pathlib import Path
@@ -102,7 +130,8 @@ jobs:
           from backend import update_plantlogic_pots_v3_20260918 as master
           from backend.services import product_cards_v3 as pcv3
           from backend.services.product_cards_v3_facets import market_test_projection
-          from backend.services.price_requests import create_price_request, list_price_requests
+          from backend.services.price_requests import create_price_request, list_price_requests, resend_price_request_notification
+          from backend.services import telegram_notifications
 
           doc=master.load_manifest()
           assert len(doc['products'])==34
@@ -163,17 +192,34 @@ jobs:
               'source_url':'https://market.bb610.com.ua/catalog.html',
           })
           assert lead['status']=='new'
+          assert lead['notification']['status']=='not_configured'
           rows=list_price_requests(limit=10)
           assert len(rows)==1
           assert rows[0]['request_code']==lead['request_code']
           assert rows[0]['product_name']==product['name']
           assert rows[0]['variant']==first['variant']
           assert rows[0]['quantity']==610
+          assert rows[0]['telegram_status']=='not_configured'
+          assert rows[0]['telegram_attempts']==1
+
+          telegram_notifications.notify_price_request=lambda row:{
+              'channel':'telegram',
+              'status':'sent',
+              'error':'',
+              'provider_message_id':'777',
+          }
+          resent=resend_price_request_notification(lead['request_code'])
+          assert resent['notification']['status']=='sent'
+          rows=list_price_requests(limit=10)
+          assert rows[0]['telegram_status']=='sent'
+          assert rows[0]['telegram_message_id']=='777'
+          assert rows[0]['telegram_attempts']==2
 
           print('PLANTLOGIC MARKET-TEST PRODUCTS: 34/34 PASS')
           print('PLANTLOGIC MARKET-TEST SKU: 37/37 PASS')
           print('PLANTLOGIC REQUEST-PRICE SKU: 37/37 PASS')
           print('PLANTLOGIC PRICE REQUEST LEAD STORAGE: PASS')
+          print('PLANTLOGIC TELEGRAM NOTIFICATION TRACKING: PASS')
           PY
 
       - name: Publish tool safety contract

@@ -1,0 +1,67 @@
+name: Surplus Product Card R2 cleanup CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_cleanup_surplus_pcv3_r2_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - 'backend/services/product_commerce.py'
+      - '.github/workflows/surplus_pcv3_r2_cleanup_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_cleanup_surplus_pcv3_r2_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - 'backend/services/product_commerce.py'
+      - '.github/workflows/surplus_pcv3_r2_cleanup_ci.yml'
+
+jobs:
+  safety-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: python -m py_compile backend/tools_cleanup_surplus_pcv3_r2_20260918.py
+
+      - name: Validate R2 cleanup contract
+        run: |
+          python - <<'PY'
+          from backend import tools_cleanup_surplus_pcv3_r2_20260918 as c
+
+          assert len(c.PAIRS) == 9
+          assert c.EXAMPLE_SLUG == 'example-product'
+          assert c.EXPECTED_BEFORE == 119
+          assert c.EXPECTED_AFTER == 109
+
+          # Pure comparison: same package + same full live commerce state is safe
+          dup_card = {
+              'slug': 'dup',
+              'sku_media': {'skus': [
+                  {'sku_id':'sku_dup','package':'1 КГ','label':'1 КГ','enabled':True}
+              ], 'media': []}
+          }
+          can_card = {
+              'slug': 'can',
+              'sku_media': {'skus': [
+                  {'sku_id':'sku_can','package':'1 КГ','label':'1 КГ','enabled':True}
+              ], 'media': []}
+          }
+          dup_map = {'skus':[{'sku_id':'sku_dup','existing_commerce_sku_key':'DUP-1'}]}
+          can_map = {'skus':[{'sku_id':'sku_can','existing_commerce_sku_key':'CAN-1'}]}
+          live = {
+              'DUP-1': {'price':100.0,'sale_price':None,'effective_price':100.0,'availability':'in_stock','stock_qty':None,'enabled':True},
+              'CAN-1': {'price':100.0,'sale_price':None,'effective_price':100.0,'availability':'in_stock','stock_qty':None,'enabled':True},
+          }
+          cmp = c.compare_pair(dup_card, dup_map, can_card, can_map, live)
+          assert cmp['safe'] is True
+
+          live['CAN-1'] = {**live['CAN-1'], 'price':101.0, 'effective_price':101.0}
+          cmp = c.compare_pair(dup_card, dup_map, can_card, can_map, live)
+          assert cmp['safe'] is False
+
+          print('SURPLUS PCV3 R2 CLEANUP CONTRACT: PASS')
+          PY

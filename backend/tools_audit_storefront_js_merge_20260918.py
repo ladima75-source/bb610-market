@@ -26,7 +26,6 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from backend.catalog_provider import load_catalog
 from backend.services.catalog_cms import public_content, admin_detail
 from backend.services.product_commerce import commerce_map
 
@@ -85,7 +84,15 @@ def sku_summary(row: dict) -> dict:
 
 
 def main() -> int:
-    base = load_catalog()
+    runtime_path = ROOT / "data" / "catalog.runtime.js"
+    raw = runtime_path.read_text(encoding="utf-8").strip()
+    prefix = "window.BB610_CATALOG = "
+    if not raw.startswith(prefix):
+        raise RuntimeError("catalog.runtime.js has unexpected wrapper")
+    payload = raw[len(prefix):]
+    if payload.endswith(";"):
+        payload = payload[:-1]
+    base = json.loads(payload)
     products = [deepcopy(x) for x in (base.get("products") or []) if isinstance(x, dict)]
     skus = [deepcopy(x) for x in (base.get("skus") or []) if isinstance(x, dict)]
 
@@ -170,6 +177,9 @@ def main() -> int:
     path = REPORT_ROOT / f"storefront-js-merge-audit-{stamp()}.json"
     payload = {
         "mode": "READ_ONLY",
+        "runtime_file": str(runtime_path),
+        "runtime_products": len(base.get("products") or []),
+        "runtime_skus": len(base.get("skus") or []),
         "public_products": len(public_products),
         "storefront_no_price": len(storefront_no_price),
         "backend_priced_but_storefront_no_price": len(mismatches),
@@ -180,6 +190,8 @@ def main() -> int:
 
     print("BB610 STOREFRONT JS MERGE AUDIT")
     print("MODE: READ_ONLY")
+    print("RUNTIME PRODUCTS:", len(base.get("products") or []))
+    print("RUNTIME SKUS:", len(base.get("skus") or []))
     print("PUBLIC PRODUCTS:", len(public_products))
     print("STOREFRONT WOULD SHOW NO PRICE:", len(storefront_no_price))
     print("BACKEND PRICED / STOREFRONT NO PRICE:", len(mismatches))

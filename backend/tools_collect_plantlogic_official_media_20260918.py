@@ -32,8 +32,8 @@ if str(ROOT) not in sys.path:
 
 MANIFEST = ROOT / "data" / "product_content" / "plantlogic_pots_v1_20260918.json"
 REPORT_ROOT = ROOT / "var" / "reports"
-EXPECTED_PRODUCTS = 32
-EXPECTED_SKUS = 34
+EXPECTED_PRODUCTS = 34
+EXPECTED_SKUS = 37
 
 # Exact current official product pages where the Product Master had a generic,
 # brochure or stale URL.

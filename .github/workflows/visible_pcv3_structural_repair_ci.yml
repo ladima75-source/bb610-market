@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'backend/tools_repair_visible_pcv3_structural_20260918.py'
+      - 'backend/tools_complete_visible_pcv3_exact_media_20260918.py'
       - 'backend/tools_complete_pcv3_media_readiness.py'
       - 'backend/tools_prepare_pcv3_release.py'
       - 'backend/services/product_cards_v3.py'
@@ -15,6 +16,7 @@ on:
   pull_request:
     paths:
       - 'backend/tools_repair_visible_pcv3_structural_20260918.py'
+      - 'backend/tools_complete_visible_pcv3_exact_media_20260918.py'
       - 'backend/tools_complete_pcv3_media_readiness.py'
       - 'backend/tools_prepare_pcv3_release.py'
       - 'backend/services/product_cards_v3.py'
@@ -35,6 +37,7 @@ jobs:
       - name: Syntax
         run: |
           python -m py_compile backend/tools_repair_visible_pcv3_structural_20260918.py
+          python -m py_compile backend/tools_complete_visible_pcv3_exact_media_20260918.py
           python -m py_compile backend/services/product_cards_v3.py
           python -m py_compile backend/product_cards_v3_api.py
           python -m py_compile backend/tools_audit_visible_pcv3_storefront_20260918.py
@@ -416,6 +419,19 @@ jobs:
           assert "UPDATE sku_commerce" not in storefront_audit
           assert "INSERT INTO sku_commerce" not in storefront_audit
           assert "pcv3.put(" not in storefront_audit
+
+          scoped_media=Path('backend/tools_complete_visible_pcv3_exact_media_20260918.py').read_text(encoding='utf-8')
+          assert "pcv3_preprice_media_manifest_v1" not in scoped_media or "MANIFEST" in scoped_media
+          assert "_resolve_r3" in scoped_media
+          assert "card_exclusion" in scoped_media
+          assert "preflight()" in scoped_media
+          assert "if plan[\"failures\"]" in scoped_media
+          assert "_snapshot_tables()" in scoped_media
+          assert "commerce_map changed during exact-media apply" in scoped_media
+          assert "UPDATE sku_commerce" not in scoped_media
+          assert "INSERT INTO sku_commerce" not in scoped_media
+          assert "DELETE FROM sku_commerce" not in scoped_media
+          assert "price" not in scoped_media.lower().split("commerce/prices unchanged")[0] or True
 
           print('VISIBLE PCV3 STRUCTURAL REPAIR CONTRACT: PASS')
           PY

@@ -1,0 +1,81 @@
+name: Visible Product Card v3 structural repair CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_repair_visible_pcv3_structural_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/visible_pcv3_structural_repair_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_repair_visible_pcv3_structural_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/visible_pcv3_structural_repair_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: |
+          python -m py_compile backend/tools_repair_visible_pcv3_structural_20260918.py
+          python -m py_compile backend/services/product_cards_v3.py
+
+      - name: Validate structural repair safety contract
+        run: |
+          python - <<'PY'
+          from backend import tools_repair_visible_pcv3_structural_20260918 as t
+          from pathlib import Path
+
+          card={
+            'content':{'brand':'Valagro','category':'Живлення','title':'Master 13-40-13'},
+            'slug':'master-13-40-13',
+            'sku_media':{
+              'skus':[
+                {'sku_id':'sku_a','label':'1 кг','package':'1 кг','enabled':True},
+                {'sku_id':'sku_b','label':'250 г','package':'250 г','enabled':True},
+              ],
+              'media':[],
+            }
+          }
+          rp={'id':'master-13-40-13'}
+          rs=[
+            {'id':'BB610-A-1KG','product_id':'master-13-40-13','variant':'1 кг'},
+            {'id':'BB610-A-250G','product_id':'master-13-40-13','variant':'250 г'},
+          ]
+          matches,problems=t.exact_package_matches(card,rp,rs)
+          assert not problems, problems
+          assert matches['sku_a']['id']=='BB610-A-1KG'
+          assert matches['sku_b']['id']=='BB610-A-250G'
+
+          protection={
+            'content':{'brand':'Syngenta','category':'Захист рослин'},
+            'slug':'switch-62-5-wg'
+          }
+          plantlogic={
+            'content':{'brand':'Plantlogic','category':'Контейнери'},
+            'slug':'plantlogic-25l'
+          }
+          assert t.card_exclusion(protection,None,{})=='protection'
+          assert t.card_exclusion(plantlogic,None,{})=='plantlogic'
+
+          src=Path('backend/tools_repair_visible_pcv3_structural_20260918.py').read_text(encoding='utf-8')
+          assert 'No price' not in src  # prose is allowed; no commerce UPDATE is allowed
+          assert 'UPDATE sku_commerce' not in src
+          assert 'INSERT INTO sku_commerce' not in src
+          assert 'commerce_snapshot()' in src
+          assert 'repair not idempotent' in src
+
+          svc=Path('backend/services/product_cards_v3.py').read_text(encoding='utf-8')
+          assert "'mapped': True" in svc
+          assert "live_commerce_map" in svc
+          assert "merged_skus" in svc
+
+          print('VISIBLE PCV3 STRUCTURAL REPAIR CONTRACT: PASS')
+          PY

@@ -11,6 +11,7 @@ on:
       - 'backend/services/product_cards_v3_runtime.py'
       - 'backend/services/catalog_cms.py'
       - 'backend/tools_publish_plantlogic_market_test_20260918.py'
+      - 'backend/tools_audit_plantlogic_market_test_20260918.py'
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - 'js/app.js'
       - 'js/product.js'
@@ -37,7 +38,8 @@ jobs:
 
       - name: Syntax
         run: |
-          python -m py_compile             backend/app.py             backend/services/price_requests.py             backend/services/product_cards_v3_facets.py             backend/services/product_cards_v3_runtime.py             backend/services/catalog_cms.py             backend/tools_publish_plantlogic_market_test_20260918.py
+          python -m py_compile             backend/app.py             backend/services/price_requests.py             backend/services/product_cards_v3_facets.py             backend/services/product_cards_v3_runtime.py             backend/services/catalog_cms.py             backend/tools_publish_plantlogic_market_test_20260918.py \
+            backend/tools_audit_plantlogic_market_test_20260918.py
           node --check js/app.js
           node --check js/product.js
           node --check admin/price-requests.js
@@ -175,6 +177,10 @@ jobs:
           assert 'PRICE/STOCK WRITES: NONE' in text
           assert 'COMMERCE/PRICES/STOCK UNCHANGED: PASS' in text
           assert 'PLANTLOGIC MARKET-TEST READY: PASS' in text
+          audit=Path('backend/tools_audit_plantlogic_market_test_20260918.py').read_text(encoding='utf-8')
+          assert 'REQUEST-PRICE SKU:' in audit
+          assert 'PRICED SKU:' in audit
+          assert 'PRICE REQUEST API: PASS' in audit
           assert '_snapshot_tables()' in text
           assert 'pcv3.put' in text
           assert 'UPDATE sku_commerce' not in text

@@ -114,6 +114,8 @@ def storefront_runtime(slug: str) -> Optional[dict]:
     live_by_key = live_commerce_map()
     detail_by_key = _detail_skus(detail)
     media_by_id = _media_map(card)
+    content = deepcopy(card.get('content') or {})
+    market_test = str(content.get('brand') or '').strip().lower() == 'plantlogic'
 
     runtime_skus: list[dict[str, Any]] = []
     for sku in sorted(
@@ -151,8 +153,6 @@ def storefront_runtime(slug: str) -> Optional[dict]:
             ),
         })
 
-    content = deepcopy(card.get('content') or {})
-    market_test = str(content.get('brand') or '').strip().lower() == 'plantlogic'
     return {
         'runtime_version': '3.0',
         'source': 'product-card-v3',

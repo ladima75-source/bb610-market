@@ -86,9 +86,13 @@ def public_content():
             merged={k:v for k,v in c.items() if not k.startswith('cms_')}; merged['id']=pid; merged['runtime_dynamic']=True; merged['runtime_hidden']=False; merged['selected_by_bb610']=True; merged['legacy_url']='product.html?id='+pid; merged['canonical_product_url']='product.html?id='+pid
         products.append(merged)
     # Product Card v3 owns curated descriptive/filter attributes. Packaging and
-    # availability remain SKU/commerce data and are intentionally not duplicated.
+    # availability normally remain SKU/commerce data. Plantlogic market-test
+    # cards are the deliberate exception: they project request-price SKU rows
+    # without inventing or writing commercial values.
+    market_skus=[]
+    market_product_ids=set()
     try:
-        from .product_cards_v3_facets import catalog_overlays
+        from .product_cards_v3_facets import catalog_overlays, market_test_projection
         positions={str(p.get('id') or ''):i for i,p in enumerate(products)}
         for patch in catalog_overlays():
             pid=str(patch.get('id') or '')
@@ -97,19 +101,41 @@ def public_content():
                 products[positions[pid]].update(patch)
             else:
                 positions[pid]=len(products); products.append(patch)
+
+        market=market_test_projection()
+        for patch in market.get('products') or []:
+            if not isinstance(patch,dict): continue
+            pid=str(patch.get('id') or '')
+            if not pid: continue
+            market_product_ids.add(pid)
+            if pid in positions:
+                products[positions[pid]].update(patch)
+            else:
+                positions[pid]=len(products); products.append(patch)
+        market_skus=[
+            dict(x) for x in (market.get('skus') or [])
+            if isinstance(x,dict) and x.get('id')
+        ]
     except Exception:
         # Catalog must stay available even if one content card is malformed.
-        pass
+        market_skus=[]
+        market_product_ids=set()
+
     # Storefront API must be authoritative for SKU identity as well as content.
-    # The static catalog.runtime.js snapshot can lag behind catalog.master.json;
-    # returning only dynamic SKU here left the browser dependent on stale static
-    # SKU identities and caused priced products to render as "Ціна уточнюється".
+    # When an enabled V3 Plantlogic card is in market-test mode, its projected
+    # request-price SKU rows replace legacy/static SKU rows for that product so
+    # the browser cannot accidentally expose stale cart/price state.
     public_ids={str(p.get('id') or '') for p in products if p.get('id') and not p.get('runtime_hidden')}
     sku_map={}
     for s in static_skus.values():
-        if str(s.get('product_id') or '') in public_ids:
+        pid=str(s.get('product_id') or '')
+        if pid in public_ids and pid not in market_product_ids:
             sku_map[str(s.get('id') or s.get('sku'))]=dict(s)
     for s in _dynamic_skus():
+        pid=str(s.get('product_id') or '')
+        if pid in public_ids and pid not in market_product_ids:
+            sku_map[str(s.get('id') or s.get('sku'))]=dict(s)
+    for s in market_skus:
         if str(s.get('product_id') or '') in public_ids:
             sku_map[str(s.get('id') or s.get('sku'))]=dict(s)
     return {'products':products,'skus':list(sku_map.values())}

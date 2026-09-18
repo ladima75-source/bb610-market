@@ -139,6 +139,14 @@
       {
         "label": "Компанія",
         "value": "Syngenta Biologicals"
+      },
+      {
+        "label": "Культури",
+        "value": "усі культури"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Фертигація"
       }
     ],
     "origin": {
@@ -152,13 +160,17 @@
       {
         "title": "Ferrilene line monograph — Valagro",
         "url": "https://www.valagro.com/media/filer_public/4c/e5/4ce5d4ef-8601-481c-8822-445fba6038bf/monografia_ferrilene_line_2021_spa_castilian_spanish.pdf"
+      },
+      {
+        "title": "Valagro catalogue — Ferrilene 4.8 directions for use",
+        "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
       }
     ],
     "sources": {
       "source_url": "https://www.valagro.com/media/filer_public/4c/e5/4ce5d4ef-8601-481c-8822-445fba6038bf/monografia_ferrilene_line_2021_spa_castilian_spanish.pdf",
       "source_type": "manufacturer_monograph",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {
@@ -253,6 +265,10 @@
       {
         "label": "Офіційна упаковка",
         "value": "1 л, 10 л"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Позакореневе внесення"
       }
     ],
     "origin": {
@@ -271,8 +287,8 @@
     "sources": {
       "source_url": "https://www.syngenta.ua/product/crop-protection/mikroelementy/boroplyustm",
       "source_type": "official_local_product_page",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {

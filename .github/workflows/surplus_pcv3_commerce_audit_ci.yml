@@ -1,0 +1,67 @@
+name: Surplus Product Card commerce audit CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_audit_surplus_pcv3_commerce_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - 'backend/services/product_commerce.py'
+      - '.github/workflows/surplus_pcv3_commerce_audit_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_audit_surplus_pcv3_commerce_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - 'backend/services/product_commerce.py'
+      - '.github/workflows/surplus_pcv3_commerce_audit_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: python -m py_compile backend/tools_audit_surplus_pcv3_commerce_20260918.py
+
+      - name: Validate read-only audit target contract
+        run: |
+          python - <<'PY'
+          from backend import tools_audit_surplus_pcv3_commerce_20260918 as a
+
+          assert len(a.PAIRS) == 9
+          assert a.EXAMPLE_SLUG == 'example-product'
+          assert a.PAIRS['master-npk-13-40-13'] == 'master-13-40-13'
+          assert a.PAIRS['plantafol-npk-5-15-45'] == 'plantafol-5-15-45'
+
+          duplicate = {
+              'parent': 'old',
+              'bindings': [{
+                  'package': '1 кг',
+                  'commerce_key': 'old-sku',
+                  'effective_price': 100.0,
+                  'enabled': False,
+                  'availability': 'unknown',
+              }],
+          }
+          canonical = {
+              'parent': 'new',
+              'bindings': [{
+                  'package': '1 кг',
+                  'commerce_key': 'new-sku',
+                  'effective_price': 100.0,
+                  'enabled': True,
+                  'availability': 'in_stock',
+              }],
+          }
+          cmp = a.compare_pair(duplicate, canonical)
+          assert cmp['same_parent'] is False
+          assert cmp['same_package_set'] is True
+          assert cmp['rows'][0]['same_price'] is True
+          assert cmp['rows'][0]['same_commerce_key'] is False
+
+          print('SURPLUS PCV3 COMMERCE AUDIT CONTRACT: PASS')
+          PY

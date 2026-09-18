@@ -254,6 +254,8 @@ def run(apply: bool) -> dict:
         category = norm(current.get("category"))
         if brand == "plantlogic" or category == "containers":
             continue
+        if category == "protection":
+            continue
         totals["nonpot_cards"] += 1
 
         master = find_master_for_card(card)

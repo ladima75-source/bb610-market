@@ -12,10 +12,18 @@ async function load(){
   const r=await fetch(API+'/api/v1/admin/dashboard',{headers:auth()});
   const x=await r.json();if(!r.ok)throw x;
   localStorage.setItem('bb610_admin_token',token());
-  const o=x.orders||{},c=x.catalog||{};
+  const o=x.orders||{},pr=x.price_requests||{},c=x.catalog||{};
   set('updated','Оновлено: '+new Date((x.generated_at||0)*1000).toLocaleString('uk-UA')+(o.source&&o.source!=='not_found'?' · orders: '+o.source:''));
   set('ordersToday',fmt(o.today));set('revenueToday',money(o.revenue_today));
   set('orders7',fmt(o.last7));set('revenue7',money(o.revenue_7));
+  set('priceRequestsNew',fmt(pr.unprocessed));set('priceRequestsTotal',fmt(pr.total)+' всього');
+  set('priceRequestsWon',fmt(pr.statuses?.won||0));set('priceRequestsQuoted',fmt(pr.statuses?.quoted||0)+' з ціною');
+  const orderNew=Number(o.unprocessed||0),requestNew=Number(pr.unprocessed||0);
+  const heroOrders=$('#heroOrders'),heroPriceRequests=$('#heroPriceRequests');
+  if(heroOrders)heroOrders.textContent='Нові замовлення'+(orderNew?' ('+orderNew+')':'');
+  if(heroPriceRequests)heroPriceRequests.textContent='Запити ціни'+(requestNew?' ('+requestNew+')':'');
+  set('quickOrdersLabel','Замовлення'+(orderNew?' ('+orderNew+')':''));
+  set('quickPriceRequestsLabel','Запити ціни'+(requestNew?' ('+requestNew+')':''));
   set('revenue30',money(o.revenue_30));set('orders30',fmt(o.last30)+' замовлень');
   set('avg30',fmt(o.avg_check_30));
   set('productsCount',fmt(c.products));set('skuCount',fmt(c.skus)+' SKU');
@@ -31,6 +39,11 @@ async function load(){
   $('#recentOrders').innerHTML=(o.recent||[]).length?(o.recent||[]).map(q=>`<tr><td>${q.id||'—'}</td><td>${when(q.created_at)}</td><td>${q.customer||q.phone||'—'}</td><td>${q.status||'—'}</td><td>${money(q.total)}</td></tr>`).join(''):'<tr><td colspan=5>Замовлення не знайдені або таблиця ще порожня.</td></tr>';
   const st=Object.entries(o.statuses||{}).sort((a,b)=>b[1]-a[1]);
   $('#orderStatuses').innerHTML=st.length?st.slice(0,12).map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join(''):'<div class=empty>Немає даних.</div>';
+
+  const prLabels={new:'Нові',contacted:'Зв’язалися',quoted:'Ціну надано',won:'Успішні',lost:'Втрачено',closed:'Закриті'};
+  $('#recentPriceRequests').innerHTML=(pr.recent||[]).length?(pr.recent||[]).map(q=>`<tr><td><a href="price-requests.html" class="dash-link">${q.request_code||'—'}</a></td><td>${when(q.created_at)}</td><td>${q.product_name||'—'}<br><small>${q.variant||q.sku||''}</small></td><td>${fmt(q.quantity)} шт.</td><td>${prLabels[q.status]||q.status||'—'}</td></tr>`).join(''):'<tr><td colspan=5>Запитів ціни ще немає.</td></tr>';
+  const prStatuses=Object.entries(pr.statuses||{}).filter(([,v])=>Number(v)>0);
+  $('#priceRequestStatuses').innerHTML=prStatuses.length?prStatuses.map(([k,v])=>`<div><span>${prLabels[k]||k}</span><b>${v}</b></div>`).join(''):'<div class=empty>Немає даних.</div>';
 
   $('#integrations').innerHTML=Object.values(x.integrations||{}).map(i=>`<div><span class="dot ${i.configured?'ok':'off'}"></span><span>${i.label}</span><b style="margin-left:auto">${i.configured?'Підключено':'Не налаштовано'}</b></div>`).join('');
 

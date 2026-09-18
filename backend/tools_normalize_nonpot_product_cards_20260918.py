@@ -32,6 +32,13 @@ REPORT_ROOT = ROOT / "var" / "reports"
 ALL_CULTURES = ["лохина", "полуниця", "малина", "овочі", "сад", "хвойні", "газон"]
 
 CYRILLIC = re.compile(r"[А-Яа-яІіЇїЄєҐґ]")
+HIDDEN_PUBLIC_PRODUCT_IDS = {
+    "aktara-25-wg",
+    "switch-625-wg",
+    "switch-62-5-wg",
+    "control-dmp",
+}
+HIDDEN_PUBLIC_CATEGORIES = {"protection", "захист рослин", "средства защиты растений"}
 
 
 def text(value: Any) -> str:
@@ -252,9 +259,15 @@ def run(apply: bool) -> dict:
         current = card.get("content") if isinstance(card.get("content"), dict) else {}
         brand = norm(current.get("brand"))
         category = norm(current.get("category"))
+        slug = norm(card.get("slug"))
+        product_id = norm(card.get("product_id"))
         if brand == "plantlogic" or category == "containers":
             continue
-        if category == "protection":
+        if (
+            category in HIDDEN_PUBLIC_CATEGORIES
+            or slug in HIDDEN_PUBLIC_PRODUCT_IDS
+            or product_id in HIDDEN_PUBLIC_PRODUCT_IDS
+        ):
             continue
         totals["nonpot_cards"] += 1
 

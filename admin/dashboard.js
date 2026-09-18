@@ -29,7 +29,11 @@ async function load(){
   set('productsCount',fmt(c.products));set('skuCount',fmt(c.skus)+' SKU');
   set('saleEnabled',fmt(c.sale_enabled_skus));set('inStock',fmt(c.in_stock_skus)+' в наявності');
 
-  $('#alerts').innerHTML=(c.alerts||[]).length?(c.alerts||[]).map(a=>`<a class="alert ${a.level||''}" href="${a.href||'#'}"><span>${a.label}</span><b>${a.count}</b></a>`).join(''):'<div class=empty>Критичних зауважень немає.</div>';
+  const operationalAlerts=[];
+  if(orderNew)operationalAlerts.push({level:'warn',label:'Нові замовлення',count:orderNew,href:'orders-center.html'});
+  if(requestNew)operationalAlerts.push({level:'warn',label:'Нові запити ціни',count:requestNew,href:'price-requests.html'});
+  const attentionAlerts=[...operationalAlerts,...(c.alerts||[])];
+  $('#alerts').innerHTML=attentionAlerts.length?attentionAlerts.map(a=>`<a class="alert ${a.level||''}" href="${a.href||'#'}"><span>${a.label}</span><b>${a.count}</b></a>`).join(''):'<div class=empty>Критичних зауважень немає.</div>';
   const stats=[
     ['Товарів',c.products],['SKU',c.skus],['SKU з ціною',c.priced_skus],['SKU без ціни',c.no_price_skus],
     ['Продаж увімкнено',c.sale_enabled_skus],['В наявності',c.in_stock_skus],['Допущено у фіди',c.feed_allowed_skus],['Не допущено',c.feed_blocked_skus]

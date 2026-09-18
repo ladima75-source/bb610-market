@@ -244,18 +244,18 @@ def card_exclusion(card: dict, mapping: dict | None, runtime_by_id: dict[str, di
 
 
 def exact_runtime_product(card: dict, mapping: dict | None, by_id: dict[str, dict], by_slug: dict[str, dict]) -> tuple[dict | None, str]:
-    # Existing mapping is not proof by itself. A stale/wrong parent must never
-    # become the source for automatic SKU/media repair.
+    # Existing mapping is useful only when its parent still exists and identity
+    # is independently proven. A missing legacy parent may be repaired, but
+    # only through a new exact slug/id or unique exact-title match.
+    stale_mapping_parent = False
     if isinstance(mapping, dict):
         parent = str(mapping.get("existing_product_key") or "").strip()
-        if not parent:
-            return None, "existing_mapping_parent_missing"
-        rp = by_id.get(parent)
-        if not isinstance(rp, dict):
-            return None, "existing_mapping_parent_missing"
-        if not _runtime_product_matches_card(card, rp):
-            return None, "existing_mapping_identity_unproven"
-        return rp, "existing_mapping_parent_exact"
+        rp = by_id.get(parent) if parent else None
+        if isinstance(rp, dict):
+            if not _runtime_product_matches_card(card, rp):
+                return None, "existing_mapping_identity_unproven"
+            return rp, "existing_mapping_parent_exact"
+        stale_mapping_parent = True
 
     slug = str(card.get("slug") or "").strip()
     candidates = []
@@ -264,16 +264,28 @@ def exact_runtime_product(card: dict, mapping: dict | None, by_id: dict[str, dic
     if slug in by_slug and by_slug[slug] not in candidates:
         candidates.append(by_slug[slug])
     if len(candidates) == 1:
-        return candidates[0], "exact_slug_or_id"
+        return candidates[0], (
+            "stale_mapping_parent_exact_slug_or_id"
+            if stale_mapping_parent else "exact_slug_or_id"
+        )
 
     # Strict title fallback only: normalized exact equality and unique.
     title = norm((card.get("content") or {}).get("title"))
     if title:
-        hits = [p for p in by_id.values() if norm(p.get("name")) == title or norm(p.get("official_name")) == title]
+        hits = [
+            p for p in by_id.values()
+            if norm(p.get("name")) == title or norm(p.get("official_name")) == title
+        ]
         unique = {str(x.get("id") or ""): x for x in hits}
         if len(unique) == 1:
-            return next(iter(unique.values())), "exact_title"
-    return None, ""
+            return next(iter(unique.values())), (
+                "stale_mapping_parent_exact_title"
+                if stale_mapping_parent else "exact_title"
+            )
+    return None, (
+        "existing_mapping_parent_missing"
+        if stale_mapping_parent else "no_exact_runtime_product_identity"
+    )
 
 
 def enabled_v3_skus(card: dict) -> list[dict]:
@@ -283,7 +295,23 @@ def enabled_v3_skus(card: dict) -> list[dict]:
     ]
 
 
-def exact_package_matches(card: dict, catalog_product: dict, catalog_skus: list[dict]) -> tuple[dict[str, dict], list[str]]:
+def exact_package_matches(
+    card: dict,
+    catalog_product: dict,
+    catalog_skus: list[dict],
+    *,
+    live: dict[str, dict] | None = None,
+    mapping: dict | None = None,
+) -> tuple[dict[str, dict], list[str]]:
+    """Resolve v3 SKU identity without fuzzy matching.
+
+    Exact package equality establishes the candidate set. When duplicate
+    catalog rows exist, identity may be disambiguated only by an already saved
+    mapping link, an exact v3 sku_code, or a single candidate that has a live
+    sku_commerce row.
+    """
+    live = live if isinstance(live, dict) else {}
+    current = current_links(mapping)
     problems: list[str] = []
     by_pack: dict[str, list[dict]] = {}
     for row in catalog_skus:
@@ -298,13 +326,45 @@ def exact_package_matches(card: dict, catalog_product: dict, catalog_skus: list[
         if not sid or not pkey:
             problems.append(f"v3 SKU missing identity/package: {sid or '-'}")
             continue
+
         hits = by_pack.get(pkey) or []
-        if len(hits) != 1:
-            problems.append(
-                f"{sid}: package {pkey} catalog matches={len(hits)}"
-            )
+        if len(hits) == 1:
+            out[sid] = hits[0]
             continue
-        out[sid] = hits[0]
+
+        by_key = {
+            str(row.get("id") or row.get("sku") or "").strip(): row
+            for row in hits
+            if str(row.get("id") or row.get("sku") or "").strip()
+        }
+
+        mapped_key = current.get(sid, "")
+        if mapped_key and mapped_key in by_key:
+            out[sid] = by_key[mapped_key]
+            continue
+
+        sku_code = str(sku.get("sku_code") or "").strip()
+        if sku_code and sku_code in by_key:
+            out[sid] = by_key[sku_code]
+            continue
+
+        live_hits = [
+            row for key, row in by_key.items()
+            if isinstance(live.get(key), dict)
+        ]
+        if len(live_hits) == 1:
+            out[sid] = live_hits[0]
+            continue
+
+        candidate_keys = sorted(by_key)
+        live_keys = sorted(
+            key for key in by_key if isinstance(live.get(key), dict)
+        )
+        problems.append(
+            f"{sid}: package {pkey} catalog matches={len(hits)} "
+            f"live matches={len(live_hits)} "
+            f"candidates={candidate_keys} live={live_keys}"
+        )
     return out, problems
 
 
@@ -469,7 +529,11 @@ def build_plan() -> dict:
 
         parent = str(rp.get("id") or "")
         package_matches, package_problems = exact_package_matches(
-            card, rp, sku_by_product.get(parent) or []
+            card,
+            rp,
+            sku_by_product.get(parent) or [],
+            live=live,
+            mapping=mapping,
         )
         if package_problems:
             unresolved.append({
@@ -542,11 +606,21 @@ def build_plan() -> dict:
                     "skus": [deepcopy(x) for x in desired_links],
                 }
             if mapping != desired_mapping:
-                # Existing non-empty mapping parent is immutable unless identical
-                # to the exact runtime identity.
+                # A present-but-different authoritative parent remains immutable.
+                # A stale parent that no longer exists may be repaired only when
+                # exact_runtime_product proved the replacement by slug/id/title.
                 if isinstance(mapping, dict):
                     old_parent = str(mapping.get("existing_product_key") or "").strip()
-                    if old_parent and old_parent != parent:
+                    stale_parent_repair = bool(
+                        old_parent
+                        and old_parent != parent
+                        and old_parent not in by_id
+                        and resolution in {
+                            "stale_mapping_parent_exact_slug_or_id",
+                            "stale_mapping_parent_exact_title",
+                        }
+                    )
+                    if old_parent and old_parent != parent and not stale_parent_repair:
                         unresolved.append({
                             "product_id": pid, "slug": card.get("slug"),
                             "reason": "existing_mapping_parent_conflict",

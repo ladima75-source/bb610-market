@@ -22,7 +22,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from backend.catalog_provider import load_catalog
-from backend.services.catalog_cms import _dynamic_skus, _overrides
+from backend.services.catalog_cms import _dynamic_skus, _overrides, public_content
 from backend.services.product_commerce import commerce_map
 
 REPORT_ROOT = ROOT / "var" / "reports"
@@ -59,20 +59,35 @@ def choose(default_sku: dict | None, skus: list[dict], cm: dict[str, dict]) -> d
 
 def main() -> int:
     catalog = load_catalog()
+    public_doc = public_content()
+    public_ids = {
+        str(x.get("id") or "")
+        for x in (public_doc.get("products") or [])
+        if isinstance(x, dict) and x.get("id") and not x.get("runtime_hidden")
+    }
+
     products = {
         str(x.get("id") or ""): dict(x)
         for x in (catalog.get("products") or [])
-        if isinstance(x, dict) and x.get("id")
+        if isinstance(x, dict) and x.get("id") and str(x.get("id")) in public_ids
     }
     for pid, patch in _overrides().items():
+        if pid not in public_ids:
+            continue
         if pid in products:
             products[pid].update({k: v for k, v in patch.items() if not k.startswith("cms_")})
         else:
             products[pid] = {k: v for k, v in patch.items() if not k.startswith("cms_")}
             products[pid]["id"] = pid
 
-    skus = [dict(x) for x in (catalog.get("skus") or []) if isinstance(x, dict)]
-    skus.extend(dict(x) for x in _dynamic_skus() if isinstance(x, dict))
+    skus = [
+        dict(x) for x in (catalog.get("skus") or [])
+        if isinstance(x, dict) and str(x.get("product_id") or "") in public_ids
+    ]
+    skus.extend(
+        dict(x) for x in _dynamic_skus()
+        if isinstance(x, dict) and str(x.get("product_id") or "") in public_ids
+    )
     by_product: dict[str, list[dict]] = defaultdict(list)
     for sku in skus:
         by_product[str(sku.get("product_id") or "")].append(sku)
@@ -140,6 +155,7 @@ def main() -> int:
     REPORT_ROOT.mkdir(parents=True, exist_ok=True)
     path = REPORT_ROOT / f"storefront-price-resolution-{stamp()}.json"
     payload = {
+        "public_products": len(public_ids),
         "products_with_skus": len(selected_rows),
         "default_unpriced_but_sibling_priced": len(fallback_rows),
         "products_with_no_configured_price": len(true_missing),
@@ -150,6 +166,7 @@ def main() -> int:
 
     print("BB610 STOREFRONT PRICE RESOLUTION AUDIT")
     print("MODE: READ_ONLY")
+    print("PUBLIC STOREFRONT PRODUCTS:", len(public_ids))
     print("PRODUCTS WITH SKU:", len(selected_rows))
     print("DEFAULT UNPRICED / SIBLING PRICED:", len(fallback_rows))
     print("NO CONFIGURED PRICE ON ANY SKU:", len(true_missing))

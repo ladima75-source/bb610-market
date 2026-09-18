@@ -8,6 +8,76 @@ from ..db import connect
 ALLOWED_STATUSES = {"new", "contacted", "quoted", "won", "lost", "closed"}
 
 
+def _record_notification(request_code: str, result: dict) -> None:
+    now = _now()
+    status = str(result.get("status") or "failed")
+    error = str(result.get("error") or "")
+    provider_message_id = str(result.get("provider_message_id") or "")
+    channel = str(result.get("channel") or "telegram")
+    with connect() as con:
+        con.execute(
+            """
+            INSERT INTO price_request_notifications(
+              request_code,channel,status,error,provider_message_id,
+              attempts,last_attempt_at,created_at,updated_at
+            ) VALUES(?,?,?,?,?,1,?,?,?)
+            ON CONFLICT(request_code,channel) DO UPDATE SET
+              status=excluded.status,
+              error=excluded.error,
+              provider_message_id=excluded.provider_message_id,
+              attempts=price_request_notifications.attempts+1,
+              last_attempt_at=excluded.last_attempt_at,
+              updated_at=excluded.updated_at
+            """,
+            (
+                request_code,
+                channel,
+                status,
+                error,
+                provider_message_id,
+                now,
+                now,
+                now,
+            ),
+        )
+        con.commit()
+
+
+def _notification_snapshot(request_code: str) -> dict:
+    with connect() as con:
+        row = con.execute(
+            """
+            SELECT channel,status,error,provider_message_id,attempts,last_attempt_at
+            FROM price_request_notifications
+            WHERE request_code=? AND channel='telegram'
+            """,
+            (request_code,),
+        ).fetchone()
+    return dict(row) if row else {
+        "channel": "telegram",
+        "status": "not_attempted",
+        "error": "",
+        "provider_message_id": "",
+        "attempts": 0,
+        "last_attempt_at": None,
+    }
+
+
+def _send_notification_for_row(row: dict) -> dict:
+    from .telegram_notifications import notify_price_request
+    try:
+        result = notify_price_request(row)
+    except Exception as exc:
+        result = {
+            "channel": "telegram",
+            "status": "failed",
+            "error": f"{type(exc).__name__}: {exc}",
+            "provider_message_id": "",
+        }
+    _record_notification(str(row.get("request_code") or ""), result)
+    return result
+
+
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
@@ -86,6 +156,22 @@ def create_price_request(payload: dict) -> dict:
                     ),
                 )
                 con.commit()
+            row = {
+                "request_code": code,
+                "status": "new",
+                "product_id": product_id,
+                "sku": sku,
+                "product_name": product_name,
+                "variant": variant,
+                "quantity": quantity,
+                "customer_name": customer_name,
+                "contact": contact,
+                "comment": comment,
+                "source_url": source_url,
+                "created_at": now,
+                "updated_at": now,
+            }
+            notification = _send_notification_for_row(row)
             return {
                 "request_code": code,
                 "status": "new",
@@ -93,6 +179,10 @@ def create_price_request(payload: dict) -> dict:
                 "sku": sku,
                 "quantity": quantity,
                 "created_at": now,
+                "notification": {
+                    "channel": notification.get("channel") or "telegram",
+                    "status": notification.get("status") or "failed",
+                },
             }
         except Exception as exc:
             if "UNIQUE constraint failed: price_requests.request_code" not in str(exc):
@@ -103,14 +193,24 @@ def create_price_request(payload: dict) -> dict:
 def list_price_requests(*, limit: int = 200, status: str | None = None) -> list[dict]:
     limit = max(1, min(int(limit or 200), 1000))
     params: list[object] = []
-    sql = "SELECT * FROM price_requests"
+    sql = """
+    SELECT pr.*,
+           n.status AS telegram_status,
+           n.error AS telegram_error,
+           n.provider_message_id AS telegram_message_id,
+           n.attempts AS telegram_attempts,
+           n.last_attempt_at AS telegram_last_attempt_at
+    FROM price_requests pr
+    LEFT JOIN price_request_notifications n
+      ON n.request_code=pr.request_code AND n.channel='telegram'
+    """
     if status:
         status = str(status).strip().lower()
         if status not in ALLOWED_STATUSES:
             raise ValueError("Invalid status")
-        sql += " WHERE status=?"
+        sql += " WHERE pr.status=?"
         params.append(status)
-    sql += " ORDER BY id DESC LIMIT ?"
+    sql += " ORDER BY pr.id DESC LIMIT ?"
     params.append(limit)
     with connect() as con:
         rows = con.execute(sql, params).fetchall()
@@ -136,3 +236,24 @@ def update_price_request_status(request_code: str, status: str) -> dict | None:
             (request_code,),
         ).fetchone()
     return dict(row) if row else None
+
+
+def resend_price_request_notification(request_code: str) -> dict | None:
+    request_code = str(request_code or "").strip()
+    with connect() as con:
+        row = con.execute(
+            "SELECT * FROM price_requests WHERE request_code=?",
+            (request_code,),
+        ).fetchone()
+    if not row:
+        return None
+    payload = dict(row)
+    result = _send_notification_for_row(payload)
+    return {
+        "request_code": request_code,
+        "notification": {
+            **_notification_snapshot(request_code),
+            "status": result.get("status") or "failed",
+        },
+    }
+

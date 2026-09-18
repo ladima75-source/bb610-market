@@ -124,6 +124,20 @@ def build_plan() -> dict:
     index = pcv3.list_cards()
     by_pid = {str(x.get("product_id") or ""): x for x in index}
     by_slug = {str(x.get("slug") or ""): x for x in index}
+    managed_ids = {str(x.get("product_id") or "") for x in doc["products"]}
+    unmanaged_plantlogic = [
+        x for x in index
+        if str(x.get("brand") or "").strip().lower() == "plantlogic"
+        and str(x.get("product_id") or "") not in managed_ids
+    ]
+    if unmanaged_plantlogic:
+        raise RuntimeError(
+            "unmanaged Plantlogic v3 cards exist: "
+            + ", ".join(
+                f"{x.get('slug')}({x.get('product_id')})"
+                for x in unmanaged_plantlogic
+            )
+        )
 
     actions = []
     conflicts = []

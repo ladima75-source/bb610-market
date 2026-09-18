@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'backend/tools_audit_plantlogic_readiness_20260918.py'
+      - 'backend/tools_bind_plantlogic_legacy_commerce_20260918.py'
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - 'backend/services/product_cards_v3.py'
       - 'backend/services/product_cards_v3_media.py'
@@ -14,6 +15,7 @@ on:
   pull_request:
     paths:
       - 'backend/tools_audit_plantlogic_readiness_20260918.py'
+      - 'backend/tools_bind_plantlogic_legacy_commerce_20260918.py'
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - 'backend/services/product_cards_v3.py'
       - 'backend/services/product_cards_v3_media.py'
@@ -31,7 +33,9 @@ jobs:
           python-version: '3.12'
 
       - name: Syntax
-        run: python -m py_compile backend/tools_audit_plantlogic_readiness_20260918.py
+        run: |
+          python -m py_compile backend/tools_audit_plantlogic_readiness_20260918.py
+          python -m py_compile backend/tools_bind_plantlogic_legacy_commerce_20260918.py
 
       - name: Validate audit contract
         run: |
@@ -51,5 +55,17 @@ jobs:
               'plantlogic-40l-round-u-grooves-1308041': 'plantlogic-40-round-ugroove-1308041',
           }
           assert all(x.get('product_id') and x.get('slug') for x in products)
+          assert 'commerce_pending_sku' in Path('backend/tools_audit_plantlogic_readiness_20260918.py').read_text(encoding='utf-8')
+          assert 'DRAFT_READY' in Path('backend/tools_audit_plantlogic_readiness_20260918.py').read_text(encoding='utf-8')
+
+          binder=Path('backend/tools_bind_plantlogic_legacy_commerce_20260918.py').read_text(encoding='utf-8')
+          assert 'BB610-PLT-1308125-EA' in binder
+          assert 'BB610-PLT-1308041-EA' in binder
+          assert '_snapshot_tables()' in binder
+          assert 'sku_commerce values changed during legacy mapping bind' in binder
+          assert 'UPDATE sku_commerce' not in binder
+          assert 'INSERT INTO sku_commerce' not in binder
+          assert 'DELETE FROM sku_commerce' not in binder
+
           print('PLANTLOGIC READINESS AUDIT CONTRACT: PASS')
           PY

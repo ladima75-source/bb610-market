@@ -276,6 +276,14 @@
       {
         "label": "Країна / регіон",
         "value": "Фінляндія / Північна Європа (за даними постачальника)"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Кореневе внесення"
+      },
+      {
+        "label": "Культури",
+        "value": "овочі; сад; лохина; полуниця; малина; хвойні"
       }
     ],
     "origin": {
@@ -289,13 +297,17 @@
       {
         "title": "Картка постачальника Organic Planet",
         "url": "https://organicplanet.com.ua/katalog/biostymulyatory/neocore-neokor-biostymulyator-rostu-korenevoyi-systemy-bioaktyvnyj-ekstrakt-torfu-30-ml-neova"
+      },
+      {
+        "title": "Organic Planet — схема застосування NeoCore під корінь",
+        "url": "https://organicplanet.com.ua/shemi-zastosuvannya-dobriv/dlya-dekorativnyh-derevev-hvojnyh"
       }
     ],
     "sources": {
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neocore-neokor-biostymulyator-rostu-korenevoyi-systemy-bioaktyvnyj-ekstrakt-torfu-30-ml-neova",
       "source_type": "supplier_product_page",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {
@@ -363,6 +375,14 @@
       {
         "label": "Країна / регіон",
         "value": "Фінляндія / Північна Європа (за даними постачальника)"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Кореневе внесення; Позакореневе внесення"
+      },
+      {
+        "label": "Культури",
+        "value": "овочі; сад; полуниця; малина"
       }
     ],
     "origin": {
@@ -376,13 +396,17 @@
       {
         "title": "Картка постачальника Organic Planet",
         "url": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-1-l-neova"
+      },
+      {
+        "title": "Organic Planet — схема кореневого застосування NeoVivo",
+        "url": "https://organicplanet.com.ua/shemi-zastosuvannya-dobriv/dlya-bahchevye-otkrytogo-grunta"
       }
     ],
     "sources": {
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-1-l-neova",
       "source_type": "supplier_product_page",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {
@@ -471,6 +495,14 @@
       {
         "label": "Країна / регіон",
         "value": "Фінляндія / Північна Європа (за даними постачальника)"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Позакореневе внесення"
+      },
+      {
+        "label": "Культури",
+        "value": "овочі; сад; лохина; полуниця; малина; газон"
       }
     ],
     "origin": {
@@ -484,13 +516,17 @@
       {
         "title": "Картка постачальника Organic Planet",
         "url": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-1-l-neova"
+      },
+      {
+        "title": "Organic Planet — NeoFlora, актуальна картка постачальника",
+        "url": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-30-ml-neova"
       }
     ],
     "sources": {
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-1-l-neova",
       "source_type": "supplier_product_page",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {

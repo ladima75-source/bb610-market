@@ -217,3 +217,83 @@
   .catalog-v2 .catalog-top{align-items:center;gap:10px}
   .catalog-v2 .catalog-top select{max-width:165px}
 }
+
+
+/* Compact grouped filters: packaging and application method */
+.facet-button-section .facet-pill-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:8px;
+  padding:0 18px 16px;
+}
+.facet-pill-option{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:
+    "main count"
+    "hint count";
+  gap:2px 10px;
+  min-height:54px;
+  padding:9px 11px;
+  border:1px solid #3a4041;
+  border-radius:8px;
+  background:#222627;
+  cursor:pointer;
+  transition:border-color .15s ease,background .15s ease,transform .15s ease;
+}
+.facet-pill-option:hover{
+  border-color:#635b44;
+  background:#272b2c;
+  transform:translateY(-1px);
+}
+.facet-pill-option input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+.facet-pill-main{
+  grid-area:main;
+  color:#eef1ee;
+  font-size:13px;
+  font-weight:800;
+  line-height:1.2;
+}
+.facet-pill-hint{
+  grid-area:hint;
+  color:#8e9793;
+  font-size:10px;
+  line-height:1.25;
+}
+.facet-pill-count{
+  grid-area:count;
+  align-self:center;
+  min-width:24px;
+  height:24px;
+  padding:0 6px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  background:#303536;
+  color:#929b97;
+  font-size:10px;
+  font-weight:800;
+}
+.facet-pill-option:has(input:checked){
+  border-color:#d1a133;
+  background:rgba(209,161,51,.11);
+  box-shadow:inset 0 0 0 1px rgba(209,161,51,.15);
+}
+.facet-pill-option:has(input:checked) .facet-pill-main{
+  color:#f0bd43;
+}
+.facet-pill-option:has(input:checked) .facet-pill-count{
+  background:#d1a133;
+  color:#17191a;
+}
+.facet-pill-option[hidden]{display:none!important}
+
+@supports not selector(:has(*)){
+  .facet-pill-option input:checked ~ .facet-pill-main{color:#f0bd43}
+  .facet-pill-option input:checked ~ .facet-pill-count{background:#d1a133;color:#17191a}
+}

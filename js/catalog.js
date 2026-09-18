@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded',async()=>{
   const facetCss=document.createElement('link');
   facetCss.rel='stylesheet';
-  facetCss.href='assets/css/catalog-facets.css?v=1';
+  facetCss.href='assets/css/catalog-facets.css?v=2';
   document.head.appendChild(facetCss);
 
   await BB610_DATA_SOURCE.refresh();
@@ -25,6 +25,57 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const productText=p=>norm([p.name,p.brand,p.manufacturer,p.categoryLabel,p.category,p.npk,p.activeIngredient,p.productType,p.shortDescription,...productSkus(p).map(s=>`${s.id} ${s.sku||''} ${s.variant||''}`),...(p.cultures||[]),...(p.purposes||[])].join(' '));
   const hasStock=p=>p.stockStatus==='in_stock'||p.stockStatus==='dnipro'||(p.sizes||[]).some(s=>s.availability==='in_stock');
 
+  const packageGroups=[
+    {id:'small',label:'Мала',hint:'до 50 г/мл · стіки / саше'},
+    {id:'medium',label:'Середня',hint:'100 г/мл – 1 кг/л'},
+    {id:'large',label:'Велика',hint:'від 5 кг/л'}
+  ];
+  const methodGroups=[
+    {id:'fertigation',label:'Фертигація',hint:'крапельний полив'},
+    {id:'foliar',label:'По листу',hint:'позакоренево'},
+    {id:'root',label:'Під корінь',hint:'полив / коренево'}
+  ];
+
+  function packageMetric(raw){
+    const t=norm(raw).replace(',','.');
+    let m=t.match(/(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml|шт|pcs?)/i);
+    if(!m)return null;
+    const n=Number(m[1]);
+    if(!Number.isFinite(n))return null;
+    const unit=m[2].toLowerCase();
+    if(unit==='кг'||unit==='kg'||unit==='л'||unit==='l')return n*1000;
+    if(unit==='шт'||unit==='pc'||unit==='pcs')return n;
+    return n;
+  }
+
+  function packageGroupForVariant(raw){
+    const n=packageMetric(raw);
+    if(n===null)return '';
+    if(n<=50)return 'small';
+    if(n>=100&&n<=1000)return 'medium';
+    if(n>=5000)return 'large';
+    return '';
+  }
+
+  function packageGroupsFor(p){
+    return uniq(productSkus(p).map(x=>packageGroupForVariant(x.variant)).filter(Boolean));
+  }
+
+  function methodGroupsFor(p){
+    const t=norm([
+      p.application,
+      p.manufacturerUse,
+      ...(p.applicationMethods||[]),
+      ...(p.application_methods||[]),
+      ...(p.purposes||[])
+    ].join(' '));
+    const out=[];
+    if(/фертигац|крапель|капель|drip/.test(t))out.push('fertigation');
+    if(/позакорен|листков|по лист|обприск|foliar/.test(t))out.push('foliar');
+    if(/коренев|під корін|под корень|ґрунт|грунт|полив|root/.test(t))out.push('root');
+    return uniq(out);
+  }
+
   const categories=BB610_DATA_SOURCE.categories().filter(c=>c.enabled&&!(BB610.categoryHidden&&BB610.categoryHidden(c.id))).sort((a,b)=>(a.order||0)-(b.order||0));
   const nonContainerSource=source.filter(p=>p.category!=='containers');
   const brands=uniq(source.map(p=>p.brand)).sort(natural);
@@ -35,6 +86,8 @@ document.addEventListener('DOMContentLoaded',async()=>{
       if(group==='category')return p.category===value;
       if(group==='brand')return p.brand===value;
       if(group==='culture')return p.category!=='containers'&&(p.cultures||[]).includes(value);
+      if(group==='packageGroup')return p.category!=='containers'&&packageGroupsFor(p).includes(value);
+      if(group==='methodGroup')return p.category!=='containers'&&methodGroupsFor(p).includes(value);
       return false;
     }).length;
   }
@@ -49,11 +102,24 @@ document.addEventListener('DOMContentLoaded',async()=>{
     return `<details class="facet-section" ${open?'open':''}><summary>${h(title)}</summary><div class="facet-body" data-expanded="false">${options}${more}</div></details>`;
   }
 
+  function buttonFacetSection(group,title,items,{open=true}={}){
+    const buttons=items.map(item=>`
+      <label class="facet-pill-option">
+        <input type="checkbox" data-facet="${h(group)}" value="${h(item.id)}">
+        <span class="facet-pill-main">${h(item.label)}</span>
+        <span class="facet-pill-hint">${h(item.hint)}</span>
+        <span class="facet-pill-count">${optionCount(group,item.id)}</span>
+      </label>`).join('');
+    return `<details class="facet-section facet-button-section" ${open?'open':''}><summary>${h(title)}</summary><div class="facet-pill-grid">${buttons}</div></details>`;
+  }
+
   const categorySection=fixedCategory?'':facetSection('category','Категорія',categories.map(c=>c.id),{limit:8});
   aside.innerHTML=`
     <div class="filters-head"><div class="facet-head-copy"><b>Фільтр</b><span>підбір товарів</span></div><button class="facet-close" type="button" aria-label="Закрити фільтр">×</button></div>
     <div class="facet-search-wrap"><input class="facet-search" id="facet-q" type="search" placeholder="Пошук у каталозі" autocomplete="off"></div>
     ${categorySection}
+    <div data-non-container-facet>${buttonFacetSection('packageGroup','Фасовка',packageGroups)}</div>
+    <div data-non-container-facet>${buttonFacetSection('methodGroup','Спосіб застосування',methodGroups)}</div>
     <div data-non-container-facet>${facetSection('culture','Культура',cultures,{limit:7})}</div>
     ${facetSection('brand','Виробник',brands,{limit:9})}
     <div class="facet-stock" data-non-container-facet><label class="facet-option"><input id="facet-stock" type="checkbox"><span class="facet-label">Є в наявності</span></label></div>
@@ -84,12 +150,16 @@ document.addEventListener('DOMContentLoaded',async()=>{
   function applyFilters(list){
     const qq=norm(q.value);
     const cats=fixedCategory?[fixedCategory]:selected('category');
+    const packageSel=selected('packageGroup');
+    const methodSel=selected('methodGroup');
     const cultureSel=selected('culture');
     const brandSel=selected('brand');
     return list.filter(p=>{
       if(qq&&!productText(p).includes(qq))return false;
       if(!matchesMulti(p,cats,(x,v)=>x.category===v))return false;
-      if(cultureSel.length&&p.category==='containers')return false;
+      if((packageSel.length||methodSel.length||cultureSel.length)&&p.category==='containers')return false;
+      if(!matchesMulti(p,packageSel,(x,v)=>packageGroupsFor(x).includes(v)))return false;
+      if(!matchesMulti(p,methodSel,(x,v)=>methodGroupsFor(x).includes(v)))return false;
       if(!matchesMulti(p,cultureSel,(x,v)=>(x.cultures||[]).includes(v)))return false;
       if(!matchesMulti(p,brandSel,(x,v)=>x.brand===v))return false;
       if(stock.checked&&!hasStock(p))return false;
@@ -101,6 +171,8 @@ document.addEventListener('DOMContentLoaded',async()=>{
     const out=[];
     if(q.value.trim())out.push({group:'q',value:q.value,label:`Пошук: ${q.value}`});
     if(!fixedCategory)selected('category').forEach(v=>out.push({group:'category',value:v,label:categoryName(v)}));
+    selected('packageGroup').forEach(v=>out.push({group:'packageGroup',value:v,label:'Фасовка: '+(packageGroups.find(x=>x.id===v)?.label||v)}));
+    selected('methodGroup').forEach(v=>out.push({group:'methodGroup',value:v,label:(methodGroups.find(x=>x.id===v)?.label||v)}));
     selected('culture').forEach(v=>out.push({group:'culture',value:v,label:v}));
     selected('brand').forEach(v=>out.push({group:'brand',value:v,label:v}));
     if(stock.checked)out.push({group:'stock',value:'1',label:'Є в наявності'});
@@ -143,8 +215,26 @@ document.addEventListener('DOMContentLoaded',async()=>{
       if(!n)input.checked=false;
     });
 
+    aside.querySelectorAll('[data-facet="packageGroup"]').forEach(input=>{
+      const n=context.filter(p=>p.category!=='containers'&&packageGroupsFor(p).includes(input.value)).length;
+      const row=input.closest('.facet-pill-option');
+      const badge=row?.querySelector('.facet-pill-count');
+      if(badge)badge.textContent=n;
+      if(row)row.hidden=!!cats.length&&!n;
+      if(!n)input.checked=false;
+    });
+
+    aside.querySelectorAll('[data-facet="methodGroup"]').forEach(input=>{
+      const n=context.filter(p=>p.category!=='containers'&&methodGroupsFor(p).includes(input.value)).length;
+      const row=input.closest('.facet-pill-option');
+      const badge=row?.querySelector('.facet-pill-count');
+      if(badge)badge.textContent=n;
+      if(row)row.hidden=!!cats.length&&!n;
+      if(!n)input.checked=false;
+    });
+
     if(onlyContainers){
-      aside.querySelectorAll('[data-facet="culture"]').forEach(x=>x.checked=false);
+      aside.querySelectorAll('[data-facet="culture"],[data-facet="packageGroup"],[data-facet="methodGroup"]').forEach(x=>x.checked=false);
       stock.checked=false;
     }
   }

@@ -78,7 +78,7 @@ def valid_primary(card: dict, sku: dict) -> bool:
 
 def choose_primary(spec: dict) -> dict:
     slug = str(spec["slug"])
-    name = str(spec.get("name") or "")
+    name = str(spec.get("official_name_en") or spec.get("name") or "")
     original_url = str(spec.get("source_url") or "")
     source_url = SOURCE_OVERRIDES.get(slug, original_url)
     numbers = [
@@ -369,7 +369,7 @@ def apply_safe(plan: dict) -> dict:
                 f"sku={post['sku_gaps']} unresolved={len(post['failures'])}"
             )
         if post["media_ready_before"] != EXPECTED_SKUS:
-            raise RuntimeError("Plantlogic media readiness is not 36/36")
+            raise RuntimeError("Plantlogic media readiness is not 37/37")
 
         target_ids = set(plan["gaps"])
         for pid, before in all_before.items():

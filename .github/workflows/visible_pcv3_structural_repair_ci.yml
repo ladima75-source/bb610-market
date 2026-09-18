@@ -224,6 +224,79 @@ jobs:
           })
           assert len(duplicates['sku_a'])==2
 
+          legacy_card={
+            'schema_version':'3.0',
+            'product_id':'prd_legacy123',
+            'slug':'legacy-card',
+            'enabled':True,
+            'content':{
+              'title':'Legacy product',
+              'brand':'Valagro',
+              'category':'Живлення',
+              'short_description':'Це достатньо довгий існуючий короткий опис картки для SEO без вигадування нового тексту.',
+              'description':'Існуючий докладний опис продукту, який уже збережений у картці та може бути повторно використаний для SEO.',
+              'benefits':[],
+              'how_it_works':'Існуючий опис механізму дії продукту.',
+              'application':'Існуючий опис способу застосування продукту.',
+              'composition':'Існуючий склад продукту.',
+              'characteristics':[],
+              'seo':{'title':'','description':''},
+            },
+            'sku_media':{
+              'skus':[{
+                'sku_id':'sku_legacy123',
+                'sku_code':'LEGACY-SKU',
+                'label':'1 кг',
+                'package':'1 кг',
+                'primary_media_id':'med_legacy',
+                'gallery_media_ids':[],
+                'sort_order':0,
+                'enabled':True,
+              }],
+              'media':[{
+                'media_id':'med_legacy',
+                'path':'assets/img/real/stage16b/master-13-40-13.png',
+                'alt':'Legacy product',
+                'kind':'product',
+                'sort_order':0,
+              }],
+            },
+          }
+          legacy_mapping={
+            'product_id':'prd_legacy123',
+            'existing_product_key':'deleted-parent',
+            'skus':[{
+              'sku_id':'sku_legacy123',
+              'existing_commerce_sku_key':'LEGACY-SKU',
+            }],
+          }
+          # Stub media resolution here: this unit test validates contract logic,
+          # not repository asset presence.
+          old_resolvable=t._is_resolvable
+          t._is_resolvable=lambda p: bool(p)
+          try:
+            ok,problems=t.legacy_mapping_runtime_safe(
+              legacy_card,legacy_mapping,{'LEGACY-SKU':{'enabled':True}}
+            )
+            assert ok, problems
+            broken={**legacy_card,'sku_media':{
+              **legacy_card['sku_media'],
+              'skus':[{**legacy_card['sku_media']['skus'][0],'primary_media_id':None}],
+            }}
+            ok,problems=t.legacy_mapping_runtime_safe(
+              broken,legacy_mapping,{'LEGACY-SKU':{'enabled':True}}
+            )
+            assert not ok
+            assert any('primary_media_missing' in x for x in problems)
+          finally:
+            t._is_resolvable=old_resolvable
+
+          seo_patched,seo_changes=t.patch_seo_from_existing_content(legacy_card)
+          assert seo_patched['content']['seo']['title']=='Legacy product'
+          assert seo_patched['content']['seo']['description']==legacy_card['content']['short_description']
+          assert 'seo:title_from_existing_title' in seo_changes
+          assert 'seo:description_from_existing_content' in seo_changes
+
           src=Path('backend/tools_repair_visible_pcv3_structural_20260918.py').read_text(encoding='utf-8')
           assert 'UPDATE sku_commerce' not in src
           assert 'INSERT INTO sku_commerce' not in src

@@ -5,11 +5,13 @@ on:
     branches: [main]
     paths:
       - 'backend/tools_collect_plantlogic_official_media_20260918.py'
+      - 'backend/tools_apply_plantlogic_official_media_20260918.py'
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - '.github/workflows/plantlogic_official_media_collector_ci.yml'
   pull_request:
     paths:
       - 'backend/tools_collect_plantlogic_official_media_20260918.py'
+      - 'backend/tools_apply_plantlogic_official_media_20260918.py'
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - '.github/workflows/plantlogic_official_media_collector_ci.yml'
 
@@ -23,7 +25,9 @@ jobs:
           python-version: '3.12'
 
       - name: Syntax
-        run: python -m py_compile backend/tools_collect_plantlogic_official_media_20260918.py
+        run: |
+          python -m py_compile backend/tools_collect_plantlogic_official_media_20260918.py
+          python -m py_compile backend/tools_apply_plantlogic_official_media_20260918.py
 
       - name: Validate collector contract
         run: |
@@ -114,6 +118,18 @@ jobs:
           by_slug={x['slug']:x for x in doc['products']}
           assert by_slug['plantlogic-30l-round-parallel-u-grooves-1308305']['product_no']=='1308305'
           assert len(by_slug['plantlogic-40l-square-u-grooves-side-holes-13090400-13090440']['skus'])==2
+
+          from pathlib import Path
+          media_apply=Path('backend/tools_apply_plantlogic_official_media_20260918.py').read_text(encoding='utf-8')
+          assert 'product_number_verified' in media_apply
+          assert 'identity_match' in media_apply
+          assert 'score' in media_apply
+          assert '_snapshot_tables()' in media_apply
+          assert 'commerce_map changed during Plantlogic media apply' in media_apply
+          assert 'pcv3.put' in media_apply
+          assert 'UPDATE sku_commerce' not in media_apply
+          assert 'INSERT INTO sku_commerce' not in media_apply
+          assert 'DELETE FROM sku_commerce' not in media_apply
 
           print('PLANTLOGIC OFFICIAL MEDIA COLLECTOR CONTRACT: PASS')
           PY

@@ -753,9 +753,15 @@
       "text": "Живильні елементи поєднані з амінокислотами та фітогормональними компонентами, щоб підтримувати живлення й фізіологічні процеси у фазу активного вегетативного росту."
     },
     "application": {
-      "intro": "Застосування — за етикеткою конкретної партії та програмою культури.",
-      "rows": [],
-      "note": "Не переносити норми з інших формул Speedfol Amino Starter / Flower&Fruit."
+      "intro": "Позакореневе підживлення у період інтенсивного вегетативного росту.",
+      "rows": [
+        {
+          "crop": "Усі культури",
+          "period": "інтенсивний вегетативний ріст; повторення через 1–2 тижні",
+          "dose": "1–4 л/га або 10–40 мл/10 л на 100 м²"
+        }
+      ],
+      "note": "Максимальна концентрація робочого розчину — 2%; пріоритет має актуальна етикетка конкретної партії."
     },
     "specs": [
       {
@@ -797,6 +803,14 @@
       {
         "label": "Бренд / виробник",
         "value": "Terral Tarsa"
+      },
+      {
+        "label": "Культури",
+        "value": "усі культури"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Позакореневе внесення"
       }
     ],
     "origin": {
@@ -804,19 +818,23 @@
       "company": "Terral Tarsa",
       "manufacturer": "Terral Tarsa",
       "country": "",
-      "official_url": "https://terratarsa.com/en/universal-nutrient-correctors-with-stimulating-effect/"
+      "official_url": "https://terratarsa.com/en/prd/speedfol-amino-vegetative-2/"
     },
     "documents": [
       {
         "title": "Speedfol Amino — офіційна сторінка Terral Tarsa",
         "url": "https://terratarsa.com/en/universal-nutrient-correctors-with-stimulating-effect/"
+      },
+      {
+        "title": "Speedfol Amino Vegetative — офіційна сторінка Terral Tarsa",
+        "url": "https://terratarsa.com/en/prd/speedfol-amino-vegetative-2/"
       }
     ],
     "sources": {
-      "source_url": "https://terratarsa.com/en/universal-nutrient-correctors-with-stimulating-effect/",
-      "source_type": "manufacturer",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "source_url": "https://terratarsa.com/en/prd/speedfol-amino-vegetative-2/",
+      "source_type": "manufacturer_product_page",
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {

@@ -99,6 +99,32 @@ jobs:
           assert rp['id']=='master-13-40-13'
           assert res=='existing_mapping_parent_exact'
 
+          existing_mapping={
+            'product_id':'prd_test',
+            'existing_product_key':'master-13-40-13',
+            'note':'preserve-me',
+            'skus':[
+              {'sku_id':'sku_a','existing_commerce_sku_key':'OLD','meta':'keep-me'},
+              {'sku_id':'sku_disabled','existing_commerce_sku_key':'KEEP'},
+            ],
+          }
+          merged=t.merge_mapping_links(existing_mapping,[
+            {'sku_id':'sku_a','existing_commerce_sku_key':'BB610-A-1KG'},
+            {'sku_id':'sku_b','existing_commerce_sku_key':'BB610-A-250G'},
+          ])
+          assert merged[0]['existing_commerce_sku_key']=='BB610-A-1KG'
+          assert merged[0]['meta']=='keep-me'
+          assert merged[1]=={'sku_id':'sku_disabled','existing_commerce_sku_key':'KEEP'}
+          assert merged[2]=={'sku_id':'sku_b','existing_commerce_sku_key':'BB610-A-250G'}
+
+          duplicates=t.mapping_link_rows({
+            'skus':[
+              {'sku_id':'sku_a','existing_commerce_sku_key':'A'},
+              {'sku_id':'sku_a','existing_commerce_sku_key':'B'},
+            ]
+          })
+          assert len(duplicates['sku_a'])==2
+
           src=Path('backend/tools_repair_visible_pcv3_structural_20260918.py').read_text(encoding='utf-8')
           assert 'UPDATE sku_commerce' not in src
           assert 'INSERT INTO sku_commerce' not in src

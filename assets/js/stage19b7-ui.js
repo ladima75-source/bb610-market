@@ -80,7 +80,7 @@ function directChildUnder(parent,el){
 }
 
 function alignOneCard(card){
-  if(!card || card.classList.contains('bb19b7-card'))return;
+  if(!card || card.classList.contains('bb19b7-card') || card.classList.contains('product-card-v2'))return;
   const leaves=[...card.querySelectorAll('*')].filter(el=>el.children.length===0);
   const availability=leaves.find(el=>/Наявність/i.test(norm(el.textContent)));
   const price=leaves.find(el=>{

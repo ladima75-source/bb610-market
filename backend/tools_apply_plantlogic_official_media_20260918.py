@@ -369,7 +369,7 @@ def apply_safe(plan: dict) -> dict:
                 f"sku={post['sku_gaps']} unresolved={len(post['failures'])}"
             )
         if post["media_ready_before"] != EXPECTED_SKUS:
-            raise RuntimeError("Plantlogic media readiness is not 37/37")
+            raise RuntimeError("Plantlogic media readiness is not 36/36")
 
         target_ids = set(plan["gaps"])
         for pid, before in all_before.items():

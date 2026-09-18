@@ -37,15 +37,17 @@ jobs:
           from backend import tools_collect_plantlogic_official_media_20260918 as c
 
           doc=json.loads(Path('data/product_content/plantlogic_pots_v1_20260918.json').read_text())
-          assert len(doc['products'])==33
-          assert sum(len(x.get('skus') or []) for x in doc['products'])==36
-          assert c.EXPECTED_PRODUCTS==33
-          assert c.EXPECTED_SKUS==36
+          assert len(doc['products'])==34
+          assert sum(len(x.get('skus') or []) for x in doc['products'])==37
+          assert c.EXPECTED_PRODUCTS==34
+          assert c.EXPECTED_SKUS==37
 
           assert c.SOURCE_OVERRIDES['plantlogic-zephyr-v2'].endswith('/portfolio-items/zephyr-v2/')
           assert c.SOURCE_OVERRIDES['plantlogic-25l-round-new-1308125'].endswith('/new-25-liter-round-pot/')
           assert c.SOURCE_OVERRIDES['plantlogic-25l-round-u-grooves-1308026'].endswith('/25-liter-round-pot-with-u-grooves/')
           assert c.SOURCE_OVERRIDES['plantlogic-30l-round-v-rib-1308031'].endswith('/30-liter-round-v-rib/')
+          assert c.SOURCE_OVERRIDES['plantlogic-30l-round-u-groove-1308303'].endswith('/30-liter-round-pot-u-groove/')
+          assert c.SOURCE_OVERRIDES['plantlogic-30l-round-parallel-u-grooves-1308305'].endswith('/30-liter-round-pot-with-parallel-u-grooves/')
           assert c.SOURCE_OVERRIDES['plantlogic-35l-round-u-grooves-13080350'].endswith('/35-liter-round-pot-with-u-grooves-for-blueberries/')
 
           assert c.normalize_url(
@@ -117,7 +119,10 @@ jobs:
           # New current official products are part of the managed master.
           by_slug={x['slug']:x for x in doc['products']}
           assert by_slug['plantlogic-30l-round-u-groove-1308303']['product_no']=='1308303'
-          assert by_slug['plantlogic-30l-round-u-groove-1308303']['name']=='30 Liter Round Pot with Parallel U-Grooves'
+          assert by_slug['plantlogic-30l-round-u-groove-1308303']['name']=='Круглий горщик 30 л з U-пазами — арт. 1308303'
+          assert by_slug['plantlogic-30l-round-u-groove-1308303']['official_name_en']=='30 Liter Round Pot with U-Grooves'
+          assert by_slug['plantlogic-30l-round-parallel-u-grooves-1308305']['name']=='Круглий горщик 30 л з паралельними U-пазами — арт. 1308305'
+          assert by_slug['plantlogic-30l-round-parallel-u-grooves-1308305']['official_name_en']=='30 Liter Round Pot with Parallel U-Grooves'
           assert len(by_slug['plantlogic-40l-square-u-grooves-side-holes-13090400-13090440']['skus'])==2
 
           from pathlib import Path

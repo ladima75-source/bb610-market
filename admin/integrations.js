@@ -33,15 +33,6 @@
    $('tg-bot-token').value='';paintTelegram(t);
    $('tg-state').textContent=t.price_request_notifications_ready?'✓ Telegram збережено':'✓ Налаштування збережено. Додайте Chat ID.';
  }
- async function findTelegramChats(){
-   const b=$('tg-find-chats');b.disabled=true;$('tg-state').textContent='Шукаємо чати…';
-   try{
-     const d=await req(tgEp+'/chats');
-     const rows=d.chats||[];
-     $('tg-chat-select').innerHTML='<option value="">Оберіть чат</option>'+rows.map(x=>`<option value="${x.chat_id}">${x.label||x.chat_id} · ${x.type||''}</option>`).join('');
-     $('tg-state').textContent=rows.length?`✓ Знайдено чатів: ${rows.length}`:'Чатів не знайдено. Напишіть боту /start і повторіть.';
-   }finally{b.disabled=false}
- }
  async function testTelegram(){
    const b=$('tg-test');b.disabled=true;$('tg-state').textContent='Надсилаємо тест…';
    try{const r=await req(tgEp+'/test',{method:'POST',body:'{}'});$('tg-state').textContent='✓ Тестове повідомлення надіслано · message '+(r.message_id||'');await load()}
@@ -105,9 +96,9 @@
    paint(s);if(s.sender?.sender_ref)await loadSenderOptions(true);$('state').textContent=s.sender_ready?'✓ Відправник, контакт, місто та відділення збережені':'✓ Налаштування збережено';
  }
  async function test(){const b=$('test');b.disabled=true;$('state').textContent='Перевірка Nova Poshta…';try{const r=await req(ep+'/test',{method:'POST',body:'{}'});$('state').textContent=`✓ API працює · знайдено ${r.results} результатів`;await load()}catch(e){$('state').textContent='✕ '+e.message}finally{b.disabled=false}}
- $('connect').onclick=()=>load().catch(e=>$('state').textContent='✕ '+e.message);$('pay-save').onclick=()=>savePayments().catch(e=>$('pay-state').textContent='✕ '+e.message);$('tg-save').onclick=()=>saveTelegram().catch(e=>$('tg-state').textContent='✕ '+e.message);$('tg-find-chats').onclick=()=>findTelegramChats().catch(e=>$('tg-state').textContent='✕ '+e.message);$('tg-test').onclick=testTelegram;$('save').onclick=()=>save().catch(e=>$('state').textContent='✕ '+e.message);$('test').onclick=test;$('load-senders').onclick=()=>loadSenderOptions(false);
+ $('connect').onclick=()=>load().catch(e=>$('state').textContent='✕ '+e.message);$('pay-save').onclick=()=>savePayments().catch(e=>$('pay-state').textContent='✕ '+e.message);$('tg-save').onclick=()=>saveTelegram().catch(e=>$('tg-state').textContent='✕ '+e.message);$('tg-test').onclick=testTelegram;$('save').onclick=()=>save().catch(e=>$('state').textContent='✕ '+e.message);$('test').onclick=test;$('load-senders').onclick=()=>loadSenderOptions(false);
  $('sender-select').onchange=()=>{$('sender-select').dataset.current=$('sender-select').value;$('contact-select').dataset.current='';$('sender-city-select').dataset.current='';$('address-select').dataset.current='';$('sender-city-select').innerHTML='<option value="">Спочатку знайдіть місто</option>';$('address-select').innerHTML='<option value="">Спочатку оберіть місто</option>';if($('sender-select').value)loadContacts($('sender-select').value).catch(e=>$('state').textContent='✕ '+e.message)};
  $('contact-select').onchange=()=>{$('contact-select').dataset.current=$('contact-select').value};$('search-sender-city').onclick=()=>searchCities().catch(e=>$('state').textContent='✕ '+e.message);
  $('sender-city-select').onchange=()=>{const v=$('sender-city-select').value;$('sender-city-select').dataset.current=v;$('address-select').dataset.current='';if(v&&$('sender-select').value)loadBranches($('sender-select').value,v).catch(()=>{})};
- $('address-select').onchange=()=>{$('address-select').dataset.current=$('address-select').value};$('toggle-key').onclick=()=>{const x=$('api-key');x.type=x.type==='password'?'text':'password'};$('tg-toggle-token').onclick=()=>{const x=$('tg-bot-token');x.type=x.type==='password'?'text':'password'};$('tg-chat-select').onchange=()=>{if($('tg-chat-select').value)$('tg-chat-id').value=$('tg-chat-select').value};if(token.value)load().catch(e=>$('state').textContent='✕ '+e.message)
+ $('address-select').onchange=()=>{$('address-select').dataset.current=$('address-select').value};$('toggle-key').onclick=()=>{const x=$('api-key');x.type=x.type==='password'?'text':'password'};$('tg-toggle-token').onclick=()=>{const x=$('tg-bot-token');x.type=x.type==='password'?'text':'password'};if(token.value)load().catch(e=>$('state').textContent='✕ '+e.message)
 })();

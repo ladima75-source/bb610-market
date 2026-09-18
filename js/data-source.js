@@ -22,7 +22,11 @@ window.BB610_DATA_SOURCE={
         const [cr,pr]=await Promise.all([fetch(base.replace(/\/$/,'')+cEp,{signal:ctl.signal,headers:{Accept:'application/json'}}),fetch(base.replace(/\/$/,'')+pEp,{signal:ctl.signal,headers:{Accept:'application/json'}})]);
         if(pr.ok){const pd=await pr.json();
           (pd.products||[]).forEach(p=>{if(p.image?.local?.startsWith('/media/'))p.image={...p.image,local:base.replace(/\/$/,'')+p.image.local};if(Array.isArray(p.gallery))p.gallery=p.gallery.map(x=>String(x).startsWith('/media/')?base.replace(/\/$/,'')+x:x);const i=(this.catalog().products||[]).findIndex(x=>x.id===p.id);if(i>=0)this.catalog().products[i]={...this.catalog().products[i],...p};else this.catalog().products.push(p)});
-          (pd.skus||[]).forEach(s=>{if(s.image?.startsWith('/media/'))s.image=base.replace(/\/$/,'')+s.image;const i=(this.catalog().skus||[]).findIndex(x=>x.id===s.id);if(i>=0)this.catalog().skus[i]={...this.catalog().skus[i],...s};else this.catalog().skus.push(s)});
+          const incoming=pd.skus||[];
+          const publicIds=new Set((pd.products||[]).filter(p=>p?.id&&!p.runtime_hidden).map(p=>p.id));
+          const incomingIds=new Set(incoming.map(s=>s?.id).filter(Boolean));
+          this.catalog().skus=(this.catalog().skus||[]).filter(s=>!publicIds.has(s.product_id)||incomingIds.has(s.id));
+          incoming.forEach(s=>{if(s.image?.startsWith('/media/'))s.image=base.replace(/\/$/,'')+s.image;const i=(this.catalog().skus||[]).findIndex(x=>x.id===s.id);if(i>=0)this.catalog().skus[i]={...this.catalog().skus[i],...s};else this.catalog().skus.push(s)});
         }
         if(cr.ok){const data=await cr.json(),map=new Map((data.items||[]).map(x=>[x.sku,x]));
           (this.catalog().skus||[]).forEach(s=>{const c=map.get(s.id);if(!c)return;s.base_price=c.price;s.sale_price=c.sale_price;s.price=c.effective_price;s.availability=c.availability;s.stock_qty=c.stock_qty;s.commercial_status=c.enabled?'active':'paused';s.offer_status=c.enabled?'active':'draft';s.stock_label=c.availability==='in_stock'?'В наявності':c.availability==='out_of_stock'?'Немає в наявності':c.availability==='preorder'?'Передзамовлення':c.availability==='backorder'?'Під замовлення':'Наявність уточнюється';});

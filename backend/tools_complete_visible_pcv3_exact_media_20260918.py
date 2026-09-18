@@ -177,7 +177,18 @@ def preflight() -> dict:
 
 def _backup_cards(ts: str) -> Path:
     dest = BACKUP_ROOT / f"visible-pcv3-exact-media-{ts}"
-    dest.parent.mkdir(parents=True, exist_ok=False)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if dest.exists():
+        # Same-second retry or interrupted previous attempt: never overwrite a
+        # backup. Allocate a deterministic unique suffix instead.
+        n = 2
+        while True:
+            candidate = BACKUP_ROOT / f"visible-pcv3-exact-media-{ts}-{n}"
+            if not candidate.exists():
+                dest = candidate
+                break
+            n += 1
+    dest.mkdir(parents=False, exist_ok=False)
     shutil.copytree(cards.BASE, dest / "product_cards_v3")
     return dest
 

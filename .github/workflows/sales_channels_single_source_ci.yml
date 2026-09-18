@@ -11,6 +11,7 @@ on:
       - 'backend/feed_api.py'
       - 'backend/sales_channels_api.py'
       - 'backend/app.py'
+      - 'backend/tools_audit_product_master_channels_20260918.py'
       - 'js/data-source.js'
       - 'config/commerce-config.js'
       - 'admin/sales-channels.html'
@@ -26,6 +27,7 @@ on:
       - 'backend/feed_api.py'
       - 'backend/sales_channels_api.py'
       - 'backend/app.py'
+      - 'backend/tools_audit_product_master_channels_20260918.py'
       - 'js/data-source.js'
       - 'config/commerce-config.js'
       - 'admin/sales-channels.html'
@@ -50,7 +52,8 @@ jobs:
             backend/services/sales_channels.py \
             backend/feed_api.py \
             backend/sales_channels_api.py \
-            backend/app.py
+            backend/app.py \
+            backend/tools_audit_product_master_channels_20260918.py
           node --check js/data-source.js
           node --check config/commerce-config.js
 

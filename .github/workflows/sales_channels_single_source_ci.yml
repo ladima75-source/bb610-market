@@ -10,9 +10,13 @@ on:
       - 'backend/services/sales_channels.py'
       - 'backend/feed_api.py'
       - 'backend/sales_channels_api.py'
+      - 'backend/app.py'
+      - 'js/data-source.js'
+      - 'config/commerce-config.js'
       - 'admin/sales-channels.html'
       - 'admin/sales-channels.js'
       - '.github/workflows/sales_channels_single_source_ci.yml'
+  workflow_dispatch:
   pull_request:
     paths:
       - 'backend/services/product_master_runtime.py'
@@ -21,6 +25,9 @@ on:
       - 'backend/services/sales_channels.py'
       - 'backend/feed_api.py'
       - 'backend/sales_channels_api.py'
+      - 'backend/app.py'
+      - 'js/data-source.js'
+      - 'config/commerce-config.js'
       - 'admin/sales-channels.html'
       - 'admin/sales-channels.js'
       - '.github/workflows/sales_channels_single_source_ci.yml'
@@ -36,7 +43,16 @@ jobs:
 
       - name: Syntax
         run: |
-          python -m py_compile             backend/services/product_master_runtime.py             backend/services/catalog_cms.py             backend/services/catalog_feeds.py             backend/services/sales_channels.py             backend/feed_api.py             backend/sales_channels_api.py
+          python -m py_compile \
+            backend/services/product_master_runtime.py \
+            backend/services/catalog_cms.py \
+            backend/services/catalog_feeds.py \
+            backend/services/sales_channels.py \
+            backend/feed_api.py \
+            backend/sales_channels_api.py \
+            backend/app.py
+          node --check js/data-source.js
+          node --check config/commerce-config.js
 
       - name: No parallel catalog source in channels
         run: |
@@ -65,6 +81,15 @@ jobs:
           assert 'єдиного Product Master' in html
           assert "Live feed" in js
           assert 'channelSource' in html and 'channelSource' in js
+          app = Path('backend/app.py').read_text(encoding='utf-8')
+          ds = Path('js/data-source.js').read_text(encoding='utf-8')
+          cfg = Path('config/commerce-config.js').read_text(encoding='utf-8')
+          assert "/api/v1/catalog/master" in app
+          assert "productMaster" in cfg and "/api/v1/catalog/master" in cfg
+          assert "_applyMaster" in ds
+          assert "productMaster||'/api/v1/catalog/master'" in ds
+          assert "this.catalog().products=products" in ds
+          assert "this.catalog().skus=skus" in ds
           print('SINGLE PRODUCT MASTER SOURCE CONTRACT: PASS')
           PY
 

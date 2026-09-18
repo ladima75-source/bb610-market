@@ -49,7 +49,7 @@ def save_telegram_settings(*, bot_token: str | None = None, chat_id: str | None 
     return telegram_status()
 
 
-def _api(method: str, payload: dict[str, Any]) -> dict[str, Any]:
+def _api(method: str, payload: dict[str, Any]) -> Any:
     token = get_value("telegram.bot_token", "")
     if not token:
         raise RuntimeError("Telegram bot token is not configured")
@@ -76,8 +76,7 @@ def _api(method: str, payload: dict[str, Any]) -> dict[str, Any]:
 
     if not isinstance(data, dict) or not data.get("ok"):
         raise RuntimeError(f"Telegram API error: {data}")
-    result = data.get("result")
-    return result if isinstance(result, dict) else {"result": result}
+    return data.get("result")
 
 
 def test_telegram() -> dict[str, Any]:
@@ -92,6 +91,8 @@ def test_telegram() -> dict[str, Any]:
             "disable_web_page_preview": "true",
         },
     )
+    if not isinstance(result, dict):
+        raise RuntimeError("Telegram sendMessage returned an unexpected response")
     return {
         "ok": True,
         "chat_id": str(result.get("chat", {}).get("id") or chat_id),
@@ -182,6 +183,8 @@ def notify_price_request(row: dict[str, Any]) -> dict[str, Any]:
                 "disable_web_page_preview": "true",
             },
         )
+        if not isinstance(result, dict):
+            raise RuntimeError("Telegram sendMessage returned an unexpected response")
         return {
             "channel": CHANNEL,
             "status": "sent",

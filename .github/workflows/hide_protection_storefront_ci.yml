@@ -1,0 +1,79 @@
+name: Hide plant protection storefront CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'js/app.js'
+      - 'js/catalog.js'
+      - 'index.html'
+      - 'catalog.html'
+      - 'product.html'
+      - 'categories/protection/index.html'
+      - 'products/switch-62-5-wg/index.html'
+      - 'products/aktara-25-wg/index.html'
+      - 'products/control-dmp/index.html'
+      - '.github/workflows/hide_protection_storefront_ci.yml'
+  pull_request:
+    paths:
+      - 'js/app.js'
+      - 'js/catalog.js'
+      - 'index.html'
+      - 'catalog.html'
+      - 'product.html'
+      - 'categories/protection/index.html'
+      - 'products/switch-62-5-wg/index.html'
+      - 'products/aktara-25-wg/index.html'
+      - 'products/control-dmp/index.html'
+      - '.github/workflows/hide_protection_storefront_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Syntax
+        run: |
+          node --check js/app.js
+          node --check js/catalog.js
+
+      - name: Validate temporary protection suppression
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          app=Path('js/app.js').read_text(encoding='utf-8')
+          catalog_js=Path('js/catalog.js').read_text(encoding='utf-8')
+          index=Path('index.html').read_text(encoding='utf-8')
+          catalog=Path('catalog.html').read_text(encoding='utf-8')
+          product=Path('product.html').read_text(encoding='utf-8')
+          protection=Path('categories/protection/index.html').read_text(encoding='utf-8')
+
+          assert "HIDDEN_STOREFRONT_CATEGORIES=new Set(['protection'])" in app
+          assert "categoryHidden(p.category_id||p.category)" in app
+          assert "BB610.categoryHidden&&BB610.categoryHidden(c.id)" in catalog_js
+
+          for name,doc in [('index',index),('catalog',catalog),('product',product)]:
+              assert 'category=protection' not in doc, name
+
+          assert 'category=protection' not in protection
+          assert '<meta name="robots" content="noindex,follow">' in protection
+          assert 'seo-static-list' not in protection
+
+          for path in [
+              'products/switch-62-5-wg/index.html',
+              'products/aktara-25-wg/index.html',
+              'products/control-dmp/index.html',
+          ]:
+              doc=Path(path).read_text(encoding='utf-8')
+              assert '<meta name="robots" content="noindex,follow">' in doc, path
+              assert 'product-layout seo-static-product' not in doc, path
+              assert 'Цей розділ тимчасово приховано.' in doc, path
+              assert 'category=protection' not in doc, path
+
+          print('HIDE PROTECTION STOREFRONT CONTRACT: PASS')
+          PY

@@ -1,3 +1,69 @@
+
+/* Stage 22B — deterministic local HERO */
+.bb22-hero{
+  position:relative;
+  width:min(1280px,calc(100% - 48px));
+  height:430px;
+  margin:18px auto 0;
+  overflow:hidden;
+  border:1px solid #242b2c;
+  border-radius:13px;
+  background:#080b0c;
+}
+.bb22-hero-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.bb22-hero-shade{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(3,6,6,.82) 0%,rgba(3,6,6,.60) 31%,rgba(3,6,6,.14) 56%,rgba(3,6,6,0) 76%);
+}
+.bb22-hero-copy{
+  position:absolute;
+  z-index:2;
+  left:34px;
+  top:50%;
+  width:min(510px,44%);
+  transform:translateY(-50%);
+}
+.bb22-hero-kicker{
+  margin-bottom:8px;
+  color:#d7aa3a;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.12em;
+}
+.bb22-hero h1{
+  margin:0;
+  color:#fff;
+  font-size:50px;
+  line-height:.98;
+  letter-spacing:-.035em;
+}
+.bb22-hero h1 span{color:#86cf49}
+.bb22-hero-copy p{
+  margin:16px 0 0;
+  max-width:470px;
+  color:#d0d7d3;
+  font-size:16px;
+  line-height:1.45;
+}
+.bb22-hero-btn{
+  display:inline-flex;
+  margin-top:20px;
+  padding:13px 18px;
+  border-radius:7px;
+  background:#d8a62d;
+  color:#111!important;
+  text-decoration:none!important;
+  font-size:13px;
+  font-weight:850;
+}
 /* BB610 Market homepage Stage 22 — storefront cleanup 2026-09-18 */
 
 /* 1. Hero: use the free space on the left instead of an oversized inner indent. */
@@ -403,4 +469,73 @@
 @media(max-width:480px){
   .bb22-cultures-grid{grid-template-columns:1fr}
   .footer .footer-grid{grid-template-columns:1fr!important}
+}
+
+/* Stage 22B — Organic-style information footer */
+.footer .bb22-footer-grid{
+  display:grid!important;
+  grid-template-columns:1.18fr 1.2fr .78fr 1.05fr 1.08fr!important;
+  gap:30px!important;
+  align-items:start!important;
+}
+.bb22-footer-grid h4{
+  margin:0 0 12px!important;
+  color:#f1f3f1!important;
+  font-size:12px!important;
+  letter-spacing:.03em!important;
+}
+.bb22-footer-grid p{
+  margin:0 0 8px!important;
+  color:#aeb8b4!important;
+  font-size:12px!important;
+  line-height:1.48!important;
+}
+.bb22-footer-grid a{
+  margin-bottom:7px!important;
+  line-height:1.35!important;
+}
+.bb22-footer-grid .footer-brand-public img{
+  width:180px!important;
+}
+.bb22-footer-grid .footer-tagline{
+  margin:12px 0 12px!important;
+  max-width:280px!important;
+}
+.bb22-footer-grid .footer-phone{
+  display:block!important;
+  margin:0 0 6px!important;
+  color:#88d85c!important;
+  font-size:17px!important;
+  font-weight:800!important;
+}
+.bb22-footer-grid .footer-shipping{
+  color:#87928e!important;
+}
+.bb22-footer-grid .footer-work strong{
+  color:#dce2de;
+  font-weight:750;
+}
+.bb22-footer-grid .footer-write .footer-mail,
+.bb22-footer-grid .footer-write .footer-telegram{
+  display:block!important;
+  overflow-wrap:anywhere;
+}
+.bb22-footer-grid .footer-write .footer-mail{color:#d9dfdc!important}
+.bb22-footer-grid .footer-write .footer-telegram{color:#e5b13b!important}
+.bb22-footer-grid .footer-socials{margin-top:10px!important}
+
+@media(max-width:1120px){
+  .footer .bb22-footer-grid{grid-template-columns:1.1fr 1.1fr 1fr!important}
+}
+@media(max-width:820px){
+  .footer .bb22-footer-grid{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:680px){
+  .bb22-hero{width:calc(100% - 28px);height:390px}
+  .bb22-hero-copy{left:22px;right:22px;width:auto}
+  .bb22-hero h1{font-size:38px}
+  .bb22-hero-copy p{font-size:14px}
+}
+@media(max-width:480px){
+  .footer .bb22-footer-grid{grid-template-columns:1fr!important}
 }

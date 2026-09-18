@@ -15,10 +15,10 @@
 <div class="status-grid status-grid-3"><div class="status-box"><span>Bot token</span><b id="tg-token-state">—</b><small id="tg-token-source" class="muted"></small></div><div class="status-box"><span>Chat ID</span><b id="tg-chat-state">—</b></div><div class="status-box"><span>Запити ціни</span><b id="tg-ready-state">—</b></div></div>
 <div class="formgrid integrations-form"><div class="section-title full">Підключення Telegram</div>
 <div class="field full"><label>Bot token</label><div class="secret-row"><input id="tg-bot-token" type="password" autocomplete="new-password" placeholder="Залиште порожнім, щоб не змінювати збережений token"><button id="tg-toggle-token" type="button" class="secondary">Показати при вводі</button></div><small class="muted">Token зберігається у захищеному сховищі та не повертається браузеру.</small></div>
-<div class="field full"><label>Chat ID для сповіщень</label><input id="tg-chat-id" placeholder="Наприклад: 123456789"><small class="muted">Напишіть вашому боту /start, потім натисніть «Знайти чати».</small></div>
-<div class="field full"><label>Знайдені чати</label><select id="tg-chat-select"><option value="">Спочатку збережіть token і напишіть боту /start</option></select></div>
+<div class="field full"><label>Чат призначення</label><input id="tg-chat-id" value="-1004349892585" readonly><small class="muted"><b>BB610 Market — Operations</b>. Усі нові замовлення та запити ціни надсилаються саме сюди.</small></div>
+
 </div>
-<div class="integration-actions"><button id="tg-save">Зберегти Telegram</button><button id="tg-find-chats" class="secondary">Знайти чати</button><button id="tg-test" class="secondary">Тест Telegram</button><span id="tg-state" class="muted"></span></div></section>
+<div class="integration-actions"><button id="tg-save">Зберегти Telegram</button><button id="tg-test" class="secondary">Тест Telegram</button><span id="tg-state" class="muted"></span></div></section>
 
 <section class="integration-card payment-integration-card"><div class="integration-head"><div><div class="provider-title">Оплата</div><div class="muted">Commerce Stage 14A</div></div><span id="pay-status" class="badge draft">Не перевірено</span></div>
 <div class="status-grid status-grid-3"><div class="status-box"><span>Післяплата</span><b id="pay-cod-state">—</b></div><div class="status-box"><span>Оплата на рахунок</span><b id="pay-bank-state">—</b><small id="pay-bank-note" class="muted"></small></div><div class="status-box"><span>Картка онлайн</span><b id="pay-card-state">Stage 14B</b><small class="muted">Провайдер ще не підключений</small></div></div>

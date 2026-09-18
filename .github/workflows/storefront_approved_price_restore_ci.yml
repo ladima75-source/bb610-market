@@ -1,0 +1,88 @@
+name: Storefront approved price restore CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_restore_storefront_prices_from_approved_source_20260918.py'
+      - 'data/catalog.runtime.js'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/storefront_approved_price_restore_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_restore_storefront_prices_from_approved_source_20260918.py'
+      - 'data/catalog.runtime.js'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/storefront_approved_price_restore_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: python -m py_compile backend/tools_restore_storefront_prices_from_approved_source_20260918.py
+
+      - name: Validate approved-source matcher
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from backend import tools_restore_storefront_prices_from_approved_source_20260918 as t
+
+          runtime=t.load_runtime()
+          source=t.load_source()
+          products={x['id']:x for x in runtime['products']}
+
+          # User-confirmed absent products must stay absent from approved source.
+          assert t.source_rows_for_product(products['switch-625-wg'], source['rows']) == []
+          assert t.source_rows_for_product(products['aktara-25-wg'], source['rows']) == []
+
+          # Known approved products must resolve.
+          for pid in [
+              'pekacid-0-60-20',
+              'osmocote-landscape-16-9-12',
+              'osmocote-quick-start-22-5-6',
+              'solupotasse',
+              'magnesium-sulfate',
+              'ferrilene',
+              'kemira-rooter',
+              'master-13-40-13',
+              'master-15-5-30',
+              'master-20-20-20',
+              'master-3-11-38',
+              'plantafol-20-20-20',
+              'plantafol-10-54-10',
+              'plantafol-30-10-10',
+              'plantafol-5-15-45',
+              'plantafol-0-25-50',
+              'osmocote-potassium-12-8-19',
+              'osmocote-flowering-12-7-18',
+          ]:
+              rows=t.source_rows_for_product(products[pid], source['rows'])
+              assert rows, pid
+              resolved,conflicts=t.collapse_source(rows)
+              assert not conflicts, (pid,conflicts)
+              assert resolved, pid
+
+          # Explicit zero-price policy remains zero.
+          rows=t.source_rows_for_product(products['master-15-5-30'], source['rows'])
+          resolved,_=t.collapse_source(rows)
+          assert resolved['20g']['price'] == 0.0
+
+          # Exact package examples.
+          rows=t.source_rows_for_product(products['pekacid-0-60-20'], source['rows'])
+          resolved,_=t.collapse_source(rows)
+          assert resolved['100g']['price'] == 84.0
+          assert resolved['1kg']['price'] == 461.0
+
+          rows=t.source_rows_for_product(products['osmocote-landscape-16-9-12'], source['rows'])
+          resolved,_=t.collapse_source(rows)
+          assert resolved['200g']['price'] == 149.0
+
+          print('STOREFRONT APPROVED PRICE RESTORE CONTRACT: PASS')
+          PY

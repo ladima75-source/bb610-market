@@ -1,0 +1,58 @@
+name: Public storefront SKU price gap audit CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_audit_public_sku_price_gaps_20260918.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/public_sku_price_gap_audit_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_audit_public_sku_price_gaps_20260918.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/public_sku_price_gap_audit_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: python -m py_compile backend/tools_audit_public_sku_price_gaps_20260918.py
+
+      - name: Validate matcher contract
+        run: |
+          python - <<'PY'
+          from backend import tools_audit_public_sku_price_gaps_20260918 as a
+
+          s,r=a.score_name(
+              'Pekacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво',
+              'Pekacid (Пекацид), NPK 0-60-20, мінеральне добриво'
+          )
+          assert s >= 700, (s,r)
+
+          s,r=a.score_name(
+              'Osmocote Landscape 16-9-12, добриво контрольованої дії 3–4 міс.',
+              'Осмокот Ландшафт 16-9-12 (3-4М)'
+          )
+          assert s >= 700, (s,r)
+
+          s,r=a.score_name(
+              'Osmocote Quick Start 22-5-6, добриво контрольованої дії 4–5 міс.',
+              'Осмокот Швидкий Старт 22-5-6 (4-5М)'
+          )
+          assert s >= 700, (s,r)
+
+          s,r=a.score_name(
+              'Osmocote Quick Start 22-5-6',
+              'Осмокот Ландшафт 16-9-12 (3-4М)'
+          )
+          assert s < 0, (s,r)
+
+          print('PUBLIC SKU PRICE GAP MATCHER: PASS')
+          PY

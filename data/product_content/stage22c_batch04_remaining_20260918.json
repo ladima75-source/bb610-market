@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "stage22c-batch04-remaining-content",
+  "batch": "BB610 Product Card v3 content / stage22c batch04 selected rows37-48 / 2026-09-18",
+  "language": "uk",
+  "source_batch": "data/content_batches/stage22c_batch04_rows37_48.json",
+  "expected_source_rows": [37, 38, 39, 40, 41, 43, 44, 46, 47, 48],
+  "expected_target_count": 10,
+  "skipped_source_rows": {
+    "42": "Radifarm already completed and production-verified in dedicated content batch",
+    "45": "Viva already completed and production-verified in dedicated content batch"
+  },
+  "legacy_id_by_source_row": {
+    "39": "neocore",
+    "43": "kemira-rooter",
+    "44": "blackjak",
+    "46": "kendal-root",
+    "48": "kendal"
+  },
+  "title_aliases_by_source_row": {
+    "39": ["NeoCore (НеоКор), біостимулятор росту кореневої системи, біоактивний екстракт торфу"],
+    "43": ["Кеміра Укорінювач, біостимулятор розвитку кореневої системи"],
+    "44": ["BlackJak (БлекДжек), біостимулятор розвитку кореневої системи"],
+    "46": ["Kendal Root (Кендал Рут), біостимулятор-антистрес для кореневої системи"],
+    "48": ["Kendal (Кендал), біостимулятор для підтримки імунної системи рослин"]
+  },
+  "policy": {
+    "mode": "content-only",
+    "resolver": "explicit legacy mapping, exact slug candidates, or exact normalized pre/post title",
+    "protected": [
+      "product_id", "slug", "enabled", "brand", "category", "sku_media",
+      "commerce_map", "sku_commerce", "price", "availability", "stock", "media"
+    ]
+  }
+}

@@ -117,6 +117,44 @@ jobs:
               m.organic_identity_index = old_organic
           print('VERIFIED MASTER IDENTITY MATCHER: PASS')
           PY
+      - name: Verified taxonomy normalization smoke
+        run: |
+          python - <<'PY'
+          from backend.tools_normalize_nonpot_product_cards_20260918 import (
+              ALL_CULTURES, culture_values, method_values
+          )
+
+          blank = {
+              'application':'',
+              'short_description':'',
+              'how_it_works':'',
+              'characteristics':[],
+          }
+
+          root = dict(blank, application='Вноситься у субстрат або поверхнево.')
+          assert method_values({}, blank, root) == ['Кореневе внесення']
+
+          leaf = dict(blank, characteristics=[
+              {'label':'Спосіб внесення','value':'Листковий'}
+          ])
+          assert method_values({}, blank, leaf) == ['Позакореневе внесення']
+
+          fert = dict(blank, application='Застосування через систему фертигації.')
+          assert method_values({}, blank, fert) == ['Фертигація']
+
+          all_crops = {'application':{'intro':'Для усіх типів культур.'}}
+          assert culture_values(all_crops, blank, blank) == ALL_CULTURES
+
+          berries = {'application':{'rows':[{'crop':'Ягідні / плодові'}]}}
+          got = culture_values(berries, blank, blank)
+          assert {'лохина','полуниця','малина','сад'}.issubset(set(got))
+
+          unknown = {'application':{'intro':'Застосування за етикеткою конкретної партії.'}}
+          assert method_values(unknown, blank, blank) == []
+          assert culture_values(unknown, blank, blank) == []
+
+          print('VERIFIED TAXONOMY NORMALIZATION: PASS')
+          PY
       - name: Catalog overlay smoke
         run: |
           python - <<'PY'

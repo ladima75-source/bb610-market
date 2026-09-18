@@ -146,6 +146,20 @@ def build_plan() -> dict:
             ],
         }
 
+        for other_pid, other in mappings.items():
+            if other_pid == pid or not isinstance(other, dict):
+                continue
+            other_parent = str(other.get("existing_product_key") or "").strip()
+            other_keys = {
+                str(x.get("existing_commerce_sku_key") or "").strip()
+                for x in (other.get("skus") or [])
+                if isinstance(x, dict)
+            }
+            if other_parent == spec["legacy_product_key"] or key in other_keys:
+                raise RuntimeError(
+                    f"{slug}: verified legacy identity is already mapped to {other_pid}"
+                )
+
         current = mappings.get(pid)
         if current is None:
             action = "CREATE_MAPPING"

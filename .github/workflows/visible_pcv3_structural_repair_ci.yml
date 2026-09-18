@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'backend/tools_repair_visible_pcv3_structural_20260918.py'
+      - 'backend/tools_complete_pcv3_media_readiness.py'
+      - 'backend/tools_prepare_pcv3_release.py'
       - 'backend/services/product_cards_v3.py'
       - 'backend/product_cards_v3_api.py'
       - 'backend/tools_audit_visible_pcv3_storefront_20260918.py'
@@ -13,6 +15,8 @@ on:
   pull_request:
     paths:
       - 'backend/tools_repair_visible_pcv3_structural_20260918.py'
+      - 'backend/tools_complete_pcv3_media_readiness.py'
+      - 'backend/tools_prepare_pcv3_release.py'
       - 'backend/services/product_cards_v3.py'
       - 'backend/product_cards_v3_api.py'
       - 'backend/tools_audit_visible_pcv3_storefront_20260918.py'
@@ -306,6 +310,79 @@ jobs:
           assert 'seo:title_from_existing_title' in seo_changes
           assert 'seo:description_from_existing_content' in seo_changes
 
+          media_card={
+            'content':{'title':'Media product'},
+            'sku_media':{
+              'skus':[{
+                'sku_id':'sku_media1',
+                'package':'1 кг',
+                'gallery_media_ids':['med_only'],
+                'primary_media_id':None,
+              }],
+              'media':[{
+                'media_id':'med_only',
+                'path':'assets/example-only.png',
+                'alt':'Existing exact card image',
+                'kind':'product',
+                'sort_order':0,
+              }],
+            },
+          }
+          old_resolvable=t._is_resolvable
+          t._is_resolvable=lambda p: bool(p)
+          try:
+            p,a,m=t.existing_card_media_candidate(
+              media_card,media_card['sku_media']['skus'][0]
+            )
+            assert p=='assets/example-only.png'
+            assert a=='Existing exact card image'
+            assert m=='existing-v3-gallery-singleton'
+
+            ambiguous={**media_card,'sku_media':{
+              **media_card['sku_media'],
+              'skus':[{**media_card['sku_media']['skus'][0],'gallery_media_ids':[]}],
+              'media':[
+                media_card['sku_media']['media'][0],
+                {
+                  'media_id':'med_second',
+                  'path':'assets/example-second.png',
+                  'alt':'Second',
+                  'kind':'product',
+                  'sort_order':1,
+                },
+              ],
+            }}
+            p,a,m=t.existing_card_media_candidate(
+              ambiguous,ambiguous['sku_media']['skus'][0]
+            )
+            assert p=='' and a=='' and m==''
+          finally:
+            t._is_resolvable=old_resolvable
+
+          old_resolvable=t._is_resolvable
+          old_choose=t._choose_legacy_image
+          t._is_resolvable=lambda p: bool(p)
+          t._choose_legacy_image=lambda *args,**kwargs: (
+            'assets/exact-legacy.png','legacy-exact-product+pack',['assets/exact-legacy.png']
+          )
+          try:
+            p,a,m,candidates=t.exact_primary_media_source(
+              {'content':{'title':'Exact'},'sku_media':{'skus':[],'media':[]}},
+              {'sku_id':'sku_exact','package':'1 кг','gallery_media_ids':[]},
+              {'id':'product-exact'},
+              {'id':'SKU-EXACT'},
+              {'existing_product_key':'product-exact','skus':[]},
+              {},
+              {},
+              [],
+            )
+            assert p=='assets/exact-legacy.png'
+            assert m=='legacy-exact-product+pack'
+            assert candidates==['assets/exact-legacy.png']
+          finally:
+            t._is_resolvable=old_resolvable
+            t._choose_legacy_image=old_choose
+
           src=Path('backend/tools_repair_visible_pcv3_structural_20260918.py').read_text(encoding='utf-8')
           assert 'UPDATE sku_commerce' not in src
           assert 'INSERT INTO sku_commerce' not in src
@@ -314,6 +391,9 @@ jobs:
           assert 'load_authoritative_catalog()' in src
           assert 'load_runtime()' not in src
           assert 'RUNTIME = ROOT' not in src
+          assert 'primary_media_missing_no_exact_source' in src
+          assert '_choose_legacy_image' in src
+          assert '_load_db_inventory' in src
 
           svc=Path('backend/services/product_cards_v3.py').read_text(encoding='utf-8')
           assert "'mapped': True" in svc

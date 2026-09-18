@@ -516,6 +516,14 @@
       {
         "label": "pH 1%",
         "value": "≈9,2 за Valagro Italia"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Позакореневе внесення"
+      },
+      {
+        "label": "Культури",
+        "value": "овочі; сад; полуниця"
       }
     ],
     "origin": {
@@ -529,13 +537,17 @@
       {
         "title": "Джерело даних",
         "url": "https://www.valagro.com/media/media_articles/attachments/Catalogo_Soluzioni_Valagro_IT_2020.pdf"
+      },
+      {
+        "title": "Organic Planet — Maxicrop Extra, спосіб внесення по листу",
+        "url": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-extra-maksikrop-ekstra-biostimulyator-05-kg-valagro"
       }
     ],
     "sources": {
       "source_url": "https://www.valagro.com/media/media_articles/attachments/Catalogo_Soluzioni_Valagro_IT_2020.pdf",
       "source_type": "manufacturer_technical_match",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {
@@ -678,6 +690,14 @@
       {
         "label": "Форма",
         "value": "Водорозчинна"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Фертигація; Позакореневе внесення; Кореневе внесення"
+      },
+      {
+        "label": "Культури",
+        "value": "усі культури"
       }
     ],
     "origin": {
@@ -691,13 +711,17 @@
       {
         "title": "Джерело даних",
         "url": "https://www.valagro.com/en/products/farm/micronutrients/"
+      },
+      {
+        "title": "Valagro catalogue — EDTA directions for use",
+        "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
       }
     ],
     "sources": {
       "source_url": "https://www.valagro.com/en/products/farm/micronutrients/",
       "source_type": "manufacturer_product_family",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {
@@ -745,6 +769,14 @@
       {
         "label": "Форма",
         "value": "Водорозчинна"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Фертигація; Позакореневе внесення; Кореневе внесення"
+      },
+      {
+        "label": "Культури",
+        "value": "усі культури"
       }
     ],
     "origin": {
@@ -758,13 +790,17 @@
       {
         "title": "Джерело даних",
         "url": "https://www.valagro.com/en/products/farm/micronutrients/"
+      },
+      {
+        "title": "Valagro catalogue — EDTA directions for use",
+        "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
       }
     ],
     "sources": {
       "source_url": "https://www.valagro.com/en/products/farm/micronutrients/",
       "source_type": "manufacturer_product_family",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {

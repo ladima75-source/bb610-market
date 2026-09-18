@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "batch": "Plantlogic pots Product Card v3 master / current official assortment / 2026-09-18",
-  "status": "source-verified draft cards; current getplantlogic.com product pages; prices and media excluded",
+  "batch": "Plantlogic pots Product Card v3 master / Ukrainian storefront naming / current official assortment / 2026-09-18",
+  "status": "source-verified Ukrainian storefront drafts; official English names retained internally only; prices and media excluded",
   "source_policy": "current official Plantlogic product pages first; Product Catalog used only as supporting source; cards remain disabled until media/commerce readiness",
   "products": [
     {
       "product_id": "prd_pl_zephyr_v2",
       "slug": "plantlogic-zephyr-v2",
-      "name": "Zephyr V2",
+      "name": "Горщик Zephyr V2 — 25, 30 та 40 л",
       "family": "zephyr",
       "use_cases": [
         "лохина",
@@ -18,31 +18,32 @@
         {
           "sku_id": "sku_pl_1301144",
           "sku_code": "PL-1301144",
-          "label": "Zephyr V2 25 л",
+          "label": "25 л · арт. 1301144",
           "package": "25 л",
           "product_no": "1301144"
         },
         {
           "sku_id": "sku_pl_1301153",
           "sku_code": "PL-1301153",
-          "label": "Zephyr V2 30 л",
+          "label": "30 л · арт. 1301153",
           "package": "30 л",
           "product_no": "1301153"
         },
         {
           "sku_id": "sku_pl_1301143",
           "sku_code": "PL-1301143",
-          "label": "Zephyr V2 40 л",
+          "label": "40 л · арт. 1301143",
           "package": "40 л",
           "product_no": "1301143"
         }
       ],
-      "dimensions": "25 л #1301144: A 369 мм, B Ø333 мм, C 397 мм, D 70 мм; 30 л #1301153: A 420 мм, B Ø333 мм, C 397 мм, D 70 мм; 40 л #1301143: A 370 мм, B Ø427 мм, C 500 мм, D 70 мм"
+      "dimensions": "25 л #1301144: A 369 мм, B Ø333 мм, C 397 мм, D 70 мм; 30 л #1301153: A 420 мм, B Ø333 мм, C 397 мм, D 70 мм; 40 л #1301143: A 370 мм, B Ø427 мм, C 500 мм, D 70 мм",
+      "official_name_en": "Zephyr V2"
     },
     {
       "product_id": "prd_pl_1309020",
       "slug": "plantlogic-20l-square-1309020",
-      "name": "20 Liter Square Pot",
+      "name": "Квадратний горщик 20 л — арт. 1309020",
       "family": "square",
       "volume_l": 20,
       "product_no": "1309020",
@@ -56,16 +57,17 @@
         {
           "sku_id": "sku_pl_1309020",
           "sku_code": "PL-1309020",
-          "label": "20 Liter Square Pot — 20 л",
+          "label": "20 л · арт. 1309020",
           "package": "20 л",
           "product_no": "1309020"
         }
-      ]
+      ],
+      "official_name_en": "20 Liter Square Pot"
     },
     {
       "product_id": "prd_pl_1308020",
       "slug": "plantlogic-20l-round-1308020",
-      "name": "20 Liter Round Pot",
+      "name": "Круглий горщик 20 л — арт. 1308020",
       "family": "round",
       "volume_l": 20,
       "product_no": "1308020",
@@ -79,16 +81,17 @@
         {
           "sku_id": "sku_pl_1308020",
           "sku_code": "PL-1308020",
-          "label": "20 Liter Round Pot — 20 л",
+          "label": "20 л · арт. 1308020",
           "package": "20 л",
           "product_no": "1308020"
         }
-      ]
+      ],
+      "official_name_en": "20 Liter Round Pot"
     },
     {
       "product_id": "prd_pl_1308125",
       "slug": "plantlogic-25l-round-new-1308125",
-      "name": "NEW 25 Liter Round Pot",
+      "name": "Круглий горщик 25 л для лохини — арт. 1308125",
       "family": "round",
       "volume_l": 25,
       "product_no": "1308125",
@@ -102,17 +105,18 @@
         {
           "sku_id": "sku_pl_1308125",
           "sku_code": "PL-1308125",
-          "label": "NEW 25 Liter Round Pot — 25 л",
+          "label": "25 л · арт. 1308125",
           "package": "25 л",
           "product_no": "1308125"
         }
       ],
-      "dimensions": "385 мм ширина × 362 мм висота"
+      "dimensions": "385 мм ширина × 362 мм висота",
+      "official_name_en": "NEW 25 Liter Round Pot"
     },
     {
       "product_id": "prd_pl_1308025",
       "slug": "plantlogic-25l-round-wide-leg-1308025",
-      "name": "25 Liter Round Pot (Wide Legs)",
+      "name": "Круглий горщик 25 л на широких ніжках — арт. 1308025",
       "family": "round",
       "volume_l": 25,
       "product_no": "1308025",
@@ -127,16 +131,17 @@
         {
           "sku_id": "sku_pl_1308025",
           "sku_code": "PL-1308025",
-          "label": "25 Liter Round Pot (Wide Legs) — 25 л",
+          "label": "25 л · арт. 1308025",
           "package": "25 л",
           "product_no": "1308025"
         }
-      ]
+      ],
+      "official_name_en": "25 Liter Round Pot (Wide Legs)"
     },
     {
       "product_id": "prd_pl_1303025",
       "slug": "plantlogic-25l-round-short-legs-1303025",
-      "name": "25 Liter Round Pot (Short Legs)",
+      "name": "Круглий горщик 25 л на коротких ніжках — арт. 1303025",
       "family": "short_legs",
       "volume_l": 25,
       "product_no": "1303025",
@@ -149,17 +154,18 @@
         {
           "sku_id": "sku_pl_1303025",
           "sku_code": "PL-1303025",
-          "label": "25 Liter Round Pot (Short Legs) — 25 л",
+          "label": "25 л · арт. 1303025",
           "package": "25 л",
           "product_no": "1303025"
         }
       ],
-      "dimensions": "399 мм ширина × 306 мм висота"
+      "dimensions": "399 мм ширина × 306 мм висота",
+      "official_name_en": "25 Liter Round Pot (Short Legs)"
     },
     {
       "product_id": "prd_pl_1309025",
       "slug": "plantlogic-25l-square-1309025",
-      "name": "25 Liter Square Pot",
+      "name": "Квадратний горщик 25 л — арт. 1309025",
       "family": "square",
       "volume_l": 25,
       "product_no": "1309025",
@@ -173,16 +179,17 @@
         {
           "sku_id": "sku_pl_1309025",
           "sku_code": "PL-1309025",
-          "label": "25 Liter Square Pot — 25 л",
+          "label": "25 л · арт. 1309025",
           "package": "25 л",
           "product_no": "1309025"
         }
-      ]
+      ],
+      "official_name_en": "25 Liter Square Pot"
     },
     {
       "product_id": "prd_pl_1309026",
       "slug": "plantlogic-25l-square-u-grooves-1309026",
-      "name": "25 Liter Square Pot with U-Grooves",
+      "name": "Квадратний горщик 25 л з U-пазами — арт. 1309026",
       "family": "u_groove_square",
       "volume_l": 25,
       "product_no": "1309026",
@@ -195,17 +202,18 @@
         {
           "sku_id": "sku_pl_1309026",
           "sku_code": "PL-1309026",
-          "label": "25 Liter Square Pot with U-Grooves — 25 л",
+          "label": "25 л · арт. 1309026",
           "package": "25 л",
           "product_no": "1309026"
         }
       ],
-      "dimensions": "355 мм ширина × 322 мм висота"
+      "dimensions": "355 мм ширина × 322 мм висота",
+      "official_name_en": "25 Liter Square Pot with U-Grooves"
     },
     {
       "product_id": "prd_pl_1308026",
       "slug": "plantlogic-25l-round-u-grooves-1308026",
-      "name": "25 Liter Round Pot with U-Grooves",
+      "name": "Круглий горщик 25 л з U-пазами — арт. 1308026",
       "family": "u_groove_round",
       "volume_l": 25,
       "product_no": "1308026",
@@ -218,17 +226,18 @@
         {
           "sku_id": "sku_pl_1308026",
           "sku_code": "PL-1308026",
-          "label": "25 Liter Round Pot with U-Grooves — 25 л",
+          "label": "25 л · арт. 1308026",
           "package": "25 л",
           "product_no": "1308026"
         }
       ],
-      "dimensions": "385 мм ширина × 354 мм висота"
+      "dimensions": "385 мм ширина × 354 мм висота",
+      "official_name_en": "25 Liter Round Pot with U-Grooves"
     },
     {
       "product_id": "prd_pl_1304125",
       "slug": "plantlogic-25l-round-drainage-1304125",
-      "name": "25 Liter Round Drainage Collection Pot",
+      "name": "Круглий горщик 25 л зі збором дренажу — арт. 1304125",
       "family": "drainage_collection",
       "volume_l": 25,
       "product_no": "1304125",
@@ -243,16 +252,17 @@
         {
           "sku_id": "sku_pl_1304125",
           "sku_code": "PL-1304125",
-          "label": "25 Liter Round Drainage Collection Pot — 25 л",
+          "label": "25 л · арт. 1304125",
           "package": "25 л",
           "product_no": "1304125"
         }
-      ]
+      ],
+      "official_name_en": "25 Liter Round Drainage Collection Pot"
     },
     {
       "product_id": "prd_pl_1303125",
       "slug": "plantlogic-25l-round-drainage-short-1303125",
-      "name": "25 Liter Round Drainage Collection Pot (Short Legs)",
+      "name": "Круглий горщик 25 л зі збором дренажу, короткі ніжки — арт. 1303125",
       "family": "drainage_collection_short",
       "volume_l": 25,
       "product_no": "1303125",
@@ -265,17 +275,18 @@
         {
           "sku_id": "sku_pl_1303125",
           "sku_code": "PL-1303125",
-          "label": "25 Liter Round Drainage Collection Pot (Short Legs) — 25 л",
+          "label": "25 л · арт. 1303125",
           "package": "25 л",
           "product_no": "1303125"
         }
       ],
-      "dimensions": "330 мм ширина × 329 мм висота"
+      "dimensions": "330 мм ширина × 329 мм висота",
+      "official_name_en": "25 Liter Round Drainage Collection Pot (Short Legs)"
     },
     {
       "product_id": "prd_pl_1308303",
       "slug": "plantlogic-30l-round-u-groove-1308303",
-      "name": "30 Liter Round Pot with U-Grooves",
+      "name": "Круглий горщик 30 л з U-пазами — арт. 1308303",
       "family": "u_groove_round",
       "volume_l": 30,
       "product_no": "1308303",
@@ -290,16 +301,17 @@
         {
           "sku_id": "sku_pl_1308303",
           "sku_code": "PL-1308303",
-          "label": "30 Liter Round Pot with U-Grooves — 30 л",
+          "label": "30 л · арт. 1308303",
           "package": "30 л",
           "product_no": "1308303"
         }
-      ]
+      ],
+      "official_name_en": "30 Liter Round Pot with U-Grooves"
     },
     {
       "product_id": "prd_pl_1308305",
       "slug": "plantlogic-30l-round-parallel-u-grooves-1308305",
-      "name": "30 Liter Round Pot with Parallel U-Grooves",
+      "name": "Круглий горщик 30 л з паралельними U-пазами — арт. 1308305",
       "family": "u_groove_round",
       "volume_l": 30,
       "product_no": "1308305",
@@ -314,16 +326,17 @@
         {
           "sku_id": "sku_pl_1308305",
           "sku_code": "PL-1308305",
-          "label": "30 Liter Round Pot with Parallel U-Grooves — 30 л",
+          "label": "30 л · арт. 1308305",
           "package": "30 л",
           "product_no": "1308305"
         }
-      ]
+      ],
+      "official_name_en": "30 Liter Round Pot with Parallel U-Grooves"
     },
     {
       "product_id": "prd_pl_1308031",
       "slug": "plantlogic-30l-round-v-rib-1308031",
-      "name": "30 Liter Round Pot V-Rib",
+      "name": "Круглий горщик 30 л з V-ребрами — арт. 1308031",
       "family": "v_rib",
       "volume_l": 30,
       "product_no": "1308031",
@@ -336,17 +349,18 @@
         {
           "sku_id": "sku_pl_1308031",
           "sku_code": "PL-1308031",
-          "label": "30 Liter Round Pot V-Rib — 30 л",
+          "label": "30 л · арт. 1308031",
           "package": "30 л",
           "product_no": "1308031"
         }
       ],
-      "dimensions": "407 мм ширина × 383 мм висота"
+      "dimensions": "407 мм ширина × 383 мм висота",
+      "official_name_en": "30 Liter Round Pot V-Rib"
     },
     {
       "product_id": "prd_pl_1309030",
       "slug": "plantlogic-30l-square-1309030",
-      "name": "30 Liter Square Pot",
+      "name": "Квадратний горщик 30 л — арт. 1309030",
       "family": "square",
       "volume_l": 30,
       "product_no": "1309030",
@@ -359,17 +373,18 @@
         {
           "sku_id": "sku_pl_1309030",
           "sku_code": "PL-1309030",
-          "label": "30 Liter Square Pot — 30 л",
+          "label": "30 л · арт. 1309030",
           "package": "30 л",
           "product_no": "1309030"
         }
       ],
-      "dimensions": "385 мм ширина × 324 мм висота"
+      "dimensions": "385 мм ширина × 324 мм висота",
+      "official_name_en": "30 Liter Square Pot"
     },
     {
       "product_id": "prd_pl_13090350",
       "slug": "plantlogic-35l-square-u-grooves-13090350",
-      "name": "35 Liter Square Pot with U-Grooves",
+      "name": "Квадратний горщик 35 л з U-пазами — арт. 13090350",
       "family": "u_groove_square",
       "volume_l": 35,
       "product_no": "13090350",
@@ -383,16 +398,17 @@
         {
           "sku_id": "sku_pl_13090350",
           "sku_code": "PL-13090350",
-          "label": "35 Liter Square Pot with U-Grooves — 35 л",
+          "label": "35 л · арт. 13090350",
           "package": "35 л",
           "product_no": "13090350"
         }
-      ]
+      ],
+      "official_name_en": "35 Liter Square Pot with U-Grooves"
     },
     {
       "product_id": "prd_pl_13080350",
       "slug": "plantlogic-35l-round-u-grooves-13080350",
-      "name": "35 Liter Round Pot with U-Grooves",
+      "name": "Круглий горщик 35 л з U-пазами — арт. 13080350",
       "family": "u_groove_round",
       "volume_l": 35,
       "product_no": "13080350",
@@ -405,17 +421,18 @@
         {
           "sku_id": "sku_pl_13080350",
           "sku_code": "PL-13080350",
-          "label": "35 Liter Round Pot with U-Grooves — 35 л",
+          "label": "35 л · арт. 13080350",
           "package": "35 л",
           "product_no": "13080350"
         }
       ],
-      "dimensions": "460 мм ширина × 340 мм висота"
+      "dimensions": "460 мм ширина × 340 мм висота",
+      "official_name_en": "35 Liter Round Pot with U-Grooves"
     },
     {
       "product_id": "prd_pl_1308041",
       "slug": "plantlogic-40l-round-u-grooves-1308041",
-      "name": "40 Liter Round Pot with U-Grooves",
+      "name": "Круглий горщик 40 л з U-пазами — арт. 1308041",
       "family": "u_groove_round",
       "volume_l": 40,
       "product_no": "1308041",
@@ -430,16 +447,17 @@
         {
           "sku_id": "sku_pl_1308041",
           "sku_code": "PL-1308041",
-          "label": "40 Liter Round Pot with U-Grooves — 40 л",
+          "label": "40 л · арт. 1308041",
           "package": "40 л",
           "product_no": "1308041"
         }
-      ]
+      ],
+      "official_name_en": "40 Liter Round Pot with U-Grooves"
     },
     {
       "product_id": "prd_pl_1308040",
       "slug": "plantlogic-40l-round-1308040",
-      "name": "40 Liter Round Pot",
+      "name": "Круглий горщик 40 л — арт. 1308040",
       "family": "round",
       "volume_l": 40,
       "product_no": "1308040",
@@ -454,16 +472,17 @@
         {
           "sku_id": "sku_pl_1308040",
           "sku_code": "PL-1308040",
-          "label": "40 Liter Round Pot — 40 л",
+          "label": "40 л · арт. 1308040",
           "package": "40 л",
           "product_no": "1308040"
         }
-      ]
+      ],
+      "official_name_en": "40 Liter Round Pot"
     },
     {
       "product_id": "prd_pl_40sq_ug_side",
       "slug": "plantlogic-40l-square-u-grooves-side-holes-13090400-13090440",
-      "name": "40 Liter Square Pot with U-Grooves & Side Holes",
+      "name": "Квадратний горщик 40 л з U-пазами та бічними отворами — арт. 13090400 / 13090440",
       "family": "u_groove_square",
       "volume_l": 40,
       "source_url": "https://getplantlogic.com/portfolio-items/40l-square-pot-for-blueberries-with-side-holes/",
@@ -476,23 +495,24 @@
         {
           "sku_id": "sku_pl_13090400",
           "sku_code": "PL-13090400",
-          "label": "40 Liter Square Pot with U-Grooves & Side Holes — 16 мм U-пази",
+          "label": "40 л · U-пази 16 мм · арт. 13090400",
           "package": "40 л / U-пази 16 мм",
           "product_no": "13090400"
         },
         {
           "sku_id": "sku_pl_13090440",
           "sku_code": "PL-13090440",
-          "label": "40 Liter Square Pot with U-Grooves & Side Holes — 20 мм U-пази",
+          "label": "40 л · U-пази 20 мм · арт. 13090440",
           "package": "40 л / U-пази 20 мм",
           "product_no": "13090440"
         }
-      ]
+      ],
+      "official_name_en": "40 Liter Square Pot with U-Grooves & Side Holes"
     },
     {
       "product_id": "prd_pl_1306003",
       "slug": "plantlogic-3l-square-1306003",
-      "name": "3 Liter Square Pot",
+      "name": "Квадратний горщик 3 л — арт. 1306003",
       "family": "square",
       "volume_l": 3,
       "product_no": "1306003",
@@ -508,16 +528,17 @@
         {
           "sku_id": "sku_pl_1306003",
           "sku_code": "PL-1306003",
-          "label": "3 Liter Square Pot — 3 л",
+          "label": "3 л · арт. 1306003",
           "package": "3 л",
           "product_no": "1306003"
         }
-      ]
+      ],
+      "official_name_en": "3 Liter Square Pot"
     },
     {
       "product_id": "prd_pl_13050040",
       "slug": "plantlogic-4-7l-square-cold-storage-13050040",
-      "name": "4.7 Liter Square Pot for Cold Storage",
+      "name": "Квадратний горщик 4,7 л для long-cane та холодного зберігання — арт. 13050040",
       "family": "cold_storage",
       "volume_l": 4.7,
       "product_no": "13050040",
@@ -532,17 +553,18 @@
         {
           "sku_id": "sku_pl_13050040",
           "sku_code": "PL-13050040",
-          "label": "4.7 Liter Square Pot for Cold Storage — 4.7 л",
+          "label": "4,7 л · арт. 13050040",
           "package": "4,7 л",
           "product_no": "13050040"
         }
       ],
-      "dimensions": "198 мм ширина × 187 мм висота"
+      "dimensions": "198 мм ширина × 187 мм висота",
+      "official_name_en": "4.7 Liter Square Pot for Cold Storage"
     },
     {
       "product_id": "prd_pl_1306051",
       "slug": "plantlogic-5l-square-short-1306051",
-      "name": "5 Liter Square Short Pot",
+      "name": "Компактний квадратний горщик 5 л — арт. 1306051",
       "family": "square_short",
       "volume_l": 5,
       "product_no": "1306051",
@@ -558,17 +580,18 @@
         {
           "sku_id": "sku_pl_1306051",
           "sku_code": "PL-1306051",
-          "label": "5 Liter Square Short Pot — 5 л",
+          "label": "5 л · арт. 1306051",
           "package": "5 л",
           "product_no": "1306051"
         }
       ],
-      "dimensions": "204 мм ширина × 322 мм висота"
+      "dimensions": "204 мм ширина × 322 мм висота",
+      "official_name_en": "5 Liter Square Short Pot"
     },
     {
       "product_id": "prd_pl_1306007",
       "slug": "plantlogic-7l-square-1306007",
-      "name": "7 Liter Square Pot",
+      "name": "Квадратний горщик 7 л — арт. 1306007",
       "family": "square",
       "volume_l": 7,
       "product_no": "1306007",
@@ -583,16 +606,17 @@
         {
           "sku_id": "sku_pl_1306007",
           "sku_code": "PL-1306007",
-          "label": "7 Liter Square Pot — 7 л",
+          "label": "7 л · арт. 1306007",
           "package": "7 л",
           "product_no": "1306007"
         }
-      ]
+      ],
+      "official_name_en": "7 Liter Square Pot"
     },
     {
       "product_id": "prd_pl_1305071",
       "slug": "plantlogic-7l-square-cold-storage-1305071",
-      "name": "7 Liter Square Pot for Cold Storage",
+      "name": "Квадратний горщик 7 л для long-cane та холодного зберігання — арт. 1305071",
       "family": "cold_storage",
       "volume_l": 7,
       "product_no": "1305071",
@@ -608,16 +632,17 @@
         {
           "sku_id": "sku_pl_1305071",
           "sku_code": "PL-1305071",
-          "label": "7 Liter Square Pot for Cold Storage — 7 л",
+          "label": "7 л · арт. 1305071",
           "package": "7 л",
           "product_no": "1305071"
         }
-      ]
+      ],
+      "official_name_en": "7 Liter Square Pot for Cold Storage"
     },
     {
       "product_id": "prd_pl_1309008",
       "slug": "plantlogic-8l-square-1309008",
-      "name": "8 Liter Square Pot",
+      "name": "Квадратний горщик 8 л — арт. 1309008",
       "family": "square",
       "volume_l": 8,
       "product_no": "1309008",
@@ -632,16 +657,17 @@
         {
           "sku_id": "sku_pl_1309008",
           "sku_code": "PL-1309008",
-          "label": "8 Liter Square Pot — 8 л",
+          "label": "8 л · арт. 1309008",
           "package": "8 л",
           "product_no": "1309008"
         }
-      ]
+      ],
+      "official_name_en": "8 Liter Square Pot"
     },
     {
       "product_id": "prd_pl_1306010",
       "slug": "plantlogic-10l-square-1306010",
-      "name": "10 Liter Square Pot",
+      "name": "Квадратний горщик 10 л — арт. 1306010",
       "family": "square",
       "volume_l": 10,
       "product_no": "1306010",
@@ -656,16 +682,17 @@
         {
           "sku_id": "sku_pl_1306010",
           "sku_code": "PL-1306010",
-          "label": "10 Liter Square Pot — 10 л",
+          "label": "10 л · арт. 1306010",
           "package": "10 л",
           "product_no": "1306010"
         }
-      ]
+      ],
+      "official_name_en": "10 Liter Square Pot"
     },
     {
       "product_id": "prd_pl_1309015",
       "slug": "plantlogic-15l-square-1309015",
-      "name": "15 Liter Square Pot",
+      "name": "Квадратний горщик 15 л — арт. 1309015",
       "family": "square",
       "volume_l": 15,
       "product_no": "1309015",
@@ -680,16 +707,17 @@
         {
           "sku_id": "sku_pl_1309015",
           "sku_code": "PL-1309015",
-          "label": "15 Liter Square Pot — 15 л",
+          "label": "15 л · арт. 1309015",
           "package": "15 л",
           "product_no": "1309015"
         }
-      ]
+      ],
+      "official_name_en": "15 Liter Square Pot"
     },
     {
       "product_id": "prd_pl_1305005",
       "slug": "plantlogic-5l-drainage-1305005",
-      "name": "5 Liter Drainage Collection Pot",
+      "name": "Горщик 5 л зі збором дренажу — арт. 1305005",
       "family": "drainage_collection",
       "volume_l": 5,
       "product_no": "1305005",
@@ -704,16 +732,17 @@
         {
           "sku_id": "sku_pl_1305005",
           "sku_code": "PL-1305005",
-          "label": "5 Liter Drainage Collection Pot — 5 л",
+          "label": "5 л · арт. 1305005",
           "package": "5 л",
           "product_no": "1305005"
         }
-      ]
+      ],
+      "official_name_en": "5 Liter Drainage Collection Pot"
     },
     {
       "product_id": "prd_pl_1307107",
       "slug": "plantlogic-7l-drainage-1307107",
-      "name": "7 Liter Drainage Collection Pot",
+      "name": "Горщик 7 л зі збором дренажу — арт. 1307107",
       "family": "drainage_collection",
       "volume_l": 7,
       "product_no": "1307107",
@@ -728,16 +757,17 @@
         {
           "sku_id": "sku_pl_1307107",
           "sku_code": "PL-1307107",
-          "label": "7 Liter Drainage Collection Pot — 7 л",
+          "label": "7 л · арт. 1307107",
           "package": "7 л",
           "product_no": "1307107"
         }
-      ]
+      ],
+      "official_name_en": "7 Liter Drainage Collection Pot"
     },
     {
       "product_id": "prd_pl_1307110",
       "slug": "plantlogic-10l-drainage-1307110",
-      "name": "10 Liter Drainage Collection Pot",
+      "name": "Горщик 10 л зі збором дренажу — арт. 1307110",
       "family": "drainage_collection",
       "volume_l": 10,
       "product_no": "1307110",
@@ -752,16 +782,17 @@
         {
           "sku_id": "sku_pl_1307110",
           "sku_code": "PL-1307110",
-          "label": "10 Liter Drainage Collection Pot — 10 л",
+          "label": "10 л · арт. 1307110",
           "package": "10 л",
           "product_no": "1307110"
         }
-      ]
+      ],
+      "official_name_en": "10 Liter Drainage Collection Pot"
     },
     {
       "product_id": "prd_pl_1304015",
       "slug": "plantlogic-15l-round-drainage-1304015",
-      "name": "15 Liter Round Drainage Collection Pot",
+      "name": "Круглий горщик 15 л зі збором дренажу — арт. 1304015",
       "family": "drainage_collection",
       "volume_l": 15,
       "product_no": "1304015",
@@ -775,16 +806,17 @@
         {
           "sku_id": "sku_pl_1304015",
           "sku_code": "PL-1304015",
-          "label": "15 Liter Round Drainage Collection Pot — 15 л",
+          "label": "15 л · арт. 1304015",
           "package": "15 л",
           "product_no": "1304015"
         }
-      ]
+      ],
+      "official_name_en": "15 Liter Round Drainage Collection Pot"
     },
     {
       "product_id": "prd_pl_1305117",
       "slug": "plantlogic-17l-drainage-1305117",
-      "name": "17 Liter Drainage Collection Pot",
+      "name": "Горщик 17 л зі збором дренажу — арт. 1305117",
       "family": "drainage_collection",
       "volume_l": 17,
       "product_no": "1305117",
@@ -799,16 +831,17 @@
         {
           "sku_id": "sku_pl_1305117",
           "sku_code": "PL-1305117",
-          "label": "17 Liter Drainage Collection Pot — 17 л",
+          "label": "17 л · арт. 1305117",
           "package": "17 л",
           "product_no": "1305117"
         }
-      ]
+      ],
+      "official_name_en": "17 Liter Drainage Collection Pot"
     },
     {
       "product_id": "prd_pl_1307133",
       "slug": "plantlogic-30l-drainage-1307133",
-      "name": "30 Liter Drainage Collection Pot",
+      "name": "Горщик 30 л зі збором дренажу — арт. 1307133",
       "family": "drainage_collection",
       "volume_l": 30,
       "product_no": "1307133",
@@ -822,11 +855,12 @@
         {
           "sku_id": "sku_pl_1307133",
           "sku_code": "PL-1307133",
-          "label": "30 Liter Drainage Collection Pot — 30 л",
+          "label": "30 л · арт. 1307133",
           "package": "30 л",
           "product_no": "1307133"
         }
-      ]
+      ],
+      "official_name_en": "30 Liter Drainage Collection Pot"
     }
   ],
   "deferred": [
@@ -838,5 +872,6 @@
       "name": "5 Liter Square Pot with Legs #13060510",
       "reason": "official Plantlogic materials distinguish this from current 5 Liter Square Short Pot #1306051; keep separate until commercial assortment is confirmed"
     }
-  ]
+  ],
+  "naming_policy": "storefront titles and descriptions are Ukrainian; Plantlogic is omitted from title and shown in brand/description; official_name_en is internal source identity only"
 }

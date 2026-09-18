@@ -65,6 +65,40 @@ jobs:
           assert t.card_exclusion(protection,None,{})=='protection'
           assert t.card_exclusion(plantlogic,None,{})=='plantlogic'
 
+          mapped_plantlogic={'existing_product_key':'plantlogic-25l'}
+          runtime_plantlogic={
+            'plantlogic-25l':{
+              'id':'plantlogic-25l',
+              'slug':'plantlogic-25l',
+              'brand':'PlantLogic',
+              'category_id':'containers',
+              'name':'25 L container',
+            }
+          }
+          generic_card={
+            'content':{'brand':'Other','category':'Контейнери','title':'25 L container'},
+            'slug':'other-container'
+          }
+          assert t.card_exclusion(generic_card,mapped_plantlogic,runtime_plantlogic)=='plantlogic'
+
+          stale_mapping={'existing_product_key':'wrong-product'}
+          wrong_runtime={'wrong-product':{'id':'wrong-product','slug':'wrong-product','name':'Other product'}}
+          rp,res=t.exact_runtime_product(card,stale_mapping,wrong_runtime,{})
+          assert rp is None
+          assert res=='existing_mapping_identity_unproven'
+
+          valid_runtime={
+            'master-13-40-13':{
+              'id':'master-13-40-13',
+              'slug':'master-13-40-13',
+              'name':'Master 13-40-13'
+            }
+          }
+          valid_mapping={'existing_product_key':'master-13-40-13'}
+          rp,res=t.exact_runtime_product(card,valid_mapping,valid_runtime,{'master-13-40-13':valid_runtime['master-13-40-13']})
+          assert rp['id']=='master-13-40-13'
+          assert res=='existing_mapping_parent_exact'
+
           src=Path('backend/tools_repair_visible_pcv3_structural_20260918.py').read_text(encoding='utf-8')
           assert 'UPDATE sku_commerce' not in src
           assert 'INSERT INTO sku_commerce' not in src

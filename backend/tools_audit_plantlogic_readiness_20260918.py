@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""Read-only readiness audit for the 33 Plantlogic Product Card v3 drafts.
+"""Read-only readiness audit for the 34 Plantlogic Product Card v3 drafts.
 
 Checks:
 - exact V3 card presence and SKU count from the verified Plantlogic master;

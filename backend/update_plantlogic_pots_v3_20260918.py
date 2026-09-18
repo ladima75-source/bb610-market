@@ -229,6 +229,8 @@ def build_content(row: dict) -> dict:
     ]
     if row.get("dimensions"):
         characteristics.append({"label": "Габарити", "value": str(row["dimensions"])})
+    if row.get("source_url"):
+        characteristics.append({"label": "Офіційне джерело", "value": str(row["source_url"])})
 
     return {
         "title": f"Plantlogic {row['name']} — контейнер для субстратного вирощування",

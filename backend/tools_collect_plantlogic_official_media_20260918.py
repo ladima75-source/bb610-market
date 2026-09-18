@@ -32,8 +32,8 @@ if str(ROOT) not in sys.path:
 
 MANIFEST = ROOT / "data" / "product_content" / "plantlogic_pots_v1_20260918.json"
 REPORT_ROOT = ROOT / "var" / "reports"
-EXPECTED_PRODUCTS = 33
-EXPECTED_SKUS = 36
+EXPECTED_PRODUCTS = 34
+EXPECTED_SKUS = 37
 
 # Exact current official product pages where the Product Master had a generic,
 # brochure or stale URL.
@@ -309,7 +309,7 @@ def main() -> int:
 
     for spec in doc["products"]:
         slug = str(spec["slug"])
-        name = str(spec.get("name") or "")
+        name = str(spec.get("official_name_en") or spec.get("name") or "")
         original_url = str(spec.get("source_url") or "")
         url = SOURCE_OVERRIDES.get(slug, original_url)
         product_numbers = [str(x.get("product_no") or "") for x in (spec.get("skus") or [])]

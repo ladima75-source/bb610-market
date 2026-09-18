@@ -1,0 +1,54 @@
+name: Storefront JS merge audit CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_audit_storefront_js_merge_20260918.py'
+      - 'backend/services/catalog_cms.py'
+      - 'backend/services/product_commerce.py'
+      - 'js/data-source.js'
+      - 'js/app.js'
+      - '.github/workflows/storefront_js_merge_audit_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_audit_storefront_js_merge_20260918.py'
+      - 'backend/services/catalog_cms.py'
+      - 'backend/services/product_commerce.py'
+      - 'js/data-source.js'
+      - 'js/app.js'
+      - '.github/workflows/storefront_js_merge_audit_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: python -m py_compile backend/tools_audit_storefront_js_merge_20260918.py
+
+      - name: Validate displaySku contract
+        run: |
+          python - <<'PY'
+          from backend import tools_audit_storefront_js_merge_20260918 as a
+
+          p={'id':'p','default_sku_id':'s1'}
+          skus=[
+              {'id':'s1','product_id':'p','price':None,'commercial_status':'paused','offer_status':'draft'},
+              {'id':'s2','product_id':'p','price':123.0,'commercial_status':'active','offer_status':'active'},
+          ]
+          assert a.display_sku(p,skus)['id']=='s2'
+
+          p={'id':'p','default_sku_id':'s1'}
+          skus=[
+              {'id':'s1','product_id':'p','price':100.0,'commercial_status':'paused','offer_status':'draft'},
+              {'id':'s2','product_id':'p','price':123.0,'commercial_status':'active','offer_status':'active'},
+          ]
+          assert a.display_sku(p,skus)['id']=='s1'
+
+          print('STOREFRONT JS MERGE AUDIT CONTRACT: PASS')
+          PY

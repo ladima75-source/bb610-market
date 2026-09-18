@@ -99,7 +99,7 @@ const BB610 = (() => {
         '<h2>Запросити ціну</h2>'+
         '<p class="price-request-product" data-pr-product></p>'+
         '<p class="price-request-note">Ціна залежить від моделі, кількості та умов постачання. Надішліть запит — ми уточнимо актуальні умови.</p>'+
-        '<label>Кількість<input name="quantity" type="number" min="1" max="100000" value="1" required></label>'+
+        '<label>Кількість, шт.<input name="quantity" type="number" min="1" max="100000" value="1" required></label>'+
         '<label>Ваше ім’я<input name="customer_name" type="text" minlength="2" maxlength="160" autocomplete="name" required></label>'+
         '<label>Телефон / Telegram / e-mail<input name="contact" type="text" minlength="3" maxlength="240" autocomplete="tel" required></label>'+
         '<label>Коментар<textarea name="comment" maxlength="2000" rows="3" placeholder="Наприклад: 610 шт., доставка у Київ"></textarea></label>'+

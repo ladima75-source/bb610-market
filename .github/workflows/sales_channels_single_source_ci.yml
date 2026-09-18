@@ -108,15 +108,24 @@ jobs:
                   'products': [
                       {'id':'p-visible','category_id':'nutrition'},
                       {'id':'p-protection','category_id':'protection'},
+                      {'id':'p-localized','category':'Захист рослин'},
+                      {'id':'control-dmp','category_id':'other'},
+                      {'id':'switch-625-wg','category_id':'other','slug':'switch-62-5-wg'},
                   ],
                   'skus': [
                       {'id':'SKU-V','product_id':'p-visible'},
                       {'id':'SKU-P','product_id':'p-protection'},
+                      {'id':'SKU-L','product_id':'p-localized'},
+                      {'id':'SKU-C','product_id':'control-dmp'},
+                      {'id':'SKU-S','product_id':'switch-625-wg'},
                   ],
               }
               pm.commerce_map = lambda: {
                   'SKU-V': {'enabled':True},
                   'SKU-P': {'enabled':True},
+                  'SKU-L': {'enabled':True},
+                  'SKU-C': {'enabled':True},
+                  'SKU-S': {'enabled':True},
               }
               snap = pm.snapshot()
               assert [x['id'] for x in snap['products']] == ['p-visible']

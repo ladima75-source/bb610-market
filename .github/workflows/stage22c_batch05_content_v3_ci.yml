@@ -1,0 +1,78 @@
+name: Stage22c batch05 content v3 CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_apply_product_content_batch_runtime.py'
+      - 'backend/update_stage22c_batch05_content_v3_20260918.py'
+      - 'data/content_batches/stage22c_batch05_rows49_60.json'
+      - 'data/product_content/stage22c_batch05_remaining_20260918.json'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/stage22c_batch05_content_v3_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_apply_product_content_batch_runtime.py'
+      - 'backend/update_stage22c_batch05_content_v3_20260918.py'
+      - 'data/content_batches/stage22c_batch05_rows49_60.json'
+      - 'data/product_content/stage22c_batch05_remaining_20260918.json'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/stage22c_batch05_content_v3_ci.yml'
+
+jobs:
+  content-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: |
+          python -m py_compile backend/tools_apply_product_content_batch_runtime.py
+          python -m py_compile backend/update_stage22c_batch05_content_v3_20260918.py
+
+      - name: Direct execution self-test
+        run: python backend/update_stage22c_batch05_content_v3_20260918.py --self-test
+
+      - name: Validate selected rows and protected content contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from backend import tools_apply_product_content_batch_runtime as engine
+          from backend import update_stage22c_batch03_content_v3_20260918 as content_base
+          from backend.services import product_cards_v3 as pcv3
+
+          manifest = Path('data/product_content/stage22c_batch05_remaining_20260918.json')
+          source = engine.load_batch(manifest)
+          rows = source['rows']
+
+          assert [int(x['source_row']) for x in rows] == [49,50,51,52,54,55,56,57,58,59,60]
+          assert len(rows) == 11
+          assert 53 not in [int(x['source_row']) for x in rows]
+
+          for row in rows:
+              managed = content_base.build_content(row)
+              assert set(managed) == set(engine.MANAGED_FIELDS)
+              card = pcv3.empty_card(str(row['name']), f"ci-{row['source_row']}")
+              card['content']['brand'] = str(row.get('brand') or '')
+              card['content']['category'] = str(row.get('category') or 'nutrition')
+              before = json.loads(json.dumps(card))
+              after = content_base.apply_content(card, row)
+              pcv3.validate(after)
+
+              assert after['product_id'] == before['product_id']
+              assert after['slug'] == before['slug']
+              assert after['enabled'] == before['enabled']
+              assert after['sku_media'] == before['sku_media']
+              assert after['content']['brand'] == before['content']['brand']
+              assert after['content']['category'] == before['content']['category']
+              for field in ('title','short_description','description','application','composition'):
+                  assert after['content'][field]
+              assert after['content']['seo']['title']
+              assert after['content']['seo']['description']
+
+          print('STAGE22C BATCH05 SELECTED CONTENT CONTRACT: 11/11 PASS')
+          PY

@@ -130,7 +130,7 @@ jobs:
           assert "priceRequestStatuses" in dash_js
 
           assert '/api/v1/admin/attention-summary' in api
-          assert "data.navFile=file" in nav
+          assert "a.dataset.navFile=file" in nav
           assert "applyCount('orders-center.html'" in nav
           assert "applyCount('price-requests.html'" in nav
           assert "bb19b8-nav-count" in nav_css

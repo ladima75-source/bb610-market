@@ -260,9 +260,16 @@ def _integrations():
     env=os.environ
     def present(*names):
         return any(bool(env.get(n)) for n in names)
+    try:
+        from .telegram_notifications import telegram_status
+        telegram_configured=bool(telegram_status().get('configured'))
+    except Exception:
+        # Keep Overview available even if an integration-specific status probe
+        # fails; legacy env detection remains a safe fallback.
+        telegram_configured=present('TELEGRAM_BOT_TOKEN','BB610_TELEGRAM_BOT_TOKEN')
     return {
       'nova_poshta':{'configured':present('NOVA_POSHTA_API_KEY','NP_API_KEY'),'label':'Нова пошта'},
-      'telegram':{'configured':present('TELEGRAM_BOT_TOKEN','BB610_TELEGRAM_BOT_TOKEN'),'label':'Telegram'},
+      'telegram':{'configured':telegram_configured,'label':'Telegram'},
       'google_feed':{'configured':True,'label':'Google Merchant feed','path':'/api/v1/catalog/feeds/google-merchant.csv'},
       'meta_feed':{'configured':True,'label':'Meta Catalog feed','path':'/api/v1/catalog/feeds/meta-catalog.csv'},
       'online_payment':{'configured':present('MONOBANK_TOKEN','MONO_TOKEN','WAYFORPAY_MERCHANT_ACCOUNT'),'label':'Онлайн-оплата'},

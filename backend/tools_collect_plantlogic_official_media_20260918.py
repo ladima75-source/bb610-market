@@ -54,8 +54,12 @@ GENERIC_IMAGE_MARKERS = (
     "plantlogic-8-liter-square-1309008-side-1", "lysimeter-clipped",
 )
 STOP_TOKENS = {
-    "liter", "litre", "with", "round", "square", "plantlogic", "pot",
-    "collection", "drainage", "short", "legs", "new", "for", "the",
+    "liter", "litre", "with", "plantlogic", "pot", "for", "the",
+}
+SHAPE_TOKENS = {"round", "square"}
+FEATURE_TOKENS = {
+    "zephyr", "drainage", "parallel", "cold", "storage", "short", "wide",
+    "groove", "grooves", "rib", "side", "holes", "new",
 }
 
 
@@ -127,6 +131,34 @@ def _identity_tokens(name: str) -> set[str]:
     return tokens
 
 
+def _volume_markers(name: str) -> set[str]:
+    raw = str(name or "").lower().replace(",", ".")
+    out: set[str] = set()
+    for m in re.finditer(r"(?<![0-9])(\d+(?:\.\d+)?)\s*(?:liter|litre|l)\b", raw):
+        value = m.group(1)
+        out.add(value + "l")
+        out.add(value.replace(".", "-") + "-liter")
+        out.add(value + " liter")
+    return out
+
+
+def _contains_volume_marker(haystack: str, markers: set[str]) -> bool:
+    h = haystack.lower().replace("_", "-")
+    h_space = re.sub(r"[^a-z0-9.]+", " ", h)
+    for marker in markers:
+        if marker.endswith("l") and marker[:-1].replace(".", "").isdigit():
+            value = marker[:-1]
+            patterns = (
+                rf"(?<![0-9]){re.escape(value)}\s*l(?![a-z0-9])",
+                rf"(?<![0-9]){re.escape(value)}[-\s]*liter(?![a-z0-9])",
+            )
+            if any(re.search(p, h, flags=re.I) for p in patterns):
+                return True
+        elif marker.replace("-", " ") in h_space:
+            return True
+    return False
+
+
 def _candidate_score(
     url: str,
     source: str,
@@ -154,9 +186,27 @@ def _candidate_score(
 
     tokens = _identity_tokens(name)
     matched_tokens = sorted(x for x in tokens if x in haystack)
-    if matched_tokens:
-        score += min(80, len(matched_tokens) * 20)
-        reasons.append("name_tokens=" + ",".join(matched_tokens))
+
+    volume_match = _contains_volume_marker(haystack, _volume_markers(name))
+    shape_matches = sorted(x for x in (tokens & SHAPE_TOKENS) if x in haystack)
+    feature_matches = sorted(x for x in (tokens & FEATURE_TOKENS) if x in haystack)
+    other_matches = sorted(
+        x for x in matched_tokens
+        if x not in SHAPE_TOKENS and x not in FEATURE_TOKENS
+    )
+
+    if volume_match:
+        score += 60
+        reasons.append("volume_match")
+    if shape_matches:
+        score += min(30, len(shape_matches) * 20)
+        reasons.append("shape=" + ",".join(shape_matches))
+    if feature_matches:
+        score += min(75, len(feature_matches) * 25)
+        reasons.append("features=" + ",".join(feature_matches))
+    if other_matches:
+        score += min(60, len(other_matches) * 20)
+        reasons.append("name_tokens=" + ",".join(other_matches))
 
     lowered = url.lower()
     if any(marker in lowered for marker in GENERIC_IMAGE_MARKERS):
@@ -172,7 +222,13 @@ def _candidate_score(
         score = min(score, 20)
         reasons.append("generic_twitter_cap")
 
-    identity_match = bool(exact or matched_tokens)
+    identity_match = bool(
+        exact
+        or "zephyr" in feature_matches
+        or (volume_match and bool(shape_matches or feature_matches))
+        or len(feature_matches) >= 2
+        or len(other_matches) >= 2
+    )
     return score, reasons, identity_match
 
 

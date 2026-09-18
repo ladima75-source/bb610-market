@@ -28,7 +28,8 @@ from backend.services import product_cards_v3 as pcv3
 MANIFEST = ROOT / "data" / "product_content" / "plantlogic_pots_v1_20260918.json"
 BACKUP_ROOT = ROOT / "var" / "content_backups"
 REPORT_ROOT = ROOT / "var" / "reports"
-EXPECTED_PRODUCTS = 32
+EXPECTED_PRODUCTS = 34
+EXPECTED_SKUS = 37
 
 
 def stamp() -> str:
@@ -81,6 +82,10 @@ def load_manifest() -> dict:
                 raise RuntimeError(f"duplicate Plantlogic SKU identity: {sid} / {code}")
             sku_ids.add(sid)
             sku_codes.add(code)
+
+    total_skus = sum(len(x.get("skus") or []) for x in products if isinstance(x, dict))
+    if total_skus != EXPECTED_SKUS:
+        raise RuntimeError(f"expected {EXPECTED_SKUS} Plantlogic SKU; got {total_skus}")
 
     return doc
 
@@ -359,7 +364,7 @@ def apply_plan(plan: dict) -> dict:
         if commerce_after != commerce_before:
             raise RuntimeError("commerce_map changed during Plantlogic seed")
 
-        # Post-verify all 32 cards. Existing managed cards are left untouched.
+        # Post-verify all managed Plantlogic cards. Existing managed cards are left untouched.
         for target in plan["targets"]:
             live = pcv3.get(target["product_id"])
             if not isinstance(live, dict):

@@ -1,0 +1,61 @@
+name: Public storefront price gap audit v2 CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_audit_public_price_gaps_v2_20260918.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/public_price_gap_v2_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_audit_public_price_gaps_v2_20260918.py'
+      - 'data/catalog_sources/bb610_market_prices_2026-09-16.json'
+      - '.github/workflows/public_price_gap_v2_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: python -m py_compile backend/tools_audit_public_price_gaps_v2_20260918.py
+
+      - name: Validate matcher contract
+        run: |
+          python - <<'PY'
+          from backend import tools_audit_public_price_gaps_v2_20260918 as a
+
+          cases = [
+              (
+                  'Pekacid (Пекацид) NPK 0-60-20, фосфорно-калійне добриво',
+                  'Pekacid (Пекацид), NPK 0-60-20, мінеральне добриво'
+              ),
+              (
+                  'Osmocote Landscape 16-9-12, добриво контрольованої дії 3–4 міс.',
+                  'Осмокот Ландшафт 16-9-12 (3-4М)'
+              ),
+              (
+                  'Osmocote Quick Start 22-5-6, добриво контрольованої дії 4–5 міс.',
+                  'Осмокот Швидкий Старт 22-5-6 (4-5М)'
+              ),
+          ]
+          for p,s in cases:
+              score,reasons=a.score_name(p,s)
+              assert score>=700,(p,s,score,reasons)
+
+          score,_=a.score_name(
+              'Osmocote Quick Start 22-5-6',
+              'Осмокот Ландшафт 16-9-12 (3-4М)'
+          )
+          assert score<0
+
+          assert a.effective_price({'price':100,'sale_price':None})==100
+          assert a.effective_price({'price':100,'sale_price':80})==80
+
+          print('PUBLIC PRICE GAP AUDIT V2 CONTRACT: PASS')
+          PY

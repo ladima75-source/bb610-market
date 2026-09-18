@@ -12,6 +12,7 @@ const BB610 = (() => {
   const productSkus=id=>BB610_DATA_SOURCE.skusForProduct(id)||[];
   const hasPrice=s=>!!s&&s.price!==null&&s.price!==undefined&&Number.isFinite(Number(s.price));
   const isCommercialActive=s=>!!s&&(s.commercial_status==='active'||s.offer_status==='active');
+  const isPriceRequestSku=s=>!!s&&(s.price_request===true||s.commercial_status==='request-price'||s.offer_status==='request-price');
   const canBuySku=s=>!!s&&hasPrice(s)&&isCommercialActive(s)&&s.availability!=='out_of_stock';
   function displaySku(productId){
     const d=defaultSku(productId);
@@ -33,7 +34,7 @@ const BB610 = (() => {
     if(!label||/уточню|невідом|unknown|bb610/i.test(label))return '';
     return label;
   }
-  const view=p=>{const s=displaySku(p.id);return {...p,name:p.name,officialName:p.official_name,category:p.category_id,categoryLabel:C().categories.find(c=>c.id===p.category_id)?.short_name||p.category_id,manufacturer:p.manufacturer,country:p.country,npk:p.npk,activeIngredient:p.active_ingredient,composition:p.composition||[],cultures:p.cultures||[],purposes:p.purposes||[],manufacturerUse:p.manufacturer_use,application:p.application,rate:p.rate,restrictions:p.restrictions,target:p.target,waitingPeriod:p.waiting_period,hazardClass:p.hazard_class,registration:p.registration,factoryPacks:p.factory_packs||[],documents:p.documents||[],instruction:(p.documents&&p.documents[0]?.title)||'Офіційне джерело виробника',source:p.source?.title||'',sourceUrl:p.source?.url||'',verifiedAt:p.verification?.verifiedAt||'',verified:!!p.verification,image:s?.image||p.image?.local||'',gallery:p.gallery||[],sku:s?.id||null,pack:s?.variant||'',price:s?.price??null,currency:s?.currency||'UAH',unit:s?.volume_weight?.unit||'шт',unitQty:s?.volume_weight?.value||1,stockStatus:s?.availability||'unknown',stockLabel:publicStockLabel(s),shipping:s?.shipping||[],supplier:s?.supplier||'',importer:s?.importer||'',packer:s?.packer||'',sizes:productSkus(p.id).map(x=>({id:x.id,label:x.variant,price:x.price,qty:x.volume_weight?.value,unit:x.volume_weight?.unit,status:x.offer_status,commercialStatus:x.commercial_status||'not-configured',stockLabel:publicStockLabel(x),availability:x.availability||'unknown',packSourceStatus:x.pack_source_status||'unknown'}))}};
+  const view=p=>{const s=displaySku(p.id);return {...p,name:p.name,officialName:p.official_name,category:p.category_id,categoryLabel:C().categories.find(c=>c.id===p.category_id)?.short_name||p.category_id,manufacturer:p.manufacturer,country:p.country,npk:p.npk,activeIngredient:p.active_ingredient,composition:p.composition||[],cultures:p.cultures||[],purposes:p.purposes||[],manufacturerUse:p.manufacturer_use,application:p.application,rate:p.rate,restrictions:p.restrictions,target:p.target,waitingPeriod:p.waiting_period,hazardClass:p.hazard_class,registration:p.registration,factoryPacks:p.factory_packs||[],documents:p.documents||[],instruction:(p.documents&&p.documents[0]?.title)||'Офіційне джерело виробника',source:p.source?.title||'',sourceUrl:p.source?.url||'',verifiedAt:p.verification?.verifiedAt||'',verified:!!p.verification,image:s?.image||p.image?.local||'',gallery:p.gallery||[],sku:s?.id||null,pack:s?.variant||'',price:s?.price??null,currency:s?.currency||'UAH',unit:s?.volume_weight?.unit||'шт',unitQty:s?.volume_weight?.value||1,stockStatus:s?.availability||'unknown',stockLabel:publicStockLabel(s),shipping:s?.shipping||[],supplier:s?.supplier||'',importer:s?.importer||'',packer:s?.packer||'',sizes:productSkus(p.id).map(x=>({id:x.id,label:x.variant,price:x.price,qty:x.volume_weight?.value,unit:x.volume_weight?.unit,status:x.offer_status,commercialStatus:x.commercial_status||'not-configured',priceRequest:isPriceRequestSku(x),marketTest:!!x.market_test,stockLabel:publicStockLabel(x),availability:x.availability||'unknown',packSourceStatus:x.pack_source_status||'unknown'}))}};
   const products=()=>rawProducts().map(view);
   const byId=id=>{const p=BB610_DATA_SOURCE.product(id);if(p)return categoryHidden(p.category_id||p.category)?null:view(p);const s=sku(id);if(!s)return null;const owner=BB610_DATA_SOURCE.product(s.product_id);return owner&&!categoryHidden(owner.category_id||owner.category)?view(owner):null};
   function commerceItem(s,quantity=1){if(!s)return null;const p=BB610_DATA_SOURCE.product(s.product_id);const item={item_id:s.id,item_name:p.name,item_brand:p.brand,item_category:C().categories.find(c=>c.id===p.category_id)?.name||p.category_id,item_variant:s.variant,quantity:Number(quantity)||1,currency:s.currency||'UAH'};if(s.price!==null&&s.price!==undefined)item.price=Number(s.price);return item}
@@ -50,8 +51,9 @@ const BB610 = (() => {
   function cardV2(p){
     const fav=get(LS.fav,[]).includes(p.id),cmp=get(LS.compare,[]).includes(p.id),s=displaySku(p.id);
     const keyMeta=s?.variant||(p.npk&&p.npk!=='—'?`NPK ${p.npk}`:(p.form||p.categoryLabel||''));
-    const unit=unitPrice(p);
-    const stock=p.stockLabel||'';
+    const priceRequest=isPriceRequestSku(s);
+    const unit=priceRequest?'':unitPrice(p);
+    const stock=priceRequest?'Під замовлення':(p.stockLabel||'');
     const buyEnabled=canBuySku(s);
     return `<article class="product-card product-card-v2" data-product-id="${p.id}">
       <a class="product-media" href="${productUrl(p)}" data-select-product="${p.id}"><img loading="lazy" src="${p.image}" alt="${p.name}"></a>
@@ -63,9 +65,9 @@ const BB610 = (() => {
         </div>
         <div class="product-card-commerce">
           <div class="stock">${stock}</div>
-          <div class="price-row"><div><div class="price">${money(p.price)}</div>${unit?`<div class="unit-price">${unit}</div>`:''}</div></div>
+          <div class="price-row"><div><div class="price">${priceRequest?'Ціна за запитом':money(p.price)}</div>${unit?`<div class="unit-price">${unit}</div>`:''}</div></div>
           <div class="card-actions">
-            <button class="btn buy-btn" data-add="${s?.id||p.id}" ${buyEnabled?'':'disabled'}>КУПИТИ</button>
+            ${priceRequest?`<button class="btn buy-btn price-request-btn" data-request-price="${s?.id||''}">ЗАПРОСИТИ ЦІНУ</button>`:`<button class="btn buy-btn" data-add="${s?.id||p.id}" ${buyEnabled?'':'disabled'}>КУПИТИ</button>`}
             <button class="btn ghost fav-toggle" data-fav="${p.id}" aria-label="Додати в обране">${fav?'♥':'♡'}</button>
             <button class="btn ghost compare-toggle" data-compare="${p.id}" aria-label="Додати до порівняння">${cmp?'✓':'⇄'}</button>
           </div>
@@ -74,7 +76,7 @@ const BB610 = (() => {
     </article>`;
   }
   const card=cardV2;
-  function bindCards(scope=document){scope.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addCart(b.dataset.add));scope.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const on=toggleFav(b.dataset.fav);b.textContent=on?'♥':'♡'});scope.querySelectorAll('[data-compare]').forEach(b=>b.onclick=()=>{const on=toggleCompare(b.dataset.compare);if(on!==false)b.textContent=on?'✓':'⇄'});scope.querySelectorAll('[data-select-product]').forEach(a=>a.addEventListener('click',()=>trackSelect(a.dataset.selectProduct,a.closest('#home-products')?'home-popular':'catalog',a.closest('#home-products')?'Популярні товари':'Каталог')))}
+  function bindCards(scope=document){scope.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addCart(b.dataset.add));scope.querySelectorAll('[data-request-price]').forEach(b=>b.onclick=()=>openPriceRequest(b.dataset.requestPrice));scope.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const on=toggleFav(b.dataset.fav);b.textContent=on?'♥':'♡'});scope.querySelectorAll('[data-compare]').forEach(b=>b.onclick=()=>{const on=toggleCompare(b.dataset.compare);if(on!==false)b.textContent=on?'✓':'⇄'});scope.querySelectorAll('[data-select-product]').forEach(a=>a.addEventListener('click',()=>trackSelect(a.dataset.selectProduct,a.closest('#home-products')?'home-popular':'catalog',a.closest('#home-products')?'Популярні товари':'Каталог')))}
   function updateCompareBar(){const arr=get(LS.compare,[]),bar=document.querySelector('.compare-bar');if(!bar)return;bar.classList.toggle('show',arr.length>0);bar.querySelector('[data-compare-bar-count]').textContent=arr.length}
   function searchSubmit(form){const q=form.querySelector('input').value.trim();pushEvent('search',{search_term:q});location.href='catalog.html?q='+encodeURIComponent(q);return false}
   function renderCategoryNav(){document.querySelectorAll('.nav .container').forEach(nav=>{nav.querySelectorAll('a[href*="#verified"]').forEach(a=>a.remove());const catLinks=[...nav.querySelectorAll('a[href*="category="]')];if(!catLinks.length)return;const first=catLinks[0];const visibleCategories=C().categories.filter(c=>c.enabled&&!categoryHidden(c.id)).sort((a,b)=>(a.order||0)-(b.order||0));visibleCategories.forEach((c,i)=>{let a=catLinks[i];if(!a){a=document.createElement('a');first.parentNode.insertBefore(a,catLinks[catLinks.length-1]?.nextSibling||null)}a.href='catalog.html?category='+encodeURIComponent(c.id);a.textContent=c.short_name||c.name});catLinks.slice(visibleCategories.length).forEach(a=>a.remove())})}

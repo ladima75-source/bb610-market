@@ -23,6 +23,7 @@ jobs:
     timeout-minutes: 10
     env:
       BB610_DB_PATH: /tmp/bb610-admin-attention.sqlite3
+      BB610_SECRETS_DIR: /tmp/bb610-admin-attention-secrets
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -40,6 +41,7 @@ jobs:
       - name: Backend attention metrics
         run: |
           rm -f "$BB610_DB_PATH" var/test-admin-attention-orders.db
+          rm -rf "$BB610_SECRETS_DIR"
           mkdir -p var
           python - <<'PY'
           import sqlite3
@@ -105,7 +107,13 @@ jobs:
           assert dashboard['price_requests']['unprocessed']==2
           assert dashboard['orders']['unprocessed']==2
 
+          from backend.services.integration_secrets import set_values
+          set_values({'telegram.bot_token':'123456789:TESTTOKEN'})
+          integrations=d._integrations()
+          assert integrations['telegram']['configured'] is True, integrations
+
           print('ADMIN ATTENTION BACKEND: PASS')
+          print('ADMIN OVERVIEW TELEGRAM STATUS: PASS')
           PY
 
       - name: Admin UI contract

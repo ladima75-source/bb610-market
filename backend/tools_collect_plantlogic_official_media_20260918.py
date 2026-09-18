@@ -64,6 +64,26 @@ FEATURE_TOKENS = {
     "zephyr", "drainage", "parallel", "cold", "storage", "short", "wide",
     "groove", "grooves", "rib", "side", "holes", "new",
 }
+TOKEN_ALIASES = {
+    "round": {"round", "redonda", "redondo"},
+    "square": {"square", "cuadrada", "cuadrado"},
+    "groove": {"groove", "ranura"},
+    "grooves": {"grooves", "ranuras"},
+    "drainage": {"drainage", "drenaje"},
+    "parallel": {"parallel", "paralelas", "paralelos"},
+    "wide": {"wide", "anchas", "anchos"},
+    "short": {"short", "cortas", "cortos"},
+    "side": {"side", "lateral", "laterales"},
+    "holes": {"holes", "agujeros", "orificios"},
+    "storage": {"storage", "almacenamiento"},
+    "cold": {"cold", "frio", "fría", "fria"},
+    "new": {"new", "nuevo", "nueva"},
+}
+
+
+def _token_present(token: str, haystack: str) -> bool:
+    aliases = TOKEN_ALIASES.get(token, {token})
+    return any(alias in haystack for alias in aliases)
 
 
 def stamp() -> str:
@@ -167,7 +187,7 @@ def _identity_tokens(name: str) -> set[str]:
 def _volume_markers(name: str) -> set[str]:
     raw = str(name or "").lower().replace(",", ".")
     out: set[str] = set()
-    for m in re.finditer(r"(?<![0-9])(\d+(?:\.\d+)?)\s*(?:liter|litre|l)\b", raw):
+    for m in re.finditer(r"(?<![0-9])(\d+(?:\.\d+)?)\s*(?:liter|litre|litro|litros|l)\b", raw):
         value = m.group(1)
         out.add(value + "l")
         out.add(value.replace(".", "-") + "-liter")
@@ -183,7 +203,7 @@ def _contains_volume_marker(haystack: str, markers: set[str]) -> bool:
             value = marker[:-1]
             patterns = (
                 rf"(?<![0-9]){re.escape(value)}\s*l(?![a-z0-9])",
-                rf"(?<![0-9]){re.escape(value)}[-\s]*liter(?![a-z0-9])",
+                rf"(?<![0-9]){re.escape(value)}[-\s]*(?:liter|litre|litro|litros)(?![a-z0-9])",
             )
             if any(re.search(p, h, flags=re.I) for p in patterns):
                 return True
@@ -218,11 +238,17 @@ def _candidate_score(
         reasons.append("product_no=" + ",".join(exact))
 
     tokens = _identity_tokens(name)
-    matched_tokens = sorted(x for x in tokens if x in haystack)
+    matched_tokens = sorted(x for x in tokens if _token_present(x, haystack))
 
     volume_match = _contains_volume_marker(haystack, _volume_markers(name))
-    shape_matches = sorted(x for x in (tokens & SHAPE_TOKENS) if x in haystack)
-    feature_matches = sorted(x for x in (tokens & FEATURE_TOKENS) if x in haystack)
+    shape_matches = sorted(
+        x for x in (tokens & SHAPE_TOKENS)
+        if _token_present(x, haystack)
+    )
+    feature_matches = sorted(
+        x for x in (tokens & FEATURE_TOKENS)
+        if _token_present(x, haystack)
+    )
     other_matches = sorted(
         x for x in matched_tokens
         if x not in SHAPE_TOKENS and x not in FEATURE_TOKENS

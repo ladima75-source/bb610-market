@@ -1,0 +1,63 @@
+name: Plantlogic pots Product Card v3 CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/product_content/plantlogic_pots_v1_20260918.json'
+      - 'backend/update_plantlogic_pots_v3_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/plantlogic_pots_v3_ci.yml'
+  pull_request:
+    paths:
+      - 'data/product_content/plantlogic_pots_v1_20260918.json'
+      - 'backend/update_plantlogic_pots_v3_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/plantlogic_pots_v3_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: python -m py_compile backend/update_plantlogic_pots_v3_20260918.py
+
+      - name: Validate manifest and all generated cards
+        run: |
+          python - <<'PY'
+          from backend import update_plantlogic_pots_v3_20260918 as u
+          from backend.services import product_cards_v3 as pcv3
+
+          doc = u.load_manifest()
+          assert len(doc['products']) == 32
+          assert len(doc.get('deferred') or []) == 2
+
+          cards = [u.build_card(row) for row in doc['products']]
+          assert len(cards) == 32
+          assert len({x['product_id'] for x in cards}) == 32
+          assert len({x['slug'] for x in cards}) == 32
+          assert all(x['enabled'] is False for x in cards)
+          assert all(x['content']['brand'] == 'Plantlogic' for x in cards)
+          assert all(x['content']['category'] == 'Контейнери' for x in cards)
+          assert all((x['sku_media']['media'] == []) for x in cards)
+
+          sku_ids = []
+          for card in cards:
+              pcv3.validate(card)
+              sku_ids.extend(x['sku_id'] for x in card['sku_media']['skus'])
+          assert len(sku_ids) == len(set(sku_ids))
+          assert len(sku_ids) == 34  # Zephyr V2 has 3 sizes; other 31 cards have one SKU.
+
+          by_slug = {x['slug']: x for x in cards}
+          assert len(by_slug['plantlogic-zephyr-v2']['sku_media']['skus']) == 3
+          assert by_slug['plantlogic-25l-round-new-1308125']['product_id'] == 'prd_pl_1308125'
+          assert by_slug['plantlogic-40l-round-u-grooves-1308041']['product_id'] == 'prd_pl_1308041'
+
+          print('PLANTLOGIC PRODUCT CARD V3 MASTER: 32/32 PASS')
+          print('PLANTLOGIC SKU STRUCTURE: 34/34 PASS')
+          PY

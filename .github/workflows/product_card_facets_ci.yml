@@ -7,6 +7,7 @@ on:
       - '.github/workflows/product_card_facets_ci.yml'
       - 'backend/services/product_cards_v3_facets.py'
       - 'backend/services/product_cards_v3_runtime.py'
+      - 'backend/services/product_cards_v3_master.py'
       - 'backend/tools_normalize_nonpot_product_cards_20260918.py'
       - 'backend/services/product_cards_v3_catalog_import_facets.py'
       - 'backend/services/catalog_cms.py'
@@ -37,7 +38,7 @@ jobs:
         run: python -m pip install -r backend/requirements.txt
       - name: Syntax checks
         run: |
-          python -m py_compile backend/services/product_cards_v3_facets.py backend/services/product_cards_v3_runtime.py backend/tools_normalize_nonpot_product_cards_20260918.py backend/services/product_cards_v3_catalog_import_facets.py backend/services/catalog_cms.py backend/catalog_import_api.py backend/update_brexil_zn_application.py
+          python -m py_compile backend/services/product_cards_v3_facets.py backend/services/product_cards_v3_runtime.py backend/services/product_cards_v3_master.py backend/tools_normalize_nonpot_product_cards_20260918.py backend/services/product_cards_v3_catalog_import_facets.py backend/services/catalog_cms.py backend/catalog_import_api.py backend/update_brexil_zn_application.py
           node --check assets/js/product-card-v2.js
           node --check assets/js/product-card-v3-enhancements.js
       - name: Filter fields round-trip smoke
@@ -72,6 +73,49 @@ jobs:
           assert got['NPK'] == '13-40-13'
           assert got['Діюча речовина'] == 'Цинк (Zn) 10%'
           assert f.template_xlsx()
+          PY
+      - name: Verified MASTER identity matcher smoke
+        run: |
+          python - <<'PY'
+          from backend.services import product_cards_v3_master as m
+
+          assert 'KENDAL ROOT' in m.identity_variants(
+              'Kendal Root (Кендал Рут), біостимулятор-антистрес для кореневої системи'
+          )
+          assert 'MASTER 13 40 13' in m.identity_variants(
+              'MASTER 13-40-13 — водорозчинне добриво'
+          )
+
+          fake = {'name':'Kendal Root'}
+          old_index = m.master_index
+          old_organic = m.organic_identity_index
+          try:
+              m.master_index = lambda: {
+                  key:(fake,) for key in m.identity_variants('Kendal Root')
+              }
+              m.organic_identity_index = lambda: {}
+              got = m.find_master_for_card({
+                  'slug':'kendal-root',
+                  'content':{'title':'Kendal Root (Кендал Рут), біостимулятор-антистрес'}
+              })
+              assert got and got['name'] == 'Kendal Root'
+              assert got['_match_method'] == 'direct_master_identity'
+
+              # Ambiguous deterministic variants must never auto-resolve.
+              fake2 = {'name':'Kendal Root Plus'}
+              m.master_index = lambda: {
+                  'KENDAL ROOT':(fake,fake2),
+                  'KENDAL ROOT PLUS':(fake2,),
+              }
+              got = m.find_master_for_card({
+                  'slug':'unknown',
+                  'content':{'title':'Kendal Root (Кендал Рут), опис'}
+              })
+              assert got is None
+          finally:
+              m.master_index = old_index
+              m.organic_identity_index = old_organic
+          print('VERIFIED MASTER IDENTITY MATCHER: PASS')
           PY
       - name: Catalog overlay smoke
         run: |

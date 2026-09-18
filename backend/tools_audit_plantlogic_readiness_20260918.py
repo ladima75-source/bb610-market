@@ -181,6 +181,16 @@ def main() -> int:
             "skus": skus,
         })
 
+    cards_enabled = sum(1 for x in rows if x["enabled"])
+    structure_ready = bool(
+        not missing
+        and len(rows) == EXPECTED_PRODUCTS
+        and total_skus == EXPECTED_SKUS
+    )
+    media_ready_all = media_ready == EXPECTED_SKUS
+    draft_state_safe = cards_enabled == 0
+    draft_ready = bool(structure_ready and media_ready_all and draft_state_safe)
+
     report = {
         "runtime_cards_expected": EXPECTED_PRODUCTS,
         "runtime_cards_found": len(rows),
@@ -189,10 +199,15 @@ def main() -> int:
         "sku_found": total_skus,
         "media_ready_sku": media_ready,
         "commerce_bound_sku": commerce_bound,
-        "cards_enabled": sum(1 for x in rows if x["enabled"]),
+        "commerce_pending_sku": max(0, EXPECTED_SKUS - commerce_bound),
+        "cards_enabled": cards_enabled,
         "cards_with_any_media": sum(1 for x in rows if x["media_ready_sku"] > 0),
         "cards_with_any_commerce": sum(1 for x in rows if x["commerce_bound_sku"] > 0),
         "known_legacy_cards": sum(1 for x in rows if x["legacy_exists"]),
+        "structure_ready": structure_ready,
+        "media_ready_all": media_ready_all,
+        "draft_state_safe": draft_state_safe,
+        "draft_ready": draft_ready,
         "products": rows,
     }
 
@@ -210,6 +225,10 @@ def main() -> int:
     print(f"CARDS WITH ANY MEDIA: {report['cards_with_any_media']}/{EXPECTED_PRODUCTS}")
     print(f"CARDS WITH ANY COMMERCE: {report['cards_with_any_commerce']}/{EXPECTED_PRODUCTS}")
     print(f"KNOWN LEGACY CARDS FOUND: {report['known_legacy_cards']}/{len(KNOWN_LEGACY)}")
+    print(f"STRUCTURE READY: {'PASS' if report['structure_ready'] else 'FAIL'}")
+    print(f"MEDIA READY: {'PASS' if report['media_ready_all'] else 'PENDING'}")
+    print(f"DRAFT STATE: {'PASS' if report['draft_state_safe'] else 'FAIL'}")
+    print(f"COMMERCE PENDING SKU: {report['commerce_pending_sku']}/{EXPECTED_SKUS}")
     print()
 
     for item in rows:
@@ -234,7 +253,12 @@ def main() -> int:
         for row in missing:
             print(" ", row)
     print("REPORT:", path)
-    print("RESULT: PASS (READ_ONLY)" if not missing and len(rows) == EXPECTED_PRODUCTS and total_skus == EXPECTED_SKUS else "RESULT: REVIEW")
+    if report["draft_ready"]:
+        print("RESULT: PASS (DRAFT_READY)")
+    elif report["structure_ready"] and report["draft_state_safe"]:
+        print("RESULT: PASS (STRUCTURE_READY_MEDIA_PENDING)")
+    else:
+        print("RESULT: REVIEW")
     return 0
 
 

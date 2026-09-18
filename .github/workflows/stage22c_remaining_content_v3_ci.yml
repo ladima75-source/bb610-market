@@ -1,0 +1,103 @@
+name: Remaining stage22c content v3 CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_apply_product_content_batch_runtime.py'
+      - 'backend/update_stage22c_remaining_rows12_24_content_v3_20260918.py'
+      - 'backend/update_stage22c_batch06_content_v3_20260918.py'
+      - 'backend/update_stage22c_batch07_content_v3_20260918.py'
+      - 'data/content_batches/stage22c_remaining_rows12_24.json'
+      - 'data/content_batches/stage22c_batch06_rows61_72.json'
+      - 'data/content_batches/stage22c_batch07_rows73_77.json'
+      - 'data/product_content/stage22c_remaining_rows12_24_20260918.json'
+      - 'data/product_content/stage22c_batch06_20260918.json'
+      - 'data/product_content/stage22c_batch07_20260918.json'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/stage22c_remaining_content_v3_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_apply_product_content_batch_runtime.py'
+      - 'backend/update_stage22c_remaining_rows12_24_content_v3_20260918.py'
+      - 'backend/update_stage22c_batch06_content_v3_20260918.py'
+      - 'backend/update_stage22c_batch07_content_v3_20260918.py'
+      - 'data/content_batches/stage22c_remaining_rows12_24.json'
+      - 'data/content_batches/stage22c_batch06_rows61_72.json'
+      - 'data/content_batches/stage22c_batch07_rows73_77.json'
+      - 'data/product_content/stage22c_remaining_rows12_24_20260918.json'
+      - 'data/product_content/stage22c_batch06_20260918.json'
+      - 'data/product_content/stage22c_batch07_20260918.json'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/stage22c_remaining_content_v3_ci.yml'
+
+jobs:
+  content-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: |
+          python -m py_compile backend/tools_apply_product_content_batch_runtime.py
+          python -m py_compile backend/update_stage22c_remaining_rows12_24_content_v3_20260918.py
+          python -m py_compile backend/update_stage22c_batch06_content_v3_20260918.py
+          python -m py_compile backend/update_stage22c_batch07_content_v3_20260918.py
+
+      - name: Direct execution self-tests
+        run: |
+          python backend/update_stage22c_remaining_rows12_24_content_v3_20260918.py --self-test
+          python backend/update_stage22c_batch06_content_v3_20260918.py --self-test
+          python backend/update_stage22c_batch07_content_v3_20260918.py --self-test
+
+      - name: Validate total remaining row contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from backend import tools_apply_product_content_batch_runtime as engine
+          from backend import update_stage22c_batch03_content_v3_20260918 as content_base
+          from backend.services import product_cards_v3 as pcv3
+
+          manifests = [
+              ('data/product_content/stage22c_remaining_rows12_24_20260918.json', list(range(12,25))),
+              ('data/product_content/stage22c_batch06_20260918.json', list(range(61,73))),
+              ('data/product_content/stage22c_batch07_20260918.json', list(range(73,78))),
+          ]
+
+          all_rows = []
+          for path, expected in manifests:
+              source = engine.load_batch(Path(path))
+              rows = source['rows']
+              actual = [int(x['source_row']) for x in rows]
+              assert actual == expected, (path, actual, expected)
+              all_rows.extend(actual)
+
+              for row in rows:
+                  managed = content_base.build_content(row)
+                  assert set(managed) == set(engine.MANAGED_FIELDS)
+                  card = pcv3.empty_card(str(row['name']), f"ci-{row['source_row']}")
+                  card['content']['brand'] = str(row.get('brand') or '')
+                  card['content']['category'] = str(row.get('category') or 'nutrition')
+                  before = json.loads(json.dumps(card))
+                  after = content_base.apply_content(card, row)
+                  pcv3.validate(after)
+
+                  assert after['product_id'] == before['product_id']
+                  assert after['slug'] == before['slug']
+                  assert after['enabled'] == before['enabled']
+                  assert after['sku_media'] == before['sku_media']
+                  assert after['content']['brand'] == before['content']['brand']
+                  assert after['content']['category'] == before['content']['category']
+                  for field in ('title','short_description','description','application','composition'):
+                      assert after['content'][field]
+                  assert after['content']['seo']['title']
+                  assert after['content']['seo']['description']
+
+          assert len(all_rows) == 30
+          assert len(set(all_rows)) == 30
+          print('REMAINING STAGE22C CONTENT CONTRACT: 30/30 PASS')
+          PY

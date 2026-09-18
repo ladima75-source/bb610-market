@@ -143,6 +143,14 @@
       {
         "label": "Актуальна офіційна назва",
         "value": "MC SET"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Позакореневе внесення"
+      },
+      {
+        "label": "Культури",
+        "value": "усі культури"
       }
     ],
     "origin": {
@@ -161,8 +169,8 @@
     "sources": {
       "source_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/mc-set",
       "source_type": "current_manufacturer_product_page",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {
@@ -230,6 +238,14 @@
       {
         "label": "Спосіб внесення",
         "value": "Листковий"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Позакореневе внесення"
+      },
+      {
+        "label": "Культури",
+        "value": "усі культури"
       }
     ],
     "origin": {
@@ -243,13 +259,17 @@
       {
         "title": "Valagro Farm Catalogue — BENEFIT PZ",
         "url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf"
+      },
+      {
+        "title": "BENEFIT PZ — офіційна сторінка Syngenta Italia",
+        "url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/benefit-pz"
       }
     ],
     "sources": {
       "source_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf",
       "source_type": "manufacturer_catalogue",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {
@@ -368,6 +388,14 @@
       {
         "label": "Спосіб внесення",
         "value": "Листковий"
+      },
+      {
+        "label": "Спосіб застосування",
+        "value": "Позакореневе внесення"
+      },
+      {
+        "label": "Культури",
+        "value": "усі культури"
       }
     ],
     "origin": {
@@ -381,13 +409,17 @@
       {
         "title": "MEGAFOL — офіційна сторінка Syngenta Biologicals",
         "url": "https://www.valagro.com/en/products/farm/plant-biostimulants/megafol/"
+      },
+      {
+        "title": "MEGAFOL — офіційна етикетка Syngenta Biologicals",
+        "url": "https://www.syngenta.it/sites/g/files/kgtney1566/files/media/document/2025/07/02/PPE4229482-L1135252-MEGAFOL%2010L%20555%20FR-IT-EN-ES-PT.pdf"
       }
     ],
     "sources": {
       "source_url": "https://www.valagro.com/en/products/farm/plant-biostimulants/megafol/",
       "source_type": "current_manufacturer_product_page",
-      "revision": "Перевірено 2026-09-05",
-      "verified_date": "2026-09-05"
+      "revision": "Перевірено 2026-09-19",
+      "verified_date": "2026-09-19"
     }
   },
   {

@@ -15,6 +15,10 @@ on:
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - 'js/app.js'
       - 'js/product.js'
+      - 'js/favorites.js'
+      - 'js/compare.js'
+      - 'favorites.html'
+      - 'compare.html'
       - 'assets/css/storefront-product-cards.css'
       - 'index.html'
       - 'catalog.html'
@@ -42,6 +46,8 @@ jobs:
             backend/tools_audit_plantlogic_market_test_20260918.py
           node --check js/app.js
           node --check js/product.js
+          node --check js/favorites.js
+          node --check js/compare.js
           node --check admin/price-requests.js
           node --check admin/admin-master-nav.js
 
@@ -68,6 +74,9 @@ jobs:
               text=Path(page).read_text(encoding='utf-8')
               assert 'app.js?v=20260918-market-test-1' in text
           assert 'product.js?v=20260918-market-test-1' in Path('product.html').read_text(encoding='utf-8')
+          assert 'favorites.js?v=20260918-market-test-1' in Path('favorites.html').read_text(encoding='utf-8')
+          assert 'compare.js?v=20260918-market-test-1' in Path('compare.html').read_text(encoding='utf-8')
+          assert 'Ціна за запитом' in Path('js/compare.js').read_text(encoding='utf-8')
           admin=Path('admin/price-requests.html').read_text(encoding='utf-8')
           admin_js=Path('admin/price-requests.js').read_text(encoding='utf-8')
           nav=Path('admin/admin-master-nav.js').read_text(encoding='utf-8')

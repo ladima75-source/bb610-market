@@ -10,6 +10,8 @@ on:
       - 'backend/services/sales_channels.py'
       - 'backend/feed_api.py'
       - 'backend/sales_channels_api.py'
+      - 'admin/sales-channels.html'
+      - 'admin/sales-channels.js'
       - '.github/workflows/sales_channels_single_source_ci.yml'
   pull_request:
     paths:
@@ -19,6 +21,8 @@ on:
       - 'backend/services/sales_channels.py'
       - 'backend/feed_api.py'
       - 'backend/sales_channels_api.py'
+      - 'admin/sales-channels.html'
+      - 'admin/sales-channels.js'
       - '.github/workflows/sales_channels_single_source_ci.yml'
 
 jobs:
@@ -56,6 +60,11 @@ jobs:
           assert 'google_csv_from_snapshot(snap)' in sales
           assert 'meta_csv_from_snapshot(snap)' in sales
           assert 'feed_status_from_snapshot(snap)' in sales
+          html = Path('admin/sales-channels.html').read_text(encoding='utf-8')
+          js = Path('admin/sales-channels.js').read_text(encoding='utf-8')
+          assert 'єдиного Product Master' in html
+          assert "Live feed" in js
+          assert 'channelSource' in html and 'channelSource' in js
           print('SINGLE PRODUCT MASTER SOURCE CONTRACT: PASS')
           PY
 

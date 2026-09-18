@@ -37,9 +37,12 @@ jobs:
           assert sum(len(x.get('skus') or []) for x in doc['products'])==34
           assert c.EXPECTED_PRODUCTS==32
           assert c.EXPECTED_SKUS==34
+
           assert c.SOURCE_OVERRIDES['plantlogic-zephyr-v2'].endswith('/portfolio-items/zephyr-v2/')
           assert c.SOURCE_OVERRIDES['plantlogic-25l-round-new-1308125'].endswith('/new-25-liter-round-pot/')
           assert c.SOURCE_OVERRIDES['plantlogic-25l-round-u-grooves-1308026'].endswith('/25-liter-round-pot-with-u-grooves/')
+          assert c.SOURCE_OVERRIDES['plantlogic-30l-round-v-rib-1308031'].endswith('/30-liter-round-v-rib/')
+          assert c.SOURCE_OVERRIDES['plantlogic-35l-round-u-grooves-13080350'].endswith('/35-liter-round-pot-with-u-grooves-for-blueberries/')
 
           assert c.normalize_url(
               'https://getplantlogic.com/portfolio-items/x/',
@@ -47,8 +50,50 @@ jobs:
           ) == 'https://getplantlogic.com/wp-content/uploads/a.jpg'
           assert c.normalize_url(
               'https://getplantlogic.com/',
+              'https://i0.wp.com/getplantlogic.com/wp-content/uploads/a.jpg'
+          ) == 'https://i0.wp.com/getplantlogic.com/wp-content/uploads/a.jpg'
+          assert c.normalize_url(
+              'https://getplantlogic.com/',
               'https://evil.example/a.jpg'
           ) == ''
+
+          # Foreign Product # images must never win a different product.
+          score,reasons,identity = c._candidate_score(
+              'https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-8-liter-square-1309008-side-1.jpg',
+              'img:src',
+              55,
+              '',
+              ['1308041'],
+              '40 Liter Round Pot with U-Grooves',
+          )
+          assert score <= -500
+          assert identity is False
+          assert any('foreign_product_no=' in x for x in reasons)
+
+          # Exact Product # in an official image URL is high confidence.
+          score,reasons,identity = c._candidate_score(
+              'https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-2.jpg',
+              'img:src',
+              55,
+              '40 Liter Round Pot with U-Grooves',
+              ['1308041'],
+              '40 Liter Round Pot with U-Grooves',
+          )
+          assert score >= 200
+          assert identity is True
+          assert any('product_no=1308041' in x for x in reasons)
+
+          # Generic OG metadata without identity cannot be high confidence.
+          score,reasons,identity = c._candidate_score(
+              'https://getplantlogic.com/wp-content/uploads/generic-hero.jpg',
+              'og:image',
+              45,
+              '',
+              ['1308041'],
+              '40 Liter Round Pot with U-Grooves',
+          )
+          assert score <= 25
+          assert identity is False
 
           print('PLANTLOGIC OFFICIAL MEDIA COLLECTOR CONTRACT: PASS')
           PY

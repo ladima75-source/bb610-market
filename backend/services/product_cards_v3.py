@@ -310,6 +310,77 @@ def commerce_view(product_id: str) -> dict:
     mapping = next((x for x in commerce_map().get('products', []) if x.get('product_id') == product_id), None)
     if not mapping:
         return {'product_id': product_id, 'mapped': False, 'mapping': None, 'commerce': None}
+
     legacy_key = str(mapping.get('existing_product_key') or '').strip()
     detail = legacy_catalog_detail(legacy_key) if legacy_key else None
-    return {'product_id': product_id, 'mapped': bool(detail), 'mapping': mapping, 'commerce': detail}
+
+    # Mapping is the Product Card v3 -> commerce identity contract.  Do not
+    # report a mapped v3 card as "unmapped" merely because catalog_cms has an
+    # incomplete/stale product row.  The storefront runtime already resolves
+    # live commercial state directly from sku_commerce, so the admin/QA view
+    # must use the same source of truth.
+    try:
+        from .product_commerce import commerce_map as live_commerce_map
+        live = live_commerce_map()
+    except Exception:
+        live = {}
+
+    detail_skus = {}
+    if isinstance(detail, dict):
+        for row in detail.get('skus') or []:
+            if not isinstance(row, dict):
+                continue
+            key = str(row.get('id') or row.get('sku') or '').strip()
+            if key:
+                detail_skus[key] = row
+
+    merged_skus = []
+    for link in mapping.get('skus') or []:
+        if not isinstance(link, dict):
+            continue
+        key = str(link.get('existing_commerce_sku_key') or '').strip()
+        if not key:
+            continue
+        meta = dict(detail_skus.get(key) or {})
+        commercial = live.get(key) if isinstance(live, dict) else None
+        row = {**meta}
+        row['id'] = row.get('id') or key
+        row['sku'] = row.get('sku') or key
+        if isinstance(commercial, dict):
+            row.update({
+                'price': commercial.get('effective_price'),
+                'base_price': commercial.get('price'),
+                'sale_price': commercial.get('sale_price'),
+                'availability': commercial.get('availability'),
+                'stock_qty': commercial.get('stock_qty'),
+                'enabled': bool(commercial.get('enabled')),
+                'commercial_status': 'active' if commercial.get('enabled') else 'paused',
+                'offer_status': 'active' if commercial.get('enabled') else 'draft',
+            })
+        else:
+            row.setdefault('price', None)
+            row.setdefault('sale_price', None)
+            row.setdefault('availability', 'unknown')
+            row.setdefault('stock_qty', None)
+            row.setdefault('enabled', False)
+        merged_skus.append(row)
+
+    if isinstance(detail, dict):
+        commerce = dict(detail)
+        commerce['skus'] = merged_skus
+    else:
+        commerce = {
+            'id': legacy_key,
+            'product_id': legacy_key,
+            # An absent legacy CMS row is not a publication veto. This mirrors
+            # product_cards_v3_runtime.storefront_runtime().
+            'published': True,
+            'skus': merged_skus,
+        }
+
+    return {
+        'product_id': product_id,
+        'mapped': True,
+        'mapping': mapping,
+        'commerce': commerce,
+    }

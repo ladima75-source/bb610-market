@@ -1,0 +1,71 @@
+name: Product content coverage audit CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_audit_product_content_coverage_v3.py'
+      - 'backend/tools_apply_product_content_batch_runtime.py'
+      - 'data/product_content/master_plantafol_20260918.json'
+      - 'data/product_content/megafol_radifarm_viva_20260918.json'
+      - 'data/product_content/stage22c_batch03_20260918.json'
+      - 'data/product_content/stage22c_remaining_rows12_24_20260918.json'
+      - 'data/product_content/stage22c_batch04_remaining_20260918.json'
+      - 'data/product_content/stage22c_batch05_remaining_20260918.json'
+      - 'data/product_content/stage22c_batch06_20260918.json'
+      - 'data/product_content/stage22c_batch07_20260918.json'
+      - '.github/workflows/product_content_coverage_audit_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_audit_product_content_coverage_v3.py'
+      - 'backend/tools_apply_product_content_batch_runtime.py'
+      - 'data/product_content/master_plantafol_20260918.json'
+      - 'data/product_content/megafol_radifarm_viva_20260918.json'
+      - 'data/product_content/stage22c_batch03_20260918.json'
+      - 'data/product_content/stage22c_remaining_rows12_24_20260918.json'
+      - 'data/product_content/stage22c_batch04_remaining_20260918.json'
+      - 'data/product_content/stage22c_batch05_remaining_20260918.json'
+      - 'data/product_content/stage22c_batch06_20260918.json'
+      - 'data/product_content/stage22c_batch07_20260918.json'
+      - '.github/workflows/product_content_coverage_audit_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: python -m py_compile backend/tools_audit_product_content_coverage_v3.py
+
+      - name: Validate managed content manifest cardinality
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from backend import tools_apply_product_content_batch_runtime as engine
+
+          root = Path('.')
+          master = json.loads((root/'data/product_content/master_plantafol_20260918.json').read_text())
+          bio = json.loads((root/'data/product_content/megafol_radifarm_viva_20260918.json').read_text())
+
+          assert len(master['products']) == 11
+          assert len(bio['products']) == 3
+
+          manifests = [
+              root/'data/product_content/stage22c_batch03_20260918.json',
+              root/'data/product_content/stage22c_remaining_rows12_24_20260918.json',
+              root/'data/product_content/stage22c_batch04_remaining_20260918.json',
+              root/'data/product_content/stage22c_batch05_remaining_20260918.json',
+              root/'data/product_content/stage22c_batch06_20260918.json',
+              root/'data/product_content/stage22c_batch07_20260918.json',
+          ]
+          counts = [len(engine.load_batch(x)['rows']) for x in manifests]
+          assert counts == [12,13,10,11,12,5], counts
+          assert 11 + 3 + sum(counts) == 77
+
+          print('MANAGED CONTENT MANIFEST COVERAGE: 77/77 PASS')
+          PY

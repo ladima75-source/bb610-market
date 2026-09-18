@@ -5,10 +5,12 @@ import re
 import sys
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 from backend.catalog_provider import load_catalog
 from backend.services.catalog_cms import public_content, MEDIA_DIR
-
-ROOT = Path(__file__).resolve().parents[1]
 
 CYRILLIC = re.compile(r"[А-Яа-яІіЇїЄєҐґ]")
 PLACEHOLDER = re.compile(r"(product-(?:biostim|npk|container|master|megafol|plantafol)\.svg|placeholder|default)", re.I)

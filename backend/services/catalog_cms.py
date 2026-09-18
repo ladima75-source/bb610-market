@@ -100,7 +100,19 @@ def public_content():
     except Exception:
         # Catalog must stay available even if one content card is malformed.
         pass
-    return {'products':products,'skus':_dynamic_skus()}
+    # Storefront API must be authoritative for SKU identity as well as content.
+    # The static catalog.runtime.js snapshot can lag behind catalog.master.json;
+    # returning only dynamic SKU here left the browser dependent on stale static
+    # SKU identities and caused priced products to render as "Ціна уточнюється".
+    public_ids={str(p.get('id') or '') for p in products if p.get('id') and not p.get('runtime_hidden')}
+    sku_map={}
+    for s in static_skus.values():
+        if str(s.get('product_id') or '') in public_ids:
+            sku_map[str(s.get('id') or s.get('sku'))]=dict(s)
+    for s in _dynamic_skus():
+        if str(s.get('product_id') or '') in public_ids:
+            sku_map[str(s.get('id') or s.get('sku'))]=dict(s)
+    return {'products':products,'skus':list(sku_map.values())}
 
 def admin_list_products():
     d, static_products, static_skus=_static(); ov=_overrides(); ids=list(static_products)

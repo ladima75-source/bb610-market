@@ -124,7 +124,7 @@ jobs:
               assert x['applicationMethods'] == ['Листова / внекоренева']
               assert x['application'] == 'Листова / внекоренева'
               assert 'manufacturerUse' not in x
-              assert 'manufacturer_use' not in x
+              assert x['manufacturer_use'] == 'Повний опис продукту для storefront projection.'
               assert 'LONG RECIPE' not in x['application']
           PY
       - name: Brexil Zn master card contract

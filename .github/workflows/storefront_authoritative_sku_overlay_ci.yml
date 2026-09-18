@@ -1,0 +1,53 @@
+name: Storefront authoritative SKU overlay CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/services/catalog_cms.py'
+      - 'js/data-source.js'
+      - 'catalog.html'
+      - '.github/workflows/storefront_authoritative_sku_overlay_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/services/catalog_cms.py'
+      - 'js/data-source.js'
+      - 'catalog.html'
+      - '.github/workflows/storefront_authoritative_sku_overlay_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Syntax
+        run: |
+          python -m py_compile backend/services/catalog_cms.py
+          node --check js/data-source.js
+
+      - name: Validate authoritative SKU overlay contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          c=Path('backend/services/catalog_cms.py').read_text(encoding='utf-8')
+          js=Path('js/data-source.js').read_text(encoding='utf-8')
+          html=Path('catalog.html').read_text(encoding='utf-8')
+
+          assert "for s in static_skus.values()" in c
+          assert "for s in _dynamic_skus()" in c
+          assert "return {'products':products,'skus':list(sku_map.values())}" in c
+
+          assert "const publicIds=new Set" in js
+          assert "const incomingIds=new Set" in js
+          assert "this.catalog().skus=(this.catalog().skus||[]).filter" in js
+
+          assert 'js/data-source.js?v=20260918-3' in html
+          print('AUTHORITATIVE SKU OVERLAY: PASS')
+          PY

@@ -72,7 +72,7 @@ window.BB610_DATA_SOURCE={
   async refresh(){
     if(this._refreshPromise)return this._refreshPromise;
     this._refreshPromise=(async()=>{
-      const base=(window.BB610_COMMERCE_CONFIG?.apiBaseUrl||'https://api.market.bb610.com.ua').replace(//$/,'');
+      const base=(window.BB610_COMMERCE_CONFIG?.apiBaseUrl||'https://api.market.bb610.com.ua').replace(/\/$/,'');
       if(!base)return this.catalog();
       const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),6000);
       try{

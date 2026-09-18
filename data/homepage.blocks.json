@@ -8,28 +8,21 @@
         "enabled": true,
         "title": "Живлення",
         "description": "Добрива та професійні формуляції для живлення рослин.",
-        "url": "catalog.html",
+        "url": "catalog.html?category=nutrition",
         "icon": "leaf"
       },
       {
         "enabled": true,
         "title": "Біостимуляція",
         "description": "Біостимулятори та рішення для підтримки росту й стійкості рослин.",
-        "url": "catalog.html",
+        "url": "catalog.html?category=biostimulation",
         "icon": "nodes"
       },
       {
         "enabled": true,
-        "title": "Захист рослин",
-        "description": "Препарати та професійні рішення для захисту рослин.",
-        "url": "catalog.html",
-        "icon": "shield"
-      },
-      {
-        "enabled": true,
-        "title": "Контейнери",
-        "description": "Професійні горщики та контейнери для вирощування.",
-        "url": "catalog.html",
+        "title": "Горщики",
+        "description": "Професійні горщики та контейнери для субстратного вирощування.",
+        "url": "catalog.html?category=containers",
         "icon": "pot"
       }
     ]
@@ -102,7 +95,7 @@
     ]
   },
   "availability": {
-    "enabled": true,
+    "enabled": false,
     "kicker": "BB610 MARKET · ДНІПРО",
     "title": "Є у Дніпрі. Самовивіз. Відправка по Україні.",
     "items": [

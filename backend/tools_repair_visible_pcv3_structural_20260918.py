@@ -243,7 +243,13 @@ def card_exclusion(card: dict, mapping: dict | None, runtime_by_id: dict[str, di
     return ""
 
 
-def exact_runtime_product(card: dict, mapping: dict | None, by_id: dict[str, dict], by_slug: dict[str, dict]) -> tuple[dict | None, str]:
+def exact_runtime_product(
+    card: dict,
+    mapping: dict | None,
+    by_id: dict[str, dict],
+    by_slug: dict[str, dict],
+    sku_by_key: dict[str, dict] | None = None,
+) -> tuple[dict | None, str]:
     # Existing mapping is useful only when its parent still exists and identity
     # is independently proven. A missing legacy parent may be repaired, but
     # only through a new exact slug/id or unique exact-title match.
@@ -256,6 +262,34 @@ def exact_runtime_product(card: dict, mapping: dict | None, by_id: dict[str, dic
                 return None, "existing_mapping_identity_unproven"
             return rp, "existing_mapping_parent_exact"
         stale_mapping_parent = True
+
+    # Exact SKU identity is authoritative evidence for stale parent recovery.
+    # Use only already-saved mapping links / v3 sku_code values and require all
+    # catalog-resolved keys to converge to exactly one existing product parent.
+    if stale_mapping_parent and isinstance(sku_by_key, dict):
+        evidence_keys: set[str] = set()
+        for key in current_links(mapping).values():
+            key = str(key or "").strip()
+            if key:
+                evidence_keys.add(key)
+        for sku in enabled_v3_skus(card):
+            key = str(sku.get("sku_code") or "").strip()
+            if key:
+                evidence_keys.add(key)
+
+        parent_ids = {
+            str((sku_by_key.get(key) or {}).get("product_id") or "").strip()
+            for key in evidence_keys
+            if isinstance(sku_by_key.get(key), dict)
+        }
+        parent_ids.discard("")
+        if len(parent_ids) == 1:
+            parent_id = next(iter(parent_ids))
+            rp = by_id.get(parent_id)
+            if isinstance(rp, dict):
+                return rp, "stale_mapping_parent_exact_sku_identity"
+        if len(parent_ids) > 1:
+            return None, "existing_mapping_sku_parent_conflict"
 
     slug = str(card.get("slug") or "").strip()
     candidates = []
@@ -483,11 +517,12 @@ def media_id_for_path(card: dict, path: str, alt: str) -> str:
 def build_plan() -> dict:
     catalog = load_authoritative_catalog()
     by_id, by_slug, sku_by_product = catalog_indexes(catalog)
-    catalog_sku_keys = {
-        str(x.get("id") or x.get("sku") or "").strip()
+    catalog_sku_by_key = {
+        str(x.get("id") or x.get("sku") or "").strip(): x
         for x in (catalog.get("skus") or [])
         if isinstance(x, dict) and str(x.get("id") or x.get("sku") or "").strip()
     }
+    catalog_sku_keys = set(catalog_sku_by_key)
     live = live_commerce_map()
     mappings = mapping_index()
 
@@ -522,7 +557,13 @@ def build_plan() -> dict:
                 "issues": content_gaps,
             })
 
-        rp, resolution = exact_runtime_product(card, mapping, by_id, by_slug)
+        rp, resolution = exact_runtime_product(
+            card,
+            mapping,
+            by_id,
+            by_slug,
+            sku_by_key=catalog_sku_by_key,
+        )
         if not isinstance(rp, dict):
             unresolved.append({
                 "product_id": pid,
@@ -627,6 +668,7 @@ def build_plan() -> dict:
                         and old_parent != parent
                         and old_parent not in by_id
                         and resolution in {
+                            "stale_mapping_parent_exact_sku_identity",
                             "stale_mapping_parent_exact_slug_or_id",
                             "stale_mapping_parent_exact_title",
                         }

@@ -1,7 +1,7 @@
 from typing import Optional
 import os
 from fastapi import APIRouter,Header,HTTPException
-from .services.admin_dashboard import dashboard
+from .services.admin_dashboard import dashboard, attention_summary
 
 router=APIRouter()
 
@@ -14,3 +14,9 @@ def auth(a):
 def dashboard_route(authorization:Optional[str]=Header(None)):
     auth(authorization)
     return dashboard()
+
+
+@router.get('/api/v1/admin/attention-summary')
+def attention_summary_route(authorization:Optional[str]=Header(None)):
+    auth(authorization)
+    return attention_summary()

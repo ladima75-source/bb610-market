@@ -128,12 +128,16 @@ jobs:
           assert "pr=x.price_requests||{}" in dash_js
           assert "heroPriceRequests" in dash_js
           assert "priceRequestStatuses" in dash_js
+          assert "operationalAlerts" in dash_js
+          assert "Нові замовлення" in dash_js
+          assert "Нові запити ціни" in dash_js
 
           assert '/api/v1/admin/attention-summary' in api
           assert "a.dataset.navFile=file" in nav
           assert "applyCount('orders-center.html'" in nav
           assert "applyCount('price-requests.html'" in nav
-          assert "bb19b8-nav-count" in nav_css
+          assert "attentionBaseLabels" in nav
+          assert "label.textContent=base+(value?' ('+value+')':'')" in nav
           assert "setInterval(loadAttention,60000)" in nav
           assert "bb610:attention-refresh" in nav
           assert "bb610:attention-refresh" in orders

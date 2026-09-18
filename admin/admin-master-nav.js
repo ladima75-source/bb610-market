@@ -83,22 +83,21 @@ function token(){
   }catch(_){return ''}
 }
 
+const attentionBaseLabels={
+  'orders-center.html':'Замовлення',
+  'price-requests.html':'Запити ціни'
+};
+
 function applyCount(file,count){
   const link=document.querySelector('.bb19b8-nav-link[data-nav-file="'+file+'"]');
   if(!link)return;
-  let badge=link.querySelector('.bb19b8-nav-count');
+  const label=link.querySelector('.bb19b8-nav-label');
+  if(!label)return;
+  const base=attentionBaseLabels[file]||label.textContent.replace(/\s*\(\d+\)\s*$/,'');
   const value=Math.max(0,Number(count)||0);
-  if(!value){
-    if(badge)badge.remove();
-    return;
-  }
-  if(!badge){
-    badge=document.createElement('span');
-    badge.className='bb19b8-nav-count';
-    link.appendChild(badge);
-  }
-  badge.textContent=String(value);
-  badge.setAttribute('aria-label',value+' необроблених');
+  label.textContent=base+(value?' ('+value+')':'');
+  link.dataset.attentionCount=String(value);
+  link.setAttribute('aria-label',value?base+': '+value+' необроблених':base);
 }
 
 async function loadAttention(){

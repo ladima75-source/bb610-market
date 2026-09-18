@@ -1,0 +1,64 @@
+name: Final surplus Product Card cleanup CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_cleanup_surplus_pcv3_final_20260918.py'
+      - 'backend/tools_cleanup_surplus_pcv3_r2_20260918.py'
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'backend/services/product_cards_v3.py'
+      - 'backend/services/catalog_cms.py'
+      - 'backend/services/product_commerce.py'
+      - '.github/workflows/final_surplus_pcv3_cleanup_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_cleanup_surplus_pcv3_final_20260918.py'
+      - 'backend/tools_cleanup_surplus_pcv3_r2_20260918.py'
+      - 'backend/tools_apply_valagro_prices_20260916_runtime.py'
+      - 'backend/services/product_cards_v3.py'
+      - 'backend/services/catalog_cms.py'
+      - 'backend/services/product_commerce.py'
+      - '.github/workflows/final_surplus_pcv3_cleanup_ci.yml'
+
+jobs:
+  safety-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: python -m py_compile backend/tools_cleanup_surplus_pcv3_final_20260918.py
+
+      - name: Validate cleanup policy
+        run: |
+          python - <<'PY'
+          from backend import tools_cleanup_surplus_pcv3_final_20260918 as c
+
+          assert len(c.PAIRS) == 9
+          assert c.SPECIAL_DUPLICATE == 'master-npk-15-5-30'
+          assert c.SPECIAL_CANONICAL == 'master-15-5-30'
+          assert c.SPECIAL_PACKAGE_KEY == '20g'
+          assert c.EXPECTED_BEFORE == 119
+          assert c.EXPECTED_AFTER == 109
+
+          source = c.source_zero_policy()
+          assert source['slug'] == 'master-15-5-30'
+          assert c.pack_key(source['package']) == '20g'
+          assert float(source['price']) == 0.0
+
+          # Full commerce state comparison protects canonical data.
+          row = {
+              'price': 25.0,
+              'sale_price': None,
+              'availability': 'in_stock',
+              'stock_qty': None,
+              'enabled': True,
+          }
+          assert c.commerce_state(row) == (25.0, None, 25.0, 'in_stock', None, True)
+
+          print('FINAL SURPLUS CLEANUP POLICY: PASS')
+          PY

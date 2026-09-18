@@ -1,0 +1,121 @@
+name: Storefront product card cleanup CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'js/app.js'
+      - 'assets/css/storefront-product-cards.css'
+      - 'assets/js/stage19b7-ui.js'
+      - 'catalog.html'
+      - 'backend/tools_audit_storefront_price_resolution_20260918.py'
+      - '.github/workflows/storefront_product_card_cleanup_ci.yml'
+  pull_request:
+    paths:
+      - 'js/app.js'
+      - 'assets/css/storefront-product-cards.css'
+      - 'assets/js/stage19b7-ui.js'
+      - 'catalog.html'
+      - 'backend/tools_audit_storefront_price_resolution_20260918.py'
+      - '.github/workflows/storefront_product_card_cleanup_ci.yml'
+
+jobs:
+  storefront-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Syntax
+        run: |
+          node --check js/app.js
+          node --check assets/js/stage19b7-ui.js
+          python -m py_compile backend/tools_audit_storefront_price_resolution_20260918.py
+
+      - name: Validate storefront card contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          app=Path('js/app.js').read_text(encoding='utf-8')
+          css=Path('assets/css/storefront-product-cards.css').read_text(encoding='utf-8')
+          catalog=Path('catalog.html').read_text(encoding='utf-8')
+          stage=Path('assets/js/stage19b7-ui.js').read_text(encoding='utf-8')
+
+          assert 'function displaySku(productId)' in app
+          assert "all.find(s=>hasPrice(s)&&isCommercialActive(s))" in app
+          assert 'product-card-main' in app
+          assert 'product-card-commerce' in app
+          assert 'verified-tag' not in app[app.index('function cardV2'):app.index('const card=cardV2')]
+          assert 'Комерційні параметри BB610 ще не визначені' not in app
+          assert 'Наявність уточнюється' not in app
+          assert 'nav.querySelectorAll(\'a[href*="#verified"]\')' in app
+          assert 'data-add="' in app and "disabled'}>КУПИТИ" in app
+
+          assert '.product-card-v2 .product-card-commerce' in css
+          assert 'border-top:1px solid #31383c' in css
+          assert 'grid-template-columns:minmax(0,1fr) 42px 42px' in css
+          assert '.product-card-v2 .buy-btn' in css
+          assert 'height:42px!important' in css
+          assert '.nav a[href*="#verified"]' in css
+
+          assert 'index.html#verified' not in catalog
+          assert 'js/app.js?v=20260918-2' in catalog
+          assert "card.classList.contains('product-card-v2')" in stage
+
+          print('STOREFRONT PRODUCT CARD CONTRACT: PASS')
+          PY
+
+      - name: Test display SKU price fallback
+        run: |
+          node <<'JS'
+          const fs=require('fs');
+          const vm=require('vm');
+          const source=fs.readFileSync('js/app.js','utf8')+'\n;globalThis.__BB610_TEST__=BB610;';
+          const products=[{id:'p1',name:'Test',category_id:'nutrition',brand:'X',default_sku_id:'s1',image:{local:'/x.jpg'}}];
+          const skus=[
+            {id:'s1',product_id:'p1',variant:'15 кг',price:null,commercial_status:'paused',offer_status:'draft',availability:'unknown',volume_weight:{value:15,unit:'кг'}},
+            {id:'s2',product_id:'p1',variant:'1 кг',price:123,commercial_status:'active',offer_status:'active',availability:'in_stock',volume_weight:{value:1,unit:'кг'}}
+          ];
+          const sandbox={
+            console,
+            Intl,
+            URLSearchParams,
+            window:{},
+            location:{protocol:'https:',href:'https://market.bb610.com.ua/catalog.html'},
+            localStorage:{getItem(){return null},setItem(){}},
+            document:{
+              readyState:'loading',
+              addEventListener(){},
+              querySelector(){return null},
+              querySelectorAll(){return []},
+              createElement(){return {style:{},dataset:{},appendChild(){}}},
+              head:{appendChild(){}},
+              body:{classList:{contains(){return false}}}
+            },
+            BB610_DATA_SOURCE:{
+              catalog(){return {categories:[{id:'nutrition',name:'Живлення',short_name:'Живлення',enabled:true}]};},
+              products(){return products;},
+              product(id){return products.find(x=>x.id===id)||null;},
+              sku(id){return skus.find(x=>x.id===id)||null;},
+              skusForProduct(id){return skus.filter(x=>x.product_id===id);},
+              defaultSku(id){return skus.find(x=>x.id==='s1')||null;}
+            }
+          };
+          vm.createContext(sandbox);
+          vm.runInContext(source,sandbox);
+          const b=sandbox.__BB610_TEST__;
+          if(b.displaySku('p1').id!=='s2') throw new Error('priced sibling fallback failed');
+          const view=b.products()[0];
+          if(view.price!==123 || view.pack!=='1 кг') throw new Error('view price fallback failed');
+          const card=b.cardV2(view);
+          if(card.includes('BB610 VERIFIED')) throw new Error('verified badge leaked');
+          if(card.includes('Комерційні параметри')) throw new Error('technical text leaked');
+          if(!card.includes('product-card-commerce')) throw new Error('commerce zone missing');
+          console.log('DISPLAY SKU FALLBACK: PASS');
+          JS

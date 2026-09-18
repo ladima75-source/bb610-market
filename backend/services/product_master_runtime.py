@@ -8,6 +8,11 @@ from .product_commerce import commerce_map
 
 
 SOURCE_ID = "product-master-v4-runtime"
+HIDDEN_PUBLIC_CATEGORIES = {"protection"}
+
+
+def _public_category(row: dict) -> str:
+    return str(row.get("category_id") or row.get("category") or "").strip().lower()
 
 
 def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]:
@@ -25,7 +30,10 @@ def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]
     products = [
         deepcopy(row)
         for row in (public.get("products") or [])
-        if isinstance(row, dict) and row.get("id") and not row.get("runtime_hidden")
+        if isinstance(row, dict)
+        and row.get("id")
+        and not row.get("runtime_hidden")
+        and _public_category(row) not in HIDDEN_PUBLIC_CATEGORIES
     ]
     product_ids = {str(row.get("id")) for row in products}
 

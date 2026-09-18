@@ -122,7 +122,27 @@ document.addEventListener('DOMContentLoaded',async()=>{
   function syncContainerFacetMode(){
     const cats=fixedCategory?[fixedCategory]:selected('category');
     const onlyContainers=cats.length===1&&cats[0]==='containers';
+    const context=cats.length?source.filter(p=>cats.includes(p.category)):source;
     aside.querySelectorAll('[data-non-container-facet]').forEach(x=>x.hidden=onlyContainers);
+
+    aside.querySelectorAll('[data-facet="brand"]').forEach(input=>{
+      const n=context.filter(p=>p.brand===input.value).length;
+      const row=input.closest('.facet-option');
+      const badge=row?.querySelector('.facet-count');
+      if(badge)badge.textContent=n;
+      if(row)row.hidden=!!cats.length&&!n;
+      if(!n)input.checked=false;
+    });
+
+    aside.querySelectorAll('[data-facet="culture"]').forEach(input=>{
+      const n=context.filter(p=>p.category!=='containers'&&(p.cultures||[]).includes(input.value)).length;
+      const row=input.closest('.facet-option');
+      const badge=row?.querySelector('.facet-count');
+      if(badge)badge.textContent=n;
+      if(row)row.hidden=!!cats.length&&!n;
+      if(!n)input.checked=false;
+    });
+
     if(onlyContainers){
       aside.querySelectorAll('[data-facet="culture"]').forEach(x=>x.checked=false);
       stock.checked=false;

@@ -255,14 +255,65 @@ def exact_package_matches(card: dict, runtime_product: dict, runtime_skus: list[
     return out, problems
 
 
-def current_links(mapping: dict | None) -> dict[str, str]:
+def mapping_link_rows(mapping: dict | None) -> dict[str, list[dict]]:
+    out: dict[str, list[dict]] = {}
     if not isinstance(mapping, dict):
-        return {}
+        return out
+    for row in mapping.get("skus") or []:
+        if not isinstance(row, dict):
+            continue
+        sid = str(row.get("sku_id") or "").strip()
+        if sid:
+            out.setdefault(sid, []).append(row)
+    return out
+
+
+def current_links(mapping: dict | None) -> dict[str, str]:
+    rows = mapping_link_rows(mapping)
     return {
-        str(x.get("sku_id") or "").strip(): str(x.get("existing_commerce_sku_key") or "").strip()
-        for x in (mapping.get("skus") or [])
-        if isinstance(x, dict) and x.get("sku_id")
+        sid: str(items[0].get("existing_commerce_sku_key") or "").strip()
+        for sid, items in rows.items()
+        if len(items) == 1
     }
+
+
+def merge_mapping_links(mapping: dict | None, desired_links: list[dict]) -> list[dict]:
+    """Replace only target SKU links; preserve every non-target mapping row."""
+    desired_by_sid = {
+        str(row.get("sku_id") or "").strip(): deepcopy(row)
+        for row in desired_links
+        if isinstance(row, dict) and str(row.get("sku_id") or "").strip()
+    }
+    if not isinstance(mapping, dict):
+        return [deepcopy(row) for row in desired_links]
+
+    out: list[dict] = []
+    seen: set[str] = set()
+    for row in mapping.get("skus") or []:
+        if not isinstance(row, dict):
+            # Preserve unexpected legacy payload instead of silently deleting it.
+            out.append(deepcopy(row))
+            continue
+        sid = str(row.get("sku_id") or "").strip()
+        desired = desired_by_sid.get(sid)
+        if desired is None:
+            out.append(deepcopy(row))
+            continue
+        if sid in seen:
+            # Duplicate target rows are rejected before this helper is used for
+            # a write, but preserving here keeps the helper non-destructive.
+            out.append(deepcopy(row))
+            continue
+        merged = deepcopy(row)
+        merged["sku_id"] = sid
+        merged["existing_commerce_sku_key"] = desired["existing_commerce_sku_key"]
+        out.append(merged)
+        seen.add(sid)
+
+    for sid, desired in desired_by_sid.items():
+        if sid not in seen:
+            out.append(deepcopy(desired))
+    return out
 
 
 def runtime_image_path(runtime_product: dict, runtime_sku: dict) -> tuple[str, str]:
@@ -378,6 +429,7 @@ def build_plan() -> dict:
 
         enabled = enabled_v3_skus(card)
         links = current_links(mapping)
+        link_rows = mapping_link_rows(mapping)
         desired_links = []
         mapping_safe = len(package_matches) == len(enabled) and bool(enabled)
 
@@ -402,6 +454,14 @@ def build_plan() -> dict:
                     "reason": "live_commerce_row_missing",
                 })
                 continue
+            existing_rows = link_rows.get(sid) or []
+            if len(existing_rows) > 1:
+                mapping_safe = False
+                unresolved.append({
+                    "product_id": pid, "slug": card.get("slug"),
+                    "sku_id": sid, "reason": "existing_mapping_duplicate_sku_link",
+                })
+                continue
             current_key = links.get(sid, "")
             if current_key and current_key != commerce_key:
                 mapping_safe = False
@@ -417,11 +477,17 @@ def build_plan() -> dict:
             })
 
         if mapping_safe:
-            desired_mapping = {
-                "product_id": pid,
-                "existing_product_key": parent,
-                "skus": desired_links,
-            }
+            if isinstance(mapping, dict):
+                desired_mapping = deepcopy(mapping)
+                desired_mapping["product_id"] = pid
+                desired_mapping["existing_product_key"] = parent
+                desired_mapping["skus"] = merge_mapping_links(mapping, desired_links)
+            else:
+                desired_mapping = {
+                    "product_id": pid,
+                    "existing_product_key": parent,
+                    "skus": [deepcopy(x) for x in desired_links],
+                }
             if mapping != desired_mapping:
                 # Existing non-empty mapping parent is immutable unless identical
                 # to the exact runtime identity.

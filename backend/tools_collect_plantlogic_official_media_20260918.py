@@ -4,11 +4,17 @@ from __future__ import annotations
 
 The collector fetches only getplantlogic.com product pages, verifies that the
 expected Plantlogic Product # is present in the page HTML, and extracts official
-OpenGraph/Twitter/IMG image candidates. It does not modify Product Card v3,
-media files, commerce, prices, stock or publication state.
+image candidates.
 
-The output report is intended to be reviewed before a separate safe importer
-downloads/attaches any image.
+Primary-image ranking is identity-aware:
+- images whose URL/tag contains the expected Plantlogic Product # rank highest;
+- product-name/model tokens add confidence;
+- images that clearly contain a different Plantlogic Product # are rejected;
+- generic site/logo/social images are never accepted as a high-confidence
+  primary merely because they are og:image/twitter:image.
+
+It does not modify Product Card v3, media files, commerce, prices, stock or
+publication state.
 """
 
 import html
@@ -19,7 +25,6 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -30,19 +35,28 @@ REPORT_ROOT = ROOT / "var" / "reports"
 EXPECTED_PRODUCTS = 32
 EXPECTED_SKUS = 34
 
-# Replace generic/category/brochure URLs in the original product master with
-# exact official Plantlogic product pages for media collection.
+# Exact current official product pages where the Product Master had a generic,
+# brochure or stale URL.
 SOURCE_OVERRIDES = {
     "plantlogic-zephyr-v2": "https://getplantlogic.com/portfolio-items/zephyr-v2/",
     "plantlogic-25l-round-new-1308125": "https://getplantlogic.com/portfolio-items/new-25-liter-round-pot/",
     "plantlogic-25l-round-short-legs-1303025": "https://getplantlogic.com/portfolio-items/25-liter-round-pot-short-legs/",
     "plantlogic-25l-square-u-grooves-1309026": "https://getplantlogic.com/portfolio-items/25-liter-square-pot-with-u-grooves/",
     "plantlogic-25l-round-u-grooves-1308026": "https://getplantlogic.com/portfolio-items/25-liter-round-pot-with-u-grooves/",
-    "plantlogic-30l-round-v-rib-1308031": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-v-rib/",
-    "plantlogic-35l-round-u-grooves-13080350": "https://getplantlogic.com/portfolio-items/35l-round-pot-with-u-grooves/",
+    "plantlogic-30l-round-v-rib-1308031": "https://getplantlogic.com/portfolio-items/30-liter-round-v-rib/",
+    "plantlogic-35l-round-u-grooves-13080350": "https://getplantlogic.com/portfolio-items/35-liter-round-pot-with-u-grooves-for-blueberries/",
 }
 
 IMAGE_EXT_RE = re.compile(r"\.(?:jpe?g|png|webp|avif)(?:\?|$)", re.I)
+PRODUCT_NO_RE = re.compile(r"(?<!\d)(13\d{5,6})(?!\d)")
+GENERIC_IMAGE_MARKERS = (
+    "/logo", "favicon", "icon_", "/icons/", "sprite", "site-logo",
+    "plantlogic-8-liter-square-1309008-side-1", "lysimeter-clipped",
+)
+STOP_TOKENS = {
+    "liter", "litre", "with", "round", "square", "plantlogic", "pot",
+    "collection", "drainage", "short", "legs", "new", "for", "the",
+}
 
 
 def stamp() -> str:
@@ -68,7 +82,10 @@ def normalize_url(base: str, value: str) -> str:
     parsed = urllib.parse.urlparse(url)
     if parsed.scheme not in {"http", "https"}:
         return ""
-    if parsed.netloc.lower() not in {"getplantlogic.com", "www.getplantlogic.com"}:
+    if parsed.netloc.lower() not in {
+        "getplantlogic.com", "www.getplantlogic.com",
+        "i0.wp.com", "i1.wp.com", "i2.wp.com",
+    }:
         return ""
     return url
 
@@ -101,40 +118,125 @@ def meta_content(page_html: str, key: str) -> list[str]:
     return out
 
 
-def img_candidates(base_url: str, page_html: str) -> list[dict]:
+def _identity_tokens(name: str) -> set[str]:
+    tokens = {
+        x
+        for x in re.findall(r"[a-z0-9]+", str(name or "").lower())
+        if len(x) >= 3 and x not in STOP_TOKENS
+    }
+    return tokens
+
+
+def _candidate_score(
+    url: str,
+    source: str,
+    base_score: int,
+    context: str,
+    product_numbers: list[str],
+    name: str,
+) -> tuple[int, list[str], bool]:
+    haystack = html.unescape(f"{url} {context}").lower()
+    expected = {str(x) for x in product_numbers if str(x)}
+    found_numbers = set(PRODUCT_NO_RE.findall(haystack))
+
+    reasons: list[str] = []
+    score = base_score
+
+    # A candidate that visibly belongs to a different Plantlogic Product # is
+    # unsafe, even if WordPress places it on the same template/page.
+    if found_numbers and not (found_numbers & expected):
+        return -1000, [f"foreign_product_no={','.join(sorted(found_numbers))}"], False
+
+    exact = sorted(found_numbers & expected)
+    if exact:
+        score += 180
+        reasons.append("product_no=" + ",".join(exact))
+
+    tokens = _identity_tokens(name)
+    matched_tokens = sorted(x for x in tokens if x in haystack)
+    if matched_tokens:
+        score += min(80, len(matched_tokens) * 20)
+        reasons.append("name_tokens=" + ",".join(matched_tokens))
+
+    lowered = url.lower()
+    if any(marker in lowered for marker in GENERIC_IMAGE_MARKERS):
+        score -= 180
+        reasons.append("generic_or_foreign_asset")
+
+    # Social metadata is useful only as a weak tie-breaker when identity is not
+    # present. It is no longer automatically considered high confidence.
+    if source == "og:image" and not exact and not matched_tokens:
+        score = min(score, 25)
+        reasons.append("generic_og_cap")
+    if source == "twitter:image" and not exact and not matched_tokens:
+        score = min(score, 20)
+        reasons.append("generic_twitter_cap")
+
+    identity_match = bool(exact or matched_tokens)
+    return score, reasons, identity_match
+
+
+def img_candidates(
+    base_url: str,
+    page_html: str,
+    product_numbers: list[str],
+    name: str,
+) -> list[dict]:
     candidates: dict[str, dict] = {}
 
-    def add(raw_url: str, source: str, score: int) -> None:
+    def add(raw_url: str, source: str, base_score: int, context: str = "") -> None:
         url = normalize_url(base_url, raw_url)
         if not url or not IMAGE_EXT_RE.search(url):
             return
-        lowered = url.lower()
-        # Never choose obvious logos/icons as a primary product candidate.
-        if any(x in lowered for x in ("/logo", "favicon", "icon_", "/icons/", "sprite")):
-            score -= 100
+        score, reasons, identity_match = _candidate_score(
+            url, source, base_score, context, product_numbers, name
+        )
+        if score <= -500:
+            return
+        row = {
+            "url": url,
+            "source": source,
+            "score": score,
+            "identity_match": identity_match,
+            "reasons": reasons,
+        }
         current = candidates.get(url)
-        row = {"url": url, "source": source, "score": score}
-        if current is None or score > int(current.get("score") or 0):
+        if current is None or score > int(current.get("score") or -9999):
             candidates[url] = row
 
     for value in meta_content(page_html, "og:image"):
-        add(value, "og:image", 100)
+        add(value, "og:image", 45)
     for value in meta_content(page_html, "twitter:image"):
-        add(value, "twitter:image", 90)
+        add(value, "twitter:image", 40)
 
     for m in re.finditer(r'<img\b[^>]*>', page_html, flags=re.I):
         tag = m.group(0)
-        for attr, score in (("data-lazy-src", 70), ("data-src", 65), ("src", 55)):
+        context_parts = []
+        for attr in ("alt", "title", "class", "id"):
+            am = re.search(rf'\b{attr}\s*=\s*["\']([^"\']*)["\']', tag, flags=re.I)
+            if am:
+                context_parts.append(am.group(1))
+        context = " ".join(context_parts)
+
+        for attr, base_score in (("data-lazy-src", 70), ("data-src", 65), ("src", 55)):
             am = re.search(rf'\b{attr}\s*=\s*["\']([^"\']+)["\']', tag, flags=re.I)
             if am:
-                add(am.group(1), f"img:{attr}", score)
+                add(am.group(1), f"img:{attr}", base_score, context)
+
         sm = re.search(r'\bsrcset\s*=\s*["\']([^"\']+)["\']', tag, flags=re.I)
         if sm:
             for part in sm.group(1).split(","):
-                url = part.strip().split(" ")[0]
-                add(url, "img:srcset", 60)
+                src = part.strip().split(" ")[0]
+                add(src, "img:srcset", 60, context)
 
-    rows = sorted(candidates.values(), key=lambda x: (-int(x["score"]), x["url"]))
+    rows = sorted(
+        candidates.values(),
+        key=lambda x: (
+            not bool(x.get("identity_match")),
+            -int(x.get("score") or 0),
+            x.get("url") or "",
+        ),
+    )
     return rows
 
 
@@ -150,6 +252,7 @@ def main() -> int:
 
     for spec in doc["products"]:
         slug = str(spec["slug"])
+        name = str(spec.get("name") or "")
         original_url = str(spec.get("source_url") or "")
         url = SOURCE_OVERRIDES.get(slug, original_url)
         product_numbers = [str(x.get("product_no") or "") for x in (spec.get("skus") or [])]
@@ -158,17 +261,20 @@ def main() -> int:
         try:
             final_url, page_html = fetch_html(url)
             verified = product_number_verified(page_html, product_numbers)
-            candidates = img_candidates(final_url, page_html)
+            candidates = img_candidates(final_url, page_html, product_numbers, name)
             top = candidates[0] if candidates else None
             rows.append({
                 "slug": slug,
-                "name": spec.get("name"),
+                "name": name,
                 "source_url_original": original_url,
                 "source_url_used": url,
                 "final_url": final_url,
                 "product_numbers": product_numbers,
                 "product_number_verified": verified,
                 "candidate_count": len(candidates),
+                "identity_candidate_count": sum(
+                    1 for x in candidates if x.get("identity_match")
+                ),
                 "primary_candidate": top,
                 "candidates": candidates[:20],
             })
@@ -184,7 +290,8 @@ def main() -> int:
     primary_ready = [
         x for x in with_candidates
         if isinstance(x.get("primary_candidate"), dict)
-        and int((x["primary_candidate"] or {}).get("score") or 0) >= 90
+        and bool((x["primary_candidate"] or {}).get("identity_match"))
+        and int((x["primary_candidate"] or {}).get("score") or 0) >= 100
     ]
 
     report = {
@@ -207,7 +314,7 @@ def main() -> int:
     print(f"PAGES FETCHED: {len(rows)}/{EXPECTED_PRODUCTS}")
     print(f"PRODUCT # VERIFIED: {len(verified_rows)}/{EXPECTED_PRODUCTS}")
     print(f"VERIFIED WITH IMAGE CANDIDATES: {len(with_candidates)}/{EXPECTED_PRODUCTS}")
-    print(f"HIGH-CONFIDENCE PRIMARY (OG/TWITTER): {len(primary_ready)}/{EXPECTED_PRODUCTS}")
+    print(f"HIGH-CONFIDENCE IDENTITY PRIMARY: {len(primary_ready)}/{EXPECTED_PRODUCTS}")
     print(f"ERRORS: {len(errors)}")
     print()
 
@@ -215,8 +322,9 @@ def main() -> int:
         primary = row.get("primary_candidate") or {}
         print(
             f"{row['slug']} | product#={'PASS' if row['product_number_verified'] else 'FAIL'} | "
-            f"candidates={row['candidate_count']} | "
-            f"primary={primary.get('source','-')} score={primary.get('score','-')}"
+            f"candidates={row['candidate_count']} identity={row['identity_candidate_count']} | "
+            f"primary={primary.get('source','-')} score={primary.get('score','-')} "
+            f"identity={primary.get('identity_match',False)}"
         )
         if primary.get("url"):
             print("  ", primary["url"])

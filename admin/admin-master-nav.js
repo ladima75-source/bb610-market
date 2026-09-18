@@ -68,10 +68,59 @@ function build(){
       const a=document.createElement('a');
       a.className='bb19b8-nav-link'+(current===file.toLowerCase()?' active':'');
       a.href=file;
-      a.innerHTML=`<span class="bb19b8-nav-icon"><svg viewBox="0 0 24 24">${icons[icon]||''}</svg></span><span>${label}</span>`;
+      a.dataset.navFile=file;
+      a.innerHTML=`<span class="bb19b8-nav-icon"><svg viewBox="0 0 24 24">${icons[icon]||''}</svg></span><span class="bb19b8-nav-label">${label}</span>`;
       sidebar.appendChild(a);
     });
   });
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build);else build();
+
+function token(){
+  try{
+    return localStorage.getItem('bb610_admin_token')
+      ||sessionStorage.getItem('bb610_admin_token')
+      ||'';
+  }catch(_){return ''}
+}
+
+function applyCount(file,count){
+  const link=document.querySelector('.bb19b8-nav-link[data-nav-file="'+file+'"]');
+  if(!link)return;
+  let badge=link.querySelector('.bb19b8-nav-count');
+  const value=Math.max(0,Number(count)||0);
+  if(!value){
+    if(badge)badge.remove();
+    return;
+  }
+  if(!badge){
+    badge=document.createElement('span');
+    badge.className='bb19b8-nav-count';
+    link.appendChild(badge);
+  }
+  badge.textContent=String(value);
+  badge.setAttribute('aria-label',value+' необроблених');
+}
+
+async function loadAttention(){
+  const t=token();
+  if(!t)return;
+  const base=(window.BB610_ADMIN_CONFIG?.apiBaseUrl||'https://api.market.bb610.com.ua').replace(/\/$/,'');
+  try{
+    const r=await fetch(base+'/api/v1/admin/attention-summary',{
+      headers:{Authorization:'Bearer '+t,Accept:'application/json'},
+      cache:'no-store'
+    });
+    if(!r.ok)return;
+    const x=await r.json();
+    applyCount('orders-center.html',x.orders?.unprocessed);
+    applyCount('price-requests.html',x.price_requests?.unprocessed);
+  }catch(_){}
+}
+
+function start(){
+  build();
+  loadAttention();
+  window.setInterval(loadAttention,60000);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();

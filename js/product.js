@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   trackView();
   document.title=selectedSku?`${p.name} ${selectedSku.variant||''} · BB610 Market`:p.name+' · BB610 Market';
 
-  const packCards=skuList.length?skuList.map(s=>`<button class="pack sku-pack${selectedSku?.id===s.id?' active':''}" type="button" data-sku-select="${s.id}"><b>${s.variant}</b><div class="price" style="font-size:18px;margin-top:4px">${BB610.money(s.price)}</div><small class="unit-price">${s.stock_label||'Наявність уточнюється'}</small></button>`).join(''):(p.factoryPacks||[]).map(s=>`<div class="pack"><b>${s}</b><small class="unit-price">Заводське фасування виробника · пропозиція BB610 ще не налаштована</small></div>`).join('');
+  const packCards=skuList.length?skuList.map(s=>`<button class="pack sku-pack${selectedSku?.id===s.id?' active':''}" type="button" data-sku-select="${s.id}"><b>${s.variant}</b><div class="price" style="font-size:18px;margin-top:4px">${BB610.isPriceRequestSku?.(s)?'Ціна за запитом':BB610.money(s.price)}</div><small class="unit-price">${BB610.isPriceRequestSku?.(s)?'Під замовлення':(s.stock_label||'Наявність уточнюється')}</small></button>`).join(''):(p.factoryPacks||[]).map(s=>`<div class="pack"><b>${s}</b><small class="unit-price">Заводське фасування виробника · пропозиція BB610 ще не налаштована</small></div>`).join('');
 
   const szr=p.category==='protection'?`<div class="info-card product-detail-card szr-card"><h2>ДАНІ ДЛЯ ЗЗР / СЗР</h2><div class="kv"><span>Діюча речовина</span><b>${richValue(p.activeIngredient)}</b></div><div class="kv"><span>Концентрація</span><b>${richValue(p.concentration)}</b></div><div class="kv"><span>Шкідник / хвороба</span><b>${richValue(p.target)}</b></div><div class="kv"><span>Строк очікування</span><b>${richValue(p.waitingPeriod)}</b></div><div class="kv"><span>Клас небезпеки</span><b>${richValue(p.hazardClass)}</b></div></div>`:'';
 
@@ -73,13 +73,23 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   function updateSkuUI(){
     const price=document.getElementById('selected-price'), unit=document.getElementById('selected-unit'), stock=document.getElementById('selected-stock'), variant=document.getElementById('selected-variant'), shipping=document.getElementById('selected-shipping');
     if(!selectedSku){variant.textContent='Фасовка BB610 ще не визначена';price.textContent='Ціна уточнюється';unit.textContent='';stock.textContent='Наявність уточнюється';shipping.innerHTML='<span>Відправка по Україні — умови уточнюються</span>';document.getElementById('buy').disabled=true;return}
-    variant.textContent=selectedSku.variant||'';price.textContent=BB610.money(selectedSku.price);unit.textContent=selectedSku.price==null?'Комерційна ціна BB610 ще не визначена':BB610.unitPrice({...p,unit:selectedSku.volume_weight?.unit},selectedSku.price,selectedSku.volume_weight?.value);stock.textContent=selectedSku.stock_label||'Наявність уточнюється';shipping.innerHTML=(selectedSku.shipping||[]).map(x=>`<span>${x}</span>`).join('');
+    const requestPrice=BB610.isPriceRequestSku?.(selectedSku)===true;
+    variant.textContent=selectedSku.variant||'';
+    price.textContent=requestPrice?'Ціна за запитом':BB610.money(selectedSku.price);
+    unit.textContent=requestPrice?'Ціна залежить від моделі, кількості та умов постачання':(selectedSku.price==null?'Комерційна ціна BB610 ще не визначена':BB610.unitPrice({...p,unit:selectedSku.volume_weight?.unit},selectedSku.price,selectedSku.volume_weight?.value));
+    stock.textContent=requestPrice?'Під замовлення':(selectedSku.stock_label||'Наявність уточнюється');
+    shipping.innerHTML=(selectedSku.shipping||[]).map(x=>`<span>${x}</span>`).join('');
     document.getElementById('product-main-image').src=selectedSku.image||p.image;document.getElementById('selected-packer').textContent=selectedSku.packer||'Уточнюється';document.getElementById('selected-supplier').textContent=selectedSku.supplier||'Уточнюється';document.getElementById('selected-sku').textContent=selectedSku.id;document.getElementById('selected-gtin').textContent=selectedSku.gtin_ean||'Не вказано';
-    document.querySelectorAll('[data-sku-select]').forEach(b=>b.classList.toggle('active',b.dataset.skuSelect===selectedSku.id));document.getElementById('buy').disabled=false;syncLiveProductSchema();
+    document.querySelectorAll('[data-sku-select]').forEach(b=>b.classList.toggle('active',b.dataset.skuSelect===selectedSku.id));
+    const buy=document.getElementById('buy'),qty=document.getElementById('qty');
+    buy.textContent=requestPrice?'ЗАПРОСИТИ ЦІНУ':'КУПИТИ';
+    qty.style.display=requestPrice?'none':'';
+    buy.disabled=requestPrice?false:!BB610.canBuySku(selectedSku);
+    syncLiveProductSchema();
   }
   document.querySelectorAll('[data-sku-select]').forEach(b=>b.onclick=()=>{selectedSku=BB610.sku(b.dataset.skuSelect);updateSkuUI();trackView();if(selectedSku?.url&&location.protocol!=='file:')history.replaceState({sku:selectedSku.id},'',selectedSku.url)});
   updateSkuUI();
-  document.getElementById('buy').onclick=()=>selectedSku&&BB610.addCart(selectedSku.id,Math.max(1,+document.getElementById('qty').value||1));
+  document.getElementById('buy').onclick=()=>{if(!selectedSku)return;const qty=Math.max(1,+document.getElementById('qty').value||1);if(BB610.isPriceRequestSku?.(selectedSku))BB610.openPriceRequest(selectedSku.id,qty);else BB610.addCart(selectedSku.id,qty)};
   document.getElementById('fav').onclick=e=>e.currentTarget.textContent=BB610.toggleFav(p.id)?'♥':'♡';
   document.getElementById('cmp').onclick=e=>{const on=BB610.toggleCompare(p.id);if(on!==false)e.currentTarget.textContent=on?'✓':'⇄'};
 });

@@ -1,0 +1,81 @@
+name: Surplus Product Card v3 cleanup CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/tools_cleanup_surplus_pcv3_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/surplus_pcv3_cleanup_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools_cleanup_surplus_pcv3_20260918.py'
+      - 'backend/services/product_cards_v3.py'
+      - '.github/workflows/surplus_pcv3_cleanup_ci.yml'
+
+jobs:
+  safety-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: python -m py_compile backend/tools_cleanup_surplus_pcv3_20260918.py
+
+      - name: Validate explicit cleanup contract
+        run: |
+          python - <<'PY'
+          from backend import tools_cleanup_surplus_pcv3_20260918 as c
+
+          assert len(c.DUPLICATES) == 9
+          assert c.EXAMPLE_SLUG == 'example-product'
+          assert c.EXPECTED_BEFORE == 119
+          assert c.EXPECTED_AFTER == 109
+
+          assert c.DUPLICATES == {
+              'master-npk-13-40-13': 'master-13-40-13',
+              'master-npk-15-5-30': 'master-15-5-30',
+              'master-npk-20-20-20': 'master-20-20-20',
+              'master-npk-3-11-38': 'master-3-11-38',
+              'plantafol-npk-0-25-50': 'plantafol-0-25-50',
+              'plantafol-npk-10-54-10': 'plantafol-10-54-10',
+              'plantafol-npk-20-20-20': 'plantafol-20-20-20',
+              'plantafol-npk-30-10-10': 'plantafol-30-10-10',
+              'plantafol-npk-5-15-45': 'plantafol-5-15-45',
+          }
+
+          # Commerce mapping removal is permitted only when the duplicate mapping
+          # is absent or is provably redundant with the canonical mapping.
+          ok, _ = c._redundant_mapping(None, None)
+          assert ok
+          ok, _ = c._redundant_mapping(
+              {
+                  'existing_product_key': 'p',
+                  'skus': [{'existing_commerce_sku_key': 'sku-a'}],
+              },
+              {
+                  'existing_product_key': 'p',
+                  'skus': [
+                      {'existing_commerce_sku_key': 'sku-a'},
+                      {'existing_commerce_sku_key': 'sku-b'},
+                  ],
+              },
+          )
+          assert ok
+          ok, _ = c._redundant_mapping(
+              {
+                  'existing_product_key': 'p',
+                  'skus': [{'existing_commerce_sku_key': 'sku-x'}],
+              },
+              {
+                  'existing_product_key': 'p',
+                  'skus': [{'existing_commerce_sku_key': 'sku-a'}],
+              },
+          )
+          assert not ok
+
+          print('SURPLUS PCV3 CLEANUP CONTRACT: PASS')
+          PY

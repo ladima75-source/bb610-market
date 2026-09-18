@@ -38,7 +38,8 @@ EXPECTED_SKUS = 37
 # Exact current official product pages where the Product Master had a generic,
 # brochure or stale URL.
 SOURCE_OVERRIDES = {
-    "plantlogic-30l-round-u-groove-1308303": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-with-parallel-u-grooves/",
+    "plantlogic-30l-round-u-groove-1308303": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-u-groove/",
+    "plantlogic-30l-round-parallel-u-grooves-1308305": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-with-parallel-u-grooves/",
     "plantlogic-zephyr-v2": "https://getplantlogic.com/portfolio-items/zephyr-v2/",
     "plantlogic-25l-round-new-1308125": "https://getplantlogic.com/portfolio-items/new-25-liter-round-pot/",
     "plantlogic-25l-round-short-legs-1303025": "https://getplantlogic.com/portfolio-items/25-liter-round-pot-short-legs/",

@@ -28,8 +28,8 @@ from backend.services import product_cards_v3 as pcv3
 MANIFEST = ROOT / "data" / "product_content" / "plantlogic_pots_v1_20260918.json"
 BACKUP_ROOT = ROOT / "var" / "content_backups"
 REPORT_ROOT = ROOT / "var" / "reports"
-EXPECTED_PRODUCTS = 34
-EXPECTED_SKUS = 37
+EXPECTED_PRODUCTS = 33
+EXPECTED_SKUS = 36
 
 
 def stamp() -> str:

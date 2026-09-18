@@ -5,6 +5,7 @@ const groups=[
   {title:'ОПЕРАЦІЇ',items:[
     ['dashboard.html','Огляд','home'],
     ['orders-center.html','Замовлення','bag'],
+    ['price-requests.html','Запити ціни','money'],
     ['commerce-control.html','Керування магазином','grid'],
     ['catalog-workbench.html','Розширений каталог','adjust']
   ]},

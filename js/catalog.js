@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const natural=(a,b)=>a.localeCompare(b,'uk',{numeric:true,sensitivity:'base'});
   const categoryName=id=>id==='containers'?'Горщики':(BB610_DATA_SOURCE.categories().find(c=>c.id===id)?.short_name||id);
   const productSkus=p=>BB610_DATA_SOURCE.skusForProduct(p.id)||[];
-  const productText=p=>norm([p.name,p.brand,p.manufacturer,p.categoryLabel,p.category,...productSkus(p).map(s=>`${s.id} ${s.sku||''} ${s.variant||''}`),...(p.cultures||[]),...(p.purposes||[])].join(' '));
+  const productText=p=>norm([p.name,p.brand,p.manufacturer,p.categoryLabel,p.category,p.npk,p.activeIngredient,p.productType,p.shortDescription,...productSkus(p).map(s=>`${s.id} ${s.sku||''} ${s.variant||''}`),...(p.cultures||[]),...(p.purposes||[])].join(' '));
   const hasStock=p=>p.stockStatus==='in_stock'||p.stockStatus==='dnipro'||(p.sizes||[]).some(s=>s.availability==='in_stock');
 
   const categories=BB610_DATA_SOURCE.categories().filter(c=>c.enabled&&!(BB610.categoryHidden&&BB610.categoryHidden(c.id))).sort((a,b)=>(a.order||0)-(b.order||0));

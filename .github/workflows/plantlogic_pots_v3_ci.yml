@@ -34,13 +34,13 @@ jobs:
           from backend.services import product_cards_v3 as pcv3
 
           doc = u.load_manifest()
-          assert len(doc['products']) == 32
+          assert len(doc['products']) == 34
           assert len(doc.get('deferred') or []) == 2
 
           cards = [u.build_card(row) for row in doc['products']]
-          assert len(cards) == 32
-          assert len({x['product_id'] for x in cards}) == 32
-          assert len({x['slug'] for x in cards}) == 32
+          assert len(cards) == 34
+          assert len({x['product_id'] for x in cards}) == 34
+          assert len({x['slug'] for x in cards}) == 34
           assert all(x['enabled'] is False for x in cards)
           assert all(x['content']['brand'] == 'Plantlogic' for x in cards)
           assert all(x['content']['category'] == 'Контейнери' for x in cards)
@@ -51,13 +51,13 @@ jobs:
               pcv3.validate(card)
               sku_ids.extend(x['sku_id'] for x in card['sku_media']['skus'])
           assert len(sku_ids) == len(set(sku_ids))
-          assert len(sku_ids) == 34  # Zephyr V2 has 3 sizes; other 31 cards have one SKU.
+          assert len(sku_ids) == 37  # Zephyr V2 has 3 SKU; new 40L square U-groove card has 2; others one.
 
           by_slug = {x['slug']: x for x in cards}
           assert len(by_slug['plantlogic-zephyr-v2']['sku_media']['skus']) == 3
           assert by_slug['plantlogic-25l-round-new-1308125']['product_id'] == 'prd_pl_1308125'
           assert by_slug['plantlogic-40l-round-u-grooves-1308041']['product_id'] == 'prd_pl_1308041'
 
-          print('PLANTLOGIC PRODUCT CARD V3 MASTER: 32/32 PASS')
-          print('PLANTLOGIC SKU STRUCTURE: 34/34 PASS')
+          print('PLANTLOGIC PRODUCT CARD V3 MASTER: 34/34 PASS')
+          print('PLANTLOGIC SKU STRUCTURE: 37/37 PASS')
           PY

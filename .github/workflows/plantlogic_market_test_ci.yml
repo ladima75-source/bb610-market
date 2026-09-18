@@ -18,6 +18,10 @@ on:
       - 'index.html'
       - 'catalog.html'
       - 'product.html'
+      - 'admin/price-requests.html'
+      - 'admin/price-requests.js'
+      - 'admin/price-requests.css'
+      - 'admin/admin-master-nav.js'
       - '.github/workflows/plantlogic_market_test_ci.yml'
   workflow_dispatch:
 
@@ -36,6 +40,8 @@ jobs:
           python -m py_compile             backend/app.py             backend/services/price_requests.py             backend/services/product_cards_v3_facets.py             backend/services/product_cards_v3_runtime.py             backend/services/catalog_cms.py             backend/tools_publish_plantlogic_market_test_20260918.py
           node --check js/app.js
           node --check js/product.js
+          node --check admin/price-requests.js
+          node --check admin/admin-master-nav.js
 
       - name: Storefront contract
         run: |
@@ -60,6 +66,12 @@ jobs:
               text=Path(page).read_text(encoding='utf-8')
               assert 'app.js?v=20260918-market-test-1' in text
           assert 'product.js?v=20260918-market-test-1' in Path('product.html').read_text(encoding='utf-8')
+          admin=Path('admin/price-requests.html').read_text(encoding='utf-8')
+          admin_js=Path('admin/price-requests.js').read_text(encoding='utf-8')
+          nav=Path('admin/admin-master-nav.js').read_text(encoding='utf-8')
+          assert 'Запити ціни' in admin
+          assert '/api/v1/admin/price-requests' in admin_js
+          assert "price-requests.html','Запити ціни'" in nav
 
           print('PLANTLOGIC MARKET-TEST STOREFRONT CONTRACT: PASS')
           PY

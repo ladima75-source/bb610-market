@@ -6,6 +6,8 @@ on:
     paths:
       - '.github/workflows/product_card_facets_ci.yml'
       - 'backend/services/product_cards_v3_facets.py'
+      - 'backend/services/product_cards_v3_runtime.py'
+      - 'backend/tools_normalize_nonpot_product_cards_20260918.py'
       - 'backend/services/product_cards_v3_catalog_import_facets.py'
       - 'backend/services/catalog_cms.py'
       - 'backend/catalog_import_api.py'
@@ -35,7 +37,7 @@ jobs:
         run: python -m pip install -r backend/requirements.txt
       - name: Syntax checks
         run: |
-          python -m py_compile backend/services/product_cards_v3_facets.py backend/services/product_cards_v3_catalog_import_facets.py backend/services/catalog_cms.py backend/catalog_import_api.py backend/update_brexil_zn_application.py
+          python -m py_compile backend/services/product_cards_v3_facets.py backend/services/product_cards_v3_runtime.py backend/tools_normalize_nonpot_product_cards_20260918.py backend/services/product_cards_v3_catalog_import_facets.py backend/services/catalog_cms.py backend/catalog_import_api.py backend/update_brexil_zn_application.py
           node --check assets/js/product-card-v2.js
           node --check assets/js/product-card-v3-enhancements.js
       - name: Filter fields round-trip smoke
@@ -84,13 +86,25 @@ jobs:
               mapping = root / 'commerce_map.json'
               (products / 'prd_test.json').write_text(json.dumps({
                   'product_id':'prd_test','slug':'test-product','enabled':True,
-                  'content':{'brand':'Brand','application':'LONG RECIPE MUST NOT LEAK','characteristics':[
-                      {'label':'Культури','value':'лохина; полуниця'},
-                      {'label':'Призначення','value':'живлення'},
-                      {'label':'Спосіб застосування','value':'Листова / внекоренева'},
-                      {'label':'NPK','value':'13-40-13'},
-                      {'label':'Діюча речовина','value':'Zn 10%'}
-                  ]}
+                  'content':{
+                      'title':'Test Product — тестовий продукт',
+                      'brand':'Brand',
+                      'short_description':'Короткий опис для каталогу.',
+                      'description':'Повний опис продукту для storefront projection.',
+                      'application':'LONG RECIPE MUST NOT LEAK',
+                      'characteristics':[
+                          {'label':'Тип продукту','value':'Мікродобриво'},
+                          {'label':'Культури','value':'лохина; полуниця'},
+                          {'label':'Призначення','value':'живлення'},
+                          {'label':'Спосіб застосування','value':'Листова / внекоренева'},
+                          {'label':'NPK','value':'13-40-13'},
+                          {'label':'Діюча речовина','value':'Zn 10%'}
+                      ]
+                  },
+                  'sku_media':{
+                      'media':[{'media_id':'m1','path':'assets/img/test-product.jpg','alt':'Test Product','kind':'product','sort_order':0}],
+                      'skus':[{'sku_id':'sku_test','sku_code':'SKU-TEST','label':'1 кг','package':'1 кг','primary_media_id':'m1','gallery_media_ids':[],'sort_order':0,'enabled':True}]
+                  }
               }), encoding='utf-8')
               mapping.write_text(json.dumps({'products':[{'product_id':'prd_test','existing_product_key':'test-product','skus':[]}]}), encoding='utf-8')
               f.PRODUCTS = products; f.COMMERCE_MAP = mapping
@@ -98,6 +112,11 @@ jobs:
               assert len(rows) == 1
               x = rows[0]
               assert x['id'] == 'test-product'
+              assert x['name'] == 'Test Product — тестовий продукт'
+              assert x['short_description'] == 'Короткий опис для каталогу.'
+              assert x['manufacturer_use'] == 'Повний опис продукту для storefront projection.'
+              assert x['product_type'] == 'Мікродобриво'
+              assert x['image']['local'] == 'assets/img/test-product.jpg'
               assert x['cultures'] == ['лохина','полуниця']
               assert x['purposes'] == ['живлення']
               assert x['npk'] == '13-40-13'

@@ -30,8 +30,8 @@ from backend.tools_prepare_pcv3_release import _snapshot_tables
 
 BACKUP_ROOT = ROOT / "var" / "release-backups"
 REPORT_ROOT = ROOT / "var" / "reports"
-EXPECTED_PRODUCTS = 34
-EXPECTED_SKUS = 37
+EXPECTED_PRODUCTS = 33
+EXPECTED_SKUS = 36
 
 
 def stamp() -> str:

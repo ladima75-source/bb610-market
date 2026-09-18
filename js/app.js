@@ -10,6 +10,15 @@ const BB610 = (() => {
   const storefrontName=p=>p?.id==='plantlogic-25-round-1308125'
     ?'Круглий горщик 25 л для лохини — арт. 1308125'
     :(p?.name||'');
+  const fallbackImage=category=>category==='containers'
+    ?'assets/img/product-container.svg'
+    :(category==='biostimulation'?'assets/img/product-biostim.svg':'assets/img/product-npk.svg');
+  const compactText=v=>String(v||'').replace(/\s+/g,' ').trim();
+  const cardSummary=p=>{
+    const candidates=[p.shortDescription,p.productType,p.manufacturerUse,(p.purposes||[]).join(' · ')];
+    const name=compactText(p.name).toLowerCase();
+    return candidates.map(compactText).find(x=>x&&x.toLowerCase()!==name)||'';
+  };
   const sku=id=>BB610_DATA_SOURCE.sku(id);
   const defaultSku=id=>BB610_DATA_SOURCE.defaultSku(id);
   const productSkus=id=>BB610_DATA_SOURCE.skusForProduct(id)||[];
@@ -37,7 +46,7 @@ const BB610 = (() => {
     if(!label||/уточню|невідом|unknown|bb610/i.test(label))return '';
     return label;
   }
-  const view=p=>{const s=displaySku(p.id);return {...p,name:storefrontName(p),officialName:p.official_name,category:p.category_id,categoryLabel:C().categories.find(c=>c.id===p.category_id)?.short_name||p.category_id,manufacturer:p.manufacturer,country:p.country,npk:p.npk,activeIngredient:p.active_ingredient,composition:p.composition||[],cultures:p.cultures||[],purposes:p.purposes||[],manufacturerUse:p.manufacturer_use,application:p.application,rate:p.rate,restrictions:p.restrictions,target:p.target,waitingPeriod:p.waiting_period,hazardClass:p.hazard_class,registration:p.registration,factoryPacks:p.factory_packs||[],documents:p.documents||[],instruction:(p.documents&&p.documents[0]?.title)||'Офіційне джерело виробника',source:p.source?.title||'',sourceUrl:p.source?.url||'',verifiedAt:p.verification?.verifiedAt||'',verified:!!p.verification,image:s?.image||p.image?.local||'',gallery:p.gallery||[],sku:s?.id||null,pack:s?.variant||'',price:s?.price??null,currency:s?.currency||'UAH',unit:s?.volume_weight?.unit||'шт',unitQty:s?.volume_weight?.value||1,stockStatus:s?.availability||'unknown',stockLabel:publicStockLabel(s),shipping:s?.shipping||[],supplier:s?.supplier||'',importer:s?.importer||'',packer:s?.packer||'',sizes:productSkus(p.id).map(x=>({id:x.id,label:x.variant,price:x.price,qty:x.volume_weight?.value,unit:x.volume_weight?.unit,status:x.offer_status,commercialStatus:x.commercial_status||'not-configured',priceRequest:isPriceRequestSku(x),marketTest:!!x.market_test,stockLabel:publicStockLabel(x),availability:x.availability||'unknown',packSourceStatus:x.pack_source_status||'unknown'}))}};
+  const view=p=>{const s=displaySku(p.id);return {...p,name:storefrontName(p),officialName:p.official_name,category:p.category_id,categoryLabel:C().categories.find(c=>c.id===p.category_id)?.short_name||p.category_id,manufacturer:p.manufacturer,country:p.country,npk:p.npk,activeIngredient:p.active_ingredient,composition:p.composition||[],cultures:p.cultures||[],purposes:p.purposes||[],manufacturerUse:p.manufacturer_use,application:p.application,rate:p.rate,restrictions:p.restrictions,target:p.target,waitingPeriod:p.waiting_period,hazardClass:p.hazard_class,registration:p.registration,factoryPacks:p.factory_packs||[],documents:p.documents||[],instruction:(p.documents&&p.documents[0]?.title)||'Офіційне джерело виробника',source:p.source?.title||'',sourceUrl:p.source?.url||'',verifiedAt:p.verification?.verifiedAt||'',verified:!!p.verification,shortDescription:p.short_description||'',productType:p.product_type||'',image:s?.image||p.image?.local||fallbackImage(p.category_id),gallery:p.gallery||[],sku:s?.id||null,pack:s?.variant||'',price:s?.price??null,currency:s?.currency||'UAH',unit:s?.volume_weight?.unit||'шт',unitQty:s?.volume_weight?.value||1,stockStatus:s?.availability||'unknown',stockLabel:publicStockLabel(s),shipping:s?.shipping||[],supplier:s?.supplier||'',importer:s?.importer||'',packer:s?.packer||'',sizes:productSkus(p.id).map(x=>({id:x.id,label:x.variant,price:x.price,qty:x.volume_weight?.value,unit:x.volume_weight?.unit,status:x.offer_status,commercialStatus:x.commercial_status||'not-configured',priceRequest:isPriceRequestSku(x),marketTest:!!x.market_test,stockLabel:publicStockLabel(x),availability:x.availability||'unknown',packSourceStatus:x.pack_source_status||'unknown'}))}};
   const products=()=>rawProducts().map(view);
   const byId=id=>{const p=BB610_DATA_SOURCE.product(id);if(p)return categoryHidden(p.category_id||p.category)?null:view(p);const s=sku(id);if(!s)return null;const owner=BB610_DATA_SOURCE.product(s.product_id);return owner&&!categoryHidden(owner.category_id||owner.category)?view(owner):null};
   function commerceItem(s,quantity=1){if(!s)return null;const p=BB610_DATA_SOURCE.product(s.product_id);const item={item_id:s.id,item_name:p.name,item_brand:p.brand,item_category:C().categories.find(c=>c.id===p.category_id)?.name||p.category_id,item_variant:s.variant,quantity:Number(quantity)||1,currency:s.currency||'UAH'};if(s.price!==null&&s.price!==undefined)item.price=Number(s.price);return item}
@@ -54,16 +63,20 @@ const BB610 = (() => {
   function cardV2(p){
     const fav=get(LS.fav,[]).includes(p.id),cmp=get(LS.compare,[]).includes(p.id),s=displaySku(p.id);
     const keyMeta=s?.variant||(p.npk&&p.npk!=='—'?`NPK ${p.npk}`:(p.form||p.categoryLabel||''));
+    const summary=cardSummary(p);
+    const fallback=fallbackImage(p.category);
+    const image=p.image||fallback;
     const priceRequest=isPriceRequestSku(s);
     const unit=priceRequest?'':unitPrice(p);
     const stock=priceRequest?'Під замовлення':(p.stockLabel||'');
     const buyEnabled=canBuySku(s);
     return `<article class="product-card product-card-v2" data-product-id="${p.id}">
-      <a class="product-media" href="${productUrl(p)}" data-select-product="${p.id}"><img loading="lazy" src="${p.image}" alt="${p.name}"></a>
+      <a class="product-media" href="${productUrl(p)}" data-select-product="${p.id}"><img loading="lazy" src="${image}" data-fallback="${fallback}" alt="${p.name}"></a>
       <div class="product-body">
         <div class="product-card-main">
           <div class="product-brand">${p.brand}</div>
           <a class="product-name" href="${productUrl(p)}" data-select-product="${p.id}">${p.name}</a>
+          ${summary?`<div class="product-summary">${summary}</div>`:''}
           <div class="product-spec">${keyMeta}</div>
         </div>
         <div class="product-card-commerce">
@@ -79,7 +92,7 @@ const BB610 = (() => {
     </article>`;
   }
   const card=cardV2;
-  function bindCards(scope=document){scope.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addCart(b.dataset.add));scope.querySelectorAll('[data-request-price]').forEach(b=>b.onclick=()=>openPriceRequest(b.dataset.requestPrice));scope.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const on=toggleFav(b.dataset.fav);b.textContent=on?'♥':'♡'});scope.querySelectorAll('[data-compare]').forEach(b=>b.onclick=()=>{const on=toggleCompare(b.dataset.compare);if(on!==false)b.textContent=on?'✓':'⇄'});scope.querySelectorAll('[data-select-product]').forEach(a=>a.addEventListener('click',()=>trackSelect(a.dataset.selectProduct,a.closest('#home-products')?'home-popular':'catalog',a.closest('#home-products')?'Популярні товари':'Каталог')))}
+  function bindCards(scope=document){scope.querySelectorAll('.product-media img[data-fallback]').forEach(img=>img.onerror=()=>{img.onerror=null;img.src=img.dataset.fallback||'assets/img/product-npk.svg';img.closest('.product-media')?.classList.add('is-fallback')});scope.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addCart(b.dataset.add));scope.querySelectorAll('[data-request-price]').forEach(b=>b.onclick=()=>openPriceRequest(b.dataset.requestPrice));scope.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const on=toggleFav(b.dataset.fav);b.textContent=on?'♥':'♡'});scope.querySelectorAll('[data-compare]').forEach(b=>b.onclick=()=>{const on=toggleCompare(b.dataset.compare);if(on!==false)b.textContent=on?'✓':'⇄'});scope.querySelectorAll('[data-select-product]').forEach(a=>a.addEventListener('click',()=>trackSelect(a.dataset.selectProduct,a.closest('#home-products')?'home-popular':'catalog',a.closest('#home-products')?'Популярні товари':'Каталог')))}
   function updateCompareBar(){const arr=get(LS.compare,[]),bar=document.querySelector('.compare-bar');if(!bar)return;bar.classList.toggle('show',arr.length>0);bar.querySelector('[data-compare-bar-count]').textContent=arr.length}
   function searchSubmit(form){const q=form.querySelector('input').value.trim();pushEvent('search',{search_term:q});location.href='catalog.html?q='+encodeURIComponent(q);return false}
   function renderCategoryNav(){document.querySelectorAll('.nav .container').forEach(nav=>{nav.querySelectorAll('a[href*="#verified"]').forEach(a=>a.remove());const catLinks=[...nav.querySelectorAll('a[href*="category="]')];if(!catLinks.length)return;const first=catLinks[0];const visibleCategories=C().categories.filter(c=>c.enabled&&!categoryHidden(c.id)).sort((a,b)=>(a.order||0)-(b.order||0));visibleCategories.forEach((c,i)=>{let a=catLinks[i];if(!a){a=document.createElement('a');first.parentNode.insertBefore(a,catLinks[catLinks.length-1]?.nextSibling||null)}a.href='catalog.html?category='+encodeURIComponent(c.id);a.textContent=c.id==='containers'?'Горщики':(c.short_name||c.name)});catLinks.slice(visibleCategories.length).forEach(a=>a.remove())})}

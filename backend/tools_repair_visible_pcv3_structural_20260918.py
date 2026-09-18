@@ -40,12 +40,13 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from backend.db import connect
+from backend.catalog_provider import load_catalog
 from backend.services import product_cards_v3 as pcv3
+from backend.services.catalog_cms import _dynamic_skus, _overrides
 from backend.services.product_cards_v3_media import _is_resolvable
 from backend.services.product_commerce import commerce_map as live_commerce_map
 from backend.tools_apply_valagro_prices_20260916_runtime import pack_key
 
-RUNTIME = ROOT / "data" / "catalog.runtime.js"
 BACKUP_ROOT = ROOT / "var" / "release-backups"
 REPORT_ROOT = ROOT / "var" / "reports"
 
@@ -61,18 +62,70 @@ def norm(value: Any) -> str:
     return s
 
 
-def load_runtime() -> dict:
-    raw = RUNTIME.read_text(encoding="utf-8").strip()
-    prefix = "window.BB610_CATALOG = "
-    if not raw.startswith(prefix):
-        raise RuntimeError("catalog.runtime.js wrapper changed")
-    payload = raw[len(prefix):]
-    if payload.endswith(";"):
-        payload = payload[:-1]
-    doc = json.loads(payload)
-    if not isinstance(doc.get("products"), list) or not isinstance(doc.get("skus"), list):
-        raise RuntimeError("runtime catalog shape changed")
-    return doc
+def merge_catalog_sources(base: dict, overrides: dict, dynamic_skus: list[dict]) -> dict:
+    """Build the same authoritative catalog identity set used by backend APIs.
+
+    catalog.master.json owns static product/SKU identity. CMS overrides may
+    update descriptive product fields or add dynamic products, while
+    dynamic_skus adds runtime-created SKU identities. The stale browser
+    catalog.runtime.js snapshot is intentionally not used here.
+    """
+    if not isinstance(base, dict):
+        raise RuntimeError("catalog.master.json must be an object")
+    if not isinstance(base.get("products"), list) or not isinstance(base.get("skus"), list):
+        raise RuntimeError("catalog.master.json shape changed")
+
+    products: dict[str, dict] = {}
+    for row in base.get("products") or []:
+        if not isinstance(row, dict) or not row.get("id"):
+            continue
+        products[str(row["id"])] = deepcopy(row)
+
+    if not isinstance(overrides, dict):
+        raise RuntimeError("catalog CMS overrides shape changed")
+    for pid, content in overrides.items():
+        if not isinstance(content, dict):
+            continue
+        key = str(pid or "").strip()
+        if not key:
+            continue
+        merged = deepcopy(products.get(key) or {})
+        merged.update({
+            k: deepcopy(v)
+            for k, v in content.items()
+            if not str(k).startswith("cms_")
+        })
+        merged["id"] = key
+        products[key] = merged
+
+    skus: dict[str, dict] = {}
+    for row in base.get("skus") or []:
+        if not isinstance(row, dict):
+            continue
+        key = str(row.get("id") or row.get("sku") or "").strip()
+        if key:
+            skus[key] = deepcopy(row)
+
+    if not isinstance(dynamic_skus, list):
+        raise RuntimeError("dynamic SKU source shape changed")
+    for row in dynamic_skus:
+        if not isinstance(row, dict):
+            continue
+        key = str(row.get("id") or row.get("sku") or "").strip()
+        if key:
+            skus[key] = deepcopy(row)
+
+    out = deepcopy(base)
+    out["products"] = list(products.values())
+    out["skus"] = list(skus.values())
+    return out
+
+
+def load_authoritative_catalog() -> dict:
+    try:
+        return merge_catalog_sources(load_catalog(), _overrides(), _dynamic_skus())
+    except Exception as exc:
+        raise RuntimeError(f"authoritative catalog load failed: {exc}") from exc
 
 
 def commerce_snapshot() -> dict[str, tuple]:
@@ -98,18 +151,18 @@ def mapping_index() -> dict[str, dict]:
     }
 
 
-def runtime_indexes(runtime: dict) -> tuple[dict[str, dict], dict[str, dict], dict[str, list[dict]]]:
+def catalog_indexes(catalog: dict) -> tuple[dict[str, dict], dict[str, dict], dict[str, list[dict]]]:
     by_id: dict[str, dict] = {}
     by_slug: dict[str, dict] = {}
     sku_by_product: dict[str, list[dict]] = {}
-    for p in runtime.get("products") or []:
+    for p in catalog.get("products") or []:
         if not isinstance(p, dict) or not p.get("id"):
             continue
         by_id[str(p["id"])] = p
         slug = str(p.get("slug") or "").strip()
         if slug:
             by_slug[slug] = p
-    for s in runtime.get("skus") or []:
+    for s in catalog.get("skus") or []:
         if not isinstance(s, dict) or not s.get("product_id"):
             continue
         sku_by_product.setdefault(str(s["product_id"]), []).append(s)
@@ -230,10 +283,10 @@ def enabled_v3_skus(card: dict) -> list[dict]:
     ]
 
 
-def exact_package_matches(card: dict, runtime_product: dict, runtime_skus: list[dict]) -> tuple[dict[str, dict], list[str]]:
+def exact_package_matches(card: dict, catalog_product: dict, catalog_skus: list[dict]) -> tuple[dict[str, dict], list[str]]:
     problems: list[str] = []
     by_pack: dict[str, list[dict]] = {}
-    for row in runtime_skus:
+    for row in catalog_skus:
         key = pack_key(row.get("variant") or "")
         if key:
             by_pack.setdefault(key, []).append(row)
@@ -248,7 +301,7 @@ def exact_package_matches(card: dict, runtime_product: dict, runtime_skus: list[
         hits = by_pack.get(pkey) or []
         if len(hits) != 1:
             problems.append(
-                f"{sid}: package {pkey} runtime matches={len(hits)}"
+                f"{sid}: package {pkey} catalog matches={len(hits)}"
             )
             continue
         out[sid] = hits[0]
@@ -316,16 +369,16 @@ def merge_mapping_links(mapping: dict | None, desired_links: list[dict]) -> list
     return out
 
 
-def runtime_image_path(runtime_product: dict, runtime_sku: dict) -> tuple[str, str]:
+def catalog_image_path(catalog_product: dict, catalog_sku: dict) -> tuple[str, str]:
     candidates: list[tuple[str, str]] = []
-    sku_image = runtime_sku.get("image")
+    sku_image = catalog_sku.get("image")
     if isinstance(sku_image, str):
-        candidates.append((sku_image, str(runtime_sku.get("image_alt") or "")))
-    pimage = runtime_product.get("image")
+        candidates.append((sku_image, str(catalog_sku.get("image_alt") or "")))
+    pimage = catalog_product.get("image")
     if isinstance(pimage, dict):
-        candidates.append((str(pimage.get("local") or ""), str(runtime_product.get("image_alt") or "")))
+        candidates.append((str(pimage.get("local") or ""), str(catalog_product.get("image_alt") or "")))
     elif isinstance(pimage, str):
-        candidates.append((pimage, str(runtime_product.get("image_alt") or "")))
+        candidates.append((pimage, str(catalog_product.get("image_alt") or "")))
     for path, alt in candidates:
         path = path.strip()
         if path and _is_resolvable(path):
@@ -368,8 +421,8 @@ def media_id_for_path(card: dict, path: str, alt: str) -> str:
 
 
 def build_plan() -> dict:
-    runtime = load_runtime()
-    by_id, by_slug, sku_by_product = runtime_indexes(runtime)
+    catalog = load_authoritative_catalog()
+    by_id, by_slug, sku_by_product = catalog_indexes(catalog)
     live = live_commerce_map()
     mappings = mapping_index()
 
@@ -537,7 +590,7 @@ def build_plan() -> dict:
                 and str(primary.get("path") or "").strip()
                 and _is_resolvable(str(primary.get("path") or ""))
             )
-            path, alt = runtime_image_path(rp, rs)
+            path, alt = catalog_image_path(rp, rs)
             if not alt:
                 title = str((patched.get("content") or {}).get("title") or "").strip()
                 package = str(sku.get("package") or sku.get("label") or "").strip()
@@ -555,7 +608,7 @@ def build_plan() -> dict:
         # currently a primary. No gallery membership is added automatically.
         runtime_alts: dict[str, str] = {}
         for sid, rs in package_matches.items():
-            path, alt = runtime_image_path(rp, rs)
+            path, alt = catalog_image_path(rp, rs)
             if path and alt:
                 runtime_alts[path] = alt
         for media in ((patched.get("sku_media") or {}).get("media") or []):

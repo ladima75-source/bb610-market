@@ -131,7 +131,7 @@ def _final_verify() -> dict:
         "primary_ready": primary_ready,
         "enabled_cards": enabled_cards,
         "legacy_bound": legacy_bound,
-        "commerce_pending": EXPECTED_SKUS - legacy_bound,
+        "unbound_skus": EXPECTED_SKUS - legacy_bound,
     }
 
 
@@ -215,7 +215,7 @@ def main() -> int:
     print(f"SKU: {result['skus']}/{EXPECTED_SKUS}")
     print(f"SKU WITH PRIMARY MEDIA: {result['primary_ready']}/{EXPECTED_SKUS}")
     print(f"VERIFIED LEGACY COMMERCE: {result['legacy_bound']}/{EXPECTED_LEGACY_BINDINGS}")
-    print(f"COMMERCE/PRECISE PRICE PENDING SKU: {result['commerce_pending']}/{EXPECTED_SKUS}")
+    print(f"UNBOUND NEW SKU: {result['unbound_skus']}/{EXPECTED_SKUS}")
     print("ENABLED CARDS:", result["enabled_cards"])
     print("COMMERCE/PRICES/STOCK UNCHANGED: PASS")
     print("UKRAINIAN STOREFRONT TITLES: PASS")

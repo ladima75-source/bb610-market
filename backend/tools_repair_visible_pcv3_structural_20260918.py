@@ -9,12 +9,12 @@ Scope:
 
 Safe repairs only:
 1) restore/create v3 -> commerce mapping when product identity is exact and every
-   enabled v3 SKU has a unique exact package match to an existing runtime SKU
+   enabled v3 SKU resolves to an exact authoritative-catalog package identity
    with a live sku_commerce row;
 2) fill a blank v3 sku_code from that exact commerce SKU key;
-3) restore missing/invalid primary media from the exact runtime SKU/product
+3) restore missing/invalid primary media from the exact catalog SKU/product
    image already present in BB610 catalog;
-4) fill missing alt from existing runtime alt metadata; when no legacy alt
+4) fill missing alt from existing catalog metadata; when no legacy alt
    exists, derive it only from the existing v3 title + package.
 
 No price, sale price, availability, stock, enabled commerce state, product
@@ -483,6 +483,11 @@ def media_id_for_path(card: dict, path: str, alt: str) -> str:
 def build_plan() -> dict:
     catalog = load_authoritative_catalog()
     by_id, by_slug, sku_by_product = catalog_indexes(catalog)
+    catalog_sku_keys = {
+        str(x.get("id") or x.get("sku") or "").strip()
+        for x in (catalog.get("skus") or [])
+        if isinstance(x, dict) and str(x.get("id") or x.get("sku") or "").strip()
+    }
     live = live_commerce_map()
     mappings = mapping_index()
 
@@ -580,7 +585,13 @@ def build_plan() -> dict:
                 })
                 continue
             current_key = links.get(sid, "")
-            if current_key and current_key != commerce_key:
+            stale_sku_link = bool(
+                current_key
+                and current_key != commerce_key
+                and current_key not in catalog_sku_keys
+                and not isinstance(live.get(current_key), dict)
+            )
+            if current_key and current_key != commerce_key and not stale_sku_link:
                 mapping_safe = False
                 unresolved.append({
                     "product_id": pid, "slug": card.get("slug"),

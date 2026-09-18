@@ -145,6 +145,24 @@ def content_issues(card: dict) -> list[str]:
     return out
 
 
+def _runtime_product_matches_card(card: dict, runtime_product: dict) -> bool:
+    """Return True only when product identity is proven by exact existing data."""
+    slug = str(card.get("slug") or "").strip()
+    runtime_id = str(runtime_product.get("id") or "").strip()
+    runtime_slug = str(runtime_product.get("slug") or "").strip()
+    if slug and (slug == runtime_id or slug == runtime_slug):
+        return True
+
+    title = norm((card.get("content") or {}).get("title"))
+    if not title:
+        return False
+    return any(
+        title == norm(runtime_product.get(key))
+        for key in ("name", "official_name")
+        if str(runtime_product.get(key) or "").strip()
+    )
+
+
 def card_exclusion(card: dict, mapping: dict | None, runtime_by_id: dict[str, dict]) -> str:
     content = card.get("content") or {}
     brand = norm(content.get("brand"))
@@ -157,16 +175,34 @@ def card_exclusion(card: dict, mapping: dict | None, runtime_by_id: dict[str, di
     if isinstance(mapping, dict):
         parent = str(mapping.get("existing_product_key") or "").strip()
         rp = runtime_by_id.get(parent)
-        if isinstance(rp, dict) and str(rp.get("category_id") or "").strip() == "protection":
-            return "protection"
+        if isinstance(rp, dict):
+            runtime_brand = norm(rp.get("brand"))
+            runtime_id = norm(rp.get("id"))
+            runtime_slug = norm(rp.get("slug"))
+            if (
+                "plantlogic" in runtime_brand
+                or runtime_id.startswith("plantlogic")
+                or runtime_slug.startswith("plantlogic-")
+            ):
+                return "plantlogic"
+            if str(rp.get("category_id") or "").strip() == "protection":
+                return "protection"
     return ""
 
 
 def exact_runtime_product(card: dict, mapping: dict | None, by_id: dict[str, dict], by_slug: dict[str, dict]) -> tuple[dict | None, str]:
+    # Existing mapping is not proof by itself. A stale/wrong parent must never
+    # become the source for automatic SKU/media repair.
     if isinstance(mapping, dict):
         parent = str(mapping.get("existing_product_key") or "").strip()
-        if parent and parent in by_id:
-            return by_id[parent], "existing_mapping_parent"
+        if not parent:
+            return None, "existing_mapping_parent_missing"
+        rp = by_id.get(parent)
+        if not isinstance(rp, dict):
+            return None, "existing_mapping_parent_missing"
+        if not _runtime_product_matches_card(card, rp):
+            return None, "existing_mapping_identity_unproven"
+        return rp, "existing_mapping_parent_exact"
 
     slug = str(card.get("slug") or "").strip()
     candidates = []
@@ -322,7 +358,7 @@ def build_plan() -> dict:
             unresolved.append({
                 "product_id": pid,
                 "slug": card.get("slug"),
-                "reason": "no_exact_runtime_product_identity",
+                "reason": resolution or "no_exact_runtime_product_identity",
             })
             cards.append({"product_id": pid, "slug": card.get("slug"), "content_issues": content_gaps})
             continue

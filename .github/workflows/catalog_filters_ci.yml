@@ -1,0 +1,83 @@
+name: Catalog filters CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'js/catalog.js'
+      - 'catalog.html'
+      - 'categories/nutrition/index.html'
+      - 'categories/biostimulation/index.html'
+      - 'categories/containers/index.html'
+      - '.github/workflows/catalog_filters_ci.yml'
+  pull_request:
+    paths:
+      - 'js/catalog.js'
+      - 'catalog.html'
+      - 'categories/nutrition/index.html'
+      - 'categories/biostimulation/index.html'
+      - 'categories/containers/index.html'
+      - '.github/workflows/catalog_filters_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Syntax
+        run: node --check js/catalog.js
+
+      - name: Canonical facet contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          js=Path('js/catalog.js').read_text(encoding='utf-8')
+
+          a=js.index('function methodGroupsFor')
+          b=js.index('\n  const categories',a)
+          method=js[a:b]
+          assert 'applicationMethods' in method
+          assert 'application_methods' in method
+          assert 'manufacturerUse' not in method
+          assert 'purposes' not in method
+          assert "'фертигація':'fertigation'" in js
+          assert "'позакореневе внесення':'foliar'" in js
+          assert "'кореневе внесення':'root'" in js
+
+          a=js.index('function packageMetric')
+          b=js.index('\n  function packageGroupForSku',a)
+          package=js[a:b]
+          assert 'volume_weight' in package
+          assert 'шт' not in package
+          assert 'pcs' not in package
+          assert "if(n<=50)return 'small'" in js
+          assert "if(n>=100&&n<=1000)return 'medium'" in js
+          assert "if(n>=5000)return 'large'" in js
+
+          assert 'function dynamicFacetCount(group,value)' in js
+          assert 'matchesState(p,state,group)' in js
+          assert 'row.hidden=!input.checked&&n===0' in js
+          assert 'if(!n)input.checked=false' not in js
+
+          for path in [
+              'catalog.html',
+              'categories/nutrition/index.html',
+              'categories/biostimulation/index.html',
+              'categories/containers/index.html',
+          ]:
+              doc=Path(path).read_text(encoding='utf-8')
+              assert 'js/catalog.js?v=20260919-facets-1' in doc, path
+              assert 'js/data-source.js?v=20260918-master-1' in doc, path
+              assert 'config/commerce-config.js?v=20260918-master-1' in doc, path
+
+          print('CATALOG FILTER CONTRACT: PASS')
+          PY

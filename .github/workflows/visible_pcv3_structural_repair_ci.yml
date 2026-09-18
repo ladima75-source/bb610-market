@@ -151,6 +151,36 @@ jobs:
           assert rp['id']=='master-new'
           assert res=='stale_mapping_parent_exact_slug_or_id'
 
+          sku_mapping={
+            'existing_product_key':'deleted-master-parent',
+            'skus':[
+              {'sku_id':'sku_a','existing_commerce_sku_key':'BB610-A-1KG'},
+              {'sku_id':'sku_b','existing_commerce_sku_key':'BB610-A-250G'},
+            ],
+          }
+          sku_parent={'canonical-master':{'id':'canonical-master','slug':'other-slug','name':'Canonical Master'}}
+          sku_by_key={
+            'BB610-A-1KG':{'id':'BB610-A-1KG','product_id':'canonical-master','variant':'1 кг'},
+            'BB610-A-250G':{'id':'BB610-A-250G','product_id':'canonical-master','variant':'250 г'},
+          }
+          rp,res=t.exact_runtime_product(card,sku_mapping,sku_parent,{},sku_by_key=sku_by_key)
+          assert rp['id']=='canonical-master'
+          assert res=='stale_mapping_parent_exact_sku_identity'
+
+          conflicting_sku_by_key={
+            'BB610-A-1KG':{'id':'BB610-A-1KG','product_id':'canonical-master','variant':'1 кг'},
+            'BB610-A-250G':{'id':'BB610-A-250G','product_id':'another-parent','variant':'250 г'},
+          }
+          conflict_parents={
+            'canonical-master':{'id':'canonical-master'},
+            'another-parent':{'id':'another-parent'},
+          }
+          rp,res=t.exact_runtime_product(
+            card,sku_mapping,conflict_parents,{},sku_by_key=conflicting_sku_by_key
+          )
+          assert rp is None
+          assert res=='existing_mapping_sku_parent_conflict'
+
           title_replacement={'master-new':{'id':'master-new','slug':'different-slug','name':'Master 13-40-13'}}
           rp,res=t.exact_runtime_product(card,missing_parent,title_replacement,{})
           assert rp['id']=='master-new'

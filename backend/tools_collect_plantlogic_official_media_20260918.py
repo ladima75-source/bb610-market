@@ -22,6 +22,7 @@ import json
 import re
 import sys
 import urllib.parse
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -96,21 +97,51 @@ def normalize_url(base: str, value: str) -> str:
     return url
 
 
+BROWSER_USER_AGENTS = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/153.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/605.1.15 (KHTML, like Gecko) "
+    "Version/18.6 Safari/605.1.15",
+)
+
+
 def fetch_html(url: str) -> tuple[str, str]:
-    req = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": "BB610-Market/1.0 (+official Plantlogic media audit)",
-            "Accept": "text/html,application/xhtml+xml",
-        },
-    )
-    with urllib.request.urlopen(req, timeout=30) as response:
-        final_url = response.geturl()
-        content_type = str(response.headers.get("Content-Type") or "")
-        if "text/html" not in content_type and "application/xhtml+xml" not in content_type:
-            raise RuntimeError(f"unexpected content type: {content_type}")
-        raw = response.read(4_000_000)
-    return final_url, raw.decode("utf-8", errors="replace")
+    last_error: Exception | None = None
+    for user_agent in BROWSER_USER_AGENTS:
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": user_agent,
+                "Accept": (
+                    "text/html,application/xhtml+xml,application/xml;q=0.9,"
+                    "image/avif,image/webp,*/*;q=0.8"
+                ),
+                "Accept-Language": "en-US,en;q=0.9,uk;q=0.8",
+                "Cache-Control": "no-cache",
+                "Pragma": "no-cache",
+                "Referer": "https://getplantlogic.com/",
+                "Upgrade-Insecure-Requests": "1",
+            },
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as response:
+                final_url = response.geturl()
+                content_type = str(response.headers.get("Content-Type") or "")
+                if "text/html" not in content_type and "application/xhtml+xml" not in content_type:
+                    raise RuntimeError(f"unexpected content type: {content_type}")
+                raw = response.read(4_000_000)
+            return final_url, raw.decode("utf-8", errors="replace")
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in {403, 404, 429, 503}:
+                raise
+        except urllib.error.URLError as exc:
+            last_error = exc
+    if last_error:
+        raise last_error
+    raise RuntimeError(f"unable to fetch official page: {url}")
 
 
 def meta_content(page_html: str, key: str) -> list[str]:

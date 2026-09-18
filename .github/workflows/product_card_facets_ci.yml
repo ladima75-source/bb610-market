@@ -13,6 +13,7 @@ on:
       - 'backend/services/catalog_cms.py'
       - 'backend/catalog_import_api.py'
       - 'backend/update_brexil_zn_application.py'
+      - 'data/content_batches/stage22c_batch*.json'
       - 'assets/js/product-card-v2.js'
       - 'assets/js/product-card-v3-enhancements.js'
       - 'products/brexil-zn/index.html'
@@ -154,6 +155,48 @@ jobs:
           assert culture_values(unknown, blank, blank) == []
 
           print('VERIFIED TAXONOMY NORMALIZATION: PASS')
+          PY
+      - name: Verified MASTER taxonomy source contracts
+        run: |
+          python - <<'PY'
+          from backend.services.product_cards_v3_master import master_rows
+
+          rows={int(x['source_row']):x for x in master_rows() if str(x.get('source_row') or '').isdigit()}
+
+          def specs(row):
+              return {str(x.get('label') or ''):str(x.get('value') or '') for x in (row.get('specs') or []) if isinstance(x,dict)}
+
+          for n in (1,2,3,4,5,6):
+              s=specs(rows[n])
+              assert s['Культури'] == 'усі культури'
+              assert s['Спосіб застосування'] == 'Фертигація'
+
+          s=specs(rows[19])
+          assert s['Культури'] == 'усі культури'
+          assert s['Спосіб застосування'] == 'Позакореневе внесення'
+          assert 'terratarsa.com/en/prd/speedfol-amino-vegetative-2/' in rows[19]['sources']['source_url']
+
+          assert specs(rows[26])['Культури'] == 'усі культури'
+          assert specs(rows[27])['Спосіб застосування'] == 'Позакореневе внесення'
+
+          assert specs(rows[39])['Спосіб застосування'] == 'Кореневе внесення'
+          assert 'Позакореневе внесення' in specs(rows[40])['Спосіб застосування']
+          assert specs(rows[41])['Спосіб застосування'] == 'Позакореневе внесення'
+
+          for n in (50,51,53):
+              s=specs(rows[n])
+              assert s['Культури'] == 'усі культури'
+              assert s['Спосіб застосування'] == 'Позакореневе внесення'
+
+          assert specs(rows[67])['Спосіб застосування'] == 'Позакореневе внесення'
+          for n in (69,70):
+              s=specs(rows[n])
+              assert s['Культури'] == 'усі культури'
+              assert 'Фертигація' in s['Спосіб застосування']
+              assert 'Позакореневе внесення' in s['Спосіб застосування']
+              assert 'Кореневе внесення' in s['Спосіб застосування']
+
+          print('VERIFIED MASTER TAXONOMY SOURCES: PASS')
           PY
       - name: Catalog overlay smoke
         run: |

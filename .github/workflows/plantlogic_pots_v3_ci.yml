@@ -6,12 +6,14 @@ on:
     paths:
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - 'backend/update_plantlogic_pots_v3_20260918.py'
+      - 'backend/tools_sync_plantlogic_pots_v3_20260918.py'
       - 'backend/services/product_cards_v3.py'
       - '.github/workflows/plantlogic_pots_v3_ci.yml'
   pull_request:
     paths:
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - 'backend/update_plantlogic_pots_v3_20260918.py'
+      - 'backend/tools_sync_plantlogic_pots_v3_20260918.py'
       - 'backend/services/product_cards_v3.py'
       - '.github/workflows/plantlogic_pots_v3_ci.yml'
 
@@ -25,7 +27,9 @@ jobs:
           python-version: '3.12'
 
       - name: Syntax
-        run: python -m py_compile backend/update_plantlogic_pots_v3_20260918.py
+        run: |
+          python -m py_compile backend/update_plantlogic_pots_v3_20260918.py
+          python -m py_compile backend/tools_sync_plantlogic_pots_v3_20260918.py
 
       - name: Validate manifest and all generated cards
         run: |
@@ -57,6 +61,25 @@ jobs:
           assert len(by_slug['plantlogic-zephyr-v2']['sku_media']['skus']) == 3
           assert by_slug['plantlogic-25l-round-new-1308125']['product_id'] == 'prd_pl_1308125'
           assert by_slug['plantlogic-40l-round-u-grooves-1308041']['product_id'] == 'prd_pl_1308041'
+          assert by_slug['plantlogic-30l-round-parallel-u-grooves-1308305']['product_id'] == 'prd_pl_1308305'
+          assert len(by_slug['plantlogic-40l-square-u-grooves-side-holes-13090400-13090440']['sku_media']['skus']) == 2
+
+          # Safe sync must preserve existing media while refreshing managed content.
+          from backend import tools_sync_plantlogic_pots_v3_20260918 as sync
+          desired=by_slug['plantlogic-25l-round-new-1308125']
+          existing={**desired,'content':{**desired['content'],'description':'old'}}
+          existing['sku_media']={
+              'skus':[{**desired['sku_media']['skus'][0],
+                       'primary_media_id':'med_test',
+                       'gallery_media_ids':['med_test']}],
+              'media':[{'media_id':'med_test','path':'media/products/test.jpg','alt':'x','kind':'product','sort_order':0}],
+          }
+          merged=sync.merge_existing(desired,existing)
+          assert merged['content']==desired['content']
+          assert merged['sku_media']['skus'][0]['primary_media_id']=='med_test'
+          assert merged['sku_media']['skus'][0]['gallery_media_ids']==['med_test']
+          assert sync.EXPECTED_PRODUCTS==34
+          assert sync.EXPECTED_SKUS==37
 
           print('PLANTLOGIC PRODUCT CARD V3 MASTER: 34/34 PASS')
           print('PLANTLOGIC SKU STRUCTURE: 37/37 PASS')

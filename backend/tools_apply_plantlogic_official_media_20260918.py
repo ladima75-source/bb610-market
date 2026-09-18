@@ -19,6 +19,7 @@ import sys
 from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlsplit, urlunsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -76,6 +77,23 @@ def valid_primary(card: dict, sku: dict) -> bool:
     return bool(isinstance(row, dict) and path and _is_resolvable(path))
 
 
+def _download_url_variants(url: str) -> list[str]:
+    out = [str(url)]
+    parsed = urlsplit(str(url))
+    if parsed.netloc.lower() == "i0.wp.com":
+        path = parsed.path.lstrip("/")
+        parts = path.split("/", 1)
+        if len(parts) == 2 and parts[0].lower() in {
+            "getplantlogic.com",
+            "www.getplantlogic.com",
+        }:
+            direct_path = "/" + parts[1].lstrip("/")
+            direct = urlunsplit(("https", "getplantlogic.com", direct_path, "", ""))
+            if direct not in out:
+                out.append(direct)
+    return out
+
+
 def choose_primary(spec: dict) -> dict:
     slug = str(spec["slug"])
     name = str(spec.get("official_name_en") or spec.get("name") or "")
@@ -107,35 +125,38 @@ def choose_primary(spec: dict) -> dict:
     attempts = []
     for chosen in ready:
         image_url = str(chosen["url"])
-        try:
-            data, ctype, resolved_url = _fetch(
-                image_url,
-                referer=final_url,
-                accept="image/avif,image/webp,image/png,image/jpeg,*/*;q=0.8",
-            )
-            if len(data) > MAX_IMAGE_BYTES:
-                raise RuntimeError("image too large")
-            kind = _image_kind(data, ctype, resolved_url)
-            if not kind:
-                raise RuntimeError("candidate is not a supported product image")
-            if len(data) < 12_000:
-                raise RuntimeError("candidate image file is suspiciously small")
-            return {
-                "slug": slug,
-                "source_page": final_url,
-                "product_numbers": numbers,
-                "candidate": chosen,
-                "bytes": data,
-                "resolved_url": resolved_url,
-                "kind": kind,
-                "sha256": _sha256(data),
-            }
-        except Exception as exc:
-            attempts.append({
-                "url": image_url,
-                "score": chosen.get("score"),
-                "error": f"{type(exc).__name__}: {exc}",
-            })
+        for download_url in _download_url_variants(image_url):
+            try:
+                data, ctype, resolved_url = _fetch(
+                    download_url,
+                    referer=final_url,
+                    accept="image/avif,image/webp,image/png,image/jpeg,*/*;q=0.8",
+                )
+                if len(data) > MAX_IMAGE_BYTES:
+                    raise RuntimeError("image too large")
+                kind = _image_kind(data, ctype, resolved_url)
+                if not kind:
+                    raise RuntimeError("candidate is not a supported product image")
+                if len(data) < 12_000:
+                    raise RuntimeError("candidate image file is suspiciously small")
+                return {
+                    "slug": slug,
+                    "source_page": final_url,
+                    "product_numbers": numbers,
+                    "candidate": chosen,
+                    "candidate_url": image_url,
+                    "bytes": data,
+                    "resolved_url": resolved_url,
+                    "kind": kind,
+                    "sha256": _sha256(data),
+                }
+            except Exception as exc:
+                attempts.append({
+                    "candidate_url": image_url,
+                    "download_url": download_url,
+                    "score": chosen.get("score"),
+                    "error": f"{type(exc).__name__}: {exc}",
+                })
 
     raise RuntimeError(
         f"{slug}: all {len(ready)} high-confidence official image candidates failed download; "

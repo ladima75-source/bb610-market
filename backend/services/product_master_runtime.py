@@ -37,11 +37,16 @@ def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]
         and str(row.get("product_id") or "") in product_ids
     ]
 
+    public_sku_ids = {
+        str(row.get("id") or row.get("sku"))
+        for row in skus
+        if row.get("id") or row.get("sku")
+    }
     commerce = commerce_override if commerce_override is not None else commerce_map()
     commerce = {
         str(key): deepcopy(value)
         for key, value in (commerce or {}).items()
-        if isinstance(value, dict)
+        if isinstance(value, dict) and str(key) in public_sku_ids
     }
 
     return {

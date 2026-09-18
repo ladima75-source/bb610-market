@@ -46,6 +46,11 @@ from backend.services.catalog_cms import _dynamic_skus, _overrides
 from backend.services.product_cards_v3_media import _is_resolvable
 from backend.services.product_commerce import commerce_map as live_commerce_map
 from backend.tools_apply_valagro_prices_20260916_runtime import pack_key
+from backend.tools_complete_pcv3_media_readiness import (
+    _choose_legacy_image,
+    _legacy_records,
+)
+from backend.tools_prepare_pcv3_release import _load_db_inventory
 
 BACKUP_ROOT = ROOT / "var" / "release-backups"
 REPORT_ROOT = ROOT / "var" / "reports"
@@ -564,6 +569,91 @@ def media_by_id(card: dict) -> dict[str, dict]:
     }
 
 
+def _image_value(value: Any) -> str:
+    if isinstance(value, dict):
+        return str(value.get("local") or value.get("path") or value.get("url") or "").strip()
+    return str(value or "").strip()
+
+
+def existing_card_media_candidate(card: dict, sku: dict) -> tuple[str, str, str]:
+    """Use only an unambiguous image already attached to this same V3 card."""
+    by_id = media_by_id(card)
+
+    gallery_paths: list[tuple[str, str]] = []
+    for mid in sku.get("gallery_media_ids") or []:
+        item = by_id.get(str(mid))
+        if not isinstance(item, dict):
+            continue
+        path = str(item.get("path") or "").strip()
+        if path and _is_resolvable(path):
+            pair = (path, str(item.get("alt") or "").strip())
+            if pair not in gallery_paths:
+                gallery_paths.append(pair)
+    if len(gallery_paths) == 1:
+        return gallery_paths[0][0], gallery_paths[0][1], "existing-v3-gallery-singleton"
+
+    all_paths: list[tuple[str, str]] = []
+    for item in ((card.get("sku_media") or {}).get("media") or []):
+        if not isinstance(item, dict):
+            continue
+        path = str(item.get("path") or "").strip()
+        if path and _is_resolvable(path):
+            pair = (path, str(item.get("alt") or "").strip())
+            if pair not in all_paths:
+                all_paths.append(pair)
+    unique_paths = {x[0] for x in all_paths}
+    if len(unique_paths) == 1 and all_paths:
+        return all_paths[0][0], all_paths[0][1], "existing-v3-media-singleton"
+    return "", "", ""
+
+
+def exact_primary_media_source(
+    card: dict,
+    sku: dict,
+    catalog_product: dict,
+    catalog_sku: dict,
+    mapping: dict | None,
+    db_products: dict[str, dict],
+    db_skus: dict[str, dict],
+    legacy_records: list[dict],
+) -> tuple[str, str, str, list[str]]:
+    """Resolve a primary image only from exact existing identity evidence."""
+    path, alt, method = existing_card_media_candidate(card, sku)
+    if path:
+        return path, alt, method, []
+
+    path, alt = catalog_image_path(catalog_product, catalog_sku)
+    if path:
+        return path, alt, "authoritative-catalog-exact", []
+
+    sid = str(sku.get("sku_id") or "").strip()
+    commerce_key = current_links(mapping).get(sid, "")
+    db_sku = db_skus.get(commerce_key) if commerce_key else None
+    direct = _image_value((db_sku or {}).get("image"))
+    if direct and _is_resolvable(direct):
+        return direct, str((db_sku or {}).get("image_alt") or "").strip(), "commerce-sku-exact", []
+
+    commerce_product = str((mapping or {}).get("existing_product_key") or "").strip()
+    for product_key in (commerce_product, str(catalog_product.get("id") or "").strip()):
+        if not product_key:
+            continue
+        product = db_products.get(product_key) or {}
+        direct = _image_value(product.get("image"))
+        if direct and _is_resolvable(direct):
+            return direct, str(product.get("image_alt") or "").strip(), "commerce-product-exact", []
+
+    legacy_path, legacy_method, candidates = _choose_legacy_image(
+        card,
+        sku,
+        commerce_product or str(catalog_product.get("id") or ""),
+        legacy_records,
+    )
+    if legacy_path and _is_resolvable(legacy_path):
+        return legacy_path, "", legacy_method, candidates
+
+    return "", "", legacy_method or "no-exact-media-source", candidates
+
+
 def media_id_for_path(card: dict, path: str, alt: str) -> str:
     sm = card.setdefault("sku_media", {"skus": [], "media": []})
     media = sm.setdefault("media", [])
@@ -601,6 +691,8 @@ def build_plan() -> dict:
     catalog_sku_keys = set(catalog_sku_by_key)
     live = live_commerce_map()
     mappings = mapping_index()
+    db_products, db_skus = _load_db_inventory()
+    legacy_records = _legacy_records()
 
     cards = []
     excluded = []
@@ -822,7 +914,23 @@ def build_plan() -> dict:
                 and str(primary.get("path") or "").strip()
                 and _is_resolvable(str(primary.get("path") or ""))
             )
-            path, alt = catalog_image_path(rp, rs)
+
+            path = ""
+            alt = ""
+            media_method = ""
+            media_candidates: list[str] = []
+            if not valid_primary:
+                path, alt, media_method, media_candidates = exact_primary_media_source(
+                    patched,
+                    sku,
+                    rp,
+                    rs,
+                    mapping,
+                    db_products,
+                    db_skus,
+                    legacy_records,
+                )
+
             if not alt:
                 title = str((patched.get("content") or {}).get("title") or "").strip()
                 package = str(sku.get("package") or sku.get("label") or "").strip()
@@ -831,7 +939,16 @@ def build_plan() -> dict:
             if not valid_primary and path:
                 mid = media_id_for_path(patched, path, alt)
                 sku["primary_media_id"] = mid
-                changed.append(f"{sid}:primary_media")
+                changed.append(f"{sid}:primary_media:{media_method}")
+            elif not valid_primary:
+                unresolved.append({
+                    "product_id": pid,
+                    "slug": card.get("slug"),
+                    "sku_id": sid,
+                    "reason": "primary_media_missing_no_exact_source",
+                    "media_resolution": media_method,
+                    "candidates": media_candidates,
+                })
             elif valid_primary and not str(primary.get("alt") or "").strip() and alt:
                 primary["alt"] = alt
                 changed.append(f"{sid}:media_alt")

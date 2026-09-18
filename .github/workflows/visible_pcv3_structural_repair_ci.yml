@@ -6,11 +6,15 @@ on:
     paths:
       - 'backend/tools_repair_visible_pcv3_structural_20260918.py'
       - 'backend/services/product_cards_v3.py'
+      - 'backend/product_cards_v3_api.py'
+      - 'backend/app.py'
       - '.github/workflows/visible_pcv3_structural_repair_ci.yml'
   pull_request:
     paths:
       - 'backend/tools_repair_visible_pcv3_structural_20260918.py'
       - 'backend/services/product_cards_v3.py'
+      - 'backend/product_cards_v3_api.py'
+      - 'backend/app.py'
       - '.github/workflows/visible_pcv3_structural_repair_ci.yml'
 
 jobs:
@@ -26,6 +30,8 @@ jobs:
         run: |
           python -m py_compile backend/tools_repair_visible_pcv3_structural_20260918.py
           python -m py_compile backend/services/product_cards_v3.py
+          python -m py_compile backend/product_cards_v3_api.py
+          python -m py_compile backend/app.py
 
       - name: Validate structural repair safety contract
         run: |
@@ -310,6 +316,14 @@ jobs:
           assert "'mapped': True" in svc
           assert "live_commerce_map" in svc
           assert "merged_skus" in svc
+
+          api=Path('backend/product_cards_v3_api.py').read_text(encoding='utf-8')
+          assert "/api/v1/storefront/product-card-v3/{slug}" in api
+          assert "storefront_runtime" in api
+
+          app=Path('backend/app.py').read_text(encoding='utf-8')
+          assert "from .product_cards_v3_api import router as product_cards_v3_router" in app
+          assert "app.include_router(product_cards_v3_router)" in app
 
           print('VISIBLE PCV3 STRUCTURAL REPAIR CONTRACT: PASS')
           PY

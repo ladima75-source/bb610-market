@@ -30,6 +30,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Python dependency for encrypted integration store
+        run: python -m pip install "cryptography>=42,<47"
+
       - name: Syntax
         run: |
           python -m py_compile backend/admin_dashboard_api.py backend/services/admin_dashboard.py

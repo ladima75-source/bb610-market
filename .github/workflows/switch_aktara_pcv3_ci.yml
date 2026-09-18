@@ -1,0 +1,86 @@
+name: Switch Aktara Product Card v3 CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/product_content/syngenta_switch_aktara_pcv3_20260918.json'
+      - 'backend/update_switch_aktara_pcv3_20260918.py'
+      - 'backend/services/product_commerce.py'
+      - '.github/workflows/switch_aktara_pcv3_ci.yml'
+  pull_request:
+    paths:
+      - 'data/product_content/syngenta_switch_aktara_pcv3_20260918.json'
+      - 'backend/update_switch_aktara_pcv3_20260918.py'
+      - 'backend/services/product_commerce.py'
+      - '.github/workflows/switch_aktara_pcv3_ci.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax
+        run: |
+          python -m py_compile backend/update_switch_aktara_pcv3_20260918.py
+          python -m py_compile backend/services/product_commerce.py
+
+      - name: Validate cards and immutable commerce identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from backend import update_switch_aktara_pcv3_20260918 as u
+
+          doc=u.load_manifest()
+          assert len(doc['products'])==2
+          by={x['legacy_product_key']:x for x in doc['products']}
+          assert set(by)=={'switch-625-wg','aktara-25-wg'}
+
+          sw=by['switch-625-wg']
+          ak=by['aktara-25-wg']
+          assert [x['commerce_sku_key'] for x in sw['skus']]==[
+            'BB610-SYN-SWITCH625-10G',
+            'BB610-SYN-SWITCH625-100G',
+            'BB610-SYN-SWITCH625-1KG',
+          ]
+          assert [x['commerce_sku_key'] for x in ak['skus']]==[
+            'BB610-SYN-AKTARA25-250G'
+          ]
+
+          for spec in doc['products']:
+            card=u.build_card(spec)
+            mapping=u.build_mapping(spec)
+            assert card['enabled'] is True
+            assert card['content']['brand']=='Syngenta'
+            assert card['content']['category']=='Захист рослин'
+            assert all(x['primary_media_id'] for x in card['sku_media']['skus'])
+            assert mapping['existing_product_key']==spec['legacy_product_key']
+            assert len(mapping['skus'])==len(spec['skus'])
+
+          runtime=u.load_runtime()
+          products={x['id']:x for x in runtime['products']}
+          skus={x['id']:x for x in runtime['skus']}
+          assert products['switch-625-wg']['name']==sw['title']
+          assert products['aktara-25-wg']['name']==ak['title']
+          for spec in doc['products']:
+            for sku in spec['skus']:
+              live=skus[sku['commerce_sku_key']]
+              assert live['product_id']==spec['legacy_product_key']
+              assert live['variant']==sku['package']
+
+          # Card manifest must remain commerce-value free.
+          raw=Path(u.MANIFEST).read_text(encoding='utf-8').lower()
+          for forbidden in ('"price"','"sale_price"','"stock_qty"','"availability"'):
+            assert forbidden not in raw
+
+          pc=Path('backend/services/product_commerce.py').read_text(encoding='utf-8')
+          assert 'Product Card v3 can legitimately own a public product' in pc
+          assert "products[legacy_key]=" in pc
+
+          print('SWITCH + AKTARA PCV3 CONTRACT: PASS')
+          PY

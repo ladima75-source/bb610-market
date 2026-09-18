@@ -177,6 +177,11 @@ def price_request_admin_notify(request_code:str,authorization:Optional[str]=Head
     return row
 
 
+@app.get('/api/v1/catalog/master')
+def catalog_master():
+    from .services.product_master_runtime import snapshot as product_master_snapshot
+    return product_master_snapshot()
+
 @app.get('/api/v1/catalog/commerce')
 def catalog_commerce(): return {'items':public_catalog()}
 

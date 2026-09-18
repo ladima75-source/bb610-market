@@ -131,3 +131,115 @@
     padding:11px 14px 13px;
   }
 }
+
+.product-card-v2 .price-request-btn{
+  font-size:12px;
+  letter-spacing:.02em;
+}
+
+.bb610-price-request{
+  width:min(560px,calc(100vw - 28px));
+  max-width:560px;
+  border:1px solid #3b4448;
+  border-radius:16px;
+  padding:0;
+  background:#202426;
+  color:#f4f5f5;
+  box-shadow:0 24px 70px rgba(0,0,0,.55);
+}
+
+.bb610-price-request::backdrop{
+  background:rgba(0,0,0,.72);
+}
+
+.price-request-card{
+  position:relative;
+  padding:24px;
+  display:grid;
+  gap:14px;
+}
+
+.price-request-card h2{
+  margin:0;
+  font-size:28px;
+}
+
+.price-request-close{
+  position:absolute;
+  right:12px;
+  top:10px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:#fff;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.price-request-product{
+  margin:0;
+  font-weight:800;
+  line-height:1.35;
+}
+
+.price-request-note{
+  margin:0;
+  color:#b9c1c4;
+  line-height:1.5;
+}
+
+.price-request-card label{
+  display:grid;
+  gap:6px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.price-request-card input,
+.price-request-card textarea{
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid #485258;
+  border-radius:10px;
+  padding:11px 12px;
+  background:#171a1c;
+  color:#fff;
+  font:inherit;
+}
+
+.price-request-card textarea{
+  resize:vertical;
+}
+
+.price-request-submit{
+  width:100%;
+  margin-top:2px;
+}
+
+.price-request-status{
+  min-height:20px;
+  color:#f0b24c;
+  line-height:1.4;
+}
+
+.price-request-alt{
+  font-size:13px;
+  color:#aeb7ba;
+}
+
+.price-request-alt a{
+  color:#f0b24c;
+}
+
+@media(max-width:640px){
+  .price-request-card{
+    padding:20px 16px 18px;
+  }
+
+  .price-request-card h2{
+    font-size:24px;
+  }
+}
+

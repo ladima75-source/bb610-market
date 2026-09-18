@@ -8,6 +8,7 @@ on:
       - 'backend/migrations/009_price_requests.sql'
       - 'backend/migrations/010_price_request_notifications.sql'
       - 'backend/services/telegram_notifications.py'
+      - 'backend/services/notifications.py'
       - 'backend/services/integration_secrets.py'
       - 'backend/integrations_api.py'
       - 'admin/integrations.html'
@@ -56,6 +57,7 @@ jobs:
             backend/integrations_api.py \
             backend/services/price_requests.py \
             backend/services/telegram_notifications.py \
+            backend/services/notifications.py \
             backend/services/integration_secrets.py \
             backend/services/product_cards_v3_facets.py \
             backend/services/product_cards_v3_runtime.py \
@@ -108,7 +110,9 @@ jobs:
           assert 'tg-bot-token' in integrations
           assert 'tg-chat-id' in integrations
           assert '/api/v1/admin/integrations/telegram' in integrations_js
-          assert 'tg-find-chats' in integrations_js
+          assert 'BB610 Market — Operations' in integrations
+          assert '-1004349892585' in integrations
+          assert 'tg-find-chats' not in integrations_js
           assert 'tg-test' in integrations_js
           assert '/notify' in admin_js
           assert 'telegram_status' in admin_js
@@ -217,6 +221,16 @@ jobs:
           assert rows[0]['telegram_status']=='sent'
           assert rows[0]['telegram_message_id']=='777'
           assert rows[0]['telegram_attempts']==2
+
+          from backend.services import notifications as order_notifications
+          from backend.services.telegram_notifications import OPERATIONS_CHAT_ID, OPERATIONS_CHAT_LABEL
+          assert OPERATIONS_CHAT_ID=='-1004349892585'
+          assert OPERATIONS_CHAT_LABEL=='BB610 Market — Operations'
+          order_source=Path('backend/services/notifications.py').read_text(encoding='utf-8')
+          assert "get_value('telegram.bot_token'" in order_source
+          assert "get_value('telegram.chat_id', OPERATIONS_CHAT_ID)" in order_source
+          assert "os.getenv('BB610_TELEGRAM_BOT_TOKEN')" not in order_source
+          assert "os.getenv('BB610_TELEGRAM_CHAT_ID')" not in order_source
 
           print('PLANTLOGIC MARKET-TEST PRODUCTS: 34/34 PASS')
           print('PLANTLOGIC MARKET-TEST SKU: 37/37 PASS')

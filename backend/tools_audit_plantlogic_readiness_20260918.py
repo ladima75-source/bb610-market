@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""Read-only readiness audit for the 34 Plantlogic Product Card v3 drafts.
+"""Read-only readiness audit for the 33 Plantlogic Product Card v3 drafts.
 
 Checks:
 - exact V3 card presence and SKU count from the verified Plantlogic master;
@@ -29,8 +29,8 @@ from backend.services.catalog_cms import admin_detail
 
 MANIFEST = ROOT / "data" / "product_content" / "plantlogic_pots_v1_20260918.json"
 REPORT_ROOT = ROOT / "var" / "reports"
-EXPECTED_PRODUCTS = 34
-EXPECTED_SKUS = 37
+EXPECTED_PRODUCTS = 33
+EXPECTED_SKUS = 36
 
 KNOWN_LEGACY = {
     "plantlogic-25l-round-new-1308125": "plantlogic-25-round-1308125",

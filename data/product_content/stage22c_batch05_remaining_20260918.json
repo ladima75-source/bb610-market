@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "stage22c-batch05-remaining-content",
+  "batch": "BB610 Product Card v3 content / stage22c batch05 selected rows49-60 / 2026-09-18",
+  "language": "uk",
+  "source_batch": "data/content_batches/stage22c_batch05_rows49_60.json",
+  "expected_source_rows": [49, 50, 51, 52, 54, 55, 56, 57, 58, 59, 60],
+  "expected_target_count": 11,
+  "skipped_source_rows": {
+    "53": "Megafol already completed and production-verified in dedicated content batch"
+  },
+  "legacy_id_by_source_row": {
+    "49": "maxicrop-cream",
+    "51": "benefit-pz",
+    "52": "sweet",
+    "54": "control-dmp"
+  },
+  "title_aliases_by_source_row": {
+    "49": [
+      "Maxicrop Cream (Максікроп Крем), біостимулятор на основі екстракту водоростей",
+      "Maxicrop Cream (Максікроп крем), біостимулятор *Дизайн етикетки 25 мл на вибір: квіти/ягоди/хвоя"
+    ],
+    "50": [
+      "Maxicrop Set (Максікроп Зав'язь), біостимулятор"
+    ],
+    "51": [
+      "Benefit PZ (Бенефіт ПЗ), біостимулятор збільшення плодів",
+      "Benefit Pz (Бенефіт ПЗ), біостимулятор збільшення плодів"
+    ],
+    "52": [
+      "Sweet (Світ), біостимулятор дозрівання та забарвлення плодів",
+      "Sweet (Svit), біостимулятор дозрівання та забарвлення плодів"
+    ],
+    "54": [
+      "Control DMP (Контроль ДМП), регулятор кислотності та прилипач",
+      "Control DMP (Контроль ДМП), регулятор кислотності, прилипач, індикатор рівня pH"
+    ],
+    "55": [
+      "Спрей-Ейд, регулятор кислотності, ад'ювант, прилипач"
+    ],
+    "56": [
+      "Terra-Sorb (Терра-сорбіт), регулятор росту, антистресант"
+    ],
+    "57": [
+      "Ерайз, біостимулятор росту та початку вегетації"
+    ],
+    "58": [
+      "Кеміра баланс (Nitrate Balancer), регулятор росту",
+      "Кеміра Баланс / Nitrate Balancer"
+    ],
+    "59": [
+      "Торф'яний субстрат, NeoTerra Organic-C, Neova",
+      "Торф'яний субстрат, NeoTerra Organic‑C, Neova"
+    ],
+    "60": [
+      "Торф'яний субстрат, NeoTerra Aqua, Neova"
+    ]
+  },
+  "policy": {
+    "mode": "content-only",
+    "resolver": "explicit legacy mapping, exact slug candidates, or exact normalized pre/post title aliases",
+    "protected": [
+      "product_id", "slug", "enabled", "brand", "category", "sku_media",
+      "commerce_map", "sku_commerce", "price", "availability", "stock", "media"
+    ]
+  }
+}

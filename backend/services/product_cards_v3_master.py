@@ -68,19 +68,7 @@ def identity_variants(value: Any) -> tuple[str, ...]:
 
     # Also remove only a trailing parenthetical alias from already-short names.
     for item in list(candidates):
-        stripped = re.sub(r'\\s*\\([^()]{2,80}\\)\\s*$', '', item).strip()
-        if stripped and stripped != item:
-            candidates.append(stripped)
-
-    out: list[str] = []
-    seen: set[str] = set()
-    for item in candidates:
-        for key in (normalize_name(item), _loose_name(item)):
-            if key and key not in seen:
-                seen.add(key)
-                out.append(key)
-    return tuple(out)
-
+        stripped = re.sub(r'\\s*\\([^()]{2,80}\\)\\s*$'
 def _load(path: Path) -> list[dict]:
     try:
         obj = json.loads(path.read_text(encoding='utf-8'))

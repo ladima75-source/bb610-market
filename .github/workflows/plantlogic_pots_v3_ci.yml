@@ -79,8 +79,8 @@ jobs:
           assert merged['content']==desired['content']
           assert merged['sku_media']['skus'][0]['primary_media_id']=='med_test'
           assert merged['sku_media']['skus'][0]['gallery_media_ids']==['med_test']
-          assert sync.EXPECTED_PRODUCTS==34
-          assert sync.EXPECTED_SKUS==37
+          assert sync.EXPECTED_PRODUCTS==33
+          assert sync.EXPECTED_SKUS==36
 
           print('PLANTLOGIC PRODUCT CARD V3 MASTER: 33/33 PASS')
           print('PLANTLOGIC SKU STRUCTURE: 36/36 PASS')

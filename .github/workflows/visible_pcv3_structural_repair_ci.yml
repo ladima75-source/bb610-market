@@ -54,6 +54,42 @@ jobs:
           assert matches['sku_a']['id']=='BB610-A-1KG'
           assert matches['sku_b']['id']=='BB610-A-250G'
 
+          duplicate_rs=[
+            {'id':'OLD-1KG','product_id':'master-13-40-13','variant':'1 кг'},
+            {'id':'LIVE-1KG','product_id':'master-13-40-13','variant':'1 кг'},
+            {'id':'OLD-250G','product_id':'master-13-40-13','variant':'250 г'},
+            {'id':'LIVE-250G','product_id':'master-13-40-13','variant':'250 г'},
+          ]
+          live={'LIVE-1KG':{'enabled':True},'LIVE-250G':{'enabled':False}}
+          matches,problems=t.exact_package_matches(card,rp,duplicate_rs,live=live,mapping=None)
+          assert not problems, problems
+          assert matches['sku_a']['id']=='LIVE-1KG'
+          assert matches['sku_b']['id']=='LIVE-250G'
+
+          card_with_code={
+            **card,
+            'sku_media':{
+              'skus':[
+                {'sku_id':'sku_a','sku_code':'OLD-1KG','label':'1 кг','package':'1 кг','enabled':True},
+              ],
+              'media':[],
+            },
+          }
+          matches,problems=t.exact_package_matches(
+            card_with_code,rp,duplicate_rs,live={'LIVE-1KG':{'enabled':True}},mapping=None
+          )
+          assert not problems, problems
+          assert matches['sku_a']['id']=='OLD-1KG'
+
+          mapping_pref={
+            'skus':[{'sku_id':'sku_a','existing_commerce_sku_key':'LIVE-1KG'}]
+          }
+          matches,problems=t.exact_package_matches(
+            card_with_code,rp,duplicate_rs,live=live,mapping=mapping_pref
+          )
+          assert not problems, problems
+          assert matches['sku_a']['id']=='LIVE-1KG'
+
           authoritative=t.merge_catalog_sources(
             {
               'products':[{'id':'master-13-40-13','slug':'master-13-40-13','name':'Old title'}],
@@ -106,6 +142,19 @@ jobs:
           rp,res=t.exact_runtime_product(card,stale_mapping,wrong_runtime,{})
           assert rp is None
           assert res=='existing_mapping_identity_unproven'
+
+          missing_parent={'existing_product_key':'deleted-master-parent'}
+          replacement={'master-new':{'id':'master-new','slug':'master-13-40-13','name':'Master 13-40-13'}}
+          rp,res=t.exact_runtime_product(
+            card,missing_parent,replacement,{'master-13-40-13':replacement['master-new']}
+          )
+          assert rp['id']=='master-new'
+          assert res=='stale_mapping_parent_exact_slug_or_id'
+
+          title_replacement={'master-new':{'id':'master-new','slug':'different-slug','name':'Master 13-40-13'}}
+          rp,res=t.exact_runtime_product(card,missing_parent,title_replacement,{})
+          assert rp['id']=='master-new'
+          assert res=='stale_mapping_parent_exact_title'
 
           valid_runtime={
             'master-13-40-13':{

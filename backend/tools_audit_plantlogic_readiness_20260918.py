@@ -29,8 +29,8 @@ from backend.db import connect
 
 MANIFEST = ROOT / "data" / "product_content" / "plantlogic_pots_v1_20260918.json"
 REPORT_ROOT = ROOT / "var" / "reports"
-EXPECTED_PRODUCTS = 33
-EXPECTED_SKUS = 36
+EXPECTED_PRODUCTS = 34
+EXPECTED_SKUS = 37
 
 KNOWN_LEGACY = {
     "plantlogic-25l-round-new-1308125": "plantlogic-25-round-1308125",

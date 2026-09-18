@@ -253,6 +253,30 @@ def market_test_projection() -> dict[str, list[dict]]:
     return {'products': products, 'skus': skus}
 
 
+
+def _content_media(card: dict) -> tuple[str, list[str]]:
+    media = _media_index(card)
+    primary = ''
+    gallery: list[str] = []
+    enabled = [
+        row for row in ((card.get('sku_media') or {}).get('skus') or [])
+        if isinstance(row, dict) and row.get('enabled') is not False
+    ]
+    enabled.sort(key=lambda row: int(row.get('sort_order') or 0))
+    for sku in enabled:
+        row = media.get(str(sku.get('primary_media_id') or '')) or {}
+        path = _public_media_path(row.get('path'))
+        if path and not primary:
+            primary = path
+        if path and path not in gallery:
+            gallery.append(path)
+        for mid in sku.get('gallery_media_ids') or []:
+            grow = media.get(str(mid)) or {}
+            gpath = _public_media_path(grow.get('path'))
+            if gpath and gpath not in gallery:
+                gallery.append(gpath)
+    return primary, gallery
+
 def catalog_overlays() -> list[dict]:
     """Return content-only overlays used by storefront catalog facets.
 
@@ -291,8 +315,30 @@ def catalog_overlays() -> list[dict]:
 
         patch: dict[str, Any] = {'id': target, 'v3_facets': True}
         brand = str(content.get('brand') or '').strip()
+        title = str(content.get('title') or '').strip()
+        short = str(content.get('short_description') or '').strip()
+        description = str(content.get('description') or '').strip()
+        product_type = _first(chars, 'Тип продукту', 'Тип продукта', 'Тип')
+        primary_image, gallery = _content_media(card)
+
+        # Product Card v3 is the descriptive storefront source of truth.
+        # Legacy catalog identity and SKU/commerce bindings remain untouched.
+        if title:
+            patch['name'] = title
+            patch['official_name'] = title
         if brand:
             patch['brand'] = brand
+        if short:
+            patch['short_description'] = short
+        if description:
+            patch['manufacturer_use'] = description
+        if product_type:
+            patch['product_type'] = product_type
+            patch['form'] = product_type
+        if primary_image:
+            patch['image'] = {'local': primary_image, 'status': 'product-card-v3'}
+        if gallery:
+            patch['gallery'] = gallery
         if cultures:
             patch['cultures'] = cultures
         if purposes:

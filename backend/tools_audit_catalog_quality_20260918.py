@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import json
 import re
+import sys
 from pathlib import Path
 
 from backend.catalog_provider import load_catalog
@@ -103,18 +105,35 @@ def main():
     print(f"NO_SUMMARY={len(no_summary)}")
     print(f"LONG_NAME={len(long_name)}")
 
-    for title, rows in [
-        ("MISSING PHOTO", missing_photo),
-        ("FALLBACK PHOTO", fallback_photo),
-        ("LATIN-ONLY NAME", latin_name),
-        ("NO SUMMARY", no_summary),
-        ("LONG NAME", long_name),
-    ]:
-        if not rows:
-            continue
-        print(f"\n--- {title} ---")
-        for row in rows[:80]:
-            print(" | ".join(str(x) for x in row))
+    report = {
+        "visible_products": len(visible),
+        "non_pot_products": len(visible) - len(pots),
+        "pots": len(pots),
+        "missing_photo": missing_photo,
+        "fallback_photo": fallback_photo,
+        "latin_only_name": latin_name,
+        "no_summary": no_summary,
+        "long_name": long_name,
+    }
+    report_dir = ROOT / "var" / "import-reports"
+    report_dir.mkdir(parents=True, exist_ok=True)
+    report_path = report_dir / "catalog_quality_audit_latest.json"
+    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"REPORT={report_path}")
+
+    if "--details" in sys.argv:
+        for title, rows in [
+            ("MISSING PHOTO", missing_photo),
+            ("FALLBACK PHOTO", fallback_photo),
+            ("LATIN-ONLY NAME", latin_name),
+            ("NO SUMMARY", no_summary),
+            ("LONG NAME", long_name),
+        ]:
+            if not rows:
+                continue
+            print(f"\n--- {title} ---")
+            for row in rows[:80]:
+                print(" | ".join(str(x) for x in row))
 
 
 if __name__ == "__main__":

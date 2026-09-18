@@ -12,6 +12,7 @@ from .services.delivery import DeliveryNotConfigured,DeliveryUpstreamError
 from .services.payment_service import methods as payment_methods,admin_update_cod,process_webhook
 from .services.payment import PaymentNotConfigured,PaymentSignatureError
 from .services.product_commerce import seed_from_catalog, public_catalog, admin_products, update_product
+from .services.price_requests import create_price_request, list_price_requests, update_price_request_status
 from .services.catalog_cms import (
     public_content, admin_list_products, admin_detail as admin_catalog_detail,
     save_product, create_product, create_sku, save_upload, MEDIA_DIR,
@@ -66,6 +67,20 @@ class CatalogSkuUpdateBody(BaseModel):
 
 class CatalogDuplicateBody(BaseModel):
     id:Optional[str]=None; name:Optional[str]=None
+
+class PriceRequestBody(BaseModel):
+    product_id:str=Field(min_length=1,max_length=160)
+    sku:str=Field(min_length=1,max_length=160)
+    product_name:str=Field(min_length=2,max_length=240)
+    variant:Optional[str]=Field(default='',max_length=240)
+    quantity:int=Field(default=1,ge=1,le=100000)
+    customer_name:str=Field(min_length=2,max_length=160)
+    contact:str=Field(min_length=3,max_length=240)
+    comment:Optional[str]=Field(default='',max_length=2000)
+    source_url:Optional[str]=Field(default='',max_length=500)
+
+class PriceRequestStatusBody(BaseModel):
+    status:str=Field(min_length=2,max_length=40)
 
 class ProductCommerceUpdate(BaseModel):
     price:Optional[float]=Field(default=None,ge=0)
@@ -123,6 +138,35 @@ def orders_get(order_id:str,token:Optional[str]=Query(default=None)):
 
 @app.get('/api/v1/payments/methods')
 def payments_methods(): return {'methods':payment_methods()}
+
+@app.post('/api/v1/price-requests',status_code=201)
+def price_request_create(body:PriceRequestBody):
+    try:
+        return create_price_request(body.model_dump())
+    except ValueError as e:
+        raise HTTPException(422,str(e))
+
+
+@app.get('/api/v1/admin/price-requests')
+def price_request_admin_list(limit:int=Query(default=200,ge=1,le=1000),status:Optional[str]=Query(default=None),authorization:Optional[str]=Header(default=None)):
+    admin_auth(authorization)
+    try:
+        return {'items':list_price_requests(limit=limit,status=status)}
+    except ValueError as e:
+        raise HTTPException(422,str(e))
+
+
+@app.patch('/api/v1/admin/price-requests/{request_code}')
+def price_request_admin_status(request_code:str,body:PriceRequestStatusBody,authorization:Optional[str]=Header(default=None)):
+    admin_auth(authorization)
+    try:
+        row=update_price_request_status(request_code,body.status)
+    except ValueError as e:
+        raise HTTPException(422,str(e))
+    if not row:
+        raise HTTPException(404,'Price request not found')
+    return row
+
 
 @app.get('/api/v1/catalog/commerce')
 def catalog_commerce(): return {'items':public_catalog()}

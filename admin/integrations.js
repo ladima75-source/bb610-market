@@ -1,5 +1,5 @@
 (()=>{
- const cfg=window.BB610_ADMIN_CONFIG||{},base=(cfg.apiBaseUrl||'').replace(/\/$/,''),ep='/api/v1/admin/integrations/nova-poshta',payEp='/api/v1/admin/integrations/payments',$=id=>document.getElementById(id),token=$('token');token.value=sessionStorage.getItem('bb610_admin_token')||'';
+ const cfg=window.BB610_ADMIN_CONFIG||{},base=(cfg.apiBaseUrl||'').replace(/\/$/,''),ep='/api/v1/admin/integrations/nova-poshta',payEp='/api/v1/admin/integrations/payments',tgEp='/api/v1/admin/integrations/telegram',$=id=>document.getElementById(id),token=$('token');token.value=sessionStorage.getItem('bb610_admin_token')||'';
  const H=()=>({'Authorization':'Bearer '+token.value.trim(),'Content-Type':'application/json','Accept':'application/json'});
  async function req(path,opt={}){const c=new AbortController(),t=setTimeout(()=>c.abort(),cfg.requestTimeoutMs||12000);try{const r=await fetch(base+path,{...opt,signal:c.signal,headers:{...H(),...(opt.headers||{})}});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.detail||`HTTP ${r.status}`);return d}finally{clearTimeout(t)}}
  const mark=(id,ok,yes='Готово',no='Не готово')=>{const e=$(id);e.textContent=ok?yes:no;e.className=ok?'ok':'warn'};
@@ -11,9 +11,43 @@
    $('sender-select').dataset.current=s.sender?.sender_ref||'';$('contact-select').dataset.current=s.sender?.sender_contact_ref||'';$('sender-city-select').dataset.current=s.sender?.sender_city_ref||'';$('address-select').dataset.current=s.sender?.sender_address_ref||'';
    const sh=s.shipping||{};$('shipment-weight').value=sh.weight||'1.0';$('shipment-description').value=sh.description||'Товари для вирощування';$('payer-type').value=sh.payer_type||'Recipient';$('payment-method').value=sh.payment_method||'Cash';
  }
- async function load(){sessionStorage.setItem('bb610_admin_token',token.value.trim());$('state').textContent='Завантаження…';const [s,p]=await Promise.all([req(ep),req(payEp)]);paint(s);paintPayments(p);if(s.api_ready){try{await loadSenderOptions(true)}catch(_){}}$('state').textContent=''}
+ async function load(){sessionStorage.setItem('bb610_admin_token',token.value.trim());$('state').textContent='Завантаження…';const [s,p,tg]=await Promise.all([req(ep),req(payEp),req(tgEp)]);paint(s);paintPayments(p);paintTelegram(tg);if(s.api_ready){try{await loadSenderOptions(true)}catch(_){}}$('state').textContent=''}
  function paintPayments(p){const cod=!!p.cod?.enabled,bank=!!p.bank_transfer?.ready,bankEnabled=!!p.bank_transfer?.enabled,card=!!p.online_card?.enabled;mark('pay-cod-state',cod,'Активна','Вимкнена');mark('pay-bank-state',bank,'Готова',bankEnabled?'Не завершено':'Вимкнена');$('pay-bank-note').textContent=bank?'Реквізити заповнені.':(bankEnabled?'Заповніть отримувача та IBAN.':'');mark('pay-card-state',card,card?(p.online_card?.provider||'Активна'):'Stage 14B','Stage 14B');$('pay-status').textContent=(cod||bank||card)?'Налаштовано':'Не налаштовано';$('pay-status').className='badge '+((cod||bank||card)?'live':'draft');$('pay-cod-enabled').checked=cod;$('pay-bank-enabled').checked=bankEnabled;$('pay-bank-recipient').value=p.bank_transfer?.recipient||'';$('pay-bank-iban').value=p.bank_transfer?.iban||'';$('pay-bank-purpose').value=p.bank_transfer?.purpose||'Оплата замовлення {order_number}'}
  async function savePayments(){const body={cod_enabled:$('pay-cod-enabled').checked,bank_transfer_enabled:$('pay-bank-enabled').checked,bank_recipient:$('pay-bank-recipient').value.trim(),bank_iban:$('pay-bank-iban').value.trim(),bank_purpose:$('pay-bank-purpose').value.trim()};$('pay-state').textContent='Збереження…';const p=await req(payEp,{method:'PATCH',body:JSON.stringify(body)});paintPayments(p);$('pay-state').textContent='✓ Збережено'}
+
+ function paintTelegram(t){
+   const tokenReady=!!t.bot_token?.configured,chatReady=!!t.chat_id?.configured,ready=!!t.price_request_notifications_ready;
+   mark('tg-token-state',tokenReady,'Збережено','Не налаштовано');
+   mark('tg-chat-state',chatReady,'Збережено','Не налаштовано');
+   mark('tg-ready-state',ready,'Готово','Не готово');
+   $('tg-token-source').textContent=tokenReady?`Token: ${t.bot_token?.source==='secure_store'?'захищене сховище':'поточний .env'}`:'';
+   $('tg-chat-id').value=t.chat_id?.value||'';
+   $('tg-status').textContent=ready?'Підключено':'Не підключено';
+   $('tg-status').className='badge '+(ready?'live':'draft');
+ }
+ async function saveTelegram(){
+   const body={chat_id:$('tg-chat-id').value.trim()};
+   const k=$('tg-bot-token').value.trim();if(k)body.bot_token=k;
+   $('tg-state').textContent='Збереження…';
+   const t=await req(tgEp,{method:'PATCH',body:JSON.stringify(body)});
+   $('tg-bot-token').value='';paintTelegram(t);
+   $('tg-state').textContent=t.price_request_notifications_ready?'✓ Telegram збережено':'✓ Налаштування збережено. Додайте Chat ID.';
+ }
+ async function findTelegramChats(){
+   const b=$('tg-find-chats');b.disabled=true;$('tg-state').textContent='Шукаємо чати…';
+   try{
+     const d=await req(tgEp+'/chats');
+     const rows=d.chats||[];
+     $('tg-chat-select').innerHTML='<option value="">Оберіть чат</option>'+rows.map(x=>`<option value="${x.chat_id}">${x.label||x.chat_id} · ${x.type||''}</option>`).join('');
+     $('tg-state').textContent=rows.length?`✓ Знайдено чатів: ${rows.length}`:'Чатів не знайдено. Напишіть боту /start і повторіть.';
+   }finally{b.disabled=false}
+ }
+ async function testTelegram(){
+   const b=$('tg-test');b.disabled=true;$('tg-state').textContent='Надсилаємо тест…';
+   try{const r=await req(tgEp+'/test',{method:'POST',body:'{}'});$('tg-state').textContent='✓ Тестове повідомлення надіслано · message '+(r.message_id||'');await load()}
+   catch(e){$('tg-state').textContent='✕ '+e.message}
+   finally{b.disabled=false}
+ }
 
  async function loadSenderOptions(silent=false){
    const b=$('load-senders');b.disabled=true;if(!silent)$('state').textContent='Завантаження відправників…';
@@ -71,9 +105,9 @@
    paint(s);if(s.sender?.sender_ref)await loadSenderOptions(true);$('state').textContent=s.sender_ready?'✓ Відправник, контакт, місто та відділення збережені':'✓ Налаштування збережено';
  }
  async function test(){const b=$('test');b.disabled=true;$('state').textContent='Перевірка Nova Poshta…';try{const r=await req(ep+'/test',{method:'POST',body:'{}'});$('state').textContent=`✓ API працює · знайдено ${r.results} результатів`;await load()}catch(e){$('state').textContent='✕ '+e.message}finally{b.disabled=false}}
- $('connect').onclick=()=>load().catch(e=>$('state').textContent='✕ '+e.message);$('pay-save').onclick=()=>savePayments().catch(e=>$('pay-state').textContent='✕ '+e.message);$('save').onclick=()=>save().catch(e=>$('state').textContent='✕ '+e.message);$('test').onclick=test;$('load-senders').onclick=()=>loadSenderOptions(false);
+ $('connect').onclick=()=>load().catch(e=>$('state').textContent='✕ '+e.message);$('pay-save').onclick=()=>savePayments().catch(e=>$('pay-state').textContent='✕ '+e.message);$('tg-save').onclick=()=>saveTelegram().catch(e=>$('tg-state').textContent='✕ '+e.message);$('tg-find-chats').onclick=()=>findTelegramChats().catch(e=>$('tg-state').textContent='✕ '+e.message);$('tg-test').onclick=testTelegram;$('save').onclick=()=>save().catch(e=>$('state').textContent='✕ '+e.message);$('test').onclick=test;$('load-senders').onclick=()=>loadSenderOptions(false);
  $('sender-select').onchange=()=>{$('sender-select').dataset.current=$('sender-select').value;$('contact-select').dataset.current='';$('sender-city-select').dataset.current='';$('address-select').dataset.current='';$('sender-city-select').innerHTML='<option value="">Спочатку знайдіть місто</option>';$('address-select').innerHTML='<option value="">Спочатку оберіть місто</option>';if($('sender-select').value)loadContacts($('sender-select').value).catch(e=>$('state').textContent='✕ '+e.message)};
  $('contact-select').onchange=()=>{$('contact-select').dataset.current=$('contact-select').value};$('search-sender-city').onclick=()=>searchCities().catch(e=>$('state').textContent='✕ '+e.message);
  $('sender-city-select').onchange=()=>{const v=$('sender-city-select').value;$('sender-city-select').dataset.current=v;$('address-select').dataset.current='';if(v&&$('sender-select').value)loadBranches($('sender-select').value,v).catch(()=>{})};
- $('address-select').onchange=()=>{$('address-select').dataset.current=$('address-select').value};$('toggle-key').onclick=()=>{const x=$('api-key');x.type=x.type==='password'?'text':'password'};if(token.value)load().catch(e=>$('state').textContent='✕ '+e.message)
+ $('address-select').onchange=()=>{$('address-select').dataset.current=$('address-select').value};$('toggle-key').onclick=()=>{const x=$('api-key');x.type=x.type==='password'?'text':'password'};$('tg-toggle-token').onclick=()=>{const x=$('tg-bot-token');x.type=x.type==='password'?'text':'password'};$('tg-chat-select').onchange=()=>{if($('tg-chat-select').value)$('tg-chat-id').value=$('tg-chat-select').value};if(token.value)load().catch(e=>$('state').textContent='✕ '+e.message)
 })();

@@ -2,6 +2,7 @@ from __future__ import annotations
 import json, os, sqlite3, time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from ..db import connect
 
 ROOT=Path(__file__).resolve().parents[2]
 MASTER=ROOT/'data'/'catalog.master.json'
@@ -145,7 +146,64 @@ def _orders_metrics():
     result['revenue_7']=round(result['revenue_7'],2)
     result['revenue_30']=round(result['revenue_30'],2)
     result['recent']=recent
+    result['unprocessed']=sum(
+        int(v or 0)
+        for k,v in result['statuses'].items()
+        if str(k or '').strip().lower() in {'new','pending','created'}
+    )
     return result
+
+def _price_request_metrics():
+    result={
+      'total':0,'unprocessed':0,
+      'statuses':{'new':0,'contacted':0,'quoted':0,'won':0,'lost':0,'closed':0},
+      'recent':[]
+    }
+    try:
+        with connect() as con:
+            rows=con.execute(
+                """
+                SELECT pr.request_code,pr.product_name,pr.variant,pr.sku,pr.quantity,
+                       pr.customer_name,pr.contact,pr.status,pr.created_at,
+                       n.status AS telegram_status
+                FROM price_requests pr
+                LEFT JOIN price_request_notifications n
+                  ON n.request_code=pr.request_code AND n.channel='telegram'
+                ORDER BY pr.id DESC
+                LIMIT 1000
+                """
+            ).fetchall()
+    except Exception:
+        return result
+
+    result['total']=len(rows)
+    for row in rows:
+        item=dict(row)
+        status=str(item.get('status') or 'new').strip().lower()
+        result['statuses'][status]=result['statuses'].get(status,0)+1
+        if status=='new':
+            result['unprocessed']+=1
+        if len(result['recent'])<8:
+            result['recent'].append(item)
+    return result
+
+
+def attention_summary():
+    orders=_orders_metrics()
+    price_requests=_price_request_metrics()
+    return {
+      'generated_at':time.time(),
+      'orders':{
+        'unprocessed':int(orders.get('unprocessed') or 0),
+        'statuses':orders.get('statuses') or {}
+      },
+      'price_requests':{
+        'unprocessed':int(price_requests.get('unprocessed') or 0),
+        'total':int(price_requests.get('total') or 0),
+        'statuses':price_requests.get('statuses') or {}
+      }
+    }
+
 
 def _catalog_metrics():
     d=_catalog();products=d.get('products',[]);skus=d.get('skus',[]);cm=_commerce()
@@ -232,10 +290,12 @@ def _recent_activity():
 
 def dashboard():
     orders=_orders_metrics()
+    price_requests=_price_request_metrics()
     catalog=_catalog_metrics()
     return {
       'generated_at':time.time(),
       'orders':orders,
+      'price_requests':price_requests,
       'catalog':catalog,
       'integrations':_integrations(),
       'activity':_recent_activity()

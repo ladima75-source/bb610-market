@@ -210,6 +210,8 @@ def run(apply: bool) -> dict:
         "media_alt_changed": 0,
         "primary_photo_changed": 0,
         "sku_identity_unchanged": True,
+        "match_methods": {},
+        "matched_unverified": 0,
     }
     unmatched: list[dict] = []
 
@@ -231,6 +233,8 @@ def run(apply: bool) -> dict:
         meta = source_metadata(master)
         if not master or not meta.get("verified"):
             totals["unmatched_or_unverified"] += 1
+            if master and not meta.get("verified"):
+                totals["matched_unverified"] += 1
             unmatched.append({
                 "product_id": pid,
                 "slug": card.get("slug"),
@@ -242,6 +246,8 @@ def run(apply: bool) -> dict:
             continue
 
         totals["verified_master"] += 1
+        method = text(meta.get("match_method")) or "unknown"
+        totals["match_methods"][method] = totals["match_methods"].get(method, 0) + 1
         work = deepcopy(card)
         before = deepcopy(current)
         identity_before = sku_identity(card)
@@ -328,6 +334,8 @@ def main() -> None:
     print("NON-POT CARDS:", r["nonpot_cards"])
     print("VERIFIED MASTER:", r["verified_master"])
     print("UNMATCHED/UNVERIFIED:", r["unmatched_or_unverified"])
+    print("MATCHED BUT UNVERIFIED:", r["matched_unverified"])
+    print("MATCH METHODS:", r["match_methods"])
     print("CARDS CHANGED:", r["cards_changed"])
     print("TITLES NORMALIZED:", r["titles_normalized"])
     print("SHORT DESCRIPTIONS SYNCED:", r["short_descriptions_synced"])
@@ -340,6 +348,11 @@ def main() -> None:
     print("COMMERCE MAP UNCHANGED:", "PASS" if r["commerce_map_unchanged"] else "FAIL")
     print("BACKUP:", r["backup_dir"])
     print("REPORT:", r["report_path"])
+    unresolved = r.get("unmatched") or []
+    if unresolved:
+        print("UNRESOLVED SAMPLE:")
+        for row in unresolved[:12]:
+            print(" -", row.get("slug") or row.get("product_id"), "|", row.get("title") or "—")
     print("RESULT: PASS")
 
 

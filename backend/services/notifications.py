@@ -4,6 +4,8 @@ import html, os, smtplib, urllib.parse, urllib.request
 from email.message import EmailMessage
 from ..db import connect
 from datetime import datetime, timezone
+from .integration_secrets import get_value
+from .telegram_notifications import OPERATIONS_CHAT_ID
 
 
 def now():
@@ -119,9 +121,11 @@ def notify_new_order(order):
     order_id = order['order_id']
     text = _text(order)
 
-    # Telegram — enabled only when both backend-only values are configured.
-    token = os.getenv('BB610_TELEGRAM_BOT_TOKEN')
-    chat = os.getenv('BB610_TELEGRAM_CHAT_ID')
+    # Telegram — one canonical backend configuration for all operational
+    # messages. Bot token may come from the encrypted integration store or env;
+    # destination defaults to the BB610 Market — Operations group.
+    token = get_value('telegram.bot_token', '')
+    chat = get_value('telegram.chat_id', OPERATIONS_CHAT_ID) or OPERATIONS_CHAT_ID
     if token and chat:
         try:
             body = urllib.parse.urlencode({'chat_id': chat, 'text': text, 'disable_web_page_preview': 'true'}).encode()

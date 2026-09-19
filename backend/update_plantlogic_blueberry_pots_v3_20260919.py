@@ -44,6 +44,56 @@ EXPECTED_PRODUCTS = 5
 EXPECTED_MODELS = 17
 EXPECTED_SKUS = 48
 
+ROUND_CARD_OFFICIAL_MEDIA = {
+    "1308020": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Round-Pot_Item_1308020.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_front.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_top-view.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-BASE.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-ISOMETRICO.jpg"),
+    ],
+    "1308025": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2018/04/8025_4.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2018/04/8025_5.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2018/04/8025_2.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2018/04/8025_1.jpg"),
+        ("detail", "https://getplantlogic.com/wp-content/uploads/2018/04/8025_3.jpg"),
+    ],
+    "1308031": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-V-ribs_Item_1308031.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_front.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_top-view.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-VR-1308031-BASE.jpg"),
+    ],
+    "1308040": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040-1.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Front-view.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Top-view.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2024/04/40L-RD-1308040-BASE.jpg"),
+    ],
+}
+
+def _official_round_media(product_no: str) -> tuple[list[dict], str | None, list[str]]:
+    rows = ROUND_CARD_OFFICIAL_MEDIA.get(product_no)
+    if not rows:
+        return [], None, []
+    media = []
+    ids = []
+    for index, (kind, path) in enumerate(rows):
+        mid = f"plbb_{product_no}_{kind}"
+        ids.append(mid)
+        media.append({
+            "media_id": mid,
+            "path": path,
+            "alt": f"Plantlogic {product_no} — {kind}",
+            "kind": "image",
+            "sort_order": index,
+        })
+    return media, ids[0], ids[1:]
+
+
 
 def stamp() -> str:
     return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -397,7 +447,9 @@ def build_card(product: dict, doc: dict, legacy_lookup: dict[str, dict]) -> dict
 
     for model in product["models"]:
         product_no = str(model["product_no"])
-        copied_media, source_primary, source_gallery = _media_for_exact_product_no(product_no, legacy_lookup)
+        copied_media, source_primary, source_gallery = _official_round_media(product_no)
+        if not copied_media:
+            copied_media, source_primary, source_gallery = _media_for_exact_product_no(product_no, legacy_lookup)
         for row in copied_media:
             mid = str(row.get("media_id") or "")
             if mid and mid not in media_by_id:

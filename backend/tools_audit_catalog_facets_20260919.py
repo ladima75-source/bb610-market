@@ -123,10 +123,12 @@ def main() -> int:
 
     allowed_methods = {"fertigation", "foliar", "root"}
     allowed_packages = {"small", "medium", "large"}
+    allowed_cultures = {"all", "лохина", "полуниця", "малина", "овочі", "сад", "хвойні", "газон"}
     bad_methods = set(method) - allowed_methods
     bad_packages = set(package) - allowed_packages
+    bad_cultures = set(culture) - allowed_cultures
 
-    ok = not missing_facets and not bad_methods and not bad_packages
+    ok = not missing_facets and not bad_methods and not bad_packages and not bad_cultures
     print("CHECKS=" + ("PASS" if ok else "FAIL"))
     if missing_facets:
         print("MISSING_FACET_IDS=" + ",".join(missing_facets[:20]))
@@ -134,6 +136,26 @@ def main() -> int:
         print("BAD_METHODS=" + ",".join(sorted(bad_methods)))
     if bad_packages:
         print("BAD_PACKAGES=" + ",".join(sorted(bad_packages)))
+    if bad_cultures:
+        print("BAD_CULTURES=" + ",".join(sorted(bad_cultures)))
+    no_culture_ids = [
+        str(p.get("id") or "?")
+        for p in products
+        if isinstance(p.get("facets"), dict)
+        and (p.get("facets") or {}).get("category") != "containers"
+        and not (p.get("facets") or {}).get("cultures")
+    ]
+    no_method_ids = [
+        str(p.get("id") or "?")
+        for p in products
+        if isinstance(p.get("facets"), dict)
+        and (p.get("facets") or {}).get("category") != "containers"
+        and not (p.get("facets") or {}).get("application_methods")
+    ]
+    if no_culture_ids:
+        print("NO_CULTURE_IDS=" + ",".join(no_culture_ids[:30]))
+    if no_method_ids:
+        print("NO_METHOD_IDS=" + ",".join(no_method_ids[:30]))
     return 0 if ok else 2
 
 

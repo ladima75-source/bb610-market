@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
 
   function packageMetric(sku){
     const t=norm(sku?.variant||'').replace(',','.');
-    const m=t.match(/(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml)\b/i);
+    const m=t.match(/(\d+(?:\.\d+)?)\s*(кг|kg|гр|г|мл|ml|л|l)(?=$|[\s,;)/])/i);
     if(m){
       const metric=metricFromUnit(m[1],m[2]);
       if(metric!==null)return metric;
@@ -80,43 +80,58 @@ document.addEventListener('DOMContentLoaded',async()=>{
     return '';
   }
 
-  function packageGroupsFor(p){
-    const canonical=facetList(p,'package_groups');
-    return canonical.length?canonical:uniq(productSkus(p).map(packageGroupForSku).filter(Boolean));
+  function matchingSkusForPackage(p,groups){
+    const rows=productSkus(p);
+    if(!groups?.length)return rows;
+    return rows.filter(s=>groups.includes(packageGroupForSku(s)));
+  }
+
+  function hasSkuForPackage(p,groups){
+    return !groups?.length||matchingSkusForPackage(p,groups).length>0;
+  }
+
+  function skuInStock(s){
+    if(typeof s?.facets?.in_stock==='boolean')return s.facets.in_stock;
+    return s?.availability==='in_stock'
+      &&s?.enabled!==false
+      &&s?.commercial_status!=='paused'
+      &&s?.offer_status!=='draft';
   }
 
   function displaySkuForPackage(p,groups){
     if(!groups?.length)return null;
+    const matching=matchingSkusForPackage(p,groups);
     const current=BB610.displaySku(p.id);
-    if(current&&groups.includes(packageGroupForSku(current)))return current;
-    const matching=productSkus(p).filter(s=>groups.includes(packageGroupForSku(s)));
-    return matching.find(s=>BB610.canBuySku(s))||
+    return matching.find(s=>s.id===current?.id&&BB610.canBuySku(s))||
+      matching.find(s=>BB610.canBuySku(s))||
+      matching.find(s=>skuInStock(s)&&BB610.hasPrice(s))||
       matching.find(s=>BB610.hasPrice(s))||
-      matching.find(s=>s.availability==='in_stock')||
+      matching.find(s=>s.id===current?.id)||
       matching[0]||
       null;
   }
 
   function hasStockForPackage(p,groups){
-    if(!groups?.length)return hasStock(p);
-    return productSkus(p).some(s=>
-      groups.includes(packageGroupForSku(s))
-      &&s.availability==='in_stock'
-      &&s.enabled!==false
-    );
+    const rows=matchingSkusForPackage(p,groups);
+    if(groups?.length&&!rows.length)return false;
+    return rows.some(s=>skuInStock(s));
   }
 
   function displayPriceForPackage(p,groups){
+    if(!groups?.length)return BB610.displaySku(p.id)?.price??p.price;
     const s=displaySkuForPackage(p,groups);
-    return s?.price??p.price;
+    return s?.price??null;
   }
 
-  const methodAlias={
-    'фертигація':'fertigation',
-    'позакореневе внесення':'foliar',
-    'листкове внесення':'foliar',
-    'кореневе внесення':'root'
-  };
+  function methodGroupsForRaw(raw){
+    const value=norm(raw);
+    const out=[];
+    const isFoliar=value.includes('позакорен')||value.includes('листков')||value.includes('foliar');
+    if(value.includes('фертигац')||value.includes('крапель')||value.includes('drip'))out.push('fertigation');
+    if(isFoliar)out.push('foliar');
+    else if(value.includes('коренев')||value.includes('під корін')||value.includes('root'))out.push('root');
+    return out;
+  }
 
   function methodGroupsFor(p){
     const canonical=facetList(p,'application_methods');
@@ -126,7 +141,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
       ...(Array.isArray(p.application_methods)?p.application_methods:[])
     ];
     if(!raw.length&&typeof p.application==='string')raw.push(...p.application.split(';'));
-    return uniq(raw.map(x=>methodAlias[norm(x)]||'').filter(Boolean));
+    return uniq(raw.flatMap(methodGroupsForRaw));
   }
 
   const categories=BB610_DATA_SOURCE.categories().filter(c=>c.enabled&&!(BB610.categoryHidden&&BB610.categoryHidden(c.id))).sort((a,b)=>(a.order||0)-(b.order||0));
@@ -139,7 +154,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
       if(group==='category')return categoryFor(p)===value;
       if(group==='brand')return brandFor(p)===value;
       if(group==='culture')return categoryFor(p)!=='containers'&&culturesFor(p).includes(value);
-      if(group==='packageGroup')return categoryFor(p)!=='containers'&&packageGroupsFor(p).includes(value);
+      if(group==='packageGroup')return categoryFor(p)!=='containers'&&hasSkuForPackage(p,[value]);
       if(group==='methodGroup')return categoryFor(p)!=='containers'&&methodGroupsFor(p).includes(value);
       return false;
     }).length;
@@ -215,7 +230,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   function matchesState(p,state,skip=''){
     if(state.qq&&!productText(p).includes(state.qq))return false;
     if(skip!=='category'&&!matchesMulti(p,state.category,(x,v)=>categoryFor(x)===v))return false;
-    if(skip!=='packageGroup'&&!matchesMulti(p,state.packageGroup,(x,v)=>packageGroupsFor(x).includes(v)))return false;
+    if(skip!=='packageGroup'&&state.packageGroup.length&&!hasSkuForPackage(p,state.packageGroup))return false;
     if(skip!=='methodGroup'&&!matchesMulti(p,state.methodGroup,(x,v)=>methodGroupsFor(x).includes(v)))return false;
     if(skip!=='culture'&&!matchesMulti(p,state.culture,(x,v)=>culturesFor(x).includes(v)))return false;
     if(skip!=='brand'&&!matchesMulti(p,state.brand,(x,v)=>brandFor(x)===v))return false;
@@ -232,7 +247,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
     if(group==='category')return categoryFor(p)===value;
     if(group==='brand')return brandFor(p)===value;
     if(group==='culture')return categoryFor(p)!=='containers'&&culturesFor(p).includes(value);
-    if(group==='packageGroup')return categoryFor(p)!=='containers'&&packageGroupsFor(p).includes(value);
+    if(group==='packageGroup')return categoryFor(p)!=='containers'&&hasSkuForPackage(p,[value]);
     if(group==='methodGroup')return categoryFor(p)!=='containers'&&methodGroupsFor(p).includes(value);
     return false;
   }

@@ -26,6 +26,15 @@
 .pot-sku-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .pot-sku-choice{display:grid;gap:2px;text-align:left;padding:10px 11px;border:1px solid #364044;border-radius:9px;background:#171c1e;color:#eef1f2}
 .pot-sku-choice small{color:#829095}.pot-sku-choice.active{border-color:var(--pot-green);background:rgba(90,191,61,.08)}
+
+.pot-configurator{display:grid;gap:14px;margin:20px 0;padding:16px;border:1px solid #30383b;border-radius:12px;background:#14191b}
+.pot-option-group>span{display:block;margin-bottom:8px;color:#8d979a;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.pot-option-list{display:flex;flex-wrap:wrap;gap:7px}
+.pot-option{min-height:38px;display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid #364044;border-radius:9px;background:#1a2022;color:#eef1f2}
+.pot-option b{font-size:12px;font-weight:750}.pot-option.active{border-color:var(--pot-green);background:rgba(90,191,61,.09);box-shadow:0 0 0 1px rgba(90,191,61,.22)}
+.pot-color-dot{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.3);box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.pot-color-dot.color-black{background:#151719}.pot-color-dot.color-white{background:#f3f3ef}.pot-color-dot.color-terracotta{background:#b85d32}
+.pot-selected-variant{min-height:18px;margin:3px 0 12px;color:#8d979a;font-size:11px;line-height:1.4}.pot-selected-variant span{color:#6f797d}.pot-selected-variant b{color:#dce1e2;font-weight:700}
 .pot-commerce{margin-top:20px;padding-top:18px;border-top:1px solid #2c3336}
 .pot-price{font-size:31px;font-weight:900}.pot-status{margin-top:5px;color:#8bd569;font-size:12px;font-weight:800}.pot-commerce small{display:block;color:#8a9498;margin-top:4px}
 .pot-actions{display:grid;grid-template-columns:1fr 44px 44px;gap:8px;margin-top:16px}.pot-request{min-height:46px}
@@ -47,4 +56,4 @@
 .pot-related-image{height:180px;display:grid;place-items:center;overflow:hidden;border-radius:9px;background:#f2f2ee}.pot-related-image img{width:100%;height:100%;object-fit:contain;padding:8px}
 .pot-related-brand{margin-top:4px;color:var(--pot-green);font-size:9px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}.pot-related-card strong{font-size:13px;line-height:1.25}.pot-related-card small{color:#808b8f;font-size:10px}
 @media(max-width:1000px){.pot-hero{grid-template-columns:1fr}.pot-buy-panel{position:static}.pot-main-stage{height:500px}.pot-benefit-grid,.pot-related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pot-engineering,.pot-tech-grid{grid-template-columns:1fr}}
-@media(max-width:620px){.pot-main-stage{height:350px;border-radius:13px}.pot-main-stage>img{padding:14px!important}.pot-gallery-nav{width:36px;height:36px;font-size:25px}.pot-zoom-label{display:none}.pot-buy-panel,.pot-section{padding:18px;border-radius:13px}.pot-buy-panel h1{font-size:30px}.pot-facts,.pot-benefit-grid,.pot-related-grid{grid-template-columns:1fr}.pot-sku-grid{grid-template-columns:1fr}.pot-benefit{min-height:0}.pot-benefit h3{margin-top:18px}.pot-tech-grid{gap:10px}.pot-spec-row{grid-template-columns:1fr;gap:3px}.pot-related-image{height:220px}}
+@media(max-width:620px){.pot-option-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.pot-option{justify-content:flex-start}.pot-main-stage{height:350px;border-radius:13px}.pot-main-stage>img{padding:14px!important}.pot-gallery-nav{width:36px;height:36px;font-size:25px}.pot-zoom-label{display:none}.pot-buy-panel,.pot-section{padding:18px;border-radius:13px}.pot-buy-panel h1{font-size:30px}.pot-facts,.pot-benefit-grid,.pot-related-grid{grid-template-columns:1fr}.pot-sku-grid{grid-template-columns:1fr}.pot-benefit{min-height:0}.pot-benefit h3{margin-top:18px}.pot-tech-grid{gap:10px}.pot-spec-row{grid-template-columns:1fr;gap:3px}.pot-related-image{height:220px}}

@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.refresh();
   const params=new URLSearchParams(location.search);
-  const q=window.BB610_SKU_ID||window.BB610_PRODUCT_ID||params.get('id');
-  const selectedFromUrl=BB610.sku(window.BB610_SKU_ID||params.get('sku')||q);
-  const p=BB610.byId(window.BB610_PRODUCT_ID||(selectedFromUrl?.product_id)||q);
+  const requestedProductId=String(window.BB610_PRODUCT_ID||params.get('id')||'').trim();
+  const requestedSkuId=String(window.BB610_SKU_ID||params.get('sku')||'').trim();
+  const selectedFromUrl=requestedSkuId?BB610.sku(requestedSkuId):null;
+  const p=
+    (requestedProductId?BB610.byId(requestedProductId):null)||
+    (selectedFromUrl?BB610.byId(selectedFromUrl.id):null)||
+    (selectedFromUrl?.product_id?BB610.byId(selectedFromUrl.product_id):null);
   const root=document.getElementById('product-root');
   if(!p){root.innerHTML='<div class="empty">Товар не знайдено. <a class="link" href="catalog.html">Повернутися до каталогу</a></div>';return}
 
@@ -39,8 +43,13 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     return escValue(value);
   }
 
-  const skuList=(p.sizes||[]).map(x=>BB610.sku(x.id)).filter(Boolean);
-  let selectedSku=selectedFromUrl&&selectedFromUrl.product_id===p.id?selectedFromUrl:(BB610.defaultSku(p.id)||skuList[0]||null);
+  const runtimeSkus=(BB610_DATA_SOURCE.skusForProduct?.(p.id)||[]).filter(Boolean);
+  const legacySkus=(p.sizes||[]).map(x=>BB610.sku(x.id)).filter(Boolean);
+  const skuMap=new Map([...runtimeSkus,...legacySkus].map(x=>[x.id||x.sku,x]));
+  const skuList=[...skuMap.values()];
+  let selectedSku=selectedFromUrl&&skuMap.has(selectedFromUrl.id)
+    ?skuMap.get(selectedFromUrl.id)
+    :(BB610.defaultSku(p.id)||skuList[0]||null);
 
   const trackView=()=>{if(selectedSku)BB610.pushEvent('view_item',{ecommerce:{currency:selectedSku.currency||'UAH',items:[BB610.commerceItem(selectedSku,1)]}})};
   trackView();
@@ -56,7 +65,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
       :`<div class="kv"><span>Параметр</span><b>${richValue(x)}</b></div>`).join('')
     :(p.composition?`<div class="kv"><span>Склад</span><b>${richValue(p.composition)}</b></div>`:'');
 
-  root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${p.categoryLabel.toUpperCase()} / ${p.name}</div>
+  root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${String(p.categoryLabel||p.category||'Каталог').toUpperCase()} / ${p.name}</div>
   <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${selectedSku?.image||p.image}" alt="${p.name}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div>${(p.gallery||[]).length?`<div class="product-gallery-thumbs">${[p.image,...p.gallery].filter(Boolean).map((im,i)=>`<button type="button" class="gallery-thumb" data-gallery-img="${im}"><img src="${im}" alt="${p.name} ${i+1}"></button>`).join('')}</div>`:''}</div>
   <div class="product-summary"><div class="eyebrow">${p.categoryLabel}</div><h1>${p.name}</h1><div class="brand">${p.brand}</div><p class="product-lead">${richValue(p.shortDescription||p.manufacturerUse||p.productType||'')}</p><div class="product-keyfacts">${p.productType?`<span><small>Тип</small><b>${richValue(p.productType)}</b></span>`:''}${p.npk&&p.npk!=='—'?`<span><small>NPK</small><b>${richValue(p.npk)}</b></span>`:''}${p.activeIngredient&&p.activeIngredient!=='—'?`<span><small>Діюча речовина</small><b>${richValue(p.activeIngredient)}</b></span>`:''}</div>
   <div class="selected-variant" id="selected-variant"></div>
@@ -96,7 +105,18 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     buy.disabled=requestPrice?false:!BB610.canBuySku(selectedSku);
     syncLiveProductSchema();
   }
-  document.querySelectorAll('[data-sku-select]').forEach(b=>b.onclick=()=>{selectedSku=BB610.sku(b.dataset.skuSelect);updateSkuUI();trackView();if(selectedSku?.url&&location.protocol!=='file:')history.replaceState({sku:selectedSku.id},'',selectedSku.url)});
+  document.querySelectorAll('[data-sku-select]').forEach(b=>b.onclick=()=>{
+    selectedSku=skuMap.get(b.dataset.skuSelect)||BB610.sku(b.dataset.skuSelect);
+    updateSkuUI();
+    trackView();
+    if(selectedSku&&location.protocol!=='file:'){
+      history.replaceState(
+        {sku:selectedSku.id},
+        '',
+        'product.html?id='+encodeURIComponent(p.id)+'&sku='+encodeURIComponent(selectedSku.id)
+      );
+    }
+  });
   updateSkuUI();
   document.getElementById('buy').onclick=()=>{if(!selectedSku)return;const qty=Math.max(1,+document.getElementById('qty').value||1);if(BB610.isPriceRequestSku?.(selectedSku))BB610.openPriceRequest(selectedSku.id,qty);else BB610.addCart(selectedSku.id,qty)};
   document.getElementById('fav').onclick=e=>e.currentTarget.textContent=BB610.toggleFav(p.id)?'♥':'♡';

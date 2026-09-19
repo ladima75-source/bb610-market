@@ -86,11 +86,16 @@ def _method_facets(product: dict) -> list[str]:
     out: list[str] = []
     for raw in raw_values:
         value = _norm(raw)
+        is_foliar = (
+            "позакорен" in value
+            or "листков" in value
+            or "foliar" in value
+        )
         if "фертигац" in value or "крапель" in value or "drip" in value:
             out.append("fertigation")
-        if "позакорен" in value or "листков" in value or "foliar" in value:
+        if is_foliar:
             out.append("foliar")
-        if "коренев" in value or "під корін" in value or "root" in value:
+        elif "коренев" in value or "під корін" in value or "root" in value:
             out.append("root")
     return _uniq(out)
 

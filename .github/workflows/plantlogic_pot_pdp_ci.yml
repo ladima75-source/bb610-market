@@ -11,6 +11,7 @@ on:
       - 'js/product-pot.js'
       - 'css/product-pot.css'
       - 'backend/services/product_cards_v3.py'
+      - 'data/product_cards_v3/product_card_v3.schema.json'
       - 'backend/services/product_cards_v3_runtime.py'
       - 'backend/services/product_cards_v3_facets.py'
       - 'backend/update_plantlogic_blueberry_pots_v3_20260919.py'
@@ -20,6 +21,7 @@ on:
       - 'backend/tools_verify_plantlogic_blueberry_architecture_20260919.py'
       - 'data/product_content/plantlogic_blueberry_pots_v2_20260919.json'
       - 'data/product_content/plantlogic_blueberry_pots_r2_20260919.json'
+      - 'tools/build_plantlogic_blueberry_content_assets.py'
       - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
   pull_request:
@@ -31,6 +33,7 @@ on:
       - 'js/product-pot.js'
       - 'css/product-pot.css'
       - 'backend/services/product_cards_v3.py'
+      - 'data/product_cards_v3/product_card_v3.schema.json'
       - 'backend/services/product_cards_v3_runtime.py'
       - 'backend/services/product_cards_v3_facets.py'
       - 'backend/update_plantlogic_blueberry_pots_v3_20260919.py'
@@ -40,6 +43,7 @@ on:
       - 'backend/tools_verify_plantlogic_blueberry_architecture_20260919.py'
       - 'data/product_content/plantlogic_blueberry_pots_v2_20260919.json'
       - 'data/product_content/plantlogic_blueberry_pots_r2_20260919.json'
+      - 'tools/build_plantlogic_blueberry_content_assets.py'
       - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
   workflow_dispatch:
@@ -77,8 +81,8 @@ jobs:
           css=Path('css/product-pot.css').read_text(encoding='utf-8')
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
-          assert 'css/product-pot.css?v=20260919-pot-pdp-4' in html
-          assert 'js/product-pot.js?v=20260919-pot-pdp-4' in html
+          assert 'css/product-pot.css?v=20260919-pot-pdp-5' in html
+          assert 'js/product-pot.js?v=20260919-pot-pdp-5' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
           assert 'BB610_POT_PDP?.matches(p)' in product
           assert 'BB610_POT_PDP.render' in product
@@ -106,6 +110,16 @@ jobs:
           assert '.pot-thumbs' in css
           assert '.pot-gallery-count' in css
           assert '.pot-model-option' in css
+          assert '.pot-family-layout' in css
+          assert '.pot-explainer-layout' in css
+          assert '.pot-garden-guide' in css
+
+          assert 'function renderFamilyOverview(product)' in pot
+          assert 'function renderTechnologyExplainer(product)' in pot
+          assert 'function renderGardenGuide(product)' in pot
+          assert 'family_overview' in pot
+          assert 'technology_explainer' in pot
+          assert 'garden_guide' in pot
 
           assert "patch['benefits']" in facets
           assert "patch['how_it_works']" in facets
@@ -129,6 +143,54 @@ jobs:
 
           python backend/update_plantlogic_blueberry_pots_r2_20260919.py --apply
           python backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py
+
+      - name: Blueberry educational content contract
+        run: |
+          python - <<'PY'
+          from backend.services import product_cards_v3 as pcv3
+          from backend.services.product_cards_v3_facets import market_test_projection
+
+          ids = [
+              'prd_pl_bb_round',
+              'prd_pl_bb_round_short_legs',
+              'prd_pl_bb_square',
+              'prd_pl_bb_round_u',
+              'prd_pl_bb_square_u',
+              'prd_pl_bb_zephyr_v2',
+          ]
+          educational = {
+              '/assets/plantlogic/blueberry-family-standard.jpg',
+              '/assets/plantlogic/blueberry-family-u-groove.jpg',
+              '/assets/plantlogic/blueberry-root-zone.png',
+          }
+          for pid in ids:
+              card = pcv3.get(pid)
+              assert card and card['enabled'] is True
+              content = card['content']
+              assert isinstance(content.get('garden_guide'), dict)
+              assert content['garden_guide']['url'] == 'https://garden.bb610.com.ua'
+              if pid != 'prd_pl_bb_zephyr_v2':
+                  assert isinstance(content.get('family_overview'), dict)
+                  assert isinstance(content.get('technology_explainer'), dict)
+                  codes = [x['code'] for x in content['technology_explainer']['items']]
+                  if pid in {'prd_pl_bb_round_u','prd_pl_bb_square_u'}:
+                      assert codes == ['A','B','C','D'], (pid,codes)
+                  else:
+                      assert codes == ['B','C','D'], (pid,codes)
+
+              for media in (card.get('sku_media') or {}).get('media') or []:
+                  assert media.get('path') not in educational
+              for sku in (card.get('sku_media') or {}).get('skus') or []:
+                  assert all(str(mid) for mid in sku.get('gallery_media_ids') or [])
+
+          projection = market_test_projection()
+          rows = [x for x in projection['products'] if x.get('v3_product_id') in ids]
+          assert len(rows) == 6
+          assert all(isinstance(x.get('garden_guide'), dict) for x in rows)
+          assert all('blueberry-family-' not in str(x.get('gallery') or '') for x in rows)
+          assert all('blueberry-root-zone' not in str(x.get('gallery') or '') for x in rows)
+          print('PLANTLOGIC EDUCATIONAL CONTENT ISOLATION: PASS')
+          PY
 
       - name: Official gallery safety contract
         run: |

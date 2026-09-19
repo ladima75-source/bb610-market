@@ -409,7 +409,7 @@ def family_overview_for(product: dict) -> dict | None:
 
 
 def model_showcase_for(product: dict) -> dict | None:
-    if str(product.get("product_id") or "") not in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs", "prd_pl_bb_square"}:
+    if str(product.get("product_id") or "") not in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs", "prd_pl_bb_square", "prd_pl_bb_round_u", "prd_pl_bb_square_u"}:
         return None
     items = []
     for model in product.get("models") or []:

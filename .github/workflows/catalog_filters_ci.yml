@@ -104,6 +104,8 @@ jobs:
           assert set(f1['package_groups'])=={'small','medium'}
           assert skus[0]['facets']['package_group']=='small'
           assert skus[1]['facets']['package_group']=='medium'
+          assert skus[0]['facets']['in_stock'] is True
+          assert skus[1]['facets']['in_stock'] is False
           assert f1['in_stock'] is True
 
           f2=products[1]['facets']
@@ -163,6 +165,7 @@ jobs:
           assert 'function hasSkuForPackage(p,groups)' in js
           assert 'function displaySkuForPackage(p,groups)' in js
           assert 'function hasStockForPackage(p,groups)' in js
+          assert 'return rows.some(s=>skuInStock(s))' in js
           assert 'function displayPriceForPackage(p,groups)' in js
           assert "rows.filter(s=>groups.includes(packageGroupForSku(s)))" in js
           assert "state.packageGroup.length&&!hasSkuForPackage(p,state.packageGroup)" in js

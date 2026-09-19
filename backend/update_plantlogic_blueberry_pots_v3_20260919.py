@@ -1,0 +1,469 @@
+from __future__ import annotations
+
+"""Build the five-card Plantlogic blueberry pot architecture for BB610 Market.
+
+Source model:
+- Plantlogic Catalog 2026, Blueberry production, catalog pages 5-7.
+- 5 storefront Product cards.
+- 17 manufacturer Product # models.
+- 48 BB610 storefront SKU: manufacturer Product # + color.
+
+The Plantlogic catalog provides one Product # per physical model and lists the
+available colors separately. Therefore the color suffix in BB610 SKU codes is
+an internal storefront identifier; it is not represented as a Plantlogic
+Product #.
+
+This migration:
+- creates/updates the five grouped Product Card v3 records;
+- preserves Product # and dimensions at SKU attribute level;
+- reuses legacy media only when the exact Product # matches;
+- disables legacy blueberry Plantlogic cards instead of deleting them;
+- never writes commerce/prices/stock.
+"""
+
+import argparse
+import json
+import shutil
+import sys
+from copy import deepcopy
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from backend.services import product_cards_v3 as pcv3
+
+MANIFEST = ROOT / "data" / "product_content" / "plantlogic_blueberry_pots_v2_20260919.json"
+LEGACY_MANIFEST = ROOT / "data" / "product_content" / "plantlogic_pots_v1_20260918.json"
+BACKUP_ROOT = ROOT / "var" / "content_backups"
+REPORT_ROOT = ROOT / "var" / "reports"
+
+EXPECTED_PRODUCTS = 5
+EXPECTED_MODELS = 17
+EXPECTED_SKUS = 48
+
+
+def stamp() -> str:
+    return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+
+
+def load_json(path: Path) -> dict:
+    obj = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(obj, dict):
+        raise RuntimeError(f"{path}: expected object")
+    return obj
+
+
+def load_manifest() -> dict:
+    doc = load_json(MANIFEST)
+    if doc.get("schema_version") != "2.0":
+        raise RuntimeError("unexpected blueberry architecture schema")
+    products = doc.get("products")
+    colors = doc.get("colors")
+    if not isinstance(products, list) or len(products) != EXPECTED_PRODUCTS:
+        raise RuntimeError(f"expected {EXPECTED_PRODUCTS} grouped products")
+    if not isinstance(colors, dict):
+        raise RuntimeError("colors are required")
+
+    product_ids: set[str] = set()
+    slugs: set[str] = set()
+    numbers: set[str] = set()
+    sku_codes: set[str] = set()
+    model_count = 0
+    sku_count = 0
+
+    for product in products:
+        pid = str(product.get("product_id") or "").strip()
+        slug = str(product.get("slug") or "").strip()
+        title = str(product.get("title") or "").strip()
+        color_set = str(product.get("color_set") or "").strip()
+        if not pid or not slug or not title:
+            raise RuntimeError("grouped product identity is incomplete")
+        if "plantlogic" in title.casefold():
+            raise RuntimeError(f"{pid}: Plantlogic must not be in storefront title")
+        if pid in product_ids or slug in slugs:
+            raise RuntimeError(f"duplicate grouped product identity: {pid} / {slug}")
+        product_ids.add(pid)
+        slugs.add(slug)
+
+        palette = colors.get(color_set)
+        if not isinstance(palette, list) or not palette:
+            raise RuntimeError(f"{pid}: invalid color_set {color_set}")
+
+        models = product.get("models")
+        if not isinstance(models, list) or not models:
+            raise RuntimeError(f"{pid}: models are required")
+        model_count += len(models)
+
+        for model in models:
+            number = str(model.get("product_no") or "").strip()
+            volume = model.get("volume_l")
+            execution = str(model.get("execution_code") or "").strip()
+            dimensions = model.get("dimensions")
+            if not number or not execution or not isinstance(volume, (int, float)):
+                raise RuntimeError(f"{pid}: incomplete model")
+            if number in numbers:
+                raise RuntimeError(f"duplicate manufacturer Product #: {number}")
+            numbers.add(number)
+            if not isinstance(dimensions, dict) or set(dimensions) != {"A", "B", "C", "D"}:
+                raise RuntimeError(f"{number}: dimensions A/B/C/D required")
+            for color in palette:
+                suffix = str(color.get("suffix") or "").strip()
+                code = f"PL-BB-{number}-{suffix}"
+                if code in sku_codes:
+                    raise RuntimeError(f"duplicate storefront SKU: {code}")
+                sku_codes.add(code)
+                sku_count += 1
+
+    if model_count != EXPECTED_MODELS:
+        raise RuntimeError(f"expected {EXPECTED_MODELS} manufacturer models; got {model_count}")
+    if sku_count != EXPECTED_SKUS:
+        raise RuntimeError(f"expected {EXPECTED_SKUS} storefront SKU; got {sku_count}")
+    return doc
+
+
+def legacy_blueberry_context() -> tuple[set[str], dict[str, dict]]:
+    legacy = load_json(LEGACY_MANIFEST)
+    legacy_ids: set[str] = set()
+    by_product_no: dict[str, dict] = {}
+    for row in legacy.get("products") or []:
+        if not isinstance(row, dict):
+            continue
+        uses = {str(x).strip().casefold() for x in (row.get("use_cases") or [])}
+        if "лохина" in uses:
+            legacy_ids.add(str(row.get("product_id") or ""))
+        for sku in row.get("skus") or []:
+            if not isinstance(sku, dict):
+                continue
+            number = str(sku.get("product_no") or "").strip()
+            if number:
+                by_product_no[number] = {
+                    "product_id": str(row.get("product_id") or ""),
+                    "sku_id": str(sku.get("sku_id") or ""),
+                }
+    return legacy_ids, by_product_no
+
+
+def _media_for_exact_product_no(product_no: str, lookup: dict[str, dict]) -> tuple[list[dict], str | None, list[str]]:
+    link = lookup.get(product_no)
+    if not link:
+        return [], None, []
+    card = pcv3.get(link["product_id"])
+    if not isinstance(card, dict):
+        return [], None, []
+    sm = card.get("sku_media") if isinstance(card.get("sku_media"), dict) else {}
+    skus = sm.get("skus") or []
+    source_sku = next((x for x in skus if isinstance(x, dict) and x.get("sku_id") == link["sku_id"]), None)
+    if not isinstance(source_sku, dict):
+        return [], None, []
+    media_index = {
+        str(x.get("media_id") or ""): x
+        for x in (sm.get("media") or [])
+        if isinstance(x, dict) and x.get("media_id")
+    }
+    ids = []
+    primary = str(source_sku.get("primary_media_id") or "")
+    if primary:
+        ids.append(primary)
+    ids.extend(str(x) for x in (source_sku.get("gallery_media_ids") or []) if str(x))
+    copied = [deepcopy(media_index[mid]) for mid in ids if mid in media_index]
+    gallery = [str(x) for x in (source_sku.get("gallery_media_ids") or []) if str(x) in media_index]
+    return copied, primary if primary in media_index else None, gallery
+
+
+def benefits_for(product: dict) -> list[dict]:
+    family = str(product.get("family") or "")
+    base = [
+        {
+            "title": "Дренаж кореневої зони",
+            "text": "Геометрія горщика розрахована на відведення надлишкової води з кореневої зони.",
+        },
+        {
+            "title": "Аерація",
+            "text": "Піднята основа та отвори підтримують повітрообмін у нижній частині субстрату.",
+        },
+        {
+            "title": "Професійне субстратне вирощування",
+            "text": "Лінійка призначена для контейнерного вирощування лохини у субстраті.",
+        },
+        {
+            "title": "Вибір під технологію",
+            "text": "У межах сімейства можна підібрати об'єм, виконання та колір під конкретну систему вирощування.",
+        },
+    ]
+    if family == "zephyr":
+        base[1] = {
+            "title": "Посилена аерація Zephyr V2",
+            "text": "Конструкція Zephyr V2 має збільшений повітряний зазор і вентиляційні отвори для роботи кореневої зони.",
+        }
+    elif "u_groove" in family:
+        base[2] = {
+            "title": "U-пази під поливну лінію",
+            "text": "U-пази передбачені для організації та фіксації елементів поливної системи.",
+        }
+    return base
+
+
+def how_it_works_for(product: dict) -> str:
+    family = str(product.get("family") or "")
+    if family == "zephyr":
+        return (
+            "Zephyr V2 поєднує підняту основу, радіальний дренаж і вентиляцію кореневої зони. "
+            "Вибір конкретного об'єму виконується всередині однієї товарної картки."
+        )
+    if "u_groove" in family:
+        return (
+            "Дренажна основа відводить надлишкову воду, а U-пази формують окреме конструктивне виконання "
+            "для організації поливної лінії. Для 30-літрової круглої групи доступні звичайні та паралельні U-пази."
+        )
+    return (
+        "Піднята дренажна основа відокремлює кореневу зону від поверхні та підтримує відведення води й повітрообмін. "
+        "Літраж та конструктивне виконання обираються всередині картки."
+    )
+
+
+def build_content(product: dict, palette: list[dict]) -> dict:
+    title = str(product["title"])
+    volumes = str(product.get("volumes_label") or "")
+    executions = []
+    for model in product.get("models") or []:
+        label = str(model.get("execution_label") or "").strip()
+        if label and label not in executions:
+            executions.append(label)
+    colors = " / ".join(str(x.get("label") or "") for x in palette)
+    shape_label = {
+        "round": "Кругла",
+        "square": "Квадратна",
+        "zephyr": "Zephyr V2",
+    }.get(str(product.get("shape") or ""), str(product.get("shape") or ""))
+
+    short = f"{title}. Доступні об'єми: {volumes}. Кольори: {colors}."
+    description = (
+        f"{title} — сімейство професійних контейнерів для субстратного вирощування лохини. "
+        f"В одній картці обираються літраж, конструктивне виконання та колір. "
+        "Product # Plantlogic і габарити зберігаються на рівні конкретного варіанта."
+    )
+    chars = [
+        {"label": "Виробник", "value": "Plantlogic"},
+        {"label": "Культура", "value": "Лохина"},
+        {"label": "Форма", "value": shape_label},
+        {"label": "Доступні об'єми", "value": volumes},
+        {"label": "Виконання", "value": " / ".join(executions)},
+        {"label": "Кольори", "value": colors},
+        {"label": "Офіційне джерело", "value": "https://getplantlogic.com/"},
+    ]
+    return {
+        "title": title,
+        "brand": "Plantlogic",
+        "category": "Контейнери",
+        "short_description": short,
+        "description": description,
+        "benefits": benefits_for(product),
+        "how_it_works": how_it_works_for(product),
+        "application": (
+            "Для професійного субстратного вирощування лохини. Об'єм і конструкцію обирають відповідно до "
+            "технології господарства, віку рослини, субстрату та системи поливу."
+        ),
+        "composition": (
+            "Жорсткий пластиковий горщик Plantlogic. Точний склад полімеру для цих моделей у використаних "
+            "сторінках каталогу не специфікований."
+        ),
+        "characteristics": chars,
+        "seo": {
+            "title": f"{title} | BB610 Market",
+            "description": f"{title}: {volumes}, вибір виконання та кольору. Plantlogic Catalog 2026.",
+        },
+    }
+
+
+def build_card(product: dict, doc: dict, legacy_lookup: dict[str, dict]) -> dict:
+    palette = doc["colors"][product["color_set"]]
+    skus = []
+    media_by_id: dict[str, dict] = {}
+    order = 0
+
+    for model in product["models"]:
+        product_no = str(model["product_no"])
+        copied_media, source_primary, source_gallery = _media_for_exact_product_no(product_no, legacy_lookup)
+        for row in copied_media:
+            mid = str(row.get("media_id") or "")
+            if mid and mid not in media_by_id:
+                media_by_id[mid] = row
+
+        for color in palette:
+            volume = model["volume_l"]
+            volume_label = f"{volume:g} л" if isinstance(volume, float) else f"{volume} л"
+            color_code = str(color["code"])
+            color_label = str(color["label"])
+            suffix = str(color["suffix"])
+            execution = str(model["execution_label"])
+            dimensions = model["dimensions"]
+            sku_code = f"PL-BB-{product_no}-{suffix}"
+            sku_id = f"sku_pl_bb_{product_no}_{color_code}"
+            label = f"{volume_label} · {execution} · {color_label} · арт. {product_no}"
+            skus.append({
+                "sku_id": sku_id,
+                "sku_code": sku_code,
+                "label": label,
+                "package": volume_label,
+                "primary_media_id": source_primary,
+                "gallery_media_ids": list(source_gallery),
+                "sort_order": order,
+                "enabled": True,
+                "attributes": {
+                    "volume_l": volume,
+                    "volume_label": volume_label,
+                    "execution_code": str(model["execution_code"]),
+                    "execution_label": execution,
+                    "color_code": color_code,
+                    "color_label": color_label,
+                    "manufacturer_product_no": product_no,
+                    "dimension_a": str(dimensions["A"]),
+                    "dimension_b": str(dimensions["B"]),
+                    "dimension_c": str(dimensions["C"]),
+                    "dimension_d": str(dimensions["D"]),
+                    "catalog_page": int(model["catalog_page"]),
+                },
+            })
+            order += 1
+
+    card = {
+        "schema_version": "3.0",
+        "product_id": str(product["product_id"]),
+        "slug": str(product["slug"]),
+        "enabled": True,
+        "content": build_content(product, palette),
+        "sku_media": {
+            "skus": skus,
+            "media": sorted(media_by_id.values(), key=lambda x: int(x.get("sort_order") or 0)),
+        },
+    }
+    pcv3.validate(card)
+    return card
+
+
+def backup_cards() -> Path:
+    dest = BACKUP_ROOT / f"plantlogic-blueberry-5card-{stamp()}"
+    n = 2
+    base = dest
+    while dest.exists():
+        dest = Path(str(base) + f"-{n}")
+        n += 1
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(pcv3.BASE, dest / "product_cards_v3")
+    return dest
+
+
+def restore_cards(backup: Path) -> None:
+    src = backup / "product_cards_v3"
+    if pcv3.BASE.exists():
+        shutil.rmtree(pcv3.BASE)
+    shutil.copytree(src, pcv3.BASE)
+    pcv3.PRODUCTS.mkdir(parents=True, exist_ok=True)
+
+
+def plan() -> dict:
+    doc = load_manifest()
+    legacy_ids, legacy_lookup = legacy_blueberry_context()
+    cards = [build_card(product, doc, legacy_lookup) for product in doc["products"]]
+    return {
+        "doc": doc,
+        "cards": cards,
+        "legacy_ids": sorted(x for x in legacy_ids if x),
+    }
+
+
+def apply_architecture(work: dict) -> dict:
+    backup = backup_cards()
+    commerce_before = pcv3.COMMERCE_MAP.read_bytes() if pcv3.COMMERCE_MAP.exists() else b""
+    created = 0
+    updated = 0
+    disabled = 0
+    try:
+        grouped_ids = {card["product_id"] for card in work["cards"]}
+        for card in work["cards"]:
+            pid = card["product_id"]
+            current = pcv3.get(pid)
+            if current is None:
+                pcv3.create(deepcopy(card))
+                created += 1
+            elif current != card:
+                pcv3.put(pid, deepcopy(card))
+                updated += 1
+
+        for pid in work["legacy_ids"]:
+            if pid in grouped_ids:
+                continue
+            current = pcv3.get(pid)
+            if not isinstance(current, dict) or current.get("enabled") is False:
+                continue
+            patched = deepcopy(current)
+            patched["enabled"] = False
+            pcv3.put(pid, patched)
+            disabled += 1
+
+        commerce_after = pcv3.COMMERCE_MAP.read_bytes() if pcv3.COMMERCE_MAP.exists() else b""
+        if commerce_after != commerce_before:
+            raise RuntimeError("commerce_map changed during blueberry architecture migration")
+
+        live = [pcv3.get(card["product_id"]) for card in work["cards"]]
+        if any(not isinstance(card, dict) or card.get("enabled") is not True for card in live):
+            raise RuntimeError("grouped blueberry cards are not all enabled")
+        sku_count = sum(len((card.get("sku_media") or {}).get("skus") or []) for card in live if isinstance(card, dict))
+        if sku_count != EXPECTED_SKUS:
+            raise RuntimeError(f"post-check SKU count {sku_count} != {EXPECTED_SKUS}")
+
+        result = {
+            "status": "PASS",
+            "products": len(live),
+            "manufacturer_models": EXPECTED_MODELS,
+            "skus": sku_count,
+            "created": created,
+            "updated": updated,
+            "legacy_blueberry_cards_disabled": disabled,
+            "commerce_map_changed": False,
+            "backup": str(backup),
+        }
+        REPORT_ROOT.mkdir(parents=True, exist_ok=True)
+        report = REPORT_ROOT / f"plantlogic-blueberry-5card-{stamp()}.json"
+        report.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        result["report"] = str(report)
+        return result
+    except Exception:
+        restore_cards(backup)
+        raise
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--apply", action="store_true")
+    args = parser.parse_args()
+
+    work = plan()
+    print("BB610 PLANTLOGIC BLUEBERRY POTS — 5 CARD ARCHITECTURE")
+    print("PRODUCT CARDS:", len(work["cards"]))
+    print("MANUFACTURER MODELS:", sum(len(x["models"]) for x in work["doc"]["products"]))
+    print("STOREFRONT SKU:", sum(len(x["sku_media"]["skus"]) for x in work["cards"]))
+    print("LEGACY BLUEBERRY CARDS TO RETIRE:", len(work["legacy_ids"]))
+    print("PRICE/STOCK/COMMERCE WRITES: NONE")
+    if not args.apply:
+        print("RESULT: PASS (DRY RUN)")
+        return 0
+
+    result = apply_architecture(work)
+    print("RESULT:", result["status"])
+    print("CREATED:", result["created"])
+    print("UPDATED:", result["updated"])
+    print("LEGACY DISABLED:", result["legacy_blueberry_cards_disabled"])
+    print("PRODUCTS:", result["products"])
+    print("SKU:", result["skus"])
+    print("COMMERCE/PRICES UNCHANGED: PASS")
+    print("BACKUP:", result["backup"])
+    print("REPORT:", result["report"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

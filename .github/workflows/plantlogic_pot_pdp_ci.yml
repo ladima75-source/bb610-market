@@ -195,7 +195,7 @@ jobs:
               assert isinstance(content.get('garden_guide'), dict)
               assert content['garden_guide']['url'] == 'https://garden.bb610.com.ua'
               if pid != 'prd_pl_bb_zephyr_v2':
-                  if pid in {'prd_pl_bb_round','prd_pl_bb_round_short_legs','prd_pl_bb_square'}:
+                  if pid in {'prd_pl_bb_round','prd_pl_bb_round_short_legs','prd_pl_bb_square','prd_pl_bb_round_u','prd_pl_bb_square_u'}:
                       assert content.get('family_overview') is None
                       assert isinstance(content.get('model_showcase'), dict)
                   else:
@@ -259,14 +259,29 @@ jobs:
           round_u_paths = [str(x.get('path') or '') for x in (round_u.get('sku_media') or {}).get('media') or []]
           assert any('1308303-1.jpg' in x for x in round_u_paths)
           assert any('1308305-FRONT-1.jpg' in x for x in round_u_paths)
+          assert any('Maceta-35-litros-redonda-para-blueberries.jpg' in x for x in round_u_paths)
+          assert any('40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg' in x for x in round_u_paths)
+          assert isinstance(round_u['content'].get('model_showcase'), dict)
+          assert len(round_u['content']['model_showcase']['items']) == 4
 
           square_u = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_square_u')
           square_u_paths = [str(x.get('path') or '') for x in (square_u.get('sku_media') or {}).get('media') or []]
           assert any('1309026.jpg' in x for x in square_u_paths)
+          assert any('13090350_frente.jpg' in x for x in square_u_paths)
+          assert isinstance(square_u['content'].get('model_showcase'), dict)
+          assert len(square_u['content']['model_showcase']['items']) == 2
 
           zephyr = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_zephyr_v2')
           zephyr_paths = [str(x.get('path') or '') for x in (zephyr.get('sku_media') or {}).get('media') or []]
           assert any('ZEPHYR-V2-1301144-FRONTAL-1.jpg' in x for x in zephyr_paths)
+          round_u_codes = {str(x.get('sku_code') or '') for x in (round_u.get('sku_media') or {}).get('skus') or []}
+          square_u_codes = {str(x.get('sku_code') or '') for x in (square_u.get('sku_media') or {}).get('skus') or []}
+          assert any('13080350' in x for x in round_u_codes)
+          assert any('1308041' in x for x in round_u_codes)
+          assert any('13090350' in x for x in square_u_codes)
+          assert not any('1308035-' in x or '13080410' in x for x in round_u_codes)
+          assert not any('1309035-' in x for x in square_u_codes)
+          print('OFFICIAL U-GROOVE PRODUCT NUMBERS: PASS')
           print('REMAINING VERIFIED MODEL MEDIA: PASS')
           zephyr = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_zephyr_v2')
           zskus = (zephyr.get('sku_media') or {}).get('skus') or []

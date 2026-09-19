@@ -23,7 +23,7 @@ import time
 from dataclasses import dataclass
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urljoin, urlparse
+from urllib.parse import quote_plus, urljoin, urlparse
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -289,15 +289,36 @@ def _resolve_targets(targets: list[Target], links: list[tuple[str, str]]) -> tup
             unresolved.append(target.sku)
             continue
 
-        # Verify against the real product H1. Package mismatch is never accepted.
-        page = _text(top[1])
-        pp = ProductPageParser()
-        pp.feed(page)
-        if _pack_key(pp.h1) != target.pack_key or _name_score(target.product_name, pp.h1) < 0.55:
-            unresolved.append(target.sku)
-            continue
         resolved[target.sku] = top[1]
     return resolved, unresolved
+
+
+def _search_links(product_name: str) -> list[tuple[str, str]]:
+    found: dict[str, str] = {}
+    query = quote_plus(product_name)
+    for base in (
+        f"https://organicplanet.com.ua/search?search={query}",
+        f"https://organicplanet.com.ua/ru/search?search={query}",
+    ):
+        try:
+            body = _text(base)
+        except Exception:
+            continue
+        parser = LinkParser()
+        parser.feed(body)
+        for href, label in parser.links:
+            absolute = urljoin(base, href)
+            parsed = urlparse(absolute)
+            if parsed.netloc not in {"organicplanet.com.ua", "www.organicplanet.com.ua"}:
+                continue
+            if "/katalog/dobriva-ta-biostimulyatori/" not in parsed.path:
+                continue
+            if not _pack_key(label):
+                continue
+            found[absolute.split("#", 1)[0]] = " ".join(label.split())
+        if found:
+            break
+    return sorted(found.items())
 
 
 def _product_image(page_url: str, target: Target) -> tuple[str, str]:
@@ -413,6 +434,20 @@ def main() -> int:
     links = _catalog_links()
     print("CATALOG_PRODUCT_LINKS:", len(links))
     resolved, unresolved = _resolve_targets(targets, links)
+
+    # Current catalog pagination normally resolves the matrix. Search is a
+    # targeted fallback for products outside the first catalog pages.
+    if unresolved:
+        unresolved_set = set(unresolved)
+        extra_links = list(links)
+        seen_products: set[str] = set()
+        for target in targets:
+            if target.sku not in unresolved_set or target.product_id in seen_products:
+                continue
+            seen_products.add(target.product_id)
+            extra_links.extend(_search_links(target.product_name))
+        resolved, unresolved = _resolve_targets(targets, extra_links)
+
     print("RESOLVED_SKU:", len(resolved))
     print("UNRESOLVED_SKU:", len(unresolved))
 

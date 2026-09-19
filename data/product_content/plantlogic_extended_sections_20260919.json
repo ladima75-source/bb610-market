@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "batch": "Plantlogic current-menu extension / Strawberry + Bag Bases + Accessories / 2026-09-19",
-  "source_policy": "Only current official Plantlogic product pages and current Products navigation. No invented Product # values.",
+  "batch": "Plantlogic current Products-menu completion / Strawberry + Vegetable + Bag Bases + Accessories / 2026-09-19",
+  "source_policy": "Current Plantlogic Products navigation determines section membership. Product # values come from current official product pages or Plantlogic catalog/tech sheets; no inferred cross-use.",
   "products": [
     {
       "product_id": "prd_pl_1305909",
@@ -53,20 +53,27 @@
     {
       "product_id": "prd_pl_12010300",
       "slug": "plantlogic-vf-bag-base-12010300",
-      "name": "VF Bag Base — основа для мішка з субстратом — арт. 12010300",
+      "name": "VF Bag Base — основа для grow bag, 30 та 40 л",
       "source_url": "https://getplantlogic.com/portfolio-items/vf-base-for-open-top-grow-bags/",
       "image_url": "https://getplantlogic.com/wp-content/uploads/2025/03/VF-BAG-BASE-12010300-ISOMETRICO.jpg",
       "product_type": "Основа для grow bag",
       "purpose": "Вирощування у субстраті; Bag Bases",
       "description": "Низькопрофільна основа Plantlogic для open-top grow bags. Платформа висотою 5 см створює повітряний зазор під мішком і допомагає відводити дренаж.",
-      "dimensions": "Платформа 50 мм; актуальна сторінка Plantlogic вказує Product #12010300",
+      "dimensions": "30 л #12010300: 50 × 320 × 320 мм; 40 л #12010400: 50 × 350 × 350 мм",
       "skus": [
         {
           "sku_id": "sku_pl_12010300",
           "sku_code": "PL-12010300",
-          "label": "арт. 12010300",
+          "label": "для 30 л · арт. 12010300",
           "package": "1 шт",
           "product_no": "12010300"
+        },
+        {
+          "sku_id": "sku_pl_12010400",
+          "sku_code": "PL-12010400",
+          "label": "для 40 л · арт. 12010400",
+          "package": "1 шт",
+          "product_no": "12010400"
         }
       ]
     },
@@ -256,6 +263,174 @@
           "label": "арт. 1300011",
           "package": "1 шт",
           "product_no": "1300011"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1305081",
+      "slug": "plantlogic-8l-strawberry-trough-short-legs-1305081",
+      "name": "Жолоб для полуниці 8 л на коротких ніжках — арт. 1305081",
+      "source_url": "https://getplantlogic.com/portfolio-items/8-liter-trough-with-short-legs/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/10/5081_1.jpg?w=669",
+      "product_type": "Жолоб для вирощування полуниці",
+      "purpose": "Полуниця; субстратне вирощування",
+      "description": "Жорсткий 8-літровий жолоб Plantlogic на коротких ніжках для гідропонного вирощування полуниці. Конструкція забезпечує дренаж та аерацію кореневої зони.",
+      "dimensions": "207 мм ширина × 124 мм висота × 497 мм довжина",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1305081",
+          "sku_code": "PL-1305081",
+          "label": "8 л · арт. 1305081",
+          "package": "8 л",
+          "product_no": "1305081"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1305082",
+      "slug": "plantlogic-8l-strawberry-trough-big-handle-1305082",
+      "name": "Жолоб для полуниці 8 л з широкою ручкою — арт. 1305082",
+      "source_url": "https://getplantlogic.com/portfolio-items/8-liter-pot-with-big-handle/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2021/06/product_8LVG_A.jpg",
+      "product_type": "Жолоб для вирощування полуниці",
+      "purpose": "Полуниця; субстратне вирощування; підтримка квітконосів",
+      "description": "8-літровий жолоб Plantlogic з широкою ручкою/бортиком для підтримки квітконосів. Модель призначена для гідропонного вирощування полуниці.",
+      "dimensions": "228 мм ширина × 124 мм висота × 497 мм довжина",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1305082",
+          "sku_code": "PL-1305082",
+          "label": "8 л · арт. 1305082",
+          "package": "8 л",
+          "product_no": "1305082"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1305109",
+      "slug": "plantlogic-9l-strawberry-trough-1305109",
+      "name": "Жолоб для полуниці 9 л — арт. 1305109",
+      "source_url": "https://getplantlogic.com/portfolio-items/9-liter-trough-for-strawberries/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2019/04/5109_1.jpg?w=669",
+      "product_type": "Жолоб для вирощування полуниці",
+      "purpose": "Полуниця; субстратне вирощування",
+      "description": "9-літровий жолоб Plantlogic для гідропонного вирощування полуниці. Жорстка конструкція передбачає контрольований дренаж і відокремлення коренів від дренажної води.",
+      "dimensions": "188 мм ширина × 508 мм довжина",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1305109",
+          "sku_code": "PL-1305109",
+          "label": "9 л · арт. 1305109",
+          "package": "9 л",
+          "product_no": "1305109"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1305209",
+      "slug": "plantlogic-9l-strawberry-trough-truss-1305209",
+      "name": "Жолоб для полуниці 9 л з підтримкою квітконосів — арт. 1305209",
+      "source_url": "https://getplantlogic.com/portfolio-items/9-liter-trough-with-truss-support/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2024/03/9L-Trough-for-strawberries_Item_1305209.jpg",
+      "product_type": "Жолоб для вирощування полуниці",
+      "purpose": "Полуниця; субстратне вирощування; Hi-Grow",
+      "description": "50-сантиметровий 9-літровий жолоб Plantlogic з підтримкою квітконосів. Модель розроблена для системи Hi-Grow та збору дренажу.",
+      "dimensions": "257 мм ширина × 511 мм довжина",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1305209",
+          "sku_code": "PL-1305209",
+          "label": "9 л · арт. 1305209",
+          "package": "9 л",
+          "product_no": "1305209"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1301081",
+      "slug": "plantlogic-kratos-slab-base-1301081",
+      "name": "Kratos — основа для субстратних плит — арт. 1301081",
+      "source_url": "https://getplantlogic.com/portfolio-items/kratos-slab-base/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2024/04/KRATOS-1301081-ISOMETRICO-3.jpg",
+      "product_type": "Основа для субстратних плит / grow bags",
+      "purpose": "Овочеві культури; Bag Bases; збір дренажу",
+      "description": "Kratos Plantlogic — V-подібна основа для субстратних плит і grow bags з вузьким центральним жолобом для збору дренажу та відкритим повітряним простором під кореневою зоною.",
+      "dimensions": "",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1301081",
+          "sku_code": "PL-1301081",
+          "label": "арт. 1301081",
+          "package": "1 шт",
+          "product_no": "1301081"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_rivus",
+      "slug": "plantlogic-rivus-2in1-slab-base",
+      "name": "Rivus 2-in-1 — основа та жолоб для субстратних плит",
+      "source_url": "https://getplantlogic.com/portfolio-items/rivus-slab-base/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2024/04/RIVUS-130205000-ISOMETRICO.jpg",
+      "product_type": "Основа 2-в-1 для субстратних плит / grow bags",
+      "purpose": "Овочеві культури; Bag Bases; збір дренажу",
+      "description": "Rivus Plantlogic поєднує основу та дренажний жолоб. Платформа висотою 60 мм підтримує повітряний зазор під субстратною плитою, а бічні канали збирають дренаж.",
+      "dimensions": "60 мм висота × 320 мм ширина × 205 мм; секції 2, 4 або 8 м залежно від виконання",
+      "skus": [
+        {
+          "sku_id": "sku_pl_13020500",
+          "sku_code": "PL-13020500",
+          "label": "Rivus · чорний · арт. 13020500",
+          "package": "1 шт",
+          "product_no": "13020500"
+        },
+        {
+          "sku_id": "sku_pl_13020502",
+          "sku_code": "PL-13020502",
+          "label": "Rivus · чорно-білий · арт. 13020502",
+          "package": "1 шт",
+          "product_no": "13020502"
+        },
+        {
+          "sku_id": "sku_pl_13020510",
+          "sku_code": "PL-13020510",
+          "label": "Торцева заглушка · чорна · арт. 13020510",
+          "package": "1 шт",
+          "product_no": "13020510"
+        },
+        {
+          "sku_id": "sku_pl_13020512",
+          "sku_code": "PL-13020512",
+          "label": "Торцева заглушка · чорно-біла · арт. 13020512",
+          "package": "1 шт",
+          "product_no": "13020512"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_lysimeter_kit",
+      "slug": "plantlogic-lysimeter-kit",
+      "name": "Лізиметри Plantlogic для контролю дренажу",
+      "source_url": "https://getplantlogic.com/portfolio-items/lysimeters/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2018/08/Lys_2.jpg",
+      "product_type": "Лізиметр",
+      "purpose": "Accessories; контроль об'єму дренажу, pH та EC",
+      "description": "Лізиметри Plantlogic для точного збору дренажу та порівняння поливного об'єму, pH і EC. Виробник пропонує малий і великий типорозміри.",
+      "dimensions": "Малий: близько 22 × 22 см; великий: близько 31,6 × 31,6 см",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1301010",
+          "sku_code": "PL-1301010",
+          "label": "Малий лізиметр · арт. 1301010",
+          "package": "1 шт",
+          "product_no": "1301010"
+        },
+        {
+          "sku_id": "sku_pl_1301030",
+          "sku_code": "PL-1301030",
+          "label": "Великий лізиметр · арт. 1301030",
+          "package": "1 шт",
+          "product_no": "1301030"
         }
       ]
     }

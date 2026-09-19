@@ -100,22 +100,7 @@ def _method_facets(product: dict) -> list[str]:
     return _uniq(out)
 
 
-def _package_metric(sku: dict) -> float | None:
-    vw = sku.get("volume_weight")
-    if isinstance(vw, dict):
-        try:
-            value = float(str(vw.get("value")).replace(",", "."))
-        except (TypeError, ValueError):
-            value = None
-        unit = _norm(vw.get("unit"))
-        if value is not None:
-            if unit in {"kg", "кг", "l", "л"}:
-                return value * 1000
-            if unit in {"g", "г", "гр", "ml", "мл"}:
-                return value
-            if unit in {"pcs", "pc", "шт"}:
-                return None
-
+def _metric_from_variant(sku: dict) -> float | None:
     import re
     variant = _norm(sku.get("variant")).replace(",", ".")
     match = re.search(r"(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml)\b", variant, re.I)
@@ -124,6 +109,31 @@ def _package_metric(sku: dict) -> float | None:
     value = float(match.group(1))
     unit = match.group(2).casefold()
     return value * 1000 if unit in {"кг", "kg", "л", "l"} else value
+
+
+def _metric_from_volume_weight(sku: dict) -> float | None:
+    vw = sku.get("volume_weight")
+    if not isinstance(vw, dict):
+        return None
+    try:
+        value = float(str(vw.get("value")).replace(",", "."))
+    except (TypeError, ValueError):
+        return None
+    unit = _norm(vw.get("unit"))
+    if unit in {"kg", "кг", "l", "л"}:
+        return value * 1000
+    if unit in {"g", "г", "гр", "ml", "мл"}:
+        return value
+    return None
+
+
+def _package_metric(sku: dict) -> float | None:
+    # The visible SKU variant is authoritative for catalog filtering.
+    # volume_weight is a fallback because legacy rows can contain stale metadata.
+    variant_metric = _metric_from_variant(sku)
+    if variant_metric is not None:
+        return variant_metric
+    return _metric_from_volume_weight(sku)
 
 
 def _package_group(sku: dict) -> str:

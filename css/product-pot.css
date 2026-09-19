@@ -133,3 +133,6 @@
 .pot-color-filter-defs{position:absolute;left:-9999px;top:-9999px;pointer-events:none}
 .pot-recolor-terra-black{filter:url(#pot-filter-terra-black)}
 .pot-recolor-terra-white{filter:url(#pot-filter-terra-white)}
+
+.pot-recolor-black-white{filter:url(#pot-filter-black-white)}
+.pot-recolor-black-terra{filter:url(#pot-filter-black-terra)}

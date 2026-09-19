@@ -4,12 +4,21 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'
 const text=v=>String(v??'').replace(/\s+/g,' ').trim();
 const norm=v=>text(v).toLowerCase();
 
+function mediaKey(value){
+  const src=text(value);
+  if(!src)return '';
+  const clean=src.split('#')[0];
+  const mediaPath=clean.match(/\/media\/[^?]+/i)?.[0];
+  if(mediaPath)return mediaPath.replace(/\/{2,}/g,'/').toLowerCase();
+  return clean.replace(/^\.\//,'').replace(/[?].*$/,'').toLowerCase();
+}
+
 function uniqueMedia(items){
   const out=[],seen=new Set();
   for(const raw of items||[]){
-    const src=text(raw);
-    if(!src||seen.has(src))continue;
-    seen.add(src);
+    const src=text(raw),key=mediaKey(src);
+    if(!src||!key||seen.has(key))continue;
+    seen.add(key);
     out.push(src);
   }
   return out;
@@ -83,11 +92,15 @@ function renderBenefits(product){
 }
 
 function renderSpecs(product,selectedSku){
-  const skip=new Set(['офіційне джерело']);
+  const skip=new Set(['офіційне джерело',"об'єм / варіанти",'артикул виробника']);
   const rows=characteristics(product).filter(x=>!skip.has(norm(x.label)));
+  const vw=selectedSku?.volume_weight;
+  const volume=vw&&Number.isFinite(Number(vw.value))
+    ?`${Number(vw.value)} ${String(vw.unit||'').toLowerCase()==='l'?'л':text(vw.unit)}`
+    :text(selectedSku?.variant||'—').replace(/\s*[·|,].*$/,'');
   const skuRows=[
-    {label:'SKU BB610',value:text(selectedSku?.id||selectedSku?.sku)||'—'},
-    {label:'Артикул Plantlogic',value:articleFromSku(selectedSku)},
+    {label:"Об'єм / модель",value:volume||'—'},
+    {label:'Артикул виробника',value:articleFromSku(selectedSku)},
   ];
   const seen=new Set();
   const merged=[...skuRows,...rows].filter(x=>{
@@ -107,7 +120,7 @@ function renderRelated(product){
   </section>`;
 }
 
-function syncSchema(product,selectedSku,currentImage){
+function syncSchema(product,selectedSku,images){
   document.querySelectorAll('script[type="application/ld+json"]').forEach(el=>{
     try{const x=JSON.parse(el.textContent||'{}');if(x&&x['@type']==='Product')el.remove()}catch(_){}
   });
@@ -116,7 +129,7 @@ function syncSchema(product,selectedSku,currentImage){
     '@type':'Product',
     name:product.name,
     description:product.shortDescription||product.manufacturerUse||'',
-    image:currentImage?[currentImage]:[],
+    image:uniqueMedia(images||[]),
     brand:{'@type':'Brand',name:'Plantlogic'},
     sku:selectedSku?.id||undefined,
     url:location.href.split('?')[0],
@@ -143,10 +156,12 @@ function render({product,root,selectedSkuId}){
   const packButtons=productSkus.length>1?productSkus.map(s=>`<button type="button" class="pot-sku-choice${s.id===selectedSku?.id?' active':''}" data-pot-sku="${esc(s.id)}"><b>${esc(s.variant||s.id)}</b><small>арт. ${esc(articleFromSku(s))}</small></button>`).join(''):'';
 
   function mediaForCurrent(){
+    const skuGallery=Array.isArray(selectedSku?.gallery)?selectedSku.gallery.filter(Boolean):[];
+    const fallbackGallery=skuGallery.length?[]:[product.image,...(product.gallery||[])];
     return uniqueMedia([
       selectedSku?.image,
-      product.image,
-      ...(product.gallery||[])
+      ...skuGallery,
+      ...fallbackGallery
     ]);
   }
 
@@ -159,6 +174,7 @@ function render({product,root,selectedSkuId}){
           <button class="pot-gallery-nav prev" type="button" data-pot-prev aria-label="Попереднє фото">‹</button>
           <img id="pot-main-image" src="" alt="${esc(product.name)}" data-photo-zoom>
           <button class="pot-gallery-nav next" type="button" data-pot-next aria-label="Наступне фото">›</button>
+          <span class="pot-gallery-count" id="pot-gallery-count" hidden></span>
           <span class="pot-zoom-label">Натисніть, щоб збільшити</span>
         </div>
         <div class="pot-thumbs" id="pot-thumbs"></div>
@@ -229,9 +245,12 @@ function render({product,root,selectedSkuId}){
     activeIndex=(index+gallery.length)%gallery.length;
     const img=document.getElementById('pot-main-image');
     img.src=gallery[activeIndex];
+    img.alt=`${product.name} — фото ${activeIndex+1}`;
     document.querySelectorAll('[data-pot-thumb]').forEach((x,i)=>x.classList.toggle('active',i===activeIndex));
     document.querySelectorAll('.pot-gallery-nav').forEach(x=>x.hidden=gallery.length<2);
-    syncSchema(product,selectedSku,gallery[activeIndex]);
+    const counter=document.getElementById('pot-gallery-count');
+    if(counter){counter.hidden=gallery.length<2;counter.textContent=`${activeIndex+1} / ${gallery.length}`;}
+    syncSchema(product,selectedSku,gallery);
   }
 
   function syncGallery(){
@@ -277,5 +296,6 @@ window.BB610_POT_PDP={
   matches:p=>!!p&&p.category==='containers'&&norm(p.brand)==='plantlogic',
   render,
   uniqueMedia,
+  mediaKey,
 };
 })();

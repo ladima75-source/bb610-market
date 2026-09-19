@@ -224,6 +224,109 @@ def how_it_works_for(product: dict) -> str:
     )
 
 
+def family_overview_for(product: dict) -> dict | None:
+    family = str(product.get("family") or "")
+    if family == "zephyr":
+        return None
+    if "u_groove" in family:
+        image = "/assets/plantlogic/blueberry-family-u-groove.jpg"
+        text = (
+            "Огляд частини лінійки Plantlogic для субстратного вирощування лохини: "
+            "різні об'єми та виконання з U-пазами. Конкретну модель і колір обирайте у конфігураторі вище."
+        )
+    else:
+        image = "/assets/plantlogic/blueberry-family-standard.jpg"
+        text = (
+            "Огляд частини стандартної лінійки Plantlogic для лохини. "
+            "Зображення пояснює сімейство та доступні формати; конкретний товар визначається вибраною моделлю вище."
+        )
+    return {
+        "title": "Лінійка горщиків для лохини",
+        "text": text,
+        "image": image,
+        "image_alt": "Огляд лінійки горщиків Plantlogic для вирощування лохини",
+    }
+
+
+def technology_explainer_for(product: dict) -> dict | None:
+    family = str(product.get("family") or "")
+    if family == "zephyr":
+        return None
+
+    common = [
+        {
+            "code": "B",
+            "title": "Повітрообмін у кореневій зоні",
+            "text": (
+                "Недренажні центральні отвори забезпечують надходження кисню до середини кореневої маси "
+                "та стримують ріст коренів униз."
+            ),
+        },
+        {
+            "code": "C",
+            "title": "Ефективний дренаж",
+            "text": (
+                "Пірамідальна основа спрямовує надлишкову воду до зовнішніх країв, зменшуючи перезволожену "
+                "зону та переводячи дренаж у ділянку активного повітрообміну."
+            ),
+        },
+    ]
+
+    if family == "short_legs":
+        legs = {
+            "code": "D",
+            "title": "Короткі ніжки",
+            "text": (
+                "Низьке виконання зберігає горщик піднятим над поверхнею; точна висота ніжок показується "
+                "в характеристиках вибраної моделі."
+            ),
+        }
+    else:
+        legs = {
+            "code": "D",
+            "title": "Широкі підняті ніжки",
+            "text": (
+                "Ніжки допомагають відокремити кореневу зону від поверхні, підтримують дренаж і зменшують "
+                "просідання горщика у м'який ґрунт."
+            ),
+        }
+
+    items = [*common, legs]
+    if "u_groove" in family:
+        items.insert(0, {
+            "code": "A",
+            "title": "U-пази для поливної трубки",
+            "text": (
+                "U-пази сформовані для зручного розміщення поливної трубки. У матеріалах Plantlogic "
+                "для цієї конструкції використовується трубка 16 мм."
+            ),
+        })
+
+    return {
+        "title": "Як працює конструкція",
+        "lead": (
+            "Ключові елементи конструкції впливають на розміщення поливу, повітрообмін і відведення "
+            "надлишкової води з кореневої зони."
+        ),
+        "image": "/assets/plantlogic/blueberry-root-zone.png",
+        "image_alt": "Схема роботи кореневої зони, дренажу та повітрообміну у горщику Plantlogic",
+        "image_mode": "root-zone",
+        "items": items,
+    }
+
+
+def garden_guide_for() -> dict:
+    return {
+        "title": "Потрібно підібрати технологію вирощування?",
+        "text": (
+            "На BB610 Garden детальніше розбираємо вибір об'єму, субстрат, схему поливу, дренаж "
+            "та роботу кореневої зони. У Market залишаємо всю інформацію, необхідну для вибору конкретної моделі."
+        ),
+        "url": "https://garden.bb610.com.ua",
+        "cta": "Докладніше про технологію на BB610 Garden",
+    }
+
+
 def build_content(product: dict, palette: list[dict]) -> dict:
     title = str(product["title"])
     volumes = str(product.get("volumes_label") or "")
@@ -271,6 +374,9 @@ def build_content(product: dict, palette: list[dict]) -> dict:
             "сторінках каталогу не специфікований."
         ),
         "characteristics": chars,
+        "family_overview": family_overview_for(product),
+        "technology_explainer": technology_explainer_for(product),
+        "garden_guide": garden_guide_for(),
         "seo": {
             "title": f"{title} | BB610 Market",
             "description": f"{title}: {volumes}, вибір виконання та кольору. Plantlogic Catalog 2026.",

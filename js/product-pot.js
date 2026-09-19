@@ -195,7 +195,8 @@ function renderGardenGuide(product){
 function renderSpecs(product,selectedSku){
   const skip=new Set([
     'офіційне джерело',"об'єм / варіанти",'артикул виробника',
-    'доступні об’єми',"доступні об'єми",'кольори','виконання'
+    'доступні об’єми',"доступні об'єми",'кольори','виконання',
+    'виробник','культура','форма'
   ]);
   const rows=characteristics(product).filter(x=>!skip.has(norm(x.label)));
   const a=attrs(selectedSku);

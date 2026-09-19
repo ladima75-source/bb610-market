@@ -550,7 +550,11 @@ def build_content(product: dict, palette: list[dict]) -> dict:
         "zephyr": "Zephyr V2",
     }.get(str(product.get("shape") or ""), str(product.get("shape") or ""))
 
-    short = f"{title}. Доступні об'єми: {volumes}. Кольори: {colors}."
+    short = (
+        "Професійний контейнер для субстратного вирощування лохини."
+        if len(product.get("models") or []) == 1
+        else "Професійні контейнери для субстратного вирощування лохини. Оберіть потрібну модель і колір."
+    )
     description = (
         f"{title} — сімейство професійних контейнерів для субстратного вирощування лохини. "
         f"В одній картці обираються літраж, конструктивне виконання та колір. "

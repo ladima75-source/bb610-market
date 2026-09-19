@@ -408,9 +408,15 @@ def _product_image(page_url: str, target: Target) -> tuple[str, str]:
     allowed_packs = {target.pack_key, *PAGE_PACK_EQUIVALENTS.get(target.sku, set())}
     if page_pack not in allowed_packs:
         raise RuntimeError(f"package mismatch for {target.sku}: {parser.h1}")
-    names = (target.product_name, *target.aliases)
-    if max((_name_score(name, parser.h1) for name in names), default=0.0) < 0.45:
-        raise RuntimeError(f"product mismatch for {target.sku}: {parser.h1}")
+    # Exact MANUAL_PAGES bindings were individually matched to the intended
+    # Organic Planet SKU page. For those entries package verification above is
+    # sufficient; fuzzy name scoring is deliberately skipped because UA/RU/EN
+    # transliteration and branding variants (e.g. Осмокот/Osmocote,
+    # Спідфол/Speedfol) can score poorly despite an exact page match.
+    if target.sku not in MANUAL_PAGES:
+        names = (target.product_name, *target.aliases)
+        if max((_name_score(name, parser.h1) for name in names), default=0.0) < 0.45:
+            raise RuntimeError(f"product mismatch for {target.sku}: {parser.h1}")
 
     image = parser.og_image
     if not image:

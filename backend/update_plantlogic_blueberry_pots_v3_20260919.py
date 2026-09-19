@@ -276,6 +276,8 @@ def how_it_works_for(product: dict) -> str:
 
 def family_overview_for(product: dict) -> dict | None:
     family = str(product.get("family") or "")
+    if str(product.get("product_id") or "") == "prd_pl_bb_round":
+        return None
     if family == "zephyr":
         return None
     if "u_groove" in family:
@@ -295,6 +297,30 @@ def family_overview_for(product: dict) -> dict | None:
         "text": text,
         "image": image,
         "image_alt": "Огляд лінійки горщиків Plantlogic для вирощування лохини",
+    }
+
+
+def model_showcase_for(product: dict) -> dict | None:
+    if str(product.get("product_id") or "") != "prd_pl_bb_round":
+        return None
+    items = []
+    for model in product.get("models") or []:
+        product_no = str(model.get("product_no") or "")
+        rows = ROUND_CARD_OFFICIAL_MEDIA.get(product_no) or []
+        if not rows:
+            continue
+        volume = model.get("volume_l")
+        volume_label = f"{volume:g} л" if isinstance(volume, float) else f"{volume} л"
+        items.append({
+            "title": volume_label,
+            "subtitle": str(model.get("execution_label") or ""),
+            "product_no": product_no,
+            "image": rows[0][1],
+        })
+    return {
+        "title": "Оберіть об’єм і конструкцію",
+        "lead": "Кожна модель нижче показана окремим офіційним фото Plantlogic.",
+        "items": items,
     }
 
 
@@ -430,6 +456,7 @@ def build_content(product: dict, palette: list[dict]) -> dict:
         ),
         "characteristics": chars,
         "family_overview": family_overview_for(product),
+        "model_showcase": model_showcase_for(product),
         "technology_explainer": technology_explainer_for(product),
         "garden_guide": garden_guide_for(),
         "seo": {

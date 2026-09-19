@@ -19,6 +19,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "plantlogic"
+ASSET_BUILD_REVISION = "20260919-1"
 
 CATALOG_URL = "https://getplantlogic.com/wp-content/uploads/2026/03/Plantlogic_Catalog_2026_ENG_Email.pdf"
 ROOT_ZONE_URL = "https://getplantlogic.com/wp-content/uploads/2024/03/maceta-40-litros-para-arandanos.png"
@@ -84,7 +85,7 @@ def main() -> int:
     catalog = fetch(CATALOG_URL)
     written = render_catalog_assets(catalog)
     written.append(build_root_zone())
-    print("PLANTLOGIC BLUEBERRY EDUCATIONAL ASSETS")
+    print("PLANTLOGIC BLUEBERRY EDUCATIONAL ASSETS", ASSET_BUILD_REVISION)
     for path in written:
         with Image.open(path) as image:
             print(f"PASS {path.relative_to(ROOT)} {image.width}x{image.height}")

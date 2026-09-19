@@ -46,8 +46,7 @@ EXPECTED_SKUS = 48
 
 ROUND_CARD_OFFICIAL_MEDIA = {
     "1303025": [
-        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Round-Pot-with-short-legs_Item_1303025.jpg"),
-        ("front", "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg"),
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg"),
         ("angle", "https://getplantlogic.com/wp-content/uploads/2018/04/3025_2-1.jpg"),
         ("top", "https://getplantlogic.com/wp-content/uploads/2018/04/3025_3.jpg"),
         ("base", "https://getplantlogic.com/wp-content/uploads/2021/06/3025_4-1.jpg"),

@@ -63,11 +63,21 @@ const BB610 = (() => {
   function productUrl(p){const slug=p.slug||p.id;if(p.runtime_dynamic)return `product.html?id=${encodeURIComponent(p.id)}`;return location.protocol==='file:'?`products/${slug}/index.html`:(p.canonical_product_url||`/products/${slug}/`)}
   const potVariantSummary=p=>{
     if(p.category!=='containers')return '';
-    const volumes=[...new Set((p.sizes||[]).map(x=>compactText(x.attributes?.volume_label)).filter(Boolean))];
-    const colors=[...new Set((p.sizes||[]).map(x=>compactText(x.attributes?.color_label)).filter(Boolean))];
+    const rows=p.sizes||[];
+    const volumes=[...new Set(rows.map(x=>compactText(x.attributes?.volume_label)).filter(Boolean))];
+    const colors=[...new Set(rows.map(x=>compactText(x.attributes?.color_label)).filter(Boolean))];
     if(!volumes.length)return '';
     const colorWord=colors.length===1?'колір':colors.length<5?'кольори':'кольорів';
-    return volumes.join(' / ')+(colors.length?' · '+colors.length+' '+colorWord:'');
+    const modelsByVolume=new Map();
+    rows.forEach(x=>{
+      const volume=compactText(x.attributes?.volume_label);
+      const model=compactText(x.attributes?.manufacturer_product_no);
+      if(!volume||!model)return;
+      if(!modelsByVolume.has(volume))modelsByVolume.set(volume,new Set());
+      modelsByVolume.get(volume).add(model);
+    });
+    const duplicated=[...modelsByVolume.entries()].filter(([,set])=>set.size>1).map(([volume,set])=>volume+' — '+set.size+' виконання');
+    return volumes.join(' / ')+(colors.length?' · '+colors.length+' '+colorWord:'')+(duplicated.length?' · '+duplicated.join(', '):'');
   };
   function cardV2(p){
     const fav=get(LS.fav,[]).includes(p.id),cmp=get(LS.compare,[]).includes(p.id),s=displaySku(p.id);

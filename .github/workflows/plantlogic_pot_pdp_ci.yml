@@ -255,6 +255,19 @@ jobs:
           assert isinstance(square_card['content'].get('model_showcase'), dict)
           assert len(square_card['content']['model_showcase']['items']) == 3
           print('SQUARE CARD OFFICIAL MEDIA: PASS')
+          round_u = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_round_u')
+          round_u_paths = [str(x.get('path') or '') for x in (round_u.get('sku_media') or {}).get('media') or []]
+          assert any('1308303-1.jpg' in x for x in round_u_paths)
+          assert any('1308305-FRONT-1.jpg' in x for x in round_u_paths)
+
+          square_u = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_square_u')
+          square_u_paths = [str(x.get('path') or '') for x in (square_u.get('sku_media') or {}).get('media') or []]
+          assert any('1309026.jpg' in x for x in square_u_paths)
+
+          zephyr = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_zephyr_v2')
+          zephyr_paths = [str(x.get('path') or '') for x in (zephyr.get('sku_media') or {}).get('media') or []]
+          assert any('ZEPHYR-V2-1301144-FRONTAL-1.jpg' in x for x in zephyr_paths)
+          print('REMAINING VERIFIED MODEL MEDIA: PASS')
           print('ROUND CARD OFFICIAL MEDIA: PASS')
           print('PLANTLOGIC EDUCATIONAL CONTENT ISOLATION: PASS')
           PY

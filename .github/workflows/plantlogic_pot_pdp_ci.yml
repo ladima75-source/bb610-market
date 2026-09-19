@@ -55,7 +55,7 @@ jobs:
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
           assert 'css/product-pot.css?v=20260919-pot-pdp-1' in html
-          assert 'js/product-pot.js?v=20260919-pot-pdp-1' in html
+          assert 'js/product-pot.js?v=20260919-pot-pdp-2' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
           assert 'BB610_POT_PDP?.matches(p)' in product
           assert 'BB610_POT_PDP.render' in product
@@ -64,7 +64,9 @@ jobs:
           assert "norm(p.brand)==='plantlogic'" in pot
           assert 'function uniqueMedia(items)' in pot
           assert 'selectedSku?.image' in pot
-          assert '...(product.gallery||[])' in pot
+          assert 'selectedSku?.gallery' in pot
+          assert 'function mediaKey(value)' in pot
+          assert "'gallery': sku_gallery" in facets
           assert 'pot-main-stage' in pot
           assert 'pot-benefit-grid' in pot
           assert 'pot-spec-table' in pot
@@ -125,7 +127,13 @@ jobs:
           vm.createContext(sandbox);
           vm.runInContext(code,sandbox);
           const fn=sandbox.window.BB610_POT_PDP.uniqueMedia;
-          const got=fn(['/a.jpg','/a.jpg','/b.jpg','/b.jpg','']);
-          if(JSON.stringify(got)!==JSON.stringify(['/a.jpg','/b.jpg'])) throw new Error(JSON.stringify(got));
+          const got=fn([
+            '/media/products/a.jpg',
+            'https://api.market.bb610.com.ua/media/products/a.jpg?v=1',
+            '/media/products/b.jpg',
+            '/media/products/b.jpg',
+            ''
+          ]);
+          if(JSON.stringify(got)!==JSON.stringify(['/media/products/a.jpg','/media/products/b.jpg'])) throw new Error(JSON.stringify(got));
           console.log('PLANTLOGIC GALLERY DEDUPE: PASS');
           JS

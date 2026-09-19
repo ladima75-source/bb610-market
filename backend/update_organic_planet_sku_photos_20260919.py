@@ -52,6 +52,7 @@ UA = (
 )
 
 MANUAL_PAGES = {
+    "BB610-OP-MAX-600-SEASAILER-20KG": "https://organicplanet.com.ua/ru/katalog/biostymulyatory/max-600-seasailer-biostymulyator-20-kg-citymax",
     "BB610-OP-KEMIRA-NPK-12-46-8-25G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-12-46-8-25-g",
     "BB610-OP-KEMIRA-NPK-18-18-18-25G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-18-18-18-25-g",
     "BB610-OP-SPIDFOL-AMINO-VEHETATSIYA-20ML": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/spidfol-amino-vegetaciya-udobrenie-dlya-listovoj-podkormki-n",
@@ -451,12 +452,15 @@ def _product_image(page_url: str, target: Target) -> tuple[str, str]:
     ranked.sort(reverse=True)
     if ranked and ranked[0][0] >= 0.45:
         image = ranked[0][1]
-    elif ranked:
-        # On pages where the main image has no alt text, the first in-page
-        # product image is still safer than a shared social preview.
-        image = ranked[0][1]
     elif parser.og_image:
-        image = urljoin(page_url, parser.og_image)
+        og = urljoin(page_url, parser.og_image)
+        og_path = urlparse(og).path.lower()
+        if (
+            not og_path.endswith(".svg")
+            and not any(token in og_path for token in ("/menu.", "/logo.", "/icon", "/sprite", "/loader"))
+            and re.search(r"\.(?:jpe?g|png|webp)(?:$|\?)", og, re.I)
+        ):
+            image = og
 
     if not image:
         raise RuntimeError(f"no product image on {page_url}")
@@ -600,7 +604,10 @@ def main() -> int:
             and str((existing.get(target.sku) or {}).get("source_page") or "").strip()
         ]
         resolved = {
-            target.sku: str(existing[target.sku]["source_page"]).strip()
+            target.sku: (
+                MANUAL_PAGES.get(target.sku)
+                or str(existing[target.sku]["source_page"]).strip()
+            )
             for target in targets
         }
         unresolved = []

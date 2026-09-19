@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const matchesSearch=(p,value)=>{
     const tokens=searchTokens(value);
     if(!tokens.length)return true;
-    const text=productText(p);
+    const text=norm(`${productText(p)} ${plantlogicSectionSearchText(p)}`);
     return tokens.every(token=>text.includes(token));
   };
   const hasStock=p=>typeof p?.facets?.in_stock==='boolean'
@@ -114,6 +114,19 @@ document.addEventListener('DOMContentLoaded',async()=>{
     {id:'accessories',label:'Аксесуари',titleSuffix:''}
   ];
   const plantlogicSectionsFor=p=>Array.isArray(p?.plantlogic_sections)?p.plantlogic_sections.filter(Boolean):[];
+  const plantlogicSearchAliases={
+    blueberry:'лохина лохини blueberry',
+    rubus:'малина малини ожина ожини raspberry blackberry rubus',
+    universal:'універсальний універсальні контейнер контейнери universal',
+    strawberry:'полуниця полуниці strawberry',
+    vegetable:'овочі овочеві vegetable',
+    bag_bases:'основи мішків мішки bag bases',
+    accessories:'аксесуари accessory accessories'
+  };
+  const plantlogicSectionSearchText=p=>plantlogicSectionsFor(p).map(id=>{
+    const section=plantlogicSectionOrder.find(x=>x.id===id);
+    return `${section?.label||''} ${section?.titleSuffix||''} ${plantlogicSearchAliases[id]||''}`;
+  }).join(' ');
   const plantlogicCardForSection=(p,section)=>{
     const suffix=String(section?.titleSuffix||'').trim();
     if(!suffix||norm(p.name).includes(norm(suffix)))return p;

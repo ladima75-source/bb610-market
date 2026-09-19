@@ -51,6 +51,46 @@ UA = (
     "Chrome/153.0.0.0 Safari/537.36"
 )
 
+MANUAL_PAGES = {
+    "BB610-OP-KEMIRA-NPK-12-46-8-25G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-12-46-8-25-g",
+    "BB610-OP-KEMIRA-NPK-18-18-18-25G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-18-18-18-25-g",
+    "BB610-OP-SPIDFOL-AMINO-VEHETATSIYA-20ML": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/spidfol-amino-vegetaciya-udobrenie-dlya-listovoj-podkormki-n",
+    "BB610-OP-BOROPLUS-15ML": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/boroplus-boroplyus-helat-bora-15-ml-valagro",
+    "BB610-OP-OSMOCOTE-DECOR-16-8-12-56M-200G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-dekor-osmocote-16-8-12-5-6m-200-g",
+    "BB610-OP-OSMOCOTE-DECOR-16-8-12-56M-1KG": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-dekor-osmocote-16-8-12-5-6m-1-kg",
+    "BB610-OP-OSMOCOTE-POTASSIUM-12-8-19-34M-200G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-kalijnyj-osmocote-12-8-19-3-4m-200-g",
+    "BB610-OP-OSMOCOTE-POTASSIUM-12-8-19-34M-1KG": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-kalijnyj-osmocote-12-8-19-3-4m-1-kg",
+    "BB610-OP-OSMOCOTE-START-11-11-17-1-5M-200G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-start-dlya-rozsady-osmocote-11-11-17-1-5m-200-g",
+    "BB610-OP-OSMOCOTE-START-11-11-17-1-5M-1KG": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-start-dlya-rozsady-osmocote-11-11-17-1-5m-1-kg",
+    "BB610-OP-OSMOCOTE-LANDSCAPE-16-9-12-34M-200G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-landshaft-osmocote-16-9-12-3-4m-200-g",
+    "BB610-OP-OSMOCOTE-LANDSCAPE-16-9-12-34M-1KG": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-landshaft-osmocote-16-9-12-3-4m-1-kg",
+    "BB610-OP-OSMOCOTE-QUICK-START-22-5-6-45M-200G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-shvydkyj-start-osmocote-22-5-6-4-5m-200-g",
+    "BB610-OP-OSMOCOTE-QUICK-START-22-5-6-45M-1KG": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-shvydkyj-start-osmocote-22-5-6-4-5m-1-kg",
+    "BB610-OP-OSMOCOTE-GRANULA-MAX-14-8-11-TE-56M-10PCS": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-granula-mah-osmocote-tablet-14-8-11-te-5-6m-10-sht",
+    "BB610-OP-AGROBLEN-GRANULA-MAX-14-20-5-TE-56M-20PCS": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agroblen-granula-mah-agroblen-tablet-icl-14-20-5-te-5-6m-20-sht",
+    "BB610-OP-RADIFARM-25ML": "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor4",
+    "BB610-OP-KEMIRA-UKORINYUVACH-20ML": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-ukorinnyuvach-20-g-organic-planet",
+    "BB610-OP-VIVA-25ML": "https://organicplanet.com.ua/ru/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-25-ml-valag",
+    "BB610-OP-MAXICROP-CREAM-25ML": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-cream-maksikrop-krem-biostimulyator-25-ml-valagro",
+    "BB610-OP-MAXICROP-SET-MAKSIKROP-ZAV-YAZ-25ML": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-set-maksikrop-zavyaz-biostimulyator-25-ml-valagro",
+    "BB610-OP-BENEFIT-PZ-25ML": "https://organicplanet.com.ua/katalog/biostymulyatory/benefit-pz-benefit-pz-biostimulyator-uvelicheniya-plodov-25",
+    "BB610-OP-SWEET-25ML": "https://organicplanet.com.ua/ru/katalog/biostymulyatory/sweet-svit-biostimulyator-okraski-plodov-25-ml-valagro",
+}
+
+# Organic Planet names several liquid sample sachets in H1 by grams while the
+# same page text/URL identifies the dosage in millilitres. This equivalence is
+# deliberately SKU-specific; it is never applied globally.
+PAGE_PACK_EQUIVALENTS = {
+    "BB610-OP-BOROPLUS-15ML": {"15g"},
+    "BB610-OP-RADIFARM-25ML": {"25g"},
+    "BB610-OP-KEMIRA-UKORINYUVACH-20ML": {"20g"},
+    "BB610-OP-VIVA-25ML": {"25g"},
+    "BB610-OP-MAXICROP-CREAM-25ML": {"25g"},
+    "BB610-OP-MAXICROP-SET-MAKSIKROP-ZAV-YAZ-25ML": {"25g"},
+    "BB610-OP-BENEFIT-PZ-25ML": {"25g"},
+    "BB610-OP-SWEET-25ML": {"25g"},
+}
+
 STOP = {
     "добриво", "добрива", "удобрение", "удобрения", "мінеральне", "минеральное",
     "біостимулятор", "биостимулятор", "мікроелементи", "микроэлементы", "хелатній",
@@ -307,6 +347,10 @@ def _resolve_targets(targets: list[Target], links: list[tuple[str, str]]) -> tup
     resolved: dict[str, str] = {}
     unresolved: list[str] = []
     for target in targets:
+        manual = MANUAL_PAGES.get(target.sku)
+        if manual:
+            resolved[target.sku] = manual
+            continue
         candidates = []
         for url, label in by_pack.get(target.pack_key, []):
             names = (target.product_name, *target.aliases)
@@ -360,7 +404,9 @@ def _product_image(page_url: str, target: Target) -> tuple[str, str]:
     page = _text(page_url)
     parser = ProductPageParser()
     parser.feed(page)
-    if _pack_key(parser.h1) != target.pack_key:
+    page_pack = _pack_key(parser.h1)
+    allowed_packs = {target.pack_key, *PAGE_PACK_EQUIVALENTS.get(target.sku, set())}
+    if page_pack not in allowed_packs:
         raise RuntimeError(f"package mismatch for {target.sku}: {parser.h1}")
     names = (target.product_name, *target.aliases)
     if max((_name_score(name, parser.h1) for name in names), default=0.0) < 0.45:
@@ -492,6 +538,7 @@ def main() -> int:
 
     links = _catalog_links()
     print("CATALOG_PRODUCT_LINKS:", len(links))
+    print("MANUAL_PAGE_BINDINGS:", len(MANUAL_PAGES))
     resolved, unresolved = _resolve_targets(targets, links)
 
     # Current catalog pagination normally resolves the matrix. Search is a

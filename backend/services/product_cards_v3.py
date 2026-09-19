@@ -116,7 +116,7 @@ def validate(card: dict) -> dict:
         'title', 'brand', 'category', 'short_description', 'description',
         'benefits', 'how_it_works', 'application', 'composition',
         'characteristics', 'seo',
-        'family_overview', 'technology_explainer', 'garden_guide'
+        'family_overview', 'model_showcase', 'technology_explainer', 'garden_guide'
     }
     extra = set(content) - allowed_content
     if extra:
@@ -144,6 +144,24 @@ def validate(card: dict) -> dict:
             raise ValueError('content.family_overview must contain title, text, image and image_alt')
         for key in allowed_family:
             _require_str(family_overview, key)
+
+    showcase = content.get('model_showcase')
+    if showcase is not None:
+        if not isinstance(showcase, dict):
+            raise ValueError('content.model_showcase must be an object')
+        if set(showcase) != {'title', 'lead', 'items'}:
+            raise ValueError('content.model_showcase must contain title, lead and items')
+        _require_str(showcase, 'title')
+        _require_str(showcase, 'lead')
+        items = showcase.get('items')
+        if not isinstance(items, list):
+            raise ValueError('content.model_showcase.items must be an array')
+        for i, item in enumerate(items):
+            if not isinstance(item, dict) or set(item) != {'title', 'subtitle', 'product_no', 'image'}:
+                raise ValueError(f'content.model_showcase.items[{i}] has an invalid field set')
+            for key in ('title', 'subtitle', 'product_no', 'image'):
+                if not isinstance(item.get(key), str):
+                    raise ValueError(f'content.model_showcase.items[{i}].{key} must be a string')
 
     technology = content.get('technology_explainer')
     if technology is not None:

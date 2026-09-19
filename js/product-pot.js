@@ -381,6 +381,7 @@ function render({product,root,selectedSkuId}){
   </div>`;
 
   let gallery=[],activeIndex=0;
+  const failedMedia=new Set();
 
   function setImage(index){
     if(!gallery.length)return;
@@ -401,19 +402,28 @@ function render({product,root,selectedSkuId}){
     syncSchema(product,selectedSku,gallery);
   }
 
+  function markMediaFailed(src){
+    const key=mediaKey(src);
+    if(!key||failedMedia.has(key))return;
+    failedMedia.add(key);
+    syncGallery();
+  }
+
   function syncGallery(){
-    gallery=mediaForCurrent();
+    gallery=mediaForCurrent().filter(src=>!failedMedia.has(mediaKey(src)));
     activeIndex=0;
     const thumbs=document.getElementById('pot-thumbs');
     const recolor=potRecolorClass(selectedSku);
     thumbs.innerHTML=gallery.length>1?gallery.map((src,i)=>`<button type="button" class="pot-thumb${i===0?' active':''}" data-pot-thumb="${i}"><img class="${esc(recolor)}" src="${esc(src)}" alt="${esc(product.name)} — фото ${i+1}"></button>`).join(''):'';
     thumbs.hidden=gallery.length<2;
     thumbs.querySelectorAll('[data-pot-thumb]').forEach(btn=>btn.onclick=()=>setImage(Number(btn.dataset.potThumb)));
+    thumbs.querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>markMediaFailed(img.getAttribute('src')||img.currentSrc)));
     if(gallery.length)setImage(0);
     else{
       const img=document.getElementById('pot-main-image');
       img.hidden=true;
       img.removeAttribute('src');
+      img.classList.remove('pot-recolor-terra-black','pot-recolor-terra-white','pot-recolor-black-white','pot-recolor-black-terra');
       img.alt=product.name;
       const empty=document.getElementById('pot-gallery-empty');if(empty)empty.hidden=false;
       document.querySelectorAll('.pot-gallery-nav').forEach(x=>x.hidden=true);
@@ -515,6 +525,7 @@ function render({product,root,selectedSkuId}){
   document.querySelector('[data-pot-prev]')?.addEventListener('click',()=>setImage(activeIndex-1));
   document.querySelector('[data-pot-next]')?.addEventListener('click',()=>setImage(activeIndex+1));
   document.getElementById('pot-main-image')?.addEventListener('click',e=>BB610.openPhoto?.(e.currentTarget.currentSrc||e.currentTarget.src,product.name));
+  document.getElementById('pot-main-image')?.addEventListener('error',e=>markMediaFailed(e.currentTarget.getAttribute('src')||e.currentTarget.currentSrc));
   document.querySelectorAll('[data-pot-content-image]').forEach(el=>el.addEventListener('click',()=>{
     const src=el.dataset.potContentImage,alt=el.dataset.potContentAlt||product.name;
     if(src)BB610.openPhoto?.(src,alt);

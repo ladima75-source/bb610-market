@@ -92,7 +92,7 @@ jobs:
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
           assert 'css/product-pot.css?v=20260919-pot-pdp-15' in html
-          assert 'js/product-pot.js?v=20260919-pot-pdp-13' in html
+          assert 'js/product-pot.js?v=20260919-pot-pdp-14' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
           assert 'BB610_POT_PDP?.matches(p)' in product
           assert 'BB610_POT_PDP.render' in product
@@ -113,6 +113,9 @@ jobs:
           assert 'if(exact.length||hasStructured)return exact' in pot
           assert 'Фото обраної моделі готується' in pot
           assert '.pot-gallery-empty' in css
+          assert 'const failedMedia=new Set()' in pot
+          assert "addEventListener('error'" in pot
+          assert 'mediaForCurrent().filter' in pot
           print('PLANTLOGIC structured gallery isolation: PASS')
           assert 'pot-model-options' in pot
           assert 'data-pot-model' in pot
@@ -345,8 +348,18 @@ jobs:
                   total_skus += 1
                   primary = str(sku.get('primary_media_id') or '')
                   assert primary and primary in media_index, (card.get('product_id'), sku.get('sku_code'), primary)
-                  for mid in sku.get('gallery_media_ids') or []:
-                      assert str(mid) in media_index, (card.get('product_id'), sku.get('sku_code'), mid)
+                  gallery_ids = [str(mid) for mid in sku.get('gallery_media_ids') or []]
+                  for mid in gallery_ids:
+                      assert mid in media_index, (card.get('product_id'), sku.get('sku_code'), mid)
+                  ordered_ids = [primary, *gallery_ids]
+                  assert len(ordered_ids) == len(set(ordered_ids)), (card.get('product_id'), sku.get('sku_code'), ordered_ids)
+                  paths = [str(media_index[mid].get('path') or '') for mid in ordered_ids]
+                  assert all(paths), (card.get('product_id'), sku.get('sku_code'))
+                  assert len(paths) == len(set(paths)), (card.get('product_id'), sku.get('sku_code'), paths)
+                  attrs = sku.get('attributes') or {}
+                  assert str(attrs.get('color_code') or '') in {'black','white','terracotta'}, (card.get('product_id'), sku.get('sku_code'))
+                  source_color = str(attrs.get('media_source_color') or '')
+                  assert source_color in {'','black','white','terracotta'}, (card.get('product_id'), sku.get('sku_code'), source_color)
                   assert media_index[primary].get('path'), (card.get('product_id'), sku.get('sku_code'))
           assert total_skus == 48, total_skus
           print('ALL 48 SKU MEDIA: PASS')

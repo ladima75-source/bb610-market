@@ -20,6 +20,14 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const initialCategory=fixedCategory||params.get('category')||'';
   const source=[...BB610.products()];
 
+  function updatePlantlogicStickyOffset(){
+    const header=document.querySelector('.market-header');
+    const height=Math.ceil(header?.getBoundingClientRect().height||0);
+    document.documentElement.style.setProperty('--plantlogic-sticky-top',`${Math.max(0,height)}px`);
+  }
+  updatePlantlogicStickyOffset();
+  window.addEventListener('resize',updatePlantlogicStickyOffset,{passive:true});
+
   const h=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   const norm=v=>String(v??'').trim().toLowerCase();
   const uniq=arr=>[...new Set(arr.map(v=>String(v??'').trim()).filter(Boolean))];

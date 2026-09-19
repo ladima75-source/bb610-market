@@ -9,8 +9,8 @@
 
 .plantlogic-catalog-block-head{
   position:sticky;
-  top:0;
-  z-index:18;
+  top:calc(var(--plantlogic-sticky-top, 100px) + 4px);
+  z-index:24;
   min-height:82px;
   display:flex;
   align-items:center;

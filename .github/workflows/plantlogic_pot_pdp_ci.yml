@@ -91,8 +91,8 @@ jobs:
           css=Path('css/product-pot.css').read_text(encoding='utf-8')
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
-          assert 'css/product-pot.css?v=20260919-pot-pdp-11' in html
-          assert 'js/product-pot.js?v=20260919-pot-pdp-9' in html
+          assert 'css/product-pot.css?v=20260919-pot-pdp-12' in html
+          assert 'js/product-pot.js?v=20260919-pot-pdp-10' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
           assert 'BB610_POT_PDP?.matches(p)' in product
           assert 'BB610_POT_PDP.render' in product
@@ -102,6 +102,10 @@ jobs:
           assert 'function uniqueMedia(items)' in pot
           assert 'function potRecolorClass(sku)' in pot
           assert 'pot-filter-terra-black' in pot
+          assert 'pot-filter-black-white' in pot
+          assert 'pot-filter-black-terra' in pot
+          assert '.pot-recolor-black-white' in css
+          assert '.pot-recolor-black-terra' in css
           assert '.pot-recolor-terra-black' in css
           assert 'selectedSku?.image' in pot
           assert 'selectedSku?.gallery' in pot
@@ -287,6 +291,9 @@ jobs:
           u30 = next(x for x in (round_u.get('sku_media') or {}).get('skus') or [] if x.get('sku_code') == 'PL-BB-1308303-BK')
           assert (u30.get('attributes') or {}).get('media_source_color') == 'terracotta'
           print('U-GROOVE COLOR SOURCE: PASS')
+          u35 = next(x for x in (round_u.get('sku_media') or {}).get('skus') or [] if x.get('sku_code') == 'PL-BB-13080350-BK')
+          assert (u35.get('attributes') or {}).get('media_source_color') == 'black'
+          print('BLACK SOURCE COLOR: PASS')
           print('OFFICIAL U-GROOVE PRODUCT NUMBERS: PASS')
           print('REMAINING VERIFIED MODEL MEDIA: PASS')
           zephyr = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_zephyr_v2')

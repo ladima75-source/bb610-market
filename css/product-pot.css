@@ -136,3 +136,6 @@
 
 .pot-recolor-black-white{filter:url(#pot-filter-black-white)}
 .pot-recolor-black-terra{filter:url(#pot-filter-black-terra)}
+
+.pot-gallery-empty{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:#667177;font-size:13px;font-weight:700;letter-spacing:.02em;background:#f5f5f1}
+.pot-gallery-empty[hidden]{display:none}

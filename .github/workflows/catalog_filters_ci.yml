@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'js/catalog.js'
+      - 'backend/services/product_master_runtime.py'
+      - 'backend/tools_audit_catalog_facets_20260919.py'
       - 'catalog.html'
       - 'categories/nutrition/index.html'
       - 'categories/biostimulation/index.html'
@@ -13,6 +15,8 @@ on:
   pull_request:
     paths:
       - 'js/catalog.js'
+      - 'backend/services/product_master_runtime.py'
+      - 'backend/tools_audit_catalog_facets_20260919.py'
       - 'catalog.html'
       - 'categories/nutrition/index.html'
       - 'categories/biostimulation/index.html'
@@ -33,7 +37,53 @@ jobs:
           node-version: '22'
 
       - name: Syntax
-        run: node --check js/catalog.js
+        run: |
+          node --check js/catalog.js
+          python -m py_compile backend/services/product_master_runtime.py backend/tools_audit_catalog_facets_20260919.py
+
+      - name: Product Master facet behavior
+        run: |
+          python - <<'PY'
+          from backend.services.product_master_runtime import _attach_facets
+
+          products = [
+              {
+                  'id':'p1','category_id':'nutrition','brand':'Valagro',
+                  'cultures':['Лохина','малина'],
+                  'applicationMethods':['Фертигація','Позакореневе внесення'],
+              },
+              {
+                  'id':'p2','category_id':'nutrition','brand':'Brand',
+                  'cultures':[],
+                  'application_methods':['Кореневе внесення'],
+              },
+          ]
+          skus = [
+              {'id':'S1','product_id':'p1','volume_weight':{'value':20,'unit':'g'}},
+              {'id':'S2','product_id':'p1','volume_weight':{'value':1,'unit':'kg'}},
+              {'id':'S3','product_id':'p2','volume_weight':{'value':2.5,'unit':'kg'}},
+          ]
+          commerce = {
+              'S1':{'enabled':True,'availability':'in_stock'},
+              'S2':{'enabled':True,'availability':'out_of_stock'},
+              'S3':{'enabled':True,'availability':'backorder'},
+          }
+
+          _attach_facets(products, skus, commerce)
+          f1=products[0]['facets']
+          assert f1['category']=='nutrition'
+          assert f1['brand']=='Valagro'
+          assert f1['cultures']==['лохина','малина']
+          assert f1['application_methods']==['fertigation','foliar']
+          assert set(f1['package_groups'])=={'small','medium'}
+          assert f1['in_stock'] is True
+
+          f2=products[1]['facets']
+          assert f2['application_methods']==['root']
+          assert f2['package_groups']==[]  # agreed 1.001–4.999 kg gap
+          assert f2['in_stock'] is False
+          print('PRODUCT MASTER FACETS: PASS')
+          PY
 
       - name: Canonical facet contract
         run: |
@@ -63,6 +113,11 @@ jobs:
           assert "if(n>=100&&n<=1000)return 'medium'" in js
           assert "if(n>=5000)return 'large'" in js
 
+          assert "facetList=(p,key)" in js
+          assert "facetList(p,'cultures')" in js
+          assert "facetList(p,'package_groups')" in js
+          assert "facetList(p,'application_methods')" in js
+          assert "typeof p?.facets?.in_stock==='boolean'" in js
           assert 'function dynamicFacetCount(group,value)' in js
           assert 'matchesState(p,state,group)' in js
           assert 'row.hidden=!input.checked&&n===0' in js
@@ -75,7 +130,7 @@ jobs:
               'categories/containers/index.html',
           ]:
               doc=Path(path).read_text(encoding='utf-8')
-              assert 'js/catalog.js?v=20260919-facets-1' in doc, path
+              assert 'js/catalog.js?v=20260919-facets-2' in doc, path
               assert 'js/data-source.js?v=20260918-master-1' in doc, path
               assert 'config/commerce-config.js?v=20260918-master-1' in doc, path
 

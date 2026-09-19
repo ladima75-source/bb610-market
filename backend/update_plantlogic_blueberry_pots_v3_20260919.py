@@ -384,7 +384,7 @@ def how_it_works_for(product: dict) -> str:
 
 def family_overview_for(product: dict) -> dict | None:
     family = str(product.get("family") or "")
-    if str(product.get("product_id") or "") in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs", "prd_pl_bb_square"}:
+    if str(product.get("product_id") or "") in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs", "prd_pl_bb_square", "prd_pl_bb_round_u", "prd_pl_bb_square_u"}:
         return None
     if family == "zephyr":
         return None

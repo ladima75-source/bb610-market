@@ -435,7 +435,12 @@ document.addEventListener('DOMContentLoaded',async()=>{
     if(sort.value==='price-asc')all.sort((a,b)=>{const ap=displayPriceForPackage(a,state.packageGroup),bp=displayPriceForPackage(b,state.packageGroup);return (ap==null?Infinity:ap)-(bp==null?Infinity:bp)});
     if(sort.value==='price-desc')all.sort((a,b)=>{const ap=displayPriceForPackage(a,state.packageGroup),bp=displayPriceForPackage(b,state.packageGroup);return (bp==null?-Infinity:bp)-(ap==null?-Infinity:ap)});
     if(sort.value==='name')all.sort((a,b)=>a.name.localeCompare(b.name,'uk'));
-    count.textContent=`${all.length} товарів`;
+    const sectionedContainers=state.category.length===1&&state.category[0]==='containers'
+      &&all.some(p=>norm(brandFor(p))==='plantlogic'&&plantlogicSectionsFor(p).length);
+    const visibleCount=sectionedContainers
+      ?all.filter(p=>norm(brandFor(p))!=='plantlogic'||plantlogicSectionsFor(p).length).length
+      :all.length;
+    count.textContent=`${visibleCount} товарів`;
     grid.innerHTML=renderCards(all,state);
     empty.style.display=all.length?'none':'block';
     BB610.bindCards(grid);

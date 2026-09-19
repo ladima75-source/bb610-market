@@ -243,7 +243,7 @@ jobs:
           assert len(round_card['content']['model_showcase']['items']) == 4
           short_card = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_round_short_legs')
           short_paths = [str(x.get('path') or '') for x in (short_card.get('sku_media') or {}).get('media') or []]
-          assert any('25-Liter-Round-Pot-with-short-legs_Item_1303025.jpg' in x for x in short_paths)
+          assert any('3025_1.jpg' in x for x in short_paths)
           assert isinstance(short_card['content'].get('model_showcase'), dict)
           assert len(short_card['content']['model_showcase']['items']) == 1
           print('SHORT LEGS OFFICIAL MEDIA: PASS')

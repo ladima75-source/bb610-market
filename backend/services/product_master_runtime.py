@@ -211,7 +211,7 @@ def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]
     _attach_facets(products, skus, commerce)
 
     return {
-        "schema_version": "4.1",
+        "schema_version": "4.0",
         "source": SOURCE_ID,
         "products": products,
         "skus": skus,

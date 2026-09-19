@@ -49,7 +49,7 @@ jobs:
       - name: Product Master facet behavior
         run: |
           python - <<'PY'
-          from backend.services.product_master_runtime import _attach_facets
+          from backend.services.product_master_runtime import _attach_facets, _package_group
 
           products = [
               {
@@ -73,6 +73,15 @@ jobs:
               'S2':{'enabled':True,'availability':'out_of_stock'},
               'S3':{'enabled':True,'availability':'backorder'},
           }
+
+          assert _package_group({'variant':'50 г'})=='small'
+          assert _package_group({'variant':'51 г'})==''
+          assert _package_group({'variant':'99 мл'})==''
+          assert _package_group({'variant':'100 мл'})=='medium'
+          assert _package_group({'variant':'1 кг'})=='medium'
+          assert _package_group({'variant':'1.001 кг'})==''
+          assert _package_group({'variant':'4.999 л'})==''
+          assert _package_group({'variant':'5 кг'})=='large'
 
           _attach_facets(products, skus, commerce)
           f1=products[0]['facets']
@@ -106,9 +115,9 @@ jobs:
           assert 'application_methods' in method
           assert 'manufacturerUse' not in method
           assert 'purposes' not in method
-          assert "'фертигація':'fertigation'" in js
-          assert "'позакореневе внесення':'foliar'" in js
-          assert "'кореневе внесення':'root'" in js
+          assert "value.includes('фертигац')" in js
+          assert "value.includes('позакорен')" in js
+          assert "value.includes('коренев')" in js
 
           a=js.index('function packageMetric')
           b=js.index('\n  function packageGroupForSku',a)
@@ -122,15 +131,20 @@ jobs:
 
           assert "facetList=(p,key)" in js
           assert "facetList(p,'cultures')" in js
-          assert "facetList(p,'package_groups')" in js
           assert "facetList(p,'application_methods')" in js
           assert "sku?.facets?.package_group" in js
           assert "const t=norm(sku?.variant||'').replace(',','.')" in js
           assert "grid.innerHTML=all.map(p=>BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))).join('')" in js
           assert "typeof p?.facets?.in_stock==='boolean'" in js
+          assert 'function matchingSkusForPackage(p,groups)' in js
+          assert 'function hasSkuForPackage(p,groups)' in js
           assert 'function displaySkuForPackage(p,groups)' in js
           assert 'function hasStockForPackage(p,groups)' in js
           assert 'function displayPriceForPackage(p,groups)' in js
+          assert "rows.filter(s=>groups.includes(packageGroupForSku(s)))" in js
+          assert "state.packageGroup.length&&!hasSkuForPackage(p,state.packageGroup)" in js
+          assert "hasSkuForPackage(p,[value])" in js
+          assert 'packageGroupsFor(' not in js
           assert 'BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))' in js
           assert 'hasStockForPackage(p,state.packageGroup)' in js
           assert 'displayPriceForPackage(a,state.packageGroup)' in js
@@ -146,7 +160,7 @@ jobs:
               'categories/containers/index.html',
           ]:
               doc=Path(path).read_text(encoding='utf-8')
-              assert 'js/catalog.js?v=20260919-facets-3' in doc, path
+              assert 'js/catalog.js?v=20260919-sku-pack-1' in doc, path
               assert 'js/app.js?v=20260919-pack-filter-1' in doc, path
               assert 'js/data-source.js?v=20260918-master-1' in doc, path
               assert 'config/commerce-config.js?v=20260918-master-1' in doc, path
@@ -159,6 +173,7 @@ jobs:
 
           audit=Path('backend/tools_audit_catalog_packaging_20260919.py').read_text(encoding='utf-8')
           assert 'SKU_DATA_MISMATCHES=' in audit
+          assert 'SKU_FACET_MISMATCHES=' in audit
           assert 'MIXED_PACKAGE_PRODUCTS=' in audit
 
           print('CATALOG FILTER CONTRACT: PASS')

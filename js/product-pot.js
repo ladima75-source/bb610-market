@@ -150,22 +150,6 @@ function renderBenefits(product){
   </section>`;
 }
 
-function renderFamilyOverview(product){
-  const data=product.family_overview;
-  if(!data||typeof data!=='object')return '';
-  const image=text(data.image);
-  return `<section class="pot-visual-section pot-family-section">
-    <div class="pot-visual-intro">
-      <div class="pot-section-head"><span>СІМЕЙСТВО</span><h2>${esc(data.title||'Лінійка горщиків')}</h2></div>
-      <p>${esc(data.text||'')}</p>
-    </div>
-    ${image?`<figure class="pot-family-figure" data-pot-content-image="${esc(image)}" data-pot-content-alt="${esc(data.image_alt||data.title||product.name)}">
-      <img src="${esc(image)}" alt="${esc(data.image_alt||data.title||product.name)}" loading="lazy">
-      <figcaption><span>Огляд сімейства</span><b>Натисніть, щоб збільшити</b></figcaption>
-    </figure>`:''}
-  </section>`;
-}
-
 function renderTechnologyExplainer(product){
   const data=product.technology_explainer;
   if(!data||typeof data!=='object')return '';
@@ -378,7 +362,6 @@ function render({product,root,selectedSkuId}){
     </section>
 
     ${renderBenefits(product)}
-    ${renderFamilyOverview(product)}
     ${renderTechnologyExplainer(product)}
 
     <section class="pot-section pot-tech">

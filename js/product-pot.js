@@ -304,8 +304,9 @@ function render({product,root,selectedSkuId}){
 
   function mediaForCurrent(){
     const skuGallery=Array.isArray(selectedSku?.gallery)?selectedSku.gallery.filter(Boolean):[];
-    const fallbackGallery=skuGallery.length?[]:[product.image,...(product.gallery||[])];
-    return uniqueMedia([selectedSku?.image,...skuGallery,...fallbackGallery]);
+    const exact=uniqueMedia([selectedSku?.image,...skuGallery]);
+    if(exact.length||hasStructured)return exact;
+    return uniqueMedia([product.image,...(product.gallery||[])]);
   }
 
   root.innerHTML=`<div class="pot-pdp">
@@ -352,6 +353,7 @@ function render({product,root,selectedSkuId}){
         <div class="pot-main-stage">
           <button class="pot-gallery-nav prev" type="button" data-pot-prev aria-label="Попереднє фото">‹</button>
           <img id="pot-main-image" src="" alt="${esc(product.name)}" data-photo-zoom>
+          <div class="pot-gallery-empty" id="pot-gallery-empty" hidden>Фото обраної моделі готується</div>
           <button class="pot-gallery-nav next" type="button" data-pot-next aria-label="Наступне фото">›</button>
           <span class="pot-gallery-count" id="pot-gallery-count" hidden></span>
           <span class="pot-zoom-label">Натисніть, щоб збільшити</span>
@@ -421,6 +423,9 @@ function render({product,root,selectedSkuId}){
     if(!gallery.length)return;
     activeIndex=(index+gallery.length)%gallery.length;
     const img=document.getElementById('pot-main-image');
+    const empty=document.getElementById('pot-gallery-empty');
+    if(empty)empty.hidden=true;
+    img.hidden=false;
     img.classList.remove('pot-recolor-terra-black','pot-recolor-terra-white','pot-recolor-black-white','pot-recolor-black-terra');
     const recolor=potRecolorClass(selectedSku);
     if(recolor)img.classList.add(recolor);
@@ -444,8 +449,10 @@ function render({product,root,selectedSkuId}){
     if(gallery.length)setImage(0);
     else{
       const img=document.getElementById('pot-main-image');
-      img.src='assets/img/product-container.svg';
+      img.hidden=true;
+      img.removeAttribute('src');
       img.alt=product.name;
+      const empty=document.getElementById('pot-gallery-empty');if(empty)empty.hidden=false;
       document.querySelectorAll('.pot-gallery-nav').forEach(x=>x.hidden=true);
       const counter=document.getElementById('pot-gallery-count');if(counter)counter.hidden=true;
     }

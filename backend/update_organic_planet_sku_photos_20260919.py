@@ -38,7 +38,11 @@ SOURCE_ALIASES = ROOT / "data" / "catalog_sources" / "organic_planet_full_price_
 ASSET_ROOT = ROOT / "assets" / "img" / "organic-planet-sku"
 BACKUP_ROOT = ROOT / "var" / "photo-backups"
 PHOTO_OVERRIDES = ROOT / "backend" / "runtime" / "organic_planet_sku_photos.json"
-CATALOG_URL = "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori"
+CATALOG_URLS = (
+    "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori",
+    "https://organicplanet.com.ua/katalog/biostymulyatory",
+    "https://organicplanet.com.ua/katalog",
+)
 MAX_PAGES = 30
 
 UA = (
@@ -266,29 +270,30 @@ def _load_targets() -> list[Target]:
 
 def _catalog_links() -> list[tuple[str, str]]:
     found: dict[str, str] = {}
-    stagnant = 0
-    for page in range(1, MAX_PAGES + 1):
-        url = CATALOG_URL if page == 1 else f"{CATALOG_URL}?page={page}"
-        body = _text(url)
-        parser = LinkParser()
-        parser.feed(body)
-        before = len(found)
-        for href, label in parser.links:
-            absolute = urljoin(url, href)
-            parsed = urlparse(absolute)
-            if parsed.netloc not in {"organicplanet.com.ua", "www.organicplanet.com.ua"}:
-                continue
-            if "/katalog/" not in parsed.path:
-                continue
-            if not _pack_key(label):
-                continue
-            found[absolute.split("#", 1)[0]] = " ".join(label.split())
-        if len(found) == before:
-            stagnant += 1
-        else:
-            stagnant = 0
-        if page >= 3 and stagnant >= 2:
-            break
+    for catalog_url in CATALOG_URLS:
+        stagnant = 0
+        for page in range(1, MAX_PAGES + 1):
+            url = catalog_url if page == 1 else f"{catalog_url}?page={page}"
+            body = _text(url)
+            parser = LinkParser()
+            parser.feed(body)
+            before = len(found)
+            for href, label in parser.links:
+                absolute = urljoin(url, href)
+                parsed = urlparse(absolute)
+                if parsed.netloc not in {"organicplanet.com.ua", "www.organicplanet.com.ua"}:
+                    continue
+                if "/katalog/" not in parsed.path:
+                    continue
+                if not _pack_key(label):
+                    continue
+                found[absolute.split("#", 1)[0]] = " ".join(label.split())
+            if len(found) == before:
+                stagnant += 1
+            else:
+                stagnant = 0
+            if page >= 3 and stagnant >= 2:
+                break
     return sorted(found.items())
 
 
@@ -322,31 +327,32 @@ def _resolve_targets(targets: list[Target], links: list[tuple[str, str]]) -> tup
     return resolved, unresolved
 
 
-def _search_links(product_name: str) -> list[tuple[str, str]]:
+def _search_links(names: tuple[str, ...]) -> list[tuple[str, str]]:
     found: dict[str, str] = {}
-    query = quote_plus(product_name)
-    for base in (
-        f"https://organicplanet.com.ua/search?search={query}",
-        f"https://organicplanet.com.ua/ru/search?search={query}",
-    ):
-        try:
-            body = _text(base)
-        except Exception:
-            continue
-        parser = LinkParser()
-        parser.feed(body)
-        for href, label in parser.links:
-            absolute = urljoin(base, href)
-            parsed = urlparse(absolute)
-            if parsed.netloc not in {"organicplanet.com.ua", "www.organicplanet.com.ua"}:
+    for product_name in dict.fromkeys(x for x in names if x):
+        query = quote_plus(product_name)
+        for base in (
+            f"https://organicplanet.com.ua/search?search={query}",
+            f"https://organicplanet.com.ua/ru/search?search={query}",
+        ):
+            try:
+                body = _text(base)
+            except Exception:
                 continue
-            if "/katalog/" not in parsed.path:
-                continue
-            if not _pack_key(label):
-                continue
-            found[absolute.split("#", 1)[0]] = " ".join(label.split())
-        if found:
-            break
+            parser = LinkParser()
+            parser.feed(body)
+            for href, label in parser.links:
+                absolute = urljoin(base, href)
+                parsed = urlparse(absolute)
+                if parsed.netloc not in {"organicplanet.com.ua", "www.organicplanet.com.ua"}:
+                    continue
+                if "/katalog/" not in parsed.path:
+                    continue
+                if not _pack_key(label):
+                    continue
+                found[absolute.split("#", 1)[0]] = " ".join(label.split())
+            if found:
+                break
     return sorted(found.items())
 
 
@@ -498,7 +504,7 @@ def main() -> int:
             if target.sku not in unresolved_set or target.product_id in seen_products:
                 continue
             seen_products.add(target.product_id)
-            extra_links.extend(_search_links(target.product_name))
+            extra_links.extend(_search_links((target.product_name, *target.aliases)))
         resolved, unresolved = _resolve_targets(targets, extra_links)
 
     print("RESOLVED_SKU:", len(resolved))

@@ -16,6 +16,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from backend.services import product_cards_v3 as pcv3
+from backend.services import product_cards_v3_facets as pcv3_facets
+from backend.services import product_commerce
 
 
 def _norm(value: object) -> str:
@@ -35,6 +37,9 @@ def main() -> int:
     mapping_unknown_product: list[str] = []
     mapping_unknown_sku: list[str] = []
     duplicate_enabled_commerce_keys: list[str] = []
+    mapping_missing_commerce: list[str] = []
+    bad_commerce_availability: list[str] = []
+    bad_market_test_status: list[str] = []
 
     slug_counts: Counter[str] = Counter()
     title_groups: dict[str, list[str]] = defaultdict(list)
@@ -136,6 +141,7 @@ def main() -> int:
         if pid not in mapping_by_product:
             missing_mapping.append(pid)
 
+    live_commerce = product_commerce.commerce_map()
     commerce_key_owners: dict[str, list[str]] = defaultdict(list)
     for mapping in mappings:
         pid = str(mapping.get("product_id") or "").strip()
@@ -153,6 +159,16 @@ def main() -> int:
             key = str(link.get("existing_commerce_sku_key") or "").strip()
             if sid and sid not in known_skus:
                 mapping_unknown_sku.append(f"{pid}:{sid}")
+            if key:
+                commerce = live_commerce.get(key)
+                if not isinstance(commerce, dict):
+                    mapping_missing_commerce.append(f"{pid}:{sid}:{key}")
+                else:
+                    availability = str(commerce.get("availability") or "")
+                    if availability not in product_commerce.VALID_AVAILABILITY:
+                        bad_commerce_availability.append(
+                            f"{pid}:{sid}:{key}:{availability}"
+                        )
             if key and pid in enabled_ids:
                 commerce_key_owners[key].append(f"{pid}:{sid}")
 
@@ -167,6 +183,24 @@ def main() -> int:
         for title, ids in sorted(title_groups.items())
         if len(ids) > 1
     ]
+
+    market_test = pcv3_facets.market_test_projection()
+    projected_market_skus = [
+        x for x in (market_test.get("skus") or [])
+        if isinstance(x, dict)
+    ]
+    for sku in projected_market_skus:
+        sid = str(sku.get("id") or sku.get("sku") or "?")
+        if (
+            sku.get("price") is not None
+            or sku.get("sale_price") is not None
+            or str(sku.get("availability") or "") != "backorder"
+            or sku.get("price_request") is not True
+            or str(sku.get("offer_status") or "") != "request-price"
+            or str(sku.get("commercial_status") or "") != "request-price"
+            or sku.get("enabled") is not True
+        ):
+            bad_market_test_status.append(sid)
 
     print("===== PRODUCT CARD V3 INTEGRITY AUDIT =====")
     print(f"RUNTIME_CARDS={len(cards)}")
@@ -183,6 +217,10 @@ def main() -> int:
     print(f"MAPPING_UNKNOWN_PRODUCT={len(mapping_unknown_product)}")
     print(f"MAPPING_UNKNOWN_SKU={len(mapping_unknown_sku)}")
     print(f"DUPLICATE_ENABLED_COMMERCE_KEYS={len(duplicate_enabled_commerce_keys)}")
+    print(f"MAPPING_MISSING_COMMERCE={len(mapping_missing_commerce)}")
+    print(f"BAD_COMMERCE_AVAILABILITY={len(bad_commerce_availability)}")
+    print(f"MARKET_TEST_SKUS={len(projected_market_skus)}")
+    print(f"BAD_MARKET_TEST_STATUS={len(bad_market_test_status)}")
 
     def emit(label: str, values: list[str]) -> None:
         if values:
@@ -199,6 +237,9 @@ def main() -> int:
     emit("MAPPING_UNKNOWN_PRODUCT_IDS", mapping_unknown_product)
     emit("MAPPING_UNKNOWN_SKU_IDS", mapping_unknown_sku)
     emit("DUPLICATE_ENABLED_COMMERCE_KEY_DETAILS", duplicate_enabled_commerce_keys)
+    emit("MAPPING_MISSING_COMMERCE_DETAILS", mapping_missing_commerce)
+    emit("BAD_COMMERCE_AVAILABILITY_DETAILS", bad_commerce_availability)
+    emit("BAD_MARKET_TEST_STATUS_IDS", bad_market_test_status)
 
     # Duplicate titles are reported for review because one product may
     # intentionally appear in multiple official storefront sections. Missing
@@ -214,6 +255,9 @@ def main() -> int:
         or mapping_unknown_product
         or mapping_unknown_sku
         or duplicate_enabled_commerce_keys
+        or mapping_missing_commerce
+        or bad_commerce_availability
+        or bad_market_test_status
     )
     print("CHECKS=" + ("FAIL" if hard_errors else "PASS"))
     return 2 if hard_errors else 0

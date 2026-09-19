@@ -167,7 +167,7 @@ function render({product,root,selectedSkuId}){
       <div class="pot-buy-panel">
         <div class="pot-brand">plantlogic</div>
         <div class="pot-type">${esc(type)}</div>
-        <h1>${esc(product.name)|</h1>
+        <h1>${esc(product.name)}</h1>
         <p class="pot-lead">${esc(product.shortDescription||description)}</p>
 
         <div class="pot-facts">
@@ -264,7 +264,7 @@ function render({product,root,selectedSkuId}){
   document.querySelector('[data-pot-next]')?.addEventListener('click',()=>setImage(activeIndex+1));
   document.getElementById('pot-main-image')?.addEventListener('click',e=>BB610.openPhoto?.(e.currentTarget.currentSrc||e.currentTarget.src,product.name));
   document.getElementById('pot-cta').onclick=()=>{
-    if(!selectedSkuIreturn;
+    if(!selectedSku)return;
     if(BB610.isPriceRequestSku?.(selectedSku))BB610.openPriceRequest(selectedSku.id,1);
     else BB610.addCart(selectedSku.id,1);
   };

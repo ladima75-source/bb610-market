@@ -115,7 +115,8 @@ def validate(card: dict) -> dict:
     allowed_content = {
         'title', 'brand', 'category', 'short_description', 'description',
         'benefits', 'how_it_works', 'application', 'composition',
-        'characteristics', 'seo'
+        'characteristics', 'seo',
+        'family_overview', 'technology_explainer', 'garden_guide'
     }
     extra = set(content) - allowed_content
     if extra:
@@ -128,6 +129,45 @@ def validate(card: dict) -> dict:
         _require_str(content, key)
     _validate_pair_list(content.get('benefits'), field='content.benefits', first='title', second='text')
     _validate_pair_list(content.get('characteristics'), field='content.characteristics', first='label', second='value')
+
+    family_overview = content.get('family_overview')
+    if family_overview is not None:
+        if not isinstance(family_overview, dict):
+            raise ValueError('content.family_overview must be an object')
+        allowed_family = {'title', 'text', 'image', 'image_alt'}
+        if set(family_overview) != allowed_family:
+            raise ValueError('content.family_overview must contain title, text, image and image_alt')
+        for key in allowed_family:
+            _require_str(family_overview, key)
+
+    technology = content.get('technology_explainer')
+    if technology is not None:
+        if not isinstance(technology, dict):
+            raise ValueError('content.technology_explainer must be an object')
+        allowed_technology = {'title', 'lead', 'image', 'image_alt', 'image_mode', 'items'}
+        if set(technology) != allowed_technology:
+            raise ValueError('content.technology_explainer has an invalid field set')
+        for key in ('title', 'lead', 'image', 'image_alt', 'image_mode'):
+            _require_str(technology, key)
+        items = technology.get('items')
+        if not isinstance(items, list):
+            raise ValueError('content.technology_explainer.items must be an array')
+        for i, item in enumerate(items):
+            if not isinstance(item, dict) or set(item) != {'code', 'title', 'text'}:
+                raise ValueError(f'content.technology_explainer.items[{i}] must contain code, title and text')
+            for key in ('code', 'title', 'text'):
+                if not isinstance(item.get(key), str):
+                    raise ValueError(f'content.technology_explainer.items[{i}].{key} must be a string')
+
+    garden = content.get('garden_guide')
+    if garden is not None:
+        if not isinstance(garden, dict):
+            raise ValueError('content.garden_guide must be an object')
+        allowed_garden = {'title', 'text', 'url', 'cta'}
+        if set(garden) != allowed_garden:
+            raise ValueError('content.garden_guide must contain title, text, url and cta')
+        for key in allowed_garden:
+            _require_str(garden, key)
 
     seo = content.get('seo')
     if not isinstance(seo, dict):

@@ -60,7 +60,12 @@ const BB610 = (() => {
   const toggleFav=id=>toggleArray(LS.fav,id); const toggleCompare=id=>toggleArray(LS.compare,id,4);
   function updateBadges(){const cart=get(LS.cart,[]).reduce((s,x)=>s+x.qty,0),fav=get(LS.fav,[]).length,cmp=get(LS.compare,[]).length;document.querySelectorAll('[data-count=cart]').forEach(e=>e.textContent=cart);document.querySelectorAll('[data-count=fav]').forEach(e=>e.textContent=fav);document.querySelectorAll('[data-count=compare]').forEach(e=>e.textContent=cmp)}
   function toast(msg){let t=document.querySelector('.toast');if(!t){t=document.createElement('div');t.className='toast';Object.assign(t.style,{position:'fixed',right:'18px',bottom:'18px',background:'#f0b24c',color:'#111',padding:'12px 16px',borderRadius:'10px',fontWeight:'800',zIndex:100,boxShadow:'0 10px 30px #0008'});document.body.appendChild(t)}t.textContent=msg;t.style.display='block';clearTimeout(t._x);t._x=setTimeout(()=>t.style.display='none',1800)}
-  function productUrl(p){const slug=p.slug||p.id;if(p.runtime_dynamic)return `product.html?id=${encodeURIComponent(p.id)}`;return location.protocol==='file:'?`products/${slug}/index.html`:(p.canonical_product_url||`/products/${slug}/`)}
+  function productUrl(p,s=null){
+    const productId=String(p?.id||s?.product_id||'').trim();
+    const skuId=String(s?.id||s?.sku||'').trim();
+    if(!productId)return 'catalog.html';
+    return 'product.html?id='+encodeURIComponent(productId)+(skuId?'&sku='+encodeURIComponent(skuId):'');
+  }
   const potVariantSummary=p=>{
     if(p.category!=='containers')return '';
     const rows=p.sizes||[];
@@ -93,7 +98,10 @@ const BB610 = (() => {
     const unit=priceRequest?'':(cardPrice!=null&&Number.isFinite(Number(cardPrice))&&Number(cardQty)>0&&cardUnit?`${money(Math.round(Number(cardPrice)/Number(cardQty)))} / ${cardUnit}`:'');
     const stock=priceRequest?'Під замовлення':(publicStockLabel(s)||p.stockLabel||'');
     const buyEnabled=canBuySku(s);
-    const href=s?.url||productUrl(p);
+    // One storefront route for every product card. Never trust legacy SKU
+    // URLs or old /products/<slug>/ pages: the live PDP is product.html and the
+    // displayed SKU must be preserved in the query string.
+    const href=productUrl(p,s);
     return `<article class="product-card product-card-v2" data-product-id="${p.id}" data-display-sku="${s?.id||''}">
       <a class="product-media" href="${href}" data-select-product="${p.id}"><img loading="lazy" src="${image}" data-fallback="${fallback}" alt="${p.name}"></a>
       <div class="product-body">

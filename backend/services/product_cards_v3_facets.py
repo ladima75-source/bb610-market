@@ -324,7 +324,7 @@ def catalog_overlays() -> list[dict]:
         chars = _characteristics(content)
         cultures = _split_values(_first(chars, 'Культури', 'Культуры', 'Культура'))
         purposes = _split_values(_first(chars, 'Призначення', 'Назначение'))
-        methods = _split_values(_first(chars, 'Спосіб застосування', 'Способ применения', 'Метод внесення'))
+        methods = _split_values(_first(chars, 'Спосіб застосування', 'Спосіб внесення', 'Способ применения', 'Метод внесення'))
         npk = _first(chars, 'NPK', 'Формула NPK')
         active = _first(chars, 'Діюча речовина', 'Действующее вещество', 'Активна речовина')
 

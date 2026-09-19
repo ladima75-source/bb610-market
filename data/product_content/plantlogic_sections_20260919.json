@@ -78,9 +78,6 @@
     "prd_pl_1309026": [
       "blueberry"
     ],
-    "prd_pl_1308026": [
-      "blueberry"
-    ],
     "prd_pl_1308303": [
       "blueberry",
       "rubus"
@@ -104,9 +101,6 @@
       "blueberry"
     ],
     "prd_pl_1308041": [
-      "blueberry"
-    ],
-    "prd_pl_40sq_ug_side": [
       "blueberry"
     ],
     "prd_pl_1306003": [
@@ -156,14 +150,14 @@
     ],
     "prd_pl_1305117": [
       "vegetable"
-    ],
-    "prd_pl_1308025": [
-      "universal"
     ]
   },
   "mapping_notes": {
-    "prd_pl_1308025": "Official product page states IDEAL FOR SUBSTRATE PRODUCTION; placed in temporary general/universal storefront block pending final section-name decision.",
-    "prd_pl_1308026": "Official Plantlogic blueberry material/tag context; mapped to Blueberry.",
-    "prd_pl_40sq_ug_side": "Official Plantlogic page/slug identifies the model for blueberries; mapped to Blueberry."
+    "rule": "Only the current Plantlogic Products navigation determines storefront section membership. Tags, archive categories, URL wording and inferred crop compatibility do not add membership."
+  },
+  "unmapped_current_cards": {
+    "prd_pl_1308025": "25 Liter Round Pot (Wide Legs) — not present in the current Products section menu; keep out of sectioned storefront until official section is confirmed.",
+    "prd_pl_1308026": "25 Liter Round Pot with U-Grooves — not present in the current Products section menu; keep out of sectioned storefront until official section is confirmed.",
+    "prd_pl_40sq_ug_side": "40 Liter Square Pot with U-Grooves & Side Holes — not present in the current Products section menu; keep out of sectioned storefront until official section is confirmed."
   }
 }

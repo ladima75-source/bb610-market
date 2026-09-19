@@ -166,6 +166,8 @@ jobs:
           assert 'function renderCards(list,state)' in js
           assert 'plantlogicSectionOrder' in js
           assert 'plantlogic_sections' in js
+          assert 'plantlogicCardForSection' in js
+          assert "const remainder=list.filter(p=>norm(brandFor(p))!=='plantlogic')" in js
           assert "plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=1'" in js
           assert 'grid.innerHTML=renderCards(all,state)' in js
           assert "typeof p?.facets?.in_stock==='boolean'" in js
@@ -207,7 +209,7 @@ jobs:
               'categories/containers/index.html',
           ]:
               doc=Path(path).read_text(encoding='utf-8')
-              assert 'js/catalog.js?v=20260919-filter-merge-1' in doc, path
+              assert 'js/catalog.js?v=20260919-filter-merge-2' in doc, path
               assert 'js/app.js?v=20260919-displayed-sku-1' in doc, path
               assert 'js/data-source.js?v=20260918-master-1' in doc, path
               assert 'config/commerce-config.js?v=20260918-master-1' in doc, path

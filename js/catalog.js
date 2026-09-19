@@ -105,15 +105,20 @@ document.addEventListener('DOMContentLoaded',async()=>{
     {id:'large',label:'Велика',hint:'від 5 кг/л'}
   ];
   const plantlogicSectionOrder=[
-    {id:'blueberry',label:'Для лохини'},
-    {id:'rubus',label:'Для малини та ожини'},
-    {id:'universal',label:'Універсальні контейнери'},
-    {id:'strawberry',label:'Для полуниці'},
-    {id:'vegetable',label:'Для овочевих культур'},
-    {id:'bag_bases',label:'Основи для мішків'},
-    {id:'accessories',label:'Аксесуари'}
+    {id:'blueberry',label:'Для лохини',titleSuffix:'для лохини'},
+    {id:'rubus',label:'Для малини та ожини',titleSuffix:'для малини та ожини'},
+    {id:'universal',label:'Універсальні контейнери',titleSuffix:'універсальний'},
+    {id:'strawberry',label:'Для полуниці',titleSuffix:'для полуниці'},
+    {id:'vegetable',label:'Для овочевих культур',titleSuffix:'для овочевих культур'},
+    {id:'bag_bases',label:'Основи для мішків',titleSuffix:''},
+    {id:'accessories',label:'Аксесуари',titleSuffix:''}
   ];
   const plantlogicSectionsFor=p=>Array.isArray(p?.plantlogic_sections)?p.plantlogic_sections.filter(Boolean):[];
+  const plantlogicCardForSection=(p,section)=>{
+    const suffix=String(section?.titleSuffix||'').trim();
+    if(!suffix||norm(p.name).includes(norm(suffix)))return p;
+    return {...p,name:`${p.name} — ${suffix}`};
+  };
   const methodGroups=[
     {id:'fertigation',label:'Фертигація',hint:'крапельний полив'},
     {id:'foliar',label:'По листу',hint:'позакоренево'},
@@ -409,11 +414,11 @@ document.addEventListener('DOMContentLoaded',async()=>{
           <h2>${h(section.label)}</h2>
           <span>${rows.length} ${rows.length===1?'модель':'моделей'}</span>
         </div>
-        <div class="products-grid plantlogic-products-grid">${rows.map(p=>BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))).join('')}</div>
+        <div class="products-grid plantlogic-products-grid">${rows.map(p=>BB610.cardV2(plantlogicCardForSection(p,section),displaySkuForPackage(p,state.packageGroup))).join('')}</div>
       </section>`);
     });
 
-    const remainder=list.filter(p=>norm(brandFor(p))!=='plantlogic'||!shown.has(p.id));
+    const remainder=list.filter(p=>norm(brandFor(p))!=='plantlogic');
     if(remainder.length){
       chunks.push(`<section class="plantlogic-catalog-block plantlogic-catalog-other">
         <div class="plantlogic-catalog-block-head"><h2>Інші горщики</h2><span>${remainder.length} моделей</span></div>

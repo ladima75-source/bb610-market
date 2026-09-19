@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "batch": "Plantlogic individual pot color SKU + media-library gallery / 2026-09-19",
+  "scope": "All 34 products in plantlogic_pots_v1_20260918.json",
+  "rule": "Every pot color is a separate BB610 SKU. Manufacturer Product # remains the model identifier; BB610 SKU code carries the color suffix.",
+  "palettes": {
+    "standard": [
+      {
+        "code": "black",
+        "label": "Чорний",
+        "suffix": "BK"
+      },
+      {
+        "code": "white",
+        "label": "Білий",
+        "suffix": "WH"
+      },
+      {
+        "code": "terracotta",
+        "label": "Теракотовий",
+        "suffix": "TC"
+      }
+    ],
+    "zephyr": [
+      {
+        "code": "black",
+        "label": "Чорний",
+        "suffix": "BK"
+      },
+      {
+        "code": "white",
+        "label": "Білий",
+        "suffix": "WH"
+      }
+    ]
+  },
+  "product_palette_rule": {
+    "prd_pl_zephyr_v2": "zephyr",
+    "default": "standard"
+  },
+  "media_policy": "Keep every existing card image, add every exact Product # match found in both BB610 media libraries, then link the resulting gallery to each color SKU. Prefer color-specific media when metadata identifies the color."
+}

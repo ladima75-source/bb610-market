@@ -72,6 +72,26 @@ ROUND_CARD_OFFICIAL_MEDIA = {
         ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_top-view.jpg"),
         ("base", "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-VR-1308031-BASE.jpg"),
     ],
+    "1309020": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Square-Pot_Item_1309020.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_front-view.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_Top-view.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_bottom-view.jpg"),
+    ],
+    "1309025": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-FRONTAL.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-CENITAL.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-BASE.jpg"),
+        ("detail", "https://getplantlogic.com/wp-content/uploads/2017/09/9025_3.jpg"),
+    ],
+    "1309030": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030-1.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_front-view.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_top-view.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_Bottom-view.jpg"),
+    ],
     "1308040": [
         ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040-1.jpg"),
         ("angle", "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040.jpg"),
@@ -282,7 +302,7 @@ def how_it_works_for(product: dict) -> str:
 
 def family_overview_for(product: dict) -> dict | None:
     family = str(product.get("family") or "")
-    if str(product.get("product_id") or "") in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs"}:
+    if str(product.get("product_id") or "") in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs", "prd_pl_bb_square"}:
         return None
     if family == "zephyr":
         return None
@@ -307,7 +327,7 @@ def family_overview_for(product: dict) -> dict | None:
 
 
 def model_showcase_for(product: dict) -> dict | None:
-    if str(product.get("product_id") or "") not in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs"}:
+    if str(product.get("product_id") or "") not in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs", "prd_pl_bb_square"}:
         return None
     items = []
     for model in product.get("models") or []:

@@ -201,6 +201,7 @@ def market_test_projection() -> dict[str, list[dict]]:
                 'shipping': ['Умови та термін поставки уточнюємо у відповіді на запит'],
                 'image': image,
                 'gallery': sku_gallery,
+                'attributes': deepcopy(sku.get('attributes') or {}),
                 'image_alt': str(content.get('title') or ''),
                 'enabled': True,
             }

@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "batch": "Plantlogic Rubus official hero media / 2026-09-19",
+  "policy": "Only official images from the current Plantlogic product pages. Existing curated primary media is preserved; official hero is added and becomes primary only when the card has no primary media.",
+  "products": [
+    {
+      "product_id": "prd_pl_1306003",
+      "product_no": "1306003",
+      "source_url": "https://getplantlogic.com/portfolio-items/3-liter-square-pot/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/3L-Square-pot_Item_1306003.jpg?w=669"
+    },
+    {
+      "product_id": "prd_pl_13050040",
+      "product_no": "13050040",
+      "source_url": "https://getplantlogic.com/portfolio-items/4-7-liter-square-pot-for-cold-storage/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2024/08/4.7L-SQ-13050040-ISOMETRICO.jpg"
+    },
+    {
+      "product_id": "prd_pl_1306051",
+      "product_no": "1306051",
+      "source_url": "https://getplantlogic.com/portfolio-items/5-liter-square-short-pot/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/5L-Square-pot_Item_1306051_front.jpg?ssl=1&w=669"
+    },
+    {
+      "product_id": "prd_pl_1305005",
+      "product_no": "1305005",
+      "source_url": "https://getplantlogic.com/portfolio-items/5-liter-drainage-collection-pot/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/5L-Drainage-collection-pot_Item_1305005.jpg?ssl=1&w=669"
+    },
+    {
+      "product_id": "prd_pl_1306007",
+      "product_no": "1306007",
+      "source_url": "https://getplantlogic.com/portfolio-items/7-liter-square-pot/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/7L-Square-pot_Item_1306007-1.jpg?w=669"
+    },
+    {
+      "product_id": "prd_pl_1305071",
+      "product_no": "1305071",
+      "source_url": "https://getplantlogic.com/portfolio-items/7-liter-square-pot-for-cold-storage/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2024/03/7L-Square-pot-for-cold-storage_Item_1305071.jpg"
+    },
+    {
+      "product_id": "prd_pl_1307107",
+      "product_no": "1307107",
+      "source_url": "https://getplantlogic.com/portfolio-items/7-liter-drainage-collection-pot/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2016/10/1307107_1.jpg?w=669"
+    },
+    {
+      "product_id": "prd_pl_1309008",
+      "product_no": "1309008",
+      "source_url": "https://getplantlogic.com/portfolio-items/8-liter-square-pot/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/8L-Square-pot_Item_1309008.jpg?ssl=1&w=669"
+    },
+    {
+      "product_id": "prd_pl_1306010",
+      "product_no": "1306010",
+      "source_url": "https://getplantlogic.com/portfolio-items/10-liter-square-pot/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2024/04/10L-SQ-1306010-ISOMETRICO.jpg"
+    },
+    {
+      "product_id": "prd_pl_1307110",
+      "product_no": "1307110",
+      "source_url": "https://getplantlogic.com/portfolio-items/10-liter-drainage-collection-pot/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2024/03/10L-Drainage-Collection-Pot_Item_1307110.jpg"
+    },
+    {
+      "product_id": "prd_pl_1309015",
+      "product_no": "1309015",
+      "source_url": "https://getplantlogic.com/portfolio-items/15-liter-square-pot/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/15L-Square-pot_Item_1309015_front.jpg?w=669"
+    }
+  ],
+  "excluded": [
+    {
+      "product_id": "prd_pl_1304015",
+      "reason": "Current product page says Product #1304015, while the page hero filename and a recent Plantlogic catalog use 1304115. Leave media untouched until identity is resolved."
+    },
+    {
+      "product_id": "prd_pl_1308303",
+      "reason": "Already covered by the existing Blueberry official-media work; do not replace curated media."
+    }
+  ]
+}

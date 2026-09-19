@@ -90,3 +90,42 @@
 .pot-model-showcase-card small{font-size:10px;color:#6f7b7f}
 @media(max-width:1000px){.pot-model-showcase-image{height:360px}}
 @media(max-width:620px){.pot-model-showcase-grid{grid-template-columns:1fr}.pot-model-showcase-image{height:340px}.pot-model-showcase-card figcaption{align-items:flex-start}}
+
+
+/* Desktop fold tuning: keep the complete selector/CTA visible at 100% zoom. */
+@media (min-width:1001px){
+  .pot-pdp{max-width:1320px;margin-left:auto;margin-right:auto}
+  .pot-pdp .breadcrumbs{margin-bottom:10px}
+  .pot-hero{grid-template-columns:minmax(0,1.03fr) minmax(470px,.97fr);gap:30px}
+  .pot-main-stage{height:430px}
+  .pot-main-stage>img{padding:18px!important;object-position:center 46%!important}
+  .pot-thumb{flex-basis:76px;width:76px;height:64px}
+  .pot-thumbs{gap:8px;padding-top:8px}
+  .pot-buy-panel{top:112px;padding:20px 22px}
+  .pot-brand{font-size:16px}
+  .pot-type{margin-top:8px;font-size:10px}
+  .pot-buy-panel h1{font-size:clamp(32px,2.55vw,40px);margin:5px 0 8px;line-height:1.01}
+  .pot-lead{font-size:13px;line-height:1.42}
+  .pot-facts{gap:6px;margin:12px 0}
+  .pot-facts>div{padding:7px 9px;border-radius:8px}
+  .pot-facts span{font-size:8px;margin-bottom:2px}
+  .pot-facts b{font-size:11px;line-height:1.25}
+  .pot-configurator{gap:9px;margin:12px 0 8px;padding:11px 12px}
+  .pot-option-group>span{margin-bottom:5px;font-size:9px}
+  .pot-model-option-list{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+  .pot-model-option{min-height:50px;padding:7px 8px;gap:3px}
+  .pot-model-option strong{font-size:15px}
+  .pot-model-option span{font-size:9px}
+  .pot-option-list{gap:6px}
+  .pot-option{min-height:34px;padding:6px 9px}
+  .pot-option b{font-size:11px}
+  .pot-color-dot{width:14px;height:14px}
+  .pot-selected-variant{min-height:15px;margin:1px 0 7px;font-size:10px}
+  .pot-commerce{margin-top:10px;padding-top:10px}
+  .pot-price{font-size:27px}
+  .pot-status{margin-top:2px;font-size:11px}
+  .pot-commerce small{margin-top:2px;font-size:10px}
+  .pot-actions{margin-top:10px}
+  .pot-request{min-height:42px}
+  .pot-trust{margin-top:9px;padding-top:8px}
+}

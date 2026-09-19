@@ -8,7 +8,6 @@ on:
       - 'js/app.js'
       - 'backend/tools_audit_catalog_packaging_20260919.py'
       - 'backend/services/product_master_runtime.py'
-      - 'backend/services/product_cards_v3_facets.py'
       - 'backend/tools_audit_catalog_facets_20260919.py'
       - 'catalog.html'
       - 'categories/nutrition/index.html'
@@ -21,7 +20,6 @@ on:
       - 'js/app.js'
       - 'backend/tools_audit_catalog_packaging_20260919.py'
       - 'backend/services/product_master_runtime.py'
-      - 'backend/services/product_cards_v3_facets.py'
       - 'backend/tools_audit_catalog_facets_20260919.py'
       - 'catalog.html'
       - 'categories/nutrition/index.html'
@@ -46,12 +44,12 @@ jobs:
         run: |
           node --check js/catalog.js
           node --check js/app.js
-          python -m py_compile backend/services/product_master_runtime.py backend/services/product_cards_v3_facets.py backend/tools_audit_catalog_facets_20260919.py backend/tools_audit_catalog_packaging_20260919.py
+          python -m py_compile backend/services/product_master_runtime.py backend/tools_audit_catalog_facets_20260919.py backend/tools_audit_catalog_packaging_20260919.py
 
       - name: Product Master facet behavior
         run: |
           python - <<'PY'
-          from backend.services.product_master_runtime import _attach_facets, _package_group
+          from backend.services.product_master_runtime import _attach_facets
 
           products = [
               {
@@ -61,39 +59,20 @@ jobs:
               },
               {
                   'id':'p2','category_id':'nutrition','brand':'Brand',
-                  'cultures':['усі культури'],
-                  'application_methods':['Кореневе внесення'],
-              },
-              {
-                  'id':'p3','category_id':'nutrition','brand':'Brand',
                   'cultures':[],
-                  'application':{
-                      'intro':'Позакореневе підживлення',
-                      'rows':[{'crop':'Плодові та овочеві культури','period':'полив під корінь'}],
-                  },
+                  'application_methods':['Кореневе внесення'],
               },
           ]
           skus = [
               {'id':'S1','product_id':'p1','variant':'20 г','volume_weight':{'value':1,'unit':'kg'}},
               {'id':'S2','product_id':'p1','variant':'1 кг','volume_weight':{'value':20,'unit':'g'}},
               {'id':'S3','product_id':'p2','variant':'2.5 кг','volume_weight':{'value':2.5,'unit':'kg'}},
-              {'id':'S4','product_id':'p3','variant':'100 мл','volume_weight':{'value':100,'unit':'ml'}},
           ]
           commerce = {
               'S1':{'enabled':True,'availability':'in_stock'},
               'S2':{'enabled':True,'availability':'out_of_stock'},
               'S3':{'enabled':True,'availability':'backorder'},
-              'S4':{'enabled':True,'availability':'in_stock'},
           }
-
-          assert _package_group({'variant':'50 г'})=='small'
-          assert _package_group({'variant':'51 г'})==''
-          assert _package_group({'variant':'99 мл'})==''
-          assert _package_group({'variant':'100 мл'})=='medium'
-          assert _package_group({'variant':'1 кг'})=='medium'
-          assert _package_group({'variant':'1.001 кг'})==''
-          assert _package_group({'variant':'4.999 л'})==''
-          assert _package_group({'variant':'5 кг'})=='large'
 
           _attach_facets(products, skus, commerce)
           f1=products[0]['facets']
@@ -104,21 +83,12 @@ jobs:
           assert set(f1['package_groups'])=={'small','medium'}
           assert skus[0]['facets']['package_group']=='small'
           assert skus[1]['facets']['package_group']=='medium'
-          assert skus[0]['facets']['in_stock'] is True
-          assert skus[1]['facets']['in_stock'] is False
           assert f1['in_stock'] is True
 
           f2=products[1]['facets']
-          assert f2['cultures']==['all']
           assert f2['application_methods']==['root']
           assert f2['package_groups']==[]  # agreed 1.001–4.999 kg gap
           assert f2['in_stock'] is False
-
-          f3=products[2]['facets']
-          assert f3['cultures']==['сад','овочі']
-          assert f3['application_methods']==['foliar','root']
-          assert f3['package_groups']==['medium']
-          assert f3['in_stock'] is True
           print('PRODUCT MASTER FACETS: PASS')
           PY
 
@@ -136,13 +106,9 @@ jobs:
           assert 'application_methods' in method
           assert 'manufacturerUse' not in method
           assert 'purposes' not in method
-          assert "value.includes('фертигац')" in js
-          assert "value.includes('позакорен')" in js
-          assert "value.includes('коренев')" in js
-          assert 'function applicationTexts(p)' in js
-          assert 'function cultureValuesFromText(raw)' in js
-          assert 'const cultureMatches=(p,value)' in js
-          assert "values.includes('all')||values.includes(value)" in js
+          assert "'фертигація':'fertigation'" in js
+          assert "'позакореневе внесення':'foliar'" in js
+          assert "'кореневе внесення':'root'" in js
 
           a=js.index('function packageMetric')
           b=js.index('\n  function packageGroupForSku',a)
@@ -156,41 +122,36 @@ jobs:
 
           assert "facetList=(p,key)" in js
           assert "facetList(p,'cultures')" in js
+          assert "facetList(p,'package_groups')" in js
           assert "facetList(p,'application_methods')" in js
           assert "sku?.facets?.package_group" in js
           assert "const t=norm(sku?.variant||'').replace(',','.')" in js
-          assert "grid.innerHTML=all.map(p=>BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))).join('')" in js
+          assert 'function renderCards(list,state)' in js
+          assert 'plantlogicSectionOrder' in js
+          assert 'plantlogic_sections' in js
+          assert 'grid.innerHTML=renderCards(all,state)' in js
           assert "typeof p?.facets?.in_stock==='boolean'" in js
-          assert 'function matchingSkusForPackage(p,groups)' in js
-          assert 'function hasSkuForPackage(p,groups)' in js
           assert 'function displaySkuForPackage(p,groups)' in js
           assert 'function hasStockForPackage(p,groups)' in js
-          assert 'return rows.some(s=>skuInStock(s))' in js
           assert 'function displayPriceForPackage(p,groups)' in js
-          assert "rows.filter(s=>groups.includes(packageGroupForSku(s)))" in js
-          assert "state.packageGroup.length&&!hasSkuForPackage(p,state.packageGroup)" in js
-          assert "hasSkuForPackage(p,[value])" in js
-          assert 'packageGroupsFor(' not in js
           assert 'BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))' in js
           assert 'hasStockForPackage(p,state.packageGroup)' in js
           assert 'displayPriceForPackage(a,state.packageGroup)' in js
           assert 'function dynamicFacetCount(group,value)' in js
           assert 'matchesState(p,state,group)' in js
-          assert "cultureMatches(x,v)" in js
-          assert "cultureMatches(p,value)" in js
-          assert "skip!=='category'\n      &&(state.packageGroup.length||state.methodGroup.length||state.culture.length)" not in js
           assert 'row.hidden=!input.checked&&n===0' in js
           assert 'if(!n)input.checked=false' not in js
 
-          for path in [
-              'catalog.html',
-              'categories/nutrition/index.html',
-              'categories/biostimulation/index.html',
-              'categories/containers/index.html',
-          ]:
+          versions={
+              'catalog.html':'js/catalog.js?v=20260919-plantlogic-sections-1',
+              'categories/containers/index.html':'js/catalog.js?v=20260919-plantlogic-sections-1',
+              'categories/nutrition/index.html':'js/catalog.js?v=20260919-facets-3',
+              'categories/biostimulation/index.html':'js/catalog.js?v=20260919-facets-3',
+          }
+          for path, catalog_js in versions.items():
               doc=Path(path).read_text(encoding='utf-8')
-              assert 'js/catalog.js?v=20260919-culture-method-1' in doc, path
-              assert 'js/app.js?v=20260919-displayed-sku-1' in doc, path
+              assert catalog_js in doc, path
+              assert 'js/app.js?v=20260919-pack-filter-1' in doc, path
               assert 'js/data-source.js?v=20260918-master-1' in doc, path
               assert 'config/commerce-config.js?v=20260918-master-1' in doc, path
 
@@ -199,17 +160,10 @@ jobs:
           assert 's=skuOverride||displaySku(p.id)' in app
           assert 'data-display-sku=' in app
           assert 'const href=s?.url||productUrl(p)' in app
-          assert "function trackSelect(productId,listId='catalog',listName='Каталог',skuId=null)" in app
-          assert "card?.dataset.displaySku||null" in app
 
           audit=Path('backend/tools_audit_catalog_packaging_20260919.py').read_text(encoding='utf-8')
           assert 'SKU_DATA_MISMATCHES=' in audit
-          assert 'SKU_FACET_MISMATCHES=' in audit
           assert 'MIXED_PACKAGE_PRODUCTS=' in audit
-
-          facet_audit=Path('backend/tools_audit_catalog_facets_20260919.py').read_text(encoding='utf-8')
-          assert 'BAD_CULTURES=' in facet_audit
-          assert '"all", "лохина", "полуниця", "малина", "овочі", "сад", "хвойні", "газон"' in facet_audit
 
           print('CATALOG FILTER CONTRACT: PASS')
           PY

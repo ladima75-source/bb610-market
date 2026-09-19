@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / 'data' / 'product_cards_v3'
 PRODUCTS = BASE / 'products'
 COMMERCE_MAP = BASE / 'commerce_map.json'
+PLANTLOGIC_SECTIONS_FILE = ROOT / 'data' / 'product_content' / 'plantlogic_sections_20260919.json'
 
 
 def _load(path: Path, default: Any) -> Any:
@@ -75,6 +76,11 @@ def _mapping_by_product() -> dict[str, dict]:
 
 
 MARKET_TEST_BRANDS = {'plantlogic'}
+
+PLANTLOGIC_SECTION_DOC = _load(PLANTLOGIC_SECTIONS_FILE, {'product_sections': {}})
+PLANTLOGIC_PRODUCT_SECTIONS = PLANTLOGIC_SECTION_DOC.get('product_sections') if isinstance(PLANTLOGIC_SECTION_DOC, dict) else {}
+if not isinstance(PLANTLOGIC_PRODUCT_SECTIONS, dict):
+    PLANTLOGIC_PRODUCT_SECTIONS = {}
 
 
 def _public_media_path(path: Any) -> str:
@@ -262,6 +268,8 @@ def market_test_projection() -> dict[str, list[dict]]:
             'market_test_cta': 'Запросити ціну',
             'v3_product_id': product_id,
             'v3_facets': True,
+            'plantlogic_sections': deepcopy(PLANTLOGIC_PRODUCT_SECTIONS.get(product_id) or []),
+            'plantlogic_section_source': str(PLANTLOGIC_SECTION_DOC.get('official_navigation_source') or ''),
         }
         products.append(patch)
 
@@ -324,7 +332,7 @@ def catalog_overlays() -> list[dict]:
         chars = _characteristics(content)
         cultures = _split_values(_first(chars, 'Культури', 'Культуры', 'Культура'))
         purposes = _split_values(_first(chars, 'Призначення', 'Назначение'))
-        methods = _split_values(_first(chars, 'Спосіб застосування', 'Спосіб внесення', 'Способ применения', 'Метод внесення'))
+        methods = _split_values(_first(chars, 'Спосіб застосування', 'Способ применения', 'Метод внесення'))
         npk = _first(chars, 'NPK', 'Формула NPK')
         active = _first(chars, 'Діюча речовина', 'Действующее вещество', 'Активна речовина')
 

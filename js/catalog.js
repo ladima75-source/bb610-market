@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const facetCss=document.createElement('link');
   facetCss.rel='stylesheet';
   facetCss.href='assets/css/catalog-facets.css?v=2';
+  const plantlogicCss=document.createElement('link');
+  plantlogicCss.rel='stylesheet';
+  plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=1';
+  document.head.appendChild(plantlogicCss);
   document.head.appendChild(facetCss);
 
   await BB610_DATA_SOURCE.refresh();
@@ -25,53 +29,9 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const facetList=(p,key)=>Array.isArray(p?.facets?.[key])?p.facets[key].filter(Boolean):[];
   const categoryFor=p=>String(p?.facets?.category||p.category||'').trim();
   const brandFor=p=>String(p?.facets?.brand||p.brand||'').trim();
-  function applicationTexts(p){
-    const out=[];
-    const app=p?.application;
-    if(typeof app==='string'){
-      out.push(...app.split(';').map(x=>x.trim()).filter(Boolean));
-    }else if(app&&typeof app==='object'&&!Array.isArray(app)){
-      ['intro','note'].forEach(key=>{const value=String(app[key]||'').trim();if(value)out.push(value)});
-      (Array.isArray(app.rows)?app.rows:[]).forEach(row=>{
-        if(!row||typeof row!=='object')return;
-        ['crop','method','period'].forEach(key=>{const value=String(row[key]||'').trim();if(value)out.push(value)});
-      });
-    }else if(Array.isArray(app)){
-      app.forEach(row=>{
-        if(typeof row==='string'&&row.trim())out.push(row.trim());
-        else if(row&&typeof row==='object'){
-          ['crop','method','period'].forEach(key=>{const value=String(row[key]||'').trim();if(value)out.push(value)});
-        }
-      });
-    }
-    return out;
-  }
-
-  function cultureValuesFromText(raw){
-    const value=norm(raw);
-    if(!value)return [];
-    if(value.includes('усі культури')||value.includes('всі культури')||value.includes('all crops'))return ['all'];
-    const out=[];
-    if(value.includes('лохин')||value.includes('blueberr'))out.push('лохина');
-    if(value.includes('полуниц')||value.includes('суниц')||value.includes('strawberr'))out.push('полуниця');
-    if(value.includes('малин')||value.includes('raspberr'))out.push('малина');
-    if(value.includes('овоч')||value.includes('vegetable'))out.push('овочі');
-    if(value.includes('плодов')||value.includes('сад')||value.includes('orchard')||value.includes('fruit crop'))out.push('сад');
-    if(value.includes('хвой')||value.includes('conifer'))out.push('хвойні');
-    if(value.includes('газон')||value.includes('lawn')||value.includes('turf'))out.push('газон');
-    return out;
-  }
-
   const culturesFor=p=>{
     const canonical=facetList(p,'cultures');
-    if(canonical.length)return canonical;
-    const raw=Array.isArray(p.cultures)?[...p.cultures]:[];
-    if(!raw.length)raw.push(...applicationTexts(p));
-    return uniq(raw.flatMap(cultureValuesFromText));
-  };
-  const cultureMatches=(p,value)=>{
-    const values=culturesFor(p);
-    return values.includes('all')||values.includes(value);
+    return canonical.length?canonical:(p.cultures||[]);
   };
   const productText=p=>norm([p.name,brandFor(p),p.manufacturer,p.categoryLabel,categoryFor(p),p.npk,p.activeIngredient,p.productType,p.shortDescription,...productSkus(p).map(s=>`${s.id} ${s.sku||''} ${s.variant||''}`),...culturesFor(p),...(p.purposes||[])].join(' '));
   const hasStock=p=>typeof p?.facets?.in_stock==='boolean'
@@ -83,6 +43,17 @@ document.addEventListener('DOMContentLoaded',async()=>{
     {id:'medium',label:'Середня',hint:'100 г/мл – 1 кг/л'},
     {id:'large',label:'Велика',hint:'від 5 кг/л'}
   ];
+  const plantlogicSectionOrder=[
+    {id:'blueberry',label:'Для лохини'},
+    {id:'rubus',label:'Для малини та ожини'},
+    {id:'universal',label:'Універсальні контейнери'},
+    {id:'strawberry',label:'Для полуниці'},
+    {id:'vegetable',label:'Для овочевих культур'},
+    {id:'bag_bases',label:'Основи для мішків'},
+    {id:'accessories',label:'Аксесуари'}
+  ];
+  const plantlogicSectionsFor=p=>Array.isArray(p?.plantlogic_sections)?p.plantlogic_sections.filter(Boolean):[];
+
   const methodGroups=[
     {id:'fertigation',label:'Фертигація',hint:'крапельний полив'},
     {id:'foliar',label:'По листу',hint:'позакоренево'},
@@ -100,7 +71,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
 
   function packageMetric(sku){
     const t=norm(sku?.variant||'').replace(',','.');
-    const m=t.match(/(\d+(?:\.\d+)?)\s*(кг|kg|гр|г|мл|ml|л|l)(?=$|[\s,;)/])/i);
+    const m=t.match(/(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml)\b/i);
     if(m){
       const metric=metricFromUnit(m[1],m[2]);
       if(metric!==null)return metric;
@@ -124,58 +95,43 @@ document.addEventListener('DOMContentLoaded',async()=>{
     return '';
   }
 
-  function matchingSkusForPackage(p,groups){
-    const rows=productSkus(p);
-    if(!groups?.length)return rows;
-    return rows.filter(s=>groups.includes(packageGroupForSku(s)));
-  }
-
-  function hasSkuForPackage(p,groups){
-    return !groups?.length||matchingSkusForPackage(p,groups).length>0;
-  }
-
-  function skuInStock(s){
-    if(typeof s?.facets?.in_stock==='boolean')return s.facets.in_stock;
-    return s?.availability==='in_stock'
-      &&s?.enabled!==false
-      &&s?.commercial_status!=='paused'
-      &&s?.offer_status!=='draft';
+  function packageGroupsFor(p){
+    const canonical=facetList(p,'package_groups');
+    return canonical.length?canonical:uniq(productSkus(p).map(packageGroupForSku).filter(Boolean));
   }
 
   function displaySkuForPackage(p,groups){
     if(!groups?.length)return null;
-    const matching=matchingSkusForPackage(p,groups);
     const current=BB610.displaySku(p.id);
-    return matching.find(s=>s.id===current?.id&&BB610.canBuySku(s))||
-      matching.find(s=>BB610.canBuySku(s))||
-      matching.find(s=>skuInStock(s)&&BB610.hasPrice(s))||
+    if(current&&groups.includes(packageGroupForSku(current)))return current;
+    const matching=productSkus(p).filter(s=>groups.includes(packageGroupForSku(s)));
+    return matching.find(s=>BB610.canBuySku(s))||
       matching.find(s=>BB610.hasPrice(s))||
-      matching.find(s=>s.id===current?.id)||
+      matching.find(s=>s.availability==='in_stock')||
       matching[0]||
       null;
   }
 
   function hasStockForPackage(p,groups){
-    const rows=matchingSkusForPackage(p,groups);
-    if(groups?.length&&!rows.length)return false;
-    return rows.some(s=>skuInStock(s));
+    if(!groups?.length)return hasStock(p);
+    return productSkus(p).some(s=>
+      groups.includes(packageGroupForSku(s))
+      &&s.availability==='in_stock'
+      &&s.enabled!==false
+    );
   }
 
   function displayPriceForPackage(p,groups){
-    if(!groups?.length)return BB610.displaySku(p.id)?.price??p.price;
     const s=displaySkuForPackage(p,groups);
-    return s?.price??null;
+    return s?.price??p.price;
   }
 
-  function methodGroupsForRaw(raw){
-    const value=norm(raw);
-    const out=[];
-    const isFoliar=value.includes('позакорен')||value.includes('листков')||value.includes('foliar');
-    if(value.includes('фертигац')||value.includes('крапель')||value.includes('drip'))out.push('fertigation');
-    if(isFoliar)out.push('foliar');
-    else if(value.includes('коренев')||value.includes('під корін')||value.includes('root'))out.push('root');
-    return out;
-  }
+  const methodAlias={
+    'фертигація':'fertigation',
+    'позакореневе внесення':'foliar',
+    'листкове внесення':'foliar',
+    'кореневе внесення':'root'
+  };
 
   function methodGroupsFor(p){
     const canonical=facetList(p,'application_methods');
@@ -184,21 +140,21 @@ document.addEventListener('DOMContentLoaded',async()=>{
       ...(Array.isArray(p.applicationMethods)?p.applicationMethods:[]),
       ...(Array.isArray(p.application_methods)?p.application_methods:[])
     ];
-    if(!raw.length)raw.push(...applicationTexts(p));
-    return uniq(raw.flatMap(methodGroupsForRaw));
+    if(!raw.length&&typeof p.application==='string')raw.push(...p.application.split(';'));
+    return uniq(raw.map(x=>methodAlias[norm(x)]||'').filter(Boolean));
   }
 
   const categories=BB610_DATA_SOURCE.categories().filter(c=>c.enabled&&!(BB610.categoryHidden&&BB610.categoryHidden(c.id))).sort((a,b)=>(a.order||0)-(b.order||0));
   const nonContainerSource=source.filter(p=>categoryFor(p)!=='containers');
   const brands=uniq(source.map(brandFor)).sort(natural);
-  const cultures=uniq(nonContainerSource.flatMap(culturesFor).filter(x=>x!=='all')).sort(natural);
+  const cultures=uniq(nonContainerSource.flatMap(culturesFor)).sort(natural);
 
   function optionCount(group,value){
     return source.filter(p=>{
       if(group==='category')return categoryFor(p)===value;
       if(group==='brand')return brandFor(p)===value;
-      if(group==='culture')return categoryFor(p)!=='containers'&&cultureMatches(p,value);
-      if(group==='packageGroup')return categoryFor(p)!=='containers'&&hasSkuForPackage(p,[value]);
+      if(group==='culture')return categoryFor(p)!=='containers'&&culturesFor(p).includes(value);
+      if(group==='packageGroup')return categoryFor(p)!=='containers'&&packageGroupsFor(p).includes(value);
       if(group==='methodGroup')return categoryFor(p)!=='containers'&&methodGroupsFor(p).includes(value);
       return false;
     }).length;
@@ -274,12 +230,13 @@ document.addEventListener('DOMContentLoaded',async()=>{
   function matchesState(p,state,skip=''){
     if(state.qq&&!productText(p).includes(state.qq))return false;
     if(skip!=='category'&&!matchesMulti(p,state.category,(x,v)=>categoryFor(x)===v))return false;
-    if(skip!=='packageGroup'&&state.packageGroup.length&&!hasSkuForPackage(p,state.packageGroup))return false;
+    if(skip!=='packageGroup'&&!matchesMulti(p,state.packageGroup,(x,v)=>packageGroupsFor(x).includes(v)))return false;
     if(skip!=='methodGroup'&&!matchesMulti(p,state.methodGroup,(x,v)=>methodGroupsFor(x).includes(v)))return false;
-    if(skip!=='culture'&&!matchesMulti(p,state.culture,(x,v)=>cultureMatches(x,v)))return false;
+    if(skip!=='culture'&&!matchesMulti(p,state.culture,(x,v)=>culturesFor(x).includes(v)))return false;
     if(skip!=='brand'&&!matchesMulti(p,state.brand,(x,v)=>brandFor(x)===v))return false;
     if(
-      (state.packageGroup.length||state.methodGroup.length||state.culture.length)
+      skip!=='category'
+      &&(state.packageGroup.length||state.methodGroup.length||state.culture.length)
       &&categoryFor(p)==='containers'
     )return false;
     if(state.stock&&!hasStockForPackage(p,state.packageGroup))return false;
@@ -289,8 +246,8 @@ document.addEventListener('DOMContentLoaded',async()=>{
   function facetMatches(p,group,value){
     if(group==='category')return categoryFor(p)===value;
     if(group==='brand')return brandFor(p)===value;
-    if(group==='culture')return categoryFor(p)!=='containers'&&cultureMatches(p,value);
-    if(group==='packageGroup')return categoryFor(p)!=='containers'&&hasSkuForPackage(p,[value]);
+    if(group==='culture')return categoryFor(p)!=='containers'&&culturesFor(p).includes(value);
+    if(group==='packageGroup')return categoryFor(p)!=='containers'&&packageGroupsFor(p).includes(value);
     if(group==='methodGroup')return categoryFor(p)!=='containers'&&methodGroupsFor(p).includes(value);
     return false;
   }
@@ -357,6 +314,41 @@ document.addEventListener('DOMContentLoaded',async()=>{
     }
   }
 
+  function renderCards(list,state){
+    const isContainerView=state.category.length===1&&state.category[0]==='containers';
+    const plantlogic=list.filter(p=>norm(brandFor(p))==='plantlogic');
+    const withSections=plantlogic.filter(p=>plantlogicSectionsFor(p).length);
+    if(!isContainerView||!withSections.length){
+      grid.classList.remove('plantlogic-sectioned-grid');
+      return list.map(p=>BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))).join('');
+    }
+
+    grid.classList.add('plantlogic-sectioned-grid');
+    const chunks=[];
+    const shown=new Set();
+    plantlogicSectionOrder.forEach(section=>{
+      const rows=list.filter(p=>norm(brandFor(p))==='plantlogic'&&plantlogicSectionsFor(p).includes(section.id));
+      if(!rows.length)return;
+      rows.forEach(p=>shown.add(p.id));
+      chunks.push(`<section class="plantlogic-catalog-block" data-plantlogic-section="${h(section.id)}">
+        <div class="plantlogic-catalog-block-head">
+          <h2>${h(section.label)}</h2>
+          <span>${rows.length} ${rows.length===1?'модель':'моделей'}</span>
+        </div>
+        <div class="products-grid plantlogic-products-grid">${rows.map(p=>BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))).join('')}</div>
+      </section>`);
+    });
+
+    const remainder=list.filter(p=>norm(brandFor(p))!=='plantlogic'||!shown.has(p.id));
+    if(remainder.length){
+      chunks.push(`<section class="plantlogic-catalog-block plantlogic-catalog-other">
+        <div class="plantlogic-catalog-block-head"><h2>Інші горщики</h2><span>${remainder.length} моделей</span></div>
+        <div class="products-grid plantlogic-products-grid">${remainder.map(p=>BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))).join('')}</div>
+      </section>`);
+    }
+    return chunks.join('');
+  }
+
   function render(){
     syncContainerFacetMode();
     const state=filterState();
@@ -365,7 +357,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
     if(sort.value==='price-desc')all.sort((a,b)=>{const ap=displayPriceForPackage(a,state.packageGroup),bp=displayPriceForPackage(b,state.packageGroup);return (bp==null?-Infinity:bp)-(ap==null?-Infinity:ap)});
     if(sort.value==='name')all.sort((a,b)=>a.name.localeCompare(b.name,'uk'));
     count.textContent=`${all.length} товарів`;
-    grid.innerHTML=all.map(p=>BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))).join('');
+    grid.innerHTML=renderCards(all,state);
     empty.style.display=all.length?'none':'block';
     BB610.bindCards(grid);
     renderChips();

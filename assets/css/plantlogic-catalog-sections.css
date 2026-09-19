@@ -1,0 +1,35 @@
+#catalog-grid.plantlogic-sectioned-grid{
+  display:block;
+}
+.plantlogic-catalog-block{
+  margin:0 0 34px;
+}
+.plantlogic-catalog-block-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:16px;
+  margin:0 0 14px;
+  padding:0 0 10px;
+  border-bottom:1px solid #34393a;
+}
+.plantlogic-catalog-block-head h2{
+  margin:0;
+  color:#f1f1ec;
+  font-size:20px;
+  line-height:1.15;
+  font-weight:800;
+}
+.plantlogic-catalog-block-head span{
+  color:#8d9591;
+  font-size:12px;
+  white-space:nowrap;
+}
+.plantlogic-products-grid{
+  width:100%;
+}
+@media(max-width:560px){
+  .plantlogic-catalog-block{margin-bottom:28px}
+  .plantlogic-catalog-block-head{align-items:center}
+  .plantlogic-catalog-block-head h2{font-size:17px}
+}

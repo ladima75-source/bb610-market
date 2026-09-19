@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.0",
+  "verified_date": "2026-09-19",
+  "official_navigation_source": "https://getplantlogic.com/blueberry-production/",
+  "policy": "Membership follows current Plantlogic product navigation. Cross-listing is allowed only when Plantlogic itself lists the product in multiple sections. The Cannabis section uses a temporary BB610 storefront label.",
+  "sections": [
+    {
+      "id": "blueberry",
+      "official_name": "Blueberry Production",
+      "label": "Для лохини",
+      "order": 10
+    },
+    {
+      "id": "rubus",
+      "official_name": "Rubus Production",
+      "label": "Для малини та ожини",
+      "order": 20
+    },
+    {
+      "id": "universal",
+      "official_name": "Cannabis Production",
+      "label": "Універсальні контейнери",
+      "order": 30,
+      "temporary_label": true
+    },
+    {
+      "id": "strawberry",
+      "official_name": "Strawberry Production",
+      "label": "Для полуниці",
+      "order": 40
+    },
+    {
+      "id": "vegetable",
+      "official_name": "Vegetable Production",
+      "label": "Для овочевих культур",
+      "order": 50
+    },
+    {
+      "id": "bag_bases",
+      "official_name": "Bag Bases",
+      "label": "Основи для мішків",
+      "order": 60
+    },
+    {
+      "id": "accessories",
+      "official_name": "Accessories",
+      "label": "Аксесуари",
+      "order": 70
+    }
+  ],
+  "product_sections": {
+    "prd_pl_zephyr_v2": [
+      "blueberry"
+    ],
+    "prd_pl_1309020": [
+      "blueberry"
+    ],
+    "prd_pl_1308020": [
+      "blueberry"
+    ],
+    "prd_pl_1308125": [
+      "blueberry"
+    ],
+    "prd_pl_1303025": [
+      "blueberry"
+    ],
+    "prd_pl_1304125": [
+      "blueberry",
+      "universal",
+      "vegetable"
+    ],
+    "prd_pl_1303125": [
+      "blueberry"
+    ],
+    "prd_pl_1309025": [
+      "blueberry"
+    ],
+    "prd_pl_1309026": [
+      "blueberry"
+    ],
+    "prd_pl_1308026": [
+      "blueberry"
+    ],
+    "prd_pl_1308303": [
+      "blueberry",
+      "rubus"
+    ],
+    "prd_pl_1308031": [
+      "blueberry"
+    ],
+    "prd_pl_1309030": [
+      "blueberry"
+    ],
+    "prd_pl_1308305": [
+      "blueberry"
+    ],
+    "prd_pl_13080350": [
+      "blueberry"
+    ],
+    "prd_pl_13090350": [
+      "blueberry"
+    ],
+    "prd_pl_1308040": [
+      "blueberry"
+    ],
+    "prd_pl_1308041": [
+      "blueberry"
+    ],
+    "prd_pl_40sq_ug_side": [
+      "blueberry"
+    ],
+    "prd_pl_1306003": [
+      "rubus",
+      "universal"
+    ],
+    "prd_pl_13050040": [
+      "rubus"
+    ],
+    "prd_pl_1306051": [
+      "rubus"
+    ],
+    "prd_pl_1305005": [
+      "rubus",
+      "universal"
+    ],
+    "prd_pl_1306007": [
+      "rubus"
+    ],
+    "prd_pl_1305071": [
+      "rubus"
+    ],
+    "prd_pl_1307107": [
+      "rubus",
+      "universal"
+    ],
+    "prd_pl_1309008": [
+      "rubus"
+    ],
+    "prd_pl_1306010": [
+      "rubus"
+    ],
+    "prd_pl_1307110": [
+      "rubus",
+      "universal",
+      "vegetable"
+    ],
+    "prd_pl_1309015": [
+      "rubus"
+    ],
+    "prd_pl_1304015": [
+      "rubus",
+      "universal"
+    ],
+    "prd_pl_1307133": [
+      "universal"
+    ],
+    "prd_pl_1305117": [
+      "vegetable"
+    ],
+    "prd_pl_1308025": [
+      "universal"
+    ]
+  },
+  "mapping_notes": {
+    "prd_pl_1308025": "Official product page states IDEAL FOR SUBSTRATE PRODUCTION; placed in temporary general/universal storefront block pending final section-name decision.",
+    "prd_pl_1308026": "Official Plantlogic blueberry material/tag context; mapped to Blueberry.",
+    "prd_pl_40sq_ug_side": "Official Plantlogic page/slug identifies the model for blueberries; mapped to Blueberry."
+  }
+}

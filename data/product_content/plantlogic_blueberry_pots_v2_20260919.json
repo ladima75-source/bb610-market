@@ -1,0 +1,335 @@
+{
+  "schema_version": "2.0",
+  "source": {
+    "document": "Plantlogic Catalog 2026",
+    "section": "Blueberry production",
+    "pages": [
+      5,
+      6,
+      7
+    ],
+    "manufacturer": "Plantlogic",
+    "manufacturer_url": "https://getplantlogic.com/"
+  },
+  "policy": {
+    "product_cards": 5,
+    "manufacturer_models": 17,
+    "storefront_skus": 48,
+    "sku_rule": "manufacturer_product_no + color",
+    "note": "Plantlogic catalog lists Product # per model and available colors; BB610 color suffixes are internal storefront SKU identifiers, not manufacturer Product # values."
+  },
+  "colors": {
+    "standard": [
+      {
+        "code": "black",
+        "label": "Чорний",
+        "suffix": "BK"
+      },
+      {
+        "code": "white",
+        "label": "Білий",
+        "suffix": "WH"
+      },
+      {
+        "code": "terracotta",
+        "label": "Теракотовий",
+        "suffix": "TC"
+      }
+    ],
+    "zephyr": [
+      {
+        "code": "black",
+        "label": "Чорний",
+        "suffix": "BK"
+      },
+      {
+        "code": "white",
+        "label": "Білий",
+        "suffix": "WH"
+      }
+    ]
+  },
+  "products": [
+    {
+      "product_id": "prd_pl_bb_round",
+      "slug": "blueberry-round-pots",
+      "title": "Круглі горщики для лохини",
+      "family": "round",
+      "shape": "round",
+      "groove_group": "none",
+      "color_set": "standard",
+      "volumes_label": "20 / 25 / 30 / 40 л",
+      "models": [
+        {
+          "product_no": "1308020",
+          "volume_l": 20,
+          "execution_code": "standard_legs",
+          "execution_label": "Стандартні ніжки",
+          "dimensions": {
+            "A": "303 мм",
+            "B": "Ø 370 мм",
+            "C": "245 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 5
+        },
+        {
+          "product_no": "1303025",
+          "volume_l": 25,
+          "execution_code": "short_legs",
+          "execution_label": "Короткі ніжки",
+          "dimensions": {
+            "A": "306 мм",
+            "B": "Ø 399 мм",
+            "C": "294 мм",
+            "D": "13 мм"
+          },
+          "catalog_page": 5
+        },
+        {
+          "product_no": "1308025",
+          "volume_l": 25,
+          "execution_code": "standard_legs",
+          "execution_label": "Стандартні ніжки",
+          "dimensions": {
+            "A": "354 мм",
+            "B": "Ø 385 мм",
+            "C": "268 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 5
+        },
+        {
+          "product_no": "1308031",
+          "volume_l": 30,
+          "execution_code": "v_ribs",
+          "execution_label": "V-ребра",
+          "dimensions": {
+            "A": "383 мм",
+            "B": "Ø 407 мм",
+            "C": "282 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 5
+        },
+        {
+          "product_no": "1308040",
+          "volume_l": 40,
+          "execution_code": "standard_legs",
+          "execution_label": "Стандартні ніжки",
+          "dimensions": {
+            "A": "384 мм",
+            "B": "Ø 460 мм",
+            "C": "330 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 5
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_bb_square",
+      "slug": "blueberry-square-pots",
+      "title": "Квадратні горщики для лохини",
+      "family": "square",
+      "shape": "square",
+      "groove_group": "none",
+      "color_set": "standard",
+      "volumes_label": "20 / 25 / 30 л",
+      "models": [
+        {
+          "product_no": "1309020",
+          "volume_l": 20,
+          "execution_code": "standard_legs",
+          "execution_label": "Стандартні ніжки",
+          "dimensions": {
+            "A": "316 мм",
+            "B": "330 × 330 мм",
+            "C": "229 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 5
+        },
+        {
+          "product_no": "1309025",
+          "volume_l": 25,
+          "execution_code": "standard_legs",
+          "execution_label": "Стандартні ніжки",
+          "dimensions": {
+            "A": "322 мм",
+            "B": "355 × 355 мм",
+            "C": "264 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 5
+        },
+        {
+          "product_no": "1309030",
+          "volume_l": 30,
+          "execution_code": "standard_legs",
+          "execution_label": "Стандартні ніжки",
+          "dimensions": {
+            "A": "322 мм",
+            "B": "385 × 385 мм",
+            "C": "291 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 5
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_bb_round_u",
+      "slug": "blueberry-round-u-groove-pots",
+      "title": "Круглі горщики з U-пазами для лохини",
+      "family": "u_groove_round",
+      "shape": "round",
+      "groove_group": "u_groove",
+      "color_set": "standard",
+      "volumes_label": "30 / 35 / 40 л",
+      "models": [
+        {
+          "product_no": "1308303",
+          "volume_l": 30,
+          "execution_code": "u_grooves",
+          "execution_label": "U-пази",
+          "dimensions": {
+            "A": "380 мм",
+            "B": "Ø 407 мм",
+            "C": "283 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 6
+        },
+        {
+          "product_no": "1308305",
+          "volume_l": 30,
+          "execution_code": "parallel_u_grooves",
+          "execution_label": "Паралельні U-пази",
+          "dimensions": {
+            "A": "380 мм",
+            "B": "Ø 407 мм",
+            "C": "283 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 6
+        },
+        {
+          "product_no": "1308035",
+          "volume_l": 35,
+          "execution_code": "u_grooves",
+          "execution_label": "U-пази",
+          "dimensions": {
+            "A": "340 мм",
+            "B": "Ø 460 мм",
+            "C": "341 мм",
+            "D": "35 мм"
+          },
+          "catalog_page": 6
+        },
+        {
+          "product_no": "13080410",
+          "volume_l": 40,
+          "execution_code": "u_grooves",
+          "execution_label": "U-пази",
+          "dimensions": {
+            "A": "384 мм",
+            "B": "Ø 460 мм",
+            "C": "330 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 6
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_bb_square_u",
+      "slug": "blueberry-square-u-groove-pots",
+      "title": "Квадратні горщики з U-пазами для лохини",
+      "family": "u_groove_square",
+      "shape": "square",
+      "groove_group": "u_groove",
+      "color_set": "standard",
+      "volumes_label": "25 / 35 л",
+      "models": [
+        {
+          "product_no": "1309026",
+          "volume_l": 25,
+          "execution_code": "u_grooves",
+          "execution_label": "U-пази",
+          "dimensions": {
+            "A": "322 мм",
+            "B": "355 × 355 мм",
+            "C": "264 мм",
+            "D": "30 мм"
+          },
+          "catalog_page": 6
+        },
+        {
+          "product_no": "1309035",
+          "volume_l": 35,
+          "execution_code": "u_grooves",
+          "execution_label": "U-пази",
+          "dimensions": {
+            "A": "350 мм",
+            "B": "425 × 425 мм",
+            "C": "290 мм",
+            "D": "40 мм"
+          },
+          "catalog_page": 6
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_bb_zephyr_v2",
+      "slug": "blueberry-zephyr-v2-pots",
+      "title": "Горщики Zephyr V2 для лохини",
+      "family": "zephyr",
+      "shape": "zephyr",
+      "groove_group": "zephyr",
+      "color_set": "zephyr",
+      "volumes_label": "25 / 30 / 40 л",
+      "models": [
+        {
+          "product_no": "1301144",
+          "volume_l": 25,
+          "execution_code": "zephyr_7cm",
+          "execution_label": "Zephyr V2 · ніжки 7 см",
+          "dimensions": {
+            "A": "369 мм",
+            "B": "Ø 333 мм",
+            "C": "397 мм",
+            "D": "70 мм"
+          },
+          "catalog_page": 7
+        },
+        {
+          "product_no": "1301153",
+          "volume_l": 30,
+          "execution_code": "zephyr_7cm",
+          "execution_label": "Zephyr V2 · ніжки 7 см",
+          "dimensions": {
+            "A": "420 мм",
+            "B": "Ø 333 мм",
+            "C": "397 мм",
+            "D": "70 мм"
+          },
+          "catalog_page": 7
+        },
+        {
+          "product_no": "1301143",
+          "volume_l": 40,
+          "execution_code": "zephyr_7cm",
+          "execution_label": "Zephyr V2 · ніжки 7 см",
+          "dimensions": {
+            "A": "370 мм",
+            "B": "Ø 427 мм",
+            "C": "500 мм",
+            "D": "70 мм"
+          },
+          "catalog_page": 7
+        }
+      ]
+    }
+  ]
+}

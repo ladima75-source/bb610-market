@@ -91,8 +91,8 @@ jobs:
           css=Path('css/product-pot.css').read_text(encoding='utf-8')
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
-          assert 'css/product-pot.css?v=20260919-pot-pdp-6' in html
-          assert 'js/product-pot.js?v=20260919-pot-pdp-6' in html
+          assert 'css/product-pot.css?v=20260919-pot-pdp-7' in html
+          assert 'js/product-pot.js?v=20260919-pot-pdp-7' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
           assert 'BB610_POT_PDP?.matches(p)' in product
           assert 'BB610_POT_PDP.render' in product
@@ -124,8 +124,13 @@ jobs:
           assert '.pot-explainer-layout' in css
           assert '.pot-garden-guide' in css
           assert '.pot-diagram-marker' in css
+          assert '.pot-visual-section' in css
+          assert 'min-height:590px' in css
+          assert 'box-shadow:0 18px 42px' in css
 
           assert 'function renderFamilyOverview(product)' in pot
+          assert 'data-pot-content-image' in pot
+          assert 'Дренаж, вентиляція та робота конструкції' not in pot
           assert 'function renderTechnologyExplainer(product)' in pot
           assert 'pot-diagram-marker' in pot
           assert 'function renderGardenGuide(product)' in pot

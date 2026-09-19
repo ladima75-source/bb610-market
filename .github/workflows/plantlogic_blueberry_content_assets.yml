@@ -1,0 +1,45 @@
+name: Plantlogic blueberry content assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/build_plantlogic_blueberry_content_assets.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: plantlogic-blueberry-content-assets
+  cancel-in-progress: true
+
+jobs:
+  build-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image build dependencies
+        run: python -m pip install --disable-pip-version-check pymupdf pillow
+      - name: Build official explanatory assets
+        run: python tools/build_plantlogic_blueberry_content_assets.py
+      - name: Commit generated assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/plantlogic/blueberry-family-standard.jpg \
+                  assets/plantlogic/blueberry-family-u-groove.jpg \
+                  assets/plantlogic/blueberry-root-zone.png
+          if git diff --cached --quiet; then
+            echo "No asset changes"
+            exit 0
+          fi
+          git commit -m "Build Plantlogic blueberry explanatory assets [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main

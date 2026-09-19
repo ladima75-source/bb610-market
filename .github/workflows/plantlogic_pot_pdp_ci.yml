@@ -191,7 +191,11 @@ jobs:
               assert isinstance(content.get('garden_guide'), dict)
               assert content['garden_guide']['url'] == 'https://garden.bb610.com.ua'
               if pid != 'prd_pl_bb_zephyr_v2':
-                  assert isinstance(content.get('family_overview'), dict)
+                  if pid == 'prd_pl_bb_round':
+                      assert content.get('family_overview') is None
+                      assert isinstance(content.get('model_showcase'), dict)
+                  else:
+                      assert isinstance(content.get('family_overview'), dict)
                   assert isinstance(content.get('technology_explainer'), dict)
                   codes = [x['code'] for x in content['technology_explainer']['items']]
                   if pid in {'prd_pl_bb_round_u','prd_pl_bb_square_u'}:

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "batch": "Plantlogic current Products-menu completion / Strawberry + Vegetable + Bag Bases + Accessories / 2026-09-19",
+  "batch": "Plantlogic current Products-menu completion incl. confirmed Ground Cover, Trough Cover and Pot Anchor / 2026-09-19",
   "source_policy": "Current Plantlogic Products navigation determines section membership. Product # values come from current official product pages or Plantlogic catalog/tech sheets; no inferred cross-use.",
   "products": [
     {
@@ -431,6 +431,157 @@
           "label": "Великий лізиметр · арт. 1301030",
           "package": "1 шт",
           "product_no": "1301030"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1600201",
+      "slug": "plantlogic-ground-cover-1600201",
+      "name": "Агротканина Ground Cover — арт. 1600201",
+      "source_url": "https://getplantlogic.com/portfolio-items/ground-cover/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2026/07/best-ground-cover-for-greenhouse.jpg",
+      "product_type": "Агротканина / ground cover",
+      "purpose": "Accessories; контроль бур'янів; зниження ризику ґрунтових хвороб",
+      "description": "Ground Cover Plantlogic для покриття ґрунту у виробничих насадженнях. Офіційний tech sheet вказує PP, ширину 0,4–8 м, довжину 50–200 м, щільність 90–280 г/м² та ресурс 5–10 років.",
+      "dimensions": "Ширина 0,4–8 м; довжина 50–200 м; щільність 90–280 г/м²",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1600201",
+          "sku_code": "PL-1600201",
+          "label": "арт. 1600201",
+          "package": "1 рулон",
+          "product_no": "1600201"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_trough_cover",
+      "slug": "plantlogic-trough-cover",
+      "name": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+      "source_url": "https://getplantlogic.com/portfolio-items/trough-cover-for-strawberries/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+      "product_type": "Накриття для полуничного жолоба",
+      "purpose": "Accessories; полуниця; зменшення випаровування; захист субстрату",
+      "description": "Trough Cover Plantlogic для 18-літрового полуничного жолоба. Доступне у PE та biodegradable виконанні, без отворів або з різною кількістю посадкових отворів.",
+      "dimensions": "Ширина 330 мм; товщина 0,1 мм; довжина налаштовується або 1 м залежно від виконання",
+      "skus": [
+        {
+          "sku_id": "sku_pl_30020034",
+          "sku_code": "PL-30020034",
+          "label": "PE · без отворів · арт. 30020034",
+          "package": "1 шт",
+          "product_no": "30020034"
+        },
+        {
+          "sku_id": "sku_pl_c30020034",
+          "sku_code": "PL-C30020034",
+          "label": "Biodegradable · без отворів · арт. C30020034",
+          "package": "1 шт",
+          "product_no": "C30020034"
+        },
+        {
+          "sku_id": "sku_pl_30020037",
+          "sku_code": "PL-30020037",
+          "label": "PE · 1 м · 3 отвори · арт. 30020037",
+          "package": "1 шт",
+          "product_no": "30020037"
+        },
+        {
+          "sku_id": "sku_pl_c30020037",
+          "sku_code": "PL-C30020037",
+          "label": "Biodegradable · 1 м · 3 отвори · арт. C30020037",
+          "package": "1 шт",
+          "product_no": "C30020037"
+        },
+        {
+          "sku_id": "sku_pl_30020012",
+          "sku_code": "PL-30020012",
+          "label": "PE · 1 м · 8 отворів · арт. 30020012",
+          "package": "1 шт",
+          "product_no": "30020012"
+        },
+        {
+          "sku_id": "sku_pl_c30020012",
+          "sku_code": "PL-C30020012",
+          "label": "Biodegradable · 1 м · 8 отворів · арт. C30020012",
+          "package": "1 шт",
+          "product_no": "C30020012"
+        },
+        {
+          "sku_id": "sku_pl_30020036",
+          "sku_code": "PL-30020036",
+          "label": "PE · 1 м · 10 отворів · арт. 30020036",
+          "package": "1 шт",
+          "product_no": "30020036"
+        },
+        {
+          "sku_id": "sku_pl_c30020036",
+          "sku_code": "PL-C30020036",
+          "label": "Biodegradable · 1 м · 10 отворів · арт. C30020036",
+          "package": "1 шт",
+          "product_no": "C30020036"
+        },
+        {
+          "sku_id": "sku_pl_30020040",
+          "sku_code": "PL-30020040",
+          "label": "PE · 1 м · 12 отворів · арт. 30020040",
+          "package": "1 шт",
+          "product_no": "30020040"
+        },
+        {
+          "sku_id": "sku_pl_c30020040",
+          "sku_code": "PL-C30020040",
+          "label": "Biodegradable · 1 м · 12 отворів · арт. C30020040",
+          "package": "1 шт",
+          "product_no": "C30020040"
+        },
+        {
+          "sku_id": "sku_pl_30020041",
+          "sku_code": "PL-30020041",
+          "label": "PE · 1 м · 14 отворів · арт. 30020041",
+          "package": "1 шт",
+          "product_no": "30020041"
+        },
+        {
+          "sku_id": "sku_pl_c30020041",
+          "sku_code": "PL-C30020041",
+          "label": "Biodegradable · 1 м · 14 отворів · арт. C30020041",
+          "package": "1 шт",
+          "product_no": "C30020041"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_pot_anchor",
+      "slug": "plantlogic-pot-anchor",
+      "name": "Pot Anchor — анкер для стабілізації горщиків Plantlogic",
+      "source_url": "https://getplantlogic.com/portfolio-items/pot-anchor/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/01/product_PotAnchor_03.jpg?ssl=1&w=669",
+      "product_type": "Анкер для горщика",
+      "purpose": "Accessories; стабілізація контейнерів від вітру та механічного впливу",
+      "description": "Pot Anchor Plantlogic фіксує контейнер до ґрунту та допомагає запобігати перекиданню під дією вітру або механічного збору. Офіційний tech sheet містить три Product #; точну прив'язку кожного номера до конкретної моделі горщика не вигадуємо.",
+      "dimensions": "Монтаж через центральну частину контейнера; сумісність залежить від моделі горщика",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1700020",
+          "sku_code": "PL-1700020",
+          "label": "арт. 1700020",
+          "package": "1 шт",
+          "product_no": "1700020"
+        },
+        {
+          "sku_id": "sku_pl_1700034",
+          "sku_code": "PL-1700034",
+          "label": "арт. 1700034",
+          "package": "1 шт",
+          "product_no": "1700034"
+        },
+        {
+          "sku_id": "sku_pl_1700041",
+          "sku_code": "PL-1700041",
+          "label": "арт. 1700041",
+          "package": "1 шт",
+          "product_no": "1700041"
         }
       ]
     }

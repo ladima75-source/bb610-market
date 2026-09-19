@@ -204,6 +204,15 @@
     ],
     "prd_pl_lysimeter_kit": [
       "accessories"
+    ],
+    "prd_pl_1600201": [
+      "accessories"
+    ],
+    "prd_pl_trough_cover": [
+      "accessories"
+    ],
+    "prd_pl_pot_anchor": [
+      "accessories"
     ]
   },
   "mapping_notes": {
@@ -211,7 +220,8 @@
     "extended_confirmed_products": "1305909, 13079250/13079300, 12010300 and 1301036 are taken from current official Plantlogic product pages/menu. No unconfirmed Product # values are created.",
     "accessories_confirmed_products": "Current official pages confirm Product #12050010, 13046025/26/31/41, 1205012, 1700146/1700147, 1205018/1205019 and 1200021/1300010/1300011. Size-to-SKU relationships are not inferred when the page does not state them.",
     "current_menu_completion": "Current Products menu explicitly lists Strawberry troughs 8L/8L big handle/9L/9L truss/18L; Kratos and Rivus under both Vegetable Production and Bag Bases; Lysimeters under Accessories.",
-    "rivus_skus": "Current Rivus page uses family Product #1302050; SKU-level variants 13020500/13020502/13020510/13020512 come from the official Plantlogic catalog."
+    "rivus_skus": "Current Rivus page uses family Product #1302050; SKU-level variants 13020500/13020502/13020510/13020512 come from the official Plantlogic catalog.",
+    "last_confirmed_accessories": "Ground Cover Product #1600201 comes from the official 2026 tech-sheet filename; Trough Cover item numbers come directly from the official 2026 tech sheet; Pot Anchor #1700020/#1700034/#1700041 come from the official Plantlogic tech sheet. Cooling Skirt remains unpublished because no current Product # is stated."
   },
   "unmapped_current_cards": {
     "prd_pl_1308025": "25 Liter Round Pot (Wide Legs) — not present in the current Products section menu; keep out of sectioned storefront until official section is confirmed.",

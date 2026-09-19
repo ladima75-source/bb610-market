@@ -205,7 +205,13 @@ jobs:
               content = card['content']
               assert isinstance(content.get('garden_guide'), dict)
               assert content['garden_guide']['url'] == 'https://garden.bb610.com.ua'
-              if pid != 'prd_pl_bb_zephyr_v2':
+              if pid == 'prd_pl_bb_zephyr_v2':
+                  assert isinstance(content.get('family_overview'), dict)
+                  assert content['family_overview']['image'].endswith('zephyr-v2-greenhouse.jpg')
+                  assert isinstance(content.get('technology_explainer'), dict)
+                  assert content['technology_explainer']['image'].endswith('zephyr-v2-capacities.jpg')
+                  assert [x['code'] for x in content['technology_explainer']['items']] == ['25 л','30 л','40 л']
+              else:
                   if pid in {'prd_pl_bb_round','prd_pl_bb_round_short_legs','prd_pl_bb_square','prd_pl_bb_round_u','prd_pl_bb_square_u'}:
                       assert content.get('family_overview') is None
                       assert isinstance(content.get('model_showcase'), dict)
@@ -233,6 +239,8 @@ jobs:
               'assets/plantlogic/blueberry-family-u-groove.jpg',
               'assets/plantlogic/blueberry-root-zone.png',
               'assets/plantlogic/blueberry-root-zone-standard.jpg',
+              'assets/plantlogic/zephyr-v2-capacities.jpg',
+              'assets/plantlogic/zephyr-v2-greenhouse.jpg',
           ]:
               p = __import__('pathlib').Path(path)
               assert p.is_file() and p.stat().st_size > 10000, path

@@ -302,15 +302,20 @@ def technology_explainer_for(product: dict) -> dict | None:
             ),
         })
 
+    is_u_groove = "u_groove" in family
     return {
         "title": "Як працює конструкція",
         "lead": (
             "Ключові елементи конструкції впливають на розміщення поливу, повітрообмін і відведення "
             "надлишкової води з кореневої зони."
         ),
-        "image": "/assets/plantlogic/blueberry-root-zone.png",
+        "image": (
+            "/assets/plantlogic/blueberry-root-zone.png"
+            if is_u_groove
+            else "/assets/plantlogic/blueberry-root-zone-standard.jpg"
+        ),
         "image_alt": "Схема роботи кореневої зони, дренажу та повітрообміну у горщику Plantlogic",
-        "image_mode": "root-zone",
+        "image_mode": "root-zone-u" if is_u_groove else "root-zone-standard",
         "items": items,
     }
 

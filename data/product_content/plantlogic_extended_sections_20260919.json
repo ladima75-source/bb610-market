@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "batch": "Plantlogic current-menu extension / Strawberry + Bag Bases / 2026-09-19",
+  "source_policy": "Only current official Plantlogic product pages and current Products navigation. No invented Product # values.",
+  "products": [
+    {
+      "product_id": "prd_pl_1305909",
+      "slug": "plantlogic-18l-strawberry-trough-1305909",
+      "name": "Жолоб для полуниці 18 л з опорою для квітконосів — арт. 1305909",
+      "source_url": "https://getplantlogic.com/portfolio-items/18-liter-strawberry-trough-with-truss-support/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2024/03/18-liter-strawberry-trough_Item_1305909.jpg",
+      "product_type": "Жолоб для вирощування полуниці",
+      "purpose": "Полуниця; субстратне вирощування; система Hi-Grow",
+      "description": "1-метровий жорсткий жолоб Plantlogic для вирощування полуниці у субстраті. Широкі борти підтримують квітконоси; конструкція сумісна з Hi-Grow System.",
+      "dimensions": "255 мм ширина × 1014 мм довжина",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1305909",
+          "sku_code": "PL-1305909",
+          "label": "18 л · арт. 1305909",
+          "package": "18 л",
+          "product_no": "1305909"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_culti_base",
+      "slug": "plantlogic-culti-base",
+      "name": "Culti-base — мішок для субстрату з інтегрованою основою, 25 та 30 л",
+      "source_url": "https://getplantlogic.com/portfolio-items/culti-base-grow-bag-with-integrated-base/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2025/03/Culti-base-13079300-bolsa-de-cultivo-con-base.jpg",
+      "product_type": "Мішок для субстрату з інтегрованою основою",
+      "purpose": "Вирощування у субстраті; Bag Bases",
+      "description": "Система Plantlogic, що поєднує grow bag та жорстку інтегровану основу. Основа має пірамідальну геометрію, центральну аерацію та ніжки 5 см.",
+      "dimensions": "25 л #13079250: 50 × 326 × 326 × 405 мм; 30 л #13079300: 50 × 326 × 326 × 442 мм",
+      "skus": [
+        {
+          "sku_id": "sku_pl_13079250",
+          "sku_code": "PL-13079250",
+          "label": "25 л · арт. 13079250",
+          "package": "25 л",
+          "product_no": "13079250"
+        },
+        {
+          "sku_id": "sku_pl_13079300",
+          "sku_code": "PL-13079300",
+          "label": "30 л · арт. 13079300",
+          "package": "30 л",
+          "product_no": "13079300"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_12010300",
+      "slug": "plantlogic-vf-bag-base-12010300",
+      "name": "VF Bag Base — основа для мішка з субстратом — арт. 12010300",
+      "source_url": "https://getplantlogic.com/portfolio-items/vf-base-for-open-top-grow-bags/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2025/03/VF-BAG-BASE-12010300-ISOMETRICO.jpg",
+      "product_type": "Основа для grow bag",
+      "purpose": "Вирощування у субстраті; Bag Bases",
+      "description": "Низькопрофільна основа Plantlogic для open-top grow bags. Платформа висотою 5 см створює повітряний зазор під мішком і допомагає відводити дренаж.",
+      "dimensions": "Платформа 50 мм; актуальна сторінка Plantlogic вказує Product #12010300",
+      "skus": [
+        {
+          "sku_id": "sku_pl_12010300",
+          "sku_code": "PL-12010300",
+          "label": "арт. 12010300",
+          "package": "1 шт",
+          "product_no": "12010300"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1301036",
+      "slug": "plantlogic-bag-base-drainage-1301036",
+      "name": "Основа для мішка зі збором дренажу — арт. 1301036",
+      "source_url": "https://getplantlogic.com/portfolio-items/bag-base-drainage-collection/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2019/04/1036_1.jpg?w=669",
+      "product_type": "Основа для мішка зі збором дренажу",
+      "purpose": "Bag Bases; збір дренажу",
+      "description": "Основа Plantlogic для grow bags із внутрішніми каналами, що спрямовують дренаж до центрального жолоба. Широка опорна поверхня розрахована на м'який ґрунт.",
+      "dimensions": "372 мм ширина × 64,7 мм висота",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1301036",
+          "sku_code": "PL-1301036",
+          "label": "арт. 1301036",
+          "package": "1 шт",
+          "product_no": "1301036"
+        }
+      ]
+    }
+  ]
+}

@@ -150,10 +150,24 @@
     ],
     "prd_pl_1305117": [
       "vegetable"
+    ],
+    "prd_pl_1305909": [
+      "strawberry"
+    ],
+    "prd_pl_culti_base": [
+      "bag_bases"
+    ],
+    "prd_pl_12010300": [
+      "bag_bases"
+    ],
+    "prd_pl_1301036": [
+      "bag_bases",
+      "accessories"
     ]
   },
   "mapping_notes": {
-    "rule": "Only the current Plantlogic Products navigation determines storefront section membership. Tags, archive categories, URL wording and inferred crop compatibility do not add membership."
+    "rule": "Only the current Plantlogic Products navigation determines storefront section membership. Tags, archive categories, URL wording and inferred crop compatibility do not add membership.",
+    "extended_confirmed_products": "1305909, 13079250/13079300, 12010300 and 1301036 are taken from current official Plantlogic product pages/menu. No unconfirmed Product # values are created."
   },
   "unmapped_current_cards": {
     "prd_pl_1308025": "25 Liter Round Pot (Wide Legs) — not present in the current Products section menu; keep out of sectioned storefront until official section is confirmed.",

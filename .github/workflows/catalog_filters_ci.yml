@@ -12,6 +12,7 @@ on:
       - 'data/product_content/plantlogic_sections_20260919.json'
       - 'assets/css/plantlogic-catalog-sections.css'
       - 'backend/tools_audit_catalog_facets_20260919.py'
+      - 'backend/tools_audit_catalog_filter_combinations_20260919.py'
       - 'catalog.html'
       - 'categories/nutrition/index.html'
       - 'categories/biostimulation/index.html'
@@ -27,6 +28,7 @@ on:
       - 'data/product_content/plantlogic_sections_20260919.json'
       - 'assets/css/plantlogic-catalog-sections.css'
       - 'backend/tools_audit_catalog_facets_20260919.py'
+      - 'backend/tools_audit_catalog_filter_combinations_20260919.py'
       - 'catalog.html'
       - 'categories/nutrition/index.html'
       - 'categories/biostimulation/index.html'
@@ -50,7 +52,7 @@ jobs:
         run: |
           node --check js/catalog.js
           node --check js/app.js
-          python -m py_compile backend/services/product_master_runtime.py backend/services/product_cards_v3_facets.py backend/tools_audit_catalog_facets_20260919.py backend/tools_audit_catalog_packaging_20260919.py
+          python -m py_compile backend/services/product_master_runtime.py backend/services/product_cards_v3_facets.py backend/tools_audit_catalog_facets_20260919.py backend/tools_audit_catalog_packaging_20260919.py backend/tools_audit_catalog_filter_combinations_20260919.py
 
       - name: Product Master facet behavior
         run: |
@@ -235,6 +237,12 @@ jobs:
           facet_audit=Path('backend/tools_audit_catalog_facets_20260919.py').read_text(encoding='utf-8')
           assert 'BAD_CULTURES=' in facet_audit
           assert '"all", "лохина", "полуниця", "малина", "овочі", "сад", "хвойні", "газон"' in facet_audit
+
+          combo_audit=Path('backend/tools_audit_catalog_filter_combinations_20260919.py').read_text(encoding='utf-8')
+          assert 'PACKAGE_STOCK_MISMATCHES=' in combo_audit
+          assert 'CULTURE_WILDCARD_ERRORS=' in combo_audit
+          assert 'CONTAINER_FACET_LEAKS=' in combo_audit
+          assert 'COMBINATION_CASES=' in combo_audit
 
           print('CATALOG FILTER CONTRACT: PASS')
           PY

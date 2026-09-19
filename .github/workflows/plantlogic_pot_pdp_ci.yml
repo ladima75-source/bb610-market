@@ -1,0 +1,97 @@
+name: Plantlogic pot PDP CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'product.html'
+      - 'js/product.js'
+      - 'js/product-pot.js'
+      - 'css/product-pot.css'
+      - 'backend/services/product_cards_v3_facets.py'
+      - '.github/workflows/plantlogic_pot_pdp_ci.yml'
+  pull_request:
+    paths:
+      - 'product.html'
+      - 'js/product.js'
+      - 'js/product-pot.js'
+      - 'css/product-pot.css'
+      - 'backend/services/product_cards_v3_facets.py'
+      - '.github/workflows/plantlogic_pot_pdp_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Syntax
+        run: |
+          node --check js/product.js
+          node --check js/product-pot.js
+          python -m py_compile backend/services/product_cards_v3_facets.py
+
+      - name: Dedicated PDP contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          html=Path('product.html').read_text(encoding='utf-8')
+          product=Path('js/product.js').read_text(encoding='utf-8')
+          pot=Path('js/product-pot.js').read_text(encoding='utf-8')
+          css=Path('css/product-pot.css').read_text(encoding='utf-8')
+          facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
+
+          assert 'css/product-pot.css?v=20260919-pot-pdp-1' in html
+          assert 'js/product-pot.js?v=20260919-pot-pdp-1' in html
+          assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
+          assert 'BB610_POT_PDP?.matches(p)' in product
+          assert 'BB610_POT_PDP.render' in product
+
+          assert "p.category==='containers'" in pot
+          assert "norm(p.brand)==='plantlogic'" in pot
+          assert 'function uniqueMedia(items)' in pot
+          assert 'selectedSku?.image' in pot
+          assert '...(product.gallery||[])' in pot
+          assert 'pot-main-stage' in pot
+          assert 'pot-benefit-grid' in pot
+          assert 'pot-spec-table' in pot
+          assert 'pot-related-grid' in pot
+          assert 'Відкрити джерело виробника' in pot
+
+          assert '.pot-main-stage{height:560px' in css
+          assert 'overflow:hidden' in css
+          assert 'object-fit:contain!important' in css
+          assert '.pot-thumbs' in css
+
+          assert "patch['benefits']" in facets
+          assert "patch['how_it_works']" in facets
+          assert "patch['characteristics']" in facets
+          assert "'benefits': deepcopy(content.get('benefits') or [])" in facets
+
+          print('PLANTLOGIC DEDICATED PDP CONTRACT: PASS')
+          PY
+
+      - name: Gallery dedupe behavior
+        run: |
+          node - <<'JS'
+          const fs=require('fs'),vm=require('vm');
+          const code=fs.readFileSync('js/product-pot.js','utf8');
+          const sandbox={window:{},document:{},location:{},BB610:{}};
+          vm.createContext(sandbox);
+          vm.runInContext(code,sandbox);
+          const fn=sandbox.window.BB610_POT_PDP.uniqueMedia;
+          const got=fn(['/a.jpg','/a.jpg','/b.jpg','/b.jpg','']);
+          if(JSON.stringify(got)!==JSON.stringify(['/a.jpg','/b.jpg'])) throw new Error(JSON.stringify(got));
+          console.log('PLANTLOGIC GALLERY DEDUPE: PASS');
+          JS

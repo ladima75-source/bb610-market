@@ -190,7 +190,7 @@ jobs:
           ]:
               doc=Path(path).read_text(encoding='utf-8')
               assert 'js/catalog.js?v=20260919-culture-method-1' in doc, path
-              assert 'js/app.js?v=20260919-pack-filter-1' in doc, path
+              assert 'js/app.js?v=20260919-displayed-sku-1' in doc, path
               assert 'js/data-source.js?v=20260918-master-1' in doc, path
               assert 'config/commerce-config.js?v=20260918-master-1' in doc, path
 
@@ -199,6 +199,8 @@ jobs:
           assert 's=skuOverride||displaySku(p.id)' in app
           assert 'data-display-sku=' in app
           assert 'const href=s?.url||productUrl(p)' in app
+          assert "function trackSelect(productId,listId='catalog',listName='Каталог',skuId=null)" in app
+          assert "card?.dataset.displaySku||null" in app
 
           audit=Path('backend/tools_audit_catalog_packaging_20260919.py').read_text(encoding='utf-8')
           assert 'SKU_DATA_MISMATCHES=' in audit

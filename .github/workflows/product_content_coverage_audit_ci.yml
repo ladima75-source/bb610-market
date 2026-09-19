@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'backend/tools_audit_product_content_coverage_v3.py'
+      - 'backend/tools_audit_product_card_integrity_20260919.py'
       - 'backend/tools_apply_product_content_batch_runtime.py'
       - 'data/product_content/master_plantafol_20260918.json'
       - 'data/product_content/megafol_radifarm_viva_20260918.json'
@@ -18,6 +19,7 @@ on:
   pull_request:
     paths:
       - 'backend/tools_audit_product_content_coverage_v3.py'
+      - 'backend/tools_audit_product_card_integrity_20260919.py'
       - 'backend/tools_apply_product_content_batch_runtime.py'
       - 'data/product_content/master_plantafol_20260918.json'
       - 'data/product_content/megafol_radifarm_viva_20260918.json'
@@ -39,7 +41,7 @@ jobs:
           python-version: '3.12'
 
       - name: Syntax
-        run: python -m py_compile backend/tools_audit_product_content_coverage_v3.py
+        run: python -m py_compile backend/tools_audit_product_content_coverage_v3.py backend/tools_audit_product_card_integrity_20260919.py
 
       - name: Validate managed content manifest cardinality
         run: |

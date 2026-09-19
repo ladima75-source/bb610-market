@@ -160,11 +160,15 @@ function renderTechnologyExplainer(product){
   const items=Array.isArray(data.items)?data.items.filter(Boolean):[];
   if(!items.length)return '';
   const image=text(data.image);
+  const markers=items
+    .filter(item=>['A','B','C','D'].includes(text(item.code).toUpperCase()))
+    .map(item=>`<span class="pot-diagram-marker marker-${esc(text(item.code).toLowerCase())}">${esc(text(item.code).toUpperCase())}</span>`)
+    .join('');
   return `<section class="pot-section pot-explainer-section">
     <div class="pot-section-head"><span>КОНСТРУКЦІЯ</span><h2>${esc(data.title||'Як працює конструкція')}</h2></div>
     <p class="pot-explainer-lead">${esc(data.lead||'')}</p>
     <div class="pot-explainer-layout">
-      ${image?`<figure class="pot-explainer-visual ${esc(data.image_mode||'')}"><img src="${esc(image)}" alt="${esc(data.image_alt||data.title||product.name)}" loading="lazy"></figure>`:''}
+      ${image?`<figure class="pot-explainer-visual ${esc(data.image_mode||'')}"><img src="${esc(image)}" alt="${esc(data.image_alt||data.title||product.name)}" loading="lazy">${markers}</figure>`:''}
       <div class="pot-explainer-items">${items.map(item=>`<article class="pot-explainer-item">
         <span class="pot-explainer-code">${esc(item.code||'')}</span>
         <div><h3>${esc(item.title||'')}</h3><p>${esc(item.text||'')}</p></div>

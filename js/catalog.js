@@ -91,6 +91,20 @@ document.addEventListener('DOMContentLoaded',async()=>{
       null;
   }
 
+  function hasStockForPackage(p,groups){
+    if(!groups?.length)return hasStock(p);
+    return productSkus(p).some(s=>
+      groups.includes(packageGroupForSku(s))
+      &&s.availability==='in_stock'
+      &&s.enabled!==false
+    );
+  }
+
+  function displayPriceForPackage(p,groups){
+    const s=displaySkuForPackage(p,groups);
+    return s?.price??p.price;
+  }
+
   const methodAlias={
     'фертигація':'fertigation',
     'позакореневе внесення':'foliar',
@@ -204,7 +218,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
       &&(state.packageGroup.length||state.methodGroup.length||state.culture.length)
       &&categoryFor(p)==='containers'
     )return false;
-    if(state.stock&&!hasStock(p))return false;
+    if(state.stock&&!hasStockForPackage(p,state.packageGroup))return false;
     return true;
   }
 
@@ -283,8 +297,8 @@ document.addEventListener('DOMContentLoaded',async()=>{
     syncContainerFacetMode();
     const state=filterState();
     let all=applyFilters([...source]);
-    if(sort.value==='price-asc')all.sort((a,b)=>(a.price==null?Infinity:a.price)-(b.price==null?Infinity:b.price));
-    if(sort.value==='price-desc')all.sort((a,b)=>(b.price==null?-Infinity:b.price)-(a.price==null?-Infinity:a.price));
+    if(sort.value==='price-asc')all.sort((a,b)=>{const ap=displayPriceForPackage(a,state.packageGroup),bp=displayPriceForPackage(b,state.packageGroup);return (ap==null?Infinity:ap)-(bp==null?Infinity:bp)});
+    if(sort.value==='price-desc')all.sort((a,b)=>{const ap=displayPriceForPackage(a,state.packageGroup),bp=displayPriceForPackage(b,state.packageGroup);return (bp==null?-Infinity:bp)-(ap==null?-Infinity:ap)});
     if(sort.value==='name')all.sort((a,b)=>a.name.localeCompare(b.name,'uk'));
     count.textContent=`${all.length} товарів`;
     grid.innerHTML=all.map(p=>BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))).join('');

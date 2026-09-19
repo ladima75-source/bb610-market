@@ -268,6 +268,18 @@ jobs:
           zephyr_paths = [str(x.get('path') or '') for x in (zephyr.get('sku_media') or {}).get('media') or []]
           assert any('ZEPHYR-V2-1301144-FRONTAL-1.jpg' in x for x in zephyr_paths)
           print('REMAINING VERIFIED MODEL MEDIA: PASS')
+          zephyr = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_zephyr_v2')
+          zskus = (zephyr.get('sku_media') or {}).get('skus') or []
+          zmedia = {str(x.get('media_id') or ''): str(x.get('path') or '') for x in (zephyr.get('sku_media') or {}).get('media') or []}
+          black = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301144-BK')
+          white = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301144-WH')
+          black_paths = [zmedia.get(black.get('primary_media_id'))] + [zmedia.get(x) for x in black.get('gallery_media_ids') or []]
+          white_paths = [zmedia.get(white.get('primary_media_id'))] + [zmedia.get(x) for x in white.get('gallery_media_ids') or []]
+          assert any('FRONTAL-2-2.jpg' in str(x) for x in black_paths)
+          assert any('FRONTAL-1.jpg' in str(x) for x in white_paths)
+          assert not any('FRONTAL-1.jpg' in str(x) or 'BASE.jpg' in str(x) for x in black_paths)
+          assert not any('FRONTAL-2-2.jpg' in str(x) or 'FRONTAL-2-1.jpg' in str(x) or 'BASE-2.jpg' in str(x) or 'CENITAL-1.jpg' in str(x) for x in white_paths)
+          print('ZEPHYR COLOR MEDIA: PASS')
           print('ROUND CARD OFFICIAL MEDIA: PASS')
           print('PLANTLOGIC EDUCATIONAL CONTENT ISOLATION: PASS')
           PY

@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from backend.services.product_master_runtime import snapshot
+from backend.services.product_master_runtime import (\n    _metric_from_variant,\n    _metric_from_volume_weight,\n    _package_group,\n    snapshot,\n)
 
 
 def main() -> int:
@@ -26,6 +26,8 @@ def main() -> int:
     no_culture = 0
     no_method = 0
     no_package = 0
+    metric_mismatch = []
+    group_mismatch = []
 
     for p in products:
         facets = p.get("facets")
@@ -54,6 +56,39 @@ def main() -> int:
         method.update(methods)
         package.update(packages)
 
+    product_category = {
+        str(p.get("id") or ""): str((p.get("facets") or {}).get("category") or "")
+        for p in products
+        if isinstance(p.get("facets"), dict)
+    }
+    for sku in skus:
+        if product_category.get(str(sku.get("product_id") or "")) == "containers":
+            continue
+        visible = _metric_from_variant(sku)
+        structured = _metric_from_volume_weight(sku)
+        if visible is None or structured is None:
+            continue
+        if abs(visible - structured) > 0.001:
+            metric_mismatch.append({
+                "sku": str(sku.get("id") or sku.get("sku") or "?"),
+                "variant": str(sku.get("variant") or ""),
+                "visible": visible,
+                "volume_weight": structured,
+            })
+            visible_probe = dict(sku)
+            visible_probe["volume_weight"] = None
+            visible_group = _package_group(visible_probe)
+            structured_probe = dict(sku)
+            structured_probe["variant"] = ""
+            structured_group = _package_group(structured_probe)
+            if visible_group != structured_group:
+                group_mismatch.append({
+                    "sku": str(sku.get("id") or sku.get("sku") or "?"),
+                    "variant": str(sku.get("variant") or ""),
+                    "visible_group": visible_group,
+                    "volume_weight_group": structured_group,
+                })
+
     print("===== CATALOG FACETS AUDIT =====")
     print(f"SOURCE={master.get('source')}")
     print(f"PRODUCTS={len(products)}")
@@ -67,6 +102,19 @@ def main() -> int:
     print(f"NO_METHOD={no_method}")
     print(f"NO_CULTURE={no_culture}")
     print(f"NO_PACKAGE_GROUP={no_package}")
+    print(f"VARIANT_VOLUME_WEIGHT_MISMATCH={len(metric_mismatch)}")
+    print(f"PACKAGE_GROUP_MISMATCH={len(group_mismatch)}")
+    for row in group_mismatch[:20]:
+        print(
+            "GROUP_MISMATCH="
+            + row["sku"]
+            + " | "
+            + row["variant"]
+            + " | visible="
+            + row["visible_group"]
+            + " | volume_weight="
+            + row["volume_weight_group"]
+        )
 
     allowed_methods = {"fertigation", "foliar", "root"}
     allowed_packages = {"small", "medium", "large"}

@@ -92,6 +92,26 @@ ROUND_CARD_OFFICIAL_MEDIA = {
         ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_top-view.jpg"),
         ("base", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_Bottom-view.jpg"),
     ],
+    "13080350": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-blueberries.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-con-ranuras-para-manguera.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-arandano.jpg"),
+        ("detail", "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg"),
+    ],
+    "1308041": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-1.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_front.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-top-view.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_bottom-view.jpg"),
+    ],
+    "13090350": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente_1.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometric.jpg"),
+        ("angle_alt", "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometrico-1.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_cenital.jpg"),
+    ],
     "1308303": [
         ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-U-grooves_Item_1308303-1.jpg"),
         ("angle", "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303.jpg"),

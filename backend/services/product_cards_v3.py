@@ -121,7 +121,12 @@ def validate(card: dict) -> dict:
     extra = set(content) - allowed_content
     if extra:
         raise ValueError('Unknown content fields: ' + ', '.join(sorted(extra)))
-    missing = allowed_content - set(content)
+    required_content = {
+        'title', 'brand', 'category', 'short_description', 'description',
+        'benefits', 'how_it_works', 'application', 'composition',
+        'characteristics', 'seo'
+    }
+    missing = required_content - set(content)
     if missing:
         raise ValueError('Missing content fields: ' + ', '.join(sorted(missing)))
     _require_str(content, 'title', nonempty=True)

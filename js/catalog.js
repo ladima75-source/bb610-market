@@ -55,17 +55,23 @@ document.addEventListener('DOMContentLoaded',async()=>{
   }
 
   function packageMetric(sku){
+    const t=norm(sku?.variant||'').replace(',','.');
+    const m=t.match(/(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml)\b/i);
+    if(m){
+      const metric=metricFromUnit(m[1],m[2]);
+      if(metric!==null)return metric;
+    }
     const vw=sku?.volume_weight;
     if(vw&&vw.value!==null&&vw.value!==undefined){
       const metric=metricFromUnit(vw.value,vw.unit);
       if(metric!==null)return metric;
     }
-    const t=norm(sku?.variant||'').replace(',','.');
-    const m=t.match(/(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml)\b/i);
-    return m?metricFromUnit(m[1],m[2]):null;
+    return null;
   }
 
   function packageGroupForSku(sku){
+    const canonical=String(sku?.facets?.package_group||'').trim();
+    if(canonical)return canonical;
     const n=packageMetric(sku);
     if(n===null)return '';
     if(n<=50)return 'small';

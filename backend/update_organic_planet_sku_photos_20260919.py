@@ -432,6 +432,11 @@ def _product_image(page_url: str, target: Target) -> tuple[str, str]:
             continue
         if "/image/" not in parsed.path:
             continue
+        low_path = parsed.path.lower()
+        if low_path.endswith(".svg") or any(token in low_path for token in ("/menu.", "/logo.", "/icon", "/sprite", "/loader")):
+            continue
+        if not re.search(r"\.(?:jpe?g|png|webp)(?:$|\?)", absolute, re.I):
+            continue
         alt_pack = _pack_key(alt)
         if alt_pack and alt_pack not in allowed_packs:
             continue
@@ -578,9 +583,13 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--repair-existing", action="store_true")
+    ap.add_argument("--sku", action="append", default=[], help="Process only the specified SKU; may be repeated.")
     args = ap.parse_args()
 
     all_targets = _load_targets()
+    if args.sku:
+        wanted = {str(x).strip() for x in args.sku if str(x).strip()}
+        all_targets = [target for target in all_targets if target.sku in wanted]
     overrides = _load_photo_overrides()
     existing = overrides.get("skus") or {}
 

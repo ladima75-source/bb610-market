@@ -3,6 +3,7 @@
 const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const text=v=>String(v??'').replace(/\s+/g,' ').trim();
 const norm=v=>text(v).toLowerCase();
+const attrs=s=>s&&typeof s.attributes==='object'&&s.attributes?s.attributes:{};
 
 function mediaKey(value){
   const src=text(value);
@@ -41,13 +42,54 @@ function charValue(product,...labels){
 }
 
 function articleFromSku(sku){
+  const direct=text(attrs(sku).manufacturer_product_no);
+  if(direct)return direct;
   const m=text(sku?.variant).match(/арт\.\s*([0-9]+)/i);
   if(m)return m[1];
   const id=text(sku?.id||sku?.sku);
   return id.replace(/^PL-/i,'')||'—';
 }
 
+function volumeLabel(sku){
+  const direct=text(attrs(sku).volume_label);
+  if(direct)return direct;
+  const vw=sku?.volume_weight;
+  if(vw&&Number.isFinite(Number(vw.value))){
+    return `${Number(vw.value)} ${String(vw.unit||'').toLowerCase()==='l'?'л':text(vw.unit)}`;
+  }
+  return text(sku?.variant||'—').replace(/\s*[·|,].*$/,'');
+}
+
+function dimensionsLabel(sku){
+  const a=attrs(sku);
+  const parts=[
+    a.dimension_a&&`A ${a.dimension_a}`,
+    a.dimension_b&&`B ${a.dimension_b}`,
+    a.dimension_c&&`C ${a.dimension_c}`,
+    a.dimension_d&&`D ${a.dimension_d}`,
+  ].filter(Boolean);
+  return parts.join(' · ');
+}
+
+function structuredOptions(skus){
+  return skus.length>0&&skus.some(s=>attrs(s).volume_label&&attrs(s).color_label);
+}
+
+function uniqueAttr(skus,key){
+  const out=[],seen=new Set();
+  for(const sku of skus){
+    const value=text(attrs(sku)[key]);
+    if(!value||seen.has(value))continue;
+    seen.add(value);out.push(value);
+  }
+  return out;
+}
+
 function volumeOf(product){
+  const values=(product.sizes||[])
+    .map(x=>Number(x.attributes?.volume_l))
+    .filter(Number.isFinite);
+  if(values.length)return Math.min(...values);
   const sku=(product.sizes||[]).map(x=>BB610.sku(x.id)).find(Boolean);
   const vw=sku?.volume_weight;
   if(vw&&String(vw.unit||'').toLowerCase()==='l'&&Number.isFinite(Number(vw.value)))return Number(vw.value);
@@ -66,15 +108,20 @@ function relatedPots(product){
     .slice(0,4);
 }
 
+function volumeRange(product){
+  const values=[...new Set((product.sizes||[]).map(x=>text(x.attributes?.volume_label)).filter(Boolean))];
+  return values.join(' / ');
+}
+
 function relatedCard(p){
   const sku=BB610.displaySku(p.id);
   const image=sku?.image||p.image||'assets/img/product-container.svg';
-  const variant=sku?.variant||'';
+  const variants=volumeRange(p)||sku?.variant||'';
   return `<a class="pot-related-card" href="${esc(BB610.productUrl(p))}">
     <span class="pot-related-image"><img src="${esc(image)}" alt="${esc(p.name)}" loading="lazy"></span>
     <span class="pot-related-brand">Plantlogic</span>
     <strong>${esc(p.name)}</strong>
-    <small>${esc(variant)}</small>
+    <small>${esc(variants)}</small>
   </a>`;
 }
 
@@ -92,16 +139,22 @@ function renderBenefits(product){
 }
 
 function renderSpecs(product,selectedSku){
-  const skip=new Set(['офіційне джерело',"об'єм / варіанти",'артикул виробника']);
+  const skip=new Set([
+    'офіційне джерело',"об'єм / варіанти",'артикул виробника',
+    'доступні об’єми',"доступні об'єми",'кольори','виконання'
+  ]);
   const rows=characteristics(product).filter(x=>!skip.has(norm(x.label)));
-  const vw=selectedSku?.volume_weight;
-  const volume=vw&&Number.isFinite(Number(vw.value))
-    ?`${Number(vw.value)} ${String(vw.unit||'').toLowerCase()==='l'?'л':text(vw.unit)}`
-    :text(selectedSku?.variant||'—').replace(/\s*[·|,].*$/,'');
+  const a=attrs(selectedSku);
   const skuRows=[
-    {label:"Об'єм / модель",value:volume||'—'},
-    {label:'Артикул виробника',value:articleFromSku(selectedSku)},
-  ];
+    {label:"Об'єм",value:volumeLabel(selectedSku)||'—'},
+    {label:'Виконання',value:text(a.execution_label)||'—'},
+    {label:'Колір',value:text(a.color_label)||'—'},
+    {label:'Product # Plantlogic',value:articleFromSku(selectedSku)},
+    {label:'Розмір A',value:text(a.dimension_a)},
+    {label:'Розмір B',value:text(a.dimension_b)},
+    {label:'Розмір C',value:text(a.dimension_c)},
+    {label:'Розмір D',value:text(a.dimension_d)},
+  ].filter(x=>x.value&&x.value!=='—'||['Об\'єм','Виконання','Колір','Product # Plantlogic'].includes(x.label));
   const seen=new Set();
   const merged=[...skuRows,...rows].filter(x=>{
     const key=norm(x.label);
@@ -132,7 +185,8 @@ function syncSchema(product,selectedSku,images){
     image:uniqueMedia(images||[]),
     brand:{'@type':'Brand',name:'Plantlogic'},
     sku:selectedSku?.id||undefined,
-    url:location.href.split('?')[0],
+    mpn:articleFromSku(selectedSku)||undefined,
+    url:location.href,
   };
   const s=document.createElement('script');
   s.type='application/ld+json';
@@ -144,25 +198,25 @@ function syncSchema(product,selectedSku,images){
 function render({product,root,selectedSkuId}){
   const productSkus=(product.sizes||[]).map(x=>BB610.sku(x.id)).filter(Boolean);
   let selectedSku=productSkus.find(x=>x.id===selectedSkuId)||BB610.defaultSku(product.id)||productSkus[0]||null;
+  const hasStructured=structuredOptions(productSkus);
   document.body.classList.add('pot-pdp-mode');
   document.title=`${product.name} · BB610 Market`;
 
   const sourceUrl=text(product.sourceUrl||(product.source&&product.source.url));
-  const type=charValue(product,'Тип','Тип продукту')||product.productType||'Професійний горщик';
-  const dimensions=charValue(product,'Габарити');
-  const purpose=charValue(product,'Призначення')||(product.cultures||[]).join(' · ');
+  const type=charValue(product,'Тип','Тип продукту','Форма')||product.productType||'Професійний горщик';
+  const purpose=charValue(product,'Культура','Призначення')||(product.cultures||[]).join(' · ');
   const how=typeof product.how_it_works==='string'?product.how_it_works:(product.howItWorks||'');
   const description=product.manufacturerUse||product.shortDescription||'';
-  const packButtons=productSkus.length>1?productSkus.map(s=>`<button type="button" class="pot-sku-choice${s.id===selectedSku?.id?' active':''}" data-pot-sku="${esc(s.id)}"><b>${esc(s.variant||s.id)}</b><small>арт. ${esc(articleFromSku(s))}</small></button>`).join(''):'';
+
+  function legacySkuButtons(){
+    if(hasStructured||productSkus.length<=1)return '';
+    return `<div class="pot-model-picker"><span>Оберіть модель</span><div class="pot-sku-grid">${productSkus.map(s=>`<button type="button" class="pot-sku-choice${s.id===selectedSku?.id?' active':''}" data-pot-sku="${esc(s.id)}"><b>${esc(s.variant||s.id)}</b><small>арт. ${esc(articleFromSku(s))}</small></button>`).join('')}</div></div>`;
+  }
 
   function mediaForCurrent(){
     const skuGallery=Array.isArray(selectedSku?.gallery)?selectedSku.gallery.filter(Boolean):[];
     const fallbackGallery=skuGallery.length?[]:[product.image,...(product.gallery||[])];
-    return uniqueMedia([
-      selectedSku?.image,
-      ...skuGallery,
-      ...fallbackGallery
-    ]);
+    return uniqueMedia([selectedSku?.image,...skuGallery,...fallbackGallery]);
   }
 
   root.innerHTML=`<div class="pot-pdp">
@@ -187,12 +241,19 @@ function render({product,root,selectedSkuId}){
         <p class="pot-lead">${esc(product.shortDescription||description)}</p>
 
         <div class="pot-facts">
-          ${selectedSku?`<div><span>Об'єм / модель</span><b id="pot-volume">${esc(selectedSku.variant||'—')}</b></div>`:''}
-          ${dimensions?`<div><span>Габарити</span><b>${esc(dimensions)}</b></div>`:''}
-          ${purpose?`<div><span>Призначення</span><b>${esc(purpose)}</b></div>`:''}
+          <div><span>Об'єм</span><b id="pot-volume">${esc(selectedSku?volumeLabel(selectedSku):'—')}</b></div>
+          <div><span>Product #</span><b id="pot-product-no">${esc(selectedSku?articleFromSku(selectedSku):'—')}</b></div>
+          <div><span>Габарити</span><b id="pot-dimensions">${esc(selectedSku?dimensionsLabel(selectedSku):'—')}</b></div>
+          ${purpose?`<div><span>Культура</span><b>${esc(purpose)}</b></div>`:''}
         </div>
 
-        ${packButtons?`<div class="pot-model-picker"><span>Оберіть модель</span><div class="pot-sku-grid">${packButtons}</div></div>`:''}
+        ${hasStructured?`<div class="pot-configurator" id="pot-configurator">
+          <div class="pot-option-group"><span>1. Оберіть об'єм</span><div class="pot-option-list" id="pot-volume-options"></div></div>
+          <div class="pot-option-group" id="pot-execution-group"><span>2. Виконання</span><div class="pot-option-list" id="pot-execution-options"></div></div>
+          <div class="pot-option-group"><span>3. Колір</span><div class="pot-option-list pot-color-list" id="pot-color-options"></div></div>
+        </div>`:legacySkuButtons()}
+
+        <div class="pot-selected-variant" id="pot-selected-variant"></div>
 
         <div class="pot-commerce">
           <div class="pot-price" id="pot-price">Ціна за запитом</div>
@@ -224,13 +285,13 @@ function render({product,root,selectedSkuId}){
     </section>
 
     <section class="pot-section pot-tech">
-      <div class="pot-section-head"><span>ТЕХНІЧНІ ДАНІ</span><h2>Характеристики моделі</h2></div>
+      <div class="pot-section-head"><span>ТЕХНІЧНІ ДАНІ</span><h2>Характеристики вибраного варіанта</h2></div>
       <div class="pot-tech-grid">
         <div class="pot-spec-table" id="pot-spec-table"></div>
         <div class="pot-source-card">
           <span>ВИРОБНИК</span><strong>Plantlogic</strong>
-          <p>Офіційні характеристики та конструктивні особливості моделі.</p>
-          ${sourceUrl?`<a href="${esc(sourceUrl)}" target="_blank" rel="noopener">Відкрити джерело виробника ↗</a>`:''}
+          <p>Product # і розміри показуються для конкретно вибраного літражу та виконання.</p>
+          ${sourceUrl?`<a href="${esc(sourceUrl)}" target="_blank" rel="noopener">Відкрити сайт виробника ↗</a>`:''}
         </div>
       </div>
     </section>
@@ -260,7 +321,66 @@ function render({product,root,selectedSkuId}){
     thumbs.innerHTML=gallery.length>1?gallery.map((src,i)=>`<button type="button" class="pot-thumb${i===0?' active':''}" data-pot-thumb="${i}"><img src="${esc(src)}" alt="${esc(product.name)} — фото ${i+1}"></button>`).join(''):'';
     thumbs.hidden=gallery.length<2;
     thumbs.querySelectorAll('[data-pot-thumb]').forEach(btn=>btn.onclick=()=>setImage(Number(btn.dataset.potThumb)));
-    setImage(0);
+    if(gallery.length)setImage(0);
+    else{
+      const img=document.getElementById('pot-main-image');
+      img.src='assets/img/product-container.svg';
+      img.alt=product.name;
+      document.querySelectorAll('.pot-gallery-nav').forEach(x=>x.hidden=true);
+      const counter=document.getElementById('pot-gallery-count');if(counter)counter.hidden=true;
+    }
+  }
+
+  function pickSku(filters,preferred){
+    const rows=productSkus.filter(s=>Object.entries(filters).every(([k,v])=>!v||text(attrs(s)[k])===text(v)));
+    if(!rows.length)return null;
+    if(preferred){
+      const pa=attrs(preferred);
+      const same=rows.find(s=>{
+        const a=attrs(s);
+        return (!pa.execution_code||a.execution_code===pa.execution_code)&&(!pa.color_code||a.color_code===pa.color_code);
+      });
+      if(same)return same;
+    }
+    return rows[0];
+  }
+
+  function optionButton(kind,value,label,active,colorCode){
+    const color=kind==='color'?`<i class="pot-color-dot color-${esc(colorCode)}"></i>`:'';
+    return `<button type="button" class="pot-option${active?' active':''}" data-pot-option="${kind}" data-pot-value="${esc(value)}">${color}<b>${esc(label)}</b></button>`;
+  }
+
+  function renderConfigurator(){
+    if(!hasStructured||!selectedSku)return;
+    const a=attrs(selectedSku);
+    const volumeRows=[...productSkus].sort((x,y)=>Number(attrs(x).volume_l||0)-Number(attrs(y).volume_l||0));
+    const volumes=uniqueAttr(volumeRows,'volume_label');
+    document.getElementById('pot-volume-options').innerHTML=volumes.map(v=>optionButton('volume',v,v,v===text(a.volume_label),'')).join('');
+
+    const sameVolume=productSkus.filter(s=>text(attrs(s).volume_label)===text(a.volume_label));
+    const executions=uniqueAttr(sameVolume,'execution_code').map(code=>{
+      const sample=sameVolume.find(s=>text(attrs(s).execution_code)===code);
+      return {code,label:text(attrs(sample).execution_label)||code};
+    });
+    const execGroup=document.getElementById('pot-execution-group');
+    execGroup.hidden=executions.length===0;
+    document.getElementById('pot-execution-options').innerHTML=executions.map(x=>optionButton('execution',x.code,x.label,x.code===text(a.execution_code),'')).join('');
+
+    const sameModel=sameVolume.filter(s=>text(attrs(s).execution_code)===text(a.execution_code));
+    const colors=uniqueAttr(sameModel,'color_code').map(code=>{
+      const sample=sameModel.find(s=>text(attrs(s).color_code)===code);
+      return {code,label:text(attrs(sample).color_label)||code};
+    });
+    document.getElementById('pot-color-options').innerHTML=colors.map(x=>optionButton('color',x.code,x.label,x.code===text(a.color_code),x.code)).join('');
+
+    document.querySelectorAll('[data-pot-option]').forEach(btn=>btn.onclick=()=>{
+      const kind=btn.dataset.potOption,value=btn.dataset.potValue,current=attrs(selectedSku);
+      let next=null;
+      if(kind==='volume')next=pickSku({volume_label:value},selectedSku);
+      if(kind==='execution')next=pickSku({volume_label:current.volume_label,execution_code:value},selectedSku);
+      if(kind==='color')next=pickSku({volume_label:current.volume_label,execution_code:current.execution_code,color_code:value},selectedSku);
+      if(next){selectedSku=next;syncSku();}
+    });
   }
 
   function syncSku(){
@@ -269,10 +389,16 @@ function render({product,root,selectedSkuId}){
     const request=BB610.isPriceRequestSku?.(selectedSku)===true;
     document.getElementById('pot-price').textContent=request?'Ціна за запитом':BB610.money(selectedSku.price);
     document.getElementById('pot-status').textContent=request?'Під замовлення':(selectedSku.stock_label||'Наявність уточнюється');
-    document.getElementById('pot-price-note').textContent=request?'Ціна залежить від моделі, кількості та умов постачання.':'';
-    const volume=document.getElementById('pot-volume');if(volume)volume.textContent=selectedSku.variant||'—';
+    document.getElementById('pot-price-note').textContent=request?'Ціна залежить від вибраного варіанта, кількості та умов постачання.':'';
+    document.getElementById('pot-volume').textContent=volumeLabel(selectedSku)||'—';
+    document.getElementById('pot-product-no').textContent=articleFromSku(selectedSku);
+    document.getElementById('pot-dimensions').textContent=dimensionsLabel(selectedSku)||'—';
     document.getElementById('pot-spec-table').innerHTML=renderSpecs(product,selectedSku);
     document.getElementById('pot-cta').textContent=request?'ЗАПРОСИТИ ЦІНУ':'КУПИТИ';
+    const a=attrs(selectedSku);
+    const selected=document.getElementById('pot-selected-variant');
+    if(selected)selected.innerHTML=`<span>Вибрано:</span> <b>${esc([volumeLabel(selectedSku),a.execution_label,a.color_label].filter(Boolean).join(' · '))}</b>`;
+    renderConfigurator();
     syncGallery();
     if(selectedSku?.url&&location.protocol!=='file:')history.replaceState({sku:selectedSku.id},'',selectedSku.url);
     BB610.pushEvent('view_item',{ecommerce:{currency:selectedSku.currency||'UAH',items:[BB610.commerceItem(selectedSku,1)]}});
@@ -297,5 +423,6 @@ window.BB610_POT_PDP={
   render,
   uniqueMedia,
   mediaKey,
+  structuredOptions,
 };
 })();

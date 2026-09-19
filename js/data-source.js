@@ -21,6 +21,7 @@ window.BB610_DATA_SOURCE={
   _fixSkuMedia(s,base){
     const x={...s};
     if(x.image?.startsWith('/media/'))x.image=base+x.image;
+    if(Array.isArray(x.gallery))x.gallery=x.gallery.map(v=>String(v).startsWith('/media/')?base+v:v);
     return x;
   },
 

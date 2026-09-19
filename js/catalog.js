@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
       :all.length;
     count.textContent=`${visibleCount} товарів`;
     grid.innerHTML=renderCards(all,state);
-    empty.style.display=all.length?'none':'block';
+    empty.style.display=visibleCount?'none':'block';
     BB610.bindCards(grid);
     renderChips();
   }

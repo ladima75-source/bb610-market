@@ -312,6 +312,16 @@ jobs:
           assert not any('FRONTAL-1.jpg' in str(x) or 'BASE.jpg' in str(x) for x in black_paths)
           assert not any('FRONTAL-2-2.jpg' in str(x) or 'FRONTAL-2-1.jpg' in str(x) or 'BASE-2.jpg' in str(x) or 'CENITAL-1.jpg' in str(x) for x in white_paths)
           print('ZEPHYR COLOR MEDIA: PASS')
+          z30b = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301153-BK')
+          z30w = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301153-WH')
+          z40b = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301143-BK')
+          z40w = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301143-WH')
+          for row in (z30b,z30w,z40b,z40w):
+              paths = [zmedia.get(row.get('primary_media_id'))] + [zmedia.get(x) for x in row.get('gallery_media_ids') or []]
+              assert any('/assets/plantlogic/zephyr-v2-capacities.jpg' in str(x) for x in paths)
+              assert any('/assets/plantlogic/zephyr-v2-greenhouse.jpg' in str(x) for x in paths)
+              assert not any('1301144-FRONTAL' in str(x) for x in paths)
+          print('ZEPHYR FALLBACK VISUALS: PASS')
           print('ROUND CARD OFFICIAL MEDIA: PASS')
           print('PLANTLOGIC EDUCATIONAL CONTENT ISOLATION: PASS')
           PY

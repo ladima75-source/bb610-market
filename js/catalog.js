@@ -25,9 +25,53 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const facetList=(p,key)=>Array.isArray(p?.facets?.[key])?p.facets[key].filter(Boolean):[];
   const categoryFor=p=>String(p?.facets?.category||p.category||'').trim();
   const brandFor=p=>String(p?.facets?.brand||p.brand||'').trim();
+  function applicationTexts(p){
+    const out=[];
+    const app=p?.application;
+    if(typeof app==='string'){
+      out.push(...app.split(';').map(x=>x.trim()).filter(Boolean));
+    }else if(app&&typeof app==='object'&&!Array.isArray(app)){
+      ['intro','note'].forEach(key=>{const value=String(app[key]||'').trim();if(value)out.push(value)});
+      (Array.isArray(app.rows)?app.rows:[]).forEach(row=>{
+        if(!row||typeof row!=='object')return;
+        ['crop','method','period'].forEach(key=>{const value=String(row[key]||'').trim();if(value)out.push(value)});
+      });
+    }else if(Array.isArray(app)){
+      app.forEach(row=>{
+        if(typeof row==='string'&&row.trim())out.push(row.trim());
+        else if(row&&typeof row==='object'){
+          ['crop','method','period'].forEach(key=>{const value=String(row[key]||'').trim();if(value)out.push(value)});
+        }
+      });
+    }
+    return out;
+  }
+
+  function cultureValuesFromText(raw){
+    const value=norm(raw);
+    if(!value)return [];
+    if(value.includes('усі культури')||value.includes('всі культури')||value.includes('all crops'))return ['all'];
+    const out=[];
+    if(value.includes('лохин')||value.includes('blueberr'))out.push('лохина');
+    if(value.includes('полуниц')||value.includes('суниц')||value.includes('strawberr'))out.push('полуниця');
+    if(value.includes('малин')||value.includes('raspberr'))out.push('малина');
+    if(value.includes('овоч')||value.includes('vegetable'))out.push('овочі');
+    if(value.includes('плодов')||value.includes('сад')||value.includes('orchard')||value.includes('fruit crop'))out.push('сад');
+    if(value.includes('хвой')||value.includes('conifer'))out.push('хвойні');
+    if(value.includes('газон')||value.includes('lawn')||value.includes('turf'))out.push('газон');
+    return out;
+  }
+
   const culturesFor=p=>{
     const canonical=facetList(p,'cultures');
-    return canonical.length?canonical:(p.cultures||[]);
+    if(canonical.length)return canonical;
+    const raw=Array.isArray(p.cultures)?[...p.cultures]:[];
+    if(!raw.length)raw.push(...applicationTexts(p));
+    return uniq(raw.flatMap(cultureValuesFromText));
+  };
+  const cultureMatches=(p,value)=>{
+    const values=culturesFor(p);
+    return values.includes('all')||values.includes(value);
   };
   const productText=p=>norm([p.name,brandFor(p),p.manufacturer,p.categoryLabel,categoryFor(p),p.npk,p.activeIngredient,p.productType,p.shortDescription,...productSkus(p).map(s=>`${s.id} ${s.sku||''} ${s.variant||''}`),...culturesFor(p),...(p.purposes||[])].join(' '));
   const hasStock=p=>typeof p?.facets?.in_stock==='boolean'
@@ -140,20 +184,20 @@ document.addEventListener('DOMContentLoaded',async()=>{
       ...(Array.isArray(p.applicationMethods)?p.applicationMethods:[]),
       ...(Array.isArray(p.application_methods)?p.application_methods:[])
     ];
-    if(!raw.length&&typeof p.application==='string')raw.push(...p.application.split(';'));
+    if(!raw.length)raw.push(...applicationTexts(p));
     return uniq(raw.flatMap(methodGroupsForRaw));
   }
 
   const categories=BB610_DATA_SOURCE.categories().filter(c=>c.enabled&&!(BB610.categoryHidden&&BB610.categoryHidden(c.id))).sort((a,b)=>(a.order||0)-(b.order||0));
   const nonContainerSource=source.filter(p=>categoryFor(p)!=='containers');
   const brands=uniq(source.map(brandFor)).sort(natural);
-  const cultures=uniq(nonContainerSource.flatMap(culturesFor)).sort(natural);
+  const cultures=uniq(nonContainerSource.flatMap(culturesFor).filter(x=>x!=='all')).sort(natural);
 
   function optionCount(group,value){
     return source.filter(p=>{
       if(group==='category')return categoryFor(p)===value;
       if(group==='brand')return brandFor(p)===value;
-      if(group==='culture')return categoryFor(p)!=='containers'&&culturesFor(p).includes(value);
+      if(group==='culture')return categoryFor(p)!=='containers'&&cultureMatches(p,value);
       if(group==='packageGroup')return categoryFor(p)!=='containers'&&hasSkuForPackage(p,[value]);
       if(group==='methodGroup')return categoryFor(p)!=='containers'&&methodGroupsFor(p).includes(value);
       return false;
@@ -232,11 +276,10 @@ document.addEventListener('DOMContentLoaded',async()=>{
     if(skip!=='category'&&!matchesMulti(p,state.category,(x,v)=>categoryFor(x)===v))return false;
     if(skip!=='packageGroup'&&state.packageGroup.length&&!hasSkuForPackage(p,state.packageGroup))return false;
     if(skip!=='methodGroup'&&!matchesMulti(p,state.methodGroup,(x,v)=>methodGroupsFor(x).includes(v)))return false;
-    if(skip!=='culture'&&!matchesMulti(p,state.culture,(x,v)=>culturesFor(x).includes(v)))return false;
+    if(skip!=='culture'&&!matchesMulti(p,state.culture,(x,v)=>cultureMatches(x,v)))return false;
     if(skip!=='brand'&&!matchesMulti(p,state.brand,(x,v)=>brandFor(x)===v))return false;
     if(
-      skip!=='category'
-      &&(state.packageGroup.length||state.methodGroup.length||state.culture.length)
+      (state.packageGroup.length||state.methodGroup.length||state.culture.length)
       &&categoryFor(p)==='containers'
     )return false;
     if(state.stock&&!hasStockForPackage(p,state.packageGroup))return false;
@@ -246,7 +289,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   function facetMatches(p,group,value){
     if(group==='category')return categoryFor(p)===value;
     if(group==='brand')return brandFor(p)===value;
-    if(group==='culture')return categoryFor(p)!=='containers'&&culturesFor(p).includes(value);
+    if(group==='culture')return categoryFor(p)!=='containers'&&cultureMatches(p,value);
     if(group==='packageGroup')return categoryFor(p)!=='containers'&&hasSkuForPackage(p,[value]);
     if(group==='methodGroup')return categoryFor(p)!=='containers'&&methodGroupsFor(p).includes(value);
     return false;

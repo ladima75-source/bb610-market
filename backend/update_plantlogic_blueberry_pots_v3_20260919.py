@@ -451,33 +451,6 @@ def how_it_works_for(product: dict) -> str:
     )
 
 
-def family_overview_for(product: dict) -> dict | None:
-    return None
-
-def model_showcase_for(product: dict) -> dict | None:
-    if str(product.get("product_id") or "") not in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs", "prd_pl_bb_square", "prd_pl_bb_round_u", "prd_pl_bb_square_u"}:
-        return None
-    items = []
-    for model in product.get("models") or []:
-        product_no = str(model.get("product_no") or "")
-        rows = ROUND_CARD_OFFICIAL_MEDIA.get(product_no) or []
-        if not rows:
-            continue
-        volume = model.get("volume_l")
-        volume_label = f"{volume:g} л" if isinstance(volume, float) else f"{volume} л"
-        items.append({
-            "title": volume_label,
-            "subtitle": str(model.get("execution_label") or ""),
-            "product_no": product_no,
-            "image": rows[0][1],
-        })
-    return {
-        "title": "Оберіть об’єм і конструкцію",
-        "lead": "Кожна модель нижче показана окремим офіційним фото Plantlogic.",
-        "items": items,
-    }
-
-
 def technology_explainer_for(product: dict) -> dict | None:
     family = str(product.get("family") or "")
     if family == "zephyr":
@@ -609,7 +582,7 @@ def build_content(product: dict, palette: list[dict]) -> dict:
             "сторінках каталогу не специфікований."
         ),
         "characteristics": chars,
-        "family_overview": family_overview_for(product),
+        "family_overview": None,
         "model_showcase": None,
         "technology_explainer": technology_explainer_for(product),
         "garden_guide": garden_guide_for(),

@@ -137,6 +137,7 @@ def storefront_runtime(slug: str) -> Optional[dict]:
             'sku_code': sku.get('sku_code') or '',
             'label': sku.get('label') or '',
             'package': sku.get('package') or '',
+            'attributes': deepcopy(sku.get('attributes') or {}),
             'primary_media': deepcopy(primary) if primary else None,
             'gallery_media': deepcopy(gallery),
             'commerce_bound': bool(commerce_key and live),

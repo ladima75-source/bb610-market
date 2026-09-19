@@ -144,22 +144,27 @@ def _attach_facets(products: list[dict], skus: list[dict], commerce: dict[str, d
     for sku in skus:
         by_product.setdefault(str(sku.get("product_id") or ""), []).append(sku)
 
+    for row in skus:
+        sid = str(row.get("id") or row.get("sku") or "")
+        state = commerce.get(sid) or {}
+        availability = _norm(state.get("availability") or row.get("availability"))
+        enabled = state.get("enabled")
+        row_facets = row.get("facets") if isinstance(row.get("facets"), dict) else {}
+        row["facets"] = {
+            **row_facets,
+            "package_group": _package_group(row),
+            "in_stock": enabled is not False and availability in {"in_stock", "dnipro"},
+        }
+
     for product in products:
         pid = str(product.get("id") or "")
         rows = by_product.get(pid, [])
-        package_groups = _uniq([_package_group(row) for row in rows if _package_group(row)])
-
-        in_stock = False
-        for row in rows:
-            sid = str(row.get("id") or row.get("sku") or "")
-            state = commerce.get(sid) or {}
-            availability = _norm(state.get("availability") or row.get("availability"))
-            enabled = state.get("enabled")
-            if enabled is False:
-                continue
-            if availability in {"in_stock", "dnipro"}:
-                in_stock = True
-                break
+        package_groups = _uniq([
+            str((row.get("facets") or {}).get("package_group") or "")
+            for row in rows
+            if str((row.get("facets") or {}).get("package_group") or "")
+        ])
+        in_stock = any(bool((row.get("facets") or {}).get("in_stock")) for row in rows)
 
         product["facets"] = {
             "category": str(product.get("category_id") or product.get("category") or "").strip(),

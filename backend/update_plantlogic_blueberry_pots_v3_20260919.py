@@ -92,6 +92,33 @@ ROUND_CARD_OFFICIAL_MEDIA = {
         ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_top-view.jpg"),
         ("base", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_Bottom-view.jpg"),
     ],
+    "1308303": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-U-grooves_Item_1308303-1.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303_Top-view.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-BASE.jpg"),
+        ("isometric", "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-ISOMETRICO.jpg"),
+    ],
+    "1308305": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-FRONT-1.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-ISOMETRIC-VIEW-2.jpg"),
+        ("detail", "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-Landing-page.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-TOP-VIEW-2.jpg"),
+    ],
+    "1309026": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Square-Pot-with-U-grooves_Item_1309026.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_front.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_top-view.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_bottom.jpg"),
+    ],
+    "1301144": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-1.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2020/11/ZEPHYR-V2-1301144-FRONTAL-2-1.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-CENITAL-1.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE.jpg"),
+        ("base_alt", "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE-2.jpg"),
+    ],
     "1308040": [
         ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040-1.jpg"),
         ("angle", "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040.jpg"),

@@ -91,7 +91,7 @@ jobs:
           css=Path('css/product-pot.css').read_text(encoding='utf-8')
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
-          assert 'css/product-pot.css?v=20260919-pot-pdp-9' in html
+          assert 'css/product-pot.css?v=20260919-pot-pdp-10' in html
           assert 'js/product-pot.js?v=20260919-pot-pdp-8' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
           assert 'BB610_POT_PDP?.matches(p)' in product
@@ -127,6 +127,8 @@ jobs:
           assert '.pot-visual-section' in css
           assert '.pot-model-showcase-grid' in css
           assert 'Desktop fold tuning' in css
+          assert 'max-width:88%!important' in css
+          assert 'object-position:center center!important' in css
           assert 'grid-template-columns:repeat(4,minmax(0,1fr))' in css
           assert 'min-height:590px' in css
           assert 'box-shadow:0 18px 42px' in css

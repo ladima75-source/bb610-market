@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "batch": "Plantlogic current-menu extension / Strawberry + Bag Bases / 2026-09-19",
+  "batch": "Plantlogic current-menu extension / Strawberry + Bag Bases + Accessories / 2026-09-19",
   "source_policy": "Only current official Plantlogic product pages and current Products navigation. No invented Product # values.",
   "products": [
     {
@@ -87,6 +87,175 @@
           "label": "арт. 1301036",
           "package": "1 шт",
           "product_no": "1301036"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_12050010",
+      "slug": "plantlogic-hose-clip-12050010",
+      "name": "Багатофункціональна кліпса для шланга — арт. 12050010",
+      "source_url": "https://getplantlogic.com/portfolio-items/hose-clip/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg",
+      "product_type": "Кліпса для шланга",
+      "purpose": "Accessories; фіксація поливного шланга, cooling skirt і дроту",
+      "description": "Багатофункціональна кліпса Plantlogic для фіксації елементів на горщику. Поточна сторінка виробника вказує діапазони 17–22 мм і 14–16 мм.",
+      "dimensions": "Два діапазони: 17–22 мм та 14–16 мм",
+      "skus": [
+        {
+          "sku_id": "sku_pl_12050010",
+          "sku_code": "PL-12050010",
+          "label": "арт. 12050010",
+          "package": "1 шт",
+          "product_no": "12050010"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_steel_lysimeter",
+      "slug": "plantlogic-steel-lysimeter",
+      "name": "Сталевий лізиметр Plantlogic",
+      "source_url": "https://getplantlogic.com/portfolio-items/steel-lysimeter-for-blueberry-pots/",
+      "image_url": "https://getplantlogic.com/wp-content/uploads/2025/03/Steel-lysimeter-for-blueberry-pots_front.jpg",
+      "product_type": "Сталевий лізиметр",
+      "purpose": "Accessories; моніторинг дренажу та вилуговування",
+      "description": "Сталевий лізиметр Plantlogic для точного збору дренажу. Виробник вказує сумісність із круглими горщиками Plantlogic 25, 30 та 40 л і чотири Product #.",
+      "dimensions": "Виробник заявляє три розміри; точну відповідність чотирьох Product # розмірам не вигадуємо",
+      "skus": [
+        {
+          "sku_id": "sku_pl_13046025",
+          "sku_code": "PL-13046025",
+          "label": "арт. 13046025",
+          "package": "1 шт",
+          "product_no": "13046025"
+        },
+        {
+          "sku_id": "sku_pl_13046026",
+          "sku_code": "PL-13046026",
+          "label": "арт. 13046026",
+          "package": "1 шт",
+          "product_no": "13046026"
+        },
+        {
+          "sku_id": "sku_pl_13046031",
+          "sku_code": "PL-13046031",
+          "label": "арт. 13046031",
+          "package": "1 шт",
+          "product_no": "13046031"
+        },
+        {
+          "sku_id": "sku_pl_13046041",
+          "sku_code": "PL-13046041",
+          "label": "арт. 13046041",
+          "package": "1 шт",
+          "product_no": "13046041"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1205012",
+      "slug": "plantlogic-metal-hose-clip-1205012",
+      "name": "Металева кліпса для поливного шланга — арт. 1205012",
+      "source_url": "https://getplantlogic.com/portfolio-items/metal-hose-clip/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012-2.jpg?w=669",
+      "product_type": "Металева кліпса для шланга",
+      "purpose": "Accessories; фіксація поливної труби",
+      "description": "Металева кліпса Plantlogic для утримання поливної труби на горщику. Офіційна сторінка вказує сумісність із трубою 16 і 18 мм.",
+      "dimensions": "Для труби 16 мм та 18 мм",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1205012",
+          "sku_code": "PL-1205012",
+          "label": "арт. 1205012",
+          "package": "1 шт",
+          "product_no": "1205012"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1700146_1700147",
+      "slug": "plantlogic-metal-stakes-gutter",
+      "name": "Металеві скоби для дренажного жолоба",
+      "source_url": "https://getplantlogic.com/portfolio-items/metal-stakes-for-gutter/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2019/10/1700145146-new.jpg?ssl=1&w=669",
+      "product_type": "Металева скоба для жолоба",
+      "purpose": "Accessories; фіксація дренажного жолоба",
+      "description": "Оцинковані металеві скоби Plantlogic для утримання пластикового дренажного жолоба на нерівній поверхні.",
+      "dimensions": "Сумісні з жолобом шириною 5 см",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1700146",
+          "sku_code": "PL-1700146",
+          "label": "арт. 1700146",
+          "package": "1 шт",
+          "product_no": "1700146"
+        },
+        {
+          "sku_id": "sku_pl_1700147",
+          "sku_code": "PL-1700147",
+          "label": "арт. 1700147",
+          "package": "1 шт",
+          "product_no": "1700147"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_1205018_1205019",
+      "slug": "plantlogic-micro-tube-stake",
+      "name": "Кілок 18 см для мікротрубки",
+      "source_url": "https://getplantlogic.com/portfolio-items/micro-tube-stake/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/08/OCStake_5.jpg?w=669",
+      "product_type": "Кілок для мікротрубки",
+      "purpose": "Accessories; позиціонування мікротрубки або крапельниці",
+      "description": "Кілок Plantlogic висотою 18 см для позиціонування мікротрубки з крапельницею або без неї. Виробник пропонує O-type та C-type виконання.",
+      "dimensions": "180 мм висота; 6 мм діаметр",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1205018",
+          "sku_code": "PL-1205018",
+          "label": "арт. 1205018",
+          "package": "1 шт",
+          "product_no": "1205018"
+        },
+        {
+          "sku_id": "sku_pl_1205019",
+          "sku_code": "PL-1205019",
+          "label": "арт. 1205019",
+          "package": "1 шт",
+          "product_no": "1205019"
+        }
+      ]
+    },
+    {
+      "product_id": "prd_pl_plastic_gutter",
+      "slug": "plantlogic-plastic-gutter-drainage",
+      "name": "Пластиковий жолоб для збору дренажу",
+      "source_url": "https://getplantlogic.com/portfolio-items/plastic-gutter/",
+      "image_url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/08/Gutter_1.jpg?w=669",
+      "product_type": "Пластиковий дренажний жолоб",
+      "purpose": "Accessories; збір і відведення дренажу",
+      "description": "Вузький пластиковий жолоб Plantlogic для відведення дренажу від контейнерів і систем збору. Поточна сторінка виробника вказує три Product # та три типорозміри.",
+      "dimensions": "35×33 мм; 50×35 мм; 50×45 мм — без самостійного зіставлення розміру з Product #",
+      "skus": [
+        {
+          "sku_id": "sku_pl_1200021",
+          "sku_code": "PL-1200021",
+          "label": "арт. 1200021",
+          "package": "1 шт",
+          "product_no": "1200021"
+        },
+        {
+          "sku_id": "sku_pl_1300010",
+          "sku_code": "PL-1300010",
+          "label": "арт. 1300010",
+          "package": "1 шт",
+          "product_no": "1300010"
+        },
+        {
+          "sku_id": "sku_pl_1300011",
+          "sku_code": "PL-1300011",
+          "label": "арт. 1300011",
+          "package": "1 шт",
+          "product_no": "1300011"
         }
       ]
     }

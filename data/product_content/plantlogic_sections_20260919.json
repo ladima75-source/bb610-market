@@ -163,11 +163,30 @@
     "prd_pl_1301036": [
       "bag_bases",
       "accessories"
+    ],
+    "prd_pl_12050010": [
+      "accessories"
+    ],
+    "prd_pl_steel_lysimeter": [
+      "accessories"
+    ],
+    "prd_pl_1205012": [
+      "accessories"
+    ],
+    "prd_pl_1700146_1700147": [
+      "accessories"
+    ],
+    "prd_pl_1205018_1205019": [
+      "accessories"
+    ],
+    "prd_pl_plastic_gutter": [
+      "accessories"
     ]
   },
   "mapping_notes": {
     "rule": "Only the current Plantlogic Products navigation determines storefront section membership. Tags, archive categories, URL wording and inferred crop compatibility do not add membership.",
-    "extended_confirmed_products": "1305909, 13079250/13079300, 12010300 and 1301036 are taken from current official Plantlogic product pages/menu. No unconfirmed Product # values are created."
+    "extended_confirmed_products": "1305909, 13079250/13079300, 12010300 and 1301036 are taken from current official Plantlogic product pages/menu. No unconfirmed Product # values are created.",
+    "accessories_confirmed_products": "Current official pages confirm Product #12050010, 13046025/26/31/41, 1205012, 1700146/1700147, 1205018/1205019 and 1200021/1300010/1300011. Size-to-SKU relationships are not inferred when the page does not state them."
   },
   "unmapped_current_cards": {
     "prd_pl_1308025": "25 Liter Round Pot (Wide Legs) — not present in the current Products section menu; keep out of sectioned storefront until official section is confirmed.",

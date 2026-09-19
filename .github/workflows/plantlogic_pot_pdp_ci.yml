@@ -330,6 +330,15 @@ jobs:
               assert any('/assets/plantlogic/zephyr-v2-greenhouse.jpg' in str(x) for x in paths)
               assert not any('1301144-FRONTAL' in str(x) for x in paths)
           print('ZEPHYR FALLBACK VISUALS: PASS')
+          zbenefits = zephyr['content']['benefits']
+          assert [x['title'] for x in zbenefits] == [
+              'Радіальний дренаж',
+              'Аерація кореневої зони',
+              'Ніжки 7 см і стабільна основа',
+              'Керована щільність аерації',
+          ]
+          assert 'ніжках 7 см' in zephyr['content']['how_it_works']
+          print('ZEPHYR TECHNICAL BENEFITS: PASS')
           print('ROUND CARD OFFICIAL MEDIA: PASS')
           print('PLANTLOGIC EDUCATIONAL CONTENT ISOLATION: PASS')
           PY

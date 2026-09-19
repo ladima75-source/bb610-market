@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 import re
 from pathlib import Path
 from typing import Any
@@ -219,6 +220,9 @@ def market_test_projection() -> dict[str, list[dict]]:
             'manufacturer_use': str(content.get('description') or ''),
             'application': str(content.get('application') or ''),
             'composition': str(content.get('composition') or ''),
+            'benefits': deepcopy(content.get('benefits') or []),
+            'how_it_works': deepcopy(content.get('how_it_works') or ''),
+            'characteristics': deepcopy(content.get('characteristics') or []),
             'cultures': cultures,
             'purposes': purposes,
             'applicationMethods': methods,
@@ -332,6 +336,12 @@ def catalog_overlays() -> list[dict]:
             patch['short_description'] = short
         if description:
             patch['manufacturer_use'] = description
+        if isinstance(content.get('benefits'), list) and content.get('benefits'):
+            patch['benefits'] = deepcopy(content.get('benefits'))
+        if content.get('how_it_works'):
+            patch['how_it_works'] = deepcopy(content.get('how_it_works'))
+        if isinstance(content.get('characteristics'), list) and content.get('characteristics'):
+            patch['characteristics'] = deepcopy(content.get('characteristics'))
         if product_type:
             patch['product_type'] = product_type
             patch['form'] = product_type

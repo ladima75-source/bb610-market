@@ -22,6 +22,10 @@ on:
       - 'data/product_content/plantlogic_blueberry_pots_v2_20260919.json'
       - 'data/product_content/plantlogic_blueberry_pots_r2_20260919.json'
       - 'tools/build_plantlogic_blueberry_content_assets.py'
+      - 'assets/plantlogic/blueberry-family-standard.jpg'
+      - 'assets/plantlogic/blueberry-family-u-groove.jpg'
+      - 'assets/plantlogic/blueberry-root-zone.png'
+      - '.github/workflows/plantlogic_blueberry_content_assets.yml'
       - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
   pull_request:
@@ -44,6 +48,10 @@ on:
       - 'data/product_content/plantlogic_blueberry_pots_v2_20260919.json'
       - 'data/product_content/plantlogic_blueberry_pots_r2_20260919.json'
       - 'tools/build_plantlogic_blueberry_content_assets.py'
+      - 'assets/plantlogic/blueberry-family-standard.jpg'
+      - 'assets/plantlogic/blueberry-family-u-groove.jpg'
+      - 'assets/plantlogic/blueberry-root-zone.png'
+      - '.github/workflows/plantlogic_blueberry_content_assets.yml'
       - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
   workflow_dispatch:
@@ -68,7 +76,7 @@ jobs:
           node --check js/product.js
           node --check js/app.js
           node --check js/product-pot.js
-          python -m py_compile backend/services/product_cards_v3.py backend/services/product_cards_v3_runtime.py backend/services/product_cards_v3_facets.py backend/update_plantlogic_blueberry_pots_v3_20260919.py backend/update_plantlogic_blueberry_pots_r2_20260919.py backend/rollback_plantlogic_blueberry_pots_to_5card_20260919.py backend/tools_verify_plantlogic_blueberry_architecture_20260919.py backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py backend/tools_apply_plantlogic_official_gallery_20260919.py
+          python -m py_compile backend/services/product_cards_v3.py backend/services/product_cards_v3_runtime.py backend/services/product_cards_v3_facets.py backend/update_plantlogic_blueberry_pots_v3_20260919.py backend/update_plantlogic_blueberry_pots_r2_20260919.py backend/rollback_plantlogic_blueberry_pots_to_5card_20260919.py backend/tools_verify_plantlogic_blueberry_architecture_20260919.py backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py backend/tools_apply_plantlogic_official_gallery_20260919.py tools/build_plantlogic_blueberry_content_assets.py
 
       - name: Dedicated PDP contract
         run: |
@@ -182,6 +190,14 @@ jobs:
                   assert media.get('path') not in educational
               for sku in (card.get('sku_media') or {}).get('skus') or []:
                   assert all(str(mid) for mid in sku.get('gallery_media_ids') or [])
+
+          for path in [
+              'assets/plantlogic/blueberry-family-standard.jpg',
+              'assets/plantlogic/blueberry-family-u-groove.jpg',
+              'assets/plantlogic/blueberry-root-zone.png',
+          ]:
+              p = __import__('pathlib').Path(path)
+              assert p.is_file() and p.stat().st_size > 10000, path
 
           projection = market_test_projection()
           rows = [x for x in projection['products'] if x.get('v3_product_id') in ids]

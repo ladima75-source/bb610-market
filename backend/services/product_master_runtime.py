@@ -53,22 +53,70 @@ def _uniq(values: list[str]) -> list[str]:
     return out
 
 
-def _culture_facets(product: dict) -> list[str]:
-    aliases = {
-        "лохина": "лохина",
-        "полуниця": "полуниця",
-        "суниця": "полуниця",
-        "малина": "малина",
-        "овочі": "овочі",
-        "сад": "сад",
-        "хвойні": "хвойні",
-        "газон": "газон",
-    }
+CULTURE_FACETS = {"all", "лохина", "полуниця", "малина", "овочі", "сад", "хвойні", "газон"}
+
+
+def _application_texts(product: dict) -> list[str]:
+    app = product.get("application")
     out: list[str] = []
-    for raw in product.get("cultures") or []:
-        value = aliases.get(_norm(raw), _norm(raw))
-        if value:
-            out.append(value)
+    if isinstance(app, str):
+        out.extend(x.strip() for x in app.split(";") if x.strip())
+    elif isinstance(app, dict):
+        for key in ("intro", "note"):
+            value = str(app.get(key) or "").strip()
+            if value:
+                out.append(value)
+        for row in app.get("rows") or []:
+            if not isinstance(row, dict):
+                continue
+            for key in ("crop", "method", "period"):
+                value = str(row.get(key) or "").strip()
+                if value:
+                    out.append(value)
+    elif isinstance(app, list):
+        for row in app:
+            if isinstance(row, str) and row.strip():
+                out.append(row.strip())
+            elif isinstance(row, dict):
+                for key in ("crop", "method", "period"):
+                    value = str(row.get(key) or "").strip()
+                    if value:
+                        out.append(value)
+    return out
+
+
+def _culture_values_from_text(raw: Any) -> list[str]:
+    value = _norm(raw)
+    if not value:
+        return []
+    if any(token in value for token in ("усі культури", "всі культури", "all crops")):
+        return ["all"]
+
+    out: list[str] = []
+    if "лохин" in value or "blueberr" in value:
+        out.append("лохина")
+    if "полуниц" in value or "суниц" in value or "strawberr" in value:
+        out.append("полуниця")
+    if "малин" in value or "raspberr" in value:
+        out.append("малина")
+    if "овоч" in value or "vegetable" in value:
+        out.append("овочі")
+    if "плодов" in value or "сад" in value or "orchard" in value or "fruit crop" in value:
+        out.append("сад")
+    if "хвой" in value or "conifer" in value:
+        out.append("хвойні")
+    if "газон" in value or "lawn" in value or "turf" in value:
+        out.append("газон")
+    return out
+
+
+def _culture_facets(product: dict) -> list[str]:
+    raw_values: list[Any] = list(product.get("cultures") or [])
+    if not raw_values:
+        raw_values.extend(_application_texts(product))
+    out: list[str] = []
+    for raw in raw_values:
+        out.extend(_culture_values_from_text(raw))
     return _uniq(out)
 
 
@@ -80,8 +128,8 @@ def _method_facets(product: dict) -> list[str]:
             raw_values.extend(str(x) for x in value)
         elif value:
             raw_values.extend(str(value).split(";"))
-    if not raw_values and product.get("application"):
-        raw_values.extend(str(product.get("application") or "").split(";"))
+    if not raw_values:
+        raw_values.extend(_application_texts(product))
 
     out: list[str] = []
     for raw in raw_values:
@@ -89,13 +137,20 @@ def _method_facets(product: dict) -> list[str]:
         is_foliar = (
             "позакорен" in value
             or "листков" in value
+            or "по лист" in value
+            or "обприск" in value
             or "foliar" in value
         )
         if "фертигац" in value or "крапель" in value or "drip" in value:
             out.append("fertigation")
         if is_foliar:
             out.append("foliar")
-        elif "коренев" in value or "під корін" in value or "root" in value:
+        elif (
+            "коренев" in value
+            or "під корін" in value
+            or "полив" in value
+            or "root" in value
+        ):
             out.append("root")
     return _uniq(out)
 

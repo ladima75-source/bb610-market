@@ -230,6 +230,9 @@ def market_test_projection() -> dict[str, list[dict]]:
             'benefits': deepcopy(content.get('benefits') or []),
             'how_it_works': deepcopy(content.get('how_it_works') or ''),
             'characteristics': deepcopy(content.get('characteristics') or []),
+            'family_overview': deepcopy(content.get('family_overview')),
+            'technology_explainer': deepcopy(content.get('technology_explainer')),
+            'garden_guide': deepcopy(content.get('garden_guide')),
             'cultures': cultures,
             'purposes': purposes,
             'applicationMethods': methods,
@@ -349,6 +352,12 @@ def catalog_overlays() -> list[dict]:
             patch['how_it_works'] = deepcopy(content.get('how_it_works'))
         if isinstance(content.get('characteristics'), list) and content.get('characteristics'):
             patch['characteristics'] = deepcopy(content.get('characteristics'))
+        if isinstance(content.get('family_overview'), dict):
+            patch['family_overview'] = deepcopy(content.get('family_overview'))
+        if isinstance(content.get('technology_explainer'), dict):
+            patch['technology_explainer'] = deepcopy(content.get('technology_explainer'))
+        if isinstance(content.get('garden_guide'), dict):
+            patch['garden_guide'] = deepcopy(content.get('garden_guide'))
         if product_type:
             patch['product_type'] = product_type
             patch['form'] = product_type

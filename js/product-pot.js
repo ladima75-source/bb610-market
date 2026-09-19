@@ -29,8 +29,11 @@ function potRecolorClass(sku){
   const a=attrs(sku);
   const source=text(a.media_source_color);
   const target=text(a.color_code);
+  if(!source||!target||source===target)return '';
   if(source==='terracotta'&&target==='black')return 'pot-recolor-terra-black';
   if(source==='terracotta'&&target==='white')return 'pot-recolor-terra-white';
+  if(source==='black'&&target==='white')return 'pot-recolor-black-white';
+  if(source==='black'&&target==='terracotta')return 'pot-recolor-black-terra';
   return '';
 }
 
@@ -324,6 +327,22 @@ function render({product,root,selectedSkuId}){
             <feFuncB type="linear" slope="0.3" intercept="0.7"/>
           </feComponentTransfer>
         </filter>
+        <filter id="pot-filter-black-white" color-interpolation-filters="sRGB">
+          <feColorMatrix type="saturate" values="0"/>
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="0.18" intercept="0.82"/>
+            <feFuncG type="linear" slope="0.18" intercept="0.82"/>
+            <feFuncB type="linear" slope="0.18" intercept="0.82"/>
+          </feComponentTransfer>
+        </filter>
+        <filter id="pot-filter-black-terra" color-interpolation-filters="sRGB">
+          <feColorMatrix type="saturate" values="0"/>
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="0.28" intercept="0.72"/>
+            <feFuncG type="linear" slope="0.64" intercept="0.36"/>
+            <feFuncB type="linear" slope="0.82" intercept="0.18"/>
+          </feComponentTransfer>
+        </filter>
       </defs>
     </svg>
     <div class="breadcrumbs">BB610 MARKET / ГОРЩИКИ / ${esc(product.name)}</div>
@@ -402,7 +421,7 @@ function render({product,root,selectedSkuId}){
     if(!gallery.length)return;
     activeIndex=(index+gallery.length)%gallery.length;
     const img=document.getElementById('pot-main-image');
-    img.classList.remove('pot-recolor-terra-black','pot-recolor-terra-white');
+    img.classList.remove('pot-recolor-terra-black','pot-recolor-terra-white','pot-recolor-black-white','pot-recolor-black-terra');
     const recolor=potRecolorClass(selectedSku);
     if(recolor)img.classList.add(recolor);
     img.src=gallery[activeIndex];

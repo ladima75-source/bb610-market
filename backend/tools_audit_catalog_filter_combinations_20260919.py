@@ -49,6 +49,27 @@ def _package_match(product: dict, package_group: str) -> bool:
     }
 
 
+def _agronomic_match(
+    product: dict,
+    *,
+    package_group: str | None = None,
+    method: str | None = None,
+    culture: str | None = None,
+) -> bool:
+    # Mirrors the storefront guard: containers are excluded whenever an
+    # agronomic filter dimension is active, even if their raw SKU text contains
+    # liters or another value that resembles fertilizer packaging.
+    if str(_facets(product).get("category") or "") == "containers":
+        return False
+    if package_group is not None and not _package_match(product, package_group):
+        return False
+    if method is not None and not _method_match(product, method):
+        return False
+    if culture is not None and not _culture_match(product, culture):
+        return False
+    return True
+
+
 def main() -> int:
     master = snapshot()
     products = [x for x in (master.get("products") or []) if isinstance(x, dict)]
@@ -111,17 +132,19 @@ def main() -> int:
             if not _culture_match(p, culture):
                 culture_wildcard_errors.append(f"{pid}:{culture}")
 
-    # Containers must never satisfy agronomic filter dimensions.
+    # Containers must never satisfy storefront agronomic filters.
+    # Raw container SKU volume is allowed to look like a package size; the
+    # category guard is what prevents leakage into fertilizer/biostimulant facets.
     for p in containers:
         pid = str(p.get("id") or "?")
         for package_group in PACKAGE_GROUPS:
-            if _package_match(p, package_group):
+            if _agronomic_match(p, package_group=package_group):
                 container_facet_leaks.append(f"{pid}:package:{package_group}")
         for method in METHOD_GROUPS:
-            if _method_match(p, method):
+            if _agronomic_match(p, method=method):
                 container_facet_leaks.append(f"{pid}:method:{method}")
         for culture in CULTURES:
-            if _culture_match(p, culture):
+            if _agronomic_match(p, culture=culture):
                 container_facet_leaks.append(f"{pid}:culture:{culture}")
 
     # Exercise the real intersection space. Zero-result combinations are valid;
@@ -135,11 +158,12 @@ def main() -> int:
                 exercised += 1
                 matched = []
                 for p in nonpot:
-                    if not _package_match(p, package_group):
-                        continue
-                    if not _method_match(p, method):
-                        continue
-                    if not _culture_match(p, culture):
+                    if not _agronomic_match(
+                        p,
+                        package_group=package_group,
+                        method=method,
+                        culture=culture,
+                    ):
                         continue
                     pid = str(p.get("id") or "")
                     rows = by_product.get(pid, [])

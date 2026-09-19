@@ -14,8 +14,12 @@ on:
       - 'backend/services/product_cards_v3_runtime.py'
       - 'backend/services/product_cards_v3_facets.py'
       - 'backend/update_plantlogic_blueberry_pots_v3_20260919.py'
+      - 'backend/update_plantlogic_blueberry_pots_r2_20260919.py'
+      - 'backend/rollback_plantlogic_blueberry_pots_to_5card_20260919.py'
+      - 'backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py'
       - 'backend/tools_verify_plantlogic_blueberry_architecture_20260919.py'
       - 'data/product_content/plantlogic_blueberry_pots_v2_20260919.json'
+      - 'data/product_content/plantlogic_blueberry_pots_r2_20260919.json'
       - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
   pull_request:
@@ -30,8 +34,12 @@ on:
       - 'backend/services/product_cards_v3_runtime.py'
       - 'backend/services/product_cards_v3_facets.py'
       - 'backend/update_plantlogic_blueberry_pots_v3_20260919.py'
+      - 'backend/update_plantlogic_blueberry_pots_r2_20260919.py'
+      - 'backend/rollback_plantlogic_blueberry_pots_to_5card_20260919.py'
+      - 'backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py'
       - 'backend/tools_verify_plantlogic_blueberry_architecture_20260919.py'
       - 'data/product_content/plantlogic_blueberry_pots_v2_20260919.json'
+      - 'data/product_content/plantlogic_blueberry_pots_r2_20260919.json'
       - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
   workflow_dispatch:
@@ -56,7 +64,7 @@ jobs:
           node --check js/product.js
           node --check js/app.js
           node --check js/product-pot.js
-          python -m py_compile backend/services/product_cards_v3.py backend/services/product_cards_v3_runtime.py backend/services/product_cards_v3_facets.py backend/update_plantlogic_blueberry_pots_v3_20260919.py backend/tools_verify_plantlogic_blueberry_architecture_20260919.py backend/tools_apply_plantlogic_official_gallery_20260919.py
+          python -m py_compile backend/services/product_cards_v3.py backend/services/product_cards_v3_runtime.py backend/services/product_cards_v3_facets.py backend/update_plantlogic_blueberry_pots_v3_20260919.py backend/update_plantlogic_blueberry_pots_r2_20260919.py backend/rollback_plantlogic_blueberry_pots_to_5card_20260919.py backend/tools_verify_plantlogic_blueberry_architecture_20260919.py backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py backend/tools_apply_plantlogic_official_gallery_20260919.py
 
       - name: Dedicated PDP contract
         run: |
@@ -69,8 +77,8 @@ jobs:
           css=Path('css/product-pot.css').read_text(encoding='utf-8')
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
-          assert 'css/product-pot.css?v=20260919-pot-pdp-3' in html
-          assert 'js/product-pot.js?v=20260919-pot-pdp-3' in html
+          assert 'css/product-pot.css?v=20260919-pot-pdp-4' in html
+          assert 'js/product-pot.js?v=20260919-pot-pdp-4' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
           assert 'BB610_POT_PDP?.matches(p)' in product
           assert 'BB610_POT_PDP.render' in product
@@ -81,8 +89,8 @@ jobs:
           assert 'selectedSku?.image' in pot
           assert 'selectedSku?.gallery' in pot
           assert 'function mediaKey(value)' in pot
-          assert 'pot-volume-options' in pot
-          assert 'pot-execution-options' in pot
+          assert 'pot-model-options' in pot
+          assert 'data-pot-model' in pot
           assert 'pot-color-options' in pot
           assert 'manufacturer_product_no' in pot
           assert "'gallery': sku_gallery" in facets
@@ -97,6 +105,7 @@ jobs:
           assert 'object-fit:contain!important' in css
           assert '.pot-thumbs' in css
           assert '.pot-gallery-count' in css
+          assert '.pot-model-option' in css
 
           assert "patch['benefits']" in facets
           assert "patch['how_it_works']" in facets
@@ -106,60 +115,20 @@ jobs:
           print('PLANTLOGIC DEDICATED PDP CONTRACT: PASS')
           PY
 
-      - name: Five-card blueberry architecture
+      - name: Reversible blueberry architecture R2
         run: |
           python backend/update_plantlogic_pots_v3_20260918.py --apply
           python backend/update_plantlogic_blueberry_pots_v3_20260919.py --apply
-          python - <<'PY'
-          from backend.services import product_cards_v3 as pcv3
-          from backend.services.product_cards_v3_facets import market_test_projection
-
-          expected = {
-              'prd_pl_bb_round': 15,
-              'prd_pl_bb_square': 9,
-              'prd_pl_bb_round_u': 12,
-              'prd_pl_bb_square_u': 6,
-              'prd_pl_bb_zephyr_v2': 6,
-          }
-          numbers = {
-              '1308020','1303025','1308025','1308031','1308040',
-              '1309020','1309025','1309030',
-              '1308303','1308305','1308035','13080410',
-              '1309026','1309035',
-              '1301144','1301153','1301143',
-          }
-          seen_numbers=set()
-          seen_codes=set()
-          for pid,count in expected.items():
-              card=pcv3.get(pid)
-              assert card and card['enabled'] is True, pid
-              assert 'plantlogic' not in card['content']['title'].lower()
-              skus=card['sku_media']['skus']
-              assert len(skus)==count, (pid,len(skus))
-              for sku in skus:
-                  a=sku.get('attributes') or {}
-                  assert a.get('volume_label')
-                  assert a.get('execution_code')
-                  assert a.get('color_code') in {'black','white','terracotta'}
-                  assert a.get('manufacturer_product_no') in numbers
-                  seen_numbers.add(a['manufacturer_product_no'])
-                  assert sku['sku_code'] not in seen_codes
-                  seen_codes.add(sku['sku_code'])
-          assert seen_numbers==numbers
-          assert len(seen_codes)==48
-
-          projection=market_test_projection()
-          products=[x for x in projection['products'] if x.get('v3_product_id') in expected]
-          skus=[x for x in projection['skus'] if x.get('product_id') in {p['id'] for p in products}]
-          assert len(products)==5, len(products)
-          assert len(skus)==48, len(skus)
-          assert all(x.get('price') is None for x in skus)
-          assert all(x.get('availability')=='backorder' for x in skus)
-          assert all(x.get('price_request') is True for x in skus)
-          assert all((x.get('attributes') or {}).get('manufacturer_product_no') for x in skus)
-          print('PLANTLOGIC BLUEBERRY 5 PRODUCT / 17 MODEL / 48 SKU: PASS')
-          PY
           python backend/tools_verify_plantlogic_blueberry_architecture_20260919.py
+
+          python backend/update_plantlogic_blueberry_pots_r2_20260919.py --apply
+          python backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py
+
+          python backend/rollback_plantlogic_blueberry_pots_to_5card_20260919.py --apply
+          python backend/tools_verify_plantlogic_blueberry_architecture_20260919.py
+
+          python backend/update_plantlogic_blueberry_pots_r2_20260919.py --apply
+          python backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py
 
       - name: Official gallery safety contract
         run: |

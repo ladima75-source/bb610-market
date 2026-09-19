@@ -120,7 +120,7 @@ jobs:
           assert '.pot-thumbs' in css
           assert '.pot-gallery-count' in css
           assert '.pot-model-option' in css
-          assert '.pot-family-layout' in css
+          assert '.pot-family-figure' in css
           assert '.pot-explainer-layout' in css
           assert '.pot-garden-guide' in css
           assert '.pot-diagram-marker' in css

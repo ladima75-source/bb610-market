@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'js/catalog.js'
+      - 'js/app.js'
+      - 'backend/tools_audit_catalog_packaging_20260919.py'
       - 'backend/services/product_master_runtime.py'
       - 'backend/tools_audit_catalog_facets_20260919.py'
       - 'catalog.html'
@@ -15,6 +17,8 @@ on:
   pull_request:
     paths:
       - 'js/catalog.js'
+      - 'js/app.js'
+      - 'backend/tools_audit_catalog_packaging_20260919.py'
       - 'backend/services/product_master_runtime.py'
       - 'backend/tools_audit_catalog_facets_20260919.py'
       - 'catalog.html'
@@ -39,7 +43,8 @@ jobs:
       - name: Syntax
         run: |
           node --check js/catalog.js
-          python -m py_compile backend/services/product_master_runtime.py backend/tools_audit_catalog_facets_20260919.py
+          node --check js/app.js
+          python -m py_compile backend/services/product_master_runtime.py backend/tools_audit_catalog_facets_20260919.py backend/tools_audit_catalog_packaging_20260919.py
 
       - name: Product Master facet behavior
         run: |
@@ -118,6 +123,8 @@ jobs:
           assert "facetList(p,'package_groups')" in js
           assert "facetList(p,'application_methods')" in js
           assert "typeof p?.facets?.in_stock==='boolean'" in js
+          assert 'function displaySkuForPackage(p,groups)' in js
+          assert 'BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))' in js
           assert 'function dynamicFacetCount(group,value)' in js
           assert 'matchesState(p,state,group)' in js
           assert 'row.hidden=!input.checked&&n===0' in js
@@ -131,8 +138,19 @@ jobs:
           ]:
               doc=Path(path).read_text(encoding='utf-8')
               assert 'js/catalog.js?v=20260919-facets-2' in doc, path
+              assert 'js/app.js?v=20260919-pack-filter-1' in doc, path
               assert 'js/data-source.js?v=20260918-master-1' in doc, path
               assert 'config/commerce-config.js?v=20260918-master-1' in doc, path
+
+          app=Path('js/app.js').read_text(encoding='utf-8')
+          assert 'function cardV2(p,skuOverride=null)' in app
+          assert 's=skuOverride||displaySku(p.id)' in app
+          assert 'data-display-sku=' in app
+          assert 'const href=s?.url||productUrl(p)' in app
+
+          audit=Path('backend/tools_audit_catalog_packaging_20260919.py').read_text(encoding='utf-8')
+          assert 'SKU_DATA_MISMATCHES=' in audit
+          assert 'MIXED_PACKAGE_PRODUCTS=' in audit
 
           print('CATALOG FILTER CONTRACT: PASS')
           PY

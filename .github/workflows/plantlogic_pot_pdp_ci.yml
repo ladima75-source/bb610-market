@@ -6,9 +6,12 @@ on:
     paths:
       - 'product.html'
       - 'js/product.js'
+      - 'js/app.js'
+      - 'catalog.html'
       - 'js/product-pot.js'
       - 'css/product-pot.css'
       - 'backend/services/product_cards_v3.py'
+      - 'backend/services/product_cards_v3_runtime.py'
       - 'backend/services/product_cards_v3_facets.py'
       - 'backend/update_plantlogic_blueberry_pots_v3_20260919.py'
       - 'data/product_content/plantlogic_blueberry_pots_v2_20260919.json'
@@ -18,9 +21,12 @@ on:
     paths:
       - 'product.html'
       - 'js/product.js'
+      - 'js/app.js'
+      - 'catalog.html'
       - 'js/product-pot.js'
       - 'css/product-pot.css'
       - 'backend/services/product_cards_v3.py'
+      - 'backend/services/product_cards_v3_runtime.py'
       - 'backend/services/product_cards_v3_facets.py'
       - 'backend/update_plantlogic_blueberry_pots_v3_20260919.py'
       - 'data/product_content/plantlogic_blueberry_pots_v2_20260919.json'
@@ -46,8 +52,9 @@ jobs:
       - name: Syntax
         run: |
           node --check js/product.js
+          node --check js/app.js
           node --check js/product-pot.js
-          python -m py_compile backend/services/product_cards_v3.py backend/services/product_cards_v3_facets.py backend/update_plantlogic_blueberry_pots_v3_20260919.py backend/tools_apply_plantlogic_official_gallery_20260919.py
+          python -m py_compile backend/services/product_cards_v3.py backend/services/product_cards_v3_runtime.py backend/services/product_cards_v3_facets.py backend/update_plantlogic_blueberry_pots_v3_20260919.py backend/tools_apply_plantlogic_official_gallery_20260919.py
 
       - name: Dedicated PDP contract
         run: |

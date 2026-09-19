@@ -34,8 +34,10 @@ from backend.services import catalog_cms
 from backend.services import product_cards_v3 as pcv3
 
 MASTER = ROOT / "data" / "product_cards.master.json"
+SOURCE_ALIASES = ROOT / "data" / "catalog_sources" / "organic_planet_full_price_v1.json"
 ASSET_ROOT = ROOT / "assets" / "img" / "organic-planet-sku"
 BACKUP_ROOT = ROOT / "var" / "photo-backups"
+PHOTO_OVERRIDES = ROOT / "backend" / "runtime" / "organic_planet_sku_photos.json"
 CATALOG_URL = "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori"
 MAX_PAGES = 30
 
@@ -57,6 +59,7 @@ STOP = {
 class Target:
     product_id: str
     product_name: str
+    aliases: tuple[str, ...]
     sku: str
     label: str
     pack_key: str
@@ -209,16 +212,41 @@ def _name_score(product_name: str, candidate: str) -> float:
     return overlap
 
 
+def _source_aliases() -> dict[str, tuple[str, ...]]:
+    if not SOURCE_ALIASES.exists():
+        return {}
+    try:
+        doc = json.loads(SOURCE_ALIASES.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    out: dict[str, tuple[str, ...]] = {}
+    for row in doc.get("products") or []:
+        if not isinstance(row, dict):
+            continue
+        names = tuple(
+            str(x).strip()
+            for x in [row.get("title"), *(row.get("aliases") or [])]
+            if str(x or "").strip()
+        )
+        if not names:
+            continue
+        for name in names:
+            out[_norm(name)] = names
+    return out
+
+
 def _load_targets() -> list[Target]:
     doc = json.loads(MASTER.read_text(encoding="utf-8"))
     products = doc.get("products") or {}
     rows = products.values() if isinstance(products, dict) else products
+    alias_index = _source_aliases()
     out: list[Target] = []
     for product in rows:
         if not isinstance(product, dict):
             continue
         product_id = str(product.get("id") or product.get("product_id") or product.get("slug") or "").strip()
         name = str(product.get("name") or product.get("title") or product_id).strip()
+        aliases = alias_index.get(_norm(name), ())
         variants = product.get("variants") or product.get("skus") or product.get("offers") or []
         if isinstance(variants, dict):
             variants = variants.values()
@@ -232,7 +260,7 @@ def _load_targets() -> list[Target]:
             key = _pack_key(label)
             if not key:
                 continue
-            out.append(Target(product_id, name, code, label, key))
+            out.append(Target(product_id, name, aliases, code, label, key))
     return out
 
 
@@ -250,7 +278,7 @@ def _catalog_links() -> list[tuple[str, str]]:
             parsed = urlparse(absolute)
             if parsed.netloc not in {"organicplanet.com.ua", "www.organicplanet.com.ua"}:
                 continue
-            if "/katalog/dobriva-ta-biostimulyatori/" not in parsed.path:
+            if "/katalog/" not in parsed.path:
                 continue
             if not _pack_key(label):
                 continue
@@ -276,8 +304,9 @@ def _resolve_targets(targets: list[Target], links: list[tuple[str, str]]) -> tup
     for target in targets:
         candidates = []
         for url, label in by_pack.get(target.pack_key, []):
-            score = _name_score(target.product_name, label)
-            if score >= 0.55:
+            names = (target.product_name, *target.aliases)
+            score = max((_name_score(name, label) for name in names), default=0.0)
+            if score >= 0.50:
                 candidates.append((score, url, label))
         candidates.sort(reverse=True)
         if not candidates:
@@ -311,7 +340,7 @@ def _search_links(product_name: str) -> list[tuple[str, str]]:
             parsed = urlparse(absolute)
             if parsed.netloc not in {"organicplanet.com.ua", "www.organicplanet.com.ua"}:
                 continue
-            if "/katalog/dobriva-ta-biostimulyatori/" not in parsed.path:
+            if "/katalog/" not in parsed.path:
                 continue
             if not _pack_key(label):
                 continue
@@ -327,6 +356,9 @@ def _product_image(page_url: str, target: Target) -> tuple[str, str]:
     parser.feed(page)
     if _pack_key(parser.h1) != target.pack_key:
         raise RuntimeError(f"package mismatch for {target.sku}: {parser.h1}")
+    names = (target.product_name, *target.aliases)
+    if max((_name_score(name, parser.h1) for name in names), default=0.0) < 0.45:
+        raise RuntimeError(f"product mismatch for {target.sku}: {parser.h1}")
 
     image = parser.og_image
     if not image:
@@ -365,6 +397,27 @@ def _save_image(target: Target, image_url: str) -> str:
     path = ASSET_ROOT / name
     path.write_bytes(raw)
     return "/" + str(path.relative_to(ROOT)).replace("\\", "/")
+
+
+def _load_photo_overrides() -> dict:
+    try:
+        obj = json.loads(PHOTO_OVERRIDES.read_text(encoding="utf-8"))
+    except Exception:
+        return {"schema_version": "1.0", "source": "organicplanet.com.ua", "skus": {}}
+    if not isinstance(obj, dict):
+        obj = {}
+    obj.setdefault("schema_version", "1.0")
+    obj.setdefault("source", "organicplanet.com.ua")
+    if not isinstance(obj.get("skus"), dict):
+        obj["skus"] = {}
+    return obj
+
+
+def _save_photo_overrides(obj: dict) -> None:
+    PHOTO_OVERRIDES.parent.mkdir(parents=True, exist_ok=True)
+    tmp = PHOTO_OVERRIDES.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    tmp.replace(PHOTO_OVERRIDES)
 
 
 def _mapping_indexes() -> tuple[dict[str, dict], dict[str, tuple[str, str]]]:
@@ -466,6 +519,7 @@ def main() -> int:
 
     target_by_sku = {x.sku: x for x in targets}
     _, public_index = _mapping_indexes()
+    overrides = _load_photo_overrides()
     changed = 0
     v3_changed = 0
     failed: list[str] = []
@@ -484,6 +538,14 @@ def main() -> int:
 
             if _apply_v3_photo(sku, local_path, target, public_index):
                 v3_changed += 1
+            overrides["skus"][sku] = {
+                "image": local_path,
+                "alt": f"{target.product_name} — {target.label}",
+                "product_id": target.product_id,
+                "package": target.label,
+                "source_page": page_url,
+            }
+            _save_photo_overrides(overrides)
             changed += 1
             print(f"PHOTO {sku} | {target.label} | {h1} | {local_path}")
         except Exception as exc:
@@ -494,6 +556,7 @@ def main() -> int:
     print("V3_SKU_MEDIA_WRITES:", v3_changed)
     print("UNRESOLVED_SKU:", len(unresolved))
     print("FAILED_SKU:", len(failed))
+    print("PUBLIC_SKU_PHOTO_OVERRIDES:", len(overrides.get("skus") or {}))
     print("PRICE_STOCK_WRITES: 0")
     print("BACKUP:", backup)
     if unresolved:

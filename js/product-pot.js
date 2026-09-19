@@ -138,6 +138,54 @@ function renderBenefits(product){
   </section>`;
 }
 
+function renderFamilyOverview(product){
+  const data=product.family_overview;
+  if(!data||typeof data!=='object')return '';
+  const image=text(data.image);
+  return `<section class="pot-section pot-family-section">
+    <div class="pot-section-head"><span>СІМЕЙСТВО</span><h2>${esc(data.title||'Лінійка горщиків')}</h2></div>
+    <div class="pot-family-layout">
+      <div class="pot-family-copy">
+        <p>${esc(data.text||'')}</p>
+        <small>Це оглядове зображення сімейства. Фото конкретного вибраного товару показуються тільки у галереї вище.</small>
+      </div>
+      ${image?`<figure class="pot-family-figure"><img src="${esc(image)}" alt="${esc(data.image_alt||data.title||product.name)}" loading="lazy"></figure>`:''}
+    </div>
+  </section>`;
+}
+
+function renderTechnologyExplainer(product){
+  const data=product.technology_explainer;
+  if(!data||typeof data!=='object')return '';
+  const items=Array.isArray(data.items)?data.items.filter(Boolean):[];
+  if(!items.length)return '';
+  const image=text(data.image);
+  return `<section class="pot-section pot-explainer-section">
+    <div class="pot-section-head"><span>КОНСТРУКЦІЯ</span><h2>${esc(data.title||'Як працює конструкція')}</h2></div>
+    <p class="pot-explainer-lead">${esc(data.lead||'')}</p>
+    <div class="pot-explainer-layout">
+      ${image?`<figure class="pot-explainer-visual ${esc(data.image_mode||'')}"><img src="${esc(image)}" alt="${esc(data.image_alt||data.title||product.name)}" loading="lazy"></figure>`:''}
+      <div class="pot-explainer-items">${items.map(item=>`<article class="pot-explainer-item">
+        <span class="pot-explainer-code">${esc(item.code||'')}</span>
+        <div><h3>${esc(item.title||'')}</h3><p>${esc(item.text||'')}</p></div>
+      </article>`).join('')}</div>
+    </div>
+  </section>`;
+}
+
+function renderGardenGuide(product){
+  const data=product.garden_guide;
+  if(!data||typeof data!=='object'||!text(data.url))return '';
+  return `<section class="pot-section pot-garden-guide">
+    <div>
+      <span>BB610 GARDEN</span>
+      <h2>${esc(data.title||'Докладніше про технологію')}</h2>
+      <p>${esc(data.text||'')}</p>
+    </div>
+    <a href="${esc(data.url)}" target="_blank" rel="noopener">${esc(data.cta||'Відкрити BB610 Garden')} →</a>
+  </section>`;
+}
+
 function renderSpecs(product,selectedSku){
   const skip=new Set([
     'офіційне джерело',"об'єм / варіанти",'артикул виробника',
@@ -270,6 +318,8 @@ function render({product,root,selectedSkuId}){
     </section>
 
     ${renderBenefits(product)}
+    ${renderFamilyOverview(product)}
+    ${renderTechnologyExplainer(product)}
 
     <section class="pot-section pot-engineering">
       <div class="pot-engineering-copy">
@@ -295,6 +345,7 @@ function render({product,root,selectedSkuId}){
       </div>
     </section>
 
+    ${renderGardenGuide(product)}
     ${renderRelated(product)}
   </div>`;
 

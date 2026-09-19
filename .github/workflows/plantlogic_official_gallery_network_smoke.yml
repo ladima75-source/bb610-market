@@ -19,6 +19,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Seed runtime Product Card v3 fixture
+        run: python backend/update_plantlogic_pots_v3_20260918.py --apply
       - name: Resolve verified official gallery candidates
         run: |
           python backend/tools_apply_plantlogic_official_gallery_20260919.py

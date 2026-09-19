@@ -150,25 +150,6 @@ function renderBenefits(product){
   </section>`;
 }
 
-function renderModelShowcase(product){
-  const data=product.model_showcase;
-  if(!data||typeof data!=='object')return '';
-  const items=Array.isArray(data.items)?data.items.filter(x=>x&&text(x.image)):[];
-  if(!items.length)return '';
-  return `<section class="pot-visual-section pot-model-showcase">
-    <div class="pot-visual-intro">
-      <div class="pot-section-head"><span>МОДЕЛІ</span><h2>${esc(data.title||'Оберіть модель')}</h2></div>
-      <p>${esc(data.lead||'')}</p>
-    </div>
-    <div class="pot-model-showcase-grid">
-      ${items.map(item=>`<figure class="pot-model-showcase-card" data-pot-content-image="${esc(item.image)}" data-pot-content-alt="${esc([item.title,item.subtitle].filter(Boolean).join(' · '))}">
-        <div class="pot-model-showcase-image"><img src="${esc(item.image)}" alt="${esc([item.title,item.subtitle].filter(Boolean).join(' · '))}" loading="lazy"></div>
-        <figcaption><div><strong>${esc(item.title||'')}</strong><span>${esc(item.subtitle||'')}</span></div><small>Product # ${esc(item.product_no||'')}</small></figcaption>
-      </figure>`).join('')}
-    </div>
-  </section>`;
-}
-
 function renderFamilyOverview(product){
   const data=product.family_overview;
   if(!data||typeof data!=='object')return '';
@@ -397,7 +378,6 @@ function render({product,root,selectedSkuId}){
     </section>
 
     ${renderBenefits(product)}
-    ${renderModelShowcase(product)}
     ${renderFamilyOverview(product)}
     ${renderTechnologyExplainer(product)}
 

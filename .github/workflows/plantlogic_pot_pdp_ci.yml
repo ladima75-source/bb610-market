@@ -9,6 +9,7 @@ on:
       - 'js/product-pot.js'
       - 'css/product-pot.css'
       - 'backend/services/product_cards_v3_facets.py'
+      - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
   pull_request:
     paths:
@@ -17,6 +18,7 @@ on:
       - 'js/product-pot.js'
       - 'css/product-pot.css'
       - 'backend/services/product_cards_v3_facets.py'
+      - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
   workflow_dispatch:
 
@@ -39,7 +41,7 @@ jobs:
         run: |
           node --check js/product.js
           node --check js/product-pot.js
-          python -m py_compile backend/services/product_cards_v3_facets.py
+          python -m py_compile backend/services/product_cards_v3_facets.py backend/tools_apply_plantlogic_official_gallery_20260919.py
 
       - name: Dedicated PDP contract
         run: |
@@ -82,6 +84,38 @@ jobs:
           print('PLANTLOGIC DEDICATED PDP CONTRACT: PASS')
           PY
 
+      - name: Official gallery safety contract
+        run: |
+          python - <<'PY'
+          from backend.tools_apply_plantlogic_official_gallery_20260919 import safe_gallery_candidate
+
+          assert safe_gallery_candidate({
+              'identity_match': True,
+              'score': 120,
+              'reasons': ['product_no=1303025'],
+          })
+          assert safe_gallery_candidate({
+              'identity_match': True,
+              'score': 190,
+              'reasons': ['volume_match','shape=round'],
+          })
+          assert safe_gallery_candidate({
+              'identity_match': True,
+              'score': 130,
+              'reasons': ['features=zephyr'],
+          })
+          assert not safe_gallery_candidate({
+              'identity_match': True,
+              'score': 120,
+              'reasons': ['volume_match'],
+          })
+          assert not safe_gallery_candidate({
+              'identity_match': False,
+              'score': 300,
+              'reasons': ['product_no=1303025'],
+          })
+          print('OFFICIAL PLANTLOGIC GALLERY SAFETY: PASS')
+          PY
       - name: Gallery dedupe behavior
         run: |
           node - <<'JS'

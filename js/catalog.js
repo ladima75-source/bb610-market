@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   facetCss.href='assets/css/catalog-facets.css?v=2';
   const plantlogicCss=document.createElement('link');
   plantlogicCss.rel='stylesheet';
-  plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=2';
+  plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=3';
   document.head.appendChild(plantlogicCss);
   document.head.appendChild(facetCss);
 
@@ -113,13 +113,34 @@ document.addEventListener('DOMContentLoaded',async()=>{
     {id:'large',label:'Велика',hint:'від 5 кг/л'}
   ];
   const plantlogicSectionOrder=[
-    {id:'blueberry',label:'Для лохини',subtitle:'Blueberry Production',titleSuffix:'для лохини'},
-    {id:'rubus',label:'Для малини та ожини',subtitle:'Rubus Production',titleSuffix:'для малини та ожини'},
-    {id:'universal',label:'Універсальні контейнери',subtitle:'Plantlogic Production',titleSuffix:'універсальний'},
-    {id:'strawberry',label:'Для полуниці',subtitle:'Strawberry Production',titleSuffix:'для полуниці'},
-    {id:'vegetable',label:'Для овочевих культур',subtitle:'Vegetable Production',titleSuffix:'для овочевих культур'},
-    {id:'bag_bases',label:'Основи для мішків',subtitle:'Bag Bases',titleSuffix:''},
-    {id:'accessories',label:'Аксесуари',subtitle:'Accessories',titleSuffix:''}
+    {
+      id:'blueberry',label:'Для лохини',subtitle:'Blueberry Production',titleSuffix:'для лохини',
+      cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/05/arandano-blueberry-prodcution-1.jpg?fit=2481%2C815&ssl=1'
+    },
+    {
+      id:'rubus',label:'Для малини та ожини',subtitle:'Rubus Production',titleSuffix:'для малини та ожини',
+      cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/05/frambuesa-rubus-hidroponia-production-1.jpg?fit=2481%2C815&ssl=1'
+    },
+    {
+      id:'universal',label:'Універсальні контейнери',subtitle:'Plantlogic Production',titleSuffix:'універсальний',
+      cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/07/hydroponic-system-cover.png?resize=669%2C502'
+    },
+    {
+      id:'strawberry',label:'Для полуниці',subtitle:'Strawberry Production',titleSuffix:'для полуниці',
+      cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/02/Strawberry-Tabletop-System-Plantlogic.png?fit=1365%2C769&ssl=1'
+    },
+    {
+      id:'vegetable',label:'Для овочевих культур',subtitle:'Vegetable Production',titleSuffix:'для овочевих культур',
+      cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/06/Vegetable_Header.jpg?fit=2481%2C971&ssl=1'
+    },
+    {
+      id:'bag_bases',label:'Основи для мішків',subtitle:'Bag Bases',titleSuffix:'',
+      cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2022/11/espaciador-para-bolsa.jpg?resize=300%2C225&ssl=1'
+    },
+    {
+      id:'accessories',label:'Аксесуари',subtitle:'Accessories',titleSuffix:'',
+      cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/07/hydroponic-system-cover.png?resize=669%2C502'
+    }
   ];
   const plantlogicSectionsFor=p=>Array.isArray(p?.plantlogic_sections)?p.plantlogic_sections.filter(Boolean):[];
   const plantlogicSearchAliases={
@@ -448,6 +469,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
       if(!rows.length)return;
       rows.forEach(p=>shown.add(p.id));
       const sectionImage=rows.map(plantlogicCardImage).find(Boolean)||'';
+      const cultureImage=String(section.cultureImage||'').trim();
       chunks.push(`<section class="plantlogic-catalog-block" data-plantlogic-section="${h(section.id)}">
         <div class="plantlogic-catalog-block-head">
           <div class="plantlogic-catalog-block-copy">
@@ -455,7 +477,10 @@ document.addEventListener('DOMContentLoaded',async()=>{
             <h2>${h(section.label)}</h2>
           </div>
           <div class="plantlogic-catalog-block-meta">${rows.length} ${rows.length===1?'модель':'моделей'}</div>
-          ${sectionImage?`<div class="plantlogic-catalog-block-visual" aria-hidden="true"><img src="${h(sectionImage)}" alt=""></div>`:''}
+          ${(cultureImage||sectionImage)?`<div class="plantlogic-catalog-block-visual" aria-hidden="true">
+            ${cultureImage?`<img class="plantlogic-catalog-culture-image" src="${h(cultureImage)}" alt="">`:''}
+            ${sectionImage?`<img class="plantlogic-catalog-product-image" src="${h(sectionImage)}" alt="">`:''}
+          </div>`:''}
         </div>
         <div class="products-grid plantlogic-products-grid">${rows.map(p=>BB610.cardV2(plantlogicCardForSection(p,section),displaySkuForPackage(p,state.packageGroup))).join('')}</div>
       </section>`);

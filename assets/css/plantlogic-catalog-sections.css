@@ -86,7 +86,7 @@
   top:0;
   right:0;
   bottom:0;
-  width:min(280px,32%);
+  width:min(360px,40%);
   overflow:hidden;
   pointer-events:none;
 }
@@ -94,18 +94,35 @@
 .plantlogic-catalog-block-visual::before{
   content:'';
   position:absolute;
-  z-index:2;
+  z-index:4;
   inset:0;
-  background:linear-gradient(90deg,#1a1f21 0%,rgba(26,31,33,.32) 54%,rgba(26,31,33,.08) 100%);
+  background:linear-gradient(90deg,#1a1f21 0%,rgba(26,31,33,.42) 32%,rgba(26,31,33,.06) 100%);
 }
 
-.plantlogic-catalog-block-visual img{
+.plantlogic-catalog-culture-image{
+  position:absolute;
+  inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
   object-position:center;
-  opacity:.38;
-  filter:saturate(.86) contrast(1.06);
+  opacity:.46;
+  filter:saturate(.92) contrast(1.05);
+}
+
+.plantlogic-catalog-product-image{
+  position:absolute;
+  z-index:3;
+  right:10px;
+  bottom:-10px;
+  width:112px;
+  height:112px;
+  object-fit:contain;
+  padding:8px;
+  border-radius:50%;
+  background:rgba(239,239,235,.90);
+  box-shadow:0 4px 18px rgba(0,0,0,.30);
+  opacity:.96;
 }
 
 .plantlogic-products-grid{

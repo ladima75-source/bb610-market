@@ -19,10 +19,11 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "plantlogic"
-ASSET_BUILD_REVISION = "20260919-1"
+ASSET_BUILD_REVISION = "20260919-2"
 
 CATALOG_URL = "https://getplantlogic.com/wp-content/uploads/2026/03/Plantlogic_Catalog_2026_ENG_Email.pdf"
 ROOT_ZONE_URL = "https://getplantlogic.com/wp-content/uploads/2024/03/maceta-40-litros-para-arandanos.png"
+STANDARD_ROOT_ZONE_URL = "https://getplantlogic.com/wp-content/uploads/2020/04/25LRD_Main.jpg"
 
 # Normalized crop boxes measured against the official 2026 catalog render.
 # Page indices are zero-based.
@@ -72,19 +73,24 @@ def render_catalog_assets(pdf_bytes: bytes) -> list[Path]:
     return written
 
 
-def build_root_zone() -> Path:
-    raw = fetch(ROOT_ZONE_URL)
-    image = Image.open(BytesIO(raw)).convert("RGBA")
-    target = OUT / "blueberry-root-zone.png"
-    image.save(target, "PNG", optimize=True)
-    return target
+def build_root_zones() -> list[Path]:
+    u_raw = fetch(ROOT_ZONE_URL)
+    u_image = Image.open(BytesIO(u_raw)).convert("RGBA")
+    u_target = OUT / "blueberry-root-zone.png"
+    u_image.save(u_target, "PNG", optimize=True)
+
+    standard_raw = fetch(STANDARD_ROOT_ZONE_URL)
+    standard_image = Image.open(BytesIO(standard_raw)).convert("RGB")
+    standard_target = OUT / "blueberry-root-zone-standard.jpg"
+    standard_image.save(standard_target, "JPEG", quality=92, optimize=True, progressive=True)
+    return [u_target, standard_target]
 
 
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     catalog = fetch(CATALOG_URL)
     written = render_catalog_assets(catalog)
-    written.append(build_root_zone())
+    written.extend(build_root_zones())
     print("PLANTLOGIC BLUEBERRY EDUCATIONAL ASSETS", ASSET_BUILD_REVISION)
     for path in written:
         with Image.open(path) as image:

@@ -129,3 +129,7 @@
   .pot-request{min-height:42px}
   .pot-trust{margin-top:9px;padding-top:8px}
 }
+
+.pot-color-filter-defs{position:absolute;left:-9999px;top:-9999px;pointer-events:none}
+.pot-recolor-terra-black{filter:url(#pot-filter-terra-black)}
+.pot-recolor-terra-white{filter:url(#pot-filter-terra-white)}

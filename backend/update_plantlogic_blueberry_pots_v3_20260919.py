@@ -45,6 +45,13 @@ EXPECTED_MODELS = 17
 EXPECTED_SKUS = 48
 
 ROUND_CARD_OFFICIAL_MEDIA = {
+    "1303025": [
+        ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Round-Pot-with-short-legs_Item_1303025.jpg"),
+        ("front", "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg"),
+        ("angle", "https://getplantlogic.com/wp-content/uploads/2018/04/3025_2-1.jpg"),
+        ("top", "https://getplantlogic.com/wp-content/uploads/2018/04/3025_3.jpg"),
+        ("base", "https://getplantlogic.com/wp-content/uploads/2021/06/3025_4-1.jpg"),
+    ],
     "1308020": [
         ("hero", "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Round-Pot_Item_1308020.jpg"),
         ("front", "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_front.jpg"),
@@ -276,7 +283,7 @@ def how_it_works_for(product: dict) -> str:
 
 def family_overview_for(product: dict) -> dict | None:
     family = str(product.get("family") or "")
-    if str(product.get("product_id") or "") == "prd_pl_bb_round":
+    if str(product.get("product_id") or "") in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs"}:
         return None
     if family == "zephyr":
         return None
@@ -301,7 +308,7 @@ def family_overview_for(product: dict) -> dict | None:
 
 
 def model_showcase_for(product: dict) -> dict | None:
-    if str(product.get("product_id") or "") != "prd_pl_bb_round":
+    if str(product.get("product_id") or "") not in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs"}:
         return None
     items = []
     for model in product.get("models") or []:

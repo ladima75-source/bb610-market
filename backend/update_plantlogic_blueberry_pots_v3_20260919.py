@@ -622,6 +622,7 @@ def build_card(product: dict, doc: dict, legacy_lookup: dict[str, dict]) -> dict
                     "color_code": color_code,
                     "color_label": color_label,
                     "manufacturer_product_no": product_no,
+                    "media_source_color": "terracotta" if product_no == "1308303" else "",
                     "dimension_a": str(dimensions["A"]),
                     "dimension_b": str(dimensions["B"]),
                     "dimension_c": str(dimensions["C"]),

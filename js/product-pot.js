@@ -142,15 +142,15 @@ function renderFamilyOverview(product){
   const data=product.family_overview;
   if(!data||typeof data!=='object')return '';
   const image=text(data.image);
-  return `<section class="pot-section pot-family-section">
-    <div class="pot-section-head"><span>СІМЕЙСТВО</span><h2>${esc(data.title||'Лінійка горщиків')}</h2></div>
-    <div class="pot-family-layout">
-      <div class="pot-family-copy">
-        <p>${esc(data.text||'')}</p>
-        <small>Це оглядове зображення сімейства. Фото конкретного вибраного товару показуються тільки у галереї вище.</small>
-      </div>
-      ${image?`<figure class="pot-family-figure"><img src="${esc(image)}" alt="${esc(data.image_alt||data.title||product.name)}" loading="lazy"></figure>`:''}
+  return `<section class="pot-visual-section pot-family-section">
+    <div class="pot-visual-intro">
+      <div class="pot-section-head"><span>СІМЕЙСТВО</span><h2>${esc(data.title||'Лінійка горщиків')}</h2></div>
+      <p>${esc(data.text||'')}</p>
     </div>
+    ${image?`<figure class="pot-family-figure" data-pot-content-image="${esc(image)}" data-pot-content-alt="${esc(data.image_alt||data.title||product.name)}">
+      <img src="${esc(image)}" alt="${esc(data.image_alt||data.title||product.name)}" loading="lazy">
+      <figcaption><span>Огляд сімейства</span><b>Натисніть, щоб збільшити</b></figcaption>
+    </figure>`:''}
   </section>`;
 }
 
@@ -164,11 +164,17 @@ function renderTechnologyExplainer(product){
     .filter(item=>['A','B','C','D'].includes(text(item.code).toUpperCase()))
     .map(item=>`<span class="pot-diagram-marker marker-${esc(text(item.code).toLowerCase())}">${esc(text(item.code).toUpperCase())}</span>`)
     .join('');
-  return `<section class="pot-section pot-explainer-section">
-    <div class="pot-section-head"><span>КОНСТРУКЦІЯ</span><h2>${esc(data.title||'Як працює конструкція')}</h2></div>
-    <p class="pot-explainer-lead">${esc(data.lead||'')}</p>
+  return `<section class="pot-visual-section pot-explainer-section">
+    <div class="pot-visual-intro">
+      <div class="pot-section-head"><span>КОНСТРУКЦІЯ</span><h2>${esc(data.title||'Як працює конструкція')}</h2></div>
+      <p>${esc(data.lead||'')}</p>
+    </div>
     <div class="pot-explainer-layout">
-      ${image?`<figure class="pot-explainer-visual ${esc(data.image_mode||'')}"><img src="${esc(image)}" alt="${esc(data.image_alt||data.title||product.name)}" loading="lazy">${markers}</figure>`:''}
+      ${image?`<figure class="pot-explainer-visual ${esc(data.image_mode||'')}" data-pot-content-image="${esc(image)}" data-pot-content-alt="${esc(data.image_alt||data.title||product.name)}">
+        <img src="${esc(image)}" alt="${esc(data.image_alt||data.title||product.name)}" loading="lazy">
+        ${markers}
+        <figcaption>Схема конструкції · натисніть, щоб збільшити</figcaption>
+      </figure>`:''}
       <div class="pot-explainer-items">${items.map(item=>`<article class="pot-explainer-item">
         <span class="pot-explainer-code">${esc(item.code||'')}</span>
         <div><h3>${esc(item.title||'')}</h3><p>${esc(item.text||'')}</p></div>
@@ -325,18 +331,6 @@ function render({product,root,selectedSkuId}){
     ${renderFamilyOverview(product)}
     ${renderTechnologyExplainer(product)}
 
-    <section class="pot-section pot-engineering">
-      <div class="pot-engineering-copy">
-        <div class="pot-section-head"><span>КОРЕНЕВА ЗОНА</span><h2>Дренаж, вентиляція та робота конструкції</h2></div>
-        <p>${esc(text(how)||description)}</p>
-      </div>
-      <div class="pot-engineering-points">
-        <article><b>01</b><span>Відведення надлишкової води від кореневої зони</span></article>
-        <article><b>02</b><span>Повітряний зазор і вентиляція нижньої частини субстрату</span></article>
-        <article><b>03</b><span>Конструкція для професійного субстратного вирощування</span></article>
-      </div>
-    </section>
-
     <section class="pot-section pot-tech">
       <div class="pot-section-head"><span>ТЕХНІЧНІ ДАНІ</span><h2>Характеристики вибраного варіанта</h2></div>
       <div class="pot-tech-grid">
@@ -479,6 +473,10 @@ function render({product,root,selectedSkuId}){
   document.querySelector('[data-pot-prev]')?.addEventListener('click',()=>setImage(activeIndex-1));
   document.querySelector('[data-pot-next]')?.addEventListener('click',()=>setImage(activeIndex+1));
   document.getElementById('pot-main-image')?.addEventListener('click',e=>BB610.openPhoto?.(e.currentTarget.currentSrc||e.currentTarget.src,product.name));
+  document.querySelectorAll('[data-pot-content-image]').forEach(el=>el.addEventListener('click',()=>{
+    const src=el.dataset.potContentImage,alt=el.dataset.potContentAlt||product.name;
+    if(src)BB610.openPhoto?.(src,alt);
+  }));
   document.getElementById('pot-cta').onclick=()=>{
     if(!selectedSku)return;
     if(BB610.isPriceRequestSku?.(selectedSku))BB610.openPriceRequest(selectedSku.id,1);

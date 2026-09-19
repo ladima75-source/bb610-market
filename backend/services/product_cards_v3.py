@@ -168,8 +168,9 @@ def validate(card: dict) -> dict:
     for item in skus:
         if not isinstance(item, dict):
             raise ValueError('SKU item must be an object')
-        allowed = {'sku_id', 'sku_code', 'label', 'package', 'primary_media_id', 'gallery_media_ids', 'sort_order', 'enabled'}
-        if set(item) != allowed:
+        required = {'sku_id', 'sku_code', 'label', 'package', 'primary_media_id', 'gallery_media_ids', 'sort_order', 'enabled'}
+        allowed = required | {'attributes'}
+        if required - set(item) or set(item) - allowed:
             raise ValueError('SKU item has missing or unknown fields')
         sid = _require_str(item, 'sku_id', nonempty=True)
         if not SKU_ID_RE.fullmatch(sid):
@@ -193,6 +194,15 @@ def validate(card: dict) -> dict:
             raise ValueError('sku.sort_order must be integer')
         if not isinstance(item.get('enabled'), bool):
             raise ValueError('sku.enabled must be boolean')
+        attributes = item.get('attributes')
+        if attributes is not None:
+            if not isinstance(attributes, dict):
+                raise ValueError(f'Invalid attributes for {sid}')
+            for key, value in attributes.items():
+                if not isinstance(key, str) or not key.strip():
+                    raise ValueError(f'Invalid attribute key for {sid}')
+                if not isinstance(value, (str, int, float, bool)) and value is not None:
+                    raise ValueError(f'Invalid attribute value for {sid}: {key}')
 
     return card
 

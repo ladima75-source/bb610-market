@@ -22,8 +22,17 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const natural=(a,b)=>a.localeCompare(b,'uk',{numeric:true,sensitivity:'base'});
   const categoryName=id=>id==='containers'?'Горщики':(BB610_DATA_SOURCE.categories().find(c=>c.id===id)?.short_name||id);
   const productSkus=p=>BB610_DATA_SOURCE.skusForProduct(p.id)||[];
-  const productText=p=>norm([p.name,p.brand,p.manufacturer,p.categoryLabel,p.category,p.npk,p.activeIngredient,p.productType,p.shortDescription,...productSkus(p).map(s=>`${s.id} ${s.sku||''} ${s.variant||''}`),...(p.cultures||[]),...(p.purposes||[])].join(' '));
-  const hasStock=p=>p.stockStatus==='in_stock'||p.stockStatus==='dnipro'||(p.sizes||[]).some(s=>s.availability==='in_stock');
+  const facetList=(p,key)=>Array.isArray(p?.facets?.[key])?p.facets[key].filter(Boolean):[];
+  const categoryFor=p=>String(p?.facets?.category||p.category||'').trim();
+  const brandFor=p=>String(p?.facets?.brand||p.brand||'').trim();
+  const culturesFor=p=>{
+    const canonical=facetList(p,'cultures');
+    return canonical.length?canonical:(p.cultures||[]);
+  };
+  const productText=p=>norm([p.name,brandFor(p),p.manufacturer,p.categoryLabel,categoryFor(p),p.npk,p.activeIngredient,p.productType,p.shortDescription,...productSkus(p).map(s=>`${s.id} ${s.sku||''} ${s.variant||''}`),...culturesFor(p),...(p.purposes||[])].join(' '));
+  const hasStock=p=>typeof p?.facets?.in_stock==='boolean'
+    ?p.facets.in_stock
+    :(p.stockStatus==='in_stock'||p.stockStatus==='dnipro'||(p.sizes||[]).some(s=>s.availability==='in_stock'));
 
   const packageGroups=[
     {id:'small',label:'Мала',hint:'до 50 г/мл · стіки / саше'},
@@ -66,7 +75,8 @@ document.addEventListener('DOMContentLoaded',async()=>{
   }
 
   function packageGroupsFor(p){
-    return uniq(productSkus(p).map(packageGroupForSku).filter(Boolean));
+    const canonical=facetList(p,'package_groups');
+    return canonical.length?canonical:uniq(productSkus(p).map(packageGroupForSku).filter(Boolean));
   }
 
   const methodAlias={
@@ -77,6 +87,8 @@ document.addEventListener('DOMContentLoaded',async()=>{
   };
 
   function methodGroupsFor(p){
+    const canonical=facetList(p,'application_methods');
+    if(canonical.length)return canonical;
     const raw=[
       ...(Array.isArray(p.applicationMethods)?p.applicationMethods:[]),
       ...(Array.isArray(p.application_methods)?p.application_methods:[])
@@ -86,15 +98,15 @@ document.addEventListener('DOMContentLoaded',async()=>{
   }
 
   const categories=BB610_DATA_SOURCE.categories().filter(c=>c.enabled&&!(BB610.categoryHidden&&BB610.categoryHidden(c.id))).sort((a,b)=>(a.order||0)-(b.order||0));
-  const nonContainerSource=source.filter(p=>p.category!=='containers');
-  const brands=uniq(source.map(p=>p.brand)).sort(natural);
-  const cultures=uniq(nonContainerSource.flatMap(p=>p.cultures||[])).sort(natural);
+  const nonContainerSource=source.filter(p=>categoryFor(p)!=='containers');
+  const brands=uniq(source.map(brandFor)).sort(natural);
+  const cultures=uniq(nonContainerSource.flatMap(culturesFor)).sort(natural);
 
   function optionCount(group,value){
     return source.filter(p=>{
-      if(group==='category')return p.category===value;
-      if(group==='brand')return p.brand===value;
-      if(group==='culture')return p.category!=='containers'&&(p.cultures||[]).includes(value);
+      if(group==='category')return categoryFor(p)===value;
+      if(group==='brand')return brandFor(p)===value;
+      if(group==='culture')return categoryFor(p)!=='containers'&&culturesFor(p).includes(value);
       if(group==='packageGroup')return p.category!=='containers'&&packageGroupsFor(p).includes(value);
       if(group==='methodGroup')return p.category!=='containers'&&methodGroupsFor(p).includes(value);
       return false;
@@ -170,26 +182,26 @@ document.addEventListener('DOMContentLoaded',async()=>{
 
   function matchesState(p,state,skip=''){
     if(state.qq&&!productText(p).includes(state.qq))return false;
-    if(skip!=='category'&&!matchesMulti(p,state.category,(x,v)=>x.category===v))return false;
+    if(skip!=='category'&&!matchesMulti(p,state.category,(x,v)=>categoryFor(x)===v))return false;
     if(skip!=='packageGroup'&&!matchesMulti(p,state.packageGroup,(x,v)=>packageGroupsFor(x).includes(v)))return false;
     if(skip!=='methodGroup'&&!matchesMulti(p,state.methodGroup,(x,v)=>methodGroupsFor(x).includes(v)))return false;
-    if(skip!=='culture'&&!matchesMulti(p,state.culture,(x,v)=>(x.cultures||[]).includes(v)))return false;
-    if(skip!=='brand'&&!matchesMulti(p,state.brand,(x,v)=>x.brand===v))return false;
+    if(skip!=='culture'&&!matchesMulti(p,state.culture,(x,v)=>culturesFor(x).includes(v)))return false;
+    if(skip!=='brand'&&!matchesMulti(p,state.brand,(x,v)=>brandFor(x)===v))return false;
     if(
       skip!=='category'
       &&(state.packageGroup.length||state.methodGroup.length||state.culture.length)
-      &&p.category==='containers'
+      &&categoryFor(p)==='containers'
     )return false;
     if(state.stock&&!hasStock(p))return false;
     return true;
   }
 
   function facetMatches(p,group,value){
-    if(group==='category')return p.category===value;
-    if(group==='brand')return p.brand===value;
-    if(group==='culture')return p.category!=='containers'&&(p.cultures||[]).includes(value);
-    if(group==='packageGroup')return p.category!=='containers'&&packageGroupsFor(p).includes(value);
-    if(group==='methodGroup')return p.category!=='containers'&&methodGroupsFor(p).includes(value);
+    if(group==='category')return categoryFor(p)===value;
+    if(group==='brand')return brandFor(p)===value;
+    if(group==='culture')return categoryFor(p)!=='containers'&&culturesFor(p).includes(value);
+    if(group==='packageGroup')return categoryFor(p)!=='containers'&&packageGroupsFor(p).includes(value);
+    if(group==='methodGroup')return categoryFor(p)!=='containers'&&methodGroupsFor(p).includes(value);
     return false;
   }
 

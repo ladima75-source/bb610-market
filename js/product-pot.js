@@ -25,6 +25,15 @@ function uniqueMedia(items){
   return out;
 }
 
+function potRecolorClass(sku){
+  const a=attrs(sku);
+  const source=text(a.media_source_color);
+  const target=text(a.color_code);
+  if(source==='terracotta'&&target==='black')return 'pot-recolor-terra-black';
+  if(source==='terracotta'&&target==='white')return 'pot-recolor-terra-white';
+  return '';
+}
+
 function characteristics(product){
   const out=[];
   for(const row of product.characteristics||[]){
@@ -297,6 +306,26 @@ function render({product,root,selectedSkuId}){
   }
 
   root.innerHTML=`<div class="pot-pdp">
+    <svg class="pot-color-filter-defs" width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="pot-filter-terra-black" color-interpolation-filters="sRGB">
+          <feColorMatrix type="saturate" values="0"/>
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="1.6" intercept="-0.6"/>
+            <feFuncG type="linear" slope="1.6" intercept="-0.6"/>
+            <feFuncB type="linear" slope="1.6" intercept="-0.6"/>
+          </feComponentTransfer>
+        </filter>
+        <filter id="pot-filter-terra-white" color-interpolation-filters="sRGB">
+          <feColorMatrix type="saturate" values="0"/>
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="0.3" intercept="0.7"/>
+            <feFuncG type="linear" slope="0.3" intercept="0.7"/>
+            <feFuncB type="linear" slope="0.3" intercept="0.7"/>
+          </feComponentTransfer>
+        </filter>
+      </defs>
+    </svg>
     <div class="breadcrumbs">BB610 MARKET / ГОРЩИКИ / ${esc(product.name)}</div>
 
     <section class="pot-hero">
@@ -373,6 +402,9 @@ function render({product,root,selectedSkuId}){
     if(!gallery.length)return;
     activeIndex=(index+gallery.length)%gallery.length;
     const img=document.getElementById('pot-main-image');
+    img.classList.remove('pot-recolor-terra-black','pot-recolor-terra-white');
+    const recolor=potRecolorClass(selectedSku);
+    if(recolor)img.classList.add(recolor);
     img.src=gallery[activeIndex];
     img.alt=`${product.name} — фото ${activeIndex+1}`;
     document.querySelectorAll('[data-pot-thumb]').forEach((x,i)=>x.classList.toggle('active',i===activeIndex));
@@ -386,7 +418,8 @@ function render({product,root,selectedSkuId}){
     gallery=mediaForCurrent();
     activeIndex=0;
     const thumbs=document.getElementById('pot-thumbs');
-    thumbs.innerHTML=gallery.length>1?gallery.map((src,i)=>`<button type="button" class="pot-thumb${i===0?' active':''}" data-pot-thumb="${i}"><img src="${esc(src)}" alt="${esc(product.name)} — фото ${i+1}"></button>`).join(''):'';
+    const recolor=potRecolorClass(selectedSku);
+    thumbs.innerHTML=gallery.length>1?gallery.map((src,i)=>`<button type="button" class="pot-thumb${i===0?' active':''}" data-pot-thumb="${i}"><img class="${esc(recolor)}" src="${esc(src)}" alt="${esc(product.name)} — фото ${i+1}"></button>`).join(''):'';
     thumbs.hidden=gallery.length<2;
     thumbs.querySelectorAll('[data-pot-thumb]').forEach(btn=>btn.onclick=()=>setImage(Number(btn.dataset.potThumb)));
     if(gallery.length)setImage(0);

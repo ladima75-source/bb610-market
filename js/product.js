@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   const root=document.getElementById('product-root');
   if(!p){root.innerHTML='<div class="empty">Товар не знайдено. <a class="link" href="catalog.html">Повернутися до каталогу</a></div>';return}
 
+  if(window.BB610_POT_PDP?.matches(p)){
+    window.BB610_POT_PDP.render({
+      product:p,
+      root,
+      selectedSkuId:selectedFromUrl?.id||null,
+    });
+    return;
+  }
+
   const escValue=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fieldLabels={intro:'Вступ',note:'Примітка',crop:'Культура',culture:'Культура',crops:'Культури',stage:'Фаза',rate:'Норма',dose:'Норма',method:'Спосіб',application:'Застосування',water:'Вода',interval:'Інтервал',purpose:'Призначення',label:'Параметр',value:'Значення',title:'Назва',text:'Опис'};
   const labelFor=k=>fieldLabels[k]||String(k||'').replace(/_/g,' ');

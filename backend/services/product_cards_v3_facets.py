@@ -300,6 +300,61 @@ def _content_media(card: dict) -> tuple[str, list[str]]:
                 gallery.append(gpath)
     return primary, gallery
 
+def sku_media_overlays() -> dict[str, dict]:
+    """Project Product Card v3 primary/gallery media onto public commerce SKU ids.
+
+    Product Card v3 owns presentation media. The mapping file keeps public SKU
+    identity stable, so this layer can correct SKU-specific photos without
+    changing price, stock, availability or SKU identity.
+    """
+    mappings = _mapping_by_product()
+    out: dict[str, dict] = {}
+    if not PRODUCTS.exists():
+        return out
+
+    for path in sorted(PRODUCTS.glob('prd_*.json')):
+        card = _load(path, None)
+        if not isinstance(card, dict) or not card.get('enabled', False):
+            continue
+        product_id = str(card.get('product_id') or '').strip()
+        mapping = mappings.get(product_id) or {}
+        sku_links = {
+            str(row.get('sku_id') or '').strip(): str(row.get('existing_commerce_sku_key') or '').strip()
+            for row in (mapping.get('skus') or [])
+            if isinstance(row, dict)
+        }
+        media = _media_index(card)
+
+        for sku in ((card.get('sku_media') or {}).get('skus') or []):
+            if not isinstance(sku, dict) or sku.get('enabled') is False:
+                continue
+            sid = str(sku.get('sku_id') or '').strip()
+            public_sku = sku_links.get(sid) or str(sku.get('sku_code') or '').strip()
+            if not public_sku:
+                continue
+
+            primary_row = media.get(str(sku.get('primary_media_id') or '')) or {}
+            primary = _public_media_path(primary_row.get('path'))
+            gallery: list[str] = []
+            if primary:
+                gallery.append(primary)
+            for mid in sku.get('gallery_media_ids') or []:
+                row = media.get(str(mid) or '') or {}
+                image = _public_media_path(row.get('path'))
+                if image and image not in gallery:
+                    gallery.append(image)
+
+            if not primary and not gallery:
+                continue
+            out[public_sku] = {
+                'image': primary or gallery[0],
+                'gallery': gallery,
+                'image_alt': str(primary_row.get('alt') or (card.get('content') or {}).get('title') or ''),
+                'v3_media': True,
+            }
+    return out
+
+
 def catalog_overlays() -> list[dict]:
     """Return content-only overlays used by storefront catalog facets.
 

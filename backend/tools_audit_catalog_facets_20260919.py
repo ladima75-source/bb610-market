@@ -8,7 +8,12 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from backend.services.product_master_runtime import (\n    _metric_from_variant,\n    _metric_from_volume_weight,\n    _package_group,\n    snapshot,\n)
+from backend.services.product_master_runtime import (
+    _metric_from_variant,
+    _metric_from_volume_weight,
+    _package_group,
+    snapshot,
+)
 
 
 def main() -> int:

@@ -336,6 +336,20 @@ jobs:
           assert len(square_u['content']['benefits']) == 4
           assert 'renderModelShowcase' not in __import__('pathlib').Path('js/product-pot.js').read_text(encoding='utf-8')
           print('PDP CONTENT CLEANUP: PASS')
+          all_cards = [__import__('backend.services.product_cards_v3', fromlist=['get']).get(pid) for pid in ids]
+          total_skus = 0
+          for card in all_cards:
+              media_index = {str(x.get('media_id') or ''): x for x in (card.get('sku_media') or {}).get('media') or []}
+              assert media_index, card.get('product_id')
+              for sku in (card.get('sku_media') or {}).get('skus') or []:
+                  total_skus += 1
+                  primary = str(sku.get('primary_media_id') or '')
+                  assert primary and primary in media_index, (card.get('product_id'), sku.get('sku_code'), primary)
+                  for mid in sku.get('gallery_media_ids') or []:
+                      assert str(mid) in media_index, (card.get('product_id'), sku.get('sku_code'), mid)
+                  assert media_index[primary].get('path'), (card.get('product_id'), sku.get('sku_code'))
+          assert total_skus == 48, total_skus
+          print('ALL 48 SKU MEDIA: PASS')
           print('ROUND CARD OFFICIAL MEDIA: PASS')
           print('PLANTLOGIC EDUCATIONAL CONTENT ISOLATION: PASS')
           PY

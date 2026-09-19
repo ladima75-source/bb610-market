@@ -142,7 +142,7 @@ class ProductPageParser(HTMLParser):
         self.h1 = ""
         self._in_h1 = False
         self._h1_parts: list[str] = []
-        self.image_candidates: list[str] = []
+        self.image_candidates: list[tuple[str, str]] = []
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
@@ -157,8 +157,9 @@ class ProductPageParser(HTMLParser):
             self._h1_parts = []
         elif low == "img":
             src = str(values.get("data-zoom-image") or values.get("data-src") or values.get("src") or "")
+            alt = html.unescape(str(values.get("alt") or values.get("title") or "")).strip()
             if src:
-                self.image_candidates.append(src)
+                self.image_candidates.append((src, alt))
 
     def handle_data(self, data):
         if self._in_h1:
@@ -418,16 +419,43 @@ def _product_image(page_url: str, target: Target) -> tuple[str, str]:
         if max((_name_score(name, parser.h1) for name in names), default=0.0) < 0.45:
             raise RuntimeError(f"product mismatch for {target.sku}: {parser.h1}")
 
-    image = parser.og_image
-    if not image:
-        for candidate in parser.image_candidates:
-            absolute = urljoin(page_url, candidate)
-            if "organicplanet.com.ua" in urlparse(absolute).netloc and "/image/" in urlparse(absolute).path:
-                image = absolute
-                break
+    # The visible main product image is authoritative. Organic Planet can keep
+    # a stale/shared og:image across package variants, while the actual product
+    # <img> correctly reflects the page SKU/package.
+    image = ""
+    allowed_packs = {target.pack_key, *PAGE_PACK_EQUIVALENTS.get(target.sku, set())}
+    ranked: list[tuple[float, str]] = []
+    for candidate, alt in parser.image_candidates:
+        absolute = urljoin(page_url, candidate)
+        parsed = urlparse(absolute)
+        if parsed.netloc not in {"organicplanet.com.ua", "www.organicplanet.com.ua"}:
+            continue
+        if "/image/" not in parsed.path:
+            continue
+        alt_pack = _pack_key(alt)
+        if alt_pack and alt_pack not in allowed_packs:
+            continue
+        if alt:
+            names = (parser.h1, target.product_name, *target.aliases)
+            score = max((_name_score(name, alt) for name in names), default=0.0)
+            if _norm(alt) == _norm(parser.h1):
+                score = max(score, 1.0)
+        else:
+            score = 0.0
+        ranked.append((score, absolute))
+    ranked.sort(reverse=True)
+    if ranked and ranked[0][0] >= 0.45:
+        image = ranked[0][1]
+    elif ranked:
+        # On pages where the main image has no alt text, the first in-page
+        # product image is still safer than a shared social preview.
+        image = ranked[0][1]
+    elif parser.og_image:
+        image = urljoin(page_url, parser.og_image)
+
     if not image:
         raise RuntimeError(f"no product image on {page_url}")
-    return urljoin(page_url, image), parser.h1
+    return image, parser.h1
 
 
 def _ext(content_type: str, image_url: str) -> str:
@@ -451,7 +479,9 @@ def _save_image(target: Target, image_url: str) -> str:
     if content_type and not content_type.lower().startswith("image/"):
         raise RuntimeError(f"not an image for {target.sku}: {content_type}")
     ASSET_ROOT.mkdir(parents=True, exist_ok=True)
-    name = re.sub(r"[^a-z0-9._-]+", "-", target.sku.lower()) + _ext(content_type, image_url)
+    stem = re.sub(r"[^a-z0-9._-]+", "-", target.sku.lower())
+    digest = hashlib.sha256(raw).hexdigest()[:12]
+    name = f"{stem}-{digest}" + _ext(content_type, image_url)
     path = ASSET_ROOT / name
     path.write_bytes(raw)
     return "/" + str(path.relative_to(ROOT)).replace("\\", "/")
@@ -547,37 +577,53 @@ def _apply_v3_photo(public_sku: str, image_path: str, target: Target, public_ind
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--repair-existing", action="store_true")
     args = ap.parse_args()
 
     all_targets = _load_targets()
     overrides = _load_photo_overrides()
     existing = overrides.get("skus") or {}
-    targets = [
-        target for target in all_targets
-        if not _override_is_live(existing.get(target.sku))
-    ]
+
+    if args.repair_existing:
+        targets = [
+            target for target in all_targets
+            if _override_is_live(existing.get(target.sku))
+            and str((existing.get(target.sku) or {}).get("source_page") or "").strip()
+        ]
+        resolved = {
+            target.sku: str(existing[target.sku]["source_page"]).strip()
+            for target in targets
+        }
+        unresolved = []
+        links = []
+    else:
+        targets = [
+            target for target in all_targets
+            if not _override_is_live(existing.get(target.sku))
+        ]
+        links = _catalog_links() if targets else []
+        resolved, unresolved = _resolve_targets(targets, links)
+
+        # Current catalog pagination normally resolves the matrix. Search is a
+        # targeted fallback for products outside the first catalog pages.
+        if unresolved:
+            unresolved_set = set(unresolved)
+            extra_links = list(links)
+            seen_products: set[str] = set()
+            for target in targets:
+                if target.sku not in unresolved_set or target.product_id in seen_products:
+                    continue
+                seen_products.add(target.product_id)
+                extra_links.extend(_search_links((target.product_name, *target.aliases)))
+            resolved, unresolved = _resolve_targets(targets, extra_links)
+
     print("ORGANIC PLANET SKU PHOTO SYNC")
     print("TARGET_SKU:", len(all_targets))
-    print("EXISTING_SKU_PHOTOS:", len(all_targets) - len(targets))
+    print("MODE:", "REPAIR_EXISTING" if args.repair_existing else "MISSING_ONLY")
+    print("EXISTING_SKU_PHOTOS:", sum(1 for target in all_targets if _override_is_live(existing.get(target.sku))))
     print("PENDING_SKU:", len(targets))
-
-    links = _catalog_links() if targets else []
     print("CATALOG_PRODUCT_LINKS:", len(links))
     print("MANUAL_PAGE_BINDINGS:", len(MANUAL_PAGES))
-    resolved, unresolved = _resolve_targets(targets, links)
-
-    # Current catalog pagination normally resolves the matrix. Search is a
-    # targeted fallback for products outside the first catalog pages.
-    if unresolved:
-        unresolved_set = set(unresolved)
-        extra_links = list(links)
-        seen_products: set[str] = set()
-        for target in targets:
-            if target.sku not in unresolved_set or target.product_id in seen_products:
-                continue
-            seen_products.add(target.product_id)
-            extra_links.extend(_search_links((target.product_name, *target.aliases)))
-        resolved, unresolved = _resolve_targets(targets, extra_links)
 
     print("RESOLVED_SKU:", len(resolved))
     print("UNRESOLVED_SKU:", len(unresolved))

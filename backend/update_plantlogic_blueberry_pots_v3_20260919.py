@@ -414,7 +414,15 @@ def family_overview_for(product: dict) -> dict | None:
     if str(product.get("product_id") or "") in {"prd_pl_bb_round", "prd_pl_bb_round_short_legs", "prd_pl_bb_square", "prd_pl_bb_round_u", "prd_pl_bb_square_u"}:
         return None
     if family == "zephyr":
-        return None
+        return {
+            "title": "Zephyr V2 у професійному вирощуванні",
+            "text": (
+                "Фото показує сімейство Zephyr V2 у виробничих умовах. "
+                "Конкретний об'єм і колір обираються у конфігураторі вище."
+            ),
+            "image": "/assets/plantlogic/zephyr-v2-greenhouse.jpg",
+            "image_alt": "Горщики Zephyr V2 у професійному вирощуванні",
+        }
     if "u_groove" in family:
         image = "/assets/plantlogic/blueberry-family-u-groove.jpg"
         text = (
@@ -462,7 +470,33 @@ def model_showcase_for(product: dict) -> dict | None:
 def technology_explainer_for(product: dict) -> dict | None:
     family = str(product.get("family") or "")
     if family == "zephyr":
-        return None
+        return {
+            "title": "Розміри Zephyr V2",
+            "lead": (
+                "Схема порівнює три об'єми Zephyr V2 — 25, 30 та 40 л. "
+                "Точний Product # і характеристики вибраного варіанта показуються у картці вище."
+            ),
+            "image": "/assets/plantlogic/zephyr-v2-capacities.jpg",
+            "image_alt": "Порівняння розмірів Zephyr V2 25, 30 та 40 л",
+            "image_mode": "zephyr-capacities",
+            "items": [
+                {
+                    "code": "25 л",
+                    "title": "25 л · Product # 1301144",
+                    "text": "Компактний варіант Zephyr V2; окремі точні фото доступні у галереї цієї моделі.",
+                },
+                {
+                    "code": "30 л",
+                    "title": "30 л · Product # 1301153",
+                    "text": "Середній об'єм лінійки; співвідношення розмірів показане на схемі.",
+                },
+                {
+                    "code": "40 л",
+                    "title": "40 л · Product # 1301143",
+                    "text": "Найбільший із трьох об'ємів; співвідношення розмірів показане на схемі.",
+                },
+            ],
+        }
 
     common = [
         {

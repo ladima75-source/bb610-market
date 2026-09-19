@@ -165,13 +165,18 @@ def market_test_projection() -> dict[str, list[dict]]:
                 continue
             primary = media.get(str(sku.get('primary_media_id') or '')) or {}
             image = _public_media_path(primary.get('path'))
+            sku_gallery: list[str] = []
+            if image:
+                sku_gallery.append(image)
+                if image not in gallery:
+                    gallery.append(image)
             for mid in sku.get('gallery_media_ids') or []:
                 grow = media.get(str(mid)) or {}
                 gpath = _public_media_path(grow.get('path'))
+                if gpath and gpath not in sku_gallery:
+                    sku_gallery.append(gpath)
                 if gpath and gpath not in gallery:
                     gallery.append(gpath)
-            if image and image not in gallery:
-                gallery.append(image)
 
             projected = {
                 'id': public_sku,
@@ -195,6 +200,7 @@ def market_test_projection() -> dict[str, list[dict]]:
                 'url': f"product.html?id={target}&sku={public_sku}",
                 'shipping': ['Умови та термін поставки уточнюємо у відповіді на запит'],
                 'image': image,
+                'gallery': sku_gallery,
                 'image_alt': str(content.get('title') or ''),
                 'enabled': True,
             }

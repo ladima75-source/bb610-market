@@ -1,5 +1,6 @@
 from __future__ import annotations
 import json, subprocess, time, uuid, shutil
+from urllib.parse import quote
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -151,6 +152,12 @@ def public_data():
             sim=skus[0].get('image')
             if isinstance(sim,dict):sim=sim.get('local') or sim.get('url')
             im=sim
+        selected_sku=(offers[0].get('sku_id') if offers else None)
+        if not selected_sku and skus:
+            selected_sku=skus[0].get('id') or skus[0].get('sku')
+        href=f'/product.html?id={quote(str(pid or ""))}'
+        if selected_sku:
+            href+=f'&sku={quote(str(selected_sku))}'
         return {
           'product_id':pid,
           'title':p.get('official_name') or p.get('name') or pid,
@@ -159,7 +166,7 @@ def public_data():
           'image':im or '',
           'display':disp,
           'offers':offers,
-          'href':f'/products/{pid}.html'
+          'href':href
         }
 
     all_products=[product_payload(p) for p in d.get('products',[])]

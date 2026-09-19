@@ -25,6 +25,7 @@ on:
       - 'assets/plantlogic/blueberry-family-standard.jpg'
       - 'assets/plantlogic/blueberry-family-u-groove.jpg'
       - 'assets/plantlogic/blueberry-root-zone.png'
+      - 'assets/plantlogic/blueberry-root-zone-standard.jpg'
       - '.github/workflows/plantlogic_blueberry_content_assets.yml'
       - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
@@ -51,6 +52,7 @@ on:
       - 'assets/plantlogic/blueberry-family-standard.jpg'
       - 'assets/plantlogic/blueberry-family-u-groove.jpg'
       - 'assets/plantlogic/blueberry-root-zone.png'
+      - 'assets/plantlogic/blueberry-root-zone-standard.jpg'
       - '.github/workflows/plantlogic_blueberry_content_assets.yml'
       - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
@@ -89,8 +91,8 @@ jobs:
           css=Path('css/product-pot.css').read_text(encoding='utf-8')
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
-          assert 'css/product-pot.css?v=20260919-pot-pdp-5' in html
-          assert 'js/product-pot.js?v=20260919-pot-pdp-5' in html
+          assert 'css/product-pot.css?v=20260919-pot-pdp-6' in html
+          assert 'js/product-pot.js?v=20260919-pot-pdp-6' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
           assert 'BB610_POT_PDP?.matches(p)' in product
           assert 'BB610_POT_PDP.render' in product
@@ -121,9 +123,11 @@ jobs:
           assert '.pot-family-layout' in css
           assert '.pot-explainer-layout' in css
           assert '.pot-garden-guide' in css
+          assert '.pot-diagram-marker' in css
 
           assert 'function renderFamilyOverview(product)' in pot
           assert 'function renderTechnologyExplainer(product)' in pot
+          assert 'pot-diagram-marker' in pot
           assert 'function renderGardenGuide(product)' in pot
           assert 'family_overview' in pot
           assert 'technology_explainer' in pot
@@ -170,6 +174,7 @@ jobs:
               '/assets/plantlogic/blueberry-family-standard.jpg',
               '/assets/plantlogic/blueberry-family-u-groove.jpg',
               '/assets/plantlogic/blueberry-root-zone.png',
+              '/assets/plantlogic/blueberry-root-zone-standard.jpg',
           }
           for pid in ids:
               card = pcv3.get(pid)
@@ -185,6 +190,11 @@ jobs:
                       assert codes == ['A','B','C','D'], (pid,codes)
                   else:
                       assert codes == ['B','C','D'], (pid,codes)
+                  image = content['technology_explainer']['image']
+                  if pid in {'prd_pl_bb_round_u','prd_pl_bb_square_u'}:
+                      assert image.endswith('blueberry-root-zone.png'), (pid,image)
+                  else:
+                      assert image.endswith('blueberry-root-zone-standard.jpg'), (pid,image)
 
               for media in (card.get('sku_media') or {}).get('media') or []:
                   assert media.get('path') not in educational
@@ -195,6 +205,7 @@ jobs:
               'assets/plantlogic/blueberry-family-standard.jpg',
               'assets/plantlogic/blueberry-family-u-groove.jpg',
               'assets/plantlogic/blueberry-root-zone.png',
+              'assets/plantlogic/blueberry-root-zone-standard.jpg',
           ]:
               p = __import__('pathlib').Path(path)
               assert p.is_file() and p.stat().st_size > 10000, path

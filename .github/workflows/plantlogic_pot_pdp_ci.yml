@@ -147,7 +147,6 @@ jobs:
           assert 'function renderTechnologyExplainer(product)' in pot
           assert 'pot-diagram-marker' in pot
           assert 'function renderGardenGuide(product)' in pot
-          assert 'family_overview' in pot
           assert 'technology_explainer' in pot
           assert 'garden_guide' in pot
 

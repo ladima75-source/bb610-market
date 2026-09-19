@@ -195,7 +195,7 @@ jobs:
               assert isinstance(content.get('garden_guide'), dict)
               assert content['garden_guide']['url'] == 'https://garden.bb610.com.ua'
               if pid != 'prd_pl_bb_zephyr_v2':
-                  if pid == 'prd_pl_bb_round':
+                  if pid in {'prd_pl_bb_round','prd_pl_bb_round_short_legs'}:
                       assert content.get('family_overview') is None
                       assert isinstance(content.get('model_showcase'), dict)
                   else:
@@ -241,6 +241,12 @@ jobs:
           assert any('40-Liter-Round-Pot_Item_1308040-1.jpg' in x for x in paths)
           assert isinstance(round_card['content'].get('model_showcase'), dict)
           assert len(round_card['content']['model_showcase']['items']) == 4
+          short_card = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_round_short_legs')
+          short_paths = [str(x.get('path') or '') for x in (short_card.get('sku_media') or {}).get('media') or []]
+          assert any('25-Liter-Round-Pot-with-short-legs_Item_1303025.jpg' in x for x in short_paths)
+          assert isinstance(short_card['content'].get('model_showcase'), dict)
+          assert len(short_card['content']['model_showcase']['items']) == 1
+          print('SHORT LEGS OFFICIAL MEDIA: PASS')
           print('ROUND CARD OFFICIAL MEDIA: PASS')
           print('PLANTLOGIC EDUCATIONAL CONTENT ISOLATION: PASS')
           PY

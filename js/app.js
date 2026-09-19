@@ -79,29 +79,33 @@ const BB610 = (() => {
     const duplicated=[...modelsByVolume.entries()].filter(([,set])=>set.size>1).map(([volume,set])=>volume+' — '+set.size+' виконання');
     return volumes.join(' / ')+(colors.length?' · '+colors.length+' '+colorWord:'')+(duplicated.length?' · '+duplicated.join(', '):'');
   };
-  function cardV2(p){
-    const fav=get(LS.fav,[]).includes(p.id),cmp=get(LS.compare,[]).includes(p.id),s=displaySku(p.id);
+  function cardV2(p,skuOverride=null){
+    const fav=get(LS.fav,[]).includes(p.id),cmp=get(LS.compare,[]).includes(p.id),s=skuOverride||displaySku(p.id);
     const keyMeta=potVariantSummary(p)||s?.variant||(p.npk&&p.npk!=='—'?`NPK ${p.npk}`:(p.form||p.categoryLabel||''));
     const title=cardTitle(p);
     const summary=cardSummary(p);
     const fallback=fallbackImage(p.category);
-    const image=p.image||fallback;
+    const image=s?.image||p.image||fallback;
     const priceRequest=isPriceRequestSku(s);
-    const unit=priceRequest?'':unitPrice(p);
-    const stock=priceRequest?'Під замовлення':(p.stockLabel||'');
+    const cardPrice=s?.price??p.price;
+    const cardUnit=s?.volume_weight?.unit||p.unit||'';
+    const cardQty=s?.volume_weight?.value||p.unitQty||0;
+    const unit=priceRequest?'':(cardPrice!=null&&Number.isFinite(Number(cardPrice))&&Number(cardQty)>0&&cardUnit?`${money(Math.round(Number(cardPrice)/Number(cardQty)))} / ${cardUnit}`:'');
+    const stock=priceRequest?'Під замовлення':(publicStockLabel(s)||p.stockLabel||'');
     const buyEnabled=canBuySku(s);
-    return `<article class="product-card product-card-v2" data-product-id="${p.id}">
-      <a class="product-media" href="${productUrl(p)}" data-select-product="${p.id}"><img loading="lazy" src="${image}" data-fallback="${fallback}" alt="${p.name}"></a>
+    const href=s?.url||productUrl(p);
+    return `<article class="product-card product-card-v2" data-product-id="${p.id}" data-display-sku="${s?.id||''}">
+      <a class="product-media" href="${href}" data-select-product="${p.id}"><img loading="lazy" src="${image}" data-fallback="${fallback}" alt="${p.name}"></a>
       <div class="product-body">
         <div class="product-card-main">
           <div class="product-brand">${p.brand}</div>
-          <a class="product-name" href="${productUrl(p)}" data-select-product="${p.id}" title="${p.name}">${title}</a>
+          <a class="product-name" href="${href}" data-select-product="${p.id}" title="${p.name}">${title}</a>
           ${summary?`<div class="product-summary">${summary}</div>`:''}
           <div class="product-spec">${keyMeta}</div>
         </div>
         <div class="product-card-commerce">
           <div class="stock">${stock}</div>
-          <div class="price-row"><div><div class="price">${priceRequest?'Ціна за запитом':money(p.price)}</div>${unit?`<div class="unit-price">${unit}</div>`:''}</div></div>
+          <div class="price-row"><div><div class="price">${priceRequest?'Ціна за запитом':money(cardPrice)}</div>${unit?`<div class="unit-price">${unit}</div>`:''}</div></div>
           <div class="card-actions">
             ${priceRequest?`<button class="btn buy-btn price-request-btn" data-request-price="${s?.id||''}">ЗАПРОСИТИ ЦІНУ</button>`:`<button class="btn buy-btn" data-add="${s?.id||p.id}" ${buyEnabled?'':'disabled'}>КУПИТИ</button>`}
             <button class="btn ghost fav-toggle" data-fav="${p.id}" aria-label="Додати в обране">${fav?'♥':'♡'}</button>

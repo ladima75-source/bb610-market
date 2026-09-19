@@ -472,6 +472,17 @@ def _save_photo_overrides(obj: dict) -> None:
     tmp.replace(PHOTO_OVERRIDES)
 
 
+def _override_is_live(row: object) -> bool:
+    if not isinstance(row, dict):
+        return False
+    image = str(row.get("image") or "").strip()
+    if not image:
+        return False
+    if image.startswith(("http://", "https://")):
+        return True
+    return (ROOT / image.lstrip("/")).exists()
+
+
 def _mapping_indexes() -> tuple[dict[str, dict], dict[str, tuple[str, str]]]:
     by_product: dict[str, dict] = {}
     by_public_sku: dict[str, tuple[str, str]] = {}
@@ -532,11 +543,19 @@ def main() -> int:
     ap.add_argument("--apply", action="store_true")
     args = ap.parse_args()
 
-    targets = _load_targets()
+    all_targets = _load_targets()
+    overrides = _load_photo_overrides()
+    existing = overrides.get("skus") or {}
+    targets = [
+        target for target in all_targets
+        if not _override_is_live(existing.get(target.sku))
+    ]
     print("ORGANIC PLANET SKU PHOTO SYNC")
-    print("TARGET_SKU:", len(targets))
+    print("TARGET_SKU:", len(all_targets))
+    print("EXISTING_SKU_PHOTOS:", len(all_targets) - len(targets))
+    print("PENDING_SKU:", len(targets))
 
-    links = _catalog_links()
+    links = _catalog_links() if targets else []
     print("CATALOG_PRODUCT_LINKS:", len(links))
     print("MANUAL_PAGE_BINDINGS:", len(MANUAL_PAGES))
     resolved, unresolved = _resolve_targets(targets, links)
@@ -572,7 +591,6 @@ def main() -> int:
 
     target_by_sku = {x.sku: x for x in targets}
     _, public_index = _mapping_indexes()
-    overrides = _load_photo_overrides()
     changed = 0
     v3_changed = 0
     failed: list[str] = []

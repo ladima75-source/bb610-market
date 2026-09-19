@@ -107,8 +107,8 @@ document.addEventListener('DOMContentLoaded',async()=>{
       if(group==='category')return categoryFor(p)===value;
       if(group==='brand')return brandFor(p)===value;
       if(group==='culture')return categoryFor(p)!=='containers'&&culturesFor(p).includes(value);
-      if(group==='packageGroup')return p.category!=='containers'&&packageGroupsFor(p).includes(value);
-      if(group==='methodGroup')return p.category!=='containers'&&methodGroupsFor(p).includes(value);
+      if(group==='packageGroup')return categoryFor(p)!=='containers'&&packageGroupsFor(p).includes(value);
+      if(group==='methodGroup')return categoryFor(p)!=='containers'&&methodGroupsFor(p).includes(value);
       return false;
     }).length;
   }

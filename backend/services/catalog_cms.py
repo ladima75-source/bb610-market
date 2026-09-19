@@ -9,6 +9,7 @@ from .product_commerce import commerce_map, update_product
 
 MEDIA_DIR = BASE_DIR / 'runtime' / 'media' / 'products'
 MEDIA_DIR.mkdir(parents=True, exist_ok=True)
+SKU_PHOTO_OVERRIDES = BASE_DIR / 'runtime' / 'organic_planet_sku_photos.json'
 
 def _now(): return datetime.now(timezone.utc).isoformat()
 def _slug(s:str)->str:
@@ -54,6 +55,14 @@ def _dynamic_skus(product_id:Optional[str]=None):
     return out
 
 def _stock(v): return {'in_stock':'В наявності','out_of_stock':'Немає в наявності','preorder':'Передзамовлення','backorder':'Під замовлення'}.get(v,'Наявність уточнюється')
+
+def _sku_photo_overrides():
+    try:
+        obj=json.loads(SKU_PHOTO_OVERRIDES.read_text(encoding='utf-8'))
+    except Exception:
+        return {}
+    rows=obj.get('skus') if isinstance(obj,dict) else None
+    return rows if isinstance(rows,dict) else {}
 
 def _normalize_content(body:dict, base:Optional[dict]=None):
     x=dict(base or {})
@@ -165,6 +174,17 @@ def public_content():
                 sku_map[sku_id].update(media_patch)
     except Exception:
         pass
+
+    # Organic Planet SKU-photo corrections can apply to immutable/static SKU
+    # identities. Only presentation media is overlaid here; commerce stays intact.
+    for sku_id, media_patch in _sku_photo_overrides().items():
+        if sku_id in sku_map and isinstance(media_patch,dict):
+            image=str(media_patch.get('image') or '').strip()
+            if image:
+                sku_map[sku_id]['image']=image
+                sku_map[sku_id]['gallery']=[image]
+                sku_map[sku_id]['image_alt']=str(media_patch.get('alt') or '')
+                sku_map[sku_id]['organic_planet_photo']=True
 
     return {'products':products,'skus':list(sku_map.values())}
 

@@ -128,6 +128,41 @@ ROUND_CARD_OFFICIAL_MEDIA = {
     ],
 }
 
+ZEPHYR_COLOR_MEDIA = {
+    "1301144": {
+        "black": [
+            ("hero", "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-2-2.jpg"),
+            ("front", "https://getplantlogic.com/wp-content/uploads/2020/11/ZEPHYR-V2-1301144-FRONTAL-2-1.jpg"),
+            ("top", "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE-2.jpg"),
+            ("base", "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-CENITAL-1.jpg"),
+        ],
+        "white": [
+            ("hero", "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-1.jpg"),
+            ("top", "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE.jpg"),
+        ],
+    },
+}
+
+
+def _official_color_media(product_no: str, color_code: str) -> tuple[list[dict], str | None, list[str]]:
+    rows = (ZEPHYR_COLOR_MEDIA.get(product_no) or {}).get(color_code)
+    if not rows:
+        return [], None, []
+    media = []
+    ids = []
+    for index, (kind, path) in enumerate(rows):
+        mid = f"plbb_{product_no}_{color_code}_{kind}"
+        ids.append(mid)
+        media.append({
+            "media_id": mid,
+            "path": path,
+            "alt": f"Plantlogic {product_no} — {color_code} — {kind}",
+            "kind": "image",
+            "sort_order": index,
+        })
+    return media, ids[0], ids[1:]
+
+
 def _official_round_media(product_no: str) -> tuple[list[dict], str | None, list[str]]:
     rows = ROUND_CARD_OFFICIAL_MEDIA.get(product_no)
     if not rows:
@@ -527,18 +562,22 @@ def build_card(product: dict, doc: dict, legacy_lookup: dict[str, dict]) -> dict
 
     for model in product["models"]:
         product_no = str(model["product_no"])
-        copied_media, source_primary, source_gallery = _official_round_media(product_no)
-        if not copied_media:
-            copied_media, source_primary, source_gallery = _media_for_exact_product_no(product_no, legacy_lookup)
-        for row in copied_media:
-            mid = str(row.get("media_id") or "")
-            if mid and mid not in media_by_id:
-                media_by_id[mid] = row
+        default_media, default_primary, default_gallery = _official_round_media(product_no)
+        if not default_media:
+            default_media, default_primary, default_gallery = _media_for_exact_product_no(product_no, legacy_lookup)
 
         for color in palette:
+            color_code = str(color["code"])
+            copied_media, source_primary, source_gallery = _official_color_media(product_no, color_code)
+            if not copied_media:
+                copied_media, source_primary, source_gallery = default_media, default_primary, default_gallery
+            for row in copied_media:
+                mid = str(row.get("media_id") or "")
+                if mid and mid not in media_by_id:
+                    media_by_id[mid] = row
+
             volume = model["volume_l"]
             volume_label = f"{volume:g} л" if isinstance(volume, float) else f"{volume} л"
-            color_code = str(color["code"])
             color_label = str(color["label"])
             suffix = str(color["suffix"])
             execution = str(model["execution_label"])

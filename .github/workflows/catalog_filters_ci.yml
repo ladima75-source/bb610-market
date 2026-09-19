@@ -146,7 +146,7 @@ jobs:
               'categories/containers/index.html',
           ]:
               doc=Path(path).read_text(encoding='utf-8')
-              assert 'js/catalog.js?v=20260919-facets-2' in doc, path
+              assert 'js/catalog.js?v=20260919-facets-3' in doc, path
               assert 'js/app.js?v=20260919-pack-filter-1' in doc, path
               assert 'js/data-source.js?v=20260918-master-1' in doc, path
               assert 'config/commerce-config.js?v=20260918-master-1' in doc, path

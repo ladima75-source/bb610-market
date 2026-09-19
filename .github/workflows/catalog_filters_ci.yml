@@ -24,6 +24,8 @@ on:
       - 'backend/tools_audit_catalog_packaging_20260919.py'
       - 'backend/services/product_master_runtime.py'
       - 'backend/services/product_cards_v3_facets.py'
+      - 'data/product_content/plantlogic_sections_20260919.json'
+      - 'assets/css/plantlogic-catalog-sections.css'
       - 'backend/tools_audit_catalog_facets_20260919.py'
       - 'catalog.html'
       - 'categories/nutrition/index.html'

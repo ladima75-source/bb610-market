@@ -62,6 +62,7 @@ def main() -> int:
     skus = [s for s in (master.get("skus") or []) if isinstance(s, dict)]
 
     mismatches = []
+    facet_mismatches = []
     by_product: dict[str, list[tuple[str, str, str]]] = defaultdict(list)
 
     for sku in skus:
@@ -77,8 +78,19 @@ def main() -> int:
         vm = variant_metric(sku)
         sg = package_group(sm)
         vg = package_group(vm)
+        expected_group = vg if vm is not None else sg
+        canonical_group = str((sku.get("facets") or {}).get("package_group") or "")
 
-        by_product[pid].append((sid, str(sku.get("variant") or ""), sg or vg))
+        by_product[pid].append((sid, str(sku.get("variant") or ""), expected_group))
+
+        if canonical_group != expected_group:
+            facet_mismatches.append({
+                "sku": sid,
+                "product_id": pid,
+                "variant": sku.get("variant"),
+                "canonical_group": canonical_group,
+                "expected_group": expected_group,
+            })
 
         if sm is not None and vm is not None:
             # Same base scale (g/ml). We care about storefront package group identity.
@@ -111,6 +123,7 @@ def main() -> int:
     print(f"PRODUCTS={len(products)}")
     print(f"SKUS={len(skus)}")
     print(f"SKU_DATA_MISMATCHES={len(mismatches)}")
+    print(f"SKU_FACET_MISMATCHES={len(facet_mismatches)}")
     print(f"MIXED_PACKAGE_PRODUCTS={len(mixed)}")
 
     for row in mismatches[:30]:
@@ -125,6 +138,18 @@ def main() -> int:
             + (row["structured_group"] or "-")
             + " | variant="
             + (row["variant_group"] or "-")
+        )
+
+    for row in facet_mismatches[:30]:
+        print(
+            "FACET_MISMATCH="
+            + row["sku"]
+            + " | "
+            + str(row["variant"])
+            + " | canonical="
+            + (row["canonical_group"] or "-")
+            + " | expected="
+            + (row["expected_group"] or "-")
         )
 
     for row in mixed[:30]:
@@ -142,7 +167,7 @@ def main() -> int:
             + variants
         )
 
-    ok = not mismatches
+    ok = not mismatches and not facet_mismatches
     print("CHECKS=" + ("PASS" if ok else "FAIL"))
     return 0 if ok else 2
 

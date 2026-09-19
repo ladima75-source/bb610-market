@@ -248,9 +248,8 @@ function render({product,root,selectedSkuId}){
         </div>
 
         ${hasStructured?`<div class="pot-configurator" id="pot-configurator">
-          <div class="pot-option-group"><span>1. Оберіть об'єм</span><div class="pot-option-list" id="pot-volume-options"></div></div>
-          <div class="pot-option-group" id="pot-execution-group"><span>2. Виконання</span><div class="pot-option-list" id="pot-execution-options"></div></div>
-          <div class="pot-option-group"><span>3. Колір</span><div class="pot-option-list pot-color-list" id="pot-color-options"></div></div>
+          <div class="pot-option-group"><span>1. Оберіть модель</span><div class="pot-model-option-list" id="pot-model-options"></div></div>
+          <div class="pot-option-group"><span>2. Колір</span><div class="pot-option-list pot-color-list" id="pot-color-options"></div></div>
         </div>`:legacySkuButtons()}
 
         <div class="pot-selected-variant" id="pot-selected-variant"></div>
@@ -350,35 +349,52 @@ function render({product,root,selectedSkuId}){
     return `<button type="button" class="pot-option${active?' active':''}" data-pot-option="${kind}" data-pot-value="${esc(value)}">${color}<b>${esc(label)}</b></button>`;
   }
 
+  function modelButton(sku,active){
+    const a=attrs(sku);
+    const number=text(a.manufacturer_product_no);
+    return `<button type="button" class="pot-model-option${active?' active':''}" data-pot-model="${esc(number)}">
+      <strong>${esc(volumeLabel(sku))}</strong>
+      <span>${esc(a.execution_label||'Стандартне виконання')}</span>
+    </button>`;
+  }
+
   function renderConfigurator(){
     if(!hasStructured||!selectedSku)return;
     const a=attrs(selectedSku);
-    const volumeRows=[...productSkus].sort((x,y)=>Number(attrs(x).volume_l||0)-Number(attrs(y).volume_l||0));
-    const volumes=uniqueAttr(volumeRows,'volume_label');
-    document.getElementById('pot-volume-options').innerHTML=volumes.map(v=>optionButton('volume',v,v,v===text(a.volume_label),'')).join('');
+    const ordered=[...productSkus].sort((x,y)=>
+      Number(attrs(x).volume_l||0)-Number(attrs(y).volume_l||0)||
+      text(attrs(x).execution_label).localeCompare(text(attrs(y).execution_label),'uk')
+    );
+    const models=[],seenModels=new Set();
+    for(const sku of ordered){
+      const number=text(attrs(sku).manufacturer_product_no);
+      if(!number||seenModels.has(number))continue;
+      seenModels.add(number);
+      models.push(sku);
+    }
+    document.getElementById('pot-model-options').innerHTML=models
+      .map(sku=>modelButton(sku,text(attrs(sku).manufacturer_product_no)===text(a.manufacturer_product_no)))
+      .join('');
 
-    const sameVolume=productSkus.filter(s=>text(attrs(s).volume_label)===text(a.volume_label));
-    const executions=uniqueAttr(sameVolume,'execution_code').map(code=>{
-      const sample=sameVolume.find(s=>text(attrs(s).execution_code)===code);
-      return {code,label:text(attrs(sample).execution_label)||code};
-    });
-    const execGroup=document.getElementById('pot-execution-group');
-    execGroup.hidden=executions.length===0;
-    document.getElementById('pot-execution-options').innerHTML=executions.map(x=>optionButton('execution',x.code,x.label,x.code===text(a.execution_code),'')).join('');
-
-    const sameModel=sameVolume.filter(s=>text(attrs(s).execution_code)===text(a.execution_code));
+    const sameModel=productSkus.filter(s=>text(attrs(s).manufacturer_product_no)===text(a.manufacturer_product_no));
     const colors=uniqueAttr(sameModel,'color_code').map(code=>{
       const sample=sameModel.find(s=>text(attrs(s).color_code)===code);
       return {code,label:text(attrs(sample).color_label)||code};
     });
-    document.getElementById('pot-color-options').innerHTML=colors.map(x=>optionButton('color',x.code,x.label,x.code===text(a.color_code),x.code)).join('');
+    document.getElementById('pot-color-options').innerHTML=colors
+      .map(x=>optionButton('color',x.code,x.label,x.code===text(a.color_code),x.code))
+      .join('');
 
-    document.querySelectorAll('[data-pot-option]').forEach(btn=>btn.onclick=()=>{
-      const kind=btn.dataset.potOption,value=btn.dataset.potValue,current=attrs(selectedSku);
-      let next=null;
-      if(kind==='volume')next=pickSku({volume_label:value},selectedSku);
-      if(kind==='execution')next=pickSku({volume_label:current.volume_label,execution_code:value},selectedSku);
-      if(kind==='color')next=pickSku({volume_label:current.volume_label,execution_code:current.execution_code,color_code:value},selectedSku);
+    document.querySelectorAll('[data-pot-model]').forEach(btn=>btn.onclick=()=>{
+      const productNo=btn.dataset.potModel;
+      const current=attrs(selectedSku);
+      const next=pickSku({manufacturer_product_no:productNo,color_code:current.color_code},selectedSku)||
+        pickSku({manufacturer_product_no:productNo},selectedSku);
+      if(next){selectedSku=next;syncSku();}
+    });
+    document.querySelectorAll('[data-pot-option="color"]').forEach(btn=>btn.onclick=()=>{
+      const current=attrs(selectedSku);
+      const next=pickSku({manufacturer_product_no:current.manufacturer_product_no,color_code:btn.dataset.potValue},selectedSku);
       if(next){selectedSku=next;syncSku();}
     });
   }

@@ -231,6 +231,53 @@
               "type": "string"
             }
           }
+        },
+        "model_showcase": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "lead",
+            "items"
+          ],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "lead": {
+              "type": "string"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "title",
+                  "subtitle",
+                  "product_no",
+                  "image"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "subtitle": {
+                    "type": "string"
+                  },
+                  "product_no": {
+                    "type": "string"
+                  },
+                  "image": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },

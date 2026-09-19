@@ -109,7 +109,7 @@ def public_content():
     market_skus=[]
     market_product_ids=set()
     try:
-        from .product_cards_v3_facets import catalog_overlays, market_test_projection
+        from .product_cards_v3_facets import catalog_overlays, market_test_projection, sku_media_overlays
         positions={str(p.get('id') or ''):i for i,p in enumerate(products)}
         for patch in catalog_overlays():
             pid=str(patch.get('id') or '')
@@ -155,6 +155,17 @@ def public_content():
     for s in market_skus:
         if str(s.get('product_id') or '') in public_ids:
             sku_map[str(s.get('id') or s.get('sku'))]=dict(s)
+
+    # Product Card v3 primary media is authoritative per SKU. This overlay is
+    # presentation-only: commercial identity, price, availability and stock stay
+    # exactly as projected above.
+    try:
+        for sku_id, media_patch in sku_media_overlays().items():
+            if sku_id in sku_map and isinstance(media_patch,dict):
+                sku_map[sku_id].update(media_patch)
+    except Exception:
+        pass
+
     return {'products':products,'skus':list(sku_map.values())}
 
 def admin_list_products():

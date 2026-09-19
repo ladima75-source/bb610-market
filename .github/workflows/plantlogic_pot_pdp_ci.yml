@@ -91,8 +91,8 @@ jobs:
           css=Path('css/product-pot.css').read_text(encoding='utf-8')
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
-          assert 'css/product-pot.css?v=20260919-pot-pdp-13' in html
-          assert 'js/product-pot.js?v=20260919-pot-pdp-11' in html
+          assert 'css/product-pot.css?v=20260919-pot-pdp-14' in html
+          assert 'js/product-pot.js?v=20260919-pot-pdp-12' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
           assert 'BB610_POT_PDP?.matches(p)' in product
           assert 'BB610_POT_PDP.render' in product
@@ -136,7 +136,6 @@ jobs:
           assert '.pot-garden-guide' in css
           assert '.pot-diagram-marker' in css
           assert '.pot-visual-section' in css
-          assert '.pot-model-showcase-grid' in css
           assert 'Desktop fold tuning' in css
           assert 'max-width:88%!important' in css
           assert 'object-position:center center!important' in css
@@ -145,8 +144,6 @@ jobs:
           assert 'box-shadow:0 18px 42px' in css
 
           assert 'function renderFamilyOverview(product)' in pot
-          assert 'function renderModelShowcase(product)' in pot
-          assert 'pot-model-showcase-grid' in pot
           assert 'data-pot-content-image' in pot
           assert 'Дренаж, вентиляція та робота конструкції' not in pot
           assert 'function renderTechnologyExplainer(product)' in pot
@@ -214,7 +211,7 @@ jobs:
               else:
                   if pid in {'prd_pl_bb_round','prd_pl_bb_round_short_legs','prd_pl_bb_square','prd_pl_bb_round_u','prd_pl_bb_square_u'}:
                       assert content.get('family_overview') is None
-                      assert isinstance(content.get('model_showcase'), dict)
+                      assert content.get('model_showcase') is None
                   else:
                       assert isinstance(content.get('family_overview'), dict)
                   assert isinstance(content.get('technology_explainer'), dict)
@@ -258,21 +255,18 @@ jobs:
           assert any('8025_4.jpg' in x for x in paths)
           assert any('30-Liter-Round-Pot-with-V-ribs_Item_1308031.jpg' in x for x in paths)
           assert any('40-Liter-Round-Pot_Item_1308040-1.jpg' in x for x in paths)
-          assert isinstance(round_card['content'].get('model_showcase'), dict)
-          assert len(round_card['content']['model_showcase']['items']) == 4
+          assert round_card['content'].get('model_showcase') is None
           short_card = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_round_short_legs')
           short_paths = [str(x.get('path') or '') for x in (short_card.get('sku_media') or {}).get('media') or []]
           assert any('3025_1.jpg' in x for x in short_paths)
-          assert isinstance(short_card['content'].get('model_showcase'), dict)
-          assert len(short_card['content']['model_showcase']['items']) == 1
+          assert short_card['content'].get('model_showcase') is None
           print('SHORT LEGS OFFICIAL MEDIA: PASS')
           square_card = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_square')
           square_paths = [str(x.get('path') or '') for x in (square_card.get('sku_media') or {}).get('media') or []]
           assert any('20-Liter-Square-Pot_Item_1309020.jpg' in x for x in square_paths)
           assert any('25L-SQ-1309025-FRONTAL.jpg' in x for x in square_paths)
           assert any('30-Liter-Square-Pot_Item_1309030-1.jpg' in x for x in square_paths)
-          assert isinstance(square_card['content'].get('model_showcase'), dict)
-          assert len(square_card['content']['model_showcase']['items']) == 3
+          assert square_card['content'].get('model_showcase') is None
           print('SQUARE CARD OFFICIAL MEDIA: PASS')
           round_u = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_round_u')
           round_u_paths = [str(x.get('path') or '') for x in (round_u.get('sku_media') or {}).get('media') or []]
@@ -280,15 +274,13 @@ jobs:
           assert any('1308305-FRONT-1.jpg' in x for x in round_u_paths)
           assert any('Maceta-35-litros-redonda-para-blueberries.jpg' in x for x in round_u_paths)
           assert any('40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg' in x for x in round_u_paths)
-          assert isinstance(round_u['content'].get('model_showcase'), dict)
-          assert len(round_u['content']['model_showcase']['items']) == 4
+          assert round_u['content'].get('model_showcase') is None
 
           square_u = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_square_u')
           square_u_paths = [str(x.get('path') or '') for x in (square_u.get('sku_media') or {}).get('media') or []]
           assert any('1309026.jpg' in x for x in square_u_paths)
           assert any('13090350_frente.jpg' in x for x in square_u_paths)
-          assert isinstance(square_u['content'].get('model_showcase'), dict)
-          assert len(square_u['content']['model_showcase']['items']) == 2
+          assert square_u['content'].get('model_showcase') is None
 
           zephyr = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_zephyr_v2')
           zephyr_paths = [str(x.get('path') or '') for x in (zephyr.get('sku_media') or {}).get('media') or []]
@@ -339,6 +331,13 @@ jobs:
           ]
           assert 'ніжках 7 см' in zephyr['content']['how_it_works']
           print('ZEPHYR TECHNICAL BENEFITS: PASS')
+          assert len(round_card['content']['benefits']) == 3
+          assert len(short_card['content']['benefits']) == 3
+          assert len(square_card['content']['benefits']) == 3
+          assert len(round_u['content']['benefits']) == 4
+          assert len(square_u['content']['benefits']) == 4
+          assert 'renderModelShowcase' not in __import__('pathlib').Path('js/product-pot.js').read_text(encoding='utf-8')
+          print('PDP CONTENT CLEANUP: PASS')
           print('ROUND CARD OFFICIAL MEDIA: PASS')
           print('PLANTLOGIC EDUCATIONAL CONTENT ISOLATION: PASS')
           PY

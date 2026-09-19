@@ -124,7 +124,11 @@ jobs:
           assert "facetList(p,'application_methods')" in js
           assert "typeof p?.facets?.in_stock==='boolean'" in js
           assert 'function displaySkuForPackage(p,groups)' in js
+          assert 'function hasStockForPackage(p,groups)' in js
+          assert 'function displayPriceForPackage(p,groups)' in js
           assert 'BB610.cardV2(p,displaySkuForPackage(p,state.packageGroup))' in js
+          assert 'hasStockForPackage(p,state.packageGroup)' in js
+          assert 'displayPriceForPackage(a,state.packageGroup)' in js
           assert 'function dynamicFacetCount(group,value)' in js
           assert 'matchesState(p,state,group)' in js
           assert 'row.hidden=!input.checked&&n===0' in js

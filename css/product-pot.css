@@ -77,3 +77,16 @@
 .pot-related-brand{margin-top:4px;color:var(--pot-green);font-size:9px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}.pot-related-card strong{font-size:13px;line-height:1.25}.pot-related-card small{color:#808b8f;font-size:10px}
 @media(max-width:1000px){.pot-hero{grid-template-columns:1fr}.pot-buy-panel{position:static}.pot-main-stage{height:500px}.pot-benefit-grid,.pot-related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pot-visual-intro,.pot-explainer-layout,.pot-tech-grid{grid-template-columns:1fr}.pot-visual-intro{gap:12px}.pot-explainer-visual{min-height:520px}.pot-explainer-items{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto}.pot-garden-guide{align-items:flex-start;flex-direction:column}}
 @media(max-width:620px){.pot-visual-section{margin-top:34px;padding-top:24px}.pot-visual-intro{margin-bottom:14px}.pot-family-figure,.pot-explainer-visual{border-radius:13px}.pot-family-figure figcaption{left:10px;right:10px;bottom:10px}.pot-family-figure figcaption b{display:none}.pot-explainer-layout{gap:12px}.pot-explainer-visual{min-height:390px}.pot-explainer-visual img{padding:8px}.pot-explainer-visual figcaption{left:10px;bottom:10px}.pot-diagram-marker{width:32px;height:32px;font-size:12px;border-width:2px}.pot-explainer-items{grid-template-columns:1fr}.pot-explainer-item{grid-template-columns:38px 1fr;padding:14px}.pot-explainer-code{width:32px;height:32px;font-size:12px}.pot-garden-guide>a{width:100%;justify-content:center}.pot-model-option-list{grid-template-columns:1fr}.pot-option-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.pot-option{justify-content:flex-start}.pot-main-stage{height:350px;border-radius:13px}.pot-main-stage>img{padding:14px!important}.pot-gallery-nav{width:36px;height:36px;font-size:25px}.pot-zoom-label{display:none}.pot-buy-panel,.pot-section{padding:18px;border-radius:13px}.pot-buy-panel h1{font-size:30px}.pot-facts,.pot-benefit-grid,.pot-related-grid{grid-template-columns:1fr}.pot-sku-grid{grid-template-columns:1fr}.pot-benefit{min-height:0}.pot-benefit h3{margin-top:18px}.pot-tech-grid{gap:10px}.pot-spec-row{grid-template-columns:1fr;gap:3px}.pot-related-image{height:220px}}
+
+/* Round blueberry card: large per-model photo showcase */
+.pot-model-showcase-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.pot-model-showcase-card{margin:0;border:1px solid #353d40;border-radius:18px;overflow:hidden;background:#171b1d;cursor:zoom-in}
+.pot-model-showcase-image{height:430px;background:#f3f3ef;display:grid;place-items:center;overflow:hidden}
+.pot-model-showcase-image img{display:block;width:100%;height:100%;object-fit:contain;padding:16px}
+.pot-model-showcase-card figcaption{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px}
+.pot-model-showcase-card figcaption>div{display:grid;gap:3px}
+.pot-model-showcase-card strong{font-size:19px}
+.pot-model-showcase-card span{font-size:12px;color:#9ca6a9}
+.pot-model-showcase-card small{font-size:10px;color:#6f7b7f}
+@media(max-width:1000px){.pot-model-showcase-image{height:360px}}
+@media(max-width:620px){.pot-model-showcase-grid{grid-template-columns:1fr}.pot-model-showcase-image{height:340px}.pot-model-showcase-card figcaption{align-items:flex-start}}

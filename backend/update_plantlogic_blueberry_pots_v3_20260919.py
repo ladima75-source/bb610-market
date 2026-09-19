@@ -44,6 +44,13 @@ EXPECTED_PRODUCTS = 5
 EXPECTED_MODELS = 17
 EXPECTED_SKUS = 48
 
+MEDIA_SOURCE_COLOR = {
+    # Official source photography color used for visual color variants.
+    # Zephyr 1301144 has true per-color media and is intentionally excluded.
+    "1308303": "terracotta",
+    "1308040": "terracotta",
+}
+
 ROUND_CARD_OFFICIAL_MEDIA = {
     "1303025": [
         ("hero", "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg"),
@@ -622,7 +629,10 @@ def build_card(product: dict, doc: dict, legacy_lookup: dict[str, dict]) -> dict
                     "color_code": color_code,
                     "color_label": color_label,
                     "manufacturer_product_no": product_no,
-                    "media_source_color": "terracotta" if product_no == "1308303" else "",
+                    "media_source_color": (
+                        MEDIA_SOURCE_COLOR.get(product_no)
+                        or ("black" if product_no in ROUND_CARD_OFFICIAL_MEDIA and product_no != "1301144" else "")
+                    ),
                     "dimension_a": str(dimensions["A"]),
                     "dimension_b": str(dimensions["B"]),
                     "dimension_c": str(dimensions["C"]),

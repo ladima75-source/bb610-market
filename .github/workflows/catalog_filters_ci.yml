@@ -196,6 +196,9 @@ jobs:
           assert 'const searchTokens=value=>' in js
           assert 'const matchesSearch=(p,value)' in js
           assert 'tokens.every(token=>text.includes(token))' in js
+          assert 'plantlogicSectionSearchText(p)' in js
+          assert "blueberry:'лохина лохини blueberry'" in js
+          assert "rubus:'малина малини ожина ожини raspberry blackberry rubus'" in js
           assert 'p.short_description' in js
           assert 'p.product_type' in js
           assert 'p.active_ingredient' in js
@@ -213,7 +216,7 @@ jobs:
               'categories/containers/index.html',
           ]:
               doc=Path(path).read_text(encoding='utf-8')
-              assert 'js/catalog.js?v=20260919-filter-merge-4' in doc, path
+              assert 'js/catalog.js?v=20260919-filter-merge-5' in doc, path
               assert 'js/app.js?v=20260919-displayed-sku-1' in doc, path
               assert 'js/data-source.js?v=20260918-master-1' in doc, path
               assert 'config/commerce-config.js?v=20260918-master-1' in doc, path

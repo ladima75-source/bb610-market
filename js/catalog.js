@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   facetCss.href='assets/css/catalog-facets.css?v=2';
   const plantlogicCss=document.createElement('link');
   plantlogicCss.rel='stylesheet';
-  plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=1';
+  plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=2';
   document.head.appendChild(plantlogicCss);
   document.head.appendChild(facetCss);
 
@@ -105,13 +105,13 @@ document.addEventListener('DOMContentLoaded',async()=>{
     {id:'large',label:'Велика',hint:'від 5 кг/л'}
   ];
   const plantlogicSectionOrder=[
-    {id:'blueberry',label:'Для лохини',titleSuffix:'для лохини'},
-    {id:'rubus',label:'Для малини та ожини',titleSuffix:'для малини та ожини'},
-    {id:'universal',label:'Універсальні контейнери',titleSuffix:'універсальний'},
-    {id:'strawberry',label:'Для полуниці',titleSuffix:'для полуниці'},
-    {id:'vegetable',label:'Для овочевих культур',titleSuffix:'для овочевих культур'},
-    {id:'bag_bases',label:'Основи для мішків',titleSuffix:''},
-    {id:'accessories',label:'Аксесуари',titleSuffix:''}
+    {id:'blueberry',label:'Для лохини',subtitle:'Blueberry Production',titleSuffix:'для лохини'},
+    {id:'rubus',label:'Для малини та ожини',subtitle:'Rubus Production',titleSuffix:'для малини та ожини'},
+    {id:'universal',label:'Універсальні контейнери',subtitle:'Plantlogic Production',titleSuffix:'універсальний'},
+    {id:'strawberry',label:'Для полуниці',subtitle:'Strawberry Production',titleSuffix:'для полуниці'},
+    {id:'vegetable',label:'Для овочевих культур',subtitle:'Vegetable Production',titleSuffix:'для овочевих культур'},
+    {id:'bag_bases',label:'Основи для мішків',subtitle:'Bag Bases',titleSuffix:''},
+    {id:'accessories',label:'Аксесуари',subtitle:'Accessories',titleSuffix:''}
   ];
   const plantlogicSectionsFor=p=>Array.isArray(p?.plantlogic_sections)?p.plantlogic_sections.filter(Boolean):[];
   const plantlogicSearchAliases={
@@ -127,10 +127,27 @@ document.addEventListener('DOMContentLoaded',async()=>{
     const section=plantlogicSectionOrder.find(x=>x.id===id);
     return `${section?.label||''} ${section?.titleSuffix||''} ${plantlogicSearchAliases[id]||''}`;
   }).join(' ');
+  const cleanPlantlogicCatalogTitle=title=>String(title||'')
+    .replace(/\s*[—-]\s*арт\.?\s*[A-ZА-ЯІЇЄ0-9-]+(?=\s*(?:[—-]|$))/giu,'')
+    .replace(/\s{2,}/g,' ')
+    .replace(/\s+[—-]\s*$/u,'')
+    .trim();
+  const plantlogicCardImage=p=>{
+    const image=p?.image;
+    if(typeof image==='string'&&image.trim())return image.trim();
+    if(image&&typeof image==='object'){
+      const value=String(image.local||image.url||image.src||'').trim();
+      if(value)return value;
+    }
+    return String((Array.isArray(p?.gallery)?p.gallery:[]).find(Boolean)||'').trim();
+  };
   const plantlogicCardForSection=(p,section)=>{
+    const baseName=cleanPlantlogicCatalogTitle(p.name);
     const suffix=String(section?.titleSuffix||'').trim();
-    if(!suffix||norm(p.name).includes(norm(suffix)))return p;
-    return {...p,name:`${p.name} — ${suffix}`};
+    const name=!suffix||norm(baseName).includes(norm(suffix))
+      ?baseName
+      :`${baseName} — ${suffix}`;
+    return {...p,name};
   };
   const methodGroups=[
     {id:'fertigation',label:'Фертигація',hint:'крапельний полив'},
@@ -422,10 +439,15 @@ document.addEventListener('DOMContentLoaded',async()=>{
       const rows=list.filter(p=>norm(brandFor(p))==='plantlogic'&&plantlogicSectionsFor(p).includes(section.id));
       if(!rows.length)return;
       rows.forEach(p=>shown.add(p.id));
+      const sectionImage=rows.map(plantlogicCardImage).find(Boolean)||'';
       chunks.push(`<section class="plantlogic-catalog-block" data-plantlogic-section="${h(section.id)}">
         <div class="plantlogic-catalog-block-head">
-          <h2>${h(section.label)}</h2>
-          <span>${rows.length} ${rows.length===1?'модель':'моделей'}</span>
+          <div class="plantlogic-catalog-block-copy">
+            <span class="plantlogic-catalog-block-kicker">${h(section.subtitle||'Plantlogic')}</span>
+            <h2>${h(section.label)}</h2>
+          </div>
+          <div class="plantlogic-catalog-block-meta">${rows.length} ${rows.length===1?'модель':'моделей'}</div>
+          ${sectionImage?`<div class="plantlogic-catalog-block-visual" aria-hidden="true"><img src="${h(sectionImage)}" alt=""></div>`:''}
         </div>
         <div class="products-grid plantlogic-products-grid">${rows.map(p=>BB610.cardV2(plantlogicCardForSection(p,section),displaySkuForPackage(p,state.packageGroup))).join('')}</div>
       </section>`);

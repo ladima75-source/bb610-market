@@ -54,7 +54,7 @@ jobs:
           css=Path('css/product-pot.css').read_text(encoding='utf-8')
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
-          assert 'css/product-pot.css?v=20260919-pot-pdp-1' in html
+          assert 'css/product-pot.css?v=20260919-pot-pdp-2' in html
           assert 'js/product-pot.js?v=20260919-pot-pdp-2' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js?v=20260919-pot-pdp-1')
           assert 'BB610_POT_PDP?.matches(p)' in product
@@ -77,6 +77,7 @@ jobs:
           assert 'overflow:hidden' in css
           assert 'object-fit:contain!important' in css
           assert '.pot-thumbs' in css
+          assert '.pot-gallery-count' in css
 
           assert "patch['benefits']" in facets
           assert "patch['how_it_works']" in facets

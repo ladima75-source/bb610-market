@@ -4,34 +4,243 @@
   "title": "BB610 Market PRODUCT CARD v3",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "product_id", "slug", "enabled", "content", "sku_media"],
+  "required": [
+    "schema_version",
+    "product_id",
+    "slug",
+    "enabled",
+    "content",
+    "sku_media"
+  ],
   "properties": {
-    "schema_version": {"const": "3.0"},
-    "product_id": {"type": "string", "pattern": "^prd_[a-z0-9][a-z0-9_-]{2,80}$"},
-    "slug": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,160}$"},
-    "enabled": {"type": "boolean"},
+    "schema_version": {
+      "const": "3.0"
+    },
+    "product_id": {
+      "type": "string",
+      "pattern": "^prd_[a-z0-9][a-z0-9_-]{2,80}$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{1,160}$"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
     "content": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["title", "brand", "category", "short_description", "description", "benefits", "how_it_works", "application", "composition", "characteristics", "seo"],
+      "required": [
+        "title",
+        "brand",
+        "category",
+        "short_description",
+        "description",
+        "benefits",
+        "how_it_works",
+        "application",
+        "composition",
+        "characteristics",
+        "seo"
+      ],
       "properties": {
-        "title": {"type": "string", "minLength": 1},
-        "brand": {"type": "string"},
-        "category": {"type": "string"},
-        "short_description": {"type": "string"},
-        "description": {"type": "string"},
-        "benefits": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["title", "text"], "properties": {"title": {"type": "string"}, "text": {"type": "string"}}}},
-        "how_it_works": {"type": "string"},
-        "application": {"type": "string"},
-        "composition": {"type": "string"},
-        "characteristics": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["label", "value"], "properties": {"label": {"type": "string"}, "value": {"type": "string"}}}},
-        "seo": {"type": "object", "additionalProperties": false, "required": ["title", "description"], "properties": {"title": {"type": "string"}, "description": {"type": "string"}}}
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "brand": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "short_description": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "benefits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "text"
+            ],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "how_it_works": {
+          "type": "string"
+        },
+        "application": {
+          "type": "string"
+        },
+        "composition": {
+          "type": "string"
+        },
+        "characteristics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "value"
+            ],
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "seo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "description"
+          ],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "family_overview": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "text",
+            "image",
+            "image_alt"
+          ],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "image": {
+              "type": "string"
+            },
+            "image_alt": {
+              "type": "string"
+            }
+          }
+        },
+        "technology_explainer": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "lead",
+            "image",
+            "image_alt",
+            "image_mode",
+            "items"
+          ],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "lead": {
+              "type": "string"
+            },
+            "image": {
+              "type": "string"
+            },
+            "image_alt": {
+              "type": "string"
+            },
+            "image_mode": {
+              "type": "string"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "code",
+                  "title",
+                  "text"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "garden_guide": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "text",
+            "url",
+            "cta"
+          ],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "cta": {
+              "type": "string"
+            }
+          }
+        }
       }
     },
     "sku_media": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["skus", "media"],
+      "required": [
+        "skus",
+        "media"
+      ],
       "properties": {
         "skus": {
           "type": "array",
@@ -39,16 +248,60 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["sku_id", "sku_code", "label", "package", "primary_media_id", "gallery_media_ids", "sort_order", "enabled"],
+            "required": [
+              "sku_id",
+              "sku_code",
+              "label",
+              "package",
+              "primary_media_id",
+              "gallery_media_ids",
+              "sort_order",
+              "enabled"
+            ],
             "properties": {
-              "sku_id": {"type": "string", "pattern": "^sku_[a-z0-9][a-z0-9_-]{2,100}$"},
-              "sku_code": {"type": "string"},
-              "label": {"type": "string"},
-              "package": {"type": "string"},
-              "primary_media_id": {"type": ["string", "null"]},
-              "gallery_media_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-              "sort_order": {"type": "integer"},
-              "enabled": {"type": "boolean"}
+              "sku_id": {
+                "type": "string",
+                "pattern": "^sku_[a-z0-9][a-z0-9_-]{2,100}$"
+              },
+              "sku_code": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "package": {
+                "type": "string"
+              },
+              "primary_media_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "gallery_media_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              },
+              "sort_order": {
+                "type": "integer"
+              },
+              "enabled": {
+                "type": "boolean"
+              },
+              "attributes": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ]
+                }
+              }
             }
           }
         },
@@ -57,13 +310,31 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["media_id", "path", "alt", "kind", "sort_order"],
+            "required": [
+              "media_id",
+              "path",
+              "alt",
+              "kind",
+              "sort_order"
+            ],
             "properties": {
-              "media_id": {"type": "string", "minLength": 1},
-              "path": {"type": "string", "minLength": 1},
-              "alt": {"type": "string"},
-              "kind": {"type": "string"},
-              "sort_order": {"type": "integer"}
+              "media_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "alt": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              },
+              "sort_order": {
+                "type": "integer"
+              }
             }
           }
         }

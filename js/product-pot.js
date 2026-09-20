@@ -73,6 +73,7 @@ function volumeLabel(sku){
 }
 
 function dimensionsLabel(sku){
+  if(articleFromSku(sku)==='1308125')return 'Ø385 × 362,5 мм · опори 30 мм';
   const a=attrs(sku);
   const parts=[
     a.dimension_a&&`A ${a.dimension_a}`,
@@ -147,7 +148,7 @@ function referenceInfo(selectedSku){
       {title:'Кріплення системи поливу',text:'Отвори у верхньому бортику дозволяють фіксувати лінію поливу, крапельниці та елементи стабілізації контейнера.'},
       {title:'Повітрообмін у кореневій зоні',text:'Центральні недренажні отвори забезпечують доступ повітря до середини кореневого кому та обмежують ріст коренів униз.'},
       {title:'Керований дренаж',text:'Пірамідальна конструкція дна спрямовує воду до зовнішнього краю, зменшуючи зону надмірного зволоження та створюючи умови для повітряного підрізання коренів.'},
-      {title:'Високі опори 30 мм',text:'Контейнер піднятий над поверхнею, що зменшує контакт коренів із ґрунтом. Нахил опор також зменшує накопичення та втрати субстрату.'},
+      {title:'Високі опори 30 мм',text:'Контейнер піднятий над поверхнею, що зменшує контакт коренів із ґрунтом і ризик контакту з ґрунтовими патогенами. Нахил опор також зменшує накопичення та втрати субстрату.'},
       {title:'Можливість анкерування',text:'Передбачено посадочне місце для системи Pot Anchor, яка допомагає стабілізувати контейнер при сильному вітрі.'},
     ],
     metrics:[
@@ -301,7 +302,7 @@ function render({product,root,selectedSkuId}){
   document.body.classList.add('pot-pdp-mode');
   document.title=`${product.name} · BB610 Market`;
 
-  const sourceUrl=text(product.sourceUrl||(product.source&&product.source.url));
+  const sourceUrl=text(product.sourceUrl||(product.source&&product.source.url))||(articleFromSku(selectedSku)==='1308125'?'https://getplantlogic.com/portfolio-items/new-25-liter-round-pot/':'');
   const type=charValue(product,'Тип','Тип продукту','Форма')||product.productType||'Професійний горщик';
   const purpose=charValue(product,'Культура','Призначення')||(product.cultures||[]).join(' · ');
   const how=typeof product.how_it_works==='string'?product.how_it_works:(product.howItWorks||'');

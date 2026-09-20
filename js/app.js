@@ -87,9 +87,22 @@ const BB610 = (() => {
       const metricMatched=rows.find(row=>mediaPackMetric(row?.label||row?.variant||row?.package)===wantedMetric&&usable(row));
       if(metricMatched)return usable(metricMatched);
     }
-    const unique=[...new Set(rows.map(usable).filter(Boolean))];
-    if(unique.length===1)return unique[0];
     return '';
+  };
+  const packageMediaRequired=(p,s=null)=>{
+    if(!s)return false;
+    const canonical=BB610_DATA_SOURCE.staticProductMedia?.(p?.id)||null;
+    const rows=[];
+    [p,canonical].filter(Boolean).forEach(source=>{
+      if(Array.isArray(source?.variants))rows.push(...source.variants.filter(x=>x&&typeof x==='object'));
+      if(Array.isArray(source?.sku_photo))rows.push(...source.sku_photo.filter(x=>x&&typeof x==='object'));
+      if(Array.isArray(source?.product_card_v2?.sku_photo))rows.push(...source.product_card_v2.sku_photo.filter(x=>x&&typeof x==='object'));
+    });
+    const packs=new Set(rows.map(row=>{
+      const raw=row?.label||row?.variant||row?.package;
+      return mediaPackMetric(raw)||mediaPackKey(raw);
+    }).filter(Boolean));
+    return packs.size>1;
   };
   const firstRealImage=list=>(Array.isArray(list)?list:[]).map(imageValue).find(src=>src&&!isFallbackImage(src))||'';
   const productImage=(p,s=null)=>{
@@ -102,6 +115,10 @@ const BB610 = (() => {
     if(skuImage&&!isFallbackImage(skuImage))return skuImage;
     const skuGallery=firstRealImage(s?.gallery);
     if(skuGallery)return skuGallery;
+    // Never substitute a product-level photo from another package when the
+    // selected SKU belongs to a multi-package product. A package-specific
+    // photo must come from the SKU/package media matrix.
+    if(packageMediaRequired(p,s))return fallbackImage(categoryId);
     const baseImage=imageValue(p?.image);
     if(baseImage&&!isFallbackImage(baseImage))return baseImage;
     const galleryImage=firstRealImage(p?.gallery);
@@ -331,7 +348,7 @@ const BB610 = (() => {
     const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
     if(typeof d.showModal==='function')d.showModal();
   }
-  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,productImage,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
+  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);
 
 function bb610LoadProductCardV3Enhancements(){

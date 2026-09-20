@@ -359,10 +359,21 @@ def public_content():
             if not pid:
                 continue
             matches=by_product_pack.get((pid,pack)) or [] if pack else []
-            if len(matches)!=1 and metric:
+            if not matches and metric:
                 matches=by_product_metric.get((pid,metric)) or []
-            if len(matches)==1:
-                apply_photo(matches[0],media_patch)
+
+            # Multiple public/runtime SKU identities may represent the same
+            # product + package. The Organic Planet override is already unique
+            # for that source product/package, so project the same approved
+            # photo to every matching runtime row instead of rejecting the
+            # duplicate identities as ambiguous.
+            seen=set()
+            for row in matches:
+                row_id=str(row.get('id') or row.get('sku') or id(row))
+                if row_id in seen:
+                    continue
+                seen.add(row_id)
+                apply_photo(row,media_patch)
 
     # Catalog Master already contains manually approved package photos for many
     # products. Project them onto the current runtime SKU identity by exact SKU

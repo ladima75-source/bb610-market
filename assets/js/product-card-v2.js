@@ -298,7 +298,7 @@ function renderV2Content(shell,d){
 function bindV2(shell,d,c,productId){
   const vs=mergeV2(d,c,productId),list=$('.mpc-variant-list',shell),hero=$('#mpcImage',shell),cta=$('#mpcCtaHost .mpc-buy',shell);
   const wantedId=String(requestedSku()||'').trim();
-  const initial=vs.find(v=>wantedId&&String(v?.sku||v?.id||'')===wantedId)||vs[0]||null;
+  const initial=vs.find(v=>wantedId&&[v?.sku,v?.id,v?.source_sku].some(x=>String(x||'')===wantedId))||vs[0]||null;
   const apply=v=>{
     setHeroCandidates(hero,[v?.image],window.BB610?.fallbackImage?.(window.BB610_DATA_SOURCE?.product?.(productId)?.category_id||window.BB610_DATA_SOURCE?.product?.(productId)?.category)||'assets/img/product-npk.svg');
     const p=(v.sale_price!==null&&v.sale_price!==undefined&&v.sale_price!=='')?v.sale_price:v.price;

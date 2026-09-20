@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1536" viewBox="0 0 1024 1536" role="img" aria-labelledby="title desc">
+<title id="title">Plantlogic 25 л — круглий контейнер з короткими ніжками, Item #1303025</title>
+<desc id="desc">Технічна інфографіка: 25 л, 6.6 gal, зовнішній діаметр 399 мм, внутрішній 370 мм, висота 306 мм, ніжки 12 мм, 48 дренажних отворів, пірамідальне дно, опційний якір, сумісність із Large Lysimeter.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#111517"/><stop offset="1" stop-color="#1a2021"/></linearGradient>
+  <linearGradient id="pot" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#252a2b"/><stop offset="0.55" stop-color="#0f1213"/><stop offset="1" stop-color="#343a3b"/></linearGradient>
+  <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#79e85b"/><stop offset="1" stop-color="#35b948"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".45"/></filter>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#f5f7f7}
+    .muted{fill:#b9c1c2}.green{fill:#63dc54}.line{stroke:#cfd6d7;stroke-width:2;fill:none}.thin{stroke:#7f898a;stroke-width:1.5;fill:none}
+    .h1{font-size:48px;font-weight:800}.h2{font-size:28px;font-weight:800}.h3{font-size:22px;font-weight:700}.body{font-size:18px}.small{font-size:15px}.tiny{font-size:13px}
+  </style>
+</defs>
+<rect width="1024" height="1536" fill="url(#bg)"/>
+<rect x="0" y="0" width="1024" height="8" fill="url(#green)"/>
+
+<!-- Header -->
+<text x="64" y="92" font-size="72" font-weight="900">plantlogic</text>
+<path d="M302 47c17-28 41-35 65-32-4 24-17 43-47 52" fill="#63dc54"/>
+<text x="66" y="126" class="small muted" letter-spacing="4">INNOVATIVE PRODUCTS FOR SMART GROWERS</text>
+<line x1="475" y1="44" x2="475" y2="200" class="thin"/>
+<text x="520" y="70" class="small muted" letter-spacing="3">АРТИКУЛ #1303025</text>
+<text x="520" y="120" class="h1">Круглий контейнер</text>
+<text x="520" y="168" class="h1"><tspan class="green">25 л</tspan><tspan> · короткі ніжки</tspan></text>
+<text x="520" y="202" class="body muted">Короткі ніжки для використання на цеглі або опорах</text>
+
+<!-- Main pot -->
+<g filter="url(#shadow)">
+  <ellipse cx="320" cy="332" rx="205" ry="40" fill="#3a4041"/>
+  <path d="M118 330 L165 610 Q170 642 205 649 L438 649 Q473 642 478 610 L522 330 Z" fill="url(#pot)" stroke="#565f60" stroke-width="3"/>
+  <ellipse cx="320" cy="330" rx="202" ry="36" fill="#171b1c" stroke="#737c7d" stroke-width="3"/>
+  <ellipse cx="320" cy="335" rx="177" ry="24" fill="#0b0d0e"/>
+  <text x="256" y="440" font-size="28" font-weight="700" fill="#060707">plantlogic</text>
+  <g fill="#0b0d0e"><rect x="180" y="640" width="28" height="25" rx="5"/><rect x="432" y="640" width="28" height="25" rx="5"/><rect x="305" y="642" width="28" height="24" rx="5"/></g>
+</g>
+<circle cx="112" cy="500" r="64" fill="none" stroke="#63dc54" stroke-width="5"/>
+<text x="75" y="494" font-size="46" font-weight="800" class="green">25 л</text>
+<text x="84" y="530" font-size="22" font-weight="700">6.6 gal</text>
+<text x="64" y="600" class="body muted">Об’єм</text>
+<text x="64" y="634" class="h2">25 л</text>
+<text x="64" y="681" class="body muted">Артикул</text>
+<text x="64" y="715" class="h2">#1303025</text>
+
+<!-- Bottom view -->
+<g transform="translate(510 270)" filter="url(#shadow)">
+  <circle cx="145" cy="145" r="132" fill="#1a1f20" stroke="#596263" stroke-width="4"/>
+  <circle cx="145" cy="145" r="112" fill="#101415" stroke="#363e3f" stroke-width="3"/>
+  <circle cx="145" cy="145" r="87" fill="none" stroke="#363e3f" stroke-width="17"/>
+  <circle cx="145" cy="145" r="52" fill="none" stroke="#363e3f" stroke-width="17"/>
+  <circle cx="145" cy="145" r="17" fill="#080a0a"/>
+  <g fill="#eef3f3">
+    <circle cx="245.0" cy="145.0" r="5"/><circle cx="237.4" cy="183.3" r="5"/><circle cx="215.7" cy="215.7" r="5"/><circle cx="183.3" cy="237.4" r="5"/><circle cx="145.0" cy="245.0" r="5"/><circle cx="106.7" cy="237.4" r="5"/><circle cx="74.3" cy="215.7" r="5"/><circle cx="52.6" cy="183.3" r="5"/><circle cx="45.0" cy="145.0" r="5"/><circle cx="52.6" cy="106.7" r="5"/><circle cx="74.3" cy="74.3" r="5"/><circle cx="106.7" cy="52.6" r="5"/><circle cx="145.0" cy="45.0" r="5"/><circle cx="183.3" cy="52.6" r="5"/><circle cx="215.7" cy="74.3" r="5"/><circle cx="237.4" cy="106.7" r="5"/>
+    <circle cx="216.6" cy="159.2" r="5"/><circle cx="205.7" cy="185.6" r="5"/><circle cx="185.6" cy="205.7" r="5"/><circle cx="159.2" cy="216.6" r="5"/><circle cx="130.8" cy="216.6" r="5"/><circle cx="104.4" cy="205.7" r="5"/><circle cx="84.3" cy="185.6" r="5"/><circle cx="73.4" cy="159.2" r="5"/><circle cx="73.4" cy="130.8" r="5"/><circle cx="84.3" cy="104.4" r="5"/><circle cx="104.4" cy="84.3" r="5"/><circle cx="130.8" cy="73.4" r="5"/><circle cx="159.2" cy="73.4" r="5"/><circle cx="185.6" cy="84.3" r="5"/><circle cx="205.7" cy="104.4" r="5"/><circle cx="216.6" cy="130.8" r="5"/>
+    <circle cx="189.0" cy="145.0" r="5"/><circle cx="185.7" cy="161.8" r="5"/><circle cx="176.1" cy="176.1" r="5"/><circle cx="161.8" cy="185.7" r="5"/><circle cx="145.0" cy="189.0" r="5"/><circle cx="128.2" cy="185.7" r="5"/><circle cx="113.9" cy="176.1" r="5"/><circle cx="104.3" cy="161.8" r="5"/><circle cx="101.0" cy="145.0" r="5"/><circle cx="104.3" cy="128.2" r="5"/><circle cx="113.9" cy="113.9" r="5"/><circle cx="128.2" cy="104.3" r="5"/><circle cx="145.0" cy="101.0" r="5"/><circle cx="161.8" cy="104.3" r="5"/><circle cx="176.1" cy="113.9" r="5"/><circle cx="185.7" cy="128.2" r="5"/>
+  </g>
+</g>
+
+<!-- Dimension drawing -->
+<g transform="translate(718 260)">
+  <text x="0" y="0" class="h3">Основні розміри</text>
+  <path d="M25 100 L60 370 L260 370 L295 100 Z" fill="url(#pot)" stroke="#d9dede" stroke-width="2"/>
+  <rect x="20" y="88" width="280" height="16" rx="8" fill="#202627" stroke="#d9dede" stroke-width="2"/>
+  <line x1="15" y1="55" x2="305" y2="55" class="line"/><path d="M15 55l12-7v14zM305 55l-12-7v14z" fill="#d9dede"/>
+  <text x="76" y="40" class="small muted">Зовнішній діаметр</text><text x="116" y="64" class="h3">399 мм</text>
+  <line x1="40" y1="118" x2="280" y2="118" class="line"/><path d="M40 118l12-7v14zM280 118l-12-7v14z" fill="#d9dede"/>
+  <text x="83" y="145" class="small muted">Внутрішній діаметр</text><text x="120" y="170" class="h3">370 мм</text>
+  <line x1="325" y1="100" x2="325" y2="370" class="line"/><path d="M325 100l-7 12h14zM325 370l-7-12h14z" fill="#d9dede"/>
+  <text x="340" y="225" class="small muted">Висота</text><text x="340" y="252" class="h3">306 мм</text>
+  <line x1="40" y1="392" x2="40" y2="424" class="line"/><path d="M40 392l-7 10h14zM40 424l-7-10h14z" fill="#d9dede"/>
+  <text x="55" y="407" class="small muted">Ніжка</text><text x="55" y="429" class="h3">12 мм</text>
+</g>
+
+<!-- Divider -->
+<line x1="48" y1="760" x2="976" y2="760" stroke="#3b4546"/>
+
+<!-- Feature cards row -->
+<g>
+  <rect x="48" y="800" width="286" height="300" rx="18" fill="#171d1e" stroke="#354142"/>
+  <circle cx="96" cy="853" r="34" fill="none" stroke="#63dc54" stroke-width="4"/><path d="M77 860q19-31 38 0M78 868q18 18 36 0" stroke="#63dc54" stroke-width="4" fill="none"/>
+  <text x="62" y="922" class="h2">Дренаж і вентиляція</text>
+  <text x="62" y="956" class="body muted">48 отворів у дні забезпечують</text><text x="62" y="984" class="body muted">відмінний дренаж і оптимальне</text><text x="62" y="1012" class="body muted">надходження кисню до коренів.</text>
+  <text x="62" y="1060" class="h3 green">48 дренажних отворів</text>
+</g>
+<g>
+  <rect x="369" y="800" width="286" height="300" rx="18" fill="#171d1e" stroke="#354142"/>
+  <circle cx="417" cy="853" r="34" fill="none" stroke="#63dc54" stroke-width="4"/><path d="M397 873l20-40 20 40z" fill="none" stroke="#63dc54" stroke-width="4"/>
+  <text x="383" y="922" class="h2">Пірамідальне дно</text>
+  <text x="383" y="956" class="body muted">Форма дна руйнує поверхневий</text><text x="383" y="984" class="body muted">натяг води, зменшуючи мокру</text><text x="383" y="1012" class="body muted">зону та покращуючи дренаж.</text>
+  <text x="383" y="1060" class="h3 green">Більше повітря під контейнером</text>
+</g>
+<g>
+  <rect x="690" y="800" width="286" height="300" rx="18" fill="#171d1e" stroke="#354142"/>
+  <circle cx="738" cy="853" r="34" fill="none" stroke="#63dc54" stroke-width="4"/><path d="M724 853h28M738 839v28" stroke="#63dc54" stroke-width="4"/>
+  <text x="704" y="922" class="h2">Короткі ніжки 12 мм</text>
+  <text x="704" y="956" class="body muted">Навіть з короткими ніжками</text><text x="704" y="984" class="body muted">пірамідальна база підтримує</text><text x="704" y="1012" class="body muted">циркуляцію повітря знизу.</text>
+  <text x="704" y="1060" class="h3 green">Для цегли та опор</text>
+</g>
+
+<!-- Bottom cards -->
+<g>
+  <rect x="48" y="1132" width="446" height="286" rx="18" fill="#171d1e" stroke="#354142"/>
+  <circle cx="96" cy="1187" r="34" fill="none" stroke="#63dc54" stroke-width="4"/>
+  <path d="M77 1187h38M86 1175l20 24M106 1175l-20 24" stroke="#63dc54" stroke-width="4"/>
+  <text x="145" y="1180" class="h2">Опційний якір</text>
+  <text x="66" y="1235" class="body muted">Підтримує контейнер і допомагає запобігти</text><text x="66" y="1263" class="body muted">перекиданню від вітру або механізованого збору.</text>
+  <rect x="66" y="1300" width="394" height="86" rx="12" fill="#101516"/>
+  <text x="86" y="1334" class="h3 green">Високий повітрообмін</text>
+  <text x="86" y="1364" class="small muted">Менше росту коренів назовні та контакту з ґрунтовими патогенами.</text>
+</g>
+<g>
+  <rect x="530" y="1132" width="446" height="286" rx="18" fill="#171d1e" stroke="#354142"/>
+  <circle cx="578" cy="1187" r="34" fill="none" stroke="#63dc54" stroke-width="4"/>
+  <rect x="560" y="1177" width="36" height="23" rx="4" fill="none" stroke="#63dc54" stroke-width="4"/><path d="M562 1187h32" stroke="#63dc54" stroke-width="3"/>
+  <text x="627" y="1180" class="h2">Large Lysimeter</text>
+  <text x="548" y="1235" class="body muted">Сумісний із Plantlogic Large Lysimeter для</text><text x="548" y="1263" class="body muted">точного збору та моніторингу дренажу.</text>
+  <text x="548" y="1315" class="h3 green">Компактне штабелювання</text>
+  <text x="548" y="1346" class="small muted">≈ 11 340 шт. / 20’ · 23 436 шт. / 40’ · 27 528 шт. / 40’ HQ*</text>
+  <text x="548" y="1375" class="tiny muted">* Орієнтовна кількість контейнерів.</text>
+</g>
+
+<line x1="48" y1="1460" x2="976" y2="1460" stroke="#3b4546"/>
+<text x="48" y="1500" font-size="32" font-weight="800">plantlogic</text>
+<text x="976" y="1498" text-anchor="end" class="small muted" letter-spacing="3">ТЕХНІЧНА ІНФОРМАЦІЯ · BB610 MARKET</text>
+</svg>

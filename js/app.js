@@ -109,6 +109,9 @@ const BB610 = (() => {
     const categoryId=p?.category_id||p?.category||'';
     // Canonical package media is the approved storefront photo. Prefer it over
     // runtime SKU.image because runtime rows can contain stale/broken media URLs.
+    const selectedPack=s?.variant||s?.package||s?.label;
+    const packageImage=imageForPackage(p?.id,selectedPack);
+    if(packageImage)return packageImage;
     const approved=approvedSkuImage(p,s);
     if(approved)return approved;
     const skuImage=imageValue(s?.image);
@@ -171,6 +174,21 @@ const BB610 = (() => {
       rows.find(s=>preferred&&String(s?.id||s?.sku||'')===preferred)||
       rows[0]||
       null;
+  }
+  function imageForPackage(productId,wanted){
+    const rows=productSkus(productId).filter(s=>sameSkuPackage(wanted,s));
+    if(!rows.length)return '';
+    const real=s=>{
+      const src=imageValue(s?.image);
+      return src&&!isFallbackImage(src)?src:'';
+    };
+    const approved=rows.find(s=>s?.organic_planet_photo&&real(s));
+    if(approved)return real(approved);
+    const images=[...new Set(rows.map(real).filter(Boolean))];
+    if(images.length===1)return images[0];
+    const active=rows.find(s=>isCommercialActive(s)&&real(s));
+    if(active)return real(active);
+    return images[0]||'';
   }
   function displaySku(productId){
     const d=defaultSku(productId);
@@ -373,7 +391,7 @@ const BB610 = (() => {
     const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
     if(typeof d.showModal==='function')d.showModal();
   }
-  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,skuForPackage,sameSkuPackage,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
+  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,skuForPackage,sameSkuPackage,imageForPackage,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);
 
 function bb610LoadProductCardV3Enhancements(){

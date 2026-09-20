@@ -56,6 +56,14 @@ def _dynamic_skus(product_id:Optional[str]=None):
 
 def _stock(v): return {'in_stock':'В наявності','out_of_stock':'Немає в наявності','preorder':'Передзамовлення','backorder':'Під замовлення'}.get(v,'Наявність уточнюється')
 
+def _placeholder_media(value):
+    raw=str(value or '').strip().lower().split('?',1)[0]
+    return raw.endswith((
+        '/assets/img/product-npk.svg','assets/img/product-npk.svg',
+        '/assets/img/product-biostim.svg','assets/img/product-biostim.svg',
+        '/assets/img/product-container.svg','assets/img/product-container.svg',
+    ))
+
 def _sku_photo_overrides():
     try:
         obj=json.loads(SKU_PHOTO_OVERRIDES.read_text(encoding='utf-8'))
@@ -232,6 +240,18 @@ def public_content():
             matches=by_product_pack.get((pid,pack)) or []
             if len(matches)==1:
                 apply_photo(matches[0],media_patch)
+
+    # Generic storefront SVGs are presentation fallbacks, not SKU media.
+    # Keeping them in the canonical SKU row makes cardV2 prefer the fallback over
+    # a real product/V3 image, so remove them before the public snapshot leaves
+    # the backend.
+    for row in sku_map.values():
+        if _placeholder_media(row.get('image')):
+            row['image']=''
+        if isinstance(row.get('gallery'),list):
+            row['gallery']=[x for x in row.get('gallery') or [] if not _placeholder_media(x)]
+        if not row.get('image') and row.get('gallery'):
+            row['image']=row['gallery'][0]
 
     return {'products':products,'skus':list(sku_map.values())}
 

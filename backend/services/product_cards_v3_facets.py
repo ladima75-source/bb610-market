@@ -83,9 +83,21 @@ if not isinstance(PLANTLOGIC_PRODUCT_SECTIONS, dict):
     PLANTLOGIC_PRODUCT_SECTIONS = {}
 
 
+def _placeholder_media(path: Any) -> bool:
+    raw = str(path or '').strip().lower().split('?', 1)[0]
+    return raw.endswith((
+        '/assets/img/product-npk.svg',
+        'assets/img/product-npk.svg',
+        '/assets/img/product-biostim.svg',
+        'assets/img/product-biostim.svg',
+        '/assets/img/product-container.svg',
+        'assets/img/product-container.svg',
+    ))
+
+
 def _public_media_path(path: Any) -> str:
     raw = str(path or '').strip()
-    if not raw:
+    if not raw or _placeholder_media(raw):
         return ''
     if raw.startswith('/media/'):
         return raw

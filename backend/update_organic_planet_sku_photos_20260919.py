@@ -52,6 +52,10 @@ UA = (
 )
 
 MANUAL_PAGES = {
+    "BB610-OP-BREXIL-MIX-15G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-v-helatnij-formi-15-g-valagro",
+    "BB610-OP-BREXIL-MIX-250G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-v-helatnij-formi-250-g-valagro",
+    "BB610-OP-BREXIL-MIX-1KG": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-1-kg-valagro",
+    "BB610-OP-BREXIL-MIX-5KG": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-5-kg-valagro",
     "BB610-OP-KENDAL-ROOT-100ML": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostymulyator-antystres-dlya-korenya-100-ml-valagro",
     "BB610-OP-KENDAL-ROOT-1L": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostimulyator-antistress-dlya-kornya",
     "BB610-OP-KENDAL-TE-100ML": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-te-kendal-te-organicheskij-bioimmunostimulyator-100-m",
@@ -429,8 +433,8 @@ def _product_image(page_url: str, target: Target) -> tuple[str, str]:
     # <img> correctly reflects the page SKU/package.
     image = ""
     allowed_packs = {target.pack_key, *PAGE_PACK_EQUIVALENTS.get(target.sku, set())}
-    ranked: list[tuple[float, str]] = []
-    for candidate, alt in parser.image_candidates:
+    ranked: list[tuple[float, int, str]] = []
+    for index, (candidate, alt) in enumerate(parser.image_candidates):
         absolute = urljoin(page_url, candidate)
         parsed = urlparse(absolute)
         if parsed.netloc not in {"organicplanet.com.ua", "www.organicplanet.com.ua"}:
@@ -452,10 +456,15 @@ def _product_image(page_url: str, target: Target) -> tuple[str, str]:
                 score = max(score, 1.0)
         else:
             score = 0.0
-        ranked.append((score, absolute))
+        ranked.append((score, -index, absolute))
     ranked.sort(reverse=True)
     if ranked and ranked[0][0] >= 0.45:
-        image = ranked[0][1]
+        image = ranked[0][2]
+    elif target.sku in MANUAL_PAGES and ranked:
+        # For an explicitly bound, package-verified product page prefer its
+        # first valid visible product image over og:image. Organic Planet can
+        # reuse stale og:image across package variants.
+        image = ranked[0][2]
     elif parser.og_image:
         og = urljoin(page_url, parser.og_image)
         og_path = urlparse(og).path.lower()

@@ -64,6 +64,24 @@ def _sku_photo_overrides():
     rows=obj.get('skus') if isinstance(obj,dict) else None
     return rows if isinstance(rows,dict) else {}
 
+def _photo_pack_key(value):
+    s=str(value or '').strip().lower().replace(',','.')
+    replacements=(
+        ('літрів','л'),('літра','л'),('літр','л'),('литров','л'),('литра','л'),('литр','л'),
+        ('мілілітрів','мл'),('мілілітра','мл'),('мілілітр','мл'),('миллилитров','мл'),('миллилитра','мл'),('миллилитр','мл'),
+        ('кілограмів','кг'),('кілограма','кг'),('кілограм','кг'),('килограммов','кг'),('килограмма','кг'),('килограмм','кг'),
+        ('грамів','г'),('грама','г'),('грам','г'),('граммов','г'),('грамма','г'),
+    )
+    for old,new in replacements:
+        s=s.replace(old,new)
+    s=re.sub(r'\bml\b','мл',s)
+    s=re.sub(r'\bkg\b','кг',s)
+    s=re.sub(r'\bl\b','л',s)
+    s=re.sub(r'\bg\b','г',s)
+    s=re.sub(r'\s+','',s)
+    return re.sub(r'[^0-9a-zа-яіїєґ.+-]','',s)
+
+
 def _normalize_content(body:dict, base:Optional[dict]=None):
     x=dict(base or {})
     allowed=['name','official_name','brand','manufacturer','country','category_id','product_type','form','npk','active_ingredient','concentration','manufacturer_use','application','rate','restrictions','target','waiting_period','hazard_class','registration','short_description']
@@ -175,16 +193,45 @@ def public_content():
     except Exception:
         pass
 
-    # Organic Planet SKU-photo corrections can apply to immutable/static SKU
-    # identities. Only presentation media is overlaid here; commerce stays intact.
-    for sku_id, media_patch in _sku_photo_overrides().items():
-        if sku_id in sku_map and isinstance(media_patch,dict):
-            image=str(media_patch.get('image') or '').strip()
-            if image:
-                sku_map[sku_id]['image']=image
-                sku_map[sku_id]['gallery']=[image]
-                sku_map[sku_id]['image_alt']=str(media_patch.get('alt') or '')
-                sku_map[sku_id]['organic_planet_photo']=True
+    # Organic Planet SKU-photo corrections were collected against source
+    # BB610-OP identifiers. Public Product Master can expose a different stable
+    # runtime SKU id, so exact-id matching alone is insufficient. Project photo
+    # by (product_id + package) when identities differ.
+    photo_overrides=_sku_photo_overrides()
+    def apply_photo(row,media_patch):
+        image=str(media_patch.get('image') or '').strip()
+        if not image:
+            return False
+        row['image']=image
+        row['gallery']=[image]
+        row['image_alt']=str(media_patch.get('alt') or '')
+        row['organic_planet_photo']=True
+        return True
+
+    unmatched=[]
+    for sku_id,media_patch in photo_overrides.items():
+        if not isinstance(media_patch,dict):
+            continue
+        if sku_id in sku_map:
+            apply_photo(sku_map[sku_id],media_patch)
+        else:
+            unmatched.append(media_patch)
+
+    if unmatched:
+        by_product_pack={}
+        for sid,row in sku_map.items():
+            pid=str(row.get('product_id') or '').strip()
+            pack=_photo_pack_key(row.get('variant') or row.get('package') or row.get('label'))
+            if pid and pack:
+                by_product_pack.setdefault((pid,pack),[]).append(row)
+        for media_patch in unmatched:
+            pid=str(media_patch.get('product_id') or '').strip()
+            pack=_photo_pack_key(media_patch.get('package'))
+            if not pid or not pack:
+                continue
+            matches=by_product_pack.get((pid,pack)) or []
+            if len(matches)==1:
+                apply_photo(matches[0],media_patch)
 
     return {'products':products,'skus':list(sku_map.values())}
 

@@ -210,14 +210,23 @@ function renderTechnologyExplainer(product){
 }
 
 function renderApprovedInfographic(selectedSku){
-  if(articleFromSku(selectedSku)!=='1308125')return '';
-  return `<figure class="pot-approved-infographic" aria-label="Інфографіка конструкції круглого контейнера 25 л">
-    <img src="assets/img/plantlogic/1308125-infographic.webp?v=20260920-1308125-infographic-2" alt="Круглий контейнер 25 л для вирощування лохини — конструкція, розміри та переваги" loading="lazy" decoding="async">
-  </figure>`;
+  const article=articleFromSku(selectedSku);
+  if(article==='1308125'){
+    return `<figure class="pot-approved-infographic" aria-label="Інфографіка конструкції круглого контейнера 25 л">
+      <img src="assets/img/plantlogic/1308125-infographic.webp?v=20260920-1308125-infographic-2" alt="Круглий контейнер 25 л для вирощування лохини — конструкція, розміри та переваги" loading="lazy" decoding="async">
+    </figure>`;
+  }
+  if(['1301144','1301053','1301153','1301143'].includes(article)){
+    return `<figure class="pot-approved-infographic" aria-label="Інфографіка контейнера Zephyr V2">
+      <img src="assets/img/plantlogic/zephyr-v2-infographic.png?v=20260920-zephyr-v2-infographic-1" alt="Zephyr V2 — контейнер для вирощування лохини, конструкція, розміри та переваги" loading="lazy" decoding="async">
+    </figure>`;
+  }
+  return '';
 }
 
 function renderProductStory(product,selectedSku){
-  if(articleFromSku(selectedSku)==='1308125')return renderApprovedInfographic(selectedSku);
+  const approved=renderApprovedInfographic(selectedSku);
+  if(approved)return approved;
   return `${renderBenefits(product,selectedSku)}${renderTechnologyExplainer(product)}`;
 }
 

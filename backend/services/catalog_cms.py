@@ -60,8 +60,13 @@ def _placeholder_media(value):
     raw=str(value or '').strip().lower().split('?',1)[0]
     return raw.endswith((
         '/assets/img/product-npk.svg','assets/img/product-npk.svg',
+        '/assets/img/product-master.svg','assets/img/product-master.svg',
+        '/assets/img/product-plantafol.svg','assets/img/product-plantafol.svg',
+        '/assets/img/product-megafol.svg','assets/img/product-megafol.svg',
         '/assets/img/product-biostim.svg','assets/img/product-biostim.svg',
         '/assets/img/product-container.svg','assets/img/product-container.svg',
+        '/assets/img/product-container45.svg','assets/img/product-container45.svg',
+        '/assets/img/product-protection.svg','assets/img/product-protection.svg',
     ))
 
 def _sku_photo_overrides():

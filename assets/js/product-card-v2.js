@@ -190,7 +190,13 @@ function bindV3(shell,card){
     const productPath=typeof rawProduct?.image==='string'?rawProduct.image:String(rawProduct?.image?.local||'').trim();
     const productGallery=firstRealMedia(rawProduct?.gallery);
     const liveGallery=firstRealMedia(liveSku?.gallery);
-    setHeroCandidates(hero,[livePath,v3Path,approvedPath,liveGallery,productPath,productGallery],'assets/img/product-npk.svg');
+    const packageKeys=new Set(vs.map(row=>packKey(row?.package||row?.label)).filter(Boolean));
+    const strictPackageMedia=packageKeys.size>1;
+    // A multi-package product must never borrow the generic/product-level
+    // photo of another package. Only SKU/V3/package-specific media is allowed.
+    const candidates=[livePath,v3Path,approvedPath,liveGallery];
+    if(!strictPackageMedia)candidates.push(productPath,productGallery);
+    setHeroCandidates(hero,candidates,'assets/img/product-npk.svg');
     const c=v?.commerce||null,p=c?((c.sale_price!==null&&c.sale_price!==undefined&&c.sale_price!=='')?c.sale_price:c.price):null;
     $('#mpcPrice',shell).textContent=money(p)||'Ціна уточнюється';
     const a=String(c?.availability||'unknown').toLowerCase();

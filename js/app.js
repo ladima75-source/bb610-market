@@ -73,12 +73,14 @@ const BB610 = (() => {
   const firstRealImage=list=>(Array.isArray(list)?list:[]).map(imageValue).find(src=>src&&!isFallbackImage(src))||'';
   const productImage=(p,s=null)=>{
     const categoryId=p?.category_id||p?.category||'';
+    // Canonical package media is the approved storefront photo. Prefer it over
+    // runtime SKU.image because runtime rows can contain stale/broken media URLs.
+    const approved=approvedSkuImage(p,s);
+    if(approved)return approved;
     const skuImage=imageValue(s?.image);
     if(skuImage&&!isFallbackImage(skuImage))return skuImage;
     const skuGallery=firstRealImage(s?.gallery);
     if(skuGallery)return skuGallery;
-    const approved=approvedSkuImage(p,s);
-    if(approved)return approved;
     const baseImage=imageValue(p?.image);
     if(baseImage&&!isFallbackImage(baseImage))return baseImage;
     const galleryImage=firstRealImage(p?.gallery);

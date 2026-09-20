@@ -125,6 +125,23 @@ def ensure_zephyr25_media(card,sku):
     sku["gallery_media_ids"]=ids[1:]
     a=attrs(sku);a["media_source_color"]=color(sku);sku["attributes"]=a
 
+def ensure_zephyr_fallback_media(card,sku,no):
+    sm=card["sku_media"]
+    media=sm["media"]
+    by_id={str(x.get("media_id") or ""):x for x in media if isinstance(x,dict)}
+    rows=[
+        (f"plmm_{no}_fallback_capacities","/assets/plantlogic/zephyr-v2-capacities.jpg",f"Plantlogic Zephyr V2 {attrs(sku).get('volume_label') or ''} — варіанти місткості"),
+        (f"plmm_{no}_fallback_greenhouse","/assets/plantlogic/zephyr-v2-greenhouse.jpg",f"Plantlogic Zephyr V2 {attrs(sku).get('volume_label') or ''} — застосування в теплиці"),
+    ]
+    ids=[]
+    for i,(mid,path,alt) in enumerate(rows):
+        if mid not in by_id:
+            row={"media_id":mid,"path":path,"alt":alt,"kind":"photo","sort_order":i}
+            media.append(row);by_id[mid]=row
+        ids.append(mid)
+    sku["primary_media_id"]=ids[0]
+    sku["gallery_media_ids"]=ids[1:]
+
 def clean_card(card):
     work=deepcopy(card)
     sm=work.get("sku_media") if isinstance(work.get("sku_media"),dict) else {}
@@ -145,8 +162,7 @@ def clean_card(card):
         if no=="1301144":
             ensure_zephyr25_media(work,sku)
         elif no in {"1301153","1301143"}:
-            sku["primary_media_id"]=None
-            sku["gallery_media_ids"]=[]
+            ensure_zephyr_fallback_media(work,sku,no)
         else:
             primary=str(sku.get("primary_media_id") or "")
             prow=by_id.get(primary)

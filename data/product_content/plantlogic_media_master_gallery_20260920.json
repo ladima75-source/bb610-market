@@ -1,0 +1,2426 @@
+{
+  "schema_version": "1.0",
+  "generated_date": "2026-09-20",
+  "source": {
+    "folder_id": "116RTG3evsQN96Ta2FlwIo7LiR-HcoZi8",
+    "folder_name": "PlantLogic_Media_Master_2026",
+    "manifest_file_id": "14FUiakH9JtTN0DmtlhFZvoEpsRC5zm3Q",
+    "readme_file_id": "1TqtBtJUinjbk49siWavYlfjeCt-O9ey2",
+    "collected_date": "2026-09-10"
+  },
+  "selection_policy": {
+    "accepted_media_type": "PRODUCT",
+    "contains_text": "NO",
+    "accepted_file_types": [
+      "JPEG",
+      "PNG",
+      "WEBP"
+    ],
+    "minimum_dimensions": "max side >= 400 px and min side >= 300 px",
+    "excluded_filename_markers": [
+      "landing-page",
+      "graphic",
+      "diagram",
+      "dimension",
+      "tech-sheet",
+      "techsheet",
+      "datasheet",
+      "spec-sheet",
+      "infographic",
+      "feature0",
+      "popup"
+    ],
+    "rule": "Exact manufacturer Product # only. Technical drawings, diagrams, infographics, text-bearing media, accessories and unrelated page imagery are excluded from SKU galleries."
+  },
+  "statistics": {
+    "product_numbers": 37,
+    "curated_product_images": 205,
+    "manifest_registry_records": 1797,
+    "manifest_unique_images_without_ua_copies": 1383,
+    "manifest_product_render_application_accessory_images": 1192,
+    "manifest_technical_diagrams_drawings_infographics": 191
+  },
+  "zephyr_fallbacks": {
+    "1301143": [
+      {
+        "media_id": "plmm_1301143_fallback_capacities",
+        "path": "/assets/plantlogic/zephyr-v2-capacities.jpg",
+        "alt": "Plantlogic Zephyr V2 40 л — варіанти місткості"
+      },
+      {
+        "media_id": "plmm_1301143_fallback_greenhouse",
+        "path": "/assets/plantlogic/zephyr-v2-greenhouse.jpg",
+        "alt": "Plantlogic Zephyr V2 40 л — застосування в теплиці"
+      }
+    ],
+    "1301153": [
+      {
+        "media_id": "plmm_1301153_fallback_capacities",
+        "path": "/assets/plantlogic/zephyr-v2-capacities.jpg",
+        "alt": "Plantlogic Zephyr V2 30 л — варіанти місткості"
+      },
+      {
+        "media_id": "plmm_1301153_fallback_greenhouse",
+        "path": "/assets/plantlogic/zephyr-v2-greenhouse.jpg",
+        "alt": "Plantlogic Zephyr V2 30 л — застосування в теплиці"
+      }
+    ]
+  },
+  "zephyr_25_color_files": {
+    "black": [
+      "ZEPHYR-V2-1301144-FRONTAL-2-2.jpg",
+      "ZEPHYR-V2-1301144-FRONTAL-2-1.jpg",
+      "ZEPHYR-V2-1301144-BASE-2.jpg",
+      "ZEPHYR-V2-1301144-CENITAL-1.jpg"
+    ],
+    "white": [
+      "ZEPHYR-V2-1301144-FRONTAL-1.jpg",
+      "ZEPHYR-V2-1301144-BASE.jpg"
+    ]
+  },
+  "preserve_existing_when_no_curated_media": [
+    "13090400",
+    "13090440"
+  ],
+  "models": {
+    "1301143": {
+      "slug": "plantlogic-zephyr-v2",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/zephyr-v2/",
+      "name": "Горщик Zephyr V2 — 25, 30 та 40 л",
+      "items": []
+    },
+    "1301144": {
+      "slug": "plantlogic-zephyr-v2",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/zephyr-v2/",
+      "name": "Горщик Zephyr V2 — 25, 30 та 40 л",
+      "items": [
+        {
+          "media_id": "PL1744E3B3",
+          "filename": "ZEPHYR-V2-1301144-FRONTAL-2-1.jpg",
+          "sha256": "1744e3b39c47386b4c9bedec81d35e7f807e5420c8a393344e50e01415eafcd0",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/11/ZEPHYR-V2-1301144-FRONTAL-2-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2020/11/ZEPHYR-V2-1301144-FRONTAL-2.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-2.jpg"
+          ]
+        },
+        {
+          "media_id": "PL5B0C93FD",
+          "filename": "ZEPHYR-V2-1301144-BASE-2.jpg",
+          "sha256": "5b0c93fdc993e2b1537eac63d82272d999e24b3ce7cef1bdae61a9c3e054206e",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE-2.jpg"
+          ]
+        },
+        {
+          "media_id": "PL2AD64B5F",
+          "filename": "ZEPHYR-V2-1301144-BASE.jpg",
+          "sha256": "2ad64b5fd48ae7f97dc5ba30081ce900a424e151bc57eaa812fcd12b10d759b7",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE.jpg"
+          ]
+        },
+        {
+          "media_id": "PL206B3A6D",
+          "filename": "ZEPHYR-V2-1301144-CENITAL-1.jpg",
+          "sha256": "206b3a6dc27a8d90c54d125548117ff82d3833cf8c0062db782bf49a041ea7f4",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-CENITAL-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-CENITAL.jpg"
+          ]
+        },
+        {
+          "media_id": "PLD8DC257B",
+          "filename": "ZEPHYR-V2-1301144-FRONTAL-1.jpg",
+          "sha256": "d8dc257b959e47ec57381f6cb83572da6d69eb6114bf34be6ee445ead787524e",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL.jpg"
+          ]
+        },
+        {
+          "media_id": "PLAAAA485F",
+          "filename": "ZEPHYR-V2-1301144-FRONTAL-2-2.jpg",
+          "sha256": "aaaa485fd58fd917c4fb652e36e5e4f93fb0320dcd2a1ce17ffdd6f884ca55f3",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-2-2.jpg"
+          ]
+        }
+      ]
+    },
+    "1301153": {
+      "slug": "plantlogic-zephyr-v2",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/zephyr-v2/",
+      "name": "Горщик Zephyr V2 — 25, 30 та 40 л",
+      "items": []
+    },
+    "1303025": {
+      "slug": "plantlogic-25l-round-short-legs-1303025",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/25-liter-round-pot-short-legs/",
+      "name": "Круглий горщик 25 л на коротких ніжках — арт. 1303025",
+      "items": [
+        {
+          "media_id": "PLDF2CE09E",
+          "filename": "3025_1.jpg",
+          "sha256": "df2ce09e3635de13488fa60461dcc5c61c809e0de43101f395fb3309c84390b0",
+          "width_px": 900,
+          "height_px": 621,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2018/08/Maceta-Redonda-de-25-Litros-Patas-Cortas.jpg"
+          ]
+        },
+        {
+          "media_id": "PL2EF98DAD",
+          "filename": "3025_2-1.jpg",
+          "sha256": "2ef98dad9582747aca2f5ca73dc6fe540cac329b4998dd0f76d076ae81f404c1",
+          "width_px": 900,
+          "height_px": 621,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/04/3025_2-1.jpg"
+          ]
+        },
+        {
+          "media_id": "PL8D449AF5",
+          "filename": "3025_3.jpg",
+          "sha256": "8d449af52d78b7e64342a631b6f52f36273931733dd4310baef1bfad01a1e894",
+          "width_px": 900,
+          "height_px": 621,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/04/3025_3.jpg"
+          ]
+        },
+        {
+          "media_id": "PL988E4111",
+          "filename": "3025_4-1.jpg",
+          "sha256": "988e411139cfb58fba17fe482f85224df02225358d77c6143fd3a8a99e58dfbb",
+          "width_px": 900,
+          "height_px": 621,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2021/06/3025_4-1.jpg"
+          ]
+        },
+        {
+          "media_id": "PL77767C04",
+          "filename": "25-Liter-Round-Pot-with-short-legs_Item_1303025.jpg",
+          "sha256": "77767c04c60d3695d5da6b6d2294e8c226667332fc0f4678ba9b533fb5a27207",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Round-Pot-with-short-legs_Item_1303025.jpg"
+          ]
+        }
+      ]
+    },
+    "1303125": {
+      "slug": "plantlogic-25l-round-drainage-short-1303125",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/25-liter-round-drainage-collection-pot-short-legs/",
+      "name": "Круглий горщик 25 л зі збором дренажу, короткі ніжки — арт. 1303125",
+      "items": [
+        {
+          "media_id": "PLF1126A6C",
+          "filename": "25-Liter-Drainage-Colection-Pot-with-short-legs_Item_1303125.jpg",
+          "sha256": "f1126a6c61735e928c6c330bad34f730f79e48ba7d9af1c7b5932e834bd29530",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Drainage-Colection-Pot-with-short-legs_Item_1303125.jpg"
+          ]
+        },
+        {
+          "media_id": "PLA6FCA2CB",
+          "filename": "25-Liter-Round-Pot_Short_legs_Item_1303125.jpg",
+          "sha256": "a6fca2cb6c17b632bf5013e26b59bb807ead5b31187618b941340d2b669bd222",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/25-Liter-Round-Pot_Short_legs_Item_1303125.jpg"
+          ]
+        },
+        {
+          "media_id": "PL3020119D",
+          "filename": "25-Liter-Round-Pot_Short_legs_Item_1303125_front-view-1.jpg",
+          "sha256": "3020119da3d326d924cc9ac3b612d0486301c03a50f0cd54f6e7c3b941f98deb",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/25-Liter-Round-Pot_Short_legs_Item_1303125_front-view-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/04/25-Liter-Round-Pot_Short_legs_Item_1303125_front-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PLEC9B24C7",
+          "filename": "25-Liter-Round-Pot_Short_legs_Item_1303125_top-view.jpg",
+          "sha256": "ec9b24c73363eac7a24afc7f85980faf18c0e1dd8a9d2b8d2b1a707ce2cad24d",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/25-Liter-Round-Pot_Short_legs_Item_1303125_top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL9BE7562F",
+          "filename": "25-liter-drainage-collection-pot-with-short-legs.png",
+          "sha256": "9be7562f2d158eda01d927dcad6fef3fba7f7e90d163c5b71492b6e40f29ab82",
+          "width_px": 524,
+          "height_px": 530,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/25-liter-drainage-collection-pot-with-short-legs.png"
+          ]
+        },
+        {
+          "media_id": "PLF3700E62",
+          "filename": "25L-RD-SL-DC-1303125-BASE.jpg",
+          "sha256": "f3700e62908f923400401ca8cbced611b97d4ca03a395ee9bbf8e257ed374e28",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/25L-RD-SL-DC-1303125-BASE.jpg"
+          ]
+        }
+      ]
+    },
+    "1304015": {
+      "slug": "plantlogic-15l-round-drainage-1304015",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/15-liter-round-drainage-collection-pot/",
+      "name": "Круглий горщик 15 л зі збором дренажу — арт. 1304015",
+      "items": [
+        {
+          "media_id": "PL5B41887D",
+          "filename": "15-liter-drainage-collection-pot.png",
+          "sha256": "5b41887d51fb75532238f764fae61c251d9927b2e01396d84eef86d4c86b5a77",
+          "width_px": 574,
+          "height_px": 552,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/15-liter-drainage-collection-pot.png"
+          ]
+        }
+      ]
+    },
+    "1304125": {
+      "slug": "plantlogic-25l-round-drainage-1304125",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/25-liter-round-drainage-collection-pot/",
+      "name": "Круглий горщик 25 л зі збором дренажу — арт. 1304125",
+      "items": [
+        {
+          "media_id": "PLEFF1F111",
+          "filename": "25-Liter-Drainage-Collection-pot_Item_1304125.jpg",
+          "sha256": "eff1f111e3b9cb7a33d0a6a2030be027908aaa1df421642c659fe40c4805037a",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Drainage-Collection-pot_Item_1304125.jpg"
+          ]
+        },
+        {
+          "media_id": "PL0C55AF7D",
+          "filename": "25L-Drainage-collection-pot_Item_1304125.jpg",
+          "sha256": "0c55af7d09b24e958c6781e2c313c5d10ca877e85642fbb59a0d2e50330eeb27",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Drainage-collection-pot_Item_1304125.jpg"
+          ]
+        },
+        {
+          "media_id": "PLE417605F",
+          "filename": "25L-Drainage-collection-pot_Item_1304125_bottom-view.jpg",
+          "sha256": "e417605f0728be7b70229458f12608ad6b4c0a016ecb9224b8593350f62a78d2",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Drainage-collection-pot_Item_1304125_bottom-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PLB4680EF1",
+          "filename": "25L-Drainage-collection-pot_Item_1304125_gutter.jpg",
+          "sha256": "b4680ef15815e49e2ab171b46b9159186ba554b1688559306da8255ebd72a6d6",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Drainage-collection-pot_Item_1304125_gutter.jpg"
+          ]
+        },
+        {
+          "media_id": "PL45234D4D",
+          "filename": "25L-Drainage-collection-pot_Item_1304125_top-view.jpg",
+          "sha256": "45234d4de473989351f598fb6ef1d94b0f2e28de481024dc73f874484db6b077",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Drainage-collection-pot_Item_1304125_top-view.jpg"
+          ]
+        }
+      ]
+    },
+    "1305005": {
+      "slug": "plantlogic-5l-drainage-1305005",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/5-liter-drainage-collection-pot/",
+      "name": "Горщик 5 л зі збором дренажу — арт. 1305005",
+      "items": [
+        {
+          "media_id": "PL6FF41931",
+          "filename": "5LDC_A.jpg",
+          "sha256": "6ff41931b8befa0799e62b43a170ac216c7d04689064840ef91260120de5fb8e",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/5LDC_A.jpg"
+          ]
+        },
+        {
+          "media_id": "PL818E77A1",
+          "filename": "5LDC_B.jpg",
+          "sha256": "818e77a152620aaf30553ffa30b9169b9661e30ed87869f299dd03a50d289304",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/5LDC_B.jpg"
+          ]
+        },
+        {
+          "media_id": "PL9C55F097",
+          "filename": "5LDC_C.jpg",
+          "sha256": "9c55f097f60c4c2ed7146eb53c110cbd231b8243c70fa448b1de0ae9f0fdb261",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/5LDC_C.jpg"
+          ]
+        },
+        {
+          "media_id": "PL898936EA",
+          "filename": "5-Liter-Drainage-Collection-pot_Item_1305005.jpg",
+          "sha256": "898936ea92a11243d273712d78728353e032b922481ff7fec682b87e40f908b3",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/5-Liter-Drainage-Collection-pot_Item_1305005.jpg"
+          ]
+        },
+        {
+          "media_id": "PLDAB703AB",
+          "filename": "5L-Drainage-collection-pot_Item_1305005.jpg",
+          "sha256": "dab703ab6da8305d5caee0f297b5d27c14f61c1af4343e660860316b4aae5c35",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/5L-Drainage-collection-pot_Item_1305005.jpg"
+          ]
+        },
+        {
+          "media_id": "PL4C726F77",
+          "filename": "5L-Drainage-collection-pot_Item_1305005_front.jpg",
+          "sha256": "4c726f7797ab62d3875cdab15ba510df6bc1d35845b968cd95bfa0170eba0704",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/5L-Drainage-collection-pot_Item_1305005_front.jpg"
+          ]
+        },
+        {
+          "media_id": "PL088846D0",
+          "filename": "5L-Drainage-collection-pot_Item_1305005_top-view.jpg",
+          "sha256": "088846d0baf538295ac297cb4106e8a63929f370d6c7fc0659e1e6748241d868",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/5L-Drainage-collection-pot_Item_1305005_top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL75A81F56",
+          "filename": "5L-DC-1305005-BASE.jpg",
+          "sha256": "75a81f56b51e7600ee8cc2c2b59e414b7326309d4267338edb3f89707ec742db",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/5L-DC-1305005-BASE.jpg"
+          ]
+        }
+      ]
+    },
+    "1305071": {
+      "slug": "plantlogic-7l-square-cold-storage-1305071",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/7-liter-square-pot-for-cold-storage/",
+      "name": "Квадратний горщик 7 л для long-cane та холодного зберігання — арт. 1305071",
+      "items": [
+        {
+          "media_id": "PLE258940B",
+          "filename": "7LSQ_C.png",
+          "sha256": "e258940b3096c95ca88e1ba55ab583d8bab72f252217845c61f025ff20fb2c6b",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2021/06/7LSQ_C.png"
+          ]
+        },
+        {
+          "media_id": "PLF024E4F5",
+          "filename": "7LSQ_D.png",
+          "sha256": "f024e4f573809f46cc06f102ef48231e91b290113e45e3af4debfeef20a8dd3c",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2021/06/7LSQ_D.png"
+          ]
+        },
+        {
+          "media_id": "PL743F8F77",
+          "filename": "7LSQ_A.png",
+          "sha256": "743f8f77235f36a4e3afb38615ecbc03166838b44f60f62e9df7fefbac759f90",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2021/07/7LSQ_A.png"
+          ]
+        },
+        {
+          "media_id": "PLF0DC40FB",
+          "filename": "7LSQ_B.png",
+          "sha256": "f0dc40fb71cb13a184f4e136282841801b4e9ab00d6da25e2d84b3bcacf40475",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2021/07/7LSQ_B.png"
+          ]
+        },
+        {
+          "media_id": "PL8D78F3A1",
+          "filename": "7-Liter-Square-pot-for-cold-storage_Item_1305071.jpg",
+          "sha256": "8d78f3a113ee4f7bf99668b62b06aa8359e4bf69a4300f02e6266cc6657719f1",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7-Liter-Square-pot-for-cold-storage_Item_1305071.jpg"
+          ]
+        },
+        {
+          "media_id": "PLD94101C0",
+          "filename": "7L-Square-pot-for-cold-storage_Item_1305071.jpg",
+          "sha256": "d94101c081ec6d1c26f4f13749cc2ced51406b57e14e10514470cfc64c0bcd2c",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7L-Square-pot-for-cold-storage_Item_1305071.jpg"
+          ]
+        },
+        {
+          "media_id": "PL9A3E43DA",
+          "filename": "7L-Square-pot-for-cold-storage_Item_1305071_front.jpg",
+          "sha256": "9a3e43da6829d390d1d752c9f0d2fbc4802f672f451cf2a1f2608f196a19a85b",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7L-Square-pot-for-cold-storage_Item_1305071_front.jpg"
+          ]
+        },
+        {
+          "media_id": "PL44AADF7C",
+          "filename": "7L-Square-pot-for-cold-storage_Item_1305071_top-view.jpg",
+          "sha256": "44aadf7c402a06ecde933d249e13b8b112a2c3774b837e942a14112df28dd898",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7L-Square-pot-for-cold-storage_Item_1305071_top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL21047B97",
+          "filename": "7L-SQ-UG-1305071-BASE.jpg",
+          "sha256": "21047b973e8ef4ef323b9aad0d2518b65f3c9f3829a70e3e16606d93fb556b5a",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/7L-SQ-UG-1305071-BASE.jpg"
+          ]
+        }
+      ]
+    },
+    "1305117": {
+      "slug": "plantlogic-17l-drainage-1305117",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/17-liter-drainage-collection-pot/",
+      "name": "Горщик 17 л зі збором дренажу — арт. 1305117",
+      "items": [
+        {
+          "media_id": "PLA6CEA906",
+          "filename": "17-Liter-Drainage-Collection-Pot_Item_1305117.jpg",
+          "sha256": "a6cea9061a6d5b052a6a2b4b90552782611acd0a12751e22516840f33bce914b",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/17-Liter-Drainage-Collection-Pot_Item_1305117.jpg"
+          ]
+        },
+        {
+          "media_id": "PLF0FE6A19",
+          "filename": "17-Liter-Drainage-Collection-Pot_Item_1305117_front-view.jpg",
+          "sha256": "f0fe6a19d496a27d1985a83806c7e573bf80783d2ccd7dd17ee125b1e4578309",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/17-Liter-Drainage-Collection-Pot_Item_1305117_front-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL3E90BD5A",
+          "filename": "17-Liter-Drainage-Collection-Pot_Item_1305117_top-view.jpg",
+          "sha256": "3e90bd5a7fd78b12a065bd55c927ff350a65e636e024e0269fedd78c9f6664c5",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/17-Liter-Drainage-Collection-Pot_Item_1305117_top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL3CA0E525",
+          "filename": "17-liter-drainage-collection-pot-1.jpg",
+          "sha256": "3ca0e525c263f9733a072d069489d30361eacc6181bd2b27c1988f7fbde08c17",
+          "width_px": 851,
+          "height_px": 580,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/17-liter-drainage-collection-pot-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/03/17-liter-drainage-collection-pot-2.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/03/17-liter-drainage-collection-pot.jpg"
+          ]
+        },
+        {
+          "media_id": "PL8BF196AA",
+          "filename": "17L-DC-1305117-BASE.jpg",
+          "sha256": "8bf196aa73a63714dd0651285c4a73d99d29866846d54b532b3087252e67435c",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/17L-DC-1305117-BASE.jpg"
+          ]
+        }
+      ]
+    },
+    "1306003": {
+      "slug": "plantlogic-3l-square-1306003",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/3-liter-square-pot/",
+      "name": "Квадратний горщик 3 л — арт. 1306003",
+      "items": [
+        {
+          "media_id": "PLA64E3D7D",
+          "filename": "6003_5.jpg",
+          "sha256": "a64e3d7d9c4b26ee575fa0ec1d0a3f5eea5081de3420a0b96bd838148fcbf0bf",
+          "width_px": 1000,
+          "height_px": 807,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/01/6003_5.jpg"
+          ]
+        },
+        {
+          "media_id": "PLA875C7EF",
+          "filename": "3-Liter-Square-Pot_Item_1306003.jpg",
+          "sha256": "a875c7ef3912e7abad5da8a33dfaac99a9d36c9ea35cc89168a876f5845bf5c4",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/3-Liter-Square-Pot_Item_1306003.jpg"
+          ]
+        },
+        {
+          "media_id": "PLA367A788",
+          "filename": "3L-Square-pot_Item_1306003.jpg",
+          "sha256": "a367a78857d42240a412915fa785a81015d55f9a84917c2b0099f24c0757ca0b",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/3L-Square-pot_Item_1306003.jpg"
+          ]
+        },
+        {
+          "media_id": "PL4F8FF39D",
+          "filename": "3L-Square-pot_Item_1306003_bottom.jpg",
+          "sha256": "4f8ff39d11ce7fdfefa57e0f8175489451f515bfe0190f65614f65eca1bba4ff",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/3L-Square-pot_Item_1306003_bottom.jpg"
+          ]
+        },
+        {
+          "media_id": "PL2D5B8EA8",
+          "filename": "3L-Square-pot_Item_1306003_front.jpg",
+          "sha256": "2d5b8ea8afb768d50be82ba12c7e1a4757059f47036d805e7e44e7250bc3f893",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/3L-Square-pot_Item_1306003_front.jpg"
+          ]
+        },
+        {
+          "media_id": "PL8FA7CC80",
+          "filename": "3L-Square-pot_Item_1306003_top-view.jpg",
+          "sha256": "8fa7cc80d6cf0ebbb893e5fb9e6ab277c7adfd19e1300103082e18a34c21822c",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/3L-Square-pot_Item_1306003_top-view.jpg"
+          ]
+        }
+      ]
+    },
+    "1306007": {
+      "slug": "plantlogic-7l-square-1306007",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/7-liter-square-pot/",
+      "name": "Квадратний горщик 7 л — арт. 1306007",
+      "items": [
+        {
+          "media_id": "PL9B8F899A",
+          "filename": "7-Liter-Square-pot-_Item_1306007.jpg",
+          "sha256": "9b8f899a5ede46f71df2ad1b175cdea059be6caec444ee0678d6b0be4b0544fb",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2017/08/7-Liter-Square-pot-_Item_1306007.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7-Liter-Square-pot-_Item_1306007.jpg"
+          ]
+        },
+        {
+          "media_id": "PL93D0B4A1",
+          "filename": "7-liter-square-pot-1.png",
+          "sha256": "93d0b4a1d9c03a6b01698409c1d966467c7683231fc04938df3f8f65c1d0f079",
+          "width_px": 423,
+          "height_px": 367,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2017/08/7-liter-square-pot-1.png",
+            "https://getplantlogic.com/wp-content/uploads/2017/08/7-liter-square-pot.png",
+            "https://getplantlogic.com/wp-content/uploads/2019/09/7-liter-square-pot.png"
+          ]
+        },
+        {
+          "media_id": "PLFEAE13BC",
+          "filename": "7L-Square-pot_Item_1306007_front.jpg",
+          "sha256": "feae13bcb85666b065fd4da8b544ceac743102cb7559a3047f9e56eb6ac2703a",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2019/09/7L-Square-pot_Item_1306007_front.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7L-Square-pot_Item_1306007.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7L-Square-pot_Item_1306007_front.jpg"
+          ]
+        },
+        {
+          "media_id": "PL48EA81F3",
+          "filename": "7L-Square-pot_Item_1306007-1.jpg",
+          "sha256": "48ea81f32c80ac1ffeec775bd518e01f163df0a4a6af8247249294808763e732",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7L-Square-pot_Item_1306007-1.jpg"
+          ]
+        },
+        {
+          "media_id": "PLEBB79902",
+          "filename": "7L-Square-pot_Item_1306007_bottom.jpg",
+          "sha256": "ebb799027bcacdec36682d8a2412c9ff2b57829a388178de77261109942bd132",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7L-Square-pot_Item_1306007_bottom.jpg"
+          ]
+        },
+        {
+          "media_id": "PLBC2F4512",
+          "filename": "7L-Square-pot_Item_1306007_top-view.jpg",
+          "sha256": "bc2f45122f510be5b7b55da344ddac8aae612d9ab54b54363880fbfda0a8181d",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7L-Square-pot_Item_1306007_top-view.jpg"
+          ]
+        }
+      ]
+    },
+    "1306010": {
+      "slug": "plantlogic-10l-square-1306010",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/10-liter-square-pot/",
+      "name": "Квадратний горщик 10 л — арт. 1306010",
+      "items": [
+        {
+          "media_id": "PL51AB8E4E",
+          "filename": "Plantlogic-10-liter-square-1306010-hero.jpg",
+          "sha256": "51ab8e4e48d7bf2ffb209bce4e3c5d456978e3ac4bc3fce02a427c2be9b244db",
+          "width_px": 500,
+          "height_px": 449,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-10-liter-square-1306010-hero.jpg"
+          ]
+        },
+        {
+          "media_id": "PL5D438C60",
+          "filename": "6010LC_5.jpg",
+          "sha256": "5d438c60ec2817ae8f9833d5c58a078eb4fb539aacf37d217aca0feb32e28ec3",
+          "width_px": 1000,
+          "height_px": 807,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2017/09/6010LC_5.jpg"
+          ]
+        },
+        {
+          "media_id": "PL2AD2F65B",
+          "filename": "10L-SQ-1306010-BASE.jpg",
+          "sha256": "2ad2f65b30e2e9831a5b481d616010cb407e90dbf398ba90fe25d273b1be57eb",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/10L-SQ-1306010-BASE.jpg"
+          ]
+        },
+        {
+          "media_id": "PLC9D9D893",
+          "filename": "10L-SQ-1306010-CENITAL.jpg",
+          "sha256": "c9d9d893103d3ecb3851730dc5f1965d9bcd2070d103353d611247236e783173",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/10L-SQ-1306010-CENITAL.jpg"
+          ]
+        },
+        {
+          "media_id": "PLB62565F7",
+          "filename": "10L-SQ-1306010-FRONTAL.jpg",
+          "sha256": "b62565f7ce70337a4bb588e5a1b5a915a637196cf2dc2d6b2ddfad0c06d2abbf",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/10L-SQ-1306010-FRONTAL.jpg"
+          ]
+        },
+        {
+          "media_id": "PLC429E29D",
+          "filename": "10L-SQ-1306010-ISOMETRICO.jpg",
+          "sha256": "c429e29d18cd87a3920a20c73e076955de27c8ba67490c486e16aa649872b796",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/10L-SQ-1306010-ISOMETRICO.jpg"
+          ]
+        },
+        {
+          "media_id": "PLCFA7EDF5",
+          "filename": "10L-Square-Pot_Item_1306010.jpg",
+          "sha256": "cfa7edf5c885b7e8e6fe275417025229e5f4575b021362c621004b3c3cb4f5ab",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/10L-Square-Pot_Item_1306010.jpg"
+          ]
+        }
+      ]
+    },
+    "1306051": {
+      "slug": "plantlogic-5l-square-short-1306051",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/5-liter-square-short-pot/",
+      "name": "Компактний квадратний горщик 5 л — арт. 1306051",
+      "items": [
+        {
+          "media_id": "PL9E9A57F2",
+          "filename": "5LDC_D.jpg",
+          "sha256": "9e9a57f266a53598a39bec79619e8ba6d6636f5c69c9cde039522375a00fb69e",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/5LDC_D.jpg"
+          ]
+        },
+        {
+          "media_id": "PL948AFB31",
+          "filename": "5LSQ_A.jpg",
+          "sha256": "948afb31f5979772caf175963fa7c32e77d7344c9ae8ebc59fab5a15f9929483",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/5LSQ_A.jpg"
+          ]
+        },
+        {
+          "media_id": "PL182D3932",
+          "filename": "5LSQ_B.jpg",
+          "sha256": "182d39324dfd950ac9069d99b6685e935edd5305062f955fa6d99dbef84f74a6",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/5LSQ_B.jpg"
+          ]
+        },
+        {
+          "media_id": "PL92AE6B0D",
+          "filename": "5LSQ_C.jpg",
+          "sha256": "92ae6b0dcd7893919bac4d76f6edda633c8b70b885fff8ed200f4137811746c0",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/5LSQ_C.jpg"
+          ]
+        },
+        {
+          "media_id": "PLAD5EB960",
+          "filename": "5-Liter-Square-pot_Item_1306051.jpg",
+          "sha256": "ad5eb9600f6b9b1ddf57c5c6e470e64a3fc22aaa68c32502750bd014ad716686",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/5-Liter-Square-pot_Item_1306051.jpg"
+          ]
+        },
+        {
+          "media_id": "PL5694CFC6",
+          "filename": "5L-Square-pot_Item_1306051.jpg",
+          "sha256": "5694cfc6cc9861d6ecf193ec9a6d8916c9a7493515959f7b584a0337337ccbe7",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/5L-Square-pot_Item_1306051.jpg"
+          ]
+        },
+        {
+          "media_id": "PLF2D73A9C",
+          "filename": "5L-Square-pot_Item_1306051_front.jpg",
+          "sha256": "f2d73a9c31896314fbe3836a1ad856e0a2fad2706248aa0b71c061a3bd72aff9",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/5L-Square-pot_Item_1306051_front.jpg"
+          ]
+        },
+        {
+          "media_id": "PLE8098376",
+          "filename": "5L-Square-pot_Item_1306051_top-view.jpg",
+          "sha256": "e8098376716b4a4a4844200ffe87689d23ff978c6db978bd7fc105807f22da18",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/5L-Square-pot_Item_1306051_top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL36680DEE",
+          "filename": "5L-DC-1306051-BASE.jpg",
+          "sha256": "36680dee8c75ae49907443007f253d0ac4d008924079f495cd328690f1249c79",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/5L-DC-1306051-BASE.jpg"
+          ]
+        }
+      ]
+    },
+    "1307107": {
+      "slug": "plantlogic-7l-drainage-1307107",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/7-liter-drainage-collection-pot/",
+      "name": "Горщик 7 л зі збором дренажу — арт. 1307107",
+      "items": [
+        {
+          "media_id": "PL7F30C00A",
+          "filename": "1307107_6.jpg",
+          "sha256": "7f30c00a1d28564f72e5c9ead6fa633ad4d72fee1a3ade34c4e1bb387a399ec9",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/06/1307107_6.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2016/10/1307107_6.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2020/05/1307107_6.jpg"
+          ]
+        },
+        {
+          "media_id": "PLFF4F724E",
+          "filename": "best-pots-for-raspberries-2.png",
+          "sha256": "ff4f724efccaba870c59ec88a19c8f48b69aad970d82632d2a9b784e5bcfffb5",
+          "width_px": 544,
+          "height_px": 460,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/06/best-pots-for-raspberries-2.png",
+            "https://getplantlogic.com/wp-content/uploads/2016/10/best-pots-for-raspberries.png",
+            "https://getplantlogic.com/wp-content/uploads/2020/05/best-pots-for-raspberries.png"
+          ]
+        },
+        {
+          "media_id": "PLF95F669C",
+          "filename": "1307107_1.jpg",
+          "sha256": "f95f669cd448623e6ff92db71d9f6658adf1087037a245e9898440af5fb5fa59",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/10/1307107_1.jpg"
+          ]
+        },
+        {
+          "media_id": "PL378BEB42",
+          "filename": "1307107_3.jpg",
+          "sha256": "378beb4207c811c48fd2bde4fc55d20131998bacda3c8e93b1328c4e9b7600ee",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/10/1307107_3.jpg"
+          ]
+        },
+        {
+          "media_id": "PL96A081CD",
+          "filename": "1307107_4.jpg",
+          "sha256": "96a081cd60baa328ae5990451e1ef6bb121f46cca31649469656f25e07907c50",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/10/1307107_4.jpg"
+          ]
+        },
+        {
+          "media_id": "PLFBB794CA",
+          "filename": "1307107_5.jpg",
+          "sha256": "fbb794cab8ba49047eddee90555dc1da561d50d6aa48bdb34361290ad5cc6343",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/10/1307107_5.jpg"
+          ]
+        },
+        {
+          "media_id": "PL2A774324",
+          "filename": "7-Liter-Drainage-Collection-pot_Item_1307107.jpg",
+          "sha256": "2a774324644075eed9584e2be855459da8b8016f4bb13fb42bb8d195f414888d",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/7-Liter-Drainage-Collection-pot_Item_1307107.jpg"
+          ]
+        }
+      ]
+    },
+    "1307110": {
+      "slug": "plantlogic-10l-drainage-1307110",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/10-liter-drainage-collection-pot/",
+      "name": "Горщик 10 л зі збором дренажу — арт. 1307110",
+      "items": [
+        {
+          "media_id": "PLB64F6662",
+          "filename": "drainage-topdown.jpg",
+          "sha256": "b64f66624c5bd0033d99c14bd7588b8150192c9c272aa0d4c5663b15d3d1bd50",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/04/drainage-topdown.jpg"
+          ]
+        },
+        {
+          "media_id": "PL4F612BF0",
+          "filename": "10-Liter-Drainage-Collection-pot_Item_1307110.jpg",
+          "sha256": "4f612bf0f1e828d637296e339047ad801184ac9c3c3ed04430b2b7ee5a83b221",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/10-Liter-Drainage-Collection-pot_Item_1307110.jpg"
+          ]
+        },
+        {
+          "media_id": "PL6A01EF05",
+          "filename": "10L-Drainage-Collection-Pot_Item_1307110.jpg",
+          "sha256": "6a01ef0585f82073b16813fe5a032502a2908780958b9fa64db8f873f31d63b6",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/10L-Drainage-Collection-Pot_Item_1307110.jpg"
+          ]
+        },
+        {
+          "media_id": "PL236A6F18",
+          "filename": "10L-Drainage-Collection-Pot_Item_1307110_bottom.jpg",
+          "sha256": "236a6f180bc4ec0dc9772cb8ca9cd7bfc57f3a0f72831ae61d42621949f128f9",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/10L-Drainage-Collection-Pot_Item_1307110_bottom.jpg"
+          ]
+        },
+        {
+          "media_id": "PLEDA24827",
+          "filename": "10L-Drainage-Collection-Pot_Item_1307110_front.jpg",
+          "sha256": "eda248272cd50199e413917f97963c6b1fb5557f3d224baba5a0987282ee3f7f",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/10L-Drainage-Collection-Pot_Item_1307110_front.jpg"
+          ]
+        },
+        {
+          "media_id": "PLF0CC6012",
+          "filename": "10L-Drainage-Collection-Pot_Item_1307110_top-view.jpg",
+          "sha256": "f0cc601284b2c224ca2ce0d8ad43a2572d8374ebc8555cd9218e62c91a1cb59a",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/10L-Drainage-Collection-Pot_Item_1307110_top-view.jpg"
+          ]
+        }
+      ]
+    },
+    "1307133": {
+      "slug": "plantlogic-30l-drainage-1307133",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/30-liter-drainage-collection-pot/",
+      "name": "Горщик 30 л зі збором дренажу — арт. 1307133",
+      "items": [
+        {
+          "media_id": "PLE6793E9C",
+          "filename": "30L-DCP_3.jpg",
+          "sha256": "e6793e9c70688c1480325fca7d556635f52fc10d88c82d989b090ae987bcefa8",
+          "width_px": 799,
+          "height_px": 368,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2017/06/30L-DCP_3.jpg"
+          ]
+        },
+        {
+          "media_id": "PL878E2D96",
+          "filename": "30-Liter-Drainage-Collection-pot_Item_1307133.jpg",
+          "sha256": "878e2d969472e36f6c38230db22ed029acd823a26a6232f21f9cee4effdba970",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Drainage-Collection-pot_Item_1307133.jpg"
+          ]
+        },
+        {
+          "media_id": "PL1AE7B43C",
+          "filename": "30L-Drainage-collection-pot_Item_1307133.jpg",
+          "sha256": "1ae7b43ce1cbe322131615909e61888bc17707c71f35d0b25c7fdae272a91579",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Drainage-collection-pot_Item_1307133.jpg"
+          ]
+        },
+        {
+          "media_id": "PL35465AEF",
+          "filename": "30L-Drainage-collection-pot_Item_1307133_bottom-view.jpg",
+          "sha256": "35465aefebf718302071727efc6e5d62f4c800c8f4e477c3a0f539614089efbe",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Drainage-collection-pot_Item_1307133_bottom-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PLA38FD841",
+          "filename": "30L-Drainage-collection-pot_Item_1307133_front-view.jpg",
+          "sha256": "a38fd841e5d5aac3f352909b0a280a16776858adc6269264a77a0ba47b81c534",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Drainage-collection-pot_Item_1307133_front-view.jpg"
+          ]
+        }
+      ]
+    },
+    "1308020": {
+      "slug": "plantlogic-20l-round-1308020",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/20-liter-round-pot/",
+      "name": "Круглий горщик 20 л — арт. 1308020",
+      "items": [
+        {
+          "media_id": "PL758F7E40",
+          "filename": "20LR_3.jpg",
+          "sha256": "758f7e40be375b6c5646de455a7a4ccd1173d2ce29c7be94c6ab250eb61e88cd",
+          "width_px": 500,
+          "height_px": 413,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2017/07/20LR_3.jpg"
+          ]
+        },
+        {
+          "media_id": "PL1F70146F",
+          "filename": "20-Liter-Round-Pot_Item_1308020.jpg",
+          "sha256": "1f70146fb087d6015d934efe52e59c0cd3ee7770879c83c251402c82f6c75765",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Round-Pot_Item_1308020.jpg"
+          ]
+        },
+        {
+          "media_id": "PL4194A57E",
+          "filename": "20L-Round-pot_Item_1308020_front.jpg",
+          "sha256": "4194a57e4138550130f777acc73716a8fd0e87d92dc3cab37eba3942fe4cc282",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_front.jpg"
+          ]
+        },
+        {
+          "media_id": "PL5EE28C2C",
+          "filename": "20L-Round-pot_Item_1308020_top-view.jpg",
+          "sha256": "5ee28c2cd86483f650e67e00eed3c0935a85f5eec34a523fc04ec0c2bc00d1d5",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PLF9226C70",
+          "filename": "20L-RD-1308020-BASE.jpg",
+          "sha256": "f9226c70fd8a97e609cfba06e67da92dbccb2095151b4b0ee0d70f8deee50813",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-BASE.jpg"
+          ]
+        },
+        {
+          "media_id": "PL495D85AC",
+          "filename": "20L-RD-1308020-ISOMETRICO.jpg",
+          "sha256": "495d85ac39c00edec9d6bf8855bfa9a966480fcc0bf90832034cc1fb2f9d65c8",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-ISOMETRICO.jpg"
+          ]
+        }
+      ]
+    },
+    "1308025": {
+      "slug": "plantlogic-25l-round-wide-leg-1308025",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/25-liter-round-pot-wide-leg/",
+      "name": "Круглий горщик 25 л на широких ніжках — арт. 1308025",
+      "items": [
+        {
+          "media_id": "PL45D59502",
+          "filename": "8025_1.jpg",
+          "sha256": "45d59502b5eb59ad05822a21b199a4d6a965baf40a2d0463b97b1430e9588bd1",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/04/8025_1.jpg"
+          ]
+        },
+        {
+          "media_id": "PL9421CA1C",
+          "filename": "8025_2.jpg",
+          "sha256": "9421ca1c6668b9b384e440b8a6a46b829750ca1f411135e66a8f2884acb6faee",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/04/8025_2.jpg"
+          ]
+        },
+        {
+          "media_id": "PLC87CC4EF",
+          "filename": "8025_4.jpg",
+          "sha256": "c87cc4ef3de220447f91cd17928641ff9ac6c9e0e0ca2e3446f14fd83c6a97a4",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/04/8025_4.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2018/08/8025_4.jpg"
+          ]
+        },
+        {
+          "media_id": "PLA4CD857B",
+          "filename": "8025_5.jpg",
+          "sha256": "a4cd857b00172620da5ad60a631e748fd809af0cc2430d2474499e0c7a8bb26d",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/04/8025_5.jpg"
+          ]
+        }
+      ]
+    },
+    "1308026": {
+      "slug": "plantlogic-25l-round-u-grooves-1308026",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/25-liter-round-pot-with-u-grooves/",
+      "name": "Круглий горщик 25 л з U-пазами — арт. 1308026",
+      "items": [
+        {
+          "media_id": "PL20EF92A8",
+          "filename": "25LRD_1.jpg",
+          "sha256": "20ef92a851ef1e90ff1384dcc0574899d27e9b3c30526ddefca86611d49db3dc",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/25LRD_1.jpg"
+          ]
+        },
+        {
+          "media_id": "PL4F3BA2D0",
+          "filename": "25LRD_2.jpg",
+          "sha256": "4f3ba2d04894e6756426ea620c0d729556067ff1c72d0fafdb4484c31ba0eae6",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/25LRD_2.jpg"
+          ]
+        },
+        {
+          "media_id": "PLE395F7AD",
+          "filename": "25LRD_3.jpg",
+          "sha256": "e395f7ada0f8cb0d8a3a5eb0d3e576e10309f7df82ca53c99f9e3a4b6240e258",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/25LRD_3.jpg"
+          ]
+        },
+        {
+          "media_id": "PL513CEC60",
+          "filename": "25LRD_4.jpg",
+          "sha256": "513cec605a2d5e0809e851209babf2096f181d33237a62b2c474e2f36e3b26b6",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/25LRD_4.jpg"
+          ]
+        },
+        {
+          "media_id": "PL7BF359E5",
+          "filename": "25LRD_A.jpg",
+          "sha256": "7bf359e50af359984c3d754fd3e002f6f40384950485ec24f19e4d7f888f5bdb",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/25LRD_A.jpg"
+          ]
+        },
+        {
+          "media_id": "PLF2C75C8E",
+          "filename": "25LRD_B.jpg",
+          "sha256": "f2c75c8ecc493ba3167862ccd62bc90d0f58e80a86615b50567aab87efc0f872",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/25LRD_B.jpg"
+          ]
+        },
+        {
+          "media_id": "PL87D548E7",
+          "filename": "25LRD_C.jpg",
+          "sha256": "87d548e7fab2e212cc224f0096feeb06612859dde01d4e13aaf09eee009deba6",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/25LRD_C.jpg"
+          ]
+        }
+      ]
+    },
+    "1308031": {
+      "slug": "plantlogic-30l-round-v-rib-1308031",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/30-liter-round-v-rib/",
+      "name": "Круглий горщик 30 л з V-ребрами — арт. 1308031",
+      "items": [
+        {
+          "media_id": "PL7184E0EB",
+          "filename": "1308031_1.jpg",
+          "sha256": "7184e0eb8ee0c06135fdd2fdf290c29fb402bcf3bd31b16e1feebed7156060d2",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/07/1308031_1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2018/08/Maceta-Redonda-de-30-Litros-con-Muescas-en-%E2%80%9CV%E2%80%9D.jpg"
+          ]
+        },
+        {
+          "media_id": "PLBEBB3F21",
+          "filename": "1308031_2.jpg",
+          "sha256": "bebb3f217f5bfffcb9079db082ac5e7fb104075522a2869075bb66b75cb9fb94",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/07/1308031_2.jpg"
+          ]
+        },
+        {
+          "media_id": "PLE7E5F84A",
+          "filename": "1308031_3.jpg",
+          "sha256": "e7e5f84aa7ac89ef9d00282209307f3487a1111731e3eb07569ac55d8f8f90b2",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/07/1308031_3.jpg"
+          ]
+        },
+        {
+          "media_id": "PL335847A6",
+          "filename": "1308031_4.jpg",
+          "sha256": "335847a61e2c525c79f9232c8a7f2f82b83e86302e91d0fce7803c5128a1123e",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/07/1308031_4.jpg"
+          ]
+        },
+        {
+          "media_id": "PLE59D4A3C",
+          "filename": "1308031_5.jpg",
+          "sha256": "e59d4a3ca11cac6eeee3d8f26c3b2641e864b7ae2a3f0437114aa49220ee0fa4",
+          "width_px": 1000,
+          "height_px": 750,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2018/07/1308031_5.jpg"
+          ]
+        },
+        {
+          "media_id": "PL369EA8CB",
+          "filename": "30-Liter-Round-Pot-with-V-ribs_Item_1308031.jpg",
+          "sha256": "369ea8cb27bd96284b2d16e8b9cd00fdd07b8ce1a04321150e7e618b5ba3708f",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-V-ribs_Item_1308031.jpg"
+          ]
+        },
+        {
+          "media_id": "PL71070A9A",
+          "filename": "30L-Round-pots-with-V-ribs_Item_1308031.jpg",
+          "sha256": "71070a9a719fa8aeb97e66d980e404fc6624b5cfe19499ad729dce7279dbd63d",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031.jpg"
+          ]
+        },
+        {
+          "media_id": "PL3C74AF97",
+          "filename": "30L-Round-pots-with-V-ribs_Item_1308031_front.jpg",
+          "sha256": "3c74af970838a89ab383fb3b1aae8a701ddc2a28e989bcf981dd8540908b5b83",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_front.jpg"
+          ]
+        },
+        {
+          "media_id": "PLFBB5A2E0",
+          "filename": "30L-Round-pots-with-V-ribs_Item_1308031_top-view.jpg",
+          "sha256": "fbb5a2e0638d696bad209f0456f8a4cacb744189570b5d0141c89413203db955",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL58D348C9",
+          "filename": "30L-RD-VR-1308031-BASE.jpg",
+          "sha256": "58d348c9d3fc99d288a3fa3b2e6bd3119e51a4e23a000a99ad3e20dab23c7e78",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-VR-1308031-BASE.jpg"
+          ]
+        }
+      ]
+    },
+    "1308040": {
+      "slug": "plantlogic-40l-round-1308040",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/40-liter-round-pot/",
+      "name": "Круглий горщик 40 л — арт. 1308040",
+      "items": [
+        {
+          "media_id": "PL8E30FB4D",
+          "filename": "Plantlogic-1308040-inside-bottom.jpg",
+          "sha256": "8e30fb4d86b3894a645d670796826b4daa1f1f52530dbbb1ec5199b52a6f0700",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/10/Plantlogic-1308040-inside-bottom.jpg"
+          ]
+        },
+        {
+          "media_id": "PLFE1944FC",
+          "filename": "40-Liter-Round-Pot_Item_1308040-1.jpg",
+          "sha256": "fe1944fcb855ac32364560cf85dc9d5a1f4801222840b6d8c7edb044a1f9957b",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040-1.jpg"
+          ]
+        },
+        {
+          "media_id": "PL416FB4E4",
+          "filename": "40-Liter-Round-Pot_Item_1308040.jpg",
+          "sha256": "416fb4e46e1dc57768dc263eff21e62a344699c6af1dedd68428170d2d8662e0",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040.jpg"
+          ]
+        },
+        {
+          "media_id": "PLBD837FC7",
+          "filename": "40-Liter-Round-Pot_Item_1308040_Front-view.jpg",
+          "sha256": "bd837fc79dd67ee5bcab215f5231101fe153f5daeae0013e4ab814913b14c1af",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Front-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL50B0F775",
+          "filename": "40-Liter-Round-Pot_Item_1308040_Top-view.jpg",
+          "sha256": "50b0f77573f9be1fbe040e5cbd630aeaae01b41cd82a1f6187e828edda2219b5",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL64419AFF",
+          "filename": "40L-RD-1308040-BASE.jpg",
+          "sha256": "64419affb068c25e65d8e4329f20a92aec332909fe75b43449114afdd81a1249",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/40L-RD-1308040-BASE.jpg"
+          ]
+        }
+      ]
+    },
+    "1308041": {
+      "slug": "plantlogic-40l-round-u-grooves-1308041",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/40l-round-pot-with-u-grooves/",
+      "name": "Круглий горщик 40 л з U-пазами — арт. 1308041",
+      "items": [
+        {
+          "media_id": "PL1DF1AE08",
+          "filename": "40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg",
+          "sha256": "1df1ae08f0d5e08eb3df531c3416d22499caae02acac2b7402f057b959e6d339",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg"
+          ]
+        },
+        {
+          "media_id": "PL8C9FD10E",
+          "filename": "40-liter-round-pot-with-U-grooves_Item_1308041-1.jpg",
+          "sha256": "8c9fd10ec20dfd1b91c795d71a69a75e01840c2f2383c3749406cb95e48184e3",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-2.jpg"
+          ]
+        },
+        {
+          "media_id": "PL52499DCB",
+          "filename": "40-liter-round-pot-with-U-grooves_Item_1308041-top-view.jpg",
+          "sha256": "52499dcbc520776d4d30785201e0ddc1624b3ca53d9fc41a57c7ce0c63fd0fd9",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL3F923FC6",
+          "filename": "40-liter-round-pot-with-U-grooves_Item_1308041_bottom-view.jpg",
+          "sha256": "3f923fc6a6d4a702b1a9c785e181c59560b23689c01fe10ddc7816f31947696a",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_bottom-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL3DC6F9C5",
+          "filename": "40-liter-round-pot-with-U-grooves_Item_1308041_front.jpg",
+          "sha256": "3dc6f9c5d484c3f503c444364ea9064b31db0b46d36481ab233468d53131fb7a",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_front.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2025/07/Maceta-redonda-40-litros-arandano.jpg"
+          ]
+        },
+        {
+          "media_id": "PL5CD4F812",
+          "filename": "maceta-40-litros-para-arandanos-1.png",
+          "sha256": "5cd4f812bd8fe9144b42a8acbc64c141e233d1b9076d2af0c32f4d771fe1068f",
+          "width_px": 750,
+          "height_px": 652,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/maceta-40-litros-para-arandanos-1.png",
+            "https://getplantlogic.com/wp-content/uploads/2024/03/maceta-40-litros-para-arandanos.png"
+          ]
+        },
+        {
+          "media_id": "PL07A131C8",
+          "filename": "40-liter-pot-for-blueberries.jpg",
+          "sha256": "07a131c8d117a29c2cc2fe91339cb1627ed3beaeb9e8fcdc783fb604b8892349",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/07/40-liter-pot-for-blueberries.jpg"
+          ]
+        },
+        {
+          "media_id": "PLD8F782B7",
+          "filename": "40-liter-pots-for-blueberries.jpg",
+          "sha256": "d8f782b778ad8e0b6fcd0109367f19591f86aeb2b38749e1dbecf1a161ebc967",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/07/40-liter-pots-for-blueberries.jpg"
+          ]
+        },
+        {
+          "media_id": "PL0C3EE481",
+          "filename": "Maceta-redonda-40-litros-para-arandanos.jpg",
+          "sha256": "0c3ee481cffa101d7c37c718cf1f4e3bee2e47ca282256157046759b0f96739a",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/07/Maceta-redonda-40-litros-para-arandanos.jpg"
+          ]
+        }
+      ]
+    },
+    "1308125": {
+      "slug": "plantlogic-25l-round-new-1308125",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/new-25-liter-round-pot/",
+      "name": "Круглий горщик 25 л для лохини — арт. 1308125",
+      "items": [
+        {
+          "media_id": "PLB4CCEEC0",
+          "filename": "1308125_A.jpg",
+          "sha256": "b4cceec05999b5edd49177a281ffa45e1dec281bde8d1acff89476e8839b40af",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2022/10/1308125_A.jpg"
+          ]
+        },
+        {
+          "media_id": "PL991A23FF",
+          "filename": "1308125_B.jpg",
+          "sha256": "991a23ffd0f11e2a39a2f11045f1ac5af8de3731d6065a511a4076fec9bf8198",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2022/10/1308125_B.jpg"
+          ]
+        },
+        {
+          "media_id": "PL408B5966",
+          "filename": "1308125_C.jpg",
+          "sha256": "408b596611c42100106a651ecadb6f0dbc51c7ba2c188b236468737567970159",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2022/10/1308125_C.jpg"
+          ]
+        },
+        {
+          "media_id": "PL2D65B000",
+          "filename": "NEW25LRD_Main.jpg",
+          "sha256": "2d65b0000deb674bd52ce9cac1aadc3800b2caab29ec6c6bd36fdf03d131e23f",
+          "width_px": 500,
+          "height_px": 500,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2022/10/NEW25LRD_Main.jpg"
+          ]
+        },
+        {
+          "media_id": "PL3544391D",
+          "filename": "25-Liter-Round-Pot_Item_1308125.jpg",
+          "sha256": "3544391deebe78d47ec7c85d95c69402b7870757d7fde8ccfe573ce54700f7d1",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Round-Pot_Item_1308125.jpg"
+          ]
+        },
+        {
+          "media_id": "PL04977711",
+          "filename": "25L-Round-pot_Item_1308125.jpg",
+          "sha256": "04977711d08ddae7483a8c27b6206ef64ab0c1fb16b2671a545501e130ee51c0",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Round-pot_Item_1308125.jpg"
+          ]
+        },
+        {
+          "media_id": "PL3AF900B4",
+          "filename": "25L-Round-pot_Item_1308125_bottom.jpg",
+          "sha256": "3af900b4374ec0c8714f2d7ebbef5cab5125328c95645614fdf43450a0d1b90b",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Round-pot_Item_1308125_bottom.jpg"
+          ]
+        },
+        {
+          "media_id": "PL0ECEB86F",
+          "filename": "25L-Round-pot_Item_1308125_front-view.jpg",
+          "sha256": "0eceb86f9cb9435751aee96e8261117e332deb6ae09fe9643e49bd5ff043baac",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Round-pot_Item_1308125_front-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL282D423B",
+          "filename": "25L-Round-pot_Item_1308125_top-view.jpg",
+          "sha256": "282d423b9ea461a8f84a2823edf9552d9ec05b11a6c2efbef5389cc7cc260040",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Round-pot_Item_1308125_top-view.jpg"
+          ]
+        }
+      ]
+    },
+    "1308303": {
+      "slug": "plantlogic-30l-round-u-groove-1308303",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-u-groove/",
+      "name": "Круглий горщик 30 л з U-пазами — арт. 1308303",
+      "items": [
+        {
+          "media_id": "PL41A50497",
+          "filename": "30-Liter-Round-Pot-with-U-grooves_Item_1308303-1.jpg",
+          "sha256": "41a504975291f806d8cbca84354d66fa8f9497b602440be5c61252c538d70370",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-U-grooves_Item_1308303-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-U-grooves_Item_1308303.jpg"
+          ]
+        },
+        {
+          "media_id": "PLFEB7F87C",
+          "filename": "30L-Round-pot-with-U-grooves_Item_1308303.jpg",
+          "sha256": "feb7f87c2f591b89afb53d4bc04bba1bb1810ea421a77f6f1641a7b1db069206",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303.jpg"
+          ]
+        },
+        {
+          "media_id": "PL3D80F0C2",
+          "filename": "30L-Round-pot-with-U-grooves_Item_1308303_Top-view.jpg",
+          "sha256": "3d80f0c28b7fd975bcff3d5ab4abc259936b900dea4531ba0cdf5c857bcfa185",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303_Top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PLA3E32747",
+          "filename": "30L-RD-UG-1308303-BASE.jpg",
+          "sha256": "a3e327473d9a57bdd41aee3d7e8e054ee8173b355ef76878ea831140f089ead8",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-BASE.jpg"
+          ]
+        },
+        {
+          "media_id": "PLD1A12E38",
+          "filename": "30L-RD-UG-1308303-ISOMETRICO.jpg",
+          "sha256": "d1a12e38b3a47d02be145ea3ce3888b90514d22ea393d797303bd368d51dac10",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-ISOMETRICO.jpg"
+          ]
+        }
+      ]
+    },
+    "1308305": {
+      "slug": "plantlogic-30l-round-parallel-u-grooves-1308305",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-with-parallel-u-grooves/",
+      "name": "Круглий горщик 30 л з паралельними U-пазами — арт. 1308305",
+      "items": [
+        {
+          "media_id": "PL6C017333",
+          "filename": "30L-RD-RD-PUG-1308305-FRONT-1.jpg",
+          "sha256": "6c0173339316124406dab2c43705275f5bf78d45e61388c35b713153244f397a",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-FRONT-1.jpg"
+          ]
+        },
+        {
+          "media_id": "PL130FC7E2",
+          "filename": "30L-RD-RD-PUG-1308305-ISOMETRIC-VIEW-2.jpg",
+          "sha256": "130fc7e29f378f6f0266db716d92ebeec5a923643c8192ec4f773eecdf4003ae",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-ISOMETRIC-VIEW-2.jpg"
+          ]
+        },
+        {
+          "media_id": "PL43027980",
+          "filename": "30L-RD-RD-PUG-1308305-TOP-VIEW-2.jpg",
+          "sha256": "43027980b902778606b2330c8017ed168efebc9f7c4e3929f99b8b5f9c8ac973",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-TOP-VIEW-2.jpg"
+          ]
+        }
+      ]
+    },
+    "1309008": {
+      "slug": "plantlogic-8l-square-1309008",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/8-liter-square-pot/",
+      "name": "Квадратний горщик 8 л — арт. 1309008",
+      "items": [
+        {
+          "media_id": "PL6FF2FFE6",
+          "filename": "Plantlogic-8-liter-square-1309008-bottom.jpg",
+          "sha256": "6ff2ffe6a37280f9aa55ec78ebf6bcfdbb0a02cabecbcde18b918563d637ded9",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-8-liter-square-1309008-bottom.jpg"
+          ]
+        },
+        {
+          "media_id": "PL26631F70",
+          "filename": "Plantlogic-8-liter-square-1309008-hero.jpg",
+          "sha256": "26631f70e8d140f613c5a86f96be415672bf43edef60d6fc887e2fcf2c14083e",
+          "width_px": 500,
+          "height_px": 325,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-8-liter-square-1309008-hero.jpg"
+          ]
+        },
+        {
+          "media_id": "PL538F5592",
+          "filename": "Plantlogic-8-liter-square-1309008-inside-1.jpg",
+          "sha256": "538f55926aeb8ccd8eebe6509a31b78962842422283f7ef13f2cc9c39bf56b25",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-8-liter-square-1309008-inside-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-8-liter-square-1309008-inside-2.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-8-liter-square-1309008-inside.jpg"
+          ]
+        },
+        {
+          "media_id": "PL0A531B54",
+          "filename": "Plantlogic-8-liter-square-1309008-side-1.jpg",
+          "sha256": "0a531b54622c0e11ce78d2382fd578e5dc6ba107abc92ce3e2be680c6474b3b6",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-8-liter-square-1309008-side-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-8-liter-square-1309008-side.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2018/06/Square-pot-plantlogic.jpg"
+          ]
+        },
+        {
+          "media_id": "PL82756A1D",
+          "filename": "8-Liter-Square-pot-_Item_1309008.jpg",
+          "sha256": "82756a1d0d25ad61bf6accafc6671e9d3794d4e1872103487193dc0c21b67aba",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/8-Liter-Square-pot-_Item_1309008.jpg"
+          ]
+        },
+        {
+          "media_id": "PL31777E0E",
+          "filename": "8L-Square-pot_Item_1309008.jpg",
+          "sha256": "31777e0e5e0c6f511c2e9fdddedf23550fb979e1499bc9ec38540189bc316cb9",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/8L-Square-pot_Item_1309008.jpg"
+          ]
+        },
+        {
+          "media_id": "PLC17564B8",
+          "filename": "8L-Square-pot_Item_1309008_bottom.jpg",
+          "sha256": "c17564b826cb6c8d4ec129219f38826229f60106f1bc247c4983d55855ea6dcc",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/8L-Square-pot_Item_1309008_bottom.jpg"
+          ]
+        },
+        {
+          "media_id": "PL47A4C949",
+          "filename": "8L-Square-pot_Item_1309008_top.jpg",
+          "sha256": "47a4c949c07de105dbc741b4367e723d0c60bd1c27e60a9ea20626f71f4e585e",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/8L-Square-pot_Item_1309008_top.jpg"
+          ]
+        },
+        {
+          "media_id": "PL8C8924E5",
+          "filename": "8L-SQ-1309008-ISOMETRICO.jpg",
+          "sha256": "8c8924e577d4051660a838b0017fe4836a8ee63f978b1b3b6681bd33b8dd9847",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/8L-SQ-1309008-ISOMETRICO.jpg"
+          ]
+        }
+      ]
+    },
+    "1309015": {
+      "slug": "plantlogic-15l-square-1309015",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/15-liter-square-pot/",
+      "name": "Квадратний горщик 15 л — арт. 1309015",
+      "items": [
+        {
+          "media_id": "PLE3FED6E1",
+          "filename": "15LSq_5.jpg",
+          "sha256": "e3fed6e13f4865c01981555d9e38638a3817e0813bfa972eb79683e7f742c203",
+          "width_px": 1000,
+          "height_px": 807,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2017/11/15LSq_5.jpg"
+          ]
+        },
+        {
+          "media_id": "PLC7CD572D",
+          "filename": "15-Liter-Square-pot_Item_1309015.jpg",
+          "sha256": "c7cd572dcb28ff7db6431755773ef896285ff59a5bedc91dafaf477bf8c0ef18",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/15-Liter-Square-pot_Item_1309015.jpg"
+          ]
+        },
+        {
+          "media_id": "PL721B4702",
+          "filename": "15L-Square-pot_Item_1309015_base.jpg",
+          "sha256": "721b47028d6c482db7199b8389ca284c418b8c493f5901b69e28aa08959145c7",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/15L-Square-pot_Item_1309015_base.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/04/15L-SQ-1309015-CENITAL.jpg"
+          ]
+        },
+        {
+          "media_id": "PLAC34374C",
+          "filename": "15L-Square-pot_Item_1309015_front.jpg",
+          "sha256": "ac34374c119c2daccb4d80345ed8024ccd852be979091b8d4eb6cf0017a3c8ca",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/15L-Square-pot_Item_1309015_front.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/04/15L-SQ-1309015-FRONTAL.jpg"
+          ]
+        },
+        {
+          "media_id": "PLB78FE2E2",
+          "filename": "15L-SQ-1309015-BASE.jpg",
+          "sha256": "b78fe2e2074ded69bbd6c43e345428cb7a692a95f41d253b028f8d7fe0792084",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/15L-SQ-1309015-BASE.jpg"
+          ]
+        },
+        {
+          "media_id": "PL74EF2F3C",
+          "filename": "15L-SQ-1309015-ISOMETRICO.jpg",
+          "sha256": "74ef2f3c6b7f2283826f6d8cafa55e7910bc582313b9b7f2d24639e2239b1d25",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/15L-SQ-1309015-ISOMETRICO.jpg"
+          ]
+        }
+      ]
+    },
+    "1309020": {
+      "slug": "plantlogic-20l-square-1309020",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/20-liter-square-pot/",
+      "name": "Квадратний горщик 20 л — арт. 1309020",
+      "items": [
+        {
+          "media_id": "PL6FFCC899",
+          "filename": "20LSq_3.jpg",
+          "sha256": "6ffcc899f8f0035ce8083747e48d40633f6bad16bc4219cce2e6e66b61bf0a79",
+          "width_px": 1000,
+          "height_px": 807,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2017/11/20LSq_3.jpg"
+          ]
+        },
+        {
+          "media_id": "PL7E7E336F",
+          "filename": "20L-Square-pot_Item_1309020.jpg",
+          "sha256": "7e7e336ff538f07873c363baa093cc82b3a66b127a51e1489797c17a38bd2866",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020.jpg"
+          ]
+        },
+        {
+          "media_id": "PLF7C525B8",
+          "filename": "20L-Square-pot_Item_1309020_Top-view.jpg",
+          "sha256": "f7c525b8b52e77d36089726d9776e51634135384d7b914df522b68c379afb5f2",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_Top-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL09575BAD",
+          "filename": "20L-Square-pot_Item_1309020_bottom-view.jpg",
+          "sha256": "09575badcd30312646ff5946d6a2de65b17c7ec638facfafbb1914a94e19bbc8",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_bottom-view.jpg"
+          ]
+        }
+      ]
+    },
+    "1309025": {
+      "slug": "plantlogic-25l-square-1309025",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/25-liter-square-pot/",
+      "name": "Квадратний горщик 25 л — арт. 1309025",
+      "items": [
+        {
+          "media_id": "PL0E8A6C7A",
+          "filename": "9025_3.jpg",
+          "sha256": "0e8a6c7ad114c5d39a7a6ddce6055347f8db87fe38a6d444fbca42d3df5a0de4",
+          "width_px": 1000,
+          "height_px": 807,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2017/09/9025_3.jpg"
+          ]
+        },
+        {
+          "media_id": "PLB75D383E",
+          "filename": "25L-SQ-1309025-BASE.jpg",
+          "sha256": "b75d383eb8e042f9014547b89a52103e219f514a08a9b8161036115ab6803546",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-BASE.jpg"
+          ]
+        },
+        {
+          "media_id": "PL9F65BC4D",
+          "filename": "25L-SQ-1309025-CENITAL.jpg",
+          "sha256": "9f65bc4d4703f5773ae08f1c17c8482639f5a079720318c057da500276c7ba35",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-CENITAL.jpg"
+          ]
+        },
+        {
+          "media_id": "PL7F2C1AC0",
+          "filename": "25L-SQ-1309025-FRONTAL.jpg",
+          "sha256": "7f2c1ac0af0245634e72cbbe3d99fa049544427094f67c764390e37ed3304a6c",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-FRONTAL.jpg"
+          ]
+        }
+      ]
+    },
+    "1309026": {
+      "slug": "plantlogic-25l-square-u-grooves-1309026",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/25-liter-square-pot-with-u-grooves/",
+      "name": "Квадратний горщик 25 л з U-пазами — арт. 1309026",
+      "items": [
+        {
+          "media_id": "PLBC4104FA",
+          "filename": "25LSQ_A.jpg",
+          "sha256": "bc4104fad37cb0fdd54d9fb9838467ccaf3a5fcc51fedc3b98c42daaf9af0178",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/25LSQ_A.jpg"
+          ]
+        },
+        {
+          "media_id": "PL3FDC3D09",
+          "filename": "25LSQ_B.jpg",
+          "sha256": "3fdc3d096ba70364421fa654d8480f2745e36fde2a1c04388bef27f5e01ff316",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/25LSQ_B.jpg"
+          ]
+        },
+        {
+          "media_id": "PL8782C8A7",
+          "filename": "25LSQ_C.jpg",
+          "sha256": "8782c8a7b6c955721ef8057cca3f57c3825f2449c22bfb9d45b5a32ffc332391",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2020/04/25LSQ_C.jpg"
+          ]
+        },
+        {
+          "media_id": "PL9A1790CB",
+          "filename": "25-Liter-Square-Pot-with-U-grooves_Item_1309026.jpg",
+          "sha256": "9a1790cb0d8904cf00af8a907d70d60f25f4e5360fdbf8c7985c8c469439870a",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Square-Pot-with-U-grooves_Item_1309026.jpg"
+          ]
+        },
+        {
+          "media_id": "PL54B3C50E",
+          "filename": "25L-Square-pot-with-u-grooves_-Item_1309026.jpg",
+          "sha256": "54b3c50ed257f6f844083bf38f654ccc0d8924b0fe25bbd23099fffea70cc71a",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026.jpg"
+          ]
+        },
+        {
+          "media_id": "PL30405972",
+          "filename": "25L-Square-pot-with-u-grooves_-Item_1309026_bottom.jpg",
+          "sha256": "30405972fe1b3b6c9af1a1adcaea8d2e958ded571908ad60a28986c5fe5e2333",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_bottom.jpg"
+          ]
+        },
+        {
+          "media_id": "PLBD9AFCE9",
+          "filename": "25L-Square-pot-with-u-grooves_-Item_1309026_front.jpg",
+          "sha256": "bd9afce99dfd0c0fa1394c9db21e5c5021577cc776917df883383a13ad81f74b",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_front.jpg"
+          ]
+        },
+        {
+          "media_id": "PL5A0616D6",
+          "filename": "25L-Square-pot-with-u-grooves_-Item_1309026_top-view.jpg",
+          "sha256": "5a0616d6d3a5c05d6aaa9aef2d9489b5d160a4a29889667ffea57551eaef29c7",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_top-view.jpg"
+          ]
+        }
+      ]
+    },
+    "1309030": {
+      "slug": "plantlogic-30l-square-1309030",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/30-liter-square-pot/",
+      "name": "Квадратний горщик 30 л — арт. 1309030",
+      "items": [
+        {
+          "media_id": "PL56E2CC92",
+          "filename": "Plantlogic-30-liter-square-1309030-hero.jpg",
+          "sha256": "56e2cc92439f4d55ee2f76f4707ed7921cf7804ceb18bafd349e4ce6fbf1e827",
+          "width_px": 500,
+          "height_px": 449,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-30-liter-square-1309030-hero.jpg"
+          ]
+        },
+        {
+          "media_id": "PL574FBBE1",
+          "filename": "Plantlogic-30-liter-square-1309030-inside.jpg",
+          "sha256": "574fbbe1dfab8bb62660691e2cc7b30170f6ebcc36715d03d235984421936d48",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-30-liter-square-1309030-inside.jpg"
+          ]
+        },
+        {
+          "media_id": "PLA42CEB6E",
+          "filename": "Plantlogic-30-liter-square-1309030-side.jpg",
+          "sha256": "a42ceb6e3d5bf91f5b97943062ee0e38bd8043d6c469a5d052b6403edb88e7db",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-30-liter-square-1309030-side.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2018/06/Plantlogic-30-liter-square-1309030-side.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2018/07/macetas-rectangulares-5.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2018/08/Maceta-Cuadrada-de-30-Litros.jpg"
+          ]
+        },
+        {
+          "media_id": "PL29BF6988",
+          "filename": "30-Liter-Square-Pot_Item_1309030-1.jpg",
+          "sha256": "29bf6988639c45cc15c4a5e97e7201ea3056ec1b706fc66403fe4e0cd1c73aa6",
+          "width_px": 768,
+          "height_px": 826,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030-1.jpg"
+          ]
+        },
+        {
+          "media_id": "PL7DD0CDCD",
+          "filename": "30-Liter-Square-Pot_Item_1309030.jpg",
+          "sha256": "7dd0cdcdeca629e453da952c0a7b3e164bed47f004f24021cf2f4818fc4af8ff",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030.jpg"
+          ]
+        },
+        {
+          "media_id": "PL7EC7C792",
+          "filename": "30-Liter-Square-Pot_Item_1309030_Bottom-view.jpg",
+          "sha256": "7ec7c792142f9d7ddc1e64a9b14c4014ef0d65e2903ef9055a22b5a9e9e12168",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_Bottom-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PLFEEE2F5C",
+          "filename": "30-Liter-Square-Pot_Item_1309030_front-view.jpg",
+          "sha256": "feee2f5c0d244d4189c4f0acf6e0d0944cc92d3cb35d78e1ea23ccf698042563",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_front-view.jpg"
+          ]
+        },
+        {
+          "media_id": "PL386DE689",
+          "filename": "30-Liter-Square-Pot_Item_1309030_top-view.jpg",
+          "sha256": "386de689074d2aa3920d1485d84815da0d91e3fef91e6b63e3c9cc774e90dec8",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_top-view.jpg"
+          ]
+        }
+      ]
+    },
+    "13050040": {
+      "slug": "plantlogic-4-7l-square-cold-storage-13050040",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/4-7-liter-square-pot-for-cold-storage/",
+      "name": "Квадратний горщик 4,7 л для long-cane та холодного зберігання — арт. 13050040",
+      "items": [
+        {
+          "media_id": "PL2C8102C5",
+          "filename": "47LSQ_C.jpg",
+          "sha256": "2c8102c5b66586d35e6b63974ac18a6a6c47009ea7fa9ab0b8e7bb0c4d98f30a",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2021/09/47LSQ_C.jpg"
+          ]
+        },
+        {
+          "media_id": "PL135AB90E",
+          "filename": "47LSQ_D.jpg",
+          "sha256": "135ab90eacc6e99dcdab13639722a39cf0ccae5d3939c14b2c8a275fae14cd34",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2021/09/47LSQ_D.jpg"
+          ]
+        },
+        {
+          "media_id": "PLA58CD408",
+          "filename": "47LSQ_E.jpg",
+          "sha256": "a58cd4087edf2e133faf471128f418226cc364016264fbfd11b8886ac345f113",
+          "width_px": 400,
+          "height_px": 400,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2021/09/47LSQ_E.jpg"
+          ]
+        },
+        {
+          "media_id": "PLCEC90C50",
+          "filename": "4.7L-SQ-13050040-BASE.jpg",
+          "sha256": "cec90c50bc824f85fea1439d1f8166eed5765e63f75b259fb5bf6076e3ac0547",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/08/4.7L-SQ-13050040-BASE.jpg"
+          ]
+        },
+        {
+          "media_id": "PLA1F100C9",
+          "filename": "4.7L-SQ-13050040-CENITAL.jpg",
+          "sha256": "a1f100c9afa87102900110ac3d1eb55c00fc74282879a3e935b28a934e1ae98f",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/08/4.7L-SQ-13050040-CENITAL.jpg"
+          ]
+        }
+      ]
+    },
+    "13080350": {
+      "slug": "plantlogic-35l-round-u-grooves-13080350",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/35-liter-round-pot-with-u-grooves-for-blueberries/",
+      "name": "Круглий горщик 35 л з U-пазами — арт. 13080350",
+      "items": [
+        {
+          "media_id": "PL9467E069",
+          "filename": "Maceta-35-litros-redonda-para-blueberries.jpg",
+          "sha256": "9467e069dad333335bc2e64b8e54dfa1a22a12b6e44c7c1bfee513e5d66e1657",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-blueberries.jpg"
+          ]
+        },
+        {
+          "media_id": "PL2CFF86D3",
+          "filename": "Maceta-redonda-35-litros-para-blueberries.png",
+          "sha256": "2cff86d30ce1a909b265998105fad79f9c2da084f1fc35bde4083b79f43fbc5b",
+          "width_px": 580,
+          "height_px": 496,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-redonda-35-litros-para-blueberries.png"
+          ]
+        },
+        {
+          "media_id": "PL23EB0DBE",
+          "filename": "Maceta-35-litros-con-ranuras-para-manguera.jpg",
+          "sha256": "23eb0dbeb156dcf6e6c32d351970360f9f908a6f6500c95cd671eb5ec82ba6bf",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-con-ranuras-para-manguera.jpg"
+          ]
+        },
+        {
+          "media_id": "PLFAEE2306",
+          "filename": "Maceta-35-litros-para-hidroponia.jpg",
+          "sha256": "faee2306d0018b2929e0a4dbf279138a237177bb1cc084138c6da99985f63b08",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg"
+          ]
+        },
+        {
+          "media_id": "PLD78D0472",
+          "filename": "Maceta-35-litros-redonda-para-arandano.jpg",
+          "sha256": "d78d0472f28812296d165ded64ae27f9bb2eb436c1e826b4428b8309448619c4",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-arandano.jpg"
+          ]
+        }
+      ]
+    },
+    "13090350": {
+      "slug": "plantlogic-35l-square-u-grooves-13090350",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/35-liter-square-pot-with-u-grooves-for-blueberries/",
+      "name": "Квадратний горщик 35 л з U-пазами — арт. 13090350",
+      "items": [
+        {
+          "media_id": "PLFB696A20",
+          "filename": "Maceta-cuadrada-de-35L-para-arandano-13090350_cenital.jpg",
+          "sha256": "fb696a20ef7cf7c7b746b55f60659bcbcd7c95a079c9cd98b6a3a738412a11ce",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_cenital.jpg"
+          ]
+        },
+        {
+          "media_id": "PLC1B41753",
+          "filename": "Maceta-cuadrada-de-35L-para-arandano-13090350_cenital_1.jpg",
+          "sha256": "c1b4175344260543f345924661f56a247bab7474baf8746652b9660806417cac",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_cenital_1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2026/06/Maceta-cuadrada-de-35L-para-arandano-13090350_cenital_1-1.jpg"
+          ]
+        },
+        {
+          "media_id": "PL4FD3F296",
+          "filename": "Maceta-cuadrada-de-35L-para-arandano-13090350_frente.jpg",
+          "sha256": "4fd3f2967b30bb333ed133a865fa5f93b6abdbe394fb0ecddbc27aa3b23df699",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente.jpg"
+          ]
+        },
+        {
+          "media_id": "PL6DBA4CCD",
+          "filename": "Maceta-cuadrada-de-35L-para-arandano-13090350_frente_1.jpg",
+          "sha256": "6dba4ccd27c3aaf203a4866789001a755fb14c001be54efc27352112765cd83e",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente_1.jpg"
+          ]
+        },
+        {
+          "media_id": "PL166B3F2B",
+          "filename": "Maceta-cuadrada-de-35L-para-arandano-13090350_isometric.jpg",
+          "sha256": "166b3f2be0202ebad881ed186e2d2ecf92d46b8021f6cd9bfd9d93212c47371b",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometric.jpg"
+          ]
+        },
+        {
+          "media_id": "PL14037007",
+          "filename": "Maceta-cuadrada-de-35L-para-arandano-13090350_isometrico-1.jpg",
+          "sha256": "1403700747478cec35d726a712bc22b98036076121c0a948fce43025fd68b8e5",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometrico-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometrico.jpg"
+          ]
+        }
+      ]
+    },
+    "13090400": {
+      "slug": "plantlogic-40l-square-u-grooves-side-holes-13090400-13090440",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/40l-square-pot-for-blueberries-with-side-holes/",
+      "name": "Квадратний горщик 40 л з U-пазами та бічними отворами — арт. 13090400 / 13090440",
+      "items": []
+    },
+    "13090440": {
+      "slug": "plantlogic-40l-square-u-grooves-side-holes-13090400-13090440",
+      "source_page_url": "https://getplantlogic.com/portfolio-items/40l-square-pot-for-blueberries-with-side-holes/",
+      "name": "Квадратний горщик 40 л з U-пазами та бічними отворами — арт. 13090400 / 13090440",
+      "items": []
+    }
+  }
+}

@@ -22,13 +22,51 @@ const packKey=v=>{
      .replace(/\s+/g,'');
   return s.replace(/[^0-9a-zа-яіїєґ.+-]/g,'');
 };
+const packMetric=v=>{
+  const s=String(v||'').toLowerCase().replace(',','.').replace(/\s+/g,' ');
+  let m=s.match(/(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml|шт|pcs?)\b/i);
+  if(!m)return'';
+  const n=Number(m[1]); if(!Number.isFinite(n))return'';
+  const u=m[2].toLowerCase();
+  if(u==='кг'||u==='kg')return'm:'+String(Math.round(n*1000*1000)/1000);
+  if(u==='г'||u==='гр'||u==='g')return'm:'+String(Math.round(n*1000)/1000);
+  if(u==='л'||u==='l')return'v:'+String(Math.round(n*1000*1000)/1000);
+  if(u==='мл'||u==='ml')return'v:'+String(Math.round(n*1000)/1000);
+  return'p:'+String(Math.round(n*1000)/1000);
+};
+const rowPackValues=row=>{
+  const out=[row?.variant,row?.package,row?.label].map(x=>String(x||'').trim()).filter(Boolean);
+  const vw=row?.volume_weight;
+  if(vw&&vw.value!==null&&vw.value!==undefined&&String(vw.unit||'').trim())out.push(String(vw.value)+' '+String(vw.unit));
+  return out;
+};
+const samePackage=(wanted,row)=>{
+  const wk=packKey(wanted),wm=packMetric(wanted);
+  return rowPackValues(row).some(raw=>(wk&&packKey(raw)===wk)||(wm&&packMetric(raw)===wm));
+};
 function liveSkuForV3(v,productId){
-  const keys=[v?.commerce_key,v?.commerce?.sku,v?.sku_code,v?.sku_id].map(x=>String(x||'').trim()).filter(Boolean);
-  for(const key of keys){const row=window.BB610?.sku?.(key);if(row)return row}
-  const wanted=packKey(v?.package||v?.label);
-  if(!wanted)return null;
+  const wanted=String(v?.package||v?.label||'').trim();
   const rows=window.BB610_DATA_SOURCE?.skusForProduct?.(productId)||[];
-  return rows.find(row=>packKey(row?.variant||row?.package||row?.label)===wanted)||null;
+
+  // Package is authoritative. V3 commerce keys may be stale or duplicated
+  // across package buttons, so resolve the selected package first.
+  if(wanted){
+    const matches=rows.filter(row=>samePackage(wanted,row));
+    if(matches.length){
+      return matches.find(row=>row?.organic_planet_photo&&String(row?.image||'').trim())||
+             matches.find(row=>String(row?.image||'').trim())||
+             matches[0];
+    }
+  }
+
+  // Only when the V3 row has no usable package identity may we trust its
+  // stored commerce/SKU keys.
+  const keys=[v?.commerce_key,v?.commerce?.sku,v?.sku_code,v?.sku_id].map(x=>String(x||'').trim()).filter(Boolean);
+  for(const key of keys){
+    const row=window.BB610?.sku?.(key);
+    if(row&&(!wanted||samePackage(wanted,row)))return row;
+  }
+  return null;
 }
 function approvedSkuImage(product,liveSku,v){
   const rows=[];

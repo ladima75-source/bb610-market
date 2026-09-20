@@ -52,6 +52,10 @@ UA = (
 )
 
 MANUAL_PAGES = {
+    "BB610-OP-KENDAL-ROOT-100ML": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostymulyator-antystres-dlya-korenya-100-ml-valagro",
+    "BB610-OP-KENDAL-ROOT-1L": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostimulyator-antistress-dlya-kornya",
+    "BB610-OP-KENDAL-TE-100ML": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-te-kendal-te-organicheskij-bioimmunostimulyator-100-m",
+    "BB610-OP-KENDAL-TE-1L": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-te-kendal-te-organicheskij-bioimmunostimulyator-1-l-v",
     "BB610-OP-MAX-600-SEASAILER-20KG": "https://organicplanet.com.ua/ru/katalog/biostymulyatory/max-600-seasailer-biostymulyator-20-kg-citymax",
     "BB610-OP-KEMIRA-NPK-12-46-8-25G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-12-46-8-25-g",
     "BB610-OP-KEMIRA-NPK-18-18-18-25G": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-18-18-18-25-g",

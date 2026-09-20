@@ -11,6 +11,24 @@ const requestedSku=()=>window.BB610_SKU_ID||params().get('sku')||'';
 async function get(url,opt=false){const r=await fetch(url,{cache:'no-store'});if(opt&&r.status===404)return null;if(!r.ok)throw new Error(url+' -> HTTP '+r.status);return r.json()}
 const money=v=>{if(v===null||v===undefined||v==='')return'';const n=Number(v);return Number.isFinite(n)?n.toLocaleString('uk-UA',{maximumFractionDigits:2})+' грн':''}
 const qty=v=>{const s=String(v?.label||v?.package||v?.sku||'').toLowerCase();let m=s.match(/(\d+(?:[.,]\d+)?)\s*(ml|мл)/);if(m)return Number(m[1].replace(',','.'));m=s.match(/(\d+(?:[.,]\d+)?)\s*(l|л)/);if(m)return Number(m[1].replace(',','.'))*1000;m=s.match(/(\d+(?:[.,]\d+)?)\s*(кг|kg)/);if(m)return Number(m[1].replace(',','.'))*1000000;m=s.match(/(\d+(?:[.,]\d+)?)\s*(г|g)/);if(m)return Number(m[1].replace(',','.'))*1000;return 1e12};
+const packKey=v=>{
+  let s=String(v||'').toLowerCase().replace(',','.').trim();
+  s=s.replace(/літрів|літра|літр|литров|литра|литр/g,'л')
+     .replace(/мілілітрів|мілілітра|мілілітр|миллилитров|миллилитра|миллилитр/g,'мл')
+     .replace(/кілограмів|кілограма|кілограм|килограммов|килограмма|килограмм/g,'кг')
+     .replace(/грамів|грама|грам|граммов|грамма/g,'г')
+     .replace(/\bml\b/g,'мл').replace(/\bkg\b/g,'кг').replace(/\bl\b/g,'л').replace(/\bg\b/g,'г')
+     .replace(/\s+/g,'');
+  return s.replace(/[^0-9a-zа-яіїєґ.+-]/g,'');
+};
+function liveSkuForV3(v,productId){
+  const keys=[v?.commerce_key,v?.commerce?.sku,v?.sku_code,v?.sku_id].map(x=>String(x||'').trim()).filter(Boolean);
+  for(const key of keys){const row=window.BB610?.sku?.(key);if(row)return row}
+  const wanted=packKey(v?.package||v?.label);
+  if(!wanted)return null;
+  const rows=window.BB610_DATA_SOURCE?.skusForProduct?.(productId)||[];
+  return rows.find(row=>packKey(row?.variant||row?.package||row?.label)===wanted)||null;
+}
 function sec(h){const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstElementChild}
 function findCta(){return $$('button,a').find(n=>{const t=(n.textContent||'').trim().toUpperCase();return n.matches('[data-add-to-cart],.buy,.buy-btn,.add-to-cart')||t==='КУПИТИ'||t.includes('ДОДАТИ В КОШИК')})}
 function staticProduct(id){
@@ -138,7 +156,7 @@ function bindV3(shell,card){
     vs.find(x=>x.commerce_bound)||
     vs[0];
   const apply=v=>{
-    const liveSku=window.BB610?.sku?.(v?.commerce_key||v?.commerce?.sku||v?.sku_code||'');
+    const liveSku=liveSkuForV3(v,slug());
     const path=liveSku?.image||v?.primary_media?.path||'';
     if(path&&hero)hero.src=abs(path);
     const c=v?.commerce||null,p=c?((c.sale_price!==null&&c.sale_price!==undefined&&c.sale_price!=='')?c.sale_price:c.price):null;
@@ -148,7 +166,7 @@ function bindV3(shell,card){
     $('#mpcSku',shell).textContent=v?.commerce_bound&&c?.sku?'Артикул: '+c.sku:'Фасування: '+(v?.label||v?.package||'—');
     $$('[data-v3-sku]',list).forEach(b=>b.classList.toggle('active',b.dataset.v3Sku===v?.sku_id));
     if(cta){cta.disabled=!v?.commerce_bound||!c?.sku;cta.dataset.sku=c?.sku||'';cta.setAttribute('data-sku',c?.sku||'');cta.title=v?.commerce_bound?'':'Для цієї фасовки продаж у BB610 ще не налаштований';cta.onclick=v?.commerce_bound&&c?.sku?()=>window.BB610?.addCart?.(c.sku,1):null}
-    const publicSku=String(v?.commerce_key||c?.sku||v?.sku_code||v?.sku_id||'').trim();
+    const publicSku=String(liveSku?.id||liveSku?.sku||v?.commerce_key||c?.sku||v?.sku_code||v?.sku_id||'').trim();
     if(publicSku&&location.protocol!=='file:'){
       history.replaceState(
         {sku:publicSku},

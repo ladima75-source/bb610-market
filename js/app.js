@@ -48,9 +48,12 @@ const BB610 = (() => {
   };
   const approvedSkuImage=(p,s=null)=>{
     const rows=[];
-    if(Array.isArray(p?.variants))rows.push(...p.variants.filter(x=>x&&typeof x==='object'));
-    if(Array.isArray(p?.sku_photo))rows.push(...p.sku_photo.filter(x=>x&&typeof x==='object'));
-    if(Array.isArray(p?.product_card_v2?.sku_photo))rows.push(...p.product_card_v2.sku_photo.filter(x=>x&&typeof x==='object'));
+    const canonical=BB610_DATA_SOURCE.staticProductMedia?.(p?.id)||null;
+    [p,canonical].filter(Boolean).forEach(source=>{
+      if(Array.isArray(source?.variants))rows.push(...source.variants.filter(x=>x&&typeof x==='object'));
+      if(Array.isArray(source?.sku_photo))rows.push(...source.sku_photo.filter(x=>x&&typeof x==='object'));
+      if(Array.isArray(source?.product_card_v2?.sku_photo))rows.push(...source.product_card_v2.sku_photo.filter(x=>x&&typeof x==='object'));
+    });
     const usable=row=>{
       const src=imageValue(row?.image||row?.image_url);
       return src&&!isFallbackImage(src)?src:'';
@@ -80,6 +83,11 @@ const BB610 = (() => {
     if(baseImage&&!isFallbackImage(baseImage))return baseImage;
     const galleryImage=firstRealImage(p?.gallery);
     if(galleryImage)return galleryImage;
+    const canonical=BB610_DATA_SOURCE.staticProductMedia?.(p?.id)||null;
+    const canonicalImage=imageValue(canonical?.image);
+    if(canonicalImage&&!isFallbackImage(canonicalImage))return canonicalImage;
+    const canonicalGallery=firstRealImage(canonical?.gallery);
+    if(canonicalGallery)return canonicalGallery;
     return fallbackImage(categoryId);
   };
   const compactText=v=>String(v||'').replace(/\s+/g,' ').trim();

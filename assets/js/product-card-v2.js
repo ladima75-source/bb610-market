@@ -5,7 +5,9 @@ const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelect
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
 const rich=s=>esc(s).replace(/\r?\n/g,'<br>');
 const abs=p=>{p=String(p||'').trim();if(!p)return'';if(/^https?:\/\//i.test(p))return p;if(/^\/?media\/products\//i.test(p))return API+'/'+p.replace(/^\//,'');return SITE+p.replace(/^\//,'')};
-const slug=()=>window.BB610_PRODUCT_ID||((location.pathname.match(/\/products\/([^\/]+)\/?/i)||[])[1]||'');
+const params=()=>new URLSearchParams(location.search);
+const slug=()=>window.BB610_PRODUCT_ID||params().get('id')||((location.pathname.match(/\/products\/([^\/]+)\/?/i)||[])[1]||'');
+const requestedSku=()=>window.BB610_SKU_ID||params().get('sku')||'';
 async function get(url,opt=false){const r=await fetch(url,{cache:'no-store'});if(opt&&r.status===404)return null;if(!r.ok)throw new Error(url+' -> HTTP '+r.status);return r.json()}
 const money=v=>{if(v===null||v===undefined||v==='')return'';const n=Number(v);return Number.isFinite(n)?n.toLocaleString('uk-UA',{maximumFractionDigits:2})+' грн':''}
 const qty=v=>{const s=String(v?.label||v?.package||v?.sku||'').toLowerCase();let m=s.match(/(\d+(?:[.,]\d+)?)\s*(ml|мл)/);if(m)return Number(m[1].replace(',','.'));m=s.match(/(\d+(?:[.,]\d+)?)\s*(l|л)/);if(m)return Number(m[1].replace(',','.'))*1000;m=s.match(/(\d+(?:[.,]\d+)?)\s*(кг|kg)/);if(m)return Number(m[1].replace(',','.'))*1000000;m=s.match(/(\d+(?:[.,]\d+)?)\s*(г|g)/);if(m)return Number(m[1].replace(',','.'))*1000;return 1e12};
@@ -128,9 +130,17 @@ function renderV3Content(shell,card){
 }
 function bindV3(shell,card){
   const vs=[...(card.skus||[])].sort((a,b)=>qty(a)-qty(b)),list=$('.mpc-variant-list',shell),hero=$('#mpcImage',shell),cta=$('#mpcCtaHost .mpc-buy',shell);
-  const initial=vs.find(x=>x.commerce_bound)||vs[0];
+  const wanted=String(requestedSku()||'').trim();
+  const initial=
+    vs.find(x=>wanted&&[
+      x?.sku_id,x?.sku_code,x?.commerce_key,x?.commerce?.sku
+    ].map(v=>String(v||'')).includes(wanted))||
+    vs.find(x=>x.commerce_bound)||
+    vs[0];
   const apply=v=>{
-    const path=v?.primary_media?.path||'';if(path&&hero)hero.src=abs(path);
+    const liveSku=window.BB610?.sku?.(v?.commerce_key||v?.commerce?.sku||v?.sku_code||'');
+    const path=liveSku?.image||v?.primary_media?.path||'';
+    if(path&&hero)hero.src=abs(path);
     const c=v?.commerce||null,p=c?((c.sale_price!==null&&c.sale_price!==undefined&&c.sale_price!=='')?c.sale_price:c.price):null;
     $('#mpcPrice',shell).textContent=money(p)||'Ціна уточнюється';
     const a=String(c?.availability||'unknown').toLowerCase();
@@ -138,6 +148,14 @@ function bindV3(shell,card){
     $('#mpcSku',shell).textContent=v?.commerce_bound&&c?.sku?'Артикул: '+c.sku:'Фасування: '+(v?.label||v?.package||'—');
     $$('[data-v3-sku]',list).forEach(b=>b.classList.toggle('active',b.dataset.v3Sku===v?.sku_id));
     if(cta){cta.disabled=!v?.commerce_bound||!c?.sku;cta.dataset.sku=c?.sku||'';cta.setAttribute('data-sku',c?.sku||'');cta.title=v?.commerce_bound?'':'Для цієї фасовки продаж у BB610 ще не налаштований';cta.onclick=v?.commerce_bound&&c?.sku?()=>window.BB610?.addCart?.(c.sku,1):null}
+    const publicSku=String(v?.commerce_key||c?.sku||v?.sku_code||v?.sku_id||'').trim();
+    if(publicSku&&location.protocol!=='file:'){
+      history.replaceState(
+        {sku:publicSku},
+        '',
+        'product.html?id='+encodeURIComponent(slug())+'&sku='+encodeURIComponent(publicSku)
+      );
+    }
   };
   list.innerHTML='';vs.forEach(v=>{const b=document.createElement('button');b.type='button';b.className='mpc-variant'+(v===initial?' active':'');b.dataset.v3Sku=v.sku_id||'';b.textContent=v.label||v.package||'Фасування';b.onclick=()=>apply(v);list.appendChild(b)});
   if(initial)apply(initial);else{if(cta)cta.disabled=true;$('#mpcPrice',shell).textContent='Ціна уточнюється';$('#mpcStock',shell).textContent='Фасування не налаштовано'}
@@ -173,6 +191,9 @@ async function run(){
   const id=slug();if(!id)return;
   try{
     if(window.BB610_DATA_SOURCE?.refresh)await window.BB610_DATA_SOURCE.refresh();
+    const rawProduct=window.BB610_DATA_SOURCE?.product?.(id);
+    const category=String(rawProduct?.category_id||rawProduct?.category||'').trim().toLowerCase();
+    if(category==='containers')return; // Plantlogic keeps its dedicated pot PDP.
     const v3=await get(API+'/api/v1/storefront/product-card-v3/'+encodeURIComponent(id),true);
     if(v3){await renderV3(v3);return}
     const card=await get(API+'/api/v1/storefront/product-card-v2/'+encodeURIComponent(id),true);if(!card)return;

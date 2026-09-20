@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
 
   const szr=p.category==='protection'?`<div class="info-card product-detail-card szr-card"><h2>ДАНІ ДЛЯ ЗЗР / СЗР</h2><div class="kv"><span>Діюча речовина</span><b>${richValue(p.activeIngredient)}</b></div><div class="kv"><span>Концентрація</span><b>${richValue(p.concentration)}</b></div><div class="kv"><span>Шкідник / хвороба</span><b>${richValue(p.target)}</b></div><div class="kv"><span>Строк очікування</span><b>${richValue(p.waitingPeriod)}</b></div><div class="kv"><span>Клас небезпеки</span><b>${richValue(p.hazardClass)}</b></div></div>`:'';
 
+  const productImageFor=s=>BB610.productImage?.(p,s)||s?.image||p.image;
+
   const compositionRows=Array.isArray(p.composition)&&p.composition.length
     ?p.composition.map(x=>typeof x==='object'&&x!==null&&('label'in x||'name'in x)
       ?`<div class="kv"><span>${escValue(x.label||x.name||'Параметр')}</span><b>${richValue(x.value??x.text??x.amount??'')}</b></div>`
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     :(p.composition?`<div class="kv"><span>Склад</span><b>${richValue(p.composition)}</b></div>`:'');
 
   root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${String(p.categoryLabel||p.category||'Каталог').toUpperCase()} / ${p.name}</div>
-  <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${selectedSku?.image||p.image}" alt="${p.name}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div>${(p.gallery||[]).length?`<div class="product-gallery-thumbs">${[p.image,...p.gallery].filter(Boolean).map((im,i)=>`<button type="button" class="gallery-thumb" data-gallery-img="${im}"><img src="${im}" alt="${p.name} ${i+1}"></button>`).join('')}</div>`:''}</div>
+  <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${productImageFor(selectedSku)}" alt="${p.name}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div>${(p.gallery||[]).length?`<div class="product-gallery-thumbs">${[p.image,...p.gallery].filter(Boolean).map((im,i)=>`<button type="button" class="gallery-thumb" data-gallery-img="${im}"><img src="${im}" alt="${p.name} ${i+1}"></button>`).join('')}</div>`:''}</div>
   <div class="product-summary"><div class="eyebrow">${p.categoryLabel}</div><h1>${p.name}</h1><div class="brand">${p.brand}</div><p class="product-lead">${richValue(p.shortDescription||p.manufacturerUse||p.productType||'')}</p><div class="product-keyfacts">${p.productType?`<span><small>Тип</small><b>${richValue(p.productType)}</b></span>`:''}${p.npk&&p.npk!=='—'?`<span><small>NPK</small><b>${richValue(p.npk)}</b></span>`:''}${p.activeIngredient&&p.activeIngredient!=='—'?`<span><small>Діюча речовина</small><b>${richValue(p.activeIngredient)}</b></span>`:''}</div>
   <div class="selected-variant" id="selected-variant"></div>
   <div class="price" id="selected-price"></div><div class="unit-price" id="selected-unit"></div><div class="stock" id="selected-stock" style="margin-top:12px"></div>
@@ -97,7 +99,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     unit.textContent=requestPrice?'Ціна залежить від моделі, кількості та умов постачання':(selectedSku.price==null?'Комерційна ціна BB610 ще не визначена':BB610.unitPrice({...p,unit:selectedSku.volume_weight?.unit},selectedSku.price,selectedSku.volume_weight?.value));
     stock.textContent=requestPrice?'Під замовлення':(selectedSku.stock_label||'Наявність уточнюється');
     shipping.innerHTML=(selectedSku.shipping||[]).map(x=>`<span>${x}</span>`).join('');
-    document.getElementById('product-main-image').src=selectedSku.image||p.image;document.getElementById('selected-packer').textContent=selectedSku.packer||'Уточнюється';document.getElementById('selected-supplier').textContent=selectedSku.supplier||'Уточнюється';document.getElementById('selected-sku').textContent=selectedSku.id;document.getElementById('selected-gtin').textContent=selectedSku.gtin_ean||'Не вказано';
+    document.getElementById('product-main-image').src=productImageFor(selectedSku);document.getElementById('selected-packer').textContent=selectedSku.packer||'Уточнюється';document.getElementById('selected-supplier').textContent=selectedSku.supplier||'Уточнюється';document.getElementById('selected-sku').textContent=selectedSku.id;document.getElementById('selected-gtin').textContent=selectedSku.gtin_ean||'Не вказано';
     document.querySelectorAll('[data-sku-select]').forEach(b=>b.classList.toggle('active',b.dataset.skuSelect===selectedSku.id));
     const buy=document.getElementById('buy'),qty=document.getElementById('qty');
     buy.textContent=requestPrice?'ЗАПРОСИТИ ЦІНУ':'КУПИТИ';

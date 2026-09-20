@@ -131,6 +131,37 @@ def _photo_pack_metric(value):
     return dimension+':'+number
 
 
+def _photo_pack_values(row):
+    """All package representations available on a public/runtime SKU row."""
+    if not isinstance(row,dict):
+        return []
+    values=[]
+    for key in ('variant','package','label'):
+        raw=row.get(key)
+        if str(raw or '').strip():
+            values.append(str(raw).strip())
+    vw=row.get('volume_weight')
+    if isinstance(vw,dict):
+        value=vw.get('value')
+        unit=vw.get('unit')
+        if value is not None and str(unit or '').strip():
+            values.append(f"{value} {unit}")
+    out=[]
+    seen=set()
+    for raw in values:
+        norm=str(raw).strip().lower()
+        if norm and norm not in seen:
+            seen.add(norm); out.append(raw)
+    return out
+
+
+def _photo_pack_keys(row):
+    values=_photo_pack_values(row)
+    keys={_photo_pack_key(value) for value in values}
+    metrics={_photo_pack_metric(value) for value in values}
+    return {x for x in keys if x},{x for x in metrics if x}
+
+
 def _catalog_sku_media_fallbacks(static_products):
     """Return approved SKU photos already stored in catalog.master.json.
 
@@ -161,12 +192,10 @@ def _catalog_sku_media_fallbacks(static_products):
             sku_id=str(row.get('sku') or row.get('id') or '').strip()
             if sku_id:
                 by_sku[sku_id]=image
-            raw_pack=row.get('label') or row.get('variant') or row.get('package')
-            pack=_photo_pack_key(raw_pack)
-            if pack:
+            keys,metrics=_photo_pack_keys(row)
+            for pack in keys:
                 by_product_pack[(str(pid),pack)]=image
-            metric=_photo_pack_metric(raw_pack)
-            if metric:
+            for metric in metrics:
                 by_product_metric[(str(pid),metric)]=image
     return by_sku,by_product_pack,by_product_metric
 
@@ -311,13 +340,17 @@ def public_content():
         by_product_metric={}
         for sid,row in sku_map.items():
             pid=str(row.get('product_id') or '').strip()
-            raw_pack=row.get('variant') or row.get('package') or row.get('label')
-            pack=_photo_pack_key(raw_pack)
-            metric=_photo_pack_metric(raw_pack)
-            if pid and pack:
-                by_product_pack.setdefault((pid,pack),[]).append(row)
-            if pid and metric:
-                by_product_metric.setdefault((pid,metric),[]).append(row)
+            if not pid:
+                continue
+            keys,metrics=_photo_pack_keys(row)
+            for pack in keys:
+                bucket=by_product_pack.setdefault((pid,pack),[])
+                if row not in bucket:
+                    bucket.append(row)
+            for metric in metrics:
+                bucket=by_product_metric.setdefault((pid,metric),[])
+                if row not in bucket:
+                    bucket.append(row)
         for media_patch in unmatched:
             pid=str(media_patch.get('product_id') or '').strip()
             raw_pack=media_patch.get('package')
@@ -343,12 +376,16 @@ def public_content():
         image=approved_by_sku.get(str(sid))
         if not image:
             pid=str(row.get('product_id') or '').strip()
-            raw_pack=row.get('variant') or row.get('package') or row.get('label')
-            pack=_photo_pack_key(raw_pack)
-            image=approved_by_product_pack.get((pid,pack))
+            keys,metrics=_photo_pack_keys(row)
+            for pack in keys:
+                image=approved_by_product_pack.get((pid,pack))
+                if image:
+                    break
             if not image:
-                metric=_photo_pack_metric(raw_pack)
-                image=approved_by_product_metric.get((pid,metric)) if metric else None
+                for metric in metrics:
+                    image=approved_by_product_metric.get((pid,metric))
+                    if image:
+                        break
         if image:
             row['image']=image
             gallery=[str(x) for x in (row.get('gallery') or []) if str(x).strip() and not _placeholder_media(x)]

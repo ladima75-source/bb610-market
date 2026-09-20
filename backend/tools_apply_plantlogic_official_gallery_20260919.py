@@ -54,8 +54,19 @@ def stamp() -> str:
     return datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
 
 
+TECHNICAL_MEDIA_MARKERS = (
+    'tech-sheet', 'techsheet', 'technical', 'dimension', 'dimensions',
+    'drawing', 'diagram', 'schematic', 'specification', 'spec-sheet',
+    'datasheet', 'catalog', 'brochure', 'infographic', 'capacities',
+    'capacity-chart', 'landing-page',
+)
+
+
 def safe_gallery_candidate(row: dict) -> bool:
     if not isinstance(row, dict) or not row.get('identity_match'):
+        return False
+    url = str(row.get('url') or '').lower()
+    if any(marker in url for marker in TECHNICAL_MEDIA_MARKERS):
         return False
     score = int(row.get('score') or 0)
     reasons = [str(x) for x in (row.get('reasons') or [])]

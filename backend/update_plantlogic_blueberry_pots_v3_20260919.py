@@ -168,26 +168,11 @@ ZEPHYR_COLOR_MEDIA = {
             ("top", "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE.jpg"),
         ],
     },
-    "1301153": {
-        "black": [
-            ("hero", "/assets/plantlogic/zephyr-v2-capacities.jpg"),
-            ("family", "/assets/plantlogic/zephyr-v2-greenhouse.jpg"),
-        ],
-        "white": [
-            ("hero", "/assets/plantlogic/zephyr-v2-capacities.jpg"),
-            ("family", "/assets/plantlogic/zephyr-v2-greenhouse.jpg"),
-        ],
-    },
-    "1301143": {
-        "black": [
-            ("hero", "/assets/plantlogic/zephyr-v2-capacities.jpg"),
-            ("family", "/assets/plantlogic/zephyr-v2-greenhouse.jpg"),
-        ],
-        "white": [
-            ("hero", "/assets/plantlogic/zephyr-v2-capacities.jpg"),
-            ("family", "/assets/plantlogic/zephyr-v2-greenhouse.jpg"),
-        ],
-    },
+    # 30L / 40L: the official Zephyr page currently exposes family/technical
+    # imagery, not model-specific photography. Do not attach those images to
+    # SKU galleries; leave media empty until exact Product # photography exists.
+    "1301153": {"black": [], "white": []},
+    "1301143": {"black": [], "white": []},
 }
 
 

@@ -7,9 +7,12 @@ const BB610 = (() => {
   const HIDDEN_STOREFRONT_CATEGORIES=new Set(['protection']);
   const categoryHidden=id=>HIDDEN_STOREFRONT_CATEGORIES.has(String(id||'').trim().toLowerCase());
   const rawProducts=()=>BB610_DATA_SOURCE.products().filter(p=>!categoryHidden(p.category_id||p.category));
-  const storefrontName=p=>p?.id==='plantlogic-25-round-1308125'
-    ?'Круглий горщик 25 л для лохини — арт. 1308125'
-    :(p?.name||'');
+  const storefrontName=p=>{
+    const name=String(p?.name||'').replace(/\s+/g,' ').trim();
+    return (p?.category_id||p?.category)==='containers'
+      ?name.replace(/\s*[—-]\s*арт\.?\s*\d+\s*$/i,'').trim()
+      :name;
+  };
   const fallbackImage=category=>category==='containers'
     ?'assets/img/product-container.svg'
     :(category==='biostimulation'?'assets/img/product-biostim.svg':'assets/img/product-npk.svg');
@@ -26,7 +29,10 @@ const BB610 = (() => {
   const hasPrice=s=>!!s&&s.price!==null&&s.price!==undefined&&Number.isFinite(Number(s.price));
   const isCommercialActive=s=>!!s&&(s.commercial_status==='active'||s.offer_status==='active');
   const isPriceRequestSku=s=>!!s&&(s.price_request===true||s.commercial_status==='request-price'||s.offer_status==='request-price');
-  const canBuySku=s=>!!s&&hasPrice(s)&&isCommercialActive(s)&&s.availability!=='out_of_stock';
+  // Storefront state must be internally consistent: when a SKU has a real
+  // price and is not out of stock, the visible BUY action must be available.
+  // Request-price SKUs keep their dedicated CTA and never enter the cart path.
+  const canBuySku=s=>!!s&&hasPrice(s)&&!isPriceRequestSku(s)&&s.availability!=='out_of_stock';
   function displaySku(productId){
     const d=defaultSku(productId);
     if(hasPrice(d))return d;

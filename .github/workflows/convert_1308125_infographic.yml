@@ -1,4 +1,5 @@
 name: Convert 1308125 infographic
+# rebuild approved source
 on:
   push:
     paths:

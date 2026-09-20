@@ -434,7 +434,15 @@
             "image": "/assets/img/real/kendal/kendal-1l.webp"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/kendal.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/kendal.png"
+      ],
+      "image_alt": "Kendal™"
     },
     {
       "id": "megafol",
@@ -715,7 +723,15 @@
             "image": "/assets/img/real/megafol.webp"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/megafol.webp",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/megafol.webp"
+      ],
+      "image_alt": "MEGAFOL™"
     },
     {
       "id": "master-npk-15-5-30",
@@ -1117,7 +1133,15 @@
             "image": "/assets/img/manual-products/row01-master-15-5-30-2-bb610-op-master-npk-15-5-30-25kg.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/master-15-5-30.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/master-15-5-30.png"
+      ],
+      "image_alt": "MASTER 15-5-30+2"
     },
     {
       "id": "master-npk-13-40-13",
@@ -1503,7 +1527,15 @@
             "image": "/assets/img/manual-products/row02-master-13-40-13-bb610-op-master-npk-13-40-13-25kg.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/master-13-40-13.webp",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/master-13-40-13.webp"
+      ],
+      "image_alt": "MASTER 13-40-13"
     },
     {
       "id": "master-npk-20-20-20",
@@ -1909,7 +1941,15 @@
             "image": "/assets/img/manual-products/row03-master-20-20-20-bb610-op-master-npk-20-20-20-25kg.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/master-20-20-20.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/master-20-20-20.png"
+      ],
+      "image_alt": "MASTER 20-20-20"
     },
     {
       "id": "master-npk-3-11-38",
@@ -2323,7 +2363,15 @@
             "image": "/assets/img/manual-products/row04-master-3-11-38-bb610-op-master-npk-3-11-38-25kg.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/master-3-11-38.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/master-3-11-38.png"
+      ],
+      "image_alt": "MASTER 3-11-38"
     },
     {
       "id": "master-npk-18-18-18",
@@ -3501,7 +3549,15 @@
             "image": "/assets/img/manual-products/row07-plantafol-30-10-10-bb610-op-plantafol-npk-30-10-10-5kg.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/plantafol-30-10-10.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/plantafol-30-10-10.jpg"
+      ],
+      "image_alt": "PLANTAFOL 30-10-10"
     },
     {
       "id": "plantafol-npk-10-54-10",
@@ -3917,7 +3973,15 @@
             "image": "/assets/img/manual-products/row08-plantafol-10-54-10-bb610-op-plantafol-npk-10-54-10-5kg.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/plantafol-10-54-10.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/plantafol-10-54-10.jpg"
+      ],
+      "image_alt": "PLANTAFOL 10-54-10"
     },
     {
       "id": "plantafol-npk-20-20-20",
@@ -4333,7 +4397,15 @@
             "image": "/assets/img/manual-products/row09-plantafol-20-20-20-bb610-op-plantafol-npk-20-20-20-5kg.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/plantafol-20-20-20.webp",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/plantafol-20-20-20.webp"
+      ],
+      "image_alt": "PLANTAFOL 20-20-20"
     },
     {
       "id": "plantafol-npk-5-15-45",
@@ -4749,7 +4821,15 @@
             "image": "/assets/img/manual-products/row10-plantafol-5-15-45-bb610-op-plantafol-npk-5-15-45-5kg.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/plantafol-5-15-45.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/plantafol-5-15-45.png"
+      ],
+      "image_alt": "PLANTAFOL 5-15-45"
     },
     {
       "id": "plantafol-npk-0-25-50",
@@ -5145,7 +5225,15 @@
             "image": "/assets/img/manual-products/row11-plantafol-0-25-50-bb610-op-plantafol-npk-0-25-50-5kg.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/plantafol-0-25-50.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/plantafol-0-25-50.png"
+      ],
+      "image_alt": "PLANTAFOL 0-25-50"
     },
     {
       "id": "pekacid-npk-0-60-20",
@@ -5517,7 +5605,15 @@
             "image": "/assets/img/manual-products/row12-nova-pekacid-0-60-20-bb610-op-pekacid-npk-0-60-20-1kg.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/pekacid-0-60-20.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/pekacid-0-60-20.jpg"
+      ],
+      "image_alt": "Nova PeKacid 0-60-20"
     },
     {
       "id": "kemira-lyuks-npk-14-11-25",
@@ -8411,7 +8507,15 @@
             "image": "/assets/img/real/stage16b/brexil-combi.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/brexil-combi.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/brexil-combi.jpg"
+      ],
+      "image_alt": "Brexil Combi"
     },
     {
       "id": "brexil-ca",
@@ -8793,7 +8897,15 @@
             "image": "/assets/img/real/stage16b/brexil-ca.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/brexil-ca.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/brexil-ca.jpg"
+      ],
+      "image_alt": "Brexil Ca"
     },
     {
       "id": "brexil-fe",
@@ -9175,7 +9287,15 @@
             "image": "/assets/img/real/stage16b/brexil-fe.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/brexil-fe.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/brexil-fe.jpg"
+      ],
+      "image_alt": "Brexil Fe"
     },
     {
       "id": "brexil-mix",
@@ -9529,7 +9649,15 @@
             "image": ""
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/brexil-mix.webp",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/brexil-mix.webp"
+      ],
+      "image_alt": "Brexil Mix"
     },
     {
       "id": "brexil-multi",
@@ -10154,7 +10282,15 @@
             "image": "/assets/img/real/stage16b/brexil-zn.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/brexil-zn.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/brexil-zn.jpg"
+      ],
+      "image_alt": "Brexil Zn"
     },
     {
       "id": "ferrilene-4-8-orto-orto",
@@ -10404,7 +10540,15 @@
             "image": ""
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/ferrilene.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/ferrilene.jpg"
+      ],
+      "image_alt": "Ferrilene 4.8 Orto-Orto"
     },
     {
       "id": "boroplus",
@@ -10768,7 +10912,15 @@
             "image": "/assets/img/real/stage16b/boroplus.png"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/boroplus.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/boroplus.png"
+      ],
+      "image_alt": "Boroplus"
     },
     {
       "id": "sulfat-mahniyu",
@@ -11368,7 +11520,15 @@
             "image": "/assets/img/official-source/row29-solupotasse-сульфат-калію.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/solupotasse.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/solupotasse.jpg"
+      ],
+      "image_alt": "SoluPotasse — сульфат калію"
     },
     {
       "id": "haifa-mkp-0-52-34",
@@ -11654,7 +11814,15 @@
             "image": "/assets/img/real/stage16b/haifa-mkp-0-52-34.png"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/haifa-mkp-0-52-34.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/haifa-mkp-0-52-34.png"
+      ],
+      "image_alt": "Haifa MKP 0-52-34"
     },
     {
       "id": "osmocote-decor-16-8-12-56m",
@@ -12462,7 +12630,15 @@
             "image": "/assets/img/real/stage16b/osmocote-potassium-12-8-19.png"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/osmocote-potassium-12-8-19.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/osmocote-potassium-12-8-19.png"
+      ],
+      "image_alt": "Osmocote Potassium 12-8-19 (3–4M)"
     },
     {
       "id": "osmocote-start-11-11-17-1-5m",
@@ -12996,7 +13172,15 @@
             "image": "/assets/img/real/stage16b/osmocote-landscape-16-9-12.png"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/osmocote-landscape-16-9-12.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/osmocote-landscape-16-9-12.png"
+      ],
+      "image_alt": "Osmocote Landscape 16-9-12 (3–4M)"
     },
     {
       "id": "osmocote-quick-start-22-5-6-45m",
@@ -13290,7 +13474,15 @@
             "image": "/assets/img/real/stage16b/osmocote-quick-start-22-5-6.png"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/osmocote-quick-start-22-5-6.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/osmocote-quick-start-22-5-6.png"
+      ],
+      "image_alt": "Osmocote Quick Start 22-5-6 (4–5M)"
     },
     {
       "id": "osmocote-granula-max-14-8-11-te-56m",
@@ -14160,7 +14352,15 @@
             "image": "/assets/img/real/stage16b/neocore.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/neocore.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/neocore.jpg"
+      ],
+      "image_alt": "NeoCore"
     },
     {
       "id": "neovivo",
@@ -15110,7 +15310,15 @@
             "image": "/assets/img/real/stage16b/radifarm.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/radifarm.webp",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/radifarm.webp"
+      ],
+      "image_alt": "Radifarm"
     },
     {
       "id": "kemira-ukorinyuvach",
@@ -15572,7 +15780,15 @@
             "image": "/assets/img/real/stage16b/blackjak.png"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/blackjak.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/blackjak.png"
+      ],
+      "image_alt": "BlackJak"
     },
     {
       "id": "viva",
@@ -15877,7 +16093,15 @@
             "image": "/assets/img/real/stage16b/viva.png"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/viva.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/viva.png"
+      ],
+      "image_alt": "Viva"
     },
     {
       "id": "kendal-root",
@@ -16591,7 +16815,15 @@
             "image": "/assets/img/real/stage16b/maxicrop-cream.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/maxicrop-cream.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/maxicrop-cream.jpg"
+      ],
+      "image_alt": "Maxicrop Cream"
     },
     {
       "id": "maxicrop-set-maksikrop-zav-yaz",
@@ -17139,7 +17371,15 @@
             "image": "/assets/img/real/stage16b/benefit-pz.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/benefit-pz.jpg",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/benefit-pz.jpg"
+      ],
+      "image_alt": "Benefit PZ"
     },
     {
       "id": "sweet",
@@ -17405,7 +17645,15 @@
             "image": "/assets/img/real/stage16b/sweet.png"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/sweet.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/sweet.png"
+      ],
+      "image_alt": "Sweet"
     },
     {
       "id": "control-dmp",
@@ -17664,7 +17912,15 @@
             "image": "/assets/img/real/stage16b/control-dmp.png"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "assets/img/real/stage16b/control-dmp.png",
+        "status": "recovered-existing-repo-media"
+      },
+      "gallery": [
+        "assets/img/real/stage16b/control-dmp.png"
+      ],
+      "image_alt": "Control DMP"
     },
     {
       "id": "sprei-eid",

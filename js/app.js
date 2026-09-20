@@ -16,6 +16,29 @@ const BB610 = (() => {
   const fallbackImage=category=>category==='containers'
     ?'assets/img/product-container.svg'
     :(category==='biostimulation'?'assets/img/product-biostim.svg':'assets/img/product-npk.svg');
+  const GENERIC_PRODUCT_IMAGES=new Set([
+    'assets/img/product-container.svg',
+    'assets/img/product-biostim.svg',
+    'assets/img/product-npk.svg',
+  ]);
+  const imageValue=image=>{
+    if(typeof image==='string')return image.trim();
+    if(image&&typeof image==='object')return String(image.local||image.url||image.src||'').trim();
+    return '';
+  };
+  const normalizedImagePath=image=>imageValue(image)
+    .replace(/^https?:\/\/[^/]+\//i,'')
+    .split(/[?#]/,1)[0]
+    .replace(/^\/+/, '');
+  const isFallbackImage=image=>GENERIC_PRODUCT_IMAGES.has(normalizedImagePath(image));
+  const productImage=(p,s=null)=>{
+    const categoryId=p?.category_id||p?.category||'';
+    const skuImage=imageValue(s?.image);
+    if(skuImage&&!isFallbackImage(skuImage))return skuImage;
+    const baseImage=imageValue(p?.image);
+    if(baseImage&&!isFallbackImage(baseImage))return baseImage;
+    return fallbackImage(categoryId);
+  };
   const compactText=v=>String(v||'').replace(/\s+/g,' ').trim();
   const cardTitle=p=>p.category==='containers'?compactText(p.name):(compactText(p.name).split(/,\s+/)[0]||compactText(p.name));
   const cardSummary=p=>{
@@ -53,7 +76,7 @@ const BB610 = (() => {
     if(!label||/уточню|невідом|unknown|bb610/i.test(label))return '';
     return label;
   }
-  const view=p=>{const s=displaySku(p.id),categoryId=p.category_id||p.category||'';return {...p,name:storefrontName(p),officialName:p.official_name,category:categoryId,categoryLabel:C().categories.find(c=>c.id===categoryId)?.short_name||categoryId||'Каталог',manufacturer:p.manufacturer,country:p.country,npk:p.npk,activeIngredient:p.active_ingredient,composition:p.composition||[],cultures:p.cultures||[],purposes:p.purposes||[],manufacturerUse:p.manufacturer_use,application:p.application,rate:p.rate,restrictions:p.restrictions,target:p.target,waitingPeriod:p.waiting_period,hazardClass:p.hazard_class,registration:p.registration,factoryPacks:p.factory_packs||[],documents:p.documents||[],instruction:(p.documents&&p.documents[0]?.title)||'Офіційне джерело виробника',source:p.source?.title||'',sourceUrl:p.source?.url||'',verifiedAt:p.verification?.verifiedAt||'',verified:!!p.verification,shortDescription:p.short_description||'',productType:p.product_type||'',image:s?.image||(typeof p.image==='string'?p.image:p.image?.local)||fallbackImage(categoryId),gallery:p.gallery||[],sku:s?.id||null,pack:s?.variant||'',price:s?.price??null,currency:s?.currency||'UAH',unit:s?.volume_weight?.unit||'шт',unitQty:s?.volume_weight?.value||1,stockStatus:s?.availability||'unknown',stockLabel:publicStockLabel(s),shipping:s?.shipping||[],supplier:s?.supplier||'',importer:s?.importer||'',packer:s?.packer||'',sizes:productSkus(p.id).map(x=>({id:x.id,label:x.variant,price:x.price,qty:x.volume_weight?.value,unit:x.volume_weight?.unit,status:x.offer_status,commercialStatus:x.commercial_status||'not-configured',priceRequest:isPriceRequestSku(x),marketTest:!!x.market_test,stockLabel:publicStockLabel(x),availability:x.availability||'unknown',packSourceStatus:x.pack_source_status||'unknown',attributes:x.attributes||{}}))}};
+  const view=p=>{const s=displaySku(p.id),categoryId=p.category_id||p.category||'';return {...p,name:storefrontName(p),officialName:p.official_name,category:categoryId,categoryLabel:C().categories.find(c=>c.id===categoryId)?.short_name||categoryId||'Каталог',manufacturer:p.manufacturer,country:p.country,npk:p.npk,activeIngredient:p.active_ingredient,composition:p.composition||[],cultures:p.cultures||[],purposes:p.purposes||[],manufacturerUse:p.manufacturer_use,application:p.application,rate:p.rate,restrictions:p.restrictions,target:p.target,waitingPeriod:p.waiting_period,hazardClass:p.hazard_class,registration:p.registration,factoryPacks:p.factory_packs||[],documents:p.documents||[],instruction:(p.documents&&p.documents[0]?.title)||'Офіційне джерело виробника',source:p.source?.title||'',sourceUrl:p.source?.url||'',verifiedAt:p.verification?.verifiedAt||'',verified:!!p.verification,shortDescription:p.short_description||'',productType:p.product_type||'',image:productImage(p,s),gallery:p.gallery||[],sku:s?.id||null,pack:s?.variant||'',price:s?.price??null,currency:s?.currency||'UAH',unit:s?.volume_weight?.unit||'шт',unitQty:s?.volume_weight?.value||1,stockStatus:s?.availability||'unknown',stockLabel:publicStockLabel(s),shipping:s?.shipping||[],supplier:s?.supplier||'',importer:s?.importer||'',packer:s?.packer||'',sizes:productSkus(p.id).map(x=>({id:x.id,label:x.variant,price:x.price,qty:x.volume_weight?.value,unit:x.volume_weight?.unit,status:x.offer_status,commercialStatus:x.commercial_status||'not-configured',priceRequest:isPriceRequestSku(x),marketTest:!!x.market_test,stockLabel:publicStockLabel(x),availability:x.availability||'unknown',packSourceStatus:x.pack_source_status||'unknown',attributes:x.attributes||{}}))}};
   const products=()=>rawProducts().map(view);
   const byId=id=>{const p=BB610_DATA_SOURCE.product(id);if(p)return categoryHidden(p.category_id||p.category)?null:view(p);const s=sku(id);if(!s)return null;const owner=BB610_DATA_SOURCE.product(s.product_id);return owner&&!categoryHidden(owner.category_id||owner.category)?view(owner):null};
   function commerceItem(s,quantity=1){if(!s)return null;const p=BB610_DATA_SOURCE.product(s.product_id);const categoryId=p?.category_id||p?.category||'';const item={item_id:s.id,item_name:p?.name||s.product_id||s.id,item_brand:p?.brand||'',item_category:C().categories.find(c=>c.id===categoryId)?.name||categoryId,item_variant:s.variant,quantity:Number(quantity)||1,currency:s.currency||'UAH'};if(s.price!==null&&s.price!==undefined)item.price=Number(s.price);return item}
@@ -96,7 +119,7 @@ const BB610 = (() => {
     const title=cardTitle(p);
     const summary=cardSummary(p);
     const fallback=fallbackImage(p.category);
-    const image=s?.image||p.image||fallback;
+    const image=productImage(p,s)||fallback;
     const cardPrice=s?.price??p.price;
     const hasVisiblePrice=cardPrice!==null&&cardPrice!==undefined&&Number.isFinite(Number(cardPrice));
     const stock=publicStockLabel(s)||p.stockLabel||'';
@@ -236,7 +259,7 @@ const BB610 = (() => {
     const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
     if(typeof d.showModal==='function')d.showModal();
   }
-  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
+  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,productImage,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);
 
 function bb610LoadProductCardV3Enhancements(){

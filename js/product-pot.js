@@ -137,16 +137,45 @@ function relatedCard(p){
   </a>`;
 }
 
-function renderBenefits(product){
-  const rows=Array.isArray(product.benefits)?product.benefits.filter(Boolean):[];
+function referenceInfo(selectedSku){
+  if(articleFromSku(selectedSku)!=='1308125')return null;
+  return {
+    eyebrow:'КОНСТРУКЦІЯ',
+    title:'Горщик, розроблений для контейнерного вирощування лохини',
+    lead:'25-літровий круглий контейнер Plantlogic створений для професійного субстратного вирощування лохини. Конструкція дна, вентиляційні отвори та високі опори допомагають керувати дренажем, повітрообміном і розвитком кореневої системи.',
+    benefits:[
+      {title:'Кріплення системи поливу',text:'Отвори у верхньому бортику дозволяють фіксувати лінію поливу, крапельниці та елементи стабілізації контейнера.'},
+      {title:'Повітрообмін у кореневій зоні',text:'Центральні недренажні отвори забезпечують доступ повітря до середини кореневого кому та обмежують ріст коренів униз.'},
+      {title:'Керований дренаж',text:'Пірамідальна конструкція дна спрямовує воду до зовнішнього краю, зменшуючи зону надмірного зволоження та створюючи умови для повітряного підрізання коренів.'},
+      {title:'Високі опори 30 мм',text:'Контейнер піднятий над поверхнею, що зменшує контакт коренів із ґрунтом. Нахил опор також зменшує накопичення та втрати субстрату.'},
+      {title:'Можливість анкерування',text:'Передбачено посадочне місце для системи Pot Anchor, яка допомагає стабілізувати контейнер при сильному вітрі.'},
+    ],
+    metrics:[
+      {value:'25 л',label:'Об’єм'},
+      {value:'385 мм',label:'Верхній діаметр'},
+      {value:'362,5 мм',label:'Висота'},
+      {value:'256,6 мм',label:'Діаметр основи'},
+      {value:'30 мм',label:'Висота опор'},
+    ],
+  };
+}
+
+function renderBenefits(product,selectedSku){
+  const info=referenceInfo(selectedSku);
+  const rows=info?.benefits||(Array.isArray(product.benefits)?product.benefits.filter(Boolean):[]);
   if(!rows.length)return '';
-  return `<section class="pot-section">
-    <div class="pot-section-head"><span>КОНСТРУКЦІЯ</span><h2>Що дає цей горщик</h2></div>
+  const title=info?.title||'Що дає цей горщик';
+  const lead=info?.lead||'';
+  const metrics=info?.metrics||[];
+  return `<section class="pot-section pot-info-section">
+    <div class="pot-section-head"><span>${esc(info?.eyebrow||'КОНСТРУКЦІЯ')}</span><h2>${esc(title)}</h2></div>
+    ${lead?`<p class="pot-section-intro">${esc(lead)}</p>`:''}
     <div class="pot-benefit-grid">${rows.map((x,i)=>`<article class="pot-benefit">
       <span class="pot-benefit-index">${String(i+1).padStart(2,'0')}</span>
       <h3>${esc(x.title||'Перевага')}</h3>
       <p>${esc(x.text||'')}</p>
     </article>`).join('')}</div>
+    ${metrics.length?`<div class="pot-metrics">${metrics.map(x=>`<div class="pot-metric"><strong>${esc(x.value)}</strong><span>${esc(x.label)}</span></div>`).join('')}</div>`:''}
   </section>`;
 }
 
@@ -193,6 +222,21 @@ function renderGardenGuide(product){
 }
 
 function renderSpecs(product,selectedSku){
+  if(articleFromSku(selectedSku)==='1308125'){
+    const a=attrs(selectedSku);
+    const rows=[
+      {label:"Об'єм",value:volumeLabel(selectedSku)||'25 л'},
+      {label:'Колір',value:text(a.color_label)||'—'},
+      {label:'Product # Plantlogic',value:'1308125'},
+      {label:'Тип',value:'Круглий горщик'},
+      {label:'Призначення',value:'Лохина, субстратне вирощування'},
+      {label:'Верхній діаметр',value:'385 мм'},
+      {label:'Висота',value:'362,5 мм'},
+      {label:'Діаметр основи',value:'256,6 мм'},
+      {label:'Висота опор',value:'30 мм'},
+    ];
+    return rows.map(x=>`<div class="pot-spec-row"><span>${esc(x.label)}</span><b>${esc(x.value)}</b></div>`).join('');
+  }
   const skip=new Set([
     'офіційне джерело',"об'єм / варіанти",'артикул виробника',
     'доступні об’єми',"доступні об'єми",'кольори','виконання',
@@ -362,18 +406,18 @@ function render({product,root,selectedSkuId}){
       </div>
     </section>
 
-    ${renderBenefits(product)}
+    ${renderBenefits(product,selectedSku)}
     ${renderTechnologyExplainer(product)}
 
     <section class="pot-section pot-tech">
       <div class="pot-section-head"><span>ТЕХНІЧНІ ДАНІ</span><h2>Характеристики вибраного варіанта</h2></div>
       <div class="pot-tech-grid">
         <div class="pot-spec-table" id="pot-spec-table"></div>
-        <div class="pot-source-card">
-          <span>ВИРОБНИК</span><strong>Plantlogic</strong>
-          <p>Product # і розміри показуються для конкретно вибраного літражу та виконання.</p>
+        <aside class="pot-source-card pot-doc-card">
+          <span>ДОКУМЕНТАЦІЯ</span><strong>Plantlogic</strong>
+          <p>Технічні параметри та конструктивні особливості звірені з офіційними матеріалами виробника для вибраного Product #.</p>
           ${sourceUrl?`<a href="${esc(sourceUrl)}" target="_blank" rel="noopener">Відкрити сайт виробника ↗</a>`:''}
-        </div>
+        </aside>
       </div>
     </section>
 

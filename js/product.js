@@ -61,7 +61,14 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
 
   const szr=p.category==='protection'?`<div class="info-card product-detail-card szr-card"><h2>ДАНІ ДЛЯ ЗЗР / СЗР</h2><div class="kv"><span>Діюча речовина</span><b>${richValue(p.activeIngredient)}</b></div><div class="kv"><span>Концентрація</span><b>${richValue(p.concentration)}</b></div><div class="kv"><span>Шкідник / хвороба</span><b>${richValue(p.target)}</b></div><div class="kv"><span>Строк очікування</span><b>${richValue(p.waitingPeriod)}</b></div><div class="kv"><span>Клас небезпеки</span><b>${richValue(p.hazardClass)}</b></div></div>`:'';
 
-  const productImageFor=s=>BB610.productImage?.(rawProduct,s)||s?.image||BB610.fallbackImage?.(p.category)||'assets/img/product-npk.svg';
+  const productImageFor=s=>{
+    const wanted=String(s?.variant||s?.package||s?.label||'').trim();
+    return BB610.imageForPackage?.(p.id,wanted)||
+      BB610.productImage?.(rawProduct,s)||
+      s?.image||
+      BB610.fallbackImage?.(p.category)||
+      'assets/img/product-npk.svg';
+  };
 
   const compositionRows=Array.isArray(p.composition)&&p.composition.length
     ?p.composition.map(x=>typeof x==='object'&&x!==null&&('label'in x||'name'in x)

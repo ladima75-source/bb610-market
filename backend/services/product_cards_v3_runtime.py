@@ -9,13 +9,40 @@ from .product_commerce import commerce_map as live_commerce_map
 
 
 def _find_card_by_slug(slug: str) -> Optional[dict]:
+    """Resolve storefront identity to an enabled Product Card v3.
+
+    The public storefront uses existing product ids while v3 has its own
+    product_id and slug. Accept all three identities so every catalog/homepage
+    link reaches the same live PDP.
+    """
     wanted = str(slug or '').strip().lower()
     if not wanted:
         return None
-    row = next((x for x in v3.list_cards() if str(x.get('slug') or '').lower() == wanted), None)
-    if not row:
+
+    row = next(
+        (
+            x for x in v3.list_cards()
+            if str(x.get('slug') or '').strip().lower() == wanted
+            or str(x.get('product_id') or '').strip().lower() == wanted
+        ),
+        None,
+    )
+    product_id = str((row or {}).get('product_id') or '').strip()
+
+    if not product_id:
+        mapping = next(
+            (
+                x for x in v3.commerce_map().get('products', [])
+                if isinstance(x, dict)
+                and str(x.get('existing_product_key') or '').strip().lower() == wanted
+            ),
+            None,
+        )
+        product_id = str((mapping or {}).get('product_id') or '').strip()
+
+    if not product_id:
         return None
-    card = v3.get(str(row.get('product_id') or ''))
+    card = v3.get(product_id)
     if not isinstance(card, dict) or not card.get('enabled', False):
         return None
     return card

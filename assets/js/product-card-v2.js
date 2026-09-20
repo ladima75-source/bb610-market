@@ -263,7 +263,27 @@ async function renderV3(card){
   console.info('BB610 PRODUCT CARD v3 rendered',card.slug,card.commerce_binding||{});
 }
 function ensureShellV2(card){return ensureShellBase(card.name,card.eyebrow,card.subtitle,card.lead)}
-function mergeV2(card,commerce){const cm=new Map((commerce?.variants||[]).map(x=>[x.sku,x]));return (card.variants||[]).map(v=>({...v,...cm.get(v.sku),image:v.image||cm.get(v.sku)?.image})).sort((a,b)=>qty(a)-qty(b))}
+function mergeV2(card,commerce,productId){
+  const cm=new Map((commerce?.variants||[]).map(x=>[x.sku,x]));
+  const rawProduct=window.BB610_DATA_SOURCE?.product?.(productId)||null;
+  return (card.variants||[]).map(v=>{
+    const legacy=cm.get(v.sku)||{};
+    const wanted=String(v?.label||v?.package||legacy?.variant||'').trim();
+    const canonical=window.BB610?.skuForPackage?.(productId,wanted,legacy?.sku||v?.sku)||null;
+    const image=canonical&&rawProduct
+      ?(window.BB610?.productImage?.(rawProduct,canonical)||canonical?.image||'')
+      :(v.image||legacy?.image||'');
+    return {
+      ...v,
+      ...legacy,
+      ...(canonical||{}),
+      source_sku:v.sku,
+      label:v.label||v.package||legacy.variant||canonical?.variant||'',
+      sku:canonical?.id||canonical?.sku||legacy?.sku||v.sku,
+      image,
+    };
+  }).sort((a,b)=>qty(a)-qty(b));
+}
 function renderV2Content(shell,d){
   const add=h=>shell.appendChild(sec(h));
   if(d.full_description)add(`<section class="mpc-section"><h2>Про ${esc(d.name)}</h2><div class="mpc-longcopy">${rich(d.full_description)}</div></section>`);
@@ -275,12 +295,24 @@ function renderV2Content(shell,d){
   if(rows.length)add(`<section class="mpc-section"><h2>Походження</h2><div class="mpc-specs">${rows.map(x=>`<div class="mpc-spec"><span>${esc(x[0])}</span><b>${rich(x[1])}</b></div>`).join('')}</div></section>`);
   const docs=(d.documents||[]).filter(x=>x.title&&x.url);if(docs.length)add(`<section class="mpc-section"><h2>Офіційні документи</h2><div class="mpc-docs">${docs.map(x=>`<a class="mpc-doc" target="_blank" rel="noopener" href="${esc(x.url)}"><span>${esc(x.title)}</span><span>↗</span></a>`).join('')}</div></section>`);
 }
-function bindV2(shell,d,c){
-  const vs=mergeV2(d,c),list=$('.mpc-variant-list',shell),hero=$('#mpcImage',shell),cta=$('#mpcCtaHost .mpc-buy',shell);
-  const apply=v=>{if(v.image&&hero)hero.src=abs(v.image);const p=(v.sale_price!==null&&v.sale_price!==undefined&&v.sale_price!=='')?v.sale_price:v.price;$('#mpcPrice',shell).textContent=money(p)||'Ціна уточнюється';const a=String(v.availability||'unknown').toLowerCase();$('#mpcStock',shell).textContent=a==='in_stock'?'В наявності':a==='out_of_stock'?'Немає в наявності':(['preorder','on_order','backorder'].includes(a)?'ПІД ЗАМОВЛЕННЯ':'Наявність уточнюється');$('#mpcSku',shell).textContent='Артикул: '+v.sku;if(cta){cta.dataset.sku=v.sku;cta.setAttribute('data-sku',v.sku)}};
-  list.innerHTML='';vs.forEach((v,i)=>{const b=document.createElement('button');b.type='button';b.className='mpc-variant'+(i===0?' active':'');b.textContent=v.label||v.sku;b.onclick=()=>{$$('.mpc-variant',list).forEach(x=>x.classList.remove('active'));b.classList.add('active');apply(v)};list.appendChild(b)});if(vs[0])apply(vs[0]);
+function bindV2(shell,d,c,productId){
+  const vs=mergeV2(d,c,productId),list=$('.mpc-variant-list',shell),hero=$('#mpcImage',shell),cta=$('#mpcCtaHost .mpc-buy',shell);
+  const wantedId=String(requestedSku()||'').trim();
+  const initial=vs.find(v=>wantedId&&String(v?.sku||v?.id||'')===wantedId)||vs[0]||null;
+  const apply=v=>{
+    setHeroCandidates(hero,[v?.image],window.BB610?.fallbackImage?.(window.BB610_DATA_SOURCE?.product?.(productId)?.category_id||window.BB610_DATA_SOURCE?.product?.(productId)?.category)||'assets/img/product-npk.svg');
+    const p=(v.sale_price!==null&&v.sale_price!==undefined&&v.sale_price!=='')?v.sale_price:v.price;
+    $('#mpcPrice',shell).textContent=money(p)||'Ціна уточнюється';
+    const a=String(v.availability||'unknown').toLowerCase();
+    $('#mpcStock',shell).textContent=a==='in_stock'?'В наявності':a==='out_of_stock'?'Немає в наявності':(['preorder','on_order','backorder'].includes(a)?'ПІД ЗАМОВЛЕННЯ':'Наявність уточнюється');
+    $('#mpcSku',shell).textContent='Артикул: '+(v.sku||'—');
+    if(cta){cta.dataset.sku=v.sku||'';cta.setAttribute('data-sku',v.sku||'')}
+  };
+  list.innerHTML='';
+  vs.forEach(v=>{const b=document.createElement('button');b.type='button';b.className='mpc-variant'+(v===initial?' active':'');b.textContent=v.label||v.sku;b.onclick=()=>{$('.mpc-variant',list).forEach(x=>x.classList.remove('active'));b.classList.add('active');apply(v)};list.appendChild(b)});
+  if(initial)apply(initial);
 }
-async function renderV2(card,id){const commerce=await get(API+'/api/v1/storefront/product-commerce/'+encodeURIComponent(id),true);const shell=ensureShellV2(card);bindV2(shell,card,commerce||{});renderV2Content(shell,card);hideLegacy(document);document.documentElement.dataset.bb610ProductCard='20f-final';console.info('BB610 Stage20F FINAL rendered',id)}
+async function renderV2(card,id){const commerce=await get(API+'/api/v1/storefront/product-commerce/'+encodeURIComponent(id),true);const shell=ensureShellV2(card);bindV2(shell,card,commerce||{},id);renderV2Content(shell,card);hideLegacy(document);document.documentElement.dataset.bb610ProductCard='20f-final';console.info('BB610 Stage20F FINAL rendered',id)}
 async function run(){
   const id=slug();if(!id)return;
   try{

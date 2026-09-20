@@ -46,6 +46,19 @@ const BB610 = (() => {
       .replace(/\s+/g,'');
     return s.replace(/[^0-9a-zа-яіїєґ.+-]/g,'');
   };
+  const mediaPackMetric=value=>{
+    const s=String(value||'').toLowerCase().replace(',','.').replace(/\s+/g,' ');
+    const m=s.match(/(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml)\b/i);
+    if(!m)return '';
+    const n=Number(m[1]);
+    if(!Number.isFinite(n))return '';
+    const u=m[2].toLowerCase();
+    if(u==='кг'||u==='kg')return 'm:'+String(Math.round(n*1000000)/1000);
+    if(u==='г'||u==='гр'||u==='g')return 'm:'+String(Math.round(n*1000)/1000);
+    if(u==='л'||u==='l')return 'v:'+String(Math.round(n*1000000)/1000);
+    if(u==='мл'||u==='ml')return 'v:'+String(Math.round(n*1000)/1000);
+    return '';
+  };
   const approvedSkuImage=(p,s=null)=>{
     const rows=[];
     const canonical=BB610_DATA_SOURCE.staticProductMedia?.(p?.id)||null;
@@ -63,11 +76,19 @@ const BB610 = (() => {
       const exact=rows.find(row=>[row?.sku,row?.id].some(v=>String(v||'').trim()===sid)&&usable(row));
       if(exact)return usable(exact);
     }
-    const wanted=mediaPackKey(s?.variant||s?.package||s?.label);
+    const rawPack=s?.variant||s?.package||s?.label;
+    const wanted=mediaPackKey(rawPack);
     if(wanted){
       const matched=rows.find(row=>mediaPackKey(row?.label||row?.variant||row?.package)===wanted&&usable(row));
       if(matched)return usable(matched);
     }
+    const wantedMetric=mediaPackMetric(rawPack);
+    if(wantedMetric){
+      const metricMatched=rows.find(row=>mediaPackMetric(row?.label||row?.variant||row?.package)===wantedMetric&&usable(row));
+      if(metricMatched)return usable(metricMatched);
+    }
+    const unique=[...new Set(rows.map(usable).filter(Boolean))];
+    if(unique.length===1)return unique[0];
     return '';
   };
   const firstRealImage=list=>(Array.isArray(list)?list:[]).map(imageValue).find(src=>src&&!isFallbackImage(src))||'';

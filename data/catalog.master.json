@@ -16170,16 +16170,18 @@
         {
           "sku": "BB610-OP-KENDAL-ROOT-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "https://images.prom.ua/6771179989_w640_h640_biostimulyator-kendall-rut.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "image_url": "https://images.prom.ua/6771179989_w640_h640_biostimulyator-kendall-rut.jpg"
         },
         {
           "sku": "BB610-OP-KENDAL-ROOT-1L",
           "label": "1 л",
-          "image": "",
+          "image": "https://images.prom.ua/7599451356_w640_h640_kendal-root-kendal.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "image_url": "https://images.prom.ua/7599451356_w640_h640_kendal-root-kendal.jpg"
         }
       ],
       "import_meta": {
@@ -16307,15 +16309,24 @@
           {
             "sku": "BB610-OP-KENDAL-ROOT-100ML",
             "label": "100 мл",
-            "image": ""
+            "image": "https://images.prom.ua/6771179989_w640_h640_biostimulyator-kendall-rut.jpg"
           },
           {
             "sku": "BB610-OP-KENDAL-ROOT-1L",
             "label": "1 л",
-            "image": ""
+            "image": "https://images.prom.ua/7599451356_w640_h640_kendal-root-kendal.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "https://images.prom.ua/6771179989_w640_h640_biostimulyator-kendall-rut.jpg",
+        "status": "packaging-media-recovery"
+      },
+      "gallery": [
+        "https://images.prom.ua/6771179989_w640_h640_biostimulyator-kendall-rut.jpg",
+        "https://images.prom.ua/7599451356_w640_h640_kendal-root-kendal.jpg"
+      ],
+      "image_alt": "Kendal Root"
     },
     {
       "id": "kendal-te",
@@ -16392,16 +16403,18 @@
         {
           "sku": "BB610-OP-KENDAL-TE-100ML",
           "label": "100 мл",
-          "image": "",
+          "image": "https://images.prom.ua/2934114768_w640_h640_2934114768.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "image_url": "https://images.prom.ua/2934114768_w640_h640_2934114768.jpg"
         },
         {
           "sku": "BB610-OP-KENDAL-TE-1L",
           "label": "1 л",
-          "image": "",
+          "image": "https://images.prom.ua/6270087321_w640_h640_kendal-te-kendall.jpg",
           "enabled": false,
-          "import_source": "Organic Planet structure import 2026"
+          "import_source": "Organic Planet structure import 2026",
+          "image_url": "https://images.prom.ua/6270087321_w640_h640_kendal-te-kendall.jpg"
         }
       ],
       "import_meta": {
@@ -16555,15 +16568,24 @@
           {
             "sku": "BB610-OP-KENDAL-TE-100ML",
             "label": "100 мл",
-            "image": ""
+            "image": "https://images.prom.ua/2934114768_w640_h640_2934114768.jpg"
           },
           {
             "sku": "BB610-OP-KENDAL-TE-1L",
             "label": "1 л",
-            "image": ""
+            "image": "https://images.prom.ua/6270087321_w640_h640_kendal-te-kendall.jpg"
           }
         ]
-      }
+      },
+      "image": {
+        "local": "https://images.prom.ua/2934114768_w640_h640_2934114768.jpg",
+        "status": "packaging-media-recovery"
+      },
+      "gallery": [
+        "https://images.prom.ua/2934114768_w640_h640_2934114768.jpg",
+        "https://images.prom.ua/6270087321_w640_h640_kendal-te-kendall.jpg"
+      ],
+      "image_alt": "Kendal TE"
     },
     {
       "id": "maxicrop-cream",

@@ -4,7 +4,7 @@ from copy import deepcopy
 from typing import Any, Optional
 
 from . import product_cards_v3 as v3
-from .catalog_cms import admin_detail as catalog_detail
+from .catalog_cms import admin_detail as catalog_detail, public_content, _photo_pack_key, _photo_pack_metric, _photo_pack_keys
 from .product_commerce import commerce_map as live_commerce_map
 
 
@@ -84,6 +84,44 @@ def _stock_label(availability: str) -> str:
     }.get(availability, 'Наявність уточнюється')
 
 
+def _public_package_media(rows: list[dict], package: str) -> Optional[dict]:
+    """Resolve canonical public Product Master image for one visible package.
+
+    Product Card v3 must not infer package media independently. public_content()
+    already projects runtime photo overrides by product + package, so reuse
+    that authoritative result here.
+    """
+    wanted_key = _photo_pack_key(package)
+    wanted_metric = _photo_pack_metric(package)
+    if not wanted_key and not wanted_metric:
+        return None
+
+    matches: list[dict] = []
+    for row in rows:
+        keys, metrics = _photo_pack_keys(row)
+        if (wanted_key and wanted_key in keys) or (wanted_metric and wanted_metric in metrics):
+            matches.append(row)
+
+    def image(row: dict) -> str:
+        return str(row.get('image') or '').strip()
+
+    preferred = next(
+        (row for row in matches if row.get('organic_planet_photo') and image(row)),
+        None,
+    )
+    if preferred is None:
+        preferred = next((row for row in matches if image(row)), None)
+    if preferred is None:
+        return None
+
+    return {
+        'path': image(preferred),
+        'source': 'public-product-master-package',
+        'sku': str(preferred.get('id') or preferred.get('sku') or ''),
+        'package': package,
+    }
+
+
 def _project_commerce(row: Optional[dict], *, sku_key: str = '', meta: Optional[dict] = None) -> Optional[dict]:
     if not isinstance(row, dict):
         return None
@@ -141,6 +179,15 @@ def storefront_runtime(slug: str) -> Optional[dict]:
     live_by_key = live_commerce_map()
     detail_by_key = _detail_skus(detail)
     media_by_id = _media_map(card)
+
+    # Use the same public Product Master SKU/media projection as the catalog.
+    public = public_content()
+    public_skus = [
+        row for row in (public.get('skus') or [])
+        if isinstance(row, dict)
+        and str(row.get('product_id') or '') == existing_product_key
+    ]
+
     content = deepcopy(card.get('content') or {})
     market_test = str(content.get('brand') or '').strip().lower() == 'plantlogic'
 
@@ -159,6 +206,8 @@ def storefront_runtime(slug: str) -> Optional[dict]:
         ]
         commerce_key = bound_by_v3_sku.get(str(sku.get('sku_id') or ''), '')
         live = live_by_key.get(commerce_key) if commerce_key else None
+        visible_package = str(sku.get('label') or sku.get('package') or '').strip()
+        package_media = _public_package_media(public_skus, visible_package)
         runtime_skus.append({
             'sku_id': sku.get('sku_id'),
             'sku_code': sku.get('sku_code') or '',
@@ -166,6 +215,7 @@ def storefront_runtime(slug: str) -> Optional[dict]:
             'package': sku.get('package') or '',
             'attributes': deepcopy(sku.get('attributes') or {}),
             'primary_media': deepcopy(primary) if primary else None,
+            'package_media': deepcopy(package_media) if package_media else None,
             'gallery_media': deepcopy(gallery),
             'commerce_bound': bool(commerce_key and live),
             'commerce_key': commerce_key,

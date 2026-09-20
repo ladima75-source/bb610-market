@@ -717,16 +717,73 @@ def main() -> int:
             and str(row.get("product_id") or "").strip() in override_products
         ]
         projected=[row for row in public_rows if row.get("organic_planet_photo")]
-        missing_public=[
-            str(row.get("id") or row.get("sku") or "")
-            for row in public_rows
-            if not row.get("organic_planet_photo")
-        ]
+
+        # Diagnose only public rows that failed projection. The old aggregate
+        # could over-count extra runtime SKUs from the same product family.
+        by_exact={
+            str(sku_id):row for sku_id,row in (overrides.get("skus") or {}).items()
+            if isinstance(row,dict)
+        }
+        by_product={}
+        for sku_id,row in by_exact.items():
+            pid=str(row.get("product_id") or "").strip()
+            if pid:
+                by_product.setdefault(pid,[]).append((sku_id,row))
+
+        diagnostics=[]
+        for row in public_rows:
+            if row.get("organic_planet_photo"):
+                continue
+            sid=str(row.get("id") or row.get("sku") or "").strip()
+            pid=str(row.get("product_id") or "").strip()
+            variant=str(row.get("variant") or row.get("package") or row.get("label") or "").strip()
+            vw=row.get("volume_weight") if isinstance(row.get("volume_weight"),dict) else {}
+            row_values=[variant]
+            if vw and vw.get("value") is not None and str(vw.get("unit") or "").strip():
+                row_values.append(f"{vw.get('value')} {vw.get('unit')}")
+            row_keys={_pack_key(v) for v in row_values if _pack_key(v)}
+
+            candidates=[]
+            for source_sku,source in by_product.get(pid,[]):
+                source_pack=str(source.get("package") or "").strip()
+                source_key=_pack_key(source_pack)
+                if source_key and source_key in row_keys:
+                    candidates.append({
+                        "source_sku":source_sku,
+                        "package":source_pack,
+                        "image":str(source.get("image") or ""),
+                    })
+
+            if sid in by_exact:
+                reason="exact_override_not_applied"
+            elif len(candidates)==1:
+                reason="unique_package_candidate_not_applied"
+            elif len(candidates)>1:
+                reason="ambiguous_package_candidates"
+            elif by_product.get(pid):
+                reason="no_package_match"
+            else:
+                reason="no_override_for_product"
+
+            diagnostics.append({
+                "sku":sid,
+                "product_id":pid,
+                "variant":variant,
+                "volume_weight":vw,
+                "reason":reason,
+                "candidate_count":len(candidates),
+                "candidates":candidates[:4],
+            })
+
         print("PUBLIC_TARGET_SKU_ROWS:",len(public_rows))
         print("PUBLIC_PROJECTED_PHOTO_SKU:",len(projected))
-        print("PUBLIC_UNPROJECTED_PHOTO_SKU:",len(missing_public))
-        if missing_public:
-            print("PUBLIC_UNPROJECTED:",", ".join(missing_public[:80]))
+        print("PUBLIC_UNPROJECTED_PHOTO_SKU:",len(diagnostics))
+        if diagnostics:
+            reason_counts={}
+            for item in diagnostics:
+                reason_counts[item["reason"]]=reason_counts.get(item["reason"],0)+1
+            print("PUBLIC_UNPROJECTED_REASONS:",json.dumps(reason_counts,ensure_ascii=False,sort_keys=True))
+            print("PUBLIC_UNPROJECTED_DIAGNOSTICS:",json.dumps(diagnostics,ensure_ascii=False,separators=(",",":")))
     except Exception as exc:
         print("PUBLIC_PROJECTION_CHECK: ERROR",exc)
 

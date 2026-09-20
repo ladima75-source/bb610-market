@@ -110,10 +110,13 @@ const BB610 = (() => {
     // Canonical package media is the approved storefront photo. Prefer it over
     // runtime SKU.image because runtime rows can contain stale/broken media URLs.
     const selectedPack=s?.variant||s?.package||s?.label;
-    const packageImage=imageForPackage(p?.id,selectedPack);
-    if(packageImage)return packageImage;
+    // Curated package media from Catalog Master is authoritative. Runtime
+    // package media is only the fallback for products whose approved matrix
+    // does not contain a photo (for example Brexil Mix after runtime repair).
     const approved=approvedSkuImage(p,s);
     if(approved)return approved;
+    const packageImage=imageForPackage(p?.id,selectedPack);
+    if(packageImage)return packageImage;
     const skuImage=imageValue(s?.image);
     if(skuImage&&!isFallbackImage(skuImage))return skuImage;
     const skuGallery=firstRealImage(s?.gallery);

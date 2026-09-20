@@ -78,7 +78,7 @@ window.BB610_DATA_SOURCE={
       const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),6000);
       try{
         const mEp=window.BB610_COMMERCE_CONFIG?.endpoints?.productMaster||'/api/v1/catalog/master';
-        const mr=await fetch(base+mEp,{signal:ctl.signal,headers:{Accept:'application/json'}});
+        const mr=await fetch(base+mEp,{signal:ctl.signal,cache:'no-store',headers:{Accept:'application/json'}});
         if(mr.ok){
           const md=await mr.json();
           this._applyMaster(md,base);
@@ -89,8 +89,8 @@ window.BB610_DATA_SOURCE={
         const cEp=window.BB610_COMMERCE_CONFIG?.endpoints?.commercialCatalog||'/api/v1/catalog/commerce';
         const pEp=window.BB610_COMMERCE_CONFIG?.endpoints?.catalogContent||'/api/v1/catalog/content';
         const [cr,pr]=await Promise.all([
-          fetch(base+cEp,{signal:ctl.signal,headers:{Accept:'application/json'}}),
-          fetch(base+pEp,{signal:ctl.signal,headers:{Accept:'application/json'}})
+          fetch(base+cEp,{signal:ctl.signal,cache:'no-store',headers:{Accept:'application/json'}}),
+          fetch(base+pEp,{signal:ctl.signal,cache:'no-store',headers:{Accept:'application/json'}})
         ]);
         if(pr.ok)this._applyLegacyContent(await pr.json(),base);
         if(cr.ok){

@@ -118,10 +118,12 @@ const BB610 = (() => {
     if(skuImage&&!isFallbackImage(skuImage))return skuImage;
     const skuGallery=firstRealImage(s?.gallery);
     if(skuGallery)return skuGallery;
-    // Never substitute a product-level photo from another package when the
-    // selected SKU belongs to a multi-package product. A package-specific
-    // photo must come from the SKU/package media matrix.
-    if(packageMediaRequired(p,s))return fallbackImage(categoryId);
+    // Strict package-only media is a PDP rule. Catalog/listing cards must keep
+    // their valid product-level image when a package-specific image does not
+    // exist; otherwise normal products collapse to generic black placeholders.
+    const path=String(globalThis.location?.pathname||'').toLowerCase();
+    const strictPackageContext=/\/product\.html$/.test(path)||/\/products\/[^/]+\/?$/.test(path);
+    if(strictPackageContext&&packageMediaRequired(p,s))return fallbackImage(categoryId);
     const baseImage=imageValue(p?.image);
     if(baseImage&&!isFallbackImage(baseImage))return baseImage;
     const galleryImage=firstRealImage(p?.gallery);

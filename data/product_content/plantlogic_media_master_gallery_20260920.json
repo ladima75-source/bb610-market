@@ -34,7 +34,7 @@
   },
   "statistics": {
     "product_numbers": 37,
-    "curated_product_images": 205,
+    "curated_product_images": 209,
     "manifest_registry_records": 1797,
     "manifest_unique_images_without_ua_copies": 1383,
     "manifest_product_render_application_accessory_images": 1192,
@@ -306,6 +306,59 @@
           "direct_urls": [
             "https://getplantlogic.com/wp-content/uploads/2024/03/15-liter-drainage-collection-pot.png"
           ]
+        },
+        {
+          "media_id": "PLD361BB3F",
+          "filename": "15-Liter-Drainage-Collection-Pot_Item_1304115-1.jpg",
+          "sha256": "d361bb3f9df16c17ef373cb4f8df694c501514a548241ab4dd588ff56e9f34e3",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/15-Liter-Drainage-Collection-Pot_Item_1304115-1.jpg"
+          ],
+          "page_identity_override": true,
+          "source_asset_product_number": "1304115",
+          "override_reason": "Official product page identifies the item as Product #1304015; the page's current product-photo asset filenames/metadata use #1304115. Accept these four clean PRODUCT photos for #1304015 by page authority only."
+        },
+        {
+          "media_id": "PLA9273C49",
+          "filename": "15-Liter-Drainage-Collection-Pot_Item_1304115_bottom-view.jpg",
+          "sha256": "a9273c493be54bb012ae6c42756d969fa298b9454cd0adcc3713950974bc14be",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/15-Liter-Drainage-Collection-Pot_Item_1304115_bottom-view.jpg"
+          ],
+          "page_identity_override": true,
+          "source_asset_product_number": "1304115",
+          "override_reason": "Official product page identifies the item as Product #1304015; the page's current product-photo asset filenames/metadata use #1304115. Accept these four clean PRODUCT photos for #1304015 by page authority only."
+        },
+        {
+          "media_id": "PL594926C5",
+          "filename": "15-Liter-Drainage-Collection-Pot_Item_1304115_front-view-1.jpg",
+          "sha256": "594926c56dcb98faa0989aeed449f1870302a3da8612e8939c59196d74985c77",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/15-Liter-Drainage-Collection-Pot_Item_1304115_front-view-1.jpg",
+            "https://getplantlogic.com/wp-content/uploads/2024/03/15-Liter-Drainage-Collection-Pot_Item_1304115_front-view.jpg"
+          ],
+          "page_identity_override": true,
+          "source_asset_product_number": "1304115",
+          "override_reason": "Official product page identifies the item as Product #1304015; the page's current product-photo asset filenames/metadata use #1304115. Accept these four clean PRODUCT photos for #1304015 by page authority only."
+        },
+        {
+          "media_id": "PLE58F0D89",
+          "filename": "15-Liter-Drainage-Collection-Pot_Item_1304115_top-view.jpg",
+          "sha256": "e58f0d89484c891ea4f4d629cf328e10a06e37fc46926db547265e3566100e89",
+          "width_px": 738,
+          "height_px": 509,
+          "direct_urls": [
+            "https://getplantlogic.com/wp-content/uploads/2024/03/15-Liter-Drainage-Collection-Pot_Item_1304115_top-view.jpg"
+          ],
+          "page_identity_override": true,
+          "source_asset_product_number": "1304115",
+          "override_reason": "Official product page identifies the item as Product #1304015; the page's current product-photo asset filenames/metadata use #1304115. Accept these four clean PRODUCT photos for #1304015 by page authority only."
         }
       ]
     },
@@ -2421,6 +2474,20 @@
       "source_page_url": "https://getplantlogic.com/portfolio-items/40l-square-pot-for-blueberries-with-side-holes/",
       "name": "Квадратний горщик 40 л з U-пазами та бічними отворами — арт. 13090400 / 13090440",
       "items": []
+    }
+  },
+  "page_identity_overrides": {
+    "1304015": {
+      "official_page": "https://getplantlogic.com/portfolio-items/15-liter-round-drainage-collection-pot/",
+      "official_page_product_number": "1304015",
+      "asset_product_number": "1304115",
+      "rule": "Use the four no-text PRODUCT photos embedded on the exact official #1304015 page despite the 1304115 asset filename/metadata mismatch. Do not use the 1304115 technical drawing or PDF in the SKU gallery.",
+      "media_ids": [
+        "PLD361BB3F",
+        "PLA9273C49",
+        "PL594926C5",
+        "PLE58F0D89"
+      ]
     }
   }
 }

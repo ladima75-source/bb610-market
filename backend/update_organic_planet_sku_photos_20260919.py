@@ -742,12 +742,18 @@ def main() -> int:
             if vw and vw.get("value") is not None and str(vw.get("unit") or "").strip():
                 row_values.append(f"{vw.get('value')} {vw.get('unit')}")
             row_keys={_pack_key(v) for v in row_values if _pack_key(v)}
+            row_metrics={
+                catalog_cms._photo_pack_metric(v)
+                for v in row_values
+                if catalog_cms._photo_pack_metric(v)
+            }
 
             candidates=[]
             for source_sku,source in by_product.get(pid,[]):
                 source_pack=str(source.get("package") or "").strip()
                 source_key=_pack_key(source_pack)
-                if source_key and source_key in row_keys:
+                source_metric=catalog_cms._photo_pack_metric(source_pack)
+                if (source_key and source_key in row_keys) or (source_metric and source_metric in row_metrics):
                     candidates.append({
                         "source_sku":source_sku,
                         "package":source_pack,

@@ -95,6 +95,42 @@ def _photo_pack_key(value):
     return re.sub(r'[^0-9a-zа-яіїєґ.+-]','',s)
 
 
+def _photo_pack_metric(value):
+    """Canonical package quantity with dimension.
+
+    Equivalent spellings such as 100 мл / 0.1 л and 250 г / 0.25 кг must map
+    to the same key, while mass and volume remain distinct.
+    """
+    s=str(value or '').strip().lower().replace(',','.')
+    replacements=(
+        ('літрів','л'),('літра','л'),('літр','л'),('литров','л'),('литра','л'),('литр','л'),
+        ('мілілітрів','мл'),('мілілітра','мл'),('мілілітр','мл'),('миллилитров','мл'),('миллилитра','мл'),('миллилитр','мл'),
+        ('кілограмів','кг'),('кілограма','кг'),('кілограм','кг'),('килограммов','кг'),('килограмма','кг'),('килограмм','кг'),
+        ('грамів','г'),('грама','г'),('грам','г'),('граммов','г'),('грамма','г'),
+    )
+    for old,new in replacements:
+        s=s.replace(old,new)
+    m=re.search(r'(?<!\d)(\d+(?:\.\d+)?)\s*(кг|kg|г|гр|g|л|l|мл|ml)\b',s,re.I)
+    if not m:
+        return ''
+    try:
+        amount=float(m.group(1))
+    except (TypeError,ValueError):
+        return ''
+    unit=m.group(2).lower()
+    if unit in ('кг','kg'):
+        dimension='mass'; base=amount*1000.0
+    elif unit in ('г','гр','g'):
+        dimension='mass'; base=amount
+    elif unit in ('л','l'):
+        dimension='volume'; base=amount*1000.0
+    else:
+        dimension='volume'; base=amount
+    rounded=round(base,6)
+    number=str(int(rounded)) if rounded.is_integer() else ('%.6f'%rounded).rstrip('0').rstrip('.')
+    return dimension+':'+number
+
+
 def _catalog_sku_media_fallbacks(static_products):
     """Return approved SKU photos already stored in catalog.master.json.
 
@@ -104,6 +140,7 @@ def _catalog_sku_media_fallbacks(static_products):
     """
     by_sku={}
     by_product_pack={}
+    by_product_metric={}
     for pid,product in (static_products or {}).items():
         rows=[]
         variants=product.get('variants') or []
@@ -124,10 +161,14 @@ def _catalog_sku_media_fallbacks(static_products):
             sku_id=str(row.get('sku') or row.get('id') or '').strip()
             if sku_id:
                 by_sku[sku_id]=image
-            pack=_photo_pack_key(row.get('label') or row.get('variant') or row.get('package'))
+            raw_pack=row.get('label') or row.get('variant') or row.get('package')
+            pack=_photo_pack_key(raw_pack)
             if pack:
                 by_product_pack[(str(pid),pack)]=image
-    return by_sku,by_product_pack
+            metric=_photo_pack_metric(raw_pack)
+            if metric:
+                by_product_metric[(str(pid),metric)]=image
+    return by_sku,by_product_pack,by_product_metric
 
 
 def _normalize_content(body:dict, base:Optional[dict]=None):
@@ -267,17 +308,26 @@ def public_content():
 
     if unmatched:
         by_product_pack={}
+        by_product_metric={}
         for sid,row in sku_map.items():
             pid=str(row.get('product_id') or '').strip()
-            pack=_photo_pack_key(row.get('variant') or row.get('package') or row.get('label'))
+            raw_pack=row.get('variant') or row.get('package') or row.get('label')
+            pack=_photo_pack_key(raw_pack)
+            metric=_photo_pack_metric(raw_pack)
             if pid and pack:
                 by_product_pack.setdefault((pid,pack),[]).append(row)
+            if pid and metric:
+                by_product_metric.setdefault((pid,metric),[]).append(row)
         for media_patch in unmatched:
             pid=str(media_patch.get('product_id') or '').strip()
-            pack=_photo_pack_key(media_patch.get('package'))
-            if not pid or not pack:
+            raw_pack=media_patch.get('package')
+            pack=_photo_pack_key(raw_pack)
+            metric=_photo_pack_metric(raw_pack)
+            if not pid:
                 continue
-            matches=by_product_pack.get((pid,pack)) or []
+            matches=by_product_pack.get((pid,pack)) or [] if pack else []
+            if len(matches)!=1 and metric:
+                matches=by_product_metric.get((pid,metric)) or []
             if len(matches)==1:
                 apply_photo(matches[0],media_patch)
 
@@ -285,7 +335,7 @@ def public_content():
     # products. Project them onto the current runtime SKU identity by exact SKU
     # first, then by (product + package). This is presentation-only and never
     # touches price, stock, availability or publication state.
-    approved_by_sku,approved_by_product_pack=_catalog_sku_media_fallbacks(static_products)
+    approved_by_sku,approved_by_product_pack,approved_by_product_metric=_catalog_sku_media_fallbacks(static_products)
     for sid,row in sku_map.items():
         current=str(row.get('image') or '').strip()
         if current and not _placeholder_media(current):
@@ -293,8 +343,12 @@ def public_content():
         image=approved_by_sku.get(str(sid))
         if not image:
             pid=str(row.get('product_id') or '').strip()
-            pack=_photo_pack_key(row.get('variant') or row.get('package') or row.get('label'))
+            raw_pack=row.get('variant') or row.get('package') or row.get('label')
+            pack=_photo_pack_key(raw_pack)
             image=approved_by_product_pack.get((pid,pack))
+            if not image:
+                metric=_photo_pack_metric(raw_pack)
+                image=approved_by_product_metric.get((pid,metric)) if metric else None
         if image:
             row['image']=image
             gallery=[str(x) for x in (row.get('gallery') or []) if str(x).strip() and not _placeholder_media(x)]

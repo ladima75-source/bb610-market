@@ -140,6 +140,17 @@ const BB610 = (() => {
   const sku=id=>BB610_DATA_SOURCE.sku(id);
   const defaultSku=id=>BB610_DATA_SOURCE.defaultSku(id);
   const productSkus=id=>BB610_DATA_SOURCE.skusForProduct(id)||[];
+  const skuPackValues=s=>{
+    const out=[s?.variant,s?.package,s?.label].map(x=>String(x||'').trim()).filter(Boolean);
+    const vw=s?.volume_weight;
+    if(vw&&vw.value!==null&&vw.value!==undefined&&String(vw.unit||'').trim())out.push(String(vw.value)+' '+String(vw.unit));
+    return [...new Set(out)];
+  };
+  const sameSkuPackage=(wanted,s)=>{
+    const wk=mediaPackKey(wanted),wm=mediaPackMetric(wanted);
+    if(!wk&&!wm)return false;
+    return skuPackValues(s).some(raw=>(wk&&mediaPackKey(raw)===wk)||(wm&&mediaPackMetric(raw)===wm));
+  };
   const hasPrice=s=>!!s&&s.price!==null&&s.price!==undefined&&Number.isFinite(Number(s.price));
   const isCommercialActive=s=>!!s&&(s.commercial_status==='active'||s.offer_status==='active');
   const isPriceRequestSku=s=>!!s&&(s.price_request===true||s.commercial_status==='request-price'||s.offer_status==='request-price');
@@ -147,6 +158,20 @@ const BB610 = (() => {
   // price and is not out of stock, the visible BUY action must be available.
   // Request-price SKUs keep their dedicated CTA and never enter the cart path.
   const canBuySku=s=>!!s&&hasPrice(s)&&!isPriceRequestSku(s)&&s.availability!=='out_of_stock';
+  function skuForPackage(productId,wanted,preferredId=''){
+    const rows=productSkus(productId).filter(s=>sameSkuPackage(wanted,s));
+    if(!rows.length)return null;
+    const preferred=String(preferredId||'').trim();
+    return rows.find(s=>preferred&&String(s?.id||s?.sku||'')===preferred&&canBuySku(s))||
+      rows.find(s=>canBuySku(s))||
+      rows.find(s=>hasPrice(s)&&isCommercialActive(s))||
+      rows.find(s=>hasPrice(s))||
+      rows.find(s=>s?.organic_planet_photo&&imageValue(s?.image))||
+      rows.find(s=>imageValue(s?.image))||
+      rows.find(s=>preferred&&String(s?.id||s?.sku||'')===preferred)||
+      rows[0]||
+      null;
+  }
   function displaySku(productId){
     const d=defaultSku(productId);
     if(hasPrice(d))return d;
@@ -348,7 +373,7 @@ const BB610 = (() => {
     const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
     if(typeof d.showModal==='function')d.showModal();
   }
-  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
+  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,skuForPackage,sameSkuPackage,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);
 
 function bb610LoadProductCardV3Enhancements(){

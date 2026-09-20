@@ -91,8 +91,8 @@ jobs:
           css=Path('css/product-pot.css').read_text(encoding='utf-8')
           facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
 
-          assert 'css/product-pot.css?v=20260920-pot-pdp-21' in html
-          assert 'js/product-pot.js?v=20260920-pot-pdp-21' in html
+          assert 'css/product-pot.css?v=20260920-pot-pdp-22' in html
+          assert 'js/product-pot.js?v=20260920-pot-pdp-22' in html
           assert html.index('js/product-pot.js') < html.index('js/product.js')
           assert 'BB610_POT_PDP?.matches(p)' in product
           assert 'BB610_POT_PDP.render' in product
@@ -108,6 +108,9 @@ jobs:
           assert '.pot-recolor-black-terra' in css
           assert '.pot-recolor-terra-black' in css
           assert 'selectedSku?.image' in pot
+          assert "article==='1303025'" in pot
+          assert 'assets/img/plantlogic/1303025-infographic.svg?v=20260920-1303025-infographic-1' in pot
+          assert Path('assets/img/plantlogic/1303025-infographic.svg').exists()
           assert 'selectedSku?.gallery' in pot
           assert 'function mediaKey(value)' in pot
           assert 'if(exact.length||hasStructured)return exact' in pot

@@ -88,10 +88,20 @@ def _placeholder_media(path: Any) -> bool:
     return raw.endswith((
         '/assets/img/product-npk.svg',
         'assets/img/product-npk.svg',
+        '/assets/img/product-master.svg',
+        'assets/img/product-master.svg',
+        '/assets/img/product-plantafol.svg',
+        'assets/img/product-plantafol.svg',
+        '/assets/img/product-megafol.svg',
+        'assets/img/product-megafol.svg',
         '/assets/img/product-biostim.svg',
         'assets/img/product-biostim.svg',
         '/assets/img/product-container.svg',
         'assets/img/product-container.svg',
+        '/assets/img/product-container45.svg',
+        'assets/img/product-container45.svg',
+        '/assets/img/product-protection.svg',
+        'assets/img/product-protection.svg',
     ))
 
 

@@ -5,7 +5,7 @@ const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelect
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
 const rich=s=>esc(s).replace(/\r?\n/g,'<br>');
 const abs=p=>{p=String(p||'').trim();if(!p)return'';if(/^https?:\/\//i.test(p))return p;if(/^\/?media\/products\//i.test(p))return API+'/'+p.replace(/^\//,'');return SITE+p.replace(/^\//,'')};
-const placeholderMedia=src=>{const v=String(src||'').toLowerCase().split('?',1)[0];return v.endsWith('assets/img/product-npk.svg')||v.endsWith('assets/img/product-biostim.svg')||v.endsWith('assets/img/product-container.svg')};
+const placeholderMedia=src=>{const v=String(src||'').toLowerCase().split('?',1)[0];return ['product-npk.svg','product-master.svg','product-plantafol.svg','product-megafol.svg','product-biostim.svg','product-container.svg','product-container45.svg','product-protection.svg'].some(x=>v.endsWith('assets/img/'+x))};
 const params=()=>new URLSearchParams(location.search);
 const slug=()=>window.BB610_PRODUCT_ID||params().get('id')||((location.pathname.match(/\/products\/([^\/]+)\/?/i)||[])[1]||'');
 const requestedSku=()=>window.BB610_SKU_ID||params().get('sku')||'';
@@ -29,6 +29,31 @@ function liveSkuForV3(v,productId){
   if(!wanted)return null;
   const rows=window.BB610_DATA_SOURCE?.skusForProduct?.(productId)||[];
   return rows.find(row=>packKey(row?.variant||row?.package||row?.label)===wanted)||null;
+}
+function approvedSkuImage(product,liveSku,v){
+  const rows=[];
+  if(Array.isArray(product?.variants))rows.push(...product.variants.filter(x=>x&&typeof x==='object'));
+  if(Array.isArray(product?.sku_photo))rows.push(...product.sku_photo.filter(x=>x&&typeof x==='object'));
+  if(Array.isArray(product?.product_card_v2?.sku_photo))rows.push(...product.product_card_v2.sku_photo.filter(x=>x&&typeof x==='object'));
+  const image=row=>String(row?.image||row?.image_url||'').trim();
+  const usable=row=>{const src=image(row);return src&&!placeholderMedia(src)?src:''};
+  const ids=[liveSku?.id,liveSku?.sku,v?.commerce_key,v?.commerce?.sku,v?.sku_code,v?.sku_id].map(x=>String(x||'').trim()).filter(Boolean);
+  for(const id of ids){const exact=rows.find(row=>[row?.sku,row?.id].some(x=>String(x||'').trim()===id)&&usable(row));if(exact)return usable(exact)}
+  const wanted=packKey(liveSku?.variant||liveSku?.package||liveSku?.label||v?.package||v?.label);
+  if(wanted){const matched=rows.find(row=>packKey(row?.label||row?.variant||row?.package)===wanted&&usable(row));if(matched)return usable(matched)}
+  return '';
+}
+function firstRealMedia(list){return (Array.isArray(list)?list:[]).map(x=>String(x||'').trim()).find(x=>x&&!placeholderMedia(x))||''}
+function setHeroCandidates(hero,candidates,fallback=''){
+  if(!hero)return;
+  const queue=[...new Set((candidates||[]).map(x=>String(x||'').trim()).filter(x=>x&&!placeholderMedia(x)))];
+  let i=0;
+  const next=()=>{
+    if(i<queue.length){hero.onerror=next;hero.src=abs(queue[i++]);return}
+    hero.onerror=null;
+    if(fallback)hero.src=abs(fallback);else hero.removeAttribute('src');
+  };
+  next();
 }
 function sec(h){const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstElementChild}
 function findCta(){return $$('button,a').find(n=>{const t=(n.textContent||'').trim().toUpperCase();return n.matches('[data-add-to-cart],.buy,.buy-btn,.add-to-cart')||t==='КУПИТИ'||t.includes('ДОДАТИ В КОШИК')})}
@@ -161,9 +186,11 @@ function bindV3(shell,card){
     const livePath=String(liveSku?.image||'').trim();
     const v3Path=String(v?.primary_media?.path||'').trim();
     const rawProduct=window.BB610_DATA_SOURCE?.product?.(slug());
+    const approvedPath=approvedSkuImage(rawProduct,liveSku,v);
     const productPath=typeof rawProduct?.image==='string'?rawProduct.image:String(rawProduct?.image?.local||'').trim();
-    const path=(!placeholderMedia(livePath)&&livePath)||(!placeholderMedia(v3Path)&&v3Path)||(!placeholderMedia(productPath)&&productPath)||livePath||v3Path||productPath||'';
-    if(path&&hero)hero.src=abs(path);
+    const productGallery=firstRealMedia(rawProduct?.gallery);
+    const liveGallery=firstRealMedia(liveSku?.gallery);
+    setHeroCandidates(hero,[livePath,v3Path,approvedPath,liveGallery,productPath,productGallery],'assets/img/product-npk.svg');
     const c=v?.commerce||null,p=c?((c.sale_price!==null&&c.sale_price!==undefined&&c.sale_price!=='')?c.sale_price:c.price):null;
     $('#mpcPrice',shell).textContent=money(p)||'Ціна уточнюється';
     const a=String(c?.availability||'unknown').toLowerCase();

@@ -220,19 +220,23 @@ function bindV3(shell,card){
     vs.find(x=>x.commerce_bound)||
     vs[0];
   const apply=v=>{
-    const liveSku=liveSkuForV3(v,slug());
+    const productId=slug();
+    const wantedPack=String(v?.package||v?.label||'').trim();
+    const liveSku=liveSkuForV3(v,productId);
+    const rawProduct=window.BB610_DATA_SOURCE?.product?.(productId);
+    const packagePath=String(window.BB610?.imageForPackage?.(productId,wantedPack)||'').trim();
     const livePath=String(liveSku?.image||'').trim();
     const v3Path=String(v?.primary_media?.path||'').trim();
-    const rawProduct=window.BB610_DATA_SOURCE?.product?.(slug());
     const approvedPath=approvedSkuImage(rawProduct,liveSku,v);
     const productPath=typeof rawProduct?.image==='string'?rawProduct.image:String(rawProduct?.image?.local||'').trim();
     const productGallery=firstRealMedia(rawProduct?.gallery);
     const liveGallery=firstRealMedia(liveSku?.gallery);
     const packageKeys=new Set(vs.map(row=>packKey(row?.package||row?.label)).filter(Boolean));
     const strictPackageMedia=packageKeys.size>1;
-    // A multi-package product must never borrow the generic/product-level
-    // photo of another package. Only SKU/V3/package-specific media is allowed.
-    const candidates=[livePath,v3Path,approvedPath,liveGallery];
+    // The selected package is authoritative. For multi-package products the
+    // canonical Product Master package image is the only acceptable first
+    // choice; V3/commerce media are merely same-package fallbacks.
+    const candidates=[packagePath,livePath,approvedPath,v3Path,liveGallery];
     if(!strictPackageMedia)candidates.push(productPath,productGallery);
     setHeroCandidates(hero,candidates,'assets/img/product-npk.svg');
     const c=v?.commerce||null,p=c?((c.sale_price!==null&&c.sale_price!==undefined&&c.sale_price!=='')?c.sale_price:c.price):null;
@@ -270,9 +274,10 @@ function mergeV2(card,commerce,productId){
     const legacy=cm.get(v.sku)||{};
     const wanted=String(v?.label||v?.package||legacy?.variant||'').trim();
     const canonical=window.BB610?.skuForPackage?.(productId,wanted,legacy?.sku||v?.sku)||null;
-    const image=canonical&&rawProduct
+    const packageImage=String(window.BB610?.imageForPackage?.(productId,wanted)||'').trim();
+    const image=packageImage||(canonical&&rawProduct
       ?(window.BB610?.productImage?.(rawProduct,canonical)||canonical?.image||'')
-      :(v.image||legacy?.image||'');
+      :(v.image||legacy?.image||''));
     return {
       ...v,
       ...legacy,

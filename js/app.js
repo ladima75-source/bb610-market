@@ -201,9 +201,7 @@ const BB610 = (() => {
     const priceRequest=explicitRequest||(!hasVisiblePrice&&(
       s?.availability==='preorder'||s?.availability==='backorder'||p.category==='containers'
     ));
-    const cardUnit=s?.volume_weight?.unit||p.unit||'';
-    const cardQty=s?.volume_weight?.value||p.unitQty||0;
-    const unit=priceRequest?'':(hasVisiblePrice&&Number(cardQty)>0&&cardUnit?`${money(Math.round(Number(cardPrice)/Number(cardQty)))} / ${cardUnit}`:'');
+    const unit='';
     const displayStock=priceRequest?'Під замовлення':stock;
     // Card-level invariant: a priced SKU that is not explicitly out of stock
     // must never render a disabled BUY button.
@@ -223,7 +221,7 @@ const BB610 = (() => {
         </div>
         <div class="product-card-commerce">
           <div class="stock">${displayStock}</div>
-          <div class="price-row"><div><div class="price">${priceRequest?'Ціна за запитом':money(cardPrice)}</div>${unit?`<div class="unit-price">${unit}</div>`:''}</div></div>
+          <div class="price-row"><div><div class="price">${priceRequest?'Ціна за запитом':money(cardPrice)}</div></div></div>
           <div class="card-actions">
             ${priceRequest?`<button class="btn buy-btn price-request-btn" data-request-price="${s?.id||''}">ЗАПРОСИТИ ЦІНУ</button>`:`<button class="btn buy-btn" data-add="${s?.id||p.id}" ${buyEnabled?'':'disabled'}>КУПИТИ</button>`}
             <button class="btn ghost fav-toggle" data-fav="${p.id}" aria-label="Додати в обране">${fav?'♥':'♡'}</button>

@@ -701,6 +701,35 @@ def main() -> int:
     print("FAILED_SKU:", len(failed))
     print("PUBLIC_SKU_PHOTO_OVERRIDES:", len(overrides.get("skus") or {}))
     print("PRICE_STOCK_WRITES: 0")
+
+    # Verify not only that photo files/overrides exist, but that they actually
+    # reach the canonical public Product Master consumed by catalog cards.
+    try:
+        public=catalog_cms.public_content()
+        override_products={
+            str(row.get("product_id") or "").strip()
+            for row in (overrides.get("skus") or {}).values()
+            if isinstance(row,dict) and str(row.get("product_id") or "").strip()
+        }
+        public_rows=[
+            row for row in (public.get("skus") or [])
+            if isinstance(row,dict)
+            and str(row.get("product_id") or "").strip() in override_products
+        ]
+        projected=[row for row in public_rows if row.get("organic_planet_photo")]
+        missing_public=[
+            str(row.get("id") or row.get("sku") or "")
+            for row in public_rows
+            if not row.get("organic_planet_photo")
+        ]
+        print("PUBLIC_TARGET_SKU_ROWS:",len(public_rows))
+        print("PUBLIC_PROJECTED_PHOTO_SKU:",len(projected))
+        print("PUBLIC_UNPROJECTED_PHOTO_SKU:",len(missing_public))
+        if missing_public:
+            print("PUBLIC_UNPROJECTED:",", ".join(missing_public[:80]))
+    except Exception as exc:
+        print("PUBLIC_PROJECTION_CHECK: ERROR",exc)
+
     print("BACKUP:", backup)
     if unresolved:
         print("UNRESOLVED:", ", ".join(unresolved[:80]))

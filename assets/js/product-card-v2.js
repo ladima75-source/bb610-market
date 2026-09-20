@@ -45,7 +45,7 @@ const samePackage=(wanted,row)=>{
   return rowPackValues(row).some(raw=>(wk&&packKey(raw)===wk)||(wm&&packMetric(raw)===wm));
 };
 function liveSkuForV3(v,productId){
-  const wanted=String(v?.package||v?.label||'').trim();
+  const wanted=String(v?.label||v?.package||'').trim();
   const rows=window.BB610_DATA_SOURCE?.skusForProduct?.(productId)||[];
 
   // Package is authoritative. V3 commerce keys may be stale or duplicated
@@ -77,7 +77,7 @@ function approvedSkuImage(product,liveSku,v){
   const usable=row=>{const src=image(row);return src&&!placeholderMedia(src)?src:''};
   const ids=[liveSku?.id,liveSku?.sku,v?.commerce_key,v?.commerce?.sku,v?.sku_code,v?.sku_id].map(x=>String(x||'').trim()).filter(Boolean);
   for(const id of ids){const exact=rows.find(row=>[row?.sku,row?.id].some(x=>String(x||'').trim()===id)&&usable(row));if(exact)return usable(exact)}
-  const wanted=packKey(liveSku?.variant||liveSku?.package||liveSku?.label||v?.package||v?.label);
+  const wanted=packKey(liveSku?.variant||liveSku?.label||liveSku?.package||v?.label||v?.package);
   if(wanted){const matched=rows.find(row=>packKey(row?.label||row?.variant||row?.package)===wanted&&usable(row));if(matched)return usable(matched)}
   return '';
 }
@@ -221,7 +221,7 @@ function bindV3(shell,card){
     vs[0];
   const apply=v=>{
     const productId=slug();
-    const wantedPack=String(v?.package||v?.label||'').trim();
+    const wantedPack=String(v?.label||v?.package||'').trim();
     const liveSku=liveSkuForV3(v,productId);
     const rawProduct=window.BB610_DATA_SOURCE?.product?.(productId);
     const packagePath=String(window.BB610?.imageForPackage?.(productId,wantedPack)||'').trim();
@@ -231,7 +231,7 @@ function bindV3(shell,card){
     const productPath=typeof rawProduct?.image==='string'?rawProduct.image:String(rawProduct?.image?.local||'').trim();
     const productGallery=firstRealMedia(rawProduct?.gallery);
     const liveGallery=firstRealMedia(liveSku?.gallery);
-    const packageKeys=new Set(vs.map(row=>packKey(row?.package||row?.label)).filter(Boolean));
+    const packageKeys=new Set(vs.map(row=>packKey(row?.label||row?.package)).filter(Boolean));
     const strictPackageMedia=packageKeys.size>1;
     // The selected package is authoritative. For multi-package products the
     // canonical Product Master package image is the only acceptable first

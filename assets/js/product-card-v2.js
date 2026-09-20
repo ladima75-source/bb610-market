@@ -224,6 +224,7 @@ function bindV3(shell,card){
     const wantedPack=String(v?.label||v?.package||'').trim();
     const liveSku=liveSkuForV3(v,productId);
     const rawProduct=window.BB610_DATA_SOURCE?.product?.(productId);
+    const runtimePackagePath=String(v?.package_media?.path||'').trim();
     const packagePath=String(window.BB610?.imageForPackage?.(productId,wantedPack)||'').trim();
     const livePath=String(liveSku?.image||'').trim();
     const v3Path=String(v?.primary_media?.path||'').trim();
@@ -236,7 +237,7 @@ function bindV3(shell,card){
     // The selected package is authoritative. For multi-package products the
     // canonical Product Master package image is the only acceptable first
     // choice; V3/commerce media are merely same-package fallbacks.
-    const candidates=[packagePath,livePath,approvedPath,v3Path,liveGallery];
+    const candidates=[runtimePackagePath,packagePath,livePath,approvedPath,v3Path,liveGallery];
     if(!strictPackageMedia)candidates.push(productPath,productGallery);
     setHeroCandidates(hero,candidates,'assets/img/product-npk.svg');
     const c=v?.commerce||null,p=c?((c.sale_price!==null&&c.sale_price!==undefined&&c.sale_price!=='')?c.sale_price:c.price):null;

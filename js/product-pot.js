@@ -212,7 +212,7 @@ function renderTechnologyExplainer(product){
 function renderApprovedInfographic(selectedSku){
   if(articleFromSku(selectedSku)!=='1308125')return '';
   return `<figure class="pot-approved-infographic" aria-label="Інфографіка конструкції круглого контейнера 25 л">
-    <img src="assets/img/plantlogic/1308125-infographic.avif" alt="Круглий контейнер 25 л для вирощування лохини — конструкція, розміри та переваги" loading="lazy" decoding="async">
+    <img src="assets/img/plantlogic/1308125-infographic.webp?v=20260920-1308125-infographic-1" alt="Круглий контейнер 25 л для вирощування лохини — конструкція, розміри та переваги" loading="lazy" decoding="async">
   </figure>`;
 }
 

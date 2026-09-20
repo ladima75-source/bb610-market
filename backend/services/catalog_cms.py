@@ -90,6 +90,41 @@ def _photo_pack_key(value):
     return re.sub(r'[^0-9a-zа-яіїєґ.+-]','',s)
 
 
+def _catalog_sku_media_fallbacks(static_products):
+    """Return approved SKU photos already stored in catalog.master.json.
+
+    Runtime commerce can expose a different SKU id for the same product/package.
+    In that case the curated package photo must follow (product_id + package),
+    not disappear just because the commercial SKU identity changed.
+    """
+    by_sku={}
+    by_product_pack={}
+    for pid,product in (static_products or {}).items():
+        rows=[]
+        variants=product.get('variants') or []
+        if isinstance(variants,list):
+            rows.extend(x for x in variants if isinstance(x,dict))
+        direct=product.get('sku_photo') or []
+        if isinstance(direct,list):
+            rows.extend(x for x in direct if isinstance(x,dict))
+        pcv2=product.get('product_card_v2') or {}
+        if isinstance(pcv2,dict):
+            photos=pcv2.get('sku_photo') or []
+            if isinstance(photos,list):
+                rows.extend(x for x in photos if isinstance(x,dict))
+        for row in rows:
+            image=str(row.get('image') or row.get('image_url') or '').strip()
+            if not image or _placeholder_media(image):
+                continue
+            sku_id=str(row.get('sku') or row.get('id') or '').strip()
+            if sku_id:
+                by_sku[sku_id]=image
+            pack=_photo_pack_key(row.get('label') or row.get('variant') or row.get('package'))
+            if pack:
+                by_product_pack[(str(pid),pack)]=image
+    return by_sku,by_product_pack
+
+
 def _normalize_content(body:dict, base:Optional[dict]=None):
     x=dict(base or {})
     allowed=['name','official_name','brand','manufacturer','country','category_id','product_type','form','npk','active_ingredient','concentration','manufacturer_use','application','rate','restrictions','target','waiting_period','hazard_class','registration','short_description']
@@ -240,6 +275,28 @@ def public_content():
             matches=by_product_pack.get((pid,pack)) or []
             if len(matches)==1:
                 apply_photo(matches[0],media_patch)
+
+    # Catalog Master already contains manually approved package photos for many
+    # products. Project them onto the current runtime SKU identity by exact SKU
+    # first, then by (product + package). This is presentation-only and never
+    # touches price, stock, availability or publication state.
+    approved_by_sku,approved_by_product_pack=_catalog_sku_media_fallbacks(static_products)
+    for sid,row in sku_map.items():
+        current=str(row.get('image') or '').strip()
+        if current and not _placeholder_media(current):
+            continue
+        image=approved_by_sku.get(str(sid))
+        if not image:
+            pid=str(row.get('product_id') or '').strip()
+            pack=_photo_pack_key(row.get('variant') or row.get('package') or row.get('label'))
+            image=approved_by_product_pack.get((pid,pack))
+        if image:
+            row['image']=image
+            gallery=[str(x) for x in (row.get('gallery') or []) if str(x).strip() and not _placeholder_media(x)]
+            if image not in gallery:
+                gallery.insert(0,image)
+            row['gallery']=gallery
+            row['catalog_master_media']=True
 
     # Generic storefront SVGs are presentation fallbacks, not SKU media.
     # Keeping them in the canonical SKU row makes cardV2 prefer the fallback over

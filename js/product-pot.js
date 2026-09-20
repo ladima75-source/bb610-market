@@ -216,6 +216,11 @@ function renderApprovedInfographic(selectedSku){
       <img src="assets/img/plantlogic/1308125-infographic.webp?v=20260920-1308125-infographic-2" alt="Круглий контейнер 25 л для вирощування лохини — конструкція, розміри та переваги" loading="lazy" decoding="async">
     </figure>`;
   }
+  if(article==='1303025'){
+    return `<figure class="pot-approved-infographic" aria-label="Технічна інфографіка круглого контейнера Plantlogic 25 л з короткими ніжками">
+      <img src="assets/img/plantlogic/1303025-infographic.svg?v=20260920-1303025-infographic-1" alt="Plantlogic 25 л, артикул 1303025 — розміри, короткі ніжки 12 мм, 48 дренажних отворів, пірамідальне дно та сумісність з Large Lysimeter" loading="lazy" decoding="async">
+    </figure>`;
+  }
   if(['1301144','1301153','1301143'].includes(article)){
     return `<figure class="pot-approved-infographic" aria-label="Інфографіка контейнера Zephyr V2">
       <img src="assets/img/plantlogic/zephyr-v2-infographic.png?v=20260920-zephyr-v2-infographic-1" alt="Zephyr V2 — контейнер для вирощування лохини, конструкція, розміри та переваги" loading="lazy" decoding="async">

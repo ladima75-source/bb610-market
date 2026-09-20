@@ -184,3 +184,12 @@
   .pot-spec-row{grid-template-columns:minmax(115px,.8fr) 1.2fr;gap:10px;padding:12px;font-size:13px}
   .pot-doc-card{min-height:190px}
 }
+
+
+/* Product #1308125 — approved full-width infographic. */
+.pot-approved-infographic{margin:28px 0 0}
+.pot-approved-infographic img{display:block;width:100%;height:auto;border-radius:18px;background:#fff}
+@media(max-width:620px){
+  .pot-approved-infographic{margin-top:20px}
+  .pot-approved-infographic img{border-radius:12px}
+}

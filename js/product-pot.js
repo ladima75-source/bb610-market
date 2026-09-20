@@ -209,6 +209,18 @@ function renderTechnologyExplainer(product){
   </section>`;
 }
 
+function renderApprovedInfographic(selectedSku){
+  if(articleFromSku(selectedSku)!=='1308125')return '';
+  return `<figure class="pot-approved-infographic" aria-label="Інфографіка конструкції круглого контейнера 25 л">
+    <img src="assets/img/plantlogic/1308125-infographic.avif" alt="Круглий контейнер 25 л для вирощування лохини — конструкція, розміри та переваги" loading="lazy" decoding="async">
+  </figure>`;
+}
+
+function renderProductStory(product,selectedSku){
+  if(articleFromSku(selectedSku)==='1308125')return renderApprovedInfographic(selectedSku);
+  return `${renderBenefits(product,selectedSku)}${renderTechnologyExplainer(product)}`;
+}
+
 function renderGardenGuide(product){
   const data=product.garden_guide;
   if(!data||typeof data!=='object'||!text(data.url))return '';
@@ -407,8 +419,7 @@ function render({product,root,selectedSkuId}){
       </div>
     </section>
 
-    ${renderBenefits(product,selectedSku)}
-    ${renderTechnologyExplainer(product)}
+    ${renderProductStory(product,selectedSku)}
 
     <section class="pot-section pot-tech">
       <div class="pot-section-head"><span>ТЕХНІЧНІ ДАНІ</span><h2>Характеристики вибраного варіанта</h2></div>

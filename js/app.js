@@ -17,9 +17,14 @@ const BB610 = (() => {
     ?'assets/img/product-container.svg'
     :(category==='biostimulation'?'assets/img/product-biostim.svg':'assets/img/product-npk.svg');
   const GENERIC_PRODUCT_IMAGES=new Set([
-    'assets/img/product-container.svg',
-    'assets/img/product-biostim.svg',
     'assets/img/product-npk.svg',
+    'assets/img/product-master.svg',
+    'assets/img/product-plantafol.svg',
+    'assets/img/product-megafol.svg',
+    'assets/img/product-biostim.svg',
+    'assets/img/product-container.svg',
+    'assets/img/product-container45.svg',
+    'assets/img/product-protection.svg',
   ]);
   const imageValue=image=>{
     if(typeof image==='string')return image.trim();
@@ -31,12 +36,50 @@ const BB610 = (() => {
     .split(/[?#]/,1)[0]
     .replace(/^\/+/, '');
   const isFallbackImage=image=>GENERIC_PRODUCT_IMAGES.has(normalizedImagePath(image));
+  const mediaPackKey=value=>{
+    let s=String(value||'').toLowerCase().replace(',','.').trim();
+    s=s.replace(/літрів|літра|літр|литров|литра|литр/g,'л')
+      .replace(/мілілітрів|мілілітра|мілілітр|миллилитров|миллилитра|миллилитр/g,'мл')
+      .replace(/кілограмів|кілограма|кілограм|килограммов|килограмма|килограмм/g,'кг')
+      .replace(/грамів|грама|грам|граммов|грамма/g,'г')
+      .replace(/\bml\b/g,'мл').replace(/\bkg\b/g,'кг').replace(/\bl\b/g,'л').replace(/\bg\b/g,'г')
+      .replace(/\s+/g,'');
+    return s.replace(/[^0-9a-zа-яіїєґ.+-]/g,'');
+  };
+  const approvedSkuImage=(p,s=null)=>{
+    const rows=[];
+    if(Array.isArray(p?.variants))rows.push(...p.variants.filter(x=>x&&typeof x==='object'));
+    if(Array.isArray(p?.sku_photo))rows.push(...p.sku_photo.filter(x=>x&&typeof x==='object'));
+    if(Array.isArray(p?.product_card_v2?.sku_photo))rows.push(...p.product_card_v2.sku_photo.filter(x=>x&&typeof x==='object'));
+    const usable=row=>{
+      const src=imageValue(row?.image||row?.image_url);
+      return src&&!isFallbackImage(src)?src:'';
+    };
+    const sid=String(s?.id||s?.sku||'').trim();
+    if(sid){
+      const exact=rows.find(row=>[row?.sku,row?.id].some(v=>String(v||'').trim()===sid)&&usable(row));
+      if(exact)return usable(exact);
+    }
+    const wanted=mediaPackKey(s?.variant||s?.package||s?.label);
+    if(wanted){
+      const matched=rows.find(row=>mediaPackKey(row?.label||row?.variant||row?.package)===wanted&&usable(row));
+      if(matched)return usable(matched);
+    }
+    return '';
+  };
+  const firstRealImage=list=>(Array.isArray(list)?list:[]).map(imageValue).find(src=>src&&!isFallbackImage(src))||'';
   const productImage=(p,s=null)=>{
     const categoryId=p?.category_id||p?.category||'';
     const skuImage=imageValue(s?.image);
     if(skuImage&&!isFallbackImage(skuImage))return skuImage;
+    const skuGallery=firstRealImage(s?.gallery);
+    if(skuGallery)return skuGallery;
+    const approved=approvedSkuImage(p,s);
+    if(approved)return approved;
     const baseImage=imageValue(p?.image);
     if(baseImage&&!isFallbackImage(baseImage))return baseImage;
+    const galleryImage=firstRealImage(p?.gallery);
+    if(galleryImage)return galleryImage;
     return fallbackImage(categoryId);
   };
   const compactText=v=>String(v||'').replace(/\s+/g,' ').trim();
@@ -259,7 +302,7 @@ const BB610 = (() => {
     const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
     if(typeof d.showModal==='function')d.showModal();
   }
-  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,productImage,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
+  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,productImage,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);
 
 function bb610LoadProductCardV3Enhancements(){

@@ -5,6 +5,7 @@ const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelect
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
 const rich=s=>esc(s).replace(/\r?\n/g,'<br>');
 const abs=p=>{p=String(p||'').trim();if(!p)return'';if(/^https?:\/\//i.test(p))return p;if(/^\/?media\/products\//i.test(p))return API+'/'+p.replace(/^\//,'');return SITE+p.replace(/^\//,'')};
+const placeholderMedia=src=>{const v=String(src||'').toLowerCase().split('?',1)[0];return v.endsWith('assets/img/product-npk.svg')||v.endsWith('assets/img/product-biostim.svg')||v.endsWith('assets/img/product-container.svg')};
 const params=()=>new URLSearchParams(location.search);
 const slug=()=>window.BB610_PRODUCT_ID||params().get('id')||((location.pathname.match(/\/products\/([^\/]+)\/?/i)||[])[1]||'');
 const requestedSku=()=>window.BB610_SKU_ID||params().get('sku')||'';
@@ -157,7 +158,11 @@ function bindV3(shell,card){
     vs[0];
   const apply=v=>{
     const liveSku=liveSkuForV3(v,slug());
-    const path=liveSku?.image||v?.primary_media?.path||'';
+    const livePath=String(liveSku?.image||'').trim();
+    const v3Path=String(v?.primary_media?.path||'').trim();
+    const rawProduct=window.BB610_DATA_SOURCE?.product?.(slug());
+    const productPath=typeof rawProduct?.image==='string'?rawProduct.image:String(rawProduct?.image?.local||'').trim();
+    const path=(!placeholderMedia(livePath)&&livePath)||(!placeholderMedia(v3Path)&&v3Path)||(!placeholderMedia(productPath)&&productPath)||livePath||v3Path||productPath||'';
     if(path&&hero)hero.src=abs(path);
     const c=v?.commerce||null,p=c?((c.sale_price!==null&&c.sale_price!==undefined&&c.sale_price!=='')?c.sale_price:c.price):null;
     $('#mpcPrice',shell).textContent=money(p)||'Ціна уточнюється';

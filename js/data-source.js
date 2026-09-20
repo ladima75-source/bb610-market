@@ -6,6 +6,27 @@ window.BB610_DATA_SOURCE={
   skus(){return this.catalog().skus||[]},
   variants(){return this.catalog().variants||[]},
   categories(){return this.catalog().categories||[]},
+  _staticProductMedia:null,
+  _captureStaticProductMedia(){
+    if(this._staticProductMedia)return;
+    this._staticProductMedia=new Map((this.catalog().products||[]).filter(p=>p?.id).map(p=>[
+      String(p.id),
+      {
+        id:p.id,
+        image:p.image,
+        gallery:Array.isArray(p.gallery)?[...p.gallery]:[],
+        variants:Array.isArray(p.variants)?p.variants.map(x=>({...x})):[],
+        sku_photo:Array.isArray(p.sku_photo)?p.sku_photo.map(x=>({...x})):[],
+        product_card_v2:p.product_card_v2&&typeof p.product_card_v2==='object'
+          ?{sku_photo:Array.isArray(p.product_card_v2.sku_photo)?p.product_card_v2.sku_photo.map(x=>({...x})):[]}
+          :null,
+      }
+    ]));
+  },
+  staticProductMedia(id){
+    this._captureStaticProductMedia();
+    return this._staticProductMedia?.get(String(id||''))||null;
+  },
   product(id){return (this.catalog().products||[]).find(x=>x.id===id)||null},
   sku(id){return this.skus().find(x=>x.id===id||x.sku===id)||null},
   skusForProduct(productId){return this.skus().filter(x=>x.product_id===productId)},
@@ -73,6 +94,7 @@ window.BB610_DATA_SOURCE={
   async refresh(){
     if(this._refreshPromise)return this._refreshPromise;
     this._refreshPromise=(async()=>{
+      this._captureStaticProductMedia();
       const base=(window.BB610_COMMERCE_CONFIG?.apiBaseUrl||'https://api.market.bb610.com.ua').replace(/\/$/,'');
       if(!base)return this.catalog();
       const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),6000);

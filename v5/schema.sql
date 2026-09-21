@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS products (
   characteristics_json TEXT NOT NULL DEFAULT '{}',
   seo_title TEXT,
   seo_description TEXT,
+  public_enabled INTEGER NOT NULL DEFAULT 1 CHECK (public_enabled IN (0,1)),
   status TEXT NOT NULL DEFAULT 'draft'
     CHECK (status IN ('draft','active','archived')),
   created_at TEXT NOT NULL,
@@ -67,6 +68,8 @@ CREATE TABLE IF NOT EXISTS product_media (
   product_id TEXT NOT NULL REFERENCES products(product_id) ON DELETE CASCADE,
   media_id TEXT NOT NULL REFERENCES media(media_id) ON DELETE CASCADE,
   sort_order INTEGER NOT NULL DEFAULT 0,
+  source_kind TEXT,
+  source_url TEXT,
   PRIMARY KEY (product_id, media_id)
 );
 
@@ -75,8 +78,8 @@ CREATE TABLE IF NOT EXISTS sku_media (
   media_id TEXT NOT NULL REFERENCES media(media_id) ON DELETE CASCADE,
   is_primary INTEGER NOT NULL DEFAULT 0 CHECK (is_primary IN (0,1)),
   sort_order INTEGER NOT NULL DEFAULT 0,
-  binding_kind TEXT NOT NULL DEFAULT 'representative'
-    CHECK (binding_kind IN ('exact','representative')),
+  binding_kind TEXT NOT NULL DEFAULT 'exact'
+    CHECK (binding_kind = 'exact'),
   source_kind TEXT,
   source_url TEXT,
   PRIMARY KEY (sku_id, media_id)

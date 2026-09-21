@@ -39,16 +39,20 @@ jobs:
           con=sqlite3.connect('/tmp/bb610-v5.sqlite3')
           q=lambda sql: con.execute(sql).fetchone()[0]
           assert q('SELECT COUNT(*) FROM products') == 86
-          assert q('SELECT COUNT(*) FROM skus') == 253
-          assert q('SELECT COUNT(*) FROM sku_commerce') == 253
-          assert q('SELECT COUNT(*) FROM sku_aliases') == 77
+          assert q('SELECT COUNT(*) FROM skus') == 221
+          assert q('SELECT COUNT(*) FROM sku_commerce') == 221
+          assert q('SELECT COUNT(*) FROM sku_aliases') == 109
           assert q('SELECT COUNT(*) FROM product_sources') == 118
           assert q("SELECT COUNT(*) FROM migration_evidence WHERE entity_type='product' AND field_name='content' AND decision='accepted'") == 86
-          assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'") == 48
-          assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='legacy_disabled'") == 1
-          assert q("SELECT COUNT(*) FROM media") == 281
-          assert q("SELECT COUNT(*) FROM sku_media") == 508
-          assert q("SELECT COUNT(DISTINCT sku_id) FROM sku_media WHERE binding_kind='exact'") == 180
+          assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'") == 17
+          assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='legacy_disabled'") == 0
+          assert q("SELECT COUNT(*) FROM media") == 279
+          assert q("SELECT COUNT(*) FROM sku_media") == 177
+          assert q("SELECT COUNT(DISTINCT sku_id) FROM sku_media WHERE binding_kind='exact'") == 177
+          assert q("SELECT COUNT(*) FROM sku_media WHERE binding_kind!='exact'") == 0
+          assert q("SELECT COUNT(*) FROM product_media") == 282
+          assert q("SELECT COUNT(*) FROM products WHERE public_enabled=1 AND status='active'") == 82
+          assert q("SELECT COUNT(*) FROM products WHERE public_enabled=0") == 4
           assert q("SELECT COUNT(*) FROM skus WHERE package_group='small'") > 0
           assert q("SELECT COUNT(*) FROM skus WHERE package_group='medium'") > 0
           assert q("SELECT COUNT(*) FROM skus WHERE package_group='large'") > 0
@@ -66,15 +70,24 @@ jobs:
           data=snapshot()
           assert data['schema_version']=='5.0'
           assert data['counts']['products']==86
-          assert data['counts']['skus']==253
+          assert data['counts']['skus']==221
+          assert data['counts']['public_products']==82
+          assert data['counts']['hidden_products']==4
+          assert data['counts']['public_skus'] < data['counts']['skus']
           assert data['counts']['product_sources']==118
-          assert data['counts']['media']==281
+          assert data['counts']['media']==279
+          assert data['counts']['product_media']==282
+          assert data['counts']['exact_sku_media']==177
           kendal=product('kendal')
           assert kendal is not None and kendal['description'] and kendal['sources']
-          switch=product('switch-625-wg')
-          assert switch is not None and switch['category_id']=='protection'
+          assert product('switch-625-wg') is None
+          hidden_switch=product('switch-625-wg', public_only=False)
+          assert hidden_switch is not None and hidden_switch['public_enabled']==0
+          assert product('plantlogic-25l-round-new-1308125') is None
           grouped=product('plantlogic-40-round-ugroove-1308041')
           assert grouped is not None and grouped['product_id']=='blueberry-round-u-groove-pots'
+          assert all(m.get('binding_kind')=='exact' for s in grouped['skus'] for m in s.get('media',[]))
+          assert grouped['media']
           assert product('plantlogic-40l-round-u-grooves-1308041')['product_id']=='blueberry-round-u-groove-pots'
           assert resolve_sku_id('BB610-VLG-KENDAL-100ML')=='BB610-32DA4F652F73A1'
           print('BB610 V5 SHADOW API SERVICE: PASS')

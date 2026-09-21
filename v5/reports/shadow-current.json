@@ -1,10 +1,10 @@
 {
   "schema": "bb610-v5-shadow-report-1",
-  "status": "WARN",
+  "status": "PASS",
   "summary": {
-    "checks_pass": 7,
+    "checks_pass": 9,
     "checks_fail": 0,
-    "warnings": 2,
+    "warnings": 0,
     "source_commerce_rows": 286,
     "v5_products": 86,
     "v5_skus": 221,
@@ -28,6 +28,11 @@
       "note": "checked=204, mismatches=0"
     },
     {
+      "name": "alias_commerce_preservation",
+      "status": "PASS",
+      "note": "checked=78, mismatches=0"
+    },
+    {
       "name": "content_coverage",
       "status": "PASS",
       "note": "products=86/86, sources=118, source_less=0"
@@ -46,20 +51,14 @@
       "name": "plantlogic_assortment",
       "status": "PASS",
       "note": "manufacturer_models=17, duplicate_or_missing_model_keys=0, wrong_colors=0"
-    }
-  ],
-  "warnings": [
-    {
-      "name": "legacy_alias_commerce_conflicts",
-      "status": "WARN",
-      "note": "active_aliases=12, price_conflicts=2"
     },
     {
       "name": "canonical_price_decisions",
-      "status": "WARN",
-      "note": "recorded_conflicts=2"
+      "status": "PASS",
+      "note": "recorded_conflicts=2; legacy values preserved in sku_alias_commerce"
     }
   ],
+  "warnings": [],
   "details": {
     "identity_uniqueness": {
       "duplicate_product_ids": [],
@@ -73,30 +72,7 @@
       "unmapped": []
     },
     "direct_commerce_parity": [],
-    "legacy_alias_commerce_conflicts": [
-      {
-        "alias_sku_id": "BB610-VLG-KENDAL-100ML",
-        "canonical_sku_id": "BB610-32DA4F652F73A1",
-        "product_id": "kendal",
-        "diff": {
-          "price": {
-            "legacy": 215.0,
-            "canonical": 220.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-VLG-KENDAL-1L",
-        "canonical_sku_id": "BB610-0BDAED34128BDA",
-        "product_id": "kendal",
-        "diff": {
-          "price": {
-            "legacy": 1200.0,
-            "canonical": 1126.0
-          }
-        }
-      }
-    ],
+    "alias_commerce_preservation": [],
     "content_coverage": {
       "missing": [],
       "source_less": []

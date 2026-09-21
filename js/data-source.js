@@ -1,12 +1,25 @@
 window.BB610_DATA_SOURCE={
   mode:'product-master-v4',
   _refreshPromise:null,
-  catalog(){return window.BB610_CATALOG||{categories:[],brands:[],products:[],variants:[],skus:[],solutions:[],bundles:[]}},
+  _staticProductMedia:null,
+  _productAliases:new Map(),
+  _skuAliases:new Map(),
+
+  catalog(){
+    return window.BB610_CATALOG||{
+      categories:[],brands:[],products:[],variants:[],skus:[],solutions:[],bundles:[]
+    };
+  },
   products(){return (this.catalog().products||[]).filter(x=>!x.internal_only&&!x.runtime_hidden)},
   skus(){return this.catalog().skus||[]},
   variants(){return this.catalog().variants||[]},
   categories(){return this.catalog().categories||[]},
-  _staticProductMedia:null,
+
+  _v5Requested(){
+    if(window.BB610_STOREFRONT_V5===true)return true;
+    try{return new URLSearchParams(location.search).get('v5')==='1'}catch(_){return false}
+  },
+
   _captureStaticProductMedia(){
     if(this._staticProductMedia)return;
     this._staticProductMedia=new Map((this.catalog().products||[]).filter(p=>p?.id).map(p=>[
@@ -23,14 +36,204 @@ window.BB610_DATA_SOURCE={
       }
     ]));
   },
+
   staticProductMedia(id){
+    if(String(this.mode||'').startsWith('bb610-product-master-v5'))return null;
     this._captureStaticProductMedia();
     return this._staticProductMedia?.get(String(id||''))||null;
   },
-  product(id){return (this.catalog().products||[]).find(x=>x.id===id)||null},
-  sku(id){return this.skus().find(x=>x.id===id||x.sku===id)||null},
-  skusForProduct(productId){return this.skus().filter(x=>x.product_id===productId)},
-  defaultSku(productId){const p=this.product(productId);return p?.default_sku_id?this.sku(p.default_sku_id):null},
+
+  product(id){
+    const key=String(id||'').trim();
+    if(!key)return null;
+    const direct=(this.catalog().products||[]).find(x=>x.id===key||x.slug===key);
+    if(direct)return direct;
+    const canonical=this._productAliases.get(key);
+    return canonical?(this.catalog().products||[]).find(x=>x.id===canonical)||null:null;
+  },
+
+  sku(id){
+    const key=String(id||'').trim();
+    if(!key)return null;
+    const direct=this.skus().find(x=>x.id===key||x.sku===key);
+    if(direct)return direct;
+    const alias=this._skuAliases.get(key);
+    if(!alias)return null;
+    const canonical=this.skus().find(x=>x.id===alias.canonical_sku_id||x.sku===alias.canonical_sku_id);
+    if(!canonical)return null;
+    const sale=alias.sale_price;
+    const base=alias.price;
+    const effective=sale!==null&&sale!==undefined?sale:base;
+    const availability=alias.availability||canonical.availability||'unknown';
+    const commerceEnabled=alias.enabled===1||alias.enabled===true;
+    return {
+      ...canonical,
+      id:key,
+      sku:key,
+      canonical_sku_id:alias.canonical_sku_id,
+      legacy_alias:true,
+      base_price:base,
+      sale_price:sale,
+      price:effective,
+      availability,
+      stock_qty:alias.stock_qty,
+      commercial_status:availability==='request_price'?'request-price':(commerceEnabled?'active':'paused'),
+      offer_status:availability==='request_price'?'request-price':(commerceEnabled?'active':'draft'),
+      price_request:availability==='request_price',
+      stock_label:this._stockLabel(availability),
+      updated_at:alias.updated_at||canonical.updated_at,
+    };
+  },
+
+  skusForProduct(productId){
+    const p=this.product(productId);
+    const id=p?.id||String(productId||'');
+    return this.skus().filter(x=>x.product_id===id);
+  },
+
+  defaultSku(productId){
+    const p=this.product(productId);
+    if(!p)return null;
+    if(p.default_sku_id){
+      const hit=this.sku(p.default_sku_id);
+      if(hit)return hit;
+    }
+    const rows=this.skusForProduct(p.id);
+    return rows.find(x=>x.price!==null&&x.price!==undefined&&x.commercial_status==='active')||
+      rows.find(x=>x.price_request===true)||
+      rows.find(x=>x.enabled!==false)||
+      rows[0]||
+      null;
+  },
+
+  _stockLabel(a){
+    if(a==='in_stock')return 'В наявності';
+    if(a==='out_of_stock')return 'Немає в наявності';
+    if(a==='preorder')return 'Передзамовлення';
+    if(a==='backorder'||a==='on_order'||a==='request_price')return 'Під замовлення';
+    return 'Наявність уточнюється';
+  },
+
+  _mediaPaths(rows){
+    return [...new Set((rows||[]).map(x=>String(x?.path||'').trim()).filter(Boolean))];
+  },
+
+  _v5Sku(raw){
+    const media=this._mediaPaths(raw.media);
+    const primary=(raw.media||[]).find(x=>x?.is_primary)?.path||media[0]||'';
+    const identityEnabled=raw.enabled===1||raw.enabled===true;
+    const commerceEnabled=raw.commerce_enabled===1||raw.commerce_enabled===true;
+    const availability=raw.availability||'unknown';
+    const sale=raw.sale_price;
+    const base=raw.price;
+    const effective=sale!==null&&sale!==undefined?sale:base;
+    const requestPrice=availability==='request_price';
+    return {
+      id:raw.sku_id,
+      sku:raw.sku_id,
+      product_id:raw.product_id,
+      manufacturer_sku:raw.manufacturer_sku||null,
+      variant:raw.package_label||'',
+      package:raw.package_label||'',
+      label:raw.package_label||'',
+      package_value:raw.package_value,
+      package_unit:raw.package_unit,
+      package_group:raw.package_group||'',
+      volume_weight:{
+        value:raw.package_value,
+        unit:raw.package_unit||'шт',
+      },
+      attributes:raw.attributes||{},
+      sort_order:Number(raw.sort_order||0),
+      enabled:identityEnabled,
+      base_price:base,
+      sale_price:sale,
+      price:effective,
+      currency:'UAH',
+      availability,
+      stock_qty:raw.stock_qty,
+      commercial_status:requestPrice?'request-price':(commerceEnabled?'active':'paused'),
+      offer_status:requestPrice?'request-price':(commerceEnabled?'active':'draft'),
+      price_request:requestPrice,
+      stock_label:this._stockLabel(availability),
+      image:primary,
+      gallery:media,
+      facets:{
+        package_group:raw.package_group||'',
+        in_stock:availability==='in_stock',
+      },
+      updated_at:raw.updated_at||null,
+    };
+  },
+
+  _v5Product(raw,skus){
+    const media=this._mediaPaths(raw.media);
+    const source=(raw.sources||[])[0]||null;
+    const sourceRows=(raw.sources||[]).filter(x=>x?.source_url);
+    const productSkus=skus.filter(s=>s.product_id===raw.product_id&&s.enabled!==false);
+    const defaultSku=productSkus.find(s=>s.price!==null&&s.price!==undefined&&s.commercial_status==='active')||
+      productSkus.find(s=>s.price_request===true)||
+      productSkus[0]||
+      null;
+    return {
+      id:raw.product_id,
+      slug:raw.slug||raw.product_id,
+      name:raw.name||raw.product_id,
+      brand:raw.brand||'',
+      manufacturer:raw.manufacturer||raw.brand||'',
+      category_id:raw.category_id||'other',
+      category:raw.category_id||'other',
+      short_description:raw.short_description||'',
+      description:raw.description||'',
+      manufacturer_use:raw.description||'',
+      application:raw.application||'',
+      composition:raw.composition||'',
+      benefits:Array.isArray(raw.benefits)?raw.benefits:[],
+      how_it_works:raw.how_it_works||'',
+      characteristics:Array.isArray(raw.characteristics)?raw.characteristics:[],
+      seo_title:raw.seo_title||'',
+      seo_description:raw.seo_description||'',
+      image:media[0]||'',
+      gallery:media,
+      sources:raw.sources||[],
+      source:source?{title:source.source_label||source.source_type||'Джерело',url:source.source_url||''}:null,
+      documents:sourceRows.map(x=>({title:x.source_label||x.source_type||'Джерело',url:x.source_url})),
+      verification:source?{verifiedAt:source.verified_at||'',status:source.status||'verified'}:null,
+      default_sku_id:defaultSku?.id||null,
+      public_enabled:raw.public_enabled!==0&&raw.public_enabled!==false,
+      status:raw.status||'active',
+      plantlogic_sections:(raw.category_id==='containers'?['blueberry']:[]),
+      facets:{
+        category:raw.category_id||'other',
+        brand:raw.brand||'',
+        in_stock:productSkus.some(s=>s.availability==='in_stock'),
+      },
+    };
+  },
+
+  _applyV5(md){
+    const mappedSkus=(md.products||[]).flatMap(p=>(p.skus||[]).map(s=>this._v5Sku(s)))
+      .filter(s=>s.id&&s.product_id);
+    const mappedProducts=(md.products||[]).map(p=>this._v5Product(p,mappedSkus))
+      .filter(p=>p.id&&p.public_enabled!==false&&p.status==='active');
+
+    const publicIds=new Set(mappedProducts.map(p=>p.id));
+    this.catalog().products=mappedProducts;
+    this.catalog().skus=mappedSkus.filter(s=>publicIds.has(s.product_id));
+    this.catalog().variants=[];
+
+    this._productAliases=new Map(
+      (md.product_aliases||[])
+        .filter(x=>x?.active!==0&&x?.alias&&x?.product_id)
+        .map(x=>[String(x.alias),String(x.product_id)])
+    );
+    this._skuAliases=new Map(
+      (md.sku_aliases||[])
+        .filter(x=>x?.active!==0&&x?.alias_sku_id&&x?.canonical_sku_id)
+        .map(x=>[String(x.alias_sku_id),x])
+    );
+    this.mode=md.source||'bb610-product-master-v5';
+  },
 
   _fixProductMedia(p,base){
     const x={...p};
@@ -58,7 +261,7 @@ window.BB610_DATA_SOURCE={
       s.stock_qty=c.stock_qty;
       s.commercial_status=c.enabled?'active':'paused';
       s.offer_status=c.enabled?'active':'draft';
-      s.stock_label=c.availability==='in_stock'?'В наявності':c.availability==='out_of_stock'?'Немає в наявності':c.availability==='preorder'?'Передзамовлення':c.availability==='backorder'?'Під замовлення':'Наявність уточнюється';
+      s.stock_label=this._stockLabel(c.availability);
     });
   },
 
@@ -97,8 +300,19 @@ window.BB610_DATA_SOURCE={
       this._captureStaticProductMedia();
       const base=(window.BB610_COMMERCE_CONFIG?.apiBaseUrl||'https://api.market.bb610.com.ua').replace(/\/$/,'');
       if(!base)return this.catalog();
-      const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),6000);
+      const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),8000);
       try{
+        if(this._v5Requested()){
+          const r=await fetch(base+'/api/v1/catalog/v5',{
+            signal:ctl.signal,cache:'no-store',headers:{Accept:'application/json'}
+          });
+          if(!r.ok)throw new Error('V5 HTTP '+r.status);
+          const md=await r.json();
+          if(md?.schema_version!=='5.0')throw new Error('Unexpected V5 schema');
+          this._applyV5(md);
+          return this.catalog();
+        }
+
         const mEp=window.BB610_COMMERCE_CONFIG?.endpoints?.productMaster||'/api/v1/catalog/master';
         const mr=await fetch(base+mEp,{signal:ctl.signal,cache:'no-store',headers:{Accept:'application/json'}});
         if(mr.ok){
@@ -107,7 +321,6 @@ window.BB610_DATA_SOURCE={
           return this.catalog();
         }
 
-        // Temporary backwards-compatible fallback for older API deployments.
         const cEp=window.BB610_COMMERCE_CONFIG?.endpoints?.commercialCatalog||'/api/v1/catalog/commerce';
         const pEp=window.BB610_COMMERCE_CONFIG?.endpoints?.catalogContent||'/api/v1/catalog/content';
         const [cr,pr]=await Promise.all([
@@ -121,9 +334,19 @@ window.BB610_DATA_SOURCE={
         }
         this.mode='legacy-api-fallback';
       }catch(e){
-        console.warn('BB610 Product Master unavailable; static catalog fallback used',e);
-        this.mode='static-fallback';
-      }finally{clearTimeout(t)}
+        console.error('BB610 catalog refresh failed',e);
+        if(this._v5Requested()){
+          this.catalog().products=[];
+          this.catalog().skus=[];
+          this._productAliases=new Map();
+          this._skuAliases=new Map();
+          this.mode='bb610-product-master-v5-error';
+        }else{
+          this.mode='static-fallback';
+        }
+      }finally{
+        clearTimeout(t);
+      }
       return this.catalog();
     })();
     return this._refreshPromise;

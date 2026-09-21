@@ -6,11 +6,10 @@ const groups=[
     ['dashboard.html','Огляд','home'],
     ['orders-center.html','Замовлення','bag'],
     ['price-requests.html','Запити ціни','money'],
-    ['commerce-control.html','Керування магазином','grid'],
-    ['catalog-workbench.html','Розширений каталог','adjust']
+    ['commerce-control.html','Керування магазином','grid']
   ]},
   {title:'КАТАЛОГ',items:[
-    ['product-cards.html','Картки товарів','card'],
+    ['catalog.html','Каталог V5','card'],
     ['products.html','Ціни та залишки','money'],
     ['categories-manager.html','Категорії','layers'],
     ['homepage-showcase.html','Головна / Вітрина','layout'],

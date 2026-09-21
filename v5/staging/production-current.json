@@ -1,18 +1,18 @@
 {
   "schema": "bb610-v5-stage-1",
   "summary": {
-    "snapshot_created_at": "2026-09-21T06:44:37.472321+00:00",
+    "snapshot_created_at": "2026-09-21T06:57:58.634177+00:00",
     "production_head": "46e0b2b208c54132bd1c11a70f993000272195f8",
-    "production_origin_main_at_snapshot": "b403599899d7f59d439bd962f6006a8d97106785",
+    "production_origin_main_at_snapshot": "7a94c2815fd44f4c25b468f11ebc000e10938cc0",
     "source_commerce_rows": 286,
     "excluded_test_rows": 4,
-    "canonical_non_plantlogic_products": 81,
-    "canonical_non_plantlogic_skus": 207,
+    "canonical_non_plantlogic_products": 80,
+    "canonical_non_plantlogic_skus": 206,
     "sku_aliases": 75,
     "price_conflicts": 2,
     "plantlogic_grouped_products": 6,
-    "plantlogic_request_price_skus": 48,
-    "v5_stage_products_total": 87,
+    "plantlogic_request_price_skus": 49,
+    "v5_stage_products_total": 86,
     "v5_stage_skus_total": 255
   },
   "products": [
@@ -638,15 +638,6 @@
       "content_state": "candidate_from_v3"
     },
     {
-      "product_id": "plantlogic-40-round-ugroove-1308041",
-      "slug": "plantlogic-40l-round-u-grooves-1308041",
-      "name": "Круглий горщик 40 л з U-пазами — арт. 1308041",
-      "brand": "Plantlogic",
-      "category_id": "Контейнери",
-      "v3_product_id": "prd_pl_1308041",
-      "content_state": "candidate_from_v3"
-    },
-    {
       "product_id": "radifarm",
       "slug": "radifarm",
       "name": "Radifarm — кореневий біостимулятор",
@@ -888,9 +879,9 @@
       "kind": "legacy_slug"
     },
     {
-      "alias": "plantlogic-40l-round-u-grooves-1308041",
-      "product_id": "plantlogic-40-round-ugroove-1308041",
-      "kind": "legacy_slug"
+      "alias": "plantlogic-40-round-ugroove-1308041",
+      "product_id": "blueberry-round-u-groove-pots",
+      "kind": "legacy_product_reparent"
     },
     {
       "alias": "solupotasse",
@@ -5315,23 +5306,6 @@
       "stock_qty": null,
       "enabled": 0,
       "updated_at": "2026-08-30T12:05:15.296254+00:00",
-      "source": "catalog_master_sku",
-      "media_state": "none",
-      "media": []
-    },
-    {
-      "sku_id": "BB610-PLT-1308041-EA",
-      "product_id": "plantlogic-40-round-ugroove-1308041",
-      "package_value": 40.0,
-      "package_unit": "l",
-      "package_label": "40 л",
-      "package_group": "large",
-      "price": null,
-      "sale_price": null,
-      "availability": "unknown",
-      "stock_qty": null,
-      "enabled": 0,
-      "updated_at": "2026-08-30T12:05:15.296260+00:00",
       "source": "catalog_master_sku",
       "media_state": "none",
       "media": []
@@ -9882,6 +9856,23 @@
           "is_primary": false
         }
       ]
+    },
+    {
+      "sku_id": "BB610-PLT-1308041-EA",
+      "v3_sku_id": null,
+      "product_id": "blueberry-round-u-groove-pots",
+      "package_value": 40.0,
+      "package_unit": "l",
+      "package_label": "40 л",
+      "package_group": "large",
+      "attributes": {
+        "legacy_sku": true,
+        "legacy_product_id": "plantlogic-40-round-ugroove-1308041",
+        "identity_status": "preserved_disabled_unresolved_color"
+      },
+      "enabled": false,
+      "commerce_state": "legacy_disabled",
+      "media": []
     }
   ],
   "excluded": [

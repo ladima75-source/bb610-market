@@ -486,3 +486,8 @@ app.include_router(stage22h_media_review_router)
 
 from .stage22l_manual_media_api import router as stage22l_manual_media_router
 app.include_router(stage22l_manual_media_router)
+
+
+# BB610 PRODUCT MASTER V5 SHADOW API
+from .product_master_v5_api import router as product_master_v5_router
+app.include_router(product_master_v5_router)

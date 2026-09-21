@@ -485,3 +485,65 @@
   .product-v2 .product-tab{padding:12px 14px;font-size:13px}
   .product-v2 .product-tab-panels{padding:18px}
 }
+
+
+/* PDP package selector in buy area */
+.product-v2 .product-pack-selector{
+  margin:16px 0 12px;
+  padding:12px 0 2px;
+  border-top:1px solid #2c3439;
+}
+.product-v2 .product-pack-label{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#aeb8bd;
+  margin-bottom:8px;
+}
+.product-v2 .product-pack-selector .pack-grid{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:7px!important;
+}
+.product-v2 .product-pack-selector .pack{
+  appearance:none;
+  flex:0 0 auto!important;
+  min-width:84px!important;
+  max-width:150px!important;
+  padding:8px 11px!important;
+  border:1px solid #394247!important;
+  border-radius:8px!important;
+  background:#1b2124!important;
+  color:#eef2f3!important;
+  text-align:left!important;
+  cursor:pointer;
+}
+.product-v2 .product-pack-selector .pack:hover{
+  border-color:#d89928!important;
+  background:#20272a!important;
+}
+.product-v2 .product-pack-selector .pack.active{
+  border-color:#e9a92d!important;
+  box-shadow:0 0 0 1px #e9a92d inset;
+  background:#242015!important;
+}
+.product-v2 .product-pack-selector .pack b{
+  display:block;
+  font-size:14px!important;
+  line-height:1.1;
+}
+.product-v2 .product-pack-selector .pack-price{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  font-weight:800;
+  color:#f2bd58;
+  line-height:1.15;
+}
+.product-v2 .product-summary .selected-variant{
+  margin-top:6px!important;
+}
+.product-v2 .compact-product-info{
+  margin-top:14px!important;
+}

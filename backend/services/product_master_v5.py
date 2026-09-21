@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 STAGE = ROOT / "v5/staging/production-current.json"
+CONTENT = ROOT / "v5/content/verified-current.json"
 SCHEMA = ROOT / "v5/schema.sql"
 BOOTSTRAP = ROOT / "v5/bootstrap_db.py"
 DB_PATH = Path(os.getenv("BB610_V5_DB_PATH", str(ROOT / "backend/runtime/bb610-v5.sqlite3")))
@@ -20,7 +21,7 @@ def _needs_rebuild() -> bool:
     if not DB_PATH.is_file():
         return True
     db_mtime = DB_PATH.stat().st_mtime
-    return any(path.is_file() and path.stat().st_mtime > db_mtime for path in (STAGE, SCHEMA, BOOTSTRAP))
+    return any(path.is_file() and path.stat().st_mtime > db_mtime for path in (STAGE, CONTENT, SCHEMA, BOOTSTRAP))
 
 
 def ensure_db() -> Path:
@@ -39,6 +40,8 @@ def ensure_db() -> Path:
                 str(BOOTSTRAP),
                 "--stage",
                 str(STAGE),
+                "--content",
+                str(CONTENT),
                 "--schema",
                 str(SCHEMA),
                 "--out",
@@ -56,13 +59,13 @@ def _connect() -> sqlite3.Connection:
     return con
 
 
-def _json(value: str | None):
+def _json(value: str | None, default):
     if not value:
-        return {}
+        return default
     try:
         return json.loads(value)
     except Exception:
-        return {}
+        return default
 
 
 def resolve_product_id(value: str) -> str | None:
@@ -122,10 +125,23 @@ def _sku_rows(con: sqlite3.Connection, product_id: str) -> list[dict]:
     result = []
     for row in rows:
         item = dict(row)
-        item["attributes"] = _json(item.pop("attributes_json", None))
+        item["attributes"] = _json(item.pop("attributes_json", None), {})
         item["media"] = _media_for_sku(con, item["sku_id"])
         result.append(item)
     return result
+
+
+def _sources_for_product(con: sqlite3.Connection, product_id: str) -> list[dict]:
+    rows = con.execute(
+        """
+        SELECT source_id,source_type,source_url,source_label,verified_at,status,notes
+        FROM product_sources
+        WHERE product_id=?
+        ORDER BY verified_at DESC, source_id ASC
+        """,
+        (product_id,),
+    ).fetchall()
+    return [dict(row) for row in rows]
 
 
 def product(product_id_or_alias: str) -> dict | None:
@@ -137,7 +153,8 @@ def product(product_id_or_alias: str) -> dict | None:
             """
             SELECT product_id,slug,name,brand,manufacturer,category_id,
                    short_description,description,application,composition,
-                   characteristics_json,status,created_at,updated_at
+                   benefits_json,how_it_works,characteristics_json,
+                   seo_title,seo_description,status,created_at,updated_at
             FROM products WHERE product_id=?
             """,
             (canonical,),
@@ -145,7 +162,9 @@ def product(product_id_or_alias: str) -> dict | None:
         if not row:
             return None
         item = dict(row)
-        item["characteristics"] = _json(item.pop("characteristics_json", None))
+        item["benefits"] = _json(item.pop("benefits_json", None), [])
+        item["characteristics"] = _json(item.pop("characteristics_json", None), [])
+        item["sources"] = _sources_for_product(con, canonical)
         item["skus"] = _sku_rows(con, canonical)
         item["aliases"] = [
             r["alias"]
@@ -165,14 +184,17 @@ def snapshot() -> dict:
                 """
                 SELECT product_id,slug,name,brand,manufacturer,category_id,
                        short_description,description,application,composition,
-                       characteristics_json,status,created_at,updated_at
+                       benefits_json,how_it_works,characteristics_json,
+                       seo_title,seo_description,status,created_at,updated_at
                 FROM products
                 ORDER BY category_id,brand,name,product_id
                 """
             )
         ]
         for item in products:
-            item["characteristics"] = _json(item.pop("characteristics_json", None))
+            item["benefits"] = _json(item.pop("benefits_json", None), [])
+            item["characteristics"] = _json(item.pop("characteristics_json", None), [])
+            item["sources"] = _sources_for_product(con, item["product_id"])
             item["skus"] = _sku_rows(con, item["product_id"])
 
         counts = {
@@ -180,6 +202,7 @@ def snapshot() -> dict:
             "skus": con.execute("SELECT COUNT(*) FROM skus").fetchone()[0],
             "sku_aliases": con.execute("SELECT COUNT(*) FROM sku_aliases").fetchone()[0],
             "media": con.execute("SELECT COUNT(*) FROM media").fetchone()[0],
+            "product_sources": con.execute("SELECT COUNT(*) FROM product_sources").fetchone()[0],
             "request_price": con.execute(
                 "SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'"
             ).fetchone()[0],

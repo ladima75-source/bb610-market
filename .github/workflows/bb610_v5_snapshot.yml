@@ -78,11 +78,23 @@ jobs:
             --out v5/media/verified-current.json \
             --copy-dir assets/img/v5/media
 
+      - name: Run V5 shadow gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python ops/v5_shadow_compare.py \
+            --snapshot .v5-snapshot \
+            --stage v5/staging/production-current.json \
+            --content v5/content/verified-current.json \
+            --media v5/media/verified-current.json \
+            --json-out v5/reports/shadow-current.json \
+            --md-out v5/reports/shadow-current.md
+
       - name: Commit staging result
         shell: bash
         run: |
           set -euo pipefail
-          git add v5/staging/production-current.json v5/staging/production-current.md v5/content/verified-current.json v5/media/verified-current.json assets/img/v5/media
+          git add v5/staging/production-current.json v5/staging/production-current.md v5/content/verified-current.json v5/media/verified-current.json v5/reports/shadow-current.json v5/reports/shadow-current.md assets/img/v5/media
           if git diff --cached --quiet; then
             echo "No staging changes"
             exit 0
@@ -101,5 +113,7 @@ jobs:
             v5/staging/production-current.md
             v5/content/verified-current.json
             v5/media/verified-current.json
+            v5/reports/shadow-current.json
+            v5/reports/shadow-current.md
           if-no-files-found: error
           retention-days: 7

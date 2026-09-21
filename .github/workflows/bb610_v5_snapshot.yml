@@ -43,6 +43,16 @@ jobs:
           mkdir -p .v5-snapshot
           tar -xzf bb610-v5-production.tar.gz -C .v5-snapshot
 
+      - name: Show sanitized gateway state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          d=json.load(open('.v5-snapshot/manifest.json',encoding='utf-8'))
+          print(json.dumps(d.get('gateway',{}),ensure_ascii=False,indent=2))
+          PY
+
       - name: Build clean V5 staging
         shell: bash
         run: |

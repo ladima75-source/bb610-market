@@ -634,11 +634,128 @@ def _verified_package_media_batch_02(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _verified_package_media_batch_03(con: sqlite3.Connection) -> bool:
+    rows = [
+        {
+            "media_id": "review26_op_master15530_1kg",
+            "sku_id": "BB610-VLG-MASTER15530-1KG",
+            "path": "/assets/img/v5/verified/op-master-15-5-30-1kg.png",
+            "alt": "MASTER 15-5-30 — 1 кг",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-15-5-30-valagro",
+        },
+        {
+            "media_id": "review26_op_master15530_250g",
+            "sku_id": "BB610-VLG-MASTER15530-250G",
+            "path": "/assets/img/v5/verified/op-master-15-5-30-250g.png",
+            "alt": "MASTER 15-5-30 — 250 г",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-15-5-30-valagro",
+        },
+        {
+            "media_id": "review26_op_plantafol02550_250g",
+            "sku_id": "BB610-VLG-PLANTAFOL02550-250G",
+            "path": "/assets/img/v5/verified/op-plantafol-0-25-50-250g.png",
+            "alt": "PLANTAFOL 0-25-50 — 250 г",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-0-25-50-valagro",
+        },
+        {
+            "media_id": "review26_op_plantafol105410_250g",
+            "sku_id": "BB610-VLG-PLANTAFOL105410-250G",
+            "path": "/assets/img/v5/verified/op-plantafol-10-54-10-250g.png",
+            "alt": "PLANTAFOL 10-54-10 — 250 г",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-10-54-10-valagro",
+        },
+        {
+            "media_id": "review26_op_plantafol301010_250g",
+            "sku_id": "BB610-VLG-PLANTAFOL301010-250G",
+            "path": "/assets/img/v5/verified/op-plantafol-30-10-10-250g.png",
+            "alt": "PLANTAFOL 30-10-10 — 250 г",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-30-10-10-valagro",
+        },
+        {
+            "media_id": "review26_op_plantafol51545_250g",
+            "sku_id": "BB610-VLG-PLANTAFOL51545-250G",
+            "path": "/assets/img/v5/verified/op-plantafol-5-15-45-250g.png",
+            "alt": "PLANTAFOL 5-15-45 — 250 г",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-5-15-45-valagro",
+        },
+        {
+            "media_id": "review26_op_megafol_1l",
+            "sku_id": "BB610-VLG-MEGAFOL-1L",
+            "path": "/assets/img/v5/verified/op-megafol-1l.png",
+            "alt": "MEGAFOL — 1 л",
+            "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-1-l-valagro",
+        },
+        {
+            "media_id": "review26_op_megafol_10l",
+            "sku_id": "BB610-VLG-MEGAFOL-10L",
+            "path": "/assets/img/v5/verified/op-megafol-10l.png",
+            "alt": "MEGAFOL — 10 л",
+            "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-10-l-valagro",
+        },
+        {
+            "media_id": "review26_op_kendalroot_10l",
+            "sku_id": "BB610-VLG-KENDALROOT-10L",
+            "path": "/assets/img/v5/verified/op-kendal-root-10l.png",
+            "alt": "Kendal Root — 10 л",
+            "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostymulyator-antystres-dlya-korenya-10-l-valagro",
+        },
+    ]
+
+    for row in rows:
+        if not con.execute(
+            "SELECT 1 FROM skus WHERE sku_id=?",
+            (row["sku_id"],),
+        ).fetchone():
+            return False
+
+    for row in rows:
+        con.execute(
+            """
+            INSERT INTO media(
+              media_id,path,sha256,kind,source_url,verification_status,alt,created_at
+            )
+            VALUES(?,?,NULL,'image',?,'verified',?,?)
+            ON CONFLICT(media_id) DO UPDATE SET
+              path=excluded.path,
+              source_url=excluded.source_url,
+              verification_status='verified',
+              alt=excluded.alt
+            """,
+            (
+                row["media_id"],
+                row["path"],
+                row["source_url"],
+                row["alt"],
+                _now(),
+            ),
+        )
+        con.execute(
+            "UPDATE sku_media SET is_primary=0 WHERE sku_id=?",
+            (row["sku_id"],),
+        )
+        con.execute(
+            """
+            INSERT INTO sku_media(
+              sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+            )
+            VALUES(?,?,1,0,'exact','verified_package_product_page',?)
+            ON CONFLICT(sku_id,media_id) DO UPDATE SET
+              is_primary=1,
+              sort_order=0,
+              source_kind='verified_package_product_page',
+              source_url=excluded.source_url
+            """,
+            (row["sku_id"], row["media_id"], row["source_url"]),
+        )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
     ("20260921_cleanup_superseded_sources_batch01", _cleanup_superseded_sources_batch_01),
     ("20260921_verified_package_media_batch02", _verified_package_media_batch_02),
+    ("20260921_verified_package_media_batch03", _verified_package_media_batch_03),
 ]
 
 

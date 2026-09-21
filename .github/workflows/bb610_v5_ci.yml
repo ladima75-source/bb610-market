@@ -38,11 +38,14 @@ jobs:
           import json, sqlite3
           con=sqlite3.connect('/tmp/bb610-v5.sqlite3')
           q=lambda sql: con.execute(sql).fetchone()[0]
-          assert q('SELECT COUNT(*) FROM products') == 87
+          assert q('SELECT COUNT(*) FROM products') == 86
           assert q('SELECT COUNT(*) FROM skus') == 255
           assert q('SELECT COUNT(*) FROM sku_commerce') == 255
           assert q('SELECT COUNT(*) FROM sku_aliases') == 75
+          assert q('SELECT COUNT(*) FROM product_sources') == 118
+          assert q("SELECT COUNT(*) FROM migration_evidence WHERE entity_type='product' AND field_name='content' AND decision='accepted'") == 86
           assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'") == 48
+          assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='legacy_disabled'") == 1
           assert q("SELECT COUNT(*) FROM skus WHERE package_group='small'") > 0
           assert q("SELECT COUNT(*) FROM skus WHERE package_group='medium'") > 0
           assert q("SELECT COUNT(*) FROM skus WHERE package_group='large'") > 0
@@ -59,9 +62,16 @@ jobs:
           from backend.services.product_master_v5 import snapshot, product, resolve_sku_id
           data=snapshot()
           assert data['schema_version']=='5.0'
-          assert data['counts']['products']==87
+          assert data['counts']['products']==86
           assert data['counts']['skus']==255
-          assert product('kendal') is not None
+          assert data['counts']['product_sources']==118
+          kendal=product('kendal')
+          assert kendal is not None and kendal['description'] and kendal['sources']
+          switch=product('switch-625-wg')
+          assert switch is not None and switch['category_id']=='protection'
+          grouped=product('plantlogic-40-round-ugroove-1308041')
+          assert grouped is not None and grouped['product_id']=='blueberry-round-u-groove-pots'
+          assert product('plantlogic-40l-round-u-grooves-1308041')['product_id']=='blueberry-round-u-groove-pots'
           assert resolve_sku_id('BB610-VLG-KENDAL-100ML')=='BB610-32DA4F652F73A1'
           print('BB610 V5 SHADOW API SERVICE: PASS')
           PY

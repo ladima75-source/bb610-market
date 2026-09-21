@@ -1,9 +1,11 @@
 {
   "schema_version": "1.0",
-  "enabled": true,
+  "enabled": false,
   "target_path": "/usr/local/sbin/bb610-github-gateway",
   "target_repo_path": "ops/bb610-github-gateway-v3",
   "expected_current_sha256": "359a3b44de0dec18fc2e842e69b084f018d1d9f308a6f0b8daf67ef4158f78ec",
   "mode": "0700",
-  "reason": "Allow safe fast-forward deploy while preserving the five application-mutated legacy catalog files byte-for-byte."
+  "reason": "Allow safe fast-forward deploy while preserving the five application-mutated legacy catalog files byte-for-byte.",
+  "completed_sha256": "ffe0a038cd174105b9b5bbe785f94b6d67a71d76ed2811ca1bd5382448f360bd",
+  "completed_note": "Gateway v3 installed successfully; one-time upgrader disabled."
 }

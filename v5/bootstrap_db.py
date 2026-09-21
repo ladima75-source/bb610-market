@@ -80,6 +80,7 @@ def main():
             all_skus.append(item)
 
         media_seen = set()
+        media_by_path = {}
         for index, row in enumerate(all_skus):
             attrs = dict(row.get("attributes") or {})
             if row.get("v3_sku_id"):
@@ -138,7 +139,9 @@ def main():
                 path = media.get("path")
                 if not media_id or not path:
                     continue
-                if media_id not in media_seen:
+                canonical_media_id = media_by_path.get(path)
+                if canonical_media_id is None:
+                    canonical_media_id = media_id
                     con.execute(
                         """
                         INSERT INTO media (
@@ -147,14 +150,16 @@ def main():
                         ) VALUES (?, ?, NULL, ?, NULL, 'candidate', ?, ?)
                         """,
                         (
-                            media_id,
+                            canonical_media_id,
                             path,
                             media.get("kind") or "image",
                             media.get("alt"),
                             now,
                         ),
                     )
-                    media_seen.add(media_id)
+                    media_by_path[path] = canonical_media_id
+                    media_seen.add(canonical_media_id)
+
                 con.execute(
                     """
                     INSERT OR IGNORE INTO sku_media(sku_id, media_id, is_primary, sort_order)
@@ -162,7 +167,7 @@ def main():
                     """,
                     (
                         row["sku_id"],
-                        media_id,
+                        canonical_media_id,
                         1 if media.get("is_primary") else 0,
                         sort_order,
                     ),

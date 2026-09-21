@@ -1,0 +1,32 @@
+name: BB610 V5 Runtime Catalog Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/audit_v5_runtime_api.py'
+      - 'ops/v5-runtime-audit-request.txt'
+      - '.github/workflows/bb610_v5_runtime_audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Audit live Product Master V5 catalog
+        run: |
+          set -euo pipefail
+          python ops/audit_v5_runtime_api.py > /tmp/v5-runtime-audit.json
+          cat /tmp/v5-runtime-audit.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bb610-v5-runtime-audit
+          path: /tmp/v5-runtime-audit.json
+          if-no-files-found: error
+          retention-days: 7

@@ -201,6 +201,13 @@
       "package_label": "5 кг",
       "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-fe-13-zhelezo-13-5-kg-valagro",
       "target": "assets/img/v5/verified/op-valagro-edta-fe13-5kg.auto"
+    },
+    {
+      "sku_id": "BB610-VLG-KENDAL-25ML",
+      "product_id": "kendal",
+      "package_label": "25 мл",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-25-ml-val",
+      "target": "assets/img/v5/verified/op-kendal-25ml.auto"
     }
   ]
 }

@@ -68,12 +68,38 @@ PY
   echo "========== END =========="
 }
 
+v5_health() {
+  local tmp
+  tmp="$(mktemp)"
+  curl -fsS --max-time 30 https://api.market.bb610.com.ua/api/v1/catalog/v5 > "$tmp"
+  python3 - "$tmp" <<'PY'
+import json,sys
+d=json.load(open(sys.argv[1],encoding="utf-8"))
+c=d.get("counts") or {}
+print("V5:", json.dumps({
+  "schema_version": d.get("schema_version"),
+  "products": c.get("products"),
+  "public_products": c.get("public_products"),
+  "skus": c.get("skus"),
+  "public_skus": c.get("public_skus"),
+  "sku_aliases": c.get("sku_aliases"),
+  "media": c.get("media"),
+}, ensure_ascii=False))
+if d.get("schema_version") != "5.0":
+    raise SystemExit("unexpected V5 schema")
+if c.get("products") != 86 or c.get("public_products") != 82 or c.get("skus") != 221:
+    raise SystemExit("unexpected V5 counts")
+PY
+  rm -f "$tmp"
+}
+
 health() {
   echo "SERVICE:"
   systemctl is-active bb610-market
   echo "API:"
   curl -fsS --max-time 15 https://api.market.bb610.com.ua/api/v1/health
   echo
+  v5_health
 }
 
 snapshot() {
@@ -150,6 +176,8 @@ deploy() {
   curl -fsS --max-time 15 https://api.market.bb610.com.ua/api/v1/health
   echo
   echo "DEPLOYED: $(git rev-parse HEAD)"
+  echo "V5 SHADOW CHECK:"
+  v5_health
   echo "PRESERVED_RUNTIME_TRACKED:"
   tracked_dirty || true
 }

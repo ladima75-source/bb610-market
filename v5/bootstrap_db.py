@@ -235,7 +235,11 @@ def main():
                     media.get("sha256"),
                     media.get("kind") or "image",
                     media.get("source_url"),
-                    media.get("verification_status") or "candidate",
+                    (
+                        media.get("verification_status")
+                        if media.get("verification_status") in {"candidate", "verified", "rejected"}
+                        else "candidate"
+                    ),
                     media.get("alt"),
                     now,
                 ),

@@ -891,6 +891,44 @@ def _verify_existing_master_exact_media_batch_06(con: sqlite3.Connection) -> boo
     return True
 
 
+def _verify_existing_plantafol_exact_media_batch_07(con: sqlite3.Connection) -> bool:
+    rows = [
+        ("BB610-VLG-PLANTAFOL02550-25G","v5m_18dfd896a0ce86733c8ae898","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-5-kg-npk-0-25-50-va"),
+        ("BB610-VLG-PLANTAFOL02550-5KG","v5m_180515f5a0bcd457c82204f2","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-5-kg-npk-0-25-50-va"),
+        ("BB610-VLG-PLANTAFOL105410-1KG","v5m_d97ea4e1d943af52d3ebec57","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-10-54-10-v"),
+        ("BB610-VLG-PLANTAFOL105410-25G","v5m_6abbd5afd6692dd5655ae389","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-10-54-10-v"),
+        ("BB610-VLG-PLANTAFOL105410-5KG","v5m_af902cf2ed187ad0e0f19377","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-10-54-10-v"),
+        ("BB610-VLG-PLANTAFOL202020-25G","v5m_5261c8125712ce7a15adabfe","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-20-20-20-v"),
+        ("BB610-VLG-PLANTAFOL301010-1KG","v5m_851e89c08c634ccac2ac0586","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-30-10-10-v"),
+        ("BB610-VLG-PLANTAFOL301010-25G","v5m_6846a866d0a970a6381126c1","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-30-10-10-v"),
+        ("BB610-VLG-PLANTAFOL301010-5KG","v5m_66d7bdc7dae326b8efd97e30","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-30-10-10-v"),
+        ("BB610-VLG-PLANTAFOL51545-1KG","v5m_c3a397daa5a996ec8ad43bf0","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-5-15-45-va"),
+        ("BB610-VLG-PLANTAFOL51545-25G","v5m_01a74f15ffaf1590ce6a3f74","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-5-15-45-va"),
+        ("BB610-VLG-PLANTAFOL51545-5KG","v5m_8a1f8b48540faf4ce1412d2c","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-5-15-45-va"),
+    ]
+    for sku_id, media_id, _ in rows:
+        if not con.execute(
+            "SELECT 1 FROM sku_media WHERE sku_id=? AND media_id=? AND binding_kind='exact'",
+            (sku_id, media_id),
+        ).fetchone():
+            return False
+    for sku_id, media_id, source_url in rows:
+        con.execute(
+            "UPDATE media SET verification_status='verified', source_url=? WHERE media_id=?",
+            (source_url, media_id),
+        )
+        con.execute(
+            """
+            UPDATE sku_media
+            SET source_kind='verified_package_named_asset_with_catalog_variant',
+                source_url=?
+            WHERE sku_id=? AND media_id=? AND binding_kind='exact'
+            """,
+            (source_url, sku_id, media_id),
+        )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -900,6 +938,7 @@ _MIGRATIONS = [
     ("20260921_verified_package_media_batch04", _verified_package_media_batch_04),
     ("20260921_verified_package_media_batch05", _verified_package_media_batch_05),
     ("20260921_verify_existing_master_exact_media_batch06", _verify_existing_master_exact_media_batch_06),
+    ("20260921_verify_existing_plantafol_exact_media_batch07", _verify_existing_plantafol_exact_media_batch_07),
 ]
 
 

@@ -87,20 +87,60 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     const t=String(v).trim();
     return !!t&&!['—','-','Уточнюється','Не вказано','null','undefined'].includes(t);
   };
-  const applicationValue=meaningful(p.application)?p.application:(meaningful(p.manufacturerUse)?p.manufacturerUse:'');
-  const compositionHtml=[
+
+  const descriptionValue=
+    (meaningful(p.description)&&p.description)||
+    (meaningful(p.manufacturerUse)&&p.manufacturerUse)||
+    (meaningful(p.manufacturer_use)&&p.manufacturer_use)||
+    (meaningful(p.shortDescription)&&p.shortDescription)||
+    (meaningful(p.short_description)&&p.short_description)||
+    '';
+
+  const applicationValue=
+    (meaningful(p.application)&&p.application)||
+    (meaningful(p.manufacturerUse)&&p.manufacturerUse)||
+    (meaningful(p.manufacturer_use)&&p.manufacturer_use)||
+    '';
+
+  const benefits=Array.isArray(p.benefits)?p.benefits.filter(Boolean):[];
+  const benefitsHtml=benefits.length
+    ?`<div class="product-benefits-grid">${benefits.map(x=>`<div class="product-benefit"><b>${escValue(x?.title||'Перевага')}</b><span>${richValue(x?.text||x?.value||'')}</span></div>`).join('')}</div>`
+    :'';
+  const howItWorks=(meaningful(p.how_it_works)&&p.how_it_works)||(meaningful(p.howItWorks)&&p.howItWorks)||'';
+  const additionalHtml=[
+    benefitsHtml,
+    howItWorks?`<div class="product-tab-copy" style="margin-top:${benefitsHtml?'18px':'0'}">${richValue(howItWorks)}</div>`:''
+  ].filter(Boolean).join('');
+
+  const characteristics=Array.isArray(p.characteristics)?p.characteristics.filter(Boolean):[];
+  const characteristicRows=characteristics.map(x=>{
+    if(x&&typeof x==='object')return `<div class="kv"><span>${escValue(x.label||x.name||'Параметр')}</span><b>${richValue(x.value??x.text??'')}</b></div>`;
+    return `<div class="kv"><span>Параметр</span><b>${richValue(x)}</b></div>`;
+  }).join('');
+  const compositionRows=Array.isArray(p.composition)&&p.composition.length
+    ?p.composition.map(x=>typeof x==='object'&&x!==null&&('label'in x||'name'in x)
+      ?`<div class="kv"><span>${escValue(x.label||x.name||'Склад')}</span><b>${richValue(x.value??x.text??x.amount??'')}</b></div>`
+      :`<div class="kv"><span>Склад</span><b>${richValue(x)}</b></div>`).join('')
+    :(meaningful(p.composition)?`<div class="kv"><span>Склад</span><b>${richValue(p.composition)}</b></div>`:'');
+
+  const characteristicsHtml=[
     compositionRows,
-    meaningful(p.npk)?`<div class="kv"><span>NPK</span><b>${richValue(p.npk)}</b></div>`:''
-  ].filter(Boolean).join('');
-  const producerRows=[
+    characteristicRows,
     meaningful(p.manufacturer)?`<div class="kv"><span>Виробник</span><b>${richValue(p.manufacturer)}</b></div>`:'',
-    meaningful(p.country)?`<div class="kv"><span>Країна</span><b>${richValue(p.country)}</b></div>`:''
+    meaningful(p.brand)?`<div class="kv"><span>Бренд</span><b>${richValue(p.brand)}</b></div>`:''
   ].filter(Boolean).join('');
-  const essentialSections=[
-    applicationValue?`<section class="product-essential-section"><h2>ЗАСТОСУВАННЯ</h2><div class="product-essential-copy">${richValue(applicationValue)}</div></section>`:'',
-    compositionHtml?`<section class="product-essential-section"><h2>СКЛАД</h2><div class="product-essential-kv">${compositionHtml}</div></section>`:'',
-    producerRows?`<section class="product-essential-section"><h2>ВИРОБНИК</h2><div class="product-essential-kv">${producerRows}</div></section>`:''
-  ].filter(Boolean).join('');
+
+  const tabs=[
+    descriptionValue?['description','Опис',`<div class="product-tab-copy">${richValue(descriptionValue)}</div>`]:null,
+    additionalHtml?['additional','Додатково',additionalHtml]:null,
+    applicationValue?['application','Застосування',`<div class="product-tab-copy">${richValue(applicationValue)}</div>`]:null,
+    characteristicsHtml?['characteristics','Характеристики',`<div class="product-characteristics">${characteristicsHtml}</div>`]:null
+  ].filter(Boolean);
+
+  const tabsHtml=tabs.length?`<div class="info-card product-detail-card product-tabs-card">
+    <div class="product-tabs" role="tablist">${tabs.map((t,i)=>`<button type="button" class="product-tab${i===0?' active':''}" data-product-tab="${t[0]}" aria-selected="${i===0?'true':'false'}">${t[1]}</button>`).join('')}</div>
+    <div class="product-tab-panels">${tabs.map((t,i)=>`<section class="product-tab-panel${i===0?' active':''}" data-product-panel="${t[0]}">${t[2]}</section>`).join('')}</div>
+  </div>`:'';
 
   root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${String(p.categoryLabel||p.category||'Каталог').toUpperCase()} / ${p.name}</div>
   <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${productImageFor(selectedSku)}" alt="${p.name}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div>${galleryImages.length>1?`<div class="product-gallery-thumbs">${galleryImages.map((im,i)=>`<button type="button" class="gallery-thumb${i===0?' active':''}" data-gallery-img="${im}"><img src="${im}" alt="${p.name} ${i+1}"></button>`).join('')}</div>`:''}</div>
@@ -112,12 +152,21 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   <div class="local-points" id="selected-shipping"></div></div></div>
   <div class="info-stack product-info-grid compact-product-info">
   <div class="info-card product-detail-card packs-card"><h2>ФАСУВАННЯ</h2><div class="pack-grid">${packCards}</div></div>
-  ${essentialSections?`<div class="info-card product-detail-card product-essential-card">${essentialSections}</div>`:''}
+  ${tabsHtml}
   ${szr}</div>`;
 
   document.querySelectorAll('[data-gallery-img]').forEach(b=>b.onclick=()=>{
     document.getElementById('product-main-image').src=b.dataset.galleryImg;
     document.querySelectorAll('[data-gallery-img]').forEach(x=>x.classList.toggle('active',x===b));
+  });
+  document.querySelectorAll('[data-product-tab]').forEach(btn=>btn.onclick=()=>{
+    const key=btn.dataset.productTab;
+    document.querySelectorAll('[data-product-tab]').forEach(x=>{
+      const active=x===btn;
+      x.classList.toggle('active',active);
+      x.setAttribute('aria-selected',active?'true':'false');
+    });
+    document.querySelectorAll('[data-product-panel]').forEach(x=>x.classList.toggle('active',x.dataset.productPanel===key));
   });
   document.getElementById('product-main-image')?.addEventListener('click',e=>BB610.openPhoto?.(e.currentTarget.currentSrc||e.currentTarget.src,p.name));
   function syncLiveProductSchema(){

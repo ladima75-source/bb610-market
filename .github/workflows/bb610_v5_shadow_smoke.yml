@@ -1,4 +1,4 @@
-name: BB610 V5 Production Shadow Smoke
+name: BB610 V5 Production Storefront Smoke
 
 on:
   push:
@@ -66,7 +66,7 @@ jobs:
           BROWSER='${{ steps.browser.outputs.bin }}'
           "$BROWSER" --headless=new --no-sandbox --disable-gpu \
             --virtual-time-budget=12000 --dump-dom \
-            'https://market.bb610.com.ua/catalog.html?v5=1' > /tmp/catalog-v5.html
+            'https://market.bb610.com.ua/catalog.html' > /tmp/catalog-v5.html
           python - <<'PY'
           from pathlib import Path
           s=Path('/tmp/catalog-v5.html').read_text(encoding='utf-8',errors='ignore')
@@ -84,7 +84,7 @@ jobs:
           BROWSER='${{ steps.browser.outputs.bin }}'
           "$BROWSER" --headless=new --no-sandbox --disable-gpu \
             --virtual-time-budget=12000 --dump-dom \
-            'https://market.bb610.com.ua/product.html?id=kendal&sku=BB610-32DA4F652F73A1&v5=1' > /tmp/kendal-v5.html
+            'https://market.bb610.com.ua/product.html?id=kendal&sku=BB610-32DA4F652F73A1' > /tmp/kendal-v5.html
           python - <<'PY'
           from pathlib import Path
           s=Path('/tmp/kendal-v5.html').read_text(encoding='utf-8',errors='ignore')
@@ -102,7 +102,7 @@ jobs:
           BROWSER='${{ steps.browser.outputs.bin }}'
           "$BROWSER" --headless=new --no-sandbox --disable-gpu \
             --virtual-time-budget=12000 --dump-dom \
-            'https://market.bb610.com.ua/product.html?id=blueberry-round-u-groove-pots&sku=PL-BB-1308041-TC&v5=1' > /tmp/pot-v5.html
+            'https://market.bb610.com.ua/product.html?id=blueberry-round-u-groove-pots&sku=PL-BB-1308041-TC' > /tmp/pot-v5.html
           python - <<'PY'
           from pathlib import Path
           s=Path('/tmp/pot-v5.html').read_text(encoding='utf-8',errors='ignore')
@@ -113,18 +113,18 @@ jobs:
           print('V5 PLANTLOGIC PDP DOM: PASS')
           PY
 
-      - name: Legacy storefront unaffected
+      - name: Emergency V4 rollback remains available
         shell: bash
         run: |
           set -euo pipefail
           BROWSER='${{ steps.browser.outputs.bin }}'
           "$BROWSER" --headless=new --no-sandbox --disable-gpu \
             --virtual-time-budget=9000 --dump-dom \
-            'https://market.bb610.com.ua/catalog.html' > /tmp/catalog-legacy.html
+            'https://market.bb610.com.ua/catalog.html?catalog=v4' > /tmp/catalog-legacy.html
           python - <<'PY'
           from pathlib import Path
           s=Path('/tmp/catalog-legacy.html').read_text(encoding='utf-8',errors='ignore')
           cards=s.count('data-product-id=')
-          assert cards>0, 'legacy catalog failed to render'
-          print('LEGACY CATALOG STILL LIVE: PASS', cards)
+          assert cards>0, 'V4 rollback catalog failed to render'
+          print('V4 ROLLBACK ROUTE: PASS', cards)
           PY

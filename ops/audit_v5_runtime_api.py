@@ -10,6 +10,25 @@ from decimal import Decimal
 
 DEFAULT_URL = "https://api.market.bb610.com.ua/api/v1/catalog/v5"
 
+EXACT_MEDIA_BLOCKERS = {
+    "PL-BB-1308303-BK": {
+        "reason": "official_model_media_is_terracotta_selected_sku_is_black",
+        "source_url": "https://getplantlogic.com/portfolio-items/30-liter-round-pot-u-groove/",
+    },
+    "PL-BB-1308041-TC": {
+        "reason": "official_model_media_is_black_selected_sku_is_terracotta",
+        "source_url": "https://getplantlogic.com/portfolio-items/40l-round-pot-with-u-grooves/",
+    },
+    "PL-BB-1301153-BK": {
+        "reason": "official_zephyr_page_confirms_30l_model_but_published_detail_media_is_25l_1301144",
+        "source_url": "https://getplantlogic.com/portfolio-items/zephyr-v2/",
+    },
+    "PL-BB-1301143-BK": {
+        "reason": "official_zephyr_page_confirms_40l_model_but_published_detail_media_is_25l_1301144",
+        "source_url": "https://getplantlogic.com/portfolio-items/zephyr-v2/",
+    },
+}
+
 
 def fetch(url: str) -> dict:
     req = urllib.request.Request(url, headers={"User-Agent": "bb610-v5-runtime-audit/1"})
@@ -74,6 +93,7 @@ def main() -> None:
     duplicate_package_variants = []
     suspicious_product_names = []
     current_without_exact = []
+    documented_exact_blockers = []
     no_media = []
     candidate_exact_media = []
     multi_primary = []
@@ -164,15 +184,20 @@ def main() -> None:
             current = identity_enabled and commerce_enabled not in (0, False)
             exact = sku.get("media") or []
             if current and not exact:
-                current_without_exact.append({
+                missing_row = {
                     "sku_id": sku.get("sku_id"),
                     "product_id": pid,
                     "brand": product.get("brand"),
                     "package_label": sku.get("package_label"),
                     "has_product_fallback": bool(pmedia),
                     "availability": sku.get("availability"),
-                })
-                per_brand_missing_exact[str(product.get("brand") or "?")] += 1
+                }
+                blocker = EXACT_MEDIA_BLOCKERS.get(str(sku.get("sku_id") or ""))
+                if blocker:
+                    documented_exact_blockers.append({**missing_row, **blocker})
+                else:
+                    current_without_exact.append(missing_row)
+                    per_brand_missing_exact[str(product.get("brand") or "?")] += 1
 
             primaries = [m for m in exact if m.get("is_primary")]
             if len(primaries) > 1:
@@ -231,6 +256,8 @@ def main() -> None:
             "current_skus_without_exact_count": len(current_without_exact),
             "current_skus_without_exact_by_brand": dict(sorted(per_brand_missing_exact.items())),
             "current_skus_without_exact": current_without_exact,
+            "documented_exact_blocker_count": len(documented_exact_blockers),
+            "documented_exact_blockers": documented_exact_blockers,
             "candidate_exact_media_count": len(candidate_exact_media),
             "candidate_exact_media": candidate_exact_media,
             "multi_primary_skus": multi_primary,

@@ -5,8 +5,8 @@
     "sources": 118,
     "products_with_primary_or_manufacturer_source": 21,
     "uncovered_products": 0,
-    "public_products": 83,
-    "hidden_products": 3
+    "public_products": 82,
+    "hidden_products": 4
   },
   "products": [
     {
@@ -5682,7 +5682,7 @@
           "provenance": "data/product_content/plantlogic_pots_v1_20260918.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": false
     },
     {
       "product_id": "radifarm",

@@ -1,14 +1,14 @@
 {
   "schema": "bb610-v5-shadow-report-1",
-  "status": "FAIL",
+  "status": "WARN",
   "summary": {
-    "checks_pass": 6,
-    "checks_fail": 1,
+    "checks_pass": 7,
+    "checks_fail": 0,
     "warnings": 2,
     "source_commerce_rows": 286,
     "v5_products": 86,
     "v5_skus": 221,
-    "public_products": 83,
+    "public_products": 82,
     "plantlogic_models": 17
   },
   "checks": [
@@ -35,12 +35,12 @@
     {
       "name": "public_visibility",
       "status": "PASS",
-      "note": "hidden=['aktara-25-wg', 'control-dmp', 'switch-625-wg']"
+      "note": "hidden=['aktara-25-wg', 'control-dmp', 'plantlogic-25-round-1308125', 'switch-625-wg']"
     },
     {
       "name": "media_architecture",
-      "status": "FAIL",
-      "note": "exact_skus=177, product_media_products=85, unresolved_current_skus=0, public_products_without_media=1"
+      "status": "PASS",
+      "note": "exact_skus=177, product_media_products=85, unresolved_current_skus=0, public_products_without_media=0"
     },
     {
       "name": "plantlogic_assortment",
@@ -52,7 +52,7 @@
     {
       "name": "legacy_alias_commerce_conflicts",
       "status": "WARN",
-      "note": "active_aliases=12, price_conflicts=32"
+      "note": "active_aliases=12, price_conflicts=2"
     },
     {
       "name": "canonical_price_decisions",
@@ -75,325 +75,6 @@
     "direct_commerce_parity": [],
     "legacy_alias_commerce_conflicts": [
       {
-        "alias_sku_id": "BB610-0A9F508C8CE117",
-        "canonical_sku_id": "BB610-VLG-MEGAFOL-25ML",
-        "product_id": "megafol",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 50.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-1765A407F97AE7",
-        "canonical_sku_id": "BB610-55F55C063F4640",
-        "product_id": "osmocote-potassium-12-8-19-34m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 637.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-19FAE1C51099A4",
-        "canonical_sku_id": "BB610-A5D89C6A24BFB9",
-        "product_id": "kemira-npk-12-46-8",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 350.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-1A6CA4B991F793",
-        "canonical_sku_id": "BB610-44E83470E508FD",
-        "product_id": "kemira-npk-12-46-8",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 27.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-1B63D028815146",
-        "canonical_sku_id": "BB610-E251836677BA97",
-        "product_id": "osmocote-decor-16-8-12-56m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 628.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-22B7EC6E865557",
-        "canonical_sku_id": "BB610-F5E76975CC9C19",
-        "product_id": "osmocote-granula-max-14-8-11-te-56m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 149.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-24C81B9A94EF88",
-        "canonical_sku_id": "BB610-276F4D8DAC8238",
-        "product_id": "osmocote-bloom-12-7-18-23m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 119.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-2A8E066E302685",
-        "canonical_sku_id": "BB610-D1D88D2D78CAAF",
-        "product_id": "kemira-ukorinyuvach",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 36.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-2CAEA7966C1DB4",
-        "canonical_sku_id": "BB610-EA1A35CD1C5B70",
-        "product_id": "osmocote-start-11-11-17-1-5m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 552.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-3D80C5BF78B053",
-        "canonical_sku_id": "BB610-8F1350C978274D",
-        "product_id": "osmocote-start-11-11-17-1-5m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 136.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-41D8659F3EFFD9",
-        "canonical_sku_id": "BB610-8F1B9C0C9C91CD",
-        "product_id": "spidfol-amino-vehetatsiya",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 42.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-45E56F96D8F26D",
-        "canonical_sku_id": "BB610-52AB75F7E35B03",
-        "product_id": "kemira-npk-18-18-18",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 319.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-69F41F56C9EE69",
-        "canonical_sku_id": "BB610-F61233E6018DC2",
-        "product_id": "osmocote-potassium-12-8-19-34m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 154.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-761B9845FEBF2D",
-        "canonical_sku_id": "BB610-E270CC1CF3AF25",
-        "product_id": "osmocote-decor-16-8-12-56m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 154.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-83F144A59414A9",
-        "canonical_sku_id": "BB610-3B413E62542312",
-        "product_id": "osmocote-quick-start-22-5-6-45m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 476.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-91828F1B81186F",
-        "canonical_sku_id": "BB610-VLG-MEGAFOL-1L",
-        "product_id": "megafol",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 768.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-939D8FA6861D0E",
-        "canonical_sku_id": "BB610-FC8EF342DCDA81",
-        "product_id": "osmocote-bloom-12-7-18-23m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 484.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-A582F953DA4686",
-        "canonical_sku_id": "BB610-227D5F45C56F17",
-        "product_id": "osmocote-landscape-16-9-12-34m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 149.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-A683655D2C5030",
-        "canonical_sku_id": "BB610-E1BB9E458B9497",
-        "product_id": "agroblen-granula-max-14-20-5-te-56m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 145.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-AD418DF4514E03",
-        "canonical_sku_id": "BB610-06C1C17B9400DC",
-        "product_id": "kemira-dlya-hazonu-npk-12-11-18",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 247.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-ADC9DD00C3617C",
-        "canonical_sku_id": "BB610-52EE194023860D",
-        "product_id": "kemira-ukorinyuvach",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 141.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-ADDAFC250166C1",
-        "canonical_sku_id": "BB610-DE87625B024BCB",
-        "product_id": "kemira-ukorinyuvach",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 1027.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-B557282DC26477",
-        "canonical_sku_id": "BB610-8B0821352513C9",
-        "product_id": "osmocote-landscape-16-9-12-34m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 611.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-C4C8688EE38FBA",
-        "canonical_sku_id": "BB610-3AFFAAF6B8027A",
-        "product_id": "kemira-npk-18-18-18",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 25.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-CFF5F957F9B6BF",
-        "canonical_sku_id": "BB610-VLG-MEGAFOL-10L",
-        "product_id": "megafol",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 6777.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-D175EF59FFB07C",
-        "canonical_sku_id": "BB610-B7B6D0D5C66801",
-        "product_id": "kemira-npk-12-46-8",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 123.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-E7FFAE6D912232",
-        "canonical_sku_id": "BB610-VLG-MEGAFOL-100ML",
-        "product_id": "megafol",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 175.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-F5446728583345",
-        "canonical_sku_id": "BB610-828A6E9188E43E",
-        "product_id": "kemira-npk-18-18-18",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 118.0
-          }
-        }
-      },
-      {
-        "alias_sku_id": "BB610-F611CB8BA87FFB",
-        "canonical_sku_id": "BB610-FE83DB399E5BBE",
-        "product_id": "osmocote-quick-start-22-5-6-45m",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 119.0
-          }
-        }
-      },
-      {
         "alias_sku_id": "BB610-VLG-KENDAL-100ML",
         "canonical_sku_id": "BB610-32DA4F652F73A1",
         "product_id": "kendal",
@@ -414,17 +95,6 @@
             "canonical": 1126.0
           }
         }
-      },
-      {
-        "alias_sku_id": "BB610-VLG-MASTER15530-20G",
-        "canonical_sku_id": "BB610-E44162122D5007",
-        "product_id": "master-npk-15-5-30",
-        "diff": {
-          "price": {
-            "legacy": null,
-            "canonical": 25.0
-          }
-        }
       }
     ],
     "content_coverage": {
@@ -435,11 +105,13 @@
       "expected": [
         "aktara-25-wg",
         "control-dmp",
+        "plantlogic-25-round-1308125",
         "switch-625-wg"
       ],
       "actual": [
         "aktara-25-wg",
         "control-dmp",
+        "plantlogic-25-round-1308125",
         "switch-625-wg"
       ],
       "missing_hidden": [],
@@ -448,9 +120,7 @@
     "media_architecture": {
       "non_exact_sku_bindings": [],
       "unresolved_current_skus": [],
-      "public_products_without_media": [
-        "plantlogic-25-round-1308125"
-      ]
+      "public_products_without_media": []
     },
     "plantlogic_assortment": {
       "duplicate_models": {},

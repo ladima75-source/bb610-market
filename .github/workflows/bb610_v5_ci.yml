@@ -6,6 +6,7 @@ on:
     paths:
       - 'v5/**'
       - 'backend/services/product_master_v5.py'
+      - 'backend/services/product_master_v5_migrations.py'
       - 'backend/catalog_provider.py'
       - 'backend/services/product_commerce.py'
       - 'admin/products.js'
@@ -95,10 +96,10 @@ jobs:
           assert data['counts']['public_products']==82
           assert data['counts']['hidden_products']==4
           assert data['counts']['public_skus'] < data['counts']['skus']
-          assert data['counts']['product_sources']==118
+          assert data['counts']['product_sources']==124
           assert data['counts']['media']==279
           assert data['counts']['product_media']==282
-          assert data['counts']['exact_sku_media']==177
+          assert data['counts']['exact_sku_media']==180
           kendal=product('kendal')
           assert kendal is not None and kendal['description'] and kendal['sources']
           assert product('switch-625-wg') is None
@@ -117,6 +118,20 @@ jobs:
           assert legacy['price']==215.0
           assert legacy['canonical_sku_id']=='BB610-32DA4F652F73A1'
           assert resolve_sku('BB610-32DA4F652F73A1')['price']==220.0
+          fulvix=product('agriflex-fulvix-fulvokysloty-60')
+          assert fulvix is not None
+          assert fulvix['slug']=='agriflex-fulvix-fulvokysloty-50'
+          assert '50%' in fulvix['name']
+          assert '50%' in (fulvix['composition'] or '')
+          for pid,sku_id in [
+              ('blueberry-round-pots','PL-BB-1308025-BK'),
+              ('blueberry-round-short-legs-pot','PL-BB-1303025-BK'),
+              ('blueberry-round-u-groove-pots','PL-BB-13080350-BK'),
+          ]:
+              item=product(pid)
+              sku=next(x for x in item['skus'] if x['sku_id']==sku_id)
+              assert sku['media'], (pid,sku_id)
+              assert sku['media'][0]['verification_status']=='verified'
           print('BB610 V5 SHADOW API SERVICE: PASS')
           PY
 

@@ -1,0 +1,87 @@
+name: BB610 VPS Bridge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/vps-command.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bb610-vps-bridge
+  cancel-in-progress: false
+
+jobs:
+  vps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate request
+        id: req
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, re
+          from pathlib import Path
+
+          path = Path("ops/vps-command.json")
+          if not path.is_file():
+              raise SystemExit("ops/vps-command.json is missing")
+
+          data = json.loads(path.read_text(encoding="utf-8"))
+          action = str(data.get("action") or "").strip()
+          allowed = {"audit", "health", "deploy"}
+          if action not in allowed:
+              raise SystemExit(f"Unsupported action: {action!r}")
+
+          ref = str(data.get("ref") or "").strip()
+          if action == "deploy":
+              if not re.fullmatch(r"[0-9a-fA-F]{7,40}", ref):
+                  raise SystemExit("deploy requires a 7-40 character git SHA in ref")
+          elif ref:
+              raise SystemExit("ref is only allowed for deploy")
+
+          print(f"action={action}")
+          print(f"ref={ref}")
+          PY
+
+      - name: Configure SSH
+        shell: bash
+        env:
+          BB610_VPS_SSH_KEY: ${{ secrets.BB610_VPS_SSH_KEY }}
+          BB610_VPS_KNOWN_HOSTS: ${{ secrets.BB610_VPS_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          test -n "$BB610_VPS_SSH_KEY"
+          test -n "$BB610_VPS_KNOWN_HOSTS"
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$BB610_VPS_SSH_KEY" > ~/.ssh/bb610_vps
+          chmod 600 ~/.ssh/bb610_vps
+          printf '%s\n' "$BB610_VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Execute approved VPS operation
+        shell: bash
+        env:
+          BB610_VPS_HOST: ${{ secrets.BB610_VPS_HOST }}
+          ACTION: ${{ steps.req.outputs.action }}
+          REF: ${{ steps.req.outputs.ref }}
+        run: |
+          set -euo pipefail
+          test -n "$BB610_VPS_HOST"
+          remote="$ACTION"
+          if [ "$ACTION" = "deploy" ]; then
+            remote="$ACTION $REF"
+          fi
+          ssh \
+            -i ~/.ssh/bb610_vps \
+            -o BatchMode=yes \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            -o ConnectTimeout=15 \
+            root@"$BB610_VPS_HOST" "$remote"

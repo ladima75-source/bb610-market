@@ -7,12 +7,14 @@ on:
       - 'ops/v5-snapshot-request.txt'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   snapshot:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - name: Configure SSH
         shell: bash
         env:
@@ -38,12 +40,43 @@ jobs:
             -o StrictHostKeyChecking=yes \
             root@"$HOST" snapshot > bb610-v5-production.tar.gz
           test -s bb610-v5-production.tar.gz
-          tar -tzf bb610-v5-production.tar.gz >/dev/null
-          du -h bb610-v5-production.tar.gz
+          mkdir -p .v5-snapshot
+          tar -xzf bb610-v5-production.tar.gz -C .v5-snapshot
+
+      - name: Build clean V5 staging
+        shell: bash
+        run: |
+          set -euo pipefail
+          python v5/build_stage.py \
+            --snapshot .v5-snapshot \
+            --json-out v5/staging/production-current.json \
+            --md-out v5/staging/production-current.md
+          python - <<'PY'
+          import json
+          d=json.load(open('v5/staging/production-current.json',encoding='utf-8'))
+          print(json.dumps(d['summary'],ensure_ascii=False,indent=2))
+          PY
+
+      - name: Commit staging result
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add v5/staging/production-current.json v5/staging/production-current.md
+          if git diff --cached --quiet; then
+            echo "No staging changes"
+            exit 0
+          fi
+          git config user.name "bb610-v5-bot"
+          git config user.email "bb610-v5-bot@users.noreply.github.com"
+          git commit -m "Refresh V5 production staging"
+          git push origin HEAD:main
 
       - uses: actions/upload-artifact@v4
         with:
           name: bb610-v5-production
-          path: bb610-v5-production.tar.gz
+          path: |
+            bb610-v5-production.tar.gz
+            v5/staging/production-current.json
+            v5/staging/production-current.md
           if-no-files-found: error
           retention-days: 7

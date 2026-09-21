@@ -1,0 +1,46 @@
+name: BB610 VPS Gateway CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/bb610-github-gateway-v3'
+      - 'ops/export_v5_snapshot.py'
+      - 'ops/gateway-upgrade.json'
+      - '.github/workflows/bb610_gateway_ci.yml'
+  pull_request:
+    paths:
+      - 'ops/bb610-github-gateway-v3'
+      - 'ops/export_v5_snapshot.py'
+      - 'ops/gateway-upgrade.json'
+      - '.github/workflows/bb610_gateway_ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  gateway-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate gateway shell syntax
+        run: |
+          set -euo pipefail
+          bash -n ops/bb610-github-gateway-v3
+
+      - name: Validate snapshot exporter syntax
+        run: |
+          set -euo pipefail
+          python -m py_compile ops/export_v5_snapshot.py
+
+      - name: Validate one-time upgrader is disabled
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('ops/gateway-upgrade.json').read_text(encoding='utf-8'))
+          assert d.get('enabled') is False, 'one-time gateway upgrader must remain disabled'
+          print('BB610 VPS GATEWAY: PASS')
+          PY

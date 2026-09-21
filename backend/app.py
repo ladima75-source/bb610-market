@@ -491,3 +491,7 @@ app.include_router(stage22l_manual_media_router)
 # BB610 PRODUCT MASTER V5 SHADOW API
 from .product_master_v5_api import router as product_master_v5_router
 app.include_router(product_master_v5_router)
+
+# BB610 PRODUCT MASTER V5 ADMIN — single catalog editor after cutover
+from .product_master_v5_admin_api import router as product_master_v5_admin_router
+app.include_router(product_master_v5_admin_router)

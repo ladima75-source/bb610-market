@@ -97,9 +97,9 @@ jobs:
           assert data['counts']['hidden_products']==4
           assert data['counts']['public_skus'] < data['counts']['skus']
           assert data['counts']['product_sources']==122
-          assert data['counts']['media']==306
+          assert data['counts']['media']==307
           assert data['counts']['product_media']==282
-          assert data['counts']['exact_sku_media']==207
+          assert data['counts']['exact_sku_media']==208
           kendal=product('kendal')
           assert kendal is not None and kendal['description'] and kendal['sources']
           assert product('switch-625-wg') is None
@@ -169,6 +169,11 @@ jobs:
               assert sku['media'], (pid,sku_id)
               assert sku['media'][0]['verification_status']=='verified'
               assert sku['media'][0]['source_kind']=='verified_package_product_page'
+          kendal25=product('kendal')
+          kendal25sku=next(x for x in kendal25['skus'] if x['sku_id']=='BB610-VLG-KENDAL-25ML')
+          assert kendal25sku['media']
+          assert kendal25sku['media'][0]['verification_status']=='verified'
+          assert kendal25sku['media'][0]['source_kind']=='verified_package_product_page'
           for pid in ('agriflex-bio','max-600-seasailer'):
               item=product(pid)
               assert item is not None

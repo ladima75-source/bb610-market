@@ -174,7 +174,7 @@ body{color:var(--text)}
 .product-v2 .breadcrumbs{margin-bottom:10px}
 .product-v2 .product-layout{grid-template-columns:minmax(430px,.9fr) minmax(430px,1.1fr);gap:32px;align-items:center}
 .product-v2 .product-gallery{height:500px}
-.product-v2 .product-gallery img{padding:2.5%;transform:scale(1.16)}
+.product-v2 .product-gallery img{padding:2.5%;transform:none!important;object-fit:contain!important}
 .product-v2 .product-summary h1{font-size:clamp(36px,3.4vw,46px);margin:5px 0 4px}
 .product-v2 .selected-variant{margin-top:12px}
 .product-v2 .product-summary .price{font-size:30px;margin:14px 0 2px}

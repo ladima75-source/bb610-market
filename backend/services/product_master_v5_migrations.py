@@ -962,6 +962,160 @@ def _verify_remaining_existing_exact_media_batch_08(con: sqlite3.Connection) -> 
     return True
 
 
+def _public_content_cleanup_batch_09(con: sqlite3.Connection) -> bool:
+    updates = {
+        "actiwin-20-5-10": {
+            "brand": "Valagro",
+            "manufacturer": "Valagro S.p.A.",
+            "short_description": "Actiwin 20-5-10 — гранульоване NPK-добриво для газонів і декоративних культур.",
+            "description": "Actiwin 20-5-10 — гранульоване добриво NPK 20-5-10 з повільнішими формами азоту та залізом. Формула розрахована на рівномірне живлення газонів і декоративних культур.",
+            "application": "Для газонів у поточних українських товарних картках: 25–35 г/м². Для ґрунтосумішей: 2–4 кг/м³. Перед внесенням звірити норму з етикеткою конкретної партії.",
+            "composition": "N — 20%; P₂O₅ — 5%; K₂O — 10%; Fe — 2%.",
+            "benefits_json": json.dumps([
+                {"title":"NPK 20-5-10","text":"Підвищена частка азоту для активного росту."},
+                {"title":"Fe 2%","text":"Залізо підтримує інтенсивне зелене забарвлення."},
+                {"title":"ГРАНУЛЬОВАНЕ","text":"Рівномірне внесення по площі."}
+            ], ensure_ascii=False),
+            "how_it_works": "Гранули містять кілька форм азоту, а також фосфор, калій і залізо; це забезпечує поступове надходження поживних речовин.",
+            "characteristics_json": json.dumps([
+                {"label":"Формула","value":"20-5-10 + Fe 2%"},
+                {"label":"Форма","value":"Гранули 1–3 мм"},
+                {"label":"Виробник","value":"Valagro S.p.A."}
+            ], ensure_ascii=False),
+            "seo_title": "Actiwin 20-5-10 Valagro — гранульоване добриво",
+            "seo_description": "Actiwin 20-5-10: NPK 20-5-10 + Fe 2%, гранульоване добриво для газонів і декоративних культур."
+        },
+        "agriflex-zn": {
+            "short_description": "Agriflex Zn — водорозчинне цинкове мікродобриво лінійки AgriFlex / CityMax.",
+            "description": "Agriflex Zn застосовують для цільового цинкового живлення польових, овочевих, плодово-ягідних і декоративних культур. Актуальні українські товарні каталоги позиціонують продукт як Zn 10%.",
+            "application": "Позакореневе внесення та інші способи застосування — згідно з етикеткою конкретної партії.",
+            "composition": "Zn — 10% за актуальними українськими товарними картками.",
+            "benefits_json": json.dumps([
+                {"title":"Zn 10%","text":"Цільове цинкове живлення."},
+                {"title":"ВОДОРОЗЧИННЕ","text":"Зручно для приготування робочих розчинів."},
+                {"title":"CITYMAX","text":"Лінійка AgriFlex виробництва CityMax."}
+            ], ensure_ascii=False),
+            "characteristics_json": json.dumps([
+                {"label":"Тип","value":"Цинкове мікродобриво"},
+                {"label":"Zn","value":"10%"},
+                {"label":"Форма","value":"Водорозчинний порошок"},
+                {"label":"Виробник","value":"Xi'an Citymax AgroChemical Co., Ltd."}
+            ], ensure_ascii=False),
+            "seo_title": "Agriflex Zn CityMax — цинкове мікродобриво",
+            "seo_description": "Agriflex Zn CityMax — водорозчинне цинкове мікродобриво Zn 10%."
+        },
+        "blackjak": {
+            "brand": "BlackJak",
+            "manufacturer": "Sofbey S.A.",
+            "short_description": "BlackJak — концентрований біостимулятор на основі леонардиту та гумінових речовин.",
+            "description": "BlackJak — концентрована водна суспензія леонардиту, багата на гумінові, фульвові та ульмінові кислоти. Продукт застосовують для підтримки структури ґрунту, доступності поживних елементів і розвитку кореневої системи.",
+            "application": "Може застосовуватися через ґрунт або позакоренево. Конкретну норму внесення визначати за етикеткою продукту.",
+            "composition": "Концентрована суспензія природного леонардиту; гумінові, фульвові та ульмінові кислоти; кислий pH.",
+            "benefits_json": json.dumps([
+                {"title":"ЛЕОНАРДИТ","text":"Джерело природних гумінових речовин."},
+                {"title":"КОРЕНЕВА ЗОНА","text":"Підтримує доступність елементів живлення."},
+                {"title":"ҐРУНТ","text":"Допомагає покращувати фізико-хімічні властивості ґрунту."}
+            ], ensure_ascii=False),
+            "how_it_works": "Гумінові компоненти леонардиту взаємодіють із ґрунтом і поживними елементами, підтримуючи їх доступність для рослин.",
+            "characteristics_json": json.dumps([
+                {"label":"Тип","value":"Гуміновий біостимулятор"},
+                {"label":"Сировина","value":"Леонардит"},
+                {"label":"Форма","value":"Концентрована водна суспензія"},
+                {"label":"Виробник","value":"Sofbey S.A."}
+            ], ensure_ascii=False),
+            "seo_title": "BlackJak — біостимулятор на основі леонардиту",
+            "seo_description": "BlackJak — концентрована суспензія леонардиту з гуміновими та фульвовими кислотами."
+        },
+        "maxicrop-extra": {
+            "name": "MC Extra (Maxicrop Extra)",
+            "brand": "Valagro / Syngenta Biologicals",
+            "short_description": "MC Extra — біостимулятор Valagro на основі активних компонентів Ascophyllum nodosum.",
+            "description": "MC Extra — повністю розчинний концентрований біостимулятор на основі активних фітокомпонентів з Ascophyllum nodosum. Містить бетаїни, білки та амінокислоти й призначений для підтримки збалансованого вегетативного та генеративного розвитку.",
+            "application": "Спосіб і норму внесення визначати за етикеткою конкретної фасовки та культурою.",
+            "composition": "Активні фітокомпоненти з Ascophyllum nodosum, включно з бетаїнами, білками та амінокислотами.",
+            "benefits_json": json.dumps([
+                {"title":"ASCOPHYLLUM NODOSUM","text":"Фітокомпоненти з бурої водорості."},
+                {"title":"БАЛАНС РОСТУ","text":"Підтримує вегетативно-продуктивний баланс."},
+                {"title":"РОЗЧИННІСТЬ","text":"Концентрована повністю розчинна форма."}
+            ], ensure_ascii=False),
+            "how_it_works": "Бетаїни, амінокислоти та інші біоактивні компоненти підтримують фізіологічні процеси рослини та стійкість до стресу.",
+            "characteristics_json": json.dumps([
+                {"label":"Тип","value":"Біостимулятор"},
+                {"label":"Сировина","value":"Ascophyllum nodosum"},
+                {"label":"Виробник","value":"Valagro / Syngenta Biologicals"}
+            ], ensure_ascii=False),
+            "seo_title": "MC Extra Valagro — біостимулятор з Ascophyllum nodosum",
+            "seo_description": "MC Extra Valagro — розчинний біостимулятор на основі Ascophyllum nodosum."
+        },
+        "neoterra-aqua": {
+            "name": "NeoTerra Aquafix™",
+            "short_description": "NeoTerra Aquafix™ — органічний кондиціонер ґрунту Neova для підвищення водоутримання та вмісту органічного вуглецю.",
+            "description": "NeoTerra Aquafix™ — органічний кондиціонер ґрунту з ретельно відібраного торфу. Він підвищує водоутримувальну здатність ґрунту, підтримує накопичення органічного вуглецю, покращує структуру та активність ґрунтової мікробіоти.",
+            "application": "Норма внесення залежить від типу ґрунту, культури та умов вирощування; використовувати рекомендації Neova для конкретного сценарію.",
+            "composition": "Органічний кондиціонер ґрунту на основі ретельно відібраного торфу природного походження.",
+            "seo_title": "NeoTerra Aquafix Neova — органічний кондиціонер ґрунту",
+            "seo_description": "NeoTerra Aquafix™ підвищує водоутримання, органічний вуглець і біологічну активність ґрунту."
+        },
+        "osmocote-decor-16-8-12-56m": {
+            "name": "Osmocote 5 16-8-12 (5–6M)",
+            "short_description": "Osmocote 5 5-6M — контрольовано-вивільнюване добриво ICL NPK 16-8-12 + 2,2% MgO + TE.",
+            "description": "Osmocote 5 5-6M — контрольовано-вивільнюване добриво ICL п’ятого покоління для контейнерних і декоративних культур. Поживні речовини вивільняються запрограмовано протягом 5–6 місяців за температури субстрату близько 21°C.",
+            "application": "Орієнтовні норми ICL: контейнерні та багаторічні культури — 2–5 г/л залежно від умов і потреби в живленні; горщикові та балконні культури — 3–5,5 г/л. Точну норму коригувати за культурою, субстратом і додатковим живленням.",
+            "composition": "N — 16%; P₂O₅ — 8%; K₂O — 12%; MgO — 2,2%; мікроелементи (TE).",
+            "benefits_json": json.dumps([
+                {"title":"5–6 МІСЯЦІВ","text":"Запрограмоване вивільнення поживних речовин."},
+                {"title":"16-8-12","text":"Повна NPK-формула з магнієм і мікроелементами."},
+                {"title":"OTEA","text":"Система оптимізованої доступності мікроелементів."}
+            ], ensure_ascii=False),
+            "characteristics_json": json.dumps([
+                {"label":"Формула","value":"16-8-12 + 2,2% MgO + TE"},
+                {"label":"Тривалість","value":"5–6 місяців при 21°C"},
+                {"label":"Тип","value":"Контрольовано-вивільнюване добриво"},
+                {"label":"Виробник","value":"ICL Growing Solutions"}
+            ], ensure_ascii=False),
+            "seo_title": "Osmocote 5 16-8-12 5–6M — добриво ICL",
+            "seo_description": "Osmocote 5 5-6M: NPK 16-8-12 + 2,2% MgO + TE, контрольоване живлення на 5–6 місяців."
+        },
+        "agriflex-fulvix-fulvokysloty-60": {
+            "description": "Agriflex Fulvix — концентрований водорозчинний продукт CityMax на основі низькомолекулярних фульвових кислот. Актуальні товарні картки та упаковка узгоджено вказують 50% розчинних фульвокислот і 12% K₂O."
+        }
+    }
+    for product_id, fields in updates.items():
+        _update_product(con, product_id, fields)
+
+    con.execute("""
+        UPDATE product_sources
+        SET source_type='official_manufacturer_label',
+            source_url='https://www.syngentabiologicals.com/usa/en/restricted-area/get-document/restricted_area/documents/4200862T14P8S9_ACTIWIN_MG_20.5.10_WW8_50Lbs_x3lPG66.pdf?id=2094',
+            source_label='Syngenta Biologicals / Valagro — Actiwin 20-5-10 label',
+            verified_at='2026-09-21',
+            status='verified',
+            notes='Official label confirms NPK 20-5-10, Fe 2% and granular formulation.'
+        WHERE product_id='actiwin-20-5-10'
+    """)
+    con.execute("""
+        UPDATE product_sources
+        SET source_type='official_manufacturer_current',
+            source_url='https://www.sofbey.com/product/blackjak/',
+            source_label='Sofbey — BlackJak',
+            verified_at='2026-09-21',
+            status='verified',
+            notes='Current manufacturer page confirms Leonardite suspension and humic/fulvic/ulmic acids.'
+        WHERE product_id='blackjak'
+    """)
+    con.execute("""
+        UPDATE product_sources
+        SET source_type='official_manufacturer_current',
+            source_url='https://www.valagro.com/en/products/farm/plant-biostimulants/mc-extra/',
+            source_label='Syngenta Biologicals / Valagro — MC Extra',
+            verified_at='2026-09-21',
+            status='verified',
+            notes='Current official product page confirms Ascophyllum nodosum active phytoingredients, betaines, proteins and amino acids.'
+        WHERE product_id='maxicrop-extra' AND source_type='manufacturer_technical_match'
+    """)
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -973,6 +1127,7 @@ _MIGRATIONS = [
     ("20260921_verify_existing_master_exact_media_batch06", _verify_existing_master_exact_media_batch_06),
     ("20260921_verify_existing_plantafol_exact_media_batch07", _verify_existing_plantafol_exact_media_batch_07),
     ("20260921_verify_remaining_existing_exact_media_batch08", _verify_remaining_existing_exact_media_batch_08),
+    ("20260921_public_content_cleanup_batch09", _public_content_cleanup_batch_09),
 ]
 
 

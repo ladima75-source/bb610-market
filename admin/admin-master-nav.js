@@ -6,15 +6,12 @@ const groups=[
     ['dashboard.html','Огляд','home'],
     ['orders-center.html','Замовлення','bag'],
     ['price-requests.html','Запити ціни','money'],
-    ['commerce-control.html','Керування магазином','grid']
   ]},
   {title:'КАТАЛОГ',items:[
     ['catalog.html','Каталог V5','card'],
     ['products.html','Ціни та залишки','money'],
     ['categories-manager.html','Категорії','layers'],
-    ['homepage-showcase.html','Головна / Вітрина','layout'],
-    ['media-manager.html','Медіатека','image'],
-    ['catalog-import.html','Імпорт / експорт','upload']
+    ['homepage-showcase.html','Головна / Вітрина','layout']
   ]},
   {title:'КАНАЛИ',items:[
     ['sales-channels.html','Канали продажів','share'],

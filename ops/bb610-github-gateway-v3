@@ -1,0 +1,169 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT=/opt/bb610-market
+CMD="${SSH_ORIGINAL_COMMAND:-}"
+
+# These legacy files are mutated by the running application on production.
+# They are preserved byte-for-byte across V5 shadow deployments.
+RUNTIME_TRACKED=(
+  data/media.library.json
+  data/product_cards.master.json
+  data/product_cards_v3/commerce_map.json
+  data/product_cards_v3/index.json
+  data/product_cards_v3/migration_manifest.json
+)
+
+tracked_dirty() {
+  cd "$ROOT"
+  git status --porcelain --untracked-files=no
+}
+
+assert_only_runtime_dirty() {
+  cd "$ROOT"
+  local bad=0
+  while IFS= read -r line; do
+    [ -z "$line" ] && continue
+    local path="${line:3}"
+    local ok=0
+    for allowed in "${RUNTIME_TRACKED[@]}"; do
+      if [ "$path" = "$allowed" ]; then
+        ok=1
+        break
+      fi
+    done
+    if [ "$ok" -ne 1 ]; then
+      echo "REFUSED: unexpected tracked change: $path"
+      bad=1
+    fi
+  done < <(tracked_dirty)
+  [ "$bad" -eq 0 ] || exit 65
+}
+
+audit() {
+  cd "$ROOT"
+  echo "========== BB610 VPS =========="
+  echo "HEAD: $(git rev-parse HEAD)"
+  echo "BRANCH: $(git branch --show-current)"
+  echo "ORIGIN_MAIN: $(git rev-parse origin/main 2>/dev/null || echo unknown)"
+  echo
+  echo "--- TRACKED CHANGES ---"
+  tracked_dirty || true
+  echo
+  echo "--- V5 ---"
+  if [ -f v5/staging/production-current.json ]; then
+    python3 - <<'PY'
+import json
+from pathlib import Path
+p=Path("v5/staging/production-current.json")
+d=json.loads(p.read_text(encoding="utf-8"))
+print(json.dumps(d.get("summary",{}),ensure_ascii=False,indent=2))
+PY
+  else
+    echo "V5 staging: ABSENT"
+  fi
+  echo
+  echo "--- SERVICE ---"
+  systemctl show bb610-market -p ActiveState -p SubState -p WorkingDirectory --no-pager
+  echo "========== END =========="
+}
+
+health() {
+  echo "SERVICE:"
+  systemctl is-active bb610-market
+  echo "API:"
+  curl -fsS --max-time 15 https://api.market.bb610.com.ua/api/v1/health
+  echo
+}
+
+snapshot() {
+  cd "$ROOT"
+  tmp="$(mktemp -d)"
+  trap 'rm -rf "$tmp"' EXIT
+  git fetch -q origin main
+  git show origin/main:ops/export_v5_snapshot.py > "$tmp/export_v5_snapshot.py"
+  python3 "$tmp/export_v5_snapshot.py" --root "$ROOT" --out "$tmp/snapshot"
+  tar -C "$tmp/snapshot" -czf - .
+}
+
+deploy() {
+  local sha="${1:-}"
+  [[ "$sha" =~ ^[0-9a-fA-F]{7,40}$ ]] || {
+    echo "Invalid commit SHA"
+    exit 64
+  }
+
+  cd "$ROOT"
+  assert_only_runtime_dirty
+
+  git fetch origin main
+  git cat-file -e "${sha}^{commit}" 2>/dev/null || {
+    echo "REFUSED: commit not found"
+    exit 66
+  }
+  git merge-base --is-ancestor "$sha" origin/main || {
+    echo "REFUSED: requested commit is not on origin/main"
+    exit 67
+  }
+  git merge-base --is-ancestor HEAD "$sha" || {
+    echo "REFUSED: deployment would not be fast-forward"
+    exit 68
+  }
+
+  local before
+  before="$(git rev-parse HEAD)"
+  local tmp
+  tmp="$(mktemp -d)"
+  trap 'rm -rf "$tmp"' RETURN
+
+  # Preserve only the approved application-mutated files.
+  for rel in "${RUNTIME_TRACKED[@]}"; do
+    if [ -f "$rel" ]; then
+      mkdir -p "$tmp/$(dirname "$rel")"
+      cp -a "$rel" "$tmp/$rel"
+    fi
+  done
+
+  # Clean the approved runtime mutations so the fast-forward cannot be blocked.
+  git checkout -- "${RUNTIME_TRACKED[@]}"
+
+  echo "BEFORE: $before"
+  echo "TARGET: $sha"
+  git merge --ff-only "$sha"
+
+  # Restore production runtime state byte-for-byte.
+  for rel in "${RUNTIME_TRACKED[@]}"; do
+    if [ -f "$tmp/$rel" ]; then
+      cp -a "$tmp/$rel" "$rel"
+    fi
+  done
+
+  # Refuse to start if deployment itself introduced an unexpected tracked edit.
+  assert_only_runtime_dirty
+
+  systemctl restart bb610-market
+  sleep 2
+
+  echo "SERVICE:"
+  systemctl is-active bb610-market
+  echo "API:"
+  curl -fsS --max-time 15 https://api.market.bb610.com.ua/api/v1/health
+  echo
+  echo "DEPLOYED: $(git rev-parse HEAD)"
+  echo "PRESERVED_RUNTIME_TRACKED:"
+  tracked_dirty || true
+}
+
+shadow() {
+  cd "$ROOT"
+  python3 ops/v5_shadow_compare.py
+}
+
+case "$CMD" in
+  audit) audit ;;
+  health) health ;;
+  snapshot) snapshot ;;
+  shadow) shadow ;;
+  deploy *) deploy "${CMD#deploy }" ;;
+  *) echo "DENIED"; exit 126 ;;
+esac

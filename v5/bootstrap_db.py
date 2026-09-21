@@ -69,9 +69,9 @@ def main():
                     product_id, slug, name, brand, manufacturer, category_id,
                     short_description, description, application, composition,
                     benefits_json, how_it_works, characteristics_json,
-                    seo_title, seo_description,
+                    seo_title, seo_description, public_enabled,
                     status, created_at, updated_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'draft', ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', ?, ?)
                 """,
                 (
                     stage_row["product_id"],
@@ -89,6 +89,7 @@ def main():
                     json.dumps(row.get("characteristics") or [], ensure_ascii=False, separators=(",", ":")),
                     row.get("seo_title"),
                     row.get("seo_description"),
+                    1 if row.get("public_enabled", True) else 0,
                     now,
                     now,
                 ),
@@ -246,24 +247,47 @@ def main():
             )
 
         sku_ids = {row["sku_id"] for row in all_skus}
-        for binding in verified_media.get("bindings") or []:
+        product_ids = {row["product_id"] for row in stage_products}
+
+        for binding in verified_media.get("sku_bindings") or []:
             if binding["sku_id"] not in sku_ids:
                 raise SystemExit(f"Media binding references unknown SKU: {binding['sku_id']}")
             if binding["media_id"] not in media_ids:
                 raise SystemExit(f"Media binding references unknown media: {binding['media_id']}")
+            if binding.get("binding_kind") not in (None, "exact"):
+                raise SystemExit(f"Non-exact SKU media is forbidden in V5: {binding}")
             con.execute(
                 """
                 INSERT INTO sku_media(
                     sku_id, media_id, is_primary, sort_order,
                     binding_kind, source_kind, source_url
-                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, 'exact', ?, ?)
                 """,
                 (
                     binding["sku_id"],
                     binding["media_id"],
                     1 if binding.get("is_primary") else 0,
                     int(binding.get("sort_order") or 0),
-                    binding.get("binding_kind") or "representative",
+                    binding.get("source_kind"),
+                    binding.get("source_url"),
+                ),
+            )
+
+        for binding in verified_media.get("product_bindings") or []:
+            if binding["product_id"] not in product_ids:
+                raise SystemExit(f"Product media references unknown product: {binding['product_id']}")
+            if binding["media_id"] not in media_ids:
+                raise SystemExit(f"Product media references unknown media: {binding['media_id']}")
+            con.execute(
+                """
+                INSERT INTO product_media(
+                    product_id, media_id, sort_order, source_kind, source_url
+                ) VALUES (?, ?, ?, ?, ?)
+                """,
+                (
+                    binding["product_id"],
+                    binding["media_id"],
+                    int(binding.get("sort_order") or 0),
                     binding.get("source_kind"),
                     binding.get("source_url"),
                 ),
@@ -282,7 +306,8 @@ def main():
                 (
                     f"Explicit media graph: {media_summary.get('exact_current_skus', 0)} "
                     f"current SKU exact; {media_summary.get('current_skus_without_exact', 0)} "
-                    f"current SKU representative-only or unresolved."
+                    f"current SKU use product-level fallback; "
+                    f"{media_summary.get('products_without_media', 0)} products without media."
                 ),
             ),
         )
@@ -319,6 +344,12 @@ def main():
 
         summary = {
             "products": con.execute("SELECT COUNT(*) FROM products").fetchone()[0],
+            "public_products": con.execute(
+                "SELECT COUNT(*) FROM products WHERE public_enabled=1 AND status='active'"
+            ).fetchone()[0],
+            "hidden_products": con.execute(
+                "SELECT COUNT(*) FROM products WHERE public_enabled=0"
+            ).fetchone()[0],
             "content_products": con.execute(
                 "SELECT COUNT(*) FROM migration_evidence WHERE entity_type='product' AND field_name='content' AND decision='accepted'"
             ).fetchone()[0],
@@ -328,11 +359,9 @@ def main():
             "media": con.execute("SELECT COUNT(*) FROM media").fetchone()[0],
             "sku_media": con.execute("SELECT COUNT(*) FROM sku_media").fetchone()[0],
             "exact_sku_media": con.execute(
-                "SELECT COUNT(DISTINCT sku_id) FROM sku_media WHERE binding_kind='exact'"
+                "SELECT COUNT(DISTINCT sku_id) FROM sku_media"
             ).fetchone()[0],
-            "representative_sku_media": con.execute(
-                "SELECT COUNT(DISTINCT sku_id) FROM sku_media WHERE binding_kind='representative'"
-            ).fetchone()[0],
+            "product_media": con.execute("SELECT COUNT(*) FROM product_media").fetchone()[0],
             "commerce": con.execute("SELECT COUNT(*) FROM sku_commerce").fetchone()[0],
             "request_price": con.execute(
                 "SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'"

@@ -111,6 +111,21 @@ def _media_for_sku(con: sqlite3.Connection, sku_id: str) -> list[dict]:
     return [dict(row) for row in rows]
 
 
+def _media_for_product(con: sqlite3.Connection, product_id: str) -> list[dict]:
+    rows = con.execute(
+        """
+        SELECT m.media_id,m.path,m.kind,m.alt,m.verification_status,
+               pm.sort_order,pm.source_kind,pm.source_url
+        FROM product_media pm
+        JOIN media m ON m.media_id=pm.media_id
+        WHERE pm.product_id=?
+        ORDER BY pm.sort_order ASC,m.media_id ASC
+        """,
+        (product_id,),
+    ).fetchall()
+    return [dict(row) for row in rows]
+
+
 def _sku_rows(con: sqlite3.Connection, product_id: str) -> list[dict]:
     rows = con.execute(
         """
@@ -148,7 +163,7 @@ def _sources_for_product(con: sqlite3.Connection, product_id: str) -> list[dict]
     return [dict(row) for row in rows]
 
 
-def product(product_id_or_alias: str) -> dict | None:
+def product(product_id_or_alias: str, *, public_only: bool = True) -> dict | None:
     canonical = resolve_product_id(product_id_or_alias)
     if not canonical:
         return None
@@ -158,17 +173,20 @@ def product(product_id_or_alias: str) -> dict | None:
             SELECT product_id,slug,name,brand,manufacturer,category_id,
                    short_description,description,application,composition,
                    benefits_json,how_it_works,characteristics_json,
-                   seo_title,seo_description,status,created_at,updated_at
+                   seo_title,seo_description,public_enabled,status,created_at,updated_at
             FROM products WHERE product_id=?
             """,
             (canonical,),
         ).fetchone()
         if not row:
             return None
+        if public_only and (not bool(row["public_enabled"]) or row["status"] != "active"):
+            return None
         item = dict(row)
         item["benefits"] = _json(item.pop("benefits_json", None), [])
         item["characteristics"] = _json(item.pop("characteristics_json", None), [])
         item["sources"] = _sources_for_product(con, canonical)
+        item["media"] = _media_for_product(con, canonical)
         item["skus"] = _sku_rows(con, canonical)
         item["aliases"] = [
             r["alias"]
@@ -180,17 +198,19 @@ def product(product_id_or_alias: str) -> dict | None:
         return item
 
 
-def snapshot() -> dict:
+def snapshot(*, public_only: bool = True) -> dict:
     with _connect() as con:
+        where = "WHERE public_enabled=1 AND status='active'" if public_only else ""
         products = [
             dict(row)
             for row in con.execute(
-                """
+                f"""
                 SELECT product_id,slug,name,brand,manufacturer,category_id,
                        short_description,description,application,composition,
                        benefits_json,how_it_works,characteristics_json,
-                       seo_title,seo_description,status,created_at,updated_at
+                       seo_title,seo_description,public_enabled,status,created_at,updated_at
                 FROM products
+                {where}
                 ORDER BY category_id,brand,name,product_id
                 """
             )
@@ -199,13 +219,37 @@ def snapshot() -> dict:
             item["benefits"] = _json(item.pop("benefits_json", None), [])
             item["characteristics"] = _json(item.pop("characteristics_json", None), [])
             item["sources"] = _sources_for_product(con, item["product_id"])
+            item["media"] = _media_for_product(con, item["product_id"])
             item["skus"] = _sku_rows(con, item["product_id"])
 
+        public_product_ids = {
+            row["product_id"]
+            for row in con.execute(
+                "SELECT product_id FROM products WHERE public_enabled=1 AND status='active'"
+            )
+        }
+        public_skus = con.execute(
+            """
+            SELECT COUNT(*)
+            FROM skus s
+            JOIN products p ON p.product_id=s.product_id
+            WHERE p.public_enabled=1 AND p.status='active'
+            """
+        ).fetchone()[0]
         counts = {
             "products": con.execute("SELECT COUNT(*) FROM products").fetchone()[0],
+            "public_products": len(public_product_ids),
+            "hidden_products": con.execute(
+                "SELECT COUNT(*) FROM products WHERE public_enabled=0"
+            ).fetchone()[0],
             "skus": con.execute("SELECT COUNT(*) FROM skus").fetchone()[0],
+            "public_skus": public_skus,
             "sku_aliases": con.execute("SELECT COUNT(*) FROM sku_aliases").fetchone()[0],
             "media": con.execute("SELECT COUNT(*) FROM media").fetchone()[0],
+            "product_media": con.execute("SELECT COUNT(*) FROM product_media").fetchone()[0],
+            "exact_sku_media": con.execute(
+                "SELECT COUNT(DISTINCT sku_id) FROM sku_media"
+            ).fetchone()[0],
             "product_sources": con.execute("SELECT COUNT(*) FROM product_sources").fetchone()[0],
             "request_price": con.execute(
                 "SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'"

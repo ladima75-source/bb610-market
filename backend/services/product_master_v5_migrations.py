@@ -929,6 +929,39 @@ def _verify_existing_plantafol_exact_media_batch_07(con: sqlite3.Connection) -> 
     return True
 
 
+def _verify_remaining_existing_exact_media_batch_08(con: sqlite3.Connection) -> bool:
+    rows = [
+        ("BB610-VLG-MEGAFOL-100ML","v5m_bcc1b7947da8b00fcbc9ba34","verified_package_named_asset_with_catalog_variant","https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-100-ml-valagro"),
+        ("BB610-VLG-MEGAFOL-25ML","v5m_673f210d22563764539f2972","verified_package_named_asset_with_market_variant","https://rozetka.com.ua/ua/97977640/p97977640/"),
+        ("BB610-0BDAED34128BDA","v5m_146dbd278150498ae1576524","verified_package_named_asset_with_catalog_variant","https://organicplanet.com.ua/ru/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-1-l-valag"),
+        ("BB610-32DA4F652F73A1","v5m_ad3434331aae65aec38db00f","verified_package_named_asset_with_catalog_variant","https://organicplanet.com.ua/ru/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-1-l-valag"),
+        ("BB610-52AB75F7E35B03","v5m_f620944cec9c1ba35ebba75a","verified_package_named_asset_with_catalog_variant","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-18-18-18-1-kg"),
+        ("BB610-828A6E9188E43E","v5m_421135128110e83e6c24ca51","verified_package_named_asset_with_catalog_variant","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-npk-18-18-18-mineralne-dobryvo-200-g-organic-planet"),
+        ("BB610-A5D89C6A24BFB9","v5m_806f98ee401e081246324eb4","verified_package_named_asset_with_catalog_variant","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-12-46-8-1-kg"),
+        ("BB610-B7B6D0D5C66801","v5m_9b9dfc0c73c9787aef637291","verified_package_named_asset_with_catalog_variant","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-12-46-8-1-kg"),
+    ]
+    for sku_id, media_id, _, _ in rows:
+        if not con.execute(
+            "SELECT 1 FROM sku_media WHERE sku_id=? AND media_id=? AND binding_kind='exact'",
+            (sku_id, media_id),
+        ).fetchone():
+            return False
+    for sku_id, media_id, source_kind, source_url in rows:
+        con.execute(
+            "UPDATE media SET verification_status='verified', source_url=? WHERE media_id=?",
+            (source_url, media_id),
+        )
+        con.execute(
+            """
+            UPDATE sku_media
+            SET source_kind=?, source_url=?
+            WHERE sku_id=? AND media_id=? AND binding_kind='exact'
+            """,
+            (source_kind, source_url, sku_id, media_id),
+        )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -939,6 +972,7 @@ _MIGRATIONS = [
     ("20260921_verified_package_media_batch05", _verified_package_media_batch_05),
     ("20260921_verify_existing_master_exact_media_batch06", _verify_existing_master_exact_media_batch_06),
     ("20260921_verify_existing_plantafol_exact_media_batch07", _verify_existing_plantafol_exact_media_batch_07),
+    ("20260921_verify_remaining_existing_exact_media_batch08", _verify_remaining_existing_exact_media_batch_08),
 ]
 
 

@@ -66,11 +66,23 @@ jobs:
             --stage v5/staging/production-current.json \
             --out v5/content/verified-current.json
 
+      - name: Compile explicit V5 media
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf assets/img/v5/media
+          python v5/compile_media.py \
+            --root . \
+            --snapshot .v5-snapshot \
+            --stage v5/staging/production-current.json \
+            --out v5/media/verified-current.json \
+            --copy-dir assets/img/v5/media
+
       - name: Commit staging result
         shell: bash
         run: |
           set -euo pipefail
-          git add v5/staging/production-current.json v5/staging/production-current.md v5/content/verified-current.json
+          git add v5/staging/production-current.json v5/staging/production-current.md v5/content/verified-current.json v5/media/verified-current.json assets/img/v5/media
           if git diff --cached --quiet; then
             echo "No staging changes"
             exit 0
@@ -88,5 +100,6 @@ jobs:
             v5/staging/production-current.json
             v5/staging/production-current.md
             v5/content/verified-current.json
+            v5/media/verified-current.json
           if-no-files-found: error
           retention-days: 7

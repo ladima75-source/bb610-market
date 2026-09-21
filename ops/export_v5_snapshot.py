@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
 import sqlite3
 import subprocess
@@ -40,6 +41,85 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def git_blob(root: Path, ref_path: str) -> bytes:
+    return subprocess.check_output(["git", "show", f"origin/main:{ref_path}"], cwd=root)
+
+
+def maybe_upgrade_gateway(root: Path, manifest: dict) -> None:
+    """Apply the one-time, hash-pinned forced-command gateway upgrade.
+
+    This runs only during the already-authorized snapshot command. It never
+    changes authorized_keys or broadens the SSH entry point; it only replaces
+    the exact forced-command file with a repository version after verifying the
+    installed file hash.
+    """
+    state = manifest.setdefault("gateway_upgrade", {})
+    try:
+        raw = git_blob(root, "ops/gateway-upgrade.json")
+    except Exception:
+        state["status"] = "no_request"
+        return
+
+    spec = json.loads(raw.decode("utf-8"))
+    if not spec.get("enabled"):
+        state["status"] = "disabled"
+        return
+
+    target = Path(str(spec.get("target_path") or ""))
+    repo_path = str(spec.get("target_repo_path") or "")
+    expected = str(spec.get("expected_current_sha256") or "")
+    if target != Path("/usr/local/sbin/bb610-github-gateway"):
+        raise RuntimeError(f"gateway upgrade target refused: {target}")
+    if repo_path != "ops/bb610-github-gateway-v3":
+        raise RuntimeError(f"gateway upgrade repo path refused: {repo_path}")
+    if len(expected) != 64:
+        raise RuntimeError("gateway upgrade expected hash is invalid")
+
+    auth = Path("/root/.ssh/authorized_keys")
+    auth_text = auth.read_text(encoding="utf-8", errors="ignore") if auth.is_file() else ""
+    if 'command="/usr/local/sbin/bb610-github-gateway"' not in auth_text:
+        raise RuntimeError("forced-command authorization does not point to target gateway")
+
+    desired = git_blob(root, repo_path)
+    desired_sha = hashlib.sha256(desired).hexdigest()
+    current_sha = sha256(target) if target.is_file() else None
+
+    state.update({
+        "target_path": str(target),
+        "target_repo_path": repo_path,
+        "current_sha256_before": current_sha,
+        "desired_sha256": desired_sha,
+    })
+
+    if current_sha == desired_sha:
+        state["status"] = "already_current"
+        return
+    if current_sha != expected:
+        raise RuntimeError(
+            f"gateway upgrade refused: installed hash {current_sha!r} != expected {expected!r}"
+        )
+
+    backup = target.with_name(target.name + ".pre-v3." + current_sha[:12])
+    if not backup.exists():
+        shutil.copy2(target, backup)
+        os.chmod(backup, 0o700)
+
+    tmp = target.with_name(target.name + ".tmp")
+    tmp.write_bytes(desired)
+    os.chmod(tmp, 0o700)
+    os.replace(tmp, target)
+
+    installed_sha = sha256(target)
+    if installed_sha != desired_sha:
+        raise RuntimeError("gateway upgrade verification failed")
+
+    state.update({
+        "status": "upgraded",
+        "backup_path": str(backup),
+        "installed_sha256": installed_sha,
+    })
 
 
 def copy_rel(root: Path, out: Path, rel: str) -> bool:
@@ -119,6 +199,10 @@ def main() -> None:
         "media": {},
         "gateway": {},
     }
+
+    # One-time restricted gateway upgrade. This is hash-pinned to the exact
+    # currently installed forced-command file and keeps the same SSH entry path.
+    maybe_upgrade_gateway(root, manifest)
 
     # Sanitized SSH gateway diagnostics: never export key material.
     try:

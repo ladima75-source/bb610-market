@@ -96,10 +96,10 @@ jobs:
           assert data['counts']['public_products']==82
           assert data['counts']['hidden_products']==4
           assert data['counts']['public_skus'] < data['counts']['skus']
-          assert data['counts']['product_sources']==124
-          assert data['counts']['media']==279
+          assert data['counts']['product_sources']==122
+          assert data['counts']['media']==288
           assert data['counts']['product_media']==282
-          assert data['counts']['exact_sku_media']==180
+          assert data['counts']['exact_sku_media']==189
           kendal=product('kendal')
           assert kendal is not None and kendal['description'] and kendal['sources']
           assert product('switch-625-wg') is None
@@ -132,6 +132,26 @@ jobs:
               sku=next(x for x in item['skus'] if x['sku_id']==sku_id)
               assert sku['media'], (pid,sku_id)
               assert sku['media'][0]['verification_status']=='verified'
+          for pid in ('agriflex-bio','max-600-seasailer'):
+              item=product(pid)
+              assert item is not None
+              assert all(x.get('source_type')!='unverified_legacy_name' for x in item['sources'])
+          for pid,sku_id in [
+              ('master-npk-13-40-13','BB610-VLG-MASTER134013-1KG'),
+              ('master-npk-13-40-13','BB610-VLG-MASTER134013-250G'),
+              ('master-npk-20-20-20','BB610-VLG-MASTER202020-1KG'),
+              ('master-npk-20-20-20','BB610-VLG-MASTER202020-250G'),
+              ('master-npk-3-11-38','BB610-VLG-MASTER31138-1KG'),
+              ('master-npk-3-11-38','BB610-VLG-MASTER31138-250G'),
+              ('plantafol-npk-20-20-20','BB610-VLG-PLANTAFOL202020-1KG'),
+              ('plantafol-npk-20-20-20','BB610-VLG-PLANTAFOL202020-250G'),
+              ('plantafol-npk-20-20-20','BB610-VLG-PLANTAFOL202020-5KG'),
+          ]:
+              item=product(pid)
+              sku=next(x for x in item['skus'] if x['sku_id']==sku_id)
+              assert sku['media'], (pid,sku_id)
+              assert sku['media'][0]['verification_status']=='verified'
+              assert sku['media'][0]['source_kind']=='verified_package_product_page'
           print('BB610 V5 SHADOW API SERVICE: PASS')
           PY
 

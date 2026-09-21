@@ -7,6 +7,9 @@ on:
       - 'v5/**'
       - 'backend/services/product_master_v5.py'
       - 'backend/catalog_provider.py'
+      - 'backend/services/product_commerce.py'
+      - 'admin/products.js'
+      - 'admin/products.html'
       - 'backend/product_master_v5_api.py'
       - 'backend/app.py'
       - '.github/workflows/bb610_v5_ci.yml'
@@ -15,6 +18,9 @@ on:
       - 'v5/**'
       - 'backend/services/product_master_v5.py'
       - 'backend/catalog_provider.py'
+      - 'backend/services/product_commerce.py'
+      - 'admin/products.js'
+      - 'admin/products.html'
       - 'backend/product_master_v5_api.py'
       - 'backend/app.py'
       - '.github/workflows/bb610_v5_ci.yml'
@@ -184,6 +190,102 @@ jobs:
               raise AssertionError('out-of-stock SKU was accepted')
 
           print('BB610 V5 LIVE COMMERCE + CHECKOUT: PASS')
+          PY
+
+      - name: V5 commerce admin contract
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os, sqlite3
+          from pathlib import Path
+
+          live=Path('/tmp/bb610-commerce-admin.sqlite3')
+          if live.exists():
+              live.unlink()
+          con=sqlite3.connect(live)
+          con.execute('''
+            CREATE TABLE sku_commerce(
+              sku TEXT PRIMARY KEY,
+              price REAL,
+              sale_price REAL,
+              availability TEXT,
+              stock_qty REAL,
+              enabled INTEGER NOT NULL,
+              updated_at TEXT
+            )
+          ''')
+          con.execute(
+              'INSERT INTO sku_commerce VALUES(?,?,?,?,?,?,?)',
+              ('BB610-32DA4F652F73A1',999.0,None,'in_stock',11,1,'preexisting-live'),
+          )
+          con.commit()
+          con.close()
+
+          os.environ['BB610_V5_DB_PATH']='/tmp/bb610-v5.sqlite3'
+          os.environ['BB610_DB_PATH']=str(live)
+
+          from backend.services.product_commerce import (
+              seed_from_catalog, commerce_map, admin_products, update_product,
+          )
+
+          seeded=seed_from_catalog()
+          assert seeded['seen']==330, seeded
+          assert seeded['created']==329, seeded
+
+          cm=commerce_map()
+          assert len(cm)==330, len(cm)
+          assert cm['BB610-32DA4F652F73A1']['price']==999.0
+          assert cm['BB610-32DA4F652F73A1']['updated_at']=='preexisting-live'
+          assert 'BB610-VLG-KENDAL-100ML' in cm
+
+          rows=admin_products()
+          assert len(rows)==330, len(rows)
+          canonical=next(x for x in rows if x['sku']=='BB610-32DA4F652F73A1')
+          alias=next(x for x in rows if x['sku']=='BB610-VLG-KENDAL-100ML')
+          assert canonical['source']=='product-master-v5'
+          assert canonical['legacy_alias'] is False
+          assert canonical['price']==999.0
+          assert alias['source']=='product-master-v5-alias'
+          assert alias['legacy_alias'] is True
+          assert alias['canonical_sku_id']=='BB610-32DA4F652F73A1'
+
+          updated=update_product(
+              'BB610-32DA4F652F73A1',
+              price=444.0,
+              availability='in_stock',
+              stock_qty=6,
+              stock_qty_set=True,
+              enabled=True,
+          )
+          assert updated['price']==444.0
+          assert updated['stock_qty']==6
+          assert updated['enabled'] is True
+
+          updated=update_product(
+              'PL-BB-1308041-TC',
+              availability='request_price',
+              enabled=True,
+          )
+          assert updated is not None
+          assert updated['availability']=='request_price'
+
+          print('BB610 V5 COMMERCE ADMIN: PASS')
+          PY
+
+      - name: Prices admin has one editor
+        run: |
+          set -euo pipefail
+          node --check admin/products.js
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('admin/products.html').read_text(encoding='utf-8')
+          js=Path('admin/products.js').read_text(encoding='utf-8')
+          assert 'commerce-editor.js' not in html
+          assert 'products.js' in html
+          assert '/api/v1/admin/products' in Path('config/admin-config.js').read_text(encoding='utf-8')
+          assert 'request_price' in html
+          assert 'request_price' in js
+          print('BB610 PRICES ADMIN SINGLE SOURCE: PASS')
           PY
 
       - uses: actions/upload-artifact@v4

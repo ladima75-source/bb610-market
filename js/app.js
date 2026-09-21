@@ -6,6 +6,11 @@ const BB610 = (() => {
   const set=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
   const HIDDEN_STOREFRONT_CATEGORIES=new Set(['protection']);
   const categoryHidden=id=>HIDDEN_STOREFRONT_CATEGORIES.has(String(id||'').trim().toLowerCase());
+  const v5Mode=()=>String(window.BB610_DATA_SOURCE?.mode||'').startsWith('bb610-product-master-v5');
+  const v5Requested=()=>{
+    if(window.BB610_STOREFRONT_V5===true)return true;
+    try{return new URLSearchParams(location.search).get('v5')==='1'}catch(_){return false}
+  };
   const rawProducts=()=>BB610_DATA_SOURCE.products().filter(p=>!categoryHidden(p.category_id||p.category));
   const storefrontName=p=>{
     const name=String(p?.name||'').replace(/\s+/g,' ').trim();
@@ -60,6 +65,7 @@ const BB610 = (() => {
     return '';
   };
   const approvedSkuImage=(p,s=null)=>{
+    if(v5Mode())return '';
     const rows=[];
     const canonical=BB610_DATA_SOURCE.staticProductMedia?.(p?.id)||null;
     [p,canonical].filter(Boolean).forEach(source=>{
@@ -90,6 +96,7 @@ const BB610 = (() => {
     return '';
   };
   const packageMediaRequired=(p,s=null)=>{
+    if(v5Mode())return false;
     if(!s)return false;
     const canonical=BB610_DATA_SOURCE.staticProductMedia?.(p?.id)||null;
     const rows=[];
@@ -107,6 +114,17 @@ const BB610 = (() => {
   const firstRealImage=list=>(Array.isArray(list)?list:[]).map(imageValue).find(src=>src&&!isFallbackImage(src))||'';
   const productImage=(p,s=null)=>{
     const categoryId=p?.category_id||p?.category||'';
+    if(v5Mode()){
+      const skuImage=imageValue(s?.image);
+      if(skuImage&&!isFallbackImage(skuImage))return skuImage;
+      const skuGallery=firstRealImage(s?.gallery);
+      if(skuGallery)return skuGallery;
+      const baseImage=imageValue(p?.image);
+      if(baseImage&&!isFallbackImage(baseImage))return baseImage;
+      const galleryImage=firstRealImage(p?.gallery);
+      if(galleryImage)return galleryImage;
+      return fallbackImage(categoryId);
+    }
     // Canonical package media is the approved storefront photo. Prefer it over
     // runtime SKU.image because runtime rows can contain stale/broken media URLs.
     const selectedPack=s?.variant||s?.package||s?.label;
@@ -232,7 +250,10 @@ const BB610 = (() => {
     const productId=String(p?.id||s?.product_id||'').trim();
     const skuId=String(s?.id||s?.sku||'').trim();
     if(!productId)return 'catalog.html';
-    return 'product.html?id='+encodeURIComponent(productId)+(skuId?'&sku='+encodeURIComponent(skuId):'');
+    const qs=new URLSearchParams({id:productId});
+    if(skuId)qs.set('sku',skuId);
+    if(v5Mode()||v5Requested())qs.set('v5','1');
+    return 'product.html?'+qs.toString();
   }
   const potVariantSummary=p=>{
     if(p.category!=='containers')return '';
@@ -401,6 +422,8 @@ const BB610 = (() => {
 
 function bb610LoadProductCardV3Enhancements(){
   if(!document.body?.classList.contains('product-v2'))return;
+  try{if(new URLSearchParams(location.search).get('v5')==='1')return}catch(_){}
+  if(window.BB610_STOREFRONT_V5===true)return;
   if(document.querySelector('script[src*="product-card-v3-enhancements.js"]'))return;
   const script=document.createElement('script');
   script.src='/assets/js/product-card-v3-enhancements.js?v=20j';

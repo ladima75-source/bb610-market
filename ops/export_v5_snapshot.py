@@ -26,6 +26,7 @@ MEDIA_ROOTS = (
     "backend/runtime/media/products",
     "var/media",
     "assets/media",
+    "assets/img/organic-planet-sku",
 )
 
 

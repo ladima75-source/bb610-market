@@ -51,7 +51,7 @@ def expected_package_label(value, unit):
     if not label_unit:
         return None
     amount = Decimal(str(value))
-    amount_text = str(int(amount)) if amount == amount.to_integral() else format(amount.normalize(), "f")
+    amount_text = str(int(amount)) if amount == amount.to_integral() else format(amount.normalize(), "f").replace(".", ",")
     return f"{amount_text} {label_unit}"
 
 

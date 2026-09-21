@@ -138,6 +138,69 @@
       "package_label": "10 л",
       "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostymulyator-antystres-dlya-korenya-10-l-valagro",
       "target": "assets/img/v5/verified/op-kendal-root-10l.png"
+    },
+    {
+      "sku_id": "BB610-24D24A6B4EB211",
+      "product_id": "agriflex-amino-aminokysloty-50",
+      "package_label": "1 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax",
+      "target": "assets/img/v5/verified/op-agriflex-amino-1kg.auto"
+    },
+    {
+      "sku_id": "BB610-E72D0A565A6415",
+      "product_id": "agriflex-amino-aminokysloty-50",
+      "package_label": "5 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax",
+      "target": "assets/img/v5/verified/op-agriflex-amino-5kg.auto"
+    },
+    {
+      "sku_id": "BB610-813432FDF29AE4",
+      "product_id": "agriflex-amino-aminokysloty-50",
+      "package_label": "20 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-25-kg-citymax",
+      "target": "assets/img/v5/verified/op-agriflex-amino-20kg.auto"
+    },
+    {
+      "sku_id": "BB610-021E63CD9734F9",
+      "product_id": "agriflex-aminovix",
+      "package_label": "1 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-aminovix-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax",
+      "target": "assets/img/v5/verified/op-agriflex-aminovix-1kg.auto"
+    },
+    {
+      "sku_id": "BB610-EAEE397CF0D45E",
+      "product_id": "agriflex-fulvix-fulvokysloty-60",
+      "package_label": "1 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-fulvix-rozchynni-fulvovi-kysloty-1-kg-citymax",
+      "target": "assets/img/v5/verified/op-agriflex-fulvix-1kg.auto"
+    },
+    {
+      "sku_id": "BB610-75B55F8DEAD7C2",
+      "product_id": "agriflex-zn",
+      "package_label": "1 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax",
+      "target": "assets/img/v5/verified/op-agriflex-zn-1kg.auto"
+    },
+    {
+      "sku_id": "BB610-156A7D639ED836",
+      "product_id": "agriflex-zn",
+      "package_label": "5 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax",
+      "target": "assets/img/v5/verified/op-agriflex-zn-5kg.auto"
+    },
+    {
+      "sku_id": "BB610-3B882CCA6D419D",
+      "product_id": "valagro-edta-5sg",
+      "package_label": "5 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-5-sgmikroelementy-helaty-5-kg-valagro",
+      "target": "assets/img/v5/verified/op-valagro-edta-5sg-5kg.auto"
+    },
+    {
+      "sku_id": "BB610-74DDB26C8BB13D",
+      "product_id": "valagro-edta-fe-13",
+      "package_label": "5 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-fe-13-zhelezo-13-5-kg-valagro",
+      "target": "assets/img/v5/verified/op-valagro-edta-fe13-5kg.auto"
     }
   ]
 }

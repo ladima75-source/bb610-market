@@ -847,6 +847,50 @@ def _verified_package_media_batch_05(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _verify_existing_master_exact_media_batch_06(con: sqlite3.Connection) -> bool:
+    rows = [
+        ("BB610-27C0F2D3BFE84A","v5m_e131365ee7289a9cac793cab","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-18-18-18-valagr"),
+        ("BB610-989A92CC0B422A","v5m_7a012993574fdd8577622079","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-18-18-18-valagr"),
+        ("BB610-74742C63CC18FA","v5m_52ca4636bb27e3d23e5da811","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-18-18-18-valagr"),
+        ("BB610-90837EAB185FC0","v5m_58355b74245fc2937299f8e9","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-1-kg-npk-17-6-18-valagro"),
+        ("BB610-875F839910C32B","v5m_beadee4bb95c8fafec44b27b","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-250-g-npk-17-6-18-valagro"),
+        ("BB610-DD39796DC4FF76","v5m_93e0bfb910836fa0f2f506a6","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-17-6-18-valagro"),
+        ("BB610-VLG-MASTER134013-20G","v5m_b6fe1160bafc5b713768f678","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-g-npk-13-40-13-valagro"),
+        ("BB610-VLG-MASTER134013-25KG","v5m_5ff16767afd9c682e4fad77f","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-13-40-13-valagr"),
+        ("BB610-VLG-MASTER15530-25KG","v5m_6bd30f7079c7fc02bbea87b7","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-15-5-30-valagro"),
+        ("BB610-VLG-MASTER202020-20G","v5m_8beecf484e8d837e427a89a5","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-20-g-npk-20-20-20-valagro"),
+        ("BB610-VLG-MASTER202020-25KG","v5m_7a3aedb92ce7711d92618dd9","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-20-20-20-valagr"),
+        ("BB610-VLG-MASTER31138-20G","v5m_cfd79f6f230397aae29ceff4","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-20-g-npk-3-11-38-valagro"),
+        ("BB610-VLG-MASTER31138-25KG","v5m_fd815cdb259457c4be4f40a2","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-3-11-38-valagro"),
+    ]
+    for sku_id, media_id, _ in rows:
+        bound = con.execute(
+            "SELECT 1 FROM sku_media WHERE sku_id=? AND media_id=? AND binding_kind='exact'",
+            (sku_id, media_id),
+        ).fetchone()
+        if not bound:
+            return False
+    for sku_id, media_id, source_url in rows:
+        con.execute(
+            """
+            UPDATE media
+            SET verification_status='verified', source_url=?
+            WHERE media_id=?
+            """,
+            (source_url, media_id),
+        )
+        con.execute(
+            """
+            UPDATE sku_media
+            SET source_kind='verified_package_named_asset_with_catalog_variant',
+                source_url=?
+            WHERE sku_id=? AND media_id=? AND binding_kind='exact'
+            """,
+            (source_url, sku_id, media_id),
+        )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -855,6 +899,7 @@ _MIGRATIONS = [
     ("20260921_verified_package_media_batch03", _verified_package_media_batch_03),
     ("20260921_verified_package_media_batch04", _verified_package_media_batch_04),
     ("20260921_verified_package_media_batch05", _verified_package_media_batch_05),
+    ("20260921_verify_existing_master_exact_media_batch06", _verify_existing_master_exact_media_batch_06),
 ]
 
 

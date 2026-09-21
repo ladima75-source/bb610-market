@@ -28,12 +28,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--stage", default="v5/staging/production-current.json")
     ap.add_argument("--content", default="v5/content/verified-current.json")
+    ap.add_argument("--media", default="v5/media/verified-current.json")
     ap.add_argument("--schema", default="v5/schema.sql")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
     stage_path = Path(args.stage)
     content_path = Path(args.content)
+    media_path = Path(args.media)
     schema_path = Path(args.schema)
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -42,6 +44,7 @@ def main():
 
     stage = load(stage_path)
     verified = load(content_path)
+    verified_media = load(media_path)
     now = stage.get("summary", {}).get("snapshot_created_at") or datetime.now(timezone.utc).isoformat()
 
     stage_products = list(stage.get("products") or []) + list(stage.get("plantlogic_products") or [])
@@ -151,7 +154,6 @@ def main():
             item["commerce_state"] = row.get("commerce_state") or "request_price"
             all_skus.append(item)
 
-        media_by_path = {}
         for index, row in enumerate(all_skus):
             attrs = dict(row.get("attributes") or {})
             if row.get("v3_sku_id"):
@@ -216,44 +218,70 @@ def main():
                     ),
                 )
 
-            for sort_order, media in enumerate(row.get("media") or []):
-                media_id = media.get("media_id")
-                path = media.get("path")
-                if not media_id or not path:
-                    continue
+        media_ids = set()
+        for media in verified_media.get("media") or []:
+            media_id = media["media_id"]
+            media_ids.add(media_id)
+            con.execute(
+                """
+                INSERT INTO media(
+                    media_id, path, sha256, kind, source_url,
+                    verification_status, alt, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    media_id,
+                    media["path"],
+                    media.get("sha256"),
+                    media.get("kind") or "image",
+                    media.get("source_url"),
+                    media.get("verification_status") or "candidate",
+                    media.get("alt"),
+                    now,
+                ),
+            )
 
-                canonical_media_id = media_by_path.get(path)
-                if canonical_media_id is None:
-                    canonical_media_id = media_id
-                    con.execute(
-                        """
-                        INSERT INTO media(
-                            media_id, path, sha256, kind, source_url,
-                            verification_status, alt, created_at
-                        ) VALUES (?, ?, NULL, ?, NULL, 'candidate', ?, ?)
-                        """,
-                        (
-                            canonical_media_id,
-                            path,
-                            media.get("kind") or "image",
-                            media.get("alt"),
-                            now,
-                        ),
-                    )
-                    media_by_path[path] = canonical_media_id
+        sku_ids = {row["sku_id"] for row in all_skus}
+        for binding in verified_media.get("bindings") or []:
+            if binding["sku_id"] not in sku_ids:
+                raise SystemExit(f"Media binding references unknown SKU: {binding['sku_id']}")
+            if binding["media_id"] not in media_ids:
+                raise SystemExit(f"Media binding references unknown media: {binding['media_id']}")
+            con.execute(
+                """
+                INSERT INTO sku_media(
+                    sku_id, media_id, is_primary, sort_order,
+                    binding_kind, source_kind, source_url
+                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    binding["sku_id"],
+                    binding["media_id"],
+                    1 if binding.get("is_primary") else 0,
+                    int(binding.get("sort_order") or 0),
+                    binding.get("binding_kind") or "representative",
+                    binding.get("source_kind"),
+                    binding.get("source_url"),
+                ),
+            )
 
-                con.execute(
-                    """
-                    INSERT OR IGNORE INTO sku_media(sku_id, media_id, is_primary, sort_order)
-                    VALUES (?, ?, ?, ?)
-                    """,
-                    (
-                        row["sku_id"],
-                        canonical_media_id,
-                        1 if media.get("is_primary") else 0,
-                        sort_order,
-                    ),
-                )
+        media_summary = verified_media.get("summary") or {}
+        con.execute(
+            """
+            INSERT INTO migration_evidence(
+                entity_type, entity_id, field_name, source_kind,
+                source_ref, decision, note
+            ) VALUES ('catalog', 'v5', 'media', 'v5_media_compiler', ?, 'accepted', ?)
+            """,
+            (
+                "v5/media/verified-current.json",
+                (
+                    f"Explicit media graph: {media_summary.get('exact_current_skus', 0)} "
+                    f"current SKU exact; {media_summary.get('current_skus_without_exact', 0)} "
+                    f"current SKU representative-only or unresolved."
+                ),
+            ),
+        )
 
         for row in stage.get("sku_aliases") or []:
             con.execute(
@@ -295,6 +323,12 @@ def main():
             "sku_aliases": con.execute("SELECT COUNT(*) FROM sku_aliases").fetchone()[0],
             "media": con.execute("SELECT COUNT(*) FROM media").fetchone()[0],
             "sku_media": con.execute("SELECT COUNT(*) FROM sku_media").fetchone()[0],
+            "exact_sku_media": con.execute(
+                "SELECT COUNT(DISTINCT sku_id) FROM sku_media WHERE binding_kind='exact'"
+            ).fetchone()[0],
+            "representative_sku_media": con.execute(
+                "SELECT COUNT(DISTINCT sku_id) FROM sku_media WHERE binding_kind='representative'"
+            ).fetchone()[0],
             "commerce": con.execute("SELECT COUNT(*) FROM sku_commerce").fetchone()[0],
             "request_price": con.execute(
                 "SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'"

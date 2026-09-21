@@ -1,0 +1,38 @@
+name: BB610 V5 Verified Media Import
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/import_v5_verified_media.py'
+      - 'ops/v5-verified-media-import.json'
+      - 'ops/v5-verified-media-import-request.txt'
+      - '.github/workflows/bb610_v5_verified_media_import.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download verified media
+        run: |
+          set -euo pipefail
+          python ops/import_v5_verified_media.py             --manifest ops/v5-verified-media-import.json
+
+      - name: Commit verified media
+        run: |
+          set -euo pipefail
+          git add assets/img/v5/verified
+          if git diff --cached --quiet; then
+            echo "No verified media changes"
+            exit 0
+          fi
+          git config user.name "bb610-v5-media-bot"
+          git config user.email "bb610-v5-media-bot@users.noreply.github.com"
+          git commit -m "Import verified V5 package media"
+          git push origin HEAD:main

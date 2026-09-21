@@ -15,6 +15,7 @@ MEDIA = ROOT / "v5/media/verified-current.json"
 SCHEMA = ROOT / "v5/schema.sql"
 BOOTSTRAP = ROOT / "v5/bootstrap_db.py"
 DB_PATH = Path(os.getenv("BB610_V5_DB_PATH", str(ROOT / "backend/runtime/bb610-v5.sqlite3")))
+LIVE_DB_PATH = Path(os.getenv("BB610_DB_PATH", str(ROOT / "backend/runtime/bb610-orders.sqlite3")))
 _LOCK = threading.Lock()
 
 
@@ -71,6 +72,54 @@ def _json(value: str | None, default):
         return default
 
 
+def _runtime_commerce_map() -> dict[str, dict]:
+    """Read the operational sku_commerce table without creating/mutating it.
+
+    Product Master V5 owns identity/content/media. Operational commerce remains
+    the single live source for price, availability, stock and enabled state.
+    When a runtime DB/table is unavailable (CI/bootstrap), V5 snapshot commerce
+    remains the deterministic fallback.
+    """
+    if not LIVE_DB_PATH.is_file():
+        return {}
+    con = None
+    try:
+        con = sqlite3.connect(f"file:{LIVE_DB_PATH}?mode=ro", uri=True)
+        con.row_factory = sqlite3.Row
+        table = con.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='sku_commerce'"
+        ).fetchone()
+        if not table:
+            return {}
+        return {
+            row["sku"]: dict(row)
+            for row in con.execute(
+                """
+                SELECT sku,price,sale_price,availability,stock_qty,enabled,updated_at
+                FROM sku_commerce
+                """
+            )
+        }
+    except sqlite3.Error:
+        return {}
+    finally:
+        if con is not None:
+            con.close()
+
+
+def _overlay_commerce(item: dict, sku_id: str, runtime: dict[str, dict]) -> dict:
+    live = runtime.get(sku_id)
+    if not live:
+        item["commerce_source"] = "v5_snapshot"
+        return item
+    for key in ("price", "sale_price", "availability", "stock_qty", "enabled", "updated_at"):
+        if key in live:
+            target = "commerce_enabled" if key == "enabled" and "commerce_enabled" in item else key
+            item[target] = live[key]
+    item["commerce_source"] = "runtime_sku_commerce"
+    return item
+
+
 def resolve_product_id(value: str) -> str | None:
     with _connect() as con:
         row = con.execute("SELECT product_id FROM products WHERE product_id=? OR slug=? LIMIT 1", (value, value)).fetchone()
@@ -84,6 +133,7 @@ def resolve_product_id(value: str) -> str | None:
 
 
 def resolve_sku(value: str) -> dict | None:
+    runtime = _runtime_commerce_map()
     with _connect() as con:
         row = con.execute(
             """
@@ -99,10 +149,14 @@ def resolve_sku(value: str) -> dict | None:
         ).fetchone()
         if row:
             data = dict(row)
+            live = runtime.get(value)
+            if live:
+                for key in ("price","sale_price","availability","stock_qty","enabled","updated_at"):
+                    data[key] = live.get(key)
             data.update({
                 "requested_sku_id": value,
                 "is_alias": False,
-                "commerce_source": "canonical",
+                "commerce_source": "runtime_sku_commerce" if live else "v5_snapshot",
             })
             return data
 
@@ -121,13 +175,16 @@ def resolve_sku(value: str) -> dict | None:
         if not row:
             return None
         data = dict(row)
+        live = runtime.get(value)
+        if live:
+            for key in ("price","sale_price","availability","stock_qty","enabled","updated_at"):
+                data[key] = live.get(key)
         data.update({
             "requested_sku_id": value,
             "is_alias": True,
-            "commerce_source": "preserved_alias",
+            "commerce_source": "runtime_sku_commerce" if live else "preserved_alias_snapshot",
         })
         return data
-
 
 def resolve_sku_id(value: str) -> str | None:
     row = resolve_sku(value)
@@ -165,7 +222,11 @@ def _media_for_product(con: sqlite3.Connection, product_id: str) -> list[dict]:
     return [dict(row) for row in rows]
 
 
-def _sku_rows(con: sqlite3.Connection, product_id: str) -> list[dict]:
+def _sku_rows(
+    con: sqlite3.Connection,
+    product_id: str,
+    runtime_commerce: dict[str, dict] | None = None,
+) -> list[dict]:
     rows = con.execute(
         """
         SELECT s.sku_id,s.product_id,s.manufacturer_sku,
@@ -180,11 +241,13 @@ def _sku_rows(con: sqlite3.Connection, product_id: str) -> list[dict]:
         """,
         (product_id,),
     ).fetchall()
+    runtime_commerce = runtime_commerce if runtime_commerce is not None else _runtime_commerce_map()
     result = []
     for row in rows:
         item = dict(row)
         item["attributes"] = _json(item.pop("attributes_json", None), {})
         item["media"] = _media_for_sku(con, item["sku_id"])
+        item = _overlay_commerce(item, item["sku_id"], runtime_commerce)
         result.append(item)
     return result
 
@@ -226,7 +289,8 @@ def product(product_id_or_alias: str, *, public_only: bool = True) -> dict | Non
         item["characteristics"] = _json(item.pop("characteristics_json", None), [])
         item["sources"] = _sources_for_product(con, canonical)
         item["media"] = _media_for_product(con, canonical)
-        item["skus"] = _sku_rows(con, canonical)
+        runtime_commerce = _runtime_commerce_map()
+        item["skus"] = _sku_rows(con, canonical, runtime_commerce)
         item["aliases"] = [
             r["alias"]
             for r in con.execute(
@@ -237,7 +301,37 @@ def product(product_id_or_alias: str, *, public_only: bool = True) -> dict | Non
         return item
 
 
+def resolve_order_sku(value: str) -> dict | None:
+    """Resolve a sellable requested SKU against V5 identity and live commerce."""
+    commerce = resolve_sku(value)
+    if not commerce:
+        return None
+    canonical = commerce["canonical_sku_id"]
+    with _connect() as con:
+        row = con.execute(
+            """
+            SELECT s.sku_id,s.product_id,s.manufacturer_sku,
+                   s.package_value,s.package_unit,s.package_label,s.package_group,
+                   s.attributes_json,s.enabled AS identity_enabled,
+                   p.slug,p.name,p.brand,p.manufacturer,p.category_id,
+                   p.public_enabled,p.status
+            FROM skus s
+            JOIN products p ON p.product_id=s.product_id
+            WHERE s.sku_id=?
+            LIMIT 1
+            """,
+            (canonical,),
+        ).fetchone()
+        if not row:
+            return None
+        item = dict(row)
+        item["attributes"] = _json(item.pop("attributes_json", None), {})
+        item.update(commerce)
+        return item
+
+
 def snapshot(*, public_only: bool = True) -> dict:
+    runtime_commerce = _runtime_commerce_map()
     with _connect() as con:
         where = "WHERE public_enabled=1 AND status='active'" if public_only else ""
         products = [
@@ -259,7 +353,7 @@ def snapshot(*, public_only: bool = True) -> dict:
             item["characteristics"] = _json(item.pop("characteristics_json", None), [])
             item["sources"] = _sources_for_product(con, item["product_id"])
             item["media"] = _media_for_product(con, item["product_id"])
-            item["skus"] = _sku_rows(con, item["product_id"])
+            item["skus"] = _sku_rows(con, item["product_id"], runtime_commerce)
 
         public_product_ids = {
             row["product_id"]
@@ -300,6 +394,14 @@ def snapshot(*, public_only: bool = True) -> dict:
                 """
             )
         ]
+        for item in sku_aliases:
+            live = runtime_commerce.get(item["alias_sku_id"])
+            if live:
+                for key in ("price","sale_price","availability","stock_qty","enabled","updated_at"):
+                    item[key] = live.get(key)
+                item["commerce_source"] = "runtime_sku_commerce"
+            else:
+                item["commerce_source"] = "preserved_alias_snapshot"
 
         counts = {
             "products": con.execute("SELECT COUNT(*) FROM products").fetchone()[0],

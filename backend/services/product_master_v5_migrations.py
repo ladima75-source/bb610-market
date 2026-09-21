@@ -1172,6 +1172,20 @@ def _plantafol_buyer_content_batch_12(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _master_buyer_titles_batch_13(con: sqlite3.Connection) -> bool:
+    titles = {
+        "master-npk-13-40-13": "MASTER 13-40-13 — мінеральне NPK-добриво для укорінення та стартового росту",
+        "master-npk-15-5-30": "MASTER 15-5-30+2 — висококалійне NPK-добриво для фертигації",
+        "master-npk-17-6-18": "MASTER 17-6-18 — NPK-добриво для активного росту та формування плодів",
+        "master-npk-18-18-18": "MASTER 18-18-18 — збалансоване NPK-добриво для активного росту",
+        "master-npk-20-20-20": "MASTER 20-20-20 — збалансоване NPK-добриво для активного росту та відновлення",
+        "master-npk-3-11-38": "MASTER 3-11-38 — висококалійне NPK-добриво для дозрівання плодів",
+    }
+    for product_id, name in titles.items():
+        _update_product(con, product_id, {"name": name})
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -1187,6 +1201,7 @@ _MIGRATIONS = [
     ("20260921_strip_internal_matrix_language_batch10", _strip_internal_matrix_language_batch_10),
     ("20260921_buyer_facing_title_batch11", _buyer_facing_title_batch_11),
     ("20260921_plantafol_buyer_content_batch12", _plantafol_buyer_content_batch_12),
+    ("20260921_master_buyer_titles_batch13", _master_buyer_titles_batch_13),
 ]
 
 

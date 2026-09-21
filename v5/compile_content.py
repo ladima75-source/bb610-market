@@ -38,6 +38,9 @@ PUBLIC_HIDDEN_PRODUCT_IDS = {
     "aktara-25-wg",
     "switch-625-wg",
     "control-dmp",
+    # Legacy standalone Plantlogic card. Identity is retained for compatibility,
+    # but the current V5 assortment is the 6-family / 17-model structure.
+    "plantlogic-25-round-1308125",
 }
 
 GENERIC_WORDS = {

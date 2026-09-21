@@ -57,11 +57,20 @@ jobs:
           print(json.dumps(d['summary'],ensure_ascii=False,indent=2))
           PY
 
+      - name: Compile verified V5 content
+        shell: bash
+        run: |
+          set -euo pipefail
+          python v5/compile_content.py \
+            --root . \
+            --stage v5/staging/production-current.json \
+            --out v5/content/verified-current.json
+
       - name: Commit staging result
         shell: bash
         run: |
           set -euo pipefail
-          git add v5/staging/production-current.json v5/staging/production-current.md
+          git add v5/staging/production-current.json v5/staging/production-current.md v5/content/verified-current.json
           if git diff --cached --quiet; then
             echo "No staging changes"
             exit 0
@@ -78,5 +87,6 @@ jobs:
             bb610-v5-production.tar.gz
             v5/staging/production-current.json
             v5/staging/production-current.md
+            v5/content/verified-current.json
           if-no-files-found: error
           retention-days: 7

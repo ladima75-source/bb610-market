@@ -9,6 +9,8 @@ import threading
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
+from . import product_master_v5_migrations
+
 ROOT = Path(__file__).resolve().parents[2]
 STAGE = ROOT / "v5/staging/production-current.json"
 CONTENT = ROOT / "v5/content/verified-current.json"
@@ -20,6 +22,8 @@ LIVE_DB_PATH = Path(os.getenv("BB610_DB_PATH", str(ROOT / "backend/runtime/bb610
 _LOCK = threading.Lock()
 _INVARIANT_LOCK = threading.Lock()
 _PACKAGE_GROUP_INVARIANT_DONE = False
+_MIGRATION_LOCK = threading.Lock()
+_RUNTIME_MIGRATIONS_DONE = False
 
 
 def package_group_for(value, unit) -> str | None:
@@ -73,6 +77,17 @@ def _enforce_package_group_invariant(con: sqlite3.Connection) -> None:
         _PACKAGE_GROUP_INVARIANT_DONE = True
 
 
+def _apply_runtime_migrations_once(con: sqlite3.Connection) -> None:
+    global _RUNTIME_MIGRATIONS_DONE
+    if _RUNTIME_MIGRATIONS_DONE:
+        return
+    with _MIGRATION_LOCK:
+        if _RUNTIME_MIGRATIONS_DONE:
+            return
+        product_master_v5_migrations.apply_runtime_migrations(con)
+        _RUNTIME_MIGRATIONS_DONE = True
+
+
 def _needs_rebuild() -> bool:
     if not DB_PATH.is_file():
         return True
@@ -124,6 +139,7 @@ def _connect() -> sqlite3.Connection:
     con = sqlite3.connect(ensure_db())
     con.row_factory = sqlite3.Row
     _enforce_package_group_invariant(con)
+    _apply_runtime_migrations_once(con)
     return con
 
 

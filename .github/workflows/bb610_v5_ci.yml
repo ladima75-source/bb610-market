@@ -5,10 +5,16 @@ on:
     branches: [main]
     paths:
       - 'v5/**'
+      - 'backend/services/product_master_v5.py'
+      - 'backend/product_master_v5_api.py'
+      - 'backend/app.py'
       - '.github/workflows/bb610_v5_ci.yml'
   pull_request:
     paths:
       - 'v5/**'
+      - 'backend/services/product_master_v5.py'
+      - 'backend/product_master_v5_api.py'
+      - 'backend/app.py'
       - '.github/workflows/bb610_v5_ci.yml'
 
 permissions:
@@ -42,6 +48,22 @@ jobs:
           assert q("SELECT COUNT(*) FROM skus WHERE package_group='large'") > 0
           assert not list(con.execute('PRAGMA foreign_key_check'))
           print('BB610 PRODUCT MASTER V5: PASS')
+          PY
+
+      - name: V5 shadow API service
+        env:
+          BB610_V5_DB_PATH: /tmp/bb610-v5.sqlite3
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from backend.services.product_master_v5 import snapshot, product, resolve_sku_id
+          data=snapshot()
+          assert data['schema_version']=='5.0'
+          assert data['counts']['products']==87
+          assert data['counts']['skus']==255
+          assert product('kendal') is not None
+          assert resolve_sku_id('BB610-VLG-KENDAL-100ML')=='BB610-32DA4F652F73A1'
+          print('BB610 V5 SHADOW API SERVICE: PASS')
           PY
 
       - uses: actions/upload-artifact@v4

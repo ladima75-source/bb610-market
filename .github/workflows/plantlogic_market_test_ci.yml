@@ -94,7 +94,7 @@ jobs:
           assert 'app.js?v=20260920-approved-media-priority-1' in Path('index.html').read_text(encoding='utf-8')
           assert 'app.js?v=20260920-approved-media-priority-1' in Path('catalog.html').read_text(encoding='utf-8')
           assert 'app.js?v=20260920-package-image-source-1' in Path('product.html').read_text(encoding='utf-8')
-          assert 'product.js?v=20260921-pdp-tabs-4' in Path('product.html').read_text(encoding='utf-8')
+          assert 'product.js?v=20260921-pdp-packs-5' in Path('product.html').read_text(encoding='utf-8')
           assert 'favorites.js?v=20260918-market-test-1' in Path('favorites.html').read_text(encoding='utf-8')
           assert 'compare.js?v=20260918-market-test-1' in Path('compare.html').read_text(encoding='utf-8')
           assert 'Ціна за запитом' in Path('js/compare.js').read_text(encoding='utf-8')

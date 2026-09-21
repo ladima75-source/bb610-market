@@ -73,6 +73,69 @@
       "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/plantafol-plantafol-mineralnoe-udobrenie-5-kg-npk-20-20-20-v",
       "image_url": "https://organicplanet.com.ua/image/cache/catalog/photo/1093-534x534.png",
       "target": "assets/img/v5/verified/op-plantafol-20-20-20-5kg.png"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER15530-1KG",
+      "product_id": "master-npk-15-5-30",
+      "package_label": "1 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-15-5-30-valagro",
+      "target": "assets/img/v5/verified/op-master-15-5-30-1kg.png"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER15530-250G",
+      "product_id": "master-npk-15-5-30",
+      "package_label": "250 г",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-15-5-30-valagro",
+      "target": "assets/img/v5/verified/op-master-15-5-30-250g.png"
+    },
+    {
+      "sku_id": "BB610-VLG-PLANTAFOL02550-250G",
+      "product_id": "plantafol-npk-0-25-50",
+      "package_label": "250 г",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-0-25-50-valagro",
+      "target": "assets/img/v5/verified/op-plantafol-0-25-50-250g.png"
+    },
+    {
+      "sku_id": "BB610-VLG-PLANTAFOL105410-250G",
+      "product_id": "plantafol-npk-10-54-10",
+      "package_label": "250 г",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-10-54-10-valagro",
+      "target": "assets/img/v5/verified/op-plantafol-10-54-10-250g.png"
+    },
+    {
+      "sku_id": "BB610-VLG-PLANTAFOL301010-250G",
+      "product_id": "plantafol-npk-30-10-10",
+      "package_label": "250 г",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-30-10-10-valagro",
+      "target": "assets/img/v5/verified/op-plantafol-30-10-10-250g.png"
+    },
+    {
+      "sku_id": "BB610-VLG-PLANTAFOL51545-250G",
+      "product_id": "plantafol-npk-5-15-45",
+      "package_label": "250 г",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-5-15-45-valagro",
+      "target": "assets/img/v5/verified/op-plantafol-5-15-45-250g.png"
+    },
+    {
+      "sku_id": "BB610-VLG-MEGAFOL-1L",
+      "product_id": "megafol",
+      "package_label": "1 л",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-1-l-valagro",
+      "target": "assets/img/v5/verified/op-megafol-1l.png"
+    },
+    {
+      "sku_id": "BB610-VLG-MEGAFOL-10L",
+      "product_id": "megafol",
+      "package_label": "10 л",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-10-l-valagro",
+      "target": "assets/img/v5/verified/op-megafol-10l.png"
+    },
+    {
+      "sku_id": "BB610-VLG-KENDALROOT-10L",
+      "product_id": "kendal-root",
+      "package_label": "10 л",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostymulyator-antystres-dlya-korenya-10-l-valagro",
+      "target": "assets/img/v5/verified/op-kendal-root-10l.png"
     }
   ]
 }

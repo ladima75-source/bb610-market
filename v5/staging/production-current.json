@@ -1,9 +1,9 @@
 {
   "schema": "bb610-v5-stage-1",
   "summary": {
-    "snapshot_created_at": "2026-09-21T07:46:19.629848+00:00",
+    "snapshot_created_at": "2026-09-21T09:39:44.889825+00:00",
     "production_head": "46e0b2b208c54132bd1c11a70f993000272195f8",
-    "production_origin_main_at_snapshot": "0de6c4a73180d3b9f759ba87f4ab5ec41dbd9049",
+    "production_origin_main_at_snapshot": "2ca6dc90bec98c9d6816eebcb1154838a7d737c7",
     "source_commerce_rows": 286,
     "excluded_test_rows": 4,
     "canonical_non_plantlogic_products": 80,

@@ -7,7 +7,12 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 
-HIDDEN_EXPECTED = {"aktara-25-wg", "switch-625-wg", "control-dmp"}
+HIDDEN_EXPECTED = {
+    "aktara-25-wg",
+    "switch-625-wg",
+    "control-dmp",
+    "plantlogic-25-round-1308125",
+}
 COMMERCE_FIELDS = ("price", "sale_price", "availability", "stock_qty", "enabled")
 
 
@@ -130,8 +135,9 @@ def main() -> None:
         src = source_by_sku.get(alias_id)
         if not src:
             continue
-        if src.get("enabled"):
-            active_aliases += 1
+        if not src.get("enabled"):
+            continue
+        active_aliases += 1
         target = canonical_by_sku.get(alias["canonical_sku_id"])
         if not target:
             alias_conflicts.append({
@@ -142,8 +148,14 @@ def main() -> None:
             continue
         diffs = {}
         for field in ("price", "sale_price"):
-            if not same(src.get(field), target.get(field)):
-                diffs[field] = {"legacy": src.get(field), "canonical": target.get(field)}
+            legacy_value = src.get(field)
+            canonical_value = target.get(field)
+            # An empty legacy price is not a conflicting price decision.
+            # Only compare values that were both actually populated.
+            if legacy_value is None or canonical_value is None:
+                continue
+            if not same(legacy_value, canonical_value):
+                diffs[field] = {"legacy": legacy_value, "canonical": canonical_value}
         if diffs:
             alias_conflicts.append({
                 "alias_sku_id": alias_id,

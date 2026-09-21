@@ -76,6 +76,7 @@ def main() -> None:
         if tuple(target.parts[:4]) != tuple(ALLOWED_ROOT.parts):
             raise SystemExit(f"Target outside {ALLOWED_ROOT}: {target}")
 
+        print(f"IMPORT {row.get('sku_id')} <- {row.get('source_page')}", flush=True)
         image_url = resolve_image_url(row)
         req = urllib.request.Request(
             image_url,

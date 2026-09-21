@@ -34,6 +34,12 @@ ROW_PRODUCT_MAP = {
     68: "ferrilen-trium",
 }
 
+PUBLIC_HIDDEN_PRODUCT_IDS = {
+    "aktara-25-wg",
+    "switch-625-wg",
+    "control-dmp",
+}
+
 GENERIC_WORDS = {
     "добриво", "удобрение", "fungicide", "insecticide", "біостимулятор",
     "biostimulant", "fertilizer", "nova", "контрольовано", "вивільнюване",
@@ -341,6 +347,9 @@ def compile_content(root: Path, stage_path: Path) -> dict:
             raise ValueError(f"Duplicate dedicated content mapping for {product_id}")
         compiled[product_id] = row
 
+    for product_id, row in compiled.items():
+        row["public_enabled"] = product_id not in PUBLIC_HIDDEN_PRODUCT_IDS
+
     missing = sorted(stage_product_ids - set(compiled))
     extra = sorted(set(compiled) - stage_product_ids)
     if missing or extra:
@@ -363,6 +372,8 @@ def compile_content(root: Path, stage_path: Path) -> dict:
             "sources": source_count,
             "products_with_primary_or_manufacturer_source": primary_count,
             "uncovered_products": 0,
+            "public_products": sum(1 for row in compiled.values() if row.get("public_enabled")),
+            "hidden_products": sum(1 for row in compiled.values() if not row.get("public_enabled")),
         },
         "products": [compiled[key] for key in sorted(compiled)],
     }

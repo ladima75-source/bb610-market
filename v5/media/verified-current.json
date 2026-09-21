@@ -21,7 +21,8 @@
       "sha256": "0103d80ec0e8c04b6f3096c639fde23775318dad78ace361ed3281e4aac35097",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/erajz-biostimulyator-rosta-i-nachala-vegetacii-100-ml",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Ерайз — 100 мл"
     },
     {
@@ -30,7 +31,8 @@
       "sha256": "0146603554bfca40272834dde77c5f8310f8ed9f1a28da4f2b04e2dd9f3a0fed",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Ferrilene 4.8 Orto-Orto — Хелат заліза EDDHA для профілактики та корекції залізного хлорозу"
     },
     {
@@ -39,7 +41,8 @@
       "sha256": "01a74f15ffaf1590ce6a3f748f75923044d650d8d120d274c5f090819fe6df50",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 5-15-45"
     },
     {
@@ -48,7 +51,8 @@
       "sha256": "01b996b4ad8fe4d4feccc05fa43495b4e6a799174206f91e7cdde619f96e8c0f",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/ru/katalog/biostymulyatory/sweet-svit-biostimulyator-okraski-plodov-25-ml-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Sweet — 25 мл"
     },
     {
@@ -57,7 +61,8 @@
       "sha256": "0473179c5d2e1a5abf6bb8e7de37e8a9179dffc09aa3955ab923114827b2b0f0",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-fe-breksil-zalizo-mikroelementy-v-helatnij-formi-15-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Fe — 15 г"
     },
     {
@@ -66,7 +71,8 @@
       "sha256": "0832c4ddb57225fe66024d9a70e37f5f3bcf0bc6348bdb93bbba5f93d1f9f1a7",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/sulfat-magniyu-100-g-alverniya-alwernia-polshcha",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Сульфат магнію — 100 г"
     },
     {
@@ -75,7 +81,8 @@
       "sha256": "08979333463aae263487dba1a4f56b18f9a27504f013ca2f79e166107a01d939",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Osmocote Start 11-11-17 (1,5M) — Короткострокове контрольоване живлення для молодих і чутливих культур"
     },
     {
@@ -84,7 +91,8 @@
       "sha256": "09575badcd30312646ff5946d6a2de65b17c7ec638facfafbb1914a94e19bbc8",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309020 — base"
     },
     {
@@ -93,7 +101,8 @@
       "sha256": "096035d6e94b54d01685490dec814412fb506ba691821b998faf3eb4c4dbef48",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/zasobi-zahistu-roslin/control-dmp-kontrol-dmp-pidkyslyuvach-prylypach-100-ml-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Control DMP — 100 мл"
     },
     {
@@ -102,7 +111,8 @@
       "sha256": "09b1f8b15ebe2d77f74f7ac2e69d3cc2a5a6f1c2d3a0c4a3caabc7eb15f00982",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-5-sgmikroelementy-helaty-1-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Valagro EDTA 5SG — 1 кг"
     },
     {
@@ -111,7 +121,8 @@
       "sha256": "0a43ea53903d7e61c9b4f5c325164fe1c0b13dfbe72cd94b70b41e1001c4f82e",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-shvydkyj-start-osmocote-22-5-6-4-5m-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Quick Start 22-5-6 (4–5M) — 1 кг"
     },
     {
@@ -120,7 +131,8 @@
       "sha256": "0a700c30d1dae27f2ba4035dde9e5893305868fc86df06be0e0e2a9fece8be8d",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agroblen-granula-mah-agroblen-tablet-icl-14-20-5-te-5-6m-20-sht",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Agroblen Granula-MAX 14-20-5+TE (5–6M) — 20 шт"
     },
     {
@@ -129,7 +141,8 @@
       "sha256": "0b681c3ad8b3acdb05f9d94555d2c4c5270c50921bd67d9b168120e961e5ee9b",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Actiwave — Кореневий біостимулятор для підвищення поглинання поживних речовин"
     },
     {
@@ -138,7 +151,8 @@
       "sha256": "0c611b29a3d3d650a63dd6261e22fe23ec9adf185942aedc6220647d334bb11f",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення — 1 кг"
     },
     {
@@ -147,7 +161,8 @@
       "sha256": "0cf836fe8ebf5292d676e606b49c934725f0eedcfd86302e6172220e4684c6fe",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Terra-Sorb"
     },
     {
@@ -156,7 +171,8 @@
       "sha256": "0e8a6c7ad114c5d39a7a6ddce6055347f8db87fe38a6d444fbca42d3df5a0de4",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309025 — detail"
     },
     {
@@ -165,7 +181,8 @@
       "sha256": "0ea63b16aa251c307737dc35f394297f8e3af4e2a08a0f441903cace0ad2cc5a",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/boroplus-boroplyus-helat-bora1-l-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Boroplus — 1 л"
     },
     {
@@ -174,7 +191,8 @@
       "sha256": "110be3b4f12e8199bc7b02467fbfd420fb12dfdb844ce04e3d14a8b7b17de8a0",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-npk-0-60-20-fosforno-kalijne-dobryvo-15-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Nova PeKacid 0-60-20 — 15 г"
     },
     {
@@ -183,7 +201,8 @@
       "sha256": "110dc313fa69fd719e750bdcc1f268f873e7df7f0854a1be60a6b64abbd67e3c",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-10-kg-npk-20-20-20-valagr",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "MASTER 20-20-20 — 10 кг"
     },
     {
@@ -192,7 +211,8 @@
       "sha256": "11b738c1e40203ef552301dbc7b1f171d1f0fe1109c7b35d40eb61f7d755ed80",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-ca-breksil-kalcij-mikroelementy-v-helatnij-formi-250-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Ca — 250 г"
     },
     {
@@ -201,7 +221,8 @@
       "sha256": "11d0bf623e6192622180c601b94af0bd60de6cfe57541faf42ee170c1837561e",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-1-l-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Viva — 1 л"
     },
     {
@@ -210,7 +231,8 @@
       "sha256": "12a2c6cf6f96bc7f85d6795b77057f8f8168fa312cf163d4771d7c453c61e3db",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/actiwin-20-5-10-22-7-kg-kompleksne-mineralne-dobryvo-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Actiwin 20-5-10 — 22,7 кг"
     },
     {
@@ -219,7 +241,8 @@
       "sha256": "12e128643f2d5c1b6db88c555d6b6b879aabe085b9278d13ae6d5bbc20b0b9fe",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-18-18-18-25-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра NPK 18-18-18 — 25 г"
     },
     {
@@ -228,7 +251,8 @@
       "sha256": "130fc7e29f378f6f0266db716d92ebeec5a923643c8192ec4f773eecdf4003ae",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308305 — angle"
     },
     {
@@ -237,7 +261,8 @@
       "sha256": "135ae357b6b634c1dc222dcb29a62cd6e96f30f2e3c4146ccb85075dffae7cda",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-ca-breksil-kalcij-mikroelementy-15-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Ca — 15 г"
     },
     {
@@ -246,7 +271,8 @@
       "sha256": "13f625113c3facd91da4b60bbe1eb75f2f927de0d7ed847c98cab65105de3f54",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-combi-breksil-kombi-mikroelementy-15-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Combi — 15 г"
     },
     {
@@ -255,7 +281,8 @@
       "sha256": "1403700747478cec35d726a712bc22b98036076121c0a948fce43025fd68b8e5",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 13090350 — angle_alt"
     },
     {
@@ -264,7 +291,8 @@
       "sha256": "146dbd278150498ae157652418951a212af91466968261dace239e46bd44ef7f",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "Kendal™"
     },
     {
@@ -273,7 +301,8 @@
       "sha256": "14e44c532d214517a48cb3023f386f231f3345b6d1047986ed28903ace22bc1a",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/max-600-seasailer-biostymulyator-1-kg-citymax",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "MAX 600 SEASAILER — 1 кг"
     },
     {
@@ -282,7 +311,8 @@
       "sha256": "14ff596575b20af17d617ef7e1320ea1ddafa97144780bb4cc92d595b3b18b26",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-multi-breksil-multi-mikroelementy-1-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Multi — 1 кг"
     },
     {
@@ -291,7 +321,8 @@
       "sha256": "166b3f2be0202ebad881ed186e2d2ecf92d46b8021f6cd9bfd9d93212c47371b",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 13090350 — angle"
     },
     {
@@ -300,7 +331,8 @@
       "sha256": "168bf00e8c01ae7f27605799715155f649d3ddc921dcc9aeb6843ae141ab89fd",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-set-maksikrop-zavyaz-biostimulyator-25-ml-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Maxicrop Set / Максікроп Зав'язь — 25 мл"
     },
     {
@@ -309,7 +341,8 @@
       "sha256": "1744e3b39c47386b4c9bedec81d35e7f807e5420c8a393344e50e01415eafcd0",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1301144 — black — front"
     },
     {
@@ -318,7 +351,8 @@
       "sha256": "180515f5a0bcd457c82204f28e28fdbe85795ecc3e4c66a7e242999e479d1172",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 0-25-50"
     },
     {
@@ -327,7 +361,8 @@
       "sha256": "18551a26434ff397c58dac8acfcd939a0b54a796077f22b10dee2e4c30f41356",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-kalijnyj-osmocote-12-8-19-3-4m-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Potassium 12-8-19 (3–4M) — 1 кг"
     },
     {
@@ -336,7 +371,8 @@
       "sha256": "18dfd896a0ce86733c8ae8988bbce20dc55d3e35bfdc8078aed3e898d3bc98fb",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 0-25-50"
     },
     {
@@ -345,7 +381,8 @@
       "sha256": "1a355d9a03ad054e062fc0381bd92a3a2d8fe06850453c9834b3931b71949b54",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Brexil Duo — Кальцій-магнієве мікродобриво з бором і мікроелементами"
     },
     {
@@ -354,7 +391,8 @@
       "sha256": "1b09b40af476b5f65a5669accdbc8cba5d0cece274e5fbb7d2ca895d60ee4bcc",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-grunt-mineralne-dobryvo-v-granulah-npk-npk-11-11-21-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — 1 кг"
     },
     {
@@ -363,7 +401,8 @@
       "sha256": "1d8e7a2f0bddebbf832da7da31560d218a61382b8169d7cdebc9a80827718e76",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "NeoTerra Aqua"
     },
     {
@@ -372,7 +411,8 @@
       "sha256": "1df1ae08f0d5e08eb3df531c3416d22499caae02acac2b7402f057b959e6d339",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1308041 — hero"
     },
     {
@@ -381,7 +421,8 @@
       "sha256": "1e3916b4839b972abc0efbd648e6216c7ac4f4cdb21755f601d2b0e3c4e97183",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-1-l-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoVivo — 1 л"
     },
     {
@@ -390,7 +431,8 @@
       "sha256": "1f70146fb087d6015d934efe52e59c0cd3ee7770879c83c251402c82f6c75765",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1308020 — hero"
     },
     {
@@ -399,7 +441,8 @@
       "sha256": "206b3a6dc27a8d90c54d125548117ff82d3833cf8c0062db782bf49a041ea7f4",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1301144 — black — base"
     },
     {
@@ -408,7 +451,8 @@
       "sha256": "23eb0dbeb156dcf6e6c32d351970360f9f908a6f6500c95cd671eb5ec82ba6bf",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 13080350 — angle"
     },
     {
@@ -417,7 +461,8 @@
       "sha256": "23f80f7ae5ac3b2b43b4a16133b2e52e3cf2c88965c00cd5697a393f72fc5001",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-nutre-breksil-nutre-mikroelementy-1-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Nutre — 1 кг"
     },
     {
@@ -426,7 +471,8 @@
       "sha256": "246f830bbd7893fb5d7e77d5ea72f8af13bf2445c6ffe1d0e71ed7ad7f4932b1",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-1-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Mix — 1 кг"
     },
     {
@@ -435,7 +481,8 @@
       "sha256": "26d2e9b5ade1a8dd697c8af8240e95c122ba6aada73575d49bc6ccd0261b1b09",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/sulfat-magniyu-200-g-alverniya-alwernia-polshcha",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Сульфат магнію — 200 г"
     },
     {
@@ -444,7 +491,8 @@
       "sha256": "26e8777a545b05df02e85562df9bcd6f117492014f7664833527784753f1b5dd",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-dekor-osmocote-16-8-12-5-6m-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Decor 16-8-12 (5–6M) — 1 кг"
     },
     {
@@ -453,7 +501,8 @@
       "sha256": "27d38d40f50edc84a45a806f49f7fc9152fbdb3d2038d65e465cf5e241d82c4d",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Спрей-Ейд"
     },
     {
@@ -462,7 +511,8 @@
       "sha256": "28c0eeb46597fa5bcf2a73deb3e618ccb56384c777f6763a9a04056e08329d92",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-fe-breksil-zhelezo-mikroelementy-1-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Fe — 1 кг"
     },
     {
@@ -471,7 +521,8 @@
       "sha256": "29bf6988639c45cc15c4a5e97e7201ea3056ec1b706fc66403fe4e0cd1c73aa6",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1309030 — hero"
     },
     {
@@ -480,7 +531,8 @@
       "sha256": "2aa9df8897484582566af31c132c70407c27f2b55fc9894019a4c247725c802a",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/sweet-svit-biostimulyator-okraski-plodov-1-l-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Sweet — 1 л"
     },
     {
@@ -489,7 +541,8 @@
       "sha256": "2ad64b5fd48ae7f97dc5ba30081ce900a424e151bc57eaa812fcd12b10d759b7",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1301144 — white — top"
     },
     {
@@ -498,7 +551,8 @@
       "sha256": "2adf4e93546de5e0ece0aa47374d7ab8a44bc82ee5e580943df9f82f099e6c45",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organichne-dobryvo-biostymulyator-20-l-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Viva — 20 л"
     },
     {
@@ -507,7 +561,8 @@
       "sha256": "2b9315d531a6e95ea3993fe5368cfcd902b8962fde1fbe1a67e1dc46b7921e9a",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Osmocote Bloom 12-7-18 (2–3M) — Контрольовано-вивільнюване добриво для однорічників і невеликих контейнерів"
     },
     {
@@ -516,7 +571,8 @@
       "sha256": "2c0f1cec443a7684585621f95813e0c9211aaedb7e10615ddc2de17924243b64",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-shvydkyj-start-osmocote-22-5-6-4-5m-200-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Quick Start 22-5-6 (4–5M) — 200 г"
     },
     {
@@ -525,7 +581,8 @@
       "sha256": "2c47e0eeb08a487da12f410f843a735c5f14a6977480f434546f537d7976a8b3",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Світч 62,5 WG, фунгіцид Syngenta"
     },
     {
@@ -534,7 +591,8 @@
       "sha256": "2ca5b4d4ac3fdf871bea15697f8bf8c36247a27fd05951f435c88eb3944baebe",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Actiwin 20-5-10 — Гранульоване NPK-добриво 20-5-10 для ґрунтового живлення"
     },
     {
@@ -543,7 +601,8 @@
       "sha256": "2d02993966feccbe12a886b6d65c27ae21640fde02064dc36bd8fcd4c0dc9704",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/ru/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-25-ml-valag",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Viva — 25 мл"
     },
     {
@@ -552,7 +611,8 @@
       "sha256": "2dab08a8de8f38c2c88d80f850f1dad2f541c2191a3ec96306462e5b4236aa0d",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309020 — front"
     },
     {
@@ -561,7 +621,8 @@
       "sha256": "2ec27ab70a0f979eea4d4c0e7755c0ac2ff8b494e002099346be5190ad6877b1",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "MEGAFOL™"
     },
     {
@@ -570,7 +631,8 @@
       "sha256": "2ef98dad9582747aca2f5ca73dc6fe540cac329b4998dd0f76d076ae81f404c1",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1303025 — angle"
     },
     {
@@ -579,7 +641,8 @@
       "sha256": "30405972fe1b3b6c9af1a1adcaea8d2e958ded571908ad60a28986c5fe5e2333",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309026 — base"
     },
     {
@@ -588,7 +651,8 @@
       "sha256": "34390bab18da3c61585e6931aa861065cfefc7f999a9eebb061e8d935e835083",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Radifarm — 10 л"
     },
     {
@@ -597,7 +661,8 @@
       "sha256": "34a1a25a55dd9adbea009e424f9fd031f1e135a4df903fde9bf900540398716b",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agrifleks-hyumik-total-agriflex-humic-total-vodorastvorimyj",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Agriflex Humic (Гумат калію) — 1 кг"
     },
     {
@@ -606,7 +671,8 @@
       "sha256": "35e3bba08efff1badfb14b8e7f84d256b362cc9753fcdeecaf65ef4754b53f31",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1309020 — hero"
     },
     {
@@ -615,7 +681,8 @@
       "sha256": "369ea8cb27bd96284b2d16e8b9cd00fdd07b8ce1a04321150e7e618b5ba3708f",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1308031 — hero"
     },
     {
@@ -624,7 +691,8 @@
       "sha256": "380086a6668c0efa483d7803485143435bd39a8f12e5348863b6d2d9cce9c7d6",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Ferrilene Trium — Багатостратегічний хелат заліза для профілактики та корекції залізного хлорозу"
     },
     {
@@ -633,7 +701,8 @@
       "sha256": "386de689074d2aa3920d1485d84815da0d91e3fef91e6b63e3c9cc774e90dec8",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309030 — top"
     },
     {
@@ -642,7 +711,8 @@
       "sha256": "399c8eacee531e79be931e27df7647f2b015da3e881732f1604bbb6c9fa0f5f5",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/haifa-hajfa-mkr-0-52-34-mineralne-dobryvo-20-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Haifa MKP 0-52-34 — 20 г"
     },
     {
@@ -651,7 +721,8 @@
       "sha256": "3a2eb24bc91d355718ccd52b51ab558dc35ea3e4ae8f8b0cd8c5fd2861601c32",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення"
     },
     {
@@ -660,7 +731,8 @@
       "sha256": "3c74af970838a89ab383fb3b1aae8a701ddc2a28e989bcf981dd8540908b5b83",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308031 — front"
     },
     {
@@ -669,7 +741,8 @@
       "sha256": "3d80f0c28b7fd975bcff3d5ab4abc259936b900dea4531ba0cdf5c857bcfa185",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308303 — top"
     },
     {
@@ -678,7 +751,8 @@
       "sha256": "3dc6f9c5d484c3f503c444364ea9064b31db0b46d36481ab233468d53131fb7a",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308041 — front"
     },
     {
@@ -687,7 +761,8 @@
       "sha256": "3ee61179db04ff9080959c978a460fd7804b1e300a25a740f9fc288bf04bae75",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-v-helatnij-formi-250-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Mix — 250 г"
     },
     {
@@ -696,7 +771,8 @@
       "sha256": "3f0bc80b105d6c43082fb7a10d7c0ad1e066555c4dc7f6bcc455ee06b41125ac",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-multi-breksil-multi-mikroelementy-v-helatnij-formi-250-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Multi — 250 г"
     },
     {
@@ -705,7 +781,8 @@
       "sha256": "3f5b305307b6c351c42edee8f68eb7e4c3f3a2de368d68105ee7913380f23f39",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-combi-breksil-kombi-mikroelementy-v-helatnij-formi-250-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Combi — 250 г"
     },
     {
@@ -714,7 +791,8 @@
       "sha256": "3f923fc6a6d4a702b1a9c785e181c59560b23689c01fe10ddc7816f31947696a",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308041 — base"
     },
     {
@@ -723,7 +801,8 @@
       "sha256": "40c6ef743b5e67be8bb640cf88260adfaa7c572c7b775466968ecb6839396163",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-te-kendal-te-organicheskij-bioimmunostimulyator-100-m",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Kendal TE — 100 мл"
     },
     {
@@ -732,7 +811,8 @@
       "sha256": "416fb4e46e1dc57768dc263eff21e62a344699c6af1dedd68428170d2d8662e0",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308040 — angle"
     },
     {
@@ -741,7 +821,8 @@
       "sha256": "4194a57e4138550130f777acc73716a8fd0e87d92dc3cab37eba3942fe4cc282",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308020 — front"
     },
     {
@@ -750,7 +831,8 @@
       "sha256": "41a504975291f806d8cbca84354d66fa8f9497b602440be5c61252c538d70370",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308303 — hero"
     },
     {
@@ -759,7 +841,8 @@
       "sha256": "421135128110e83e6c24ca51777f7df74680efc3d597eb932118d56ff655205c",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "Кеміра NPK 18-18-18"
     },
     {
@@ -768,7 +851,8 @@
       "sha256": "43027980b902778606b2330c8017ed168efebc9f7c4e3929f99b8b5f9c8ac973",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308305 — top"
     },
     {
@@ -777,7 +861,8 @@
       "sha256": "4324ccaf5ce05d20358f62d68cf2b51d4e7bfaaaef6d9cb04e1555614c5cffdd",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/zasobi-zahistu-roslin/control-dmp-kontrol-dmp-podkislitel-prilipatel-10-l-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Control DMP — 10 л"
     },
     {
@@ -786,7 +871,8 @@
       "sha256": "45c6be9973168c3cea0ac3df991b3ec4cdbadbd0942a51631e56fdd9bad8d0a1",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/terra-sorb-terra-sorb-regulyator-rosta-antistresant-100-ml",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Terra-Sorb — 100 мл"
     },
     {
@@ -795,7 +881,8 @@
       "sha256": "45d59502b5eb59ad05822a21b199a4d6a965baf40a2d0463b97b1430e9588bd1",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308025 — base"
     },
     {
@@ -804,7 +891,8 @@
       "sha256": "46c13ff382ee9d40ba150fbd387e580a77f66231426b958270f371c9b9ba3780",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308025 — detail"
     },
     {
@@ -813,7 +901,8 @@
       "sha256": "481b23546720de50c9dc3bf2e41e22fce9cfa5eb47d3ebe6930bc7b085a2de05",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-lyuks-mineralnoe-udobrenie-npk-14-11-25-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Люкс NPK 14-11-25 — 1 кг"
     },
     {
@@ -822,7 +911,8 @@
       "sha256": "48b0d7ed73cbb05f75fce0742398f1e7b1068e3c8f211f527b92cfc96a0a0c88",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-fe-breksil-zalizo-mikroelementy-v-helatnij-formi-250-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Fe — 250 г"
     },
     {
@@ -831,7 +921,8 @@
       "sha256": "48b835e1726640f035f7dc3b6e9037b9459a129ba71ca0aa6202302783951e79",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-1-l-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoFlora — 1 л"
     },
     {
@@ -840,7 +931,8 @@
       "sha256": "495d85ac39c00edec9d6bf8855bfa9a966480fcc0bf90832034cc1fb2f9d65c8",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308020 — angle"
     },
     {
@@ -849,7 +941,8 @@
       "sha256": "4974ca823e69170c9ced49374226a77ff88061b2a00c4bdb16cf4123dba97c57",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-kalijnyj-osmocote-12-8-19-3-4m-200-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Potassium 12-8-19 (3–4M) — 200 г"
     },
     {
@@ -858,7 +951,8 @@
       "sha256": "4a7c7c9e9da1d81d15c415fb80e7a374d52587a473c35d11722f1c9f5f13387f",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kropker-yaramila-cropcare-npk-11-11-21-100-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — 100 г"
     },
     {
@@ -867,7 +961,8 @@
       "sha256": "4d6ece7299483b2d4973f791a75fbae615d748a2539becdaa5b97ec0e87fe0f1",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/haifa-hajfa-mkr-0-52-34-mineralne-dobryvo-200-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Haifa MKP 0-52-34 — 200 г"
     },
     {
@@ -876,7 +971,8 @@
       "sha256": "4e2a97aed45dda535d08c0eddf3a9e9111e9584e8d747386bc8e6e1f72c82461",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/ru/katalog/biostymulyatory/max-600-seasailer-biostymulyator-20-kg-citymax",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "MAX 600 SEASAILER — 20 кг"
     },
     {
@@ -885,7 +981,8 @@
       "sha256": "4e4de77268143fe234859a4860502dc7e6756909acebbddd18f04ef087de2e5a",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-nutre-breksil-nutre-mikroelementy-5-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Nutre — 5 кг"
     },
     {
@@ -894,7 +991,8 @@
       "sha256": "4fc25224660ef3b4fe91726c624f4ae78a7681ad8870ba9bc9fbfa849c6e9c00",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Osmocote Granula-MAX 14-8-11+TE (5–6M) — Таблетоване контрольовано-вивільнюване добриво 14-8-11+2MgO+TE на 5–6 місяців"
     },
     {
@@ -903,7 +1001,8 @@
       "sha256": "4fc5d348dbbaa31c058ce641a6b84e8545a6fbc67f7e7bf24d20833ebb6eb823",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/sweet-svit-biostimulyator-okraski-plodov-100-ml-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Sweet — 100 мл"
     },
     {
@@ -912,7 +1011,8 @@
       "sha256": "4fd3f2967b30bb333ed133a865fa5f93b6abdbe394fb0ecddbc27aa3b23df699",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 13090350 — hero"
     },
     {
@@ -921,7 +1021,8 @@
       "sha256": "50b0f77573f9be1fbe040e5cbd630aeaae01b41cd82a1f6187e828edda2219b5",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308040 — top"
     },
     {
@@ -930,7 +1031,8 @@
       "sha256": "515d9ef4338d870a2f86148b303ada2afaab02fe91048ac05d1199c0fc0be70e",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1301153 — black — family"
     },
     {
@@ -939,7 +1041,8 @@
       "sha256": "52499dcbc520776d4d30785201e0ddc1624b3ca53d9fc41a57c7ce0c63fd0fd9",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308041 — top"
     },
     {
@@ -948,7 +1051,8 @@
       "sha256": "5261c8125712ce7a15adabfe180a373b3ecb20d546eed163f739bb0ec6204316",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 20-20-20"
     },
     {
@@ -957,7 +1061,8 @@
       "sha256": "52ca4636bb27e3d23e5da811c3e83939b9eec8e7d7350abcecc2ebe02ece2be2",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 18-18-18"
     },
     {
@@ -966,7 +1071,8 @@
       "sha256": "53f56b0082c00ccc807ba475dd703d9a892713fd930e06ad5c6e76d8c43882a1",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-fulvix-rozchynni-fulvovi-kysloty-5-kg-citymax",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Agriflex Fulvix (Фульвокислоти 60%) — 5 кг"
     },
     {
@@ -975,7 +1081,8 @@
       "sha256": "544e4728d45240425e28fa3cfd5a9e6c2a007c588e4bebb1341f5e2e47e2e13a",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-zn-breksil-cynk-mikroelementy-v-helatnij-formi-15-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Zn — 15 г"
     },
     {
@@ -984,7 +1091,8 @@
       "sha256": "547500282fa0a4b5c9c89c5dd62e376970c870571abdd3540f9b9597b2b77dd3",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Ерайз — Мультикомпонентний регулятор росту для старту вегетації та обробки насіння"
     },
     {
@@ -993,7 +1101,8 @@
       "sha256": "54b3c50ed257f6f844083bf38f654ccc0d8924b0fe25bbd23099fffea70cc71a",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309026 — angle"
     },
     {
@@ -1002,7 +1111,8 @@
       "sha256": "558d37ae8fd94f784b36204c7ef40c3185dc215a360b221494c2c156732e9ad2",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agrifleks-hyumik-total-agriflex-humic-total-vodorozchynnyj-gumat-kalyiyu-25-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Agriflex Humic (Гумат калію) — 25 кг"
     },
     {
@@ -1011,7 +1121,8 @@
       "sha256": "564414470e81e33f30c3804742821f4d916294877c5f9edc52ebb44ed4e6448b",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення"
     },
     {
@@ -1020,7 +1131,8 @@
       "sha256": "5733d0949816fb674c4abc6877d5b1470317e6a2ca944b223d2be02078b075a1",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/actiwave-aktivejv-biostimulyator-1-l-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Actiwave — 1 л"
     },
     {
@@ -1029,7 +1141,8 @@
       "sha256": "573d10d6736e3e4a4cd32c547f9dca19846edf7f97242370e23c957a0f9ad38d",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Brexil Multi — Мультиелементне мікродобриво з магнієм для листкового внесення"
     },
     {
@@ -1038,7 +1151,8 @@
       "sha256": "58355b74245fc2937299f8e9d82656aac2c8e26985ba9b59b16001832498cd59",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 17-6-18"
     },
     {
@@ -1047,7 +1161,8 @@
       "sha256": "588144745cbafbff370f902964d99c35832edf04553fb7f56a0f394a47111e5c",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-te-kendal-te-organicheskij-bioimmunostimulyator-1-l-v",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Kendal TE — 1 л"
     },
     {
@@ -1056,7 +1171,8 @@
       "sha256": "5887f15d0c2154a0e3a9744ece41e1af70d107fc32589ce26f1111d56dc30dd0",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neocore-biostymulyator-rostu-korenevoyi-systemy-bioaktyvnyj-ekstrakt-torfu-1-l-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoCore — 1 л"
     },
     {
@@ -1065,7 +1181,8 @@
       "sha256": "58d348c9d3fc99d288a3fa3b2e6bd3119e51a4e23a000a99ad3e20dab23c7e78",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308031 — base"
     },
     {
@@ -1074,7 +1191,8 @@
       "sha256": "5a0616d6d3a5c05d6aaa9aef2d9489b5d160a4a29889667ffea57551eaef29c7",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309026 — top"
     },
     {
@@ -1083,7 +1201,8 @@
       "sha256": "5b0c93fdc993e2b1537eac63d82272d999e24b3ce7cef1bdae61a9c3e054206e",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1301144 — black — top"
     },
     {
@@ -1092,7 +1211,8 @@
       "sha256": "5ba68c36afaf8293431e9e62cb61da46865c6b04a0b40a5e469c2c5ef50300a4",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-5-l-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoVivo — 5 л"
     },
     {
@@ -1101,7 +1221,8 @@
       "sha256": "5cb8a7fb5e8045cc8f86d3573387e2fff595f492171ec834608f532c2dcbce3c",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво"
     },
     {
@@ -1110,7 +1231,8 @@
       "sha256": "5df3e938fa684b5514bc048e7dc567a57f7e0d868adfb64339052143924a5441",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Agriflex Humic (Гумат калію) — Водорозчинний гумат калію з гуміновими та фульвовими кислотами"
     },
     {
@@ -1119,7 +1241,8 @@
       "sha256": "5df98852c13976f35087cf37ba866194ecfc6dcc519619c9948c1576d960203d",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/sulfat-magniyu-1-kg-alverniya-alwernia-polshcha",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Сульфат магнію — 1 кг"
     },
     {
@@ -1128,7 +1251,8 @@
       "sha256": "5e126950eb44f3b0aee0fa25d23583b7c07c3f385bc6a04440d507921146e102",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1301153 — black — hero"
     },
     {
@@ -1137,7 +1261,8 @@
       "sha256": "5ee28c2cd86483f650e67e00eed3c0935a85f5eec34a523fc04ec0c2bc00d1d5",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308020 — top"
     },
     {
@@ -1146,7 +1271,8 @@
       "sha256": "5ff16767afd9c682e4fad77fb5f22afc75429df4aada31d077755734914b0cb2",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 13-40-13"
     },
     {
@@ -1155,7 +1281,8 @@
       "sha256": "60fa19bab10f488b2dfa2f987e13f3f337fb2ca89974738933db7913fba28749",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-multi-breksil-multi-mikroelementy-v-helatnij-formi-15-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Multi — 15 г"
     },
     {
@@ -1164,7 +1291,8 @@
       "sha256": "633df423d6ba93ce6a1331ad0479f98c7cad6b564efd69271030d3aeada5d78c",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-duo-breksil-duo-mikroelementy-5-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Duo — 5 кг"
     },
     {
@@ -1173,7 +1301,8 @@
       "sha256": "64419affb068c25e65d8e4329f20a92aec332909fe75b43449114afdd81a1249",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308040 — base"
     },
     {
@@ -1182,7 +1311,8 @@
       "sha256": "66d7bdc7dae326b8efd97e309a9566ded984e4c1a5668191a5ad1b9cf25a321c",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 30-10-10"
     },
     {
@@ -1191,7 +1321,8 @@
       "sha256": "673f210d22563764539f29723eaa0873a4186c6f0be388c18e303af88eaf2d56",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MEGAFOL™"
     },
     {
@@ -1200,7 +1331,8 @@
       "sha256": "6846a866d0a970a6381126c1cd27d3be42a0be28f543a87dbbfa5cbae01277db",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 30-10-10"
     },
     {
@@ -1209,7 +1341,8 @@
       "sha256": "6990399839e740bdba29fe475395da7a8e4b609cbf6e897afd55cc949ebbe411",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-ca-breksil-kalcij-mikroelementy-1-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Ca — 1 кг"
     },
     {
@@ -1218,7 +1351,8 @@
       "sha256": "6aad0963860e83b793405b0c8999390a1b9db4429f91fcb8cd6ab7d069ef4a37",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/benefit-pz-benefit-pz-biostimulyator-uvelicheniya-plodov-100",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Benefit PZ — 100 мл"
     },
     {
@@ -1227,7 +1361,8 @@
       "sha256": "6aaeaed0087c0e7f68f0acaecfc19fad32cb7b37f534f7fc3dc34924427581b1",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-mineralne-dobryvo-npk-0-60-20-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Nova PeKacid 0-60-20 — 1 кг"
     },
     {
@@ -1236,7 +1371,8 @@
       "sha256": "6abbd5afd6692dd5655ae389c8f70d051a7bbc42c727f74c88d3431c9c68a664",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 10-54-10"
     },
     {
@@ -1245,7 +1381,8 @@
       "sha256": "6bd30f7079c7fc02bbea87b70f51223e62ae27190bf4d6351ccf0a487bd5fa58",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 15-5-30+2"
     },
     {
@@ -1254,7 +1391,8 @@
       "sha256": "6c0173339316124406dab2c43705275f5bf78d45e61388c35b713153244f397a",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1308305 — hero"
     },
     {
@@ -1263,7 +1401,8 @@
       "sha256": "6d2a5cabc58069db8609c13253abef3c2afe4c9e64352dac534001f5d67d3342",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-start-dlya-rozsady-osmocote-11-11-17-1-5m-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Start 11-11-17 (1,5M) — 1 кг"
     },
     {
@@ -1272,7 +1411,8 @@
       "sha256": "6dba4ccd27c3aaf203a4866789001a755fb14c001be54efc27352112765cd83e",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 13090350 — front"
     },
     {
@@ -1281,7 +1421,8 @@
       "sha256": "71070a9a719fa8aeb97e66d980e404fc6624b5cfe19499ad729dce7279dbd63d",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308031 — angle"
     },
     {
@@ -1290,7 +1431,8 @@
       "sha256": "73506facf11270b3dd68628f8135c976705542dd47e7c83e408cfaa8882b15e9",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-20-l-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoVivo — 20 л"
     },
     {
@@ -1299,7 +1441,8 @@
       "sha256": "73bd913089b71d9b86db776e84960c05437e8ebe45c2a30c165b7984b9db87df",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/solupotasse-solyupotass-sulfat-kaliyu-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "SoluPotasse — сульфат калію — 1 кг"
     },
     {
@@ -1308,7 +1451,8 @@
       "sha256": "769bb08effa5a7ba827f66e6b8768b8930b9385af055d7de3e36b627e97e52bb",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-neovivo-biostymulyator-rostu-antystresant-30-ml-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoVivo — 30 мл"
     },
     {
@@ -1317,7 +1461,8 @@
       "sha256": "77f9adb9331f33afdb92fb7988bd3086e256256b987fe1bee392623c95217e1c",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-mineralne-dobryvo-npk-0-60-20-100-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Nova PeKacid 0-60-20 — 100 г"
     },
     {
@@ -1326,7 +1471,8 @@
       "sha256": "78d13cd758d06b6a62984d7d3dbe58d6a792b46b0711e958eadd467b9ef801ae",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Brexil Mn"
     },
     {
@@ -1335,7 +1481,8 @@
       "sha256": "794cc5583b7136316dc51cabbd6a5acf286f435596da118650518e04614a06b6",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/ferrilene-trium-ferrilen-trium-helat-zheleza-1-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Ferrilene Trium — 1 кг"
     },
     {
@@ -1344,7 +1491,8 @@
       "sha256": "795434bfb61d17c9e38408429dd81573a62a969b8004e2e91b2e5b861aebd857",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor3",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Radifarm — 100 мл"
     },
     {
@@ -1353,7 +1501,8 @@
       "sha256": "7988109945a749572045efc0c4bd54b6888e36b6e2625abd9174bc03ea1dfbb7",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-hobi-osmocote-bloom-12-7-18-2-3m-granulovane-dobryvo-dlya-kvituchyh-roslyn-icl-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Bloom 12-7-18 (2–3M) — 1 кг"
     },
     {
@@ -1362,7 +1511,8 @@
       "sha256": "7a012993574fdd8577622079f9de7b8badc709252c6ce63105e5b64a765b9a95",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 18-18-18"
     },
     {
@@ -1371,7 +1521,8 @@
       "sha256": "7a3aedb92ce7711d92618dd9bf7c38c436b8ef22278a358837c24c54cbdc7c39",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 20-20-20"
     },
     {
@@ -1380,7 +1531,8 @@
       "sha256": "7b0f205570c23203be18f3f306cd1273a1084b1e6f2a659499161da87e44f075",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mn-breksyl-marganec-mikroelementy-5-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Mn — 5 кг"
     },
     {
@@ -1389,7 +1541,8 @@
       "sha256": "7c77ff494faaf342d8f0f2875baf2d8c13af3665c88372301b38e37181b1d015",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308305 — detail"
     },
     {
@@ -1398,7 +1551,8 @@
       "sha256": "7dd0cdcdeca629e453da952c0a7b3e164bed47f004f24021cf2f4818fc4af8ff",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309030 — angle"
     },
     {
@@ -1407,7 +1561,8 @@
       "sha256": "7e7e336ff538f07873c363baa093cc82b3a66b127a51e1489797c17a38bd2866",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309020 — angle"
     },
     {
@@ -1416,7 +1571,8 @@
       "sha256": "7ec7c792142f9d7ddc1e64a9b14c4014ef0d65e2903ef9055a22b5a9e9e12168",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309030 — base"
     },
     {
@@ -1425,7 +1581,8 @@
       "sha256": "7f2c1ac0af0245634e72cbbe3d99fa049544427094f67c764390e37ed3304a6c",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1309025 — hero"
     },
     {
@@ -1434,7 +1591,8 @@
       "sha256": "806f98ee401e081246324eb445439dc961005fad0b3fb9f7334f596ecdfeccad",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "Кеміра NPK 12-46-8"
     },
     {
@@ -1443,7 +1601,8 @@
       "sha256": "80e6e2473b582aa8992ab7742e4f6a97bc8dc82a8a32bbb411c289ee3b2f8d6d",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-set-maksikrop-zavyaz-biostimulyator-100-ml-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Maxicrop Set / Максікроп Зав'язь — 100 мл"
     },
     {
@@ -1452,7 +1611,8 @@
       "sha256": "8402ae482423d42e43d4cfa44311c4cde455b9009fae4467cba2a63f5ca708a8",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-combi-breksil-kombi-mikroelementy-1-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Combi — 1 кг"
     },
     {
@@ -1461,7 +1621,8 @@
       "sha256": "851e89c08c634ccac2ac058659fddcb4eeb0e23f06526eafa8a3b3d220f55035",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 30-10-10"
     },
     {
@@ -1470,7 +1631,8 @@
       "sha256": "866ed69913c2cce7d2a36cced7334eb4eecde66683e614f29ac99155a775d11c",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neocore-neokor-biostymulyator-rostu-korenevoyi-systemy-bioaktyvnyj-ekstrakt-torfu-30-ml-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoCore — 30 мл"
     },
     {
@@ -1479,7 +1641,8 @@
       "sha256": "870f93791d9a6b1a6a14344f9d2216633ca5ddc733366062d589d99e61c3f97e",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostimulyator-antistress-dlya-kornya",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Kendal Root — 1 л"
     },
     {
@@ -1488,7 +1651,8 @@
       "sha256": "8a1f8b48540faf4ce1412d2ccbcb3b92e3b19f06c98539cdea8ed134563ba0fb",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 5-15-45"
     },
     {
@@ -1497,7 +1661,8 @@
       "sha256": "8acd913cc1a1143b23973705a439b66d65cfbb882b9cf47330fd3dd652dead14",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/ferrilene-trium-ferrilen-trium-helat-zheleza-5-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Ferrilene Trium — 5 кг"
     },
     {
@@ -1506,7 +1671,8 @@
       "sha256": "8beecf484e8d837e427a89a5ed7e99b79c2191a4465ecc84ccff81df1d1e4c78",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 20-20-20"
     },
     {
@@ -1515,7 +1681,8 @@
       "sha256": "8c9fd10ec20dfd1b91c795d71a69a75e01840c2f2383c3749406cb95e48184e3",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308041 — angle"
     },
     {
@@ -1524,7 +1691,8 @@
       "sha256": "8d449af52d78b7e64342a631b6f52f36273931733dd4310baef1bfad01a1e894",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1303025 — top"
     },
     {
@@ -1533,7 +1701,8 @@
       "sha256": "904415a07129fd3b2871b80e75f820b2aa053cf40fc10bc7decc052649b07b93",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-20-l-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoFlora — 20 л"
     },
     {
@@ -1542,7 +1711,8 @@
       "sha256": "908169600d5a8a456a2ea2790274bcdbddd5f1e7053af084ee7b5bad06636a57",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/solupotasse-solyupotass-sulfat-kaliyu-100-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "SoluPotasse — сульфат калію — 100 г"
     },
     {
@@ -1551,7 +1721,8 @@
       "sha256": "93e0bfb910836fa0f2f506a67cb7c7bb3ce6efb905e897eac0532678409e60a0",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 17-6-18"
     },
     {
@@ -1560,7 +1731,8 @@
       "sha256": "9421ca1c6668b9b384e440b8a6a46b829750ca1f411135e66a8f2884acb6faee",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308025 — top"
     },
     {
@@ -1569,7 +1741,8 @@
       "sha256": "9467e069dad333335bc2e64b8e54dfa1a22a12b6e44c7c1bfee513e5d66e1657",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 13080350 — hero"
     },
     {
@@ -1578,7 +1751,8 @@
       "sha256": "972a36211800e6a163eac6e133baef3c10051ac10bee451a6ca509af488e9fe8",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Brexil Nutre — Багатокомпонентне мікродобриво Brexil® для листкового живлення"
     },
     {
@@ -1587,7 +1761,8 @@
       "sha256": "9787471f6a8fe8492715c3a6e5660bc2f3b38df362e08644ef64dd8390952e19",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/micro-np-mikro-np-mineralnoe-udobrenie-granuly-10-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Micro NP — 10 кг"
     },
     {
@@ -1596,7 +1771,8 @@
       "sha256": "988e411139cfb58fba17fe482f85224df02225358d77c6143fd3a8a99e58dfbb",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1303025 — base"
     },
     {
@@ -1605,7 +1781,8 @@
       "sha256": "9992732f4f6f8377eedc675086684cde7347d1fed505915f1614aa08dba60365",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Agriflex Zn — Водорозчинне цинкове мікродобриво AgriFlex"
     },
     {
@@ -1614,7 +1791,8 @@
       "sha256": "9a01c99833e1a66b9030a62809369e313fc618d0e21234fc33b5cd7219bf5e2f",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-bio-stymulyator-rostu-1-kg-citymax",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Agriflex Bio — 1 кг"
     },
     {
@@ -1623,7 +1801,8 @@
       "sha256": "9a1790cb0d8904cf00af8a907d70d60f25f4e5360fdbf8c7985c8c469439870a",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1309026 — hero"
     },
     {
@@ -1632,7 +1811,8 @@
       "sha256": "9a260295eb97453c4681c4e6e5970ef810b453033c90993d7b02a42ed031a965",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-zn-breksil-cink-mikroelementy-1-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Zn — 1 кг"
     },
     {
@@ -1641,7 +1821,8 @@
       "sha256": "9adb4aa49db81c4a93b2cb1d8a678574c0763827dacc84a89521e8b0334ee657",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-lyuks-mineralnoe-udobrenie-npk-14-11-25-20-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Люкс NPK 14-11-25 — 20 г"
     },
     {
@@ -1650,7 +1831,8 @@
       "sha256": "9b9dfc0c73c9787aef637291089b1453f205c8b5dee7d084f49cc8aedb4e8bcd",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "Кеміра NPK 12-46-8"
     },
     {
@@ -1659,7 +1841,8 @@
       "sha256": "9d0ecc7d2dbf5e64b83cfcd8272284b83392e5b299c6c1144fd6fc9fbec1a888",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/boroplus-boroplyus-helat-boru-100-ml-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Boroplus — 100 мл"
     },
     {
@@ -1668,7 +1851,8 @@
       "sha256": "9d745766b2664f68c3f2da67569b40211438605a086f12ddef30d211d916a78c",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/runty-substraty-ta-materialy-dlya-posadky/neoterra-organic-c-organichnyj-kondycioner-runtu-torf-25-kg-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoTerra Organic-C — 25 кг"
     },
     {
@@ -1677,7 +1861,8 @@
       "sha256": "9dc32ca01864863c15e083d27c681f717e53027d4e77944818d4e392ea24e87f",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/boroplus-boroplyus-helat-bora10-l-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Boroplus — 10 л"
     },
     {
@@ -1686,7 +1871,8 @@
       "sha256": "9dd51472f391d292bee304bc9174871dbc0d48188142234d9bc8585bcd594502",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/spidfol-amino-vegetaciya-udobrenie-dlya-listovoj-podkormki-n",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Speedfol Amino Vegetative — 20 мл"
     },
     {
@@ -1695,7 +1881,8 @@
       "sha256": "9ed4216d02506b188eb3a80041b39740fa4586a93e3da8be3de9492c831b9f7b",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-5-l-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoFlora — 5 л"
     },
     {
@@ -1704,7 +1891,8 @@
       "sha256": "9f65bc4d4703f5773ae08f1c17c8482639f5a079720318c057da500276c7ba35",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309025 — top"
     },
     {
@@ -1713,7 +1901,8 @@
       "sha256": "a09bb0101220304358ef9e1ef8d7e455d4bd7921963847618b23903fca50d690",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво"
     },
     {
@@ -1722,7 +1911,8 @@
       "sha256": "a1b5e0d83d387c2ef2ebcb9ecfa2b3b679620997893026a2878f2d57c6243de9",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення"
     },
     {
@@ -1731,7 +1921,8 @@
       "sha256": "a3e327473d9a57bdd41aee3d7e8e054ee8173b355ef76878ea831140f089ead8",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308303 — base"
     },
     {
@@ -1740,7 +1931,8 @@
       "sha256": "a44db32b119dcdd5e749447506d4815c3e1b161eff21bd289177019d9c697604",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-landshaft-osmocote-16-9-12-3-4m-200-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Landscape 16-9-12 (3–4M) — 200 г"
     },
     {
@@ -1749,7 +1941,8 @@
       "sha256": "a4cd857b00172620da5ad60a631e748fd809af0cc2430d2474499e0c7a8bb26d",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308025 — front"
     },
     {
@@ -1758,7 +1951,8 @@
       "sha256": "a702d752cc6f1cd09ffd7968b13215a693eaf41241dfe0c04d14d5059a7b9c13",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-fe-breksil-zhelezo-mikroelementy-5-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Fe — 5 кг"
     },
     {
@@ -1767,7 +1961,8 @@
       "sha256": "a8481806d6325394f291c7b2db833f08fd6215dbc8aebf0dd42c92cd36188cd4",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Brexil Mix — Багатокомпонентний комплекс мікроелементів для листкового живлення"
     },
     {
@@ -1776,7 +1971,8 @@
       "sha256": "a8f72fa0c704b35aa69c72c5b73e9cb660de427cc4e902b0531c16cd7c93104c",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor4",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Radifarm — 25 мл"
     },
     {
@@ -1785,7 +1981,8 @@
       "sha256": "aa4b5ec523df97ddf8c508c142eeceeeb1df074b56e07d218071b2e58108a71d",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Agriflex Amino (Амінокислоти 50%) — Водорозчинний амінокислотний антистресант із L-амінокислотами"
     },
     {
@@ -1794,7 +1991,8 @@
       "sha256": "aa73458665699a8dab4c0de043f342e824987a049e82c0db6fc3d3a3086cdff0",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-cream-maksikrop-krem-biostimulyator-25-ml-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Maxicrop Cream — 25 мл"
     },
     {
@@ -1803,7 +2001,8 @@
       "sha256": "aaaa485fd58fd917c4fb652e36e5e4f93fb0320dcd2a1ce17ffdd6f884ca55f3",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1301144 — black — hero"
     },
     {
@@ -1812,7 +2011,8 @@
       "sha256": "ab69044ca65958260687fd351100d790c947119206fb501a5ed85ee1da7b150e",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-dlya-gazonu-vesna-lito-mineralne-dobryvo-v-granulah-npk-12-11-18-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра для газону NPK 12-11-18 — 1 кг"
     },
     {
@@ -1821,7 +2021,8 @@
       "sha256": "ad3434331aae65aec38db00fd4f14117b420f97824bf8e69e8c9208d0ee97c03",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "Kendal™"
     },
     {
@@ -1830,7 +2031,8 @@
       "sha256": "af2131dc364e1406343250cc9f46d156a709092084a2dae0e4fde90770d4a940",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agrifleks-hyumik-total-agriflex-humic-total-vodorozchynnyj-gumat-kalyiyu-5-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Agriflex Humic (Гумат калію) — 5 кг"
     },
     {
@@ -1839,7 +2041,8 @@
       "sha256": "af902cf2ed187ad0e0f19377ed45ac102cb22cee7c4aaad8e1ef7ce748742a28",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 10-54-10"
     },
     {
@@ -1848,7 +2051,8 @@
       "sha256": "af9e5f64bebd8fce109b663f602d5072eb3de279ad3b6ff4fd30f7cb14a18258",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-extra-maksikrop-ekstra-biostimulyator-1-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Maxicrop Extra — 1 кг"
     },
     {
@@ -1857,7 +2061,8 @@
       "sha256": "b18833a972d5143ad3d9c4eea4220535e0a3f6c3020903277ab35f9ada70ab12",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/ferrilene-ferrilen-48-orto-orto-helat-zheleza-10-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Ferrilene 4.8 Orto-Orto — 10 г"
     },
     {
@@ -1866,7 +2071,8 @@
       "sha256": "b5a5b6c34106511db6fdd3de156e6f146937ea923ad186c588e7f471b0456458",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-multi-breksil-multi-mikroelementy-5-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Multi — 5 кг"
     },
     {
@@ -1875,7 +2081,8 @@
       "sha256": "b6fe1160bafc5b713768f6782fcf6ac605fc34975d83e4f649def0e1ff8e8f7c",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 13-40-13"
     },
     {
@@ -1884,7 +2091,8 @@
       "sha256": "b75d383eb8e042f9014547b89a52103e219f514a08a9b8161036115ab6803546",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309025 — base"
     },
     {
@@ -1893,7 +2101,8 @@
       "sha256": "b86cfa93cf7430d09cb79e076c040806f6cd134c06c0fe45562fb57b5b7ee252",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Kendal TE — Біостимулюючий комплекс Kendal із Cu, Mn та Zn"
     },
     {
@@ -1902,7 +2111,8 @@
       "sha256": "b94777e02e5155675b5d36c7d66eca14cac13d85023961410aad920afeacec77",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-balans-100-ml-organic-planet",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Баланс / Nitrate Balancer — 100 мл"
     },
     {
@@ -1911,7 +2121,8 @@
       "sha256": "ba7e2303c2f55d1bf93b93120e69db443c69ccfbfd6691e718b8e3ca564f558a",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-ukorinnyuvach-20-g-organic-planet",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Укорінювач — 20 мл"
     },
     {
@@ -1920,7 +2131,8 @@
       "sha256": "bb2222d4c55ebcb3b721dc6c2c30434c2f3cb9c1dbe3112b34b8da0bae07b1be",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/solupotasse-solyupotass-sulfat-kaliyu-200-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "SoluPotasse — сульфат калію — 200 г"
     },
     {
@@ -1929,7 +2141,8 @@
       "sha256": "bbfa500fb2e4a097cf2a8d511c7e1f7364a89b9c035e88677bd19dba3d077050",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-landshaft-osmocote-16-9-12-3-4m-1-kg",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Landscape 16-9-12 (3–4M) — 1 кг"
     },
     {
@@ -1938,7 +2151,8 @@
       "sha256": "bc3fa4c7a451dac4368954ff2ba1c397b7923791b69aaac914a4cbae28997848",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-zav-yaz-5-g-dobryvo-dlya-kimnatnyh-roslyn-organic-planet",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Зав'язь — 5 г"
     },
     {
@@ -1947,7 +2161,8 @@
       "sha256": "bc7a8b7cddbfb6732d66bc4e8691af06b5a55597e6c1c797c1906037f2281fb7",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neocore-biostymulyator-rostu-korenevoyi-systemy-bioaktyvnyj-ekstrakt-torfu-20-l-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoCore — 20 л"
     },
     {
@@ -1956,7 +2171,8 @@
       "sha256": "bcc1b7947da8b00fcbc9ba347aea67a704f501e938c9b002d98a938f1e1481bf",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MEGAFOL™"
     },
     {
@@ -1965,7 +2181,8 @@
       "sha256": "bd837fc79dd67ee5bcab215f5231101fe153f5daeae0013e4ab814913b14c1af",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308040 — front"
     },
     {
@@ -1974,7 +2191,8 @@
       "sha256": "bd9afce99dfd0c0fa1394c9db21e5c5021577cc776917df883383a13ad81f74b",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309026 — front"
     },
     {
@@ -1983,7 +2201,8 @@
       "sha256": "beadee4bb95c8fafec44b27b4c45b42f7fce5196254bce114dd6cca9ca169539",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 17-6-18"
     },
     {
@@ -1992,7 +2211,8 @@
       "sha256": "c1019a90a26d77414f6a6ab693727e63dc107e5f30be6bcdfcc5e7ceac8b9165",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво"
     },
     {
@@ -2001,7 +2221,8 @@
       "sha256": "c19bb9eabb025e16c6ee6d6cf0305d54f8a9be130b77ac105f5cead1f151c761",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-30-ml-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoFlora — 30 мл"
     },
     {
@@ -2010,7 +2231,8 @@
       "sha256": "c1cb781c514d2fb61c2c2652416b12d423eff723d7a3ebf59c3681dcdf19caff",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-npk-0-60-20-fosforno-kalijne-dobryvo-200-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Nova PeKacid 0-60-20 — 200 г"
     },
     {
@@ -2019,7 +2241,8 @@
       "sha256": "c3a397daa5a996ec8ad43bf0adad6ece51dc3897d850b915cf3bbe331bd7e77b",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 5-15-45"
     },
     {
@@ -2028,7 +2251,8 @@
       "sha256": "c4587b45667696a4d0cc2b5aa8f359e3cded81ccc5df2c19e6ccf0bd54ac4c3f",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/runty-substraty-ta-materialy-dlya-posadky/neoterra-aqua-organichnyj-kondycioner-runtu-torf-25-kg-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoTerra Aqua — 25 кг"
     },
     {
@@ -2037,7 +2261,8 @@
       "sha256": "c6cf9b675537ce12f76ca1a2465eec20fa6d445ece2427a7de7509ab2f900e6e",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Agriflex Fulvix (Фульвокислоти 60%) — Водорозчинний фульвокислотний біостимулятор із калієм"
     },
     {
@@ -2046,7 +2271,8 @@
       "sha256": "c7cdb4491557c959e62359ef68a93ed10a9505fbc788a0a7e83966313d4ee045",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/boroplus-boroplyus-helat-bora-15-ml-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Boroplus — 15 мл"
     },
     {
@@ -2055,7 +2281,8 @@
       "sha256": "c87cc4ef3de220447f91cd17928641ff9ac6c9e0e0ca2e3446f14fd83c6a97a4",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308025 — hero"
     },
     {
@@ -2064,7 +2291,8 @@
       "sha256": "c8bbf5641d465b009b59451fbd36896ec89099b853b8794352a86db0e9396664",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Micro NP — Мікрогранульоване NP 4-30 добриво із цинком для локального внесення під час сівби"
     },
     {
@@ -2073,7 +2301,8 @@
       "sha256": "c9cbd6401163c19baa171ca02ba140446295ce2dab19872d22e3af1e171fbffc",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Maxicrop Set / Максікроп Зав'язь — Біостимулятор для підтримки цвітіння та зав'язування плодів"
     },
     {
@@ -2082,7 +2311,8 @@
       "sha256": "cab1a45e76d25d301b6b757d247b073ed083f085fc6cb25bd8472fd6f7d51a3c",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво"
     },
     {
@@ -2091,7 +2321,8 @@
       "sha256": "cac7fcdf3dd30fc246bf5d45a62e947a162c54aec2dc0fb79c43d0b03af5db50",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/benefit-pz-benefit-pz-biostimulyator-uvelicheniya-plodov-10",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Benefit PZ — 10 л"
     },
     {
@@ -2100,7 +2331,8 @@
       "sha256": "caf5d7736728c26b36b2bc5661127a414455d713328fd524362b92a6bb083d1a",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-granula-mah-osmocote-tablet-14-8-11-te-5-6m-10-sht",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Granula-MAX 14-8-11+TE (5–6M) — 10 шт"
     },
     {
@@ -2109,7 +2341,8 @@
       "sha256": "cd14d9a20bccd58f817ee2b148072422e4e8686ff39266be695611d9b63d086b",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-hobi-osmocote-bloom-12-7-18-2-3m-granulovane-dobryvo-dlya-kvituchyh-roslyn-icl-200-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Bloom 12-7-18 (2–3M) — 200 г"
     },
     {
@@ -2118,7 +2351,8 @@
       "sha256": "cdc9608f64ca985a00d65bb9e1f39beadeaa22eab628cd2e61ca6f98d341cf85",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-organic-planet-helatne-mineralne-dobryvo-dlya-pozakorenevogo-pidzhyvlennya-npk-12-46-8-25-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра NPK 12-46-8 — 25 г"
     },
     {
@@ -2127,7 +2361,8 @@
       "sha256": "ceecffb21040513312fe40c312935d5d1f2597c7faee59e83294ef58b9b9dc4a",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-ca-breksil-kalcij-mikroelementy-5-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Ca — 5 кг"
     },
     {
@@ -2136,7 +2371,8 @@
       "sha256": "cefe7ac295b373b72dc9805fdb5ad2673d10abd6a9bffbf9ab9d732cc744fa01",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-zn-breksil-cink-mikroelementy-5-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Zn — 5 кг"
     },
     {
@@ -2145,7 +2381,8 @@
       "sha256": "cf746aa59264c9dc6aa9bb244756d11ee9e54eaf011828b70fc3aac4aa9c6c54",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/benefit-pz-benefit-pz-biostimulyator-uvelicheniya-plodov-25",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Benefit PZ — 25 мл"
     },
     {
@@ -2154,7 +2391,8 @@
       "sha256": "cfd79f6f230397aae29ceff4e52e6306cc4893701ace820164b86936eb038f7d",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 3-11-38"
     },
     {
@@ -2163,7 +2401,8 @@
       "sha256": "d1a12e38b3a47d02be145ea3ce3888b90514d22ea393d797303bd368d51dac10",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308303 — isometric"
     },
     {
@@ -2172,7 +2411,8 @@
       "sha256": "d33e51563b9dbdc54da1d2d5f901766404b7a247ebca1968e8e89647697a7bbd",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor2",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Radifarm — 1 л"
     },
     {
@@ -2181,7 +2421,8 @@
       "sha256": "d3b90963ebacabfb9a94d6b6785f25d40044d5724a4dc4b137a05d765b305431",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-10-l-valagr",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Viva — 10 л"
     },
     {
@@ -2190,7 +2431,8 @@
       "sha256": "d63fb689efa040d6ed1a48419dd40c25d418f1c16eb566e89cef6ff0a10f65db",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-ukorinnyuvach-1-l-organic-planet",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Укорінювач — 1 л"
     },
     {
@@ -2199,7 +2441,8 @@
       "sha256": "d78d0472f28812296d165ded64ae27f9bb2eb436c1e826b4428b8309448619c4",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 13080350 — front"
     },
     {
@@ -2208,7 +2451,8 @@
       "sha256": "d7a45e0bdd356e67eaffbf9dcd84c071c2b06c0db45fe52a678e9f679b1d3579",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "SoluPotasse — сульфат калію"
     },
     {
@@ -2217,7 +2461,8 @@
       "sha256": "d7dc355510c911f7d9937f3a9c2876078121b986138e614f79e0ef8dbddf8014",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Maxicrop Extra — Мікрогранульований біостимулятор на основі екстракту морських водоростей"
     },
     {
@@ -2226,7 +2471,8 @@
       "sha256": "d8dc257b959e47ec57381f6cb83572da6d69eb6114bf34be6ee445ead787524e",
       "kind": "image",
       "source_url": null,
-      "verification_status": "manufacturer_model_source",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1301144 — white — hero"
     },
     {
@@ -2235,7 +2481,8 @@
       "sha256": "d97ea4e1d943af52d3ebec57fed20491e81eb36f3b8aa0c3f1d73a8766d9785e",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 10-54-10"
     },
     {
@@ -2244,7 +2491,8 @@
       "sha256": "d99779e141c6ed47c99a1ec018fce5cdb033ea3cbc15aff8d58c04c20ca412c9",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "MAX 600 SEASAILER — Біостимулюючий продукт великого фасування — потребує підтвердження актуальної етикетки"
     },
     {
@@ -2253,7 +2501,8 @@
       "sha256": "dd2dc6f26e30f677ba5ac0729b4052a75a9a4bb42843a0200f49d626fc6adb63",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Agriflex AminoVix — Амінокислотний комплекс із мікроелементами у водорозчинній формі"
     },
     {
@@ -2262,7 +2511,8 @@
       "sha256": "df2ce09e3635de13488fa60461dcc5c61c809e0de43101f395fb3309c84390b0",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1303025 — hero"
     },
     {
@@ -2271,7 +2521,8 @@
       "sha256": "e131365ee7289a9cac793cab8614ce840b002a5b4e5c49aef2751bf75c70c79b",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 18-18-18"
     },
     {
@@ -2280,7 +2531,8 @@
       "sha256": "e182a7413ef54ed9fd77159a1e5e7873b3a9de61ada47c6e682891329a7b7eb9",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/benefit-pz-benefit-pz-biostimulyator-uvelicheniya-plodov-1-l",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Benefit PZ — 1 л"
     },
     {
@@ -2289,7 +2541,8 @@
       "sha256": "e66980f4c8d77ef94d8006cecad3de8e479c8b24500d100dc6d2e089b4e58ba0",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Agriflex Bio — Біостимулюючий продукт 1 кг — технічні дані очікують верифікації етикетки"
     },
     {
@@ -2298,7 +2551,8 @@
       "sha256": "e723433d73a3250fd8c96d5943404032557f6ea8e867f279ae8fe54731bca5b7",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Osmocote Decor 16-8-12 (5–6M) — Контрольоване живлення для контейнерних декоративних культур"
     },
     {
@@ -2307,7 +2561,8 @@
       "sha256": "e7b73c8f47a7ed13d7eaa7c3554843471587609be272a18180b6f14ab92687eb",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-start-dlya-rozsady-osmocote-11-11-17-1-5m-200-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Start 11-11-17 (1,5M) — 200 г"
     },
     {
@@ -2316,7 +2571,8 @@
       "sha256": "e945c018816c10d07aaa7d5c9652f56eafd410041b461d4e0c9d565a8071b07d",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-grunt-yaramila-complex-granuly-npk-12-11-18-20-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — 20 г"
     },
     {
@@ -2325,7 +2581,8 @@
       "sha256": "e955754a6e3977ad56d87d7b75f7766850a6f271f39ab95d5e935c34f3f8a2d5",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/blekdzhek-blackjak-biostimulyator-kornevoj-sistemy-ukorenite",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "BlackJak — 100 мл"
     },
     {
@@ -2334,7 +2591,8 @@
       "sha256": "ea1480ead7811957e087d3ab819cb5bbdc82c9f8395cd0a9cf017b99c688b876",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/zasobi-zahistu-roslin/control-dmp-kontrol-dmp-podkislitel-prilipatel-1-l-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Control DMP — 1 л"
     },
     {
@@ -2343,7 +2601,8 @@
       "sha256": "eaedec442306265adf1e5452b2c426f6aec001efb54402a10f1f6d76c8d2f009",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-cream-maksikrop-krem-biostimulyator-100-ml-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Maxicrop Cream — 100 мл"
     },
     {
@@ -2352,7 +2611,8 @@
       "sha256": "eb086cd04a46c545ae3ed550a587bf2426e0d954ce8e794ed645e14dc054244a",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neocore-biostymulyator-rostu-korenevoyi-systemy-bioaktyvnyj-ekstrakt-torfu-5-l-neova",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "NeoCore — 5 л"
     },
     {
@@ -2361,7 +2621,8 @@
       "sha256": "eb3844af14f0436026b1f9ab23af2843a76073833fbfd444cf39652ea64b36ca",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-100-ml-vala",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Viva — 100 мл"
     },
     {
@@ -2370,7 +2631,8 @@
       "sha256": "ec30b3bafe67e0bddd5205688fb78d9a0b53b5c5c8f8f2faa24501cfe4767614",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-v-helatnij-formi-15-g-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Mix — 15 г"
     },
     {
@@ -2379,7 +2641,8 @@
       "sha256": "ee7013b6a2bfddab4883bc7b94c3dde998ae0c2cbbeacfb644d6a336e4d3b732",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Актара 25 WG, інсектицид Syngenta"
     },
     {
@@ -2388,7 +2651,8 @@
       "sha256": "eec6ac4817687302b0913646552d34accc4129d0a60f2c4c2cba5ce65fedf3a5",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-lyuks-mineralnoe-udobrenie-npk-14-11-25-100-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Люкс NPK 14-11-25 — 100 г"
     },
     {
@@ -2397,7 +2661,8 @@
       "sha256": "f166ce533eb04b38b96a4b77d21b87a2d86c0b759b150db5166433d83f345016",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-dekor-osmocote-16-8-12-5-6m-200-g",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Osmocote Decor 16-8-12 (5–6M) — 200 г"
     },
     {
@@ -2406,7 +2671,8 @@
       "sha256": "f259b6bc71e16b64013c6341205349fe7866401a0450cb4212923573dd6255de",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/ferrilene-ferrilen-48-orto-orto-helat-zheleza-5-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Ferrilene 4.8 Orto-Orto — 5 кг"
     },
     {
@@ -2415,7 +2681,8 @@
       "sha256": "f620944cec9c1ba35ebba75aad3273f1b3fcf6104e49869d251d70a1a0052b13",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "Кеміра NPK 18-18-18"
     },
     {
@@ -2424,7 +2691,8 @@
       "sha256": "f7705d40c9c028a6b13f9e7fba069dd5fa5ed42194473f0c3fb3af3a0cbe4d4a",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostymulyator-antystres-dlya-korenya-100-ml-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Kendal Root — 100 мл"
     },
     {
@@ -2433,7 +2701,8 @@
       "sha256": "f7c525b8b52e77d36089726d9776e51634135384d7b914df522b68c379afb5f2",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309020 — top"
     },
     {
@@ -2442,7 +2711,8 @@
       "sha256": "f8918d1caf2650d9412b9e136d352dee4a5fb50dd658d39077cf998cd3e0fe24",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/zasobi-zahistu-roslin/adyuvant-sprej-ejd100-ml",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Спрей-Ейд — 100 мл"
     },
     {
@@ -2451,7 +2721,8 @@
       "sha256": "f9226c70fd8a97e609cfba06e67da92dbccb2095151b4b0ee0d70f8deee50813",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308020 — base"
     },
     {
@@ -2460,7 +2731,8 @@
       "sha256": "f97a5a2c2434009cebf1c00aa40b90abbfda1920f3fdfc0f89266f4ee3e21dec",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-5-kg-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Brexil Mix — 5 кг"
     },
     {
@@ -2469,7 +2741,8 @@
       "sha256": "faee2306d0018b2929e0a4dbf279138a237177bb1cc084138c6da99985f63b08",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 13080350 — detail"
     },
     {
@@ -2478,7 +2751,8 @@
       "sha256": "fb3000aa7a295e7c40752ab808d1e8ed732504df48550002f7bedd2ae7ed6917",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-ukorinnyuvach-100-ml-organic-planet",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Кеміра Укорінювач — 100 мл"
     },
     {
@@ -2487,7 +2761,8 @@
       "sha256": "fb696a20ef7cf7c7b746b55f60659bcbcd7c95a079c9cd98b6a3a738412a11ce",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 13090350 — top"
     },
     {
@@ -2496,7 +2771,8 @@
       "sha256": "fbb5a2e0638d696bad209f0456f8a4cacb744189570b5d0141c89413203db955",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308031 — top"
     },
     {
@@ -2505,7 +2781,8 @@
       "sha256": "fd69d6f1fd88ee17b4bc98e21c4f5d834c3cdab7176031e1dcb22d04e79433e0",
       "kind": "image",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/sweet-svit-biostimulyator-okraski-plodov-10-l-valagro",
-      "verification_status": "package_specific_source",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
       "alt": "Sweet — 10 л"
     },
     {
@@ -2514,7 +2791,8 @@
       "sha256": "fd815cdb259457c4be4f40a240355e5f8ae8f4ac5070d1535d2fd02aee049e51",
       "kind": "image",
       "source_url": null,
-      "verification_status": "package_named_legacy_asset",
+      "verification_status": "candidate",
+      "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 3-11-38"
     },
     {
@@ -2523,7 +2801,8 @@
       "sha256": "fe1944fcb855ac32364560cf85dc9d5a1f4801222840b6d8c7edb044a1f9957b",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308040 — hero"
     },
     {
@@ -2532,7 +2811,8 @@
       "sha256": "feb7f87c2f591b89afb53d4bc04bba1bb1810ea421a77f6f1641a7b1db069206",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1308303 — angle"
     },
     {
@@ -2541,7 +2821,8 @@
       "sha256": "feee2f5c0d244d4189c4f0acf6e0d0944cc92d3cb35d78e1ea23ccf698042563",
       "kind": "image",
       "source_url": null,
-      "verification_status": "representative",
+      "verification_status": "candidate",
+      "verification_detail": "representative",
       "alt": "Plantlogic 1309030 — front"
     }
   ],

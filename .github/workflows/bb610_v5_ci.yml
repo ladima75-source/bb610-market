@@ -42,6 +42,7 @@ jobs:
           assert q('SELECT COUNT(*) FROM skus') == 221
           assert q('SELECT COUNT(*) FROM sku_commerce') == 221
           assert q('SELECT COUNT(*) FROM sku_aliases') == 109
+          assert q('SELECT COUNT(*) FROM sku_alias_commerce') == 109
           assert q('SELECT COUNT(*) FROM product_sources') == 118
           assert q("SELECT COUNT(*) FROM migration_evidence WHERE entity_type='product' AND field_name='content' AND decision='accepted'") == 86
           assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'") == 17
@@ -66,7 +67,7 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          from backend.services.product_master_v5 import snapshot, product, resolve_sku_id
+          from backend.services.product_master_v5 import snapshot, product, resolve_sku, resolve_sku_id
           data=snapshot()
           assert data['schema_version']=='5.0'
           assert data['counts']['products']==86
@@ -90,6 +91,12 @@ jobs:
           assert grouped['media']
           assert product('plantlogic-40l-round-u-grooves-1308041')['product_id']=='blueberry-round-u-groove-pots'
           assert resolve_sku_id('BB610-VLG-KENDAL-100ML')=='BB610-32DA4F652F73A1'
+          legacy=resolve_sku('BB610-VLG-KENDAL-100ML')
+          assert legacy['is_alias'] is True
+          assert legacy['commerce_source']=='preserved_alias'
+          assert legacy['price']==215.0
+          assert legacy['canonical_sku_id']=='BB610-32DA4F652F73A1'
+          assert resolve_sku('BB610-32DA4F652F73A1')['price']==220.0
           print('BB610 V5 SHADOW API SERVICE: PASS')
           PY
 

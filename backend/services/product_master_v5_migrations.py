@@ -503,9 +503,142 @@ def _plantlogic_exact_media_batch_01(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _cleanup_superseded_sources_batch_01(con: sqlite3.Connection) -> bool:
+    # These migration-era Valagro catalogue links never verified the exact
+    # products. Current reviewed sources now do, so do not expose stale
+    # candidate provenance in the public V5 product response.
+    con.execute(
+        """
+        DELETE FROM product_sources
+        WHERE source_type='unverified_legacy_name'
+          AND product_id IN ('agriflex-bio','max-600-seasailer')
+        """
+    )
+    return True
+
+
+def _verified_package_media_batch_02(con: sqlite3.Connection) -> bool:
+    rows = [
+        {
+            "media_id": "review26_op_master134013_1kg",
+            "sku_id": "BB610-VLG-MASTER134013-1KG",
+            "path": "/assets/img/v5/verified/op-master-13-40-13-1kg.png",
+            "alt": "MASTER 13-40-13 — 1 кг",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-13-40-13-valagro",
+        },
+        {
+            "media_id": "review26_op_master134013_250g",
+            "sku_id": "BB610-VLG-MASTER134013-250G",
+            "path": "/assets/img/v5/verified/op-master-13-40-13-250g.png",
+            "alt": "MASTER 13-40-13 — 250 г",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro",
+        },
+        {
+            "media_id": "review26_op_master202020_1kg",
+            "sku_id": "BB610-VLG-MASTER202020-1KG",
+            "path": "/assets/img/v5/verified/op-master-20-20-20-1kg.png",
+            "alt": "MASTER 20-20-20 — 1 кг",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-20-20-20-valagro",
+        },
+        {
+            "media_id": "review26_op_master202020_250g",
+            "sku_id": "BB610-VLG-MASTER202020-250G",
+            "path": "/assets/img/v5/verified/op-master-20-20-20-250g.png",
+            "alt": "MASTER 20-20-20 — 250 г",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-20-20-20-valagro",
+        },
+        {
+            "media_id": "review26_op_master31138_1kg",
+            "sku_id": "BB610-VLG-MASTER31138-1KG",
+            "path": "/assets/img/v5/verified/op-master-3-11-38-1kg.png",
+            "alt": "MASTER 3-11-38 — 1 кг",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-3-11-38-valagro",
+        },
+        {
+            "media_id": "review26_op_master31138_250g",
+            "sku_id": "BB610-VLG-MASTER31138-250G",
+            "path": "/assets/img/v5/verified/op-master-3-11-38-250g.png",
+            "alt": "MASTER 3-11-38 — 250 г",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-3-11-38-valagro",
+        },
+        {
+            "media_id": "review26_op_plantafol202020_1kg",
+            "sku_id": "BB610-VLG-PLANTAFOL202020-1KG",
+            "path": "/assets/img/v5/verified/op-plantafol-20-20-20-1kg.png",
+            "alt": "PLANTAFOL 20-20-20 — 1 кг",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-20-20-20-v",
+        },
+        {
+            "media_id": "review26_op_plantafol202020_250g",
+            "sku_id": "BB610-VLG-PLANTAFOL202020-250G",
+            "path": "/assets/img/v5/verified/op-plantafol-20-20-20-250g.png",
+            "alt": "PLANTAFOL 20-20-20 — 250 г",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-dobryvo-250-g-npk-20-20-20-valagro",
+        },
+        {
+            "media_id": "review26_op_plantafol202020_5kg",
+            "sku_id": "BB610-VLG-PLANTAFOL202020-5KG",
+            "path": "/assets/img/v5/verified/op-plantafol-20-20-20-5kg.png",
+            "alt": "PLANTAFOL 20-20-20 — 5 кг",
+            "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-5-kg-npk-20-20-20-v",
+        },
+    ]
+
+    for row in rows:
+        exists = con.execute(
+            "SELECT 1 FROM skus WHERE sku_id=?",
+            (row["sku_id"],),
+        ).fetchone()
+        if not exists:
+            return False
+
+    for row in rows:
+        con.execute(
+            """
+            INSERT INTO media(
+              media_id,path,sha256,kind,source_url,verification_status,alt,created_at
+            )
+            VALUES(?,?,NULL,'image',?,'verified',?,?)
+            ON CONFLICT(media_id) DO UPDATE SET
+              path=excluded.path,
+              source_url=excluded.source_url,
+              verification_status='verified',
+              alt=excluded.alt
+            """,
+            (
+                row["media_id"],
+                row["path"],
+                row["source_url"],
+                row["alt"],
+                _now(),
+            ),
+        )
+        con.execute(
+            "UPDATE sku_media SET is_primary=0 WHERE sku_id=?",
+            (row["sku_id"],),
+        )
+        con.execute(
+            """
+            INSERT INTO sku_media(
+              sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+            )
+            VALUES(?,?,1,0,'exact','verified_package_product_page',?)
+            ON CONFLICT(sku_id,media_id) DO UPDATE SET
+              is_primary=1,
+              sort_order=0,
+              source_kind='verified_package_product_page',
+              source_url=excluded.source_url
+            """,
+            (row["sku_id"], row["media_id"], row["source_url"]),
+        )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
+    ("20260921_cleanup_superseded_sources_batch01", _cleanup_superseded_sources_batch_01),
+    ("20260921_verified_package_media_batch02", _verified_package_media_batch_02),
 ]
 
 

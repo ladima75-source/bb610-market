@@ -1,0 +1,100 @@
+name: BB610 V5 Storefront CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'js/data-source.js'
+      - 'js/app.js'
+      - 'js/catalog.js'
+      - 'js/product.js'
+      - 'assets/js/product-card-v2.js'
+      - 'assets/js/product-card-v3-enhancements.js'
+      - 'backend/services/product_master_v5.py'
+      - 'v5/**'
+      - '.github/workflows/bb610_v5_storefront_ci.yml'
+  pull_request:
+    paths:
+      - 'js/data-source.js'
+      - 'js/app.js'
+      - 'js/catalog.js'
+      - 'js/product.js'
+      - 'assets/js/product-card-v2.js'
+      - 'assets/js/product-card-v3-enhancements.js'
+      - 'backend/services/product_master_v5.py'
+      - 'v5/**'
+      - '.github/workflows/bb610_v5_storefront_ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  storefront-v5:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JavaScript syntax
+        run: |
+          set -euo pipefail
+          node --check js/data-source.js
+          node --check js/app.js
+          node --check js/catalog.js
+          node --check js/product.js
+          node --check assets/js/product-card-v2.js
+          node --check assets/js/product-card-v3-enhancements.js
+
+      - name: Build V5 DB and export snapshot
+        run: |
+          set -euo pipefail
+          python v5/bootstrap_db.py --out /tmp/bb610-v5.sqlite3
+          BB610_V5_DB_PATH=/tmp/bb610-v5.sqlite3 python - <<'PY'
+          import json
+          from pathlib import Path
+          from backend.services.product_master_v5 import snapshot
+          Path('/tmp/v5.json').write_text(
+              json.dumps(snapshot(), ensure_ascii=False),
+              encoding='utf-8',
+          )
+          PY
+
+      - name: Browser adapter contract
+        run: |
+          set -euo pipefail
+          node <<'JS'
+          const fs=require('fs');
+          const vm=require('vm');
+          global.window={
+            BB610_CATALOG:{
+              categories:[
+                {id:'nutrition',name:'Живлення',short_name:'Живлення',enabled:true,order:1},
+                {id:'biostimulation',name:'Біостимуляція',short_name:'Біостимуляція',enabled:true,order:2},
+                {id:'containers',name:'Горщики',short_name:'Горщики',enabled:true,order:3},
+                {id:'protection',name:'Захист рослин',short_name:'Захист рослин',enabled:true,order:4},
+                {id:'other',name:'Інше',short_name:'Інше',enabled:true,order:5},
+              ],
+              products:[],skus:[],variants:[],brands:[],solutions:[],bundles:[]
+            },
+            BB610_STOREFRONT_V5:true,
+          };
+          global.location={search:'?v5=1'};
+          global.URLSearchParams=URLSearchParams;
+          vm.runInThisContext(fs.readFileSync('js/data-source.js','utf8'),{filename:'js/data-source.js'});
+          const d=JSON.parse(fs.readFileSync('/tmp/v5.json','utf8'));
+          BB610_DATA_SOURCE._applyV5(d);
+          if(BB610_DATA_SOURCE.mode!=='bb610-product-master-v5')throw new Error('wrong mode');
+          if(BB610_DATA_SOURCE.products().length!==82)throw new Error('public product count');
+          if(BB610_DATA_SOURCE.skus().length!==213)throw new Error('public SKU count');
+          const kendal=BB610_DATA_SOURCE.product('kendal');
+          if(!kendal||!kendal.image||!kendal.sources?.length)throw new Error('Kendal projection');
+          const canonical=BB610_DATA_SOURCE.sku('BB610-32DA4F652F73A1');
+          if(!canonical||canonical.price!==220)throw new Error('canonical Kendal price');
+          const legacy=BB610_DATA_SOURCE.sku('BB610-VLG-KENDAL-100ML');
+          if(!legacy||legacy.price!==215||legacy.canonical_sku_id!=='BB610-32DA4F652F73A1')throw new Error('legacy alias commerce');
+          if((BB610_DATA_SOURCE.staticProductMedia('kendal')||null)!==null)throw new Error('legacy static media leaked into V5');
+          const pots=BB610_DATA_SOURCE.products().filter(x=>x.category_id==='containers');
+          if(pots.length!==6)throw new Error('Plantlogic public family count');
+          const potSkus=pots.flatMap(p=>BB610_DATA_SOURCE.skusForProduct(p.id));
+          if(potSkus.length!==17)throw new Error('Plantlogic model count');
+          console.log('BB610 V5 STOREFRONT ADAPTER: PASS');
+          JS

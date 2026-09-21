@@ -102,3 +102,24 @@ CREATE TABLE IF NOT EXISTS migration_evidence (
 
 CREATE INDEX IF NOT EXISTS idx_evidence_entity
 ON migration_evidence(entity_type, entity_id);
+
+
+CREATE TABLE IF NOT EXISTS product_aliases (
+  alias TEXT PRIMARY KEY,
+  product_id TEXT NOT NULL REFERENCES products(product_id) ON DELETE CASCADE,
+  alias_kind TEXT NOT NULL DEFAULT 'legacy',
+  active INTEGER NOT NULL DEFAULT 1 CHECK (active IN (0,1))
+);
+
+CREATE TABLE IF NOT EXISTS sku_aliases (
+  alias_sku_id TEXT PRIMARY KEY,
+  canonical_sku_id TEXT NOT NULL REFERENCES skus(sku_id) ON DELETE CASCADE,
+  alias_kind TEXT NOT NULL DEFAULT 'legacy',
+  active INTEGER NOT NULL DEFAULT 1 CHECK (active IN (0,1))
+);
+
+CREATE INDEX IF NOT EXISTS idx_product_aliases_product
+ON product_aliases(product_id);
+
+CREATE INDEX IF NOT EXISTS idx_sku_aliases_canonical
+ON sku_aliases(canonical_sku_id);

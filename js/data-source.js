@@ -1,3 +1,9 @@
+try{
+  const q=new URLSearchParams(location.search);
+  window.BB610_STOREFRONT_V5=q.get('catalog')!=='v4';
+}catch(_){
+  window.BB610_STOREFRONT_V5=true;
+}
 window.BB610_DATA_SOURCE={
   mode:'product-master-v4',
   _refreshPromise:null,
@@ -16,8 +22,12 @@ window.BB610_DATA_SOURCE={
   categories(){return this.catalog().categories||[]},
 
   _v5Requested(){
-    if(window.BB610_STOREFRONT_V5===true)return true;
-    try{return new URLSearchParams(location.search).get('v5')==='1'}catch(_){return false}
+    try{
+      const q=new URLSearchParams(location.search);
+      if(q.get('catalog')==='v4')return false;
+      if(q.get('v5')==='1')return true;
+    }catch(_){}
+    return window.BB610_STOREFRONT_V5!==false;
   },
 
   _captureStaticProductMedia(){

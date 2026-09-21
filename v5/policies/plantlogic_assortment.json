@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "scope": "Plantlogic blueberry storefront assortment",
+  "policy": {
+    "one_sellable_color_per_manufacturer_model": true,
+    "default_color": "black",
+    "volume_overrides": [
+      {
+        "volume_l": 40,
+        "preferred_color": "terracotta",
+        "fallback_color": "black"
+      }
+    ],
+    "preserve_retired_color_skus_as_aliases": true
+  },
+  "rationale": "Current BB610 assortment decision: blueberry pots are black by default; 40 L models use terracotta where that manufacturer color is available. Legacy R2 multi-color storefront SKU remain compatibility aliases only."
+}

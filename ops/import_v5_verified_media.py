@@ -2,7 +2,10 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
+import re
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -24,6 +27,36 @@ def validate_image(data: bytes) -> str:
     raise SystemExit("Downloaded payload is not PNG/JPEG/WEBP")
 
 
+def resolve_image_url(row: dict) -> str:
+    direct = str(row.get("image_url") or "").strip()
+    if direct:
+        return direct
+
+    source_page = str(row.get("source_page") or "").strip()
+    if not source_page:
+        raise SystemExit("Manifest row must contain image_url or source_page")
+
+    req = urllib.request.Request(
+        source_page,
+        headers={"User-Agent": "BB610-V5-verified-media-import/1.0"},
+    )
+    with urllib.request.urlopen(req, timeout=45) as response:
+        raw = response.read(4 * 1024 * 1024 + 1)
+    if len(raw) > 4 * 1024 * 1024:
+        raise SystemExit(f"Product page too large: {source_page}")
+    page = raw.decode("utf-8", errors="replace")
+
+    patterns = [
+        r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']',
+        r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image["\']',
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, page, flags=re.IGNORECASE)
+        if match:
+            return urllib.parse.urljoin(source_page, html.unescape(match.group(1)))
+    raise SystemExit(f"og:image not found: {source_page}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--manifest", default="ops/v5-verified-media-import.json")
@@ -43,15 +76,16 @@ def main() -> None:
         if tuple(target.parts[:4]) != tuple(ALLOWED_ROOT.parts):
             raise SystemExit(f"Target outside {ALLOWED_ROOT}: {target}")
 
+        image_url = resolve_image_url(row)
         req = urllib.request.Request(
-            row["image_url"],
+            image_url,
             headers={"User-Agent": "BB610-V5-verified-media-import/1.0"},
         )
         with urllib.request.urlopen(req, timeout=45) as response:
             data = response.read(8 * 1024 * 1024 + 1)
             content_type = response.headers.get("Content-Type", "")
         if len(data) > 8 * 1024 * 1024:
-            raise SystemExit(f"Image too large: {row['image_url']}")
+            raise SystemExit(f"Image too large: {image_url}")
         kind = validate_image(data)
 
         suffix = target.suffix.lower().lstrip(".")
@@ -72,6 +106,7 @@ def main() -> None:
             "bytes": len(data),
             "kind": kind,
             "source_page": row.get("source_page"),
+            "image_url": image_url,
         })
 
     print(json.dumps({"written": written}, ensure_ascii=False, indent=2))

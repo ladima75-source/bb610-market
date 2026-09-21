@@ -75,6 +75,10 @@ CREATE TABLE IF NOT EXISTS sku_media (
   media_id TEXT NOT NULL REFERENCES media(media_id) ON DELETE CASCADE,
   is_primary INTEGER NOT NULL DEFAULT 0 CHECK (is_primary IN (0,1)),
   sort_order INTEGER NOT NULL DEFAULT 0,
+  binding_kind TEXT NOT NULL DEFAULT 'representative'
+    CHECK (binding_kind IN ('exact','representative')),
+  source_kind TEXT,
+  source_url TEXT,
   PRIMARY KEY (sku_id, media_id)
 );
 

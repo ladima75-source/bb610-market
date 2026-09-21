@@ -1248,10 +1248,11 @@ def _master_134013_rich_content_batch_14(con: sqlite3.Connection) -> bool:
     con.execute(
         """
         INSERT OR IGNORE INTO product_sources(
-          product_id,source_type,source_url,source_label,verified_at,status,notes,created_at
+          source_id,product_id,source_type,source_url,source_label,verified_at,status,notes
         ) VALUES(?,?,?,?,?,?,?,?)
         """,
         (
+            "review26_op_master134013",
             "master-npk-13-40-13",
             "verified_market_product_page",
             "https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro",
@@ -1259,7 +1260,6 @@ def _master_134013_rich_content_batch_14(con: sqlite3.Connection) -> bool:
             "2026-09-21",
             "verified",
             "Used for buyer-facing composition, use cases and application guidance; batch label remains authoritative.",
-            _now(),
         ),
     )
     return True

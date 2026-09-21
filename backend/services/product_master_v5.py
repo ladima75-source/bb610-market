@@ -275,6 +275,32 @@ def snapshot(*, public_only: bool = True) -> dict:
             WHERE p.public_enabled=1 AND p.status='active'
             """
         ).fetchone()[0]
+        product_aliases = [
+            dict(row)
+            for row in con.execute(
+                """
+                SELECT alias,product_id,alias_kind,active
+                FROM product_aliases
+                WHERE active=1
+                ORDER BY alias
+                """
+            )
+        ]
+        sku_aliases = [
+            dict(row)
+            for row in con.execute(
+                """
+                SELECT a.alias_sku_id,a.canonical_sku_id,a.alias_kind,a.active,
+                       ac.price,ac.sale_price,ac.availability,ac.stock_qty,
+                       ac.enabled,ac.updated_at
+                FROM sku_aliases a
+                LEFT JOIN sku_alias_commerce ac ON ac.alias_sku_id=a.alias_sku_id
+                WHERE a.active=1
+                ORDER BY a.alias_sku_id
+                """
+            )
+        ]
+
         counts = {
             "products": con.execute("SELECT COUNT(*) FROM products").fetchone()[0],
             "public_products": len(public_product_ids),
@@ -300,4 +326,6 @@ def snapshot(*, public_only: bool = True) -> dict:
             "source": "bb610-product-master-v5",
             "counts": counts,
             "products": products,
+            "product_aliases": product_aliases,
+            "sku_aliases": sku_aliases,
         }

@@ -4,7 +4,9 @@
     "products": 86,
     "sources": 118,
     "products_with_primary_or_manufacturer_source": 21,
-    "uncovered_products": 0
+    "uncovered_products": 0,
+    "public_products": 83,
+    "hidden_products": 3
   },
   "products": [
     {
@@ -62,7 +64,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "actiwin-20-5-10",
@@ -115,7 +118,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "agriflex-amino-aminokysloty-50",
@@ -188,7 +192,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch07_rows73_77.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "agriflex-aminovix",
@@ -277,7 +282,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch07_rows73_77.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "agriflex-bio",
@@ -326,7 +332,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "agriflex-fulvix-fulvokysloty-60",
@@ -395,7 +402,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch07_rows73_77.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "agriflex-humic-humat-kaliyu",
@@ -472,7 +480,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch07_rows73_77.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "agriflex-zn",
@@ -533,7 +542,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch07_rows73_77.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "agroblen-granula-max-14-20-5-te-56m",
@@ -602,7 +612,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "aktara-25-wg",
@@ -675,7 +686,8 @@
           "status": "verified",
           "provenance": "data/source-audit.json"
         }
-      ]
+      ],
+      "public_enabled": false
     },
     {
       "product_id": "benefit-pz",
@@ -748,7 +760,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "blackjak",
@@ -801,7 +814,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "blueberry-round-pots",
@@ -845,7 +859,8 @@
           "status": "verified",
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "blueberry-round-short-legs-pot",
@@ -889,7 +904,8 @@
           "status": "verified",
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "blueberry-round-u-groove-pots",
@@ -933,7 +949,8 @@
           "status": "verified",
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "blueberry-square-pots",
@@ -977,7 +994,8 @@
           "status": "verified",
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "blueberry-square-u-groove-pots",
@@ -1021,7 +1039,8 @@
           "status": "verified",
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "blueberry-zephyr-v2-pots",
@@ -1065,7 +1084,8 @@
           "status": "verified",
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "boroplus",
@@ -1138,7 +1158,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "brexil-ca",
@@ -1219,7 +1240,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "brexil-combi",
@@ -1300,7 +1322,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "brexil-duo",
@@ -1365,7 +1388,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "brexil-fe",
@@ -1446,7 +1470,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "brexil-mix",
@@ -1535,7 +1560,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "brexil-mn",
@@ -1596,7 +1622,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "brexil-multi",
@@ -1677,7 +1704,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "brexil-nutre",
@@ -1734,7 +1762,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "brexil-zn",
@@ -1799,7 +1828,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "control-dmp",
@@ -1856,7 +1886,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": false
     },
     {
       "product_id": "eraiz",
@@ -1917,7 +1948,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "ferrilen-trium",
@@ -1982,7 +2014,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "ferrilene-4-8-orto-orto",
@@ -2067,7 +2100,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "haifa-mkp-0-52-34",
@@ -2148,7 +2182,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kemira-balans-nitrate-balancer",
@@ -2201,7 +2236,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kemira-dlya-hazonu-npk-12-11-18",
@@ -2302,7 +2338,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kemira-grunt-kropker-npk-11-11-21",
@@ -2383,7 +2420,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kemira-lyuks-npk-14-11-25",
@@ -2492,7 +2530,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kemira-npk-12-46-8",
@@ -2597,7 +2636,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kemira-npk-18-18-18",
@@ -2706,7 +2746,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kemira-ukorinyuvach",
@@ -2767,7 +2808,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kemira-zav-yaz",
@@ -2848,7 +2890,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kendal",
@@ -2901,7 +2944,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kendal-root",
@@ -2954,7 +2998,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "kendal-te",
@@ -3015,7 +3060,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "master-npk-13-40-13",
@@ -3124,7 +3170,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "master-npk-15-5-30",
@@ -3237,7 +3284,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "master-npk-17-6-18",
@@ -3346,7 +3394,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "master-npk-18-18-18",
@@ -3463,7 +3512,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "master-npk-20-20-20",
@@ -3572,7 +3622,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "master-npk-3-11-38",
@@ -3689,7 +3740,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "max-600-seasailer",
@@ -3738,7 +3790,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "maxicrop-cream",
@@ -3799,7 +3852,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "maxicrop-extra",
@@ -3868,7 +3922,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "maxicrop-set-maksikrop-zav-yaz",
@@ -3941,7 +3996,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "megafol",
@@ -4010,7 +4066,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "micro-np",
@@ -4083,7 +4140,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "neocore",
@@ -4168,7 +4226,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "neoflora",
@@ -4257,7 +4316,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "neoterra-aqua",
@@ -4322,7 +4382,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "neoterra-organic-c",
@@ -4387,7 +4448,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "neovivo",
@@ -4476,7 +4538,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "osmocote-bloom-12-7-18-23m",
@@ -4549,7 +4612,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "osmocote-decor-16-8-12-56m",
@@ -4622,7 +4686,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "osmocote-granula-max-14-8-11-te-56m",
@@ -4683,7 +4748,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "osmocote-landscape-16-9-12-34m",
@@ -4756,7 +4822,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "osmocote-potassium-12-8-19-34m",
@@ -4833,7 +4900,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "osmocote-quick-start-22-5-6-45m",
@@ -4918,7 +4986,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "osmocote-start-11-11-17-1-5m",
@@ -4991,7 +5060,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "pekacid-npk-0-60-20",
@@ -5080,7 +5150,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "plantafol-npk-0-25-50",
@@ -5177,7 +5248,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "plantafol-npk-10-54-10",
@@ -5274,7 +5346,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "plantafol-npk-20-20-20",
@@ -5371,7 +5444,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "plantafol-npk-30-10-10",
@@ -5468,7 +5542,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "plantafol-npk-5-15-45",
@@ -5565,7 +5640,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch01_rows01_12.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "plantlogic-25-round-1308125",
@@ -5605,7 +5681,8 @@
           "status": "verified",
           "provenance": "data/product_content/plantlogic_pots_v1_20260918.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "radifarm",
@@ -5662,7 +5739,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "solupotasse-sulfat-kaliyu",
@@ -5743,7 +5821,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "spidfol-amino-vehetatsiya",
@@ -5840,7 +5919,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch02_rows13_24.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "sprei-eid",
@@ -5893,7 +5973,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "sulfat-mahniyu",
@@ -5958,7 +6039,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch03_rows25_36.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "sweet",
@@ -6015,7 +6097,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "switch-625-wg",
@@ -6088,7 +6171,8 @@
           "status": "verified",
           "provenance": "data/source-audit.json"
         }
-      ]
+      ],
+      "public_enabled": false
     },
     {
       "product_id": "terra-sorb",
@@ -6169,7 +6253,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch05_rows49_60.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "valagro-edta-5sg",
@@ -6238,7 +6323,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "valagro-edta-fe-13",
@@ -6307,7 +6393,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch06_rows61_72.json"
         }
-      ]
+      ],
+      "public_enabled": true
     },
     {
       "product_id": "viva",
@@ -6360,7 +6447,8 @@
           "status": "verified",
           "provenance": "data/content_batches/stage22c_batch04_rows37_48.json"
         }
-      ]
+      ],
+      "public_enabled": true
     }
   ]
 }

@@ -1,20 +1,21 @@
 {
   "schema": "bb610-v5-stage-1",
   "summary": {
-    "snapshot_created_at": "2026-09-21T07:25:28.246157+00:00",
+    "snapshot_created_at": "2026-09-21T07:42:49.304687+00:00",
     "production_head": "46e0b2b208c54132bd1c11a70f993000272195f8",
-    "production_origin_main_at_snapshot": "6688cf96edefac17be79033067653659fd9e9346",
+    "production_origin_main_at_snapshot": "df8955e1b589b089d57ccecd630602fd85b1ec2c",
     "source_commerce_rows": 286,
     "excluded_test_rows": 4,
     "canonical_non_plantlogic_products": 80,
     "canonical_non_plantlogic_skus": 204,
-    "sku_aliases": 77,
+    "sku_aliases": 109,
     "price_conflicts": 2,
     "plantlogic_grouped_products": 6,
-    "plantlogic_request_price_skus": 48,
-    "plantlogic_legacy_skus": 1,
+    "plantlogic_request_price_skus": 17,
+    "plantlogic_retired_color_aliases": 31,
+    "plantlogic_legacy_skus": 0,
     "v5_stage_products_total": 86,
-    "v5_stage_skus_total": 253
+    "v5_stage_skus_total": 221
   },
   "products": [
     {
@@ -7065,6 +7066,21 @@
       }
     },
     {
+      "alias_sku_id": "BB610-PLT-1308041-EA",
+      "canonical_sku_id": "PL-BB-1308041-TC",
+      "product_id": "blueberry-round-u-groove-pots",
+      "package_label": "40 л",
+      "reason": "legacy_product_reparent_by_v5_assortment_policy",
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "unknown",
+        "stock_qty": null,
+        "enabled": 0,
+        "updated_at": "2026-08-30T12:05:15.296260+00:00"
+      }
+    },
+    {
       "alias_sku_id": "BB610-SOLUPOTASSE-K2SO4-1KG",
       "canonical_sku_id": "BB610-CDBF81D3217CCE",
       "product_id": "solupotasse-sulfat-kaliyu",
@@ -7137,6 +7153,936 @@
         "stock_qty": null,
         "enabled": 0,
         "updated_at": "2026-09-17T21:43:07.440315+00:00"
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1301143-WH",
+      "canonical_sku_id": "PL-BB-1301143-BK",
+      "product_id": "blueberry-zephyr-v2-pots",
+      "package_label": "40 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 40,
+        "volume_label": "40 л",
+        "execution_code": "zephyr_7cm",
+        "execution_label": "Zephyr V2 · ніжки 7 см",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1301143",
+        "media_source_color": "",
+        "dimension_a": "370 мм",
+        "dimension_b": "Ø 427 мм",
+        "dimension_c": "500 мм",
+        "dimension_d": "70 мм",
+        "catalog_page": 7
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1301144-WH",
+      "canonical_sku_id": "PL-BB-1301144-BK",
+      "product_id": "blueberry-zephyr-v2-pots",
+      "package_label": "25 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 25,
+        "volume_label": "25 л",
+        "execution_code": "zephyr_7cm",
+        "execution_label": "Zephyr V2 · ніжки 7 см",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1301144",
+        "media_source_color": "",
+        "dimension_a": "369 мм",
+        "dimension_b": "Ø 333 мм",
+        "dimension_c": "397 мм",
+        "dimension_d": "70 мм",
+        "catalog_page": 7
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1301153-WH",
+      "canonical_sku_id": "PL-BB-1301153-BK",
+      "product_id": "blueberry-zephyr-v2-pots",
+      "package_label": "30 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 30,
+        "volume_label": "30 л",
+        "execution_code": "zephyr_7cm",
+        "execution_label": "Zephyr V2 · ніжки 7 см",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1301153",
+        "media_source_color": "",
+        "dimension_a": "420 мм",
+        "dimension_b": "Ø 333 мм",
+        "dimension_c": "397 мм",
+        "dimension_d": "70 мм",
+        "catalog_page": 7
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1303025-TC",
+      "canonical_sku_id": "PL-BB-1303025-BK",
+      "product_id": "blueberry-round-short-legs-pot",
+      "package_label": "25 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 25,
+        "volume_label": "25 л",
+        "execution_code": "short_legs",
+        "execution_label": "Короткі ніжки",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1303025",
+        "media_source_color": "black",
+        "dimension_a": "306 мм",
+        "dimension_b": "Ø 399 мм",
+        "dimension_c": "294 мм",
+        "dimension_d": "13 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1303025-WH",
+      "canonical_sku_id": "PL-BB-1303025-BK",
+      "product_id": "blueberry-round-short-legs-pot",
+      "package_label": "25 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 25,
+        "volume_label": "25 л",
+        "execution_code": "short_legs",
+        "execution_label": "Короткі ніжки",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1303025",
+        "media_source_color": "black",
+        "dimension_a": "306 мм",
+        "dimension_b": "Ø 399 мм",
+        "dimension_c": "294 мм",
+        "dimension_d": "13 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308020-TC",
+      "canonical_sku_id": "PL-BB-1308020-BK",
+      "product_id": "blueberry-round-pots",
+      "package_label": "20 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 20,
+        "volume_label": "20 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1308020",
+        "media_source_color": "black",
+        "dimension_a": "303 мм",
+        "dimension_b": "Ø 370 мм",
+        "dimension_c": "245 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308020-WH",
+      "canonical_sku_id": "PL-BB-1308020-BK",
+      "product_id": "blueberry-round-pots",
+      "package_label": "20 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 20,
+        "volume_label": "20 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1308020",
+        "media_source_color": "black",
+        "dimension_a": "303 мм",
+        "dimension_b": "Ø 370 мм",
+        "dimension_c": "245 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308025-TC",
+      "canonical_sku_id": "PL-BB-1308025-BK",
+      "product_id": "blueberry-round-pots",
+      "package_label": "25 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 25,
+        "volume_label": "25 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1308025",
+        "media_source_color": "black",
+        "dimension_a": "354 мм",
+        "dimension_b": "Ø 385 мм",
+        "dimension_c": "268 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308025-WH",
+      "canonical_sku_id": "PL-BB-1308025-BK",
+      "product_id": "blueberry-round-pots",
+      "package_label": "25 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 25,
+        "volume_label": "25 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1308025",
+        "media_source_color": "black",
+        "dimension_a": "354 мм",
+        "dimension_b": "Ø 385 мм",
+        "dimension_c": "268 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308031-TC",
+      "canonical_sku_id": "PL-BB-1308031-BK",
+      "product_id": "blueberry-round-pots",
+      "package_label": "30 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 30,
+        "volume_label": "30 л",
+        "execution_code": "v_ribs",
+        "execution_label": "V-ребра",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1308031",
+        "media_source_color": "black",
+        "dimension_a": "383 мм",
+        "dimension_b": "Ø 407 мм",
+        "dimension_c": "282 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308031-WH",
+      "canonical_sku_id": "PL-BB-1308031-BK",
+      "product_id": "blueberry-round-pots",
+      "package_label": "30 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 30,
+        "volume_label": "30 л",
+        "execution_code": "v_ribs",
+        "execution_label": "V-ребра",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1308031",
+        "media_source_color": "black",
+        "dimension_a": "383 мм",
+        "dimension_b": "Ø 407 мм",
+        "dimension_c": "282 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-13080350-TC",
+      "canonical_sku_id": "PL-BB-13080350-BK",
+      "product_id": "blueberry-round-u-groove-pots",
+      "package_label": "35 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 35,
+        "volume_label": "35 л",
+        "execution_code": "u_grooves",
+        "execution_label": "U-пази",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "13080350",
+        "media_source_color": "black",
+        "dimension_a": "340 мм",
+        "dimension_b": "Ø 460 мм",
+        "dimension_c": "341 мм",
+        "dimension_d": "35 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-13080350-WH",
+      "canonical_sku_id": "PL-BB-13080350-BK",
+      "product_id": "blueberry-round-u-groove-pots",
+      "package_label": "35 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 35,
+        "volume_label": "35 л",
+        "execution_code": "u_grooves",
+        "execution_label": "U-пази",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "13080350",
+        "media_source_color": "black",
+        "dimension_a": "340 мм",
+        "dimension_b": "Ø 460 мм",
+        "dimension_c": "341 мм",
+        "dimension_d": "35 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308040-BK",
+      "canonical_sku_id": "PL-BB-1308040-TC",
+      "product_id": "blueberry-round-pots",
+      "package_label": "40 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 40,
+        "volume_label": "40 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1308040",
+        "media_source_color": "terracotta",
+        "dimension_a": "384 мм",
+        "dimension_b": "Ø 460 мм",
+        "dimension_c": "330 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308040-WH",
+      "canonical_sku_id": "PL-BB-1308040-TC",
+      "product_id": "blueberry-round-pots",
+      "package_label": "40 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 40,
+        "volume_label": "40 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1308040",
+        "media_source_color": "terracotta",
+        "dimension_a": "384 мм",
+        "dimension_b": "Ø 460 мм",
+        "dimension_c": "330 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308041-BK",
+      "canonical_sku_id": "PL-BB-1308041-TC",
+      "product_id": "blueberry-round-u-groove-pots",
+      "package_label": "40 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 40,
+        "volume_label": "40 л",
+        "execution_code": "u_grooves",
+        "execution_label": "U-пази",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1308041",
+        "media_source_color": "black",
+        "dimension_a": "384 мм",
+        "dimension_b": "Ø 460 мм",
+        "dimension_c": "330 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308041-WH",
+      "canonical_sku_id": "PL-BB-1308041-TC",
+      "product_id": "blueberry-round-u-groove-pots",
+      "package_label": "40 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 40,
+        "volume_label": "40 л",
+        "execution_code": "u_grooves",
+        "execution_label": "U-пази",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1308041",
+        "media_source_color": "black",
+        "dimension_a": "384 мм",
+        "dimension_b": "Ø 460 мм",
+        "dimension_c": "330 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308303-TC",
+      "canonical_sku_id": "PL-BB-1308303-BK",
+      "product_id": "blueberry-round-u-groove-pots",
+      "package_label": "30 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 30,
+        "volume_label": "30 л",
+        "execution_code": "u_grooves",
+        "execution_label": "U-пази",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1308303",
+        "media_source_color": "terracotta",
+        "dimension_a": "380 мм",
+        "dimension_b": "Ø 407 мм",
+        "dimension_c": "283 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308303-WH",
+      "canonical_sku_id": "PL-BB-1308303-BK",
+      "product_id": "blueberry-round-u-groove-pots",
+      "package_label": "30 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 30,
+        "volume_label": "30 л",
+        "execution_code": "u_grooves",
+        "execution_label": "U-пази",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1308303",
+        "media_source_color": "terracotta",
+        "dimension_a": "380 мм",
+        "dimension_b": "Ø 407 мм",
+        "dimension_c": "283 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308305-TC",
+      "canonical_sku_id": "PL-BB-1308305-BK",
+      "product_id": "blueberry-round-u-groove-pots",
+      "package_label": "30 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 30,
+        "volume_label": "30 л",
+        "execution_code": "parallel_u_grooves",
+        "execution_label": "Паралельні U-пази",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1308305",
+        "media_source_color": "black",
+        "dimension_a": "380 мм",
+        "dimension_b": "Ø 407 мм",
+        "dimension_c": "283 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1308305-WH",
+      "canonical_sku_id": "PL-BB-1308305-BK",
+      "product_id": "blueberry-round-u-groove-pots",
+      "package_label": "30 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 30,
+        "volume_label": "30 л",
+        "execution_code": "parallel_u_grooves",
+        "execution_label": "Паралельні U-пази",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1308305",
+        "media_source_color": "black",
+        "dimension_a": "380 мм",
+        "dimension_b": "Ø 407 мм",
+        "dimension_c": "283 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1309020-TC",
+      "canonical_sku_id": "PL-BB-1309020-BK",
+      "product_id": "blueberry-square-pots",
+      "package_label": "20 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 20,
+        "volume_label": "20 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1309020",
+        "media_source_color": "black",
+        "dimension_a": "316 мм",
+        "dimension_b": "330 × 330 мм",
+        "dimension_c": "229 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1309020-WH",
+      "canonical_sku_id": "PL-BB-1309020-BK",
+      "product_id": "blueberry-square-pots",
+      "package_label": "20 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 20,
+        "volume_label": "20 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1309020",
+        "media_source_color": "black",
+        "dimension_a": "316 мм",
+        "dimension_b": "330 × 330 мм",
+        "dimension_c": "229 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1309025-TC",
+      "canonical_sku_id": "PL-BB-1309025-BK",
+      "product_id": "blueberry-square-pots",
+      "package_label": "25 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 25,
+        "volume_label": "25 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1309025",
+        "media_source_color": "black",
+        "dimension_a": "322 мм",
+        "dimension_b": "355 × 355 мм",
+        "dimension_c": "264 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1309025-WH",
+      "canonical_sku_id": "PL-BB-1309025-BK",
+      "product_id": "blueberry-square-pots",
+      "package_label": "25 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 25,
+        "volume_label": "25 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1309025",
+        "media_source_color": "black",
+        "dimension_a": "322 мм",
+        "dimension_b": "355 × 355 мм",
+        "dimension_c": "264 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1309026-TC",
+      "canonical_sku_id": "PL-BB-1309026-BK",
+      "product_id": "blueberry-square-u-groove-pots",
+      "package_label": "25 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 25,
+        "volume_label": "25 л",
+        "execution_code": "u_grooves",
+        "execution_label": "U-пази",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1309026",
+        "media_source_color": "black",
+        "dimension_a": "322 мм",
+        "dimension_b": "355 × 355 мм",
+        "dimension_c": "264 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1309026-WH",
+      "canonical_sku_id": "PL-BB-1309026-BK",
+      "product_id": "blueberry-square-u-groove-pots",
+      "package_label": "25 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 25,
+        "volume_label": "25 л",
+        "execution_code": "u_grooves",
+        "execution_label": "U-пази",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1309026",
+        "media_source_color": "black",
+        "dimension_a": "322 мм",
+        "dimension_b": "355 × 355 мм",
+        "dimension_c": "264 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1309030-TC",
+      "canonical_sku_id": "PL-BB-1309030-BK",
+      "product_id": "blueberry-square-pots",
+      "package_label": "30 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 30,
+        "volume_label": "30 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1309030",
+        "media_source_color": "black",
+        "dimension_a": "322 мм",
+        "dimension_b": "385 × 385 мм",
+        "dimension_c": "291 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-1309030-WH",
+      "canonical_sku_id": "PL-BB-1309030-BK",
+      "product_id": "blueberry-square-pots",
+      "package_label": "30 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 30,
+        "volume_label": "30 л",
+        "execution_code": "standard_legs",
+        "execution_label": "Стандартні ніжки",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1309030",
+        "media_source_color": "black",
+        "dimension_a": "322 мм",
+        "dimension_b": "385 × 385 мм",
+        "dimension_c": "291 мм",
+        "dimension_d": "30 мм",
+        "catalog_page": 5
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-13090350-TC",
+      "canonical_sku_id": "PL-BB-13090350-BK",
+      "product_id": "blueberry-square-u-groove-pots",
+      "package_label": "35 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 35,
+        "volume_label": "35 л",
+        "execution_code": "u_grooves",
+        "execution_label": "U-пази",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "13090350",
+        "media_source_color": "black",
+        "dimension_a": "350 мм",
+        "dimension_b": "425 × 425 мм",
+        "dimension_c": "290 мм",
+        "dimension_d": "40 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
+      }
+    },
+    {
+      "alias_sku_id": "PL-BB-13090350-WH",
+      "canonical_sku_id": "PL-BB-13090350-BK",
+      "product_id": "blueberry-square-u-groove-pots",
+      "package_label": "35 л",
+      "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+      "retired_attributes": {
+        "volume_l": 35,
+        "volume_label": "35 л",
+        "execution_code": "u_grooves",
+        "execution_label": "U-пази",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "13090350",
+        "media_source_color": "black",
+        "dimension_a": "350 мм",
+        "dimension_b": "425 × 425 мм",
+        "dimension_c": "290 мм",
+        "dimension_d": "40 мм",
+        "catalog_page": 6
+      },
+      "alias_commerce": {
+        "price": null,
+        "sale_price": null,
+        "availability": "request_price",
+        "stock_qty": null,
+        "enabled": false,
+        "updated_at": null
       }
     }
   ],
@@ -7264,123 +8210,9 @@
         "dimension_b": "Ø 370 мм",
         "dimension_c": "245 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308020_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Round-Pot_Item_1308020.jpg",
-          "alt": "Plantlogic 1308020 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308020_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_front.jpg",
-          "alt": "Plantlogic 1308020 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308020_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_top-view.jpg",
-          "alt": "Plantlogic 1308020 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308020_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-BASE.jpg",
-          "alt": "Plantlogic 1308020 — base",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308020_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-ISOMETRICO.jpg",
-          "alt": "Plantlogic 1308020 — angle",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308020-WH",
-      "v3_sku_id": "sku_pl_bb_1308020_white",
-      "product_id": "blueberry-round-pots",
-      "package_value": 20.0,
-      "package_unit": "l",
-      "package_label": "20 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 20,
-        "volume_label": "20 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1308020",
-        "media_source_color": "black",
-        "dimension_a": "303 мм",
-        "dimension_b": "Ø 370 мм",
-        "dimension_c": "245 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308020_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Round-Pot_Item_1308020.jpg",
-          "alt": "Plantlogic 1308020 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308020_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_front.jpg",
-          "alt": "Plantlogic 1308020 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308020_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_top-view.jpg",
-          "alt": "Plantlogic 1308020 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308020_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-BASE.jpg",
-          "alt": "Plantlogic 1308020 — base",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308020_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-ISOMETRICO.jpg",
-          "alt": "Plantlogic 1308020 — angle",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308020-TC",
-      "v3_sku_id": "sku_pl_bb_1308020_terracotta",
-      "product_id": "blueberry-round-pots",
-      "package_value": 20.0,
-      "package_unit": "l",
-      "package_label": "20 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 20,
-        "volume_label": "20 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "1308020",
-        "media_source_color": "black",
-        "dimension_a": "303 мм",
-        "dimension_b": "Ø 370 мм",
-        "dimension_c": "245 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
+        "catalog_page": 5,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -7438,123 +8270,9 @@
         "dimension_b": "Ø 385 мм",
         "dimension_c": "268 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308025_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_4.jpg",
-          "alt": "Plantlogic 1308025 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308025_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_5.jpg",
-          "alt": "Plantlogic 1308025 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308025_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_2.jpg",
-          "alt": "Plantlogic 1308025 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308025_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_1.jpg",
-          "alt": "Plantlogic 1308025 — base",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308025_detail",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_3.jpg",
-          "alt": "Plantlogic 1308025 — detail",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308025-WH",
-      "v3_sku_id": "sku_pl_bb_1308025_white",
-      "product_id": "blueberry-round-pots",
-      "package_value": 25.0,
-      "package_unit": "l",
-      "package_label": "25 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 25,
-        "volume_label": "25 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1308025",
-        "media_source_color": "black",
-        "dimension_a": "354 мм",
-        "dimension_b": "Ø 385 мм",
-        "dimension_c": "268 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308025_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_4.jpg",
-          "alt": "Plantlogic 1308025 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308025_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_5.jpg",
-          "alt": "Plantlogic 1308025 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308025_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_2.jpg",
-          "alt": "Plantlogic 1308025 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308025_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_1.jpg",
-          "alt": "Plantlogic 1308025 — base",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308025_detail",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_3.jpg",
-          "alt": "Plantlogic 1308025 — detail",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308025-TC",
-      "v3_sku_id": "sku_pl_bb_1308025_terracotta",
-      "product_id": "blueberry-round-pots",
-      "package_value": 25.0,
-      "package_unit": "l",
-      "package_label": "25 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 25,
-        "volume_label": "25 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "1308025",
-        "media_source_color": "black",
-        "dimension_a": "354 мм",
-        "dimension_b": "Ø 385 мм",
-        "dimension_c": "268 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
+        "catalog_page": 5,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -7612,7 +8330,9 @@
         "dimension_b": "Ø 407 мм",
         "dimension_c": "282 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 5
+        "catalog_page": 5,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -7645,238 +8365,6 @@
           "media_id": "plbb_1308031_base",
           "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-VR-1308031-BASE.jpg",
           "alt": "Plantlogic 1308031 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308031-WH",
-      "v3_sku_id": "sku_pl_bb_1308031_white",
-      "product_id": "blueberry-round-pots",
-      "package_value": 30.0,
-      "package_unit": "l",
-      "package_label": "30 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 30,
-        "volume_label": "30 л",
-        "execution_code": "v_ribs",
-        "execution_label": "V-ребра",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1308031",
-        "media_source_color": "black",
-        "dimension_a": "383 мм",
-        "dimension_b": "Ø 407 мм",
-        "dimension_c": "282 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308031_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-V-ribs_Item_1308031.jpg",
-          "alt": "Plantlogic 1308031 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308031_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031.jpg",
-          "alt": "Plantlogic 1308031 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308031_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_front.jpg",
-          "alt": "Plantlogic 1308031 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308031_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_top-view.jpg",
-          "alt": "Plantlogic 1308031 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308031_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-VR-1308031-BASE.jpg",
-          "alt": "Plantlogic 1308031 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308031-TC",
-      "v3_sku_id": "sku_pl_bb_1308031_terracotta",
-      "product_id": "blueberry-round-pots",
-      "package_value": 30.0,
-      "package_unit": "l",
-      "package_label": "30 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 30,
-        "volume_label": "30 л",
-        "execution_code": "v_ribs",
-        "execution_label": "V-ребра",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "1308031",
-        "media_source_color": "black",
-        "dimension_a": "383 мм",
-        "dimension_b": "Ø 407 мм",
-        "dimension_c": "282 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308031_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-V-ribs_Item_1308031.jpg",
-          "alt": "Plantlogic 1308031 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308031_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031.jpg",
-          "alt": "Plantlogic 1308031 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308031_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_front.jpg",
-          "alt": "Plantlogic 1308031 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308031_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_top-view.jpg",
-          "alt": "Plantlogic 1308031 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308031_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-VR-1308031-BASE.jpg",
-          "alt": "Plantlogic 1308031 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308040-BK",
-      "v3_sku_id": "sku_pl_bb_1308040_black",
-      "product_id": "blueberry-round-pots",
-      "package_value": 40.0,
-      "package_unit": "l",
-      "package_label": "40 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 40,
-        "volume_label": "40 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "black",
-        "color_label": "Чорний",
-        "manufacturer_product_no": "1308040",
-        "media_source_color": "terracotta",
-        "dimension_a": "384 мм",
-        "dimension_b": "Ø 460 мм",
-        "dimension_c": "330 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308040_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040-1.jpg",
-          "alt": "Plantlogic 1308040 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308040_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040.jpg",
-          "alt": "Plantlogic 1308040 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308040_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Front-view.jpg",
-          "alt": "Plantlogic 1308040 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308040_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Top-view.jpg",
-          "alt": "Plantlogic 1308040 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308040_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/40L-RD-1308040-BASE.jpg",
-          "alt": "Plantlogic 1308040 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308040-WH",
-      "v3_sku_id": "sku_pl_bb_1308040_white",
-      "product_id": "blueberry-round-pots",
-      "package_value": 40.0,
-      "package_unit": "l",
-      "package_label": "40 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 40,
-        "volume_label": "40 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1308040",
-        "media_source_color": "terracotta",
-        "dimension_a": "384 мм",
-        "dimension_b": "Ø 460 мм",
-        "dimension_c": "330 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308040_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040-1.jpg",
-          "alt": "Plantlogic 1308040 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308040_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040.jpg",
-          "alt": "Plantlogic 1308040 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308040_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Front-view.jpg",
-          "alt": "Plantlogic 1308040 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308040_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Top-view.jpg",
-          "alt": "Plantlogic 1308040 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308040_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/40L-RD-1308040-BASE.jpg",
-          "alt": "Plantlogic 1308040 — base",
           "is_primary": false
         }
       ]
@@ -7902,7 +8390,9 @@
         "dimension_b": "Ø 460 мм",
         "dimension_c": "330 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 5
+        "catalog_page": 5,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -7960,111 +8450,9 @@
         "dimension_b": "Ø 399 мм",
         "dimension_c": "294 мм",
         "dimension_d": "13 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1303025_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg",
-          "alt": "Plantlogic 1303025 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1303025_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_2-1.jpg",
-          "alt": "Plantlogic 1303025 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1303025_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_3.jpg",
-          "alt": "Plantlogic 1303025 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1303025_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2021/06/3025_4-1.jpg",
-          "alt": "Plantlogic 1303025 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1303025-WH",
-      "v3_sku_id": "sku_pl_bb_1303025_white",
-      "product_id": "blueberry-round-short-legs-pot",
-      "package_value": 25.0,
-      "package_unit": "l",
-      "package_label": "25 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 25,
-        "volume_label": "25 л",
-        "execution_code": "short_legs",
-        "execution_label": "Короткі ніжки",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1303025",
-        "media_source_color": "black",
-        "dimension_a": "306 мм",
-        "dimension_b": "Ø 399 мм",
-        "dimension_c": "294 мм",
-        "dimension_d": "13 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1303025_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg",
-          "alt": "Plantlogic 1303025 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1303025_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_2-1.jpg",
-          "alt": "Plantlogic 1303025 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1303025_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_3.jpg",
-          "alt": "Plantlogic 1303025 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1303025_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2021/06/3025_4-1.jpg",
-          "alt": "Plantlogic 1303025 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1303025-TC",
-      "v3_sku_id": "sku_pl_bb_1303025_terracotta",
-      "product_id": "blueberry-round-short-legs-pot",
-      "package_value": 25.0,
-      "package_unit": "l",
-      "package_label": "25 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 25,
-        "volume_label": "25 л",
-        "execution_code": "short_legs",
-        "execution_label": "Короткі ніжки",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "1303025",
-        "media_source_color": "black",
-        "dimension_a": "306 мм",
-        "dimension_b": "Ø 399 мм",
-        "dimension_c": "294 мм",
-        "dimension_d": "13 мм",
-        "catalog_page": 5
+        "catalog_page": 5,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8116,123 +8504,9 @@
         "dimension_b": "Ø 407 мм",
         "dimension_c": "283 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308303_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-U-grooves_Item_1308303-1.jpg",
-          "alt": "Plantlogic 1308303 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308303_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303.jpg",
-          "alt": "Plantlogic 1308303 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308303_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303_Top-view.jpg",
-          "alt": "Plantlogic 1308303 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308303_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-BASE.jpg",
-          "alt": "Plantlogic 1308303 — base",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308303_isometric",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-ISOMETRICO.jpg",
-          "alt": "Plantlogic 1308303 — isometric",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308303-WH",
-      "v3_sku_id": "sku_pl_bb_1308303_white",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 30.0,
-      "package_unit": "l",
-      "package_label": "30 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 30,
-        "volume_label": "30 л",
-        "execution_code": "u_grooves",
-        "execution_label": "U-пази",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1308303",
-        "media_source_color": "terracotta",
-        "dimension_a": "380 мм",
-        "dimension_b": "Ø 407 мм",
-        "dimension_c": "283 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308303_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-U-grooves_Item_1308303-1.jpg",
-          "alt": "Plantlogic 1308303 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308303_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303.jpg",
-          "alt": "Plantlogic 1308303 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308303_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303_Top-view.jpg",
-          "alt": "Plantlogic 1308303 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308303_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-BASE.jpg",
-          "alt": "Plantlogic 1308303 — base",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308303_isometric",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-ISOMETRICO.jpg",
-          "alt": "Plantlogic 1308303 — isometric",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308303-TC",
-      "v3_sku_id": "sku_pl_bb_1308303_terracotta",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 30.0,
-      "package_unit": "l",
-      "package_label": "30 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 30,
-        "volume_label": "30 л",
-        "execution_code": "u_grooves",
-        "execution_label": "U-пази",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "1308303",
-        "media_source_color": "terracotta",
-        "dimension_a": "380 мм",
-        "dimension_b": "Ø 407 мм",
-        "dimension_c": "283 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 6
+        "catalog_page": 6,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8290,111 +8564,9 @@
         "dimension_b": "Ø 407 мм",
         "dimension_c": "283 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308305_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-FRONT-1.jpg",
-          "alt": "Plantlogic 1308305 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308305_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-ISOMETRIC-VIEW-2.jpg",
-          "alt": "Plantlogic 1308305 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308305_detail",
-          "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-Landing-page.jpg",
-          "alt": "Plantlogic 1308305 — detail",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308305_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-TOP-VIEW-2.jpg",
-          "alt": "Plantlogic 1308305 — top",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308305-WH",
-      "v3_sku_id": "sku_pl_bb_1308305_white",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 30.0,
-      "package_unit": "l",
-      "package_label": "30 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 30,
-        "volume_label": "30 л",
-        "execution_code": "parallel_u_grooves",
-        "execution_label": "Паралельні U-пази",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1308305",
-        "media_source_color": "black",
-        "dimension_a": "380 мм",
-        "dimension_b": "Ø 407 мм",
-        "dimension_c": "283 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308305_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-FRONT-1.jpg",
-          "alt": "Plantlogic 1308305 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308305_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-ISOMETRIC-VIEW-2.jpg",
-          "alt": "Plantlogic 1308305 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308305_detail",
-          "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-Landing-page.jpg",
-          "alt": "Plantlogic 1308305 — detail",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308305_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-TOP-VIEW-2.jpg",
-          "alt": "Plantlogic 1308305 — top",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308305-TC",
-      "v3_sku_id": "sku_pl_bb_1308305_terracotta",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 30.0,
-      "package_unit": "l",
-      "package_label": "30 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 30,
-        "volume_label": "30 л",
-        "execution_code": "parallel_u_grooves",
-        "execution_label": "Паралельні U-пази",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "1308305",
-        "media_source_color": "black",
-        "dimension_a": "380 мм",
-        "dimension_b": "Ø 407 мм",
-        "dimension_c": "283 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 6
+        "catalog_page": 6,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8446,7 +8618,9 @@
         "dimension_b": "Ø 460 мм",
         "dimension_c": "341 мм",
         "dimension_d": "35 мм",
-        "catalog_page": 6
+        "catalog_page": 6,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8473,226 +8647,6 @@
           "media_id": "plbb_13080350_detail",
           "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg",
           "alt": "Plantlogic 13080350 — detail",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-13080350-WH",
-      "v3_sku_id": "sku_pl_bb_13080350_white",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 35.0,
-      "package_unit": "l",
-      "package_label": "35 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 35,
-        "volume_label": "35 л",
-        "execution_code": "u_grooves",
-        "execution_label": "U-пази",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "13080350",
-        "media_source_color": "black",
-        "dimension_a": "340 мм",
-        "dimension_b": "Ø 460 мм",
-        "dimension_c": "341 мм",
-        "dimension_d": "35 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_13080350_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-blueberries.jpg",
-          "alt": "Plantlogic 13080350 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_13080350_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-con-ranuras-para-manguera.jpg",
-          "alt": "Plantlogic 13080350 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_13080350_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-arandano.jpg",
-          "alt": "Plantlogic 13080350 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_13080350_detail",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg",
-          "alt": "Plantlogic 13080350 — detail",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-13080350-TC",
-      "v3_sku_id": "sku_pl_bb_13080350_terracotta",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 35.0,
-      "package_unit": "l",
-      "package_label": "35 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 35,
-        "volume_label": "35 л",
-        "execution_code": "u_grooves",
-        "execution_label": "U-пази",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "13080350",
-        "media_source_color": "black",
-        "dimension_a": "340 мм",
-        "dimension_b": "Ø 460 мм",
-        "dimension_c": "341 мм",
-        "dimension_d": "35 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_13080350_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-blueberries.jpg",
-          "alt": "Plantlogic 13080350 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_13080350_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-con-ranuras-para-manguera.jpg",
-          "alt": "Plantlogic 13080350 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_13080350_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-arandano.jpg",
-          "alt": "Plantlogic 13080350 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_13080350_detail",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg",
-          "alt": "Plantlogic 13080350 — detail",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308041-BK",
-      "v3_sku_id": "sku_pl_bb_1308041_black",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 40.0,
-      "package_unit": "l",
-      "package_label": "40 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 40,
-        "volume_label": "40 л",
-        "execution_code": "u_grooves",
-        "execution_label": "U-пази",
-        "color_code": "black",
-        "color_label": "Чорний",
-        "manufacturer_product_no": "1308041",
-        "media_source_color": "black",
-        "dimension_a": "384 мм",
-        "dimension_b": "Ø 460 мм",
-        "dimension_c": "330 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308041_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg",
-          "alt": "Plantlogic 1308041 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308041_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-1.jpg",
-          "alt": "Plantlogic 1308041 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308041_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_front.jpg",
-          "alt": "Plantlogic 1308041 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308041_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-top-view.jpg",
-          "alt": "Plantlogic 1308041 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308041_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_bottom-view.jpg",
-          "alt": "Plantlogic 1308041 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1308041-WH",
-      "v3_sku_id": "sku_pl_bb_1308041_white",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 40.0,
-      "package_unit": "l",
-      "package_label": "40 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 40,
-        "volume_label": "40 л",
-        "execution_code": "u_grooves",
-        "execution_label": "U-пази",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1308041",
-        "media_source_color": "black",
-        "dimension_a": "384 мм",
-        "dimension_b": "Ø 460 мм",
-        "dimension_c": "330 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1308041_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg",
-          "alt": "Plantlogic 1308041 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1308041_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-1.jpg",
-          "alt": "Plantlogic 1308041 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308041_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_front.jpg",
-          "alt": "Plantlogic 1308041 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308041_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-top-view.jpg",
-          "alt": "Plantlogic 1308041 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1308041_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_bottom-view.jpg",
-          "alt": "Plantlogic 1308041 — base",
           "is_primary": false
         }
       ]
@@ -8718,7 +8672,9 @@
         "dimension_b": "Ø 460 мм",
         "dimension_c": "330 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 6
+        "catalog_page": 6,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8776,123 +8732,9 @@
         "dimension_b": "330 × 330 мм",
         "dimension_c": "229 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1309020_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Square-Pot_Item_1309020.jpg",
-          "alt": "Plantlogic 1309020 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1309020_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020.jpg",
-          "alt": "Plantlogic 1309020 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309020_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_front-view.jpg",
-          "alt": "Plantlogic 1309020 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309020_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_Top-view.jpg",
-          "alt": "Plantlogic 1309020 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309020_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_bottom-view.jpg",
-          "alt": "Plantlogic 1309020 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1309020-WH",
-      "v3_sku_id": "sku_pl_bb_1309020_white",
-      "product_id": "blueberry-square-pots",
-      "package_value": 20.0,
-      "package_unit": "l",
-      "package_label": "20 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 20,
-        "volume_label": "20 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1309020",
-        "media_source_color": "black",
-        "dimension_a": "316 мм",
-        "dimension_b": "330 × 330 мм",
-        "dimension_c": "229 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1309020_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Square-Pot_Item_1309020.jpg",
-          "alt": "Plantlogic 1309020 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1309020_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020.jpg",
-          "alt": "Plantlogic 1309020 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309020_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_front-view.jpg",
-          "alt": "Plantlogic 1309020 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309020_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_Top-view.jpg",
-          "alt": "Plantlogic 1309020 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309020_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_bottom-view.jpg",
-          "alt": "Plantlogic 1309020 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1309020-TC",
-      "v3_sku_id": "sku_pl_bb_1309020_terracotta",
-      "product_id": "blueberry-square-pots",
-      "package_value": 20.0,
-      "package_unit": "l",
-      "package_label": "20 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 20,
-        "volume_label": "20 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "1309020",
-        "media_source_color": "black",
-        "dimension_a": "316 мм",
-        "dimension_b": "330 × 330 мм",
-        "dimension_c": "229 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
+        "catalog_page": 5,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8950,111 +8792,9 @@
         "dimension_b": "355 × 355 мм",
         "dimension_c": "264 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1309025_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-FRONTAL.jpg",
-          "alt": "Plantlogic 1309025 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1309025_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-CENITAL.jpg",
-          "alt": "Plantlogic 1309025 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309025_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-BASE.jpg",
-          "alt": "Plantlogic 1309025 — base",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309025_detail",
-          "path": "https://getplantlogic.com/wp-content/uploads/2017/09/9025_3.jpg",
-          "alt": "Plantlogic 1309025 — detail",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1309025-WH",
-      "v3_sku_id": "sku_pl_bb_1309025_white",
-      "product_id": "blueberry-square-pots",
-      "package_value": 25.0,
-      "package_unit": "l",
-      "package_label": "25 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 25,
-        "volume_label": "25 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1309025",
-        "media_source_color": "black",
-        "dimension_a": "322 мм",
-        "dimension_b": "355 × 355 мм",
-        "dimension_c": "264 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1309025_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-FRONTAL.jpg",
-          "alt": "Plantlogic 1309025 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1309025_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-CENITAL.jpg",
-          "alt": "Plantlogic 1309025 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309025_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-BASE.jpg",
-          "alt": "Plantlogic 1309025 — base",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309025_detail",
-          "path": "https://getplantlogic.com/wp-content/uploads/2017/09/9025_3.jpg",
-          "alt": "Plantlogic 1309025 — detail",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1309025-TC",
-      "v3_sku_id": "sku_pl_bb_1309025_terracotta",
-      "product_id": "blueberry-square-pots",
-      "package_value": 25.0,
-      "package_unit": "l",
-      "package_label": "25 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 25,
-        "volume_label": "25 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "1309025",
-        "media_source_color": "black",
-        "dimension_a": "322 мм",
-        "dimension_b": "355 × 355 мм",
-        "dimension_c": "264 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
+        "catalog_page": 5,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9106,123 +8846,9 @@
         "dimension_b": "385 × 385 мм",
         "dimension_c": "291 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1309030_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030-1.jpg",
-          "alt": "Plantlogic 1309030 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1309030_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030.jpg",
-          "alt": "Plantlogic 1309030 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309030_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_front-view.jpg",
-          "alt": "Plantlogic 1309030 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309030_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_top-view.jpg",
-          "alt": "Plantlogic 1309030 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309030_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_Bottom-view.jpg",
-          "alt": "Plantlogic 1309030 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1309030-WH",
-      "v3_sku_id": "sku_pl_bb_1309030_white",
-      "product_id": "blueberry-square-pots",
-      "package_value": 30.0,
-      "package_unit": "l",
-      "package_label": "30 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 30,
-        "volume_label": "30 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1309030",
-        "media_source_color": "black",
-        "dimension_a": "322 мм",
-        "dimension_b": "385 × 385 мм",
-        "dimension_c": "291 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1309030_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030-1.jpg",
-          "alt": "Plantlogic 1309030 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1309030_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030.jpg",
-          "alt": "Plantlogic 1309030 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309030_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_front-view.jpg",
-          "alt": "Plantlogic 1309030 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309030_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_top-view.jpg",
-          "alt": "Plantlogic 1309030 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309030_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_Bottom-view.jpg",
-          "alt": "Plantlogic 1309030 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1309030-TC",
-      "v3_sku_id": "sku_pl_bb_1309030_terracotta",
-      "product_id": "blueberry-square-pots",
-      "package_value": 30.0,
-      "package_unit": "l",
-      "package_label": "30 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 30,
-        "volume_label": "30 л",
-        "execution_code": "standard_legs",
-        "execution_label": "Стандартні ніжки",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "1309030",
-        "media_source_color": "black",
-        "dimension_a": "322 мм",
-        "dimension_b": "385 × 385 мм",
-        "dimension_c": "291 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 5
+        "catalog_page": 5,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9280,123 +8906,9 @@
         "dimension_b": "355 × 355 мм",
         "dimension_c": "264 мм",
         "dimension_d": "30 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1309026_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Square-Pot-with-U-grooves_Item_1309026.jpg",
-          "alt": "Plantlogic 1309026 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1309026_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026.jpg",
-          "alt": "Plantlogic 1309026 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309026_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_front.jpg",
-          "alt": "Plantlogic 1309026 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309026_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_top-view.jpg",
-          "alt": "Plantlogic 1309026 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309026_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_bottom.jpg",
-          "alt": "Plantlogic 1309026 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1309026-WH",
-      "v3_sku_id": "sku_pl_bb_1309026_white",
-      "product_id": "blueberry-square-u-groove-pots",
-      "package_value": 25.0,
-      "package_unit": "l",
-      "package_label": "25 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 25,
-        "volume_label": "25 л",
-        "execution_code": "u_grooves",
-        "execution_label": "U-пази",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1309026",
-        "media_source_color": "black",
-        "dimension_a": "322 мм",
-        "dimension_b": "355 × 355 мм",
-        "dimension_c": "264 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1309026_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Square-Pot-with-U-grooves_Item_1309026.jpg",
-          "alt": "Plantlogic 1309026 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1309026_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026.jpg",
-          "alt": "Plantlogic 1309026 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309026_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_front.jpg",
-          "alt": "Plantlogic 1309026 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309026_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_top-view.jpg",
-          "alt": "Plantlogic 1309026 — top",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_1309026_base",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_bottom.jpg",
-          "alt": "Plantlogic 1309026 — base",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1309026-TC",
-      "v3_sku_id": "sku_pl_bb_1309026_terracotta",
-      "product_id": "blueberry-square-u-groove-pots",
-      "package_value": 25.0,
-      "package_unit": "l",
-      "package_label": "25 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 25,
-        "volume_label": "25 л",
-        "execution_code": "u_grooves",
-        "execution_label": "U-пази",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "1309026",
-        "media_source_color": "black",
-        "dimension_a": "322 мм",
-        "dimension_b": "355 × 355 мм",
-        "dimension_c": "264 мм",
-        "dimension_d": "30 мм",
-        "catalog_page": 6
+        "catalog_page": 6,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9454,123 +8966,9 @@
         "dimension_b": "425 × 425 мм",
         "dimension_c": "290 мм",
         "dimension_d": "40 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_13090350_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente.jpg",
-          "alt": "Plantlogic 13090350 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_13090350_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente_1.jpg",
-          "alt": "Plantlogic 13090350 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_13090350_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometric.jpg",
-          "alt": "Plantlogic 13090350 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_13090350_angle_alt",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometrico-1.jpg",
-          "alt": "Plantlogic 13090350 — angle_alt",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_13090350_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_cenital.jpg",
-          "alt": "Plantlogic 13090350 — top",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-13090350-WH",
-      "v3_sku_id": "sku_pl_bb_13090350_white",
-      "product_id": "blueberry-square-u-groove-pots",
-      "package_value": 35.0,
-      "package_unit": "l",
-      "package_label": "35 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 35,
-        "volume_label": "35 л",
-        "execution_code": "u_grooves",
-        "execution_label": "U-пази",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "13090350",
-        "media_source_color": "black",
-        "dimension_a": "350 мм",
-        "dimension_b": "425 × 425 мм",
-        "dimension_c": "290 мм",
-        "dimension_d": "40 мм",
-        "catalog_page": 6
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_13090350_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente.jpg",
-          "alt": "Plantlogic 13090350 — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_13090350_front",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente_1.jpg",
-          "alt": "Plantlogic 13090350 — front",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_13090350_angle",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometric.jpg",
-          "alt": "Plantlogic 13090350 — angle",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_13090350_angle_alt",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometrico-1.jpg",
-          "alt": "Plantlogic 13090350 — angle_alt",
-          "is_primary": false
-        },
-        {
-          "media_id": "plbb_13090350_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_cenital.jpg",
-          "alt": "Plantlogic 13090350 — top",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-13090350-TC",
-      "v3_sku_id": "sku_pl_bb_13090350_terracotta",
-      "product_id": "blueberry-square-u-groove-pots",
-      "package_value": 35.0,
-      "package_unit": "l",
-      "package_label": "35 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 35,
-        "volume_label": "35 л",
-        "execution_code": "u_grooves",
-        "execution_label": "U-пази",
-        "color_code": "terracotta",
-        "color_label": "Теракотовий",
-        "manufacturer_product_no": "13090350",
-        "media_source_color": "black",
-        "dimension_a": "350 мм",
-        "dimension_b": "425 × 425 мм",
-        "dimension_c": "290 мм",
-        "dimension_d": "40 мм",
-        "catalog_page": 6
+        "catalog_page": 6,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9628,7 +9026,9 @@
         "dimension_b": "Ø 333 мм",
         "dimension_c": "397 мм",
         "dimension_d": "70 мм",
-        "catalog_page": 7
+        "catalog_page": 7,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9660,46 +9060,6 @@
       ]
     },
     {
-      "sku_id": "PL-BB-1301144-WH",
-      "v3_sku_id": "sku_pl_bb_1301144_white",
-      "product_id": "blueberry-zephyr-v2-pots",
-      "package_value": 25.0,
-      "package_unit": "l",
-      "package_label": "25 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 25,
-        "volume_label": "25 л",
-        "execution_code": "zephyr_7cm",
-        "execution_label": "Zephyr V2 · ніжки 7 см",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1301144",
-        "media_source_color": "",
-        "dimension_a": "369 мм",
-        "dimension_b": "Ø 333 мм",
-        "dimension_c": "397 мм",
-        "dimension_d": "70 мм",
-        "catalog_page": 7
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1301144_white_hero",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-1.jpg",
-          "alt": "Plantlogic 1301144 — white — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1301144_white_top",
-          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE.jpg",
-          "alt": "Plantlogic 1301144 — white — top",
-          "is_primary": false
-        }
-      ]
-    },
-    {
       "sku_id": "PL-BB-1301153-BK",
       "v3_sku_id": "sku_pl_bb_1301153_black",
       "product_id": "blueberry-zephyr-v2-pots",
@@ -9720,7 +9080,9 @@
         "dimension_b": "Ø 333 мм",
         "dimension_c": "397 мм",
         "dimension_d": "70 мм",
-        "catalog_page": 7
+        "catalog_page": 7,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9735,46 +9097,6 @@
           "media_id": "plbb_1301153_black_family",
           "path": "/assets/plantlogic/zephyr-v2-greenhouse.jpg",
           "alt": "Plantlogic 1301153 — black — family",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "PL-BB-1301153-WH",
-      "v3_sku_id": "sku_pl_bb_1301153_white",
-      "product_id": "blueberry-zephyr-v2-pots",
-      "package_value": 30.0,
-      "package_unit": "l",
-      "package_label": "30 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 30,
-        "volume_label": "30 л",
-        "execution_code": "zephyr_7cm",
-        "execution_label": "Zephyr V2 · ніжки 7 см",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1301153",
-        "media_source_color": "",
-        "dimension_a": "420 мм",
-        "dimension_b": "Ø 333 мм",
-        "dimension_c": "397 мм",
-        "dimension_d": "70 мм",
-        "catalog_page": 7
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1301153_white_hero",
-          "path": "/assets/plantlogic/zephyr-v2-capacities.jpg",
-          "alt": "Plantlogic 1301153 — white — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1301153_white_family",
-          "path": "/assets/plantlogic/zephyr-v2-greenhouse.jpg",
-          "alt": "Plantlogic 1301153 — white — family",
           "is_primary": false
         }
       ]
@@ -9800,7 +9122,9 @@
         "dimension_b": "Ø 427 мм",
         "dimension_c": "500 мм",
         "dimension_d": "70 мм",
-        "catalog_page": 7
+        "catalog_page": 7,
+        "assortment_policy": "v5_single_color",
+        "assortment_selected": true
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9818,63 +9142,6 @@
           "is_primary": false
         }
       ]
-    },
-    {
-      "sku_id": "PL-BB-1301143-WH",
-      "v3_sku_id": "sku_pl_bb_1301143_white",
-      "product_id": "blueberry-zephyr-v2-pots",
-      "package_value": 40.0,
-      "package_unit": "l",
-      "package_label": "40 л",
-      "package_group": "large",
-      "attributes": {
-        "volume_l": 40,
-        "volume_label": "40 л",
-        "execution_code": "zephyr_7cm",
-        "execution_label": "Zephyr V2 · ніжки 7 см",
-        "color_code": "white",
-        "color_label": "Білий",
-        "manufacturer_product_no": "1301143",
-        "media_source_color": "",
-        "dimension_a": "370 мм",
-        "dimension_b": "Ø 427 мм",
-        "dimension_c": "500 мм",
-        "dimension_d": "70 мм",
-        "catalog_page": 7
-      },
-      "enabled": true,
-      "commerce_state": "request_price",
-      "media": [
-        {
-          "media_id": "plbb_1301143_white_hero",
-          "path": "/assets/plantlogic/zephyr-v2-capacities.jpg",
-          "alt": "Plantlogic 1301143 — white — hero",
-          "is_primary": true
-        },
-        {
-          "media_id": "plbb_1301143_white_family",
-          "path": "/assets/plantlogic/zephyr-v2-greenhouse.jpg",
-          "alt": "Plantlogic 1301143 — white — family",
-          "is_primary": false
-        }
-      ]
-    },
-    {
-      "sku_id": "BB610-PLT-1308041-EA",
-      "v3_sku_id": null,
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 40.0,
-      "package_unit": "l",
-      "package_label": "40 л",
-      "package_group": "large",
-      "attributes": {
-        "legacy_sku": true,
-        "legacy_product_id": "plantlogic-40-round-ugroove-1308041",
-        "identity_status": "preserved_disabled_unresolved_color"
-      },
-      "enabled": false,
-      "commerce_state": "legacy_disabled",
-      "media": []
     }
   ],
   "excluded": [

@@ -1,4 +1,6 @@
 (()=>{'use strict';
+try{if(new URLSearchParams(location.search).get('v5')==='1')return}catch(_){}
+if(window.BB610_STOREFRONT_V5===true)return;
 const FACET_LABELS=new Set(['Культури','Призначення','Спосіб застосування']);
 const EMPTY_RE=/^(?:[-—–]|н\/?д|n\/?a|none|null|не застосовується)$/i;
 function norm(value){return String(value||'').trim().toLocaleLowerCase('uk-UA').replace(/[–—]/g,'-').replace(/\s+/g,' ');}

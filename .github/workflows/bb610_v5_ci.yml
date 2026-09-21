@@ -6,6 +6,7 @@ on:
     paths:
       - 'v5/**'
       - 'backend/services/product_master_v5.py'
+      - 'backend/catalog_provider.py'
       - 'backend/product_master_v5_api.py'
       - 'backend/app.py'
       - '.github/workflows/bb610_v5_ci.yml'
@@ -13,6 +14,7 @@ on:
     paths:
       - 'v5/**'
       - 'backend/services/product_master_v5.py'
+      - 'backend/catalog_provider.py'
       - 'backend/product_master_v5_api.py'
       - 'backend/app.py'
       - '.github/workflows/bb610_v5_ci.yml'
@@ -93,11 +95,95 @@ jobs:
           assert resolve_sku_id('BB610-VLG-KENDAL-100ML')=='BB610-32DA4F652F73A1'
           legacy=resolve_sku('BB610-VLG-KENDAL-100ML')
           assert legacy['is_alias'] is True
-          assert legacy['commerce_source']=='preserved_alias'
+          assert legacy['commerce_source']=='preserved_alias_snapshot'
           assert legacy['price']==215.0
           assert legacy['canonical_sku_id']=='BB610-32DA4F652F73A1'
           assert resolve_sku('BB610-32DA4F652F73A1')['price']==220.0
           print('BB610 V5 SHADOW API SERVICE: PASS')
+          PY
+
+      - name: V5 live commerce + checkout resolver contract
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os, sqlite3, tempfile
+          from pathlib import Path
+
+          live=Path('/tmp/bb610-live-commerce.sqlite3')
+          if live.exists():
+              live.unlink()
+          con=sqlite3.connect(live)
+          con.execute('''
+            CREATE TABLE sku_commerce(
+              sku TEXT PRIMARY KEY,
+              price REAL,
+              sale_price REAL,
+              availability TEXT,
+              stock_qty REAL,
+              enabled INTEGER NOT NULL,
+              updated_at TEXT
+            )
+          ''')
+          con.executemany(
+              'INSERT INTO sku_commerce VALUES(?,?,?,?,?,?,?)',
+              [
+                  ('BB610-32DA4F652F73A1',333.0,None,'in_stock',7,1,'live-canonical'),
+                  ('BB610-VLG-KENDAL-100ML',222.0,None,'in_stock',3,1,'live-alias'),
+              ],
+          )
+          con.commit()
+          con.close()
+
+          os.environ['BB610_V5_DB_PATH']='/tmp/bb610-v5.sqlite3'
+          os.environ['BB610_DB_PATH']=str(live)
+
+          from backend.services.product_master_v5 import snapshot, resolve_sku
+          from backend.catalog_provider import resolve_order_items, CatalogError
+
+          canonical=resolve_sku('BB610-32DA4F652F73A1')
+          assert canonical['price']==333.0
+          assert canonical['commerce_source']=='runtime_sku_commerce'
+
+          legacy=resolve_sku('BB610-VLG-KENDAL-100ML')
+          assert legacy['price']==222.0
+          assert legacy['commerce_source']=='runtime_sku_commerce'
+          assert legacy['canonical_sku_id']=='BB610-32DA4F652F73A1'
+
+          data=snapshot()
+          kendal=next(x for x in data['products'] if x['product_id']=='kendal')
+          ksku=next(x for x in kendal['skus'] if x['sku_id']=='BB610-32DA4F652F73A1')
+          assert ksku['price']==333.0
+          assert ksku['stock_qty']==7
+          assert ksku['commerce_source']=='runtime_sku_commerce'
+          kalias=next(x for x in data['sku_aliases'] if x['alias_sku_id']=='BB610-VLG-KENDAL-100ML')
+          assert kalias['price']==222.0
+          assert kalias['stock_qty']==3
+
+          rows=resolve_order_items([{'sku':'BB610-32DA4F652F73A1','quantity':2}])
+          assert len(rows)==1
+          assert rows[0]['unit_price']==333.0
+          assert rows[0]['line_total']==666.0
+          assert rows[0]['name']
+          assert rows[0]['snapshot']['canonical_sku']=='BB610-32DA4F652F73A1'
+          assert rows[0]['snapshot']['commerce_source']=='runtime_sku_commerce'
+
+          rows=resolve_order_items([{'sku':'BB610-VLG-KENDAL-100ML','quantity':1}])
+          assert rows[0]['sku']=='BB610-VLG-KENDAL-100ML'
+          assert rows[0]['unit_price']==222.0
+          assert rows[0]['snapshot']['canonical_sku']=='BB610-32DA4F652F73A1'
+
+          con=sqlite3.connect(live)
+          con.execute("UPDATE sku_commerce SET availability='out_of_stock' WHERE sku='BB610-32DA4F652F73A1'")
+          con.commit()
+          con.close()
+          try:
+              resolve_order_items([{'sku':'BB610-32DA4F652F73A1','quantity':1}])
+          except CatalogError as exc:
+              assert 'unavailable' in str(exc)
+          else:
+              raise AssertionError('out-of-stock SKU was accepted')
+
+          print('BB610 V5 LIVE COMMERCE + CHECKOUT: PASS')
           PY
 
       - uses: actions/upload-artifact@v4

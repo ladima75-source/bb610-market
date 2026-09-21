@@ -320,6 +320,24 @@ def main():
                 """,
                 (row["alias_sku_id"], row["canonical_sku_id"]),
             )
+            alias_commerce = row.get("alias_commerce") or {}
+            con.execute(
+                """
+                INSERT INTO sku_alias_commerce(
+                    alias_sku_id, price, sale_price, availability,
+                    stock_qty, enabled, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    row["alias_sku_id"],
+                    alias_commerce.get("price"),
+                    alias_commerce.get("sale_price"),
+                    alias_commerce.get("availability"),
+                    alias_commerce.get("stock_qty"),
+                    1 if alias_commerce.get("enabled") else 0,
+                    alias_commerce.get("updated_at"),
+                ),
+            )
 
         for row in stage.get("price_conflicts") or []:
             con.execute(
@@ -356,6 +374,7 @@ def main():
             "product_sources": con.execute("SELECT COUNT(*) FROM product_sources").fetchone()[0],
             "skus": con.execute("SELECT COUNT(*) FROM skus").fetchone()[0],
             "sku_aliases": con.execute("SELECT COUNT(*) FROM sku_aliases").fetchone()[0],
+            "sku_alias_commerce": con.execute("SELECT COUNT(*) FROM sku_alias_commerce").fetchone()[0],
             "media": con.execute("SELECT COUNT(*) FROM media").fetchone()[0],
             "sku_media": con.execute("SELECT COUNT(*) FROM sku_media").fetchone()[0],
             "exact_sku_media": con.execute(

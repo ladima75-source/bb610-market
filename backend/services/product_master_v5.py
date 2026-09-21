@@ -22,8 +22,17 @@ _LOCK = threading.Lock()
 def _needs_rebuild() -> bool:
     if not DB_PATH.is_file():
         return True
+    # After cutover the runtime V5 database is persistent and admin-editable.
+    # Source files remain migration/bootstrap evidence, not a competing live
+    # owner. Rebuild from source only when explicitly requested.
+    rebuild = str(os.getenv("BB610_V5_REBUILD_ON_SOURCE_CHANGE", "")).strip().lower()
+    if rebuild not in {"1", "true", "yes"}:
+        return False
     db_mtime = DB_PATH.stat().st_mtime
-    return any(path.is_file() and path.stat().st_mtime > db_mtime for path in (STAGE, CONTENT, MEDIA, SCHEMA, BOOTSTRAP))
+    return any(
+        path.is_file() and path.stat().st_mtime > db_mtime
+        for path in (STAGE, CONTENT, MEDIA, SCHEMA, BOOTSTRAP)
+    )
 
 
 def ensure_db() -> Path:

@@ -1245,15 +1245,22 @@ def _master_134013_rich_content_batch_14(con: sqlite3.Connection) -> bool:
             ], ensure_ascii=False),
         },
     )
-    _add_source(
-        con,
-        product_id="master-npk-13-40-13",
-        source_type="verified_market_product_page",
-        source_url="https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro",
-        source_label="Organic Planet — MASTER 13-40-13, 250 г",
-        verified_at="2026-09-21",
-        status="verified",
-        notes="Used for buyer-facing composition, use cases and application guidance; batch label remains authoritative.",
+    con.execute(
+        """
+        INSERT OR IGNORE INTO product_sources(
+          product_id,source_type,source_url,source_label,verified_at,status,notes,created_at
+        ) VALUES(?,?,?,?,?,?,?,?)
+        """,
+        (
+            "master-npk-13-40-13",
+            "verified_market_product_page",
+            "https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro",
+            "Organic Planet — MASTER 13-40-13, 250 г",
+            "2026-09-21",
+            "verified",
+            "Used for buyer-facing composition, use cases and application guidance; batch label remains authoritative.",
+            _now(),
+        ),
     )
     return True
 

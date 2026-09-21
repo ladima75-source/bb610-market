@@ -192,6 +192,6 @@ case "$CMD" in
   health) health ;;
   snapshot) snapshot ;;
   shadow) shadow ;;
-  deploy *) deploy "${CMD#deploy }" ;;
+  deploy\ *) deploy "${CMD#deploy }" ;;
   *) echo "DENIED"; exit 126 ;;
 esac

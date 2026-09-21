@@ -76,12 +76,6 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     ...((!selectedSku||skuList.length<=1)?[p.image,...(p.gallery||[])]:[])
   ].map(x=>String(x||'').trim()).filter(Boolean))];
 
-  const compositionRows=Array.isArray(p.composition)&&p.composition.length
-    ?p.composition.map(x=>typeof x==='object'&&x!==null&&('label'in x||'name'in x)
-      ?`<div class="kv"><span>${escValue(x.label||x.name||'Параметр')}</span><b>${richValue(x.value??x.text??x.amount??'')}</b></div>`
-      :`<div class="kv"><span>Параметр</span><b>${richValue(x)}</b></div>`).join('')
-    :(p.composition?`<div class="kv"><span>Склад</span><b>${richValue(p.composition)}</b></div>`:'');
-
   const meaningful=v=>{
     if(v===null||v===undefined)return false;
     const t=String(v).trim();

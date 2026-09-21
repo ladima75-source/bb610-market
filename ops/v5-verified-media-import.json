@@ -208,6 +208,97 @@
       "package_label": "25 мл",
       "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-25-ml-val",
       "target": "assets/img/v5/verified/op-kendal-25ml.auto"
+    },
+    {
+      "sku_id": "BB610-27C0F2D3BFE84A",
+      "product_id": "master-npk-18-18-18",
+      "package_label": "1 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-1-kg-npk-18-18-18-valagro",
+      "target": "assets/img/v5/verified/op-master-18-18-18-1kg.auto"
+    },
+    {
+      "sku_id": "BB610-989A92CC0B422A",
+      "product_id": "master-npk-18-18-18",
+      "package_label": "250 г",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-250-g-npk-18-18-18-valagro",
+      "target": "assets/img/v5/verified/op-master-18-18-18-250g.auto"
+    },
+    {
+      "sku_id": "BB610-74742C63CC18FA",
+      "product_id": "master-npk-18-18-18",
+      "package_label": "25 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-18-18-18-valagr",
+      "target": "assets/img/v5/verified/op-master-18-18-18-25kg.auto"
+    },
+    {
+      "sku_id": "BB610-90837EAB185FC0",
+      "product_id": "master-npk-17-6-18",
+      "package_label": "1 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-1-kg-npk-17-6-18-valagro",
+      "target": "assets/img/v5/verified/op-master-17-6-18-1kg.auto"
+    },
+    {
+      "sku_id": "BB610-875F839910C32B",
+      "product_id": "master-npk-17-6-18",
+      "package_label": "250 г",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-250-g-npk-17-6-18-valagro",
+      "target": "assets/img/v5/verified/op-master-17-6-18-250g.auto"
+    },
+    {
+      "sku_id": "BB610-DD39796DC4FF76",
+      "product_id": "master-npk-17-6-18",
+      "package_label": "25 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-17-6-18-valagro",
+      "target": "assets/img/v5/verified/op-master-17-6-18-25kg.auto"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER134013-20G",
+      "product_id": "master-npk-13-40-13",
+      "package_label": "20 г",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-g-npk-13-40-13-valagro",
+      "target": "assets/img/v5/verified/op-master-13-40-13-20g.auto"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER134013-25KG",
+      "product_id": "master-npk-13-40-13",
+      "package_label": "25 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-13-40-13-valagr",
+      "target": "assets/img/v5/verified/op-master-13-40-13-25kg.auto"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER15530-25KG",
+      "product_id": "master-npk-15-5-30",
+      "package_label": "25 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-15-5-30-valagro",
+      "target": "assets/img/v5/verified/op-master-15-5-30-25kg.auto"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER202020-20G",
+      "product_id": "master-npk-20-20-20",
+      "package_label": "20 г",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-20-g-npk-20-20-20-valagro",
+      "target": "assets/img/v5/verified/op-master-20-20-20-20g.auto"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER202020-25KG",
+      "product_id": "master-npk-20-20-20",
+      "package_label": "25 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-20-20-20-valagr",
+      "target": "assets/img/v5/verified/op-master-20-20-20-25kg.auto"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER31138-20G",
+      "product_id": "master-npk-3-11-38",
+      "package_label": "20 г",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-20-g-npk-3-11-38-valagro",
+      "target": "assets/img/v5/verified/op-master-3-11-38-20g.auto"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER31138-25KG",
+      "product_id": "master-npk-3-11-38",
+      "package_label": "25 кг",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-3-11-38-valagro",
+      "target": "assets/img/v5/verified/op-master-3-11-38-25kg.auto"
     }
   ]
 }

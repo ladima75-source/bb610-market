@@ -11,6 +11,12 @@ on:
       - 'admin/products.js'
       - 'admin/products.html'
       - 'backend/product_master_v5_api.py'
+      - 'admin/admin-master-nav.js'
+      - 'admin/catalog.css'
+      - 'admin/catalog.js'
+      - 'admin/catalog.html'
+      - 'backend/product_master_v5_admin_api.py'
+      - 'backend/services/product_master_v5_admin.py'
       - 'backend/app.py'
       - '.github/workflows/bb610_v5_ci.yml'
   pull_request:
@@ -22,6 +28,12 @@ on:
       - 'admin/products.js'
       - 'admin/products.html'
       - 'backend/product_master_v5_api.py'
+      - 'admin/admin-master-nav.js'
+      - 'admin/catalog.css'
+      - 'admin/catalog.js'
+      - 'admin/catalog.html'
+      - 'backend/product_master_v5_admin_api.py'
+      - 'backend/services/product_master_v5_admin.py'
       - 'backend/app.py'
       - '.github/workflows/bb610_v5_ci.yml'
 
@@ -286,6 +298,70 @@ jobs:
           assert 'request_price' in html
           assert 'request_price' in js
           print('BB610 PRICES ADMIN SINGLE SOURCE: PASS')
+          PY
+
+      - name: V5 catalog admin contract
+        env:
+          BB610_V5_DB_PATH: /tmp/bb610-v5.sqlite3
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          from backend.services.product_master_v5_admin import (
+              list_products, get_product, update_product, update_sku,
+              save_image, bind_media, unbind_media,
+          )
+
+          rows=list_products()
+          assert len(rows)==86
+          assert any(x['product_id']=='kendal' for x in rows)
+
+          before=get_product('kendal')
+          assert before and before['product_id']=='kendal'
+          original_short=before['short_description']
+
+          changed=update_product('kendal',{
+              'short_description':'CI V5 EDIT',
+              'public_enabled':True,
+              'status':'active',
+          })
+          assert changed['short_description']=='CI V5 EDIT'
+
+          sku=changed['skus'][0]
+          original_label=sku['package_label']
+          updated=update_sku('kendal',sku['sku_id'],{
+              'package_label':original_label,
+              'enabled':True,
+          })
+          assert updated['sku_id']==sku['sku_id']
+
+          media=save_image('ci-v5.png',b'bb610-v5-ci-image')
+          with_media=bind_media('kendal',media['media_id'],primary=True)
+          assert any(x['media_id']==media['media_id'] for x in with_media['media'])
+          cleaned=unbind_media('kendal',media['media_id'])
+          assert all(x['media_id']!=media['media_id'] for x in cleaned['media'])
+
+          update_product('kendal',{'short_description':original_short})
+          print('BB610 V5 CATALOG ADMIN SERVICE: PASS')
+          PY
+
+      - name: V5 catalog admin frontend contract
+        run: |
+          set -euo pipefail
+          python -m py_compile backend/services/product_master_v5_admin.py backend/product_master_v5_admin_api.py
+          node --check admin/catalog.js
+          node --check admin/admin-master-nav.js
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('admin/catalog.html').read_text(encoding='utf-8')
+          js=Path('admin/catalog.js').read_text(encoding='utf-8')
+          nav=Path('admin/admin-master-nav.js').read_text(encoding='utf-8')
+          assert 'catalog-provenance.js' not in html
+          assert 'product-maintenance.js' not in html
+          assert 'catalog-v5' in js
+          assert "['catalog.html','Каталог V5','card']" in nav
+          assert "['catalog-workbench.html','Розширений каталог','adjust']" not in nav
+          print('BB610 V5 CATALOG ADMIN FRONTEND: PASS')
           PY
 
       - uses: actions/upload-artifact@v4

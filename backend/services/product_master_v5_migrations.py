@@ -807,6 +807,46 @@ def _verified_package_media_batch_04(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _verified_package_media_batch_05(con: sqlite3.Connection) -> bool:
+    sku_id = "BB610-VLG-KENDAL-25ML"
+    if not con.execute("SELECT 1 FROM skus WHERE sku_id=?", (sku_id,)).fetchone():
+        return False
+
+    media_id = "review26_op_kendal_25ml"
+    path = "/assets/img/v5/verified/op-kendal-25ml.jpg"
+    source_url = "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-25-ml-val"
+    alt = "Kendal — 25 мл"
+
+    con.execute(
+        """
+        INSERT INTO media(media_id,path,sha256,kind,source_url,verification_status,alt,created_at)
+        VALUES(?,?,NULL,'image',?,'verified',?,?)
+        ON CONFLICT(media_id) DO UPDATE SET
+          path=excluded.path,
+          source_url=excluded.source_url,
+          verification_status='verified',
+          alt=excluded.alt
+        """,
+        (media_id, path, source_url, alt, _now()),
+    )
+    con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+    con.execute(
+        """
+        INSERT INTO sku_media(
+          sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+        )
+        VALUES(?,?,1,0,'exact','verified_package_product_page',?)
+        ON CONFLICT(sku_id,media_id) DO UPDATE SET
+          is_primary=1,
+          sort_order=0,
+          source_kind='verified_package_product_page',
+          source_url=excluded.source_url
+        """,
+        (sku_id, media_id, source_url),
+    )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -814,6 +854,7 @@ _MIGRATIONS = [
     ("20260921_verified_package_media_batch02", _verified_package_media_batch_02),
     ("20260921_verified_package_media_batch03", _verified_package_media_batch_03),
     ("20260921_verified_package_media_batch04", _verified_package_media_batch_04),
+    ("20260921_verified_package_media_batch05", _verified_package_media_batch_05),
 ]
 
 

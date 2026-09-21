@@ -117,7 +117,41 @@ def main() -> None:
         "v3_cards": {},
         "sqlite": {},
         "media": {},
+        "gateway": {},
     }
+
+    # Sanitized SSH gateway diagnostics: never export key material.
+    try:
+        auth = Path("/root/.ssh/authorized_keys")
+        forced = []
+        if auth.is_file():
+            for line in auth.read_text(encoding="utf-8", errors="ignore").splitlines():
+                if 'command="' not in line:
+                    continue
+                import re
+                m = re.search(r'command="([^"]+)"', line)
+                if m:
+                    forced.append(m.group(1))
+        manifest["gateway"]["forced_commands"] = forced
+        for candidate in (
+            root / "ops/bb610-github-gateway",
+            root / "ops/bb610-github-gateway-v2",
+            Path("/usr/local/bin/bb610-github-gateway"),
+            Path("/usr/local/sbin/bb610-github-gateway"),
+            Path("/usr/local/bin/bb610-github-gateway-v2"),
+            Path("/usr/local/sbin/bb610-github-gateway-v2"),
+        ):
+            key = str(candidate)
+            if candidate.is_file():
+                manifest["gateway"].setdefault("candidates", {})[key] = {
+                    "exists": True,
+                    "sha256": sha256(candidate),
+                    "mode": oct(candidate.stat().st_mode & 0o777),
+                }
+            else:
+                manifest["gateway"].setdefault("candidates", {})[key] = {"exists": False}
+    except Exception as e:
+        manifest["gateway"]["error"] = str(e)
 
     try:
         manifest["git"]["head"] = run(root, "git", "rev-parse", "HEAD")

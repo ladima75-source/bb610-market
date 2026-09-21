@@ -134,3 +134,14 @@ ON product_aliases(product_id);
 
 CREATE INDEX IF NOT EXISTS idx_sku_aliases_canonical
 ON sku_aliases(canonical_sku_id);
+
+CREATE TABLE IF NOT EXISTS sku_alias_commerce (
+  alias_sku_id TEXT PRIMARY KEY
+    REFERENCES sku_aliases(alias_sku_id) ON DELETE CASCADE,
+  price REAL,
+  sale_price REAL,
+  availability TEXT,
+  stock_qty REAL,
+  enabled INTEGER NOT NULL DEFAULT 0 CHECK (enabled IN (0,1)),
+  updated_at TEXT
+);

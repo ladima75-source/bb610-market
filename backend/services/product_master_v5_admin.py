@@ -125,6 +125,20 @@ def update_sku(product_id: str, sku_id: str, body: dict) -> dict | None:
     if not canonical_product or not canonical_sku:
         return None
 
+    with _connect() as con:
+        current = con.execute(
+            "SELECT package_value,package_unit FROM skus WHERE sku_id=? AND product_id=?",
+            (canonical_sku, canonical_product),
+        ).fetchone()
+    if not current:
+        return None
+
+    body = dict(body)
+    effective_value = body.get("package_value", current["package_value"])
+    effective_unit = body.get("package_unit", current["package_unit"])
+    # package_group is derived V5 data, never a free-form editor field.
+    body["package_group"] = v5.package_group_for(effective_value, effective_unit)
+
     allowed = {
         "package_value",
         "package_unit",

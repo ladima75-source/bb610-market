@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 STAGE = ROOT / "v5/staging/production-current.json"
 CONTENT = ROOT / "v5/content/verified-current.json"
+MEDIA = ROOT / "v5/media/verified-current.json"
 SCHEMA = ROOT / "v5/schema.sql"
 BOOTSTRAP = ROOT / "v5/bootstrap_db.py"
 DB_PATH = Path(os.getenv("BB610_V5_DB_PATH", str(ROOT / "backend/runtime/bb610-v5.sqlite3")))
@@ -21,7 +22,7 @@ def _needs_rebuild() -> bool:
     if not DB_PATH.is_file():
         return True
     db_mtime = DB_PATH.stat().st_mtime
-    return any(path.is_file() and path.stat().st_mtime > db_mtime for path in (STAGE, CONTENT, SCHEMA, BOOTSTRAP))
+    return any(path.is_file() and path.stat().st_mtime > db_mtime for path in (STAGE, CONTENT, MEDIA, SCHEMA, BOOTSTRAP))
 
 
 def ensure_db() -> Path:
@@ -42,6 +43,8 @@ def ensure_db() -> Path:
                 str(STAGE),
                 "--content",
                 str(CONTENT),
+                "--media",
+                str(MEDIA),
                 "--schema",
                 str(SCHEMA),
                 "--out",
@@ -96,7 +99,8 @@ def _media_for_sku(con: sqlite3.Connection, sku_id: str) -> list[dict]:
     rows = con.execute(
         """
         SELECT m.media_id,m.path,m.kind,m.alt,m.verification_status,
-               sm.is_primary,sm.sort_order
+               sm.is_primary,sm.sort_order,sm.binding_kind,sm.source_kind,
+               sm.source_url
         FROM sku_media sm
         JOIN media m ON m.media_id=sm.media_id
         WHERE sm.sku_id=?

@@ -1,26 +1,122 @@
-<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>BB610 Market — Картки товарів</title><link rel="icon" href="../favicon.ico"><link rel="stylesheet" href="catalog.css"><link rel="stylesheet" href="catalog-provenance.css?v=17a1fix">
-<link rel="stylesheet" href="product-maintenance.css?v=17b">
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Каталог V5 · BB610 Admin</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="catalog.css?v=v5">
 <link rel="stylesheet" href="admin-shell.css?v=18i1">
-<link rel="stylesheet" href="admin-sticky-tables.css?v=18k1">
-<link rel="stylesheet" href="admin-master-nav.css?v=20260918-attention-1">
-</head><body>
-<header class="top"><div class="brand">BB610 <span>MARKET ADMIN</span></div><nav class="nav"><a href="dashboard.html">Огляд</a><a href="orders.html">Замовлення</a><a href="products.html">Ціни</a><a class="active" href="catalog-workbench.html">Каталог</a><a href="catalog-import.html">Імпорт каталогу</a><a href="content.html">Контент</a><a href="integrations.html">Інтеграції</a></nav></header>
-<main class="shell"><div class="titlebar"><div><h1>Картки товарів</h1><div class="muted">Нова адмінка v4 · товар і SKU з перевіркою фактичного запису.</div></div><div class="controls"><input id="token" type="password" placeholder="BB610_ADMIN_TOKEN"><button id="connect">Підключити</button><button id="add">+ Додати товар</button></div></div>
-<div class="controls list-controls"><input id="search" placeholder="Пошук: товар, бренд, ID"><select id="filter"><option value="">Усі</option><option value="published">Опубліковані</option><option value="draft">Чернетки</option></select><button class="secondary" id="reload">Оновити</button><span id="state" class="muted"></span></div><section id="cards" class="grid"></section></main>
-<dialog id="editor" class="dialog"><div class="dlghead"><div><b id="editor-title">Товар</b><div class="muted" id="editor-sub"></div></div><div class="row"><button class="secondary" id="preview-btn" type="button">Перегляд</button><button class="secondary" id="duplicate" type="button">Дублювати</button><button class="secondary" id="close">Закрити</button></div></div><div class="dlgbody"><div class="formgrid">
-<div class="section-title full">Основне</div><div class="field"><label>ID товару</label><input id="f-id" placeholder="megafol"></div><div class="field"><label>Slug</label><input id="f-slug"><small id="url-hint" class="muted"></small></div>
-<div class="field full"><label>Назва</label><input id="f-name"></div><div class="field"><label>Бренд</label><input id="f-brand"></div><div class="field"><label>Категорія</label><select id="f-category"><option value="nutrition">Живлення</option><option value="biostimulation">Біостимуляція</option><option value="protection">Захист рослин</option><option value="containers">Контейнери</option></select></div>
-<div class="field"><label>Виробник</label><input id="f-manufacturer"></div><div class="field"><label>Країна</label><input id="f-country"></div><div class="field"><label>Тип продукту</label><input id="f-type"></div><div class="field"><label>Форма</label><input id="f-form"></div><div class="field"><label>NPK</label><input id="f-npk"></div><div class="field"><label>Діюча речовина</label><input id="f-active"></div><div class="field"><label>Концентрація</label><input id="f-concentration"></div><div class="field"><label>Ціль / об'єкт</label><input id="f-target"></div>
-<div class="section-title full">Опис та застосування</div><div class="field full"><label>Короткий опис</label><textarea id="f-short"></textarea></div><div class="field full"><label>Виробник рекомендує / призначення</label><textarea id="f-use"></textarea></div><div class="field full"><label>Застосування</label><textarea id="f-application"></textarea></div><div class="field full"><label>Норма</label><textarea id="f-rate"></textarea></div><div class="field full"><label>Обмеження</label><textarea id="f-restrictions"></textarea></div>
-<div class="field"><label>Культури — по одному в рядку</label><textarea id="f-cultures"></textarea></div><div class="field"><label>Призначення — по одному в рядку</label><textarea id="f-purposes"></textarea></div><div class="field"><label>Склад — по одному в рядку</label><textarea id="f-composition"></textarea></div><div class="field"><label>Заводські фасовки — по одному в рядку</label><textarea id="f-packs"></textarea></div>
-<div class="field"><label>Період очікування</label><input id="f-waiting"></div><div class="field"><label>Клас небезпеки</label><input id="f-hazard"></div><div class="field full"><label>Реєстрація / примітка</label><textarea id="f-registration"></textarea></div>
-<div class="section-title full">Фото</div><div class="field full"><label>Основне фото</label><div class="row photo-main"><img id="preview" class="photo-preview" alt=""><div class="photo-actions"><input id="upload" type="file" accept="image/png,image/jpeg,image/webp"><div class="muted">JPG / PNG / WEBP, до 8 МБ</div><input id="f-image" placeholder="URL / шлях фото"><button type="button" class="secondary" id="clear-main">Прибрати основне фото</button></div></div></div>
-<div class="field full"><label>Додаткові фото</label><input id="gallery-upload" type="file" multiple accept="image/png,image/jpeg,image/webp"><div class="muted">Можна завантажити кілька. Кнопки ← → змінюють порядок, «Головне» робить фото основним.</div><div id="gallery-preview" class="gallery-grid"></div></div>
-<div class="section-title full">Джерело та публікація</div><div class="field"><label>Джерело / назва</label><input id="f-source-title"></div><div class="field"><label>Джерело / URL</label><input id="f-source-url"></div><div class="field"><label><input type="checkbox" id="f-verified"> BB610 VERIFIED</label></div><div class="field"><label><input type="checkbox" id="f-published"> Опублікувати товар</label></div>
-<div class="section-title full">SKU / фасування</div><div class="field full"><div id="sku-list"></div><div class="sku-box add-sku"><div class="sku-title">Додати фасування / SKU</div><div class="sku-edit-grid"><input id="sku-code" placeholder="BB610-...-100ML"><input id="sku-variant" placeholder="100 мл"><input id="sku-price" type="number" step="0.01" placeholder="Ціна"><input id="sku-sale" type="number" step="0.01" placeholder="Акційна"><select id="sku-av"><option value="unknown">Невідомо</option><option value="in_stock">В наявності</option><option value="out_of_stock">Немає</option><option value="preorder">Передзамовлення</option><option value="backorder">Під замовлення</option></select><input id="sku-stock" type="number" min="0" placeholder="К-сть"><label class="check"><input type="checkbox" id="sku-enabled"> Продаж</label><button id="generate-sku" class="secondary" type="button">Згенерувати SKU</button><button id="add-sku" type="button">Додати SKU</button></div></div></div>
-</div></div><div class="footer"><span id="save-state" class="status"></span><div class="row"><button class="secondary" id="save-draft">Зберегти як чернетку</button><button id="save">Зберегти</button></div></div></dialog>
-<script src="../config/admin-config.js"></script><script src="catalog.js"></script><script src="catalog-provenance.js?v=17a1fix"></script>
-<script src="product-maintenance.js?v=17b"></script>
+<link rel="stylesheet" href="admin-master-nav.css?v=v5">
+</head>
+<body>
+<header class="top"><div class="brand">BB610 <span>MARKET ADMIN</span></div></header>
+
+<main class="shell">
+  <div class="titlebar">
+    <div>
+      <h1>Каталог V5</h1>
+      <div class="muted">Єдиний редактор товару, SKU та медіа Product Master V5.</div>
+    </div>
+    <div class="controls">
+      <input id="token" type="password" placeholder="BB610_ADMIN_TOKEN">
+      <button id="connect">Підключити</button>
+    </div>
+  </div>
+
+  <div class="controls list-controls">
+    <input id="search" placeholder="Пошук: товар, бренд, ID, slug">
+    <select id="filter">
+      <option value="">Усі</option>
+      <option value="public">Публічні</option>
+      <option value="hidden">Приховані</option>
+      <option value="draft">Чернетки</option>
+      <option value="archived">Архів</option>
+    </select>
+    <button class="secondary" id="reload">Оновити</button>
+    <a class="secondary-link" href="products.html">Ціни та залишки</a>
+    <span id="state" class="muted"></span>
+  </div>
+
+  <section id="cards" class="grid"></section>
+</main>
+
+<dialog id="editor" class="dialog">
+  <div class="dlghead">
+    <div><b id="editor-title">Товар</b><div class="muted" id="editor-sub"></div></div>
+    <div class="row">
+      <button class="secondary" id="preview-btn" type="button">На сайті</button>
+      <button class="secondary" id="close" type="button">Закрити</button>
+    </div>
+  </div>
+
+  <div class="dlgbody">
+    <div class="formgrid">
+      <div class="section-title full">Основне</div>
+      <div class="field"><label>ID товару</label><input id="f-id" disabled></div>
+      <div class="field"><label>Slug</label><input id="f-slug"></div>
+      <div class="field full"><label>Назва</label><input id="f-name"></div>
+      <div class="field"><label>Бренд</label><input id="f-brand"></div>
+      <div class="field"><label>Виробник</label><input id="f-manufacturer"></div>
+      <div class="field"><label>Категорія</label>
+        <select id="f-category">
+          <option value="nutrition">Живлення</option>
+          <option value="biostimulation">Біостимуляція</option>
+          <option value="containers">Горщики</option>
+          <option value="protection">Захист рослин</option>
+          <option value="other">Інше</option>
+        </select>
+      </div>
+      <div class="field"><label>Статус</label>
+        <select id="f-status">
+          <option value="active">Active</option>
+          <option value="draft">Draft</option>
+          <option value="archived">Archived</option>
+        </select>
+      </div>
+      <div class="field full"><label><input type="checkbox" id="f-public"> Показувати на storefront</label></div>
+
+      <div class="section-title full">Контент</div>
+      <div class="field full"><label>Короткий опис</label><textarea id="f-short"></textarea></div>
+      <div class="field full"><label>Опис</label><textarea id="f-description"></textarea></div>
+      <div class="field full"><label>Застосування</label><textarea id="f-application"></textarea></div>
+      <div class="field full"><label>Склад</label><textarea id="f-composition"></textarea></div>
+      <div class="field full"><label>Як працює</label><textarea id="f-how"></textarea></div>
+      <div class="field"><label>Переваги — по одному в рядку</label><textarea id="f-benefits"></textarea></div>
+      <div class="field"><label>Характеристики — JSON масив</label><textarea id="f-characteristics"></textarea></div>
+
+      <div class="section-title full">SEO</div>
+      <div class="field full"><label>SEO title</label><input id="f-seo-title"></div>
+      <div class="field full"><label>SEO description</label><textarea id="f-seo-description"></textarea></div>
+
+      <div class="section-title full">Джерела</div>
+      <div class="field full"><div id="sources" class="source-list"></div></div>
+
+      <div class="section-title full">Фото товару — fallback</div>
+      <div class="field full">
+        <input id="product-upload" type="file" accept="image/png,image/jpeg,image/webp">
+        <div class="muted">Це фото товару в цілому. Для конкретної фасовки використовуйте фото всередині SKU.</div>
+        <div id="product-media" class="gallery-grid"></div>
+      </div>
+
+      <div class="section-title full">SKU / фасування</div>
+      <div class="field full">
+        <div class="muted">Ціни та залишки редагуються тільки у вкладці «Ціни та залишки».</div>
+        <div id="sku-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span id="save-state" class="status"></span>
+    <button id="save" type="button">Зберегти товар</button>
+  </div>
+</dialog>
+
+<script src="../config/admin-config.js"></script>
+<script src="catalog.js?v=v5"></script>
 <script src="admin-shell.js?v=18i"></script>
-<script src="admin-master-nav.js?v=20260918-attention-1"></script>
-</body></html>
+<script src="admin-master-nav.js?v=v5"></script>
+</body>
+</html>

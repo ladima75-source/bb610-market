@@ -1,4 +1,6 @@
 (()=>{'use strict';
+try{if(new URLSearchParams(location.search).get('v5')==='1')return}catch(_){}
+if(window.BB610_STOREFRONT_V5===true)return;
 const API='https://api.market.bb610.com.ua';
 const SITE='https://market.bb610.com.ua/';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];

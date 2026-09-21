@@ -281,9 +281,24 @@ def main():
             accepted_op.extend(rows)
 
     media_by_hash = {}
-    bindings = []
-    binding_keys = set()
+    sku_bindings = []
+    sku_binding_keys = set()
+    product_candidates = {}
     exact_skus = set()
+    sku_to_product = {row["sku_id"]: row["product_id"] for row in all_skus}
+
+    def add_product_binding(product_id, media_id, sort_order, source_kind, source_url=None):
+        key = (product_id, media_id)
+        candidate = {
+            "product_id": product_id,
+            "media_id": media_id,
+            "sort_order": int(sort_order),
+            "source_kind": source_kind,
+            "source_url": source_url,
+        }
+        current = product_candidates.get(key)
+        if current is None or candidate["sort_order"] < current["sort_order"]:
+            product_candidates[key] = candidate
 
     for row in accepted_op:
         src = Path(row["source_file"])
@@ -296,27 +311,33 @@ def main():
             verification_status="package_specific_source",
         )
         key = (row["sku_id"], media["media_id"])
-        if key in binding_keys:
-            continue
-        binding_keys.add(key)
-        bindings.append({
-            "sku_id": row["sku_id"],
-            "media_id": media["media_id"],
-            "is_primary": True,
-            "sort_order": 0,
-            "binding_kind": "exact",
-            "source_kind": "organic_planet_package_source",
-            "source_url": row.get("source_url"),
-        })
-        exact_skus.add(row["sku_id"])
+        if key not in sku_binding_keys:
+            sku_binding_keys.add(key)
+            sku_bindings.append({
+                "sku_id": row["sku_id"],
+                "media_id": media["media_id"],
+                "is_primary": True,
+                "sort_order": 0,
+                "binding_kind": "exact",
+                "source_kind": "organic_planet_package_source",
+                "source_url": row.get("source_url"),
+            })
+            exact_skus.add(row["sku_id"])
+        add_product_binding(
+            row["product_id"],
+            media["media_id"],
+            20,
+            "exact_sku_rollup",
+            row.get("source_url"),
+        )
 
-    # Preserve explicit legacy V3 bindings as REPRESENTATIVE media.
-    # A uniquely named package-specific file can be promoted to exact only when
-    # no stronger source is present.
+    # Legacy/V3 media is migrated in two lanes:
+    # - exact model/package evidence may bind to one SKU;
+    # - everything else becomes PRODUCT-level fallback only.
     representative_missing = []
     for sku in all_skus:
         sku_id = sku["sku_id"]
-        primary_seen = sku_id in exact_skus
+        product_id = sku["product_id"]
         source_media = sku.get("media") or []
         for order, raw in enumerate(source_media):
             public_path = raw.get("path")
@@ -326,13 +347,14 @@ def main():
             if not src:
                 representative_missing.append({
                     "sku_id": sku_id,
+                    "product_id": product_id,
                     "path": public_path,
                     "reason": "legacy_media_asset_missing",
                 })
                 continue
 
             kind = "representative"
-            source_kind = "legacy_explicit_binding"
+            source_kind = "legacy_product_fallback"
             verification = "representative"
 
             attrs = sku.get("attributes") or {}
@@ -369,45 +391,55 @@ def main():
                 verification_status=verification,
             )
 
-            key = (sku_id, media["media_id"])
-            if key in binding_keys:
-                # Stronger exact binding already exists for the same file.
-                continue
-
-            is_primary = False
-            if kind == "exact" and sku_id not in exact_skus and raw.get("is_primary"):
-                is_primary = True
+            if kind == "exact":
+                key = (sku_id, media["media_id"])
+                if key not in sku_binding_keys:
+                    sku_binding_keys.add(key)
+                    sku_bindings.append({
+                        "sku_id": sku_id,
+                        "media_id": media["media_id"],
+                        "is_primary": bool(raw.get("is_primary")),
+                        "sort_order": order,
+                        "binding_kind": "exact",
+                        "source_kind": source_kind,
+                        "source_url": None,
+                    })
                 exact_skus.add(sku_id)
-                primary_seen = True
-            elif not primary_seen and raw.get("is_primary"):
-                is_primary = True
-                primary_seen = True
+                add_product_binding(
+                    product_id,
+                    media["media_id"],
+                    30 + order,
+                    "exact_sku_rollup",
+                    None,
+                )
+            else:
+                # Representative media must never masquerade as SKU media.
+                add_product_binding(
+                    product_id,
+                    media["media_id"],
+                    (0 if raw.get("is_primary") else 100) + order,
+                    source_kind,
+                    None,
+                )
 
-            binding_keys.add(key)
-            bindings.append({
-                "sku_id": sku_id,
-                "media_id": media["media_id"],
-                "is_primary": is_primary,
-                "sort_order": order + (0 if kind == "exact" else 100),
-                "binding_kind": kind,
-                "source_kind": source_kind,
-                "source_url": None,
-            })
-
-    # If both an exact and representative primary survived for a SKU,
-    # exact wins deterministically.
-    grouped = collections.defaultdict(list)
-    for row in bindings:
-        grouped[row["sku_id"]].append(row)
-    for sku_id, rows in grouped.items():
-        exact = [x for x in rows if x["binding_kind"] == "exact"]
-        if exact:
-            preferred = min(exact, key=lambda x: (x["sort_order"], x["media_id"]))
-        else:
-            primaries = [x for x in rows if x["is_primary"]]
-            preferred = min(primaries, key=lambda x: (x["sort_order"], x["media_id"])) if primaries else None
+    # One exact primary per SKU. Prefer source rows with the lowest sort order.
+    grouped_sku = collections.defaultdict(list)
+    for row in sku_bindings:
+        grouped_sku[row["sku_id"]].append(row)
+    for sku_id, rows in grouped_sku.items():
+        primaries = [x for x in rows if x.get("is_primary")]
+        preferred = min(
+            primaries or rows,
+            key=lambda x: (x["sort_order"], x["media_id"]),
+        )
         for row in rows:
-            row["is_primary"] = bool(preferred and row is preferred)
+            row["is_primary"] = row is preferred
+
+    product_bindings = sorted(
+        product_candidates.values(),
+        key=lambda x: (x["product_id"], x["sort_order"], x["media_id"]),
+    )
+    products_with_media = {row["product_id"] for row in product_bindings}
 
     current_skus = [
         row for row in all_skus
@@ -420,42 +452,45 @@ def main():
             "sku_id": row["sku_id"],
             "product_id": row["product_id"],
             "package_label": row.get("package_label"),
-            "has_representative": any(
-                b["sku_id"] == row["sku_id"] for b in bindings
-            ),
+            "has_product_fallback": row["product_id"] in products_with_media,
         }
         for row in current_skus
         if row["sku_id"] not in exact_skus
     ]
 
+    all_product_ids = {row["product_id"] for row in all_skus}
+    products_without_media = sorted(all_product_ids - products_with_media)
+
     output = {
-        "schema": "bb610-v5-media-1",
+        "schema": "bb610-v5-media-2",
         "summary": {
             "all_skus": len(all_skus),
             "current_skus": len(current_skus),
             "exact_current_skus": len(current_exact),
             "current_skus_without_exact": len(current_without_exact),
+            "products_with_media": len(products_with_media),
+            "products_without_media": len(products_without_media),
             "media_assets": len(media_by_hash),
-            "bindings": len(bindings),
-            "exact_bindings": sum(1 for x in bindings if x["binding_kind"] == "exact"),
-            "representative_bindings": sum(1 for x in bindings if x["binding_kind"] == "representative"),
+            "sku_bindings": len(sku_bindings),
+            "product_bindings": len(product_bindings),
             "organic_planet_source_rows": len(overrides),
             "organic_planet_accepted_exact_rows": len(accepted_op),
             "organic_planet_rejected_rows": len(rejected_op),
             "mapping_failures": len(mapping_failures),
         },
         "media": sorted(media_by_hash.values(), key=lambda x: x["media_id"]),
-        "bindings": sorted(
-            bindings,
+        "sku_bindings": sorted(
+            sku_bindings,
             key=lambda x: (
                 x["sku_id"],
                 0 if x["is_primary"] else 1,
-                0 if x["binding_kind"] == "exact" else 1,
                 x["sort_order"],
                 x["media_id"],
             ),
         ),
+        "product_bindings": product_bindings,
         "current_without_exact": current_without_exact,
+        "products_without_media": products_without_media,
         "rejected_organic_planet": rejected_op,
         "mapping_failures": mapping_failures,
         "missing_legacy_assets": representative_missing,
@@ -470,7 +505,7 @@ def main():
             print(
                 f"  {row['sku_id']} | {row['product_id']} | "
                 f"{row.get('package_label') or '-'} | "
-                f"representative={row['has_representative']}"
+                f"product_fallback={row['has_product_fallback']}"
             )
 
 

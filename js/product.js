@@ -82,19 +82,38 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
       :`<div class="kv"><span>Параметр</span><b>${richValue(x)}</b></div>`).join('')
     :(p.composition?`<div class="kv"><span>Склад</span><b>${richValue(p.composition)}</b></div>`:'');
 
+  const meaningful=v=>{
+    if(v===null||v===undefined)return false;
+    const t=String(v).trim();
+    return !!t&&!['—','-','Уточнюється','Не вказано','null','undefined'].includes(t);
+  };
+  const applicationValue=meaningful(p.application)?p.application:(meaningful(p.manufacturerUse)?p.manufacturerUse:'');
+  const compositionHtml=[
+    compositionRows,
+    meaningful(p.npk)?`<div class="kv"><span>NPK</span><b>${richValue(p.npk)}</b></div>`:''
+  ].filter(Boolean).join('');
+  const producerRows=[
+    meaningful(p.manufacturer)?`<div class="kv"><span>Виробник</span><b>${richValue(p.manufacturer)}</b></div>`:'',
+    meaningful(p.country)?`<div class="kv"><span>Країна</span><b>${richValue(p.country)}</b></div>`:''
+  ].filter(Boolean).join('');
+  const essentialSections=[
+    applicationValue?`<section class="product-essential-section"><h2>ЗАСТОСУВАННЯ</h2><div class="product-essential-copy">${richValue(applicationValue)}</div></section>`:'',
+    compositionHtml?`<section class="product-essential-section"><h2>СКЛАД</h2><div class="product-essential-kv">${compositionHtml}</div></section>`:'',
+    producerRows?`<section class="product-essential-section"><h2>ВИРОБНИК</h2><div class="product-essential-kv">${producerRows}</div></section>`:''
+  ].filter(Boolean).join('');
+
   root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${String(p.categoryLabel||p.category||'Каталог').toUpperCase()} / ${p.name}</div>
   <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${productImageFor(selectedSku)}" alt="${p.name}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div>${galleryImages.length>1?`<div class="product-gallery-thumbs">${galleryImages.map((im,i)=>`<button type="button" class="gallery-thumb${i===0?' active':''}" data-gallery-img="${im}"><img src="${im}" alt="${p.name} ${i+1}"></button>`).join('')}</div>`:''}</div>
-  <div class="product-summary"><div class="eyebrow">${p.categoryLabel}</div><h1>${p.name}</h1><div class="brand">${p.brand}</div><p class="product-lead">${richValue(p.shortDescription||p.manufacturerUse||p.productType||'')}</p><div class="product-keyfacts">${p.productType?`<span><small>Тип</small><b>${richValue(p.productType)}</b></span>`:''}${p.npk&&p.npk!=='—'?`<span><small>NPK</small><b>${richValue(p.npk)}</b></span>`:''}${p.activeIngredient&&p.activeIngredient!=='—'?`<span><small>Діюча речовина</small><b>${richValue(p.activeIngredient)}</b></span>`:''}</div>
+  <div class="product-summary"><div class="eyebrow">${p.categoryLabel}</div><h1>${p.name}</h1><div class="brand">${p.brand}</div><p class="product-lead">${richValue(p.shortDescription||p.productType||'')}</p><div class="product-keyfacts">${p.productType?`<span><small>Тип</small><b>${richValue(p.productType)}</b></span>`:''}${p.npk&&p.npk!=='—'?`<span><small>NPK</small><b>${richValue(p.npk)}</b></span>`:''}${p.activeIngredient&&p.activeIngredient!=='—'?`<span><small>Діюча речовина</small><b>${richValue(p.activeIngredient)}</b></span>`:''}</div>
   <div class="selected-variant" id="selected-variant"></div>
-  <div class="price" id="selected-price"></div><div class="unit-price" id="selected-unit"></div><div class="stock" id="selected-stock" style="margin-top:12px"></div>
+  <div class="price" id="selected-price"></div><div class="unit-price" id="selected-unit"></div><div class="stock" id="selected-stock" style="margin-top:10px"></div>
   ${p.verified?'<div class="verified-line">✓ <b>BB610 VERIFIED</b><small>Дані продукту звірено з первинним джерелом виробника</small></div>':''}
   <div class="product-buy"><input class="qty" id="qty" type="number" min="1" value="1"><button class="btn" id="buy">КУПИТИ</button><button class="btn ghost" id="fav">♡</button><button class="btn ghost" id="cmp">⇄</button></div>
   <div class="local-points" id="selected-shipping"></div></div></div>
-  <div class="info-stack product-info-grid">
-  <div class="info-card product-detail-card packs-card"><h2>ФАСОВКИ / SKU BB610</h2><p class="unit-price">Підтверджене заводське фасування не означає автоматично наявність у BB610. Ціна й складський статус визначаються окремо для кожного SKU.</p><div class="pack-grid">${packCards}</div></div>
-  <div class="info-card product-detail-card manufacturer-card"><h2>ВИРОБНИК РЕКОМЕНДУЄ</h2><div class="kv"><span>Призначення</span><b>${richValue(p.manufacturerUse)}</b></div><div class="kv"><span>Культури</span><b>${richValue(p.cultures)}</b></div><div class="kv"><span>Спосіб застосування</span><b>${richValue(p.application)}</b></div><div class="kv"><span>Норма застосування виробника</span><b>${richValue(p.rate)}</b></div><div class="kv"><span>Обмеження</span><b>${richValue(p.restrictions)}</b></div><div class="kv"><span>Інструкція виробника</span><b>${richValue(p.instruction)}</b></div><div class="kv"><span>Джерело інформації</span><b>${richValue(p.source)}</b></div><div class="kv"><span>Перевірено</span><b>${richValue(p.verifiedAt)}</b></div></div>
-  <div class="info-card product-detail-card composition-card"><h2>СКЛАД</h2>${compositionRows}<div class="kv"><span>NPK</span><b>${richValue(p.npk)}</b></div></div>
-  <div class="info-card product-detail-card origin-card"><h2>ПОХОДЖЕННЯ</h2><div class="kv"><span>Виробник</span><b>${richValue(p.manufacturer)}</b></div><div class="kv"><span>Країна</span><b>${richValue(p.country)}</b></div><div class="kv"><span>Фасувальник BB610 offer</span><b id="selected-packer">Уточнюється</b></div><div class="kv"><span>Постачальник BB610</span><b id="selected-supplier">Уточнюється</b></div><div class="kv"><span>SKU</span><b id="selected-sku">—</b></div><div class="kv"><span>GTIN / EAN</span><b id="selected-gtin">—</b></div></div>${szr}</div>`;
+  <div class="info-stack product-info-grid compact-product-info">
+  <div class="info-card product-detail-card packs-card"><h2>ФАСУВАННЯ</h2><div class="pack-grid">${packCards}</div></div>
+  ${essentialSections?`<div class="info-card product-detail-card product-essential-card">${essentialSections}</div>`:''}
+  ${szr}</div>`;
 
   document.querySelectorAll('[data-gallery-img]').forEach(b=>b.onclick=()=>{
     document.getElementById('product-main-image').src=b.dataset.galleryImg;
@@ -117,7 +136,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     unit.textContent=requestPrice?'Ціна залежить від моделі, кількості та умов постачання':(selectedSku.price==null?'Комерційна ціна BB610 ще не визначена':BB610.unitPrice({...p,unit:selectedSku.volume_weight?.unit},selectedSku.price,selectedSku.volume_weight?.value));
     stock.textContent=requestPrice?'Під замовлення':(selectedSku.stock_label||'Наявність уточнюється');
     shipping.innerHTML=(selectedSku.shipping||[]).map(x=>`<span>${x}</span>`).join('');
-    document.getElementById('product-main-image').src=productImageFor(selectedSku);document.getElementById('selected-packer').textContent=selectedSku.packer||'Уточнюється';document.getElementById('selected-supplier').textContent=selectedSku.supplier||'Уточнюється';document.getElementById('selected-sku').textContent=selectedSku.id;document.getElementById('selected-gtin').textContent=selectedSku.gtin_ean||'Не вказано';
+    document.getElementById('product-main-image').src=productImageFor(selectedSku);
     document.querySelectorAll('[data-sku-select]').forEach(b=>b.classList.toggle('active',b.dataset.skuSelect===selectedSku.id));
     const buy=document.getElementById('buy'),qty=document.getElementById('qty');
     buy.textContent=requestPrice?'ЗАПРОСИТИ ЦІНУ':'КУПИТИ';

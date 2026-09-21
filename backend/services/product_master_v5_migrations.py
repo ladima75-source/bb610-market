@@ -1116,6 +1116,28 @@ def _public_content_cleanup_batch_09(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _strip_internal_matrix_language_batch_10(con: sqlite3.Connection) -> bool:
+    columns = (
+        "short_description", "description", "application", "composition",
+        "benefits_json", "how_it_works", "characteristics_json",
+        "seo_title", "seo_description",
+    )
+    replacements = (
+        ("матриці BB610", "поточному асортименті"),
+        ("Матриці BB610", "поточному асортименті"),
+        ("вихідній матриці", "початкових даних"),
+        ("матриці постачальника", "даних постачальника"),
+    )
+    for column in columns:
+        for old, new in replacements:
+            con.execute(
+                f"UPDATE products SET {column}=REPLACE({column}, ?, ?) "
+                f"WHERE {column} IS NOT NULL AND {column} LIKE ?",
+                (old, new, f"%{old}%"),
+            )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -1128,6 +1150,7 @@ _MIGRATIONS = [
     ("20260921_verify_existing_plantafol_exact_media_batch07", _verify_existing_plantafol_exact_media_batch_07),
     ("20260921_verify_remaining_existing_exact_media_batch08", _verify_remaining_existing_exact_media_batch_08),
     ("20260921_public_content_cleanup_batch09", _public_content_cleanup_batch_09),
+    ("20260921_strip_internal_matrix_language_batch10", _strip_internal_matrix_language_batch_10),
 ]
 
 

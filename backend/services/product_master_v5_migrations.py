@@ -1153,6 +1153,25 @@ def _buyer_facing_title_batch_11(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _plantafol_buyer_content_batch_12(con: sqlite3.Connection) -> bool:
+    _update_product(
+        con,
+        "plantafol-npk-5-15-45",
+        {
+            "name": "PLANTAFOL 5-15-45 — листкове NPK-живлення з високим калієм",
+            "composition": (
+                "N — 5%; P₂O₅ — 15%; K₂O — 45%; "
+                "мікроелементи B, Cu, Fe, Mn, Zn; Cu/Fe/Mn/Zn — EDTA."
+            ),
+            "short_description": (
+                "Водорозчинне листкове добриво Valagro з формулою NPK 5-15-45 "
+                "і вираженим калійним акцентом."
+            ),
+        },
+    )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -1167,6 +1186,7 @@ _MIGRATIONS = [
     ("20260921_public_content_cleanup_batch09", _public_content_cleanup_batch_09),
     ("20260921_strip_internal_matrix_language_batch10", _strip_internal_matrix_language_batch_10),
     ("20260921_buyer_facing_title_batch11", _buyer_facing_title_batch_11),
+    ("20260921_plantafol_buyer_content_batch12", _plantafol_buyer_content_batch_12),
 ]
 
 

@@ -83,16 +83,55 @@ def resolve_product_id(value: str) -> str | None:
         return row["product_id"] if row else None
 
 
-def resolve_sku_id(value: str) -> str | None:
+def resolve_sku(value: str) -> dict | None:
     with _connect() as con:
-        row = con.execute("SELECT sku_id FROM skus WHERE sku_id=? LIMIT 1", (value,)).fetchone()
-        if row:
-            return row["sku_id"]
         row = con.execute(
-            "SELECT canonical_sku_id FROM sku_aliases WHERE alias_sku_id=? AND active=1 LIMIT 1",
+            """
+            SELECT s.sku_id AS canonical_sku_id,
+                   c.price,c.sale_price,c.availability,c.stock_qty,
+                   c.enabled,c.updated_at
+            FROM skus s
+            LEFT JOIN sku_commerce c ON c.sku_id=s.sku_id
+            WHERE s.sku_id=?
+            LIMIT 1
+            """,
             (value,),
         ).fetchone()
-        return row["canonical_sku_id"] if row else None
+        if row:
+            data = dict(row)
+            data.update({
+                "requested_sku_id": value,
+                "is_alias": False,
+                "commerce_source": "canonical",
+            })
+            return data
+
+        row = con.execute(
+            """
+            SELECT a.alias_sku_id,a.canonical_sku_id,
+                   ac.price,ac.sale_price,ac.availability,ac.stock_qty,
+                   ac.enabled,ac.updated_at
+            FROM sku_aliases a
+            LEFT JOIN sku_alias_commerce ac ON ac.alias_sku_id=a.alias_sku_id
+            WHERE a.alias_sku_id=? AND a.active=1
+            LIMIT 1
+            """,
+            (value,),
+        ).fetchone()
+        if not row:
+            return None
+        data = dict(row)
+        data.update({
+            "requested_sku_id": value,
+            "is_alias": True,
+            "commerce_source": "preserved_alias",
+        })
+        return data
+
+
+def resolve_sku_id(value: str) -> str | None:
+    row = resolve_sku(value)
+    return row["canonical_sku_id"] if row else None
 
 
 def _media_for_sku(con: sqlite3.Connection, sku_id: str) -> list[dict]:
@@ -245,6 +284,7 @@ def snapshot(*, public_only: bool = True) -> dict:
             "skus": con.execute("SELECT COUNT(*) FROM skus").fetchone()[0],
             "public_skus": public_skus,
             "sku_aliases": con.execute("SELECT COUNT(*) FROM sku_aliases").fetchone()[0],
+            "sku_alias_commerce": con.execute("SELECT COUNT(*) FROM sku_alias_commerce").fetchone()[0],
             "media": con.execute("SELECT COUNT(*) FROM media").fetchone()[0],
             "product_media": con.execute("SELECT COUNT(*) FROM product_media").fetchone()[0],
             "exact_sku_media": con.execute(

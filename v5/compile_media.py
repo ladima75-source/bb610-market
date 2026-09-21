@@ -7,6 +7,8 @@ import hashlib
 import json
 import re
 import shutil
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 
@@ -73,11 +75,34 @@ def placeholder(path: str | None) -> bool:
 
 
 def resolve_source_file(repo_root: Path, snapshot_root: Path, public_path: str) -> Path | None:
-    raw = str(public_path or "").split("?", 1)[0].strip()
-    if not raw:
+    raw_full = str(public_path or "").strip()
+    if not raw_full:
         return None
-    rel = raw.lstrip("/")
 
+    if raw_full.startswith("https://"):
+        parsed = urllib.parse.urlparse(raw_full)
+        if parsed.hostname not in {"getplantlogic.com", "www.getplantlogic.com"}:
+            return None
+        remote_dir = snapshot_root / "_remote_media"
+        remote_dir.mkdir(parents=True, exist_ok=True)
+        suffix = Path(parsed.path).suffix.lower() or ".bin"
+        name = hashlib.sha256(raw_full.encode("utf-8")).hexdigest()[:24] + suffix
+        target = remote_dir / name
+        if not target.is_file():
+            req = urllib.request.Request(
+                raw_full,
+                headers={"User-Agent": "BB610-V5-Media-Migration/1.0"},
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=30) as response, target.open("wb") as out:
+                    shutil.copyfileobj(response, out)
+            except Exception:
+                target.unlink(missing_ok=True)
+                return None
+        return target
+
+    raw = raw_full.split("?", 1)[0]
+    rel = raw.lstrip("/")
     candidates = [
         repo_root / rel,
         snapshot_root / "files" / rel,

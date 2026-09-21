@@ -1,0 +1,52 @@
+name: BB610 Product Master V5 CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'v5/**'
+      - '.github/workflows/bb610_v5_ci.yml'
+  pull_request:
+    paths:
+      - 'v5/**'
+      - '.github/workflows/bb610_v5_ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-v5:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Product Master V5 SQLite
+        run: |
+          set -euo pipefail
+          python v5/bootstrap_db.py --out /tmp/bb610-v5.sqlite3
+
+      - name: V5 contract
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, sqlite3
+          con=sqlite3.connect('/tmp/bb610-v5.sqlite3')
+          q=lambda sql: con.execute(sql).fetchone()[0]
+          assert q('SELECT COUNT(*) FROM products') == 87
+          assert q('SELECT COUNT(*) FROM skus') == 255
+          assert q('SELECT COUNT(*) FROM sku_commerce') == 255
+          assert q('SELECT COUNT(*) FROM sku_aliases') == 75
+          assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'") == 48
+          assert q("SELECT COUNT(*) FROM skus WHERE package_group='small'") > 0
+          assert q("SELECT COUNT(*) FROM skus WHERE package_group='medium'") > 0
+          assert q("SELECT COUNT(*) FROM skus WHERE package_group='large'") > 0
+          assert not list(con.execute('PRAGMA foreign_key_check'))
+          print('BB610 PRODUCT MASTER V5: PASS')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bb610-product-master-v5
+          path: /tmp/bb610-v5.sqlite3
+          if-no-files-found: error
+          retention-days: 7

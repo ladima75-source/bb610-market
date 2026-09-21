@@ -11,7 +11,11 @@ CREATE TABLE IF NOT EXISTS products (
   description TEXT,
   application TEXT,
   composition TEXT,
+  benefits_json TEXT NOT NULL DEFAULT '[]',
+  how_it_works TEXT,
   characteristics_json TEXT NOT NULL DEFAULT '{}',
+  seo_title TEXT,
+  seo_description TEXT,
   status TEXT NOT NULL DEFAULT 'draft'
     CHECK (status IN ('draft','active','archived')),
   created_at TEXT NOT NULL,

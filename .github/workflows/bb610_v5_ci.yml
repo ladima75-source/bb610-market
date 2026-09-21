@@ -96,7 +96,7 @@ jobs:
           assert data['counts']['public_products']==82
           assert data['counts']['hidden_products']==4
           assert data['counts']['public_skus'] < data['counts']['skus']
-          assert data['counts']['product_sources']==122
+          assert data['counts']['product_sources']==123
           assert data['counts']['media']==307
           assert data['counts']['product_media']==282
           assert data['counts']['exact_sku_media']==208
@@ -178,6 +178,11 @@ jobs:
               item=product(pid)
               assert item is not None
               assert all(x.get('source_type')!='unverified_legacy_name' for x in item['sources'])
+          master134013=product('master-npk-13-40-13')
+          assert 'укорінення' in master134013['name'].lower()
+          assert 'P₂O₅' in (master134013['composition'] or '')
+          assert '20–25 г на 10 л' in (master134013['application'] or '')
+          assert len(master134013['benefits']) >= 3
           for pid,sku_id in [
               ('master-npk-13-40-13','BB610-VLG-MASTER134013-1KG'),
               ('master-npk-13-40-13','BB610-VLG-MASTER134013-250G'),

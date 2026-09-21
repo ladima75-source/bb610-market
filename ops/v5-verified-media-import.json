@@ -121,21 +121,23 @@
       "product_id": "megafol",
       "package_label": "1 л",
       "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-1-l-valagro",
-      "target": "assets/img/v5/verified/op-megafol-1l.png"
+      "target": "assets/img/v5/verified/op-megafol-1l.png",
+      "image_url": "https://organicplanet.com.ua/image/cache/catalog/photo/1080-534x534.png"
     },
     {
       "sku_id": "BB610-VLG-MEGAFOL-10L",
       "product_id": "megafol",
       "package_label": "10 л",
       "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-10-l-valagro",
-      "target": "assets/img/v5/verified/op-megafol-10l.png"
+      "target": "assets/img/v5/verified/op-megafol-10l.png",
+      "image_url": "https://organicplanet.com.ua/image/cache/catalog/photo/1083-534x534.png"
     },
     {
       "sku_id": "BB610-VLG-KENDALROOT-10L",
       "product_id": "kendal-root",
       "package_label": "10 л",
       "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostymulyator-antystres-dlya-korenya-10-l-valagro",
-      "target": "assets/img/v5/verified/op-kendal-root-10l.png"
+      "target": "assets/img/v5/verified/op-kendal-root-10l.jpg"
     }
   ]
 }

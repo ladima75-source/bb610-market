@@ -92,6 +92,7 @@ def main() -> None:
     package_label_mismatches = []
     duplicate_package_variants = []
     suspicious_product_names = []
+    internal_public_language = []
     current_without_exact = []
     documented_exact_blockers = []
     no_media = []
@@ -112,6 +113,28 @@ def main() -> None:
         package_seen = {}
         if not pmedia:
             no_media.append(pid)
+
+        public_text = json.dumps({
+            "name": product.get("name"),
+            "short_description": product.get("short_description"),
+            "description": product.get("description"),
+            "application": product.get("application"),
+            "composition": product.get("composition"),
+            "benefits": product.get("benefits"),
+            "how_it_works": product.get("how_it_works"),
+            "characteristics": product.get("characteristics"),
+        }, ensure_ascii=False).lower()
+        internal_terms = (
+            "legacy", "не публікувати", "потребує верифікації",
+            "потрібна етикетка", "не вдалося", "вихідній матриці",
+            "матриці bb610", "legacy match", "status review",
+        )
+        found_internal = [term for term in internal_terms if term in public_text]
+        if found_internal:
+            internal_public_language.append({
+                "product_id": pid,
+                "terms": found_internal,
+            })
 
         required = {
             "name": product.get("name"),
@@ -265,6 +288,8 @@ def main() -> None:
         "content": {
             "suspicious_product_name_count": len(suspicious_product_names),
             "suspicious_product_names": suspicious_product_names,
+            "internal_public_language_count": len(internal_public_language),
+            "internal_public_language": internal_public_language,
             "missing_required_count": len(missing_content),
             "missing_required": missing_content,
             "weak_or_conflicting_sources_count": len(weak_sources),

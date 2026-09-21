@@ -97,9 +97,9 @@ jobs:
           assert data['counts']['hidden_products']==4
           assert data['counts']['public_skus'] < data['counts']['skus']
           assert data['counts']['product_sources']==122
-          assert data['counts']['media']==297
+          assert data['counts']['media']==306
           assert data['counts']['product_media']==282
-          assert data['counts']['exact_sku_media']==198
+          assert data['counts']['exact_sku_media']==207
           kendal=product('kendal')
           assert kendal is not None and kendal['description'] and kendal['sources']
           assert product('switch-625-wg') is None
@@ -142,6 +142,27 @@ jobs:
               ('megafol','BB610-VLG-MEGAFOL-1L'),
               ('megafol','BB610-VLG-MEGAFOL-10L'),
               ('kendal-root','BB610-VLG-KENDALROOT-10L'),
+          ]:
+              item=product(pid)
+              sku=next(x for x in item['skus'] if x['sku_id']==sku_id)
+              assert sku['media'], (pid,sku_id)
+              assert sku['media'][0]['verification_status']=='verified'
+              assert sku['media'][0]['source_kind']=='verified_package_product_page'
+          amino=product('agriflex-amino-aminokysloty-50')
+          amino20=next(x for x in amino['skus'] if x['sku_id']=='BB610-813432FDF29AE4')
+          assert amino20['package_value']==20
+          assert amino20['package_unit']=='kg'
+          assert amino20['package_label']=='20 кг'
+          for pid,sku_id in [
+              ('agriflex-amino-aminokysloty-50','BB610-24D24A6B4EB211'),
+              ('agriflex-amino-aminokysloty-50','BB610-E72D0A565A6415'),
+              ('agriflex-amino-aminokysloty-50','BB610-813432FDF29AE4'),
+              ('agriflex-aminovix','BB610-021E63CD9734F9'),
+              ('agriflex-fulvix-fulvokysloty-60','BB610-EAEE397CF0D45E'),
+              ('agriflex-zn','BB610-75B55F8DEAD7C2'),
+              ('agriflex-zn','BB610-156A7D639ED836'),
+              ('valagro-edta-5sg','BB610-3B882CCA6D419D'),
+              ('valagro-edta-fe-13','BB610-74DDB26C8BB13D'),
           ]:
               item=product(pid)
               sku=next(x for x in item['skus'] if x['sku_id']==sku_id)

@@ -6,6 +6,7 @@ import sqlite3
 import subprocess
 import sys
 import threading
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -17,6 +18,59 @@ BOOTSTRAP = ROOT / "v5/bootstrap_db.py"
 DB_PATH = Path(os.getenv("BB610_V5_DB_PATH", str(ROOT / "backend/runtime/bb610-v5.sqlite3")))
 LIVE_DB_PATH = Path(os.getenv("BB610_DB_PATH", str(ROOT / "backend/runtime/bb610-orders.sqlite3")))
 _LOCK = threading.Lock()
+_INVARIANT_LOCK = threading.Lock()
+_PACKAGE_GROUP_INVARIANT_DONE = False
+
+
+def package_group_for(value, unit) -> str | None:
+    if value is None:
+        return None
+    unit = str(unit or "").strip().lower()
+    try:
+        amount = Decimal(str(value))
+    except (InvalidOperation, ValueError):
+        return None
+    if unit == "kg":
+        amount *= Decimal("1000")
+    elif unit == "g":
+        pass
+    elif unit == "l":
+        amount *= Decimal("1000")
+    elif unit == "ml":
+        pass
+    else:
+        return None
+    if amount <= Decimal("50"):
+        return "small"
+    if Decimal("100") <= amount <= Decimal("1000"):
+        return "medium"
+    if amount >= Decimal("5000"):
+        return "large"
+    return None
+
+
+def _enforce_package_group_invariant(con: sqlite3.Connection) -> None:
+    global _PACKAGE_GROUP_INVARIANT_DONE
+    if _PACKAGE_GROUP_INVARIANT_DONE:
+        return
+    with _INVARIANT_LOCK:
+        if _PACKAGE_GROUP_INVARIANT_DONE:
+            return
+        rows = con.execute(
+            "SELECT sku_id,package_value,package_unit,package_group FROM skus"
+        ).fetchall()
+        updates = []
+        for row in rows:
+            expected = package_group_for(row["package_value"], row["package_unit"])
+            if row["package_group"] != expected:
+                updates.append((expected, row["sku_id"]))
+        if updates:
+            con.executemany(
+                "UPDATE skus SET package_group=? WHERE sku_id=?",
+                updates,
+            )
+            con.commit()
+        _PACKAGE_GROUP_INVARIANT_DONE = True
 
 
 def _needs_rebuild() -> bool:
@@ -69,6 +123,7 @@ def ensure_db() -> Path:
 def _connect() -> sqlite3.Connection:
     con = sqlite3.connect(ensure_db())
     con.row_factory = sqlite3.Row
+    _enforce_package_group_invariant(con)
     return con
 
 

@@ -129,52 +129,31 @@ def main() -> None:
         direct_mismatches,
     )
 
-    alias_conflicts = []
-    active_aliases = 0
+    alias_mismatches = []
+    alias_checked = 0
     for alias_id, alias in aliases.items():
         src = source_by_sku.get(alias_id)
         if not src:
             continue
-        if not src.get("enabled"):
-            continue
-        active_aliases += 1
-        target = canonical_by_sku.get(alias["canonical_sku_id"])
-        if not target:
-            alias_conflicts.append({
-                "alias_sku_id": alias_id,
-                "canonical_sku_id": alias["canonical_sku_id"],
-                "reason": "canonical_missing",
-            })
-            continue
+        alias_checked += 1
+        preserved = alias.get("alias_commerce") or {}
         diffs = {}
-        for field in ("price", "sale_price"):
-            legacy_value = src.get(field)
-            canonical_value = target.get(field)
-            # An empty legacy price is not a conflicting price decision.
-            # Only compare values that were both actually populated.
-            if legacy_value is None or canonical_value is None:
-                continue
-            if not same(legacy_value, canonical_value):
-                diffs[field] = {"legacy": legacy_value, "canonical": canonical_value}
+        for field in COMMERCE_FIELDS:
+            if not same(src.get(field), preserved.get(field)):
+                diffs[field] = {"source": src.get(field), "preserved": preserved.get(field)}
         if diffs:
-            alias_conflicts.append({
+            alias_mismatches.append({
                 "alias_sku_id": alias_id,
-                "canonical_sku_id": alias["canonical_sku_id"],
+                "canonical_sku_id": alias.get("canonical_sku_id"),
                 "product_id": alias.get("product_id"),
                 "diff": diffs,
             })
-    if alias_conflicts:
-        warn(
-            "legacy_alias_commerce_conflicts",
-            f"active_aliases={active_aliases}, price_conflicts={len(alias_conflicts)}",
-            alias_conflicts,
-        )
-    else:
-        checks.append({
-            "name": "legacy_alias_commerce_conflicts",
-            "status": "PASS",
-            "note": f"active_aliases={active_aliases}, price_conflicts=0",
-        })
+    check(
+        "alias_commerce_preservation",
+        not alias_mismatches,
+        f"checked={alias_checked}, mismatches={len(alias_mismatches)}",
+        alias_mismatches,
+    )
 
     content_rows = content.get("products") or []
     content_ids = {row["product_id"] for row in content_rows}
@@ -288,18 +267,16 @@ def main() -> None:
     )
 
     price_conflicts = stage.get("price_conflicts") or []
+    checks.append({
+        "name": "canonical_price_decisions",
+        "status": "PASS",
+        "note": (
+            f"recorded_conflicts={len(price_conflicts)}; "
+            "legacy values preserved in sku_alias_commerce"
+        ),
+    })
     if price_conflicts:
-        warn(
-            "canonical_price_decisions",
-            f"recorded_conflicts={len(price_conflicts)}",
-            price_conflicts,
-        )
-    else:
-        checks.append({
-            "name": "canonical_price_decisions",
-            "status": "PASS",
-            "note": "recorded_conflicts=0",
-        })
+        details["canonical_price_decisions"] = price_conflicts
 
     failed = [row for row in checks if row["status"] == "FAIL"]
     status = "FAIL" if failed else ("WARN" if warnings else "PASS")
@@ -351,6 +328,8 @@ def main() -> None:
     ]
     md_out.write_text("\n".join(lines), encoding="utf-8")
     print(json.dumps(result["summary"] | {"status": status}, ensure_ascii=False, indent=2))
+    if failed:
+        raise SystemExit(2)
 
 
 if __name__ == "__main__":

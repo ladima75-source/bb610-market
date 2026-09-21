@@ -91,7 +91,9 @@ def main() -> None:
         suffix = target.suffix.lower().lstrip(".")
         if suffix == "jpeg":
             suffix = "jpg"
-        if suffix != kind:
+        if suffix == "auto":
+            target = target.with_suffix("." + kind)
+        elif suffix != kind:
             raise SystemExit(
                 f"Extension mismatch for {target}: expected {suffix}, got {kind}; "
                 f"content-type={content_type}"

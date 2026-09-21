@@ -91,6 +91,8 @@ def base_amount(value, unit):
         return value * 1000, "ml"
     if unit == "ml":
         return value, "ml"
+    if unit in ("pcs", "шт"):
+        return value, "pcs"
     return None, None
 
 

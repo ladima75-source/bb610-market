@@ -1138,6 +1138,21 @@ def _strip_internal_matrix_language_batch_10(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _buyer_facing_title_batch_11(con: sqlite3.Connection) -> bool:
+    _update_product(
+        con,
+        "osmocote-decor-16-8-12-56m",
+        {
+            "name": "Osmocote 5 16-8-12 (5–6M) — тривале живлення контейнерних і декоративних рослин",
+            "short_description": (
+                "Контрольовано-вивільнюване добриво ICL: одна закладка поживних "
+                "речовин працює до 5–6 місяців."
+            ),
+        },
+    )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -1151,6 +1166,7 @@ _MIGRATIONS = [
     ("20260921_verify_remaining_existing_exact_media_batch08", _verify_remaining_existing_exact_media_batch_08),
     ("20260921_public_content_cleanup_batch09", _public_content_cleanup_batch_09),
     ("20260921_strip_internal_matrix_language_batch10", _strip_internal_matrix_language_batch_10),
+    ("20260921_buyer_facing_title_batch11", _buyer_facing_title_batch_11),
 ]
 
 

@@ -164,13 +164,19 @@ def canonical_asset(
     if not dest.exists():
         shutil.copy2(source, dest)
 
+    strict_status = (
+        "verified"
+        if verification_status in {"package_specific_source", "manufacturer_model_source"}
+        else "candidate"
+    )
     item = {
         "media_id": "v5m_" + digest[:24],
         "path": "/assets/img/v5/media/" + dest_name,
         "sha256": digest,
         "kind": "image",
         "source_url": source_url,
-        "verification_status": verification_status,
+        "verification_status": strict_status,
+        "verification_detail": verification_status,
         "alt": alt,
     }
     known_by_hash[digest] = item

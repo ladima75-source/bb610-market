@@ -3,12 +3,12 @@
   "summary": {
     "all_skus": 253,
     "current_skus": 243,
-    "exact_current_skus": 167,
-    "current_skus_without_exact": 76,
-    "media_assets": 209,
-    "bindings": 304,
-    "exact_bindings": 167,
-    "representative_bindings": 137,
+    "exact_current_skus": 180,
+    "current_skus_without_exact": 63,
+    "media_assets": 281,
+    "bindings": 508,
+    "exact_bindings": 180,
+    "representative_bindings": 328,
     "organic_planet_source_rows": 187,
     "organic_planet_accepted_exact_rows": 134,
     "organic_planet_rejected_rows": 53,
@@ -79,6 +79,15 @@
       "alt": "Osmocote Start 11-11-17 (1,5M) — Короткострокове контрольоване живлення для молодих і чутливих культур"
     },
     {
+      "media_id": "v5m_09575badcd30312646ff5946",
+      "path": "/assets/img/v5/media/09575badcd30312646ff.jpg",
+      "sha256": "09575badcd30312646ff5946d6a2de65b17c7ec638facfafbb1914a94e19bbc8",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309020 — base"
+    },
+    {
       "media_id": "v5m_096035d6e94b54d01685490d",
       "path": "/assets/img/v5/media/096035d6e94b54d01685.png",
       "sha256": "096035d6e94b54d01685490dec814412fb506ba691821b998faf3eb4c4dbef48",
@@ -140,6 +149,15 @@
       "source_url": null,
       "verification_status": "representative",
       "alt": "Terra-Sorb"
+    },
+    {
+      "media_id": "v5m_0e8a6c7ad114c5d39a7a6ddc",
+      "path": "/assets/img/v5/media/0e8a6c7ad114c5d39a7a.jpg",
+      "sha256": "0e8a6c7ad114c5d39a7a6ddce6055347f8db87fe38a6d444fbca42d3df5a0de4",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309025 — detail"
     },
     {
       "media_id": "v5m_0ea63b16aa251c307737dc35",
@@ -205,6 +223,15 @@
       "alt": "Кеміра NPK 18-18-18 — 25 г"
     },
     {
+      "media_id": "v5m_130fc7e29f378f6f0266db71",
+      "path": "/assets/img/v5/media/130fc7e29f378f6f0266.jpg",
+      "sha256": "130fc7e29f378f6f0266db716d92ebeec5a923643c8192ec4f773eecdf4003ae",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308305 — angle"
+    },
+    {
       "media_id": "v5m_135ae357b6b634c1dc222dcb",
       "path": "/assets/img/v5/media/135ae357b6b634c1dc22.jpg",
       "sha256": "135ae357b6b634c1dc222dcb29a62cd6e96f30f2e3c4146ccb85075dffae7cda",
@@ -221,6 +248,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-combi-breksil-kombi-mikroelementy-15-g-valagro",
       "verification_status": "package_specific_source",
       "alt": "Brexil Combi — 15 г"
+    },
+    {
+      "media_id": "v5m_1403700747478cec35d726a7",
+      "path": "/assets/img/v5/media/1403700747478cec35d7.jpg",
+      "sha256": "1403700747478cec35d726a712bc22b98036076121c0a948fce43025fd68b8e5",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 13090350 — angle_alt"
     },
     {
       "media_id": "v5m_146dbd278150498ae1576524",
@@ -250,6 +286,15 @@
       "alt": "Brexil Multi — 1 кг"
     },
     {
+      "media_id": "v5m_166b3f2be0202ebad881ed18",
+      "path": "/assets/img/v5/media/166b3f2be0202ebad881.jpg",
+      "sha256": "166b3f2be0202ebad881ed186e2d2ecf92d46b8021f6cd9bfd9d93212c47371b",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 13090350 — angle"
+    },
+    {
       "media_id": "v5m_168bf00e8c01ae7f27605799",
       "path": "/assets/img/v5/media/168bf00e8c01ae7f2760.jpg",
       "sha256": "168bf00e8c01ae7f27605799715155f649d3ddc921dcc9aeb6843ae141ab89fd",
@@ -257,6 +302,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-set-maksikrop-zavyaz-biostimulyator-25-ml-valagro",
       "verification_status": "package_specific_source",
       "alt": "Maxicrop Set / Максікроп Зав'язь — 25 мл"
+    },
+    {
+      "media_id": "v5m_1744e3b39c47386b4c9bedec",
+      "path": "/assets/img/v5/media/1744e3b39c47386b4c9b.jpg",
+      "sha256": "1744e3b39c47386b4c9bedec81d35e7f807e5420c8a393344e50e01415eafcd0",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1301144 — black — front"
     },
     {
       "media_id": "v5m_180515f5a0bcd457c82204f2",
@@ -313,6 +367,15 @@
       "alt": "NeoTerra Aqua"
     },
     {
+      "media_id": "v5m_1df1ae08f0d5e08eb3df531c",
+      "path": "/assets/img/v5/media/1df1ae08f0d5e08eb3df.jpg",
+      "sha256": "1df1ae08f0d5e08eb3df531c3416d22499caae02acac2b7402f057b959e6d339",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 1308041 — hero"
+    },
+    {
       "media_id": "v5m_1e3916b4839b972abc0efbd6",
       "path": "/assets/img/v5/media/1e3916b4839b972abc0e.jpg",
       "sha256": "1e3916b4839b972abc0efbd648e6216c7ac4f4cdb21755f601d2b0e3c4e97183",
@@ -320,6 +383,33 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neovivo-biostymulyator-rostu-antystresant-1-l-neova",
       "verification_status": "package_specific_source",
       "alt": "NeoVivo — 1 л"
+    },
+    {
+      "media_id": "v5m_1f70146fb087d6015d934efe",
+      "path": "/assets/img/v5/media/1f70146fb087d6015d93.jpg",
+      "sha256": "1f70146fb087d6015d934efe52e59c0cd3ee7770879c83c251402c82f6c75765",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 1308020 — hero"
+    },
+    {
+      "media_id": "v5m_206b3a6dc27a8d90c54d1255",
+      "path": "/assets/img/v5/media/206b3a6dc27a8d90c54d.jpg",
+      "sha256": "206b3a6dc27a8d90c54d125548117ff82d3833cf8c0062db782bf49a041ea7f4",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1301144 — black — base"
+    },
+    {
+      "media_id": "v5m_23eb0dbeb156dcf6e6c32d35",
+      "path": "/assets/img/v5/media/23eb0dbeb156dcf6e6c3.jpg",
+      "sha256": "23eb0dbeb156dcf6e6c32d351970360f9f908a6f6500c95cd671eb5ec82ba6bf",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 13080350 — angle"
     },
     {
       "media_id": "v5m_23f80f7ae5ac3b2b43b4a161",
@@ -376,6 +466,15 @@
       "alt": "Brexil Fe — 1 кг"
     },
     {
+      "media_id": "v5m_29bf6988639c45cc15c4a5e9",
+      "path": "/assets/img/v5/media/29bf6988639c45cc15c4.jpg",
+      "sha256": "29bf6988639c45cc15c4a5e97e7201ea3056ec1b706fc66403fe4e0cd1c73aa6",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 1309030 — hero"
+    },
+    {
       "media_id": "v5m_2aa9df8897484582566af31c",
       "path": "/assets/img/v5/media/2aa9df8897484582566a.png",
       "sha256": "2aa9df8897484582566af31c132c70407c27f2b55fc9894019a4c247725c802a",
@@ -383,6 +482,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/sweet-svit-biostimulyator-okraski-plodov-1-l-valagro",
       "verification_status": "package_specific_source",
       "alt": "Sweet — 1 л"
+    },
+    {
+      "media_id": "v5m_2ad64b5fd48ae7f97dc5ba30",
+      "path": "/assets/img/v5/media/2ad64b5fd48ae7f97dc5.jpg",
+      "sha256": "2ad64b5fd48ae7f97dc5ba30081ce900a424e151bc57eaa812fcd12b10d759b7",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1301144 — white — top"
     },
     {
       "media_id": "v5m_2adf4e93546de5e0ece0aa47",
@@ -439,6 +547,15 @@
       "alt": "Viva — 25 мл"
     },
     {
+      "media_id": "v5m_2dab08a8de8f38c2c88d80f8",
+      "path": "/assets/img/v5/media/2dab08a8de8f38c2c88d.jpg",
+      "sha256": "2dab08a8de8f38c2c88d80f850f1dad2f541c2191a3ec96306462e5b4236aa0d",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309020 — front"
+    },
+    {
       "media_id": "v5m_2ec27ab70a0f979eea4d4c0e",
       "path": "/assets/img/v5/media/2ec27ab70a0f979eea4d.webp",
       "sha256": "2ec27ab70a0f979eea4d4c0e7755c0ac2ff8b494e002099346be5190ad6877b1",
@@ -446,6 +563,24 @@
       "source_url": null,
       "verification_status": "representative",
       "alt": "MEGAFOL™"
+    },
+    {
+      "media_id": "v5m_2ef98dad9582747aca2f5ca7",
+      "path": "/assets/img/v5/media/2ef98dad9582747aca2f.jpg",
+      "sha256": "2ef98dad9582747aca2f5ca73dc6fe540cac329b4998dd0f76d076ae81f404c1",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1303025 — angle"
+    },
+    {
+      "media_id": "v5m_30405972fe1b3b6c9af1a1ad",
+      "path": "/assets/img/v5/media/30405972fe1b3b6c9af1.jpg",
+      "sha256": "30405972fe1b3b6c9af1a1adcaea8d2e958ded571908ad60a28986c5fe5e2333",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309026 — base"
     },
     {
       "media_id": "v5m_34390bab18da3c61585e6931",
@@ -466,6 +601,24 @@
       "alt": "Agriflex Humic (Гумат калію) — 1 кг"
     },
     {
+      "media_id": "v5m_35e3bba08efff1badfb14b8e",
+      "path": "/assets/img/v5/media/35e3bba08efff1badfb1.jpg",
+      "sha256": "35e3bba08efff1badfb14b8e7f84d256b362cc9753fcdeecaf65ef4754b53f31",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 1309020 — hero"
+    },
+    {
+      "media_id": "v5m_369ea8cb27bd96284b2d16e8",
+      "path": "/assets/img/v5/media/369ea8cb27bd96284b2d.jpg",
+      "sha256": "369ea8cb27bd96284b2d16e8b9cd00fdd07b8ce1a04321150e7e618b5ba3708f",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 1308031 — hero"
+    },
+    {
       "media_id": "v5m_380086a6668c0efa483d7803",
       "path": "/assets/img/v5/media/380086a6668c0efa483d.jpg",
       "sha256": "380086a6668c0efa483d7803485143435bd39a8f12e5348863b6d2d9cce9c7d6",
@@ -473,6 +626,15 @@
       "source_url": null,
       "verification_status": "representative",
       "alt": "Ferrilene Trium — Багатостратегічний хелат заліза для профілактики та корекції залізного хлорозу"
+    },
+    {
+      "media_id": "v5m_386de689074d2aa3920d1485",
+      "path": "/assets/img/v5/media/386de689074d2aa3920d.jpg",
+      "sha256": "386de689074d2aa3920d1485d84815da0d91e3fef91e6b63e3c9cc774e90dec8",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309030 — top"
     },
     {
       "media_id": "v5m_399c8eacee531e79be931e27",
@@ -491,6 +653,33 @@
       "source_url": null,
       "verification_status": "representative",
       "alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення"
+    },
+    {
+      "media_id": "v5m_3c74af970838a89ab383fb3b",
+      "path": "/assets/img/v5/media/3c74af970838a89ab383.jpg",
+      "sha256": "3c74af970838a89ab383fb3b1aae8a701ddc2a28e989bcf981dd8540908b5b83",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308031 — front"
+    },
+    {
+      "media_id": "v5m_3d80f0c28b7fd975bcff3d5a",
+      "path": "/assets/img/v5/media/3d80f0c28b7fd975bcff.jpg",
+      "sha256": "3d80f0c28b7fd975bcff3d5ab4abc259936b900dea4531ba0cdf5c857bcfa185",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308303 — top"
+    },
+    {
+      "media_id": "v5m_3dc6f9c5d484c3f503c44436",
+      "path": "/assets/img/v5/media/3dc6f9c5d484c3f503c4.jpg",
+      "sha256": "3dc6f9c5d484c3f503c444364ea9064b31db0b46d36481ab233468d53131fb7a",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308041 — front"
     },
     {
       "media_id": "v5m_3ee61179db04ff9080959c97",
@@ -520,6 +709,15 @@
       "alt": "Brexil Combi — 250 г"
     },
     {
+      "media_id": "v5m_3f923fc6a6d4a702b1a9c785",
+      "path": "/assets/img/v5/media/3f923fc6a6d4a702b1a9.jpg",
+      "sha256": "3f923fc6a6d4a702b1a9c785e181c59560b23689c01fe10ddc7816f31947696a",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308041 — base"
+    },
+    {
       "media_id": "v5m_40c6ef743b5e67be8bb640cf",
       "path": "/assets/img/v5/media/40c6ef743b5e67be8bb6.png",
       "sha256": "40c6ef743b5e67be8bb640cf88260adfaa7c572c7b775466968ecb6839396163",
@@ -529,6 +727,33 @@
       "alt": "Kendal TE — 100 мл"
     },
     {
+      "media_id": "v5m_416fb4e46e1dc57768dc263e",
+      "path": "/assets/img/v5/media/416fb4e46e1dc57768dc.jpg",
+      "sha256": "416fb4e46e1dc57768dc263eff21e62a344699c6af1dedd68428170d2d8662e0",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308040 — angle"
+    },
+    {
+      "media_id": "v5m_4194a57e4138550130f777ac",
+      "path": "/assets/img/v5/media/4194a57e4138550130f7.jpg",
+      "sha256": "4194a57e4138550130f777acc73716a8fd0e87d92dc3cab37eba3942fe4cc282",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308020 — front"
+    },
+    {
+      "media_id": "v5m_41a504975291f806d8cbca84",
+      "path": "/assets/img/v5/media/41a504975291f806d8cb.jpg",
+      "sha256": "41a504975291f806d8cbca84354d66fa8f9497b602440be5c61252c538d70370",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308303 — hero"
+    },
+    {
       "media_id": "v5m_421135128110e83e6c24ca51",
       "path": "/assets/img/v5/media/421135128110e83e6c24.png",
       "sha256": "421135128110e83e6c24ca51777f7df74680efc3d597eb932118d56ff655205c",
@@ -536,6 +761,15 @@
       "source_url": null,
       "verification_status": "package_named_legacy_asset",
       "alt": "Кеміра NPK 18-18-18"
+    },
+    {
+      "media_id": "v5m_43027980b902778606b2330c",
+      "path": "/assets/img/v5/media/43027980b902778606b2.jpg",
+      "sha256": "43027980b902778606b2330c8017ed168efebc9f7c4e3929f99b8b5f9c8ac973",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308305 — top"
     },
     {
       "media_id": "v5m_4324ccaf5ce05d20358f62d6",
@@ -554,6 +788,24 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/terra-sorb-terra-sorb-regulyator-rosta-antistresant-100-ml",
       "verification_status": "package_specific_source",
       "alt": "Terra-Sorb — 100 мл"
+    },
+    {
+      "media_id": "v5m_45d59502b5eb59ad05822a21",
+      "path": "/assets/img/v5/media/45d59502b5eb59ad0582.jpg",
+      "sha256": "45d59502b5eb59ad05822a21b199a4d6a965baf40a2d0463b97b1430e9588bd1",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308025 — base"
+    },
+    {
+      "media_id": "v5m_46c13ff382ee9d40ba150fbd",
+      "path": "/assets/img/v5/media/46c13ff382ee9d40ba15.jpg",
+      "sha256": "46c13ff382ee9d40ba150fbd387e580a77f66231426b958270f371c9b9ba3780",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308025 — detail"
     },
     {
       "media_id": "v5m_481b23546720de50c9dc3bf2",
@@ -581,6 +833,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/neoflora-stymulyator-cvitinnya-ta-zav-yazuvannya-plodiv-1-l-neova",
       "verification_status": "package_specific_source",
       "alt": "NeoFlora — 1 л"
+    },
+    {
+      "media_id": "v5m_495d85ac39c00edec9d6bf88",
+      "path": "/assets/img/v5/media/495d85ac39c00edec9d6.jpg",
+      "sha256": "495d85ac39c00edec9d6bf8855bfa9a966480fcc0bf90832034cc1fb2f9d65c8",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308020 — angle"
     },
     {
       "media_id": "v5m_4974ca823e69170c9ced4937",
@@ -646,6 +907,24 @@
       "alt": "Sweet — 100 мл"
     },
     {
+      "media_id": "v5m_4fd3f2967b30bb333ed133a8",
+      "path": "/assets/img/v5/media/4fd3f2967b30bb333ed1.jpg",
+      "sha256": "4fd3f2967b30bb333ed133a865fa5f93b6abdbe394fb0ecddbc27aa3b23df699",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 13090350 — hero"
+    },
+    {
+      "media_id": "v5m_50b0f77573f9be1fbe040e5c",
+      "path": "/assets/img/v5/media/50b0f77573f9be1fbe04.jpg",
+      "sha256": "50b0f77573f9be1fbe040e5cbd630aeaae01b41cd82a1f6187e828edda2219b5",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308040 — top"
+    },
+    {
       "media_id": "v5m_515d9ef4338d870a2f86148b",
       "path": "/assets/img/v5/media/515d9ef4338d870a2f86.jpg",
       "sha256": "515d9ef4338d870a2f86148b303ada2afaab02fe91048ac05d1199c0fc0be70e",
@@ -653,6 +932,15 @@
       "source_url": null,
       "verification_status": "representative",
       "alt": "Plantlogic 1301153 — black — family"
+    },
+    {
+      "media_id": "v5m_52499dcbc520776d4d307852",
+      "path": "/assets/img/v5/media/52499dcbc520776d4d30.jpg",
+      "sha256": "52499dcbc520776d4d30785201e0ddc1624b3ca53d9fc41a57c7ce0c63fd0fd9",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308041 — top"
     },
     {
       "media_id": "v5m_5261c8125712ce7a15adabfe",
@@ -698,6 +986,15 @@
       "source_url": null,
       "verification_status": "representative",
       "alt": "Ерайз — Мультикомпонентний регулятор росту для старту вегетації та обробки насіння"
+    },
+    {
+      "media_id": "v5m_54b3c50ed257f6f844083bf3",
+      "path": "/assets/img/v5/media/54b3c50ed257f6f84408.jpg",
+      "sha256": "54b3c50ed257f6f844083bf38f654ccc0d8924b0fe25bbd23099fffea70cc71a",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309026 — angle"
     },
     {
       "media_id": "v5m_558d37ae8fd94f784b36204c",
@@ -763,6 +1060,33 @@
       "alt": "NeoCore — 1 л"
     },
     {
+      "media_id": "v5m_58d348c9d3fc99d288a3fa3b",
+      "path": "/assets/img/v5/media/58d348c9d3fc99d288a3.jpg",
+      "sha256": "58d348c9d3fc99d288a3fa3b2e6bd3119e51a4e23a000a99ad3e20dab23c7e78",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308031 — base"
+    },
+    {
+      "media_id": "v5m_5a0616d6d3a5c05d6aaa9aef",
+      "path": "/assets/img/v5/media/5a0616d6d3a5c05d6aaa.jpg",
+      "sha256": "5a0616d6d3a5c05d6aaa9aef2d9489b5d160a4a29889667ffea57551eaef29c7",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309026 — top"
+    },
+    {
+      "media_id": "v5m_5b0c93fdc993e2b1537eac63",
+      "path": "/assets/img/v5/media/5b0c93fdc993e2b1537e.jpg",
+      "sha256": "5b0c93fdc993e2b1537eac63d82272d999e24b3ce7cef1bdae61a9c3e054206e",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1301144 — black — top"
+    },
+    {
       "media_id": "v5m_5ba68c36afaf8293431e9e62",
       "path": "/assets/img/v5/media/5ba68c36afaf8293431e.jpg",
       "sha256": "5ba68c36afaf8293431e9e62cb61da46865c6b04a0b40a5e469c2c5ef50300a4",
@@ -808,6 +1132,15 @@
       "alt": "Plantlogic 1301153 — black — hero"
     },
     {
+      "media_id": "v5m_5ee28c2cd86483f650e67e00",
+      "path": "/assets/img/v5/media/5ee28c2cd86483f650e6.jpg",
+      "sha256": "5ee28c2cd86483f650e67e00eed3c0935a85f5eec34a523fc04ec0c2bc00d1d5",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308020 — top"
+    },
+    {
       "media_id": "v5m_5ff16767afd9c682e4fad77f",
       "path": "/assets/img/v5/media/5ff16767afd9c682e4fa.jpg",
       "sha256": "5ff16767afd9c682e4fad77fb5f22afc75429df4aada31d077755734914b0cb2",
@@ -833,6 +1166,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-duo-breksil-duo-mikroelementy-5-kg-valagro",
       "verification_status": "package_specific_source",
       "alt": "Brexil Duo — 5 кг"
+    },
+    {
+      "media_id": "v5m_64419affb068c25e65d8e432",
+      "path": "/assets/img/v5/media/64419affb068c25e65d8.jpg",
+      "sha256": "64419affb068c25e65d8e4329f20a92aec332909fe75b43449114afdd81a1249",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308040 — base"
     },
     {
       "media_id": "v5m_66d7bdc7dae326b8efd97e30",
@@ -907,6 +1249,15 @@
       "alt": "MASTER 15-5-30+2"
     },
     {
+      "media_id": "v5m_6c0173339316124406dab2c4",
+      "path": "/assets/img/v5/media/6c0173339316124406da.jpg",
+      "sha256": "6c0173339316124406dab2c43705275f5bf78d45e61388c35b713153244f397a",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 1308305 — hero"
+    },
+    {
       "media_id": "v5m_6d2a5cabc58069db8609c132",
       "path": "/assets/img/v5/media/6d2a5cabc58069db8609.png",
       "sha256": "6d2a5cabc58069db8609c13253abef3c2afe4c9e64352dac534001f5d67d3342",
@@ -914,6 +1265,24 @@
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-start-dlya-rozsady-osmocote-11-11-17-1-5m-1-kg",
       "verification_status": "package_specific_source",
       "alt": "Osmocote Start 11-11-17 (1,5M) — 1 кг"
+    },
+    {
+      "media_id": "v5m_6dba4ccd27c3aaf203a48667",
+      "path": "/assets/img/v5/media/6dba4ccd27c3aaf203a4.jpg",
+      "sha256": "6dba4ccd27c3aaf203a4866789001a755fb14c001be54efc27352112765cd83e",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 13090350 — front"
+    },
+    {
+      "media_id": "v5m_71070a9a719fa8aeb97e66d9",
+      "path": "/assets/img/v5/media/71070a9a719fa8aeb97e.jpg",
+      "sha256": "71070a9a719fa8aeb97e66d980e404fc6624b5cfe19499ad729dce7279dbd63d",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308031 — angle"
     },
     {
       "media_id": "v5m_73506facf11270b3dd68628f",
@@ -1015,6 +1384,51 @@
       "alt": "Brexil Mn — 5 кг"
     },
     {
+      "media_id": "v5m_7c77ff494faaf342d8f0f287",
+      "path": "/assets/img/v5/media/7c77ff494faaf342d8f0.jpg",
+      "sha256": "7c77ff494faaf342d8f0f2875baf2d8c13af3665c88372301b38e37181b1d015",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308305 — detail"
+    },
+    {
+      "media_id": "v5m_7dd0cdcdeca629e453da952c",
+      "path": "/assets/img/v5/media/7dd0cdcdeca629e453da.jpg",
+      "sha256": "7dd0cdcdeca629e453da952c0a7b3e164bed47f004f24021cf2f4818fc4af8ff",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309030 — angle"
+    },
+    {
+      "media_id": "v5m_7e7e336ff538f07873c363ba",
+      "path": "/assets/img/v5/media/7e7e336ff538f07873c3.jpg",
+      "sha256": "7e7e336ff538f07873c363baa093cc82b3a66b127a51e1489797c17a38bd2866",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309020 — angle"
+    },
+    {
+      "media_id": "v5m_7ec7c792142f9d7ddc1e64a9",
+      "path": "/assets/img/v5/media/7ec7c792142f9d7ddc1e.jpg",
+      "sha256": "7ec7c792142f9d7ddc1e64a9b14c4014ef0d65e2903ef9055a22b5a9e9e12168",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309030 — base"
+    },
+    {
+      "media_id": "v5m_7f2c1ac0af0245634e72cbbe",
+      "path": "/assets/img/v5/media/7f2c1ac0af0245634e72.jpg",
+      "sha256": "7f2c1ac0af0245634e72cbbe3d99fa049544427094f67c764390e37ed3304a6c",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 1309025 — hero"
+    },
+    {
       "media_id": "v5m_806f98ee401e081246324eb4",
       "path": "/assets/img/v5/media/806f98ee401e08124632.jpg",
       "sha256": "806f98ee401e081246324eb445439dc961005fad0b3fb9f7334f596ecdfeccad",
@@ -1096,6 +1510,24 @@
       "alt": "MASTER 20-20-20"
     },
     {
+      "media_id": "v5m_8c9fd10ec20dfd1b91c795d7",
+      "path": "/assets/img/v5/media/8c9fd10ec20dfd1b91c7.jpg",
+      "sha256": "8c9fd10ec20dfd1b91c795d71a69a75e01840c2f2383c3749406cb95e48184e3",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308041 — angle"
+    },
+    {
+      "media_id": "v5m_8d449af52d78b7e64342a631",
+      "path": "/assets/img/v5/media/8d449af52d78b7e64342.jpg",
+      "sha256": "8d449af52d78b7e64342a631b6f52f36273931733dd4310baef1bfad01a1e894",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1303025 — top"
+    },
+    {
       "media_id": "v5m_904415a07129fd3b2871b80e",
       "path": "/assets/img/v5/media/904415a07129fd3b2871.jpg",
       "sha256": "904415a07129fd3b2871b80e75f820b2aa053cf40fc10bc7decc052649b07b93",
@@ -1123,6 +1555,24 @@
       "alt": "MASTER 17-6-18"
     },
     {
+      "media_id": "v5m_9421ca1c6668b9b384e440b8",
+      "path": "/assets/img/v5/media/9421ca1c6668b9b384e4.jpg",
+      "sha256": "9421ca1c6668b9b384e440b8a6a46b829750ca1f411135e66a8f2884acb6faee",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308025 — top"
+    },
+    {
+      "media_id": "v5m_9467e069dad333335bc2e64b",
+      "path": "/assets/img/v5/media/9467e069dad333335bc2.jpg",
+      "sha256": "9467e069dad333335bc2e64b8e54dfa1a22a12b6e44c7c1bfee513e5d66e1657",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 13080350 — hero"
+    },
+    {
       "media_id": "v5m_972a36211800e6a163eac6e1",
       "path": "/assets/img/v5/media/972a36211800e6a163ea.jpg",
       "sha256": "972a36211800e6a163eac6e133baef3c10051ac10bee451a6ca509af488e9fe8",
@@ -1141,6 +1591,15 @@
       "alt": "Micro NP — 10 кг"
     },
     {
+      "media_id": "v5m_988e411139cfb58fba17fe48",
+      "path": "/assets/img/v5/media/988e411139cfb58fba17.jpg",
+      "sha256": "988e411139cfb58fba17fe482f85224df02225358d77c6143fd3a8a99e58dfbb",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1303025 — base"
+    },
+    {
       "media_id": "v5m_9992732f4f6f8377eedc6750",
       "path": "/assets/img/v5/media/9992732f4f6f8377eedc.webp",
       "sha256": "9992732f4f6f8377eedc675086684cde7347d1fed505915f1614aa08dba60365",
@@ -1157,6 +1616,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-bio-stymulyator-rostu-1-kg-citymax",
       "verification_status": "package_specific_source",
       "alt": "Agriflex Bio — 1 кг"
+    },
+    {
+      "media_id": "v5m_9a1790cb0d8904cf00af8a90",
+      "path": "/assets/img/v5/media/9a1790cb0d8904cf00af.jpg",
+      "sha256": "9a1790cb0d8904cf00af8a907d70d60f25f4e5360fdbf8c7985c8c469439870a",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 1309026 — hero"
     },
     {
       "media_id": "v5m_9a260295eb97453c4681c4e6",
@@ -1231,6 +1699,15 @@
       "alt": "NeoFlora — 5 л"
     },
     {
+      "media_id": "v5m_9f65bc4d4703f5773ae08f1c",
+      "path": "/assets/img/v5/media/9f65bc4d4703f5773ae0.jpg",
+      "sha256": "9f65bc4d4703f5773ae08f1c17c8482639f5a079720318c057da500276c7ba35",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309025 — top"
+    },
+    {
       "media_id": "v5m_a09bb0101220304358ef9e1e",
       "path": "/assets/img/v5/media/a09bb0101220304358ef.png",
       "sha256": "a09bb0101220304358ef9e1ef8d7e455d4bd7921963847618b23903fca50d690",
@@ -1249,6 +1726,15 @@
       "alt": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення"
     },
     {
+      "media_id": "v5m_a3e327473d9a57bdd41aee3d",
+      "path": "/assets/img/v5/media/a3e327473d9a57bdd41a.jpg",
+      "sha256": "a3e327473d9a57bdd41aee3d7e8e054ee8173b355ef76878ea831140f089ead8",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308303 — base"
+    },
+    {
       "media_id": "v5m_a44db32b119dcdd5e7494475",
       "path": "/assets/img/v5/media/a44db32b119dcdd5e749.png",
       "sha256": "a44db32b119dcdd5e749447506d4815c3e1b161eff21bd289177019d9c697604",
@@ -1256,6 +1742,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-landshaft-osmocote-16-9-12-3-4m-200-g",
       "verification_status": "package_specific_source",
       "alt": "Osmocote Landscape 16-9-12 (3–4M) — 200 г"
+    },
+    {
+      "media_id": "v5m_a4cd857b00172620da5ad60a",
+      "path": "/assets/img/v5/media/a4cd857b00172620da5a.jpg",
+      "sha256": "a4cd857b00172620da5ad60a631e748fd809af0cc2430d2474499e0c7a8bb26d",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308025 — front"
     },
     {
       "media_id": "v5m_a702d752cc6f1cd09ffd7968",
@@ -1301,6 +1796,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-cream-maksikrop-krem-biostimulyator-25-ml-valagro",
       "verification_status": "package_specific_source",
       "alt": "Maxicrop Cream — 25 мл"
+    },
+    {
+      "media_id": "v5m_aaaa485fd58fd917c4fb652e",
+      "path": "/assets/img/v5/media/aaaa485fd58fd917c4fb.jpg",
+      "sha256": "aaaa485fd58fd917c4fb652e36e5e4f93fb0320dcd2a1ce17ffdd6f884ca55f3",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 1301144 — black — hero"
     },
     {
       "media_id": "v5m_ab69044ca65958260687fd35",
@@ -1375,6 +1879,15 @@
       "alt": "MASTER 13-40-13"
     },
     {
+      "media_id": "v5m_b75d383eb8e042f9014547b8",
+      "path": "/assets/img/v5/media/b75d383eb8e042f90145.jpg",
+      "sha256": "b75d383eb8e042f9014547b89a52103e219f514a08a9b8161036115ab6803546",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309025 — base"
+    },
+    {
       "media_id": "v5m_b86cfa93cf7430d09cb79e07",
       "path": "/assets/img/v5/media/b86cfa93cf7430d09cb7.webp",
       "sha256": "b86cfa93cf7430d09cb79e076c040806f6cd134c06c0fe45562fb57b5b7ee252",
@@ -1447,6 +1960,24 @@
       "alt": "MEGAFOL™"
     },
     {
+      "media_id": "v5m_bd837fc79dd67ee5bcab215f",
+      "path": "/assets/img/v5/media/bd837fc79dd67ee5bcab.jpg",
+      "sha256": "bd837fc79dd67ee5bcab215f5231101fe153f5daeae0013e4ab814913b14c1af",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308040 — front"
+    },
+    {
+      "media_id": "v5m_bd9afce99dfd0c0fa1394c9d",
+      "path": "/assets/img/v5/media/bd9afce99dfd0c0fa139.jpg",
+      "sha256": "bd9afce99dfd0c0fa1394c9db21e5c5021577cc776917df883383a13ad81f74b",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309026 — front"
+    },
+    {
       "media_id": "v5m_beadee4bb95c8fafec44b27b",
       "path": "/assets/img/v5/media/beadee4bb95c8fafec44.png",
       "sha256": "beadee4bb95c8fafec44b27b4c45b42f7fce5196254bce114dd6cca9ca169539",
@@ -1517,6 +2048,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/boroplus-boroplyus-helat-bora-15-ml-valagro",
       "verification_status": "package_specific_source",
       "alt": "Boroplus — 15 мл"
+    },
+    {
+      "media_id": "v5m_c87cc4ef3de220447f91cd17",
+      "path": "/assets/img/v5/media/c87cc4ef3de220447f91.jpg",
+      "sha256": "c87cc4ef3de220447f91cd17928641ff9ac6c9e0e0ca2e3446f14fd83c6a97a4",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308025 — hero"
     },
     {
       "media_id": "v5m_c8bbf5641d465b009b59451f",
@@ -1618,6 +2158,15 @@
       "alt": "MASTER 3-11-38"
     },
     {
+      "media_id": "v5m_d1a12e38b3a47d02be145ea3",
+      "path": "/assets/img/v5/media/d1a12e38b3a47d02be14.jpg",
+      "sha256": "d1a12e38b3a47d02be145ea3ce3888b90514d22ea393d797303bd368d51dac10",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308303 — isometric"
+    },
+    {
       "media_id": "v5m_d33e51563b9dbdc54da1d2d5",
       "path": "/assets/img/v5/media/d33e51563b9dbdc54da1.jpg",
       "sha256": "d33e51563b9dbdc54da1d2d5f901766404b7a247ebca1968e8e89647697a7bbd",
@@ -1645,6 +2194,15 @@
       "alt": "Кеміра Укорінювач — 1 л"
     },
     {
+      "media_id": "v5m_d78d0472f28812296d165ded",
+      "path": "/assets/img/v5/media/d78d0472f28812296d16.jpg",
+      "sha256": "d78d0472f28812296d165ded64ae27f9bb2eb436c1e826b4428b8309448619c4",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 13080350 — front"
+    },
+    {
       "media_id": "v5m_d7a45e0bdd356e67eaffbf9d",
       "path": "/assets/img/v5/media/d7a45e0bdd356e67eaff.jpg",
       "sha256": "d7a45e0bdd356e67eaffbf9dcd84c071c2b06c0db45fe52a678e9f679b1d3579",
@@ -1661,6 +2219,15 @@
       "source_url": null,
       "verification_status": "representative",
       "alt": "Maxicrop Extra — Мікрогранульований біостимулятор на основі екстракту морських водоростей"
+    },
+    {
+      "media_id": "v5m_d8dc257b959e47ec57381f6c",
+      "path": "/assets/img/v5/media/d8dc257b959e47ec5738.jpg",
+      "sha256": "d8dc257b959e47ec57381f6cb83572da6d69eb6114bf34be6ee445ead787524e",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "manufacturer_model_source",
+      "alt": "Plantlogic 1301144 — white — hero"
     },
     {
       "media_id": "v5m_d97ea4e1d943af52d3ebec57",
@@ -1688,6 +2255,15 @@
       "source_url": null,
       "verification_status": "representative",
       "alt": "Agriflex AminoVix — Амінокислотний комплекс із мікроелементами у водорозчинній формі"
+    },
+    {
+      "media_id": "v5m_df2ce09e3635de13488fa604",
+      "path": "/assets/img/v5/media/df2ce09e3635de13488f.jpg",
+      "sha256": "df2ce09e3635de13488fa60461dcc5c61c809e0de43101f395fb3309c84390b0",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1303025 — hero"
     },
     {
       "media_id": "v5m_e131365ee7289a9cac793cab",
@@ -1852,6 +2428,15 @@
       "alt": "Kendal Root — 100 мл"
     },
     {
+      "media_id": "v5m_f7c525b8b52e77d36089726d",
+      "path": "/assets/img/v5/media/f7c525b8b52e77d36089.jpg",
+      "sha256": "f7c525b8b52e77d36089726d9776e51634135384d7b914df522b68c379afb5f2",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309020 — top"
+    },
+    {
       "media_id": "v5m_f8918d1caf2650d9412b9e13",
       "path": "/assets/img/v5/media/f8918d1caf2650d9412b.png",
       "sha256": "f8918d1caf2650d9412b9e136d352dee4a5fb50dd658d39077cf998cd3e0fe24",
@@ -1859,6 +2444,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/zasobi-zahistu-roslin/adyuvant-sprej-ejd100-ml",
       "verification_status": "package_specific_source",
       "alt": "Спрей-Ейд — 100 мл"
+    },
+    {
+      "media_id": "v5m_f9226c70fd8a97e609cfba06",
+      "path": "/assets/img/v5/media/f9226c70fd8a97e609cf.jpg",
+      "sha256": "f9226c70fd8a97e609cfba06e67da92dbccb2095151b4b0ee0d70f8deee50813",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308020 — base"
     },
     {
       "media_id": "v5m_f97a5a2c2434009cebf1c00a",
@@ -1870,6 +2464,15 @@
       "alt": "Brexil Mix — 5 кг"
     },
     {
+      "media_id": "v5m_faee2306d0018b2929e0a4db",
+      "path": "/assets/img/v5/media/faee2306d0018b2929e0.jpg",
+      "sha256": "faee2306d0018b2929e0a4dbf279138a237177bb1cc084138c6da99985f63b08",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 13080350 — detail"
+    },
+    {
       "media_id": "v5m_fb3000aa7a295e7c40752ab8",
       "path": "/assets/img/v5/media/fb3000aa7a295e7c4075.png",
       "sha256": "fb3000aa7a295e7c40752ab808d1e8ed732504df48550002f7bedd2ae7ed6917",
@@ -1877,6 +2480,24 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kemira-ukorinnyuvach-100-ml-organic-planet",
       "verification_status": "package_specific_source",
       "alt": "Кеміра Укорінювач — 100 мл"
+    },
+    {
+      "media_id": "v5m_fb696a20ef7cf7c7b746b55f",
+      "path": "/assets/img/v5/media/fb696a20ef7cf7c7b746.jpg",
+      "sha256": "fb696a20ef7cf7c7b746b55f60659bcbcd7c95a079c9cd98b6a3a738412a11ce",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 13090350 — top"
+    },
+    {
+      "media_id": "v5m_fbb5a2e0638d696bad209f04",
+      "path": "/assets/img/v5/media/fbb5a2e0638d696bad20.jpg",
+      "sha256": "fbb5a2e0638d696bad209f0456f8a4cacb744189570b5d0141c89413203db955",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308031 — top"
     },
     {
       "media_id": "v5m_fd69d6f1fd88ee17b4bc98e2",
@@ -1895,6 +2516,33 @@
       "source_url": null,
       "verification_status": "package_named_legacy_asset",
       "alt": "MASTER 3-11-38"
+    },
+    {
+      "media_id": "v5m_fe1944fcb855ac32364560cf",
+      "path": "/assets/img/v5/media/fe1944fcb855ac323645.jpg",
+      "sha256": "fe1944fcb855ac32364560cf85dc9d5a1f4801222840b6d8c7edb044a1f9957b",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308040 — hero"
+    },
+    {
+      "media_id": "v5m_feb7f87c2f591b89afb53d4b",
+      "path": "/assets/img/v5/media/feb7f87c2f591b89afb5.jpg",
+      "sha256": "feb7f87c2f591b89afb53d4bc04bba1bb1810ea421a77f6f1641a7b1db069206",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1308303 — angle"
+    },
+    {
+      "media_id": "v5m_feee2f5c0d244d4189c4f0ac",
+      "path": "/assets/img/v5/media/feee2f5c0d244d4189c4.jpg",
+      "sha256": "feee2f5c0d244d4189c4f0acf6e0d0944cc92d3cb35d78e1ea23ccf698042563",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "representative",
+      "alt": "Plantlogic 1309030 — front"
     }
   ],
   "bindings": [
@@ -4599,6 +5247,60 @@
       "source_url": null
     },
     {
+      "sku_id": "PL-BB-1301144-BK",
+      "media_id": "v5m_aaaa485fd58fd917c4fb652e",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1301144-BK",
+      "media_id": "v5m_1744e3b39c47386b4c9bedec",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1301144-BK",
+      "media_id": "v5m_5b0c93fdc993e2b1537eac63",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1301144-BK",
+      "media_id": "v5m_206b3a6dc27a8d90c54d1255",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1301144-WH",
+      "media_id": "v5m_d8dc257b959e47ec57381f6c",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1301144-WH",
+      "media_id": "v5m_2ad64b5fd48ae7f97dc5ba30",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
       "sku_id": "PL-BB-1301153-BK",
       "media_id": "v5m_5e126950eb44f3b0aee0fa25",
       "is_primary": true,
@@ -4630,6 +5332,1788 @@
       "media_id": "v5m_515d9ef4338d870a2f86148b",
       "is_primary": false,
       "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-BK",
+      "media_id": "v5m_df2ce09e3635de13488fa604",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-BK",
+      "media_id": "v5m_2ef98dad9582747aca2f5ca7",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-BK",
+      "media_id": "v5m_8d449af52d78b7e64342a631",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-BK",
+      "media_id": "v5m_988e411139cfb58fba17fe48",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-TC",
+      "media_id": "v5m_df2ce09e3635de13488fa604",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-TC",
+      "media_id": "v5m_2ef98dad9582747aca2f5ca7",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-TC",
+      "media_id": "v5m_8d449af52d78b7e64342a631",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-TC",
+      "media_id": "v5m_988e411139cfb58fba17fe48",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-WH",
+      "media_id": "v5m_df2ce09e3635de13488fa604",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-WH",
+      "media_id": "v5m_2ef98dad9582747aca2f5ca7",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-WH",
+      "media_id": "v5m_8d449af52d78b7e64342a631",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1303025-WH",
+      "media_id": "v5m_988e411139cfb58fba17fe48",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-BK",
+      "media_id": "v5m_1f70146fb087d6015d934efe",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-BK",
+      "media_id": "v5m_4194a57e4138550130f777ac",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-BK",
+      "media_id": "v5m_5ee28c2cd86483f650e67e00",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-BK",
+      "media_id": "v5m_f9226c70fd8a97e609cfba06",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-BK",
+      "media_id": "v5m_495d85ac39c00edec9d6bf88",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-TC",
+      "media_id": "v5m_1f70146fb087d6015d934efe",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-TC",
+      "media_id": "v5m_4194a57e4138550130f777ac",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-TC",
+      "media_id": "v5m_5ee28c2cd86483f650e67e00",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-TC",
+      "media_id": "v5m_f9226c70fd8a97e609cfba06",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-TC",
+      "media_id": "v5m_495d85ac39c00edec9d6bf88",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-WH",
+      "media_id": "v5m_1f70146fb087d6015d934efe",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-WH",
+      "media_id": "v5m_4194a57e4138550130f777ac",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-WH",
+      "media_id": "v5m_5ee28c2cd86483f650e67e00",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-WH",
+      "media_id": "v5m_f9226c70fd8a97e609cfba06",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308020-WH",
+      "media_id": "v5m_495d85ac39c00edec9d6bf88",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-BK",
+      "media_id": "v5m_c87cc4ef3de220447f91cd17",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-BK",
+      "media_id": "v5m_a4cd857b00172620da5ad60a",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-BK",
+      "media_id": "v5m_9421ca1c6668b9b384e440b8",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-BK",
+      "media_id": "v5m_45d59502b5eb59ad05822a21",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-BK",
+      "media_id": "v5m_46c13ff382ee9d40ba150fbd",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-TC",
+      "media_id": "v5m_c87cc4ef3de220447f91cd17",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-TC",
+      "media_id": "v5m_a4cd857b00172620da5ad60a",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-TC",
+      "media_id": "v5m_9421ca1c6668b9b384e440b8",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-TC",
+      "media_id": "v5m_45d59502b5eb59ad05822a21",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-TC",
+      "media_id": "v5m_46c13ff382ee9d40ba150fbd",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-WH",
+      "media_id": "v5m_c87cc4ef3de220447f91cd17",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-WH",
+      "media_id": "v5m_a4cd857b00172620da5ad60a",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-WH",
+      "media_id": "v5m_9421ca1c6668b9b384e440b8",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-WH",
+      "media_id": "v5m_45d59502b5eb59ad05822a21",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308025-WH",
+      "media_id": "v5m_46c13ff382ee9d40ba150fbd",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-BK",
+      "media_id": "v5m_369ea8cb27bd96284b2d16e8",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-BK",
+      "media_id": "v5m_71070a9a719fa8aeb97e66d9",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-BK",
+      "media_id": "v5m_3c74af970838a89ab383fb3b",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-BK",
+      "media_id": "v5m_fbb5a2e0638d696bad209f04",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-BK",
+      "media_id": "v5m_58d348c9d3fc99d288a3fa3b",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-TC",
+      "media_id": "v5m_369ea8cb27bd96284b2d16e8",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-TC",
+      "media_id": "v5m_71070a9a719fa8aeb97e66d9",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-TC",
+      "media_id": "v5m_3c74af970838a89ab383fb3b",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-TC",
+      "media_id": "v5m_fbb5a2e0638d696bad209f04",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-TC",
+      "media_id": "v5m_58d348c9d3fc99d288a3fa3b",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-WH",
+      "media_id": "v5m_369ea8cb27bd96284b2d16e8",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-WH",
+      "media_id": "v5m_71070a9a719fa8aeb97e66d9",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-WH",
+      "media_id": "v5m_3c74af970838a89ab383fb3b",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-WH",
+      "media_id": "v5m_fbb5a2e0638d696bad209f04",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308031-WH",
+      "media_id": "v5m_58d348c9d3fc99d288a3fa3b",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-BK",
+      "media_id": "v5m_9467e069dad333335bc2e64b",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-BK",
+      "media_id": "v5m_23eb0dbeb156dcf6e6c32d35",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-BK",
+      "media_id": "v5m_d78d0472f28812296d165ded",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-BK",
+      "media_id": "v5m_faee2306d0018b2929e0a4db",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-TC",
+      "media_id": "v5m_9467e069dad333335bc2e64b",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-TC",
+      "media_id": "v5m_23eb0dbeb156dcf6e6c32d35",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-TC",
+      "media_id": "v5m_d78d0472f28812296d165ded",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-TC",
+      "media_id": "v5m_faee2306d0018b2929e0a4db",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-WH",
+      "media_id": "v5m_9467e069dad333335bc2e64b",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-WH",
+      "media_id": "v5m_23eb0dbeb156dcf6e6c32d35",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-WH",
+      "media_id": "v5m_d78d0472f28812296d165ded",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13080350-WH",
+      "media_id": "v5m_faee2306d0018b2929e0a4db",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-BK",
+      "media_id": "v5m_fe1944fcb855ac32364560cf",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-BK",
+      "media_id": "v5m_416fb4e46e1dc57768dc263e",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-BK",
+      "media_id": "v5m_bd837fc79dd67ee5bcab215f",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-BK",
+      "media_id": "v5m_50b0f77573f9be1fbe040e5c",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-BK",
+      "media_id": "v5m_64419affb068c25e65d8e432",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-TC",
+      "media_id": "v5m_fe1944fcb855ac32364560cf",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-TC",
+      "media_id": "v5m_416fb4e46e1dc57768dc263e",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-TC",
+      "media_id": "v5m_bd837fc79dd67ee5bcab215f",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-TC",
+      "media_id": "v5m_50b0f77573f9be1fbe040e5c",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-TC",
+      "media_id": "v5m_64419affb068c25e65d8e432",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-WH",
+      "media_id": "v5m_fe1944fcb855ac32364560cf",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-WH",
+      "media_id": "v5m_416fb4e46e1dc57768dc263e",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-WH",
+      "media_id": "v5m_bd837fc79dd67ee5bcab215f",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-WH",
+      "media_id": "v5m_50b0f77573f9be1fbe040e5c",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308040-WH",
+      "media_id": "v5m_64419affb068c25e65d8e432",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-BK",
+      "media_id": "v5m_1df1ae08f0d5e08eb3df531c",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-BK",
+      "media_id": "v5m_8c9fd10ec20dfd1b91c795d7",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-BK",
+      "media_id": "v5m_3dc6f9c5d484c3f503c44436",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-BK",
+      "media_id": "v5m_52499dcbc520776d4d307852",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-BK",
+      "media_id": "v5m_3f923fc6a6d4a702b1a9c785",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-TC",
+      "media_id": "v5m_1df1ae08f0d5e08eb3df531c",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-TC",
+      "media_id": "v5m_8c9fd10ec20dfd1b91c795d7",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-TC",
+      "media_id": "v5m_3dc6f9c5d484c3f503c44436",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-TC",
+      "media_id": "v5m_52499dcbc520776d4d307852",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-TC",
+      "media_id": "v5m_3f923fc6a6d4a702b1a9c785",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-WH",
+      "media_id": "v5m_1df1ae08f0d5e08eb3df531c",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-WH",
+      "media_id": "v5m_8c9fd10ec20dfd1b91c795d7",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-WH",
+      "media_id": "v5m_3dc6f9c5d484c3f503c44436",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-WH",
+      "media_id": "v5m_52499dcbc520776d4d307852",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308041-WH",
+      "media_id": "v5m_3f923fc6a6d4a702b1a9c785",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-BK",
+      "media_id": "v5m_41a504975291f806d8cbca84",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-BK",
+      "media_id": "v5m_feb7f87c2f591b89afb53d4b",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-BK",
+      "media_id": "v5m_3d80f0c28b7fd975bcff3d5a",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-BK",
+      "media_id": "v5m_a3e327473d9a57bdd41aee3d",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-BK",
+      "media_id": "v5m_d1a12e38b3a47d02be145ea3",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-TC",
+      "media_id": "v5m_41a504975291f806d8cbca84",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-TC",
+      "media_id": "v5m_feb7f87c2f591b89afb53d4b",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-TC",
+      "media_id": "v5m_3d80f0c28b7fd975bcff3d5a",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-TC",
+      "media_id": "v5m_a3e327473d9a57bdd41aee3d",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-TC",
+      "media_id": "v5m_d1a12e38b3a47d02be145ea3",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-WH",
+      "media_id": "v5m_41a504975291f806d8cbca84",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-WH",
+      "media_id": "v5m_feb7f87c2f591b89afb53d4b",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-WH",
+      "media_id": "v5m_3d80f0c28b7fd975bcff3d5a",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-WH",
+      "media_id": "v5m_a3e327473d9a57bdd41aee3d",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308303-WH",
+      "media_id": "v5m_d1a12e38b3a47d02be145ea3",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-BK",
+      "media_id": "v5m_6c0173339316124406dab2c4",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-BK",
+      "media_id": "v5m_130fc7e29f378f6f0266db71",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-BK",
+      "media_id": "v5m_7c77ff494faaf342d8f0f287",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-BK",
+      "media_id": "v5m_43027980b902778606b2330c",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-TC",
+      "media_id": "v5m_6c0173339316124406dab2c4",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-TC",
+      "media_id": "v5m_130fc7e29f378f6f0266db71",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-TC",
+      "media_id": "v5m_7c77ff494faaf342d8f0f287",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-TC",
+      "media_id": "v5m_43027980b902778606b2330c",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-WH",
+      "media_id": "v5m_6c0173339316124406dab2c4",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-WH",
+      "media_id": "v5m_130fc7e29f378f6f0266db71",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-WH",
+      "media_id": "v5m_7c77ff494faaf342d8f0f287",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1308305-WH",
+      "media_id": "v5m_43027980b902778606b2330c",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-BK",
+      "media_id": "v5m_35e3bba08efff1badfb14b8e",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-BK",
+      "media_id": "v5m_7e7e336ff538f07873c363ba",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-BK",
+      "media_id": "v5m_2dab08a8de8f38c2c88d80f8",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-BK",
+      "media_id": "v5m_f7c525b8b52e77d36089726d",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-BK",
+      "media_id": "v5m_09575badcd30312646ff5946",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-TC",
+      "media_id": "v5m_35e3bba08efff1badfb14b8e",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-TC",
+      "media_id": "v5m_7e7e336ff538f07873c363ba",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-TC",
+      "media_id": "v5m_2dab08a8de8f38c2c88d80f8",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-TC",
+      "media_id": "v5m_f7c525b8b52e77d36089726d",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-TC",
+      "media_id": "v5m_09575badcd30312646ff5946",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-WH",
+      "media_id": "v5m_35e3bba08efff1badfb14b8e",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-WH",
+      "media_id": "v5m_7e7e336ff538f07873c363ba",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-WH",
+      "media_id": "v5m_2dab08a8de8f38c2c88d80f8",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-WH",
+      "media_id": "v5m_f7c525b8b52e77d36089726d",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309020-WH",
+      "media_id": "v5m_09575badcd30312646ff5946",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-BK",
+      "media_id": "v5m_7f2c1ac0af0245634e72cbbe",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-BK",
+      "media_id": "v5m_9f65bc4d4703f5773ae08f1c",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-BK",
+      "media_id": "v5m_b75d383eb8e042f9014547b8",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-BK",
+      "media_id": "v5m_0e8a6c7ad114c5d39a7a6ddc",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-TC",
+      "media_id": "v5m_7f2c1ac0af0245634e72cbbe",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-TC",
+      "media_id": "v5m_9f65bc4d4703f5773ae08f1c",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-TC",
+      "media_id": "v5m_b75d383eb8e042f9014547b8",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-TC",
+      "media_id": "v5m_0e8a6c7ad114c5d39a7a6ddc",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-WH",
+      "media_id": "v5m_7f2c1ac0af0245634e72cbbe",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-WH",
+      "media_id": "v5m_9f65bc4d4703f5773ae08f1c",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-WH",
+      "media_id": "v5m_b75d383eb8e042f9014547b8",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309025-WH",
+      "media_id": "v5m_0e8a6c7ad114c5d39a7a6ddc",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-BK",
+      "media_id": "v5m_9a1790cb0d8904cf00af8a90",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-BK",
+      "media_id": "v5m_54b3c50ed257f6f844083bf3",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-BK",
+      "media_id": "v5m_bd9afce99dfd0c0fa1394c9d",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-BK",
+      "media_id": "v5m_5a0616d6d3a5c05d6aaa9aef",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-BK",
+      "media_id": "v5m_30405972fe1b3b6c9af1a1ad",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-TC",
+      "media_id": "v5m_9a1790cb0d8904cf00af8a90",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-TC",
+      "media_id": "v5m_54b3c50ed257f6f844083bf3",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-TC",
+      "media_id": "v5m_bd9afce99dfd0c0fa1394c9d",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-TC",
+      "media_id": "v5m_5a0616d6d3a5c05d6aaa9aef",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-TC",
+      "media_id": "v5m_30405972fe1b3b6c9af1a1ad",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-WH",
+      "media_id": "v5m_9a1790cb0d8904cf00af8a90",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-WH",
+      "media_id": "v5m_54b3c50ed257f6f844083bf3",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-WH",
+      "media_id": "v5m_bd9afce99dfd0c0fa1394c9d",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-WH",
+      "media_id": "v5m_5a0616d6d3a5c05d6aaa9aef",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309026-WH",
+      "media_id": "v5m_30405972fe1b3b6c9af1a1ad",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-BK",
+      "media_id": "v5m_29bf6988639c45cc15c4a5e9",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-BK",
+      "media_id": "v5m_7dd0cdcdeca629e453da952c",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-BK",
+      "media_id": "v5m_feee2f5c0d244d4189c4f0ac",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-BK",
+      "media_id": "v5m_386de689074d2aa3920d1485",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-BK",
+      "media_id": "v5m_7ec7c792142f9d7ddc1e64a9",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-TC",
+      "media_id": "v5m_29bf6988639c45cc15c4a5e9",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-TC",
+      "media_id": "v5m_7dd0cdcdeca629e453da952c",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-TC",
+      "media_id": "v5m_feee2f5c0d244d4189c4f0ac",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-TC",
+      "media_id": "v5m_386de689074d2aa3920d1485",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-TC",
+      "media_id": "v5m_7ec7c792142f9d7ddc1e64a9",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-WH",
+      "media_id": "v5m_29bf6988639c45cc15c4a5e9",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-WH",
+      "media_id": "v5m_7dd0cdcdeca629e453da952c",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-WH",
+      "media_id": "v5m_feee2f5c0d244d4189c4f0ac",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-WH",
+      "media_id": "v5m_386de689074d2aa3920d1485",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-1309030-WH",
+      "media_id": "v5m_7ec7c792142f9d7ddc1e64a9",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-BK",
+      "media_id": "v5m_4fd3f2967b30bb333ed133a8",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-BK",
+      "media_id": "v5m_6dba4ccd27c3aaf203a48667",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-BK",
+      "media_id": "v5m_166b3f2be0202ebad881ed18",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-BK",
+      "media_id": "v5m_1403700747478cec35d726a7",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-BK",
+      "media_id": "v5m_fb696a20ef7cf7c7b746b55f",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-TC",
+      "media_id": "v5m_4fd3f2967b30bb333ed133a8",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-TC",
+      "media_id": "v5m_6dba4ccd27c3aaf203a48667",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-TC",
+      "media_id": "v5m_166b3f2be0202ebad881ed18",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-TC",
+      "media_id": "v5m_1403700747478cec35d726a7",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-TC",
+      "media_id": "v5m_fb696a20ef7cf7c7b746b55f",
+      "is_primary": false,
+      "sort_order": 104,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-WH",
+      "media_id": "v5m_4fd3f2967b30bb333ed133a8",
+      "is_primary": true,
+      "sort_order": 100,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-WH",
+      "media_id": "v5m_6dba4ccd27c3aaf203a48667",
+      "is_primary": false,
+      "sort_order": 101,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-WH",
+      "media_id": "v5m_166b3f2be0202ebad881ed18",
+      "is_primary": false,
+      "sort_order": 102,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-WH",
+      "media_id": "v5m_1403700747478cec35d726a7",
+      "is_primary": false,
+      "sort_order": 103,
+      "binding_kind": "representative",
+      "source_kind": "legacy_explicit_binding",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-BB-13090350-WH",
+      "media_id": "v5m_fb696a20ef7cf7c7b746b55f",
+      "is_primary": false,
+      "sort_order": 104,
       "binding_kind": "representative",
       "source_kind": "legacy_explicit_binding",
       "source_url": null
@@ -4805,268 +7289,190 @@
       "has_representative": true
     },
     {
-      "sku_id": "PL-BB-1308020-BK",
-      "product_id": "blueberry-round-pots",
-      "package_label": "20 л",
-      "has_representative": false
-    },
-    {
       "sku_id": "PL-BB-1308020-WH",
       "product_id": "blueberry-round-pots",
       "package_label": "20 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308020-TC",
       "product_id": "blueberry-round-pots",
       "package_label": "20 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308025-BK",
       "product_id": "blueberry-round-pots",
       "package_label": "25 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308025-WH",
       "product_id": "blueberry-round-pots",
       "package_label": "25 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308025-TC",
       "product_id": "blueberry-round-pots",
       "package_label": "25 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1308031-BK",
-      "product_id": "blueberry-round-pots",
-      "package_label": "30 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308031-WH",
       "product_id": "blueberry-round-pots",
       "package_label": "30 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308031-TC",
       "product_id": "blueberry-round-pots",
       "package_label": "30 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308040-BK",
       "product_id": "blueberry-round-pots",
       "package_label": "40 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308040-WH",
       "product_id": "blueberry-round-pots",
       "package_label": "40 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1308040-TC",
-      "product_id": "blueberry-round-pots",
-      "package_label": "40 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1303025-BK",
       "product_id": "blueberry-round-short-legs-pot",
       "package_label": "25 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1303025-WH",
       "product_id": "blueberry-round-short-legs-pot",
       "package_label": "25 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1303025-TC",
       "product_id": "blueberry-round-short-legs-pot",
       "package_label": "25 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308303-BK",
       "product_id": "blueberry-round-u-groove-pots",
       "package_label": "30 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308303-WH",
       "product_id": "blueberry-round-u-groove-pots",
       "package_label": "30 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1308303-TC",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_label": "30 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1308305-BK",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_label": "30 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308305-WH",
       "product_id": "blueberry-round-u-groove-pots",
       "package_label": "30 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308305-TC",
       "product_id": "blueberry-round-u-groove-pots",
       "package_label": "30 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-13080350-BK",
       "product_id": "blueberry-round-u-groove-pots",
       "package_label": "35 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-13080350-WH",
       "product_id": "blueberry-round-u-groove-pots",
       "package_label": "35 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-13080350-TC",
       "product_id": "blueberry-round-u-groove-pots",
       "package_label": "35 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1308041-BK",
-      "product_id": "blueberry-round-u-groove-pots",
-      "package_label": "40 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308041-WH",
       "product_id": "blueberry-round-u-groove-pots",
       "package_label": "40 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1308041-TC",
       "product_id": "blueberry-round-u-groove-pots",
       "package_label": "40 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1309020-BK",
-      "product_id": "blueberry-square-pots",
-      "package_label": "20 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1309020-WH",
       "product_id": "blueberry-square-pots",
       "package_label": "20 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1309020-TC",
       "product_id": "blueberry-square-pots",
       "package_label": "20 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1309025-BK",
-      "product_id": "blueberry-square-pots",
-      "package_label": "25 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1309025-WH",
       "product_id": "blueberry-square-pots",
       "package_label": "25 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1309025-TC",
       "product_id": "blueberry-square-pots",
       "package_label": "25 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1309030-BK",
-      "product_id": "blueberry-square-pots",
-      "package_label": "30 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1309030-WH",
       "product_id": "blueberry-square-pots",
       "package_label": "30 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1309030-TC",
       "product_id": "blueberry-square-pots",
       "package_label": "30 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1309026-BK",
-      "product_id": "blueberry-square-u-groove-pots",
-      "package_label": "25 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1309026-WH",
       "product_id": "blueberry-square-u-groove-pots",
       "package_label": "25 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1309026-TC",
       "product_id": "blueberry-square-u-groove-pots",
       "package_label": "25 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-13090350-BK",
-      "product_id": "blueberry-square-u-groove-pots",
-      "package_label": "35 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-13090350-WH",
       "product_id": "blueberry-square-u-groove-pots",
       "package_label": "35 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-13090350-TC",
       "product_id": "blueberry-square-u-groove-pots",
       "package_label": "35 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1301144-BK",
-      "product_id": "blueberry-zephyr-v2-pots",
-      "package_label": "25 л",
-      "has_representative": false
-    },
-    {
-      "sku_id": "PL-BB-1301144-WH",
-      "product_id": "blueberry-zephyr-v2-pots",
-      "package_label": "25 л",
-      "has_representative": false
+      "has_representative": true
     },
     {
       "sku_id": "PL-BB-1301153-BK",
@@ -5679,1026 +8085,5 @@
     }
   ],
   "mapping_failures": [],
-  "missing_legacy_assets": [
-    {
-      "sku_id": "PL-BB-1308020-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Round-Pot_Item_1308020.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-ISOMETRICO.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Round-Pot_Item_1308020.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-ISOMETRICO.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Round-Pot_Item_1308020.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Round-pot_Item_1308020_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308020-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/20L-RD-1308020-ISOMETRICO.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_4.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_5.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_3.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_4.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_5.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_3.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_4.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_5.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/8025_3.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-V-ribs_Item_1308031.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-VR-1308031-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-V-ribs_Item_1308031.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-VR-1308031-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-V-ribs_Item_1308031.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pots-with-V-ribs_Item_1308031_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308031-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-VR-1308031-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Front-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/40L-RD-1308040-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Front-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/40L-RD-1308040-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Front-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot_Item_1308040_Top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308040-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/40L-RD-1308040-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_2-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_3.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2021/06/3025_4-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_2-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_3.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2021/06/3025_4-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_2-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_3.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1303025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2021/06/3025_4-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-U-grooves_Item_1308303-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303_Top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-ISOMETRICO.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-U-grooves_Item_1308303-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303_Top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-ISOMETRICO.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Round-Pot-with-U-grooves_Item_1308303-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30L-Round-pot-with-U-grooves_Item_1308303_Top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308303-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/30L-RD-UG-1308303-ISOMETRICO.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-FRONT-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-ISOMETRIC-VIEW-2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-Landing-page.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-TOP-VIEW-2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-FRONT-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-ISOMETRIC-VIEW-2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-Landing-page.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-TOP-VIEW-2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-FRONT-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-ISOMETRIC-VIEW-2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-Landing-page.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308305-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2026/04/30L-RD-RD-PUG-1308305-TOP-VIEW-2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-blueberries.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-con-ranuras-para-manguera.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-arandano.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-blueberries.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-con-ranuras-para-manguera.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-arandano.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-blueberries.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-con-ranuras-para-manguera.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-redonda-para-arandano.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13080350-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_bottom-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_bottom-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041-top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1308041-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/40-liter-round-pot-with-U-grooves_Item_1308041_bottom-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Square-Pot_Item_1309020.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_front-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_Top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_bottom-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Square-Pot_Item_1309020.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_front-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_Top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_bottom-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20-Liter-Square-Pot_Item_1309020.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_front-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_Top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309020-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/20L-Square-pot_Item_1309020_bottom-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-FRONTAL.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-CENITAL.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2017/09/9025_3.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-FRONTAL.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-CENITAL.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2017/09/9025_3.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-FRONTAL.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-CENITAL.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/25L-SQ-1309025-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309025-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2017/09/9025_3.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_front-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_Bottom-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_front-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_Bottom-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_front-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309030-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/30-Liter-Square-Pot_Item_1309030_Bottom-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Square-Pot-with-U-grooves_Item_1309026.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_bottom.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Square-Pot-with-U-grooves_Item_1309026.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_bottom.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25-Liter-Square-Pot-with-U-grooves_Item_1309026.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_front.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_top-view.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1309026-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/03/25L-Square-pot-with-u-grooves_-Item_1309026_bottom.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente_1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometric.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometrico-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_cenital.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente_1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometric.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometrico-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_cenital.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_frente_1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometric.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_isometrico-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-13090350-TC",
-      "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Maceta-cuadrada-de-35L-para-arandano-13090350_cenital.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1301144-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-2-2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1301144-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2020/11/ZEPHYR-V2-1301144-FRONTAL-2-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1301144-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE-2.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1301144-BK",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-CENITAL-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1301144-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-1.jpg",
-      "reason": "legacy_media_asset_missing"
-    },
-    {
-      "sku_id": "PL-BB-1301144-WH",
-      "path": "https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE.jpg",
-      "reason": "legacy_media_asset_missing"
-    }
-  ]
+  "missing_legacy_assets": []
 }

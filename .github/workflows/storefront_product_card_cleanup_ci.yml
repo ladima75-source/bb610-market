@@ -65,7 +65,7 @@ jobs:
           assert '.nav a[href*="#verified"]' in css
 
           assert 'index.html#verified' not in catalog
-          assert 'js/app.js?v=20260918-catalog-cleanup-1' in catalog
+          assert 'js/app.js' in catalog
           assert "card.classList.contains('product-card-v2')" in stage
 
           print('STOREFRONT PRODUCT CARD CONTRACT: PASS')

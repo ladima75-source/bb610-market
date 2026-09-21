@@ -76,6 +76,22 @@ def main() -> None:
         if tuple(target.parts[:4]) != tuple(ALLOWED_ROOT.parts):
             raise SystemExit(f"Target outside {ALLOWED_ROOT}: {target}")
 
+        if target.suffix.lower() == ".auto":
+            stem = target.with_suffix("")
+            existing = next(
+                (
+                    root / stem.with_suffix(ext)
+                    for ext in (".png", ".jpg", ".webp")
+                    if (root / stem.with_suffix(ext)).is_file()
+                ),
+                None,
+            )
+        else:
+            existing = root / target if (root / target).is_file() else None
+        if existing is not None:
+            print(f"SKIP {row.get('sku_id')} -> {existing.relative_to(root)}", flush=True)
+            continue
+
         print(f"IMPORT {row.get('sku_id')} <- {row.get('source_page')}", flush=True)
         image_url = resolve_image_url(row)
         req = urllib.request.Request(

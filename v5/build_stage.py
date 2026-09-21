@@ -97,8 +97,10 @@ def base_amount(value, unit):
 
 
 def package_group(value, unit):
-    amount, _ = base_amount(value, unit)
-    if amount is None:
+    amount, base_unit = base_amount(value, unit)
+    # Storefront package-size facets are defined only for mass/volume.
+    # Piece-count variants (pcs/шт) must never leak into small/medium/large.
+    if amount is None or base_unit not in {"g", "ml"}:
         return None
     if amount <= 50:
         return "small"
@@ -303,6 +305,24 @@ def main():
             })
 
     canonical_rows = [row for row in carry if row["sku_id"] in canonical_ids]
+
+    unresolved_identity = [
+        {
+            "sku_id": row["sku_id"],
+            "source": row.get("source"),
+            "legacy_product_key": row.get("legacy_product_key"),
+            "package_label": row.get("package_label"),
+            "enabled": row.get("enabled"),
+            "price": row.get("price"),
+        }
+        for row in canonical_rows
+        if not row.get("canonical_product_key")
+    ]
+    if unresolved_identity:
+        raise SystemExit(
+            "Unresolved commerce identity: "
+            + json.dumps(unresolved_identity, ensure_ascii=False, separators=(",", ":"))
+        )
 
     # One old Plantlogic item already exists inside the current grouped family.
     # Keep its stable SKU as a disabled legacy identity, but do not keep a duplicate product card.

@@ -1186,6 +1186,78 @@ def _master_buyer_titles_batch_13(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _master_134013_rich_content_batch_14(con: sqlite3.Connection) -> bool:
+    _update_product(
+        con,
+        "master-npk-13-40-13",
+        {
+            "description": (
+                "MASTER 13-40-13 — водорозчинне комплексне мінеральне добриво Valagro "
+                "з підвищеним вмістом фосфору. Формула призначена насамперед для ранніх "
+                "фаз вегетації, періоду після висаджування розсади та саджанців і розвитку "
+                "кореневої системи. Високий вміст P₂O₅ підтримує укорінення, стартовий ріст, "
+                "цвітіння та формування зав'язі. Добриво придатне для фертигації й інших "
+                "систем поливу та містить комплекс мікроелементів."
+            ),
+            "composition": (
+                "N — 13% (NH₄-N — 9,3%; NO₃-N — 3,7%); P₂O₅ — 40%; K₂O — 13%; "
+                "Fe — 0,07%; Cu — 0,005%; Mn — 0,03%; Zn — 0,01%; B — 0,02%. "
+                "pH 1% розчину — близько 4,7."
+            ),
+            "application": (
+                "Орієнтири застосування з актуальної товарної картки Organic Planet:\n"
+                "• полив під корінь — 20–25 г на 10 л води;\n"
+                "• крапельне живлення — орієнтовно 50–100 г на 100 м² на добу;\n"
+                "• томати — 40–60 г/100 м² до появи дрібних плодів, далі норму збільшують;\n"
+                "• огірки — 50–75 г/100 м², у період цвітіння до 125 г;\n"
+                "• троянди — 30–50 г/100 м²; виноград — 40–60 г/100 м²;\n"
+                "• позакоренево — 20–40 г на 10 л води.\n"
+                "Фактичну норму коригувати під культуру, воду, субстрат і схему живлення. "
+                "Етикетка конкретної партії має пріоритет."
+            ),
+            "benefits_json": json.dumps([
+                {
+                    "title": "40% P₂O₅",
+                    "text": "Фосфорний акцент для укорінення, стартових фаз і формування генеративних органів."
+                },
+                {
+                    "title": "ПОВНІСТЮ ВОДОРОЗЧИННЕ",
+                    "text": "Підходить для фертигації та систем крапельного поливу."
+                },
+                {
+                    "title": "МІКРОЕЛЕМЕНТИ",
+                    "text": "Fe, Cu, Mn, Zn і B доповнюють базову формулу NPK."
+                }
+            ], ensure_ascii=False),
+            "how_it_works": (
+                "Співвідношення 13-40-13 зміщує живлення в бік фосфору на етапах, коли "
+                "рослині потрібні активне коренеутворення та енергійний старт. Азот підтримує "
+                "вегетативний розвиток, а калій — водний баланс і подальший розвиток тканин."
+            ),
+            "characteristics_json": json.dumps([
+                {"label":"Тип","value":"Водорозчинне мінеральне NPK-добриво"},
+                {"label":"Формула","value":"13-40-13 + мікроелементи"},
+                {"label":"Основне призначення","value":"Укорінення, стартовий ріст, ранні фази вегетації"},
+                {"label":"Спосіб внесення","value":"Фертигація, полив під корінь, позакореневе живлення"},
+                {"label":"pH 1% розчину","value":"≈ 4,7"},
+                {"label":"Бренд","value":"MASTER / Valagro"},
+                {"label":"Виробник","value":"Valagro S.p.A."}
+            ], ensure_ascii=False),
+        },
+    )
+    _add_source(
+        con,
+        product_id="master-npk-13-40-13",
+        source_type="verified_market_product_page",
+        source_url="https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro",
+        source_label="Organic Planet — MASTER 13-40-13, 250 г",
+        verified_at="2026-09-21",
+        status="verified",
+        notes="Used for buyer-facing composition, use cases and application guidance; batch label remains authoritative.",
+    )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -1202,6 +1274,7 @@ _MIGRATIONS = [
     ("20260921_buyer_facing_title_batch11", _buyer_facing_title_batch_11),
     ("20260921_plantafol_buyer_content_batch12", _plantafol_buyer_content_batch_12),
     ("20260921_master_buyer_titles_batch13", _master_buyer_titles_batch_13),
+    ("20260921_master_134013_rich_content_batch14", _master_134013_rich_content_batch_14),
 ]
 
 

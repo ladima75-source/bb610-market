@@ -8,7 +8,7 @@ Production snapshot: `46e0b2b208c54132bd1c11a70f993000272195f8`.
 - Canonical non-Plantlogic SKU: **206**
 - Legacy/duplicate SKU aliases: **75**
 - Plantlogic grouped products: **6**
-- Plantlogic request-price SKU: **49**
+- Plantlogic request-price SKU: **48**
 - Total V5 staging: **86 products / 255 SKU**
 
 ## Price conflicts

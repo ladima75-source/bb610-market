@@ -70,6 +70,12 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
       'assets/img/product-npk.svg';
   };
 
+  const galleryImages=[...new Set([
+    selectedSku?.image,
+    ...(Array.isArray(selectedSku?.gallery)?selectedSku.gallery:[]),
+    ...((!selectedSku||skuList.length<=1)?[p.image,...(p.gallery||[])]:[])
+  ].map(x=>String(x||'').trim()).filter(Boolean))];
+
   const compositionRows=Array.isArray(p.composition)&&p.composition.length
     ?p.composition.map(x=>typeof x==='object'&&x!==null&&('label'in x||'name'in x)
       ?`<div class="kv"><span>${escValue(x.label||x.name||'Параметр')}</span><b>${richValue(x.value??x.text??x.amount??'')}</b></div>`
@@ -77,7 +83,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     :(p.composition?`<div class="kv"><span>Склад</span><b>${richValue(p.composition)}</b></div>`:'');
 
   root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${String(p.categoryLabel||p.category||'Каталог').toUpperCase()} / ${p.name}</div>
-  <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${productImageFor(selectedSku)}" alt="${p.name}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div>${(!BB610.packageMediaRequired?.(rawProduct,selectedSku)&&(p.gallery||[]).length)?`<div class="product-gallery-thumbs">${[p.image,...p.gallery].filter(Boolean).map((im,i)=>`<button type="button" class="gallery-thumb" data-gallery-img="${im}"><img src="${im}" alt="${p.name} ${i+1}"></button>`).join('')}</div>`:''}</div>
+  <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${productImageFor(selectedSku)}" alt="${p.name}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div>${galleryImages.length>1?`<div class="product-gallery-thumbs">${galleryImages.map((im,i)=>`<button type="button" class="gallery-thumb${i===0?' active':''}" data-gallery-img="${im}"><img src="${im}" alt="${p.name} ${i+1}"></button>`).join('')}</div>`:''}</div>
   <div class="product-summary"><div class="eyebrow">${p.categoryLabel}</div><h1>${p.name}</h1><div class="brand">${p.brand}</div><p class="product-lead">${richValue(p.shortDescription||p.manufacturerUse||p.productType||'')}</p><div class="product-keyfacts">${p.productType?`<span><small>Тип</small><b>${richValue(p.productType)}</b></span>`:''}${p.npk&&p.npk!=='—'?`<span><small>NPK</small><b>${richValue(p.npk)}</b></span>`:''}${p.activeIngredient&&p.activeIngredient!=='—'?`<span><small>Діюча речовина</small><b>${richValue(p.activeIngredient)}</b></span>`:''}</div>
   <div class="selected-variant" id="selected-variant"></div>
   <div class="price" id="selected-price"></div><div class="unit-price" id="selected-unit"></div><div class="stock" id="selected-stock" style="margin-top:12px"></div>
@@ -90,7 +96,10 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   <div class="info-card product-detail-card composition-card"><h2>СКЛАД</h2>${compositionRows}<div class="kv"><span>NPK</span><b>${richValue(p.npk)}</b></div></div>
   <div class="info-card product-detail-card origin-card"><h2>ПОХОДЖЕННЯ</h2><div class="kv"><span>Виробник</span><b>${richValue(p.manufacturer)}</b></div><div class="kv"><span>Країна</span><b>${richValue(p.country)}</b></div><div class="kv"><span>Фасувальник BB610 offer</span><b id="selected-packer">Уточнюється</b></div><div class="kv"><span>Постачальник BB610</span><b id="selected-supplier">Уточнюється</b></div><div class="kv"><span>SKU</span><b id="selected-sku">—</b></div><div class="kv"><span>GTIN / EAN</span><b id="selected-gtin">—</b></div></div>${szr}</div>`;
 
-  document.querySelectorAll('[data-gallery-img]').forEach(b=>b.onclick=()=>{document.getElementById('product-main-image').src=b.dataset.galleryImg});
+  document.querySelectorAll('[data-gallery-img]').forEach(b=>b.onclick=()=>{
+    document.getElementById('product-main-image').src=b.dataset.galleryImg;
+    document.querySelectorAll('[data-gallery-img]').forEach(x=>x.classList.toggle('active',x===b));
+  });
   document.getElementById('product-main-image')?.addEventListener('click',e=>BB610.openPhoto?.(e.currentTarget.currentSrc||e.currentTarget.src,p.name));
   function syncLiveProductSchema(){
     document.querySelectorAll('script[type="application/ld+json"]').forEach(el=>{try{const x=JSON.parse(el.textContent||'{}');if(x&&x['@type']==='Product')el.remove()}catch(_){}});

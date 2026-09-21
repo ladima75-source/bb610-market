@@ -341,6 +341,10 @@ def main():
 
     for legacy_product_id, target_product_id in legacy_reparent_product.items():
         product_aliases.add((legacy_product_id, target_product_id, "legacy_product_reparent"))
+        legacy_card = product_to_v3.get(legacy_product_id) or {}
+        legacy_slug = legacy_card.get("slug")
+        if legacy_slug:
+            product_aliases.add((legacy_slug, target_product_id, "legacy_slug_reparent"))
 
     def exact_media(commerce_key):
         info = commerce_v3.get(commerce_key)
@@ -488,7 +492,8 @@ def main():
         "sku_aliases": len(sku_aliases),
         "price_conflicts": len(price_conflicts),
         "plantlogic_grouped_products": len(plantlogic_products),
-        "plantlogic_request_price_skus": len(plantlogic_skus),
+        "plantlogic_request_price_skus": sum(1 for row in plantlogic_skus if row.get("commerce_state") == "request_price"),
+        "plantlogic_legacy_skus": sum(1 for row in plantlogic_skus if row.get("commerce_state") == "legacy_disabled"),
         "v5_stage_products_total": len(products) + len(plantlogic_products),
         "v5_stage_skus_total": len(skus) + len(plantlogic_skus),
     }

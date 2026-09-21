@@ -260,10 +260,17 @@ def bind_media(
                 (canonical_sku, media_id, 1 if primary else 0, int(order)),
             )
         else:
-            order = con.execute(
-                "SELECT COALESCE(MAX(sort_order),-1)+1 FROM product_media WHERE product_id=?",
-                (canonical_product,),
-            ).fetchone()[0]
+            if primary:
+                con.execute(
+                    "UPDATE product_media SET sort_order=sort_order+1 WHERE product_id=?",
+                    (canonical_product,),
+                )
+                order = 0
+            else:
+                order = con.execute(
+                    "SELECT COALESCE(MAX(sort_order),-1)+1 FROM product_media WHERE product_id=?",
+                    (canonical_product,),
+                ).fetchone()[0]
             con.execute(
                 """
                 INSERT INTO product_media(

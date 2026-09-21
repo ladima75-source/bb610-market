@@ -750,12 +750,70 @@ def _verified_package_media_batch_03(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _verified_package_media_batch_04(con: sqlite3.Connection) -> bool:
+    rows = [
+        ("review26_op_agriflex_amino_1kg","BB610-24D24A6B4EB211","/assets/img/v5/verified/op-agriflex-amino-1kg.jpg","AgriFlex Amino — 1 кг","https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"),
+        ("review26_op_agriflex_amino_5kg","BB610-E72D0A565A6415","/assets/img/v5/verified/op-agriflex-amino-5kg.jpg","AgriFlex Amino — 5 кг","https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax"),
+        ("review26_op_agriflex_amino_20kg","BB610-813432FDF29AE4","/assets/img/v5/verified/op-agriflex-amino-20kg.jpg","AgriFlex Amino — 20 кг","https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-25-kg-citymax"),
+        ("review26_op_agriflex_aminovix_1kg","BB610-021E63CD9734F9","/assets/img/v5/verified/op-agriflex-aminovix-1kg.jpg","AgriFlex AminoVix — 1 кг","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-aminovix-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"),
+        ("review26_op_agriflex_fulvix_1kg","BB610-EAEE397CF0D45E","/assets/img/v5/verified/op-agriflex-fulvix-1kg.jpg","AgriFlex Fulvix — 1 кг","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-fulvix-rozchynni-fulvovi-kysloty-1-kg-citymax"),
+        ("review26_op_agriflex_zn_1kg","BB610-75B55F8DEAD7C2","/assets/img/v5/verified/op-agriflex-zn-1kg.jpg","AgriFlex Amino Zn — 1 кг","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"),
+        ("review26_op_agriflex_zn_5kg","BB610-156A7D639ED836","/assets/img/v5/verified/op-agriflex-zn-5kg.jpg","AgriFlex Amino Zn — 5 кг","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax"),
+        ("review26_op_edta_5sg_5kg","BB610-3B882CCA6D419D","/assets/img/v5/verified/op-valagro-edta-5sg-5kg.png","Valagro EDTA 5 SG — 5 кг","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-5-sgmikroelementy-helaty-5-kg-valagro"),
+        ("review26_op_edta_fe13_5kg","BB610-74DDB26C8BB13D","/assets/img/v5/verified/op-valagro-edta-fe13-5kg.png","Valagro EDTA Fe-13% — 5 кг","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-fe-13-zhelezo-13-5-kg-valagro"),
+    ]
+
+    for _, sku_id, _, _, _ in rows:
+        if not con.execute("SELECT 1 FROM skus WHERE sku_id=?", (sku_id,)).fetchone():
+            return False
+
+    # The canonical identity stays stable; only the reviewed package facts change.
+    con.execute(
+        """
+        UPDATE skus
+        SET package_value=20, package_unit='kg', package_label='20 кг', package_group='large'
+        WHERE sku_id='BB610-813432FDF29AE4'
+        """
+    )
+
+    for media_id, sku_id, path, alt, source_url in rows:
+        con.execute(
+            """
+            INSERT INTO media(media_id,path,sha256,kind,source_url,verification_status,alt,created_at)
+            VALUES(?,?,NULL,'image',?,'verified',?,?)
+            ON CONFLICT(media_id) DO UPDATE SET
+              path=excluded.path,
+              source_url=excluded.source_url,
+              verification_status='verified',
+              alt=excluded.alt
+            """,
+            (media_id, path, source_url, alt, _now()),
+        )
+        con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+        con.execute(
+            """
+            INSERT INTO sku_media(
+              sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+            )
+            VALUES(?,?,1,0,'exact','verified_package_product_page',?)
+            ON CONFLICT(sku_id,media_id) DO UPDATE SET
+              is_primary=1,
+              sort_order=0,
+              source_kind='verified_package_product_page',
+              source_url=excluded.source_url
+            """,
+            (sku_id, media_id, source_url),
+        )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
     ("20260921_cleanup_superseded_sources_batch01", _cleanup_superseded_sources_batch_01),
     ("20260921_verified_package_media_batch02", _verified_package_media_batch_02),
     ("20260921_verified_package_media_batch03", _verified_package_media_batch_03),
+    ("20260921_verified_package_media_batch04", _verified_package_media_batch_04),
 ]
 
 

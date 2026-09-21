@@ -112,11 +112,16 @@ def package_group(value, unit):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--snapshot", required=True)
+    ap.add_argument(
+        "--plantlogic-policy",
+        default=str(Path(__file__).resolve().parent / "policies/plantlogic_assortment.json"),
+    )
     ap.add_argument("--json-out", required=True)
     ap.add_argument("--md-out", required=True)
     args = ap.parse_args()
 
     root = Path(args.snapshot).resolve()
+    plantlogic_policy = load(Path(args.plantlogic_policy).resolve())
     manifest = load(root / "manifest.json")
     catalog = load(root / "files/data/catalog.master.json")
     commerce = load(root / "db/sku_commerce.json")
@@ -406,6 +411,45 @@ def main():
 
     plantlogic_products = []
     plantlogic_skus = []
+    plantlogic_retired_aliases = []
+    plantlogic_model_canonical = {}
+
+    policy_cfg = plantlogic_policy.get("policy") or {}
+    default_plantlogic_color = str(policy_cfg.get("default_color") or "black")
+    volume_color_overrides = policy_cfg.get("volume_overrides") or []
+
+    def preferred_plantlogic_color(rows):
+        offered = {
+            str((row.get("attributes") or {}).get("color_code") or "").strip()
+            for row in rows
+            if str((row.get("attributes") or {}).get("color_code") or "").strip()
+        }
+        volume = next(
+            (
+                float(row.get("package_value"))
+                for row in rows
+                if row.get("package_value") is not None
+            ),
+            None,
+        )
+        if volume is not None:
+            for override in volume_color_overrides:
+                try:
+                    override_volume = float(override.get("volume_l"))
+                except (TypeError, ValueError):
+                    continue
+                if abs(volume - override_volume) > 1e-9:
+                    continue
+                preferred = str(override.get("preferred_color") or "").strip()
+                fallback = str(override.get("fallback_color") or "").strip()
+                if preferred in offered:
+                    return preferred
+                if fallback in offered:
+                    return fallback
+        if default_plantlogic_color in offered:
+            return default_plantlogic_color
+        return sorted(offered)[0] if offered else ""
+
     for v3_product_id in PLANTLOGIC_GROUPS:
         card = v3_cards[v3_product_id]
         content = card.get("content") or {}
@@ -423,6 +467,8 @@ def main():
             row.get("media_id"): row
             for row in (card.get("sku_media") or {}).get("media") or []
         }
+
+        raw_model_rows = collections.defaultdict(list)
         for sku in (card.get("sku_media") or {}).get("skus") or []:
             value, unit, label = parse_package(sku.get("package") or sku.get("label"))
             ids = [sku.get("primary_media_id"), *(sku.get("gallery_media_ids") or [])]
@@ -439,7 +485,11 @@ def main():
                     "alt": item.get("alt"),
                     "is_primary": media_id == sku.get("primary_media_id"),
                 })
-            plantlogic_skus.append({
+
+            attrs = dict(sku.get("attributes") or {})
+            manufacturer_no = str(attrs.get("manufacturer_product_no") or "").strip()
+            model_key = manufacturer_no or str(sku.get("sku_id") or "").strip()
+            raw_model_rows[model_key].append({
                 "sku_id": sku.get("sku_code") or sku.get("sku_id"),
                 "v3_sku_id": sku.get("sku_id"),
                 "product_id": product_id,
@@ -447,31 +497,91 @@ def main():
                 "package_unit": unit,
                 "package_label": label,
                 "package_group": package_group(value, unit),
-                "attributes": sku.get("attributes") or {},
+                "attributes": attrs,
                 "enabled": bool(sku.get("enabled", True)),
                 "commerce_state": "request_price",
                 "media": media,
             })
 
+        for model_key, rows in raw_model_rows.items():
+            target_color = preferred_plantlogic_color(rows)
+            selected = next(
+                (
+                    row for row in rows
+                    if str((row.get("attributes") or {}).get("color_code") or "").strip() == target_color
+                ),
+                rows[0],
+            )
+            selected = dict(selected)
+            selected["attributes"] = {
+                **(selected.get("attributes") or {}),
+                "assortment_policy": "v5_single_color",
+                "assortment_selected": True,
+            }
+            plantlogic_skus.append(selected)
+            plantlogic_model_canonical[(product_id, model_key)] = selected["sku_id"]
+
+            for retired in rows:
+                if retired["sku_id"] == selected["sku_id"]:
+                    continue
+                plantlogic_retired_aliases.append({
+                    "alias_sku_id": retired["sku_id"],
+                    "canonical_sku_id": selected["sku_id"],
+                    "product_id": product_id,
+                    "package_label": retired.get("package_label"),
+                    "reason": "retired_plantlogic_color_by_v5_assortment_policy",
+                    "retired_attributes": retired.get("attributes") or {},
+                    "alias_commerce": {
+                        "price": None,
+                        "sale_price": None,
+                        "availability": "request_price",
+                        "stock_qty": None,
+                        "enabled": False,
+                        "updated_at": None,
+                    },
+                })
+
+    sku_aliases.extend(plantlogic_retired_aliases)
+
     for legacy in legacy_reparent_rows:
         target_product_id = legacy_reparent_product[legacy["canonical_product_key"]]
-        plantlogic_skus.append({
-            "sku_id": legacy["sku_id"],
-            "v3_sku_id": None,
-            "product_id": target_product_id,
-            "package_value": legacy.get("package_value"),
-            "package_unit": legacy.get("package_unit"),
-            "package_label": legacy.get("package_label"),
-            "package_group": legacy.get("package_group"),
-            "attributes": {
-                "legacy_sku": True,
-                "legacy_product_id": legacy["canonical_product_key"],
-                "identity_status": "preserved_disabled_unresolved_color",
-            },
-            "enabled": False,
-            "commerce_state": "legacy_disabled",
-            "media": [],
-        })
+        match = re.search(r"(\d+)$", legacy["canonical_product_key"])
+        manufacturer_no = match.group(1) if match else ""
+        canonical_sku = plantlogic_model_canonical.get((target_product_id, manufacturer_no))
+        if canonical_sku:
+            sku_aliases.append({
+                "alias_sku_id": legacy["sku_id"],
+                "canonical_sku_id": canonical_sku,
+                "product_id": target_product_id,
+                "package_label": legacy.get("package_label"),
+                "reason": "legacy_product_reparent_by_v5_assortment_policy",
+                "alias_commerce": {
+                    "price": legacy.get("price"),
+                    "sale_price": legacy.get("sale_price"),
+                    "availability": legacy.get("availability"),
+                    "stock_qty": legacy.get("stock_qty"),
+                    "enabled": legacy.get("enabled"),
+                    "updated_at": legacy.get("updated_at"),
+                },
+            })
+        else:
+            plantlogic_skus.append({
+                "sku_id": legacy["sku_id"],
+                "v3_sku_id": None,
+                "product_id": target_product_id,
+                "package_value": legacy.get("package_value"),
+                "package_unit": legacy.get("package_unit"),
+                "package_label": legacy.get("package_label"),
+                "package_group": legacy.get("package_group"),
+                "attributes": {
+                    "legacy_sku": True,
+                    "legacy_product_id": legacy["canonical_product_key"],
+                    "identity_status": "preserved_disabled_unresolved_color",
+                },
+                "enabled": False,
+                "commerce_state": "legacy_disabled",
+                "media": [],
+            })
 
     excluded = [
         {
@@ -495,6 +605,7 @@ def main():
         "price_conflicts": len(price_conflicts),
         "plantlogic_grouped_products": len(plantlogic_products),
         "plantlogic_request_price_skus": sum(1 for row in plantlogic_skus if row.get("commerce_state") == "request_price"),
+        "plantlogic_retired_color_aliases": len(plantlogic_retired_aliases),
         "plantlogic_legacy_skus": sum(1 for row in plantlogic_skus if row.get("commerce_state") == "legacy_disabled"),
         "v5_stage_products_total": len(products) + len(plantlogic_products),
         "v5_stage_skus_total": len(skus) + len(plantlogic_skus),
@@ -534,6 +645,7 @@ def main():
         f"- Legacy/duplicate SKU aliases: **{summary['sku_aliases']}**",
         f"- Plantlogic grouped products: **{summary['plantlogic_grouped_products']}**",
         f"- Plantlogic request-price SKU: **{summary['plantlogic_request_price_skus']}**",
+        f"- Plantlogic retired color aliases: **{summary['plantlogic_retired_color_aliases']}**",
         f"- Total V5 staging: **{summary['v5_stage_products_total']} products / {summary['v5_stage_skus_total']} SKU**",
         "",
         "## Price conflicts",

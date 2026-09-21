@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 import urllib.request
 from collections import Counter, defaultdict
@@ -40,6 +41,21 @@ def expected_package_group(value, unit):
     return None
 
 
+
+def expected_package_label(value, unit):
+    if value is None:
+        return None
+    unit_map = {"kg": "кг", "g": "г", "l": "л", "ml": "мл", "pcs": "шт"}
+    unit = str(unit or "").strip().lower()
+    label_unit = unit_map.get(unit)
+    if not label_unit:
+        return None
+    amount = Decimal(str(value))
+    amount_text = str(int(amount)) if amount == amount.to_integral() else format(amount.normalize(), "f")
+    return f"{amount_text} {label_unit}"
+
+
+
 def main() -> None:
     url = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_URL
     data = fetch(url)
@@ -54,6 +70,9 @@ def main() -> None:
         return sorted(k for k, n in Counter(values).items() if k and n > 1)
 
     package_group_mismatches = []
+    package_label_mismatches = []
+    duplicate_package_variants = []
+    suspicious_product_names = []
     current_without_exact = []
     no_media = []
     candidate_exact_media = []
@@ -65,7 +84,12 @@ def main() -> None:
 
     for product in products:
         pid = product.get("product_id")
+        name = str(product.get("name") or "")
         pmedia = product.get("media") or []
+        if re.search(r"plantlogic|контейнер|#\d{5,}", name, flags=re.IGNORECASE):
+            suspicious_product_names.append({"product_id": pid, "name": name})
+
+        package_seen = {}
         if not pmedia:
             no_media.append(pid)
 
@@ -86,6 +110,15 @@ def main() -> None:
         if absent:
             missing_content.append({"product_id": pid, "fields": absent})
 
+        for package_key, ids in package_seen.items():
+            if len(ids) > 1:
+                duplicate_package_variants.append({
+                    "product_id": pid,
+                    "package_value": package_key[0],
+                    "package_unit": package_key[1],
+                    "sku_ids": ids,
+                })
+
         for source in product.get("sources") or []:
             st = str(source.get("source_type") or "").lower()
             status = str(source.get("status") or "").lower()
@@ -100,6 +133,22 @@ def main() -> None:
         for sku in product.get("skus") or []:
             expected = expected_package_group(sku.get("package_value"), sku.get("package_unit"))
             actual = sku.get("package_group")
+            expected_label = expected_package_label(sku.get("package_value"), sku.get("package_unit"))
+            actual_label = str(sku.get("package_label") or "").strip()
+            if expected_label and actual_label != expected_label:
+                package_label_mismatches.append({
+                    "sku_id": sku.get("sku_id"),
+                    "product_id": pid,
+                    "actual": actual_label,
+                    "expected": expected_label,
+                })
+
+            if bool(sku.get("enabled")) and sku.get("commerce_enabled") not in (0, False):
+                package_key = (
+                    str(sku.get("package_value")),
+                    str(sku.get("package_unit") or "").lower(),
+                )
+                package_seen.setdefault(package_key, []).append(sku.get("sku_id"))
             if actual != expected:
                 package_group_mismatches.append({
                     "sku_id": sku.get("sku_id"),
@@ -171,6 +220,10 @@ def main() -> None:
         "packages": {
             "group_mismatch_count": len(package_group_mismatches),
             "group_mismatches": package_group_mismatches,
+            "label_mismatch_count": len(package_label_mismatches),
+            "label_mismatches": package_label_mismatches,
+            "duplicate_current_package_variant_count": len(duplicate_package_variants),
+            "duplicate_current_package_variants": duplicate_package_variants,
         },
         "media": {
             "products_without_product_media_count": len(no_media),
@@ -183,6 +236,8 @@ def main() -> None:
             "multi_primary_skus": multi_primary,
         },
         "content": {
+            "suspicious_product_name_count": len(suspicious_product_names),
+            "suspicious_product_names": suspicious_product_names,
             "missing_required_count": len(missing_content),
             "missing_required": missing_content,
             "weak_or_conflicting_sources_count": len(weak_sources),

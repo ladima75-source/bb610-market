@@ -296,6 +296,20 @@ def main():
             })
 
     canonical_rows = [row for row in carry if row["sku_id"] in canonical_ids]
+
+    # One old Plantlogic item already exists inside the current grouped family.
+    # Keep its stable SKU as a disabled legacy identity, but do not keep a duplicate product card.
+    legacy_reparent_product = {
+        "plantlogic-40-round-ugroove-1308041": "blueberry-round-u-groove-pots",
+    }
+    legacy_reparent_rows = [
+        row for row in canonical_rows
+        if row["canonical_product_key"] in legacy_reparent_product
+    ]
+    canonical_rows = [
+        row for row in canonical_rows
+        if row["canonical_product_key"] not in legacy_reparent_product
+    ]
     canonical_products = sorted({row["canonical_product_key"] for row in canonical_rows})
 
     missing_cards = [key for key in canonical_products if key not in product_to_v3]
@@ -324,6 +338,9 @@ def main():
         canonical = row.get("canonical_product_key")
         if raw and canonical and raw != canonical:
             product_aliases.add((raw, canonical, "legacy_product_key"))
+
+    for legacy_product_id, target_product_id in legacy_reparent_product.items():
+        product_aliases.add((legacy_product_id, target_product_id, "legacy_product_reparent"))
 
     def exact_media(commerce_key):
         info = commerce_v3.get(commerce_key)
@@ -429,6 +446,26 @@ def main():
                 "commerce_state": "request_price",
                 "media": media,
             })
+
+    for legacy in legacy_reparent_rows:
+        target_product_id = legacy_reparent_product[legacy["canonical_product_key"]]
+        plantlogic_skus.append({
+            "sku_id": legacy["sku_id"],
+            "v3_sku_id": None,
+            "product_id": target_product_id,
+            "package_value": legacy.get("package_value"),
+            "package_unit": legacy.get("package_unit"),
+            "package_label": legacy.get("package_label"),
+            "package_group": legacy.get("package_group"),
+            "attributes": {
+                "legacy_sku": True,
+                "legacy_product_id": legacy["canonical_product_key"],
+                "identity_status": "preserved_disabled_unresolved_color",
+            },
+            "enabled": False,
+            "commerce_state": "legacy_disabled",
+            "media": [],
+        })
 
     excluded = [
         {

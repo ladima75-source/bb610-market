@@ -1,1 +1,1 @@
-snapshot catalog-review 2026-09-21T13:56:00Z
+snapshot catalog-review-diagnostics 2026-09-21T14:05:00Z

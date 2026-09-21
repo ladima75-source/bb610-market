@@ -1,0 +1,168 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT=/opt/bb610-market
+CMD="${SSH_ORIGINAL_COMMAND:-}"
+
+audit() {
+  cd "$ROOT"
+
+  echo "========== BB610 VPS =========="
+  echo "HEAD: $(git rev-parse HEAD)"
+  echo "BRANCH: $(git branch --show-current)"
+  echo
+
+  echo "--- TRACKED CHANGES ---"
+  git status --short --untracked-files=no || true
+  echo
+
+  echo "--- V2 ---"
+  if [ -f backend/services/product_cards_v2.py ]; then
+    echo "product_cards_v2.py: PRESENT"
+    sha256sum backend/services/product_cards_v2.py
+  else
+    echo "product_cards_v2.py: ABSENT"
+  fi
+
+  echo
+  echo "--- V3 ---"
+  if [ -d data/product_cards_v3/products ]; then
+    printf "cards: "
+    find data/product_cards_v3/products -maxdepth 1 -name 'prd_*.json' -type f | wc -l
+  else
+    echo "cards: 0"
+  fi
+
+  echo
+  echo "--- RUNTIME ---"
+  for d in backend/runtime var/media assets/media; do
+    if [ -d "$d" ]; then
+      printf "%s files: " "$d"
+      find "$d" -type f | wc -l
+    else
+      echo "$d: ABSENT"
+    fi
+  done
+
+  echo
+  echo "--- SQLITE ---"
+  python3 - <<'PY'
+from pathlib import Path
+import sqlite3
+
+root = Path("/opt/bb610-market")
+seen = set()
+interesting = {
+    "sku_commerce","product_content","dynamic_skus","media_assets",
+    "orders","order_items","price_requests","stock_items","reservations"
+}
+
+for pat in ("*.sqlite3","*.sqlite","*.db"):
+    for p in root.rglob(pat):
+        try:
+            rp = p.resolve()
+        except Exception:
+            continue
+        if rp in seen or not p.is_file():
+            continue
+        seen.add(rp)
+        print(f"\nDB {p.relative_to(root)}")
+        try:
+            con = sqlite3.connect(f"file:{rp}?mode=ro", uri=True)
+            tables = [r[0] for r in con.execute(
+                "SELECT name FROM sqlite_master "
+                "WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name"
+            )]
+            for t in tables:
+                if t in interesting:
+                    n = con.execute(f'SELECT COUNT(*) FROM "{t}"').fetchone()[0]
+                    print(f"  {t}: {n}")
+            con.close()
+        except Exception as e:
+            print("  ERROR:", e)
+PY
+
+  echo
+  echo "--- SERVICE ---"
+  systemctl show bb610-market \
+    -p ActiveState \
+    -p SubState \
+    -p User \
+    -p Group \
+    -p WorkingDirectory \
+    --no-pager
+
+  echo "========== END =========="
+}
+
+health() {
+  echo "SERVICE:"
+  systemctl is-active bb610-market
+  echo "API:"
+  curl -fsS --max-time 15 https://api.market.bb610.com.ua/api/v1/health
+  echo
+}
+
+deploy() {
+  sha="${1:-}"
+
+  [[ "$sha" =~ ^[0-9a-fA-F]{7,40}$ ]] || {
+    echo "Invalid commit SHA"
+    exit 64
+  }
+
+  cd "$ROOT"
+
+  if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+    echo "REFUSED: tracked working tree is not clean"
+    git status --short --untracked-files=no
+    exit 65
+  fi
+
+  git fetch origin main
+
+  git cat-file -e "${sha}^{commit}" 2>/dev/null || {
+    echo "REFUSED: commit not found"
+    exit 66
+  }
+
+  git merge-base --is-ancestor "$sha" origin/main || {
+    echo "REFUSED: requested commit is not on origin/main"
+    exit 67
+  }
+
+  git merge-base --is-ancestor HEAD "$sha" || {
+    echo "REFUSED: deployment would not be fast-forward"
+    exit 68
+  }
+
+  echo "BEFORE: $(git rev-parse HEAD)"
+  echo "TARGET: $sha"
+
+  git merge --ff-only "$sha"
+  systemctl restart bb610-market
+  sleep 2
+
+  echo "SERVICE:"
+  systemctl is-active bb610-market
+  echo "API:"
+  curl -fsS --max-time 15 https://api.market.bb610.com.ua/api/v1/health
+  echo
+  echo "DEPLOYED: $(git rev-parse HEAD)"
+}
+
+case "$CMD" in
+  audit)
+    audit
+    ;;
+  health)
+    health
+    ;;
+  deploy\ *)
+    deploy "${CMD#deploy }"
+    ;;
+  *)
+    echo "DENIED"
+    exit 126
+    ;;
+esac

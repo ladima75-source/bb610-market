@@ -48,7 +48,21 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   const legacySkus=(p.sizes||[]).map(x=>BB610.sku(x.id)).filter(Boolean);
   const skuMap=new Map([...runtimeSkus,...legacySkus].map(x=>[x.id||x.sku,x]));
   const packageLabels=[...new Set([...runtimeSkus,...legacySkus].map(x=>String(x?.variant||x?.package||x?.label||'').trim()).filter(Boolean))];
-  const skuList=packageLabels.map(label=>BB610.skuForPackage?.(p.id,label)||[...skuMap.values()].find(x=>BB610.sameSkuPackage?.(label,x))).filter(Boolean);
+  const packageSortValue=s=>{
+    const value=Number(s?.package_value??s?.volume_weight?.value);
+    const unit=String(s?.package_unit??s?.volume_weight?.unit??'').trim().toLowerCase();
+    if(!Number.isFinite(value))return Number.POSITIVE_INFINITY;
+    if(unit==='g')return value;
+    if(unit==='kg')return value*1000;
+    if(unit==='ml')return value;
+    if(unit==='l')return value*1000;
+    if(unit==='pcs'||unit==='шт')return value;
+    return value;
+  };
+  const skuList=packageLabels
+    .map(label=>BB610.skuForPackage?.(p.id,label)||[...skuMap.values()].find(x=>BB610.sameSkuPackage?.(label,x)))
+    .filter(Boolean)
+    .sort((a,b)=>packageSortValue(a)-packageSortValue(b)||String(a.variant||'').localeCompare(String(b.variant||''),'uk'));
   let selectedSku=selectedFromUrl
     ?(BB610.skuForPackage?.(p.id,selectedFromUrl.variant||selectedFromUrl.package||selectedFromUrl.label,selectedFromUrl.id)||selectedFromUrl)
     :(BB610.defaultSku(p.id)||skuList[0]||null);
@@ -57,7 +71,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   trackView();
   document.title=selectedSku?`${p.name} ${selectedSku.variant||''} · BB610 Market`:p.name+' · BB610 Market';
 
-  const packCards=skuList.length?skuList.map(s=>`<button class="pack sku-pack${selectedSku?.id===s.id?' active':''}" type="button" data-sku-select="${s.id}"><b>${s.variant}</b><div class="price" style="font-size:18px;margin-top:4px">${BB610.isPriceRequestSku?.(s)?'Ціна за запитом':BB610.money(s.price)}</div><small class="unit-price">${BB610.isPriceRequestSku?.(s)?'Під замовлення':(s.stock_label||'Наявність уточнюється')}</small></button>`).join(''):(p.factoryPacks||[]).map(s=>`<div class="pack"><b>${s}</b><small class="unit-price">Заводське фасування виробника · пропозиція BB610 ще не налаштована</small></div>`).join('');
+  const packCards=skuList.length?skuList.map(s=>`<button class="pack sku-pack${selectedSku?.id===s.id?' active':''}" type="button" data-sku-select="${s.id}"><b>${s.variant}</b><span class="pack-price">${BB610.isPriceRequestSku?.(s)?'Ціна за запитом':BB610.money(s.price)}</span></button>`).join(''):(p.factoryPacks||[]).map(s=>`<div class="pack"><b>${s}</b></div>`).join('');
 
   const szr=p.category==='protection'?`<div class="info-card product-detail-card szr-card"><h2>ДАНІ ДЛЯ ЗЗР / СЗР</h2><div class="kv"><span>Діюча речовина</span><b>${richValue(p.activeIngredient)}</b></div><div class="kv"><span>Концентрація</span><b>${richValue(p.concentration)}</b></div><div class="kv"><span>Шкідник / хвороба</span><b>${richValue(p.target)}</b></div><div class="kv"><span>Строк очікування</span><b>${richValue(p.waitingPeriod)}</b></div><div class="kv"><span>Клас небезпеки</span><b>${richValue(p.hazardClass)}</b></div></div>`:'';
 
@@ -139,13 +153,13 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${String(p.categoryLabel||p.category||'Каталог').toUpperCase()} / ${p.name}</div>
   <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${productImageFor(selectedSku)}" alt="${p.name}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div>${galleryImages.length>1?`<div class="product-gallery-thumbs">${galleryImages.map((im,i)=>`<button type="button" class="gallery-thumb${i===0?' active':''}" data-gallery-img="${im}"><img src="${im}" alt="${p.name} ${i+1}"></button>`).join('')}</div>`:''}</div>
   <div class="product-summary"><div class="eyebrow">${p.categoryLabel}</div><h1>${p.name}</h1><div class="brand">${p.brand}</div><p class="product-lead">${richValue(p.shortDescription||p.productType||'')}</p><div class="product-keyfacts">${p.productType?`<span><small>Тип</small><b>${richValue(p.productType)}</b></span>`:''}${p.npk&&p.npk!=='—'?`<span><small>NPK</small><b>${richValue(p.npk)}</b></span>`:''}${p.activeIngredient&&p.activeIngredient!=='—'?`<span><small>Діюча речовина</small><b>${richValue(p.activeIngredient)}</b></span>`:''}</div>
+  ${packCards?`<div class="product-pack-selector"><div class="product-pack-label">Фасування</div><div class="pack-grid">${packCards}</div></div>`:''}
   <div class="selected-variant" id="selected-variant"></div>
   <div class="price" id="selected-price"></div><div class="unit-price" id="selected-unit"></div><div class="stock" id="selected-stock" style="margin-top:10px"></div>
   ${p.verified?'<div class="verified-line">✓ <b>BB610 VERIFIED</b><small>Дані продукту звірено з первинним джерелом виробника</small></div>':''}
   <div class="product-buy"><input class="qty" id="qty" type="number" min="1" value="1"><button class="btn" id="buy">КУПИТИ</button><button class="btn ghost" id="fav">♡</button><button class="btn ghost" id="cmp">⇄</button></div>
   <div class="local-points" id="selected-shipping"></div></div></div>
   <div class="info-stack product-info-grid compact-product-info">
-  <div class="info-card product-detail-card packs-card"><h2>ФАСУВАННЯ</h2><div class="pack-grid">${packCards}</div></div>
   ${tabsHtml}
   ${szr}</div>`;
 

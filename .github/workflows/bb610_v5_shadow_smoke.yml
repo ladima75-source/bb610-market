@@ -1,0 +1,130 @@
+name: BB610 V5 Production Shadow Smoke
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/v5-storefront-smoke-request.txt'
+      - '.github/workflows/bb610_v5_shadow_smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: API smoke
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, urllib.request
+          base='https://api.market.bb610.com.ua'
+          def get(path):
+              with urllib.request.urlopen(base+path, timeout=30) as r:
+                  return json.load(r)
+          health=get('/api/v1/health')
+          assert health.get('ok') is True
+          v5=get('/api/v1/catalog/v5')
+          c=v5.get('counts') or {}
+          assert v5.get('schema_version')=='5.0'
+          assert c.get('public_products')==82
+          assert c.get('public_skus')==213
+          assert len(v5.get('product_aliases') or [])>0
+          assert len(v5.get('sku_aliases') or [])==109
+          legacy=get('/api/v1/catalog/v5/resolve-sku/BB610-VLG-KENDAL-100ML')
+          assert legacy.get('is_alias') is True
+          assert legacy.get('price')==215.0
+          assert legacy.get('canonical_sku_id')=='BB610-32DA4F652F73A1'
+          canonical=get('/api/v1/catalog/v5/resolve-sku/BB610-32DA4F652F73A1')
+          assert canonical.get('price')==220.0
+          print('V5 API PRODUCTION: PASS')
+          PY
+
+      - name: Find Chromium
+        id: browser
+        shell: bash
+        run: |
+          set -euo pipefail
+          for b in google-chrome google-chrome-stable chromium chromium-browser; do
+            if command -v "$b" >/dev/null 2>&1; then
+              echo "bin=$(command -v "$b")" >> "$GITHUB_OUTPUT"
+              echo "Using $b"
+              exit 0
+            fi
+          done
+          echo "No Chromium browser found" >&2
+          exit 1
+
+      - name: Render V5 catalog
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER='${{ steps.browser.outputs.bin }}'
+          "$BROWSER" --headless=new --no-sandbox --disable-gpu \
+            --virtual-time-budget=12000 --dump-dom \
+            'https://market.bb610.com.ua/catalog.html?v5=1' > /tmp/catalog-v5.html
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('/tmp/catalog-v5.html').read_text(encoding='utf-8',errors='ignore')
+          cards=s.count('data-product-id=')
+          assert cards>=75, f'too few V5 catalog cards: {cards}'
+          assert 'product-card-v2' in s
+          assert 'BB610 Product Master unavailable' not in s
+          print('V5 CATALOG DOM: PASS', cards)
+          PY
+
+      - name: Render V5 Kendal PDP
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER='${{ steps.browser.outputs.bin }}'
+          "$BROWSER" --headless=new --no-sandbox --disable-gpu \
+            --virtual-time-budget=12000 --dump-dom \
+            'https://market.bb610.com.ua/product.html?id=kendal&sku=BB610-32DA4F652F73A1&v5=1' > /tmp/kendal-v5.html
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('/tmp/kendal-v5.html').read_text(encoding='utf-8',errors='ignore')
+          assert 'Kendal' in s
+          assert '220 грн' in s, 'canonical Kendal price not rendered'
+          assert 'id="selected-price"' in s
+          assert 'mpc-shell' not in s, 'legacy Product Card runtime leaked into V5'
+          print('V5 KENDAL PDP DOM: PASS')
+          PY
+
+      - name: Render V5 Plantlogic PDP
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER='${{ steps.browser.outputs.bin }}'
+          "$BROWSER" --headless=new --no-sandbox --disable-gpu \
+            --virtual-time-budget=12000 --dump-dom \
+            'https://market.bb610.com.ua/product.html?id=blueberry-round-u-groove-pots&sku=PL-BB-1308041-TC&v5=1' > /tmp/pot-v5.html
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('/tmp/pot-v5.html').read_text(encoding='utf-8',errors='ignore')
+          assert 'pot-pdp' in s
+          assert '1308041' in s
+          assert 'Ціна за запитом' in s
+          assert 'mpc-shell' not in s
+          print('V5 PLANTLOGIC PDP DOM: PASS')
+          PY
+
+      - name: Legacy storefront unaffected
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER='${{ steps.browser.outputs.bin }}'
+          "$BROWSER" --headless=new --no-sandbox --disable-gpu \
+            --virtual-time-budget=9000 --dump-dom \
+            'https://market.bb610.com.ua/catalog.html' > /tmp/catalog-legacy.html
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('/tmp/catalog-legacy.html').read_text(encoding='utf-8',errors='ignore')
+          cards=s.count('data-product-id=')
+          assert cards>0, 'legacy catalog failed to render'
+          print('LEGACY CATALOG STILL LIVE: PASS', cards)
+          PY

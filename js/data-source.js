@@ -128,8 +128,32 @@ window.BB610_DATA_SOURCE={
     return [...new Set((rows||[]).map(x=>String(x?.path||'').trim()).filter(Boolean))];
   },
 
-  _v5Sku(raw){
-    const media=this._mediaPaths(raw.media);
+  _plantlogicSections(raw){
+    if(raw?.category_id!=='containers')return [];
+    const chars=Array.isArray(raw.characteristics)?raw.characteristics:[];
+    const haystack=[
+      raw.name,raw.short_description,raw.description,raw.application,
+      ...chars.flatMap(x=>[x?.label,x?.value])
+    ].map(x=>String(x||'').toLowerCase()).join(' ');
+    const out=[];
+    if(/лохин|blueberr|arand/.test(haystack))out.push('blueberry');
+    if(/малин|ожин|rubus|raspberr|blackberr/.test(haystack))out.push('rubus');
+    if(/полуниц|суниц|strawberr/.test(haystack))out.push('strawberry');
+    if(/овоч|vegetable|tomato|pepper|cucumber/.test(haystack))out.push('vegetable');
+    if(/універс|universal/.test(haystack))out.push('universal');
+    return out.length?out:['universal'];
+  },
+
+  _v5Sku(raw,productRaw){
+    const exactMedia=this._mediaPaths(raw.media);
+    let media=exactMedia;
+    if(productRaw?.category_id==='containers'){
+      const article=String(raw?.attributes?.manufacturer_product_no||'').trim();
+      if(article){
+        const sameModel=(productRaw.media||[]).filter(x=>String(x?.alt||'').includes(article));
+        media=[...new Set([...exactMedia,...this._mediaPaths(sameModel)])];
+      }
+    }
     const primary=(raw.media||[]).find(x=>x?.is_primary)?.path||media[0]||'';
     const identityEnabled=raw.enabled===1||raw.enabled===true;
     const commerceEnabled=raw.commerce_enabled===1||raw.commerce_enabled===true;
@@ -212,7 +236,7 @@ window.BB610_DATA_SOURCE={
       default_sku_id:defaultSku?.id||null,
       public_enabled:raw.public_enabled!==0&&raw.public_enabled!==false,
       status:raw.status||'active',
-      plantlogic_sections:(raw.category_id==='containers'?['blueberry']:[]),
+      plantlogic_sections:this._plantlogicSections(raw),
       facets:{
         category:raw.category_id||'other',
         brand:raw.brand||'',
@@ -222,7 +246,7 @@ window.BB610_DATA_SOURCE={
   },
 
   _applyV5(md){
-    const mappedSkus=(md.products||[]).flatMap(p=>(p.skus||[]).map(s=>this._v5Sku(s)))
+    const mappedSkus=(md.products||[]).flatMap(p=>(p.skus||[]).map(s=>this._v5Sku(s,p)))
       .filter(s=>s.id&&s.product_id);
     const mappedProducts=(md.products||[]).map(p=>this._v5Product(p,mappedSkus))
       .filter(p=>p.id&&p.public_enabled!==false&&p.status==='active');

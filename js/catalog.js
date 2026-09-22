@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   updatePlantlogicStickyOffset();
   window.addEventListener('resize',updatePlantlogicStickyOffset,{passive:true});
 
-  const h=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const h=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[ch]));
   const norm=v=>String(v??'').trim().toLowerCase();
   const uniq=arr=>[...new Set(arr.map(v=>String(v??'').trim()).filter(Boolean))];
   const natural=(a,b)=>a.localeCompare(b,'uk',{numeric:true,sensitivity:'base'});
@@ -122,10 +122,6 @@ document.addEventListener('DOMContentLoaded',async()=>{
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/05/frambuesa-rubus-hidroponia-production-1.jpg?fit=2481%2C815&ssl=1'
     },
     {
-      id:'universal',label:'Універсальні контейнери',subtitle:'Plantlogic Production',titleSuffix:'універсальний',
-      cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/07/hydroponic-system-cover.png?resize=669%2C502'
-    },
-    {
       id:'strawberry',label:'Для полуниці',subtitle:'Strawberry Production',titleSuffix:'для полуниці',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/02/Strawberry-Tabletop-System-Plantlogic.png?fit=1365%2C769&ssl=1'
     },
@@ -134,23 +130,28 @@ document.addEventListener('DOMContentLoaded',async()=>{
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/06/Vegetable_Header.jpg?fit=2481%2C971&ssl=1'
     },
     {
-      id:'bag_bases',label:'Основи для мішків',subtitle:'Bag Bases',titleSuffix:'',
-      cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2022/11/espaciador-para-bolsa.jpg?resize=300%2C225&ssl=1'
+      id:'garden',label:'Для саду',subtitle:'BB610 Garden',titleSuffix:'для саду та розсадника',
+      cultureImage:''
     },
     {
-      id:'accessories',label:'Аксесуари',subtitle:'Accessories',titleSuffix:'',
+      id:'universal',label:'Універсальні',subtitle:'Універсальне застосування',titleSuffix:'універсальний',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/07/hydroponic-system-cover.png?resize=669%2C502'
     }
   ];
-  const plantlogicSectionsFor=p=>Array.isArray(p?.plantlogic_sections)?p.plantlogic_sections.filter(Boolean):[];
+  const plantlogicSectionsFor=p=>{
+    const direct=Array.isArray(p?.plantlogic_sections)?p.plantlogic_sections.filter(Boolean):[];
+    const hidden=(Array.isArray(p?.characteristics)?p.characteristics:[])
+      .find(row=>String(row?.label||'').trim()==='__plantlogic_sections');
+    const explicit=String(hidden?.value||'').split('|').map(x=>x.trim()).filter(Boolean);
+    return uniq([...direct,...explicit]);
+  };
   const plantlogicSearchAliases={
     blueberry:'лохина лохини blueberry',
     rubus:'малина малини ожина ожини raspberry blackberry rubus',
-    universal:'універсальний універсальні контейнер контейнери universal',
     strawberry:'полуниця полуниці strawberry',
     vegetable:'овочі овочеві vegetable',
-    bag_bases:'основи мішків мішки bag bases',
-    accessories:'аксесуари accessory accessories'
+    garden:'сад саду розсадник nursery garden',
+    universal:'універсальний універсальні контейнер контейнери universal'
   };
   const plantlogicSectionSearchText=p=>plantlogicSectionsFor(p).map(id=>{
     const section=plantlogicSectionOrder.find(x=>x.id===id);

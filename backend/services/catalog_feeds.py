@@ -143,7 +143,11 @@ def _mpn(product: dict, sku: dict) -> str:
 
 def _effective_policy(product: dict, sku: dict) -> str:
     sku_policy = _text(sku.get("feed_policy"))
-    return sku_policy or _text(product.get("feed_policy"))
+    product_policy = _text(product.get("feed_policy"))
+    # Public Product Master is the catalog allow-list. Explicit feed policy can
+    # still block/review an item, but an absent policy must not silently remove
+    # an otherwise sale-ready public SKU from Merchant/Meta feeds.
+    return sku_policy or product_policy or "allowed"
 
 
 def _price(commerce: dict) -> float | None:

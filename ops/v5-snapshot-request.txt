@@ -1,1 +1,1 @@
-snapshot plantlogic-sections-v5-retry 2026-09-22T11:12:00+03:00
+snapshot plantlogic-sections-v5-final 2026-09-22T11:18:00+03:00

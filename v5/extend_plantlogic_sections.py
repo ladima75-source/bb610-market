@@ -9,6 +9,7 @@ from pathlib import Path
 
 TARGET_SECTIONS = {"rubus", "strawberry", "vegetable", "universal"}
 GARDEN_USE_RE = re.compile(r"розсадник|nursery|сад", re.I)
+CANNABIS_RE = re.compile(r"\b(?:канабіс|cannabis)\b", re.I)
 HIDDEN_SECTION_LABEL = "__plantlogic_sections"
 
 
@@ -18,6 +19,16 @@ def load(path):
 
 def dump(path, value):
     Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def sanitize_public(value):
+    if isinstance(value, str):
+        return CANNABIS_RE.sub("універсальне субстратне вирощування", value)
+    if isinstance(value, list):
+        return [sanitize_public(item) for item in value]
+    if isinstance(value, dict):
+        return {key: sanitize_public(item) for key, item in value.items()}
+    return value
 
 
 def parse_package(value):
@@ -70,7 +81,7 @@ def media_for_sku(card, sku):
 
 
 def content_from_card(product_id, card, sections, source_url):
-    content = card.get("content") or {}
+    content = sanitize_public(card.get("content") or {})
     characteristics = [
         row for row in (content.get("characteristics") or [])
         if str(row.get("label") or "") != HIDDEN_SECTION_LABEL
@@ -207,7 +218,7 @@ def main():
             skipped.append((v3_product_id, "no_nonconflicting_sku"))
             continue
 
-        card_content = card.get("content") or {}
+        card_content = sanitize_public(card.get("content") or {})
         added_products.append({
             "product_id": slug,
             "slug": slug,

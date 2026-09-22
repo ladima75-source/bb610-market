@@ -53,12 +53,28 @@ jobs:
           print(json.dumps(d.get('gateway',{}),ensure_ascii=False,indent=2))
           PY
 
+      - name: Prepare identity-build snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp -a .v5-snapshot .v5-build-snapshot
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path('.v5-build-snapshot/db/sku_commerce.json')
+          rows=json.loads(path.read_text(encoding='utf-8'))
+          kept=[row for row in rows if not str(row.get('sku') or '').startswith('PL-BB-')]
+          removed=len(rows)-len(kept)
+          path.write_text(json.dumps(kept,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(f'Excluded derived V5 Plantlogic commerce identities: {removed}')
+          PY
+
       - name: Build clean V5 staging
         shell: bash
         run: |
           set -euo pipefail
           python v5/build_stage.py \
-            --snapshot .v5-snapshot \
+            --snapshot .v5-build-snapshot \
             --json-out v5/staging/production-current.json \
             --md-out v5/staging/production-current.md
           python - <<'PY'

@@ -110,18 +110,9 @@ _CANONICAL_TITLE_MIGRATION_ID = "20260922_canonical_nonpot_titles_v1"
 
 
 def _apply_canonical_nonpot_titles_once(con: sqlite3.Connection) -> None:
-    con.execute(
-        """
-        CREATE TABLE IF NOT EXISTS runtime_migrations (
-          migration_id TEXT PRIMARY KEY,
-          applied_at TEXT NOT NULL
-        )
-        """
-    )
-    if con.execute(
-        "SELECT 1 FROM runtime_migrations WHERE migration_id=?",
-        (_CANONICAL_TITLE_MIGRATION_ID,),
-    ).fetchone():
+    migrations = product_master_v5_migrations
+    migrations._ensure_migration_table(con)
+    if migrations._applied(con, _CANONICAL_TITLE_MIGRATION_ID):
         return
     rows = {
         row["product_id"]: str(row["category_id"] or "").strip().lower()
@@ -136,14 +127,8 @@ def _apply_canonical_nonpot_titles_once(con: sqlite3.Connection) -> None:
             category = rows.get(product_id)
             if category is None or category in {"containers", "контейнери"}:
                 continue
-            con.execute(
-                "UPDATE products SET name=?, updated_at=CURRENT_TIMESTAMP WHERE product_id=?",
-                (name, product_id),
-            )
-        con.execute(
-            "INSERT INTO runtime_migrations(migration_id,applied_at) VALUES(?,CURRENT_TIMESTAMP)",
-            (_CANONICAL_TITLE_MIGRATION_ID,),
-        )
+            migrations._update_product(con, product_id, {"name": name})
+        migrations._record(con, _CANONICAL_TITLE_MIGRATION_ID)
 
 
 def package_group_for(value, unit) -> str | None:
@@ -212,6 +197,9 @@ def _apply_runtime_migrations_once(con: sqlite3.Connection) -> None:
 def _needs_rebuild() -> bool:
     if not DB_PATH.is_file():
         return True
+    # After cutover the runtime V5 database is persistent and admin-editable.
+    # Source files remain migration/bootstrap evidence, not a competing live
+    # owner. Rebuild from source only when explicitly requested.
     rebuild = str(os.getenv("BB610_V5_REBUILD_ON_SOURCE_CHANGE", "")).strip().lower()
     if rebuild not in {"1", "true", "yes"}:
         return False

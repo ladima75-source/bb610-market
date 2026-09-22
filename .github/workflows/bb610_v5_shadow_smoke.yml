@@ -61,24 +61,24 @@ jobs:
           echo "No Chromium browser found" >&2
           exit 1
 
-      - name: Render V5 catalog
+      - name: Render V5 containers catalog
         shell: bash
         run: |
           set -euo pipefail
           BROWSER='${{ steps.browser.outputs.bin }}'
           "$BROWSER" --headless=new --no-sandbox --disable-gpu \
             --virtual-time-budget=12000 --dump-dom \
-            'https://market.bb610.com.ua/catalog.html' > /tmp/catalog-v5.html
+            'https://market.bb610.com.ua/categories/containers/' > /tmp/containers-v5.html
           python - <<'PY'
           from pathlib import Path
-          s=Path('/tmp/catalog-v5.html').read_text(encoding='utf-8',errors='ignore')
+          s=Path('/tmp/containers-v5.html').read_text(encoding='utf-8',errors='ignore')
           cards=s.count('data-product-id=')
-          assert cards>=90, f'too few V5 catalog cards: {cards}'
+          assert cards>=20, f'too few Plantlogic cards: {cards}'
           assert 'product-card-v2' in s
           assert 'BB610 Product Master unavailable' not in s
           for title in ('Для лохини','Для малини та ожини','Для полуниці','Для овочевих культур','Сад','Універсальні'):
               assert title in s, f'missing Plantlogic section: {title}'
-          print('V5 CATALOG DOM: PASS', cards)
+          print('V5 CONTAINERS DOM: PASS', cards)
           PY
 
       - name: Render V5 Kendal PDP

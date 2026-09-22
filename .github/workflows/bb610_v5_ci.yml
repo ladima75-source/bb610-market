@@ -179,7 +179,7 @@ jobs:
               assert item is not None
               assert all(x.get('source_type')!='unverified_legacy_name' for x in item['sources'])
           master134013=product('master-npk-13-40-13')
-          assert 'укорінення' in master134013['name'].lower()
+          assert master134013['name']=='MASTER 13-40-13 — водорозчинне NPK-добриво Valagro'
           assert 'P₂O₅' in (master134013['composition'] or '')
           assert '20–25 г на 10 л' in (master134013['application'] or '')
           assert len(master134013['benefits']) >= 3

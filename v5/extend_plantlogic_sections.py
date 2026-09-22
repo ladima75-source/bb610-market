@@ -31,6 +31,16 @@ def sanitize_public(value):
     return value
 
 
+def normalize_official_image_url(value):
+    url = str(value or "").strip()
+    if not url:
+        return ""
+    if url.startswith("https://i0.wp.com/getplantlogic.com/"):
+        url = "https://getplantlogic.com/" + url.split("https://i0.wp.com/getplantlogic.com/", 1)[1]
+        url = url.split("?", 1)[0]
+    return url
+
+
 def parse_package(value):
     text = str(value or "").replace(",", ".").lower()
     match = re.search(r"(?<!\d)(\d+(?:\.\d+)?)\s*(л|l|кг|kg|г|g|мл|ml)\b", text, re.I)
@@ -78,6 +88,19 @@ def media_for_sku(card, sku):
             "is_primary": media_id == sku.get("primary_media_id"),
         })
     return out
+
+
+def official_fallback_media(spec):
+    image_url = normalize_official_image_url(spec.get("image_url"))
+    if not image_url:
+        return []
+    return [{
+        "media_id": "official_fallback",
+        "path": image_url,
+        "alt": sanitize_public(spec.get("name") or "Plantlogic"),
+        "kind": "image",
+        "is_primary": True,
+    }]
 
 
 def content_from_card(product_id, card, sections, source_url):
@@ -201,6 +224,7 @@ def main():
                 continue
             value, unit, label = parse_package(sku.get("package") or sku.get("label"))
             attributes["plantlogic_sections"] = sections
+            media = media_for_sku(card, sku) or official_fallback_media(spec)
             sku_rows.append({
                 "sku_id": sku_id,
                 "v3_sku_id": sku.get("sku_id"),
@@ -212,7 +236,7 @@ def main():
                 "attributes": attributes,
                 "enabled": bool(sku.get("enabled", True)),
                 "commerce_state": "request_price",
-                "media": media_for_sku(card, sku),
+                "media": media,
             })
         if not sku_rows:
             skipped.append((v3_product_id, "no_nonconflicting_sku"))

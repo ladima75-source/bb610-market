@@ -1,26 +1,19 @@
-/* BB610 Market — Organic Planet autumn commercial layer, 2026-09-22 */
-.bbop-hero{position:relative;width:min(1280px,calc(100% - 48px));min-height:500px;margin:18px auto 0;overflow:hidden;border:1px solid #303a34;border-radius:18px;background:#0d1410;isolation:isolate}
-.bbop-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 52%;filter:saturate(.78) contrast(1.04) brightness(.64);z-index:-3}
-.bbop-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,14,10,.94) 0%,rgba(8,14,10,.80) 35%,rgba(8,14,10,.30) 67%,rgba(8,14,10,.08) 100%);z-index:-2}
-.bbop-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,10,8,.42),transparent 45%);z-index:-1}
-.bbop-hero-copy{max-width:650px;padding:74px 64px 42px}
-.bbop-season{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;color:#d9b45a;font-size:11px;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
-.bbop-season:before{content:"";width:22px;height:1px;background:#d9b45a}
-.bbop-hero h1{margin:0;max-width:620px;color:#f7f7f2;font-size:58px;line-height:.98;letter-spacing:-.045em;font-weight:850}
-.bbop-hero p{margin:20px 0 0;max-width:560px;color:#d4dbd5;font-size:17px;line-height:1.55}
-.bbop-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.bbop-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border:1px solid #d8aa3d;border-radius:8px;background:#d8aa3d;color:#10140f!important;text-decoration:none!important;font-size:13px;font-weight:850}
-.bbop-btn.secondary{border-color:rgba(255,255,255,.32);background:rgba(13,20,16,.46);color:#f2f4ef!important;backdrop-filter:blur(8px)}
-.bbop-trust{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:42px;color:#b8c2ba;font-size:11px;font-weight:700;letter-spacing:.025em}
-.bbop-trust span{display:flex;align-items:center;gap:7px}.bbop-trust span:before{content:"";width:5px;height:5px;border-radius:50%;background:#80bd54}
-.bbop-seasonal{width:min(1280px,calc(100% - 48px));margin:0 auto;padding:42px 0 12px}
-.bbop-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:17px}.bbop-head h2{margin:3px 0 0;color:#f4f5f1;font-size:30px;line-height:1.05;letter-spacing:-.025em}.bbop-head p{margin:0;max-width:520px;color:#9fa9a2;font-size:13px;line-height:1.5}
-.bbop-kicker{color:#d5ad4c;font-size:10px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
-.bbop-scenarios{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
-.bbop-scenario{position:relative;min-height:310px;overflow:hidden;border:1px solid #313a35;border-radius:15px;background:#151c17;text-decoration:none!important}
-.bbop-scenario img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.75) brightness(.67);transition:transform .35s ease,filter .35s ease}.bbop-scenario:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,12,9,.96) 0%,rgba(7,12,9,.68) 45%,rgba(7,12,9,.10) 100%)}
-.bbop-scenario-copy{position:absolute;z-index:2;left:26px;right:26px;bottom:24px}.bbop-scenario h3{margin:5px 0 8px;max-width:590px;color:#fff;font-size:29px;line-height:1.04;letter-spacing:-.025em}.bbop-scenario p{margin:0;max-width:600px;color:#c8d0ca;font-size:13px;line-height:1.45}.bbop-scenario-link{display:inline-block;margin-top:13px;color:#e1b955;font-size:12px;font-weight:800}.bbop-scenario:hover img{transform:scale(1.035);filter:saturate(.85) brightness(.72)}
-.bbop-problems{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.bbop-problem{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:92px;padding:19px 22px;border:1px solid #2e3732;border-radius:13px;background:linear-gradient(135deg,#171e19,#121713);text-decoration:none!important}.bbop-problem strong{display:block;color:#f0f2ee;font-size:16px}.bbop-problem small{display:block;margin-top:5px;color:#9ea8a1;font-size:12px}.bbop-problem b{color:#dcb24c;font-size:20px;font-weight:500}.bbop-note{margin:13px 2px 0;color:#7f8a83;font-size:10px;line-height:1.45}
-.products-section .section-head .eyebrow{color:#d5ad4c}.products-section .section-head h2{letter-spacing:-.02em}
-@media(max-width:820px){.bbop-hero{min-height:470px}.bbop-hero-copy{padding:62px 38px 36px}.bbop-hero h1{font-size:48px}.bbop-scenarios{grid-template-columns:1fr}.bbop-scenario{min-height:270px}.bbop-head{align-items:start;flex-direction:column;gap:8px}}
-@media(max-width:680px){.bbop-hero,.bbop-seasonal{width:calc(100% - 28px)}.bbop-hero{min-height:510px}.bbop-hero>img{object-position:64% center}.bbop-hero:before{background:linear-gradient(90deg,rgba(8,14,10,.94) 0%,rgba(8,14,10,.76) 62%,rgba(8,14,10,.30) 100%)}.bbop-hero-copy{padding:54px 22px 28px}.bbop-hero h1{font-size:41px}.bbop-hero p{font-size:15px}.bbop-actions{flex-direction:column;align-items:stretch}.bbop-btn{width:100%}.bbop-trust{margin-top:30px;gap:8px 14px}.bbop-seasonal{padding-top:32px}.bbop-head h2{font-size:26px}.bbop-problems{grid-template-columns:1fr}.bbop-scenario h3{font-size:25px}}
+/* BB610 Market — seasonal commercial banners, 2026-09-22 */
+.bbop-seasonal{width:min(1280px,calc(100% - 48px));margin:0 auto;padding:30px 0 8px}
+.bbop-head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:15px}
+.bbop-head h2{margin:4px 0 0;color:#f4f5f1;font-size:29px;line-height:1.05;letter-spacing:-.025em}
+.bbop-head p{margin:0;max-width:500px;color:#9fa9a2;font-size:12px;line-height:1.5}
+.bbop-kicker{color:#d5ad4c;font-size:10px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.bbop-scenarios{display:grid;grid-template-columns:1.18fr .82fr;gap:14px}
+.bbop-scenario{position:relative;min-height:265px;overflow:hidden;border:1px solid #313a35;border-radius:14px;background:#151c17;text-decoration:none!important;isolation:isolate}
+.bbop-scenario img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.03) brightness(.62);transition:transform .35s ease,filter .35s ease;z-index:-3}
+.bbop-scenario:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,12,9,.96) 0%,rgba(7,12,9,.67) 48%,rgba(7,12,9,.08) 100%);z-index:-2}
+.bbop-winter:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,15,11,.52),transparent 70%);z-index:-1}
+.bbop-scenario-copy{position:absolute;left:25px;right:25px;bottom:22px;z-index:2}
+.bbop-scenario h3{margin:5px 0 8px;max-width:610px;color:#fff;font-size:28px;line-height:1.05;letter-spacing:-.025em}
+.bbop-scenario p{margin:0;max-width:580px;color:#c9d0cb;font-size:13px;line-height:1.45}
+.bbop-scenario-link{display:inline-block;margin-top:13px;color:#e1b955;font-size:12px;font-weight:800}
+.bbop-scenario:hover img{transform:scale(1.035);filter:saturate(.88) contrast(1.03) brightness(.68)}
+.bbop-note{margin:10px 2px 0;color:#78847d;font-size:10px;line-height:1.45}
+@media(max-width:820px){.bbop-head{align-items:flex-start;flex-direction:column;gap:7px}.bbop-scenarios{grid-template-columns:1fr}.bbop-scenario{min-height:245px}}
+@media(max-width:680px){.bbop-seasonal{width:calc(100% - 28px);padding-top:24px}.bbop-head h2{font-size:25px}.bbop-scenario{min-height:230px}.bbop-scenario-copy{left:20px;right:20px;bottom:19px}.bbop-scenario h3{font-size:23px}.bbop-scenario p{font-size:12px}}

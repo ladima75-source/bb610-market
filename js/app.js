@@ -128,12 +128,7 @@ const BB610 = (() => {
       if(galleryImage)return galleryImage;
       return fallbackImage(categoryId);
     }
-    // Canonical package media is the approved storefront photo. Prefer it over
-    // runtime SKU.image because runtime rows can contain stale/broken media URLs.
     const selectedPack=s?.variant||s?.package||s?.label;
-    // Curated package media from Catalog Master is authoritative. Runtime
-    // package media is only the fallback for products whose approved matrix
-    // does not contain a photo (for example Brexil Mix after runtime repair).
     const approved=approvedSkuImage(p,s);
     if(approved)return approved;
     const packageImage=imageForPackage(p?.id,selectedPack);
@@ -142,9 +137,6 @@ const BB610 = (() => {
     if(skuImage&&!isFallbackImage(skuImage))return skuImage;
     const skuGallery=firstRealImage(s?.gallery);
     if(skuGallery)return skuGallery;
-    // Strict package-only media is a PDP rule. Catalog/listing cards must keep
-    // their valid product-level image when a package-specific image does not
-    // exist; otherwise normal products collapse to generic black placeholders.
     const path=String(globalThis.location?.pathname||'').toLowerCase();
     const strictPackageContext=/\/product\.html$/.test(path)||/\/products\/[^/]+\/?$/.test(path);
     if(strictPackageContext&&packageMediaRequired(p,s))return fallbackImage(categoryId);
@@ -160,7 +152,17 @@ const BB610 = (() => {
     return fallbackImage(categoryId);
   };
   const compactText=v=>String(v||'').replace(/\s+/g,' ').trim();
-  const cardTitle=p=>p.category==='containers'?compactText(p.name):(compactText(p.name).split(/,\s+/)[0]||compactText(p.name));
+  const skuName=(p,s=null)=>{
+    const base=compactText(storefrontName(p));
+    const categoryId=String(p?.category_id||p?.category||'').trim().toLowerCase();
+    if(categoryId==='containers'||!v5Mode())return base;
+    const pack=compactText(s?.variant||s?.package||s?.label);
+    if(!pack)return base;
+    return base.endsWith(`, ${pack}`)?base:`${base}, ${pack}`;
+  };
+  const cardTitle=(p,s=null)=>p.category==='containers'
+    ?compactText(p.name)
+    :(v5Mode()?skuName(p,s):(compactText(p.name).split(/,\s+/)[0]||compactText(p.name)));
   const cardSummary=p=>{
     const candidates=[p.shortDescription,p.productType,p.manufacturerUse,(p.purposes||[]).join(' · ')];
     const name=compactText(p.name).toLowerCase();
@@ -183,9 +185,6 @@ const BB610 = (() => {
   const hasPrice=s=>!!s&&s.price!==null&&s.price!==undefined&&Number.isFinite(Number(s.price));
   const isCommercialActive=s=>!!s&&(s.commercial_status==='active'||s.offer_status==='active');
   const isPriceRequestSku=s=>!!s&&(s.price_request===true||s.commercial_status==='request-price'||s.offer_status==='request-price');
-  // Storefront state must be internally consistent: when a SKU has a real
-  // price and is not out of stock, the visible BUY action must be available.
-  // Request-price SKUs keep their dedicated CTA and never enter the cart path.
   const canBuySku=s=>!!s&&hasPrice(s)&&!isPriceRequestSku(s)&&s.availability!=='out_of_stock';
   function skuForPackage(productId,wanted,preferredId=''){
     const rows=productSkus(productId).filter(s=>sameSkuPackage(wanted,s));
@@ -278,8 +277,8 @@ const BB610 = (() => {
   };
   function cardV2(p,skuOverride=null){
     const fav=get(LS.fav,[]).includes(p.id),cmp=get(LS.compare,[]).includes(p.id),s=skuOverride||displaySku(p.id);
-    const keyMeta=potVariantSummary(p)||s?.variant||(p.npk&&p.npk!=='—'?`NPK ${p.npk}`:(p.form||p.categoryLabel||''));
-    const title=cardTitle(p);
+    const keyMeta=potVariantSummary(p)||(p.npk&&p.npk!=='—'?`NPK ${p.npk}`:(p.form||p.categoryLabel||''));
+    const title=cardTitle(p,s);
     const summary=cardSummary(p);
     const fallback=fallbackImage(p.category);
     const image=productImage(p,s)||fallback;
@@ -287,24 +286,17 @@ const BB610 = (() => {
     const hasVisiblePrice=cardPrice!==null&&cardPrice!==undefined&&Number.isFinite(Number(cardPrice));
     const stock=publicStockLabel(s)||p.stockLabel||'';
     const explicitRequest=isPriceRequestSku(s);
-    const priceRequest=explicitRequest||(!hasVisiblePrice&&(
-      s?.availability==='preorder'||s?.availability==='backorder'||p.category==='containers'
-    ));
+    const priceRequest=explicitRequest||(!hasVisiblePrice&&(s?.availability==='preorder'||s?.availability==='backorder'||p.category==='containers'));
     const unit='';
     const displayStock=priceRequest?'Під замовлення':stock;
-    // Card-level invariant: a priced SKU that is not explicitly out of stock
-    // must never render a disabled BUY button.
     const buyEnabled=!priceRequest&&hasVisiblePrice&&s?.availability!=='out_of_stock';
-    // One storefront route for every product card. Never trust legacy SKU
-    // URLs or old /products/<slug>/ pages: the live PDP is product.html and the
-    // displayed SKU must be preserved in the query string.
     const href=productUrl(p,s);
     return `<article class="product-card product-card-v2" data-product-id="${p.id}" data-display-sku="${s?.id||''}">
-      <a class="product-media" href="${href}" data-select-product="${p.id}"><img loading="lazy" src="${image}" data-fallback="${fallback}" alt="${p.name}"></a>
+      <a class="product-media" href="${href}" data-select-product="${p.id}"><img loading="lazy" src="${image}" data-fallback="${fallback}" alt="${title}"></a>
       <div class="product-body">
         <div class="product-card-main">
           <div class="product-brand">${p.brand}</div>
-          <a class="product-name" href="${href}" data-select-product="${p.id}" title="${p.name}">${title}</a>
+          <a class="product-name" href="${href}" data-select-product="${p.id}" title="${title}">${title}</a>
           ${summary?`<div class="product-summary">${summary}</div>`:''}
           <div class="product-spec">${keyMeta}</div>
         </div>
@@ -420,7 +412,7 @@ const BB610 = (() => {
     const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
     if(typeof d.showModal==='function')d.showModal();
   }
-  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,skuForPackage,sameSkuPackage,imageForPackage,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
+  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,skuForPackage,sameSkuPackage,imageForPackage,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,skuName,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);
 
 function bb610LoadProductCardV3Enhancements(){

@@ -1,1 +1,1 @@
-snapshot plantlogic-sections-v5-final 2026-09-22T11:18:00+03:00
+snapshot plantlogic-pot-sections-final 2026-09-22T11:22:00+03:00

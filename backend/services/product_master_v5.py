@@ -25,6 +25,126 @@ _PACKAGE_GROUP_INVARIANT_DONE = False
 _MIGRATION_LOCK = threading.Lock()
 _RUNTIME_MIGRATIONS_DONE = False
 
+_CANONICAL_NONPOT_TITLES = {
+    "actiwave": "Actiwave — кореневий біостимулятор Valagro",
+    "actiwin-20-5-10": "Actiwin 20-5-10 — гранульоване NPK-добриво Valagro",
+    "agriflex-amino-aminokysloty-50": "Agriflex Amino (Амінокислоти 50%) — амінокислотний біостимулятор CityMax",
+    "agriflex-aminovix": "Agriflex AminoVix — амінокислотний біостимулятор CityMax",
+    "agriflex-bio": "Agriflex Bio — фульвокислотний біостимулятор CityMax",
+    "agriflex-fulvix-fulvokysloty-60": "Agriflex Fulvix (Фульвокислоти 50%) — фульвокислотний біостимулятор CityMax",
+    "agriflex-humic-humat-kaliyu": "Agriflex Humic (Гумат калію) — гуміновий біостимулятор CityMax",
+    "agriflex-zn": "Agriflex Zn — цинкове мікродобриво CityMax",
+    "agroblen-granula-max-14-20-5-te-56m": "Agroblen Granula-MAX 14-20-5+TE (5–6M) — добриво контрольованого вивільнення ICL",
+    "aktara-25-wg": "Актара 25 WG — системний інсектицид Syngenta",
+    "benefit-pz": "Benefit PZ — біостимулятор Valagro",
+    "blackjak": "BlackJak — гуміновий біостимулятор Sofbey",
+    "boroplus": "Boroplus — борне мікродобриво Valagro",
+    "brexil-ca": "Brexil Ca — хелатне мікродобриво з кальцієм Valagro",
+    "brexil-combi": "Brexil Combi — комплексне хелатне мікродобриво Valagro",
+    "brexil-duo": "Brexil Duo — кальцієво-магнієве мікродобриво Valagro",
+    "brexil-fe": "Brexil Fe — хелатне мікродобриво із залізом Valagro",
+    "brexil-mix": "Brexil Mix — комплексне хелатне мікродобриво Valagro",
+    "brexil-mn": "Brexil Mn — хелатне мікродобриво з марганцем Valagro",
+    "brexil-multi": "Brexil Multi — комплексне хелатне мікродобриво Valagro",
+    "brexil-nutre": "Brexil Nutre — комплексне мікродобриво Valagro",
+    "brexil-zn": "Brexil Zn — хелатне мікродобриво з цинком Valagro",
+    "control-dmp": "Control DMP — NP-добриво з підкислювальною дією Valagro",
+    "eraiz": "Ерайз — регулятор росту Miller",
+    "ferrilen-trium": "Ferrilene Trium — хелат заліза Valagro",
+    "ferrilene-4-8-orto-orto": "Ferrilene 4.8 Orto-Orto — хелат заліза Valagro",
+    "haifa-mkp-0-52-34": "Haifa MKP 0-52-34 — водорозчинне PK-добриво Haifa Group",
+    "kemira-balans-nitrate-balancer": "Кеміра Баланс / Nitrate Balancer — борно-молібденовий продукт Organic Planet",
+    "kemira-dlya-hazonu-npk-12-11-18": "Кеміра для газону NPK 12-11-18 — гранульоване NPK-добриво",
+    "kemira-grunt-kropker-npk-11-11-21": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — гранульоване NPK-добриво",
+    "kemira-lyuks-npk-14-11-25": "Кеміра Люкс NPK 14-11-25 — водорозчинне NPK-добриво",
+    "kemira-npk-12-46-8": "Кеміра NPK 12-46-8 — водорозчинне NPK-добриво",
+    "kemira-npk-18-18-18": "Кеміра NPK 18-18-18 — водорозчинне NPK-добриво",
+    "kemira-ukorinyuvach": "Кеміра Укорінювач — біостимулятор коренеутворення Organic Planet",
+    "kemira-zav-yaz": "Кеміра Зав'язь — фосфорно-калійне добриво",
+    "kendal": "Kendal — біостимулятор захисних реакцій рослин Valagro",
+    "kendal-root": "Kendal Root — кореневий біостимулятор Valagro",
+    "kendal-te": "Kendal TE — мікроелементний біостимулятор Valagro",
+    "master-npk-13-40-13": "MASTER 13-40-13 — водорозчинне NPK-добриво Valagro",
+    "master-npk-15-5-30": "MASTER 15-5-30+2 — водорозчинне NPK-добриво Valagro",
+    "master-npk-17-6-18": "MASTER 17-6-18 — водорозчинне NPK-добриво Valagro",
+    "master-npk-18-18-18": "MASTER 18-18-18 — водорозчинне NPK-добриво Valagro",
+    "master-npk-20-20-20": "MASTER 20-20-20 — водорозчинне NPK-добриво Valagro",
+    "master-npk-3-11-38": "MASTER 3-11-38 — водорозчинне NPK-добриво Valagro",
+    "max-600-seasailer": "MAX 600 SeaSailer — біостимулятор з екстрактом водоростей CityMax",
+    "maxicrop-cream": "Maxicrop Cream — біостимулятор Valagro",
+    "maxicrop-extra": "MC Extra (Maxicrop Extra) — біостимулятор Valagro",
+    "maxicrop-set-maksikrop-zav-yaz": "Maxicrop Set — біостимулятор Valagro",
+    "megafol": "Megafol — антистресовий біостимулятор Valagro",
+    "micro-np": "Micro NP — мікрогранульоване NP-добриво Valagro",
+    "neocore": "NeoCore — кореневий біостимулятор Neova",
+    "neoflora": "NeoFlora — біостимулятор Neova",
+    "neoterra-aqua": "NeoTerra Aquafix™ — органічний кондиціонер ґрунту Neova",
+    "neoterra-organic-c": "NeoTerra Organic-C — органічний кондиціонер ґрунту Neova",
+    "neovivo": "NeoVivo — антистресовий біостимулятор Neova",
+    "osmocote-bloom-12-7-18-23m": "Osmocote Bloom 12-7-18 (2–3M) — добриво контрольованого вивільнення ICL",
+    "osmocote-decor-16-8-12-56m": "Osmocote 5 16-8-12 (5–6M) — добриво контрольованого вивільнення ICL",
+    "osmocote-granula-max-14-8-11-te-56m": "Osmocote Granula-MAX 14-8-11+TE (5–6M) — добриво контрольованого вивільнення ICL",
+    "osmocote-landscape-16-9-12-34m": "Osmocote Landscape 16-9-12 (3–4M) — добриво контрольованого вивільнення ICL",
+    "osmocote-potassium-12-8-19-34m": "Osmocote Potassium 12-8-19 (3–4M) — добриво контрольованого вивільнення ICL",
+    "osmocote-quick-start-22-5-6-45m": "Osmocote Quick Start 22-5-6 (4–5M) — добриво контрольованого вивільнення ICL",
+    "osmocote-start-11-11-17-1-5m": "Osmocote Start 11-11-17 (1,5M) — добриво контрольованого вивільнення ICL",
+    "pekacid-npk-0-60-20": "Nova PeKacid 0-60-20 — водорозчинне PK-добриво ICL",
+    "plantafol-npk-0-25-50": "PLANTAFOL 0-25-50 — водорозчинне листкове NPK-добриво Valagro",
+    "plantafol-npk-10-54-10": "PLANTAFOL 10-54-10 — водорозчинне листкове NPK-добриво Valagro",
+    "plantafol-npk-20-20-20": "PLANTAFOL 20-20-20 — водорозчинне листкове NPK-добриво Valagro",
+    "plantafol-npk-30-10-10": "PLANTAFOL 30-10-10 — водорозчинне листкове NPK-добриво Valagro",
+    "plantafol-npk-5-15-45": "PLANTAFOL 5-15-45 — водорозчинне листкове NPK-добриво Valagro",
+    "radifarm": "Radifarm — кореневий біостимулятор Valagro",
+    "solupotasse-sulfat-kaliyu": "SoluPotasse — водорозчинний сульфат калію Tessenderlo Kerley",
+    "spidfol-amino-vehetatsiya": "Speedfol Amino Vegetative — амінокислотний коректор живлення Terral Tarsa",
+    "sprei-eid": "Спрей-Ейд (Spray-Aide) — ад'ювант-підкислювач Miller",
+    "sulfat-mahniyu": "Сульфат магнію — водорозчинне магнієве добриво Alventa",
+    "sweet": "Sweet — біостимулятор дозрівання Valagro",
+    "switch-625-wg": "Світч 62,5 WG — фунгіцид Syngenta",
+    "terra-sorb": "Terra-Sorb — амінокислотний біостимулятор Bioiberica",
+    "valagro-edta-5sg": "Valagro EDTA 5SG — комплексне хелатне мікродобриво Valagro",
+    "valagro-edta-fe-13": "Valagro EDTA Fe 13% — хелат заліза Valagro",
+    "viva": "Viva — біостимулятор ризосфери Valagro",
+}
+_CANONICAL_TITLE_MIGRATION_ID = "20260922_canonical_nonpot_titles_v1"
+
+
+def _apply_canonical_nonpot_titles_once(con: sqlite3.Connection) -> None:
+    con.execute(
+        """
+        CREATE TABLE IF NOT EXISTS runtime_migrations (
+          migration_id TEXT PRIMARY KEY,
+          applied_at TEXT NOT NULL
+        )
+        """
+    )
+    if con.execute(
+        "SELECT 1 FROM runtime_migrations WHERE migration_id=?",
+        (_CANONICAL_TITLE_MIGRATION_ID,),
+    ).fetchone():
+        return
+    rows = {
+        row["product_id"]: str(row["category_id"] or "").strip().lower()
+        for row in con.execute(
+            "SELECT product_id,category_id FROM products WHERE product_id IN (%s)"
+            % ",".join("?" for _ in _CANONICAL_NONPOT_TITLES),
+            tuple(_CANONICAL_NONPOT_TITLES),
+        ).fetchall()
+    }
+    with con:
+        for product_id, name in _CANONICAL_NONPOT_TITLES.items():
+            category = rows.get(product_id)
+            if category is None or category in {"containers", "контейнери"}:
+                continue
+            con.execute(
+                "UPDATE products SET name=?, updated_at=CURRENT_TIMESTAMP WHERE product_id=?",
+                (name, product_id),
+            )
+        con.execute(
+            "INSERT INTO runtime_migrations(migration_id,applied_at) VALUES(?,CURRENT_TIMESTAMP)",
+            (_CANONICAL_TITLE_MIGRATION_ID,),
+        )
+
 
 def package_group_for(value, unit) -> str | None:
     if value is None:
@@ -85,15 +205,13 @@ def _apply_runtime_migrations_once(con: sqlite3.Connection) -> None:
         if _RUNTIME_MIGRATIONS_DONE:
             return
         product_master_v5_migrations.apply_runtime_migrations(con)
+        _apply_canonical_nonpot_titles_once(con)
         _RUNTIME_MIGRATIONS_DONE = True
 
 
 def _needs_rebuild() -> bool:
     if not DB_PATH.is_file():
         return True
-    # After cutover the runtime V5 database is persistent and admin-editable.
-    # Source files remain migration/bootstrap evidence, not a competing live
-    # owner. Rebuild from source only when explicitly requested.
     rebuild = str(os.getenv("BB610_V5_REBUILD_ON_SOURCE_CHANGE", "")).strip().lower()
     if rebuild not in {"1", "true", "yes"}:
         return False

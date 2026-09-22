@@ -1,15 +1,15 @@
 {
   "schema": "bb610-v5-media-2",
   "summary": {
-    "all_skus": 221,
-    "current_skus": 212,
-    "exact_current_skus": 177,
-    "current_skus_without_exact": 35,
-    "products_with_media": 85,
+    "all_skus": 269,
+    "current_skus": 260,
+    "exact_current_skus": 224,
+    "current_skus_without_exact": 36,
+    "products_with_media": 103,
     "products_without_media": 1,
-    "media_assets": 279,
-    "sku_bindings": 177,
-    "product_bindings": 282,
+    "media_assets": 382,
+    "sku_bindings": 224,
+    "product_bindings": 385,
     "organic_planet_source_rows": 187,
     "organic_planet_accepted_exact_rows": 134,
     "organic_planet_rejected_rows": 53,
@@ -57,6 +57,16 @@
       "alt": "Sweet — 25 мл"
     },
     {
+      "media_id": "v5m_026d011a0d4fa0794b06c0d9",
+      "path": "/assets/img/v5/media/026d011a0d4fa0794b06.jpg",
+      "sha256": "026d011a0d4fa0794b06c0d9ba8724911b650dcb436f3abae9c333645edfd222",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Жолоб для полуниці 8 л з широкою ручкою — арт. 1305082"
+    },
+    {
       "media_id": "v5m_0473179c5d2e1a5abf6bb8e7",
       "path": "/assets/img/v5/media/0473179c5d2e1a5abf6b.jpg",
       "sha256": "0473179c5d2e1a5abf6bb8e7de37e8a9179dffc09aa3955ab923114827b2b0f0",
@@ -75,6 +85,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Сульфат магнію — 100 г"
+    },
+    {
+      "media_id": "v5m_088846d0baf538295ac297cb",
+      "path": "/assets/img/v5/media/088846d0baf538295ac2.jpg",
+      "sha256": "088846d0baf538295ac297cb4106e8a63929f370d6c7fc0659e1e6748241d868",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005_top-view.jpg"
     },
     {
       "media_id": "v5m_08979333463aae263487dba1",
@@ -127,6 +147,16 @@
       "alt": "Osmocote Quick Start 22-5-6 (4–5M) — 1 кг"
     },
     {
+      "media_id": "v5m_0a531b54622c0e11ce78d238",
+      "path": "/assets/img/v5/media/0a531b54622c0e11ce78.jpg",
+      "sha256": "0a531b54622c0e11ce78d2382fd578e5dc6ba107abc92ce3e2be680c6474b3b6",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-side-1.jpg"
+    },
+    {
       "media_id": "v5m_0a700c30d1dae27f2ba4035d",
       "path": "/assets/img/v5/media/0a700c30d1dae27f2ba4.png",
       "sha256": "0a700c30d1dae27f2ba4035dde9e5893305868fc86df06be0e0e2a9fece8be8d",
@@ -145,6 +175,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Actiwave — Кореневий біостимулятор для підвищення поглинання поживних речовин"
+    },
+    {
+      "media_id": "v5m_0c55af7d09b24e958c6781e2",
+      "path": "/assets/img/v5/media/0c55af7d09b24e958c67.jpg",
+      "sha256": "0c55af7d09b24e958c6781e2c313c5d10ca877e85642fbb59a0d2e50330eeb27",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125.jpg"
     },
     {
       "media_id": "v5m_0c611b29a3d3d650a63dd626",
@@ -257,6 +297,16 @@
       "alt": "Plantlogic 1308305 — angle"
     },
     {
+      "media_id": "v5m_135ab90eacc6e99dcdab1363",
+      "path": "/assets/img/v5/media/135ab90eacc6e99dcdab.jpg",
+      "sha256": "135ab90eacc6e99dcdab13639722a39cf0ccae5d3939c14b2c8a275fae14cd34",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 13050040 — 47LSQ_D.jpg"
+    },
+    {
       "media_id": "v5m_135ae357b6b634c1dc222dcb",
       "path": "/assets/img/v5/media/135ae357b6b634c1dc22.jpg",
       "sha256": "135ae357b6b634c1dc222dcb29a62cd6e96f30f2e3c4146ccb85075dffae7cda",
@@ -357,6 +407,26 @@
       "alt": "PLANTAFOL 0-25-50"
     },
     {
+      "media_id": "v5m_182d39324dfd950ac9069d99",
+      "path": "/assets/img/v5/media/182d39324dfd950ac906.jpg",
+      "sha256": "182d39324dfd950ac9069d99b6685e935edd5305062f955fa6d99dbef84f74a6",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306051 — 5LSQ_B.jpg"
+    },
+    {
+      "media_id": "v5m_184ad08e66ad9bd3f8815d3c",
+      "path": "/assets/img/v5/media/184ad08e66ad9bd3f881.jpg",
+      "sha256": "184ad08e66ad9bd3f8815d3c6579b4eb52f44ed3c1a9335e651477477f0f32aa",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Жолоб для полуниці 18 л з опорою для квітконосів — арт. 1305909"
+    },
+    {
       "media_id": "v5m_18551a26434ff397c58dac8a",
       "path": "/assets/img/v5/media/18551a26434ff397c58d.png",
       "sha256": "18551a26434ff397c58dac8acfcd939a0b54a796077f22b10dee2e4c30f41356",
@@ -385,6 +455,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Brexil Duo — Кальцій-магнієве мікродобриво з бором і мікроелементами"
+    },
+    {
+      "media_id": "v5m_1ae7b43ce1cbe32213161590",
+      "path": "/assets/img/v5/media/1ae7b43ce1cbe3221316.jpg",
+      "sha256": "1ae7b43ce1cbe322131615909e61888bc17707c71f35d0b25c7fdae272a91579",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133.jpg"
     },
     {
       "media_id": "v5m_1b09b40af476b5f65a5669ac",
@@ -447,6 +527,26 @@
       "alt": "Plantlogic 1301144 — black — base"
     },
     {
+      "media_id": "v5m_21047b973e8ef4ef323b9aad",
+      "path": "/assets/img/v5/media/21047b973e8ef4ef323b.jpg",
+      "sha256": "21047b973e8ef4ef323b9aad0d2518b65f3c9f3829a70e3e16606d93fb556b5a",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305071 — 7L-SQ-UG-1305071-BASE.jpg"
+    },
+    {
+      "media_id": "v5m_236a6f180bc4ec0dc9772cb8",
+      "path": "/assets/img/v5/media/236a6f180bc4ec0dc977.jpg",
+      "sha256": "236a6f180bc4ec0dc9772cb8ca9cd7bfc57f3a0f72831ae61d42621949f128f9",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_bottom.jpg"
+    },
+    {
       "media_id": "v5m_23eb0dbeb156dcf6e6c32d35",
       "path": "/assets/img/v5/media/23eb0dbeb156dcf6e6c3.jpg",
       "sha256": "23eb0dbeb156dcf6e6c32d351970360f9f908a6f6500c95cd671eb5ec82ba6bf",
@@ -475,6 +575,26 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Brexil Mix — 1 кг"
+    },
+    {
+      "media_id": "v5m_26631f70e8d140f613c5a86f",
+      "path": "/assets/img/v5/media/26631f70e8d140f613c5.jpg",
+      "sha256": "26631f70e8d140f613c5a86f96be415672bf43edef60d6fc887e2fcf2c14083e",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-hero.jpg"
+    },
+    {
+      "media_id": "v5m_26647ee081fb54c040fed30f",
+      "path": "/assets/img/v5/media/26647ee081fb54c040fe.jpg",
+      "sha256": "26647ee081fb54c040fed30f5b05f070796430a041e280756407f568f702f4e5",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-ISOMETRICO.jpg"
     },
     {
       "media_id": "v5m_26d2e9b5ade1a8dd697c8af8",
@@ -527,6 +647,16 @@
       "alt": "Plantlogic 1309030 — hero"
     },
     {
+      "media_id": "v5m_2a774324644075eed9584e2b",
+      "path": "/assets/img/v5/media/2a774324644075eed958.jpg",
+      "sha256": "2a774324644075eed9584e2be855459da8b8016f4bb13fb42bb8d195f414888d",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307107 — 7-Liter-Drainage-Collection-pot_Item_1307107.jpg"
+    },
+    {
       "media_id": "v5m_2aa9df8897484582566af31c",
       "path": "/assets/img/v5/media/2aa9df8897484582566a.png",
       "sha256": "2aa9df8897484582566af31c132c70407c27f2b55fc9894019a4c247725c802a",
@@ -535,6 +665,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Sweet — 1 л"
+    },
+    {
+      "media_id": "v5m_2ad2f65b30e2e9831a5b481d",
+      "path": "/assets/img/v5/media/2ad2f65b30e2e9831a5b.jpg",
+      "sha256": "2ad2f65b30e2e9831a5b481d616010cb407e90dbf398ba90fe25d273b1be57eb",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306010 — 10L-SQ-1306010-BASE.jpg"
     },
     {
       "media_id": "v5m_2adf4e93546de5e0ece0aa47",
@@ -577,6 +717,16 @@
       "alt": "Світч 62,5 WG, фунгіцид Syngenta"
     },
     {
+      "media_id": "v5m_2c8102c5b66586d35e6b6397",
+      "path": "/assets/img/v5/media/2c8102c5b66586d35e6b.jpg",
+      "sha256": "2c8102c5b66586d35e6b63974ac18a6a6c47009ea7fa9ab0b8e7bb0c4d98f30a",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 13050040 — 47LSQ_C.jpg"
+    },
+    {
       "media_id": "v5m_2ca5b4d4ac3fdf871bea1569",
       "path": "/assets/img/v5/media/2ca5b4d4ac3fdf871bea.jpg",
       "sha256": "2ca5b4d4ac3fdf871bea15697f8bf8c36247a27fd05951f435c88eb3944baebe",
@@ -595,6 +745,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Viva — 25 мл"
+    },
+    {
+      "media_id": "v5m_2d5b8ea8afb768d50be82ba1",
+      "path": "/assets/img/v5/media/2d5b8ea8afb768d50be8.jpg",
+      "sha256": "2d5b8ea8afb768d50be82ba12c7e1a4757059f47036d805e7e44e7250bc3f893",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_front.jpg"
     },
     {
       "media_id": "v5m_2dab08a8de8f38c2c88d80f8",
@@ -637,6 +797,16 @@
       "alt": "Plantlogic 1309026 — base"
     },
     {
+      "media_id": "v5m_31777e0e5e0c6f511c2e9fdd",
+      "path": "/assets/img/v5/media/31777e0e5e0c6f511c2e.jpg",
+      "sha256": "31777e0e5e0c6f511c2e9fdddedf23550fb979e1499bc9ec38540189bc316cb9",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008.jpg"
+    },
+    {
       "media_id": "v5m_34390bab18da3c61585e6931",
       "path": "/assets/img/v5/media/34390bab18da3c61585e.jpg",
       "sha256": "34390bab18da3c61585e6931aa861065cfefc7f999a9eebb061e8d935e835083",
@@ -657,6 +827,16 @@
       "alt": "Agriflex Humic (Гумат калію) — 1 кг"
     },
     {
+      "media_id": "v5m_35465aefebf718302071727e",
+      "path": "/assets/img/v5/media/35465aefebf718302071.jpg",
+      "sha256": "35465aefebf718302071727efc6e5d62f4c800c8f4e477c3a0f539614089efbe",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133_bottom-view.jpg"
+    },
+    {
       "media_id": "v5m_35e3bba08efff1badfb14b8e",
       "path": "/assets/img/v5/media/35e3bba08efff1badfb1.jpg",
       "sha256": "35e3bba08efff1badfb14b8e7f84d256b362cc9753fcdeecaf65ef4754b53f31",
@@ -667,6 +847,16 @@
       "alt": "Plantlogic 1309020 — hero"
     },
     {
+      "media_id": "v5m_36680dee8c75ae4990744300",
+      "path": "/assets/img/v5/media/36680dee8c75ae499074.jpg",
+      "sha256": "36680dee8c75ae49907443007f253d0ac4d008924079f495cd328690f1249c79",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306051 — 5L-DC-1306051-BASE.jpg"
+    },
+    {
       "media_id": "v5m_369ea8cb27bd96284b2d16e8",
       "path": "/assets/img/v5/media/369ea8cb27bd96284b2d.jpg",
       "sha256": "369ea8cb27bd96284b2d16e8b9cd00fdd07b8ce1a04321150e7e618b5ba3708f",
@@ -675,6 +865,16 @@
       "verification_status": "verified",
       "verification_detail": "manufacturer_model_source",
       "alt": "Plantlogic 1308031 — hero"
+    },
+    {
+      "media_id": "v5m_378beb4207c811c48fd2bde4",
+      "path": "/assets/img/v5/media/378beb4207c811c48fd2.jpg",
+      "sha256": "378beb4207c811c48fd2bde4fc55d20131998bacda3c8e93b1328c4e9b7600ee",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307107 — 1307107_3.jpg"
     },
     {
       "media_id": "v5m_380086a6668c0efa483d7803",
@@ -727,6 +927,16 @@
       "alt": "Plantlogic 1308031 — front"
     },
     {
+      "media_id": "v5m_3ca0e525c263f9733a072d06",
+      "path": "/assets/img/v5/media/3ca0e525c263f9733a07.jpg",
+      "sha256": "3ca0e525c263f9733a072d069489d30361eacc6181bd2b27c1988f7fbde08c17",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305117 — 17-liter-drainage-collection-pot-1.jpg"
+    },
+    {
       "media_id": "v5m_3d80f0c28b7fd975bcff3d5a",
       "path": "/assets/img/v5/media/3d80f0c28b7fd975bcff.jpg",
       "sha256": "3d80f0c28b7fd975bcff3d5ab4abc259936b900dea4531ba0cdf5c857bcfa185",
@@ -745,6 +955,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 1308041 — front"
+    },
+    {
+      "media_id": "v5m_3e90bd5a7fd78b12a065bd55",
+      "path": "/assets/img/v5/media/3e90bd5a7fd78b12a065.jpg",
+      "sha256": "3e90bd5a7fd78b12a065bd55c927ff350a65e636e024e0269fedd78c9f6664c5",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117_top-view.jpg"
     },
     {
       "media_id": "v5m_3ee61179db04ff9080959c97",
@@ -857,6 +1077,26 @@
       "alt": "Control DMP — 10 л"
     },
     {
+      "media_id": "v5m_44aadf7c402a06ecde933d24",
+      "path": "/assets/img/v5/media/44aadf7c402a06ecde93.jpg",
+      "sha256": "44aadf7c402a06ecde933d249e13b8b112a2c3774b837e942a14112df28dd898",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071_top-view.jpg"
+    },
+    {
+      "media_id": "v5m_45234d4de473989351f598fb",
+      "path": "/assets/img/v5/media/45234d4de473989351f5.jpg",
+      "sha256": "45234d4de473989351f598fb6ef1d94b0f2e28de481024dc73f874484db6b077",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_top-view.jpg"
+    },
+    {
       "media_id": "v5m_45c6be9973168c3cea0ac3df",
       "path": "/assets/img/v5/media/45c6be9973168c3cea0a.png",
       "sha256": "45c6be9973168c3cea0ac3df991b3ec4cdbadbd0942a51631e56fdd9bad8d0a1",
@@ -885,6 +1125,26 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 1308025 — detail"
+    },
+    {
+      "media_id": "v5m_4740222530a05f2c173b64fa",
+      "path": "/assets/img/v5/media/4740222530a05f2c173b.jpg",
+      "sha256": "4740222530a05f2c173b64faab2f9b76a1af28317141b87180cfd0cef4cf301d",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-FRENTE.jpg"
+    },
+    {
+      "media_id": "v5m_47a4c949c07de105dbc741b4",
+      "path": "/assets/img/v5/media/47a4c949c07de105dbc7.jpg",
+      "sha256": "47a4c949c07de105dbc741b4367e723d0c60bd1c27e60a9ea20626f71f4e585e",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008_top.jpg"
     },
     {
       "media_id": "v5m_481b23546720de50c9dc3bf2",
@@ -917,6 +1177,16 @@
       "alt": "NeoFlora — 1 л"
     },
     {
+      "media_id": "v5m_48ea81f32c80ac1ffeec775b",
+      "path": "/assets/img/v5/media/48ea81f32c80ac1ffeec.jpg",
+      "sha256": "48ea81f32c80ac1ffeec775bd518e01f163df0a4a6af8247249294808763e732",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007-1.jpg"
+    },
+    {
       "media_id": "v5m_495d85ac39c00edec9d6bf88",
       "path": "/assets/img/v5/media/495d85ac39c00edec9d6.jpg",
       "sha256": "495d85ac39c00edec9d6bf8855bfa9a966480fcc0bf90832034cc1fb2f9d65c8",
@@ -947,6 +1217,16 @@
       "alt": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — 100 г"
     },
     {
+      "media_id": "v5m_4c726f7797ab62d3875cdab1",
+      "path": "/assets/img/v5/media/4c726f7797ab62d3875c.jpg",
+      "sha256": "4c726f7797ab62d3875cdab15ba510df6bc1d35845b968cd95bfa0170eba0704",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005_front.jpg"
+    },
+    {
       "media_id": "v5m_4d6ece7299483b2d4973f791",
       "path": "/assets/img/v5/media/4d6ece7299483b2d4973.png",
       "sha256": "4d6ece7299483b2d4973f791a75fbae615d748a2539becdaa5b97ec0e87fe0f1",
@@ -975,6 +1255,26 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Brexil Nutre — 5 кг"
+    },
+    {
+      "media_id": "v5m_4f612bf0f1e828d637296e33",
+      "path": "/assets/img/v5/media/4f612bf0f1e828d63729.jpg",
+      "sha256": "4f612bf0f1e828d637296e339047ad801184ac9c3c3ed04430b2b7ee5a83b221",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307110 — 10-Liter-Drainage-Collection-pot_Item_1307110.jpg"
+    },
+    {
+      "media_id": "v5m_4f8ff39d11ce7fdfefa57e0f",
+      "path": "/assets/img/v5/media/4f8ff39d11ce7fdfefa5.jpg",
+      "sha256": "4f8ff39d11ce7fdfefa57e0f8175489451f515bfe0190f65614f65eca1bba4ff",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_bottom.jpg"
     },
     {
       "media_id": "v5m_4fc25224660ef3b4fe91726c",
@@ -1027,6 +1327,16 @@
       "alt": "Plantlogic 1301153 — black — family"
     },
     {
+      "media_id": "v5m_51ab8e4e48d7bf2ffb209bce",
+      "path": "/assets/img/v5/media/51ab8e4e48d7bf2ffb20.jpg",
+      "sha256": "51ab8e4e48d7bf2ffb209bce4e3c5d456978e3ac4bc3fce02a427c2be9b244db",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1306010 — Plantlogic-10-liter-square-1306010-hero.jpg"
+    },
+    {
       "media_id": "v5m_52499dcbc520776d4d307852",
       "path": "/assets/img/v5/media/52499dcbc520776d4d30.jpg",
       "sha256": "52499dcbc520776d4d30785201e0ddc1624b3ca53d9fc41a57c7ce0c63fd0fd9",
@@ -1055,6 +1365,16 @@
       "verification_status": "candidate",
       "verification_detail": "package_named_legacy_asset",
       "alt": "MASTER 18-18-18"
+    },
+    {
+      "media_id": "v5m_538f55926aeb8ccd8eebe650",
+      "path": "/assets/img/v5/media/538f55926aeb8ccd8eeb.jpg",
+      "sha256": "538f55926aeb8ccd8eebe6509a31b78962842422283f7ef13f2cc9c39bf56b25",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-inside-1.jpg"
     },
     {
       "media_id": "v5m_53f56b0082c00ccc807ba475",
@@ -1117,6 +1437,16 @@
       "alt": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення"
     },
     {
+      "media_id": "v5m_5694cfc6cc9861d6ecf193ec",
+      "path": "/assets/img/v5/media/5694cfc6cc9861d6ecf1.jpg",
+      "sha256": "5694cfc6cc9861d6ecf193ec9a6d8916c9a7493515959f7b584a0337337ccbe7",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051.jpg"
+    },
+    {
       "media_id": "v5m_5733d0949816fb674c4abc68",
       "path": "/assets/img/v5/media/5733d0949816fb674c4a.png",
       "sha256": "5733d0949816fb674c4abc6877d5b1470317e6a2ca944b223d2be02078b075a1",
@@ -1177,6 +1507,16 @@
       "alt": "Plantlogic 1308031 — base"
     },
     {
+      "media_id": "v5m_594926c56dcb98faa0989aee",
+      "path": "/assets/img/v5/media/594926c56dcb98faa098.jpg",
+      "sha256": "594926c56dcb98faa0989aeed449f1870302a3da8612e8939c59196d74985c77",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_front-view-1.jpg"
+    },
+    {
       "media_id": "v5m_5a0616d6d3a5c05d6aaa9aef",
       "path": "/assets/img/v5/media/5a0616d6d3a5c05d6aaa.jpg",
       "sha256": "5a0616d6d3a5c05d6aaa9aef2d9489b5d160a4a29889667ffea57551eaef29c7",
@@ -1197,6 +1537,16 @@
       "alt": "Plantlogic 1301144 — black — top"
     },
     {
+      "media_id": "v5m_5b41887d51fb75532238f764",
+      "path": "/assets/img/v5/media/5b41887d51fb75532238.png",
+      "sha256": "5b41887d51fb75532238f764fae61c251d9927b2e01396d84eef86d4c86b5a77",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1304015 — 15-liter-drainage-collection-pot.png"
+    },
+    {
       "media_id": "v5m_5ba68c36afaf8293431e9e62",
       "path": "/assets/img/v5/media/5ba68c36afaf8293431e.jpg",
       "sha256": "5ba68c36afaf8293431e9e62cb61da46865c6b04a0b40a5e469c2c5ef50300a4",
@@ -1215,6 +1565,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво"
+    },
+    {
+      "media_id": "v5m_5d438c60ec2817ae8f9833d5",
+      "path": "/assets/img/v5/media/5d438c60ec2817ae8f98.jpg",
+      "sha256": "5d438c60ec2817ae8f9833d5c58a078eb4fb539aacf37d217aca0feb32e28ec3",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306010 — 6010LC_5.jpg"
     },
     {
       "media_id": "v5m_5df3e938fa684b5514bc048e",
@@ -1337,6 +1697,16 @@
       "alt": "Brexil Ca — 1 кг"
     },
     {
+      "media_id": "v5m_6a01ef0585f82073b16813fe",
+      "path": "/assets/img/v5/media/6a01ef0585f82073b168.jpg",
+      "sha256": "6a01ef0585f82073b16813fe5a032502a2908780958b9fa64db8f873f31d63b6",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110.jpg"
+    },
+    {
       "media_id": "v5m_6aad0963860e83b793405b0c",
       "path": "/assets/img/v5/media/6aad0963860e83b79340.png",
       "sha256": "6aad0963860e83b793405b0c8999390a1b9db4429f91fcb8cd6ab7d069ef4a37",
@@ -1407,6 +1777,26 @@
       "alt": "Plantlogic 13090350 — front"
     },
     {
+      "media_id": "v5m_6ff2ffe6a37280f9aa55ec78",
+      "path": "/assets/img/v5/media/6ff2ffe6a37280f9aa55.jpg",
+      "sha256": "6ff2ffe6a37280f9aa55ec78ebf6bcfdbb0a02cabecbcde18b918563d637ded9",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-bottom.jpg"
+    },
+    {
+      "media_id": "v5m_6ff41931b8befa0799e62b43",
+      "path": "/assets/img/v5/media/6ff41931b8befa0799e6.jpg",
+      "sha256": "6ff41931b8befa0799e62b43a170ac216c7d04689064840ef91260120de5fb8e",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1305005 — 5LDC_A.jpg"
+    },
+    {
       "media_id": "v5m_71070a9a719fa8aeb97e66d9",
       "path": "/assets/img/v5/media/71070a9a719fa8aeb97e.jpg",
       "sha256": "71070a9a719fa8aeb97e66d980e404fc6624b5cfe19499ad729dce7279dbd63d",
@@ -1415,6 +1805,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 1308031 — angle"
+    },
+    {
+      "media_id": "v5m_721b47028d6c482db7199b83",
+      "path": "/assets/img/v5/media/721b47028d6c482db719.jpg",
+      "sha256": "721b47028d6c482db7199b8389ca284c418b8c493f5901b69e28aa08959145c7",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309015 — 15L-Square-pot_Item_1309015_base.jpg"
     },
     {
       "media_id": "v5m_73506facf11270b3dd68628f",
@@ -1435,6 +1835,36 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "SoluPotasse — сульфат калію — 1 кг"
+    },
+    {
+      "media_id": "v5m_743f8f77235f36a4e3afb386",
+      "path": "/assets/img/v5/media/743f8f77235f36a4e3af.png",
+      "sha256": "743f8f77235f36a4e3afb38615ecbc03166838b44f60f62e9df7fefbac759f90",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305071 — 7LSQ_A.png"
+    },
+    {
+      "media_id": "v5m_74ef2f3c6b7f2283826f6d8c",
+      "path": "/assets/img/v5/media/74ef2f3c6b7f2283826f.jpg",
+      "sha256": "74ef2f3c6b7f2283826f6d8cafa55e7910bc582313b9b7f2d24639e2239b1d25",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309015 — 15L-SQ-1309015-ISOMETRICO.jpg"
+    },
+    {
+      "media_id": "v5m_75a81f56b51e7600ee8cc2c2",
+      "path": "/assets/img/v5/media/75a81f56b51e7600ee8c.jpg",
+      "sha256": "75a81f56b51e7600ee8cc2c2b59e414b7326309d4267338edb3f89707ec742db",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305005 — 5L-DC-1305005-BASE.jpg"
     },
     {
       "media_id": "v5m_769bb08effa5a7ba827f66e6",
@@ -1577,6 +2007,16 @@
       "alt": "Plantlogic 1309025 — hero"
     },
     {
+      "media_id": "v5m_7f30c00a1d28564f72e5c9ea",
+      "path": "/assets/img/v5/media/7f30c00a1d28564f72e5.jpg",
+      "sha256": "7f30c00a1d28564f72e5c9ead6fa633ad4d72fee1a3ade34c4e1bb387a399ec9",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1307107 — 1307107_6.jpg"
+    },
+    {
       "media_id": "v5m_806f98ee401e081246324eb4",
       "path": "/assets/img/v5/media/806f98ee401e08124632.jpg",
       "sha256": "806f98ee401e081246324eb445439dc961005fad0b3fb9f7334f596ecdfeccad",
@@ -1595,6 +2035,26 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Maxicrop Set / Максікроп Зав'язь — 100 мл"
+    },
+    {
+      "media_id": "v5m_818e77a152620aaf30553ffa",
+      "path": "/assets/img/v5/media/818e77a152620aaf3055.jpg",
+      "sha256": "818e77a152620aaf30553ffa30b9169b9661e30ed87869f299dd03a50d289304",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305005 — 5LDC_B.jpg"
+    },
+    {
+      "media_id": "v5m_82756a1d0d25ad61bf6accaf",
+      "path": "/assets/img/v5/media/82756a1d0d25ad61bf6a.jpg",
+      "sha256": "82756a1d0d25ad61bf6accafc6671e9d3794d4e1872103487193dc0c21b67aba",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309008 — 8-Liter-Square-pot-_Item_1309008.jpg"
     },
     {
       "media_id": "v5m_8402ae482423d42e43d4cfa4",
@@ -1637,6 +2097,26 @@
       "alt": "Kendal Root — 1 л"
     },
     {
+      "media_id": "v5m_878e2d969472e36f6c38230d",
+      "path": "/assets/img/v5/media/878e2d969472e36f6c38.jpg",
+      "sha256": "878e2d969472e36f6c38230db22ed029acd823a26a6232f21f9cee4effdba970",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307133 — 30-Liter-Drainage-Collection-pot_Item_1307133.jpg"
+    },
+    {
+      "media_id": "v5m_898936ea92a11243d273712d",
+      "path": "/assets/img/v5/media/898936ea92a11243d273.jpg",
+      "sha256": "898936ea92a11243d273712d78728353e032b922481ff7fec682b87e40f908b3",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305005 — 5-Liter-Drainage-Collection-pot_Item_1305005.jpg"
+    },
+    {
       "media_id": "v5m_8a1f8b48540faf4ce1412d2c",
       "path": "/assets/img/v5/media/8a1f8b48540faf4ce141.jpg",
       "sha256": "8a1f8b48540faf4ce1412d2ccbcb3b92e3b19f06c98539cdea8ed134563ba0fb",
@@ -1667,6 +2147,26 @@
       "alt": "MASTER 20-20-20"
     },
     {
+      "media_id": "v5m_8bf196aa73a63714dd065128",
+      "path": "/assets/img/v5/media/8bf196aa73a63714dd06.jpg",
+      "sha256": "8bf196aa73a63714dd0651285c4a73d99d29866846d54b532b3087252e67435c",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305117 — 17L-DC-1305117-BASE.jpg"
+    },
+    {
+      "media_id": "v5m_8c8924e577d4051660a838b0",
+      "path": "/assets/img/v5/media/8c8924e577d4051660a8.jpg",
+      "sha256": "8c8924e577d4051660a838b0017fe4836a8ee63f978b1b3b6681bd33b8dd9847",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309008 — 8L-SQ-1309008-ISOMETRICO.jpg"
+    },
+    {
       "media_id": "v5m_8c9fd10ec20dfd1b91c795d7",
       "path": "/assets/img/v5/media/8c9fd10ec20dfd1b91c7.jpg",
       "sha256": "8c9fd10ec20dfd1b91c795d71a69a75e01840c2f2383c3749406cb95e48184e3",
@@ -1687,6 +2187,26 @@
       "alt": "Plantlogic 1303025 — top"
     },
     {
+      "media_id": "v5m_8d78f3a113ee4f7bf99668b6",
+      "path": "/assets/img/v5/media/8d78f3a113ee4f7bf996.jpg",
+      "sha256": "8d78f3a113ee4f7bf99668b62b06aa8359e4bf69a4300f02e6266cc6657719f1",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305071 — 7-Liter-Square-pot-for-cold-storage_Item_1305071.jpg"
+    },
+    {
+      "media_id": "v5m_8fa7cc80d6cf0ebbb893e5fb",
+      "path": "/assets/img/v5/media/8fa7cc80d6cf0ebbb893.jpg",
+      "sha256": "8fa7cc80d6cf0ebbb893e5fb9e6ab277c7adfd19e1300103082e18a34c21822c",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_top-view.jpg"
+    },
+    {
       "media_id": "v5m_904415a07129fd3b2871b80e",
       "path": "/assets/img/v5/media/904415a07129fd3b2871.jpg",
       "sha256": "904415a07129fd3b2871b80e75f820b2aa053cf40fc10bc7decc052649b07b93",
@@ -1705,6 +2225,36 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "SoluPotasse — сульфат калію — 100 г"
+    },
+    {
+      "media_id": "v5m_928bb2d60e9102985b35aebc",
+      "path": "/assets/img/v5/media/928bb2d60e9102985b35.jpg",
+      "sha256": "928bb2d60e9102985b35aebcd65711bfbfc06e229bb0773cb1301fce022ac7f8",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Жолоб для полуниці 9 л з підтримкою квітконосів — арт. 1305209"
+    },
+    {
+      "media_id": "v5m_92ae6b0dcd7893919bac4d76",
+      "path": "/assets/img/v5/media/92ae6b0dcd7893919bac.jpg",
+      "sha256": "92ae6b0dcd7893919bac4d76f6edda633c8b70b885fff8ed200f4137811746c0",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306051 — 5LSQ_C.jpg"
+    },
+    {
+      "media_id": "v5m_93d0b4a1d9c03a6b01698409",
+      "path": "/assets/img/v5/media/93d0b4a1d9c03a6b0169.png",
+      "sha256": "93d0b4a1d9c03a6b01698409c1d966467c7683231fc04938df3f8f65c1d0f079",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306007 — 7-liter-square-pot-1.png"
     },
     {
       "media_id": "v5m_93e0bfb910836fa0f2f506a6",
@@ -1735,6 +2285,26 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 13080350 — hero"
+    },
+    {
+      "media_id": "v5m_948afb31f5979772caf17596",
+      "path": "/assets/img/v5/media/948afb31f5979772caf1.jpg",
+      "sha256": "948afb31f5979772caf175963fa7c32e77d7344c9ae8ebc59fab5a15f9929483",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306051 — 5LSQ_A.jpg"
+    },
+    {
+      "media_id": "v5m_96a081cd60baa328ae599045",
+      "path": "/assets/img/v5/media/96a081cd60baa328ae59.jpg",
+      "sha256": "96a081cd60baa328ae5990451e1ef6bb121f46cca31649469656f25e07907c50",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307107 — 1307107_4.jpg"
     },
     {
       "media_id": "v5m_972a36211800e6a163eac6e1",
@@ -1807,6 +2377,16 @@
       "alt": "Brexil Zn — 1 кг"
     },
     {
+      "media_id": "v5m_9a3e43da6829d390d1d752c9",
+      "path": "/assets/img/v5/media/9a3e43da6829d390d1d7.jpg",
+      "sha256": "9a3e43da6829d390d1d752c9f0d2fbc4802f672f451cf2a1f2608f196a19a85b",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071_front.jpg"
+    },
+    {
       "media_id": "v5m_9adb4aa49db81c4a93b2cb1d",
       "path": "/assets/img/v5/media/9adb4aa49db81c4a93b2.jpg",
       "sha256": "9adb4aa49db81c4a93b2cb1d8a678574c0763827dacc84a89521e8b0334ee657",
@@ -1817,6 +2397,16 @@
       "alt": "Кеміра Люкс NPK 14-11-25 — 20 г"
     },
     {
+      "media_id": "v5m_9b8f899a5ede46f71df2ad1b",
+      "path": "/assets/img/v5/media/9b8f899a5ede46f71df2.jpg",
+      "sha256": "9b8f899a5ede46f71df2ad1b175cdea059be6caec444ee0678d6b0be4b0544fb",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1306007 — 7-Liter-Square-pot-_Item_1306007.jpg"
+    },
+    {
       "media_id": "v5m_9b9dfc0c73c9787aef637291",
       "path": "/assets/img/v5/media/9b9dfc0c73c9787aef63.png",
       "sha256": "9b9dfc0c73c9787aef637291089b1453f205c8b5dee7d084f49cc8aedb4e8bcd",
@@ -1825,6 +2415,16 @@
       "verification_status": "candidate",
       "verification_detail": "package_named_legacy_asset",
       "alt": "Кеміра NPK 12-46-8"
+    },
+    {
+      "media_id": "v5m_9c55f097f60c4c2ed7146eb5",
+      "path": "/assets/img/v5/media/9c55f097f60c4c2ed714.jpg",
+      "sha256": "9c55f097f60c4c2ed7146eb53c110cbd231b8243c70fa448b1de0ae9f0fdb261",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305005 — 5LDC_C.jpg"
     },
     {
       "media_id": "v5m_9d0ecc7d2dbf5e64b83cfcd8",
@@ -1867,6 +2467,16 @@
       "alt": "Speedfol Amino Vegetative — 20 мл"
     },
     {
+      "media_id": "v5m_9e9a57f266a53598a39bec79",
+      "path": "/assets/img/v5/media/9e9a57f266a53598a39b.jpg",
+      "sha256": "9e9a57f266a53598a39bec79619e8ba6d6636f5c69c9cde039522375a00fb69e",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1306051 — 5LDC_D.jpg"
+    },
+    {
       "media_id": "v5m_9ed4216d02506b188eb3a800",
       "path": "/assets/img/v5/media/9ed4216d02506b188eb3.jpg",
       "sha256": "9ed4216d02506b188eb3a80041b39740fa4586a93e3da8be3de9492c831b9f7b",
@@ -1907,6 +2517,36 @@
       "alt": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення"
     },
     {
+      "media_id": "v5m_a1f100c9afa87102900110ac",
+      "path": "/assets/img/v5/media/a1f100c9afa871029001.jpg",
+      "sha256": "a1f100c9afa87102900110ac3d1eb55c00fc74282879a3e935b28a934e1ae98f",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-CENITAL.jpg"
+    },
+    {
+      "media_id": "v5m_a367a78857d42240a412915f",
+      "path": "/assets/img/v5/media/a367a78857d42240a412.jpg",
+      "sha256": "a367a78857d42240a412915fa785a81015d55f9a84917c2b0099f24c0757ca0b",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003.jpg"
+    },
+    {
+      "media_id": "v5m_a38fd841e5d5aac3f352909b",
+      "path": "/assets/img/v5/media/a38fd841e5d5aac3f352.jpg",
+      "sha256": "a38fd841e5d5aac3f352909b0a280a16776858adc6269264a77a0ba47b81c534",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133_front-view.jpg"
+    },
+    {
       "media_id": "v5m_a3e327473d9a57bdd41aee3d",
       "path": "/assets/img/v5/media/a3e327473d9a57bdd41a.jpg",
       "sha256": "a3e327473d9a57bdd41aee3d7e8e054ee8173b355ef76878ea831140f089ead8",
@@ -1937,6 +2577,36 @@
       "alt": "Plantlogic 1308025 — front"
     },
     {
+      "media_id": "v5m_a58cd4087edf2e133faf4711",
+      "path": "/assets/img/v5/media/a58cd4087edf2e133faf.jpg",
+      "sha256": "a58cd4087edf2e133faf471128f418226cc364016264fbfd11b8886ac345f113",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 13050040 — 47LSQ_E.jpg"
+    },
+    {
+      "media_id": "v5m_a64e3d7d9c4b26ee575fa0ec",
+      "path": "/assets/img/v5/media/a64e3d7d9c4b26ee575f.jpg",
+      "sha256": "a64e3d7d9c4b26ee575fa0ec1d0a3f5eea5081de3420a0b96bd838148fcbf0bf",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1306003 — 6003_5.jpg"
+    },
+    {
+      "media_id": "v5m_a6cea9061a6d5b052a6a2b4b",
+      "path": "/assets/img/v5/media/a6cea9061a6d5b052a6a.jpg",
+      "sha256": "a6cea9061a6d5b052a6a2b4b90552782611acd0a12751e22516840f33bce914b",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117.jpg"
+    },
+    {
       "media_id": "v5m_a702d752cc6f1cd09ffd7968",
       "path": "/assets/img/v5/media/a702d752cc6f1cd09ffd.png",
       "sha256": "a702d752cc6f1cd09ffd7968b13215a693eaf41241dfe0c04d14d5059a7b9c13",
@@ -1957,6 +2627,16 @@
       "alt": "Brexil Mix — Багатокомпонентний комплекс мікроелементів для листкового живлення"
     },
     {
+      "media_id": "v5m_a875c7ef3912e7abad5da8a3",
+      "path": "/assets/img/v5/media/a875c7ef3912e7abad5d.jpg",
+      "sha256": "a875c7ef3912e7abad5da8a33dfaac99a9d36c9ea35cc89168a876f5845bf5c4",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306003 — 3-Liter-Square-Pot_Item_1306003.jpg"
+    },
+    {
       "media_id": "v5m_a8f72fa0c704b35aa69c72c5",
       "path": "/assets/img/v5/media/a8f72fa0c704b35aa69c.jpg",
       "sha256": "a8f72fa0c704b35aa69c72c5b73e9cb660de427cc4e902b0531c16cd7c93104c",
@@ -1965,6 +2645,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Radifarm — 25 мл"
+    },
+    {
+      "media_id": "v5m_a9273c493be54bb012ae6c42",
+      "path": "/assets/img/v5/media/a9273c493be54bb012ae.jpg",
+      "sha256": "a9273c493be54bb012ae6c42756d969fa298b9454cd0adcc3713950974bc14be",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_bottom-view.jpg"
     },
     {
       "media_id": "v5m_aa4b5ec523df97ddf8c508c1",
@@ -2007,6 +2697,16 @@
       "alt": "Кеміра для газону NPK 12-11-18 — 1 кг"
     },
     {
+      "media_id": "v5m_ac34374c119c2daccb4d8034",
+      "path": "/assets/img/v5/media/ac34374c119c2daccb4d.jpg",
+      "sha256": "ac34374c119c2daccb4d80345ed8024ccd852be979091b8d4eb6cf0017a3c8ca",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309015 — 15L-Square-pot_Item_1309015_front.jpg"
+    },
+    {
       "media_id": "v5m_ad3434331aae65aec38db00f",
       "path": "/assets/img/v5/media/ad3434331aae65aec38d.webp",
       "sha256": "ad3434331aae65aec38db00fd4f14117b420f97824bf8e69e8c9208d0ee97c03",
@@ -2015,6 +2715,16 @@
       "verification_status": "candidate",
       "verification_detail": "package_named_legacy_asset",
       "alt": "Kendal™"
+    },
+    {
+      "media_id": "v5m_ad5eb9600f6b9b1ddf57c5c6",
+      "path": "/assets/img/v5/media/ad5eb9600f6b9b1ddf57.jpg",
+      "sha256": "ad5eb9600f6b9b1ddf57c5c6e470e64a3fc22aaa68c32502750bd014ad716686",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306051 — 5-Liter-Square-pot_Item_1306051.jpg"
     },
     {
       "media_id": "v5m_af2131dc364e1406343250cc",
@@ -2057,6 +2767,16 @@
       "alt": "Ferrilene 4.8 Orto-Orto — 10 г"
     },
     {
+      "media_id": "v5m_b4680ef15815e49e2ab171b4",
+      "path": "/assets/img/v5/media/b4680ef15815e49e2ab1.jpg",
+      "sha256": "b4680ef15815e49e2ab171b46b9159186ba554b1688559306da8255ebd72a6d6",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_gutter.jpg"
+    },
+    {
       "media_id": "v5m_b5a5b6c34106511db6fdd3de",
       "path": "/assets/img/v5/media/b5a5b6c34106511db6fd.png",
       "sha256": "b5a5b6c34106511db6fdd3de156e6f146937ea923ad186c588e7f471b0456458",
@@ -2065,6 +2785,26 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Brexil Multi — 5 кг"
+    },
+    {
+      "media_id": "v5m_b62565f7ce70337a4bb588e5",
+      "path": "/assets/img/v5/media/b62565f7ce70337a4bb5.jpg",
+      "sha256": "b62565f7ce70337a4bb588e5a1b5a915a637196cf2dc2d6b2ddfad0c06d2abbf",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306010 — 10L-SQ-1306010-FRONTAL.jpg"
+    },
+    {
+      "media_id": "v5m_b64f66624c5bd0033d99c14b",
+      "path": "/assets/img/v5/media/b64f66624c5bd0033d99.jpg",
+      "sha256": "b64f66624c5bd0033d99c14bd7588b8150192c9c272aa0d4c5663b15d3d1bd50",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1307110 — drainage-topdown.jpg"
     },
     {
       "media_id": "v5m_b6fe1160bafc5b713768f678",
@@ -2085,6 +2825,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 1309025 — base"
+    },
+    {
+      "media_id": "v5m_b78fe2e2074ded69bbd6c43e",
+      "path": "/assets/img/v5/media/b78fe2e2074ded69bbd6.jpg",
+      "sha256": "b78fe2e2074ded69bbd6c43e345428cb7a692a95f41d253b028f8d7fe0792084",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309015 — 15L-SQ-1309015-BASE.jpg"
     },
     {
       "media_id": "v5m_b86cfa93cf7430d09cb79e07",
@@ -2135,6 +2885,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Osmocote Landscape 16-9-12 (3–4M) — 1 кг"
+    },
+    {
+      "media_id": "v5m_bc2f45122f510be5b7b55da3",
+      "path": "/assets/img/v5/media/bc2f45122f510be5b7b5.jpg",
+      "sha256": "bc2f45122f510be5b7b55da344ddac8aae612d9ab54b54363880fbfda0a8181d",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_top-view.jpg"
     },
     {
       "media_id": "v5m_bc3fa4c7a451dac4368954ff",
@@ -2207,6 +2967,16 @@
       "alt": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво"
     },
     {
+      "media_id": "v5m_c17564b826cb6c8d4ec12921",
+      "path": "/assets/img/v5/media/c17564b826cb6c8d4ec1.jpg",
+      "sha256": "c17564b826cb6c8d4ec129219f38826229f60106f1bc247c4983d55855ea6dcc",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008_bottom.jpg"
+    },
+    {
       "media_id": "v5m_c19bb9eabb025e16c6ee6d6c",
       "path": "/assets/img/v5/media/c19bb9eabb025e16c6ee.jpg",
       "sha256": "c19bb9eabb025e16c6ee6d6cf0305d54f8a9be130b77ac105f5cead1f151c761",
@@ -2237,6 +3007,16 @@
       "alt": "PLANTAFOL 5-15-45"
     },
     {
+      "media_id": "v5m_c429e29d18cd87a3920a20c7",
+      "path": "/assets/img/v5/media/c429e29d18cd87a3920a.jpg",
+      "sha256": "c429e29d18cd87a3920a20c73e076955de27c8ba67490c486e16aa649872b796",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306010 — 10L-SQ-1306010-ISOMETRICO.jpg"
+    },
+    {
       "media_id": "v5m_c4587b45667696a4d0cc2b5a",
       "path": "/assets/img/v5/media/c4587b45667696a4d0cc.jpg",
       "sha256": "c4587b45667696a4d0cc2b5aa8f359e3cded81ccc5df2c19e6ccf0bd54ac4c3f",
@@ -2255,6 +3035,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Agriflex Fulvix (Фульвокислоти 60%) — Водорозчинний фульвокислотний біостимулятор із калієм"
+    },
+    {
+      "media_id": "v5m_c7cd572dcb28ff7db6431755",
+      "path": "/assets/img/v5/media/c7cd572dcb28ff7db643.jpg",
+      "sha256": "c7cd572dcb28ff7db6431755773ef896285ff59a5bedc91dafaf477bf8c0ef18",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1309015 — 15-Liter-Square-pot_Item_1309015.jpg"
     },
     {
       "media_id": "v5m_c7cdb4491557c959e62359ef",
@@ -2295,6 +3085,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Maxicrop Set / Максікроп Зав'язь — Біостимулятор для підтримки цвітіння та зав'язування плодів"
+    },
+    {
+      "media_id": "v5m_c9d9d893103d3ecb3851730d",
+      "path": "/assets/img/v5/media/c9d9d893103d3ecb3851.jpg",
+      "sha256": "c9d9d893103d3ecb3851730dc5f1965d9bcd2070d103353d611247236e783173",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306010 — 10L-SQ-1306010-CENITAL.jpg"
     },
     {
       "media_id": "v5m_cab1a45e76d25d301b6b757d",
@@ -2347,6 +3147,16 @@
       "alt": "Кеміра NPK 12-46-8 — 25 г"
     },
     {
+      "media_id": "v5m_cec90c50bc824f85fea1439d",
+      "path": "/assets/img/v5/media/cec90c50bc824f85fea1.jpg",
+      "sha256": "cec90c50bc824f85fea1439d1f8166eed5765e63f75b259fb5bf6076e3ac0547",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-BASE.jpg"
+    },
+    {
       "media_id": "v5m_ceecffb21040513312fe40c3",
       "path": "/assets/img/v5/media/ceecffb21040513312fe.png",
       "sha256": "ceecffb21040513312fe40c312935d5d1f2597c7faee59e83294ef58b9b9dc4a",
@@ -2377,6 +3187,16 @@
       "alt": "Benefit PZ — 25 мл"
     },
     {
+      "media_id": "v5m_cfa7edf5c885b7e8e6fe2754",
+      "path": "/assets/img/v5/media/cfa7edf5c885b7e8e6fe.jpg",
+      "sha256": "cfa7edf5c885b7e8e6fe275417025229e5f4575b021362c621004b3c3cb4f5ab",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306010 — 10L-Square-Pot_Item_1306010.jpg"
+    },
+    {
       "media_id": "v5m_cfd79f6f230397aae29ceff4",
       "path": "/assets/img/v5/media/cfd79f6f230397aae29c.jpg",
       "sha256": "cfd79f6f230397aae29ceff4e52e6306cc4893701ace820164b86936eb038f7d",
@@ -2405,6 +3225,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Radifarm — 1 л"
+    },
+    {
+      "media_id": "v5m_d361bb3f9df16c17ef373cb4",
+      "path": "/assets/img/v5/media/d361bb3f9df16c17ef37.jpg",
+      "sha256": "d361bb3f9df16c17ef373cb4f8df694c501514a548241ab4dd588ff56e9f34e3",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115-1.jpg"
     },
     {
       "media_id": "v5m_d3b90963ebacabfb9a94d6b6",
@@ -2457,6 +3287,16 @@
       "alt": "Maxicrop Extra — Мікрогранульований біостимулятор на основі екстракту морських водоростей"
     },
     {
+      "media_id": "v5m_d94101c081ec6d1c26f4f137",
+      "path": "/assets/img/v5/media/d94101c081ec6d1c26f4.jpg",
+      "sha256": "d94101c081ec6d1c26f4f13749cc2ced51406b57e14e10514470cfc64c0bcd2c",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071.jpg"
+    },
+    {
       "media_id": "v5m_d97ea4e1d943af52d3ebec57",
       "path": "/assets/img/v5/media/d97ea4e1d943af52d3eb.jpg",
       "sha256": "d97ea4e1d943af52d3ebec57fed20491e81eb36f3b8aa0c3f1d73a8766d9785e",
@@ -2475,6 +3315,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "MAX 600 SEASAILER — Біостимулюючий продукт великого фасування — потребує підтвердження актуальної етикетки"
+    },
+    {
+      "media_id": "v5m_dab703ab6da8305d5caee0f2",
+      "path": "/assets/img/v5/media/dab703ab6da8305d5cae.jpg",
+      "sha256": "dab703ab6da8305d5caee0f297b5d27c14f61c1af4343e660860316b4aae5c35",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005.jpg"
     },
     {
       "media_id": "v5m_dd2dc6f26e30f677ba5ac072",
@@ -2517,6 +3367,46 @@
       "alt": "Benefit PZ — 1 л"
     },
     {
+      "media_id": "v5m_e258940b3096c95ca88e1ba5",
+      "path": "/assets/img/v5/media/e258940b3096c95ca88e.png",
+      "sha256": "e258940b3096c95ca88e1ba55ab583d8bab72f252217845c61f025ff20fb2c6b",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1305071 — 7LSQ_C.png"
+    },
+    {
+      "media_id": "v5m_e3fed6e13f4865c01981555d",
+      "path": "/assets/img/v5/media/e3fed6e13f4865c01981.jpg",
+      "sha256": "e3fed6e13f4865c01981555d9e38638a3817e0813bfa972eb79683e7f742c203",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1309015 — 15LSq_5.jpg"
+    },
+    {
+      "media_id": "v5m_e417605f0728be7b70229458",
+      "path": "/assets/img/v5/media/e417605f0728be7b7022.jpg",
+      "sha256": "e417605f0728be7b70229458f12608ad6b4c0a016ecb9224b8593350f62a78d2",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_bottom-view.jpg"
+    },
+    {
+      "media_id": "v5m_e58f0d89484c891ea4f4d629",
+      "path": "/assets/img/v5/media/e58f0d89484c891ea4f4.jpg",
+      "sha256": "e58f0d89484c891ea4f4d629cf328e10a06e37fc46926db547265e3566100e89",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_top-view.jpg"
+    },
+    {
       "media_id": "v5m_e66980f4c8d77ef94d8006ce",
       "path": "/assets/img/v5/media/e66980f4c8d77ef94d80.webp",
       "sha256": "e66980f4c8d77ef94d8006cecad3de8e479c8b24500d100dc6d2e089b4e58ba0",
@@ -2525,6 +3415,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Agriflex Bio — Біостимулюючий продукт 1 кг — технічні дані очікують верифікації етикетки"
+    },
+    {
+      "media_id": "v5m_e6793e9c70688c1480325fca",
+      "path": "/assets/img/v5/media/e6793e9c70688c148032.jpg",
+      "sha256": "e6793e9c70688c1480325fca7d556635f52fc10d88c82d989b090ae987bcefa8",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1307133 — 30L-DCP_3.jpg"
     },
     {
       "media_id": "v5m_e723433d73a3250fd8c96d59",
@@ -2545,6 +3445,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Osmocote Start 11-11-17 (1,5M) — 200 г"
+    },
+    {
+      "media_id": "v5m_e8098376716b4a4a4844200f",
+      "path": "/assets/img/v5/media/e8098376716b4a4a4844.jpg",
+      "sha256": "e8098376716b4a4a4844200ffe87689d23ff978c6db978bd7fc105807f22da18",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051_top-view.jpg"
     },
     {
       "media_id": "v5m_e945c018816c10d07aaa7d5c",
@@ -2607,6 +3517,16 @@
       "alt": "Viva — 100 мл"
     },
     {
+      "media_id": "v5m_ebb799027bcacdec36682d8a",
+      "path": "/assets/img/v5/media/ebb799027bcacdec3668.jpg",
+      "sha256": "ebb799027bcacdec36682d8a2412c9ff2b57829a388178de77261109942bd132",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_bottom.jpg"
+    },
+    {
       "media_id": "v5m_ec30b3bafe67e0bddd520568",
       "path": "/assets/img/v5/media/ec30b3bafe67e0bddd52.jpg",
       "sha256": "ec30b3bafe67e0bddd5205688fb78d9a0b53b5c5c8f8f2faa24501cfe4767614",
@@ -2615,6 +3535,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Brexil Mix — 15 г"
+    },
+    {
+      "media_id": "v5m_eda248272cd50199e413917f",
+      "path": "/assets/img/v5/media/eda248272cd50199e413.jpg",
+      "sha256": "eda248272cd50199e413917f97963c6b1fb5557f3d224baba5a0987282ee3f7f",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_front.jpg"
     },
     {
       "media_id": "v5m_ee7013b6a2bfddab4883bc7b",
@@ -2637,6 +3567,56 @@
       "alt": "Кеміра Люкс NPK 14-11-25 — 100 г"
     },
     {
+      "media_id": "v5m_eff1f111e3b9cb7a33d0a6a2",
+      "path": "/assets/img/v5/media/eff1f111e3b9cb7a33d0.jpg",
+      "sha256": "eff1f111e3b9cb7a33d0a6a2030be027908aaa1df421642c659fe40c4805037a",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Plantlogic 1304125 — 25-Liter-Drainage-Collection-pot_Item_1304125.jpg"
+    },
+    {
+      "media_id": "v5m_f024e4f573809f46cc06f102",
+      "path": "/assets/img/v5/media/f024e4f573809f46cc06.png",
+      "sha256": "f024e4f573809f46cc06f102ef48231e91b290113e45e3af4debfeef20a8dd3c",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305071 — 7LSQ_D.png"
+    },
+    {
+      "media_id": "v5m_f0cc601284b2c224ca2ce0d8",
+      "path": "/assets/img/v5/media/f0cc601284b2c224ca2c.jpg",
+      "sha256": "f0cc601284b2c224ca2ce0d8ad43a2572d8374ebc8555cd9218e62c91a1cb59a",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_top-view.jpg"
+    },
+    {
+      "media_id": "v5m_f0dc40fb71cb13a184f4e136",
+      "path": "/assets/img/v5/media/f0dc40fb71cb13a184f4.png",
+      "sha256": "f0dc40fb71cb13a184f4e136282841801b4e9ab00d6da25e2d84b3bcacf40475",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305071 — 7LSQ_B.png"
+    },
+    {
+      "media_id": "v5m_f0fe6a19d496a27d1985a838",
+      "path": "/assets/img/v5/media/f0fe6a19d496a27d1985.jpg",
+      "sha256": "f0fe6a19d496a27d1985a83806c7e573bf80783d2ccd7dd17ee125b1e4578309",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117_front-view.jpg"
+    },
+    {
       "media_id": "v5m_f166ce533eb04b38b96a4b77",
       "path": "/assets/img/v5/media/f166ce533eb04b38b96a.png",
       "sha256": "f166ce533eb04b38b96a4b77d21b87a2d86c0b759b150db5166433d83f345016",
@@ -2655,6 +3635,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Ferrilene 4.8 Orto-Orto — 5 кг"
+    },
+    {
+      "media_id": "v5m_f2d73a9c31896314fbe3836a",
+      "path": "/assets/img/v5/media/f2d73a9c31896314fbe3.jpg",
+      "sha256": "f2d73a9c31896314fbe3836a1ad856e0a2fad2706248aa0b71c061a3bd72aff9",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051_front.jpg"
     },
     {
       "media_id": "v5m_f620944cec9c1ba35ebba75a",
@@ -2707,6 +3697,16 @@
       "alt": "Plantlogic 1308020 — base"
     },
     {
+      "media_id": "v5m_f95f669cd448623e6ff92db7",
+      "path": "/assets/img/v5/media/f95f669cd448623e6ff9.jpg",
+      "sha256": "f95f669cd448623e6ff92db71d9f6658adf1087037a245e9898440af5fb5fa59",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307107 — 1307107_1.jpg"
+    },
+    {
       "media_id": "v5m_f97a5a2c2434009cebf1c00a",
       "path": "/assets/img/v5/media/f97a5a2c2434009cebf1.png",
       "sha256": "f97a5a2c2434009cebf1c00aa40b90abbfda1920f3fdfc0f89266f4ee3e21dec",
@@ -2757,6 +3757,16 @@
       "alt": "Plantlogic 1308031 — top"
     },
     {
+      "media_id": "v5m_fbb794cab8ba49047eddee90",
+      "path": "/assets/img/v5/media/fbb794cab8ba49047edd.jpg",
+      "sha256": "fbb794cab8ba49047eddee90555dc1da561d50d6aa48bdb34361290ad5cc6343",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307107 — 1307107_5.jpg"
+    },
+    {
       "media_id": "v5m_fd69d6f1fd88ee17b4bc98e2",
       "path": "/assets/img/v5/media/fd69d6f1fd88ee17b4bc.jpg",
       "sha256": "fd69d6f1fd88ee17b4bc98e21c4f5d834c3cdab7176031e1dcb22d04e79433e0",
@@ -2787,6 +3797,16 @@
       "alt": "Plantlogic 1308040 — hero"
     },
     {
+      "media_id": "v5m_feae13bcb85666b065fd4da8",
+      "path": "/assets/img/v5/media/feae13bcb85666b065fd.jpg",
+      "sha256": "feae13bcb85666b065fd4da8b544ceac743102cb7559a3047f9e56eb6ac2703a",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_front.jpg"
+    },
+    {
       "media_id": "v5m_feb7f87c2f591b89afb53d4b",
       "path": "/assets/img/v5/media/feb7f87c2f591b89afb5.jpg",
       "sha256": "feb7f87c2f591b89afb53d4bc04bba1bb1810ea421a77f6f1641a7b1db069206",
@@ -2805,6 +3825,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 1309030 — front"
+    },
+    {
+      "media_id": "v5m_ff4f724efccaba870c59ec88",
+      "path": "/assets/img/v5/media/ff4f724efccaba870c59.png",
+      "sha256": "ff4f724efccaba870c59ec88a19c8f48b69aad970d82632d2a9b784e5bcfffb5",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic 1307107 — best-pots-for-raspberries-2.png"
     }
   ],
   "sku_bindings": [
@@ -4310,6 +5340,429 @@
       "binding_kind": "exact",
       "source_kind": "organic_planet_package_source",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-100-ml-vala"
+    },
+    {
+      "sku_id": "PL-1304015-BK",
+      "media_id": "v5m_5b41887d51fb75532238f764",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1304015-TC",
+      "media_id": "v5m_5b41887d51fb75532238f764",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1304015-WH",
+      "media_id": "v5m_5b41887d51fb75532238f764",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1304125-BK",
+      "media_id": "v5m_eff1f111e3b9cb7a33d0a6a2",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1304125-TC",
+      "media_id": "v5m_eff1f111e3b9cb7a33d0a6a2",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1304125-WH",
+      "media_id": "v5m_eff1f111e3b9cb7a33d0a6a2",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-13050040-BK",
+      "media_id": "v5m_2c8102c5b66586d35e6b6397",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-13050040-TC",
+      "media_id": "v5m_2c8102c5b66586d35e6b6397",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-13050040-WH",
+      "media_id": "v5m_2c8102c5b66586d35e6b6397",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305005-BK",
+      "media_id": "v5m_6ff41931b8befa0799e62b43",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305005-TC",
+      "media_id": "v5m_6ff41931b8befa0799e62b43",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305005-WH",
+      "media_id": "v5m_6ff41931b8befa0799e62b43",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305071-BK",
+      "media_id": "v5m_e258940b3096c95ca88e1ba5",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305071-TC",
+      "media_id": "v5m_e258940b3096c95ca88e1ba5",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305071-WH",
+      "media_id": "v5m_e258940b3096c95ca88e1ba5",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305117-BK",
+      "media_id": "v5m_a6cea9061a6d5b052a6a2b4b",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305117-TC",
+      "media_id": "v5m_a6cea9061a6d5b052a6a2b4b",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305117-WH",
+      "media_id": "v5m_a6cea9061a6d5b052a6a2b4b",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305209",
+      "media_id": "v5m_928bb2d60e9102985b35aebc",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1305909",
+      "media_id": "v5m_184ad08e66ad9bd3f8815d3c",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306003-BK",
+      "media_id": "v5m_a64e3d7d9c4b26ee575fa0ec",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306003-TC",
+      "media_id": "v5m_a64e3d7d9c4b26ee575fa0ec",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306003-WH",
+      "media_id": "v5m_a64e3d7d9c4b26ee575fa0ec",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306007-BK",
+      "media_id": "v5m_9b8f899a5ede46f71df2ad1b",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306007-TC",
+      "media_id": "v5m_9b8f899a5ede46f71df2ad1b",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306007-WH",
+      "media_id": "v5m_9b8f899a5ede46f71df2ad1b",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306010-BK",
+      "media_id": "v5m_51ab8e4e48d7bf2ffb209bce",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306010-TC",
+      "media_id": "v5m_51ab8e4e48d7bf2ffb209bce",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306010-WH",
+      "media_id": "v5m_51ab8e4e48d7bf2ffb209bce",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306051-BK",
+      "media_id": "v5m_9e9a57f266a53598a39bec79",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306051-TC",
+      "media_id": "v5m_9e9a57f266a53598a39bec79",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1306051-WH",
+      "media_id": "v5m_9e9a57f266a53598a39bec79",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1307107-BK",
+      "media_id": "v5m_7f30c00a1d28564f72e5c9ea",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1307107-TC",
+      "media_id": "v5m_7f30c00a1d28564f72e5c9ea",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1307107-WH",
+      "media_id": "v5m_7f30c00a1d28564f72e5c9ea",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1307110-BK",
+      "media_id": "v5m_b64f66624c5bd0033d99c14b",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1307110-TC",
+      "media_id": "v5m_b64f66624c5bd0033d99c14b",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1307110-WH",
+      "media_id": "v5m_b64f66624c5bd0033d99c14b",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1307133-BK",
+      "media_id": "v5m_e6793e9c70688c1480325fca",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1307133-TC",
+      "media_id": "v5m_e6793e9c70688c1480325fca",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1307133-WH",
+      "media_id": "v5m_e6793e9c70688c1480325fca",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1309008-BK",
+      "media_id": "v5m_6ff2ffe6a37280f9aa55ec78",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1309008-TC",
+      "media_id": "v5m_6ff2ffe6a37280f9aa55ec78",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1309008-WH",
+      "media_id": "v5m_6ff2ffe6a37280f9aa55ec78",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1309015-BK",
+      "media_id": "v5m_e3fed6e13f4865c01981555d",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1309015-TC",
+      "media_id": "v5m_e3fed6e13f4865c01981555d",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1309015-WH",
+      "media_id": "v5m_e3fed6e13f4865c01981555d",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
     },
     {
       "sku_id": "PL-BB-1301144-BK",
@@ -6175,6 +7628,727 @@
       "source_url": null
     },
     {
+      "product_id": "plantlogic-10l-drainage-1307110",
+      "media_id": "v5m_b64f66624c5bd0033d99c14b",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-drainage-1307110",
+      "media_id": "v5m_4f612bf0f1e828d637296e33",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-drainage-1307110",
+      "media_id": "v5m_6a01ef0585f82073b16813fe",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-drainage-1307110",
+      "media_id": "v5m_236a6f180bc4ec0dc9772cb8",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-drainage-1307110",
+      "media_id": "v5m_eda248272cd50199e413917f",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-drainage-1307110",
+      "media_id": "v5m_f0cc601284b2c224ca2ce0d8",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-square-1306010",
+      "media_id": "v5m_51ab8e4e48d7bf2ffb209bce",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-square-1306010",
+      "media_id": "v5m_5d438c60ec2817ae8f9833d5",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-square-1306010",
+      "media_id": "v5m_2ad2f65b30e2e9831a5b481d",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-square-1306010",
+      "media_id": "v5m_c9d9d893103d3ecb3851730d",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-square-1306010",
+      "media_id": "v5m_b62565f7ce70337a4bb588e5",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-square-1306010",
+      "media_id": "v5m_c429e29d18cd87a3920a20c7",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-10l-square-1306010",
+      "media_id": "v5m_cfa7edf5c885b7e8e6fe2754",
+      "sort_order": 106,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-round-drainage-1304015",
+      "media_id": "v5m_5b41887d51fb75532238f764",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-round-drainage-1304015",
+      "media_id": "v5m_d361bb3f9df16c17ef373cb4",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-round-drainage-1304015",
+      "media_id": "v5m_a9273c493be54bb012ae6c42",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-round-drainage-1304015",
+      "media_id": "v5m_594926c56dcb98faa0989aee",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-round-drainage-1304015",
+      "media_id": "v5m_e58f0d89484c891ea4f4d629",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-square-1309015",
+      "media_id": "v5m_e3fed6e13f4865c01981555d",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-square-1309015",
+      "media_id": "v5m_c7cd572dcb28ff7db6431755",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-square-1309015",
+      "media_id": "v5m_721b47028d6c482db7199b83",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-square-1309015",
+      "media_id": "v5m_ac34374c119c2daccb4d8034",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-square-1309015",
+      "media_id": "v5m_b78fe2e2074ded69bbd6c43e",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-15l-square-1309015",
+      "media_id": "v5m_74ef2f3c6b7f2283826f6d8c",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-17l-drainage-1305117",
+      "media_id": "v5m_a6cea9061a6d5b052a6a2b4b",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-17l-drainage-1305117",
+      "media_id": "v5m_f0fe6a19d496a27d1985a838",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-17l-drainage-1305117",
+      "media_id": "v5m_3e90bd5a7fd78b12a065bd55",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-17l-drainage-1305117",
+      "media_id": "v5m_3ca0e525c263f9733a072d06",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-17l-drainage-1305117",
+      "media_id": "v5m_8bf196aa73a63714dd065128",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-18l-strawberry-trough-1305909",
+      "media_id": "v5m_184ad08e66ad9bd3f8815d3c",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-25l-round-drainage-1304125",
+      "media_id": "v5m_eff1f111e3b9cb7a33d0a6a2",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-25l-round-drainage-1304125",
+      "media_id": "v5m_0c55af7d09b24e958c6781e2",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-25l-round-drainage-1304125",
+      "media_id": "v5m_e417605f0728be7b70229458",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-25l-round-drainage-1304125",
+      "media_id": "v5m_b4680ef15815e49e2ab171b4",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-25l-round-drainage-1304125",
+      "media_id": "v5m_45234d4de473989351f598fb",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-30l-drainage-1307133",
+      "media_id": "v5m_e6793e9c70688c1480325fca",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-30l-drainage-1307133",
+      "media_id": "v5m_878e2d969472e36f6c38230d",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-30l-drainage-1307133",
+      "media_id": "v5m_1ae7b43ce1cbe32213161590",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-30l-drainage-1307133",
+      "media_id": "v5m_35465aefebf718302071727e",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-30l-drainage-1307133",
+      "media_id": "v5m_a38fd841e5d5aac3f352909b",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-3l-square-1306003",
+      "media_id": "v5m_a64e3d7d9c4b26ee575fa0ec",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-3l-square-1306003",
+      "media_id": "v5m_a875c7ef3912e7abad5da8a3",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-3l-square-1306003",
+      "media_id": "v5m_a367a78857d42240a412915f",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-3l-square-1306003",
+      "media_id": "v5m_4f8ff39d11ce7fdfefa57e0f",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-3l-square-1306003",
+      "media_id": "v5m_2d5b8ea8afb768d50be82ba1",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-3l-square-1306003",
+      "media_id": "v5m_8fa7cc80d6cf0ebbb893e5fb",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "media_id": "v5m_2c8102c5b66586d35e6b6397",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "media_id": "v5m_135ab90eacc6e99dcdab1363",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "media_id": "v5m_a58cd4087edf2e133faf4711",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "media_id": "v5m_cec90c50bc824f85fea1439d",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "media_id": "v5m_a1f100c9afa87102900110ac",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "media_id": "v5m_26647ee081fb54c040fed30f",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "media_id": "v5m_4740222530a05f2c173b64fa",
+      "sort_order": 106,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "media_id": "v5m_6ff41931b8befa0799e62b43",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "media_id": "v5m_818e77a152620aaf30553ffa",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "media_id": "v5m_9c55f097f60c4c2ed7146eb5",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "media_id": "v5m_898936ea92a11243d273712d",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "media_id": "v5m_dab703ab6da8305d5caee0f2",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "media_id": "v5m_4c726f7797ab62d3875cdab1",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "media_id": "v5m_088846d0baf538295ac297cb",
+      "sort_order": 106,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "media_id": "v5m_75a81f56b51e7600ee8cc2c2",
+      "sort_order": 107,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "media_id": "v5m_9e9a57f266a53598a39bec79",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "media_id": "v5m_948afb31f5979772caf17596",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "media_id": "v5m_182d39324dfd950ac9069d99",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "media_id": "v5m_92ae6b0dcd7893919bac4d76",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "media_id": "v5m_ad5eb9600f6b9b1ddf57c5c6",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "media_id": "v5m_5694cfc6cc9861d6ecf193ec",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "media_id": "v5m_f2d73a9c31896314fbe3836a",
+      "sort_order": 106,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "media_id": "v5m_e8098376716b4a4a4844200f",
+      "sort_order": 107,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "media_id": "v5m_36680dee8c75ae4990744300",
+      "sort_order": 108,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "media_id": "v5m_7f30c00a1d28564f72e5c9ea",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "media_id": "v5m_ff4f724efccaba870c59ec88",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "media_id": "v5m_f95f669cd448623e6ff92db7",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "media_id": "v5m_378beb4207c811c48fd2bde4",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "media_id": "v5m_96a081cd60baa328ae599045",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "media_id": "v5m_fbb794cab8ba49047eddee90",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "media_id": "v5m_2a774324644075eed9584e2b",
+      "sort_order": 106,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-1306007",
+      "media_id": "v5m_9b8f899a5ede46f71df2ad1b",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-1306007",
+      "media_id": "v5m_93d0b4a1d9c03a6b01698409",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-1306007",
+      "media_id": "v5m_feae13bcb85666b065fd4da8",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-1306007",
+      "media_id": "v5m_48ea81f32c80ac1ffeec775b",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-1306007",
+      "media_id": "v5m_ebb799027bcacdec36682d8a",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-1306007",
+      "media_id": "v5m_bc2f45122f510be5b7b55da3",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "media_id": "v5m_e258940b3096c95ca88e1ba5",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "media_id": "v5m_f024e4f573809f46cc06f102",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "media_id": "v5m_743f8f77235f36a4e3afb386",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "media_id": "v5m_f0dc40fb71cb13a184f4e136",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "media_id": "v5m_8d78f3a113ee4f7bf99668b6",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "media_id": "v5m_d94101c081ec6d1c26f4f137",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "media_id": "v5m_9a3e43da6829d390d1d752c9",
+      "sort_order": 106,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "media_id": "v5m_44aadf7c402a06ecde933d24",
+      "sort_order": 107,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "media_id": "v5m_21047b973e8ef4ef323b9aad",
+      "sort_order": 108,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-8l-square-1309008",
+      "media_id": "v5m_6ff2ffe6a37280f9aa55ec78",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-8l-square-1309008",
+      "media_id": "v5m_26631f70e8d140f613c5a86f",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-8l-square-1309008",
+      "media_id": "v5m_538f55926aeb8ccd8eebe650",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-8l-square-1309008",
+      "media_id": "v5m_0a531b54622c0e11ce78d238",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-8l-square-1309008",
+      "media_id": "v5m_82756a1d0d25ad61bf6accaf",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-8l-square-1309008",
+      "media_id": "v5m_31777e0e5e0c6f511c2e9fdd",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-8l-square-1309008",
+      "media_id": "v5m_c17564b826cb6c8d4ec12921",
+      "sort_order": 106,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-8l-square-1309008",
+      "media_id": "v5m_47a4c949c07de105dbc741b4",
+      "sort_order": 107,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-8l-square-1309008",
+      "media_id": "v5m_8c8924e577d4051660a838b0",
+      "sort_order": 108,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
+      "media_id": "v5m_026d011a0d4fa0794b06c0d9",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-9l-strawberry-trough-truss-1305209",
+      "media_id": "v5m_928bb2d60e9102985b35aebc",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
       "product_id": "radifarm",
       "media_id": "v5m_a8f72fa0c704b35aa69c72c5",
       "sort_order": 0,
@@ -6587,6 +8761,12 @@
       "sku_id": "PL-BB-1301143-BK",
       "product_id": "blueberry-zephyr-v2-pots",
       "package_label": "40 л",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1305082",
+      "product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
+      "package_label": "8 л",
       "has_product_fallback": true
     }
   ],

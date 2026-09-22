@@ -5,22 +5,22 @@
     "checks_pass": 9,
     "checks_fail": 0,
     "warnings": 0,
-    "source_commerce_rows": 286,
-    "v5_products": 86,
-    "v5_skus": 221,
-    "public_products": 82,
+    "source_commerce_rows": 334,
+    "v5_products": 104,
+    "v5_skus": 269,
+    "public_products": 100,
     "plantlogic_models": 17
   },
   "checks": [
     {
       "name": "identity_uniqueness",
       "status": "PASS",
-      "note": "products=86, skus=221"
+      "note": "products=104, skus=269"
     },
     {
       "name": "production_commerce_identity_coverage",
       "status": "PASS",
-      "note": "source=286 canonical=204 alias=78 excluded=4 unmapped=0"
+      "note": "source=334 canonical=221 alias=109 excluded=4 unmapped=0"
     },
     {
       "name": "direct_commerce_parity",
@@ -30,12 +30,12 @@
     {
       "name": "alias_commerce_preservation",
       "status": "PASS",
-      "note": "checked=78, mismatches=0"
+      "note": "checked=109, mismatches=0"
     },
     {
       "name": "content_coverage",
       "status": "PASS",
-      "note": "products=86/86, sources=118, source_less=0"
+      "note": "products=104/104, sources=136, source_less=0"
     },
     {
       "name": "public_visibility",
@@ -45,12 +45,12 @@
     {
       "name": "media_architecture",
       "status": "PASS",
-      "note": "exact_skus=177, product_media_products=85, unresolved_current_skus=0, public_products_without_media=0"
+      "note": "exact_skus=224, product_media_products=103, unresolved_current_skus=0, public_products_without_media=0"
     },
     {
       "name": "plantlogic_assortment",
       "status": "PASS",
-      "note": "manufacturer_models=17, duplicate_or_missing_model_keys=0, wrong_colors=0"
+      "note": "core_blueberry_manufacturer_models=17, duplicate_or_missing_model_keys=0, wrong_colors=0"
     },
     {
       "name": "canonical_price_decisions",
@@ -66,8 +66,8 @@
       "duplicate_skus": []
     },
     "production_commerce_identity_coverage": {
-      "canonical": 204,
-      "alias": 78,
+      "canonical": 221,
+      "alias": 109,
       "excluded": 4,
       "unmapped": []
     },

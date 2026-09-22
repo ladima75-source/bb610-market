@@ -1,9 +1,9 @@
 {
   "schema": "bb610-v5-stage-1",
   "summary": {
-    "snapshot_created_at": "2026-09-21T09:57:20.680815+00:00",
-    "production_head": "46e0b2b208c54132bd1c11a70f993000272195f8",
-    "production_origin_main_at_snapshot": "41fa4154090eec7658ce86ed01fad43ac93145ff",
+    "snapshot_created_at": "2026-09-22T09:15:12.136391+00:00",
+    "production_head": "663a1b3921cfaf39a93b34839c955664391f1d65",
+    "production_origin_main_at_snapshot": "62065f7533053d9e30b3feac893a310aee07a0a1",
     "source_commerce_rows": 286,
     "excluded_test_rows": 4,
     "canonical_non_plantlogic_products": 80,
@@ -14,8 +14,10 @@
     "plantlogic_request_price_skus": 17,
     "plantlogic_retired_color_aliases": 31,
     "plantlogic_legacy_skus": 0,
-    "v5_stage_products_total": 86,
-    "v5_stage_skus_total": 221
+    "v5_stage_products_total": 104,
+    "v5_stage_skus_total": 269,
+    "plantlogic_sectioned_products": 18,
+    "plantlogic_sectioned_request_price_skus": 48
   },
   "products": [
     {
@@ -1258,7 +1260,7 @@
       "package_value": 20.0,
       "package_unit": "pcs",
       "package_label": "20 шт",
-      "package_group": "small",
+      "package_group": null,
       "price": 145.0,
       "sale_price": null,
       "availability": "in_stock",
@@ -4426,7 +4428,7 @@
       "package_value": 10.0,
       "package_unit": "pcs",
       "package_label": "10 шт",
-      "package_group": "small",
+      "package_group": null,
       "price": 149.0,
       "sale_price": null,
       "availability": "in_stock",
@@ -8140,7 +8142,11 @@
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_round",
-      "content_state": "candidate_from_v3_verified_plantlogic_work"
+      "content_state": "candidate_from_v3_verified_plantlogic_work",
+      "plantlogic_sections": [
+        "blueberry",
+        "rubus"
+      ]
     },
     {
       "product_id": "blueberry-round-short-legs-pot",
@@ -8149,7 +8155,10 @@
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_round_short_legs",
-      "content_state": "candidate_from_v3_verified_plantlogic_work"
+      "content_state": "candidate_from_v3_verified_plantlogic_work",
+      "plantlogic_sections": [
+        "blueberry"
+      ]
     },
     {
       "product_id": "blueberry-round-u-groove-pots",
@@ -8158,7 +8167,11 @@
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_round_u",
-      "content_state": "candidate_from_v3_verified_plantlogic_work"
+      "content_state": "candidate_from_v3_verified_plantlogic_work",
+      "plantlogic_sections": [
+        "blueberry",
+        "rubus"
+      ]
     },
     {
       "product_id": "blueberry-square-pots",
@@ -8167,7 +8180,10 @@
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_square",
-      "content_state": "candidate_from_v3_verified_plantlogic_work"
+      "content_state": "candidate_from_v3_verified_plantlogic_work",
+      "plantlogic_sections": [
+        "blueberry"
+      ]
     },
     {
       "product_id": "blueberry-square-u-groove-pots",
@@ -8176,7 +8192,10 @@
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_square_u",
-      "content_state": "candidate_from_v3_verified_plantlogic_work"
+      "content_state": "candidate_from_v3_verified_plantlogic_work",
+      "plantlogic_sections": [
+        "blueberry"
+      ]
     },
     {
       "product_id": "blueberry-zephyr-v2-pots",
@@ -8185,7 +8204,236 @@
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_zephyr_v2",
-      "content_state": "candidate_from_v3_verified_plantlogic_work"
+      "content_state": "candidate_from_v3_verified_plantlogic_work",
+      "plantlogic_sections": [
+        "blueberry"
+      ]
+    },
+    {
+      "product_id": "plantlogic-25l-round-drainage-1304125",
+      "slug": "plantlogic-25l-round-drainage-1304125",
+      "name": "Круглий горщик 25 л зі збором дренажу — арт. 1304125",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1304125",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "universal",
+        "vegetable"
+      ]
+    },
+    {
+      "product_id": "plantlogic-3l-square-1306003",
+      "slug": "plantlogic-3l-square-1306003",
+      "name": "Квадратний горщик 3 л — арт. 1306003",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1306003",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus",
+        "universal",
+        "garden"
+      ]
+    },
+    {
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "slug": "plantlogic-4-7l-square-cold-storage-13050040",
+      "name": "Квадратний горщик 4,7 л для long-cane та холодного зберігання — арт. 13050040",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_13050040",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "slug": "plantlogic-5l-square-short-1306051",
+      "name": "Компактний квадратний горщик 5 л — арт. 1306051",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1306051",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus",
+        "garden"
+      ]
+    },
+    {
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "slug": "plantlogic-5l-drainage-1305005",
+      "name": "Горщик 5 л зі збором дренажу — арт. 1305005",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1305005",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus",
+        "universal"
+      ]
+    },
+    {
+      "product_id": "plantlogic-7l-square-1306007",
+      "slug": "plantlogic-7l-square-1306007",
+      "name": "Квадратний горщик 7 л — арт. 1306007",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1306007",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "slug": "plantlogic-7l-square-cold-storage-1305071",
+      "name": "Квадратний горщик 7 л для long-cane та холодного зберігання — арт. 1305071",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1305071",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "slug": "plantlogic-7l-drainage-1307107",
+      "name": "Горщик 7 л зі збором дренажу — арт. 1307107",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1307107",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus",
+        "universal"
+      ]
+    },
+    {
+      "product_id": "plantlogic-8l-square-1309008",
+      "slug": "plantlogic-8l-square-1309008",
+      "name": "Квадратний горщик 8 л — арт. 1309008",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1309008",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-10l-square-1306010",
+      "slug": "plantlogic-10l-square-1306010",
+      "name": "Квадратний горщик 10 л — арт. 1306010",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1306010",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-10l-drainage-1307110",
+      "slug": "plantlogic-10l-drainage-1307110",
+      "name": "Горщик 10 л зі збором дренажу — арт. 1307110",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1307110",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus",
+        "universal",
+        "vegetable"
+      ]
+    },
+    {
+      "product_id": "plantlogic-15l-square-1309015",
+      "slug": "plantlogic-15l-square-1309015",
+      "name": "Квадратний горщик 15 л — арт. 1309015",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1309015",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-15l-round-drainage-1304015",
+      "slug": "plantlogic-15l-round-drainage-1304015",
+      "name": "Круглий горщик 15 л зі збором дренажу — арт. 1304015",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1304015",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "rubus",
+        "universal"
+      ]
+    },
+    {
+      "product_id": "plantlogic-30l-drainage-1307133",
+      "slug": "plantlogic-30l-drainage-1307133",
+      "name": "Горщик 30 л зі збором дренажу — арт. 1307133",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1307133",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "universal"
+      ]
+    },
+    {
+      "product_id": "plantlogic-17l-drainage-1305117",
+      "slug": "plantlogic-17l-drainage-1305117",
+      "name": "Горщик 17 л зі збором дренажу — арт. 1305117",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1305117",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "vegetable",
+        "strawberry"
+      ]
+    },
+    {
+      "product_id": "plantlogic-18l-strawberry-trough-1305909",
+      "slug": "plantlogic-18l-strawberry-trough-1305909",
+      "name": "Жолоб для полуниці 18 л з опорою для квітконосів — арт. 1305909",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1305909",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "strawberry"
+      ]
+    },
+    {
+      "product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
+      "slug": "plantlogic-8l-strawberry-trough-big-handle-1305082",
+      "name": "Жолоб для полуниці 8 л з широкою ручкою — арт. 1305082",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1305082",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "strawberry"
+      ]
+    },
+    {
+      "product_id": "plantlogic-9l-strawberry-trough-truss-1305209",
+      "slug": "plantlogic-9l-strawberry-trough-truss-1305209",
+      "name": "Жолоб для полуниці 9 л з підтримкою квітконосів — арт. 1305209",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1305209",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "strawberry"
+      ]
     }
   ],
   "plantlogic_skus": [
@@ -9140,6 +9388,3249 @@
           "path": "/assets/plantlogic/zephyr-v2-greenhouse.jpg",
           "alt": "Plantlogic 1301143 — black — family",
           "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1304125-BK",
+      "v3_sku_id": "sku_pl_1304125_black",
+      "product_id": "plantlogic-25l-round-drainage-1304125",
+      "package_value": 25.0,
+      "package_unit": "l",
+      "package_label": "25 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "25 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1304125",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "universal",
+          "vegetable"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1304125_pleff1f111",
+          "path": "/media/products/plantlogic-1304125-pleff1f111.jpg",
+          "alt": "Plantlogic 1304125 — 25-Liter-Drainage-Collection-pot_Item_1304125.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1304125_pl0c55af7d",
+          "path": "/media/products/plantlogic-1304125-pl0c55af7d.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304125_ple417605f",
+          "path": "/media/products/plantlogic-1304125-ple417605f.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_bottom-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304125_plb4680ef1",
+          "path": "/media/products/plantlogic-1304125-plb4680ef1.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_gutter.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304125_pl45234d4d",
+          "path": "/media/products/plantlogic-1304125-pl45234d4d.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1304125-WH",
+      "v3_sku_id": "sku_pl_1304125_white",
+      "product_id": "plantlogic-25l-round-drainage-1304125",
+      "package_value": 25.0,
+      "package_unit": "l",
+      "package_label": "25 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "25 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1304125",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "universal",
+          "vegetable"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1304125_pleff1f111",
+          "path": "/media/products/plantlogic-1304125-pleff1f111.jpg",
+          "alt": "Plantlogic 1304125 — 25-Liter-Drainage-Collection-pot_Item_1304125.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1304125_pl0c55af7d",
+          "path": "/media/products/plantlogic-1304125-pl0c55af7d.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304125_ple417605f",
+          "path": "/media/products/plantlogic-1304125-ple417605f.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_bottom-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304125_plb4680ef1",
+          "path": "/media/products/plantlogic-1304125-plb4680ef1.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_gutter.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304125_pl45234d4d",
+          "path": "/media/products/plantlogic-1304125-pl45234d4d.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1304125-TC",
+      "v3_sku_id": "sku_pl_1304125_terracotta",
+      "product_id": "plantlogic-25l-round-drainage-1304125",
+      "package_value": 25.0,
+      "package_unit": "l",
+      "package_label": "25 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "25 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1304125",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "universal",
+          "vegetable"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1304125_pleff1f111",
+          "path": "/media/products/plantlogic-1304125-pleff1f111.jpg",
+          "alt": "Plantlogic 1304125 — 25-Liter-Drainage-Collection-pot_Item_1304125.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1304125_pl0c55af7d",
+          "path": "/media/products/plantlogic-1304125-pl0c55af7d.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304125_ple417605f",
+          "path": "/media/products/plantlogic-1304125-ple417605f.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_bottom-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304125_plb4680ef1",
+          "path": "/media/products/plantlogic-1304125-plb4680ef1.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_gutter.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304125_pl45234d4d",
+          "path": "/media/products/plantlogic-1304125-pl45234d4d.jpg",
+          "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306003-BK",
+      "v3_sku_id": "sku_pl_1306003_black",
+      "product_id": "plantlogic-3l-square-1306003",
+      "package_value": 3.0,
+      "package_unit": "l",
+      "package_label": "3 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "3 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1306003",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal",
+          "garden"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306003_pla64e3d7d",
+          "path": "/media/products/plantlogic-1306003-pla64e3d7d.jpg",
+          "alt": "Plantlogic 1306003 — 6003_5.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306003_pla875c7ef",
+          "path": "/media/products/plantlogic-1306003-pla875c7ef.jpg",
+          "alt": "Plantlogic 1306003 — 3-Liter-Square-Pot_Item_1306003.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pla367a788",
+          "path": "/media/products/plantlogic-1306003-pla367a788.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pl4f8ff39d",
+          "path": "/media/products/plantlogic-1306003-pl4f8ff39d.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pl2d5b8ea8",
+          "path": "/media/products/plantlogic-1306003-pl2d5b8ea8.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pl8fa7cc80",
+          "path": "/media/products/plantlogic-1306003-pl8fa7cc80.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306003-WH",
+      "v3_sku_id": "sku_pl_1306003_white",
+      "product_id": "plantlogic-3l-square-1306003",
+      "package_value": 3.0,
+      "package_unit": "l",
+      "package_label": "3 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "3 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1306003",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal",
+          "garden"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306003_pla64e3d7d",
+          "path": "/media/products/plantlogic-1306003-pla64e3d7d.jpg",
+          "alt": "Plantlogic 1306003 — 6003_5.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306003_pla875c7ef",
+          "path": "/media/products/plantlogic-1306003-pla875c7ef.jpg",
+          "alt": "Plantlogic 1306003 — 3-Liter-Square-Pot_Item_1306003.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pla367a788",
+          "path": "/media/products/plantlogic-1306003-pla367a788.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pl4f8ff39d",
+          "path": "/media/products/plantlogic-1306003-pl4f8ff39d.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pl2d5b8ea8",
+          "path": "/media/products/plantlogic-1306003-pl2d5b8ea8.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pl8fa7cc80",
+          "path": "/media/products/plantlogic-1306003-pl8fa7cc80.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306003-TC",
+      "v3_sku_id": "sku_pl_1306003_terracotta",
+      "product_id": "plantlogic-3l-square-1306003",
+      "package_value": 3.0,
+      "package_unit": "l",
+      "package_label": "3 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "3 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1306003",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal",
+          "garden"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306003_pla64e3d7d",
+          "path": "/media/products/plantlogic-1306003-pla64e3d7d.jpg",
+          "alt": "Plantlogic 1306003 — 6003_5.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306003_pla875c7ef",
+          "path": "/media/products/plantlogic-1306003-pla875c7ef.jpg",
+          "alt": "Plantlogic 1306003 — 3-Liter-Square-Pot_Item_1306003.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pla367a788",
+          "path": "/media/products/plantlogic-1306003-pla367a788.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pl4f8ff39d",
+          "path": "/media/products/plantlogic-1306003-pl4f8ff39d.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pl2d5b8ea8",
+          "path": "/media/products/plantlogic-1306003-pl2d5b8ea8.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306003_pl8fa7cc80",
+          "path": "/media/products/plantlogic-1306003-pl8fa7cc80.jpg",
+          "alt": "Plantlogic 1306003 — 3L-Square-pot_Item_1306003_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13050040-BK",
+      "v3_sku_id": "sku_pl_13050040_black",
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "package_value": 4.7,
+      "package_unit": "l",
+      "package_label": "4.7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "4,7 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "13050040",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_13050040_pl2c8102c5",
+          "path": "/media/products/plantlogic-13050040-pl2c8102c5.jpg",
+          "alt": "Plantlogic 13050040 — 47LSQ_C.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_13050040_pl135ab90e",
+          "path": "/media/products/plantlogic-13050040-pl135ab90e.jpg",
+          "alt": "Plantlogic 13050040 — 47LSQ_D.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pla58cd408",
+          "path": "/media/products/plantlogic-13050040-pla58cd408.jpg",
+          "alt": "Plantlogic 13050040 — 47LSQ_E.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_plcec90c50",
+          "path": "/media/products/plantlogic-13050040-plcec90c50.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pla1f100c9",
+          "path": "/media/products/plantlogic-13050040-pla1f100c9.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-CENITAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pl26647ee013050040",
+          "path": "/media/products/plantlogic-13050040-pl26647ee013050040.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pl4740222513050040",
+          "path": "/media/products/plantlogic-13050040-pl4740222513050040.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-FRENTE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13050040-WH",
+      "v3_sku_id": "sku_pl_13050040_white",
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "package_value": 4.7,
+      "package_unit": "l",
+      "package_label": "4.7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "4,7 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "13050040",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_13050040_pl2c8102c5",
+          "path": "/media/products/plantlogic-13050040-pl2c8102c5.jpg",
+          "alt": "Plantlogic 13050040 — 47LSQ_C.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_13050040_pl135ab90e",
+          "path": "/media/products/plantlogic-13050040-pl135ab90e.jpg",
+          "alt": "Plantlogic 13050040 — 47LSQ_D.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pla58cd408",
+          "path": "/media/products/plantlogic-13050040-pla58cd408.jpg",
+          "alt": "Plantlogic 13050040 — 47LSQ_E.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_plcec90c50",
+          "path": "/media/products/plantlogic-13050040-plcec90c50.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pla1f100c9",
+          "path": "/media/products/plantlogic-13050040-pla1f100c9.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-CENITAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pl26647ee013050040",
+          "path": "/media/products/plantlogic-13050040-pl26647ee013050040.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pl4740222513050040",
+          "path": "/media/products/plantlogic-13050040-pl4740222513050040.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-FRENTE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13050040-TC",
+      "v3_sku_id": "sku_pl_13050040_terracotta",
+      "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "package_value": 4.7,
+      "package_unit": "l",
+      "package_label": "4.7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "4,7 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "13050040",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_13050040_pl2c8102c5",
+          "path": "/media/products/plantlogic-13050040-pl2c8102c5.jpg",
+          "alt": "Plantlogic 13050040 — 47LSQ_C.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_13050040_pl135ab90e",
+          "path": "/media/products/plantlogic-13050040-pl135ab90e.jpg",
+          "alt": "Plantlogic 13050040 — 47LSQ_D.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pla58cd408",
+          "path": "/media/products/plantlogic-13050040-pla58cd408.jpg",
+          "alt": "Plantlogic 13050040 — 47LSQ_E.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_plcec90c50",
+          "path": "/media/products/plantlogic-13050040-plcec90c50.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pla1f100c9",
+          "path": "/media/products/plantlogic-13050040-pla1f100c9.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-CENITAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pl26647ee013050040",
+          "path": "/media/products/plantlogic-13050040-pl26647ee013050040.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_13050040_pl4740222513050040",
+          "path": "/media/products/plantlogic-13050040-pl4740222513050040.jpg",
+          "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-FRENTE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306051-BK",
+      "v3_sku_id": "sku_pl_1306051_black",
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "package_value": 5.0,
+      "package_unit": "l",
+      "package_label": "5 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "5 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1306051",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "garden"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306051_pl9e9a57f2",
+          "path": "/media/products/plantlogic-1306051-pl9e9a57f2.jpg",
+          "alt": "Plantlogic 1306051 — 5LDC_D.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306051_pl948afb31",
+          "path": "/media/products/plantlogic-1306051-pl948afb31.jpg",
+          "alt": "Plantlogic 1306051 — 5LSQ_A.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl182d3932",
+          "path": "/media/products/plantlogic-1306051-pl182d3932.jpg",
+          "alt": "Plantlogic 1306051 — 5LSQ_B.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl92ae6b0d",
+          "path": "/media/products/plantlogic-1306051-pl92ae6b0d.jpg",
+          "alt": "Plantlogic 1306051 — 5LSQ_C.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_plad5eb960",
+          "path": "/media/products/plantlogic-1306051-plad5eb960.jpg",
+          "alt": "Plantlogic 1306051 — 5-Liter-Square-pot_Item_1306051.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl5694cfc6",
+          "path": "/media/products/plantlogic-1306051-pl5694cfc6.jpg",
+          "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_plf2d73a9c",
+          "path": "/media/products/plantlogic-1306051-plf2d73a9c.jpg",
+          "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_ple8098376",
+          "path": "/media/products/plantlogic-1306051-ple8098376.jpg",
+          "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl36680dee",
+          "path": "/media/products/plantlogic-1306051-pl36680dee.jpg",
+          "alt": "Plantlogic 1306051 — 5L-DC-1306051-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306051-WH",
+      "v3_sku_id": "sku_pl_1306051_white",
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "package_value": 5.0,
+      "package_unit": "l",
+      "package_label": "5 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "5 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1306051",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "garden"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306051_pl9e9a57f2",
+          "path": "/media/products/plantlogic-1306051-pl9e9a57f2.jpg",
+          "alt": "Plantlogic 1306051 — 5LDC_D.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306051_pl948afb31",
+          "path": "/media/products/plantlogic-1306051-pl948afb31.jpg",
+          "alt": "Plantlogic 1306051 — 5LSQ_A.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl182d3932",
+          "path": "/media/products/plantlogic-1306051-pl182d3932.jpg",
+          "alt": "Plantlogic 1306051 — 5LSQ_B.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl92ae6b0d",
+          "path": "/media/products/plantlogic-1306051-pl92ae6b0d.jpg",
+          "alt": "Plantlogic 1306051 — 5LSQ_C.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_plad5eb960",
+          "path": "/media/products/plantlogic-1306051-plad5eb960.jpg",
+          "alt": "Plantlogic 1306051 — 5-Liter-Square-pot_Item_1306051.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl5694cfc6",
+          "path": "/media/products/plantlogic-1306051-pl5694cfc6.jpg",
+          "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_plf2d73a9c",
+          "path": "/media/products/plantlogic-1306051-plf2d73a9c.jpg",
+          "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_ple8098376",
+          "path": "/media/products/plantlogic-1306051-ple8098376.jpg",
+          "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl36680dee",
+          "path": "/media/products/plantlogic-1306051-pl36680dee.jpg",
+          "alt": "Plantlogic 1306051 — 5L-DC-1306051-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306051-TC",
+      "v3_sku_id": "sku_pl_1306051_terracotta",
+      "product_id": "plantlogic-5l-square-short-1306051",
+      "package_value": 5.0,
+      "package_unit": "l",
+      "package_label": "5 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "5 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1306051",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "garden"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306051_pl9e9a57f2",
+          "path": "/media/products/plantlogic-1306051-pl9e9a57f2.jpg",
+          "alt": "Plantlogic 1306051 — 5LDC_D.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306051_pl948afb31",
+          "path": "/media/products/plantlogic-1306051-pl948afb31.jpg",
+          "alt": "Plantlogic 1306051 — 5LSQ_A.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl182d3932",
+          "path": "/media/products/plantlogic-1306051-pl182d3932.jpg",
+          "alt": "Plantlogic 1306051 — 5LSQ_B.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl92ae6b0d",
+          "path": "/media/products/plantlogic-1306051-pl92ae6b0d.jpg",
+          "alt": "Plantlogic 1306051 — 5LSQ_C.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_plad5eb960",
+          "path": "/media/products/plantlogic-1306051-plad5eb960.jpg",
+          "alt": "Plantlogic 1306051 — 5-Liter-Square-pot_Item_1306051.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl5694cfc6",
+          "path": "/media/products/plantlogic-1306051-pl5694cfc6.jpg",
+          "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_plf2d73a9c",
+          "path": "/media/products/plantlogic-1306051-plf2d73a9c.jpg",
+          "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_ple8098376",
+          "path": "/media/products/plantlogic-1306051-ple8098376.jpg",
+          "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306051_pl36680dee",
+          "path": "/media/products/plantlogic-1306051-pl36680dee.jpg",
+          "alt": "Plantlogic 1306051 — 5L-DC-1306051-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305005-BK",
+      "v3_sku_id": "sku_pl_1305005_black",
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "package_value": 5.0,
+      "package_unit": "l",
+      "package_label": "5 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "5 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1305005",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1305005_pl6ff41931",
+          "path": "/media/products/plantlogic-1305005-pl6ff41931.jpg",
+          "alt": "Plantlogic 1305005 — 5LDC_A.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1305005_pl818e77a1",
+          "path": "/media/products/plantlogic-1305005-pl818e77a1.jpg",
+          "alt": "Plantlogic 1305005 — 5LDC_B.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl9c55f097",
+          "path": "/media/products/plantlogic-1305005-pl9c55f097.jpg",
+          "alt": "Plantlogic 1305005 — 5LDC_C.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl898936ea",
+          "path": "/media/products/plantlogic-1305005-pl898936ea.jpg",
+          "alt": "Plantlogic 1305005 — 5-Liter-Drainage-Collection-pot_Item_1305005.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pldab703ab",
+          "path": "/media/products/plantlogic-1305005-pldab703ab.jpg",
+          "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl4c726f77",
+          "path": "/media/products/plantlogic-1305005-pl4c726f77.jpg",
+          "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl088846d0",
+          "path": "/media/products/plantlogic-1305005-pl088846d0.jpg",
+          "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl75a81f56",
+          "path": "/media/products/plantlogic-1305005-pl75a81f56.jpg",
+          "alt": "Plantlogic 1305005 — 5L-DC-1305005-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305005-WH",
+      "v3_sku_id": "sku_pl_1305005_white",
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "package_value": 5.0,
+      "package_unit": "l",
+      "package_label": "5 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "5 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1305005",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1305005_pl6ff41931",
+          "path": "/media/products/plantlogic-1305005-pl6ff41931.jpg",
+          "alt": "Plantlogic 1305005 — 5LDC_A.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1305005_pl818e77a1",
+          "path": "/media/products/plantlogic-1305005-pl818e77a1.jpg",
+          "alt": "Plantlogic 1305005 — 5LDC_B.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl9c55f097",
+          "path": "/media/products/plantlogic-1305005-pl9c55f097.jpg",
+          "alt": "Plantlogic 1305005 — 5LDC_C.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl898936ea",
+          "path": "/media/products/plantlogic-1305005-pl898936ea.jpg",
+          "alt": "Plantlogic 1305005 — 5-Liter-Drainage-Collection-pot_Item_1305005.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pldab703ab",
+          "path": "/media/products/plantlogic-1305005-pldab703ab.jpg",
+          "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl4c726f77",
+          "path": "/media/products/plantlogic-1305005-pl4c726f77.jpg",
+          "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl088846d0",
+          "path": "/media/products/plantlogic-1305005-pl088846d0.jpg",
+          "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl75a81f56",
+          "path": "/media/products/plantlogic-1305005-pl75a81f56.jpg",
+          "alt": "Plantlogic 1305005 — 5L-DC-1305005-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305005-TC",
+      "v3_sku_id": "sku_pl_1305005_terracotta",
+      "product_id": "plantlogic-5l-drainage-1305005",
+      "package_value": 5.0,
+      "package_unit": "l",
+      "package_label": "5 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "5 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1305005",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1305005_pl6ff41931",
+          "path": "/media/products/plantlogic-1305005-pl6ff41931.jpg",
+          "alt": "Plantlogic 1305005 — 5LDC_A.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1305005_pl818e77a1",
+          "path": "/media/products/plantlogic-1305005-pl818e77a1.jpg",
+          "alt": "Plantlogic 1305005 — 5LDC_B.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl9c55f097",
+          "path": "/media/products/plantlogic-1305005-pl9c55f097.jpg",
+          "alt": "Plantlogic 1305005 — 5LDC_C.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl898936ea",
+          "path": "/media/products/plantlogic-1305005-pl898936ea.jpg",
+          "alt": "Plantlogic 1305005 — 5-Liter-Drainage-Collection-pot_Item_1305005.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pldab703ab",
+          "path": "/media/products/plantlogic-1305005-pldab703ab.jpg",
+          "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl4c726f77",
+          "path": "/media/products/plantlogic-1305005-pl4c726f77.jpg",
+          "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl088846d0",
+          "path": "/media/products/plantlogic-1305005-pl088846d0.jpg",
+          "alt": "Plantlogic 1305005 — 5L-Drainage-collection-pot_Item_1305005_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305005_pl75a81f56",
+          "path": "/media/products/plantlogic-1305005-pl75a81f56.jpg",
+          "alt": "Plantlogic 1305005 — 5L-DC-1305005-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306007-BK",
+      "v3_sku_id": "sku_pl_1306007_black",
+      "product_id": "plantlogic-7l-square-1306007",
+      "package_value": 7.0,
+      "package_unit": "l",
+      "package_label": "7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "7 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1306007",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306007_pl9b8f899a",
+          "path": "/media/products/plantlogic-1306007-pl9b8f899a.jpg",
+          "alt": "Plantlogic 1306007 — 7-Liter-Square-pot-_Item_1306007.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306007_pl93d0b4a1",
+          "path": "/media/products/plantlogic-1306007-pl93d0b4a1.png",
+          "alt": "Plantlogic 1306007 — 7-liter-square-pot-1.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_plfeae13bc",
+          "path": "/media/products/plantlogic-1306007-plfeae13bc.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_pl48ea81f3",
+          "path": "/media/products/plantlogic-1306007-pl48ea81f3.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_plebb79902",
+          "path": "/media/products/plantlogic-1306007-plebb79902.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_plbc2f4512",
+          "path": "/media/products/plantlogic-1306007-plbc2f4512.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306007-WH",
+      "v3_sku_id": "sku_pl_1306007_white",
+      "product_id": "plantlogic-7l-square-1306007",
+      "package_value": 7.0,
+      "package_unit": "l",
+      "package_label": "7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "7 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1306007",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306007_pl9b8f899a",
+          "path": "/media/products/plantlogic-1306007-pl9b8f899a.jpg",
+          "alt": "Plantlogic 1306007 — 7-Liter-Square-pot-_Item_1306007.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306007_pl93d0b4a1",
+          "path": "/media/products/plantlogic-1306007-pl93d0b4a1.png",
+          "alt": "Plantlogic 1306007 — 7-liter-square-pot-1.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_plfeae13bc",
+          "path": "/media/products/plantlogic-1306007-plfeae13bc.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_pl48ea81f3",
+          "path": "/media/products/plantlogic-1306007-pl48ea81f3.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_plebb79902",
+          "path": "/media/products/plantlogic-1306007-plebb79902.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_plbc2f4512",
+          "path": "/media/products/plantlogic-1306007-plbc2f4512.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306007-TC",
+      "v3_sku_id": "sku_pl_1306007_terracotta",
+      "product_id": "plantlogic-7l-square-1306007",
+      "package_value": 7.0,
+      "package_unit": "l",
+      "package_label": "7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "7 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1306007",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306007_pl9b8f899a",
+          "path": "/media/products/plantlogic-1306007-pl9b8f899a.jpg",
+          "alt": "Plantlogic 1306007 — 7-Liter-Square-pot-_Item_1306007.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306007_pl93d0b4a1",
+          "path": "/media/products/plantlogic-1306007-pl93d0b4a1.png",
+          "alt": "Plantlogic 1306007 — 7-liter-square-pot-1.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_plfeae13bc",
+          "path": "/media/products/plantlogic-1306007-plfeae13bc.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_pl48ea81f3",
+          "path": "/media/products/plantlogic-1306007-pl48ea81f3.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_plebb79902",
+          "path": "/media/products/plantlogic-1306007-plebb79902.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306007_plbc2f4512",
+          "path": "/media/products/plantlogic-1306007-plbc2f4512.jpg",
+          "alt": "Plantlogic 1306007 — 7L-Square-pot_Item_1306007_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305071-BK",
+      "v3_sku_id": "sku_pl_1305071_black",
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "package_value": 7.0,
+      "package_unit": "l",
+      "package_label": "7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "7 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1305071",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1305071_ple258940b",
+          "path": "/media/products/plantlogic-1305071-ple258940b.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_C.png",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1305071_plf024e4f5",
+          "path": "/media/products/plantlogic-1305071-plf024e4f5.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_D.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl743f8f77",
+          "path": "/media/products/plantlogic-1305071-pl743f8f77.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_A.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_plf0dc40fb",
+          "path": "/media/products/plantlogic-1305071-plf0dc40fb.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_B.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl8d78f3a1",
+          "path": "/media/products/plantlogic-1305071-pl8d78f3a1.jpg",
+          "alt": "Plantlogic 1305071 — 7-Liter-Square-pot-for-cold-storage_Item_1305071.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pld94101c0",
+          "path": "/media/products/plantlogic-1305071-pld94101c0.jpg",
+          "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl9a3e43da",
+          "path": "/media/products/plantlogic-1305071-pl9a3e43da.jpg",
+          "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl44aadf7c",
+          "path": "/media/products/plantlogic-1305071-pl44aadf7c.jpg",
+          "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl21047b97",
+          "path": "/media/products/plantlogic-1305071-pl21047b97.jpg",
+          "alt": "Plantlogic 1305071 — 7L-SQ-UG-1305071-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305071-WH",
+      "v3_sku_id": "sku_pl_1305071_white",
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "package_value": 7.0,
+      "package_unit": "l",
+      "package_label": "7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "7 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1305071",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1305071_ple258940b",
+          "path": "/media/products/plantlogic-1305071-ple258940b.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_C.png",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1305071_plf024e4f5",
+          "path": "/media/products/plantlogic-1305071-plf024e4f5.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_D.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl743f8f77",
+          "path": "/media/products/plantlogic-1305071-pl743f8f77.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_A.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_plf0dc40fb",
+          "path": "/media/products/plantlogic-1305071-plf0dc40fb.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_B.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl8d78f3a1",
+          "path": "/media/products/plantlogic-1305071-pl8d78f3a1.jpg",
+          "alt": "Plantlogic 1305071 — 7-Liter-Square-pot-for-cold-storage_Item_1305071.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pld94101c0",
+          "path": "/media/products/plantlogic-1305071-pld94101c0.jpg",
+          "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl9a3e43da",
+          "path": "/media/products/plantlogic-1305071-pl9a3e43da.jpg",
+          "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl44aadf7c",
+          "path": "/media/products/plantlogic-1305071-pl44aadf7c.jpg",
+          "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl21047b97",
+          "path": "/media/products/plantlogic-1305071-pl21047b97.jpg",
+          "alt": "Plantlogic 1305071 — 7L-SQ-UG-1305071-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305071-TC",
+      "v3_sku_id": "sku_pl_1305071_terracotta",
+      "product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "package_value": 7.0,
+      "package_unit": "l",
+      "package_label": "7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "7 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1305071",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1305071_ple258940b",
+          "path": "/media/products/plantlogic-1305071-ple258940b.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_C.png",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1305071_plf024e4f5",
+          "path": "/media/products/plantlogic-1305071-plf024e4f5.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_D.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl743f8f77",
+          "path": "/media/products/plantlogic-1305071-pl743f8f77.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_A.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_plf0dc40fb",
+          "path": "/media/products/plantlogic-1305071-plf0dc40fb.png",
+          "alt": "Plantlogic 1305071 — 7LSQ_B.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl8d78f3a1",
+          "path": "/media/products/plantlogic-1305071-pl8d78f3a1.jpg",
+          "alt": "Plantlogic 1305071 — 7-Liter-Square-pot-for-cold-storage_Item_1305071.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pld94101c0",
+          "path": "/media/products/plantlogic-1305071-pld94101c0.jpg",
+          "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl9a3e43da",
+          "path": "/media/products/plantlogic-1305071-pl9a3e43da.jpg",
+          "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl44aadf7c",
+          "path": "/media/products/plantlogic-1305071-pl44aadf7c.jpg",
+          "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305071_pl21047b97",
+          "path": "/media/products/plantlogic-1305071-pl21047b97.jpg",
+          "alt": "Plantlogic 1305071 — 7L-SQ-UG-1305071-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1307107-BK",
+      "v3_sku_id": "sku_pl_1307107_black",
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "package_value": 7.0,
+      "package_unit": "l",
+      "package_label": "7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "7 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1307107",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1307107_pl7f30c00a",
+          "path": "/media/products/plantlogic-1307107-pl7f30c00a.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_6.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1307107_plff4f724e",
+          "path": "/media/products/plantlogic-1307107-plff4f724e.png",
+          "alt": "Plantlogic 1307107 — best-pots-for-raspberries-2.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_plf95f669c",
+          "path": "/media/products/plantlogic-1307107-plf95f669c.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_pl378beb42",
+          "path": "/media/products/plantlogic-1307107-pl378beb42.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_3.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_pl96a081cd",
+          "path": "/media/products/plantlogic-1307107-pl96a081cd.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_4.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_plfbb794ca",
+          "path": "/media/products/plantlogic-1307107-plfbb794ca.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_5.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_pl2a774324",
+          "path": "/media/products/plantlogic-1307107-pl2a774324.jpg",
+          "alt": "Plantlogic 1307107 — 7-Liter-Drainage-Collection-pot_Item_1307107.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1307107-WH",
+      "v3_sku_id": "sku_pl_1307107_white",
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "package_value": 7.0,
+      "package_unit": "l",
+      "package_label": "7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "7 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1307107",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1307107_pl7f30c00a",
+          "path": "/media/products/plantlogic-1307107-pl7f30c00a.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_6.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1307107_plff4f724e",
+          "path": "/media/products/plantlogic-1307107-plff4f724e.png",
+          "alt": "Plantlogic 1307107 — best-pots-for-raspberries-2.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_plf95f669c",
+          "path": "/media/products/plantlogic-1307107-plf95f669c.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_pl378beb42",
+          "path": "/media/products/plantlogic-1307107-pl378beb42.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_3.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_pl96a081cd",
+          "path": "/media/products/plantlogic-1307107-pl96a081cd.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_4.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_plfbb794ca",
+          "path": "/media/products/plantlogic-1307107-plfbb794ca.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_5.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_pl2a774324",
+          "path": "/media/products/plantlogic-1307107-pl2a774324.jpg",
+          "alt": "Plantlogic 1307107 — 7-Liter-Drainage-Collection-pot_Item_1307107.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1307107-TC",
+      "v3_sku_id": "sku_pl_1307107_terracotta",
+      "product_id": "plantlogic-7l-drainage-1307107",
+      "package_value": 7.0,
+      "package_unit": "l",
+      "package_label": "7 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "7 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1307107",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1307107_pl7f30c00a",
+          "path": "/media/products/plantlogic-1307107-pl7f30c00a.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_6.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1307107_plff4f724e",
+          "path": "/media/products/plantlogic-1307107-plff4f724e.png",
+          "alt": "Plantlogic 1307107 — best-pots-for-raspberries-2.png",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_plf95f669c",
+          "path": "/media/products/plantlogic-1307107-plf95f669c.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_pl378beb42",
+          "path": "/media/products/plantlogic-1307107-pl378beb42.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_3.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_pl96a081cd",
+          "path": "/media/products/plantlogic-1307107-pl96a081cd.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_4.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_plfbb794ca",
+          "path": "/media/products/plantlogic-1307107-plfbb794ca.jpg",
+          "alt": "Plantlogic 1307107 — 1307107_5.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307107_pl2a774324",
+          "path": "/media/products/plantlogic-1307107-pl2a774324.jpg",
+          "alt": "Plantlogic 1307107 — 7-Liter-Drainage-Collection-pot_Item_1307107.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1309008-BK",
+      "v3_sku_id": "sku_pl_1309008_black",
+      "product_id": "plantlogic-8l-square-1309008",
+      "package_value": 8.0,
+      "package_unit": "l",
+      "package_label": "8 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "8 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1309008",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1309008_pl6ff2ffe6",
+          "path": "/media/products/plantlogic-1309008-pl6ff2ffe6.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-bottom.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1309008_pl26631f70",
+          "path": "/media/products/plantlogic-1309008-pl26631f70.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-hero.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl538f5592",
+          "path": "/media/products/plantlogic-1309008-pl538f5592.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-inside-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl0a531b54",
+          "path": "/media/products/plantlogic-1309008-pl0a531b54.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-side-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl82756a1d",
+          "path": "/media/products/plantlogic-1309008-pl82756a1d.jpg",
+          "alt": "Plantlogic 1309008 — 8-Liter-Square-pot-_Item_1309008.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl31777e0e",
+          "path": "/media/products/plantlogic-1309008-pl31777e0e.jpg",
+          "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_plc17564b8",
+          "path": "/media/products/plantlogic-1309008-plc17564b8.jpg",
+          "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl47a4c949",
+          "path": "/media/products/plantlogic-1309008-pl47a4c949.jpg",
+          "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008_top.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl8c8924e5",
+          "path": "/media/products/plantlogic-1309008-pl8c8924e5.jpg",
+          "alt": "Plantlogic 1309008 — 8L-SQ-1309008-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1309008-WH",
+      "v3_sku_id": "sku_pl_1309008_white",
+      "product_id": "plantlogic-8l-square-1309008",
+      "package_value": 8.0,
+      "package_unit": "l",
+      "package_label": "8 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "8 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1309008",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1309008_pl6ff2ffe6",
+          "path": "/media/products/plantlogic-1309008-pl6ff2ffe6.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-bottom.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1309008_pl26631f70",
+          "path": "/media/products/plantlogic-1309008-pl26631f70.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-hero.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl538f5592",
+          "path": "/media/products/plantlogic-1309008-pl538f5592.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-inside-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl0a531b54",
+          "path": "/media/products/plantlogic-1309008-pl0a531b54.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-side-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl82756a1d",
+          "path": "/media/products/plantlogic-1309008-pl82756a1d.jpg",
+          "alt": "Plantlogic 1309008 — 8-Liter-Square-pot-_Item_1309008.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl31777e0e",
+          "path": "/media/products/plantlogic-1309008-pl31777e0e.jpg",
+          "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_plc17564b8",
+          "path": "/media/products/plantlogic-1309008-plc17564b8.jpg",
+          "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl47a4c949",
+          "path": "/media/products/plantlogic-1309008-pl47a4c949.jpg",
+          "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008_top.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl8c8924e5",
+          "path": "/media/products/plantlogic-1309008-pl8c8924e5.jpg",
+          "alt": "Plantlogic 1309008 — 8L-SQ-1309008-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1309008-TC",
+      "v3_sku_id": "sku_pl_1309008_terracotta",
+      "product_id": "plantlogic-8l-square-1309008",
+      "package_value": 8.0,
+      "package_unit": "l",
+      "package_label": "8 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "8 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1309008",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1309008_pl6ff2ffe6",
+          "path": "/media/products/plantlogic-1309008-pl6ff2ffe6.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-bottom.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1309008_pl26631f70",
+          "path": "/media/products/plantlogic-1309008-pl26631f70.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-hero.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl538f5592",
+          "path": "/media/products/plantlogic-1309008-pl538f5592.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-inside-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl0a531b54",
+          "path": "/media/products/plantlogic-1309008-pl0a531b54.jpg",
+          "alt": "Plantlogic 1309008 — Plantlogic-8-liter-square-1309008-side-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl82756a1d",
+          "path": "/media/products/plantlogic-1309008-pl82756a1d.jpg",
+          "alt": "Plantlogic 1309008 — 8-Liter-Square-pot-_Item_1309008.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl31777e0e",
+          "path": "/media/products/plantlogic-1309008-pl31777e0e.jpg",
+          "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_plc17564b8",
+          "path": "/media/products/plantlogic-1309008-plc17564b8.jpg",
+          "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl47a4c949",
+          "path": "/media/products/plantlogic-1309008-pl47a4c949.jpg",
+          "alt": "Plantlogic 1309008 — 8L-Square-pot_Item_1309008_top.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309008_pl8c8924e5",
+          "path": "/media/products/plantlogic-1309008-pl8c8924e5.jpg",
+          "alt": "Plantlogic 1309008 — 8L-SQ-1309008-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306010-BK",
+      "v3_sku_id": "sku_pl_1306010_black",
+      "product_id": "plantlogic-10l-square-1306010",
+      "package_value": 10.0,
+      "package_unit": "l",
+      "package_label": "10 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "10 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1306010",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306010_pl51ab8e4e",
+          "path": "/media/products/plantlogic-1306010-pl51ab8e4e.jpg",
+          "alt": "Plantlogic 1306010 — Plantlogic-10-liter-square-1306010-hero.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306010_pl5d438c60",
+          "path": "/media/products/plantlogic-1306010-pl5d438c60.jpg",
+          "alt": "Plantlogic 1306010 — 6010LC_5.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_pl2ad2f65b",
+          "path": "/media/products/plantlogic-1306010-pl2ad2f65b.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plc9d9d893",
+          "path": "/media/products/plantlogic-1306010-plc9d9d893.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-CENITAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plb62565f7",
+          "path": "/media/products/plantlogic-1306010-plb62565f7.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-FRONTAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plc429e29d",
+          "path": "/media/products/plantlogic-1306010-plc429e29d.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plcfa7edf5",
+          "path": "/media/products/plantlogic-1306010-plcfa7edf5.jpg",
+          "alt": "Plantlogic 1306010 — 10L-Square-Pot_Item_1306010.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306010-WH",
+      "v3_sku_id": "sku_pl_1306010_white",
+      "product_id": "plantlogic-10l-square-1306010",
+      "package_value": 10.0,
+      "package_unit": "l",
+      "package_label": "10 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "10 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1306010",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306010_pl51ab8e4e",
+          "path": "/media/products/plantlogic-1306010-pl51ab8e4e.jpg",
+          "alt": "Plantlogic 1306010 — Plantlogic-10-liter-square-1306010-hero.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306010_pl5d438c60",
+          "path": "/media/products/plantlogic-1306010-pl5d438c60.jpg",
+          "alt": "Plantlogic 1306010 — 6010LC_5.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_pl2ad2f65b",
+          "path": "/media/products/plantlogic-1306010-pl2ad2f65b.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plc9d9d893",
+          "path": "/media/products/plantlogic-1306010-plc9d9d893.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-CENITAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plb62565f7",
+          "path": "/media/products/plantlogic-1306010-plb62565f7.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-FRONTAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plc429e29d",
+          "path": "/media/products/plantlogic-1306010-plc429e29d.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plcfa7edf5",
+          "path": "/media/products/plantlogic-1306010-plcfa7edf5.jpg",
+          "alt": "Plantlogic 1306010 — 10L-Square-Pot_Item_1306010.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1306010-TC",
+      "v3_sku_id": "sku_pl_1306010_terracotta",
+      "product_id": "plantlogic-10l-square-1306010",
+      "package_value": 10.0,
+      "package_unit": "l",
+      "package_label": "10 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "10 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1306010",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1306010_pl51ab8e4e",
+          "path": "/media/products/plantlogic-1306010-pl51ab8e4e.jpg",
+          "alt": "Plantlogic 1306010 — Plantlogic-10-liter-square-1306010-hero.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1306010_pl5d438c60",
+          "path": "/media/products/plantlogic-1306010-pl5d438c60.jpg",
+          "alt": "Plantlogic 1306010 — 6010LC_5.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_pl2ad2f65b",
+          "path": "/media/products/plantlogic-1306010-pl2ad2f65b.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plc9d9d893",
+          "path": "/media/products/plantlogic-1306010-plc9d9d893.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-CENITAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plb62565f7",
+          "path": "/media/products/plantlogic-1306010-plb62565f7.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-FRONTAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plc429e29d",
+          "path": "/media/products/plantlogic-1306010-plc429e29d.jpg",
+          "alt": "Plantlogic 1306010 — 10L-SQ-1306010-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1306010_plcfa7edf5",
+          "path": "/media/products/plantlogic-1306010-plcfa7edf5.jpg",
+          "alt": "Plantlogic 1306010 — 10L-Square-Pot_Item_1306010.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1307110-BK",
+      "v3_sku_id": "sku_pl_1307110_black",
+      "product_id": "plantlogic-10l-drainage-1307110",
+      "package_value": 10.0,
+      "package_unit": "l",
+      "package_label": "10 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "10 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1307110",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal",
+          "vegetable"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1307110_plb64f6662",
+          "path": "/media/products/plantlogic-1307110-plb64f6662.jpg",
+          "alt": "Plantlogic 1307110 — drainage-topdown.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1307110_pl4f612bf0",
+          "path": "/media/products/plantlogic-1307110-pl4f612bf0.jpg",
+          "alt": "Plantlogic 1307110 — 10-Liter-Drainage-Collection-pot_Item_1307110.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_pl6a01ef05",
+          "path": "/media/products/plantlogic-1307110-pl6a01ef05.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_pl236a6f18",
+          "path": "/media/products/plantlogic-1307110-pl236a6f18.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_pleda24827",
+          "path": "/media/products/plantlogic-1307110-pleda24827.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_plf0cc6012",
+          "path": "/media/products/plantlogic-1307110-plf0cc6012.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1307110-WH",
+      "v3_sku_id": "sku_pl_1307110_white",
+      "product_id": "plantlogic-10l-drainage-1307110",
+      "package_value": 10.0,
+      "package_unit": "l",
+      "package_label": "10 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "10 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1307110",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal",
+          "vegetable"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1307110_plb64f6662",
+          "path": "/media/products/plantlogic-1307110-plb64f6662.jpg",
+          "alt": "Plantlogic 1307110 — drainage-topdown.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1307110_pl4f612bf0",
+          "path": "/media/products/plantlogic-1307110-pl4f612bf0.jpg",
+          "alt": "Plantlogic 1307110 — 10-Liter-Drainage-Collection-pot_Item_1307110.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_pl6a01ef05",
+          "path": "/media/products/plantlogic-1307110-pl6a01ef05.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_pl236a6f18",
+          "path": "/media/products/plantlogic-1307110-pl236a6f18.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_pleda24827",
+          "path": "/media/products/plantlogic-1307110-pleda24827.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_plf0cc6012",
+          "path": "/media/products/plantlogic-1307110-plf0cc6012.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1307110-TC",
+      "v3_sku_id": "sku_pl_1307110_terracotta",
+      "product_id": "plantlogic-10l-drainage-1307110",
+      "package_value": 10.0,
+      "package_unit": "l",
+      "package_label": "10 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "10 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1307110",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal",
+          "vegetable"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1307110_plb64f6662",
+          "path": "/media/products/plantlogic-1307110-plb64f6662.jpg",
+          "alt": "Plantlogic 1307110 — drainage-topdown.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1307110_pl4f612bf0",
+          "path": "/media/products/plantlogic-1307110-pl4f612bf0.jpg",
+          "alt": "Plantlogic 1307110 — 10-Liter-Drainage-Collection-pot_Item_1307110.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_pl6a01ef05",
+          "path": "/media/products/plantlogic-1307110-pl6a01ef05.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_pl236a6f18",
+          "path": "/media/products/plantlogic-1307110-pl236a6f18.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_bottom.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_pleda24827",
+          "path": "/media/products/plantlogic-1307110-pleda24827.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307110_plf0cc6012",
+          "path": "/media/products/plantlogic-1307110-plf0cc6012.jpg",
+          "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1309015-BK",
+      "v3_sku_id": "sku_pl_1309015_black",
+      "product_id": "plantlogic-15l-square-1309015",
+      "package_value": 15.0,
+      "package_unit": "l",
+      "package_label": "15 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "15 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1309015",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1309015_ple3fed6e1",
+          "path": "/media/products/plantlogic-1309015-ple3fed6e1.jpg",
+          "alt": "Plantlogic 1309015 — 15LSq_5.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1309015_plc7cd572d",
+          "path": "/media/products/plantlogic-1309015-plc7cd572d.jpg",
+          "alt": "Plantlogic 1309015 — 15-Liter-Square-pot_Item_1309015.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_pl721b4702",
+          "path": "/media/products/plantlogic-1309015-pl721b4702.jpg",
+          "alt": "Plantlogic 1309015 — 15L-Square-pot_Item_1309015_base.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_plac34374c",
+          "path": "/media/products/plantlogic-1309015-plac34374c.jpg",
+          "alt": "Plantlogic 1309015 — 15L-Square-pot_Item_1309015_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_plb78fe2e2",
+          "path": "/media/products/plantlogic-1309015-plb78fe2e2.jpg",
+          "alt": "Plantlogic 1309015 — 15L-SQ-1309015-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_pl74ef2f3c",
+          "path": "/media/products/plantlogic-1309015-pl74ef2f3c.jpg",
+          "alt": "Plantlogic 1309015 — 15L-SQ-1309015-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1309015-WH",
+      "v3_sku_id": "sku_pl_1309015_white",
+      "product_id": "plantlogic-15l-square-1309015",
+      "package_value": 15.0,
+      "package_unit": "l",
+      "package_label": "15 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "15 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1309015",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1309015_ple3fed6e1",
+          "path": "/media/products/plantlogic-1309015-ple3fed6e1.jpg",
+          "alt": "Plantlogic 1309015 — 15LSq_5.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1309015_plc7cd572d",
+          "path": "/media/products/plantlogic-1309015-plc7cd572d.jpg",
+          "alt": "Plantlogic 1309015 — 15-Liter-Square-pot_Item_1309015.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_pl721b4702",
+          "path": "/media/products/plantlogic-1309015-pl721b4702.jpg",
+          "alt": "Plantlogic 1309015 — 15L-Square-pot_Item_1309015_base.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_plac34374c",
+          "path": "/media/products/plantlogic-1309015-plac34374c.jpg",
+          "alt": "Plantlogic 1309015 — 15L-Square-pot_Item_1309015_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_plb78fe2e2",
+          "path": "/media/products/plantlogic-1309015-plb78fe2e2.jpg",
+          "alt": "Plantlogic 1309015 — 15L-SQ-1309015-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_pl74ef2f3c",
+          "path": "/media/products/plantlogic-1309015-pl74ef2f3c.jpg",
+          "alt": "Plantlogic 1309015 — 15L-SQ-1309015-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1309015-TC",
+      "v3_sku_id": "sku_pl_1309015_terracotta",
+      "product_id": "plantlogic-15l-square-1309015",
+      "package_value": 15.0,
+      "package_unit": "l",
+      "package_label": "15 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "15 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1309015",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1309015_ple3fed6e1",
+          "path": "/media/products/plantlogic-1309015-ple3fed6e1.jpg",
+          "alt": "Plantlogic 1309015 — 15LSq_5.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1309015_plc7cd572d",
+          "path": "/media/products/plantlogic-1309015-plc7cd572d.jpg",
+          "alt": "Plantlogic 1309015 — 15-Liter-Square-pot_Item_1309015.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_pl721b4702",
+          "path": "/media/products/plantlogic-1309015-pl721b4702.jpg",
+          "alt": "Plantlogic 1309015 — 15L-Square-pot_Item_1309015_base.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_plac34374c",
+          "path": "/media/products/plantlogic-1309015-plac34374c.jpg",
+          "alt": "Plantlogic 1309015 — 15L-Square-pot_Item_1309015_front.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_plb78fe2e2",
+          "path": "/media/products/plantlogic-1309015-plb78fe2e2.jpg",
+          "alt": "Plantlogic 1309015 — 15L-SQ-1309015-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1309015_pl74ef2f3c",
+          "path": "/media/products/plantlogic-1309015-pl74ef2f3c.jpg",
+          "alt": "Plantlogic 1309015 — 15L-SQ-1309015-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1304015-BK",
+      "v3_sku_id": "sku_pl_1304015_black",
+      "product_id": "plantlogic-15l-round-drainage-1304015",
+      "package_value": 15.0,
+      "package_unit": "l",
+      "package_label": "15 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "15 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1304015",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1304015_pl5b41887d",
+          "path": "/media/products/plantlogic-1304015-pl5b41887d.png",
+          "alt": "Plantlogic 1304015 — 15-liter-drainage-collection-pot.png",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1304015_pld361bb3f",
+          "path": "/media/products/plantlogic-1304015-pld361bb3f.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304015_pla9273c49",
+          "path": "/media/products/plantlogic-1304015-pla9273c49.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_bottom-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304015_pl594926c5",
+          "path": "/media/products/plantlogic-1304015-pl594926c5.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_front-view-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304015_ple58f0d89",
+          "path": "/media/products/plantlogic-1304015-ple58f0d89.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1304015-WH",
+      "v3_sku_id": "sku_pl_1304015_white",
+      "product_id": "plantlogic-15l-round-drainage-1304015",
+      "package_value": 15.0,
+      "package_unit": "l",
+      "package_label": "15 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "15 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1304015",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1304015_pl5b41887d",
+          "path": "/media/products/plantlogic-1304015-pl5b41887d.png",
+          "alt": "Plantlogic 1304015 — 15-liter-drainage-collection-pot.png",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1304015_pld361bb3f",
+          "path": "/media/products/plantlogic-1304015-pld361bb3f.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304015_pla9273c49",
+          "path": "/media/products/plantlogic-1304015-pla9273c49.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_bottom-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304015_pl594926c5",
+          "path": "/media/products/plantlogic-1304015-pl594926c5.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_front-view-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304015_ple58f0d89",
+          "path": "/media/products/plantlogic-1304015-ple58f0d89.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1304015-TC",
+      "v3_sku_id": "sku_pl_1304015_terracotta",
+      "product_id": "plantlogic-15l-round-drainage-1304015",
+      "package_value": 15.0,
+      "package_unit": "l",
+      "package_label": "15 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "15 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1304015",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "rubus",
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1304015_pl5b41887d",
+          "path": "/media/products/plantlogic-1304015-pl5b41887d.png",
+          "alt": "Plantlogic 1304015 — 15-liter-drainage-collection-pot.png",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1304015_pld361bb3f",
+          "path": "/media/products/plantlogic-1304015-pld361bb3f.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304015_pla9273c49",
+          "path": "/media/products/plantlogic-1304015-pla9273c49.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_bottom-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304015_pl594926c5",
+          "path": "/media/products/plantlogic-1304015-pl594926c5.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_front-view-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1304015_ple58f0d89",
+          "path": "/media/products/plantlogic-1304015-ple58f0d89.jpg",
+          "alt": "Plantlogic 1304015 — 15-Liter-Drainage-Collection-Pot_Item_1304115_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1307133-BK",
+      "v3_sku_id": "sku_pl_1307133_black",
+      "product_id": "plantlogic-30l-drainage-1307133",
+      "package_value": 30.0,
+      "package_unit": "l",
+      "package_label": "30 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "30 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1307133",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1307133_ple6793e9c",
+          "path": "/media/products/plantlogic-1307133-ple6793e9c.jpg",
+          "alt": "Plantlogic 1307133 — 30L-DCP_3.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1307133_pl878e2d96",
+          "path": "/media/products/plantlogic-1307133-pl878e2d96.jpg",
+          "alt": "Plantlogic 1307133 — 30-Liter-Drainage-Collection-pot_Item_1307133.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307133_pl1ae7b43c",
+          "path": "/media/products/plantlogic-1307133-pl1ae7b43c.jpg",
+          "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307133_pl35465aef",
+          "path": "/media/products/plantlogic-1307133-pl35465aef.jpg",
+          "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133_bottom-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307133_pla38fd841",
+          "path": "/media/products/plantlogic-1307133-pla38fd841.jpg",
+          "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133_front-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1307133-WH",
+      "v3_sku_id": "sku_pl_1307133_white",
+      "product_id": "plantlogic-30l-drainage-1307133",
+      "package_value": 30.0,
+      "package_unit": "l",
+      "package_label": "30 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "30 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1307133",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1307133_ple6793e9c",
+          "path": "/media/products/plantlogic-1307133-ple6793e9c.jpg",
+          "alt": "Plantlogic 1307133 — 30L-DCP_3.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1307133_pl878e2d96",
+          "path": "/media/products/plantlogic-1307133-pl878e2d96.jpg",
+          "alt": "Plantlogic 1307133 — 30-Liter-Drainage-Collection-pot_Item_1307133.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307133_pl1ae7b43c",
+          "path": "/media/products/plantlogic-1307133-pl1ae7b43c.jpg",
+          "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307133_pl35465aef",
+          "path": "/media/products/plantlogic-1307133-pl35465aef.jpg",
+          "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133_bottom-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307133_pla38fd841",
+          "path": "/media/products/plantlogic-1307133-pla38fd841.jpg",
+          "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133_front-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1307133-TC",
+      "v3_sku_id": "sku_pl_1307133_terracotta",
+      "product_id": "plantlogic-30l-drainage-1307133",
+      "package_value": 30.0,
+      "package_unit": "l",
+      "package_label": "30 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "30 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1307133",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "universal"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1307133_ple6793e9c",
+          "path": "/media/products/plantlogic-1307133-ple6793e9c.jpg",
+          "alt": "Plantlogic 1307133 — 30L-DCP_3.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1307133_pl878e2d96",
+          "path": "/media/products/plantlogic-1307133-pl878e2d96.jpg",
+          "alt": "Plantlogic 1307133 — 30-Liter-Drainage-Collection-pot_Item_1307133.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307133_pl1ae7b43c",
+          "path": "/media/products/plantlogic-1307133-pl1ae7b43c.jpg",
+          "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307133_pl35465aef",
+          "path": "/media/products/plantlogic-1307133-pl35465aef.jpg",
+          "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133_bottom-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1307133_pla38fd841",
+          "path": "/media/products/plantlogic-1307133-pla38fd841.jpg",
+          "alt": "Plantlogic 1307133 — 30L-Drainage-collection-pot_Item_1307133_front-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305117-BK",
+      "v3_sku_id": "sku_pl_1305117_black",
+      "product_id": "plantlogic-17l-drainage-1305117",
+      "package_value": 17.0,
+      "package_unit": "l",
+      "package_label": "17 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "17 л",
+        "color_code": "black",
+        "color_label": "Чорний",
+        "manufacturer_product_no": "1305117",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "vegetable",
+          "strawberry"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1305117_pla6cea906",
+          "path": "/media/products/plantlogic-1305117-pla6cea906.jpg",
+          "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1305117_plf0fe6a19",
+          "path": "/media/products/plantlogic-1305117-plf0fe6a19.jpg",
+          "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117_front-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305117_pl3e90bd5a",
+          "path": "/media/products/plantlogic-1305117-pl3e90bd5a.jpg",
+          "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305117_pl3ca0e525",
+          "path": "/media/products/plantlogic-1305117-pl3ca0e525.jpg",
+          "alt": "Plantlogic 1305117 — 17-liter-drainage-collection-pot-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305117_pl8bf196aa",
+          "path": "/media/products/plantlogic-1305117-pl8bf196aa.jpg",
+          "alt": "Plantlogic 1305117 — 17L-DC-1305117-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305117-WH",
+      "v3_sku_id": "sku_pl_1305117_white",
+      "product_id": "plantlogic-17l-drainage-1305117",
+      "package_value": 17.0,
+      "package_unit": "l",
+      "package_label": "17 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "17 л",
+        "color_code": "white",
+        "color_label": "Білий",
+        "manufacturer_product_no": "1305117",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "vegetable",
+          "strawberry"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1305117_pla6cea906",
+          "path": "/media/products/plantlogic-1305117-pla6cea906.jpg",
+          "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1305117_plf0fe6a19",
+          "path": "/media/products/plantlogic-1305117-plf0fe6a19.jpg",
+          "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117_front-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305117_pl3e90bd5a",
+          "path": "/media/products/plantlogic-1305117-pl3e90bd5a.jpg",
+          "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305117_pl3ca0e525",
+          "path": "/media/products/plantlogic-1305117-pl3ca0e525.jpg",
+          "alt": "Plantlogic 1305117 — 17-liter-drainage-collection-pot-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305117_pl8bf196aa",
+          "path": "/media/products/plantlogic-1305117-pl8bf196aa.jpg",
+          "alt": "Plantlogic 1305117 — 17L-DC-1305117-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305117-TC",
+      "v3_sku_id": "sku_pl_1305117_terracotta",
+      "product_id": "plantlogic-17l-drainage-1305117",
+      "package_value": 17.0,
+      "package_unit": "l",
+      "package_label": "17 л",
+      "package_group": null,
+      "attributes": {
+        "volume_label": "17 л",
+        "color_code": "terracotta",
+        "color_label": "Теракотовий",
+        "manufacturer_product_no": "1305117",
+        "media_source_color": "",
+        "plantlogic_sections": [
+          "vegetable",
+          "strawberry"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_1305117_pla6cea906",
+          "path": "/media/products/plantlogic-1305117-pla6cea906.jpg",
+          "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_1305117_plf0fe6a19",
+          "path": "/media/products/plantlogic-1305117-plf0fe6a19.jpg",
+          "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117_front-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305117_pl3e90bd5a",
+          "path": "/media/products/plantlogic-1305117-pl3e90bd5a.jpg",
+          "alt": "Plantlogic 1305117 — 17-Liter-Drainage-Collection-Pot_Item_1305117_top-view.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305117_pl3ca0e525",
+          "path": "/media/products/plantlogic-1305117-pl3ca0e525.jpg",
+          "alt": "Plantlogic 1305117 — 17-liter-drainage-collection-pot-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_1305117_pl8bf196aa",
+          "path": "/media/products/plantlogic-1305117-pl8bf196aa.jpg",
+          "alt": "Plantlogic 1305117 — 17L-DC-1305117-BASE.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305909",
+      "v3_sku_id": "sku_pl_1305909",
+      "product_id": "plantlogic-18l-strawberry-trough-1305909",
+      "package_value": 18.0,
+      "package_unit": "l",
+      "package_label": "18 л",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1305909",
+        "plantlogic_sections": [
+          "strawberry"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1305909_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/18-liter-strawberry-trough_Item_1305909.jpg",
+          "alt": "Жолоб для полуниці 18 л з опорою для квітконосів — арт. 1305909",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305082",
+      "v3_sku_id": "sku_pl_1305082",
+      "product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
+      "package_value": 8.0,
+      "package_unit": "l",
+      "package_label": "8 л",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1305082",
+        "plantlogic_sections": [
+          "strawberry"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1305082_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2021/06/product_8LVG_A.jpg",
+          "alt": "Жолоб для полуниці 8 л з широкою ручкою — арт. 1305082",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1305209",
+      "v3_sku_id": "sku_pl_1305209",
+      "product_id": "plantlogic-9l-strawberry-trough-truss-1305209",
+      "package_value": 9.0,
+      "package_unit": "l",
+      "package_label": "9 л",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1305209",
+        "plantlogic_sections": [
+          "strawberry"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1305209_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2024/03/9L-Trough-for-strawberries_Item_1305209.jpg",
+          "alt": "Жолоб для полуниці 9 л з підтримкою квітконосів — арт. 1305209",
+          "kind": "hero",
+          "is_primary": true
         }
       ]
     }

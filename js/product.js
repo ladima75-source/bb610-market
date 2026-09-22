@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   trackView();
   document.title=selectedSku?`${p.name} ${selectedSku.variant||''} · BB610 Market`:p.name+' · BB610 Market';
 
-  const packCards=skuList.length?skuList.map(s=>`<button class="pack sku-pack${selectedSku?.id===s.id?' active':''}" type="button" data-sku-select="${s.id}"><b>${s.variant}</b><span class="pack-price">${BB610.isPriceRequestSku?.(s)?'Ціна за запитом':BB610.money(s.price)}</span></button>`).join(''):(p.factoryPacks||[]).map(s=>`<div class="pack"><b>${s}</b></div>`).join('');
+  const packCards=skuList.length?skuList.map(s=>`<button class="pack${selectedSku?.id===s.id?' active':''}" type="button" data-sku-select="${s.id}"><b>${s.variant}</b><span class="pack-price">${BB610.isPriceRequestSku?.(s)?'Ціна за запитом':BB610.money(s.price)}</span></button>`).join(''):(p.factoryPacks||[]).map(s=>`<div class="pack"><b>${s}</b></div>`).join('');
 
   const szr=p.category==='protection'?`<div class="info-card product-detail-card szr-card"><h2>ДАНІ ДЛЯ ЗЗР / СЗР</h2><div class="kv"><span>Діюча речовина</span><b>${richValue(p.activeIngredient)}</b></div><div class="kv"><span>Концентрація</span><b>${richValue(p.concentration)}</b></div><div class="kv"><span>Шкідник / хвороба</span><b>${richValue(p.target)}</b></div><div class="kv"><span>Строк очікування</span><b>${richValue(p.waitingPeriod)}</b></div><div class="kv"><span>Клас небезпеки</span><b>${richValue(p.hazardClass)}</b></div></div>`:'';
 

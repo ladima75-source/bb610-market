@@ -5,7 +5,7 @@ import io
 import time
 from typing import Any
 
-from .product_master_runtime import SOURCE_ID, snapshot as master_snapshot
+from .product_master_feed_v5 import SOURCE_ID, snapshot as master_snapshot
 
 SITE = "https://market.bb610.com.ua"
 API = "https://api.market.bb610.com.ua"
@@ -72,6 +72,8 @@ def _real_image_ready(product: dict, sku: dict) -> bool:
         or low.startswith("media/products/")
         or low.startswith("assets/media/")
         or low.startswith("assets/img/real/")
+        or low.startswith("/assets/img/v5/media/")
+        or low.startswith("assets/img/v5/media/")
         or low.startswith("https://")
         or low.startswith("http://")
     ):
@@ -144,9 +146,6 @@ def _mpn(product: dict, sku: dict) -> str:
 def _effective_policy(product: dict, sku: dict) -> str:
     sku_policy = _text(sku.get("feed_policy"))
     product_policy = _text(product.get("feed_policy"))
-    # Public Product Master is the catalog allow-list. Explicit feed policy can
-    # still block/review an item, but an absent policy must not silently remove
-    # an otherwise sale-ready public SKU from Merchant/Meta feeds.
     return sku_policy or product_policy or "allowed"
 
 
@@ -406,9 +405,8 @@ def feed_status_from_snapshot(snap: dict) -> dict:
         "launch_sku_count": len(launch),
         "launch_eligible_count": sum(1 for row in launch if row["state"] == "eligible"),
         "note": (
-            "Product content, media, identifiers and channel policy come from the canonical "
-            "public Product Master projection; price, availability, stock and sale-enabled "
-            "state come from live SKU commerce."
+            "Product identity, content and media come from public canonical Product Master V5 SKUs only; "
+            "legacy aliases are excluded. Live commerce is overlaid onto those canonical V5 SKU identities."
         ),
         "items": snap["audit_rows"],
     }

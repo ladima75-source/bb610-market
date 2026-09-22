@@ -10,6 +10,7 @@ on:
       - 'backend/services/telegram_notifications.py'
       - 'backend/services/notifications.py'
       - 'backend/services/integration_secrets.py'
+      - 'backend/services/product_master_v5.py'
       - 'backend/integrations_api.py'
       - 'admin/integrations.html'
       - 'admin/integrations.js'
@@ -22,8 +23,10 @@ on:
       - 'data/product_content/plantlogic_pots_v1_20260918.json'
       - 'js/app.js'
       - 'js/product.js'
+      - 'js/cart.js'
       - 'js/favorites.js'
       - 'js/compare.js'
+      - 'cart.html'
       - 'favorites.html'
       - 'compare.html'
       - 'assets/css/storefront-product-cards.css'
@@ -59,6 +62,7 @@ jobs:
             backend/services/telegram_notifications.py \
             backend/services/notifications.py \
             backend/services/integration_secrets.py \
+            backend/services/product_master_v5.py \
             backend/services/product_cards_v3_facets.py \
             backend/services/product_cards_v3_runtime.py \
             backend/services/catalog_cms.py \
@@ -66,6 +70,7 @@ jobs:
             backend/tools_audit_plantlogic_market_test_20260918.py
           node --check js/app.js
           node --check js/product.js
+          node --check js/cart.js
           node --check js/favorites.js
           node --check js/compare.js
           node --check admin/price-requests.js
@@ -79,6 +84,9 @@ jobs:
 
           app=Path('js/app.js').read_text(encoding='utf-8')
           product=Path('js/product.js').read_text(encoding='utf-8')
+          cart=Path('js/cart.js').read_text(encoding='utf-8')
+          compare=Path('js/compare.js').read_text(encoding='utf-8')
+          master=Path('backend/services/product_master_v5.py').read_text(encoding='utf-8')
           css=Path('assets/css/storefront-product-cards.css').read_text(encoding='utf-8')
 
           assert "isPriceRequestSku" in app
@@ -86,19 +94,32 @@ jobs:
           assert "Ціна за запитом" in app
           assert "/api/v1/price-requests" in app
           assert "data-request-price" in app
+          assert "const skuName=" in app
+          assert "categoryId==='containers'||!v5Mode()" in app
           assert "openPriceRequest" in product
           assert "Ціна за запитом" in product
           assert "Під замовлення" in product
           assert 'sku-pack' not in product
+          assert 'id="product-title"' in product
+          assert 'BB610.skuName' in product
+          assert 'BB610.skuName' in cart
+          assert 'BB610.skuName' in compare
+          assert 'MASTER 13-40-13 — водорозчинне NPK-добриво Valagro' in master
+          assert '_CANONICAL_TITLE_MIGRATION_ID' in master
+          assert 'category in {"containers", "контейнери"}' in master
           assert "bb610-price-request" in css
 
-          assert 'app.js?v=20260920-approved-media-priority-1' in Path('index.html').read_text(encoding='utf-8')
-          assert 'app.js?v=20260920-approved-media-priority-1' in Path('catalog.html').read_text(encoding='utf-8')
-          assert 'app.js?v=20260920-package-image-source-1' in Path('product.html').read_text(encoding='utf-8')
-          assert 'product.js?v=20260922-pdp-packs-6' in Path('product.html').read_text(encoding='utf-8')
+          assert 'app.js?v=20260922-sku-title-1' in Path('index.html').read_text(encoding='utf-8')
+          assert 'app.js?v=20260922-sku-title-1' in Path('catalog.html').read_text(encoding='utf-8')
+          assert 'app.js?v=20260922-sku-title-1' in Path('product.html').read_text(encoding='utf-8')
+          assert 'product.js?v=20260922-sku-title-1' in Path('product.html').read_text(encoding='utf-8')
+          assert 'app.js?v=20260922-sku-title-1' in Path('favorites.html').read_text(encoding='utf-8')
           assert 'favorites.js?v=20260918-market-test-1' in Path('favorites.html').read_text(encoding='utf-8')
-          assert 'compare.js?v=20260918-market-test-1' in Path('compare.html').read_text(encoding='utf-8')
-          assert 'Ціна за запитом' in Path('js/compare.js').read_text(encoding='utf-8')
+          assert 'app.js?v=20260922-sku-title-1' in Path('compare.html').read_text(encoding='utf-8')
+          assert 'compare.js?v=20260922-sku-title-1' in Path('compare.html').read_text(encoding='utf-8')
+          assert 'app.js?v=20260922-sku-title-1' in Path('cart.html').read_text(encoding='utf-8')
+          assert 'cart.js?v=20260922-sku-title-1' in Path('cart.html').read_text(encoding='utf-8')
+          assert 'Ціна за запитом' in compare
           admin=Path('admin/price-requests.html').read_text(encoding='utf-8')
           admin_js=Path('admin/price-requests.js').read_text(encoding='utf-8')
           nav=Path('admin/admin-master-nav.js').read_text(encoding='utf-8')

@@ -13,6 +13,14 @@ HIDDEN_EXPECTED = {
     "control-dmp",
     "plantlogic-25-round-1308125",
 }
+CORE_PLANTLOGIC_PRODUCTS = {
+    "blueberry-round-pots",
+    "blueberry-round-short-legs-pot",
+    "blueberry-round-u-groove-pots",
+    "blueberry-square-pots",
+    "blueberry-square-u-groove-pots",
+    "blueberry-zephyr-v2-pots",
+}
 COMMERCE_FIELDS = ("price", "sale_price", "availability", "stock_qty", "enabled")
 
 
@@ -225,6 +233,8 @@ def main() -> None:
     for row in stage.get("plantlogic_skus") or []:
         if row.get("commerce_state") != "request_price":
             continue
+        if row.get("product_id") not in CORE_PLANTLOGIC_PRODUCTS:
+            continue
         attrs = row.get("attributes") or {}
         model = str(attrs.get("manufacturer_product_no") or "").strip()
         model_rows[model].append(row)
@@ -242,7 +252,6 @@ def main() -> None:
         volume = row.get("package_value")
         color = attrs.get("color_code")
         expected = "terracotta" if volume == 40 and color == "terracotta" else "black"
-        # 40 L Zephyr has no terracotta in manufacturer set, so black is valid fallback.
         if volume == 40:
             valid = color in {"terracotta", "black"}
         else:
@@ -259,7 +268,7 @@ def main() -> None:
         "plantlogic_assortment",
         len(model_rows) == 17 and not duplicate_models and not wrong_colors,
         (
-            f"manufacturer_models={len(model_rows)}, "
+            f"core_blueberry_manufacturer_models={len(model_rows)}, "
             f"duplicate_or_missing_model_keys={len(duplicate_models)}, "
             f"wrong_colors={len(wrong_colors)}"
         ),
@@ -329,6 +338,8 @@ def main() -> None:
     md_out.write_text("\n".join(lines), encoding="utf-8")
     print(json.dumps(result["summary"] | {"status": status}, ensure_ascii=False, indent=2))
     if failed:
+        for row in failed:
+            print(f"FAIL {row['name']}: {row['note']}")
         raise SystemExit(2)
 
 

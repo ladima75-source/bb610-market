@@ -76,6 +76,21 @@ jobs:
             --stage v5/staging/production-current.json \
             --out v5/content/verified-current.json
 
+      - name: Restore Plantlogic application sections in V5
+        shell: bash
+        run: |
+          set -euo pipefail
+          python v5/extend_plantlogic_sections.py \
+            --root . \
+            --snapshot .v5-snapshot \
+            --stage v5/staging/production-current.json \
+            --content v5/content/verified-current.json
+          python - <<'PY'
+          import json
+          d=json.load(open('v5/staging/production-current.json',encoding='utf-8'))
+          print(json.dumps(d['summary'],ensure_ascii=False,indent=2))
+          PY
+
       - name: Compile explicit V5 media
         shell: bash
         run: |

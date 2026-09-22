@@ -1,1 +1,1 @@
-snapshot catalog-review-diagnostics 2026-09-21T14:05:00Z
+snapshot plantlogic-sections-v5 2026-09-22T11:08:00+03:00

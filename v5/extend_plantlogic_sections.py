@@ -1,0 +1,276 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import collections
+import json
+import re
+from pathlib import Path
+
+TARGET_SECTIONS = {"rubus", "strawberry", "vegetable", "universal"}
+GARDEN_USE_RE = re.compile(r"розсадник|nursery|сад", re.I)
+HIDDEN_SECTION_LABEL = "__plantlogic_sections"
+
+
+def load(path):
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def dump(path, value):
+    Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def parse_package(value):
+    text = str(value or "").replace(",", ".").lower()
+    match = re.search(r"(?<!\d)(\d+(?:\.\d+)?)\s*(л|l|кг|kg|г|g|мл|ml)\b", text, re.I)
+    if not match:
+        return None, None, None
+    number = float(match.group(1))
+    unit = {
+        "л": "l", "l": "l", "кг": "kg", "kg": "kg",
+        "г": "g", "g": "g", "мл": "ml", "ml": "ml",
+    }[match.group(2).lower()]
+    shown = str(int(number)) if number.is_integer() else str(number).rstrip("0").rstrip(".")
+    ua = {"l": "л", "kg": "кг", "g": "г", "ml": "мл"}[unit]
+    return number, unit, f"{shown} {ua}"
+
+
+def source_url_from_card(card):
+    content = card.get("content") or {}
+    for row in content.get("characteristics") or []:
+        label = str(row.get("label") or "").lower()
+        if "офіційн" in label and "джерел" in label:
+            value = str(row.get("value") or "").strip()
+            if value.startswith("http"):
+                return value
+    return ""
+
+
+def media_for_sku(card, sku):
+    media_index = {
+        row.get("media_id"): row
+        for row in (card.get("sku_media") or {}).get("media") or []
+    }
+    ids = [sku.get("primary_media_id"), *(sku.get("gallery_media_ids") or [])]
+    out = []
+    seen = set()
+    for media_id in ids:
+        if not media_id or media_id in seen or media_id not in media_index:
+            continue
+        seen.add(media_id)
+        item = media_index[media_id]
+        out.append({
+            "media_id": media_id,
+            "path": item.get("path"),
+            "alt": item.get("alt"),
+            "kind": item.get("kind"),
+            "is_primary": media_id == sku.get("primary_media_id"),
+        })
+    return out
+
+
+def content_from_card(product_id, card, sections, source_url):
+    content = card.get("content") or {}
+    characteristics = [
+        row for row in (content.get("characteristics") or [])
+        if str(row.get("label") or "") != HIDDEN_SECTION_LABEL
+    ]
+    characteristics.append({"label": HIDDEN_SECTION_LABEL, "value": "|".join(sections)})
+    source_url = source_url or source_url_from_card(card)
+    sources = []
+    if source_url:
+        sources = [{
+            "source_type": "official_primary",
+            "url": source_url,
+            "label": "Plantlogic — офіційна сторінка продукту",
+            "verified_at": "2026-09-19",
+            "status": "verified",
+            "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json",
+        }]
+    return {
+        "product_id": product_id,
+        "name": content.get("title") or product_id,
+        "brand": content.get("brand") or "Plantlogic",
+        "manufacturer": "Plantlogic",
+        "category_id": "containers",
+        "short_description": content.get("short_description") or content.get("description") or "",
+        "description": content.get("description") or content.get("short_description") or "",
+        "application": content.get("application") or "",
+        "composition": content.get("composition"),
+        "benefits": content.get("benefits") or [],
+        "how_it_works": content.get("how_it_works"),
+        "characteristics": characteristics,
+        "seo_title": (content.get("seo") or {}).get("title"),
+        "seo_description": (content.get("seo") or {}).get("description"),
+        "content_status": "verified_migrated_plantlogic_sectioned",
+        "sources": sources,
+        "public_enabled": True,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", default=".")
+    parser.add_argument("--snapshot", required=True)
+    parser.add_argument("--stage", required=True)
+    parser.add_argument("--content", required=True)
+    args = parser.parse_args()
+
+    root = Path(args.root).resolve()
+    snapshot = Path(args.snapshot).resolve()
+    stage_path = (root / args.stage).resolve()
+    content_path = (root / args.content).resolve()
+
+    stage = load(stage_path)
+    content = load(content_path)
+    section_doc = load(root / "data/product_content/plantlogic_sections_20260919.json")
+    core = load(root / "data/product_content/plantlogic_pots_v1_20260918.json")
+    extended = load(root / "data/product_content/plantlogic_extended_sections_20260919.json")
+    specs = {row["product_id"]: row for row in (core.get("products") or [])}
+    specs.update({row["product_id"]: row for row in (extended.get("products") or [])})
+
+    cards = {}
+    v3_dir = snapshot / "files/data/product_cards_v3/products"
+    for path in v3_dir.glob("prd_*.json"):
+        try:
+            card = load(path)
+            cards[card.get("product_id")] = card
+        except Exception:
+            continue
+
+    existing_product_ids = {
+        row["product_id"] for row in (stage.get("products") or [])
+    } | {
+        row["product_id"] for row in (stage.get("plantlogic_products") or [])
+    }
+    existing_sku_ids = {
+        row["sku_id"] for row in (stage.get("skus") or [])
+    } | {
+        row["sku_id"] for row in (stage.get("plantlogic_skus") or [])
+    }
+    existing_manufacturer_nos = {
+        str((row.get("attributes") or {}).get("manufacturer_product_no") or "").strip()
+        for row in (stage.get("plantlogic_skus") or [])
+    }
+    compiled = {row["product_id"]: row for row in (content.get("products") or [])}
+
+    added_products = []
+    added_skus = []
+    skipped = []
+
+    for v3_product_id, raw_sections in (section_doc.get("product_sections") or {}).items():
+        sections = [section for section in raw_sections if section in TARGET_SECTIONS]
+        spec = specs.get(v3_product_id) or {}
+        uses = " ".join(spec.get("use_cases") or [])
+        if GARDEN_USE_RE.search(uses):
+            sections.append("garden")
+        sections = list(dict.fromkeys(sections))
+        if not sections:
+            continue
+
+        card = cards.get(v3_product_id)
+        if not card:
+            skipped.append((v3_product_id, "missing_v3_card"))
+            continue
+        slug = str(card.get("slug") or "").strip()
+        if not slug:
+            skipped.append((v3_product_id, "missing_slug"))
+            continue
+        if slug in existing_product_ids:
+            continue
+
+        sku_rows = []
+        for sku in (card.get("sku_media") or {}).get("skus") or []:
+            attributes = dict(sku.get("attributes") or {})
+            manufacturer_no = str(attributes.get("manufacturer_product_no") or "").strip()
+            if manufacturer_no and manufacturer_no in existing_manufacturer_nos:
+                continue
+            sku_id = str(sku.get("sku_code") or sku.get("sku_id") or "").strip()
+            if not sku_id or sku_id in existing_sku_ids:
+                continue
+            value, unit, label = parse_package(sku.get("package") or sku.get("label"))
+            attributes["plantlogic_sections"] = sections
+            sku_rows.append({
+                "sku_id": sku_id,
+                "v3_sku_id": sku.get("sku_id"),
+                "product_id": slug,
+                "package_value": value,
+                "package_unit": unit,
+                "package_label": label or sku.get("package") or sku.get("label"),
+                "package_group": None,
+                "attributes": attributes,
+                "enabled": bool(sku.get("enabled", True)),
+                "commerce_state": "request_price",
+                "media": media_for_sku(card, sku),
+            })
+        if not sku_rows:
+            skipped.append((v3_product_id, "no_nonconflicting_sku"))
+            continue
+
+        card_content = card.get("content") or {}
+        added_products.append({
+            "product_id": slug,
+            "slug": slug,
+            "name": card_content.get("title") or spec.get("name") or slug,
+            "brand": "Plantlogic",
+            "category_id": "containers",
+            "v3_product_id": v3_product_id,
+            "content_state": "verified_migrated_sectioned",
+            "plantlogic_sections": sections,
+        })
+        compiled[slug] = content_from_card(
+            slug,
+            card,
+            sections,
+            str(spec.get("source_url") or ""),
+        )
+        added_skus.extend(sku_rows)
+        existing_product_ids.add(slug)
+        existing_sku_ids.update(row["sku_id"] for row in sku_rows)
+        existing_manufacturer_nos.update(
+            str((row.get("attributes") or {}).get("manufacturer_product_no") or "")
+            for row in sku_rows
+        )
+
+    stage.setdefault("plantlogic_products", []).extend(added_products)
+    stage.setdefault("plantlogic_skus", []).extend(added_skus)
+    summary = stage.setdefault("summary", {})
+    summary["plantlogic_sectioned_products"] = len(added_products)
+    summary["plantlogic_sectioned_request_price_skus"] = len(added_skus)
+    summary["v5_stage_products_total"] = len(stage.get("products") or []) + len(stage.get("plantlogic_products") or [])
+    summary["v5_stage_skus_total"] = len(stage.get("skus") or []) + len(stage.get("plantlogic_skus") or [])
+
+    content["products"] = [compiled[key] for key in sorted(compiled)]
+    content_summary = content.setdefault("summary", {})
+    content_summary["products"] = len(content["products"])
+    content_summary["sources"] = sum(len(row.get("sources") or []) for row in content["products"])
+    content_summary["uncovered_products"] = 0
+    content_summary["public_products"] = sum(1 for row in content["products"] if row.get("public_enabled", True))
+    content_summary["hidden_products"] = sum(1 for row in content["products"] if not row.get("public_enabled", True))
+    content_summary["plantlogic_sectioned_products"] = len(added_products)
+
+    dump(stage_path, stage)
+    dump(content_path, content)
+
+    present = collections.Counter(
+        section
+        for product in added_products
+        for section in product.get("plantlogic_sections") or []
+    )
+    print("PLANTLOGIC V5 SECTION EXTENSION")
+    print("ADDED PRODUCTS:", len(added_products))
+    print("ADDED SKU:", len(added_skus))
+    print("SECTIONS:", dict(sorted(present.items())))
+    print("SKIPPED:", len(skipped))
+    for product_id, reason in skipped:
+        print(" ", product_id, reason)
+
+    required = {"rubus", "strawberry", "vegetable", "universal", "garden"}
+    missing = required - set(present)
+    if missing:
+        raise SystemExit("missing required sections: " + ",".join(sorted(missing)))
+    print("RESULT: PASS")
+
+
+if __name__ == "__main__":
+    main()

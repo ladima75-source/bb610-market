@@ -3,12 +3,20 @@ from __future__ import annotations
 
 import argparse
 import collections
+import hashlib
 import json
 import re
+import shutil
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 TARGET_SECTIONS = {"rubus", "strawberry", "vegetable", "universal"}
+EXCLUDED_SECTION_TYPES = {"bag_bases", "accessories"}
 GARDEN_USE_RE = re.compile(r"розсадник|nursery|сад", re.I)
+RUBUS_USE_RE = re.compile(r"малин|ожин|raspberr|blackberr|rubus", re.I)
+STRAWBERRY_USE_RE = re.compile(r"полуниц|суниц|strawberr", re.I)
+VEGETABLE_USE_RE = re.compile(r"овоч|vegetable|tomato|pepper|cucumber", re.I)
 CANNABIS_RE = re.compile(r"\b(?:канабіс|cannabis)\b", re.I)
 HIDDEN_SECTION_LABEL = "__plantlogic_sections"
 
@@ -31,28 +39,19 @@ def sanitize_public(value):
     return value
 
 
-def normalize_official_image_url(value):
-    url = str(value or "").strip()
-    if not url:
-        return ""
-    if url.startswith("https://i0.wp.com/getplantlogic.com/"):
-        url = "https://getplantlogic.com/" + url.split("https://i0.wp.com/getplantlogic.com/", 1)[1]
-        url = url.split("?", 1)[0]
-    return url
-
-
 def parse_package(value):
     text = str(value or "").replace(",", ".").lower()
-    match = re.search(r"(?<!\d)(\d+(?:\.\d+)?)\s*(л|l|кг|kg|г|g|мл|ml)\b", text, re.I)
+    match = re.search(r"(?<!\d)(\d+(?:\.\d+)?)\s*(л|l|кг|kg|г|g|мл|ml|шт|pcs)\b", text, re.I)
     if not match:
         return None, None, None
     number = float(match.group(1))
     unit = {
         "л": "l", "l": "l", "кг": "kg", "kg": "kg",
         "г": "g", "g": "g", "мл": "ml", "ml": "ml",
+        "шт": "pcs", "pcs": "pcs",
     }[match.group(2).lower()]
     shown = str(int(number)) if number.is_integer() else str(number).rstrip("0").rstrip(".")
-    ua = {"l": "л", "kg": "кг", "g": "г", "ml": "мл"}[unit]
+    ua = {"l": "л", "kg": "кг", "g": "г", "ml": "мл", "pcs": "шт"}[unit]
     return number, unit, f"{shown} {ua}"
 
 
@@ -90,17 +89,39 @@ def media_for_sku(card, sku):
     return out
 
 
-def official_fallback_media(spec):
-    image_url = normalize_official_image_url(spec.get("image_url"))
-    if not image_url:
+def official_fallback_media(spec, snapshot):
+    original = str(spec.get("image_url") or "").strip()
+    if not original:
         return []
-    return [{
-        "media_id": "official_fallback",
-        "path": image_url,
-        "alt": sanitize_public(spec.get("name") or "Plantlogic"),
-        "kind": "image",
-        "is_primary": True,
-    }]
+    urls = [original]
+    if original.startswith("https://i0.wp.com/getplantlogic.com/"):
+        direct = "https://getplantlogic.com/" + original.split("https://i0.wp.com/getplantlogic.com/", 1)[1].split("?", 1)[0]
+        urls.append(direct)
+
+    target_dir = snapshot / "files/backend/runtime/media/products"
+    target_dir.mkdir(parents=True, exist_ok=True)
+    for url in urls:
+        parsed = urllib.parse.urlparse(url)
+        suffix = Path(parsed.path).suffix.lower() or ".jpg"
+        name = "plantlogic-v5-" + hashlib.sha256(url.encode("utf-8")).hexdigest()[:20] + suffix
+        target = target_dir / name
+        if not target.is_file():
+            req = urllib.request.Request(url, headers={"User-Agent": "BB610-V5-Plantlogic-Migration/1.0"})
+            try:
+                with urllib.request.urlopen(req, timeout=30) as response, target.open("wb") as out:
+                    shutil.copyfileobj(response, out)
+            except Exception:
+                target.unlink(missing_ok=True)
+                continue
+        if target.is_file() and target.stat().st_size > 1000:
+            return [{
+                "media_id": "official_fallback",
+                "path": f"/media/products/{name}",
+                "alt": sanitize_public(spec.get("name") or "Plantlogic"),
+                "kind": "image",
+                "is_primary": True,
+            }]
+    return []
 
 
 def content_from_card(product_id, card, sections, source_url):
@@ -142,6 +163,30 @@ def content_from_card(product_id, card, sections, source_url):
     }
 
 
+def usage_sections(spec, section_doc):
+    raw_sections = section_doc.get("product_sections", {}).get(spec.get("product_id"), [])
+    out = [section for section in raw_sections if section in TARGET_SECTIONS]
+    uses = " ".join(spec.get("use_cases") or [])
+    if RUBUS_USE_RE.search(uses):
+        out.append("rubus")
+    if STRAWBERRY_USE_RE.search(uses):
+        out.append("strawberry")
+    if VEGETABLE_USE_RE.search(uses):
+        out.append("vegetable")
+    if GARDEN_USE_RE.search(uses):
+        out.append("garden")
+    return list(dict.fromkeys(out))
+
+
+def set_content_sections(row, sections):
+    chars = [
+        item for item in (row.get("characteristics") or [])
+        if str(item.get("label") or "") != HIDDEN_SECTION_LABEL
+    ]
+    chars.append({"label": HIDDEN_SECTION_LABEL, "value": "|".join(sections)})
+    row["characteristics"] = chars
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=".")
@@ -162,6 +207,13 @@ def main():
     extended = load(root / "data/product_content/plantlogic_extended_sections_20260919.json")
     specs = {row["product_id"]: row for row in (core.get("products") or [])}
     specs.update({row["product_id"]: row for row in (extended.get("products") or [])})
+
+    spec_by_product_no = collections.defaultdict(list)
+    for spec in specs.values():
+        for sku in spec.get("skus") or []:
+            product_no = str(sku.get("product_no") or "").strip()
+            if product_no:
+                spec_by_product_no[product_no].append(spec)
 
     cards = {}
     v3_dir = snapshot / "files/data/product_cards_v3/products"
@@ -188,16 +240,37 @@ def main():
     }
     compiled = {row["product_id"]: row for row in (content.get("products") or [])}
 
+    # Existing six blueberry grouped products stay grouped, but can also belong
+    # to other application sections when one of their manufacturer models has
+    # confirmed use there.
+    group_sections = collections.defaultdict(lambda: ["blueberry"])
+    for sku in stage.get("plantlogic_skus") or []:
+        product_id = sku.get("product_id")
+        manufacturer_no = str((sku.get("attributes") or {}).get("manufacturer_product_no") or "").strip()
+        for spec in spec_by_product_no.get(manufacturer_no, []):
+            for section in usage_sections(spec, section_doc):
+                if section not in group_sections[product_id]:
+                    group_sections[product_id].append(section)
+    for product in stage.get("plantlogic_products") or []:
+        product_id = product.get("product_id")
+        sections = group_sections.get(product_id, ["blueberry"])
+        product["plantlogic_sections"] = sections
+        if product_id in compiled:
+            set_content_sections(compiled[product_id], sections)
+
     added_products = []
     added_skus = []
     skipped = []
 
     for v3_product_id, raw_sections in (section_doc.get("product_sections") or {}).items():
+        if any(section in EXCLUDED_SECTION_TYPES for section in raw_sections):
+            skipped.append((v3_product_id, "non_pot_section"))
+            continue
         sections = [section for section in raw_sections if section in TARGET_SECTIONS]
         spec = specs.get(v3_product_id) or {}
-        uses = " ".join(spec.get("use_cases") or [])
-        if GARDEN_USE_RE.search(uses):
-            sections.append("garden")
+        for section in usage_sections(spec, section_doc):
+            if section not in sections:
+                sections.append(section)
         sections = list(dict.fromkeys(sections))
         if not sections:
             continue
@@ -224,7 +297,7 @@ def main():
                 continue
             value, unit, label = parse_package(sku.get("package") or sku.get("label"))
             attributes["plantlogic_sections"] = sections
-            media = media_for_sku(card, sku) or official_fallback_media(spec)
+            media = media_for_sku(card, sku) or official_fallback_media(spec, snapshot)
             sku_rows.append({
                 "sku_id": sku_id,
                 "v3_sku_id": sku.get("sku_id"),
@@ -289,7 +362,7 @@ def main():
 
     present = collections.Counter(
         section
-        for product in added_products
+        for product in (stage.get("plantlogic_products") or [])
         for section in product.get("plantlogic_sections") or []
     )
     print("PLANTLOGIC V5 SECTION EXTENSION")
@@ -300,7 +373,7 @@ def main():
     for product_id, reason in skipped:
         print(" ", product_id, reason)
 
-    required = {"rubus", "strawberry", "vegetable", "universal", "garden"}
+    required = {"blueberry", "rubus", "strawberry", "vegetable", "universal", "garden"}
     missing = required - set(present)
     if missing:
         raise SystemExit("missing required sections: " + ",".join(sorted(missing)))

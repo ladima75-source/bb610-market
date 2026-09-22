@@ -4,8 +4,8 @@ window.BB610_ANALYTICS_CONFIG = Object.freeze({
   site: 'market.bb610.com.ua',
   currency: 'UAH',
   tagManager: {
-    enabled: false,
-    containerId: null,
+    enabled: true,
+    containerId: 'GTM-MF8PZJCJ',
     dataLayerName: 'dataLayer'
   },
   consent: {
@@ -19,7 +19,7 @@ window.BB610_ANALYTICS_CONFIG = Object.freeze({
     waitForUpdateMs: 500
   },
   providers: {
-    ga4: { enabled: false, measurementId: null },
+    ga4: { enabled: true, measurementId: 'G-QWG1K17HC3' },
     googleAds: { enabled: false, conversionId: null },
     metaPixel: { enabled: false, pixelId: null },
     metaCapi: { enabled: false, endpoint: null }

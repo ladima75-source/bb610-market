@@ -18,8 +18,24 @@
   }
   function consentDefault(){const c=cfg().consent;if(!c?.required)return;window.gtag=window.gtag||function(){dl().push(arguments)};window.gtag('consent','default',{...(c.defaultState||{}),wait_for_update:c.waitForUpdateMs||500});}
   function updateConsent(state){window.gtag=window.gtag||function(){dl().push(arguments)};window.gtag('consent','update',state);push('bb610_consent_update',{consent:state});}
-  function loadGTM(){const t=cfg().tagManager;if(!t?.enabled||!/^GTM-[A-Z0-9]+$/i.test(t.containerId||''))return false;const name=t.dataLayerName||'dataLayer';const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id='+encodeURIComponent(t.containerId)+(name==='dataLayer'?'':'&l='+encodeURIComponent(name));document.head.appendChild(s);return true}
-  function init(){dl();consentDefault();push('bb610_analytics_ready',{analytics_version:'stage6-v1'});loadGTM()}
+  function loadGTM(){
+    const t=cfg().tagManager;
+    if(!t?.enabled||!/^GTM-[A-Z0-9]+$/i.test(t.containerId||''))return false;
+    const name=t.dataLayerName||'dataLayer';
+    const layer=dl();
+    layer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+    const s=document.createElement('script');
+    s.async=true;
+    s.src='https://www.googletagmanager.com/gtm.js?id='+encodeURIComponent(t.containerId)+(name==='dataLayer'?'':'&l='+encodeURIComponent(name));
+    document.head.appendChild(s);
+    return true;
+  }
+  function init(){
+    dl();
+    consentDefault();
+    loadGTM();
+    push('bb610_analytics_ready',{analytics_version:'stage6-v2'});
+  }
   window.BB610Analytics=Object.freeze({push,updateConsent,sessionId,pageType,config:cfg,init});
   init();
 })();

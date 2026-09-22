@@ -11,7 +11,7 @@ window.BB610_ANALYTICS_CONFIG = Object.freeze({
   consent: {
     required: true,
     defaultState: {
-      analytics_storage: 'denied',
+      analytics_storage: 'granted',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied'

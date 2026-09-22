@@ -13,6 +13,7 @@ from pathlib import Path
 
 TARGET_SECTIONS = {"rubus", "strawberry", "vegetable", "universal"}
 EXCLUDED_SECTION_TYPES = {"bag_bases", "accessories"}
+NO_VERIFIED_MEDIA = {"prd_pl_1305081", "prd_pl_1305109"}
 GARDEN_USE_RE = re.compile(r"розсадник|nursery|сад", re.I)
 RUBUS_USE_RE = re.compile(r"малин|ожин|raspberr|blackberr|rubus", re.I)
 STRAWBERRY_USE_RE = re.compile(r"полуниц|суниц|strawberr", re.I)
@@ -240,9 +241,6 @@ def main():
     }
     compiled = {row["product_id"]: row for row in (content.get("products") or [])}
 
-    # Existing six blueberry grouped products stay grouped, but can also belong
-    # to other application sections when one of their manufacturer models has
-    # confirmed use there.
     group_sections = collections.defaultdict(lambda: ["blueberry"])
     for sku in stage.get("plantlogic_skus") or []:
         product_id = sku.get("product_id")
@@ -265,6 +263,9 @@ def main():
     for v3_product_id, raw_sections in (section_doc.get("product_sections") or {}).items():
         if any(section in EXCLUDED_SECTION_TYPES for section in raw_sections):
             skipped.append((v3_product_id, "non_pot_section"))
+            continue
+        if v3_product_id in NO_VERIFIED_MEDIA:
+            skipped.append((v3_product_id, "no_verified_media"))
             continue
         sections = [section for section in raw_sections if section in TARGET_SECTIONS]
         spec = specs.get(v3_product_id) or {}

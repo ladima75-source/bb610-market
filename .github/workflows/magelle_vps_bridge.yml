@@ -30,7 +30,7 @@ jobs:
           from pathlib import Path
           d=json.loads(Path("ops/magelle-vps-command.json").read_text(encoding="utf-8"))
           action=str(d.get("action") or "").strip()
-          allowed={"audit","bootstrap","health","deploy"}
+          allowed={"audit","bootstrap","health","public","tls","deploy"}
           if action not in allowed:
               raise SystemExit(f"unsupported action: {action}")
           ref=str(d.get("ref") or "").strip()
@@ -66,6 +66,8 @@ jobs:
             audit) remote="magelle-audit" ;;
             bootstrap) remote="magelle-bootstrap" ;;
             health) remote="magelle-health" ;;
+            public) remote="magelle-public" ;;
+            tls) remote="magelle-tls" ;;
             deploy) remote="magelle-deploy $REF" ;;
           esac
           ssh -i ~/.ssh/vps -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes root@"$H" "$remote"

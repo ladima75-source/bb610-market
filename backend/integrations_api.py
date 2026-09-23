@@ -10,6 +10,7 @@ from .services.payment_settings import payment_settings_status, save_payment_set
 from .services.integration_secrets import set_values
 from .services.payment.mono import MonoPaymentAdapter
 from .services.checkbox_prro import status as checkbox_status, test as test_checkbox
+from .services.meta_capi import status as meta_capi_status
 
 router=APIRouter(prefix='/api/v1/admin/integrations',tags=['admin-integrations'])
 class PaymentSettingsPatch(BaseModel):
@@ -23,6 +24,9 @@ class PaymentSettingsPatch(BaseModel):
 class CheckboxSettingsPatch(BaseModel):
     cashier_login:Optional[str]=Field(default=None,min_length=2,max_length=200)
     cashier_password:Optional[str]=Field(default=None,min_length=2,max_length=512)
+
+class MetaCapiSettingsPatch(BaseModel):
+    access_token:Optional[str]=Field(default=None,min_length=20,max_length=4096)
 
 class TelegramSettingsPatch(BaseModel):
     bot_token:Optional[str]=Field(default=None,min_length=8,max_length=512)
@@ -78,6 +82,16 @@ def checkbox_test(authorization:Optional[str]=Header(default=None)):
     _admin_auth(authorization)
     try:return test_checkbox()
     except RuntimeError as e:raise HTTPException(502,str(e))
+
+@router.get('/meta-capi')
+def get_meta_capi(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return meta_capi_status()
+@router.patch('/meta-capi')
+def patch_meta_capi(body:MetaCapiSettingsPatch,authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    data=body.model_dump(exclude_unset=True)
+    token=data.get('access_token')
+    if token is not None:set_values({'meta.access_token':token})
+    return meta_capi_status()
 
 @router.get('/telegram')
 def get_telegram(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return telegram_status()

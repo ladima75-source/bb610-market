@@ -13,40 +13,20 @@ jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect Organic Planet MAX 600 20kg source images
+      - name: Inspect original MAX 600 20kg image candidates
         shell: bash
         run: |
           set -euo pipefail
-          URL='https://organicplanet.com.ua/ru/katalog/biostymulyatory/max-600-seasailer-biostymulyator-20-kg-citymax'
-          curl -LfsS --max-time 30 -A 'Mozilla/5.0' "$URL" -o /tmp/page.html
-          python - <<'PY'
-          import re, html, urllib.parse, urllib.request, os, subprocess
-          s=open('/tmp/page.html',encoding='utf-8',errors='ignore').read()
-          vals=[]
-          for pat in [
-              r'<meta[^>]+property=["\x27]og:image["\x27][^>]+content=["\x27]([^"\x27]+)',
-              r'<meta[^>]+content=["\x27]([^"\x27]+)["\x27][^>]+property=["\x27]og:image["\x27]',
-              r'(https?://[^"\x27\s>]+\.(?:png|jpe?g|webp)(?:\?[^"\x27\s>]*)?)'
-          ]:
-              vals += re.findall(pat,s,flags=re.I)
-          out=[]
-          seen=set()
-          for v in vals:
-              v=html.unescape(v)
-              if v.startswith('//'): v='https:'+v
-              if v.startswith('/'): v=urllib.parse.urljoin('https://organicplanet.com.ua',v)
-              if v in seen: continue
-              seen.add(v); out.append(v)
-          print('CANDIDATES',len(out))
-          for i,u in enumerate(out[:40]):
-              try:
-                  p=f'/tmp/cand_{i}'
-                  req=urllib.request.Request(u,headers={'User-Agent':'Mozilla/5.0'})
-                  with urllib.request.urlopen(req,timeout=20) as r:
-                      open(p,'wb').write(r.read())
-                  info=subprocess.check_output(['file',p],text=True).strip()
-                  if any(x in info for x in ('image data','Web/P image')):
-                      print(i,u,info)
-              except Exception as e:
-                  print('ERR',i,u,repr(e))
-          PY
+          for U in \
+            'https://organicplanet.com.ua/image/catalog/products/3448.jpg' \
+            'https://organicplanet.com.ua/image/catalog/products/3448.png' \
+            'https://organicplanet.com.ua/image/cache/catalog/products/3448-500x500.jpg' \
+            'https://organicplanet.com.ua/image/cache/catalog/products/3448-800x800.jpg'; do
+            echo "URL=$U"
+            if curl -LfsS --max-time 20 -A 'Mozilla/5.0' "$U" -o /tmp/img; then
+              file /tmp/img
+              wc -c /tmp/img
+            else
+              echo FAIL
+            fi
+          done

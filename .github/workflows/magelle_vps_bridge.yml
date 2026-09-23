@@ -1,0 +1,71 @@
+name: MaGelle VPS Bridge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/magelle-vps-command.json'
+      - '.github/workflows/magelle_vps_bridge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: magelle-vps-bridge
+  cancel-in-progress: false
+
+jobs:
+  vps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate request
+        id: req
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json,re
+          from pathlib import Path
+          d=json.loads(Path("ops/magelle-vps-command.json").read_text(encoding="utf-8"))
+          action=str(d.get("action") or "").strip()
+          allowed={"audit","bootstrap","health","deploy"}
+          if action not in allowed:
+              raise SystemExit(f"unsupported action: {action}")
+          ref=str(d.get("ref") or "").strip()
+          if action=="deploy":
+              if not re.fullmatch(r"[0-9a-fA-F]{7,40}",ref):
+                  raise SystemExit("deploy requires git SHA")
+          elif ref:
+              raise SystemExit("ref only valid for deploy")
+          print(f"action={action}")
+          print(f"ref={ref}")
+          PY
+      - name: Configure SSH
+        shell: bash
+        env:
+          K: ${{ secrets.BB610_VPS_SSH_KEY }}
+          KH: ${{ secrets.BB610_VPS_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          test -n "$K"; test -n "$KH"
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$K" > ~/.ssh/vps
+          chmod 600 ~/.ssh/vps
+          printf '%s\n' "$KH" > ~/.ssh/known_hosts
+      - name: Execute MaGelle operation
+        shell: bash
+        env:
+          H: ${{ secrets.BB610_VPS_HOST }}
+          ACTION: ${{ steps.req.outputs.action }}
+          REF: ${{ steps.req.outputs.ref }}
+        run: |
+          set -euo pipefail
+          case "$ACTION" in
+            audit) remote="magelle-audit" ;;
+            bootstrap) remote="magelle-bootstrap" ;;
+            health) remote="magelle-health" ;;
+            deploy) remote="magelle-deploy $REF" ;;
+          esac
+          ssh -i ~/.ssh/vps -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes root@"$H" "$remote"

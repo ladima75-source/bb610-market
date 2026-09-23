@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from ..db import connect
 from .payment import PaymentNotConfigured, PaymentSignatureError
 from .payment.unconfigured import UnconfiguredPaymentAdapter
+from .payment.mono import MonoPaymentAdapter
 from .automation import emit,audit
 from .payment_settings import payment_settings_status, bank_transfer_instructions
 
@@ -13,9 +14,8 @@ def now(): return datetime.now(timezone.utc).isoformat()
 def env_bool(name,default=False): return os.getenv(name,'1' if default else '0').strip().lower() in ('1','true','yes','on')
 
 def adapter():
-    # Stage 9 intentionally ships no live acquiring credentials/provider implementation.
-    # A future LiqPay/WayForPay/etc adapter plugs into this single factory.
-    return UnconfiguredPaymentAdapter()
+    mono=MonoPaymentAdapter()
+    return mono if mono.configured() else UnconfiguredPaymentAdapter()
 
 def methods():
     a=adapter(); st=payment_settings_status(a.configured(),a.provider if a.configured() else None)

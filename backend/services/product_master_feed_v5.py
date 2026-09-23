@@ -7,6 +7,13 @@ from .product_master_v5 import snapshot as v5_snapshot
 
 SOURCE_ID = "bb610-product-master-v5"
 
+# Exact channel-safe image overrides are used only when the canonical SKU image
+# is verified but its stored derivative is too small for shopping channels.
+# Keep these package-specific: never substitute media from another SKU.
+_CHANNEL_IMAGE_OVERRIDES = {
+    "BB610-906E45D6FF4693": "https://organicplanet.com.ua/image/catalog/products/3448.jpg",
+}
+
 
 def _text(value: Any) -> str:
     return str(value or "").strip()
@@ -90,7 +97,7 @@ def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]
                 continue
 
             attributes = source_sku.get("attributes")
-            sku_image = _primary_media(source_sku.get("media")) or product_image
+            sku_image = _CHANNEL_IMAGE_OVERRIDES.get(sid) or _primary_media(source_sku.get("media")) or product_image
             sku = {
                 "id": sid,
                 "product_id": pid,

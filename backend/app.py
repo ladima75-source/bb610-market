@@ -371,6 +371,8 @@ def admin_refresh_tracking(order_id:str,authorization:Optional[str]=Header(defau
 # BB610_STAGE13A_INTEGRATIONS_ROUTER
 from .integrations_api import router as integrations_router
 app.include_router(integrations_router)
+from .meta_capi_api import router as meta_capi_router
+app.include_router(meta_capi_router)
 
 
 # BB610_STAGE13B2_SHIPPING_ADMIN_ROUTER

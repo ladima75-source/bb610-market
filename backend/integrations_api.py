@@ -7,7 +7,7 @@ from .services.delivery.base import DeliveryNotConfigured, DeliveryUpstreamError
 from .services.integrations import nova_poshta_status, save_nova_poshta_settings, test_nova_poshta, nova_poshta_sender_options, nova_poshta_sender_cities
 from .services.telegram_notifications import telegram_status, save_telegram_settings, test_telegram, discover_telegram_chats
 from .services.payment_settings import payment_settings_status, save_payment_settings
-from .services.integration_secrets import set_values
+from .services.integration_secrets import set_values, configured, source_for
 from .services.payment.mono import MonoPaymentAdapter
 from .services.checkbox_prro import status as checkbox_status, test as test_checkbox
 
@@ -23,6 +23,9 @@ class PaymentSettingsPatch(BaseModel):
 class CheckboxSettingsPatch(BaseModel):
     cashier_login:Optional[str]=Field(default=None,min_length=2,max_length=200)
     cashier_password:Optional[str]=Field(default=None,min_length=2,max_length=512)
+
+class MetaCapiSettingsPatch(BaseModel):
+    access_token:Optional[str]=Field(default=None,min_length=20,max_length=4096)
 
 class TelegramSettingsPatch(BaseModel):
     bot_token:Optional[str]=Field(default=None,min_length=8,max_length=512)
@@ -78,6 +81,19 @@ def checkbox_test(authorization:Optional[str]=Header(default=None)):
     _admin_auth(authorization)
     try:return test_checkbox()
     except RuntimeError as e:raise HTTPException(502,str(e))
+
+@router.get('/meta-capi')
+def get_meta_capi(authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    ready=configured('meta.access_token')
+    return {'id':'meta_capi','configured':ready,'pixel_id':'1103668908981910','access_token':{'configured':ready,'source':source_for('meta.access_token')},'deduplication':'event_id'}
+@router.patch('/meta-capi')
+def patch_meta_capi(body:MetaCapiSettingsPatch,authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    data=body.model_dump(exclude_unset=True)
+    if 'access_token' in data:set_values({'meta.access_token':data['access_token']})
+    ready=configured('meta.access_token')
+    return {'id':'meta_capi','configured':ready,'pixel_id':'1103668908981910','access_token':{'configured':ready,'source':source_for('meta.access_token')},'deduplication':'event_id'}
 
 @router.get('/telegram')
 def get_telegram(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return telegram_status()

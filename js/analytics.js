@@ -30,11 +30,34 @@
     document.head.appendChild(s);
     return true;
   }
+  function loadMetaPixel(){
+    const p=cfg().providers?.metaPixel;
+    const id=String(p?.pixelId||'').trim();
+    if(!p?.enabled||!/^[0-9]+$/.test(id))return false;
+    if(!window.fbq){
+      const fbq=function(){fbq.callMethod?fbq.callMethod.apply(fbq,arguments):fbq.queue.push(arguments)};
+      window.fbq=fbq;
+      if(!window._fbq)window._fbq=fbq;
+      fbq.push=fbq;
+      fbq.loaded=true;
+      fbq.version='2.0';
+      fbq.queue=[];
+      const s=document.createElement('script');
+      s.async=true;
+      s.src='https://connect.facebook.net/en_US/fbevents.js';
+      const first=document.getElementsByTagName('script')[0];
+      if(first?.parentNode)first.parentNode.insertBefore(s,first);else document.head.appendChild(s);
+    }
+    window.fbq('init',id);
+    window.fbq('track','PageView');
+    return true;
+  }
   function init(){
     dl();
     consentDefault();
     loadGTM();
-    push('bb610_analytics_ready',{analytics_version:'stage6-v2'});
+    loadMetaPixel();
+    push('bb610_analytics_ready',{analytics_version:'stage6-v3'});
   }
   window.BB610Analytics=Object.freeze({push,updateConsent,sessionId,pageType,config:cfg,init});
   init();

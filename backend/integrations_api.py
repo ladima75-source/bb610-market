@@ -9,6 +9,7 @@ from .services.telegram_notifications import telegram_status, save_telegram_sett
 from .services.payment_settings import payment_settings_status, save_payment_settings
 from .services.integration_secrets import set_values
 from .services.payment.mono import MonoPaymentAdapter
+from .services.checkbox_prro import status as checkbox_status, test as test_checkbox
 
 router=APIRouter(prefix='/api/v1/admin/integrations',tags=['admin-integrations'])
 class PaymentSettingsPatch(BaseModel):
@@ -18,6 +19,10 @@ class PaymentSettingsPatch(BaseModel):
     bank_iban:Optional[str]=Field(default=None,max_length=64)
     bank_purpose:Optional[str]=Field(default=None,max_length=200)
     mono_token:Optional[str]=Field(default=None,min_length=8,max_length=1024)
+
+class CheckboxSettingsPatch(BaseModel):
+    cashier_login:Optional[str]=Field(default=None,min_length=2,max_length=200)
+    cashier_password:Optional[str]=Field(default=None,min_length=2,max_length=512)
 
 class TelegramSettingsPatch(BaseModel):
     bot_token:Optional[str]=Field(default=None,min_length=8,max_length=512)
@@ -57,6 +62,22 @@ def test_mono(authorization:Optional[str]=Header(default=None)):
     _admin_auth(authorization)
     try:return MonoPaymentAdapter().test()
     except Exception as e:raise HTTPException(502,str(e))
+
+@router.get('/checkbox')
+def get_checkbox(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return checkbox_status()
+@router.patch('/checkbox')
+def patch_checkbox(body:CheckboxSettingsPatch,authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    data=body.model_dump(exclude_unset=True);values={}
+    if 'cashier_login' in data:values['checkbox.cashier_login']=data['cashier_login']
+    if 'cashier_password' in data:values['checkbox.cashier_password']=data['cashier_password']
+    if values:set_values(values)
+    return checkbox_status()
+@router.post('/checkbox/test')
+def checkbox_test(authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    try:return test_checkbox()
+    except RuntimeError as e:raise HTTPException(502,str(e))
 
 @router.get('/telegram')
 def get_telegram(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return telegram_status()

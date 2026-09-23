@@ -21,7 +21,7 @@ window.BB610_ANALYTICS_CONFIG = Object.freeze({
   providers: {
     ga4: { enabled: true, measurementId: 'G-QWG1K17HC3' },
     googleAds: { enabled: false, conversionId: null },
-    metaPixel: { enabled: false, pixelId: null },
+    metaPixel: { enabled: true, pixelId: '1103668908981910' },
     metaCapi: { enabled: false, endpoint: null }
   }
 });

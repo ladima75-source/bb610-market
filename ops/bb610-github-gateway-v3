@@ -289,6 +289,23 @@ magelle_health() {
   echo
 }
 
+magelle_admin_check() {
+  echo "--- SERVICE ---"
+  systemctl is-active magelle-admin
+  echo "--- ADMIN PAGE ---"
+  curl -ksS -o /tmp/magelle-admin-page -w '%{http_code}\n' https://api.magelle.com.ua/admin/
+  head -c 120 /tmp/magelle-admin-page; echo
+  echo "--- LOGIN EMPTY TEST ---"
+  curl -ksS -o /tmp/magelle-login -w '%{http_code}\n' -H 'Content-Type: application/json' -d '{"password":""}' https://api.magelle.com.ua/api/admin/login
+  cat /tmp/magelle-login; echo
+  echo "--- PASSWORD FILE ---"
+  if [ -s /root/magelle-admin-initial-password.txt ]; then
+    echo "present"
+  else
+    echo "missing"
+  fi
+}
+
 magelle_public() {
   echo "--- NGINX ---"
   nginx -t
@@ -363,6 +380,7 @@ case "$CMD" in
   magelle-audit) magelle_audit ;;
   magelle-bootstrap) magelle_bootstrap ;;
   magelle-health) magelle_health ;;
+  magelle-admin-check) magelle_admin_check ;;
   magelle-public) magelle_public ;;
   magelle-tls) magelle_tls ;;
   magelle-deploy\ *) magelle_deploy "${CMD#magelle-deploy }" ;;

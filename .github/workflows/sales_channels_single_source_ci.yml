@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'backend/services/product_master_runtime.py'
+      - 'backend/services/product_master_feed_v5.py'
       - 'backend/services/catalog_cms.py'
       - 'backend/services/catalog_feeds.py'
       - 'backend/services/sales_channels.py'
@@ -21,6 +22,7 @@ on:
   pull_request:
     paths:
       - 'backend/services/product_master_runtime.py'
+      - 'backend/services/product_master_feed_v5.py'
       - 'backend/services/catalog_cms.py'
       - 'backend/services/catalog_feeds.py'
       - 'backend/services/sales_channels.py'
@@ -47,6 +49,7 @@ jobs:
         run: |
           python -m py_compile \
             backend/services/product_master_runtime.py \
+            backend/services/product_master_feed_v5.py \
             backend/services/catalog_cms.py \
             backend/services/catalog_feeds.py \
             backend/services/sales_channels.py \

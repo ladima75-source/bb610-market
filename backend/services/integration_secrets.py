@@ -24,7 +24,6 @@ _ENV_FALLBACKS = {
     "telegram.chat_id": "BB610_TELEGRAM_CHAT_ID",
     "checkbox.cashier_login": "BB610_CHECKBOX_CASHIER_LOGIN",
     "checkbox.cashier_password": "BB610_CHECKBOX_CASHIER_PASSWORD",
-    "meta.access_token": "BB610_META_CAPI_ACCESS_TOKEN",
 }
 
 

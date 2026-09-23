@@ -9,7 +9,7 @@ from .base import PaymentAdapter, PaymentSession, PaymentWebhookEvent, PaymentNo
 from ..integration_secrets import get_value
 
 API='https://api.monobank.ua'
-_STATUS={'success':'paid','failure':'failed','reversed':'refunded','processing':'pending','created':'requires_action','hold':'requires_action'}
+_STATUS={'success':'paid','failure':'failed','reversed':'refunded','processing':'requires_action','created':'requires_action','hold':'requires_action'}
 
 class MonoPaymentAdapter(PaymentAdapter):
     provider='mono'

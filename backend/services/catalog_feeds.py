@@ -104,13 +104,35 @@ def _title(product: dict, sku: dict) -> str:
 
 def _description(product: dict, sku: dict) -> str:
     pfeed = product.get("feed") if isinstance(product.get("feed"), dict) else {}
-    value = _text(
-        pfeed.get("description")
-        or product.get("short_description")
-        or product.get("manufacturer_use")
-        or product.get("product_type")
-    )
-    return value[:5000]
+    raw_parts = [
+        pfeed.get("description"),
+        product.get("description"),
+        product.get("short_description"),
+        product.get("seo_description"),
+        product.get("application"),
+        product.get("composition"),
+        product.get("how_it_works"),
+    ]
+    parts: list[str] = []
+    for raw in raw_parts:
+        part = " ".join(_text(raw).split())
+        if not part:
+            continue
+        # Avoid repeating the same sentence when short/SEO descriptions are
+        # already contained in the canonical long description.
+        if any(part == existing or part in existing for existing in parts):
+            continue
+        parts.append(part)
+
+    if not parts:
+        fallback = [
+            _title(product, sku),
+            _text(product.get("brand")),
+            _text(product.get("product_type")),
+        ]
+        parts = [part for part in fallback if part]
+
+    return " ".join(parts)[:5000]
 
 
 def _link(product: dict, sku: dict) -> str:

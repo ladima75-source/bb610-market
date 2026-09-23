@@ -9,6 +9,7 @@ from .payment_service import initialize_payment,get_payment,validate_method
 from .automation import emit,audit
 
 ORDER_STATUSES=('new','confirmed','preparing','shipped','completed','cancelled')
+MIN_ORDER_UAH=500.0
 TRANSITIONS={
  'new':{'confirmed','cancelled'},
  'confirmed':{'new','preparing','cancelled'},
@@ -55,7 +56,9 @@ def create_order(payload, idem_key):
             if old['request_hash']!=h: raise ValueError('IDEMPOTENCY_CONFLICT')
             row=con.execute('SELECT * FROM orders WHERE id=?',(old['order_id'],)).fetchone()
             return _public_order(con,row,public_token_for_order(row['id']))
-        oid=str(uuid.uuid4()); token=public_token_for_order(oid); created=now(); subtotal=round(sum(x['line_total'] for x in items),2); delivery=0.0; total=subtotal
+        oid=str(uuid.uuid4()); token=public_token_for_order(oid); created=now(); subtotal=round(sum(x['line_total'] for x in items),2)
+        if subtotal < MIN_ORDER_UAH: raise ValueError('MIN_ORDER_AMOUNT_500_UAH')
+        delivery=0.0; total=subtotal
         number=order_number()
         while con.execute('SELECT 1 FROM orders WHERE order_number=?',(number,)).fetchone(): number=order_number()
         event_id=f'purchase_{uuid.uuid4()}'

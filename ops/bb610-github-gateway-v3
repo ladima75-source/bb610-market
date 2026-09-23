@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ROOT=/opt/bb610-market
+MAGELLE_ROOT=/opt/magelle
 CMD="${SSH_ORIGINAL_COMMAND:-}"
 
 # These legacy files are mutated by the running application on production.
@@ -187,11 +188,120 @@ shadow() {
   python3 ops/v5_shadow_compare.py
 }
 
+magelle_audit() {
+  echo "========== MAGELLE VPS =========="
+  if [ -d "$MAGELLE_ROOT/.git" ]; then
+    cd "$MAGELLE_ROOT"
+    git fetch -q origin main || true
+    echo "HEAD: $(git rev-parse HEAD 2>/dev/null || echo unknown)"
+    echo "ORIGIN_MAIN: $(git rev-parse origin/main 2>/dev/null || echo unknown)"
+    git status --short --untracked-files=no || true
+  else
+    echo "REPO: ABSENT"
+  fi
+  echo "--- SERVICE ---"
+  systemctl show magelle-admin -p ActiveState -p SubState -p WorkingDirectory --no-pager 2>/dev/null || echo "magelle-admin: NOT_INSTALLED"
+  echo "--- LOCAL HEALTH ---"
+  curl -fsS --max-time 10 http://127.0.0.1:8787/api/health 2>/dev/null || echo "health: unavailable"
+  echo
+  echo "========== END =========="
+}
+
+magelle_bootstrap() {
+  if [ ! -d "$MAGELLE_ROOT/.git" ]; then
+    git clone https://github.com/ladima75-source/magelle.git "$MAGELLE_ROOT"
+  fi
+  cd "$MAGELLE_ROOT"
+  git fetch origin main
+  git reset --hard origin/main
+
+  python3 -m venv "$MAGELLE_ROOT/venv"
+  "$MAGELLE_ROOT/venv/bin/pip" install --upgrade pip
+  "$MAGELLE_ROOT/venv/bin/pip" install -r "$MAGELLE_ROOT/server/requirements.txt"
+
+  install -d -m 0750 -o www-data -g www-data /var/lib/magelle
+  chown -R www-data:www-data "$MAGELLE_ROOT/server"
+
+  if [ ! -f /etc/magelle-admin.env ]; then
+    local admin_password session_secret
+    admin_password="$(python3 - <<'PY'
+import secrets
+print(secrets.token_urlsafe(18))
+PY
+)"
+    session_secret="$(python3 - <<'PY'
+import secrets
+print(secrets.token_urlsafe(48))
+PY
+)"
+    cat > /etc/magelle-admin.env <<EOF
+MAGELLE_ADMIN_PASSWORD=$admin_password
+MAGELLE_SESSION_SECRET=$session_secret
+MAGELLE_DB=/var/lib/magelle/admin.db
+MAGELLE_ORIGIN=https://magelle.com.ua
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+EOF
+    chmod 600 /etc/magelle-admin.env
+    echo "MAGELLE_ADMIN_PASSWORD=$admin_password"
+  else
+    echo "MAGELLE_ADMIN_PASSWORD=EXISTING"
+  fi
+
+  cp "$MAGELLE_ROOT/server/magelle-admin.service" /etc/systemd/system/magelle-admin.service
+  cp "$MAGELLE_ROOT/server/nginx-magelle-admin.conf" /etc/nginx/sites-available/magelle-admin.conf
+  ln -sfn /etc/nginx/sites-available/magelle-admin.conf /etc/nginx/sites-enabled/magelle-admin.conf
+
+  systemctl daemon-reload
+  systemctl enable --now magelle-admin
+  nginx -t
+  systemctl reload nginx
+  sleep 2
+  curl -fsS --max-time 15 http://127.0.0.1:8787/api/health
+  echo
+}
+
+magelle_health() {
+  systemctl is-active magelle-admin
+  curl -fsS --max-time 15 http://127.0.0.1:8787/api/health
+  echo
+}
+
+magelle_deploy() {
+  local sha="${1:-}"
+  [[ "$sha" =~ ^[0-9a-fA-F]{7,40}$ ]] || { echo "Invalid commit SHA"; exit 64; }
+  [ -d "$MAGELLE_ROOT/.git" ] || { echo "MaGelle repo absent; run magelle-bootstrap"; exit 69; }
+  cd "$MAGELLE_ROOT"
+  if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+    echo "REFUSED: tracked working tree is not clean"
+    git status --short --untracked-files=no
+    exit 65
+  fi
+  git fetch origin main
+  git cat-file -e "${sha}^{commit}" 2>/dev/null || exit 66
+  git merge-base --is-ancestor "$sha" origin/main || exit 67
+  git merge-base --is-ancestor HEAD "$sha" || exit 68
+  git merge --ff-only "$sha"
+  "$MAGELLE_ROOT/venv/bin/pip" install -r "$MAGELLE_ROOT/server/requirements.txt"
+  cp "$MAGELLE_ROOT/server/magelle-admin.service" /etc/systemd/system/magelle-admin.service
+  cp "$MAGELLE_ROOT/server/nginx-magelle-admin.conf" /etc/nginx/sites-available/magelle-admin.conf
+  systemctl daemon-reload
+  systemctl restart magelle-admin
+  nginx -t
+  systemctl reload nginx
+  sleep 2
+  magelle_health
+}
+
 case "$CMD" in
   audit) audit ;;
   health) health ;;
   snapshot) snapshot ;;
   shadow) shadow ;;
+  magelle-audit) magelle_audit ;;
+  magelle-bootstrap) magelle_bootstrap ;;
+  magelle-health) magelle_health ;;
+  magelle-deploy\ *) magelle_deploy "${CMD#magelle-deploy }" ;;
   deploy\ *) deploy "${CMD#deploy }" ;;
   *) echo "DENIED"; exit 126 ;;
 esac

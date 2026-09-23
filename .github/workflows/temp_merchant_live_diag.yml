@@ -1,0 +1,47 @@
+name: TEMP Merchant Live Diag
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/temp_merchant_live_diag.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Audit live Merchant feed and MAX 600 media
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsS --max-time 30 https://api.market.bb610.com.ua/api/v1/catalog/v5 -o /tmp/v5.json
+          curl -fsS --max-time 30 https://api.market.bb610.com.ua/api/v1/catalog/feeds/google-merchant.csv -o /tmp/google.csv
+          python - <<'PY'
+          import csv, io, json, statistics, urllib.request, os, subprocess
+          data=json.load(open('/tmp/v5.json',encoding='utf-8'))
+          raw=open('/tmp/google.csv',encoding='utf-8-sig').read()
+          rows=list(csv.DictReader(io.StringIO(raw)))
+          lens=[len((r.get('description') or '').strip()) for r in rows]
+          print('FEED_ROWS',len(rows))
+          print('DESC_MIN',min(lens) if lens else None)
+          print('DESC_MEDIAN',statistics.median(lens) if lens else None)
+          print('DESC_LT50',sum(x<50 for x in lens))
+          print('DESC_LT100',sum(x<100 for x in lens))
+          print('DESC_LT150',sum(x<150 for x in lens))
+          for p in data.get('products') or []:
+              blob=' '.join(str(p.get(k) or '') for k in ('product_id','name','brand')).lower()
+              if 'max 600' in blob or 'seasailer' in blob:
+                  print('PRODUCT',json.dumps({k:p.get(k) for k in ('product_id','name','brand','short_description','description','application','category_id')},ensure_ascii=False))
+                  print('PRODUCT_MEDIA',json.dumps(p.get('media') or [],ensure_ascii=False))
+                  for s in p.get('skus') or []:
+                      print('SKU',json.dumps({k:s.get(k) for k in ('sku_id','package_label','price','sale_price','availability','commerce_enabled')},ensure_ascii=False))
+                      print('SKU_MEDIA',json.dumps(s.get('media') or [],ensure_ascii=False))
+          print('FEED_MATCHES')
+          for r in rows:
+              title=(r.get('title') or '').lower()
+              if 'max 600' in title or 'seasailer' in title:
+                  print(json.dumps(r,ensure_ascii=False))
+          PY

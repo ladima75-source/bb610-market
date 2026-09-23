@@ -7,6 +7,8 @@ from .services.delivery.base import DeliveryNotConfigured, DeliveryUpstreamError
 from .services.integrations import nova_poshta_status, save_nova_poshta_settings, test_nova_poshta, nova_poshta_sender_options, nova_poshta_sender_cities
 from .services.telegram_notifications import telegram_status, save_telegram_settings, test_telegram, discover_telegram_chats
 from .services.payment_settings import payment_settings_status, save_payment_settings
+from .services.integration_secrets import set_values
+from .services.payment.mono import MonoPaymentAdapter
 
 router=APIRouter(prefix='/api/v1/admin/integrations',tags=['admin-integrations'])
 class PaymentSettingsPatch(BaseModel):
@@ -15,6 +17,7 @@ class PaymentSettingsPatch(BaseModel):
     bank_recipient:Optional[str]=Field(default=None,max_length=200)
     bank_iban:Optional[str]=Field(default=None,max_length=64)
     bank_purpose:Optional[str]=Field(default=None,max_length=200)
+    mono_token:Optional[str]=Field(default=None,min_length=8,max_length=1024)
 
 class TelegramSettingsPatch(BaseModel):
     bot_token:Optional[str]=Field(default=None,min_length=8,max_length=512)
@@ -42,9 +45,19 @@ def get_payments(authorization:Optional[str]=Header(default=None)):_admin_auth(a
 @router.patch('/payments')
 def patch_payments(body:PaymentSettingsPatch,authorization:Optional[str]=Header(default=None)):
     _admin_auth(authorization)
-    try:return save_payment_settings(**body.model_dump(exclude_unset=True))
+    try:
+        data=body.model_dump(exclude_unset=True)
+        mono_token=data.pop('mono_token',None)
+        if mono_token is not None:set_values({'payments.mono_token':mono_token})
+        return save_payment_settings(**data)
     except ValueError as e:raise HTTPException(422,str(e))
     except RuntimeError as e:raise HTTPException(500,str(e))
+@router.post('/payments/mono/test')
+def test_mono(authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    try:return MonoPaymentAdapter().test()
+    except Exception as e:raise HTTPException(502,str(e))
+
 @router.get('/telegram')
 def get_telegram(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return telegram_status()
 

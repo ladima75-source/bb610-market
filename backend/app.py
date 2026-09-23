@@ -19,6 +19,7 @@ from .services.catalog_cms import (
     update_catalog_sku, delete_catalog_sku, duplicate_product
 )
 from .services.automation import emit,list_rules,set_rule_enabled,list_jobs,list_approvals,decide_approval,list_audit,summary as automation_summary,approval_for_source
+from .services.meta_capi import send_event as send_meta_capi_event
 import json
 
 app=FastAPI(title='BB610 Market Commerce API',version='Stage 12')
@@ -47,6 +48,20 @@ class StatusUpdate(BaseModel): status:str; note:Optional[str]=Field(default=None
 class AdminNote(BaseModel): note:str=Field(min_length=1,max_length=2000)
 class TrackingAttach(BaseModel): tracking_number:str=Field(min_length=4,max_length=100); note:Optional[str]=Field(default=None,max_length=500)
 class PaymentAdminUpdate(BaseModel): status:str; note:Optional[str]=Field(default=None,max_length=500)
+
+class MetaContentBody(BaseModel):
+    id:str=Field(min_length=1,max_length=200)
+    quantity:int=Field(default=1,ge=1,le=1000)
+    item_price:Optional[float]=Field(default=None,ge=0)
+
+class MetaCapiEventBody(BaseModel):
+    event_name:str=Field(min_length=1,max_length=64)
+    event_id:str=Field(min_length=8,max_length=200)
+    event_source_url:str=Field(min_length=8,max_length=2000)
+    currency:str=Field(default='UAH',min_length=3,max_length=3)
+    value:Optional[float]=Field(default=None,ge=0)
+    order_id:Optional[str]=Field(default=None,max_length=200)
+    contents:list[MetaContentBody]=Field(default_factory=list)
 
 
 class CatalogProductBody(BaseModel):
@@ -103,6 +118,23 @@ def delivery_error(e):
 
 @app.get('/api/v1/health')
 def health(): return {'ok':True,'service':'bb610-commerce','stage':12}
+
+@app.post('/api/v1/analytics/meta-capi')
+def meta_capi_event(body:MetaCapiEventBody,request:Request):
+    allowed={'ViewContent','AddToCart','InitiateCheckout','Purchase'}
+    if body.event_name not in allowed:return {'accepted':False,'reason':'unsupported_event'}
+    if len(body.contents)>100:return {'accepted':False,'reason':'too_many_contents'}
+    origin=(request.headers.get('origin') or '').lower().rstrip('/')
+    if origin and origin not in {'https://market.bb610.com.ua','https://www.market.bb610.com.ua'}:
+        return {'accepted':False,'reason':'origin_not_allowed'}
+    forwarded=(request.headers.get('x-forwarded-for') or '').split(',')[0].strip()
+    client_ip=forwarded or (request.client.host if request.client else '')
+    user_agent=request.headers.get('user-agent') or ''
+    return send_meta_capi_event(
+        event_name=body.event_name,event_id=body.event_id,event_source_url=body.event_source_url,
+        contents=[x.model_dump(exclude_none=True) for x in body.contents],currency=body.currency.upper(),
+        value=body.value,order_id=body.order_id,client_ip=client_ip,client_user_agent=user_agent
+    )
 
 @app.get('/api/v1/delivery/providers')
 def delivery_providers(): return {'providers':provider_capabilities()}

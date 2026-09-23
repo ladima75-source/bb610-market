@@ -13,7 +13,6 @@
     if(data.ecommerce){dl().push({ecommerce:null});}
     dl().push(data);
     trackMetaEvent(event,data,eventId);
-    sendMetaCapi(event,data,eventId);
     if(cfg().debug&&console)console.info('[BB610 analytics]',data);
     document.dispatchEvent(new CustomEvent('bb610:ecommerce',{detail:data}));
     return eventId;
@@ -90,41 +89,12 @@
     window.fbq('track',metaName,params,{eventID:String(eventId)});
     return true;
   }
-  function sendMetaCapi(event,data,eventId){
-    const p=cfg().providers?.metaCapi;
-    const endpoint=String(p?.endpoint||'').trim();
-    if(!p?.enabled||!endpoint)return false;
-    const names={view_item:'ViewContent',add_to_cart:'AddToCart',begin_checkout:'InitiateCheckout',purchase:'Purchase'};
-    const metaName=names[event];
-    if(!metaName)return false;
-    const ecommerce=data?.ecommerce||{};
-    const items=Array.isArray(ecommerce.items)?ecommerce.items.filter(Boolean):[];
-    if(!items.length&&metaName!=='Purchase')return false;
-    const contents=items.map(item=>({
-      id:String(item.item_id||'').trim(),
-      quantity:Number(item.quantity)||1,
-      ...(Number.isFinite(Number(item.price))?{item_price:Number(item.price)}:{})
-    })).filter(item=>item.id);
-    let value=Number(ecommerce.value);
-    if(!Number.isFinite(value))value=contents.reduce((sum,item)=>sum+(Number(item.item_price)||0)*(Number(item.quantity)||1),0);
-    const body={
-      event_name:metaName,
-      event_id:String(eventId),
-      event_source_url:String(data.page_location||location.href),
-      currency:String(ecommerce.currency||items[0]?.currency||cfg().currency||'UAH').slice(0,3).toUpperCase(),
-      contents
-    };
-    if(Number.isFinite(value)&&value>=0)body.value=value;
-    if(metaName==='Purchase'&&ecommerce.transaction_id)body.order_id=String(ecommerce.transaction_id);
-    fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},credentials:'include',keepalive:true,body:JSON.stringify(body)}).catch(()=>{});
-    return true;
-  }
   function init(){
     dl();
     consentDefault();
     loadGTM();
     loadMetaPixel();
-    push('bb610_analytics_ready',{analytics_version:'stage6-v5'});
+    push('bb610_analytics_ready',{analytics_version:'stage6-v4'});
   }
   window.BB610Analytics=Object.freeze({push,updateConsent,sessionId,pageType,config:cfg,init});
   init();

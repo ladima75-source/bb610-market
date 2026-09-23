@@ -1,0 +1,23 @@
+name: MaGelle DNS Check
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['ops/magelle-dns-check.txt']
+permissions:
+  contents: read
+jobs:
+  dns:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check DNS
+        run: |
+          set -euo pipefail
+          echo "NS:"
+          dig +short NS magelle.com.ua
+          echo "APEX A:"
+          dig +short A magelle.com.ua
+          echo "API A:"
+          dig +short A api.magelle.com.ua
+          echo "API CNAME:"
+          dig +short CNAME api.magelle.com.ua

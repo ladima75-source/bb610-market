@@ -19,6 +19,12 @@ document.addEventListener('DOMContentLoaded',async()=>{
     }
     if(o.clear_cart===true){BB610.set(BB610.LS.cart,[]);BB610.updateBadges()}
     BB610OrderClient.resetRequestId();sessionStorage.removeItem('bb610_pending_order');
+    const online=o.payment?.method==='online_card';const ps=String(o.payment?.status||'');const esc=v=>String(v||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    if(online&&ps!=='paid'){
+      const retry=o.payment?.redirect_url?'<a class="btn" href="'+esc(o.payment.redirect_url)+'">ПОВЕРНУТИСЯ ДО ОПЛАТИ</a>':'';
+      root.innerHTML='<div class="order-state"><div class="eyebrow">ЗАМОВЛЕННЯ СТВОРЕНО</div><h1>Оплата ще не завершена</h1><p>Замовлення <b>'+esc(o.order_number||o.order_id)+'</b> збережено. Ми не вважаємо його оплаченим, доки mono не підтвердить платіж.</p><p>Статус оплати: <b>Очікує оплати</b>.</p>'+retry+' <a class="btn secondary" href="../../cart.html">ПОВЕРНУТИСЯ ДО КОШИКА</a></div>';
+      return;
+    }
     const ins=o.payment?.method==='bank_transfer'?(o.payment?.instructions||{}):null;const bank=ins&&ins.iban?`<div class="payment-instructions"><div class="eyebrow">ОПЛАТА НА РАХУНОК</div><p><b>Отримувач:</b> ${String(ins.recipient||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}</p><p><b>IBAN:</b> <code>${String(ins.iban||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}</code></p><p><b>Призначення:</b> ${String(ins.purpose||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}</p><small>Замовлення буде передано в роботу після підтвердження оплати.</small></div>`:'';root.innerHTML=`<div class="order-state success"><div class="eyebrow">ЗАМОВЛЕННЯ ПРИЙНЯТО</div><h1>Дякуємо</h1><p>Номер замовлення: <b>${o.order_number||o.order_id}</b></p><p>${o.customer_message||'Ми отримали замовлення та зв’яжемося з вами щодо підтвердження.'}</p>${bank}<a class="btn" href="../../index.html">ПОВЕРНУТИСЯ ДО МАГАЗИНУ</a></div>`;
   }catch(ex){root.innerHTML=`<div class="order-state"><h1>Не вдалося підтвердити замовлення</h1><p>${ex.message||'Спробуйте відкрити сторінку пізніше.'}</p></div>`}
 });

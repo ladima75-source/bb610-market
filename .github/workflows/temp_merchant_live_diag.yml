@@ -13,14 +13,14 @@ jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-      - name: Audit live Merchant feed and MAX 600 media
+      - name: Audit live Merchant feed, MAX 600 media and ZZR policy candidates
         shell: bash
         run: |
           set -euo pipefail
           curl -fsS --max-time 30 https://api.market.bb610.com.ua/api/v1/catalog/v5 -o /tmp/v5.json
           curl -fsS --max-time 30 https://api.market.bb610.com.ua/api/v1/catalog/feeds/google-merchant.csv -o /tmp/google.csv
           python - <<'PY'
-          import csv, io, json, statistics, urllib.request, os, subprocess
+          import csv, io, json, statistics, subprocess, urllib.request, os
           data=json.load(open('/tmp/v5.json',encoding='utf-8'))
           raw=open('/tmp/google.csv',encoding='utf-8-sig').read()
           rows=list(csv.DictReader(io.StringIO(raw)))
@@ -32,16 +32,29 @@ jobs:
           print('DESC_LT100',sum(x<100 for x in lens))
           print('DESC_LT150',sum(x<150 for x in lens))
           for p in data.get('products') or []:
-              blob=' '.join(str(p.get(k) or '') for k in ('product_id','name','brand')).lower()
-              if 'max 600' in blob or 'seasailer' in blob:
+              pid=str(p.get('product_id') or '')
+              name=str(p.get('name') or '')
+              if pid=='max-600-seasailer':
                   print('PRODUCT',json.dumps({k:p.get(k) for k in ('product_id','name','brand','short_description','description','application','category_id')},ensure_ascii=False))
                   print('PRODUCT_MEDIA',json.dumps(p.get('media') or [],ensure_ascii=False))
                   for s in p.get('skus') or []:
                       print('SKU',json.dumps({k:s.get(k) for k in ('sku_id','package_label','price','sale_price','availability','commerce_enabled')},ensure_ascii=False))
                       print('SKU_MEDIA',json.dumps(s.get('media') or [],ensure_ascii=False))
-          print('FEED_MATCHES')
+                      for m in s.get('media') or []:
+                          path=str(m.get('path') or '')
+                          if not path: continue
+                          url='https://market.bb610.com.ua/'+path.lstrip('/')
+                          out='/tmp/'+os.path.basename(path)
+                          try:
+                              urllib.request.urlretrieve(url,out)
+                              print('DIM',s.get('sku_id'),url,subprocess.check_output(['file',out],text=True).strip())
+                          except Exception as e:
+                              print('DIM_ERROR',s.get('sku_id'),url,repr(e))
+              if pid in {'aktara-25-wg','switch-625-wg'}:
+                  print('ZZR',json.dumps({'product_id':pid,'name':name,'category_id':p.get('category_id'),'skus':[s.get('sku_id') for s in p.get('skus') or []]},ensure_ascii=False))
+          print('FEED_ZZR')
           for r in rows:
               title=(r.get('title') or '').lower()
-              if 'max 600' in title or 'seasailer' in title:
+              if 'актара' in title or 'aktara' in title or 'світч' in title or 'switch' in title:
                   print(json.dumps(r,ensure_ascii=False))
           PY

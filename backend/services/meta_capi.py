@@ -5,93 +5,33 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from typing import Any
 
-from .integration_secrets import configured, get_value, source_for
+from .integration_secrets import get_value
 
 PIXEL_ID = "1103668908981910"
 GRAPH_VERSION = "v26.0"
 GRAPH_ROOT = "https://graph.facebook.com"
 
 
-def status() -> dict[str, Any]:
-    ready = configured("meta.access_token")
-    return {
-        "id": "meta_capi",
-        "label": "Meta Conversions API",
-        "configured": ready,
-        "pixel_id": PIXEL_ID,
-        "graph_version": GRAPH_VERSION,
-        "access_token": {
-            "configured": ready,
-            "masked": "••••••••••••" if ready else "",
-            "source": source_for("meta.access_token"),
-        },
-        "endpoint": "/api/v1/analytics/meta-capi",
-        "deduplication": "event_id",
-    }
-
-
-def _post(payload: dict[str, Any]) -> dict[str, Any]:
+def send_event(*, event_name, event_id, event_source_url, contents, currency="UAH",
+               value=None, order_id=None, client_ip="", client_user_agent=""):
     token = get_value("meta.access_token", "")
     if not token:
-        raise RuntimeError("Meta Conversions API access token is not configured")
-    query = urllib.parse.urlencode({"access_token": token})
-    url = f"{GRAPH_ROOT}/{GRAPH_VERSION}/{PIXEL_ID}/events?{query}"
-    body = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-    req = urllib.request.Request(
-        url,
-        data=body,
-        method="POST",
-        headers={
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "User-Agent": "BB610-Market/1.0",
-        },
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=12) as response:
-            return json.loads(response.read().decode("utf-8") or "{}")
-    except urllib.error.HTTPError as exc:
-        detail = exc.read().decode("utf-8", errors="replace")[:1000]
-        raise RuntimeError(f"Meta CAPI HTTP {exc.code}: {detail}") from exc
-    except urllib.error.URLError as exc:
-        raise RuntimeError(f"Meta CAPI network error: {exc}") from exc
+        return {"accepted": False, "reason": "not_configured"}
 
-
-def send_event(
-    *,
-    event_name: str,
-    event_id: str,
-    event_source_url: str,
-    contents: list[dict[str, Any]],
-    currency: str = "UAH",
-    value: float | None = None,
-    order_id: str | None = None,
-    client_ip: str = "",
-    client_user_agent: str = "",
-    fbp: str = "",
-    fbc: str = "",
-) -> dict[str, Any]:
-    if not event_name or not event_id:
-        raise ValueError("event_name and event_id are required")
-
-    user_data: dict[str, Any] = {}
+    user_data = {}
     if client_ip:
         user_data["client_ip_address"] = client_ip
     if client_user_agent:
         user_data["client_user_agent"] = client_user_agent
-    if fbp:
-        user_data["fbp"] = fbp
-    if fbc:
-        user_data["fbc"] = fbc
+    if not user_data:
+        return {"accepted": False, "reason": "missing_user_data"}
 
-    custom_data: dict[str, Any] = {
+    custom_data = {
         "currency": currency or "UAH",
         "content_type": "product",
-        "contents": contents,
-        "content_ids": [str(x.get("id") or "").strip() for x in contents if str(x.get("id") or "").strip()],
-        "num_items": sum(max(1, int(x.get("quantity") or 1)) for x in contents),
+        "contents": contents or [],
+        "content_ids": [str(x.get("id") or "").strip() for x in (contents or []) if str(x.get("id") or "").strip()],
     }
     if value is not None:
         custom_data["value"] = round(float(value), 2)
@@ -107,4 +47,31 @@ def send_event(
         "user_data": user_data,
         "custom_data": custom_data,
     }
-    return _post({"data": [event]})
+
+    query = urllib.parse.urlencode({"access_token": token})
+    url = f"{GRAPH_ROOT}/{GRAPH_VERSION}/{PIXEL_ID}/events?{query}"
+    body = json.dumps({"data": [event]}, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=body,
+        method="POST",
+        headers={
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "User-Agent": "BB610-Market/1.0",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=12) as response:
+            data = json.loads(response.read().decode("utf-8") or "{}")
+            return {
+                "accepted": True,
+                "events_received": data.get("events_received"),
+                "messages": data.get("messages") or [],
+                "fbtrace_id": data.get("fbtrace_id"),
+            }
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")[:500]
+        return {"accepted": False, "reason": "meta_http_error", "status": exc.code, "detail": detail}
+    except urllib.error.URLError as exc:
+        return {"accepted": False, "reason": "meta_network_error", "detail": str(exc)[:300]}

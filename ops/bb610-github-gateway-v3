@@ -245,14 +245,21 @@ TELEGRAM_BOT_TOKEN=
 TELEGRAM_CHAT_ID=
 EOF
     chmod 600 /etc/magelle-admin.env
-    echo "MAGELLE_ADMIN_PASSWORD=$admin_password"
+    printf '%s\n' "$admin_password" > /root/magelle-admin-initial-password.txt
+    chmod 600 /root/magelle-admin-initial-password.txt
+    echo "MAGELLE_ADMIN_PASSWORD=CREATED_AND_STORED_ROOT_ONLY"
   else
     echo "MAGELLE_ADMIN_PASSWORD=EXISTING"
   fi
 
   cp "$MAGELLE_ROOT/server/magelle-admin.service" /etc/systemd/system/magelle-admin.service
-  cp "$MAGELLE_ROOT/server/nginx-magelle-admin.conf" /etc/nginx/sites-available/magelle-admin.conf
-  ln -sfn /etc/nginx/sites-available/magelle-admin.conf /etc/nginx/sites-enabled/magelle-admin.conf
+  if [ -d /etc/nginx/sites-available ]; then
+    cp "$MAGELLE_ROOT/server/nginx-magelle-admin.conf" /etc/nginx/sites-available/magelle-admin.conf
+    mkdir -p /etc/nginx/sites-enabled
+    ln -sfn /etc/nginx/sites-available/magelle-admin.conf /etc/nginx/sites-enabled/magelle-admin.conf
+  else
+    cp "$MAGELLE_ROOT/server/nginx-magelle-admin.conf" /etc/nginx/conf.d/magelle-admin.conf
+  fi
 
   systemctl daemon-reload
   systemctl enable --now magelle-admin
@@ -286,7 +293,13 @@ magelle_deploy() {
   git merge --ff-only "$sha"
   "$MAGELLE_ROOT/venv/bin/pip" install -r "$MAGELLE_ROOT/server/requirements.txt"
   cp "$MAGELLE_ROOT/server/magelle-admin.service" /etc/systemd/system/magelle-admin.service
-  cp "$MAGELLE_ROOT/server/nginx-magelle-admin.conf" /etc/nginx/sites-available/magelle-admin.conf
+  if [ -d /etc/nginx/sites-available ]; then
+    cp "$MAGELLE_ROOT/server/nginx-magelle-admin.conf" /etc/nginx/sites-available/magelle-admin.conf
+    mkdir -p /etc/nginx/sites-enabled
+    ln -sfn /etc/nginx/sites-available/magelle-admin.conf /etc/nginx/sites-enabled/magelle-admin.conf
+  else
+    cp "$MAGELLE_ROOT/server/nginx-magelle-admin.conf" /etc/nginx/conf.d/magelle-admin.conf
+  fi
   systemctl daemon-reload
   systemctl restart magelle-admin
   nginx -t

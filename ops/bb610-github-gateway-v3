@@ -249,7 +249,20 @@ EOF
     chmod 600 /root/magelle-admin-initial-password.txt
     echo "MAGELLE_ADMIN_PASSWORD=CREATED_AND_STORED_ROOT_ONLY"
   else
-    echo "MAGELLE_ADMIN_PASSWORD=EXISTING"
+    if [ ! -f /root/magelle-admin-initial-password.txt ]; then
+      local rotated_password
+      rotated_password="$(python3 - <<'PY'
+import secrets
+print(secrets.token_urlsafe(18))
+PY
+)"
+      sed -i "s|^MAGELLE_ADMIN_PASSWORD=.*$|MAGELLE_ADMIN_PASSWORD=$rotated_password|" /etc/magelle-admin.env
+      printf '%s\n' "$rotated_password" > /root/magelle-admin-initial-password.txt
+      chmod 600 /root/magelle-admin-initial-password.txt
+      echo "MAGELLE_ADMIN_PASSWORD=ROTATED_AND_STORED_ROOT_ONLY"
+    else
+      echo "MAGELLE_ADMIN_PASSWORD=EXISTING"
+    fi
   fi
 
   cp "$MAGELLE_ROOT/server/magelle-admin.service" /etc/systemd/system/magelle-admin.service

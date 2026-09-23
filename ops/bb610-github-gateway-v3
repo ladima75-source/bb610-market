@@ -299,6 +299,30 @@ magelle_public() {
   ss -lntp | grep -E ':(80|443|8787)\b' || true
 }
 
+magelle_tls() {
+  local resolved
+  resolved="$(getent ahostsv4 api.magelle.com.ua | awk 'NR==1{print $1}')"
+  if [ "$resolved" != "173.242.53.156" ]; then
+    echo "REFUSED: api.magelle.com.ua does not resolve to VPS (got: ${resolved:-none})"
+    exit 70
+  fi
+  if ! command -v certbot >/dev/null 2>&1; then
+    if command -v dnf >/dev/null 2>&1; then
+      dnf -y install certbot python3-certbot-nginx
+    elif command -v yum >/dev/null 2>&1; then
+      yum -y install certbot python3-certbot-nginx
+    else
+      echo "REFUSED: certbot unavailable and no supported package manager"
+      exit 71
+    fi
+  fi
+  certbot --nginx -d api.magelle.com.ua --non-interactive --agree-tos --register-unsafely-without-email --redirect
+  nginx -t
+  systemctl reload nginx
+  curl -fsS --max-time 20 https://api.magelle.com.ua/api/health
+  echo
+}
+
 magelle_deploy() {
   local sha="${1:-}"
   [[ "$sha" =~ ^[0-9a-fA-F]{7,40}$ ]] || { echo "Invalid commit SHA"; exit 64; }
@@ -340,6 +364,7 @@ case "$CMD" in
   magelle-bootstrap) magelle_bootstrap ;;
   magelle-health) magelle_health ;;
   magelle-public) magelle_public ;;
+  magelle-tls) magelle_tls ;;
   magelle-deploy\ *) magelle_deploy "${CMD#magelle-deploy }" ;;
   deploy\ *) deploy "${CMD#deploy }" ;;
   *) echo "DENIED"; exit 126 ;;

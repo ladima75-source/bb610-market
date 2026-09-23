@@ -1,0 +1,30 @@
+name: MaGelle SSH Capability Probe
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/magelle-ssh-probe.txt'
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure SSH
+        shell: bash
+        env:
+          K: ${{ secrets.BB610_VPS_SSH_KEY }}
+          KH: ${{ secrets.BB610_VPS_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$K" > ~/.ssh/vps
+          chmod 600 ~/.ssh/vps
+          printf '%s\n' "$KH" > ~/.ssh/known_hosts
+      - name: Probe
+        shell: bash
+        env:
+          H: ${{ secrets.BB610_VPS_HOST }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/vps -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes root@"$H" "printf MAGELLE_SSH_OK"

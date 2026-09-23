@@ -289,6 +289,16 @@ magelle_health() {
   echo
 }
 
+magelle_public() {
+  echo "--- NGINX ---"
+  nginx -t
+  echo "--- HTTP HOST ROUTING ---"
+  curl -fsS --max-time 15 -H 'Host: api.magelle.com.ua' http://127.0.0.1/api/health
+  echo
+  echo "--- LISTENER ---"
+  ss -lntp | grep -E ':(80|443|8787)\b' || true
+}
+
 magelle_deploy() {
   local sha="${1:-}"
   [[ "$sha" =~ ^[0-9a-fA-F]{7,40}$ ]] || { echo "Invalid commit SHA"; exit 64; }
@@ -329,6 +339,7 @@ case "$CMD" in
   magelle-audit) magelle_audit ;;
   magelle-bootstrap) magelle_bootstrap ;;
   magelle-health) magelle_health ;;
+  magelle-public) magelle_public ;;
   magelle-deploy\ *) magelle_deploy "${CMD#magelle-deploy }" ;;
   deploy\ *) deploy "${CMD#deploy }" ;;
   *) echo "DENIED"; exit 126 ;;

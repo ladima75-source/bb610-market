@@ -22,6 +22,8 @@ _ENV_FALLBACKS = {
     "payments.mono_token": "BB610_MONO_TOKEN",
     "telegram.bot_token": "BB610_TELEGRAM_BOT_TOKEN",
     "telegram.chat_id": "BB610_TELEGRAM_CHAT_ID",
+    "checkbox.cashier_login": "BB610_CHECKBOX_CASHIER_LOGIN",
+    "checkbox.cashier_password": "BB610_CHECKBOX_CASHIER_PASSWORD",
 }
 
 

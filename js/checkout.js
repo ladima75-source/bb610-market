@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded',async()=>{
+ await BB610_DATA_SOURCE.refresh();
  const root=document.getElementById('checkout-app');if(!root)return;
  const orderRules=window.BB610_DELIVERY_CONFIG?.orderRules||{};const minOrder=Number(orderRules.minOrderUah||500),freeThreshold=Number(orderRules.freeShippingThresholdUah||2500),freeMaxKg=Number(orderRules.freeShippingMaxChargeableWeightKg||10);
  const cart=BB610.get(BB610.LS.cart,[]).map(row=>({row,sku:BB610.sku(row.sku)})).filter(x=>x.sku).map(x=>({...x,p:BB610.byId(x.sku.product_id)}));

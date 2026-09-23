@@ -1,7 +1,7 @@
 from __future__ import annotations
 import re
 from typing import Any
-from .integration_secrets import get_value, set_values, source_for
+from .integration_secrets import get_value, set_values, source_for, configured
 
 
 def _bool(v: str | None, default: bool=False) -> bool:
@@ -13,7 +13,10 @@ def _clean_iban(v: str | None) -> str:
     return re.sub(r"\s+", "", str(v or "")).upper()
 
 
-def payment_settings_status(online_configured: bool=False, online_provider: str|None=None) -> dict[str,Any]:
+def payment_settings_status(online_configured: bool|None=None, online_provider: str|None=None) -> dict[str,Any]:
+    if online_configured is None:
+        online_configured=configured('payments.mono_token')
+        online_provider='mono' if online_configured else None
     cod=_bool(get_value('payments.cod_enabled','0'))
     bank_enabled=_bool(get_value('payments.bank_transfer_enabled','0'))
     recipient=get_value('payments.bank_recipient','')
@@ -25,7 +28,9 @@ def payment_settings_status(online_configured: bool=False, online_provider: str|
       'cod':{'enabled':cod,'source':source_for('payments.cod_enabled')},
       'bank_transfer':{'enabled':bank_enabled,'ready':bank_ready,'recipient':recipient,'iban':iban,'purpose':purpose,
                        'blocker':None if bank_ready else ('disabled' if not bank_enabled else 'recipient_or_iban_missing')},
-      'online_card':{'enabled':bool(online_configured),'provider':online_provider if online_configured else None,'stage':'14B'},
+      'online_card':{'enabled':bool(online_configured),'provider':online_provider if online_configured else None,'stage':'live' if online_configured else '14B',
+                     'token':{'configured':configured('payments.mono_token'),'source':source_for('payments.mono_token')},
+                     'webhook_url':'https://api.market.bb610.com.ua/api/v1/payments/webhooks/mono'},
     }
 
 

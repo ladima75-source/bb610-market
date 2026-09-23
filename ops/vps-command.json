@@ -1,4 +1,1 @@
-{
-  "action":"health",
-  "request_id":"2026-09-23T18:04:00+03:00"
-}
+{"action":"deploy","ref":"7513f1b6ec84008074c99177037dbeb945ccfb00","request_id":"2026-09-23T18:07:00+03:00"}

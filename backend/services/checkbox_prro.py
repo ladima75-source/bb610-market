@@ -21,7 +21,7 @@ def status():
 
 def _request(method,path,payload=None,token=None):
     data=None if payload is None else json.dumps(payload,ensure_ascii=False).encode()
-    headers={'Accept':'application/json','Content-Type':'application/json'}
+    headers={'Accept':'application/json','Content-Type':'application/json','User-Agent':'BB610-Market/1.0','X-Client-Name':'BB610 Market','X-Client-Version':'1.0'}
     if token: headers['Authorization']='Bearer '+token
     req=Request(API+path,data=data,method=method,headers=headers)
     try:

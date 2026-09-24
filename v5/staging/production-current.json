@@ -1,9 +1,9 @@
 {
   "schema": "bb610-v5-stage-1",
   "summary": {
-    "snapshot_created_at": "2026-09-22T09:15:12.136391+00:00",
-    "production_head": "663a1b3921cfaf39a93b34839c955664391f1d65",
-    "production_origin_main_at_snapshot": "62065f7533053d9e30b3feac893a310aee07a0a1",
+    "snapshot_created_at": "2026-09-24T07:08:06.739567+00:00",
+    "production_head": "86673b1ad2b260e0efa401dc9ca28c20beb81707",
+    "production_origin_main_at_snapshot": "e4c45bd40053d6bff27e394f4ed6f957ce0addef",
     "source_commerce_rows": 286,
     "excluded_test_rows": 4,
     "canonical_non_plantlogic_products": 80,
@@ -14,10 +14,10 @@
     "plantlogic_request_price_skus": 17,
     "plantlogic_retired_color_aliases": 31,
     "plantlogic_legacy_skus": 0,
-    "v5_stage_products_total": 104,
-    "v5_stage_skus_total": 269,
-    "plantlogic_sectioned_products": 18,
-    "plantlogic_sectioned_request_price_skus": 48
+    "v5_stage_products_total": 119,
+    "v5_stage_skus_total": 310,
+    "plantlogic_sectioned_products": 33,
+    "plantlogic_sectioned_request_price_skus": 89
   },
   "products": [
     {
@@ -8412,6 +8412,115 @@
       ]
     },
     {
+      "product_id": "plantlogic-culti-base",
+      "slug": "plantlogic-culti-base",
+      "name": "Culti-base — мішок для субстрату з інтегрованою основою, 25 та 30 л",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_culti_base",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "bag_bases"
+      ]
+    },
+    {
+      "product_id": "plantlogic-vf-bag-base-12010300",
+      "slug": "plantlogic-vf-bag-base-12010300",
+      "name": "VF Bag Base — основа для grow bag, 30 та 40 л",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_12010300",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "bag_bases"
+      ]
+    },
+    {
+      "product_id": "plantlogic-bag-base-drainage-1301036",
+      "slug": "plantlogic-bag-base-drainage-1301036",
+      "name": "Основа для мішка зі збором дренажу — арт. 1301036",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1301036",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "bag_bases",
+        "accessories"
+      ]
+    },
+    {
+      "product_id": "plantlogic-hose-clip-12050010",
+      "slug": "plantlogic-hose-clip-12050010",
+      "name": "Багатофункціональна кліпса для шланга — арт. 12050010",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_12050010",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "accessories"
+      ]
+    },
+    {
+      "product_id": "plantlogic-steel-lysimeter",
+      "slug": "plantlogic-steel-lysimeter",
+      "name": "Сталевий лізиметр Plantlogic",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_steel_lysimeter",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "accessories"
+      ]
+    },
+    {
+      "product_id": "plantlogic-metal-hose-clip-1205012",
+      "slug": "plantlogic-metal-hose-clip-1205012",
+      "name": "Металева кліпса для поливного шланга — арт. 1205012",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1205012",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "accessories"
+      ]
+    },
+    {
+      "product_id": "plantlogic-metal-stakes-gutter",
+      "slug": "plantlogic-metal-stakes-gutter",
+      "name": "Металеві скоби для дренажного жолоба",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1700146_1700147",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "accessories"
+      ]
+    },
+    {
+      "product_id": "plantlogic-micro-tube-stake",
+      "slug": "plantlogic-micro-tube-stake",
+      "name": "Кілок 18 см для мікротрубки",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1205018_1205019",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "accessories"
+      ]
+    },
+    {
+      "product_id": "plantlogic-plastic-gutter-drainage",
+      "slug": "plantlogic-plastic-gutter-drainage",
+      "name": "Пластиковий жолоб для збору дренажу",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_plastic_gutter",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "accessories"
+      ]
+    },
+    {
       "product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
       "slug": "plantlogic-8l-strawberry-trough-big-handle-1305082",
       "name": "Жолоб для полуниці 8 л з широкою ручкою — арт. 1305082",
@@ -8433,6 +8542,80 @@
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
         "strawberry"
+      ]
+    },
+    {
+      "product_id": "plantlogic-kratos-slab-base-1301081",
+      "slug": "plantlogic-kratos-slab-base-1301081",
+      "name": "Kratos — основа для субстратних плит — арт. 1301081",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1301081",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "vegetable",
+        "bag_bases"
+      ]
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "slug": "plantlogic-rivus-2in1-slab-base",
+      "name": "Rivus 2-in-1 — основа та жолоб для субстратних плит",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_rivus",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "vegetable",
+        "bag_bases"
+      ]
+    },
+    {
+      "product_id": "plantlogic-lysimeter-kit",
+      "slug": "plantlogic-lysimeter-kit",
+      "name": "Лізиметри Plantlogic для контролю дренажу",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_lysimeter_kit",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "accessories"
+      ]
+    },
+    {
+      "product_id": "plantlogic-ground-cover-1600201",
+      "slug": "plantlogic-ground-cover-1600201",
+      "name": "Агротканина Ground Cover — арт. 1600201",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_1600201",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "accessories"
+      ]
+    },
+    {
+      "product_id": "plantlogic-trough-cover",
+      "slug": "plantlogic-trough-cover",
+      "name": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_trough_cover",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "accessories"
+      ]
+    },
+    {
+      "product_id": "plantlogic-pot-anchor",
+      "slug": "plantlogic-pot-anchor",
+      "name": "Pot Anchor — анкер для стабілізації горщиків Plantlogic",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_pot_anchor",
+      "content_state": "verified_migrated_sectioned",
+      "plantlogic_sections": [
+        "accessories"
       ]
     }
   ],
@@ -12583,6 +12766,475 @@
       ]
     },
     {
+      "sku_id": "PL-13079250",
+      "v3_sku_id": "sku_pl_13079250",
+      "product_id": "plantlogic-culti-base",
+      "package_value": 25.0,
+      "package_unit": "l",
+      "package_label": "25 л",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "13079250",
+        "plantlogic_sections": [
+          "bag_bases"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "official_fallback",
+          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Culti-base-13079300-bolsa-de-cultivo-con-base.jpg",
+          "alt": "Culti-base — мішок для субстрату з інтегрованою основою, 25 та 30 л",
+          "kind": "image",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13079300",
+      "v3_sku_id": "sku_pl_13079300",
+      "product_id": "plantlogic-culti-base",
+      "package_value": 30.0,
+      "package_unit": "l",
+      "package_label": "30 л",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "13079300",
+        "plantlogic_sections": [
+          "bag_bases"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_culti_base_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Culti-base-13079300-bolsa-de-cultivo-con-base.jpg",
+          "alt": "Culti-base — мішок для субстрату з інтегрованою основою, 25 та 30 л",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-12010300",
+      "v3_sku_id": "sku_pl_12010300",
+      "product_id": "plantlogic-vf-bag-base-12010300",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "12010300",
+        "plantlogic_sections": [
+          "bag_bases"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_12010300_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/VF-BAG-BASE-12010300-ISOMETRICO.jpg",
+          "alt": "VF Bag Base — основа для grow bag, 30 та 40 л",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-12010400",
+      "v3_sku_id": "sku_pl_12010400",
+      "product_id": "plantlogic-vf-bag-base-12010300",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "12010400",
+        "plantlogic_sections": [
+          "bag_bases"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "official_fallback",
+          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/VF-BAG-BASE-12010300-ISOMETRICO.jpg",
+          "alt": "VF Bag Base — основа для grow bag, 30 та 40 л",
+          "kind": "image",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1301036",
+      "v3_sku_id": "sku_pl_1301036",
+      "product_id": "plantlogic-bag-base-drainage-1301036",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1301036",
+        "plantlogic_sections": [
+          "bag_bases",
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1301036_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2019/04/1036_1.jpg?w=669",
+          "alt": "Основа для мішка зі збором дренажу — арт. 1301036",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-12050010",
+      "v3_sku_id": "sku_pl_12050010",
+      "product_id": "plantlogic-hose-clip-12050010",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "12050010",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_12050010_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg",
+          "alt": "Багатофункціональна кліпса для шланга — арт. 12050010",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13046025",
+      "v3_sku_id": "sku_pl_13046025",
+      "product_id": "plantlogic-steel-lysimeter",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "13046025",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_steel_lysimeter_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Steel-lysimeter-for-blueberry-pots_front.jpg",
+          "alt": "Сталевий лізиметр Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13046026",
+      "v3_sku_id": "sku_pl_13046026",
+      "product_id": "plantlogic-steel-lysimeter",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "13046026",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_steel_lysimeter_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Steel-lysimeter-for-blueberry-pots_front.jpg",
+          "alt": "Сталевий лізиметр Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13046031",
+      "v3_sku_id": "sku_pl_13046031",
+      "product_id": "plantlogic-steel-lysimeter",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "13046031",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_steel_lysimeter_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Steel-lysimeter-for-blueberry-pots_front.jpg",
+          "alt": "Сталевий лізиметр Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13046041",
+      "v3_sku_id": "sku_pl_13046041",
+      "product_id": "plantlogic-steel-lysimeter",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "13046041",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_steel_lysimeter_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2025/03/Steel-lysimeter-for-blueberry-pots_front.jpg",
+          "alt": "Сталевий лізиметр Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1205012",
+      "v3_sku_id": "sku_pl_1205012",
+      "product_id": "plantlogic-metal-hose-clip-1205012",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1205012",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1205012_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012-2.jpg?w=669",
+          "alt": "Металева кліпса для поливного шланга — арт. 1205012",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1700146",
+      "v3_sku_id": "sku_pl_1700146",
+      "product_id": "plantlogic-metal-stakes-gutter",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1700146",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1700146_1700147_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2019/10/1700145146-new.jpg?ssl=1&w=669",
+          "alt": "Металеві скоби для дренажного жолоба",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1700147",
+      "v3_sku_id": "sku_pl_1700147",
+      "product_id": "plantlogic-metal-stakes-gutter",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1700147",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1700146_1700147_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2019/10/1700145146-new.jpg?ssl=1&w=669",
+          "alt": "Металеві скоби для дренажного жолоба",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1205018",
+      "v3_sku_id": "sku_pl_1205018",
+      "product_id": "plantlogic-micro-tube-stake",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1205018",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1205018_1205019_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/08/OCStake_5.jpg?w=669",
+          "alt": "Кілок 18 см для мікротрубки",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1205019",
+      "v3_sku_id": "sku_pl_1205019",
+      "product_id": "plantlogic-micro-tube-stake",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1205019",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1205018_1205019_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/08/OCStake_5.jpg?w=669",
+          "alt": "Кілок 18 см для мікротрубки",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1200021",
+      "v3_sku_id": "sku_pl_1200021",
+      "product_id": "plantlogic-plastic-gutter-drainage",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1200021",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_plastic_gutter_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/08/Gutter_1.jpg?w=669",
+          "alt": "Пластиковий жолоб для збору дренажу",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1300010",
+      "v3_sku_id": "sku_pl_1300010",
+      "product_id": "plantlogic-plastic-gutter-drainage",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1300010",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_plastic_gutter_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/08/Gutter_1.jpg?w=669",
+          "alt": "Пластиковий жолоб для збору дренажу",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1300011",
+      "v3_sku_id": "sku_pl_1300011",
+      "product_id": "plantlogic-plastic-gutter-drainage",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1300011",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_plastic_gutter_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/08/Gutter_1.jpg?w=669",
+          "alt": "Пластиковий жолоб для збору дренажу",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
       "sku_id": "PL-1305082",
       "v3_sku_id": "sku_pl_1305082",
       "product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
@@ -12629,6 +13281,707 @@
           "media_id": "media_prd_pl_1305209_hero",
           "path": "https://getplantlogic.com/wp-content/uploads/2024/03/9L-Trough-for-strawberries_Item_1305209.jpg",
           "alt": "Жолоб для полуниці 9 л з підтримкою квітконосів — арт. 1305209",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1301081",
+      "v3_sku_id": "sku_pl_1301081",
+      "product_id": "plantlogic-kratos-slab-base-1301081",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1301081",
+        "plantlogic_sections": [
+          "vegetable",
+          "bag_bases"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1301081_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2024/04/KRATOS-1301081-ISOMETRICO-3.jpg",
+          "alt": "Kratos — основа для субстратних плит — арт. 1301081",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13020500",
+      "v3_sku_id": "sku_pl_13020500",
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "13020500",
+        "plantlogic_sections": [
+          "vegetable",
+          "bag_bases"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_rivus_pl9c36a0f7",
+          "path": "/media/products/plantlogic-rivus-pl9c36a0f7.jpg",
+          "alt": "Plantlogic Rivus — RIVUS-130205000-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_rivus_pl08785ce4",
+          "path": "/media/products/plantlogic-rivus-pl08785ce4.jpg",
+          "alt": "Plantlogic Rivus — RIVUS-130205000-ISOMETRICO-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_rivus_pl907d14d6",
+          "path": "/media/products/plantlogic-rivus-pl907d14d6.jpg",
+          "alt": "Plantlogic Rivus — RIVUS-130205000-FRONTAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_rivus_pl62af4a9b",
+          "path": "/media/products/plantlogic-rivus-pl62af4a9b.jpg",
+          "alt": "Plantlogic Rivus — product_Rivus_A-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_rivus_plb2a564d1",
+          "path": "/media/products/plantlogic-rivus-plb2a564d1.jpg",
+          "alt": "Plantlogic Rivus — ftr_Rivus_A.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_rivus_pl6dac3b12",
+          "path": "/media/products/plantlogic-rivus-pl6dac3b12.jpg",
+          "alt": "Plantlogic Rivus — ftr_Rivus_B.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_rivus_pl6e7573d2",
+          "path": "/media/products/plantlogic-rivus-pl6e7573d2.jpg",
+          "alt": "Plantlogic Rivus — ftr_Rivus_C.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13020502",
+      "v3_sku_id": "sku_pl_13020502",
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "13020502",
+        "plantlogic_sections": [
+          "vegetable",
+          "bag_bases"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_rivus_pl9c36a0f7",
+          "path": "/media/products/plantlogic-rivus-pl9c36a0f7.jpg",
+          "alt": "Plantlogic Rivus — RIVUS-130205000-ISOMETRICO.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_rivus_pl08785ce4",
+          "path": "/media/products/plantlogic-rivus-pl08785ce4.jpg",
+          "alt": "Plantlogic Rivus — RIVUS-130205000-ISOMETRICO-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_rivus_pl907d14d6",
+          "path": "/media/products/plantlogic-rivus-pl907d14d6.jpg",
+          "alt": "Plantlogic Rivus — RIVUS-130205000-FRONTAL.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_rivus_pl62af4a9b",
+          "path": "/media/products/plantlogic-rivus-pl62af4a9b.jpg",
+          "alt": "Plantlogic Rivus — product_Rivus_A-1.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_rivus_plb2a564d1",
+          "path": "/media/products/plantlogic-rivus-plb2a564d1.jpg",
+          "alt": "Plantlogic Rivus — ftr_Rivus_A.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_rivus_pl6dac3b12",
+          "path": "/media/products/plantlogic-rivus-pl6dac3b12.jpg",
+          "alt": "Plantlogic Rivus — ftr_Rivus_B.jpg",
+          "kind": "photo",
+          "is_primary": false
+        },
+        {
+          "media_id": "plmm_rivus_pl6e7573d2",
+          "path": "/media/products/plantlogic-rivus-pl6e7573d2.jpg",
+          "alt": "Plantlogic Rivus — ftr_Rivus_C.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13020510",
+      "v3_sku_id": "sku_pl_13020510",
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "13020510",
+        "plantlogic_sections": [
+          "vegetable",
+          "bag_bases"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_rivus_pl87973314",
+          "path": "/media/products/plantlogic-rivus-pl87973314.jpg",
+          "alt": "Plantlogic Rivus — RIVUS-130205000-ENDCAP-1.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_rivus_pl0c624f87",
+          "path": "/media/products/plantlogic-rivus-pl0c624f87.jpg",
+          "alt": "Plantlogic Rivus — RIVUS-130205000-ENDCAP-2.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-13020512",
+      "v3_sku_id": "sku_pl_13020512",
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "13020512",
+        "plantlogic_sections": [
+          "vegetable",
+          "bag_bases"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "plmm_rivus_pl87973314",
+          "path": "/media/products/plantlogic-rivus-pl87973314.jpg",
+          "alt": "Plantlogic Rivus — RIVUS-130205000-ENDCAP-1.jpg",
+          "kind": "photo",
+          "is_primary": true
+        },
+        {
+          "media_id": "plmm_rivus_pl0c624f87",
+          "path": "/media/products/plantlogic-rivus-pl0c624f87.jpg",
+          "alt": "Plantlogic Rivus — RIVUS-130205000-ENDCAP-2.jpg",
+          "kind": "photo",
+          "is_primary": false
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1301010",
+      "v3_sku_id": "sku_pl_1301010",
+      "product_id": "plantlogic-lysimeter-kit",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1301010",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_lysimeter_kit_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2018/08/Lys_2.jpg",
+          "alt": "Лізиметри Plantlogic для контролю дренажу",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1301030",
+      "v3_sku_id": "sku_pl_1301030",
+      "product_id": "plantlogic-lysimeter-kit",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1301030",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_lysimeter_kit_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2018/08/Lys_2.jpg",
+          "alt": "Лізиметри Plantlogic для контролю дренажу",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1600201",
+      "v3_sku_id": "sku_pl_1600201",
+      "product_id": "plantlogic-ground-cover-1600201",
+      "package_value": null,
+      "package_unit": null,
+      "package_label": "1 рулон",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1600201",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_1600201_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/best-ground-cover-for-greenhouse.jpg",
+          "alt": "Агротканина Ground Cover — арт. 1600201",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-30020034",
+      "v3_sku_id": "sku_pl_30020034",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "30020034",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-C30020034",
+      "v3_sku_id": "sku_pl_c30020034",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "C30020034",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-30020037",
+      "v3_sku_id": "sku_pl_30020037",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "30020037",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-C30020037",
+      "v3_sku_id": "sku_pl_c30020037",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "C30020037",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-30020012",
+      "v3_sku_id": "sku_pl_30020012",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "30020012",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-C30020012",
+      "v3_sku_id": "sku_pl_c30020012",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "C30020012",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-30020036",
+      "v3_sku_id": "sku_pl_30020036",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "30020036",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-C30020036",
+      "v3_sku_id": "sku_pl_c30020036",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "C30020036",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-30020040",
+      "v3_sku_id": "sku_pl_30020040",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "30020040",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-C30020040",
+      "v3_sku_id": "sku_pl_c30020040",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "C30020040",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-30020041",
+      "v3_sku_id": "sku_pl_30020041",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "30020041",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-C30020041",
+      "v3_sku_id": "sku_pl_c30020041",
+      "product_id": "plantlogic-trough-cover",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "C30020041",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_trough_cover_hero",
+          "path": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot.jpg",
+          "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1700020",
+      "v3_sku_id": "sku_pl_1700020",
+      "product_id": "plantlogic-pot-anchor",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1700020",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_pot_anchor_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/01/product_PotAnchor_03.jpg?ssl=1&w=669",
+          "alt": "Pot Anchor — анкер для стабілізації горщиків Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1700034",
+      "v3_sku_id": "sku_pl_1700034",
+      "product_id": "plantlogic-pot-anchor",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1700034",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_pot_anchor_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/01/product_PotAnchor_03.jpg?ssl=1&w=669",
+          "alt": "Pot Anchor — анкер для стабілізації горщиків Plantlogic",
+          "kind": "hero",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "sku_id": "PL-1700041",
+      "v3_sku_id": "sku_pl_1700041",
+      "product_id": "plantlogic-pot-anchor",
+      "package_value": 1.0,
+      "package_unit": "pcs",
+      "package_label": "1 шт",
+      "package_group": null,
+      "attributes": {
+        "manufacturer_product_no": "1700041",
+        "plantlogic_sections": [
+          "accessories"
+        ]
+      },
+      "enabled": true,
+      "commerce_state": "request_price",
+      "media": [
+        {
+          "media_id": "media_prd_pl_pot_anchor_hero",
+          "path": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/01/product_PotAnchor_03.jpg?ssl=1&w=669",
+          "alt": "Pot Anchor — анкер для стабілізації горщиків Plantlogic",
           "kind": "hero",
           "is_primary": true
         }

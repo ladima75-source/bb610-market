@@ -1,6 +1,6 @@
 # BB610 V5 production staging
 
-Production snapshot: `663a1b3921cfaf39a93b34839c955664391f1d65`.
+Production snapshot: `86673b1ad2b260e0efa401dc9ca28c20beb81707`.
 
 - Commerce source rows: **286**
 - Excluded test/example rows: **4**

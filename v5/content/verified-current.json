@@ -1,13 +1,13 @@
 {
   "schema": "bb610-v5-verified-content-1",
   "summary": {
-    "products": 104,
-    "sources": 136,
+    "products": 119,
+    "sources": 151,
     "products_with_primary_or_manufacturer_source": 21,
     "uncovered_products": 0,
-    "public_products": 100,
+    "public_products": 115,
     "hidden_products": 4,
-    "plantlogic_sectioned_products": 18
+    "plantlogic_sectioned_products": 33
   },
   "products": [
     {
@@ -7069,6 +7069,992 @@
         {
           "source_type": "official_primary",
           "url": "https://getplantlogic.com/portfolio-items/9-liter-trough-with-truss-support/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-bag-base-drainage-1301036",
+      "name": "Основа для мішка зі збором дренажу — арт. 1301036",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Основа Plantlogic для grow bags із внутрішніми каналами, що спрямовують дренаж до центрального жолоба. Широка опорна поверхня розрахована на м'який ґрунт.",
+      "description": "Основа Plantlogic для grow bags із внутрішніми каналами, що спрямовують дренаж до центрального жолоба. Широка опорна поверхня розрахована на м'який ґрунт. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Bag Bases; збір дренажу",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Bag Bases; збір дренажу."
+        }
+      ],
+      "how_it_works": "Основа Plantlogic для grow bags із внутрішніми каналами, що спрямовують дренаж до центрального жолоба. Широка опорна поверхня розрахована на м'який ґрунт.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Основа для мішка зі збором дренажу"
+        },
+        {
+          "label": "Призначення",
+          "value": "Bag Bases; збір дренажу"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1301036"
+        },
+        {
+          "label": "Габарити",
+          "value": "372 мм ширина × 64,7 мм висота"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/bag-base-drainage-collection/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "bag_bases|accessories"
+        }
+      ],
+      "seo_title": "Основа для мішка зі збором дренажу — арт. 1301036 | BB610 Market",
+      "seo_description": "Основа для мішка зі збором дренажу — арт. 1301036. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/bag-base-drainage-collection/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-culti-base",
+      "name": "Culti-base — мішок для субстрату з інтегрованою основою, 25 та 30 л",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Система Plantlogic, що поєднує grow bag та жорстку інтегровану основу. Основа має пірамідальну геометрію, центральну аерацію та ніжки 5 см.",
+      "description": "Система Plantlogic, що поєднує grow bag та жорстку інтегровану основу. Основа має пірамідальну геометрію, центральну аерацію та ніжки 5 см. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Вирощування у субстраті; Bag Bases",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Вирощування у субстраті; Bag Bases."
+        }
+      ],
+      "how_it_works": "Система Plantlogic, що поєднує grow bag та жорстку інтегровану основу. Основа має пірамідальну геометрію, центральну аерацію та ніжки 5 см.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Мішок для субстрату з інтегрованою основою"
+        },
+        {
+          "label": "Призначення",
+          "value": "Вирощування у субстраті; Bag Bases"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "13079250, 13079300"
+        },
+        {
+          "label": "Габарити",
+          "value": "25 л #13079250: 50 × 326 × 326 × 405 мм; 30 л #13079300: 50 × 326 × 326 × 442 мм"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/culti-base-grow-bag-with-integrated-base/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "bag_bases"
+        }
+      ],
+      "seo_title": "Culti-base — мішок для субстрату з інтегрованою основою, 25 та 30 л | BB610 Market",
+      "seo_description": "Culti-base — мішок для субстрату з інтегрованою основою, 25 та 30 л. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/culti-base-grow-bag-with-integrated-base/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-ground-cover-1600201",
+      "name": "Агротканина Ground Cover — арт. 1600201",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Ground Cover Plantlogic для покриття ґрунту у виробничих насадженнях. Офіційний tech sheet вказує PP, ширину 0,4–8 м, довжину 50–200 м, щільність 90–280 г/м² та ресурс 5–10 років.",
+      "description": "Ground Cover Plantlogic для покриття ґрунту у виробничих насадженнях. Офіційний tech sheet вказує PP, ширину 0,4–8 м, довжину 50–200 м, щільність 90–280 г/м² та ресурс 5–10 років. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Accessories; контроль бур'янів; зниження ризику ґрунтових хвороб",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Accessories; контроль бур'янів; зниження ризику ґрунтових хвороб."
+        }
+      ],
+      "how_it_works": "Ground Cover Plantlogic для покриття ґрунту у виробничих насадженнях. Офіційний tech sheet вказує PP, ширину 0,4–8 м, довжину 50–200 м, щільність 90–280 г/м² та ресурс 5–10 років.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Агротканина / ground cover"
+        },
+        {
+          "label": "Призначення",
+          "value": "Accessories; контроль бур'янів; зниження ризику ґрунтових хвороб"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1600201"
+        },
+        {
+          "label": "Габарити",
+          "value": "Ширина 0,4–8 м; довжина 50–200 м; щільність 90–280 г/м²"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/ground-cover/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "accessories"
+        }
+      ],
+      "seo_title": "Агротканина Ground Cover — арт. 1600201 | BB610 Market",
+      "seo_description": "Агротканина Ground Cover — арт. 1600201. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/ground-cover/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-hose-clip-12050010",
+      "name": "Багатофункціональна кліпса для шланга — арт. 12050010",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Багатофункціональна кліпса Plantlogic для фіксації елементів на горщику. Поточна сторінка виробника вказує діапазони 17–22 мм і 14–16 мм.",
+      "description": "Багатофункціональна кліпса Plantlogic для фіксації елементів на горщику. Поточна сторінка виробника вказує діапазони 17–22 мм і 14–16 мм. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Accessories; фіксація поливного шланга, cooling skirt і дроту",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Accessories; фіксація поливного шланга, cooling skirt і дроту."
+        }
+      ],
+      "how_it_works": "Багатофункціональна кліпса Plantlogic для фіксації елементів на горщику. Поточна сторінка виробника вказує діапазони 17–22 мм і 14–16 мм.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Кліпса для шланга"
+        },
+        {
+          "label": "Призначення",
+          "value": "Accessories; фіксація поливного шланга, cooling skirt і дроту"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "12050010"
+        },
+        {
+          "label": "Габарити",
+          "value": "Два діапазони: 17–22 мм та 14–16 мм"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/hose-clip/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "accessories"
+        }
+      ],
+      "seo_title": "Багатофункціональна кліпса для шланга — арт. 12050010 | BB610 Market",
+      "seo_description": "Багатофункціональна кліпса для шланга — арт. 12050010. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/hose-clip/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-kratos-slab-base-1301081",
+      "name": "Kratos — основа для субстратних плит — арт. 1301081",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Kratos Plantlogic — V-подібна основа для субстратних плит і grow bags з вузьким центральним жолобом для збору дренажу та відкритим повітряним простором під кореневою зоною.",
+      "description": "Kratos Plantlogic — V-подібна основа для субстратних плит і grow bags з вузьким центральним жолобом для збору дренажу та відкритим повітряним простором під кореневою зоною. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Овочеві культури; Bag Bases; збір дренажу",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Овочеві культури; Bag Bases; збір дренажу."
+        }
+      ],
+      "how_it_works": "Kratos Plantlogic — V-подібна основа для субстратних плит і grow bags з вузьким центральним жолобом для збору дренажу та відкритим повітряним простором під кореневою зоною.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Основа для субстратних плит / grow bags"
+        },
+        {
+          "label": "Призначення",
+          "value": "Овочеві культури; Bag Bases; збір дренажу"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1301081"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/kratos-slab-base/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "vegetable|bag_bases"
+        }
+      ],
+      "seo_title": "Kratos — основа для субстратних плит — арт. 1301081 | BB610 Market",
+      "seo_description": "Kratos — основа для субстратних плит — арт. 1301081. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/kratos-slab-base/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-lysimeter-kit",
+      "name": "Лізиметри Plantlogic для контролю дренажу",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Лізиметри Plantlogic для точного збору дренажу та порівняння поливного об'єму, pH і EC. Виробник пропонує малий і великий типорозміри.",
+      "description": "Лізиметри Plantlogic для точного збору дренажу та порівняння поливного об'єму, pH і EC. Виробник пропонує малий і великий типорозміри. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Accessories; контроль об'єму дренажу, pH та EC",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Accessories; контроль об'єму дренажу, pH та EC."
+        }
+      ],
+      "how_it_works": "Лізиметри Plantlogic для точного збору дренажу та порівняння поливного об'єму, pH і EC. Виробник пропонує малий і великий типорозміри.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Лізиметр"
+        },
+        {
+          "label": "Призначення",
+          "value": "Accessories; контроль об'єму дренажу, pH та EC"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1301010, 1301030"
+        },
+        {
+          "label": "Габарити",
+          "value": "Малий: близько 22 × 22 см; великий: близько 31,6 × 31,6 см"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/lysimeters/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "accessories"
+        }
+      ],
+      "seo_title": "Лізиметри Plantlogic для контролю дренажу | BB610 Market",
+      "seo_description": "Лізиметри Plantlogic для контролю дренажу. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/lysimeters/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-metal-hose-clip-1205012",
+      "name": "Металева кліпса для поливного шланга — арт. 1205012",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Металева кліпса Plantlogic для утримання поливної труби на горщику. Офіційна сторінка вказує сумісність із трубою 16 і 18 мм.",
+      "description": "Металева кліпса Plantlogic для утримання поливної труби на горщику. Офіційна сторінка вказує сумісність із трубою 16 і 18 мм. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Accessories; фіксація поливної труби",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Accessories; фіксація поливної труби."
+        }
+      ],
+      "how_it_works": "Металева кліпса Plantlogic для утримання поливної труби на горщику. Офіційна сторінка вказує сумісність із трубою 16 і 18 мм.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Металева кліпса для шланга"
+        },
+        {
+          "label": "Призначення",
+          "value": "Accessories; фіксація поливної труби"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1205012"
+        },
+        {
+          "label": "Габарити",
+          "value": "Для труби 16 мм та 18 мм"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/metal-hose-clip/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "accessories"
+        }
+      ],
+      "seo_title": "Металева кліпса для поливного шланга — арт. 1205012 | BB610 Market",
+      "seo_description": "Металева кліпса для поливного шланга — арт. 1205012. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/metal-hose-clip/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-metal-stakes-gutter",
+      "name": "Металеві скоби для дренажного жолоба",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Оцинковані металеві скоби Plantlogic для утримання пластикового дренажного жолоба на нерівній поверхні.",
+      "description": "Оцинковані металеві скоби Plantlogic для утримання пластикового дренажного жолоба на нерівній поверхні. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Accessories; фіксація дренажного жолоба",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Accessories; фіксація дренажного жолоба."
+        }
+      ],
+      "how_it_works": "Оцинковані металеві скоби Plantlogic для утримання пластикового дренажного жолоба на нерівній поверхні.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Металева скоба для жолоба"
+        },
+        {
+          "label": "Призначення",
+          "value": "Accessories; фіксація дренажного жолоба"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1700146, 1700147"
+        },
+        {
+          "label": "Габарити",
+          "value": "Сумісні з жолобом шириною 5 см"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/metal-stakes-for-gutter/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "accessories"
+        }
+      ],
+      "seo_title": "Металеві скоби для дренажного жолоба | BB610 Market",
+      "seo_description": "Металеві скоби для дренажного жолоба. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/metal-stakes-for-gutter/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-micro-tube-stake",
+      "name": "Кілок 18 см для мікротрубки",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Кілок Plantlogic висотою 18 см для позиціонування мікротрубки з крапельницею або без неї. Виробник пропонує O-type та C-type виконання.",
+      "description": "Кілок Plantlogic висотою 18 см для позиціонування мікротрубки з крапельницею або без неї. Виробник пропонує O-type та C-type виконання. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Accessories; позиціонування мікротрубки або крапельниці",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Accessories; позиціонування мікротрубки або крапельниці."
+        }
+      ],
+      "how_it_works": "Кілок Plantlogic висотою 18 см для позиціонування мікротрубки з крапельницею або без неї. Виробник пропонує O-type та C-type виконання.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Кілок для мікротрубки"
+        },
+        {
+          "label": "Призначення",
+          "value": "Accessories; позиціонування мікротрубки або крапельниці"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1205018, 1205019"
+        },
+        {
+          "label": "Габарити",
+          "value": "180 мм висота; 6 мм діаметр"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/micro-tube-stake/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "accessories"
+        }
+      ],
+      "seo_title": "Кілок 18 см для мікротрубки | BB610 Market",
+      "seo_description": "Кілок 18 см для мікротрубки. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/micro-tube-stake/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-plastic-gutter-drainage",
+      "name": "Пластиковий жолоб для збору дренажу",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Вузький пластиковий жолоб Plantlogic для відведення дренажу від контейнерів і систем збору. Поточна сторінка виробника вказує три Product # та три типорозміри.",
+      "description": "Вузький пластиковий жолоб Plantlogic для відведення дренажу від контейнерів і систем збору. Поточна сторінка виробника вказує три Product # та три типорозміри. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Accessories; збір і відведення дренажу",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Accessories; збір і відведення дренажу."
+        }
+      ],
+      "how_it_works": "Вузький пластиковий жолоб Plantlogic для відведення дренажу від контейнерів і систем збору. Поточна сторінка виробника вказує три Product # та три типорозміри.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Пластиковий дренажний жолоб"
+        },
+        {
+          "label": "Призначення",
+          "value": "Accessories; збір і відведення дренажу"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1200021, 1300010, 1300011"
+        },
+        {
+          "label": "Габарити",
+          "value": "35×33 мм; 50×35 мм; 50×45 мм — без самостійного зіставлення розміру з Product #"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/plastic-gutter/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "accessories"
+        }
+      ],
+      "seo_title": "Пластиковий жолоб для збору дренажу | BB610 Market",
+      "seo_description": "Пластиковий жолоб для збору дренажу. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/plastic-gutter/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-pot-anchor",
+      "name": "Pot Anchor — анкер для стабілізації горщиків Plantlogic",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Pot Anchor Plantlogic фіксує контейнер до ґрунту та допомагає запобігати перекиданню під дією вітру або механічного збору. Офіційний tech sheet містить три Product #; точну прив'язку кожного номера до конкретної моделі горщика не вигадуємо.",
+      "description": "Pot Anchor Plantlogic фіксує контейнер до ґрунту та допомагає запобігати перекиданню під дією вітру або механічного збору. Офіційний tech sheet містить три Product #; точну прив'язку кожного номера до конкретної моделі горщика не вигадуємо. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Accessories; стабілізація контейнерів від вітру та механічного впливу",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Accessories; стабілізація контейнерів від вітру та механічного впливу."
+        }
+      ],
+      "how_it_works": "Pot Anchor Plantlogic фіксує контейнер до ґрунту та допомагає запобігати перекиданню під дією вітру або механічного збору. Офіційний tech sheet містить три Product #; точну прив'язку кожного номера до конкретної моделі горщика не вигадуємо.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Анкер для горщика"
+        },
+        {
+          "label": "Призначення",
+          "value": "Accessories; стабілізація контейнерів від вітру та механічного впливу"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1700020, 1700034, 1700041"
+        },
+        {
+          "label": "Габарити",
+          "value": "Монтаж через центральну частину контейнера; сумісність залежить від моделі горщика"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/pot-anchor/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "accessories"
+        }
+      ],
+      "seo_title": "Pot Anchor — анкер для стабілізації горщиків Plantlogic | BB610 Market",
+      "seo_description": "Pot Anchor — анкер для стабілізації горщиків Plantlogic. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/pot-anchor/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "name": "Rivus 2-in-1 — основа та жолоб для субстратних плит",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Rivus Plantlogic поєднує основу та дренажний жолоб. Платформа висотою 60 мм підтримує повітряний зазор під субстратною плитою, а бічні канали збирають дренаж.",
+      "description": "Rivus Plantlogic поєднує основу та дренажний жолоб. Платформа висотою 60 мм підтримує повітряний зазор під субстратною плитою, а бічні канали збирають дренаж. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Овочеві культури; Bag Bases; збір дренажу",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Овочеві культури; Bag Bases; збір дренажу."
+        }
+      ],
+      "how_it_works": "Rivus Plantlogic поєднує основу та дренажний жолоб. Платформа висотою 60 мм підтримує повітряний зазор під субстратною плитою, а бічні канали збирають дренаж.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Основа 2-в-1 для субстратних плит / grow bags"
+        },
+        {
+          "label": "Призначення",
+          "value": "Овочеві культури; Bag Bases; збір дренажу"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "13020500, 13020502, 13020510, 13020512"
+        },
+        {
+          "label": "Габарити",
+          "value": "60 мм висота × 320 мм ширина × 205 мм; секції 2, 4 або 8 м залежно від виконання"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/rivus-slab-base/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "vegetable|bag_bases"
+        }
+      ],
+      "seo_title": "Rivus 2-in-1 — основа та жолоб для субстратних плит | BB610 Market",
+      "seo_description": "Rivus 2-in-1 — основа та жолоб для субстратних плит. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/rivus-slab-base/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-steel-lysimeter",
+      "name": "Сталевий лізиметр Plantlogic",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Сталевий лізиметр Plantlogic для точного збору дренажу. Виробник вказує сумісність із круглими горщиками Plantlogic 25, 30 та 40 л і чотири Product #.",
+      "description": "Сталевий лізиметр Plantlogic для точного збору дренажу. Виробник вказує сумісність із круглими горщиками Plantlogic 25, 30 та 40 л і чотири Product #. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Accessories; моніторинг дренажу та вилуговування",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Accessories; моніторинг дренажу та вилуговування."
+        }
+      ],
+      "how_it_works": "Сталевий лізиметр Plantlogic для точного збору дренажу. Виробник вказує сумісність із круглими горщиками Plantlogic 25, 30 та 40 л і чотири Product #.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Сталевий лізиметр"
+        },
+        {
+          "label": "Призначення",
+          "value": "Accessories; моніторинг дренажу та вилуговування"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "13046025, 13046026, 13046031, 13046041"
+        },
+        {
+          "label": "Габарити",
+          "value": "Виробник заявляє три розміри; точну відповідність чотирьох Product # розмірам не вигадуємо"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/steel-lysimeter-for-blueberry-pots/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "accessories"
+        }
+      ],
+      "seo_title": "Сталевий лізиметр Plantlogic | BB610 Market",
+      "seo_description": "Сталевий лізиметр Plantlogic. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/steel-lysimeter-for-blueberry-pots/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-trough-cover",
+      "name": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Trough Cover Plantlogic для 18-літрового полуничного жолоба. Доступне у PE та biodegradable виконанні, без отворів або з різною кількістю посадкових отворів.",
+      "description": "Trough Cover Plantlogic для 18-літрового полуничного жолоба. Доступне у PE та biodegradable виконанні, без отворів або з різною кількістю посадкових отворів. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Accessories; полуниця; зменшення випаровування; захист субстрату",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Accessories; полуниця; зменшення випаровування; захист субстрату."
+        }
+      ],
+      "how_it_works": "Trough Cover Plantlogic для 18-літрового полуничного жолоба. Доступне у PE та biodegradable виконанні, без отворів або з різною кількістю посадкових отворів.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Накриття для полуничного жолоба"
+        },
+        {
+          "label": "Призначення",
+          "value": "Accessories; полуниця; зменшення випаровування; захист субстрату"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "30020034, C30020034, 30020037, C30020037, 30020012, C30020012, 30020036, C30020036, 30020040, C30020040, 30020041, C30020041"
+        },
+        {
+          "label": "Габарити",
+          "value": "Ширина 330 мм; товщина 0,1 мм; довжина налаштовується або 1 м залежно від виконання"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/trough-cover-for-strawberries/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "accessories"
+        }
+      ],
+      "seo_title": "Trough Cover — накриття для полуничного жолоба Plantlogic | BB610 Market",
+      "seo_description": "Trough Cover — накриття для полуничного жолоба Plantlogic. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/trough-cover-for-strawberries/",
+          "label": "Plantlogic — офіційна сторінка продукту",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
+        }
+      ],
+      "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-vf-bag-base-12010300",
+      "name": "VF Bag Base — основа для grow bag, 30 та 40 л",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Низькопрофільна основа Plantlogic для open-top grow bags. Платформа висотою 5 см створює повітряний зазор під мішком і допомагає відводити дренаж.",
+      "description": "Низькопрофільна основа Plantlogic для open-top grow bags. Платформа висотою 5 см створює повітряний зазор під мішком і допомагає відводити дренаж. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
+      "application": "Вирощування у субстраті; Bag Bases",
+      "composition": "Конструктивний виріб Plantlogic для систем субстратного вирощування; точний склад матеріалу на використаній сторінці не специфікований.",
+      "benefits": [
+        {
+          "title": "Офіційна модель Plantlogic",
+          "text": "Модель і Product # взяті з поточної продуктової сторінки виробника."
+        },
+        {
+          "title": "Для професійного субстратного виробництва",
+          "text": "Вирощування у субстраті; Bag Bases."
+        }
+      ],
+      "how_it_works": "Низькопрофільна основа Plantlogic для open-top grow bags. Платформа висотою 5 см створює повітряний зазор під мішком і допомагає відводити дренаж.",
+      "characteristics": [
+        {
+          "label": "Виробник",
+          "value": "Plantlogic"
+        },
+        {
+          "label": "Тип",
+          "value": "Основа для grow bag"
+        },
+        {
+          "label": "Призначення",
+          "value": "Вирощування у субстраті; Bag Bases"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "12010300, 12010400"
+        },
+        {
+          "label": "Габарити",
+          "value": "30 л #12010300: 50 × 320 × 320 мм; 40 л #12010400: 50 × 350 × 350 мм"
+        },
+        {
+          "label": "Офіційне джерело",
+          "value": "https://getplantlogic.com/portfolio-items/vf-base-for-open-top-grow-bags/"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "bag_bases"
+        }
+      ],
+      "seo_title": "VF Bag Base — основа для grow bag, 30 та 40 л | BB610 Market",
+      "seo_description": "VF Bag Base — основа для grow bag, 30 та 40 л. Офіційна модель Plantlogic, Product # та основні характеристики.",
+      "content_status": "verified_migrated_plantlogic_sectioned",
+      "sources": [
+        {
+          "source_type": "official_primary",
+          "url": "https://getplantlogic.com/portfolio-items/vf-base-for-open-top-grow-bags/",
           "label": "Plantlogic — офіційна сторінка продукту",
           "verified_at": "2026-09-19",
           "status": "verified",

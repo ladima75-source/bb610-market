@@ -1,21 +1,31 @@
 {
   "schema": "bb610-v5-media-2",
   "summary": {
-    "all_skus": 269,
-    "current_skus": 260,
-    "exact_current_skus": 224,
-    "current_skus_without_exact": 36,
-    "products_with_media": 103,
+    "all_skus": 310,
+    "current_skus": 301,
+    "exact_current_skus": 229,
+    "current_skus_without_exact": 72,
+    "products_with_media": 118,
     "products_without_media": 1,
-    "media_assets": 382,
-    "sku_bindings": 224,
-    "product_bindings": 385,
+    "media_assets": 405,
+    "sku_bindings": 229,
+    "product_bindings": 408,
     "organic_planet_source_rows": 187,
     "organic_planet_accepted_exact_rows": 134,
     "organic_planet_rejected_rows": 53,
     "mapping_failures": 0
   },
   "media": [
+    {
+      "media_id": "v5m_00eb0234d0dc495832f8b7cc",
+      "path": "/assets/img/v5/media/00eb0234d0dc495832f8.jpg",
+      "sha256": "00eb0234d0dc495832f8b7cc16292e135dce7634625e1f9c7385613818cea5b2",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Агротканина Ground Cover — арт. 1600201"
+    },
     {
       "media_id": "v5m_0103d80ec0e8c04b6f3096c6",
       "path": "/assets/img/v5/media/0103d80ec0e8c04b6f30.png",
@@ -85,6 +95,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Сульфат магнію — 100 г"
+    },
+    {
+      "media_id": "v5m_08785ce4ace756baf15d1ec0",
+      "path": "/assets/img/v5/media/08785ce4ace756baf15d.jpg",
+      "sha256": "08785ce4ace756baf15d1ec0952637d7b3af6c07dfb80761555245a216d30db5",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic Rivus — RIVUS-130205000-ISOMETRICO-1.jpg"
     },
     {
       "media_id": "v5m_088846d0baf538295ac297cb",
@@ -177,6 +197,16 @@
       "alt": "Actiwave — Кореневий біостимулятор для підвищення поглинання поживних речовин"
     },
     {
+      "media_id": "v5m_0bf49ae91c067410028aa5e8",
+      "path": "/assets/img/v5/media/0bf49ae91c067410028a.jpg",
+      "sha256": "0bf49ae91c067410028aa5e8dc547d0a5cb772f3540f49e5fb1cf7a6d2761297",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "VF Bag Base — основа для grow bag, 30 та 40 л"
+    },
+    {
       "media_id": "v5m_0c55af7d09b24e958c6781e2",
       "path": "/assets/img/v5/media/0c55af7d09b24e958c67.jpg",
       "sha256": "0c55af7d09b24e958c6781e2c313c5d10ca877e85642fbb59a0d2e50330eeb27",
@@ -197,6 +227,16 @@
       "alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення — 1 кг"
     },
     {
+      "media_id": "v5m_0c624f873b1d64a36a8788f7",
+      "path": "/assets/img/v5/media/0c624f873b1d64a36a87.jpg",
+      "sha256": "0c624f873b1d64a36a8788f750a867501b268fcac2c5b5c3b00949facc2cf35e",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic Rivus — RIVUS-130205000-ENDCAP-2.jpg"
+    },
+    {
       "media_id": "v5m_0cf836fe8ebf5292d676e606",
       "path": "/assets/img/v5/media/0cf836fe8ebf5292d676.jpg",
       "sha256": "0cf836fe8ebf5292d676e606b49c934725f0eedcfd86302e6172220e4684c6fe",
@@ -205,6 +245,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Terra-Sorb"
+    },
+    {
+      "media_id": "v5m_0d1787affd6a3bbce8e33e44",
+      "path": "/assets/img/v5/media/0d1787affd6a3bbce8e3.jpg",
+      "sha256": "0d1787affd6a3bbce8e33e442f905a6201ada26adeec12f15c21980148b35099",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Сталевий лізиметр Plantlogic"
     },
     {
       "media_id": "v5m_0e8a6c7ad114c5d39a7a6ddc",
@@ -255,6 +305,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Brexil Ca — 250 г"
+    },
+    {
+      "media_id": "v5m_11c9bb4fcc978a24956f07ea",
+      "path": "/assets/img/v5/media/11c9bb4fcc978a24956f.jpg",
+      "sha256": "11c9bb4fcc978a24956f07ead8e869c6764df74714f4a1a918226be22c44f2c2",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Kratos — основа для субстратних плит — арт. 1301081"
     },
     {
       "media_id": "v5m_11d0bf623e6192622180c601",
@@ -577,6 +637,16 @@
       "alt": "Brexil Mix — 1 кг"
     },
     {
+      "media_id": "v5m_25e7d6585579476d5cf343b6",
+      "path": "/assets/img/v5/media/25e7d6585579476d5cf3.jpg",
+      "sha256": "25e7d6585579476d5cf343b6300bc5d176851c23ae09bed3bdd9d3ef09730ae7",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Багатофункціональна кліпса для шланга — арт. 12050010"
+    },
+    {
       "media_id": "v5m_26631f70e8d140f613c5a86f",
       "path": "/assets/img/v5/media/26631f70e8d140f613c5.jpg",
       "sha256": "26631f70e8d140f613c5a86f96be415672bf43edef60d6fc887e2fcf2c14083e",
@@ -775,6 +845,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "MEGAFOL™"
+    },
+    {
+      "media_id": "v5m_2ede80c5a49bb3f01cd74294",
+      "path": "/assets/img/v5/media/2ede80c5a49bb3f01cd7.jpg",
+      "sha256": "2ede80c5a49bb3f01cd74294a83337f2270178c3955304981e6fb7525c97047b",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Металеві скоби для дренажного жолоба"
     },
     {
       "media_id": "v5m_2ef98dad9582747aca2f5ca7",
@@ -1005,6 +1085,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 1308041 — base"
+    },
+    {
+      "media_id": "v5m_3ff0d58907c1140b6554ac5a",
+      "path": "/assets/img/v5/media/3ff0d58907c1140b6554.jpg",
+      "sha256": "3ff0d58907c1140b6554ac5ad0cdeb4eafef2b7b7168c3db24dd36e6eaee5c8f",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Кілок 18 см для мікротрубки"
     },
     {
       "media_id": "v5m_40c6ef743b5e67be8bb640cf",
@@ -1637,6 +1727,16 @@
       "alt": "Brexil Multi — 15 г"
     },
     {
+      "media_id": "v5m_62af4a9b396a5e84d3a2b520",
+      "path": "/assets/img/v5/media/62af4a9b396a5e84d3a2.jpg",
+      "sha256": "62af4a9b396a5e84d3a2b520325a0fe96c4419312096d7f1192ac6bd951484f4",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic Rivus — product_Rivus_A-1.jpg"
+    },
+    {
       "media_id": "v5m_633df423d6ba93ce6a1331ad",
       "path": "/assets/img/v5/media/633df423d6ba93ce6a13.png",
       "sha256": "633df423d6ba93ce6a1331ad0479f98c7cad6b564efd69271030d3aeada5d78c",
@@ -1767,6 +1867,26 @@
       "alt": "Osmocote Start 11-11-17 (1,5M) — 1 кг"
     },
     {
+      "media_id": "v5m_6d3c4677a1ce24b651f3d596",
+      "path": "/assets/img/v5/media/6d3c4677a1ce24b651f3.jpg",
+      "sha256": "6d3c4677a1ce24b651f3d5967fcef317b4ead9798e32bfc10af9247f7341b18c",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Pot Anchor — анкер для стабілізації горщиків Plantlogic"
+    },
+    {
+      "media_id": "v5m_6dac3b12ad4bb4cb52730ae6",
+      "path": "/assets/img/v5/media/6dac3b12ad4bb4cb5273.jpg",
+      "sha256": "6dac3b12ad4bb4cb52730ae606c3b90ca0b95ee82537b518f9c9ab9e001b11b5",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic Rivus — ftr_Rivus_B.jpg"
+    },
+    {
       "media_id": "v5m_6dba4ccd27c3aaf203a48667",
       "path": "/assets/img/v5/media/6dba4ccd27c3aaf203a4.jpg",
       "sha256": "6dba4ccd27c3aaf203a4866789001a755fb14c001be54efc27352112765cd83e",
@@ -1775,6 +1895,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 13090350 — front"
+    },
+    {
+      "media_id": "v5m_6e7573d276c6a6aba6e9c220",
+      "path": "/assets/img/v5/media/6e7573d276c6a6aba6e9.jpg",
+      "sha256": "6e7573d276c6a6aba6e9c2204bd08826070571e2aa39ee24224632237b9222cf",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic Rivus — ftr_Rivus_C.jpg"
     },
     {
       "media_id": "v5m_6ff2ffe6a37280f9aa55ec78",
@@ -1817,6 +1947,16 @@
       "alt": "Plantlogic 1309015 — 15L-Square-pot_Item_1309015_base.jpg"
     },
     {
+      "media_id": "v5m_72bb5c94b0e7bf6a89b9575e",
+      "path": "/assets/img/v5/media/72bb5c94b0e7bf6a89b9.jpg",
+      "sha256": "72bb5c94b0e7bf6a89b9575e05b2137a29d27ed4262e43da70d9f70975caa422",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source",
+      "alt": "Металева кліпса для поливного шланга — арт. 1205012"
+    },
+    {
       "media_id": "v5m_73506facf11270b3dd68628f",
       "path": "/assets/img/v5/media/73506facf11270b3dd68.jpg",
       "sha256": "73506facf11270b3dd68628f8135c976705542dd47e7c83e408cfaa8882b15e9",
@@ -1855,6 +1995,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 1309015 — 15L-SQ-1309015-ISOMETRICO.jpg"
+    },
+    {
+      "media_id": "v5m_7589faad4063064aa7ef4d1c",
+      "path": "/assets/img/v5/media/7589faad4063064aa7ef.jpg",
+      "sha256": "7589faad4063064aa7ef4d1c2e7198c94f95b6d1540520787b1cc3768bc28e9b",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Основа для мішка зі збором дренажу — арт. 1301036"
     },
     {
       "media_id": "v5m_75a81f56b51e7600ee8cc2c2",
@@ -1947,6 +2097,16 @@
       "alt": "MASTER 20-20-20"
     },
     {
+      "media_id": "v5m_7a4031e2405408ed77b99509",
+      "path": "/assets/img/v5/media/7a4031e2405408ed77b9.jpg",
+      "sha256": "7a4031e2405408ed77b995098b2bdafa9d036b37cb1f9ad242e085da9ff1437f",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Culti-base — мішок для субстрату з інтегрованою основою, 25 та 30 л"
+    },
+    {
       "media_id": "v5m_7b0f205570c23203be18f3f3",
       "path": "/assets/img/v5/media/7b0f205570c23203be18.jpg",
       "sha256": "7b0f205570c23203be18f3f306cd1273a1084b1e6f2a659499161da87e44f075",
@@ -1995,6 +2155,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 1309030 — base"
+    },
+    {
+      "media_id": "v5m_7ec8b98109a532927908f382",
+      "path": "/assets/img/v5/media/7ec8b98109a532927908.jpg",
+      "sha256": "7ec8b98109a532927908f38290c7acc0fe9a851bfee0630b7b81752fe31bb485",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Пластиковий жолоб для збору дренажу"
     },
     {
       "media_id": "v5m_7f2c1ac0af0245634e72cbbe",
@@ -2107,6 +2277,16 @@
       "alt": "Plantlogic 1307133 — 30-Liter-Drainage-Collection-pot_Item_1307133.jpg"
     },
     {
+      "media_id": "v5m_879733147ad085dbe9b80405",
+      "path": "/assets/img/v5/media/879733147ad085dbe9b8.jpg",
+      "sha256": "879733147ad085dbe9b80405964bd9cdc8f50d188e220318ec4c287359f2d684",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic Rivus — RIVUS-130205000-ENDCAP-1.jpg"
+    },
+    {
       "media_id": "v5m_898936ea92a11243d273712d",
       "path": "/assets/img/v5/media/898936ea92a11243d273.jpg",
       "sha256": "898936ea92a11243d273712d78728353e032b922481ff7fec682b87e40f908b3",
@@ -2215,6 +2395,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "NeoFlora — 20 л"
+    },
+    {
+      "media_id": "v5m_907d14d636ec4259576c0eab",
+      "path": "/assets/img/v5/media/907d14d636ec4259576c.jpg",
+      "sha256": "907d14d636ec4259576c0eabc7f9449ee091992875b1723e5344e074736713b4",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic Rivus — RIVUS-130205000-FRONTAL.jpg"
     },
     {
       "media_id": "v5m_908169600d5a8a456a2ea279",
@@ -2415,6 +2605,16 @@
       "verification_status": "candidate",
       "verification_detail": "package_named_legacy_asset",
       "alt": "Кеміра NPK 12-46-8"
+    },
+    {
+      "media_id": "v5m_9c36a0f7ee4ccd5e17e976d1",
+      "path": "/assets/img/v5/media/9c36a0f7ee4ccd5e17e9.jpg",
+      "sha256": "9c36a0f7ee4ccd5e17e976d1dbc21f9c826f82722afe88d69986df12ab998b2b",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic Rivus — RIVUS-130205000-ISOMETRICO.jpg"
     },
     {
       "media_id": "v5m_9c55f097f60c4c2ed7146eb5",
@@ -2765,6 +2965,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Ferrilene 4.8 Orto-Orto — 10 г"
+    },
+    {
+      "media_id": "v5m_b2a564d1e494df21a54434ed",
+      "path": "/assets/img/v5/media/b2a564d1e494df21a544.jpg",
+      "sha256": "b2a564d1e494df21a54434edf1480dda273377861798bfc2b98ec6ca91a6aaec",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Plantlogic Rivus — ftr_Rivus_A.jpg"
     },
     {
       "media_id": "v5m_b4680ef15815e49e2ab171b4",
@@ -3317,6 +3527,16 @@
       "alt": "MAX 600 SEASAILER — Біостимулюючий продукт великого фасування — потребує підтвердження актуальної етикетки"
     },
     {
+      "media_id": "v5m_da9e77e8e71226b45fe98acc",
+      "path": "/assets/img/v5/media/da9e77e8e71226b45fe9.jpg",
+      "sha256": "da9e77e8e71226b45fe98acc87904869614bea7bb5262b7f4c1a73638f979c18",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Лізиметри Plantlogic для контролю дренажу"
+    },
+    {
       "media_id": "v5m_dab703ab6da8305d5caee0f2",
       "path": "/assets/img/v5/media/dab703ab6da8305d5cae.jpg",
       "sha256": "dab703ab6da8305d5caee0f297b5d27c14f61c1af4343e660860316b4aae5c35",
@@ -3335,6 +3555,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Agriflex AminoVix — Амінокислотний комплекс із мікроелементами у водорозчинній формі"
+    },
+    {
+      "media_id": "v5m_de683edc527e971a2862960b",
+      "path": "/assets/img/v5/media/de683edc527e971a2862.jpg",
+      "sha256": "de683edc527e971a2862960b79c668741881fd900f55aa6a5f93038695e5fcc8",
+      "kind": "image",
+      "source_url": null,
+      "verification_status": "candidate",
+      "verification_detail": "representative",
+      "alt": "Trough Cover — накриття для полуничного жолоба Plantlogic"
     },
     {
       "media_id": "v5m_df2ce09e3635de13488fa604",
@@ -5342,6 +5572,42 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-100-ml-vala"
     },
     {
+      "sku_id": "PL-12010300",
+      "media_id": "v5m_0bf49ae91c067410028aa5e8",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-12050010",
+      "media_id": "v5m_25e7d6585579476d5cf343b6",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1205012",
+      "media_id": "v5m_72bb5c94b0e7bf6a89b9575e",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-1301081",
+      "media_id": "v5m_11c9bb4fcc978a24956f07ea",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
       "sku_id": "PL-1304015-BK",
       "media_id": "v5m_5b41887d51fb75532238f764",
       "is_primary": true,
@@ -5704,6 +5970,15 @@
     {
       "sku_id": "PL-1307133-WH",
       "media_id": "v5m_e6793e9c70688c1480325fca",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "plantlogic_model_source",
+      "source_url": null
+    },
+    {
+      "sku_id": "PL-13079300",
+      "media_id": "v5m_7a4031e2405408ed77b99509",
       "is_primary": true,
       "sort_order": 0,
       "binding_kind": "exact",
@@ -8349,6 +8624,167 @@
       "source_url": null
     },
     {
+      "product_id": "plantlogic-bag-base-drainage-1301036",
+      "media_id": "v5m_7589faad4063064aa7ef4d1c",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-culti-base",
+      "media_id": "v5m_7a4031e2405408ed77b99509",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-ground-cover-1600201",
+      "media_id": "v5m_00eb0234d0dc495832f8b7cc",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-hose-clip-12050010",
+      "media_id": "v5m_25e7d6585579476d5cf343b6",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-kratos-slab-base-1301081",
+      "media_id": "v5m_11c9bb4fcc978a24956f07ea",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-lysimeter-kit",
+      "media_id": "v5m_da9e77e8e71226b45fe98acc",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-metal-hose-clip-1205012",
+      "media_id": "v5m_72bb5c94b0e7bf6a89b9575e",
+      "sort_order": 30,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-metal-stakes-gutter",
+      "media_id": "v5m_2ede80c5a49bb3f01cd74294",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-micro-tube-stake",
+      "media_id": "v5m_3ff0d58907c1140b6554ac5a",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-plastic-gutter-drainage",
+      "media_id": "v5m_7ec8b98109a532927908f382",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-pot-anchor",
+      "media_id": "v5m_6d3c4677a1ce24b651f3d596",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "media_id": "v5m_879733147ad085dbe9b80405",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "media_id": "v5m_9c36a0f7ee4ccd5e17e976d1",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "media_id": "v5m_08785ce4ace756baf15d1ec0",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "media_id": "v5m_0c624f873b1d64a36a8788f7",
+      "sort_order": 101,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "media_id": "v5m_907d14d636ec4259576c0eab",
+      "sort_order": 102,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "media_id": "v5m_62af4a9b396a5e84d3a2b520",
+      "sort_order": 103,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "media_id": "v5m_b2a564d1e494df21a54434ed",
+      "sort_order": 104,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "media_id": "v5m_6dac3b12ad4bb4cb52730ae6",
+      "sort_order": 105,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "media_id": "v5m_6e7573d276c6a6aba6e9c220",
+      "sort_order": 106,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-steel-lysimeter",
+      "media_id": "v5m_0d1787affd6a3bbce8e33e44",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-trough-cover",
+      "media_id": "v5m_de683edc527e971a2862960b",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-vf-bag-base-12010300",
+      "media_id": "v5m_0bf49ae91c067410028aa5e8",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
       "product_id": "radifarm",
       "media_id": "v5m_a8f72fa0c704b35aa69c72c5",
       "sort_order": 0,
@@ -8764,9 +9200,225 @@
       "has_product_fallback": true
     },
     {
+      "sku_id": "PL-13079250",
+      "product_id": "plantlogic-culti-base",
+      "package_label": "25 л",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-12010400",
+      "product_id": "plantlogic-vf-bag-base-12010300",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1301036",
+      "product_id": "plantlogic-bag-base-drainage-1301036",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-13046025",
+      "product_id": "plantlogic-steel-lysimeter",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-13046026",
+      "product_id": "plantlogic-steel-lysimeter",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-13046031",
+      "product_id": "plantlogic-steel-lysimeter",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-13046041",
+      "product_id": "plantlogic-steel-lysimeter",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1700146",
+      "product_id": "plantlogic-metal-stakes-gutter",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1700147",
+      "product_id": "plantlogic-metal-stakes-gutter",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1205018",
+      "product_id": "plantlogic-micro-tube-stake",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1205019",
+      "product_id": "plantlogic-micro-tube-stake",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1200021",
+      "product_id": "plantlogic-plastic-gutter-drainage",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1300010",
+      "product_id": "plantlogic-plastic-gutter-drainage",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1300011",
+      "product_id": "plantlogic-plastic-gutter-drainage",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
       "sku_id": "PL-1305082",
       "product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
       "package_label": "8 л",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-13020500",
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-13020502",
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-13020510",
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-13020512",
+      "product_id": "plantlogic-rivus-2in1-slab-base",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1301010",
+      "product_id": "plantlogic-lysimeter-kit",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1301030",
+      "product_id": "plantlogic-lysimeter-kit",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1600201",
+      "product_id": "plantlogic-ground-cover-1600201",
+      "package_label": "1 рулон",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-30020034",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-C30020034",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-30020037",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-C30020037",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-30020012",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-C30020012",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-30020036",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-C30020036",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-30020040",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-C30020040",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-30020041",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-C30020041",
+      "product_id": "plantlogic-trough-cover",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1700020",
+      "product_id": "plantlogic-pot-anchor",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1700034",
+      "product_id": "plantlogic-pot-anchor",
+      "package_label": "1 шт",
+      "has_product_fallback": true
+    },
+    {
+      "sku_id": "PL-1700041",
+      "product_id": "plantlogic-pot-anchor",
+      "package_label": "1 шт",
       "has_product_fallback": true
     }
   ],

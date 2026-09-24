@@ -5,22 +5,22 @@
     "checks_pass": 9,
     "checks_fail": 0,
     "warnings": 0,
-    "source_commerce_rows": 334,
-    "v5_products": 104,
-    "v5_skus": 269,
-    "public_products": 100,
+    "source_commerce_rows": 382,
+    "v5_products": 119,
+    "v5_skus": 310,
+    "public_products": 115,
     "plantlogic_models": 17
   },
   "checks": [
     {
       "name": "identity_uniqueness",
       "status": "PASS",
-      "note": "products=104, skus=269"
+      "note": "products=119, skus=310"
     },
     {
       "name": "production_commerce_identity_coverage",
       "status": "PASS",
-      "note": "source=334 canonical=221 alias=109 excluded=4 unmapped=0"
+      "note": "source=382 canonical=269 alias=109 excluded=4 unmapped=0"
     },
     {
       "name": "direct_commerce_parity",
@@ -35,7 +35,7 @@
     {
       "name": "content_coverage",
       "status": "PASS",
-      "note": "products=104/104, sources=136, source_less=0"
+      "note": "products=119/119, sources=151, source_less=0"
     },
     {
       "name": "public_visibility",
@@ -45,7 +45,7 @@
     {
       "name": "media_architecture",
       "status": "PASS",
-      "note": "exact_skus=224, product_media_products=103, unresolved_current_skus=0, public_products_without_media=0"
+      "note": "exact_skus=229, product_media_products=118, unresolved_current_skus=0, public_products_without_media=0"
     },
     {
       "name": "plantlogic_assortment",
@@ -66,7 +66,7 @@
       "duplicate_skus": []
     },
     "production_commerce_identity_coverage": {
-      "canonical": 221,
+      "canonical": 269,
       "alias": 109,
       "excluded": 4,
       "unmapped": []

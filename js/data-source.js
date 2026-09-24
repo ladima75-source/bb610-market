@@ -201,7 +201,7 @@ window.BB610_DATA_SOURCE={
     }
     const media=this._mediaPaths(mediaRows);
     const primary=media[0]||'';
-    const identityEnabled=raw.enabled===1||raw.enabled===true;    const identityEnabled=raw.enabled===1||raw.enabled===true;
+    const identityEnabled=raw.enabled===1||raw.enabled===true;
     const commerceEnabled=raw.commerce_enabled===1||raw.commerce_enabled===true;
     const availability=raw.availability||'unknown';
     const sale=raw.sale_price;

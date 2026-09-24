@@ -94,35 +94,16 @@ def official_fallback_media(spec, snapshot):
     original = str(spec.get("image_url") or "").strip()
     if not original:
         return []
-    urls = [original]
-    if original.startswith("https://i0.wp.com/getplantlogic.com/"):
-        direct = "https://getplantlogic.com/" + original.split("https://i0.wp.com/getplantlogic.com/", 1)[1].split("?", 1)[0]
-        urls.append(direct)
-
-    target_dir = snapshot / "files/backend/runtime/media/products"
-    target_dir.mkdir(parents=True, exist_ok=True)
-    for url in urls:
-        parsed = urllib.parse.urlparse(url)
-        suffix = Path(parsed.path).suffix.lower() or ".jpg"
-        name = "plantlogic-v5-" + hashlib.sha256(url.encode("utf-8")).hexdigest()[:20] + suffix
-        target = target_dir / name
-        if not target.is_file():
-            req = urllib.request.Request(url, headers={"User-Agent": "BB610-V5-Plantlogic-Migration/1.0"})
-            try:
-                with urllib.request.urlopen(req, timeout=30) as response, target.open("wb") as out:
-                    shutil.copyfileobj(response, out)
-            except Exception:
-                target.unlink(missing_ok=True)
-                continue
-        if target.is_file() and target.stat().st_size > 1000:
-            return [{
-                "media_id": "official_fallback",
-                "path": f"/media/products/{name}",
-                "alt": sanitize_public(spec.get("name") or "Plantlogic"),
-                "kind": "image",
-                "is_primary": True,
-            }]
-    return []
+    # Keep the verified official Plantlogic URL in the stage. compile_media.py
+    # resolves it centrally, preserving provenance and avoiding a second,
+    # fragile downloader during section extension.
+    return [{
+        "media_id": "official_fallback",
+        "path": original,
+        "alt": sanitize_public(spec.get("name") or "Plantlogic"),
+        "kind": "image",
+        "is_primary": True,
+    }]
 
 
 def content_from_card(product_id, card, sections, source_url):

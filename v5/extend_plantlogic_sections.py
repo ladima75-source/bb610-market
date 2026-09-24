@@ -11,8 +11,8 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-TARGET_SECTIONS = {"rubus", "strawberry", "vegetable", "universal"}
-EXCLUDED_SECTION_TYPES = {"bag_bases", "accessories"}
+TARGET_SECTIONS = {"rubus", "strawberry", "vegetable", "universal", "bag_bases", "accessories"}
+EXCLUDED_SECTION_TYPES = set()
 NO_VERIFIED_MEDIA = {"prd_pl_1305081", "prd_pl_1305109"}
 GARDEN_USE_RE = re.compile(r"розсадник|nursery|сад", re.I)
 RUBUS_USE_RE = re.compile(r"малин|ожин|raspberr|blackberr|rubus", re.I)
@@ -374,7 +374,7 @@ def main():
     for product_id, reason in skipped:
         print(" ", product_id, reason)
 
-    required = {"blueberry", "rubus", "strawberry", "vegetable", "universal", "garden"}
+    required = {"blueberry", "rubus", "strawberry", "vegetable", "universal", "garden", "bag_bases", "accessories"}
     missing = required - set(present)
     if missing:
         raise SystemExit("missing required sections: " + ",".join(sorted(missing)))

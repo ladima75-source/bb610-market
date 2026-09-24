@@ -4,8 +4,7 @@ on:
   push:
     branches: [social-media-staging]
     paths:
-      - 'social-media-staging/instagram/**/*.svg'
-      - '.github/workflows/social-media-render.yml'
+      - 'social-media-staging/render.trigger'
 
 permissions:
   contents: write

@@ -1,0 +1,87 @@
+name: Plantlogic live accessories CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/services/plantlogic_sections_runtime_migration.py'
+      - 'v5/staging/production-current.json'
+      - 'v5/content/verified-current.json'
+      - 'js/catalog.js'
+      - '.github/workflows/plantlogic_live_accessories_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-accessories:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify live V5 accessories and bag bases
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 5 --retry-delay 2 \
+            https://api.market.bb610.com.ua/api/v1/catalog/v5 \
+            -o /tmp/catalog-v5.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          live=json.loads(Path('/tmp/catalog-v5.json').read_text(encoding='utf-8'))
+          content=json.loads(Path('v5/content/verified-current.json').read_text(encoding='utf-8'))
+          stage=json.loads(Path('v5/staging/production-current.json').read_text(encoding='utf-8'))
+
+          def sections(product):
+              for row in product.get('characteristics') or []:
+                  if str(row.get('label') or '').strip() == '__plantlogic_sections':
+                      return {x.strip() for x in str(row.get('value') or '').split('|') if x.strip()}
+              return set()
+
+          expected_products={
+              p['product_id']: sections(p)
+              for p in content.get('products') or []
+              if str(p.get('brand') or '').strip().lower() == 'plantlogic'
+          }
+          live_products={
+              p['product_id']: sections(p)
+              for p in live.get('products') or []
+              if str(p.get('brand') or '').strip().lower() == 'plantlogic'
+          }
+
+          for section in ('accessories','bag_bases'):
+              expected={pid for pid,sec in expected_products.items() if section in sec}
+              actual={pid for pid,sec in live_products.items() if section in sec}
+              missing=sorted(expected-actual)
+              if missing:
+                  raise SystemExit(f'{section}: missing live products: {missing}')
+              print(f'{section}: {len(actual)} live products')
+
+          required={
+              'plantlogic-hose-clip-12050010',
+              'plantlogic-steel-lysimeter',
+              'plantlogic-metal-hose-clip-1205012',
+              'plantlogic-metal-stakes-gutter',
+              'plantlogic-micro-tube-stake',
+              'plantlogic-plastic-gutter-drainage',
+              'plantlogic-lysimeter-kit',
+              'plantlogic-ground-cover-1600201',
+              'plantlogic-trough-cover',
+              'plantlogic-pot-anchor',
+          }
+          live_accessories={pid for pid,sec in live_products.items() if 'accessories' in sec}
+          missing=sorted(required-live_accessories)
+          if missing:
+              raise SystemExit(f'required accessories absent from live API: {missing}')
+
+          counts=live.get('counts') or {}
+          summary=stage.get('summary') or {}
+          if counts.get('products') != summary.get('v5_stage_products_total'):
+              raise SystemExit(f"product count mismatch live={counts.get('products')} stage={summary.get('v5_stage_products_total')}")
+          if counts.get('skus') != summary.get('v5_stage_skus_total'):
+              raise SystemExit(f"sku count mismatch live={counts.get('skus')} stage={summary.get('v5_stage_skus_total')}")
+
+          print('PLANTLOGIC LIVE ACCESSORIES: PASS')
+          PY

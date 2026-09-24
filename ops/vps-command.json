@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "5080ece461ac15ea8a199fd1a490b1e9db1d592f",
-  "request_id": "2026-09-24-googleads-purchase-label-1"
+  "action": "audit",
+  "request_id": "2026-09-24-googleads-purchase-audit-1"
 }

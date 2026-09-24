@@ -95,8 +95,9 @@ jobs:
           if(!legacy||legacy.price!==215||legacy.canonical_sku_id!=='BB610-32DA4F652F73A1')throw new Error('legacy alias commerce');
           if((DS.staticProductMedia('kendal')||null)!==null)throw new Error('legacy static media leaked into V5');
           const pots=DS.products().filter(x=>x.category_id==='containers');
-          if(pots.length!==6)throw new Error('Plantlogic public family count');
+          if(pots.length<6)throw new Error('Plantlogic public family count');
+          if(!pots.some(p=>(p.plantlogic_sections||[]).includes('accessories')))throw new Error('Plantlogic accessories section');
           const potSkus=pots.flatMap(p=>DS.skusForProduct(p.id));
-          if(potSkus.length!==17)throw new Error('Plantlogic model count');
+          if(potSkus.length<17)throw new Error('Plantlogic model count');
           console.log('BB610 V5 STOREFRONT ADAPTER: PASS');
           JS

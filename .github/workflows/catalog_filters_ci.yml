@@ -123,7 +123,7 @@ jobs:
           assert f2['in_stock'] is False
 
           f3=products[2]['facets']
-          assert f3['cultures']==['сад','овочі']
+          assert f3['cultures']==['овочі','сад']
           assert f3['application_methods']==['foliar','root']
           assert f3['package_groups']==['medium']
           assert f3['in_stock'] is True

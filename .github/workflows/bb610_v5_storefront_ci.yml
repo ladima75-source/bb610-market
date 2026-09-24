@@ -103,7 +103,7 @@ jobs:
           const potSkus=pots.flatMap(p=>DS.skusForProduct(p.id));
           if(potSkus.length<17)throw new Error('Plantlogic model count');
           const ordered=DS._orderedPlantlogicMedia([
-            {path:'/media/1309008-bottom.jpg',alt:'bottom technical view',is_primary:true,sort_order:0},
+            {path:'/media/1309008-bottom.jpg',alt:'bottom view',is_primary:true,sort_order:0},
             {path:'/media/1309008-front.jpg',alt:'front hero',is_primary:false,sort_order:9},
             {path:'/media/1309008-tech-sheet.jpg',alt:'technical drawing',is_primary:false,sort_order:1},
             {path:'/media/1309008-side.jpg',alt:'side view',is_primary:false,sort_order:2},

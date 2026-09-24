@@ -138,14 +138,26 @@ window.BB610_DATA_SOURCE={
     return /(tech[\s_-]*sheet|technical|drawing|diagram|schematic|spec(?:ification|[\s_-]*sheet)|datasheet|brochure|catalog|infographic|capacit(?:y|ies)|graphic|креслен|схем|техніч|інфограф|розмір)/i.test(value);
   },
 
+  _plantlogicFeatureMedia(row){
+    const value=this._plantlogicMediaText(row);
+    return /(?:^|[\s_.-])(?:\d+(?:\.\d+)?l?(?:dc|sq|dcp)?|\d{4,})[_-][a-e](?:[\s_.-]|$)/i.test(value);
+  },
+
   _plantlogicMediaRank(row){
     const value=this._plantlogicMediaText(row);
-    if(/(?:^|[\s_.-])(hero|front|frontal)(?:[\s_.-]|$)/i.test(value))return 0;
+    // Keep technical material available, but always after clean product views.
+    if(this._plantlogicTechnicalMedia(row))return 900;
+    if(/(?:^|[\s_.-])(hero|front|frontal|frente)(?:[\s_.-]|$)/i.test(value))return 0;
+    // Manufacturer's unsuffixed Item_<product no>.jpg is normally the clean model view.
+    if(/item[_-]\d+(?:-\d+)?\.(?:jpe?g|png|webp)(?:[?#\s]|$)/i.test(value))return 5;
     if(/isometr|angle|three[\s_-]*quarter|3\/4/i.test(value))return 10;
+    if(/family|installed|application|system/i.test(value))return 20;
     if(/(?:^|[\s_.-])(side|lateral)(?:[\s_.-]|$)/i.test(value))return 25;
     if(/top[\s_-]*(?:view|down)?|cenital/i.test(value))return 30;
     if(/(?:^|[\s_.-])(base|bottom)(?:[\s_.-]|$)/i.test(value))return 40;
-    if(/detail|close[\s_-]*up/i.test(value))return 50;
+    if(/detail|close[\s_-]*up|inside/i.test(value))return 50;
+    // Legacy feature tiles (A/B/C/D/E) are useful explanations, not hero photos.
+    if(this._plantlogicFeatureMedia(row))return 80;
     return 20;
   },
 
@@ -153,7 +165,7 @@ window.BB610_DATA_SOURCE={
     const seen=new Set();
     const clean=(rows||[]).map((row,index)=>({row,index})).filter(({row})=>{
       const path=String(row?.path||'').trim();
-      if(!path||seen.has(path)||this._plantlogicTechnicalMedia(row))return false;
+      if(!path||seen.has(path))return false;
       seen.add(path);return true;
     });
     clean.sort((a,b)=>{

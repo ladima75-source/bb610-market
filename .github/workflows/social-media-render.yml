@@ -1,0 +1,57 @@
+name: Social Media Render
+
+on:
+  push:
+    branches: [social-media-staging]
+    paths:
+      - 'social-media-staging/instagram/**/*.svg'
+      - '.github/workflows/social-media-render.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: social-media-staging
+          fetch-depth: 0
+
+      - name: Install SVG renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin imagemagick
+
+      - name: Render SVG to JPEG
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$GITHUB_WORKSPACE"
+          LOGO_RAW='https://raw.githubusercontent.com/ladima75-source/bb610-market/main/assets/bb610-market-logo.png'
+          RAD_RAW='https://raw.githubusercontent.com/ladima75-source/bb610-market/main/assets/img/real/stage16b/radifarm.jpg'
+          while IFS= read -r -d '' svg; do
+            tmp="$(mktemp --suffix=.svg)"
+            cp "$svg" "$tmp"
+            sed -i "s|$LOGO_RAW|file://$ROOT/assets/bb610-market-logo.png|g" "$tmp"
+            sed -i "s|$RAD_RAW|file://$ROOT/assets/img/real/stage16b/radifarm.jpg|g" "$tmp"
+            png="\${svg%.svg}.png"
+            jpg="\${svg%.svg}.jpg"
+            rsvg-convert -w 1080 -h 1350 "$tmp" -o "$png"
+            convert "$png" -background white -alpha remove -alpha off -quality 92 "$jpg"
+            rm -f "$png" "$tmp"
+            identify "$jpg"
+          done < <(find social-media-staging/instagram -type f -name '*.svg' -print0 | sort -z)
+
+      - name: Commit rendered JPEGs
+        run: |
+          git config user.name "BB610 Social Renderer"
+          git config user.email "actions@users.noreply.github.com"
+          git add social-media-staging/instagram/**/*.jpg
+          if git diff --cached --quiet; then
+            echo "No JPEG changes"
+            exit 0
+          fi
+          git commit -m "social: render staged Instagram JPEGs"
+          git push origin HEAD:social-media-staging

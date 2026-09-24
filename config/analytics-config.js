@@ -20,7 +20,7 @@ window.BB610_ANALYTICS_CONFIG = Object.freeze({
   },
   providers: {
     ga4: { enabled: true, measurementId: 'G-QWG1K17HC3' },
-    googleAds: { enabled: true, conversionId: 'AW-73873342320', conversionLabel: null },
+    googleAds: { enabled: true, conversionId: 'AW-18468335580', conversionLabel: 'TnTxCK6GtoEdENzfseZE' },
     metaPixel: { enabled: true, pixelId: '1103668908981910' },
     metaCapi: { enabled: true, endpoint: 'https://api.market.bb610.com.ua/api/v1/analytics/meta-capi' }
   }

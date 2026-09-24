@@ -128,34 +128,80 @@ window.BB610_DATA_SOURCE={
     return [...new Set((rows||[]).map(x=>String(x?.path||'').trim()).filter(Boolean))];
   },
 
+  _plantlogicMediaText(row){
+    return [row?.alt,row?.path,row?.kind,row?.source_kind,row?.binding_kind]
+      .map(x=>String(x||'').toLowerCase()).join(' ');
+  },
+
+  _plantlogicTechnicalMedia(row){
+    const value=this._plantlogicMediaText(row);
+    return /(tech[\s_-]*sheet|technical|drawing|diagram|schematic|spec(?:ification|[\s_-]*sheet)|datasheet|brochure|catalog|infographic|capacit(?:y|ies)|graphic|креслен|схем|техніч|інфограф|розмір)/i.test(value);
+  },
+
+  _plantlogicMediaRank(row){
+    const value=this._plantlogicMediaText(row);
+    if(/(?:^|[\s_.-])(hero|front|frontal)(?:[\s_.-]|$)/i.test(value))return 0;
+    if(/isometr|angle|three[\s_-]*quarter|3\/4/i.test(value))return 10;
+    if(/(?:^|[\s_.-])(side|lateral)(?:[\s_.-]|$)/i.test(value))return 25;
+    if(/top[\s_-]*(?:view|down)?|cenital/i.test(value))return 30;
+    if(/(?:^|[\s_.-])(base|bottom)(?:[\s_.-]|$)/i.test(value))return 40;
+    if(/detail|close[\s_-]*up/i.test(value))return 50;
+    return 20;
+  },
+
+  _orderedPlantlogicMedia(rows){
+    const seen=new Set();
+    const clean=(rows||[]).map((row,index)=>({row,index})).filter(({row})=>{
+      const path=String(row?.path||'').trim();
+      if(!path||seen.has(path)||this._plantlogicTechnicalMedia(row))return false;
+      seen.add(path);return true;
+    });
+    clean.sort((a,b)=>{
+      const rank=this._plantlogicMediaRank(a.row)-this._plantlogicMediaRank(b.row);
+      if(rank)return rank;
+      const pa=(a.row?.is_primary===1||a.row?.is_primary===true)?0:1;
+      const pb=(b.row?.is_primary===1||b.row?.is_primary===true)?0:1;
+      if(pa!==pb)return pa-pb;
+      const oa=Number.isFinite(Number(a.row?.sort_order))?Number(a.row.sort_order):999;
+      const ob=Number.isFinite(Number(b.row?.sort_order))?Number(b.row.sort_order):999;
+      return oa-ob||a.index-b.index;
+    });
+    return clean.map(x=>x.row);
+  },
+
   _plantlogicSections(raw){
     if(raw?.category_id!=='containers')return [];
     const chars=Array.isArray(raw.characteristics)?raw.characteristics:[];
-    const haystack=[
-      raw.name,raw.short_description,raw.description,raw.application,
-      ...chars.flatMap(x=>[x?.label,x?.value])
-    ].map(x=>String(x||'').toLowerCase()).join(' ');
+    const allowed=new Set(['blueberry','rubus','strawberry','vegetable','garden','universal','bag_bases','accessories']);
+    const hidden=chars.find(row=>String(row?.label||'').trim()==='__plantlogic_sections');
+    const explicit=String(hidden?.value||'').split('|').map(x=>x.trim()).filter(x=>allowed.has(x));
+    if(explicit.length)return [...new Set(explicit)];
+    const haystack=[raw.name,raw.short_description,raw.description,raw.application,...chars.flatMap(x=>[x?.label,x?.value])]
+      .map(x=>String(x||'').toLowerCase()).join(' ');
     const out=[];
     if(/лохин|blueberr|arand/.test(haystack))out.push('blueberry');
     if(/малин|ожин|rubus|raspberr|blackberr/.test(haystack))out.push('rubus');
     if(/полуниц|суниц|strawberr/.test(haystack))out.push('strawberry');
     if(/овоч|vegetable|tomato|pepper|cucumber/.test(haystack))out.push('vegetable');
+    if(/сад|garden|nursery/.test(haystack))out.push('garden');
+    if(/bag[\s_-]*bases?|grow[\s_-]*bags?|основ[аи]\s+для\s+(?:мішк|субстрат)/.test(haystack))out.push('bag_bases');
+    if(/accessor|аксесуар|pot[\s_-]*anchor|ground[\s_-]*cover|drip[\s_-]*stake|лізиметр|lysimeter|plastic[\s_-]*gutter/.test(haystack))out.push('accessories');
     if(/універс|universal/.test(haystack))out.push('universal');
-    return out.length?out:['universal'];
+    return out.length?[...new Set(out)]:['universal'];
   },
 
   _v5Sku(raw,productRaw){
-    const exactMedia=this._mediaPaths(raw.media);
-    let media=exactMedia;
-    if(productRaw?.category_id==='containers'){
+    const sourceRows=Array.isArray(raw.media)?raw.media:[];
+    const isPlantlogicContainer=productRaw?.category_id==='containers'&&String(productRaw?.brand||'').trim().toLowerCase()==='plantlogic';
+    let mediaRows=sourceRows;
+    if(isPlantlogicContainer){
       const article=String(raw?.attributes?.manufacturer_product_no||'').trim();
-      if(article){
-        const sameModel=(productRaw.media||[]).filter(x=>String(x?.alt||'').includes(article));
-        media=[...new Set([...exactMedia,...this._mediaPaths(sameModel)])];
-      }
+      const sameModel=article?(productRaw.media||[]).filter(x=>String(x?.alt||'').includes(article)):[];
+      mediaRows=this._orderedPlantlogicMedia([...sourceRows,...sameModel]);
     }
-    const primary=(raw.media||[]).find(x=>x?.is_primary)?.path||media[0]||'';
-    const identityEnabled=raw.enabled===1||raw.enabled===true;
+    const media=this._mediaPaths(mediaRows);
+    const primary=media[0]||'';
+    const identityEnabled=raw.enabled===1||raw.enabled===true;    const identityEnabled=raw.enabled===1||raw.enabled===true;
     const commerceEnabled=raw.commerce_enabled===1||raw.commerce_enabled===true;
     const availability=raw.availability||'unknown';
     const sale=raw.sale_price;
@@ -201,8 +247,10 @@ window.BB610_DATA_SOURCE={
   },
 
   _v5Product(raw,skus){
-    const media=this._mediaPaths(raw.media);
-    const source=(raw.sources||[])[0]||null;
+    const isPlantlogicContainer=raw?.category_id==='containers'&&String(raw?.brand||'').trim().toLowerCase()==='plantlogic';
+    const mediaRows=isPlantlogicContainer?this._orderedPlantlogicMedia(raw.media||[]):(raw.media||[]);
+    const media=this._mediaPaths(mediaRows);
+    const source=(raw.sources||[])[0]||null;    const source=(raw.sources||[])[0]||null;
     const sourceRows=(raw.sources||[]).filter(x=>x?.source_url);
     const productSkus=skus.filter(s=>s.product_id===raw.product_id&&s.enabled!==false);
     const defaultSku=productSkus.find(s=>s.price!==null&&s.price!==undefined&&s.commercial_status==='active')||

@@ -136,6 +136,12 @@ document.addEventListener('DOMContentLoaded',async()=>{
     {
       id:'universal',label:'Універсальні',subtitle:'Універсальне застосування',titleSuffix:'універсальний',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/07/hydroponic-system-cover.png?resize=669%2C502'
+    },
+    {
+      id:'bag_bases',label:'Основи для мішків',subtitle:'Bag Bases',titleSuffix:'',cultureImage:''
+    },
+    {
+      id:'accessories',label:'Аксесуари',subtitle:'Accessories',titleSuffix:'',cultureImage:''
     }
   ];
   const plantlogicSectionsFor=p=>{
@@ -151,7 +157,9 @@ document.addEventListener('DOMContentLoaded',async()=>{
     strawberry:'полуниця полуниці strawberry',
     vegetable:'овочі овочеві vegetable',
     garden:'сад саду розсадник nursery garden',
-    universal:'універсальний універсальні контейнер контейнери universal'
+    universal:'універсальний універсальні контейнер контейнери universal',
+    bag_bases:'основи для мішків субстратні мішки grow bag bag base bag bases',
+    accessories:'аксесуари аксесуар accessories accessory анкер лізиметр жолоб ground cover'
   };
   const plantlogicSectionSearchText=p=>plantlogicSectionsFor(p).map(id=>{
     const section=plantlogicSectionOrder.find(x=>x.id===id);

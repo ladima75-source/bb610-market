@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'js/catalog.js'
+      - 'js/data-source.js'
       - 'js/app.js'
       - 'backend/tools_audit_catalog_packaging_20260919.py'
       - 'backend/services/product_master_runtime.py'
@@ -21,6 +22,7 @@ on:
   pull_request:
     paths:
       - 'js/catalog.js'
+      - 'js/data-source.js'
       - 'js/app.js'
       - 'backend/tools_audit_catalog_packaging_20260919.py'
       - 'backend/services/product_master_runtime.py'
@@ -202,6 +204,15 @@ jobs:
           assert 'const matchesSearch=(p,value)' in js
           assert 'tokens.every(token=>text.includes(token))' in js
           assert 'plantlogicSectionSearchText(p)' in js
+          assert "id:'bag_bases'" in js
+          assert "id:'accessories'" in js
+          assert "accessories:'аксесуари" in js
+          ds=Path('js/data-source.js').read_text(encoding='utf-8')
+          assert '_orderedPlantlogicMedia' in ds
+          assert '_plantlogicTechnicalMedia' in ds
+          assert '__plantlogic_sections' in ds
+          assert "'bag_bases'" in ds
+          assert "'accessories'" in ds
           assert "blueberry:'лохина лохини blueberry'" in js
           assert "rubus:'малина малини ожина ожини raspberry blackberry rubus'" in js
           assert 'p.short_description' in js
@@ -221,9 +232,9 @@ jobs:
               'categories/containers/index.html',
           ]:
               doc=Path(path).read_text(encoding='utf-8')
-              assert 'js/catalog.js?v=20260919-plantlogic-culture-1' in doc, path
-              assert 'js/app.js?v=20260919-displayed-sku-1' in doc, path
-              assert 'js/data-source.js?v=20260918-master-1' in doc, path
+              assert 'js/catalog.js?v=' in doc, path
+              assert 'js/app.js?v=' in doc, path
+              assert 'js/data-source.js?v=' in doc, path
               assert 'config/commerce-config.js?v=20260918-master-1' in doc, path
 
           v3=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')

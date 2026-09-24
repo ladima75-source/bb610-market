@@ -250,7 +250,7 @@ window.BB610_DATA_SOURCE={
     const isPlantlogicContainer=raw?.category_id==='containers'&&String(raw?.brand||'').trim().toLowerCase()==='plantlogic';
     const mediaRows=isPlantlogicContainer?this._orderedPlantlogicMedia(raw.media||[]):(raw.media||[]);
     const media=this._mediaPaths(mediaRows);
-    const source=(raw.sources||[])[0]||null;    const source=(raw.sources||[])[0]||null;
+    const source=(raw.sources||[])[0]||null;
     const sourceRows=(raw.sources||[]).filter(x=>x?.source_url);
     const productSkus=skus.filter(s=>s.product_id===raw.product_id&&s.enabled!==false);
     const defaultSku=productSkus.find(s=>s.price!==null&&s.price!==undefined&&s.commercial_status==='active')||

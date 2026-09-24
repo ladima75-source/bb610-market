@@ -107,9 +107,15 @@ jobs:
             {path:'/media/1309008-front.jpg',alt:'front hero',is_primary:false,sort_order:9},
             {path:'/media/1309008-tech-sheet.jpg',alt:'technical drawing',is_primary:false,sort_order:1},
             {path:'/media/1309008-side.jpg',alt:'side view',is_primary:false,sort_order:2},
+            {path:'/media/4.7L-SQ-13050040-FRENTE.jpg',alt:'Plantlogic 13050040 FRENTE',is_primary:false,sort_order:20},
+            {path:'/media/7-Liter-Drainage-Collection-pot_Item_1307107.jpg',alt:'Plantlogic 1307107 clean item',is_primary:false,sort_order:30},
+            {path:'/media/5LDC_D.jpg',alt:'Plantlogic 1306051 5LDC_D.jpg',is_primary:true,sort_order:0},
           ]);
-          if(ordered.length!==3)throw new Error('Plantlogic technical media filter');
-          if(!ordered[0].path.includes('front'))throw new Error('Plantlogic main-view ordering');
-          if(ordered.some(x=>x.path.includes('tech-sheet')))throw new Error('Plantlogic technical media leaked into gallery');
+          if(ordered.length!==7)throw new Error('Plantlogic media preservation');
+          if(!ordered[0].path.includes('front'))throw new Error('Plantlogic hero/front ordering');
+          if(ordered.findIndex(x=>x.path.includes('FRENTE'))>2)throw new Error('Plantlogic FRENTE ordering');
+          if(ordered.findIndex(x=>x.path.includes('Item_1307107'))>2)throw new Error('Plantlogic clean item ordering');
+          if(ordered.findIndex(x=>x.path.includes('5LDC_D'))>=ordered.findIndex(x=>x.path.includes('tech-sheet')))throw new Error('Plantlogic feature/technical tail ordering');
+          if(!ordered.at(-1).path.includes('tech-sheet'))throw new Error('Plantlogic technical media must be last');
           console.log('BB610 V5 STOREFRONT ADAPTER: PASS');
           JS

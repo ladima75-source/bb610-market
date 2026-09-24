@@ -12,6 +12,7 @@
     const data=clean({event,event_id:eventId,event_time:new Date().toISOString(),...baseContext(),...payload});
     if(data.ecommerce){dl().push({ecommerce:null});}
     dl().push(data);
+    trackGa4Event(event,data);
     trackMetaEvent(event,data,eventId);
     sendMetaCapi(event,data,eventId);
     if(cfg().debug&&console)console.info('[BB610 analytics]',data);
@@ -31,6 +32,30 @@
     s.src='https://www.googletagmanager.com/gtm.js?id='+encodeURIComponent(t.containerId)+(name==='dataLayer'?'':'&l='+encodeURIComponent(name));
     document.head.appendChild(s);
     return true;
+  }
+  function configureGa4(){
+    const p=cfg().providers?.ga4;
+    const id=String(p?.measurementId||'').trim();
+    if(!p?.enabled||!/^G-[A-Z0-9]+$/i.test(id))return false;
+    window.gtag=window.gtag||function(){dl().push(arguments)};
+    window.gtag('config',id,{send_page_view:false});
+    return true;
+  }
+  function trackGa4Event(event,data){
+    const p=cfg().providers?.ga4;
+    const id=String(p?.measurementId||'').trim();
+    if(!p?.enabled||!/^G-[A-Z0-9]+$/i.test(id)||typeof window.gtag!=='function')return false;
+    const ecommerceEvents=new Set(['view_item_list','select_item','view_item','add_to_cart','view_cart','begin_checkout','purchase']);
+    if(ecommerceEvents.has(event)){
+      const ecommerce=data?.ecommerce||{};
+      window.gtag('event',event,{...ecommerce,send_to:id});
+      return true;
+    }
+    if(event==='search'&&data?.search_term){
+      window.gtag('event','search',{search_term:String(data.search_term),send_to:id});
+      return true;
+    }
+    return false;
   }
   function loadMetaPixel(){
     const p=cfg().providers?.metaPixel;
@@ -123,8 +148,9 @@
     dl();
     consentDefault();
     loadGTM();
+    configureGa4();
     loadMetaPixel();
-    push('bb610_analytics_ready',{analytics_version:'stage6-v5'});
+    push('bb610_analytics_ready',{analytics_version:'stage6-v6-ga4-ecommerce'});
   }
   window.BB610Analytics=Object.freeze({push,updateConsent,sessionId,pageType,config:cfg,init});
   init();

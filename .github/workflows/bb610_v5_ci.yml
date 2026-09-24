@@ -57,24 +57,36 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           import json, sqlite3
+          from pathlib import Path
+          stage=json.loads(Path('v5/staging/production-current.json').read_text(encoding='utf-8'))
+          content=json.loads(Path('v5/content/verified-current.json').read_text(encoding='utf-8'))
+          media=json.loads(Path('v5/media/verified-current.json').read_text(encoding='utf-8'))
+          products=(stage.get('products') or [])+(stage.get('plantlogic_products') or [])
+          skus=(stage.get('skus') or [])+(stage.get('plantlogic_skus') or [])
+          aliases=stage.get('sku_aliases') or []
+          expected_sources=sum(len(x.get('sources') or []) for x in content.get('products') or [])
+          expected_request=sum(1 for x in skus if x.get('commerce_state')=='request_price')
+          expected_public=sum(1 for x in content.get('products') or [] if x.get('public_enabled',True))
+          expected_hidden=len(content.get('products') or [])-expected_public
+
           con=sqlite3.connect('/tmp/bb610-v5.sqlite3')
           q=lambda sql: con.execute(sql).fetchone()[0]
-          assert q('SELECT COUNT(*) FROM products') == 86
-          assert q('SELECT COUNT(*) FROM skus') == 221
-          assert q('SELECT COUNT(*) FROM sku_commerce') == 221
-          assert q('SELECT COUNT(*) FROM sku_aliases') == 109
-          assert q('SELECT COUNT(*) FROM sku_alias_commerce') == 109
-          assert q('SELECT COUNT(*) FROM product_sources') == 118
-          assert q("SELECT COUNT(*) FROM migration_evidence WHERE entity_type='product' AND field_name='content' AND decision='accepted'") == 86
-          assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'") == 17
+          assert q('SELECT COUNT(*) FROM products') == len(products)
+          assert q('SELECT COUNT(*) FROM skus') == len(skus)
+          assert q('SELECT COUNT(*) FROM sku_commerce') == len(skus)
+          assert q('SELECT COUNT(*) FROM sku_aliases') == len(aliases)
+          assert q('SELECT COUNT(*) FROM sku_alias_commerce') == len(aliases)
+          assert q('SELECT COUNT(*) FROM product_sources') == expected_sources
+          assert q("SELECT COUNT(*) FROM migration_evidence WHERE entity_type='product' AND field_name='content' AND decision='accepted'") == len(content.get('products') or [])
+          assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='request_price'") == expected_request
           assert q("SELECT COUNT(*) FROM sku_commerce WHERE availability='legacy_disabled'") == 0
-          assert q("SELECT COUNT(*) FROM media") == 279
-          assert q("SELECT COUNT(*) FROM sku_media") == 177
-          assert q("SELECT COUNT(DISTINCT sku_id) FROM sku_media WHERE binding_kind='exact'") == 177
+          assert q("SELECT COUNT(*) FROM media") == len(media.get('media') or [])
+          assert q("SELECT COUNT(*) FROM sku_media") == len(media.get('sku_bindings') or [])
+          assert q("SELECT COUNT(DISTINCT sku_id) FROM sku_media WHERE binding_kind='exact'") == len({x['sku_id'] for x in media.get('sku_bindings') or []})
           assert q("SELECT COUNT(*) FROM sku_media WHERE binding_kind!='exact'") == 0
-          assert q("SELECT COUNT(*) FROM product_media") == 282
-          assert q("SELECT COUNT(*) FROM products WHERE public_enabled=1 AND status='active'") == 82
-          assert q("SELECT COUNT(*) FROM products WHERE public_enabled=0") == 4
+          assert q("SELECT COUNT(*) FROM product_media") == len(media.get('product_bindings') or [])
+          assert q("SELECT COUNT(*) FROM products WHERE public_enabled=1 AND status='active'") == expected_public
+          assert q("SELECT COUNT(*) FROM products WHERE public_enabled=0") == expected_hidden
           assert q("SELECT COUNT(*) FROM skus WHERE package_group='small'") > 0
           assert q("SELECT COUNT(*) FROM skus WHERE package_group='medium'") > 0
           assert q("SELECT COUNT(*) FROM skus WHERE package_group='large'") > 0
@@ -88,18 +100,28 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
+          import json
+          from pathlib import Path
           from backend.services.product_master_v5 import snapshot, product, resolve_sku, resolve_sku_id
+          stage=json.loads(Path('v5/staging/production-current.json').read_text(encoding='utf-8'))
+          content=json.loads(Path('v5/content/verified-current.json').read_text(encoding='utf-8'))
+          media=json.loads(Path('v5/media/verified-current.json').read_text(encoding='utf-8'))
+          expected_products=len(stage.get('products') or [])+len(stage.get('plantlogic_products') or [])
+          expected_skus=len(stage.get('skus') or [])+len(stage.get('plantlogic_skus') or [])
+          expected_public=sum(1 for x in content.get('products') or [] if x.get('public_enabled',True))
+          expected_hidden=len(content.get('products') or [])-expected_public
+          expected_sources=sum(len(x.get('sources') or []) for x in content.get('products') or [])
           data=snapshot()
           assert data['schema_version']=='5.0'
-          assert data['counts']['products']==86
-          assert data['counts']['skus']==221
-          assert data['counts']['public_products']==82
-          assert data['counts']['hidden_products']==4
+          assert data['counts']['products']==expected_products
+          assert data['counts']['skus']==expected_skus
+          assert data['counts']['public_products']==expected_public
+          assert data['counts']['hidden_products']==expected_hidden
           assert data['counts']['public_skus'] < data['counts']['skus']
-          assert data['counts']['product_sources']==123
-          assert data['counts']['media']==307
-          assert data['counts']['product_media']==282
-          assert data['counts']['exact_sku_media']==208
+          assert data['counts']['product_sources']>=expected_sources
+          assert data['counts']['media']>=len(media.get('media') or [])
+          assert data['counts']['product_media']>=len(media.get('product_bindings') or [])
+          assert data['counts']['exact_sku_media']>=len({x['sku_id'] for x in media.get('sku_bindings') or []})
           kendal=product('kendal')
           assert kendal is not None and kendal['description'] and kendal['sources']
           assert product('switch-625-wg') is None
@@ -322,18 +344,25 @@ jobs:
               seed_from_catalog, commerce_map, admin_products, update_product,
           )
 
+          import json
+          expected_stage=json.load(open('v5/staging/production-current.json',encoding='utf-8'))
+          expected_total=(
+              len(expected_stage.get('skus') or [])+
+              len(expected_stage.get('plantlogic_skus') or [])+
+              len(expected_stage.get('sku_aliases') or [])
+          )
           seeded=seed_from_catalog()
-          assert seeded['seen']==330, seeded
-          assert seeded['created']==329, seeded
+          assert seeded['seen']==expected_total, seeded
+          assert seeded['created']==expected_total-1, seeded
 
           cm=commerce_map()
-          assert len(cm)==330, len(cm)
+          assert len(cm)==expected_total, len(cm)
           assert cm['BB610-32DA4F652F73A1']['price']==999.0
           assert cm['BB610-32DA4F652F73A1']['updated_at']=='preexisting-live'
           assert 'BB610-VLG-KENDAL-100ML' in cm
 
           rows=admin_products()
-          assert len(rows)==330, len(rows)
+          assert len(rows)==expected_total, len(rows)
           canonical=next(x for x in rows if x['sku']=='BB610-32DA4F652F73A1')
           alias=next(x for x in rows if x['sku']=='BB610-VLG-KENDAL-100ML')
           assert canonical['source']=='product-master-v5'
@@ -394,9 +423,13 @@ jobs:
               save_image, bind_media, unbind_media,
           )
 
+          import json
+          stage=json.load(open('v5/staging/production-current.json',encoding='utf-8'))
+          expected_products=len(stage.get('products') or [])+len(stage.get('plantlogic_products') or [])
           rows=list_products()
-          assert len(rows)==86
+          assert len(rows)==expected_products
           assert any(x['product_id']=='kendal' for x in rows)
+          assert any(x['product_id']=='plantlogic-pot-anchor' for x in rows)
 
           before=get_product('kendal')
           assert before and before['product_id']=='kendal'

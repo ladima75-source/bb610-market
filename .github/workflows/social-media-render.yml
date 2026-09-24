@@ -36,8 +36,8 @@ jobs:
             cp "$svg" "$tmp"
             sed -i "s|$LOGO_RAW|file://$ROOT/assets/bb610-market-logo.png|g" "$tmp"
             sed -i "s|$RAD_RAW|file://$ROOT/assets/img/real/stage16b/radifarm.jpg|g" "$tmp"
-            png="\${svg%.svg}.png"
-            jpg="\${svg%.svg}.jpg"
+            png="${svg%.svg}.png"
+            jpg="${svg%.svg}.jpg"
             rsvg-convert -w 1080 -h 1350 "$tmp" -o "$png"
             convert "$png" -background white -alpha remove -alpha off -quality 92 "$jpg"
             rm -f "$png" "$tmp"
@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "BB610 Social Renderer"
           git config user.email "actions@users.noreply.github.com"
-          git add social-media-staging/instagram/**/*.jpg
+          find social-media-staging/instagram -type f -name '*.jpg' -print0 | xargs -0 git add --
           if git diff --cached --quiet; then
             echo "No JPEG changes"
             exit 0

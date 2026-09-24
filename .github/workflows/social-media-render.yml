@@ -18,30 +18,95 @@ jobs:
           ref: social-media-staging
           fetch-depth: 0
 
-      - name: Install SVG renderer
+      - name: Install image tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y librsvg2-bin imagemagick
+          sudo apt-get install -y imagemagick
+          google-chrome --version || true
 
-      - name: Render SVG to JPEG
+      - name: Build HTML slides
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, html, os
+          from pathlib import Path
+          root=Path(os.environ["GITHUB_WORKSPACE"])
+          data=json.loads((root/"social-media-staging/content.json").read_text())
+          out=Path("/tmp/social-render")
+          out.mkdir(parents=True, exist_ok=True)
+          logo=(root/"assets/bb610-market-logo.png").resolve().as_uri()
+          CSS=r"""
+          *{box-sizing:border-box}html,body{margin:0;padding:0;width:1080px;height:1350px;overflow:hidden;background:#f4f3ee;font-family:Arial,Helvetica,sans-serif;color:#17191a}
+          .page{width:1080px;height:1350px;position:relative;overflow:hidden;background:#f4f3ee;padding:82px 84px 74px;display:flex;flex-direction:column}
+          .page.dark{background:#17191a;color:#f2f1ed}.page.white{background:#fff;color:#17191a}
+          .ring{position:absolute;width:730px;height:730px;border:95px solid #f2b52d;opacity:.13;border-radius:50%;right:-440px;bottom:80px;z-index:0}.dark .ring{border-color:#ffd263;opacity:.17}
+          .meta{display:flex;justify-content:space-between;align-items:center;gap:24px;position:relative;z-index:2}
+          .brandbox{width:214px;height:64px;background:#17191a;border-radius:9px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 0 0 1px rgba(242,181,45,.18)}
+          .brandbox img{width:174px;max-height:54px;object-fit:contain}.pagenum{font-size:23px;font-weight:700;letter-spacing:.05em;opacity:.62}
+          .content{position:relative;z-index:2;display:flex;flex-direction:column;flex:1;justify-content:center;padding-bottom:90px}
+          .topic{text-transform:uppercase;letter-spacing:.17em;font-size:23px;font-weight:700;opacity:.66;margin-bottom:22px}
+          .accent{height:8px;width:114px;background:#f2b52d;border-radius:9px;margin-bottom:28px}
+          .headline{font-size:82px;line-height:1.02;letter-spacing:-4px;font-weight:850;max-width:900px;margin:0 0 32px;overflow-wrap:normal}
+          .headline.long{font-size:72px;letter-spacing:-3.3px}.headline.verylong{font-size:65px;letter-spacing:-2.6px}
+          .sub{font-size:42px;line-height:1.23;letter-spacing:-.8px;max-width:870px;opacity:.87;margin:0;font-weight:400}
+          .hero .headline{font-size:92px;max-width:920px}.hero .headline.long{font-size:77px}.hero .headline.verylong{font-size:67px}.hero .sub{font-size:44px}
+          .footer{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:auto;position:relative;z-index:2;border-top:2px solid rgba(25,37,34,.17);padding-top:29px}.dark .footer{border-color:rgba(250,255,248,.25)}
+          .footer .domain{font-size:25px;font-weight:700;letter-spacing:.03em}.footer .series{font-size:19px;opacity:.66}
+          .cta-chip{padding:21px 30px;border-radius:50px;background:#f2b52d;color:#17191a;display:inline-flex;align-self:flex-start;font-size:29px;font-weight:750;margin-top:48px}
+          .bullets{display:flex;flex-direction:column;gap:0;margin-top:20px;width:100%;max-width:870px}.bullet{border-top:1px solid #d3c8b3;padding:22px 0;display:flex;align-items:center;gap:25px;font-size:34px;line-height:1.16;font-weight:650}.bullet .dot{width:14px;height:14px;flex:0 0 14px;border-radius:50%;background:#f2b52d}
+          .has-product .content{padding-right:390px}.has-product .headline{font-size:69px;letter-spacing:-3.2px;max-width:560px}.has-product .sub{font-size:34px;max-width:555px}.has-product .headline.long{font-size:62px}.has-product .headline.verylong{font-size:56px}
+          .product{position:absolute;z-index:1;right:74px;bottom:154px;width:356px;height:438px;object-fit:contain;filter:drop-shadow(0 22px 25px rgba(0,0,0,.16));border-radius:16px}.dark .product{filter:drop-shadow(0 22px 28px rgba(0,0,0,.42))}
+          .product-note{position:absolute;right:83px;bottom:98px;z-index:2;font-size:15px;letter-spacing:.06em;text-transform:uppercase;opacity:.62;max-width:330px;text-align:right}
+          """
+          for pid,slides in data.items():
+              total=len(slides)
+              d=out/f"lp-ig-{pid}"
+              d.mkdir(parents=True,exist_ok=True)
+              for idx,s in enumerate(slides,1):
+                  classes=["page"]
+                  if s.get("dark"): classes.append("dark")
+                  if s.get("white"): classes.append("white")
+                  if idx==1: classes.append("hero")
+                  if s.get("product"): classes.append("has-product")
+                  title=s["title"]
+                  hcls="headline"
+                  if len(title)>48:hcls+=" verylong"
+                  elif len(title)>34:hcls+=" long"
+                  product=""
+                  if s.get("product"):
+                      product_uri=(root/s["product"]).resolve().as_uri()
+                      product=f'<img class="product" src="{product_uri}"><div class="product-note">Фото товару з поточного каталогу BB610</div>'
+                  if s.get("list"):
+                      rows="".join(f'<div class="bullet"><span class="dot"></span><span>{html.escape(x)}</span></div>' for x in s["list"])
+                      body=f'<div class="bullets">{rows}</div>'
+                  else:
+                      body=f'<p class="sub">{html.escape(s.get("sub",""))}</p>'
+                  chip=f'<div class="cta-chip">{html.escape(s["cta"])}</div>' if s.get("cta") else ""
+                  doc=f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
+                  <section class="{' '.join(classes)}"><div class="ring"></div>
+                  <div class="meta"><div class="brandbox"><img src="{logo}"></div><div class="pagenum">{idx:02d} / {total:02d}</div></div>
+                  <div class="content"><div class="topic">{html.escape(s["topic"])}</div><div class="accent"></div><h1 class="{hcls}">{html.escape(title)}</h1>{body}{chip}</div>
+                  {product}<div class="footer"><div class="domain">market.bb610.com.ua</div><div class="series">LAUNCH PACK · {pid}</div></div></section>
+                  </body></html>"""
+                  (d/f"{idx:02d}.html").write_text(doc)
+          PY
+
+      - name: Render browser screenshots to JPEG
         shell: bash
         run: |
           set -euo pipefail
-          ROOT="$GITHUB_WORKSPACE"
-          LOGO_RAW='https://raw.githubusercontent.com/ladima75-source/bb610-market/main/assets/bb610-market-logo.png'
-          RAD_RAW='https://raw.githubusercontent.com/ladima75-source/bb610-market/main/assets/img/real/stage16b/radifarm.jpg'
-          while IFS= read -r -d '' svg; do
-            tmp="$(mktemp --suffix=.svg)"
-            cp "$svg" "$tmp"
-            sed -i "s|$LOGO_RAW|file://$ROOT/assets/bb610-market-logo.png|g" "$tmp"
-            sed -i "s|$RAD_RAW|file://$ROOT/assets/img/real/stage16b/radifarm.jpg|g" "$tmp"
-            png="${svg%.svg}.png"
-            jpg="${svg%.svg}.jpg"
-            rsvg-convert -w 1080 -h 1350 "$tmp" -o "$png"
-            convert "$png" -background white -alpha remove -alpha off -quality 92 "$jpg"
-            rm -f "$png" "$tmp"
+          BROWSER="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"
+          if [ -z "$BROWSER" ]; then echo "Chrome/Chromium not found"; exit 1; fi
+          while IFS= read -r -d '' html; do
+            rel="${html#/tmp/social-render/}"
+            png="social-media-staging/instagram/${rel%.html}.png"
+            jpg="social-media-staging/instagram/${rel%.html}.jpg"
+            mkdir -p "$(dirname "$jpg")"
+            "$BROWSER" --headless=new --no-sandbox --disable-gpu --hide-scrollbars --allow-file-access-from-files --force-device-scale-factor=1 --window-size=1080,1350 --screenshot="$png" "file://$html" >/dev/null 2>&1
+            convert "$png" -quality 92 "$jpg"
+            rm -f "$png"
             identify "$jpg"
-          done < <(find social-media-staging/instagram -type f -name '*.svg' -print0 | sort -z)
+          done < <(find /tmp/social-render -type f -name '*.html' -print0 | sort -z)
 
       - name: Commit rendered JPEGs
         run: |
@@ -52,5 +117,5 @@ jobs:
             echo "No JPEG changes"
             exit 0
           fi
-          git commit -m "social: render staged Instagram JPEGs"
+          git commit -m "social: render browser-perfect Instagram JPEGs"
           git push origin HEAD:social-media-staging

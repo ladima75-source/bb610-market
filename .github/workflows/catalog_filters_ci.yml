@@ -246,7 +246,7 @@ jobs:
           assert 'function cardV2(p,skuOverride=null)' in app
           assert 's=skuOverride||displaySku(p.id)' in app
           assert 'data-display-sku=' in app
-          assert 'const href=s?.url||productUrl(p)' in app
+          assert 'const href=productUrl(p,s)' in app
           assert "function trackSelect(productId,listId='catalog',listName='Каталог',skuId=null)" in app
           assert "card?.dataset.displaySku||null" in app
 

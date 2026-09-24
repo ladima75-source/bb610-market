@@ -81,7 +81,7 @@ def resolve_source_file(repo_root: Path, snapshot_root: Path, public_path: str) 
 
     if raw_full.startswith("https://"):
         parsed = urllib.parse.urlparse(raw_full)
-        if parsed.hostname not in {"getplantlogic.com", "www.getplantlogic.com"}:
+        if parsed.hostname not in {"getplantlogic.com", "www.getplantlogic.com", "i0.wp.com"}:
             return None
         remote_dir = snapshot_root / "_remote_media"
         remote_dir.mkdir(parents=True, exist_ok=True)
@@ -91,7 +91,11 @@ def resolve_source_file(repo_root: Path, snapshot_root: Path, public_path: str) 
         if not target.is_file():
             req = urllib.request.Request(
                 raw_full,
-                headers={"User-Agent": "BB610-V5-Media-Migration/1.0"},
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/153 Safari/537.36",
+                    "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+                    "Referer": "https://getplantlogic.com/",
+                },
             )
             try:
                 with urllib.request.urlopen(req, timeout=30) as response, target.open("wb") as out:

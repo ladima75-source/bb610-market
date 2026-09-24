@@ -6,7 +6,7 @@ import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 
-MIGRATION_ID = "20260922_plantlogic_application_sections_v5"
+MIGRATION_ID = "20260924_plantlogic_accessories_bagbases_v5"
 ROOT = Path(__file__).resolve().parents[2]
 DB_PATH = ROOT / "backend/runtime/bb610-v5.sqlite3"
 STAGE_PATH = ROOT / "v5/staging/production-current.json"

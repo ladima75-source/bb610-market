@@ -13,6 +13,7 @@
     if(data.ecommerce){dl().push({ecommerce:null});}
     dl().push(data);
     trackGa4Event(event,data);
+    trackGoogleAdsEvent(event,data);
     trackMetaEvent(event,data,eventId);
     sendMetaCapi(event,data,eventId);
     if(cfg().debug&&console)console.info('[BB610 analytics]',data);
@@ -39,6 +40,31 @@
     if(!p?.enabled||!/^G-[A-Z0-9]+$/i.test(id))return false;
     window.gtag=window.gtag||function(){dl().push(arguments)};
     window.gtag('config',id,{send_page_view:false});
+    return true;
+  }
+  function configureGoogleAds(){
+    const p=cfg().providers?.googleAds;
+    const id=String(p?.conversionId||'').trim();
+    if(!p?.enabled||!/^AW-[0-9]+$/i.test(id))return false;
+    window.gtag=window.gtag||function(){dl().push(arguments)};
+    window.gtag('config',id);
+    return true;
+  }
+  function trackGoogleAdsEvent(event,data){
+    if(event!=='purchase')return false;
+    const p=cfg().providers?.googleAds;
+    const id=String(p?.conversionId||'').trim();
+    const label=String(p?.conversionLabel||'').trim();
+    if(!p?.enabled||!/^AW-[0-9]+$/i.test(id)||!label||typeof window.gtag!=='function')return false;
+    const ecommerce=data?.ecommerce||{};
+    const value=Number(ecommerce.value);
+    const params={
+      send_to:id+'/'+label,
+      currency:String(ecommerce.currency||cfg().currency||'UAH').slice(0,3).toUpperCase(),
+      transaction_id:String(ecommerce.transaction_id||'').trim()
+    };
+    if(Number.isFinite(value)&&value>=0)params.value=value;
+    window.gtag('event','conversion',params);
     return true;
   }
   function trackGa4Event(event,data){
@@ -149,6 +175,7 @@
     consentDefault();
     loadGTM();
     configureGa4();
+    configureGoogleAds();
     loadMetaPixel();
     push('bb610_analytics_ready',{analytics_version:'stage6-v6-ga4-ecommerce'});
   }

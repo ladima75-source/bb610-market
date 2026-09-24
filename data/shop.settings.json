@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "updated_at": null,
+  "updated_at": 1790267776.1065173,
   "store": {
     "name": "BB610 Market",
     "currency": "UAH",
-    "min_order_amount": 0,
+    "min_order_amount": 500.0,
     "phone": "",
     "email": "",
     "telegram": "",
@@ -19,8 +19,8 @@
   },
   "payment": {
     "cod": true,
-    "bank_transfer": false,
-    "online_payment": false,
+    "bank_transfer": true,
+    "online_payment": true,
     "cod_customer_pays_fee": true
   },
   "legal": {

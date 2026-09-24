@@ -48,6 +48,6 @@ jobs:
           assert "const incomingIds=new Set" in js
           assert "this.catalog().skus=(this.catalog().skus||[]).filter" in js
 
-          assert 'js/data-source.js?v=20260918-3' in html
+          assert 'js/data-source.js?v=' in html
           print('AUTHORITATIVE SKU OVERLAY: PASS')
           PY

@@ -323,3 +323,10 @@ body{color:var(--text)}
 .delivery-choice-state:empty{display:none}
 
 .ttn-actions,.payment-admin-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.ttn-actions #ttn-check-result{flex-basis:100%}.danger-action{background:#7f231f!important;color:#fff!important;border-color:#a83b34!important}.payment-instructions{margin:20px 0;padding:16px;border:1px solid rgba(255,193,7,.35);border-radius:12px;background:rgba(255,193,7,.06)}.payment-instructions p{margin:7px 0}.payment-instructions code{word-break:break-all}
+
+
+/* Catalog photo-stage normalization: match the white background used by supplier product photos. */
+.design-v2.catalog-v2 .product-card-v2 .product-media,
+.design-v2.catalog-v2 .product-card-v2 .product-media img{
+  background:#fefefe!important;
+}

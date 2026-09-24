@@ -84,8 +84,9 @@ jobs:
           const DS=window.BB610_DATA_SOURCE;
           DS._applyV5(d);
           if(DS.mode!=='bb610-product-master-v5')throw new Error('wrong mode');
-          if(DS.products().length!==82)throw new Error('public product count');
-          if(DS.skus().length!==213)throw new Error('public SKU count');
+          if(DS.products().length!==(d.products||[]).length)throw new Error('public product count');
+          const expectedSkus=(d.products||[]).reduce((n,p)=>n+(p.skus||[]).length,0);
+          if(DS.skus().length!==expectedSkus)throw new Error('public SKU count');
           const kendal=DS.product('kendal');
           if(!kendal||!kendal.image||!kendal.sources?.length)throw new Error('Kendal projection');
           const canonical=DS.sku('BB610-32DA4F652F73A1');

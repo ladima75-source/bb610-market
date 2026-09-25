@@ -7,6 +7,8 @@ on:
       - '.github/workflows/catalog_import_ci.yml'
       - 'backend/services/product_cards_v3_catalog_import.py'
       - 'backend/services/product_cards_v3_import.py'
+      - 'backend/services/product_commerce.py'
+      - 'backend/services/catalog_cms.py'
       - 'backend/catalog_import_api.py'
       - 'admin/catalog-import.js'
       - 'admin/catalog-import.html'

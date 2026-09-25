@@ -3,17 +3,21 @@
   "summary": {
     "all_skus": 310,
     "current_skus": 301,
-    "exact_current_skus": 229,
-    "current_skus_without_exact": 72,
+    "exact_current_skus": 256,
+    "current_skus_without_exact": 45,
     "products_with_media": 118,
     "products_without_media": 1,
-    "media_assets": 405,
-    "sku_bindings": 229,
-    "product_bindings": 408,
+    "media_assets": 425,
+    "sku_bindings": 256,
+    "product_bindings": 428,
     "organic_planet_source_rows": 187,
     "organic_planet_accepted_exact_rows": 134,
     "organic_planet_rejected_rows": 53,
-    "mapping_failures": 0
+    "mapping_failures": 0,
+    "verified_manifest_rows": 28,
+    "verified_manifest_accepted": 27,
+    "verified_manifest_rejected": 0,
+    "verified_manifest_failures": 1
   },
   "media": [
     {
@@ -85,6 +89,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Brexil Fe — 15 г"
+    },
+    {
+      "media_id": "v5m_0792ef20fbd7b481aa414e8a",
+      "path": "/assets/img/v5/media/0792ef20fbd7b481aa41.png",
+      "sha256": "0792ef20fbd7b481aa414e8aa8974c532853e583f422c1c3c9f83bca5bf0fca9",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostymulyator-antystres-dlya-korenya-10-l-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "kendal-root — 10 л"
     },
     {
       "media_id": "v5m_0832c4ddb57225fe66024d9a",
@@ -535,6 +549,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — 1 кг"
+    },
+    {
+      "media_id": "v5m_1d5e956c2165ce67957c7c5b",
+      "path": "/assets/img/v5/media/1d5e956c2165ce67957c.jpg",
+      "sha256": "1d5e956c2165ce67957c7c5b9f83cf7eb6ec0dc748f42be11d262096d58a27c4",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "agriflex-zn — 1 кг"
     },
     {
       "media_id": "v5m_1d8e7a2f0bddebbf832da7da",
@@ -991,10 +1015,10 @@
       "path": "/assets/img/v5/media/3a2eb24bc91d355718cc.png",
       "sha256": "3a2eb24bc91d355718ccd52b51ab558dc35ea3e4ae8f8b0cd8c5fd2861601c32",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
-      "alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення"
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/plantafol-plantafol-mineralne-dobryvo-250-g-npk-20-20-20-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "plantafol-npk-20-20-20 — 250 г"
     },
     {
       "media_id": "v5m_3c74af970838a89ab383fb3b",
@@ -1507,6 +1531,16 @@
       "alt": "Plantlogic 1309026 — angle"
     },
     {
+      "media_id": "v5m_557e310e14a3b033f89e3e91",
+      "path": "/assets/img/v5/media/557e310e14a3b033f89e.png",
+      "sha256": "557e310e14a3b033f89e3e91cdcfe198617fdc3d26cf5da41acd80c11ba820c7",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-20-20-20-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "master-npk-20-20-20 — 250 г"
+    },
+    {
       "media_id": "v5m_558d37ae8fd94f784b36204c",
       "path": "/assets/img/v5/media/558d37ae8fd94f784b36.png",
       "sha256": "558d37ae8fd94f784b36204c7ef40c3185dc215a360b221494c2c156732e9ad2",
@@ -1521,10 +1555,10 @@
       "path": "/assets/img/v5/media/564414470e81e33f30c3.png",
       "sha256": "564414470e81e33f30c3804742821f4d916294877c5f9edc52ebb44ed4e6448b",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
-      "alt": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення"
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-5-15-45-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "plantafol-npk-5-15-45 — 250 г"
     },
     {
       "media_id": "v5m_5694cfc6cc9861d6ecf193ec",
@@ -1555,6 +1589,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Brexil Multi — Мультиелементне мікродобриво з магнієм для листкового внесення"
+    },
+    {
+      "media_id": "v5m_57f2cdf58fecf332b5f5dbc6",
+      "path": "/assets/img/v5/media/57f2cdf58fecf332b5f5.png",
+      "sha256": "57f2cdf58fecf332b5f5dbc612f389a1a6a51f5604acdfc69c6357167e6c1457",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-10-54-10-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "plantafol-npk-10-54-10 — 250 г"
     },
     {
       "media_id": "v5m_58355b74245fc2937299f8e9",
@@ -1651,10 +1695,10 @@
       "path": "/assets/img/v5/media/5cb8a7fb5e8045cc8f86.png",
       "sha256": "5cb8a7fb5e8045cc8f86d3573387e2fff595f492171ec834608f532c2dcbce3c",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
-      "alt": "Master (Мастер) NPK 15-5-30, водорозчинне мінеральне добриво"
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-15-5-30-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "master-npk-15-5-30 — 250 г"
     },
     {
       "media_id": "v5m_5d438c60ec2817ae8f9833d5",
@@ -2017,6 +2061,16 @@
       "alt": "Plantlogic 1305005 — 5L-DC-1305005-BASE.jpg"
     },
     {
+      "media_id": "v5m_75eb1dbadfd0fba6a78fc6a2",
+      "path": "/assets/img/v5/media/75eb1dbadfd0fba6a78f.jpg",
+      "sha256": "75eb1dbadfd0fba6a78fc6a226622a9a6d4d4135d48773b75352affb04fa6634",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "agriflex-amino-aminokysloty-50 — 5 кг"
+    },
+    {
       "media_id": "v5m_769bb08effa5a7ba827f66e6",
       "path": "/assets/img/v5/media/769bb08effa5a7ba827f.jpg",
       "sha256": "769bb08effa5a7ba827f66e6b8768b8930b9385af055d7de3e36b627e97e52bb",
@@ -2115,6 +2169,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Brexil Mn — 5 кг"
+    },
+    {
+      "media_id": "v5m_7b140abbe3fb9caa4d4c595f",
+      "path": "/assets/img/v5/media/7b140abbe3fb9caa4d4c.png",
+      "sha256": "7b140abbe3fb9caa4d4c595f75eccf282c2338d57ac332965d082644dd20b776",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-15-5-30-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "master-npk-15-5-30 — 1 кг"
     },
     {
       "media_id": "v5m_7c77ff494faaf342d8f0f287",
@@ -2337,6 +2401,16 @@
       "alt": "Plantlogic 1305117 — 17L-DC-1305117-BASE.jpg"
     },
     {
+      "media_id": "v5m_8c292ca45485eb5f71ac289a",
+      "path": "/assets/img/v5/media/8c292ca45485eb5f71ac.png",
+      "sha256": "8c292ca45485eb5f71ac289aab4e7ce754dfdc8f7e52a30d89f560dec61ecdaf",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-5-sgmikroelementy-helaty-5-kg-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "valagro-edta-5sg — 5 кг"
+    },
+    {
       "media_id": "v5m_8c8924e577d4051660a838b0",
       "path": "/assets/img/v5/media/8c8924e577d4051660a8.jpg",
       "sha256": "8c8924e577d4051660a838b0017fe4836a8ee63f978b1b3b6681bd33b8dd9847",
@@ -2415,6 +2489,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "SoluPotasse — сульфат калію — 100 г"
+    },
+    {
+      "media_id": "v5m_91103f556aabd20b842b51c5",
+      "path": "/assets/img/v5/media/91103f556aabd20b842b.jpg",
+      "sha256": "91103f556aabd20b842b51c5e8dcf00b1a80a45e80cc022c8bee9743796eb75e",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-25-ml-val",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "kendal — 25 мл"
     },
     {
       "media_id": "v5m_928bb2d60e9102985b35aebc",
@@ -2701,20 +2785,30 @@
       "path": "/assets/img/v5/media/a09bb0101220304358ef.png",
       "sha256": "a09bb0101220304358ef9e1ef8d7e455d4bd7921963847618b23903fca50d690",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
-      "alt": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво"
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/master-master-mineralne-dobryvo-1-kg-npk-20-20-20-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "master-npk-20-20-20 — 1 кг"
+    },
+    {
+      "media_id": "v5m_a09d5c61605cca0b2e869023",
+      "path": "/assets/img/v5/media/a09d5c61605cca0b2e86.png",
+      "sha256": "a09d5c61605cca0b2e869023490d93ce90baeefc2517bdb6027584652258dbb9",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-30-10-10-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "plantafol-npk-30-10-10 — 250 г"
     },
     {
       "media_id": "v5m_a1b5e0d83d387c2ef2ebcb9e",
       "path": "/assets/img/v5/media/a1b5e0d83d387c2ef2eb.png",
       "sha256": "a1b5e0d83d387c2ef2ebcb9ecfa2b3b679620997893026a2878f2d57c6243de9",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
-      "alt": "Plantafol (Плантафол) NPK 0-25-50, мінеральне добриво для позакореневого живлення"
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-0-25-50-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "plantafol-npk-0-25-50 — 250 г"
     },
     {
       "media_id": "v5m_a1f100c9afa87102900110ac",
@@ -2725,6 +2819,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 13050040 — 4.7L-SQ-13050040-CENITAL.jpg"
+    },
+    {
+      "media_id": "v5m_a2c053efdd356700290eb863",
+      "path": "/assets/img/v5/media/a2c053efdd356700290e.png",
+      "sha256": "a2c053efdd356700290eb8633534c7a8a2e17c8c4f684fadc49be196789043c3",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-fe-13-zhelezo-13-5-kg-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "valagro-edta-fe-13 — 5 кг"
     },
     {
       "media_id": "v5m_a367a78857d42240a412915f",
@@ -2895,6 +2999,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Кеміра для газону NPK 12-11-18 — 1 кг"
+    },
+    {
+      "media_id": "v5m_ab8ab31ce61773ac5fe8f37c",
+      "path": "/assets/img/v5/media/ab8ab31ce61773ac5fe8.jpg",
+      "sha256": "ab8ab31ce61773ac5fe8f37c3a6c2f6d27ac819bf49ec4f854134e7e59313bc6",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-fulvix-rozchynni-fulvovi-kysloty-1-kg-citymax",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "agriflex-fulvix-fulvokysloty-60 — 1 кг"
     },
     {
       "media_id": "v5m_ac34374c119c2daccb4d8034",
@@ -3087,6 +3201,16 @@
       "alt": "SoluPotasse — сульфат калію — 200 г"
     },
     {
+      "media_id": "v5m_bb9f221a9d8f690a18cfa2f4",
+      "path": "/assets/img/v5/media/bb9f221a9d8f690a18cf.png",
+      "sha256": "bb9f221a9d8f690a18cfa2f4f41f5fdf7311dff6d353811d8b014dc28a273954",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-20-20-20-v",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "plantafol-npk-20-20-20 — 1 кг"
+    },
+    {
       "media_id": "v5m_bbfa500fb2e4a097cf2a8d51",
       "path": "/assets/img/v5/media/bbfa500fb2e4a097cf2a.png",
       "sha256": "bbfa500fb2e4a097cf2a8d511c7e1f7364a89b9c035e88677bd19dba3d077050",
@@ -3167,14 +3291,34 @@
       "alt": "MASTER 17-6-18"
     },
     {
+      "media_id": "v5m_c03341a63d3f62b565d06d60",
+      "path": "/assets/img/v5/media/c03341a63d3f62b565d0.png",
+      "sha256": "c03341a63d3f62b565d06d60db31e773d9207b84db103b7247379c61a6dc5fd5",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-10-l-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "megafol — 10 л"
+    },
+    {
+      "media_id": "v5m_c0959bafda3b7beb7b0d37f7",
+      "path": "/assets/img/v5/media/c0959bafda3b7beb7b0d.jpg",
+      "sha256": "c0959bafda3b7beb7b0d37f7949de57beb0aa0350d5f1b9bfe671c31d942a371",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "agriflex-amino-aminokysloty-50 — 1 кг"
+    },
+    {
       "media_id": "v5m_c1019a90a26d77414f6a6ab6",
       "path": "/assets/img/v5/media/c1019a90a26d77414f6a.png",
       "sha256": "c1019a90a26d77414f6a6ab693727e63dc107e5f30be6bcdfcc5e7ceac8b9165",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
-      "alt": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво"
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-13-40-13-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "master-npk-13-40-13 — 1 кг"
     },
     {
       "media_id": "v5m_c17564b826cb6c8d4ec12921",
@@ -3215,6 +3359,16 @@
       "verification_status": "candidate",
       "verification_detail": "package_named_legacy_asset",
       "alt": "PLANTAFOL 5-15-45"
+    },
+    {
+      "media_id": "v5m_c3bc04347347b0a942934c57",
+      "path": "/assets/img/v5/media/c3bc04347347b0a94293.jpg",
+      "sha256": "c3bc04347347b0a942934c57021f1a5a6a377baac9bddb5d5915e6a56288ba8b",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-aminovix-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "agriflex-aminovix — 1 кг"
     },
     {
       "media_id": "v5m_c429e29d18cd87a3920a20c7",
@@ -3311,10 +3465,10 @@
       "path": "/assets/img/v5/media/cab1a45e76d25d301b6b.png",
       "sha256": "cab1a45e76d25d301b6b757d247b073ed083f085fc6cb25bd8472fd6f7d51a3c",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
-      "alt": "Master (Мастер) NPK 3-11-38, водорозчинне мінеральне добриво"
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-3-11-38-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "master-npk-3-11-38 — 250 г"
     },
     {
       "media_id": "v5m_cac7fcdf3dd30fc246bf5d45",
@@ -3355,6 +3509,16 @@
       "verification_status": "verified",
       "verification_detail": "package_specific_source",
       "alt": "Кеміра NPK 12-46-8 — 25 г"
+    },
+    {
+      "media_id": "v5m_ce3422600a2c5fdb3fd66165",
+      "path": "/assets/img/v5/media/ce3422600a2c5fdb3fd6.png",
+      "sha256": "ce3422600a2c5fdb3fd6616538db8adebc5e3f58beb2cc76f0657d357690865e",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/plantafol-plantafol-mineralnoe-udobrenie-5-kg-npk-20-20-20-v",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "plantafol-npk-20-20-20 — 5 кг"
     },
     {
       "media_id": "v5m_cec90c50bc824f85fea1439d",
@@ -3557,6 +3721,16 @@
       "alt": "Agriflex AminoVix — Амінокислотний комплекс із мікроелементами у водорозчинній формі"
     },
     {
+      "media_id": "v5m_de0a18f9cfff2676da525fab",
+      "path": "/assets/img/v5/media/de0a18f9cfff2676da52.png",
+      "sha256": "de0a18f9cfff2676da525faba33f57dfe65c7b40efdc9efb9263956e5cb8d699",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "master-npk-13-40-13 — 250 г"
+    },
+    {
       "media_id": "v5m_de683edc527e971a2862960b",
       "path": "/assets/img/v5/media/de683edc527e971a2862.jpg",
       "sha256": "de683edc527e971a2862960b79c668741881fd900f55aa6a5f93038695e5fcc8",
@@ -3687,6 +3861,16 @@
       "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051_top-view.jpg"
     },
     {
+      "media_id": "v5m_e83e3341072993e851f9ce2d",
+      "path": "/assets/img/v5/media/e83e3341072993e851f9.jpg",
+      "sha256": "e83e3341072993e851f9ce2d60106e2ad245478029d9b8ba0b4acbc2025e8def",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "agriflex-zn — 5 кг"
+    },
+    {
       "media_id": "v5m_e945c018816c10d07aaa7d5c",
       "path": "/assets/img/v5/media/e945c018816c10d07aaa.jpg",
       "sha256": "e945c018816c10d07aaa7d5c9652f56eafd410041b461d4e0c9d565a8071b07d",
@@ -3775,6 +3959,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 1307110 — 10L-Drainage-Collection-Pot_Item_1307110_front.jpg"
+    },
+    {
+      "media_id": "v5m_ee578bb166b460c2d8141409",
+      "path": "/assets/img/v5/media/ee578bb166b460c2d814.png",
+      "sha256": "ee578bb166b460c2d81414095c1e3171e507bc4ae7d8b02821068677fe1be133",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/master-master-mineralne-dobryvo-1-kg-npk-3-11-38-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "master-npk-3-11-38 — 1 кг"
     },
     {
       "media_id": "v5m_ee7013b6a2bfddab4883bc7b",
@@ -3875,6 +4069,16 @@
       "verification_status": "candidate",
       "verification_detail": "representative",
       "alt": "Plantlogic 1306051 — 5L-Square-pot_Item_1306051_front.jpg"
+    },
+    {
+      "media_id": "v5m_f408c1a6c605c9270326091f",
+      "path": "/assets/img/v5/media/f408c1a6c605c9270326.png",
+      "sha256": "f408c1a6c605c9270326091f6a73328d374c6bd5b63f7a582692177af61077ec",
+      "kind": "image",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-1-l-valagro",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "megafol — 1 л"
     },
     {
       "media_id": "v5m_f620944cec9c1ba35ebba75a",
@@ -4078,6 +4282,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/actiwin-20-5-10-22-7-kg-kompleksne-mineralne-dobryvo-valagro"
     },
     {
+      "sku_id": "BB610-021E63CD9734F9",
+      "media_id": "v5m_c3bc04347347b0a942934c57",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-aminovix-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"
+    },
+    {
       "sku_id": "BB610-02A58A1A393719",
       "media_id": "v5m_6aaeaed0087c0e7f68f0acae",
       "is_primary": true,
@@ -4123,6 +4336,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/maxicrop-cream-maksikrop-krem-biostimulyator-100-ml-valagro"
     },
     {
+      "sku_id": "BB610-156A7D639ED836",
+      "media_id": "v5m_e83e3341072993e851f9ce2d",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax"
+    },
+    {
       "sku_id": "BB610-1DF4D3D04DBAE3",
       "media_id": "v5m_c7cdb4491557c959e62359ef",
       "is_primary": true,
@@ -4166,6 +4388,15 @@
       "binding_kind": "exact",
       "source_kind": "organic_planet_package_source",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/kemira-zav-yaz-5-g-dobryvo-dlya-kimnatnyh-roslyn-organic-planet"
+    },
+    {
+      "sku_id": "BB610-24D24A6B4EB211",
+      "media_id": "v5m_c0959bafda3b7beb7b0d37f7",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"
     },
     {
       "sku_id": "BB610-26B311DBF9085A",
@@ -4274,6 +4505,15 @@
       "binding_kind": "exact",
       "source_kind": "organic_planet_package_source",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-shvydkyj-start-osmocote-22-5-6-4-5m-1-kg"
+    },
+    {
+      "sku_id": "BB610-3B882CCA6D419D",
+      "media_id": "v5m_8c292ca45485eb5f71ac289a",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-5-sgmikroelementy-helaty-5-kg-valagro"
     },
     {
       "sku_id": "BB610-3CCFA12C27E227",
@@ -4553,6 +4793,24 @@
       "binding_kind": "exact",
       "source_kind": "legacy_package_named_asset",
       "source_url": null
+    },
+    {
+      "sku_id": "BB610-74DDB26C8BB13D",
+      "media_id": "v5m_a2c053efdd356700290eb863",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-fe-13-zhelezo-13-5-kg-valagro"
+    },
+    {
+      "sku_id": "BB610-75B55F8DEAD7C2",
+      "media_id": "v5m_1d5e956c2165ce67957c7c5b",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"
     },
     {
       "sku_id": "BB610-75DA86689E220C",
@@ -5113,6 +5371,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor2"
     },
     {
+      "sku_id": "BB610-E72D0A565A6415",
+      "media_id": "v5m_75eb1dbadfd0fba6a78fc6a2",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax"
+    },
+    {
       "sku_id": "BB610-EA1A35CD1C5B70",
       "media_id": "v5m_6d2a5cabc58069db8609c132",
       "is_primary": true,
@@ -5120,6 +5387,15 @@
       "binding_kind": "exact",
       "source_kind": "organic_planet_package_source",
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/osmokot-start-dlya-rozsady-osmocote-11-11-17-1-5m-1-kg"
+    },
+    {
+      "sku_id": "BB610-EAEE397CF0D45E",
+      "media_id": "v5m_ab8ab31ce61773ac5fe8f37c",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-fulvix-rozchynni-fulvovi-kysloty-1-kg-citymax"
     },
     {
       "sku_id": "BB610-EC1D442D54C6DB",
@@ -5347,6 +5623,33 @@
       "source_url": "https://organicplanet.com.ua/katalog/zasobi-zahistu-roslin/control-dmp-kontrol-dmp-pidkyslyuvach-prylypach-100-ml-valagro"
     },
     {
+      "sku_id": "BB610-VLG-KENDAL-25ML",
+      "media_id": "v5m_91103f556aabd20b842b51c5",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-25-ml-val"
+    },
+    {
+      "sku_id": "BB610-VLG-KENDALROOT-10L",
+      "media_id": "v5m_0792ef20fbd7b481aa414e8a",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostymulyator-antystres-dlya-korenya-10-l-valagro"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER134013-1KG",
+      "media_id": "v5m_c1019a90a26d77414f6a6ab6",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-13-40-13-valagro"
+    },
+    {
       "sku_id": "BB610-VLG-MASTER134013-20G",
       "media_id": "v5m_b6fe1160bafc5b713768f678",
       "is_primary": true,
@@ -5356,6 +5659,15 @@
       "source_url": null
     },
     {
+      "sku_id": "BB610-VLG-MASTER134013-250G",
+      "media_id": "v5m_de0a18f9cfff2676da525fab",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro"
+    },
+    {
       "sku_id": "BB610-VLG-MASTER134013-25KG",
       "media_id": "v5m_5ff16767afd9c682e4fad77f",
       "is_primary": true,
@@ -5363,6 +5675,24 @@
       "binding_kind": "exact",
       "source_kind": "legacy_package_named_asset",
       "source_url": null
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER15530-1KG",
+      "media_id": "v5m_7b140abbe3fb9caa4d4c595f",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-15-5-30-valagro"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER15530-250G",
+      "media_id": "v5m_5cb8a7fb5e8045cc8f86d357",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-15-5-30-valagro"
     },
     {
       "sku_id": "BB610-VLG-MASTER15530-25KG",
@@ -5383,6 +5713,15 @@
       "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-10-kg-npk-20-20-20-valagr"
     },
     {
+      "sku_id": "BB610-VLG-MASTER202020-1KG",
+      "media_id": "v5m_a09bb0101220304358ef9e1e",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/master-master-mineralne-dobryvo-1-kg-npk-20-20-20-valagro"
+    },
+    {
       "sku_id": "BB610-VLG-MASTER202020-20G",
       "media_id": "v5m_8beecf484e8d837e427a89a5",
       "is_primary": true,
@@ -5390,6 +5729,15 @@
       "binding_kind": "exact",
       "source_kind": "legacy_package_named_asset",
       "source_url": null
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER202020-250G",
+      "media_id": "v5m_557e310e14a3b033f89e3e91",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-20-20-20-valagro"
     },
     {
       "sku_id": "BB610-VLG-MASTER202020-25KG",
@@ -5401,6 +5749,15 @@
       "source_url": null
     },
     {
+      "sku_id": "BB610-VLG-MASTER31138-1KG",
+      "media_id": "v5m_ee578bb166b460c2d8141409",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/master-master-mineralne-dobryvo-1-kg-npk-3-11-38-valagro"
+    },
+    {
       "sku_id": "BB610-VLG-MASTER31138-20G",
       "media_id": "v5m_cfd79f6f230397aae29ceff4",
       "is_primary": true,
@@ -5408,6 +5765,15 @@
       "binding_kind": "exact",
       "source_kind": "legacy_package_named_asset",
       "source_url": null
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER31138-250G",
+      "media_id": "v5m_cab1a45e76d25d301b6b757d",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-3-11-38-valagro"
     },
     {
       "sku_id": "BB610-VLG-MASTER31138-25KG",
@@ -5428,6 +5794,24 @@
       "source_url": null
     },
     {
+      "sku_id": "BB610-VLG-MEGAFOL-10L",
+      "media_id": "v5m_c03341a63d3f62b565d06d60",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-10-l-valagro"
+    },
+    {
+      "sku_id": "BB610-VLG-MEGAFOL-1L",
+      "media_id": "v5m_f408c1a6c605c9270326091f",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-1-l-valagro"
+    },
+    {
       "sku_id": "BB610-VLG-MEGAFOL-25ML",
       "media_id": "v5m_673f210d22563764539f2972",
       "is_primary": true,
@@ -5435,6 +5819,15 @@
       "binding_kind": "exact",
       "source_kind": "legacy_package_named_asset",
       "source_url": null
+    },
+    {
+      "sku_id": "BB610-VLG-PLANTAFOL02550-250G",
+      "media_id": "v5m_a1b5e0d83d387c2ef2ebcb9e",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-0-25-50-valagro"
     },
     {
       "sku_id": "BB610-VLG-PLANTAFOL02550-25G",
@@ -5464,6 +5857,15 @@
       "source_url": null
     },
     {
+      "sku_id": "BB610-VLG-PLANTAFOL105410-250G",
+      "media_id": "v5m_57f2cdf58fecf332b5f5dbc6",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-10-54-10-valagro"
+    },
+    {
       "sku_id": "BB610-VLG-PLANTAFOL105410-25G",
       "media_id": "v5m_6abbd5afd6692dd5655ae389",
       "is_primary": true,
@@ -5482,6 +5884,24 @@
       "source_url": null
     },
     {
+      "sku_id": "BB610-VLG-PLANTAFOL202020-1KG",
+      "media_id": "v5m_bb9f221a9d8f690a18cfa2f4",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-20-20-20-v"
+    },
+    {
+      "sku_id": "BB610-VLG-PLANTAFOL202020-250G",
+      "media_id": "v5m_3a2eb24bc91d355718ccd52b",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/plantafol-plantafol-mineralne-dobryvo-250-g-npk-20-20-20-valagro"
+    },
+    {
       "sku_id": "BB610-VLG-PLANTAFOL202020-25G",
       "media_id": "v5m_5261c8125712ce7a15adabfe",
       "is_primary": true,
@@ -5491,6 +5911,15 @@
       "source_url": null
     },
     {
+      "sku_id": "BB610-VLG-PLANTAFOL202020-5KG",
+      "media_id": "v5m_ce3422600a2c5fdb3fd66165",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/plantafol-plantafol-mineralnoe-udobrenie-5-kg-npk-20-20-20-v"
+    },
+    {
       "sku_id": "BB610-VLG-PLANTAFOL301010-1KG",
       "media_id": "v5m_851e89c08c634ccac2ac0586",
       "is_primary": true,
@@ -5498,6 +5927,15 @@
       "binding_kind": "exact",
       "source_kind": "legacy_package_named_asset",
       "source_url": null
+    },
+    {
+      "sku_id": "BB610-VLG-PLANTAFOL301010-250G",
+      "media_id": "v5m_a09d5c61605cca0b2e869023",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-30-10-10-valagro"
     },
     {
       "sku_id": "BB610-VLG-PLANTAFOL301010-25G",
@@ -5525,6 +5963,15 @@
       "binding_kind": "exact",
       "source_kind": "legacy_package_named_asset",
       "source_url": null
+    },
+    {
+      "sku_id": "BB610-VLG-PLANTAFOL51545-250G",
+      "media_id": "v5m_564414470e81e33f30c38047",
+      "is_primary": true,
+      "sort_order": -10,
+      "binding_kind": "exact",
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-5-15-45-valagro"
     },
     {
       "sku_id": "BB610-VLG-PLANTAFOL51545-25G",
@@ -6167,11 +6614,32 @@
       "source_url": null
     },
     {
+      "product_id": "agriflex-amino-aminokysloty-50",
+      "media_id": "v5m_75eb1dbadfd0fba6a78fc6a2",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax"
+    },
+    {
+      "product_id": "agriflex-amino-aminokysloty-50",
+      "media_id": "v5m_c0959bafda3b7beb7b0d37f7",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"
+    },
+    {
       "product_id": "agriflex-aminovix",
       "media_id": "v5m_dd2dc6f26e30f677ba5ac072",
       "sort_order": 0,
       "source_kind": "legacy_product_fallback",
       "source_url": null
+    },
+    {
+      "product_id": "agriflex-aminovix",
+      "media_id": "v5m_c3bc04347347b0a942934c57",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-aminovix-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"
     },
     {
       "product_id": "agriflex-bio",
@@ -6193,6 +6661,13 @@
       "sort_order": 0,
       "source_kind": "legacy_product_fallback",
       "source_url": null
+    },
+    {
+      "product_id": "agriflex-fulvix-fulvokysloty-60",
+      "media_id": "v5m_ab8ab31ce61773ac5fe8f37c",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-fulvix-rozchynni-fulvovi-kysloty-1-kg-citymax"
     },
     {
       "product_id": "agriflex-fulvix-fulvokysloty-60",
@@ -6235,6 +6710,20 @@
       "sort_order": 0,
       "source_kind": "legacy_product_fallback",
       "source_url": null
+    },
+    {
+      "product_id": "agriflex-zn",
+      "media_id": "v5m_1d5e956c2165ce67957c7c5b",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"
+    },
+    {
+      "product_id": "agriflex-zn",
+      "media_id": "v5m_e83e3341072993e851f9ce2d",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax"
     },
     {
       "product_id": "agroblen-granula-max-14-20-5-te-56m",
@@ -7260,10 +7749,24 @@
     },
     {
       "product_id": "kendal",
+      "media_id": "v5m_91103f556aabd20b842b51c5",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-25-ml-val"
+    },
+    {
+      "product_id": "kendal",
       "media_id": "v5m_146dbd278150498ae1576524",
       "sort_order": 30,
       "source_kind": "exact_sku_rollup",
       "source_url": null
+    },
+    {
+      "product_id": "kendal-root",
+      "media_id": "v5m_0792ef20fbd7b481aa414e8a",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-root-kendal-rut-biostymulyator-antystres-dlya-korenya-10-l-valagro"
     },
     {
       "product_id": "kendal-root",
@@ -7309,6 +7812,13 @@
     },
     {
       "product_id": "master-npk-13-40-13",
+      "media_id": "v5m_de0a18f9cfff2676da525fab",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro"
+    },
+    {
+      "product_id": "master-npk-13-40-13",
       "media_id": "v5m_5ff16767afd9c682e4fad77f",
       "sort_order": 30,
       "source_kind": "exact_sku_rollup",
@@ -7327,6 +7837,13 @@
       "sort_order": 0,
       "source_kind": "legacy_product_fallback",
       "source_url": null
+    },
+    {
+      "product_id": "master-npk-15-5-30",
+      "media_id": "v5m_7b140abbe3fb9caa4d4c595f",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-15-5-30-valagro"
     },
     {
       "product_id": "master-npk-15-5-30",
@@ -7393,6 +7910,13 @@
     },
     {
       "product_id": "master-npk-20-20-20",
+      "media_id": "v5m_557e310e14a3b033f89e3e91",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-20-20-20-valagro"
+    },
+    {
+      "product_id": "master-npk-20-20-20",
       "media_id": "v5m_7a3aedb92ce7711d92618dd9",
       "sort_order": 30,
       "source_kind": "exact_sku_rollup",
@@ -7411,6 +7935,13 @@
       "sort_order": 0,
       "source_kind": "legacy_product_fallback",
       "source_url": null
+    },
+    {
+      "product_id": "master-npk-3-11-38",
+      "media_id": "v5m_ee578bb166b460c2d8141409",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/master-master-mineralne-dobryvo-1-kg-npk-3-11-38-valagro"
     },
     {
       "product_id": "master-npk-3-11-38",
@@ -7502,6 +8033,20 @@
       "sort_order": 0,
       "source_kind": "legacy_product_fallback",
       "source_url": null
+    },
+    {
+      "product_id": "megafol",
+      "media_id": "v5m_c03341a63d3f62b565d06d60",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-10-l-valagro"
+    },
+    {
+      "product_id": "megafol",
+      "media_id": "v5m_f408c1a6c605c9270326091f",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-1-l-valagro"
     },
     {
       "product_id": "megafol",
@@ -7820,6 +8365,13 @@
     },
     {
       "product_id": "plantafol-npk-10-54-10",
+      "media_id": "v5m_57f2cdf58fecf332b5f5dbc6",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-10-54-10-valagro"
+    },
+    {
+      "product_id": "plantafol-npk-10-54-10",
       "media_id": "v5m_6abbd5afd6692dd5655ae389",
       "sort_order": 30,
       "source_kind": "exact_sku_rollup",
@@ -7848,6 +8400,20 @@
     },
     {
       "product_id": "plantafol-npk-20-20-20",
+      "media_id": "v5m_bb9f221a9d8f690a18cfa2f4",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-20-20-20-v"
+    },
+    {
+      "product_id": "plantafol-npk-20-20-20",
+      "media_id": "v5m_ce3422600a2c5fdb3fd66165",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostymulyatory/plantafol-plantafol-mineralnoe-udobrenie-5-kg-npk-20-20-20-v"
+    },
+    {
+      "product_id": "plantafol-npk-20-20-20",
       "media_id": "v5m_5261c8125712ce7a15adabfe",
       "sort_order": 30,
       "source_kind": "exact_sku_rollup",
@@ -7859,6 +8425,13 @@
       "sort_order": 0,
       "source_kind": "legacy_product_fallback",
       "source_url": null
+    },
+    {
+      "product_id": "plantafol-npk-30-10-10",
+      "media_id": "v5m_a09d5c61605cca0b2e869023",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-30-10-10-valagro"
     },
     {
       "product_id": "plantafol-npk-30-10-10",
@@ -8940,6 +9513,13 @@
     },
     {
       "product_id": "valagro-edta-5sg",
+      "media_id": "v5m_8c292ca45485eb5f71ac289a",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-5-sgmikroelementy-helaty-5-kg-valagro"
+    },
+    {
+      "product_id": "valagro-edta-5sg",
       "media_id": "v5m_09b1f8b15ebe2d77f74f7ac2",
       "sort_order": 20,
       "source_kind": "exact_sku_rollup",
@@ -8951,6 +9531,13 @@
       "sort_order": 0,
       "source_kind": "legacy_product_fallback",
       "source_url": null
+    },
+    {
+      "product_id": "valagro-edta-fe-13",
+      "media_id": "v5m_a2c053efdd356700290eb863",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/valagro-edta-fe-13-zhelezo-13-5-kg-valagro"
     },
     {
       "product_id": "viva",
@@ -8990,171 +9577,9 @@
   ],
   "current_without_exact": [
     {
-      "sku_id": "BB610-24D24A6B4EB211",
-      "product_id": "agriflex-amino-aminokysloty-50",
-      "package_label": "1 кг",
-      "has_product_fallback": true
-    },
-    {
       "sku_id": "BB610-813432FDF29AE4",
       "product_id": "agriflex-amino-aminokysloty-50",
       "package_label": "25 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-E72D0A565A6415",
-      "product_id": "agriflex-amino-aminokysloty-50",
-      "package_label": "5 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-021E63CD9734F9",
-      "product_id": "agriflex-aminovix",
-      "package_label": "1 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-EAEE397CF0D45E",
-      "product_id": "agriflex-fulvix-fulvokysloty-60",
-      "package_label": "1 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-156A7D639ED836",
-      "product_id": "agriflex-zn",
-      "package_label": "5 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-75B55F8DEAD7C2",
-      "product_id": "agriflex-zn",
-      "package_label": "1 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-KENDAL-25ML",
-      "product_id": "kendal",
-      "package_label": "25 мл",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-KENDALROOT-10L",
-      "product_id": "kendal-root",
-      "package_label": "10 л",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-MASTER134013-1KG",
-      "product_id": "master-npk-13-40-13",
-      "package_label": "1 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-MASTER134013-250G",
-      "product_id": "master-npk-13-40-13",
-      "package_label": "250 г",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-MASTER15530-1KG",
-      "product_id": "master-npk-15-5-30",
-      "package_label": "1 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-MASTER15530-250G",
-      "product_id": "master-npk-15-5-30",
-      "package_label": "250 г",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-MASTER202020-1KG",
-      "product_id": "master-npk-20-20-20",
-      "package_label": "1 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-MASTER202020-250G",
-      "product_id": "master-npk-20-20-20",
-      "package_label": "250 г",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-MASTER31138-1KG",
-      "product_id": "master-npk-3-11-38",
-      "package_label": "1 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-MASTER31138-250G",
-      "product_id": "master-npk-3-11-38",
-      "package_label": "250 г",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-MEGAFOL-10L",
-      "product_id": "megafol",
-      "package_label": "10 л",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-MEGAFOL-1L",
-      "product_id": "megafol",
-      "package_label": "1 л",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-PLANTAFOL02550-250G",
-      "product_id": "plantafol-npk-0-25-50",
-      "package_label": "250 г",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-PLANTAFOL105410-250G",
-      "product_id": "plantafol-npk-10-54-10",
-      "package_label": "250 г",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-PLANTAFOL202020-1KG",
-      "product_id": "plantafol-npk-20-20-20",
-      "package_label": "1 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-PLANTAFOL202020-250G",
-      "product_id": "plantafol-npk-20-20-20",
-      "package_label": "250 г",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-PLANTAFOL202020-5KG",
-      "product_id": "plantafol-npk-20-20-20",
-      "package_label": "5 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-PLANTAFOL301010-250G",
-      "product_id": "plantafol-npk-30-10-10",
-      "package_label": "250 г",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-VLG-PLANTAFOL51545-250G",
-      "product_id": "plantafol-npk-5-15-45",
-      "package_label": "250 г",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-3B882CCA6D419D",
-      "product_id": "valagro-edta-5sg",
-      "package_label": "5 кг",
-      "has_product_fallback": true
-    },
-    {
-      "sku_id": "BB610-74DDB26C8BB13D",
-      "product_id": "valagro-edta-fe-13",
-      "package_label": "5 кг",
       "has_product_fallback": true
     },
     {
@@ -10011,5 +10436,14 @@
     }
   ],
   "mapping_failures": [],
+  "verified_manifest_rejected": [],
+  "verified_manifest_failures": [
+    {
+      "sku_id": "BB610-813432FDF29AE4",
+      "reason": "package_mismatch",
+      "manifest_package": "20 кг",
+      "v5_package": "25 кг"
+    }
+  ],
   "missing_legacy_assets": []
 }

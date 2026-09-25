@@ -68,9 +68,39 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     :(BB610.defaultSku(p.id)||skuList[0]||null);
   const displayName=()=>BB610.skuName?.(rawProduct,selectedSku)||p.name;
 
+  const canonicalProductUrl=()=>location.origin+'/product.html?id='+encodeURIComponent(p.id);
+  const setMeta=(name,content,attr='name')=>{
+    if(!content)return;
+    let el=document.head.querySelector(`meta[${attr}="${name}"]`);
+    if(!el){el=document.createElement('meta');el.setAttribute(attr,name);document.head.appendChild(el)}
+    el.setAttribute('content',String(content));
+  };
+  function syncSeoMeta(){
+    const title=displayName()+' · BB610 Market';
+    const description=String(
+      p.shortDescription||p.short_description||p.description||p.manufacturerUse||p.productType||''
+    ).replace(/\s+/g,' ').trim().slice(0,180);
+    document.title=title;
+    let canonical=document.head.querySelector('link[rel="canonical"]');
+    if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical)}
+    canonical.href=canonicalProductUrl();
+    setMeta('description',description);
+    setMeta('og:type','product','property');
+    setMeta('og:title',title,'property');
+    setMeta('og:description',description,'property');
+    setMeta('og:url',canonicalProductUrl(),'property');
+    const img=document.getElementById('product-main-image');
+    const imageUrl=img?.currentSrc||img?.src||p.image;
+    if(imageUrl)setMeta('og:image',new URL(imageUrl,location.origin).href,'property');
+    setMeta('twitter:card','summary_large_image');
+    setMeta('twitter:title',title);
+    setMeta('twitter:description',description);
+    if(imageUrl)setMeta('twitter:image',new URL(imageUrl,location.origin).href);
+  }
+
   const trackView=()=>{if(selectedSku)BB610.pushEvent('view_item',{ecommerce:{currency:selectedSku.currency||'UAH',items:[BB610.commerceItem(selectedSku,1)]}})};
   trackView();
-  document.title=displayName()+' · BB610 Market';
+  syncSeoMeta();
 
   const packCards=skuList.length?skuList.map(s=>`<button class="pack${selectedSku?.id===s.id?' active':''}" type="button" data-sku-select="${s.id}"><b>${s.variant}</b><span class="pack-price">${BB610.isPriceRequestSku?.(s)?'Ціна за запитом':BB610.money(s.price)}</span></button>`).join(''):(p.factoryPacks||[]).map(s=>`<div class="pack"><b>${s}</b></div>`).join('');
 
@@ -182,8 +212,8 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   function syncLiveProductSchema(){
     document.querySelectorAll('script[type="application/ld+json"]').forEach(el=>{try{const x=JSON.parse(el.textContent||'{}');if(x&&x['@type']==='Product')el.remove()}catch(_){}});
     const img=document.getElementById('product-main-image');
-    const obj={'@context':'https://schema.org','@type':'Product',name:displayName(),description:p.shortDescription||p.manufacturerUse||p.productType||'',image:[img?.currentSrc||img?.src||p.image].filter(Boolean),brand:p.brand?{'@type':'Brand',name:p.brand}:undefined,manufacturer:p.manufacturer?{'@type':'Organization',name:p.manufacturer}:undefined,url:location.href.split('?')[0]};
-    if(selectedSku){obj.sku=selectedSku.id;if(selectedSku.gtin_ean)obj.gtin=selectedSku.gtin_ean;if(selectedSku.mpn)obj.mpn=selectedSku.mpn;const av={in_stock:'https://schema.org/InStock',out_of_stock:'https://schema.org/OutOfStock',preorder:'https://schema.org/PreOrder',backorder:'https://schema.org/BackOrder'}[selectedSku.availability];if(selectedSku.price!=null&&av&&selectedSku.commercial_status==='active'){obj.offers={'@type':'Offer',url:location.href.split('?')[0],priceCurrency:selectedSku.currency||'UAH',price:String(selectedSku.price),availability:av,itemCondition:'https://schema.org/NewCondition'}}}
+    const obj={'@context':'https://schema.org','@type':'Product',name:displayName(),description:p.shortDescription||p.manufacturerUse||p.productType||'',image:[img?.currentSrc||img?.src||p.image].filter(Boolean),brand:p.brand?{'@type':'Brand',name:p.brand}:undefined,manufacturer:p.manufacturer?{'@type':'Organization',name:p.manufacturer}:undefined,url:canonicalProductUrl()};
+    if(selectedSku){obj.sku=selectedSku.id;if(selectedSku.gtin_ean)obj.gtin=selectedSku.gtin_ean;if(selectedSku.mpn)obj.mpn=selectedSku.mpn;const av={in_stock:'https://schema.org/InStock',out_of_stock:'https://schema.org/OutOfStock',preorder:'https://schema.org/PreOrder',backorder:'https://schema.org/BackOrder'}[selectedSku.availability];if(selectedSku.price!=null&&av&&selectedSku.commercial_status==='active'){obj.offers={'@type':'Offer',url:canonicalProductUrl(),priceCurrency:selectedSku.currency||'UAH',price:String(selectedSku.price),availability:av,itemCondition:'https://schema.org/NewCondition'}}}
     const s=document.createElement('script');s.type='application/ld+json';s.id='bb610-live-product-schema';s.textContent=JSON.stringify(obj);document.head.appendChild(s);
   }
   function updateSkuUI(){
@@ -196,6 +226,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     const mainImage=document.getElementById('product-main-image');
     mainImage.src=productImageFor(selectedSku);
     mainImage.alt=liveName;
+    syncSeoMeta();
     variant.textContent=selectedSku.variant||'';
     price.textContent=requestPrice?'Ціна за запитом':BB610.money(selectedSku.price);
     unit.textContent=requestPrice?'Ціна залежить від моделі, кількості та умов постачання':(selectedSku.price==null?'Комерційна ціна BB610 ще не визначена':BB610.unitPrice({...p,unit:selectedSku.volume_weight?.unit},selectedSku.price,selectedSku.volume_weight?.value));

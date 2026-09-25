@@ -144,7 +144,7 @@ jobs:
           assert 'tg-test' in integrations_js
           assert "localStorage.getItem('bb610_admin_token')" in integrations_js
           assert "Додайте Bot token." in integrations_js
-          assert 'integrations.js?v=20260918-telegram-2' in integrations
+          assert 'admin/integrations.js?v=' in integrations
           assert '/notify' in admin_js
           assert 'telegram_status' in admin_js
 

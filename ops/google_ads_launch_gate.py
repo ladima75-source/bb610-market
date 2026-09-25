@@ -177,17 +177,21 @@ def check_catalog(errors: list[str]) -> dict:
 def check_seo_and_tracking(errors: list[str]) -> dict:
     product_html = (ROOT / "product.html").read_text(encoding="utf-8")
     product_js = (ROOT / "js/product.js").read_text(encoding="utf-8")
+    data_source = (ROOT / "js/data-source.js").read_text(encoding="utf-8")
     analytics = (ROOT / "js/analytics.js").read_text(encoding="utf-8")
     order_success = (ROOT / "js/order-success.js").read_text(encoding="utf-8")
     config = (ROOT / "config/analytics-config.js").read_text(encoding="utf-8")
+    routes_js = (ROOT / "config/seo-routes.js").read_text(encoding="utf-8")
 
     required = {
         "GTM-MF8PZJCJ": config,
         "G-QWG1K17HC3": config,
         "AW-18468335580": config,
         "TnTkCK6GtoEdENzfseZE": config,
-        "index,follow,max-image-preview:large": product_html,
+        'name="robots" content="noindex,follow"': product_html,
+        "config/seo-routes.js": product_html,
         "canonicalProductUrl": product_js,
+        "seoProductUrl": data_source,
         "setMeta('og:title'": product_js,
         "syncLiveProductSchema": product_js,
         "ecommerce.transaction_id": analytics,
@@ -199,16 +203,42 @@ def check_seo_and_tracking(errors: list[str]) -> dict:
         if needle not in haystack:
             fail(errors, f"tracking/SEO contract missing: {needle}")
 
-    if "noindex,follow" in product_html:
-        fail(errors, "product page regressed to noindex")
+    route_re = re.compile(r'"([^"]+)"\s*:\s*"(/products/[^"]+/)"')
+    routes = dict(route_re.findall(routes_js))
+    landing_checks = {}
+    for pid in LAUNCH_PRODUCTS:
+        route = routes.get(pid)
+        if not route:
+            fail(errors, f"{pid}: SEO route missing")
+            continue
+        rel = route.strip("/")
+        page_path = ROOT / rel / "index.html"
+        if not page_path.is_file():
+            fail(errors, f"{pid}: SEO landing file missing: {route}")
+            continue
+        page = page_path.read_text(encoding="utf-8")
+        expected_url = "https://market.bb610.com.ua" + route
+        checks = {
+            "indexable": 'name="robots" content="index,follow,max-image-preview:large"' in page,
+            "canonical": f'<link rel="canonical" href="{expected_url}">' in page,
+            "product_schema": '"@type":"Product"' in page,
+            "breadcrumb_schema": '"@type":"BreadcrumbList"' in page,
+            "og_url": f'<meta property="og:url" content="{expected_url}">' in page,
+            "data_source_current": "js/data-source.js?v=20260925-seo-routes-1" in page,
+            "product_js_current": "js/product.js?v=20260925-seo-canonical-2" in page,
+        }
+        landing_checks[pid] = checks
+        for name, ok in checks.items():
+            if not ok:
+                fail(errors, f"{pid}: SEO landing check failed: {name}")
 
     conversion_re = re.compile(
         r"gtag\s*\(\s*['\"]event['\"]\s*,\s*['\"]conversion['\"]"
     )
     senders = []
     for path in (ROOT / "js").glob("*.js"):
-        text = path.read_text(encoding="utf-8", errors="ignore")
-        count = len(conversion_re.findall(text))
+        text_value = path.read_text(encoding="utf-8", errors="ignore")
+        count = len(conversion_re.findall(text_value))
         senders.extend([path.relative_to(ROOT).as_posix()] * count)
     if senders != ["js/analytics.js"]:
         fail(errors, f"Google Ads conversion senders changed: {senders}")
@@ -221,8 +251,8 @@ def check_seo_and_tracking(errors: list[str]) -> dict:
         "ga4": "G-QWG1K17HC3",
         "google_ads": "AW-18468335580",
         "conversion_senders": senders,
+        "seo_landings": landing_checks,
     }
-
 
 def main() -> None:
     errors: list[str] = []

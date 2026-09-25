@@ -194,6 +194,7 @@ def main():
     ap.add_argument("--stage", default="v5/staging/production-current.json")
     ap.add_argument("--out", required=True)
     ap.add_argument("--copy-dir", default="assets/img/v5/media")
+    ap.add_argument("--verified-import-manifest", default="ops/v5-verified-media-import.json")
     args = ap.parse_args()
 
     repo_root = Path(args.root).resolve()
@@ -203,11 +204,87 @@ def main():
     copy_dir = (repo_root / args.copy_dir).resolve()
 
     stage = load(stage_path)
+    verified_import_path = (repo_root / args.verified_import_manifest).resolve()
+    verified_import = load(verified_import_path) if verified_import_path.is_file() else {"media": []}
     override_path = snapshot_root / "files/backend/runtime/organic_planet_sku_photos.json"
     overrides = (load(override_path).get("skus") or {}) if override_path.is_file() else {}
 
     all_skus = list(stage.get("skus") or []) + list(stage.get("plantlogic_skus") or [])
     sku_by_id = {row["sku_id"]: row for row in all_skus}
+
+    # Repository-pinned package media is a stronger source than legacy/V3 media.
+    # Every row must match the canonical V5 SKU, product and structured package.
+    verified_import_candidates = []
+    verified_import_failures = []
+    for row in verified_import.get("media") or []:
+        sku_id = str(row.get("sku_id") or "").strip()
+        sku = sku_by_id.get(sku_id)
+        if not sku:
+            verified_import_failures.append({
+                "sku_id": sku_id,
+                "reason": "unknown_v5_sku",
+            })
+            continue
+        if str(row.get("product_id") or "").strip() != str(sku.get("product_id") or ""):
+            verified_import_failures.append({
+                "sku_id": sku_id,
+                "reason": "product_mismatch",
+                "manifest_product_id": row.get("product_id"),
+                "v5_product_id": sku.get("product_id"),
+            })
+            continue
+        manifest_metric = parse_package_metric(row.get("package_label"))
+        sku_metric = package_metric(sku.get("package_value"), sku.get("package_unit"))
+        if manifest_metric != sku_metric:
+            verified_import_failures.append({
+                "sku_id": sku_id,
+                "reason": "package_mismatch",
+                "manifest_package": row.get("package_label"),
+                "v5_package": sku.get("package_label"),
+            })
+            continue
+
+        target = Path(str(row.get("target") or ""))
+        candidates = []
+        if target.suffix.lower() == ".auto":
+            stem = target.with_suffix("")
+            candidates = [repo_root / stem.with_suffix(ext) for ext in (".png", ".jpg", ".webp")]
+        elif str(target):
+            candidates = [repo_root / target]
+        src = next((p for p in candidates if p.is_file()), None)
+        if not src:
+            verified_import_failures.append({
+                "sku_id": sku_id,
+                "reason": "verified_asset_missing",
+                "target": str(target),
+            })
+            continue
+        verified_import_candidates.append({
+            "sku_id": sku_id,
+            "product_id": sku["product_id"],
+            "package_label": sku.get("package_label"),
+            "source_file": str(src),
+            "sha256": sha256(src),
+            "alt": f"{sku.get('product_id')} — {sku.get('package_label') or ''}".strip(" —"),
+            "source_url": row.get("source_page"),
+        })
+
+    # A single binary cannot be exact for different product/package identities.
+    verified_by_hash = collections.defaultdict(list)
+    for row in verified_import_candidates:
+        verified_by_hash[row["sha256"]].append(row)
+    accepted_verified_import = []
+    rejected_verified_import = []
+    for digest, rows in verified_by_hash.items():
+        identities = {(x["product_id"], x.get("package_label")) for x in rows}
+        if len(identities) > 1:
+            for row in rows:
+                rejected_verified_import.append({
+                    **{k: v for k, v in row.items() if k != "source_file"},
+                    "reason": "same_verified_binary_used_for_multiple_identities",
+                })
+        else:
+            accepted_verified_import.extend(rows)
 
     # Product + structured package identity is used ONCE during migration.
     # Runtime V5 never guesses media from labels.
@@ -303,6 +380,37 @@ def main():
         current = product_candidates.get(key)
         if current is None or candidate["sort_order"] < current["sort_order"]:
             product_candidates[key] = candidate
+
+    for row in accepted_verified_import:
+        src = Path(row["source_file"])
+        media = canonical_asset(
+            src,
+            copy_dir,
+            media_by_hash,
+            alt=row.get("alt"),
+            source_url=row.get("source_url"),
+            verification_status="package_specific_source",
+        )
+        key = (row["sku_id"], media["media_id"])
+        if key not in sku_binding_keys:
+            sku_binding_keys.add(key)
+            sku_bindings.append({
+                "sku_id": row["sku_id"],
+                "media_id": media["media_id"],
+                "is_primary": True,
+                "sort_order": -10,
+                "binding_kind": "exact",
+                "source_kind": "verified_manifest_package_source",
+                "source_url": row.get("source_url"),
+            })
+            exact_skus.add(row["sku_id"])
+        add_product_binding(
+            row["product_id"],
+            media["media_id"],
+            10,
+            "verified_manifest_rollup",
+            row.get("source_url"),
+        )
 
     for row in accepted_op:
         src = Path(row["source_file"])
@@ -481,6 +589,10 @@ def main():
             "organic_planet_accepted_exact_rows": len(accepted_op),
             "organic_planet_rejected_rows": len(rejected_op),
             "mapping_failures": len(mapping_failures),
+            "verified_manifest_rows": len(verified_import.get("media") or []),
+            "verified_manifest_accepted": len(accepted_verified_import),
+            "verified_manifest_rejected": len(rejected_verified_import),
+            "verified_manifest_failures": len(verified_import_failures),
         },
         "media": sorted(media_by_hash.values(), key=lambda x: x["media_id"]),
         "sku_bindings": sorted(
@@ -497,6 +609,8 @@ def main():
         "products_without_media": products_without_media,
         "rejected_organic_planet": rejected_op,
         "mapping_failures": mapping_failures,
+        "verified_manifest_rejected": rejected_verified_import,
+        "verified_manifest_failures": verified_import_failures,
         "missing_legacy_assets": representative_missing,
     }
 

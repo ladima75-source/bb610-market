@@ -1,0 +1,80 @@
+name: BB610 SEO Landing Patch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/seo-landing-patch-request.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Patch dynamic product landing SEO wiring
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p=Path('product.html')
+          text=p.read_text(encoding='utf-8')
+
+          robots='<meta name="robots" content="noindex,follow">'
+          if re.search(r'<meta name="robots" content="[^"]*">', text):
+              text=re.sub(r'<meta name="robots" content="[^"]*">', robots, text, count=1)
+          else:
+              text=text.replace('<title>Товар · BB610 Market</title>',
+                                '<title>Товар · BB610 Market</title>'+robots,1)
+
+          if 'config/seo-routes.js' not in text:
+              needle='<script src="data/catalog.runtime.js"></script>'
+              assert needle in text, 'catalog runtime script marker missing'
+              text=text.replace(
+                  needle,
+                  needle+'<script src="config/seo-routes.js?v=20260925-1"></script>',
+                  1,
+              )
+
+          text=re.sub(
+              r'js/data-source\.js\?v=[^"]+',
+              'js/data-source.js?v=20260925-seo-routes-1',
+              text,
+              count=1,
+          )
+          text=re.sub(
+              r'js/product\.js\?v=[^"]+',
+              'js/product.js?v=20260925-seo-canonical-2',
+              text,
+              count=1,
+          )
+
+          assert robots in text
+          assert 'config/seo-routes.js?v=20260925-1' in text
+          assert 'js/data-source.js?v=20260925-seo-routes-1' in text
+          assert 'js/product.js?v=20260925-seo-canonical-2' in text
+          p.write_text(text,encoding='utf-8')
+          PY
+
+      - name: Commit landing SEO wiring
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add product.html
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo 'No changes required'
+            exit 0
+          fi
+          git config user.name 'bb610-seo-bot'
+          git config user.email 'bb610-seo-bot@users.noreply.github.com'
+          git commit -m 'Wire dynamic product landings to SEO routes'
+          git push origin HEAD:main

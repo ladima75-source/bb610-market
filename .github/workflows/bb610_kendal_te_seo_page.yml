@@ -1,0 +1,136 @@
+name: BB610 Kendal TE SEO Page
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/kendal-te-seo-page-request.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build Kendal TE static SEO route
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import html, json, re
+
+          template=Path('product.html').read_text(encoding='utf-8')
+          url='https://market.bb610.com.ua/products/kendal-te/'
+          title='Kendal TE — біостимулятор Valagro з Cu, Mn і Zn · BB610 Market'
+          desc=('Kendal TE Valagro — біостимулятор з мікроелементами Cu, Mn і Zn. '
+                'Фасування, актуальна ціна, характеристики та застосування у BB610 Market.')
+          image='https://market.bb610.com.ua/assets/img/v5/verified/kendal-te-100ml-1200.jpg'
+          product_name='Kendal TE — мікроелементний біостимулятор Valagro'
+
+          # Dynamic landing metadata must not leak into the static SEO page.
+          page=re.sub(r'<meta name="robots" content="[^"]*">','',template,count=1)
+          page=re.sub(r'<meta name="description" content="[^"]*">','',page,count=1)
+          page=re.sub(r'<link rel="canonical" href="[^"]*">','',page,count=1)
+          page=page.replace('<head>','<head><base href="../../">',1)
+
+          product_schema={
+            '@context':'https://schema.org',
+            '@type':'Product',
+            'name':product_name,
+            'description':desc,
+            'image':[image],
+            'brand':{'@type':'Brand','name':'Valagro'},
+            'manufacturer':{'@type':'Organization','name':'Valagro S.p.A.'},
+            'category':'Біостимуляція',
+            'url':url,
+          }
+          breadcrumb={
+            '@context':'https://schema.org',
+            '@type':'BreadcrumbList',
+            'itemListElement':[
+              {'@type':'ListItem','position':1,'name':'BB610 Market','item':'https://market.bb610.com.ua/'},
+              {'@type':'ListItem','position':2,'name':'Біостимуляція','item':'https://market.bb610.com.ua/categories/biostimulation/'},
+              {'@type':'ListItem','position':3,'name':product_name,'item':url},
+            ],
+          }
+          head=(
+            f'<title>{html.escape(title,quote=True)}</title>'
+            f'<meta name="description" content="{html.escape(desc,quote=True)}">'
+            f'<link rel="canonical" href="{url}">'
+            '<meta name="robots" content="index,follow,max-image-preview:large">'
+            '<meta property="og:type" content="product">'
+            '<meta property="og:site_name" content="BB610 Market">'
+            f'<meta property="og:title" content="{html.escape(title,quote=True)}">'
+            f'<meta property="og:description" content="{html.escape(desc,quote=True)}">'
+            f'<meta property="og:url" content="{url}">'
+            f'<meta property="og:image" content="{image}">'
+            '<meta name="twitter:card" content="summary_large_image">'
+            f'<script type="application/ld+json">{json.dumps(product_schema,ensure_ascii=False,separators=(",",":"))}</script>'
+            f'<script type="application/ld+json">{json.dumps(breadcrumb,ensure_ascii=False,separators=(",",":"))}</script>'
+          )
+          assert '<title>Товар · BB610 Market</title>' in page
+          page=page.replace('<title>Товар · BB610 Market</title>',head,1)
+
+          static=(
+            '<div class="breadcrumbs">BB610 MARKET / БІОСТИМУЛЯЦІЯ / Kendal TE</div>'
+            '<div class="product-layout seo-static-product">'
+            '<div class="product-gallery"><img src="assets/img/v5/verified/kendal-te-100ml-1200.jpg" '
+            'alt="Kendal TE — 100 мл" width="1200" height="1200"></div>'
+            '<div class="product-summary"><div class="eyebrow">Біостимуляція</div>'
+            f'<h1>{html.escape(product_name)}</h1><div class="brand">Valagro</div>'
+            '<div class="selected-variant"></div><div class="price">Ціна та фасування завантажуються</div>'
+            '<div class="stock">Актуальна наявність завантажується</div>'
+            '<p>KENDAL TE — продукт Valagro із біоактивним комплексом та мікроелементами Cu, Mn і Zn.</p>'
+            '</div></div>'
+          )
+          assert '<div class="container" id="product-root"></div>' in page
+          page=page.replace('<div class="container" id="product-root"></div>',
+                            '<div class="container" id="product-root">'+static+'</div>',1)
+
+          globals_js='<script>window.BB610_PRODUCT_ID="kendal-te";window.BB610_SKU_ID=null;</script>'
+          assert '<script src="data/catalog.runtime.js"></script>' in page
+          page=page.replace('<script src="data/catalog.runtime.js"></script>',
+                            globals_js+'<script src="data/catalog.runtime.js"></script>',1)
+
+          out=Path('products/kendal-te/index.html')
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text(page,encoding='utf-8')
+
+          sitemap=Path('sitemap.xml')
+          xml=sitemap.read_text(encoding='utf-8')
+          entry='  <url><loc>https://market.bb610.com.ua/products/kendal-te/</loc></url>\n'
+          if '/products/kendal-te/' not in xml:
+              assert '</urlset>' in xml
+              xml=xml.replace('</urlset>',entry+'</urlset>',1)
+              sitemap.write_text(xml,encoding='utf-8')
+          PY
+
+      - name: Validate generated SEO page
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'rel="canonical" href="https://market.bb610.com.ua/products/kendal-te/"' products/kendal-te/index.html
+          grep -q 'name="robots" content="index,follow,max-image-preview:large"' products/kendal-te/index.html
+          grep -q 'window.BB610_PRODUCT_ID="kendal-te"' products/kendal-te/index.html
+          grep -q 'products/kendal-te/' sitemap.xml
+
+      - name: Commit SEO route
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add products/kendal-te/index.html sitemap.xml
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo 'No changes required'
+            exit 0
+          fi
+          git config user.name 'bb610-seo-bot'
+          git config user.email 'bb610-seo-bot@users.noreply.github.com'
+          git commit -m 'Add Kendal TE SEO product route'
+          git push origin HEAD:main

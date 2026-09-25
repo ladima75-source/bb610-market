@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-import json, pathlib, csv, io, html, shutil
+import json, pathlib, csv, io, html, shutil, re
 from urllib.parse import urljoin
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 DATA=ROOT/'data'
 master=json.loads((DATA/'catalog.master.json').read_text(encoding='utf-8'))
 SITE=master.get('site',{}).get('base_url','https://market.bb610.com.ua').rstrip('/')
+
+SEO_EXTRA_PATH=DATA/'seo.v5.extra.json'
+seo_extra=json.loads(SEO_EXTRA_PATH.read_text(encoding='utf-8')) if SEO_EXTRA_PATH.exists() else {'products':[]}
+seo_extra_products=seo_extra.get('products') or []
 
 # ---------- validation ----------
 def unique(rows,key,label):
@@ -21,6 +25,12 @@ unique(master['categories'],'id','categories')
 
 pids={p['id'] for p in master['products']}; vids={v['id'] for v in master['variants']}; sids={s['id'] for s in master['skus']}; cids={c['id'] for c in master['categories']}
 prod={p['id']:p for p in master['products']}; cats={c['id']:c for c in master['categories']}
+
+for p in seo_extra_products:
+    if not p.get('id') or not p.get('slug'): raise SystemExit('seo extra product: id and slug are required')
+    if p['id'] in pids: raise SystemExit(f"seo extra product duplicates legacy id: {p['id']}")
+    if p.get('category_id') not in cids: raise SystemExit(f"seo extra product {p['id']}: unknown category {p.get('category_id')}")
+seo_products=[*master['products'],*seo_extra_products]
 for p in master['products']:
     if p['category_id'] not in cids: raise SystemExit(f"product {p['id']}: unknown category {p['category_id']}")
     if p.get('default_sku_id') and p['default_sku_id'] not in sids: raise SystemExit(f"product {p['id']}: unknown default_sku_id")
@@ -141,8 +151,10 @@ def seo_head(p,page_url,sku=None,indexable=True):
 
 # ---------- static product/SKU pages ----------
 template=(ROOT/'product.html').read_text(encoding='utf-8')
-# Strip legacy dynamic-page SEO tags before using product.html as a generator template.
-template=template.replace('<meta name="robots" content="noindex,follow"><link rel="canonical" href="https://market.bb610.com.ua/catalog.html">','')
+# Strip dynamic-page SEO tags before using product.html as a generator template.
+template=re.sub(r'<meta name="robots" content="[^"]*">','',template,count=1)
+template=re.sub(r'<link rel="canonical" href="[^"]*">','',template,count=1)
+template=re.sub(r'<meta name="description" content="[^"]*">','',template,count=1)
 products_dir=ROOT/'products'
 if products_dir.exists(): shutil.rmtree(products_dir)
 products_dir.mkdir()
@@ -184,18 +196,24 @@ def render_product_page(p,sku=None):
     content=content.replace('<script src="data/catalog.runtime.js"></script>',globals_js+'<script src="data/catalog.runtime.js"></script>',1)
     out=products_dir/slug/'index.html';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(content,encoding='utf-8')
 
-for p in master['products']:
+for p in seo_products:
     if p.get('internal_only'): continue
     render_product_page(p,None)
 for s in master['skus']:
     if s.get('internal_only') or prod[s['product_id']].get('internal_only'): continue
     render_product_page(prod[s['product_id']],s)
 
-# legacy dynamic product endpoint should never be indexed
+# Dynamic product endpoint is an Ads/runtime landing. Keep it crawlable for
+# links but out of the index; product.js supplies the canonical SEO route.
 legacy=ROOT/'product.html'
 legacy_text=legacy.read_text(encoding='utf-8')
-if 'name="robots"' not in legacy_text:
-    legacy_text=legacy_text.replace('<title>Товар · BB610 Market</title>','<title>Товар · BB610 Market</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://market.bb610.com.ua/catalog.html">',1)
+legacy_text=re.sub(r'<meta name="robots" content="[^"]*">','',legacy_text,count=1)
+legacy_text=re.sub(r'<link rel="canonical" href="[^"]*">','',legacy_text,count=1)
+legacy_text=legacy_text.replace(
+    '<title>Товар · BB610 Market</title>',
+    '<title>Товар · BB610 Market</title><meta name="robots" content="noindex,follow">',
+    1,
+)
 legacy.write_text(legacy_text,encoding='utf-8')
 
 # ---------- category pages ----------
@@ -213,7 +231,7 @@ for c in master['categories']:
     t=cat_template.replace('<head>','<head><base href="../../">',1)
     t=t.replace('<title>Каталог · BB610 Market</title>',f'<title>{esc(title)}</title><meta name="description" content="{esc(desc)}"><link rel="canonical" href="{url}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{url}">',1)
     t=t.replace('<h1>Каталог</h1>',f'<h1>{esc(c["name"])}</h1>',1)
-    static_links=''.join(f'<article><a href="products/{esc(pp["slug"])}/index.html"><strong>{esc(pp["name"])}</strong></a><div>{esc(pp.get("brand",""))}</div></article>' for pp in master['products'] if pp['category_id']==c['id'])
+    static_links=''.join(f'<article><a href="products/{esc(pp["slug"])}/index.html"><strong>{esc(pp["name"])}</strong></a><div>{esc(pp.get("brand",""))}</div></article>' for pp in seo_products if pp['category_id']==c['id'])
     t=t.replace('<div id="catalog-grid" class="products-grid"></div>',f'<div id="catalog-grid" class="products-grid seo-static-list">{static_links}</div>',1)
     t=t.replace('<script src="data/catalog.runtime.js"></script>',f'<script>window.BB610_CATEGORY_ID={json.dumps(c["id"])};</script><script src="data/catalog.runtime.js"></script>',1)
     out=categories_dir/c['slug']/'index.html';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(t,encoding='utf-8')
@@ -260,7 +278,7 @@ for s in master['skus']:
 # ---------- sitemap / robots ----------
 urls=[SITE+'/',SITE+'/catalog.html',SITE+'/about.html']
 urls += [SITE+'/categories/'+c['slug']+'/' for c in master['categories'] if c.get('enabled')]
-urls += [SITE+'/products/'+p['slug']+'/' for p in master['products'] if not p.get('internal_only')]
+urls += [SITE+'/products/'+p['slug']+'/' for p in seo_products if not p.get('internal_only')]
 urls += [SITE+s['url'] for s in master['skus'] if sku_indexable(s) and not s.get('internal_only') and not prod[s['product_id']].get('internal_only')]
 sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{esc(u)}</loc></url>\n' for u in urls)+'</urlset>\n'
 (ROOT/'sitemap.xml').write_text(sitemap,encoding='utf-8')
@@ -290,4 +308,4 @@ for fn in ['cart.html','checkout.html','compare.html','favorites.html','404.html
         tx=tx.replace('</title>','</title><meta name="robots" content="noindex,nofollow">',1)
     path.write_text(tx,encoding='utf-8')
 
-print(f"Built Stage 4: {len(master['products'])} product pages, {len(master['skus'])} SKU pages, {len(master['categories'])} category pages, {len(eligible)} feed-eligible SKUs, {len(urls)} sitemap URLs")
+print(f"Built Stage 4: {len(seo_products)} product pages, {len(master['skus'])} SKU pages, {len(master['categories'])} category pages, {len(eligible)} feed-eligible SKUs, {len(urls)} sitemap URLs")

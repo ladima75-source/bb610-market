@@ -246,8 +246,27 @@ def update_product(
         fields.append('enabled=?')
         values.append(1 if enabled else 0)
 
+    def current_row() -> dict | None:
+        # Canonical V5 and alias SKUs have rich admin metadata. Runtime/dynamic
+        # catalog SKUs are intentionally outside Product Master V5, so fall
+        # back to their live commerce row instead of reporting a false miss.
+        rich = next((x for x in admin_products() if x['sku'] == sku), None)
+        if rich:
+            return rich
+        with connect() as con:
+            row = con.execute(
+                'SELECT sku,price,sale_price,availability,stock_qty,enabled,updated_at FROM sku_commerce WHERE sku=?',
+                (sku,),
+            ).fetchone()
+        if not row:
+            return None
+        out = dict(row)
+        out['enabled'] = bool(out.get('enabled'))
+        out['effective_price'] = out.get('sale_price') if out.get('sale_price') is not None else out.get('price')
+        return out
+
     if not fields:
-        return next((x for x in admin_products() if x['sku'] == sku), None)
+        return current_row()
 
     fields.append('updated_at=?')
     values.append(_now())
@@ -259,4 +278,4 @@ def update_product(
         )
         con.commit()
 
-    return next((x for x in admin_products() if x['sku'] == sku), None)
+    return current_row()

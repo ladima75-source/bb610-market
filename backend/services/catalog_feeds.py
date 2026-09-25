@@ -74,6 +74,8 @@ def _real_image_ready(product: dict, sku: dict) -> bool:
         or low.startswith("assets/img/real/")
         or low.startswith("/assets/img/v5/media/")
         or low.startswith("assets/img/v5/media/")
+        or low.startswith("/assets/img/v5/channel/")
+        or low.startswith("assets/img/v5/channel/")
         or low.startswith("https://")
         or low.startswith("http://")
     ):

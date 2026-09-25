@@ -11,7 +11,7 @@ SOURCE_ID = "bb610-product-master-v5"
 # is verified but its stored derivative is too small for shopping channels.
 # Keep these package-specific: never substitute media from another SKU.
 _CHANNEL_IMAGE_OVERRIDES = {
-    "BB610-906E45D6FF4693": "https://organicplanet.com.ua/image/catalog/products/3448.jpg",
+    "BB610-906E45D6FF4693": "https://godomall.speedycdn.net/d7edf57af8cba2f9de6fa9e1e88e0c40/goods/1000001036/image/detail/1000001036_detail_011.jpg",
 }
 
 

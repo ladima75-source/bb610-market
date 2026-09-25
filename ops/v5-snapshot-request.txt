@@ -1,3 +1,4 @@
 snapshot plantlogic-accessories-official-media 2026-09-24T10:18:00+03:00
 2026-09-25T18:52:00+03:00 prelaunch verified-package-media refresh
 2026-09-25T18:58:00+03:00 include exact Master 13-40-13 20g media
+2026-09-25T23:44:00+03:00 prelaunch exact-master-13-40-13-20g retry

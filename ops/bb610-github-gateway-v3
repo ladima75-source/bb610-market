@@ -188,6 +188,11 @@ shadow() {
   python3 ops/v5_shadow_compare.py
 }
 
+head_bundle() {
+  cd "$ROOT"
+  git bundle create - HEAD
+}
+
 magelle_audit() {
   echo "========== MAGELLE VPS =========="
   if [ -d "$MAGELLE_ROOT/.git" ]; then
@@ -377,6 +382,7 @@ case "$CMD" in
   health) health ;;
   snapshot) snapshot ;;
   shadow) shadow ;;
+  head-bundle) head_bundle ;;
   magelle-audit) magelle_audit ;;
   magelle-bootstrap) magelle_bootstrap ;;
   magelle-health) magelle_health ;;

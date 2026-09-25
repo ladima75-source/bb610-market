@@ -1320,6 +1320,83 @@ def _ads_launch_content_quality_batch_15(con: sqlite3.Connection) -> bool:
         _update_product(con, product_id, fields)
     return True
 
+
+def _kendal_te_100ml_hires_media_batch_16(con: sqlite3.Connection) -> bool:
+    """Promote the verified high-resolution exact image for Kendal TE 100 ml."""
+    product_id = "kendal-te"
+    sku_id = "BB610-EC1D442D54C6DB"
+    old_media_id = "v5m_40c6ef743b5e67be8bb640cf"
+    media_id = "review26_kendal_te_100ml_hires"
+    path = "/assets/img/v5/verified/kendal-te-100ml-1200.jpg"
+    source_url = (
+        "https://agronom.ua/product/"
+        "biostymulyator-imunitetu-kendal-te-valagro-kendal-te-valagro-100-ml/"
+    )
+    alt = "Kendal TE — 100 мл"
+
+    if not con.execute(
+        "SELECT 1 FROM skus WHERE sku_id=? AND product_id=?",
+        (sku_id, product_id),
+    ).fetchone():
+        return False
+
+    con.execute(
+        """
+        INSERT INTO media(
+          media_id,path,sha256,kind,source_url,verification_status,alt,created_at
+        )
+        VALUES(?,?,NULL,'image',?,'verified',?,?)
+        ON CONFLICT(media_id) DO UPDATE SET
+          path=excluded.path,
+          source_url=excluded.source_url,
+          verification_status='verified',
+          alt=excluded.alt
+        """,
+        (media_id, path, source_url, alt, _now()),
+    )
+
+    # The imported asset is validated as >=1000 px by the import workflow.
+    # Keep the old media row for rollback, but remove its active bindings so
+    # the 338x338 image cannot appear in the storefront gallery or feed.
+    con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+    con.execute(
+        "DELETE FROM sku_media WHERE sku_id=? AND media_id=?",
+        (sku_id, old_media_id),
+    )
+    con.execute(
+        "DELETE FROM product_media WHERE product_id=? AND media_id=?",
+        (product_id, old_media_id),
+    )
+    con.execute(
+        """
+        INSERT INTO sku_media(
+          sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+        )
+        VALUES(?,?,1,0,'exact','verified_package_product_page',?)
+        ON CONFLICT(sku_id,media_id) DO UPDATE SET
+          is_primary=1,
+          sort_order=0,
+          binding_kind='exact',
+          source_kind='verified_package_product_page',
+          source_url=excluded.source_url
+        """,
+        (sku_id, media_id, source_url),
+    )
+    con.execute(
+        """
+        INSERT INTO product_media(
+          product_id,media_id,sort_order,source_kind,source_url
+        )
+        VALUES(?,?,0,'exact_sku_rollup',?)
+        ON CONFLICT(product_id,media_id) DO UPDATE SET
+          sort_order=0,
+          source_kind='exact_sku_rollup',
+          source_url=excluded.source_url
+        """,
+        (product_id, media_id, source_url),
+    )
+    return True
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -1338,6 +1415,7 @@ _MIGRATIONS = [
     ("20260921_master_buyer_titles_batch13", _master_buyer_titles_batch_13),
     ("20260921_master_134013_rich_content_batch14", _master_134013_rich_content_batch_14),
     ("20260925_ads_launch_content_quality_batch15", _ads_launch_content_quality_batch_15),
+    ("20260925_kendal_te_100ml_hires_media_batch16", _kendal_te_100ml_hires_media_batch_16),
 ]
 
 

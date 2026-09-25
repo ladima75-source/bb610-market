@@ -7,17 +7,17 @@
     "current_skus_without_exact": 45,
     "products_with_media": 118,
     "products_without_media": 1,
-    "media_assets": 425,
+    "media_assets": 426,
     "sku_bindings": 256,
-    "product_bindings": 428,
+    "product_bindings": 429,
     "organic_planet_source_rows": 187,
     "organic_planet_accepted_exact_rows": 134,
     "organic_planet_rejected_rows": 53,
     "mapping_failures": 0,
     "verified_manifest_rows": 28,
-    "verified_manifest_accepted": 27,
+    "verified_manifest_accepted": 28,
     "verified_manifest_rejected": 0,
-    "verified_manifest_failures": 1
+    "verified_manifest_failures": 0
   },
   "media": [
     {
@@ -3101,6 +3101,16 @@
       "alt": "Plantlogic 1304125 — 25L-Drainage-collection-pot_Item_1304125_gutter.jpg"
     },
     {
+      "media_id": "v5m_b56f300a0b3dce93f42d0b95",
+      "path": "/assets/img/v5/media/b56f300a0b3dce93f42d.png",
+      "sha256": "b56f300a0b3dce93f42d0b95cf19f7edcb69cb4e9c20369cb261b9fa2cd4c87b",
+      "kind": "image",
+      "source_url": "https://rodon-agro.com.ua/ua/p1713311143-mineralnoe-udobrenie-master.html",
+      "verification_status": "verified",
+      "verification_detail": "package_specific_source",
+      "alt": "master-npk-13-40-13 — 20 г"
+    },
+    {
       "media_id": "v5m_b5a5b6c34106511db6fdd3de",
       "path": "/assets/img/v5/media/b5a5b6c34106511db6fd.png",
       "sha256": "b5a5b6c34106511db6fdd3de156e6f146937ea923ad186c588e7f471b0456458",
@@ -3137,7 +3147,7 @@
       "kind": "image",
       "source_url": null,
       "verification_status": "candidate",
-      "verification_detail": "package_named_legacy_asset",
+      "verification_detail": "representative",
       "alt": "MASTER 13-40-13"
     },
     {
@@ -5651,12 +5661,12 @@
     },
     {
       "sku_id": "BB610-VLG-MASTER134013-20G",
-      "media_id": "v5m_b6fe1160bafc5b713768f678",
+      "media_id": "v5m_b56f300a0b3dce93f42d0b95",
       "is_primary": true,
-      "sort_order": 0,
+      "sort_order": -10,
       "binding_kind": "exact",
-      "source_kind": "legacy_package_named_asset",
-      "source_url": null
+      "source_kind": "verified_manifest_package_source",
+      "source_url": "https://rodon-agro.com.ua/ua/p1713311143-mineralnoe-udobrenie-master.html"
     },
     {
       "sku_id": "BB610-VLG-MASTER134013-250G",
@@ -7805,10 +7815,24 @@
     },
     {
       "product_id": "master-npk-13-40-13",
+      "media_id": "v5m_b6fe1160bafc5b713768f678",
+      "sort_order": 0,
+      "source_kind": "legacy_product_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "master-npk-13-40-13",
       "media_id": "v5m_c1019a90a26d77414f6a6ab6",
       "sort_order": 0,
       "source_kind": "legacy_product_fallback",
       "source_url": null
+    },
+    {
+      "product_id": "master-npk-13-40-13",
+      "media_id": "v5m_b56f300a0b3dce93f42d0b95",
+      "sort_order": 10,
+      "source_kind": "verified_manifest_rollup",
+      "source_url": "https://rodon-agro.com.ua/ua/p1713311143-mineralnoe-udobrenie-master.html"
     },
     {
       "product_id": "master-npk-13-40-13",
@@ -7820,13 +7844,6 @@
     {
       "product_id": "master-npk-13-40-13",
       "media_id": "v5m_5ff16767afd9c682e4fad77f",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "master-npk-13-40-13",
-      "media_id": "v5m_b6fe1160bafc5b713768f678",
       "sort_order": 30,
       "source_kind": "exact_sku_rollup",
       "source_url": null
@@ -10437,13 +10454,6 @@
   ],
   "mapping_failures": [],
   "verified_manifest_rejected": [],
-  "verified_manifest_failures": [
-    {
-      "sku_id": "BB610-813432FDF29AE4",
-      "reason": "package_mismatch",
-      "manifest_package": "20 кг",
-      "v5_package": "25 кг"
-    }
-  ],
+  "verified_manifest_failures": [],
   "missing_legacy_assets": []
 }

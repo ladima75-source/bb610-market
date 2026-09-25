@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "2f7c8dd04c9bd0058fd0d53d9294e964ad2b23e9",
-  "request_id": "2026-09-25-merchant-seasailer-image-fix-ff"
+  "action": "audit",
+  "request_id": "2026-09-25-audit-before-merchant-image-deploy"
 }

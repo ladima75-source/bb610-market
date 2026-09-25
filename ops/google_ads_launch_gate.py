@@ -224,7 +224,7 @@ def check_seo_and_tracking(errors: list[str]) -> dict:
             "product_schema": '"@type":"Product"' in page,
             "breadcrumb_schema": '"@type":"BreadcrumbList"' in page,
             "og_url": f'<meta property="og:url" content="{expected_url}">' in page,
-            "data_source_current": "js/data-source.js?v=20260925-seo-routes-1" in page,
+            "data_source_current": "js/data-source.js?v=20260925-generic-gallery-1" in page,
             "product_js_current": "js/product.js?v=20260925-seo-canonical-2" in page,
         }
         landing_checks[pid] = checks

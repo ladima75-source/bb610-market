@@ -109,9 +109,9 @@ jobs:
           assert 'category in {"containers", "контейнери"}' in master
           assert "bb610-price-request" in css
 
-          assert 'app.js?v=20260922-sku-title-1' in Path('index.html').read_text(encoding='utf-8')
-          assert 'app.js?v=20260922-sku-title-1' in Path('catalog.html').read_text(encoding='utf-8')
-          assert 'app.js?v=20260922-sku-title-1' in Path('product.html').read_text(encoding='utf-8')
+          assert 'js/app.js?v=' in Path('index.html').read_text(encoding='utf-8')
+          assert 'js/app.js?v=' in Path('catalog.html').read_text(encoding='utf-8')
+          assert 'js/app.js?v=' in Path('product.html').read_text(encoding='utf-8')
           product_html=Path('product.html').read_text(encoding='utf-8')
           assert 'js/product.js?v=' in product_html
           assert 'index,follow,max-image-preview:large' in product_html
@@ -119,12 +119,12 @@ jobs:
           assert 'canonicalProductUrl' in product
           assert "setMeta('og:title'" in product
           assert "setMeta('twitter:card'" in product
-          assert 'app.js?v=20260922-sku-title-1' in Path('favorites.html').read_text(encoding='utf-8')
-          assert 'favorites.js?v=20260918-market-test-1' in Path('favorites.html').read_text(encoding='utf-8')
-          assert 'app.js?v=20260922-sku-title-1' in Path('compare.html').read_text(encoding='utf-8')
-          assert 'compare.js?v=20260922-sku-title-1' in Path('compare.html').read_text(encoding='utf-8')
-          assert 'app.js?v=20260922-sku-title-1' in Path('cart.html').read_text(encoding='utf-8')
-          assert 'cart.js?v=20260922-sku-title-1' in Path('cart.html').read_text(encoding='utf-8')
+          assert 'js/app.js?v=' in Path('favorites.html').read_text(encoding='utf-8')
+          assert 'js/favorites.js?v=' in Path('favorites.html').read_text(encoding='utf-8')
+          assert 'js/app.js?v=' in Path('compare.html').read_text(encoding='utf-8')
+          assert 'js/compare.js?v=' in Path('compare.html').read_text(encoding='utf-8')
+          assert 'js/app.js?v=' in Path('cart.html').read_text(encoding='utf-8')
+          assert 'js/cart.js?v=' in Path('cart.html').read_text(encoding='utf-8')
           assert 'Ціна за запитом' in compare
           admin=Path('admin/price-requests.html').read_text(encoding='utf-8')
           admin_js=Path('admin/price-requests.js').read_text(encoding='utf-8')

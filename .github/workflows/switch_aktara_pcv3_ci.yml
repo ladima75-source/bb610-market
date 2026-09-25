@@ -6,13 +6,11 @@ on:
     paths:
       - 'data/product_content/syngenta_switch_aktara_pcv3_20260918.json'
       - 'backend/update_switch_aktara_pcv3_20260918.py'
-      - 'backend/services/product_commerce.py'
       - '.github/workflows/switch_aktara_pcv3_ci.yml'
   pull_request:
     paths:
       - 'data/product_content/syngenta_switch_aktara_pcv3_20260918.json'
       - 'backend/update_switch_aktara_pcv3_20260918.py'
-      - 'backend/services/product_commerce.py'
       - '.github/workflows/switch_aktara_pcv3_ci.yml'
 
 jobs:
@@ -27,7 +25,6 @@ jobs:
       - name: Syntax
         run: |
           python -m py_compile backend/update_switch_aktara_pcv3_20260918.py
-          python -m py_compile backend/services/product_commerce.py
 
       - name: Validate cards and immutable commerce identity
         run: |
@@ -62,25 +59,24 @@ jobs:
             assert mapping['existing_product_key']==spec['legacy_product_key']
             assert len(mapping['skus'])==len(spec['skus'])
 
+          # Protection products are intentionally retained as curated source data,
+          # but they must stay hidden from the public V5 storefront.
           runtime=u.load_runtime()
           products={x['id']:x for x in runtime['products']}
-          skus={x['id']:x for x in runtime['skus']}
-          assert products['switch-625-wg']['name']==sw['title']
-          assert products['aktara-25-wg']['name']==ak['title']
-          for spec in doc['products']:
-            for sku in spec['skus']:
-              live=skus[sku['commerce_sku_key']]
-              assert live['product_id']==spec['legacy_product_key']
-              assert live['variant']==sku['package']
+          assert 'switch-625-wg' not in products
+          assert 'aktara-25-wg' not in products
+
+          verified=json.loads(Path('v5/content/verified-current.json').read_text(encoding='utf-8'))
+          v5={x['product_id']:x for x in verified['products']}
+          for key in ('switch-625-wg','aktara-25-wg'):
+            assert key in v5
+            assert v5[key].get('public_enabled') is False
+            assert v5[key].get('category_id')=='protection'
 
           # Card manifest must remain commerce-value free.
           raw=Path(u.MANIFEST).read_text(encoding='utf-8').lower()
           for forbidden in ('"price"','"sale_price"','"stock_qty"','"availability"'):
             assert forbidden not in raw
-
-          pc=Path('backend/services/product_commerce.py').read_text(encoding='utf-8')
-          assert 'Product Card v3 can legitimately own a public product' in pc
-          assert "products[legacy_key]=" in pc
 
           print('SWITCH + AKTARA PCV3 CONTRACT: PASS')
           PY

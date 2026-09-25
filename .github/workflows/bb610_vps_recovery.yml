@@ -1,0 +1,56 @@
+name: BB610 VPS Recovery Export
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/vps-recovery-request.txt'
+      - '.github/workflows/bb610_vps_recovery.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure SSH
+        shell: bash
+        env:
+          KEY: ${{ secrets.BB610_VPS_SSH_KEY }}
+          HOSTS: ${{ secrets.BB610_VPS_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/bb610_vps
+          chmod 600 ~/.ssh/bb610_vps
+          printf '%s\n' "$HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Export production HEAD bundle
+        shell: bash
+        env:
+          HOST: ${{ secrets.BB610_VPS_HOST }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/bb610_vps \
+            -o BatchMode=yes \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            root@"$HOST" head-bundle > /tmp/vps-head.bundle
+          test -s /tmp/vps-head.bundle
+          git bundle verify /tmp/vps-head.bundle
+
+      - name: Publish recovery branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch /tmp/vps-head.bundle HEAD:refs/remotes/vps/recovery
+          sha="$(git rev-parse refs/remotes/vps/recovery)"
+          test "$sha" = "dea05b0b4482179e09bbe8ce40bb0819c7a8db1e"
+          git push origin "$sha:refs/heads/vps-recovery-20260925"
+          echo "RECOVERY_SHA=$sha"

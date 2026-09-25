@@ -227,7 +227,11 @@ window.BB610_DATA_SOURCE={
   _v5Sku(raw,productRaw){
     const sourceRows=Array.isArray(raw.media)?raw.media:[];
     const isPlantlogicContainer=productRaw?.category_id==='containers'&&String(productRaw?.brand||'').trim().toLowerCase()==='plantlogic';
-    let mediaRows=sourceRows;
+    const hasPackageMetric=row=>/\b\d+(?:[.,]\d+)?\s*(?:г|кг|мл|л|шт|pcs)\b/i.test(String(row?.alt||''));
+    const genericProductRows=(productRaw?.media||[]).filter(row=>
+      row?.source_kind==='legacy_product_fallback'&&!hasPackageMetric(row)
+    );
+    let mediaRows=[...sourceRows,...genericProductRows];
     if(isPlantlogicContainer){
       const article=String(raw?.attributes?.manufacturer_product_no||'').trim();
       const sameModel=article?(productRaw.media||[]).filter(x=>String(x?.alt||'').includes(article)):[];

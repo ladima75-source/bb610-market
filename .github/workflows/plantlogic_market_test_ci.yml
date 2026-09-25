@@ -112,7 +112,13 @@ jobs:
           assert 'app.js?v=20260922-sku-title-1' in Path('index.html').read_text(encoding='utf-8')
           assert 'app.js?v=20260922-sku-title-1' in Path('catalog.html').read_text(encoding='utf-8')
           assert 'app.js?v=20260922-sku-title-1' in Path('product.html').read_text(encoding='utf-8')
-          assert 'product.js?v=20260922-sku-title-1' in Path('product.html').read_text(encoding='utf-8')
+          product_html=Path('product.html').read_text(encoding='utf-8')
+          assert 'js/product.js?v=' in product_html
+          assert 'index,follow,max-image-preview:large' in product_html
+          assert 'noindex,follow' not in product_html
+          assert 'canonicalProductUrl' in product
+          assert "setMeta('og:title'" in product
+          assert "setMeta('twitter:card'" in product
           assert 'app.js?v=20260922-sku-title-1' in Path('favorites.html').read_text(encoding='utf-8')
           assert 'favorites.js?v=20260918-market-test-1' in Path('favorites.html').read_text(encoding='utf-8')
           assert 'app.js?v=20260922-sku-title-1' in Path('compare.html').read_text(encoding='utf-8')

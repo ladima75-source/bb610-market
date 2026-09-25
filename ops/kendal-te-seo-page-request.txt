@@ -1,1 +1,1 @@
-2026-09-25 build Kendal TE static SEO route and sitemap entry
+2026-09-25 retry Kendal TE static SEO route after ignored-path fix

@@ -5,6 +5,10 @@ on:
   push:
     branches: [main]
     paths:
+      - 'ops/google-ads-launch-gate-request.txt'
+      - 'ops/google_ads_launch_gate.py'
+      - 'config/seo-routes.js'
+      - 'products/**/index.html'
       - 'v5/staging/production-current.json'
       - 'v5/content/verified-current.json'
       - 'v5/media/verified-current.json'

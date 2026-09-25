@@ -754,7 +754,6 @@ def _verified_package_media_batch_04(con: sqlite3.Connection) -> bool:
     rows = [
         ("review26_op_agriflex_amino_1kg","BB610-24D24A6B4EB211","/assets/img/v5/verified/op-agriflex-amino-1kg.jpg","AgriFlex Amino — 1 кг","https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"),
         ("review26_op_agriflex_amino_5kg","BB610-E72D0A565A6415","/assets/img/v5/verified/op-agriflex-amino-5kg.jpg","AgriFlex Amino — 5 кг","https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-5-kg-citymax"),
-        ("review26_op_agriflex_amino_20kg","BB610-813432FDF29AE4","/assets/img/v5/verified/op-agriflex-amino-20kg.jpg","AgriFlex Amino — 20 кг","https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-25-kg-citymax"),
         ("review26_op_agriflex_aminovix_1kg","BB610-021E63CD9734F9","/assets/img/v5/verified/op-agriflex-aminovix-1kg.jpg","AgriFlex AminoVix — 1 кг","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-aminovix-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"),
         ("review26_op_agriflex_fulvix_1kg","BB610-EAEE397CF0D45E","/assets/img/v5/verified/op-agriflex-fulvix-1kg.jpg","AgriFlex Fulvix — 1 кг","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-fulvix-rozchynni-fulvovi-kysloty-1-kg-citymax"),
         ("review26_op_agriflex_zn_1kg","BB610-75B55F8DEAD7C2","/assets/img/v5/verified/op-agriflex-zn-1kg.jpg","AgriFlex Amino Zn — 1 кг","https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/agriflex-amino-zn-vodorozchynnyj-kompleks-aminokyslot-1-kg-citymax"),
@@ -767,14 +766,9 @@ def _verified_package_media_batch_04(con: sqlite3.Connection) -> bool:
         if not con.execute("SELECT 1 FROM skus WHERE sku_id=?", (sku_id,)).fetchone():
             return False
 
-    # The canonical identity stays stable; only the reviewed package facts change.
-    con.execute(
-        """
-        UPDATE skus
-        SET package_value=20, package_unit='kg', package_label='20 кг', package_group='large'
-        WHERE sku_id='BB610-813432FDF29AE4'
-        """
-    )
+    # Media migrations must never rewrite canonical package identity. Package
+    # facts come from Product Master V5 staging; verified media may only bind
+    # to an already-matching SKU/package.
 
     for media_id, sku_id, path, alt, source_url in rows:
         con.execute(

@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "id": "kendal-te",
+      "slug": "kendal-te",
+      "name": "Kendal TE — мікроелементний біостимулятор Valagro",
+      "brand": "Valagro",
+      "manufacturer": "Valagro S.p.A.",
+      "category_id": "biostimulation",
+      "short_description": "KENDAL TE — продукт Valagro із біоактивним комплексом та мікроелементами Cu, Mn і Zn.",
+      "manufacturer_use": "Біостимулюючий комплекс Valagro з мікроелементами Cu, Mn і Zn. Актуальні характеристики та застосування завантажуються з Product Master V5.",
+      "image": {
+        "local": "assets/img/v5/verified/kendal-te-100ml-1200.jpg"
+      },
+      "verification": {
+        "verified": true
+      },
+      "seo": {
+        "title": "Kendal TE — біостимулятор Valagro з Cu, Mn і Zn",
+        "description": "Kendal TE Valagro — біостимулятор з мікроелементами Cu, Mn і Zn. Фасування, актуальна ціна, характеристики та застосування у BB610 Market."
+      }
+    }
+  ]
+}

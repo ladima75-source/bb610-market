@@ -1,0 +1,63 @@
+name: BB610 Kendal TE Image Import
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/kendal-te-image-import-request.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  import-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Import exact Kendal TE 100ml image
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/img/v5/verified
+          url='https://agronom.ua/image/cache/catalog/%20%20100%20-1754413247-1200x1200-product_popup.jpg'
+          curl -fL --retry 3 --retry-delay 2 -A 'Mozilla/5.0' "$url" -o assets/img/v5/verified/kendal-te-100ml-1200.jpg
+          python - <<'PY'
+          from pathlib import Path
+          import struct
+          p=Path('assets/img/v5/verified/kendal-te-100ml-1200.jpg')
+          data=p.read_bytes()
+          assert data[:2] == b'\xff\xd8', 'source is not JPEG'
+          i=2; w=h=None
+          sof={0xC0,0xC1,0xC2,0xC3,0xC5,0xC6,0xC7,0xC9,0xCA,0xCB,0xCD,0xCE,0xCF}
+          while i+9 < len(data):
+              if data[i] != 0xFF:
+                  i += 1; continue
+              while i < len(data) and data[i] == 0xFF:
+                  i += 1
+              marker=data[i]; i += 1
+              if marker in (0xD8,0xD9):
+                  continue
+              seglen=struct.unpack('>H',data[i:i+2])[0]
+              if marker in sof:
+                  h=struct.unpack('>H',data[i+3:i+5])[0]
+                  w=struct.unpack('>H',data[i+5:i+7])[0]
+                  break
+              i += seglen
+          assert w and h, 'unable to read dimensions'
+          assert min(w,h) >= 1000, (w,h)
+          print('verified', len(data), w, h)
+          PY
+
+      - name: Commit verified package image
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add assets/img/v5/verified/kendal-te-100ml-1200.jpg
+          git diff --cached --check
+          git config user.name 'bb610-media-bot'
+          git config user.email 'bb610-media-bot@users.noreply.github.com'
+          git commit -m 'Add high-resolution Kendal TE 100ml image'
+          git push origin HEAD:main

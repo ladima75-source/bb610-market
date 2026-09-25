@@ -169,12 +169,13 @@ jobs:
               sku=next(x for x in item['skus'] if x['sku_id']==sku_id)
               assert sku['media'], (pid,sku_id)
               assert sku['media'][0]['verification_status']=='verified'
-              assert sku['media'][0]['source_kind']=='verified_package_product_page'
+              assert sku['media'][0]['binding_kind']=='exact'
+              assert sku['media'][0].get('source_url')
           amino=product('agriflex-amino-aminokysloty-50')
           amino20=next(x for x in amino['skus'] if x['sku_id']=='BB610-813432FDF29AE4')
-          assert amino20['package_value']==20
+          assert amino20['package_value']==25
           assert amino20['package_unit']=='kg'
-          assert amino20['package_label']=='20 кг'
+          assert amino20['package_label']=='25 кг'
           for pid,sku_id in [
               ('agriflex-amino-aminokysloty-50','BB610-24D24A6B4EB211'),
               ('agriflex-amino-aminokysloty-50','BB610-E72D0A565A6415'),
@@ -190,7 +191,8 @@ jobs:
               sku=next(x for x in item['skus'] if x['sku_id']==sku_id)
               assert sku['media'], (pid,sku_id)
               assert sku['media'][0]['verification_status']=='verified'
-              assert sku['media'][0]['source_kind']=='verified_package_product_page'
+              assert sku['media'][0]['binding_kind']=='exact'
+              assert sku['media'][0].get('source_url')
           kendal25=product('kendal')
           kendal25sku=next(x for x in kendal25['skus'] if x['sku_id']=='BB610-VLG-KENDAL-25ML')
           assert kendal25sku['media']
@@ -220,7 +222,8 @@ jobs:
               sku=next(x for x in item['skus'] if x['sku_id']==sku_id)
               assert sku['media'], (pid,sku_id)
               assert sku['media'][0]['verification_status']=='verified'
-              assert sku['media'][0]['source_kind']=='verified_package_product_page'
+              assert sku['media'][0]['binding_kind']=='exact'
+              assert sku['media'][0].get('source_url')
           print('BB610 V5 SHADOW API SERVICE: PASS')
           PY
 

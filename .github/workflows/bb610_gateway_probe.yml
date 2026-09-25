@@ -1,0 +1,53 @@
+name: BB610 Gateway Probe
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/gateway-probe-request.txt'
+      - '.github/workflows/bb610_gateway_probe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure SSH
+        shell: bash
+        env:
+          KEY: ${{ secrets.BB610_VPS_SSH_KEY }}
+          HOSTS: ${{ secrets.BB610_VPS_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/bb610_vps
+          chmod 600 ~/.ssh/bb610_vps
+          printf '%s\n' "$HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Probe installed gateway through read-only snapshot
+        shell: bash
+        env:
+          HOST: ${{ secrets.BB610_VPS_HOST }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/bb610_vps \
+            -o BatchMode=yes \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            root@"$HOST" snapshot > /tmp/bb610-probe.tar.gz
+          mkdir -p /tmp/bb610-probe
+          tar -xzf /tmp/bb610-probe.tar.gz -C /tmp/bb610-probe ./manifest.json
+          python - <<'PY'
+          import json
+          d=json.load(open('/tmp/bb610-probe/manifest.json',encoding='utf-8'))
+          print(json.dumps({
+              'git': d.get('git',{}),
+              'gateway': d.get('gateway',{}),
+              'gateway_upgrade': d.get('gateway_upgrade',{})
+          },ensure_ascii=False,indent=2))
+          PY

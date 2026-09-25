@@ -1,6 +1,6 @@
 {
   "schema": "bb610-v5-verified-media-import-1",
-  "verified_at": "2026-09-21",
+  "verified_at": "2026-09-25",
   "media": [
     {
       "sku_id": "BB610-VLG-MASTER134013-1KG",
@@ -156,7 +156,7 @@
     {
       "sku_id": "BB610-813432FDF29AE4",
       "product_id": "agriflex-amino-aminokysloty-50",
-      "package_label": "20 кг",
+      "package_label": "25 кг",
       "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/agriflex-amino-vodorozchynnyj-kompleks-aminokyslot-25-kg-citymax",
       "target": "assets/img/v5/verified/op-agriflex-amino-20kg.auto"
     },
@@ -208,6 +208,14 @@
       "package_label": "25 мл",
       "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-25-ml-val",
       "target": "assets/img/v5/verified/op-kendal-25ml.auto"
+    },
+    {
+      "sku_id": "BB610-VLG-MASTER134013-20G",
+      "product_id": "master-npk-13-40-13",
+      "package_label": "20 г",
+      "source_page": "https://rodon-agro.com.ua/ua/p1713311143-mineralnoe-udobrenie-master.html",
+      "image_url": "https://images.prom.ua/6019332107_w640_h640_6019332107.jpg",
+      "target": "assets/img/v5/verified/master-13-40-13-20g-exact.jpg"
     }
   ]
 }

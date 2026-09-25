@@ -68,7 +68,13 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     :(BB610.defaultSku(p.id)||skuList[0]||null);
   const displayName=()=>BB610.skuName?.(rawProduct,selectedSku)||p.name;
 
-  const canonicalProductUrl=()=>location.origin+'/product.html?id='+encodeURIComponent(p.id);
+  const canonicalProductUrl=()=>{
+    if(/^\/products\/[^/]+\/?$/.test(location.pathname)){
+      return location.origin+location.pathname.replace(/\/?$/,'/');
+    }
+    return BB610_DATA_SOURCE.seoProductUrl?.(p.id)||
+      (location.origin+'/product.html?id='+encodeURIComponent(p.id));
+  };
   const setMeta=(name,content,attr='name')=>{
     if(!content)return;
     let el=document.head.querySelector(`meta[${attr}="${name}"]`);

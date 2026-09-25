@@ -1,0 +1,29 @@
+name: BB610 Google Ads Launch Gate
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'v5/staging/production-current.json'
+      - 'v5/content/verified-current.json'
+      - 'v5/media/verified-current.json'
+      - 'assets/img/v5/media/**'
+      - 'product.html'
+      - 'js/product.js'
+      - 'js/analytics.js'
+      - 'js/order-success.js'
+      - 'config/analytics-config.js'
+
+permissions:
+  contents: read
+
+jobs:
+  launch-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Google Ads prelaunch quality gate
+        run: |
+          set -euo pipefail
+          python ops/google_ads_launch_gate.py

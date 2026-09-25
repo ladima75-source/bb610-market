@@ -124,7 +124,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git add products/kendal-te/index.html sitemap.xml
+          git add -f products/kendal-te/index.html
+          git add sitemap.xml
           git diff --cached --check
           if git diff --cached --quiet; then
             echo 'No changes required'

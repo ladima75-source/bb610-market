@@ -8,6 +8,7 @@ window.BB610_DATA_SOURCE={
   mode:'product-master-v4',
   _refreshPromise:null,
   _staticProductMedia:null,
+  _staticSeoRoutes:null,
   _productAliases:new Map(),
   _skuAliases:new Map(),
 
@@ -51,6 +52,27 @@ window.BB610_DATA_SOURCE={
     if(String(this.mode||'').startsWith('bb610-product-master-v5'))return null;
     this._captureStaticProductMedia();
     return this._staticProductMedia?.get(String(id||''))||null;
+  },
+
+  _captureStaticSeoRoutes(){
+    if(this._staticSeoRoutes)return;
+    const map=new Map();
+    (this.catalog().products||[]).forEach(p=>{
+      const id=String(p?.id||'').trim();
+      const slug=String(p?.slug||'').trim();
+      if(id&&slug)map.set(id,'/products/'+slug+'/');
+    });
+    Object.entries(window.BB610_SEO_ROUTES||{}).forEach(([id,path])=>{
+      id=String(id||'').trim();path=String(path||'').trim();
+      if(id&&/^\/products\/[^/]+\/$/.test(path))map.set(id,path);
+    });
+    this._staticSeoRoutes=map;
+  },
+
+  seoProductUrl(id){
+    this._captureStaticSeoRoutes();
+    const path=this._staticSeoRoutes?.get(String(id||'').trim());
+    return path?new URL(path,location.origin).href:null;
   },
 
   product(id){
@@ -392,6 +414,7 @@ window.BB610_DATA_SOURCE={
     if(this._refreshPromise)return this._refreshPromise;
     this._refreshPromise=(async()=>{
       this._captureStaticProductMedia();
+      this._captureStaticSeoRoutes();
       const base=(window.BB610_COMMERCE_CONFIG?.apiBaseUrl||'https://api.market.bb610.com.ua').replace(/\/$/,'');
       if(!base)return this.catalog();
       const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),8000);

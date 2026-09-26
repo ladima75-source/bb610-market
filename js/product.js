@@ -187,6 +187,26 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     <div class="product-tab-panels">${tabs.map((t,i)=>`<section class="product-tab-panel${i===0?' active':''}" data-product-panel="${t[0]}">${t[2]}</section>`).join('')}</div>
   </div>`:'';
 
+  const sourceRows=Array.isArray(p.sources)?p.sources.filter(x=>x?.source_url):[];
+  const sourceKindLabel=row=>{
+    const type=String(row?.source_type||'').toLowerCase();
+    const url=String(row?.source_url||'').toLowerCase();
+    if(url.includes('.pdf')||url.includes('pdf-getter'))return 'Документ / каталог виробника';
+    if(type.includes('catalog'))return 'Каталог виробника';
+    if(type.includes('official')||type.includes('manufacturer'))return 'Офіційна сторінка виробника';
+    return 'Перевірене джерело';
+  };
+  const sourceHtml=sourceRows.length?`<div class="info-card product-detail-card product-sources-card">
+    <h2>ДЖЕРЕЛА ДАНИХ</h2>
+    <p class="product-tab-copy">Характеристики та застосування звірено з матеріалами виробника.</p>
+    <div class="product-sources-list">${sourceRows.map(row=>{
+      const label=escValue(row.source_label||sourceKindLabel(row));
+      const kind=escValue(sourceKindLabel(row));
+      const verified=row.verified_at?` · перевірено ${escValue(row.verified_at)}`:'';
+      return `<div class="kv"><span>${kind}${verified}</span><b><a class="link" href="${escValue(row.source_url)}" target="_blank" rel="noopener noreferrer">${label}</a></b></div>`;
+    }).join('')}</div>
+  </div>`:'';
+
   const initialName=displayName();
   root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${String(p.categoryLabel||p.category||'Каталог').toUpperCase()} / ${escValue(initialName)}</div>
   <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${productImageFor(selectedSku)}" alt="${escValue(initialName)}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div>${galleryImages.length>1?`<div class="product-gallery-thumbs">${galleryImages.map((im,i)=>`<button type="button" class="gallery-thumb${i===0?' active':''}" data-gallery-img="${im}"><img src="${im}" alt="${escValue(initialName)} ${i+1}"></button>`).join('')}</div>`:''}</div>
@@ -199,6 +219,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   <div class="local-points" id="selected-shipping"></div></div></div>
   <div class="info-stack product-info-grid compact-product-info">
   ${tabsHtml}
+  ${sourceHtml}
   ${szr}</div>`;
 
   document.querySelectorAll('[data-gallery-img]').forEach(b=>b.onclick=()=>{

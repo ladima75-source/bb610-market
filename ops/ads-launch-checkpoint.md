@@ -163,6 +163,16 @@ Media policy for launch:
 - Do not add third-party YouTube clips or decorative stock media just to increase media count.
 - Preserve V5 as the single source of truth; do not create a parallel legacy gallery.
 
+## Products / Brand landing decision
+Verified 2026-09-26:
+- Brand Search current landing to the BB610 Market home page remains appropriate.
+- Products Search currently lands on `catalog.html?category=nutrition` and `catalog.html?category=biostimulation`.
+- Clean `/categories/nutrition/` and `/categories/biostimulation/` routes exist and are indexable, but they are currently behind the live catalog runtime versions.
+- The biostimulation SEO category static fallback also contains `BB610 TEST ORDER`, which is unacceptable for paid traffic.
+- Therefore Products Ads must NOT be migrated to the clean category SEO routes yet.
+- Keep current catalog query landing URLs for launch unless category routes are independently modernized and re-verified.
+- Containers ad/group remains paused and is not part of the initial paid launch decision.
+
 ## Next work block
 1. Replace weak sub-600px advertising media where an exact or official higher-resolution source can be verified, prioritizing the 12 paid SKU.
 2. Add official manufacturer video only when a verified official source exists and materially helps the buyer.

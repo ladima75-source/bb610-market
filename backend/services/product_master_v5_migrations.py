@@ -1420,6 +1420,116 @@ def _official_video_sources_batch_17(con: sqlite3.Connection) -> bool:
     )
     return True
 
+
+def _ads_hires_exact_package_media_batch_18(con: sqlite3.Connection) -> bool:
+    """Promote validated high-resolution exact-package media for Ads launch products."""
+    rows = [
+        ("megafol", "BB610-VLG-MEGAFOL-10L", "10 л", "/assets/img/v5/verified/ads-hires/bb610-vlg-megafol-10l.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-10-l-valagro", 10000),
+        ("megafol", "BB610-VLG-MEGAFOL-1L", "1 л", "/assets/img/v5/verified/ads-hires/bb610-vlg-megafol-1l.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-1-l-valagro", 1000),
+        ("kendal-te", "BB610-63DFC68206EF52", "1 л", "/assets/img/v5/verified/ads-hires/bb610-63dfc68206ef52.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-te-kendal-te-organicheskij-bioimmunostimulyator-1-l-v", 1000),
+        ("kendal", "BB610-0BDAED34128BDA", "1 л", "/assets/img/v5/verified/ads-hires/bb610-0bdaed34128bda.webp", "https://organicplanet.com.ua/ru/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-1-l-valag", 1000),
+        ("kendal", "BB610-VLG-KENDAL-25ML", "25 мл", "/assets/img/v5/verified/ads-hires/bb610-vlg-kendal-25ml.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-25-ml-val", 25),
+        ("radifarm", "BB610-D357BA80A4242C", "10 л", "/assets/img/v5/verified/ads-hires/bb610-d357ba80a4242c.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor", 10000),
+        ("radifarm", "BB610-E4A0F69C3768B0", "1 л", "/assets/img/v5/verified/ads-hires/bb610-e4a0f69c3768b0.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor2", 1000),
+        ("radifarm", "BB610-EDD4D8789728B8", "100 мл", "/assets/img/v5/verified/ads-hires/bb610-edd4d8789728b8.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor3", 100),
+        ("radifarm", "BB610-VLG-RADIFARM-25ML", "25 мл", "/assets/img/v5/verified/ads-hires/bb610-vlg-radifarm-25ml.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor4", 25),
+        ("viva", "BB610-75DA86689E220C", "1 л", "/assets/img/v5/verified/ads-hires/bb610-75da86689e220c.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-1-l-valagro", 1000),
+        ("viva", "BB610-A02CF54E375533", "20 л", "/assets/img/v5/verified/ads-hires/bb610-a02cf54e375533.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organichne-dobryvo-biostymulyator-20-l-valagro", 20000),
+        ("viva", "BB610-CFFC5BB95623B9", "10 л", "/assets/img/v5/verified/ads-hires/bb610-cffc5bb95623b9.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-10-l-valagr", 10000),
+        ("viva", "BB610-FDF73DEFF6CCEC", "25 мл", "/assets/img/v5/verified/ads-hires/bb610-fdf73deff6ccec.webp", "https://organicplanet.com.ua/ru/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-25-ml-valag", 25),
+        ("viva", "BB610-VLG-VIVA-100ML", "100 мл", "/assets/img/v5/verified/ads-hires/bb610-vlg-viva-100ml.webp", "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-100-ml-vala", 100),
+        ("pekacid-npk-0-60-20", "BB610-02A58A1A393719", "1 кг", "/assets/img/v5/verified/ads-hires/bb610-02a58a1a393719.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-mineralne-dobryvo-npk-0-60-20-1-kg", 1000),
+        ("pekacid-npk-0-60-20", "BB610-1E396B98D1779E", "100 г", "/assets/img/v5/verified/ads-hires/bb610-1e396b98d1779e.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-mineralne-dobryvo-npk-0-60-20-100-g", 100),
+        ("pekacid-npk-0-60-20", "BB610-D886B6AD2D6C04", "200 г", "/assets/img/v5/verified/ads-hires/bb610-d886b6ad2d6c04.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-npk-0-60-20-fosforno-kalijne-dobryvo-200-g", 200),
+        ("brexil-mix", "BB610-5C50CFED57B2BD", "15 г", "/assets/img/v5/verified/ads-hires/bb610-5c50cfed57b2bd.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-v-helatnij-formi-15-g-valagro", 15),
+        ("brexil-mix", "BB610-7CAECCDF081CBB", "5 кг", "/assets/img/v5/verified/ads-hires/bb610-7caeccdf081cbb.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-5-kg-valagro", 5000),
+        ("brexil-mix", "BB610-8AF90FA8223437", "250 г", "/assets/img/v5/verified/ads-hires/bb610-8af90fa8223437.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-v-helatnij-formi-250-g-valagro", 250),
+        ("brexil-mix", "BB610-B1881030364E52", "1 кг", "/assets/img/v5/verified/ads-hires/bb610-b1881030364e52.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-1-kg-valagro", 1000),
+        ("master-npk-13-40-13", "BB610-VLG-MASTER134013-1KG", "1 кг", "/assets/img/v5/verified/ads-hires/bb610-vlg-master134013-1kg.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-13-40-13-valagro", 1000),
+        ("master-npk-13-40-13", "BB610-VLG-MASTER134013-250G", "250 г", "/assets/img/v5/verified/ads-hires/bb610-vlg-master134013-250g.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro", 250),
+        ("master-npk-13-40-13", "BB610-VLG-MASTER134013-25KG", "25 кг", "/assets/img/v5/verified/ads-hires/bb610-vlg-master134013-25kg.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-13-40-13-valagr", 25000),
+        ("master-npk-20-20-20", "BB610-VLG-MASTER202020-10KG", "10 кг", "/assets/img/v5/verified/ads-hires/bb610-vlg-master202020-10kg.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-10-kg-npk-20-20-20-valagr", 10000),
+        ("master-npk-20-20-20", "BB610-VLG-MASTER202020-1KG", "1 кг", "/assets/img/v5/verified/ads-hires/bb610-vlg-master202020-1kg.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-20-20-20-valagro", 1000),
+        ("master-npk-20-20-20", "BB610-VLG-MASTER202020-20G", "20 г", "/assets/img/v5/verified/ads-hires/bb610-vlg-master202020-20g.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-20-g-npk-20-20-20-valagro", 20),
+        ("master-npk-20-20-20", "BB610-VLG-MASTER202020-250G", "250 г", "/assets/img/v5/verified/ads-hires/bb610-vlg-master202020-250g.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-20-20-20-valagro", 250),
+        ("master-npk-20-20-20", "BB610-VLG-MASTER202020-25KG", "25 кг", "/assets/img/v5/verified/ads-hires/bb610-vlg-master202020-25kg.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-20-20-20-valagr", 25000),
+        ("plantafol-npk-10-54-10", "BB610-VLG-PLANTAFOL105410-1KG", "1 кг", "/assets/img/v5/verified/ads-hires/bb610-vlg-plantafol105410-1kg.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-10-54-10-v", 1000),
+        ("plantafol-npk-10-54-10", "BB610-VLG-PLANTAFOL105410-250G", "250 г", "/assets/img/v5/verified/ads-hires/bb610-vlg-plantafol105410-250g.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-10-54-10-valagro", 250),
+        ("plantafol-npk-20-20-20", "BB610-VLG-PLANTAFOL202020-1KG", "1 кг", "/assets/img/v5/verified/ads-hires/bb610-vlg-plantafol202020-1kg.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-20-20-20-v", 1000),
+        ("plantafol-npk-20-20-20", "BB610-VLG-PLANTAFOL202020-250G", "250 г", "/assets/img/v5/verified/ads-hires/bb610-vlg-plantafol202020-250g.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-dobryvo-250-g-npk-20-20-20-valagro", 250),
+        ("plantafol-npk-20-20-20", "BB610-VLG-PLANTAFOL202020-5KG", "5 кг", "/assets/img/v5/verified/ads-hires/bb610-vlg-plantafol202020-5kg.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-5-kg-npk-20-20-20-v", 5000),
+        ("plantafol-npk-5-15-45", "BB610-VLG-PLANTAFOL51545-1KG", "1 кг", "/assets/img/v5/verified/ads-hires/bb610-vlg-plantafol51545-1kg.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-5-15-45-va", 1000),
+        ("plantafol-npk-5-15-45", "BB610-VLG-PLANTAFOL51545-250G", "250 г", "/assets/img/v5/verified/ads-hires/bb610-vlg-plantafol51545-250g.webp", "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-5-15-45-valagro", 250),
+    ]
+    for product_id, sku_id, package_label, path, source_url, sort_order in rows:
+        product = con.execute(
+            "SELECT name FROM products WHERE product_id=?", (product_id,)
+        ).fetchone()
+        if not product or not con.execute(
+            "SELECT 1 FROM skus WHERE sku_id=? AND product_id=?", (sku_id, product_id)
+        ).fetchone():
+            return False
+
+        old_media_ids = [
+            row[0] for row in con.execute(
+                "SELECT media_id FROM sku_media WHERE sku_id=?", (sku_id,)
+            ).fetchall()
+        ]
+        media_id = "review26_ads_hires_" + sku_id.lower().replace("-", "_")
+        alt = f"{product[0]} — {package_label}"
+        con.execute(
+            """
+            INSERT INTO media(
+              media_id,path,sha256,kind,source_url,verification_status,alt,created_at
+            ) VALUES(?,?,NULL,'image',?,'verified',?,?)
+            ON CONFLICT(media_id) DO UPDATE SET
+              path=excluded.path,
+              source_url=excluded.source_url,
+              verification_status='verified',
+              alt=excluded.alt
+            """,
+            (media_id, path, source_url, alt, _now()),
+        )
+
+        # Remove old bindings only; media rows remain available for rollback/history.
+        con.execute("DELETE FROM sku_media WHERE sku_id=?", (sku_id,))
+        for old_media_id in old_media_ids:
+            if not con.execute(
+                "SELECT 1 FROM sku_media WHERE media_id=? LIMIT 1", (old_media_id,)
+            ).fetchone():
+                con.execute(
+                    "DELETE FROM product_media WHERE product_id=? AND media_id=?",
+                    (product_id, old_media_id),
+                )
+
+        con.execute(
+            """
+            INSERT INTO sku_media(
+              sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+            ) VALUES(?,?,1,0,'exact','verified_package_hires_original',?)
+            ON CONFLICT(sku_id,media_id) DO UPDATE SET
+              is_primary=1,
+              sort_order=0,
+              binding_kind='exact',
+              source_kind='verified_package_hires_original',
+              source_url=excluded.source_url
+            """,
+            (sku_id, media_id, source_url),
+        )
+        con.execute(
+            """
+            INSERT INTO product_media(
+              product_id,media_id,sort_order,source_kind,source_url
+            ) VALUES(?, ?, ?, 'exact_sku_rollup', ?)
+            ON CONFLICT(product_id,media_id) DO UPDATE SET
+              sort_order=excluded.sort_order,
+              source_kind='exact_sku_rollup',
+              source_url=excluded.source_url
+            """,
+            (product_id, media_id, sort_order, source_url),
+        )
+    return True
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -1439,7 +1549,7 @@ _MIGRATIONS = [
     ("20260921_master_134013_rich_content_batch14", _master_134013_rich_content_batch_14),
     ("20260925_ads_launch_content_quality_batch15", _ads_launch_content_quality_batch_15),
     ("20260925_kendal_te_100ml_hires_media_batch16", _kendal_te_100ml_hires_media_batch_16),
-    ("20260926_official_video_sources_batch17", _official_video_sources_batch_17),
+    ("20260926_official_video_sources_batch17", _official_video_sources_batch_17),\n    ("20260926_ads_hires_exact_package_media_batch18", _ads_hires_exact_package_media_batch_18),
 ]
 
 

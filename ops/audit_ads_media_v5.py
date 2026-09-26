@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import hashlib, io, json, urllib.request
+import hashlib, html, io, json, re, urllib.parse, urllib.request
 from pathlib import Path
 from PIL import Image
 
@@ -13,6 +13,19 @@ PRODUCTS=[
  'pekacid-npk-0-60-20','master-npk-20-20-20','viva','master-npk-13-40-13',
  'plantafol-npk-20-20-20','megafol','radifarm','kendal-te'
 ]
+
+OFFICIAL_PRODUCT_PAGES={
+ 'kendal':'https://www.valagro.com/usa/en-us/products/farm/biostimulants/kendal/',
+ 'plantafol-npk-10-54-10':'https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/plantafol-10-54-10',
+ 'plantafol-npk-5-15-45':'https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/plantafol-5-15-45',
+ 'pekacid-npk-0-60-20':'https://icl-growingsolutions.com/uk-ua/agriculture/products/nova-pekacid/',
+ 'master-npk-20-20-20':'https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/master-20-20-20',
+ 'viva':'https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/viva',
+ 'master-npk-13-40-13':'https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/master-13-40-13',
+ 'plantafol-npk-20-20-20':'https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/plantafol-20-20-20',
+ 'megafol':'https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/megafol',
+ 'radifarm':'https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/radifarm',
+}
 
 def fetch_json(url):
     req=urllib.request.Request(url,headers={'User-Agent':'BB610-Ads-Media-Audit/1.0'})
@@ -63,6 +76,38 @@ def compact_media(m,scope,sku_id=None,package=None):
         'is_primary':m.get('is_primary')
     }
 
+def probe_official_page(url):
+    try:
+        req=urllib.request.Request(url,headers={'User-Agent':'BB610-Ads-Media-Audit/1.0'})
+        with urllib.request.urlopen(req,timeout=30) as r:
+            raw=r.read(6*1024*1024)
+            final=r.geturl()
+        page=raw.decode('utf-8',errors='replace')
+        patterns=[
+            r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']',
+            r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image["\']',
+        ]
+        image_url=''
+        for pat in patterns:
+            m=re.search(pat,page,re.I)
+            if m:
+                image_url=urllib.parse.urljoin(final,html.unescape(m.group(1)))
+                break
+        yt=[]
+        for pat in [
+            r'(?:youtube\.com/(?:embed/|watch\?v=)|youtu\.be/)([A-Za-z0-9_-]{6,})',
+            r'["\']videoId["\']\s*:\s*["\']([A-Za-z0-9_-]{6,})["\']'
+        ]:
+            for vid in re.findall(pat,page,re.I):
+                if vid not in yt:yt.append(vid)
+        return {
+            'ok':True,'page_url':final,'og_image':image_url,
+            'og_image_info':inspect_image(image_url) if image_url else None,
+            'youtube_ids':yt[:10]
+        }
+    except Exception as e:
+        return {'ok':False,'page_url':url,'error':str(e)}
+
 def main():
     data=fetch_json(API)
     by_id={p.get('product_id'):p for p in (data.get('products') or [])}
@@ -106,8 +151,10 @@ def main():
             if not im.get('ok'):broken.append(m['url']);continue
             if min(im.get('width',0),im.get('height',0))<600:
                 small.append({'url':m['url'],'width':im.get('width'),'height':im.get('height')})
+        official_page=OFFICIAL_PRODUCT_PAGES.get(pid)
         result['products'].append({
             'product_id':pid,'name':p.get('name'),'brand':p.get('brand'),
+            'official_page_probe':probe_official_page(official_page) if official_page else None,
             'product_media_count':len(p.get('media') or []),
             'unique_media_count':len(unique),
             'media':list(unique.values()),

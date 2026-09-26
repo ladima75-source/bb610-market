@@ -5,6 +5,21 @@
       "product_id": "kendal",
       "name": "Kendal — біостимулятор захисних реакцій рослин Valagro",
       "brand": "Valagro",
+      "official_page_probe": {
+        "ok": true,
+        "page_url": "https://www.syngenta.com/products/biologicals",
+        "og_image": "https://www.syngenta.com/sites/default/files/2025-07/biologicals%20thumb.jpg",
+        "og_image_info": {
+          "ok": true,
+          "width": 1286,
+          "height": 884,
+          "bytes": 91499,
+          "format": "JPEG",
+          "content_type": "image/jpeg",
+          "sha256": "78d13cd758d06b6a62984d7d3dbe58d6a792b46b0711e958eadd467b9ef801ae"
+        },
+        "youtube_ids": []
+      },
       "product_media_count": 2,
       "unique_media_count": 3,
       "media": [
@@ -134,6 +149,11 @@
       "product_id": "plantafol-npk-10-54-10",
       "name": "PLANTAFOL 10-54-10 — водорозчинне листкове NPK-добриво Valagro",
       "brand": "Valagro",
+      "official_page_probe": {
+        "ok": false,
+        "page_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/plantafol-10-54-10",
+        "error": "HTTP Error 403: Forbidden"
+      },
       "product_media_count": 3,
       "unique_media_count": 4,
       "media": [
@@ -306,6 +326,11 @@
       "product_id": "plantafol-npk-5-15-45",
       "name": "PLANTAFOL 5-15-45 — водорозчинне листкове NPK-добриво Valagro",
       "brand": "Valagro",
+      "official_page_probe": {
+        "ok": false,
+        "page_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/plantafol-5-15-45",
+        "error": "HTTP Error 403: Forbidden"
+      },
       "product_media_count": 4,
       "unique_media_count": 5,
       "media": [
@@ -509,6 +534,7 @@
       "product_id": "brexil-mix",
       "name": "Brexil Mix — комплексне хелатне мікродобриво Valagro",
       "brand": "Valagro",
+      "official_page_probe": null,
       "product_media_count": 5,
       "unique_media_count": 5,
       "media": [
@@ -707,6 +733,11 @@
       "product_id": "pekacid-npk-0-60-20",
       "name": "Nova PeKacid 0-60-20 — водорозчинне PK-добриво ICL",
       "brand": "ICL",
+      "official_page_probe": {
+        "ok": false,
+        "page_url": "https://icl-growingsolutions.com/uk-ua/agriculture/products/nova-pekacid/",
+        "error": "HTTP Error 403: Forbidden"
+      },
       "product_media_count": 4,
       "unique_media_count": 4,
       "media": [
@@ -879,6 +910,11 @@
       "product_id": "master-npk-20-20-20",
       "name": "MASTER 20-20-20 — водорозчинне NPK-добриво Valagro",
       "brand": "Valagro",
+      "official_page_probe": {
+        "ok": false,
+        "page_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/master-20-20-20",
+        "error": "HTTP Error 403: Forbidden"
+      },
       "product_media_count": 4,
       "unique_media_count": 6,
       "media": [
@@ -1116,6 +1152,11 @@
       "product_id": "viva",
       "name": "Viva — біостимулятор ризосфери Valagro",
       "brand": "Valagro",
+      "official_page_probe": {
+        "ok": false,
+        "page_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/viva",
+        "error": "HTTP Error 403: Forbidden"
+      },
       "product_media_count": 5,
       "unique_media_count": 5,
       "media": [
@@ -1313,6 +1354,11 @@
       "product_id": "master-npk-13-40-13",
       "name": "MASTER 13-40-13 — водорозчинне NPK-добриво Valagro",
       "brand": "Valagro",
+      "official_page_probe": {
+        "ok": false,
+        "page_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/master-13-40-13",
+        "error": "HTTP Error 403: Forbidden"
+      },
       "product_media_count": 3,
       "unique_media_count": 5,
       "media": [
@@ -1525,6 +1571,11 @@
       "product_id": "plantafol-npk-20-20-20",
       "name": "PLANTAFOL 20-20-20 — водорозчинне листкове NPK-добриво Valagro",
       "brand": "Valagro",
+      "official_page_probe": {
+        "ok": false,
+        "page_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/nutrizione/plantafol-20-20-20",
+        "error": "HTTP Error 403: Forbidden"
+      },
       "product_media_count": 3,
       "unique_media_count": 6,
       "media": [
@@ -1757,6 +1808,11 @@
       "product_id": "megafol",
       "name": "Megafol — антистресовий біостимулятор Valagro",
       "brand": "Syngenta Biologicals / Valagro",
+      "official_page_probe": {
+        "ok": false,
+        "page_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/megafol",
+        "error": "HTTP Error 403: Forbidden"
+      },
       "product_media_count": 3,
       "unique_media_count": 5,
       "media": [
@@ -1956,6 +2012,11 @@
       "product_id": "radifarm",
       "name": "Radifarm — кореневий біостимулятор Valagro",
       "brand": "Valagro",
+      "official_page_probe": {
+        "ok": false,
+        "page_url": "https://www.syngenta.it/prodotti/protezione-delle-colture/biostimolanti-specialita-nutrizionali/radifarm",
+        "error": "HTTP Error 403: Forbidden"
+      },
       "product_media_count": 4,
       "unique_media_count": 4,
       "media": [
@@ -2119,6 +2180,7 @@
       "product_id": "kendal-te",
       "name": "Kendal TE — мікроелементний біостимулятор Valagro",
       "brand": "Valagro",
+      "official_page_probe": null,
       "product_media_count": 3,
       "unique_media_count": 3,
       "media": [

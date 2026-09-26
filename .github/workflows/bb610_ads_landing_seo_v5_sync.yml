@@ -1,0 +1,37 @@
+name: BB610 Ads Landing SEO V5 Sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/ads-landing-seo-v5-sync-request.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync advertising landing SEO from V5
+        run: python ops/sync_ads_landing_seo_v5.py
+      - name: Validate changed landing pages
+        run: |
+          set -euo pipefail
+          python ops/google_ads_launch_gate.py
+          git diff --check
+      - name: Commit synced SEO pages
+        run: |
+          set -euo pipefail
+          git add products/*/index.html
+          if git diff --cached --quiet; then
+            echo "No SEO landing changes required"
+            exit 0
+          fi
+          git config user.name "bb610-seo-bot"
+          git config user.email "bb610-seo-bot@users.noreply.github.com"
+          git commit -m "Sync advertising landing SEO from V5"
+          git push origin HEAD:main

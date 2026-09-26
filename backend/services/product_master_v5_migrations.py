@@ -1549,7 +1549,8 @@ _MIGRATIONS = [
     ("20260921_master_134013_rich_content_batch14", _master_134013_rich_content_batch_14),
     ("20260925_ads_launch_content_quality_batch15", _ads_launch_content_quality_batch_15),
     ("20260925_kendal_te_100ml_hires_media_batch16", _kendal_te_100ml_hires_media_batch_16),
-    ("20260926_official_video_sources_batch17", _official_video_sources_batch_17),\n    ("20260926_ads_hires_exact_package_media_batch18", _ads_hires_exact_package_media_batch_18),
+    ("20260926_official_video_sources_batch17", _official_video_sources_batch_17),
+    ("20260926_ads_hires_exact_package_media_batch18", _ads_hires_exact_package_media_batch_18),
 ]
 
 

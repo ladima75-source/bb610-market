@@ -91,6 +91,68 @@ def aggregate_offer(p,url):
             'lowPrice':f'{min(prices):g}','highPrice':f'{max(prices):g}',
             'offerCount':len(prices),'url':url}
 
+
+def money_ua(v):
+    try:v=float(v)
+    except Exception:return ''
+    if v.is_integer():s=f'{int(v):,}'.replace(',',' ')
+    else:s=f'{v:,.2f}'.replace(',',' ').replace('.',',')
+    return s+' грн'
+
+def sku_label(s):
+    for key in ('variant','package','package_label','label','display_name'):
+        v=plain(s.get(key))
+        if v:return v
+    vw=s.get('volume_weight')
+    if isinstance(vw,dict):
+        value=plain(vw.get('value'));unit=plain(vw.get('unit'))
+        if value:return (value+' '+unit).strip()
+    value=plain(s.get('package_value'));unit=plain(s.get('package_unit'))
+    if value:return (value+' '+unit).strip()
+    return ''
+
+def static_price(p):
+    rows=active_skus(p)
+    if not rows:return 'Ціна уточнюється'
+    prices=[float(s['price']) for s in rows]
+    lo=min(prices);hi=max(prices)
+    return money_ua(lo) if lo==hi else 'від '+money_ua(lo)
+
+def static_stock(p):
+    rows=active_skus(p)
+    states={str(s.get('availability') or '').lower() for s in rows}
+    if states & {'in_stock','instock','in stock'}:return 'В наявності'
+    if states & {'preorder','backorder','pre_order'}:return 'Під замовлення'
+    return 'Наявність уточнюється'
+
+def static_packages(p):
+    labels=[]
+    for s in active_skus(p):
+        label=sku_label(s)
+        if label and label not in labels:labels.append(label)
+    if not labels:return ''
+    return '<div class="product-pack-label">Фасування</div><div class="pack-grid">'+''.join(
+        '<span class="pack"><b>'+html.escape(x)+'</b></span>' for x in labels[:8]
+    )+'</div>'
+
+def patch_static_fallback(text,p,desc,images):
+    price=html.escape(static_price(p))
+    stock=html.escape(static_stock(p))
+    packages=static_packages(p)
+    short=trim_words(p.get('short_description') or p.get('description') or p.get('manufacturer_use') or desc,260)
+    text=re.sub(r'<div class="selected-variant">.*?</div>',
+                '<div class="selected-variant">'+packages+'</div>',text,count=1,flags=re.I|re.S)
+    text=re.sub(r'<div class="price">.*?</div>',
+                '<div class="price">'+price+'</div>',text,count=1,flags=re.I|re.S)
+    text=re.sub(r'<div class="stock">.*?</div>',
+                '<div class="stock">'+stock+'</div>',text,count=1,flags=re.I|re.S)
+    text=re.sub(r'(<div class="stock">.*?</div>)\s*<p>.*?</p>',
+                r'\1<p>'+html.escape(short)+'</p>',text,count=1,flags=re.I|re.S)
+    if images:
+        text=re.sub(r'(<div class="product-gallery">\s*<img\s+src=")[^"]+(")',
+                    r'\1'+html.escape(images[0],quote=True)+r'\2',text,count=1,flags=re.I|re.S)
+    return text
+
 def replace_meta(text,selector,value,attr='name'):
     patt=rf'<meta(?=[^>]*\b{attr}=["\']{re.escape(selector)}["\'])[^>]*>'
     tag=f'<meta {attr}="{html.escape(selector,quote=True)}" content="{html.escape(value,quote=True)}">'
@@ -143,6 +205,7 @@ def main():
         text=replace_meta(text,'twitter:description',desc)
         if images:text=replace_meta(text,'twitter:image',images[0])
         text=patch_product_schema(text,p,url,desc,images)
+        text=patch_static_fallback(text,p,desc,images)
         path.write_text(text,encoding='utf-8')
         report.append({'id':pid,'slug':slug,'title_len':len(title),'description_len':len(desc),
                        'images':len(images),'active_skus':len(active_skus(p)),

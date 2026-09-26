@@ -251,11 +251,10 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     updateSkuUI();
     trackView();
     if(selectedSku&&location.protocol!=='file:'){
-      history.replaceState(
-        {sku:selectedSku.id},
-        '',
-        'product.html?id='+encodeURIComponent(p.id)+'&sku='+encodeURIComponent(selectedSku.id)
-      );
+      const skuUrl=/^\/products\/[^/]+\/?$/.test(location.pathname)
+        ?location.pathname.replace(/\/?$/,'/')+'?sku='+encodeURIComponent(selectedSku.id)
+        :'product.html?id='+encodeURIComponent(p.id)+'&sku='+encodeURIComponent(selectedSku.id);
+      history.replaceState({sku:selectedSku.id},'',skuUrl);
     }
   });
   updateSkuUI();

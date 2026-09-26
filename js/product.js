@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   const videoHtml=videoSources.length?`<div class="info-card product-detail-card product-video-card">
     <h2>ВІДЕО ВИРОБНИКА</h2>
     <div class="product-video-grid">${videoSources.map(({row,id})=>`<div class="product-video-item">
-      <div class="product-video-frame"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/${escValue(id)}" title="${escValue(row.source_label||'Відео виробника')}" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      <div class="product-video-frame" style="position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:12px"><iframe style="width:100%;height:100%;border:0;display:block" loading="lazy" src="https://www.youtube-nocookie.com/embed/${escValue(id)}" title="${escValue(row.source_label||'Відео виробника')}" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
       <div class="product-video-caption">${escValue(row.source_label||'Офіційне відео виробника')}</div>
     </div>`).join('')}</div>
   </div>`:'';

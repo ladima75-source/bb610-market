@@ -149,7 +149,7 @@ def patch_static_fallback(text,p,desc,images):
     stock=html.escape(static_stock(p))
     packages=static_packages(p)
     short=trim_words(p.get('short_description') or p.get('description') or p.get('manufacturer_use') or desc,260)
-    text=re.sub(r'<div class="selected-variant">.*?</div>',
+    text=re.sub(r'<div class="selected-variant">.*?(?=<div class="price">)',
                 '<div class="selected-variant">'+packages+'</div>',text,count=1,flags=re.I|re.S)
     text=re.sub(r'<div class="price">.*?</div>',
                 '<div class="price">'+price+'</div>',text,count=1,flags=re.I|re.S)

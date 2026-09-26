@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
-  "enabled": false,
+  "enabled": true,
   "target_path": "/usr/local/sbin/bb610-github-gateway",
   "target_repo_path": "ops/bb610-github-gateway-v3",
-  "expected_current_sha256": "9ed1306986b3aa10c573c9c6564d82b447fce00d0c022f5b14338b0d13c021cc",
+  "expected_current_sha256": "b58902e51a818217c8095348b29a61f507ce2a5c82438c912699cf6675f853f9",
   "mode": "0700",
-  "reason": "Read-only HEAD bundle export added for one-time production history recovery.",
-  "completed_sha256": "b58902e51a818217c8095348b29a61f507ce2a5c82438c912699cf6675f853f9",
-  "completed_note": "Recovery gateway upgrade completed successfully; upgrader disabled."
+  "reason": "Update V5 deploy health gate to minimum regression thresholds so catalog growth does not cause false deployment failures.",
+  "completed_sha256": "",
+  "completed_note": ""
 }

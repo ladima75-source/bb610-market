@@ -1,1 +1,2 @@
 2026-09-26 initial V5 ads landing SEO sync
+2026-09-26 retry after tracked-ignore fix

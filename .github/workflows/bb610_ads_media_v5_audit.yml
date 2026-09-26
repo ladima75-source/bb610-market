@@ -1,0 +1,34 @@
+name: BB610 Ads Media V5 Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/ads-media-audit-request.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install image inspector
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Audit advertising product media
+        run: python ops/audit_ads_media_v5.py
+      - name: Commit audit report
+        run: |
+          set -euo pipefail
+          git add ops/reports/ads-media-audit.json
+          if git diff --cached --quiet; then
+            echo "No media audit changes"
+            exit 0
+          fi
+          git config user.name "bb610-audit-bot"
+          git config user.email "bb610-audit-bot@users.noreply.github.com"
+          git commit -m "Update Ads media audit"
+          git push origin HEAD:main

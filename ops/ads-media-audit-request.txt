@@ -1,2 +1,3 @@
 2026-09-26 initial durable V5 media audit for 12 Ads landing products
 2026-09-26 probe official product-page media and videos
+2026-09-26 probe uncached exact package source images

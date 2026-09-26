@@ -61,17 +61,41 @@ def abs_url(path):
 
 def esc(x): return html.escape(str(x or ''), quote=True)
 
+def trim_words(text, limit):
+    text=re.sub(r'\\s+',' ',str(text or '')).strip()
+    if len(text) <= limit:
+        return text
+    cut=text[:limit+1]
+    if ' ' in cut:
+        cut=cut.rsplit(' ',1)[0]
+    return cut.rstrip(' ,;:—–-|')
+
+def compact_product_name(p):
+    raw=((p.get('seo') or {}).get('title') or p.get('name') or '').strip()
+    core=re.split(r'\\s+[—–]\\s+|,\\s*',raw,maxsplit=1)[0].strip()
+    brand=str(p.get('brand') or '').strip()
+    if brand and brand.casefold() not in core.casefold():
+        candidate=f"{core} {brand}"
+        if len(candidate) <= 46:
+            core=candidate
+    return trim_words(core,46)
+
 def description_for(p, sku=None):
-    base=(p.get('seo') or {}).get('description') or p.get('short_description') or p.get('manufacturer_use') or p.get('product_type') or p.get('form') or ''
-    if sku and sku.get('variant'):
-        text=f"{p['name']} {sku.get('variant')}. {base}".strip()
+    seo_desc=(p.get('seo') or {}).get('description')
+    base=seo_desc or p.get('short_description') or p.get('manufacturer_use') or p.get('product_type') or p.get('form') or ''
+    if seo_desc:
+        text=base
+    elif sku and sku.get('variant'):
+        text=f"{compact_product_name(p)} {sku.get('variant')}. {base}".strip()
     else:
-        text=f"{p['name']}. {base}".strip()
-    return text[:320]
+        text=f"{compact_product_name(p)}. {base}".strip()
+    return trim_words(text,160)
 
 def title_for(p,sku=None):
-    base=(p.get('seo') or {}).get('title') or p['name']
-    return f"{base} {sku.get('variant','')} · BB610 Market" if sku else f"{base} · BB610 Market"
+    base=compact_product_name(p)
+    if sku and sku.get('variant'):
+        base=trim_words(f"{base} {sku.get('variant','')}",46)
+    return f"{base} | BB610 Market"
 
 def feed_title_for(p,sku):
     base=(p.get('feed') or {}).get('title') or p.get('name','')
@@ -118,6 +142,18 @@ def product_schema(p, page_url, sku=None):
             offer={'@type':'Offer','url':page_url,'priceCurrency':sku.get('currency','UAH'),'price':str(sku['price']),'itemCondition':'https://schema.org/NewCondition'}
             if av: offer['availability']=av
             obj['offers']=offer
+    else:
+        active=[s for s in master['skus'] if s.get('product_id')==p.get('id') and sku_indexable(s)]
+        prices=[float(s['price']) for s in active if s.get('price') is not None]
+        if prices:
+            obj['offers']={
+                '@type':'AggregateOffer',
+                'priceCurrency':active[0].get('currency','UAH'),
+                'lowPrice':str(min(prices)),
+                'highPrice':str(max(prices)),
+                'offerCount':len(prices),
+                'url':page_url,
+            }
     return obj
 
 def breadcrumb_schema(p,page_url,sku=None):

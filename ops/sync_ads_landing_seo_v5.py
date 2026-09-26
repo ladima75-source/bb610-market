@@ -125,9 +125,18 @@ def static_stock(p):
     if states & {'preorder','backorder','pre_order'}:return 'Під замовлення'
     return 'Наявність уточнюється'
 
+def sku_sort_value(s):
+    value=s.get('package_value');unit=plain(s.get('package_unit')).lower()
+    if value is None and isinstance(s.get('volume_weight'),dict):
+        value=s['volume_weight'].get('value');unit=plain(s['volume_weight'].get('unit')).lower()
+    try:value=float(value)
+    except Exception:return (float('inf'),sku_label(s))
+    factor={'g':1,'kg':1000,'ml':1,'l':1000,'pcs':1,'шт':1}.get(unit,1)
+    return (value*factor,sku_label(s))
+
 def static_packages(p):
     labels=[]
-    for s in active_skus(p):
+    for s in sorted(active_skus(p),key=sku_sort_value):
         label=sku_label(s)
         if label and label not in labels:labels.append(label)
     if not labels:return ''

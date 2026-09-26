@@ -7,6 +7,8 @@ on:
       - 'v5/**'
       - 'backend/services/product_master_v5.py'
       - 'backend/services/product_master_v5_migrations.py'
+      - 'ops/ads-hires-media-import.json'
+      - 'ops/validate_ads_hires_v5.py'
       - 'backend/catalog_provider.py'
       - 'backend/services/product_commerce.py'
       - 'admin/products.js'
@@ -226,6 +228,11 @@ jobs:
               assert sku['media'][0].get('source_url')
           print('BB610 V5 SHADOW API SERVICE: PASS')
           PY
+
+      - name: Ads HiRes exact-package V5 bindings
+        run: |
+          set -euo pipefail
+          python ops/validate_ads_hires_v5.py --db /tmp/bb610-v5.sqlite3
 
       - name: V5 live commerce + checkout resolver contract
         run: |

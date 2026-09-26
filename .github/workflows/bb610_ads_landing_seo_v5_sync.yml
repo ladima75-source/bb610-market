@@ -26,7 +26,7 @@ jobs:
       - name: Commit synced SEO pages
         run: |
           set -euo pipefail
-          git add products/*/index.html
+          git add -f products/*/index.html
           if git diff --cached --quiet; then
             echo "No SEO landing changes required"
             exit 0

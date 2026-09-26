@@ -188,6 +188,22 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   </div>`:'';
 
   const sourceRows=Array.isArray(p.sources)?p.sources.filter(x=>x?.source_url):[];
+  const youtubeVideoId=row=>{
+    const url=String(row?.source_url||'').trim();
+    const type=String(row?.source_type||'').toLowerCase();
+    if(!url||(!/youtu(?:\.be|be\.com)/i.test(url)&&!type.includes('video')))return '';
+    try{
+      const u=new URL(url,location.origin);
+      if(u.hostname==='youtu.be')return u.pathname.replace(/^\//,'').split('/')[0];
+      if(/(^|\.)youtube\.com$/i.test(u.hostname)){
+        if(u.pathname==='/watch')return u.searchParams.get('v')||'';
+        const m=u.pathname.match(/^\/(?:embed|shorts)\/([^/?#]+)/);
+        return m?.[1]||'';
+      }
+    }catch(_){}
+    return '';
+  };
+  const videoSources=sourceRows.map(row=>({row,id:youtubeVideoId(row)})).filter(x=>x.id);
   const sourceKindLabel=row=>{
     const type=String(row?.source_type||'').toLowerCase();
     const url=String(row?.source_url||'').toLowerCase();
@@ -196,6 +212,14 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     if(type.includes('official')||type.includes('manufacturer'))return 'Офіційна сторінка виробника';
     return 'Перевірене джерело';
   };
+  const videoHtml=videoSources.length?`<div class="info-card product-detail-card product-video-card">
+    <h2>ВІДЕО ВИРОБНИКА</h2>
+    <div class="product-video-grid">${videoSources.map(({row,id})=>`<div class="product-video-item">
+      <div class="product-video-frame"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/${escValue(id)}" title="${escValue(row.source_label||'Відео виробника')}" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      <div class="product-video-caption">${escValue(row.source_label||'Офіційне відео виробника')}</div>
+    </div>`).join('')}</div>
+  </div>`:'';
+
   const sourceHtml=sourceRows.length?`<div class="info-card product-detail-card product-sources-card">
     <h2>ДЖЕРЕЛА ДАНИХ</h2>
     <p class="product-tab-copy">Характеристики та застосування звірено з матеріалами виробника.</p>
@@ -219,6 +243,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   <div class="local-points" id="selected-shipping"></div></div></div>
   <div class="info-stack product-info-grid compact-product-info">
   ${tabsHtml}
+  ${videoHtml}
   ${sourceHtml}
   ${szr}</div>`;
 

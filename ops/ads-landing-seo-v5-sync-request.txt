@@ -1,3 +1,4 @@
 2026-09-26 initial V5 ads landing SEO sync
 2026-09-26 retry after tracked-ignore fix
 2026-09-26 strengthen paid landing static fallback
+2026-09-26 retry stronger fallback after PeKacid runtime alignment

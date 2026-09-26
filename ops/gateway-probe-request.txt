@@ -1,1 +1,2 @@
 verify-live-feed-final 2026-09-25 merchant recovery
+2026-09-26 growth-safe-v5-gate

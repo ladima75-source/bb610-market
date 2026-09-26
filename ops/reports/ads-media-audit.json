@@ -1,0 +1,2235 @@
+{
+  "generated_from": "https://api.market.bb610.com.ua/api/v1/catalog/v5",
+  "products": [
+    {
+      "product_id": "kendal",
+      "name": "Kendal — біостимулятор захисних реакцій рослин Valagro",
+      "brand": "Valagro",
+      "product_media_count": 2,
+      "unique_media_count": 3,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/ad3434331aae65aec38d.webp",
+          "alt": "Kendal™",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 83105,
+            "format": "PNG",
+            "content_type": "image/webp",
+            "sha256": "ad3434331aae65aec38db00fd4f14117b420f97824bf8e69e8c9208d0ee97c03"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/146dbd278150498ae157.webp",
+          "alt": "Kendal™",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 33273,
+            "format": "JPEG",
+            "content_type": "image/webp",
+            "sha256": "146dbd278150498ae157652418951a212af91466968261dace239e46bd44ef7f"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-KENDAL-25ML",
+          "package": "25 мл",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-kendal-25ml.jpg",
+          "alt": "Kendal — 25 мл",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 64498,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "91103f556aabd20b842b51c5e8dcf00b1a80a45e80cc022c8bee9743796eb75e"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-0BDAED34128BDA",
+          "package": "1 л",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 1126.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-32DA4F652F73A1",
+          "package": "100 мл",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 220.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-KENDAL-25ML",
+          "package": "25 мл",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 68.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_228ae88478f6d3eb6ac9",
+          "source_type": "manufacturer_product_page",
+          "source_url": "https://www.valagro.com/usa/en-us/products/farm/biostimulants/kendal/",
+          "source_label": "KENDAL — актуальна сторінка Syngenta Biologicals",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch04_rows37_48.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/ad3434331aae65aec38d.webp",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/146dbd278150498ae157.webp",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-kendal-25ml.jpg",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "plantafol-npk-10-54-10",
+      "name": "PLANTAFOL 10-54-10 — водорозчинне листкове NPK-добриво Valagro",
+      "brand": "Valagro",
+      "product_media_count": 3,
+      "unique_media_count": 4,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/d97ea4e1d943af52d3eb.jpg",
+          "alt": "PLANTAFOL 10-54-10",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 76214,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "d97ea4e1d943af52d3ebec57fed20491e81eb36f3b8aa0c3f1d73a8766d9785e"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/6abbd5afd6692dd5655a.jpg",
+          "alt": "PLANTAFOL 10-54-10",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 70204,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "6abbd5afd6692dd5655ae389c8f70d051a7bbc42c727f74c88d3431c9c68a664"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/af902cf2ed187ad0e0f1.jpg",
+          "alt": "PLANTAFOL 10-54-10",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 50936,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "af902cf2ed187ad0e0f19377ed45ac102cb22cee7c4aaad8e1ef7ce748742a28"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-PLANTAFOL105410-250G",
+          "package": "250 г",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-10-54-10-250g.png",
+          "alt": "PLANTAFOL 10-54-10 — 250 г",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 161675,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "57f2cdf58fecf332b5f5dbc612f389a1a6a51f5604acdfc69c6357167e6c1457"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL105410-1KG",
+          "package": "1 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 452.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL105410-250G",
+          "package": "250 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 207.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL105410-25G",
+          "package": "25 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 33.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL105410-5KG",
+          "package": "5 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 2164.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_9a0d106d1122a739a188",
+          "source_type": "official_primary",
+          "source_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf",
+          "source_label": "Valagro Catalogue — склад і фізичні властивості PLANTAFOL®",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        },
+        {
+          "source_id": "src_b895278923a3b89490ca",
+          "source_type": "official_primary",
+          "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+          "source_label": "Valagro Farm Catalogue — PLANTAFOL® line",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/d97ea4e1d943af52d3eb.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/6abbd5afd6692dd5655a.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/af902cf2ed187ad0e0f1.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-10-54-10-250g.png",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "plantafol-npk-5-15-45",
+      "name": "PLANTAFOL 5-15-45 — водорозчинне листкове NPK-добриво Valagro",
+      "brand": "Valagro",
+      "product_media_count": 4,
+      "unique_media_count": 5,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/564414470e81e33f30c3.png",
+          "alt": "Plantafol (Плантафол) NPK 5-15-45, мінеральне добриво для позакореневого живлення",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 165395,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "564414470e81e33f30c3804742821f4d916294877c5f9edc52ebb44ed4e6448b"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/01a74f15ffaf1590ce6a.jpg",
+          "alt": "PLANTAFOL 5-15-45",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 62551,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "01a74f15ffaf1590ce6a3f748f75923044d650d8d120d274c5f090819fe6df50"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/8a1f8b48540faf4ce141.jpg",
+          "alt": "PLANTAFOL 5-15-45",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 53409,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "8a1f8b48540faf4ce1412d2ccbcb3b92e3b19f06c98539cdea8ed134563ba0fb"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/c3a397daa5a996ec8ad4.jpg",
+          "alt": "PLANTAFOL 5-15-45",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 73860,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "c3a397daa5a996ec8ad43bf0adad6ece51dc3897d850b915cf3bbe331bd7e77b"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-PLANTAFOL51545-250G",
+          "package": "250 г",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-5-15-45-250g.png",
+          "alt": "PLANTAFOL 5-15-45 — 250 г",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 165395,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "564414470e81e33f30c3804742821f4d916294877c5f9edc52ebb44ed4e6448b"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL51545-1KG",
+          "package": "1 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 360.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL51545-250G",
+          "package": "250 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 188.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL51545-25G",
+          "package": "25 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 29.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL51545-5KG",
+          "package": "5 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 1668.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_68f5b1baecbdfa008b6a",
+          "source_type": "official_primary",
+          "source_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf",
+          "source_label": "Valagro Catalogue — склад і фізичні властивості PLANTAFOL®",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        },
+        {
+          "source_id": "src_8abaff183d4987eff4fd",
+          "source_type": "official_primary",
+          "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+          "source_label": "Valagro Farm Catalogue — PLANTAFOL® line",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [
+        [
+          "https://market.bb610.com.ua/assets/img/v5/media/564414470e81e33f30c3.png",
+          "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-5-15-45-250g.png"
+        ]
+      ],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/564414470e81e33f30c3.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/01a74f15ffaf1590ce6a.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/8a1f8b48540faf4ce141.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/c3a397daa5a996ec8ad4.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-5-15-45-250g.png",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "brexil-mix",
+      "name": "Brexil Mix — комплексне хелатне мікродобриво Valagro",
+      "brand": "Valagro",
+      "product_media_count": 5,
+      "unique_media_count": 5,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/a8481806d6325394f291.webp",
+          "alt": "Brexil Mix — Багатокомпонентний комплекс мікроелементів для листкового живлення",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 440,
+            "height": 440,
+            "bytes": 23802,
+            "format": "WEBP",
+            "content_type": "image/webp",
+            "sha256": "a8481806d6325394f291c7b2db833f08fd6215dbc8aebf0dd42c92cd36188cd4"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/246f830bbd7893fb5d7e.png",
+          "alt": "Brexil Mix — 1 кг",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 169762,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "246f830bbd7893fb5d7e77d5ea72f8af13bf2445c6ffe1d0e71ed7ad7f4932b1"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/3ee61179db04ff908095.png",
+          "alt": "Brexil Mix — 250 г",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 181231,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "3ee61179db04ff9080959c978a460fd7804b1e300a25a740f9fc288bf04bae75"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/ec30b3bafe67e0bddd52.jpg",
+          "alt": "Brexil Mix — 15 г",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 70818,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "ec30b3bafe67e0bddd5205688fb78d9a0b53b5c5c8f8f2faa24501cfe4767614"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/f97a5a2c2434009cebf1.png",
+          "alt": "Brexil Mix — 5 кг",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 170018,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "f97a5a2c2434009cebf1c00aa40b90abbfda1920f3fdfc0f89266f4ee3e21dec"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-5C50CFED57B2BD",
+          "package": "15 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 38.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-7CAECCDF081CBB",
+          "package": "5 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 3338.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-8AF90FA8223437",
+          "package": "250 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 336.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-B1881030364E52",
+          "package": "1 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 740.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_2f541c536c84c248551f",
+          "source_type": "manufacturer",
+          "source_url": "https://www.syngenta.ua/sites/g/files/kgtney1466/files/media/document/2025/01/20/catalog2025.pdf",
+          "source_label": null,
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch02_rows13_24.json"
+        },
+        {
+          "source_id": "src_cd65bc356b3a76879f29",
+          "source_type": "manufacturer",
+          "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+          "source_label": "Valagro Farm Catalogue — Brexil® line",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch02_rows13_24.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/a8481806d6325394f291.webp",
+          "width": 440,
+          "height": 440
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/246f830bbd7893fb5d7e.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/3ee61179db04ff908095.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/ec30b3bafe67e0bddd52.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/f97a5a2c2434009cebf1.png",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "pekacid-npk-0-60-20",
+      "name": "Nova PeKacid 0-60-20 — водорозчинне PK-добриво ICL",
+      "brand": "ICL",
+      "product_media_count": 4,
+      "unique_media_count": 4,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/110be3b4f12e8199bc7b.jpg",
+          "alt": "Nova PeKacid 0-60-20 — 15 г",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 113362,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "110be3b4f12e8199bc7b02467fbfd420fb12dfdb844ce04e3d14a8b7b17de8a0"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/6aaeaed0087c0e7f68f0.jpg",
+          "alt": "Nova PeKacid 0-60-20 — 1 кг",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 49230,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "6aaeaed0087c0e7f68f0acaecfc19fad32cb7b37f534f7fc3dc34924427581b1"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/77f9adb9331f33afdb92.png",
+          "alt": "Nova PeKacid 0-60-20 — 100 г",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 113513,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "77f9adb9331f33afdb92fb7988bd3086e256256b987fe1bee392623c95217e1c"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/c1cb781c514d2fb61c2c.png",
+          "alt": "Nova PeKacid 0-60-20 — 200 г",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 205895,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "c1cb781c514d2fb61c2c2652416b12d423eff723d7a3ebf59c3681dcdf19caff"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-02A58A1A393719",
+          "package": "1 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 461.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-1E396B98D1779E",
+          "package": "100 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 84.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-356BD42689A64D",
+          "package": "15 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 22.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-D886B6AD2D6C04",
+          "package": "200 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 116.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_0743633cd74aaeb1f067",
+          "source_type": "official_primary",
+          "source_url": "https://icl-growingsolutions.com/uk-ua/agriculture/products/nova-pekacid/",
+          "source_label": "Nova PeKacid — офіційна сторінка ICL Україна",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        },
+        {
+          "source_id": "src_9195a6222afc4e64f0e8",
+          "source_type": "official_primary",
+          "source_url": "https://icl-growingsolutions.com/uk-ua/wp-content/themes/icl-v2-repo/pdf-creator/pdf-getter.php?id=9846",
+          "source_label": "Nova PeKacid — офіційний PDF ICL Україна",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/110be3b4f12e8199bc7b.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/6aaeaed0087c0e7f68f0.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/77f9adb9331f33afdb92.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/c1cb781c514d2fb61c2c.png",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "master-npk-20-20-20",
+      "name": "MASTER 20-20-20 — водорозчинне NPK-добриво Valagro",
+      "brand": "Valagro",
+      "product_media_count": 4,
+      "unique_media_count": 6,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/110dc313fa69fd719e75.jpg",
+          "alt": "MASTER 20-20-20 — 10 кг",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 52287,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "110dc313fa69fd719e750bdcc1f268f873e7df7f0854a1be60a6b64abbd67e3c"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/a09bb0101220304358ef.png",
+          "alt": "Master (Мастер) NPK 20-20-20, водорозчинне мінеральне добриво",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 164486,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "a09bb0101220304358ef9e1ef8d7e455d4bd7921963847618b23903fca50d690"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/7a3aedb92ce7711d9261.jpg",
+          "alt": "MASTER 20-20-20",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 54865,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "7a3aedb92ce7711d92618dd9bf7c38c436b8ef22278a358837c24c54cbdc7c39"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/8beecf484e8d837e427a.jpg",
+          "alt": "MASTER 20-20-20",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 64267,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "8beecf484e8d837e427a89a5ed7e99b79c2191a4465ecc84ccff81df1d1e4c78"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-MASTER202020-1KG",
+          "package": "1 кг",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-master-20-20-20-1kg.png",
+          "alt": "MASTER 20-20-20 — 1 кг",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 164486,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "a09bb0101220304358ef9e1ef8d7e455d4bd7921963847618b23903fca50d690"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-MASTER202020-250G",
+          "package": "250 г",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-master-20-20-20-250g.png",
+          "alt": "MASTER 20-20-20 — 250 г",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 160658,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "557e310e14a3b033f89e3e91cdcfe198617fdc3d26cf5da41acd80c11ba820c7"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-VLG-MASTER202020-10KG",
+          "package": "10 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 2100.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-MASTER202020-1KG",
+          "package": "1 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 406.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-MASTER202020-20G",
+          "package": "20 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 25.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-MASTER202020-250G",
+          "package": "250 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 173.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-MASTER202020-25KG",
+          "package": "25 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 5059.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_d564a8287fdea4a4a4a5",
+          "source_type": "official_primary",
+          "source_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+          "source_label": "MASTER® line — офіційна сторінка Valagro / Syngenta Biologicals",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        },
+        {
+          "source_id": "src_e0f64c2f2787252cb694",
+          "source_type": "official_primary",
+          "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+          "source_label": "Valagro Farm Catalogue — MASTER® / WATER SOLUBLE NUTRITION",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [
+        [
+          "https://market.bb610.com.ua/assets/img/v5/media/a09bb0101220304358ef.png",
+          "https://market.bb610.com.ua/assets/img/v5/verified/op-master-20-20-20-1kg.png"
+        ]
+      ],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/110dc313fa69fd719e75.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/a09bb0101220304358ef.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/7a3aedb92ce7711d9261.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/8beecf484e8d837e427a.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-master-20-20-20-1kg.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-master-20-20-20-250g.png",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "viva",
+      "name": "Viva — біостимулятор ризосфери Valagro",
+      "brand": "Valagro",
+      "product_media_count": 5,
+      "unique_media_count": 5,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/eb3844af14f0436026b1.png",
+          "alt": "Viva — 100 мл",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 77610,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "eb3844af14f0436026b1f9ab23af2843a76073833fbfd444cf39652ea64b36ca"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/11d0bf623e6192622180.jpg",
+          "alt": "Viva — 1 л",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 35326,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "11d0bf623e6192622180c601b94af0bd60de6cfe57541faf42ee170c1837561e"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/2adf4e93546de5e0ece0.png",
+          "alt": "Viva — 20 л",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 62225,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "2adf4e93546de5e0ece0aa47374d7ab8a44bc82ee5e580943df9f82f099e6c45"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/2d02993966feccbe12a8.jpg",
+          "alt": "Viva — 25 мл",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 59591,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "2d02993966feccbe12a886b6d65c27ae21640fde02064dc36bd8fcd4c0dc9704"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/d3b90963ebacabfb9a94.png",
+          "alt": "Viva — 10 л",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 154574,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "d3b90963ebacabfb9a94d6b6785f25d40044d5724a4dc4b137a05d765b305431"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-75DA86689E220C",
+          "package": "1 л",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 594.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-A02CF54E375533",
+          "package": "20 л",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 10104.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-CFFC5BB95623B9",
+          "package": "10 л",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 5380.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-FDF73DEFF6CCEC",
+          "package": "25 мл",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 43.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-VIVA-100ML",
+          "package": "100 мл",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 143.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_6f5f827821881f5e9e0d",
+          "source_type": "manufacturer_catalogue",
+          "source_url": "https://www.valagro.com/media/media_articles/attachments/ValagroCatalogue2019_1J0QPe9.pdf",
+          "source_label": "Valagro Catalogue — VIVA",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch04_rows37_48.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/eb3844af14f0436026b1.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/11d0bf623e6192622180.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/2adf4e93546de5e0ece0.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/2d02993966feccbe12a8.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/d3b90963ebacabfb9a94.png",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "master-npk-13-40-13",
+      "name": "MASTER 13-40-13 — водорозчинне NPK-добриво Valagro",
+      "brand": "Valagro",
+      "product_media_count": 3,
+      "unique_media_count": 5,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/c1019a90a26d77414f6a.png",
+          "alt": "Master (Мастер) NPK 13-40-13, водорозчинне мінеральне добриво",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 167320,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "c1019a90a26d77414f6a6ab693727e63dc107e5f30be6bcdfcc5e7ceac8b9165"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/5ff16767afd9c682e4fa.jpg",
+          "alt": "MASTER 13-40-13",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 55043,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "5ff16767afd9c682e4fad77fb5f22afc75429df4aada31d077755734914b0cb2"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/b6fe1160bafc5b713768.jpg",
+          "alt": "MASTER 13-40-13",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 74165,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "b6fe1160bafc5b713768f6782fcf6ac605fc34975d83e4f649def0e1ff8e8f7c"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-MASTER134013-1KG",
+          "package": "1 кг",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-master-13-40-13-1kg.png",
+          "alt": "MASTER 13-40-13 — 1 кг",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 167320,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "c1019a90a26d77414f6a6ab693727e63dc107e5f30be6bcdfcc5e7ceac8b9165"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-MASTER134013-250G",
+          "package": "250 г",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-master-13-40-13-250g.png",
+          "alt": "MASTER 13-40-13 — 250 г",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 164580,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "de0a18f9cfff2676da525faba33f57dfe65c7b40efdc9efb9263956e5cb8d699"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-VLG-MASTER134013-1KG",
+          "package": "1 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 408.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-MASTER134013-20G",
+          "package": "20 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 25.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-MASTER134013-250G",
+          "package": "250 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 175.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-MASTER134013-25KG",
+          "package": "25 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 5218.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "review26_op_master134013",
+          "source_type": "verified_market_product_page",
+          "source_url": "https://organicplanet.com.ua/ru/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro",
+          "source_label": "Organic Planet — MASTER 13-40-13, 250 г",
+          "verified_at": "2026-09-21",
+          "status": "verified",
+          "notes": "Used for buyer-facing composition, use cases and application guidance; batch label remains authoritative."
+        },
+        {
+          "source_id": "src_3a28111917da72515c24",
+          "source_type": "official_primary",
+          "source_url": "https://www.valagro.com/en/products/farm/water-soluble-nutrition/master-line/",
+          "source_label": "MASTER® line — офіційна сторінка Valagro / Syngenta Biologicals",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        },
+        {
+          "source_id": "src_43e0cab51e6f47c5d539",
+          "source_type": "official_primary",
+          "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+          "source_label": "Valagro Farm Catalogue — MASTER® / WATER SOLUBLE NUTRITION",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [
+        [
+          "https://market.bb610.com.ua/assets/img/v5/media/c1019a90a26d77414f6a.png",
+          "https://market.bb610.com.ua/assets/img/v5/verified/op-master-13-40-13-1kg.png"
+        ]
+      ],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/c1019a90a26d77414f6a.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/5ff16767afd9c682e4fa.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/b6fe1160bafc5b713768.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-master-13-40-13-1kg.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-master-13-40-13-250g.png",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "plantafol-npk-20-20-20",
+      "name": "PLANTAFOL 20-20-20 — водорозчинне листкове NPK-добриво Valagro",
+      "brand": "Valagro",
+      "product_media_count": 3,
+      "unique_media_count": 6,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/0c611b29a3d3d650a63d.webp",
+          "alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення — 1 кг",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 900,
+            "height": 900,
+            "bytes": 72654,
+            "format": "WEBP",
+            "content_type": "image/webp",
+            "sha256": "0c611b29a3d3d650a63dd6261e22fe23ec9adf185942aedc6220647d334bb11f"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/3a2eb24bc91d355718cc.png",
+          "alt": "Plantafol (Плантафол) NPK 20-20-20, мінеральне добриво для позакореневого живлення",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 164861,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "3a2eb24bc91d355718ccd52b51ab558dc35ea3e4ae8f8b0cd8c5fd2861601c32"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/5261c8125712ce7a15ad.jpg",
+          "alt": "PLANTAFOL 20-20-20",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 52028,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "5261c8125712ce7a15adabfe180a373b3ecb20d546eed163f739bb0ec6204316"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-PLANTAFOL202020-1KG",
+          "package": "1 кг",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-20-20-20-1kg.png",
+          "alt": "PLANTAFOL 20-20-20 — 1 кг",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 197847,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "bb9f221a9d8f690a18cfa2f4f41f5fdf7311dff6d353811d8b014dc28a273954"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-PLANTAFOL202020-250G",
+          "package": "250 г",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-20-20-20-250g.png",
+          "alt": "PLANTAFOL 20-20-20 — 250 г",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 164861,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "3a2eb24bc91d355718ccd52b51ab558dc35ea3e4ae8f8b0cd8c5fd2861601c32"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-PLANTAFOL202020-5KG",
+          "package": "5 кг",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-20-20-20-5kg.png",
+          "alt": "PLANTAFOL 20-20-20 — 5 кг",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 190317,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "ce3422600a2c5fdb3fd6616538db8adebc5e3f58beb2cc76f0657d357690865e"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL202020-1KG",
+          "package": "1 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 345.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL202020-250G",
+          "package": "250 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 188.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL202020-25G",
+          "package": "25 г",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 29.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL202020-25KG",
+          "package": "25 кг",
+          "commerce_enabled": 0,
+          "availability": "unknown",
+          "price": null,
+          "media_count": 0
+        },
+        {
+          "sku_id": "BB610-VLG-PLANTAFOL202020-5KG",
+          "package": "5 кг",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 1571.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_b3ba5644c47cef5d3045",
+          "source_type": "official_primary",
+          "source_url": "https://www.valagro.com/media/media_articles/attachments/Valagro_Catalogue_WW_hxfH3Yc.pdf",
+          "source_label": "Valagro Catalogue — склад і фізичні властивості PLANTAFOL®",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        },
+        {
+          "source_id": "src_b94f875868ac309cd221",
+          "source_type": "official_primary",
+          "source_url": "https://www.valagro.com/media/filer_public/b6/7d/b67dfa60-9560-4b52-aa43-edd528ec24ea/valagro_catalogue_farm2018_en.pdf",
+          "source_label": "Valagro Farm Catalogue — PLANTAFOL® line",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch01_rows01_12.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [
+        [
+          "https://market.bb610.com.ua/assets/img/v5/media/3a2eb24bc91d355718cc.png",
+          "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-20-20-20-250g.png"
+        ]
+      ],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/3a2eb24bc91d355718cc.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/5261c8125712ce7a15ad.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-20-20-20-1kg.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-20-20-20-250g.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-plantafol-20-20-20-5kg.png",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "megafol",
+      "name": "Megafol — антистресовий біостимулятор Valagro",
+      "brand": "Syngenta Biologicals / Valagro",
+      "product_media_count": 3,
+      "unique_media_count": 5,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/2ec27ab70a0f979eea4d.webp",
+          "alt": "MEGAFOL™",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 900,
+            "height": 900,
+            "bytes": 37668,
+            "format": "WEBP",
+            "content_type": "image/webp",
+            "sha256": "2ec27ab70a0f979eea4d4c0e7755c0ac2ff8b494e002099346be5190ad6877b1"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/673f210d22563764539f.png",
+          "alt": "MEGAFOL™",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 1001,
+            "height": 1307,
+            "bytes": 663898,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "673f210d22563764539f29723eaa0873a4186c6f0be388c18e303af88eaf2d56"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/bcc1b7947da8b00fcbc9.png",
+          "alt": "MEGAFOL™",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 1000,
+            "height": 1000,
+            "bytes": 249152,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "bcc1b7947da8b00fcbc9ba347aea67a704f501e938c9b002d98a938f1e1481bf"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-MEGAFOL-10L",
+          "package": "10 л",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-megafol-10l.png",
+          "alt": "MEGAFOL — 10 л",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 105953,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "c03341a63d3f62b565d06d60db31e773d9207b84db103b7247379c61a6dc5fd5"
+          }
+        },
+        {
+          "scope": "sku",
+          "sku_id": "BB610-VLG-MEGAFOL-1L",
+          "package": "1 л",
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-megafol-1l.png",
+          "alt": "MEGAFOL — 1 л",
+          "kind": "image",
+          "source_kind": "verified_package_product_page",
+          "binding_kind": "exact",
+          "role": null,
+          "is_primary": 1,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 123909,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "f408c1a6c605c9270326091f6a73328d374c6bd5b63f7a582692177af61077ec"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-VLG-MEGAFOL-1000L",
+          "package": "1000 л",
+          "commerce_enabled": 0,
+          "availability": "unknown",
+          "price": null,
+          "media_count": 0
+        },
+        {
+          "sku_id": "BB610-VLG-MEGAFOL-100ML",
+          "package": "100 мл",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 175.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-MEGAFOL-10L",
+          "package": "10 л",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 6777.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-MEGAFOL-1L",
+          "package": "1 л",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 768.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-MEGAFOL-20L",
+          "package": "20 л",
+          "commerce_enabled": 0,
+          "availability": "unknown",
+          "price": null,
+          "media_count": 0
+        },
+        {
+          "sku_id": "BB610-VLG-MEGAFOL-25ML",
+          "package": "25 мл",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 50.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_1213bfca5c979841f314",
+          "source_type": "current_manufacturer_product_page",
+          "source_url": "https://www.valagro.com/en/products/farm/plant-biostimulants/megafol/",
+          "source_label": "MEGAFOL — офіційна сторінка Syngenta Biologicals",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch05_rows49_60.json"
+        },
+        {
+          "source_id": "src_84311194c7748f295dae",
+          "source_type": "current_manufacturer_product_page",
+          "source_url": "https://www.syngenta.it/sites/g/files/kgtney1566/files/media/document/2025/07/02/PPE4229482-L1135252-MEGAFOL%2010L%20555%20FR-IT-EN-ES-PT.pdf",
+          "source_label": "MEGAFOL — офіційна етикетка Syngenta Biologicals",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch05_rows49_60.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-megafol-10l.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/op-megafol-1l.png",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "radifarm",
+      "name": "Radifarm — кореневий біостимулятор Valagro",
+      "brand": "Valagro",
+      "product_media_count": 4,
+      "unique_media_count": 4,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/a8f72fa0c704b35aa69c.jpg",
+          "alt": "Radifarm — 25 мл",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 59682,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "a8f72fa0c704b35aa69c72c5b73e9cb660de427cc4e902b0531c16cd7c93104c"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/34390bab18da3c61585e.jpg",
+          "alt": "Radifarm — 10 л",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 38816,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "34390bab18da3c61585e6931aa861065cfefc7f999a9eebb061e8d935e835083"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/795434bfb61d17c9e384.png",
+          "alt": "Radifarm — 100 мл",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 75835,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "795434bfb61d17c9e38408429dd81573a62a969b8004e2e91b2e5b861aebd857"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/d33e51563b9dbdc54da1.jpg",
+          "alt": "Radifarm — 1 л",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 32410,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "d33e51563b9dbdc54da1d2d5f901766404b7a247ebca1968e8e89647697a7bbd"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-D357BA80A4242C",
+          "package": "10 л",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 16594.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-E4A0F69C3768B0",
+          "package": "1 л",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 1809.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-EDD4D8789728B8",
+          "package": "100 мл",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 314.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-VLG-RADIFARM-25ML",
+          "package": "25 мл",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 88.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_6b48fe70fbefa065deef",
+          "source_type": "manufacturer_catalogue",
+          "source_url": "https://www.valagro.com/media/products/product_family/document/Valagro_Catalogue_USA_2019_s0nR3ol.pdf",
+          "source_label": "Valagro Catalogue — RADIFARM",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch04_rows37_48.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/a8f72fa0c704b35aa69c.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/34390bab18da3c61585e.jpg",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/795434bfb61d17c9e384.png",
+          "width": 534,
+          "height": 534
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/d33e51563b9dbdc54da1.jpg",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    },
+    {
+      "product_id": "kendal-te",
+      "name": "Kendal TE — мікроелементний біостимулятор Valagro",
+      "brand": "Valagro",
+      "product_media_count": 3,
+      "unique_media_count": 3,
+      "media": [
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/verified/kendal-te-100ml-1200.jpg",
+          "alt": "Kendal TE — 100 мл",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 1200,
+            "height": 1200,
+            "bytes": 106286,
+            "format": "JPEG",
+            "content_type": "image/jpeg",
+            "sha256": "25896562a71bcdd15192bd523e54ea61ab2a217e4ce45ef5e344e77bd9175d5b"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/b86cfa93cf7430d09cb7.webp",
+          "alt": "Kendal TE — Біостимулюючий комплекс Kendal із Cu, Mn та Zn",
+          "kind": "image",
+          "source_kind": "legacy_product_fallback",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 427,
+            "height": 630,
+            "bytes": 32618,
+            "format": "WEBP",
+            "content_type": "image/webp",
+            "sha256": "b86cfa93cf7430d09cb79e076c040806f6cd134c06c0fe45562fb57b5b7ee252"
+          }
+        },
+        {
+          "scope": "product",
+          "sku_id": null,
+          "package": null,
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/588144745cbafbff370f.png",
+          "alt": "Kendal TE — 1 л",
+          "kind": "image",
+          "source_kind": "exact_sku_rollup",
+          "binding_kind": null,
+          "role": null,
+          "is_primary": null,
+          "image": {
+            "ok": true,
+            "width": 534,
+            "height": 534,
+            "bytes": 126637,
+            "format": "PNG",
+            "content_type": "image/png",
+            "sha256": "588144745cbafbff370f902964d99c35832edf04553fb7f56a0f394a47111e5c"
+          }
+        }
+      ],
+      "sku_media_coverage": [
+        {
+          "sku_id": "BB610-63DFC68206EF52",
+          "package": "1 л",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 1445.0,
+          "media_count": 1
+        },
+        {
+          "sku_id": "BB610-EC1D442D54C6DB",
+          "package": "100 мл",
+          "commerce_enabled": 1,
+          "availability": "in_stock",
+          "price": 291.0,
+          "media_count": 1
+        }
+      ],
+      "sources": [
+        {
+          "source_id": "src_e1c7265db8d6fbf635d3",
+          "source_type": "current_official_label",
+          "source_url": "https://www.syngenta.gr/sites/g/files/kgtney1556/files/media/document/2025/05/15/ppe4230063-l1135635-kendal_te_1l_564_sl-hr-el.pdf",
+          "source_label": "Kendal TE 1L — етикетка Syngenta 2025",
+          "verified_at": "2026-09-05",
+          "status": "verified",
+          "notes": "data/content_batches/stage22c_batch04_rows37_48.json"
+        }
+      ],
+      "video_sources": [],
+      "duplicate_content_groups": [],
+      "small_under_600px": [
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/b86cfa93cf7430d09cb7.webp",
+          "width": 427,
+          "height": 630
+        },
+        {
+          "url": "https://market.bb610.com.ua/assets/img/v5/media/588144745cbafbff370f.png",
+          "width": 534,
+          "height": 534
+        }
+      ],
+      "broken_media": []
+    }
+  ]
+}

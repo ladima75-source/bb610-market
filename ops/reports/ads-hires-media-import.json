@@ -1,0 +1,654 @@
+{
+  "status": "PASS",
+  "count": 36,
+  "media": [
+    {
+      "product_id": "megafol",
+      "sku_id": "BB610-VLG-MEGAFOL-10L",
+      "package_label": "10 л",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-megafol-10l.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-10-l-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1083megafol10l.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 86088,
+      "sha256": "169398249d73097f89befc158411675ebb40ff0da572ddb0bcdb5dd511a8d76b"
+    },
+    {
+      "product_id": "megafol",
+      "sku_id": "BB610-VLG-MEGAFOL-1L",
+      "package_label": "1 л",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-megafol-1l.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/megafol-megafol-biostimulyator-antistress-1-l-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1080megafol1l.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 73500,
+      "sha256": "eeda78916677f0ff3e0a7e7ba2b11a43694f99180a845250a4b49859d7e046e8"
+    },
+    {
+      "product_id": "kendal-te",
+      "sku_id": "BB610-63DFC68206EF52",
+      "package_label": "1 л",
+      "target": "assets/img/v5/verified/ads-hires/bb610-63dfc68206ef52.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-te-kendal-te-organicheskij-bioimmunostimulyator-1-l-v",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1050.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 53428,
+      "sha256": "d1397d83ee5dae07790e79379180d5326cba45450fba74037d779db7fde367ce"
+    },
+    {
+      "product_id": "kendal",
+      "sku_id": "BB610-0BDAED34128BDA",
+      "package_label": "1 л",
+      "target": "assets/img/v5/verified/ads-hires/bb610-0bdaed34128bda.webp",
+      "source_page": "https://organicplanet.com.ua/ru/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-1-l-valag",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1047kendal1l.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 62990,
+      "sha256": "bb09ce189dc6287f792c633b4fce766772538e8c9a041da36e039656e99c2901"
+    },
+    {
+      "product_id": "kendal",
+      "sku_id": "BB610-VLG-KENDAL-25ML",
+      "package_label": "25 мл",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-kendal-25ml.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/kendal-kendal-biostimulyator-profilaktika-boleznej-25-ml-val",
+      "image_url": "https://organicplanet.com.ua/image/catalog/111/paketidljasai%CC%86tu-03.jpg",
+      "source_size": [
+        1000,
+        1305
+      ],
+      "output_size": [
+        920,
+        1200
+      ],
+      "bytes": 101782,
+      "sha256": "2d41a609c9313d40a5c7864ac1367704a186ce9d7814e9dc12829c365585c27b"
+    },
+    {
+      "product_id": "radifarm",
+      "sku_id": "BB610-D357BA80A4242C",
+      "package_label": "10 л",
+      "target": "assets/img/v5/verified/ads-hires/bb610-d357ba80a4242c.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1104radifarm10l.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 67430,
+      "sha256": "f76c93e603c5efb39a81e054afd530d08601d47bfe5fb37427813c19966721d3"
+    },
+    {
+      "product_id": "radifarm",
+      "sku_id": "BB610-E4A0F69C3768B0",
+      "package_label": "1 л",
+      "target": "assets/img/v5/verified/ads-hires/bb610-e4a0f69c3768b0.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor2",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1106radifarm1l.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 60156,
+      "sha256": "189969ff738fe233e9f78a7a4c40a9fb375c67ce0de4c72401ba035559ef6fee"
+    },
+    {
+      "product_id": "radifarm",
+      "sku_id": "BB610-EDD4D8789728B8",
+      "package_label": "100 мл",
+      "target": "assets/img/v5/verified/ads-hires/bb610-edd4d8789728b8.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor3",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1107.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 24988,
+      "sha256": "18ad72e0e078b8fc45710736f07b3dfdfaaf51f9490ac4670317c43e9850464f"
+    },
+    {
+      "product_id": "radifarm",
+      "sku_id": "BB610-VLG-RADIFARM-25ML",
+      "package_label": "25 мл",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-radifarm-25ml.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/radifarm-radifarm-biostimulyator-rosta-kornevoj-sistemy-ukor4",
+      "image_url": "https://organicplanet.com.ua/image/catalog/111/paketidljasai%CC%86tu-01.jpg",
+      "source_size": [
+        1000,
+        1306
+      ],
+      "output_size": [
+        919,
+        1200
+      ],
+      "bytes": 92964,
+      "sha256": "ce38e2cbd2d33711f98e64d24d9d7b4b9a8ca4ee2edb6da521296e0120b2edfa"
+    },
+    {
+      "product_id": "viva",
+      "sku_id": "BB610-75DA86689E220C",
+      "package_label": "1 л",
+      "target": "assets/img/v5/verified/ads-hires/bb610-75da86689e220c.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-1-l-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1126viva1l.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 76710,
+      "sha256": "cd37a41b9453df8d1093c7fa41a9a50e0afed4582f6d6d969d370835ac1bad5d"
+    },
+    {
+      "product_id": "viva",
+      "sku_id": "BB610-A02CF54E375533",
+      "package_label": "20 л",
+      "target": "assets/img/v5/verified/ads-hires/bb610-a02cf54e375533.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organichne-dobryvo-biostymulyator-20-l-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1294.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 26486,
+      "sha256": "c456235b5139bf71fd9f6ad9a239328b1876bda2310f85101196f0ed435d7167"
+    },
+    {
+      "product_id": "viva",
+      "sku_id": "BB610-CFFC5BB95623B9",
+      "package_label": "10 л",
+      "target": "assets/img/v5/verified/ads-hires/bb610-cffc5bb95623b9.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-10-l-valagr",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1125.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 71358,
+      "sha256": "fce7a0a9da057b5e09d36c0a64d4370901544c86f953bb76f31ebeacd520e2ae"
+    },
+    {
+      "product_id": "viva",
+      "sku_id": "BB610-FDF73DEFF6CCEC",
+      "package_label": "25 мл",
+      "target": "assets/img/v5/verified/ads-hires/bb610-fdf73deff6ccec.webp",
+      "source_page": "https://organicplanet.com.ua/ru/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-25-ml-valag",
+      "image_url": "https://organicplanet.com.ua/image/catalog/upakovki16-04.jpg",
+      "source_size": [
+        1001,
+        1306
+      ],
+      "output_size": [
+        920,
+        1200
+      ],
+      "bytes": 101866,
+      "sha256": "9b7473e95ca9fd512b2af494593433e66edc7224d496f6f8210a84856c17cbb9"
+    },
+    {
+      "product_id": "viva",
+      "sku_id": "BB610-VLG-VIVA-100ML",
+      "package_label": "100 мл",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-viva-100ml.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-100-ml-vala",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1127.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 27066,
+      "sha256": "6813f7eca5c0017c360dbe067b8c1c4984c8b3ff23ee983ebb3630141dd0fa5b"
+    },
+    {
+      "product_id": "pekacid-npk-0-60-20",
+      "sku_id": "BB610-02A58A1A393719",
+      "package_label": "1 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-02a58a1a393719.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-mineralne-dobryvo-npk-0-60-20-1-kg",
+      "image_url": "https://organicplanet.com.ua/image/catalog/pekacid.jpg",
+      "source_size": [
+        1080,
+        1080
+      ],
+      "output_size": [
+        1080,
+        1080
+      ],
+      "bytes": 83280,
+      "sha256": "75ebacf3be3bd5928a124869630099d2aa40e58b78eda104413e1c9b2e3f6c05"
+    },
+    {
+      "product_id": "pekacid-npk-0-60-20",
+      "sku_id": "BB610-1E396B98D1779E",
+      "package_label": "100 г",
+      "target": "assets/img/v5/verified/ads-hires/bb610-1e396b98d1779e.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-mineralne-dobryvo-npk-0-60-20-100-g",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1290.png",
+      "source_size": [
+        715,
+        1000
+      ],
+      "output_size": [
+        715,
+        1000
+      ],
+      "bytes": 69208,
+      "sha256": "17cfc28b7c5c5e69e1e5b09b88cf0a0b52b9e843bce02e936e15eb6c0d72fe5d"
+    },
+    {
+      "product_id": "pekacid-npk-0-60-20",
+      "sku_id": "BB610-D886B6AD2D6C04",
+      "package_label": "200 г",
+      "target": "assets/img/v5/verified/ads-hires/bb610-d886b6ad2d6c04.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/pekacid-pekacyd-npk-0-60-20-fosforno-kalijne-dobryvo-200-g",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novinkifasovka/4492.png",
+      "source_size": [
+        1669,
+        1669
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 134078,
+      "sha256": "6995558228ad5c995822fb7fd345b8d1a31876002d67e6d7f04af13d148e30c6"
+    },
+    {
+      "product_id": "brexil-mix",
+      "sku_id": "BB610-5C50CFED57B2BD",
+      "package_label": "15 г",
+      "target": "assets/img/v5/verified/ads-hires/bb610-5c50cfed57b2bd.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-v-helatnij-formi-15-g-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/111/upakovki16-11.jpg",
+      "source_size": [
+        1001,
+        1307
+      ],
+      "output_size": [
+        919,
+        1200
+      ],
+      "bytes": 134460,
+      "sha256": "f215bd743393a4a2b589eca2776b233a819659443ce21011a2c9f5c96b00ca8e"
+    },
+    {
+      "product_id": "brexil-mix",
+      "sku_id": "BB610-7CAECCDF081CBB",
+      "package_label": "5 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-7caeccdf081cbb.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-5-kg-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1021.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 74292,
+      "sha256": "cd2c9028f83dff620f21805ebc0bc5b8f5daaa0881364694f39fcb0f8221af5d"
+    },
+    {
+      "product_id": "brexil-mix",
+      "sku_id": "BB610-8AF90FA8223437",
+      "package_label": "250 г",
+      "target": "assets/img/v5/verified/ads-hires/bb610-8af90fa8223437.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-v-helatnij-formi-250-g-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novinkifasovka/4489.png",
+      "source_size": [
+        1669,
+        1669
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 130702,
+      "sha256": "f57016b9d8f6e916660d6045c9d37020718ad6fb448556ef4eb4bb54c70c21cb"
+    },
+    {
+      "product_id": "brexil-mix",
+      "sku_id": "BB610-B1881030364E52",
+      "package_label": "1 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-b1881030364e52.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/brexil-mix-breksil-miks-mikroelementy-1-kg-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1022.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 81072,
+      "sha256": "a2912b67c6ce9c58b2f5c010bb41e507959b7cd9b86a350832f95223d41fed86"
+    },
+    {
+      "product_id": "master-npk-13-40-13",
+      "sku_id": "BB610-VLG-MASTER134013-1KG",
+      "package_label": "1 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-master134013-1kg.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-13-40-13-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/master13-40-13.png",
+      "source_size": [
+        1080,
+        1080
+      ],
+      "output_size": [
+        1080,
+        1080
+      ],
+      "bytes": 116256,
+      "sha256": "76e7b0caec694517153e382208839217c945089d38ae568c58a9de24a3fb154a"
+    },
+    {
+      "product_id": "master-npk-13-40-13",
+      "sku_id": "BB610-VLG-MASTER134013-250G",
+      "package_label": "250 г",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-master134013-250g.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-13-40-13-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1205.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 86108,
+      "sha256": "522d5af5972eaaa504747f00dcb1f3c14efbad0f38d276baa24160ab0b370296"
+    },
+    {
+      "product_id": "master-npk-13-40-13",
+      "sku_id": "BB610-VLG-MASTER134013-25KG",
+      "package_label": "25 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-master134013-25kg.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-13-40-13-valagr",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1060master13-40-1325kg.jpg",
+      "source_size": [
+        1086,
+        1448
+      ],
+      "output_size": [
+        900,
+        1200
+      ],
+      "bytes": 113006,
+      "sha256": "b93a6cdc30b9e97f5aa607b6bae3fd0b6dd3566360b69a4abcf6795265a8fb3b"
+    },
+    {
+      "product_id": "master-npk-20-20-20",
+      "sku_id": "BB610-VLG-MASTER202020-10KG",
+      "package_label": "10 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-master202020-10kg.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-10-kg-npk-20-20-20-valagr",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1064master20-20-2010kg.jpg",
+      "source_size": [
+        1086,
+        1448
+      ],
+      "output_size": [
+        900,
+        1200
+      ],
+      "bytes": 104642,
+      "sha256": "1a68b71e26eedfd6d2ec5a21f1f617423e3567ded1e192e17bc1689d3de5ce25"
+    },
+    {
+      "product_id": "master-npk-20-20-20",
+      "sku_id": "BB610-VLG-MASTER202020-1KG",
+      "package_label": "1 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-master202020-1kg.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-1-kg-npk-20-20-20-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/master20-20-20.png",
+      "source_size": [
+        1080,
+        1080
+      ],
+      "output_size": [
+        1080,
+        1080
+      ],
+      "bytes": 112538,
+      "sha256": "d07c46744d3307f09b43586db9864523941227ec48f1f4da4e7d2812a847b0bb"
+    },
+    {
+      "product_id": "master-npk-20-20-20",
+      "sku_id": "BB610-VLG-MASTER202020-20G",
+      "package_label": "20 г",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-master202020-20g.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-20-g-npk-20-20-20-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/upakovki16-05.jpg",
+      "source_size": [
+        1001,
+        1306
+      ],
+      "output_size": [
+        920,
+        1200
+      ],
+      "bytes": 100196,
+      "sha256": "bb278ad0a52900dd3aeef556a722d21bd014886fb8084c62a6644cbe4a06f74b"
+    },
+    {
+      "product_id": "master-npk-20-20-20",
+      "sku_id": "BB610-VLG-MASTER202020-250G",
+      "package_label": "250 г",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-master202020-250g.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralne-dobryvo-250-g-npk-20-20-20-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1209.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 84500,
+      "sha256": "31b3dba76755b8f02e8d3eb85f3403f31365fe8cd1846bb61ba077fb97174518"
+    },
+    {
+      "product_id": "master-npk-20-20-20",
+      "sku_id": "BB610-VLG-MASTER202020-25KG",
+      "package_label": "25 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-master202020-25kg.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/master-master-mineralnoe-udobrenie-25-kg-npk-20-20-20-valagr",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1063master20-20-2025kg.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 112518,
+      "sha256": "231bab72bac023792c16909982b09f64ddc126cfc5bdec4779d1240311b1037a"
+    },
+    {
+      "product_id": "plantafol-npk-10-54-10",
+      "sku_id": "BB610-VLG-PLANTAFOL105410-1KG",
+      "package_label": "1 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-plantafol105410-1kg.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-10-54-10-v",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1100plantafol-10-54-10_-1-kg.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 186762,
+      "sha256": "897011ca3aa59a033458a05c9ef0485a6e432557779d730014f1440eb09672a0"
+    },
+    {
+      "product_id": "plantafol-npk-10-54-10",
+      "sku_id": "BB610-VLG-PLANTAFOL105410-250G",
+      "package_label": "250 г",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-plantafol105410-250g.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-10-54-10-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1212.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 69626,
+      "sha256": "bad61d816512bbb0694327329375a53f75c70b034298f1a56dfd7e7b25f4bf3a"
+    },
+    {
+      "product_id": "plantafol-npk-20-20-20",
+      "sku_id": "BB610-VLG-PLANTAFOL202020-1KG",
+      "package_label": "1 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-plantafol202020-1kg.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-20-20-20-v",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1094plantafol-20-20-20_-1-kg.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 153550,
+      "sha256": "8d68f030b71ab71afe3dc056ba261760373856a5875751c7846a0081a7379b39"
+    },
+    {
+      "product_id": "plantafol-npk-20-20-20",
+      "sku_id": "BB610-VLG-PLANTAFOL202020-250G",
+      "package_label": "250 г",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-plantafol202020-250g.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-dobryvo-250-g-npk-20-20-20-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1213.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 73070,
+      "sha256": "cbb792112bf46b02d415ff302904cf380223a34c4610483b98916d07f475a8c5"
+    },
+    {
+      "product_id": "plantafol-npk-20-20-20",
+      "sku_id": "BB610-VLG-PLANTAFOL202020-5KG",
+      "package_label": "5 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-plantafol202020-5kg.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-5-kg-npk-20-20-20-v",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1093plantafol20-20-205kg.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 145004,
+      "sha256": "dd6fadc932e7dff0844a67a6f32014313914cf527eea0771d8ce27d3a819741b"
+    },
+    {
+      "product_id": "plantafol-npk-5-15-45",
+      "sku_id": "BB610-VLG-PLANTAFOL51545-1KG",
+      "package_label": "1 кг",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-plantafol51545-1kg.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralnoe-udobrenie-1-kg-npk-5-15-45-va",
+      "image_url": "https://organicplanet.com.ua/image/catalog/novijdizajn/1097plantafol-5-15-45_-1-kg.jpg",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1200,
+        1200
+      ],
+      "bytes": 189784,
+      "sha256": "5baad1027fc15e202a1f33c22b04be79d9feb4eda462539fef0361f3d533af26"
+    },
+    {
+      "product_id": "plantafol-npk-5-15-45",
+      "sku_id": "BB610-VLG-PLANTAFOL51545-250G",
+      "package_label": "250 г",
+      "target": "assets/img/v5/verified/ads-hires/bb610-vlg-plantafol51545-250g.webp",
+      "source_page": "https://organicplanet.com.ua/katalog/dobriva-ta-biostimulyatori/plantafol-plantafol-mineralne-dobryvo-250-g-npk-5-15-45-valagro",
+      "image_url": "https://organicplanet.com.ua/image/catalog/photo/1215.png",
+      "source_size": [
+        1000,
+        1000
+      ],
+      "output_size": [
+        1000,
+        1000
+      ],
+      "bytes": 71814,
+      "sha256": "0d371a23cb527b204c6bc911599d3b109b113db100c17d95cddaa6983caf0783"
+    }
+  ]
+}

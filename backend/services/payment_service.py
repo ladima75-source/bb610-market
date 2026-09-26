@@ -44,10 +44,15 @@ def initialize_payment(con,order_id:str,method:str,amount:float,currency:str,ord
         con.execute('INSERT INTO payment_events(order_id,provider,event_type,from_status,to_status,payload_json,created_at) VALUES(?,?,?,?,?,?,?)',(order_id,'carrier','payment_initialized',None,'pending','{}',ts))
         return {'required':True,'method':'cod','provider':'carrier','status':'pending','redirect_url':None}
     if method=='bank_transfer':
+        # A valid bank-transfer order is a completed ecommerce checkout, just
+        # like COD. Payment remains pending operationally, but purchase
+        # analytics must fire while the customer is still on the success page;
+        # otherwise the later admin payment confirmation has no browser session
+        # in which to send the Google Ads/GA4 purchase event.
         ins=bank_transfer_instructions(order_number)
         raw={'instructions':ins}
         con.execute('INSERT INTO order_payments(order_id,method,provider,status,amount,currency,last_event_at,raw_json) VALUES(?,?,?,?,?,?,?,?)',(order_id,'bank_transfer','bank','pending',amount,currency,ts,json.dumps(raw,ensure_ascii=False)))
-        con.execute('UPDATE orders SET payment_method=?,payment_status=?,purchase_ready=0,clear_cart=1 WHERE id=?',('bank_transfer','pending',order_id))
+        con.execute('UPDATE orders SET payment_method=?,payment_status=?,purchase_ready=1,clear_cart=1 WHERE id=?',('bank_transfer','pending',order_id))
         con.execute('INSERT INTO payment_events(order_id,provider,event_type,from_status,to_status,payload_json,created_at) VALUES(?,?,?,?,?,?,?)',(order_id,'bank','payment_initialized',None,'pending',json.dumps(raw,ensure_ascii=False),ts))
         return {'required':True,'method':'bank_transfer','provider':'bank','status':'pending','redirect_url':None,'instructions':ins}
     a=adapter()

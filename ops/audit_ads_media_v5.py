@@ -72,9 +72,45 @@ def compact_media(m,scope,sku_id=None,package=None):
     return {
         'scope':scope,'sku_id':sku_id,'package':package,'url':url,
         'alt':m.get('alt'),'kind':m.get('kind'),'source_kind':m.get('source_kind'),
-        'binding_kind':m.get('binding_kind'),'role':m.get('role'),
+        'source_url':m.get('source_url'),'binding_kind':m.get('binding_kind'),'role':m.get('role'),
         'is_primary':m.get('is_primary')
     }
+
+def derive_uncached_candidate(image_url):
+    try:
+        u=urllib.parse.urlparse(image_url)
+        path=u.path
+        if '/image/cache/catalog/' not in path:return ''
+        path=path.replace('/image/cache/catalog/','/image/catalog/',1)
+        path=re.sub(r'-\d+x\d+(?=\.[^.]+$)','',path)
+        return urllib.parse.urlunparse((u.scheme,u.netloc,path,u.params,u.query,u.fragment))
+    except Exception:
+        return ''
+
+def probe_exact_source_page(url):
+    if not url or not str(url).startswith(('http://','https://')):return None
+    try:
+        req=urllib.request.Request(url,headers={'User-Agent':'BB610-Ads-Media-Audit/1.0'})
+        with urllib.request.urlopen(req,timeout=30) as r:
+            raw=r.read(6*1024*1024);final=r.geturl()
+        page=raw.decode('utf-8',errors='replace')
+        og=''
+        for pat in [
+            r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']',
+            r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image["\']'
+        ]:
+            m=re.search(pat,page,re.I)
+            if m:
+                og=urllib.parse.urljoin(final,html.unescape(m.group(1)));break
+        uncached=derive_uncached_candidate(og)
+        return {
+            'ok':True,'page_url':final,'og_image':og,
+            'og_image_info':inspect_image(og) if og else None,
+            'uncached_candidate':uncached,
+            'uncached_info':inspect_image(uncached) if uncached else None
+        }
+    except Exception as e:
+        return {'ok':False,'page_url':url,'error':str(e)}
 
 def probe_official_page(url):
     try:
@@ -137,6 +173,8 @@ def main():
             unique.setdefault(m['url'],m)
         for m in unique.values():
             m['image']=inspect_image(m['url'])
+            if m.get('source_kind') in ('verified_package_product_page','exact_sku_rollup') and m.get('source_url'):
+                m['exact_source_probe']=probe_exact_source_page(m.get('source_url'))
         hashes={}
         for m in unique.values():
             h=(m.get('image') or {}).get('sha256')

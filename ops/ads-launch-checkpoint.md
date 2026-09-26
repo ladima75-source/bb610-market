@@ -96,28 +96,22 @@ Main content weakness before paid traffic:
 - Priority is product-specific photos, package-specific images, technical/application infographics, then official video where genuinely useful.
 - Do not add invented or generic media just to hit a count.
 
-## Current critical in-progress item
-Google Ads SKU RSA final URLs were still observed pointing to dynamic URLs like:
-https://market.bb610.com.ua/product.html?id=...
+## SKU RSA landing-page migration — COMPLETE
+Read-back verified 2026-09-26:
+- 12/12 SKU ad groups now have the active ad pointing to a clean /products/.../ SEO landing page.
+- The previous dynamic product.html?id=... ads are PAUSED.
+- SKU campaign itself remains PAUSED, so there is no spend.
+- No campaign/ad-group rebuild is required.
 
-Because canonical SEO routes now exist, the next paid-media work is to migrate ad final URLs to clean /products/.../ landing pages without enabling campaigns.
-
-Available connector limitation:
-- Existing RSA final URL cannot be edited directly with current Windsor write actions.
-- Safe migration method: create a new paused RSA in the same ad group using the existing approved copy but correct /products/.../ final URL, then pause the old ad only after exact read-back verification.
-- Campaign stays PAUSED throughout.
-- Do not recreate campaigns or ad groups.
+Verified groups:
+Kendal; Plantafol 10-54-10; Plantafol 5-15-45; Brexil Mix; PeKacid 0-60-20; Master 20-20-20; Viva; Master 13-40-13; Plantafol 20-20-20; Megafol; Radifarm; Kendal TE.
 
 ## Next work block
-1. Read all current enabled SKU RSAs and exact ad/ad-group ids.
-2. Map each current final URL to config/seo-routes.js canonical route.
-3. Create replacement RSAs PAUSED with identical or deliberately improved copy and clean SEO final URLs.
-4. Read back and verify each replacement.
-5. Pause old SKU RSAs only after replacement exists and is correct.
-6. Repeat for Products/Brand only where canonical landing-page architecture makes the change beneficial.
-7. Verify Google Ads Purchase conversion goal/primary status.
-8. Audit media quality for the 12 advertised SKU and improve only high-impact deficiencies using verified product-specific sources.
-9. Final go/no-go review. Do not launch without explicit user authorization.
+1. Audit the 12 clean /products/... landing pages for conversion quality: first screen, package selection, price/stock, media, technical content, mobile usability and trust.
+2. Improve only high-impact content/media deficiencies using verified product-specific sources.
+3. Check Products and Brand final URLs only where clean canonical routes materially improve the landing experience.
+4. Verify Google Ads Purchase conversion goal/primary status as far as account tooling allows.
+5. Final go/no-go review. Do not launch without explicit user authorization.
 
 ## Operational rule
 - Make a durable checkpoint after each major block.

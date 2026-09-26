@@ -1397,6 +1397,29 @@ def _kendal_te_100ml_hires_media_batch_16(con: sqlite3.Connection) -> bool:
     )
     return True
 
+
+def _official_video_sources_batch_17(con: sqlite3.Connection) -> bool:
+    """Attach official manufacturer video sources without creating a parallel media owner."""
+    if not con.execute(
+        "SELECT 1 FROM products WHERE product_id='pekacid-npk-0-60-20'"
+    ).fetchone():
+        return False
+
+    _upsert_source(
+        con,
+        source_id="review26_pekacid_icl_official_video",
+        product_id="pekacid-npk-0-60-20",
+        source_type="official_manufacturer_video",
+        source_url="https://youtu.be/fGLjEUfLEhw",
+        source_label="ICL — Nova PeKacid: офіційне відео",
+        verified_at="2026-09-26",
+        notes=(
+            "Official ICL Ukraine Nova PeKacid product page links directly to this "
+            "YouTube video as the product video."
+        ),
+    )
+    return True
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -1416,6 +1439,7 @@ _MIGRATIONS = [
     ("20260921_master_134013_rich_content_batch14", _master_134013_rich_content_batch_14),
     ("20260925_ads_launch_content_quality_batch15", _ads_launch_content_quality_batch_15),
     ("20260925_kendal_te_100ml_hires_media_batch16", _kendal_te_100ml_hires_media_batch_16),
+    ("20260926_official_video_sources_batch17", _official_video_sources_batch_17),
 ]
 
 

@@ -1,0 +1,36 @@
+name: BB610 Ads HiRes Media Import
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/ads-hires-media-import-request.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install image tools
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Import and normalize exact package media
+        run: python ops/import_ads_hires_media.py --manifest ops/ads-hires-media-import.json
+      - name: Commit verified media
+        run: |
+          set -euo pipefail
+          git add assets/img/v5/verified/ads-hires ops/reports/ads-hires-media-import.json
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No HiRes media changes"
+            exit 0
+          fi
+          git config user.name "bb610-media-bot"
+          git config user.email "bb610-media-bot@users.noreply.github.com"
+          git commit -m "Import high-resolution Ads package media"
+          git pull --rebase origin main
+          git push origin HEAD:main

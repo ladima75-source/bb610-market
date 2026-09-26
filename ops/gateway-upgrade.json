@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
-  "enabled": true,
+  "enabled": false,
   "target_path": "/usr/local/sbin/bb610-github-gateway",
   "target_repo_path": "ops/bb610-github-gateway-v3",
   "expected_current_sha256": "b58902e51a818217c8095348b29a61f507ce2a5c82438c912699cf6675f853f9",
   "mode": "0700",
   "reason": "Update V5 deploy health gate to minimum regression thresholds so catalog growth does not cause false deployment failures.",
-  "completed_sha256": "",
-  "completed_note": ""
+  "completed_sha256": "59ff17de1aaa68acb6c143a986f4cf2eee2ff769759e79a6545b601c904079d1",
+  "completed_note": "Growth-safe V5 deploy health gate installed successfully; upgrader disabled."
 }

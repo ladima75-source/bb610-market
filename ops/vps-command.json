@@ -1,4 +1,5 @@
 {
-  "action": "health",
-  "request_id": "2026-09-26-growth-safe-gateway-health"
+  "action": "deploy",
+  "ref": "fe476d19289f938e967dc54be6647a16c2e70e66",
+  "request_id": "2026-09-26-pdp-sources-seo-alignment"
 }

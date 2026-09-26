@@ -3,3 +3,4 @@
 2026-09-26 strengthen paid landing static fallback
 2026-09-26 retry stronger fallback after PeKacid runtime alignment
 2026-09-26 sort paid landing packages small to large
+2026-09-26 idempotent paid landing fallback regeneration

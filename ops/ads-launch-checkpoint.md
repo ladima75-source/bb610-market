@@ -173,6 +173,25 @@ Verified 2026-09-26:
 - Keep current catalog query landing URLs for launch unless category routes are independently modernized and re-verified.
 - Containers ad/group remains paused and is not part of the initial paid launch decision.
 
+## High-resolution exact-package media import — COMPLETE
+Verified 2026-09-26:
+- 36 exact-package source pages were matched to uncached originals.
+- Ambiguous/mismatched package sources were excluded from the batch.
+- Import commit: `27c1d5415173568ca7d3b770753bbd2cdfe33b4e`.
+- Import report: `ops/reports/ads-hires-media-import.json`.
+- Result: PASS 36/36.
+- Minimum output short side: 715 px.
+- Maximum output long side: 1200 px.
+- Total normalized WebP size for all 36 files: ~3.35 MB.
+- Large source PNG/JPEG files were normalized to WebP rather than served raw.
+- Existing V5 bindings are not changed by the import itself; the old media remains live until the dedicated V5 migration is applied.
+
+Excluded from automatic replacement because source page did not prove the exact package:
+- Kendal 100 ml
+- several Plantafol 25 g / 5 kg bindings whose provenance points to a 1 kg page
+- MASTER 13-40-13 20 g where the existing source URL points to a 25 g page
+- PeKacid 15 g because the uncached original is still only 534×534
+
 ## Next work block
 1. Replace weak sub-600px advertising media where an exact or official higher-resolution source can be verified, prioritizing the 12 paid SKU.
 2. Add official manufacturer video only when a verified official source exists and materially helps the buyer.

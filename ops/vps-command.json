@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "5411586372343eecd03bd25b2eb4e517556793ce",
-  "request_id": "2026-09-26-seo-sku-url-fix"
+  "action": "health",
+  "request_id": "2026-09-26-growth-safe-gateway-health"
 }

@@ -106,9 +106,40 @@ Read-back verified 2026-09-26:
 Verified groups:
 Kendal; Plantafol 10-54-10; Plantafol 5-15-45; Brexil Mix; PeKacid 0-60-20; Master 20-20-20; Viva; Master 13-40-13; Plantafol 20-20-20; Megafol; Radifarm; Kendal TE.
 
+## Paid SEO landing static fallback — COMPLETE
+Verified 2026-09-26 after generated commit f7c32e3758dbee91606381b05cd49d7f23e9d65f:
+- 12/12 advertised SEO landings have a V5-backed static first screen.
+- Static fallback shows real minimum price and availability instead of generic "Ціна уточнюється / Наявність уточнюється".
+- Static fallback uses V5 primary media.
+- Package labels are sorted small → large.
+- Regeneration is idempotent: repeated workflow runs no longer duplicate package labels.
+- All 12 pages use current `js/product.js?v=20260926-pdp-sources-1`.
+- Launch-gate workflow passed after PeKacid runtime alignment.
+
+Verified package order:
+- Kendal: 25 ml → 100 ml → 1 l
+- Plantafol 10-54-10: 25 g → 250 g → 1 kg → 5 kg
+- Plantafol 5-15-45: 25 g → 250 g → 1 kg → 5 kg
+- Brexil Mix: 15 g → 250 g → 1 kg → 5 kg
+- PeKacid: 15 g → 100 g → 200 g → 1 kg
+- Master 20-20-20: 20 g → 250 g → 1 kg → 10 kg → 25 kg
+- Viva: 25 ml → 100 ml → 1 l → 10 l → 20 l
+- Master 13-40-13: 20 g → 250 g → 1 kg → 25 kg
+- Plantafol 20-20-20: 25 g → 250 g → 1 kg → 5 kg
+- Megafol: 25 ml → 100 ml → 1 l → 10 l
+- Radifarm: 25 ml → 100 ml → 1 l → 10 l
+- Kendal TE: 100 ml → 1 l
+
+Generator/source:
+- `ops/sync_ads_landing_seo_v5.py`
+- stronger fallback commit: `120479de40376b8c084d847ec82db119cd8562ce`
+- package sort commit: `ce0a49dabb0dff3c43c25480eff82514d1abf4fc`
+- idempotency fix: `ff7d90d7f2be8aaa0f2cecff936f833c1d8a5a07`
+- final generated pages: `f7c32e3758dbee91606381b05cd49d7f23e9d65f`
+
 ## Next work block
-1. Audit the 12 clean /products/... landing pages for conversion quality: first screen, package selection, price/stock, media, technical content, mobile usability and trust.
-2. Improve only high-impact content/media deficiencies using verified product-specific sources.
+1. Audit media quality for the 12 advertised SKU: resolution, duplicate images, package-specific coverage, technical/application infographics and official manufacturer video where useful.
+2. Improve only high-impact media/source deficiencies through the V5/single-source architecture; no decorative filler.
 3. Check Products and Brand final URLs only where clean canonical routes materially improve the landing experience.
 4. Verify Google Ads Purchase conversion goal/primary status as far as account tooling allows.
 5. Final go/no-go review. Do not launch without explicit user authorization.

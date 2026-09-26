@@ -88,8 +88,20 @@ print("V5:", json.dumps({
 }, ensure_ascii=False))
 if d.get("schema_version") != "5.0":
     raise SystemExit("unexpected V5 schema")
-if c.get("products") != 86 or c.get("public_products") != 82 or c.get("skus") != 221:
-    raise SystemExit("unexpected V5 counts")
+required = {
+    "products": 119,
+    "public_products": 115,
+    "skus": 310,
+    "public_skus": 302,
+    "sku_aliases": 109,
+    "media": 434,
+}
+missing = {k: (c.get(k), minimum) for k, minimum in required.items()
+           if not isinstance(c.get(k), int) or c.get(k) < minimum}
+if missing:
+    raise SystemExit("unexpected V5 count regression: " + json.dumps(missing, ensure_ascii=False))
+if c["public_products"] > c["products"] or c["public_skus"] > c["skus"]:
+    raise SystemExit("invalid V5 public/total count relationship")
 PY
   rm -f "$tmp"
 }

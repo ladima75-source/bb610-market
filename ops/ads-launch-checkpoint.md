@@ -137,12 +137,39 @@ Generator/source:
 - idempotency fix: `ff7d90d7f2be8aaa0f2cecff936f833c1d8a5a07`
 - final generated pages: `f7c32e3758dbee91606381b05cd49d7f23e9d65f`
 
+## V5 media quality baseline — COMPLETE
+Durable audit report:
+- `ops/reports/ads-media-audit.json`
+- report commit: `fad099fb172a55ee80aab1741c68b76282b6cf30`
+- audit script: `ops/audit_ads_media_v5.py`
+
+Verified 2026-09-26:
+- 12/12 advertised products audited directly from Product Master V5.
+- 0 broken media URLs.
+- Every commerce-enabled / in-stock package has package media coverage.
+- No verified official YouTube source is currently attached in V5 for the 12 products.
+- Main visual weakness is source resolution, not missing links.
+- Most legacy/package images are 440–534 px square.
+- Stronger current media already exists for:
+  - PLANTAFOL 20-20-20: one 900×900 image
+  - MEGAFOL: 900×900, 1001×1307 and 1000×1000 product images
+  - Kendal TE: verified 1200×1200 100 ml image
+- Kendal, PLANTAFOL 10-54-10, PLANTAFOL 5-15-45, Brexil Mix, PeKacid, MASTER 20-20-20, Viva, MASTER 13-40-13 and Radifarm are dominated by sub-600px media.
+- Duplicate-content groups exist in some product rollups (PLANTAFOL 5-15-45, MASTER 20-20-20, MASTER 13-40-13, PLANTAFOL 20-20-20); these are audit findings, not broken package bindings.
+
+Media policy for launch:
+- Prefer exact-package verified images over generic product art.
+- Prefer official Syngenta Biologicals / Valagro / ICL assets when a higher-resolution exact or product-family source exists.
+- Do not add third-party YouTube clips or decorative stock media just to increase media count.
+- Preserve V5 as the single source of truth; do not create a parallel legacy gallery.
+
 ## Next work block
-1. Audit media quality for the 12 advertised SKU: resolution, duplicate images, package-specific coverage, technical/application infographics and official manufacturer video where useful.
-2. Improve only high-impact media/source deficiencies through the V5/single-source architecture; no decorative filler.
-3. Check Products and Brand final URLs only where clean canonical routes materially improve the landing experience.
-4. Verify Google Ads Purchase conversion goal/primary status as far as account tooling allows.
-5. Final go/no-go review. Do not launch without explicit user authorization.
+1. Replace weak sub-600px advertising media where an exact or official higher-resolution source can be verified, prioritizing the 12 paid SKU.
+2. Add official manufacturer video only when a verified official source exists and materially helps the buyer.
+3. Keep exact package bindings and V5 single-source architecture intact.
+4. Compare Products campaign category landing URLs against clean /categories/... routes and migrate only if the clean route is at least as functional.
+5. Verify Google Ads Purchase conversion goal/primary status as far as account tooling allows.
+6. Final go/no-go review. Do not launch without explicit user authorization.
 
 ## Operational rule
 - Make a durable checkpoint after each major block.

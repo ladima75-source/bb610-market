@@ -78,7 +78,7 @@ jobs:
           assert cards>=20, f'too few Plantlogic cards: {cards}'
           assert 'product-card-v2' in s
           assert 'BB610 Product Master unavailable' not in s
-          for title in ('Для лохини','Для малини та ожини','Для полуниці','Для овочевих культур','Сад','Універсальні'):
+          for title in ('Для лохини','Для малини та ожини','Для полуниці','Для овочевих культур','Для саду','Універсальні'):
               assert title in s, f'missing Plantlogic section: {title}'
           print('V5 CONTAINERS DOM: PASS', cards)
           PY

@@ -1,5 +1,5 @@
 {
   "action": "deploy",
-  "ref": "67218aa17f7d172cb73bfbfbd01364369c20649e",
-  "request_id": "2026-09-27-adaptive-catalog-ranking-r2"
+  "ref": "2a18f645ed03fd015f0b6000040689ac1cf60bf1",
+  "request_id": "2026-09-27-admin-canonical-skus-only"
 }

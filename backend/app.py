@@ -5,7 +5,7 @@ from fastapi import FastAPI, Header, HTTPException, Query, Request, UploadFile, 
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
-from .db import migrate
+from .db import migrate, connect
 from .services.orders import create_order,get_public_order,admin_list,admin_detail,update_status,add_admin_note,CatalogError
 from .services.delivery_service import provider_capabilities,search_cities,search_branches,set_manual_tracking,refresh_tracking
 from .services.delivery import DeliveryNotConfigured,DeliveryUpstreamError
@@ -62,6 +62,8 @@ class MetaCapiEventBody(BaseModel):
     currency:str=Field(default='UAH',min_length=3,max_length=3)
     value:Optional[float]=Field(default=None,ge=0)
     order_id:Optional[str]=Field(default=None,max_length=200)
+    fbp:Optional[str]=Field(default=None,max_length=512)
+    fbc:Optional[str]=Field(default=None,max_length=512)
     contents:list[MetaContentBody]=Field(default_factory=list)
 
 class CatalogLearningEventBody(BaseModel):
@@ -136,10 +138,24 @@ def meta_capi_event(body:MetaCapiEventBody,request:Request):
     forwarded=(request.headers.get('x-forwarded-for') or '').split(',')[0].strip()
     client_ip=forwarded or (request.client.host if request.client else '')
     user_agent=request.headers.get('user-agent') or ''
+    email=phone=external_id=''
+    if body.event_name=='Purchase' and body.order_id:
+        # Enrich Purchase server-side from the confirmed order record.
+        # PII never returns to the browser; Meta receives only normalized SHA-256 hashes.
+        with connect() as con:
+            row=con.execute(
+                'SELECT id,customer_email,customer_phone FROM orders WHERE order_number=? AND purchase_ready=1',
+                (body.order_id,)
+            ).fetchone()
+        if row:
+            email=row['customer_email'] or ''
+            phone=row['customer_phone'] or ''
+            external_id=row['id'] or ''
     return send_meta_capi_event(
         event_name=body.event_name,event_id=body.event_id,event_source_url=body.event_source_url,
         contents=[x.model_dump(exclude_none=True) for x in body.contents],currency=body.currency.upper(),
-        value=body.value,order_id=body.order_id,client_ip=client_ip,client_user_agent=user_agent
+        value=body.value,order_id=body.order_id,client_ip=client_ip,client_user_agent=user_agent,
+        fbp=body.fbp or '',fbc=body.fbc or '',email=email,phone=phone,external_id=external_id
     )
 
 @app.post('/api/v1/analytics/catalog-event')

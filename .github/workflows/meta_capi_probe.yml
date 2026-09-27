@@ -23,11 +23,17 @@ jobs:
             'config':'https://market.bb610.com.ua/config/analytics-config.js',
             'analytics':'https://market.bb610.com.ua/js/analytics.js',
           }
+          import time
           data={}
-          for key,url in urls.items():
-              req=urllib.request.Request(url,headers={'User-Agent':'BB610-Meta-Tracking-Probe/1.0'})
-              with urllib.request.urlopen(req,timeout=30) as resp:
-                  data[key]=resp.read().decode('utf-8')
+          for attempt in range(18):
+              data={}
+              for key,url in urls.items():
+                  req=urllib.request.Request(url,headers={'User-Agent':'BB610-Meta-Tracking-Probe/1.0','Cache-Control':'no-cache'})
+                  with urllib.request.urlopen(req,timeout=30) as resp:
+                      data[key]=resp.read().decode('utf-8')
+              if 'bb610_meta_fbc' in data.get('analytics','') and 'body.fbp=fbp' in data.get('analytics',''):
+                  break
+              time.sleep(5)
           config=data['config']
           analytics=data['analytics']
           checks={
@@ -42,6 +48,8 @@ jobs:
             'initiate_checkout': "begin_checkout:'InitiateCheckout'" in analytics,
             'purchase': "purchase:'Purchase'" in analytics,
             'event_id_dedup': "eventID:String(eventId)" in analytics,
+            'client_fbp': 'body.fbp=fbp' in analytics,
+            'client_fbc': 'body.fbc=fbc' in analytics and 'bb610_meta_fbc' in analytics,
           }
           print('LIVE_PIXEL_CHECKS', checks)
           failed=[k for k,v in checks.items() if not v]
@@ -61,6 +69,8 @@ jobs:
             'event_id':'bb610-meta-capi-probe-20260928-v2',
             'event_source_url':'https://market.bb610.com.ua/?meta_capi_probe=1',
             'currency':'UAH',
+            'fbp':'fb.1.1727480000000.1234567890',
+            'fbc':'fb.1.1727480000000.TESTCLICKID',
             'contents':[]
           }
           req=urllib.request.Request(

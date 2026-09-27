@@ -235,7 +235,7 @@ jobs:
               assert 'js/catalog.js?v=' in doc, path
               assert 'js/app.js?v=' in doc, path
               assert 'js/data-source.js?v=' in doc, path
-              assert 'config/commerce-config.js?v=20260918-master-1' in doc, path
+              assert 'config/commerce-config.js?v=20260927-single-v5-1' in doc, path
 
           v3=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
           assert "'Спосіб внесення'" in v3

@@ -1,11 +1,6 @@
-try{
-  const q=new URLSearchParams(location.search);
-  window.BB610_STOREFRONT_V5=q.get('catalog')!=='v4';
-}catch(_){
-  window.BB610_STOREFRONT_V5=true;
-}
+window.BB610_STOREFRONT_V5=true;
 window.BB610_DATA_SOURCE={
-  mode:'product-master-v4',
+  mode:'bb610-product-master-v5',
   _refreshPromise:null,
   _staticProductMedia:null,
   _staticSeoRoutes:null,
@@ -22,14 +17,7 @@ window.BB610_DATA_SOURCE={
   variants(){return this.catalog().variants||[]},
   categories(){return this.catalog().categories||[]},
 
-  _v5Requested(){
-    try{
-      const q=new URLSearchParams(location.search);
-      if(q.get('catalog')==='v4')return false;
-      if(q.get('v5')==='1')return true;
-    }catch(_){}
-    return window.BB610_STOREFRONT_V5!==false;
-  },
+  _v5Requested(){return true;},
 
   _captureStaticProductMedia(){
     if(this._staticProductMedia)return;
@@ -93,28 +81,7 @@ window.BB610_DATA_SOURCE={
     if(!alias)return null;
     const canonical=this.skus().find(x=>x.id===alias.canonical_sku_id||x.sku===alias.canonical_sku_id);
     if(!canonical)return null;
-    const sale=alias.sale_price;
-    const base=alias.price;
-    const effective=sale!==null&&sale!==undefined?sale:base;
-    const availability=alias.availability||canonical.availability||'unknown';
-    const commerceEnabled=alias.enabled===1||alias.enabled===true;
-    return {
-      ...canonical,
-      id:key,
-      sku:key,
-      canonical_sku_id:alias.canonical_sku_id,
-      legacy_alias:true,
-      base_price:base,
-      sale_price:sale,
-      price:effective,
-      availability,
-      stock_qty:alias.stock_qty,
-      commercial_status:availability==='request_price'?'request-price':(commerceEnabled?'active':'paused'),
-      offer_status:availability==='request_price'?'request-price':(commerceEnabled?'active':'draft'),
-      price_request:availability==='request_price',
-      stock_label:this._stockLabel(availability),
-      updated_at:alias.updated_at||canonical.updated_at,
-    };
+    return {...canonical,id:key,sku:key,canonical_sku_id:alias.canonical_sku_id,legacy_alias:true};
   },
 
   skusForProduct(productId){
@@ -355,121 +322,29 @@ window.BB610_DATA_SOURCE={
     this.mode=md.source||'bb610-product-master-v5';
   },
 
-  _fixProductMedia(p,base){
-    const x={...p};
-    if(x.image?.local?.startsWith('/media/'))x.image={...x.image,local:base+x.image.local};
-    if(Array.isArray(x.gallery))x.gallery=x.gallery.map(v=>String(v).startsWith('/media/')?base+v:v);
-    return x;
-  },
-
-  _fixSkuMedia(s,base){
-    const x={...s};
-    if(x.image?.startsWith('/media/'))x.image=base+x.image;
-    if(Array.isArray(x.gallery))x.gallery=x.gallery.map(v=>String(v).startsWith('/media/')?base+v:v);
-    return x;
-  },
-
-  _applyCommerce(items){
-    const map=new Map((items||[]).map(x=>[x.sku||x.id,x]));
-    (this.catalog().skus||[]).forEach(s=>{
-      const c=map.get(s.id||s.sku);
-      if(!c)return;
-      s.base_price=c.price;
-      s.sale_price=c.sale_price;
-      s.price=c.effective_price;
-      s.availability=c.availability;
-      s.stock_qty=c.stock_qty;
-      s.commercial_status=c.enabled?'active':'paused';
-      s.offer_status=c.enabled?'active':'draft';
-      s.stock_label=this._stockLabel(c.availability);
-    });
-  },
-
-  _applyMaster(md,base){
-    const products=(md.products||[]).filter(p=>p?.id&&!p.runtime_hidden).map(p=>this._fixProductMedia(p,base));
-    const productIds=new Set(products.map(p=>p.id));
-    const skus=(md.skus||[]).filter(s=>s?.id&&productIds.has(s.product_id)).map(s=>this._fixSkuMedia(s,base));
-    this.catalog().products=products;
-    this.catalog().skus=skus;
-    this._applyCommerce(Object.values(md.commerce||{}));
-    this.mode=md.source||'product-master-v4';
-  },
-
-  _applyLegacyContent(pd,base){
-    (pd.products||[]).forEach(raw=>{
-      const p=this._fixProductMedia(raw,base);
-      const i=(this.catalog().products||[]).findIndex(x=>x.id===p.id);
-      if(i>=0)this.catalog().products[i]={...this.catalog().products[i],...p};
-      else this.catalog().products.push(p);
-    });
-    const incoming=pd.skus||[];
-    const publicIds=new Set((pd.products||[]).filter(p=>p?.id&&!p.runtime_hidden).map(p=>p.id));
-    const incomingIds=new Set(incoming.map(s=>s?.id).filter(Boolean));
-    this.catalog().skus=(this.catalog().skus||[]).filter(s=>!publicIds.has(s.product_id)||incomingIds.has(s.id));
-    incoming.forEach(raw=>{
-      const s=this._fixSkuMedia(raw,base);
-      const i=(this.catalog().skus||[]).findIndex(x=>x.id===s.id);
-      if(i>=0)this.catalog().skus[i]={...this.catalog().skus[i],...s};
-      else this.catalog().skus.push(s);
-    });
-  },
-
   async refresh(){
     if(this._refreshPromise)return this._refreshPromise;
     this._refreshPromise=(async()=>{
-      this._captureStaticProductMedia();
       this._captureStaticSeoRoutes();
       const base=(window.BB610_COMMERCE_CONFIG?.apiBaseUrl||'https://api.market.bb610.com.ua').replace(/\/$/,'');
-      if(!base)return this.catalog();
+      const ep=window.BB610_COMMERCE_CONFIG?.endpoints?.catalogV5||'/api/v1/catalog/v5';
       const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),8000);
       try{
-        if(this._v5Requested()){
-          const r=await fetch(base+'/api/v1/catalog/v5',{
-            signal:ctl.signal,cache:'no-store',headers:{Accept:'application/json'}
-          });
-          if(!r.ok)throw new Error('V5 HTTP '+r.status);
-          const md=await r.json();
-          if(md?.schema_version!=='5.0')throw new Error('Unexpected V5 schema');
-          this._applyV5(md);
-          return this.catalog();
-        }
-
-        const mEp=window.BB610_COMMERCE_CONFIG?.endpoints?.productMaster||'/api/v1/catalog/master';
-        const mr=await fetch(base+mEp,{signal:ctl.signal,cache:'no-store',headers:{Accept:'application/json'}});
-        if(mr.ok){
-          const md=await mr.json();
-          this._applyMaster(md,base);
-          return this.catalog();
-        }
-
-        const cEp=window.BB610_COMMERCE_CONFIG?.endpoints?.commercialCatalog||'/api/v1/catalog/commerce';
-        const pEp=window.BB610_COMMERCE_CONFIG?.endpoints?.catalogContent||'/api/v1/catalog/content';
-        const [cr,pr]=await Promise.all([
-          fetch(base+cEp,{signal:ctl.signal,cache:'no-store',headers:{Accept:'application/json'}}),
-          fetch(base+pEp,{signal:ctl.signal,cache:'no-store',headers:{Accept:'application/json'}})
-        ]);
-        if(pr.ok)this._applyLegacyContent(await pr.json(),base);
-        if(cr.ok){
-          const data=await cr.json();
-          this._applyCommerce(data.items||[]);
-        }
-        this.mode='legacy-api-fallback';
+        const r=await fetch(base+ep,{signal:ctl.signal,cache:'no-store',headers:{Accept:'application/json'}});
+        if(!r.ok)throw new Error('V5 HTTP '+r.status);
+        const md=await r.json();
+        if(md?.schema_version!=='5.0')throw new Error('Unexpected V5 schema');
+        this._applyV5(md);
       }catch(e){
-        console.error('BB610 catalog refresh failed',e);
-        if(this._v5Requested()){
-          this.catalog().products=[];
-          this.catalog().skus=[];
-          this._productAliases=new Map();
-          this._skuAliases=new Map();
-          this.mode='bb610-product-master-v5-error';
-        }else{
-          this.mode='static-fallback';
-        }
-      }finally{
-        clearTimeout(t);
-      }
+        console.error('BB610 Product Master V5 refresh failed',e);
+        this.catalog().products=[];
+        this.catalog().skus=[];
+        this.catalog().variants=[];
+        this._productAliases=new Map();
+        this._skuAliases=new Map();
+        this.mode='bb610-product-master-v5-error';
+      }finally{clearTimeout(t)}
       return this.catalog();
     })();
     return this._refreshPromise;
-  }
-};
+  }};

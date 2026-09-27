@@ -20,14 +20,14 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def _v5_snapshot():
+def _v5_snapshot(*, public_only: bool = False):
     from .product_master_v5 import snapshot
-    return snapshot(public_only=False)
+    return snapshot(public_only=public_only)
 
 
-def _seed_rows_from_v5() -> list[dict]:
-    """Return every V5 commerce identity with its current/fallback commerce state."""
-    data = _v5_snapshot()
+def _seed_rows_from_v5(data: dict | None = None) -> list[dict]:
+    """Return canonical V5 SKU identities with current/fallback commerce state."""
+    data = data if isinstance(data, dict) else _v5_snapshot(public_only=False)
     rows = []
     canonical = {}
 
@@ -48,31 +48,20 @@ def _seed_rows_from_v5() -> list[dict]:
             rows.append(row)
             canonical[sid] = row
 
-    for alias in data.get('sku_aliases') or []:
-        sid = str(alias.get('alias_sku_id') or '').strip()
-        if not sid:
-            continue
-        rows.append({
-            'sku': sid,
-            'price': alias.get('price'),
-            'sale_price': alias.get('sale_price'),
-            'availability': alias.get('availability') or 'unknown',
-            'stock_qty': alias.get('stock_qty'),
-            'enabled': 1 if alias.get('enabled') else 0,
-            'updated_at': alias.get('updated_at') or _now(),
-        })
     return rows
 
 
 def seed_from_catalog() -> dict:
-    """Backfill operational sku_commerce from Product Master V5.
-
-    Existing production rows are never overwritten. This turns sku_commerce
-    into the live commerce source for every canonical V5 SKU and compatibility
-    alias while preserving all previously edited prices/stock.
-    """
-    rows = _seed_rows_from_v5()
+    """Backfill operational commerce for canonical Product Master V5 SKU only."""
+    data = _v5_snapshot(public_only=False)
+    rows = _seed_rows_from_v5(data)
+    alias_ids = [
+        str(x.get('alias_sku_id') or '').strip()
+        for x in (data.get('sku_aliases') or [])
+        if str(x.get('alias_sku_id') or '').strip()
+    ]
     created = []
+    pruned_alias_rows = 0
     with connect() as con:
         for row in rows:
             before = con.total_changes
@@ -94,12 +83,27 @@ def seed_from_catalog() -> dict:
             )
             if con.total_changes > before:
                 created.append(row['sku'])
+        if alias_ids:
+            marks = ",".join("?" for _ in alias_ids)
+            cur = con.execute(f"DELETE FROM sku_commerce WHERE sku IN ({marks})", tuple(alias_ids))
+            pruned_alias_rows = int(cur.rowcount or 0)
         con.commit()
-    return {'seen': len(rows), 'created': len(created), 'created_skus': created}
+    return {'seen': len(rows), 'created': len(created), 'created_skus': created, 'pruned_alias_rows': pruned_alias_rows}
+
+
+def _canonical_sku_ids(*, public_only: bool = False) -> set[str]:
+    data = _v5_snapshot(public_only=public_only)
+    return {
+        str(sku.get('sku_id') or '').strip()
+        for product in (data.get('products') or [])
+        for sku in (product.get('skus') or [])
+        if str(sku.get('sku_id') or '').strip()
+    }
 
 
 def commerce_map() -> dict[str, dict]:
     seed_from_catalog()
+    canonical_ids = _canonical_sku_ids(public_only=False)
     with connect() as con:
         rows = con.execute(
             '''
@@ -110,6 +114,8 @@ def commerce_map() -> dict[str, dict]:
     out = {}
     for r in rows:
         x = dict(r)
+        if x['sku'] not in canonical_ids:
+            continue
         x['enabled'] = bool(x['enabled'])
         x['effective_price'] = x['sale_price'] if x['sale_price'] is not None else x['price']
         out[x['sku']] = x
@@ -117,7 +123,8 @@ def commerce_map() -> dict[str, dict]:
 
 
 def public_catalog() -> list[dict]:
-    return list(commerce_map().values())
+    public_ids = _canonical_sku_ids(public_only=True)
+    return [row for sku,row in commerce_map().items() if sku in public_ids]
 
 
 def _primary_media(product: dict, sku: dict) -> str:
@@ -226,6 +233,11 @@ def update_product(
     enabled: Optional[bool] = None,
 ) -> dict | None:
     sku = str(sku or '').strip()
+    from .product_master_v5 import resolve_sku_id
+    canonical_sku = resolve_sku_id(sku)
+    if not canonical_sku:
+        return None
+    sku = canonical_sku
     seed_from_catalog()
     with connect() as con:
         exists = con.execute('SELECT 1 FROM sku_commerce WHERE sku=?', (sku,)).fetchone()

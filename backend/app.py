@@ -232,14 +232,18 @@ def price_request_admin_notify(request_code:str,authorization:Optional[str]=Head
 
 @app.get('/api/v1/catalog/master')
 def catalog_master():
-    from .services.product_master_runtime import snapshot as product_master_snapshot
+    from .services.product_master_feed_v5 import snapshot as product_master_snapshot
     return product_master_snapshot()
 
 @app.get('/api/v1/catalog/commerce')
-def catalog_commerce(): return {'items':public_catalog()}
+def catalog_commerce():
+    return {'source':'bb610-product-master-v5','items':public_catalog()}
 
 @app.get('/api/v1/catalog/content')
-def catalog_content(): return public_content()
+def catalog_content():
+    from .services.product_master_feed_v5 import snapshot as product_master_snapshot
+    snap=product_master_snapshot()
+    return {'source':snap.get('source'),'schema_version':'5.0-compat','products':snap.get('products') or [],'skus':snap.get('skus') or []}
 
 @app.get('/api/v1/admin/catalog/products')
 def admin_catalog_products(authorization:Optional[str]=Header(default=None)):

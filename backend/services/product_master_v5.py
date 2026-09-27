@@ -349,10 +349,10 @@ def resolve_sku(value: str) -> dict | None:
         row = con.execute(
             """
             SELECT a.alias_sku_id,a.canonical_sku_id,
-                   ac.price,ac.sale_price,ac.availability,ac.stock_qty,
-                   ac.enabled,ac.updated_at
+                   c.price,c.sale_price,c.availability,c.stock_qty,
+                   c.enabled,c.updated_at
             FROM sku_aliases a
-            LEFT JOIN sku_alias_commerce ac ON ac.alias_sku_id=a.alias_sku_id
+            LEFT JOIN sku_commerce c ON c.sku_id=a.canonical_sku_id
             WHERE a.alias_sku_id=? AND a.active=1
             LIMIT 1
             """,
@@ -361,14 +361,14 @@ def resolve_sku(value: str) -> dict | None:
         if not row:
             return None
         data = dict(row)
-        live = runtime.get(value)
-        if live:
+        canonical_live = runtime.get(data["canonical_sku_id"])
+        if canonical_live:
             for key in ("price","sale_price","availability","stock_qty","enabled","updated_at"):
-                data[key] = live.get(key)
+                data[key] = canonical_live.get(key)
         data.update({
             "requested_sku_id": value,
             "is_alias": True,
-            "commerce_source": "runtime_sku_commerce" if live else "preserved_alias_snapshot",
+            "commerce_source": "canonical_runtime_sku_commerce" if canonical_live else "canonical_v5_snapshot",
         })
         return data
 
@@ -444,6 +444,8 @@ def _sku_rows(
     con: sqlite3.Connection,
     product_id: str,
     runtime_commerce: dict[str, dict] | None = None,
+    *,
+    enabled_only: bool = False,
 ) -> list[dict]:
     rows = con.execute(
         """
@@ -463,6 +465,8 @@ def _sku_rows(
     result = []
     for row in rows:
         item = dict(row)
+        if enabled_only and not bool(item.get("enabled")):
+            continue
         item["attributes"] = _json(item.pop("attributes_json", None), {})
         item["media"] = _media_for_sku(con, item["sku_id"])
         item = _overlay_commerce(item, item["sku_id"], runtime_commerce)
@@ -508,7 +512,7 @@ def product(product_id_or_alias: str, *, public_only: bool = True) -> dict | Non
         item["sources"] = _sources_for_product(con, canonical)
         item["media"] = _media_for_product(con, canonical)
         runtime_commerce = _runtime_commerce_map()
-        item["skus"] = _sku_rows(con, canonical, runtime_commerce)
+        item["skus"] = _sku_rows(con, canonical, runtime_commerce, enabled_only=public_only)
         item["aliases"] = [
             r["alias"]
             for r in con.execute(
@@ -571,7 +575,7 @@ def snapshot(*, public_only: bool = True) -> dict:
             item["characteristics"] = _json(item.pop("characteristics_json", None), [])
             item["sources"] = _sources_for_product(con, item["product_id"])
             item["media"] = _media_for_product(con, item["product_id"])
-            item["skus"] = _sku_rows(con, item["product_id"], runtime_commerce)
+            item["skus"] = _sku_rows(con, item["product_id"], runtime_commerce, enabled_only=public_only)
 
         public_product_ids = {
             row["product_id"]
@@ -584,7 +588,7 @@ def snapshot(*, public_only: bool = True) -> dict:
             SELECT COUNT(*)
             FROM skus s
             JOIN products p ON p.product_id=s.product_id
-            WHERE p.public_enabled=1 AND p.status='active'
+            WHERE p.public_enabled=1 AND p.status='active' AND s.enabled=1
             """
         ).fetchone()[0]
         product_aliases = [
@@ -603,23 +607,23 @@ def snapshot(*, public_only: bool = True) -> dict:
             for row in con.execute(
                 """
                 SELECT a.alias_sku_id,a.canonical_sku_id,a.alias_kind,a.active,
-                       ac.price,ac.sale_price,ac.availability,ac.stock_qty,
-                       ac.enabled,ac.updated_at
+                       c.price,c.sale_price,c.availability,c.stock_qty,
+                       c.enabled,c.updated_at
                 FROM sku_aliases a
-                LEFT JOIN sku_alias_commerce ac ON ac.alias_sku_id=a.alias_sku_id
+                LEFT JOIN sku_commerce c ON c.sku_id=a.canonical_sku_id
                 WHERE a.active=1
                 ORDER BY a.alias_sku_id
                 """
             )
         ]
         for item in sku_aliases:
-            live = runtime_commerce.get(item["alias_sku_id"])
+            live = runtime_commerce.get(item["canonical_sku_id"])
             if live:
                 for key in ("price","sale_price","availability","stock_qty","enabled","updated_at"):
                     item[key] = live.get(key)
-                item["commerce_source"] = "runtime_sku_commerce"
+                item["commerce_source"] = "canonical_runtime_sku_commerce"
             else:
-                item["commerce_source"] = "preserved_alias_snapshot"
+                item["commerce_source"] = "canonical_v5_snapshot"
 
         counts = {
             "products": con.execute("SELECT COUNT(*) FROM products").fetchone()[0],

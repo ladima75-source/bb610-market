@@ -90,12 +90,14 @@ jobs:
           app = Path('backend/app.py').read_text(encoding='utf-8')
           ds = Path('js/data-source.js').read_text(encoding='utf-8')
           cfg = Path('config/commerce-config.js').read_text(encoding='utf-8')
-          assert "/api/v1/catalog/master" in app
-          assert "productMaster" in cfg and "/api/v1/catalog/master" in cfg
-          assert "_applyMaster" in ds
-          assert "productMaster||'/api/v1/catalog/master'" in ds
-          assert "this.catalog().products=products" in ds
-          assert "this.catalog().skus=skus" in ds
+          assert "/api/v1/catalog/v5" in app
+          assert "catalogV5" in cfg and "/api/v1/catalog/v5" in cfg
+          assert "productMaster" not in cfg
+          assert "_applyV5" in ds
+          assert "_applyMaster" not in ds
+          assert "/api/v1/catalog/master" not in ds
+          assert "this.catalog().products=mappedProducts" in ds
+          assert "this.catalog().skus=mappedSkus.filter" in ds
           print('SINGLE PRODUCT MASTER SOURCE CONTRACT: PASS')
           PY
 
@@ -149,7 +151,7 @@ jobs:
           from backend.services import sales_channels
 
           fixture = {
-              'source': 'product-master-v4-runtime',
+              'source': 'bb610-product-master-v5',
               'products': [
                   {
                       'id': 'p1',
@@ -210,14 +212,14 @@ jobs:
           catalog_feeds.master_snapshot = lambda commerce_override=None: fixture
 
           snap = catalog_feeds.channel_snapshot()
-          assert snap['source'] == 'product-master-v4-runtime'
+          assert snap['source'] == 'bb610-product-master-v5'
           assert snap['counts']['total'] == 2
           assert snap['counts']['eligible'] == 1
           assert snap['counts']['review_required'] == 1
           assert len(snap['feed_rows']) == 1
 
           admin = sales_channels.channels_status()
-          assert admin['source'] == 'product-master-v4-runtime'
+          assert admin['source'] == 'bb610-product-master-v5'
           assert admin['audit']['counts']['eligible'] == 1
           assert admin['channels']['google']['file']['rows'] == 1
           assert admin['channels']['meta']['file']['rows'] == 1

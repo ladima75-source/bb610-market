@@ -132,8 +132,13 @@ def _primary_media(product: dict, sku: dict) -> str:
     return first_product['path'] if first_product else ''
 
 
-def admin_products() -> list[dict]:
-    """Admin commerce projection from V5 identity + operational commerce only."""
+def admin_products(*, include_inactive: bool = False, include_aliases: bool = False) -> list[dict]:
+    """Admin commerce projection from V5 identity + operational commerce only.
+
+    By default this is an operational editor view: canonical SKU rows only,
+    excluding dormant empty/unknown SKU identities. Aliases remain available
+    for compatibility and diagnostics when explicitly requested.
+    """
     data = _v5_snapshot()
     cm = commerce_map()
     result = []
@@ -167,30 +172,38 @@ def admin_products() -> list[dict]:
                 'product_status': product.get('status'),
                 'source': 'product-master-v5',
             }
-            result.append(row)
             canonical_meta[sid] = row
+            operational = (
+                row['enabled']
+                or row['price'] is not None
+                or row['sale_price'] is not None
+                or row['availability'] in {'in_stock','out_of_stock','preorder','backorder','request_price'}
+            )
+            if include_inactive or operational:
+                result.append(row)
 
-    for alias in data.get('sku_aliases') or []:
-        sid = str(alias.get('alias_sku_id') or '').strip()
-        canonical_id = str(alias.get('canonical_sku_id') or '').strip()
-        meta = canonical_meta.get(canonical_id)
-        if not sid or not meta:
-            continue
-        c = cm.get(sid, {})
-        result.append({
-            **meta,
-            'sku': sid,
-            'canonical_sku_id': canonical_id,
-            'legacy_alias': True,
-            'price': c.get('price'),
-            'sale_price': c.get('sale_price'),
-            'effective_price': c.get('effective_price'),
-            'availability': c.get('availability', 'unknown'),
-            'stock_qty': c.get('stock_qty'),
-            'enabled': bool(c.get('enabled')),
-            'updated_at': c.get('updated_at'),
-            'source': 'product-master-v5-alias',
-        })
+    if include_aliases:
+        for alias in data.get('sku_aliases') or []:
+            sid = str(alias.get('alias_sku_id') or '').strip()
+            canonical_id = str(alias.get('canonical_sku_id') or '').strip()
+            meta = canonical_meta.get(canonical_id)
+            if not sid or not meta:
+                continue
+            c = cm.get(sid, {})
+            result.append({
+                **meta,
+                'sku': sid,
+                'canonical_sku_id': canonical_id,
+                'legacy_alias': True,
+                'price': c.get('price'),
+                'sale_price': c.get('sale_price'),
+                'effective_price': c.get('effective_price'),
+                'availability': c.get('availability', 'unknown'),
+                'stock_qty': c.get('stock_qty'),
+                'enabled': bool(c.get('enabled')),
+                'updated_at': c.get('updated_at'),
+                'source': 'product-master-v5-alias',
+            })
 
     result.sort(key=lambda x: (
         str(x.get('name') or '').lower(),
@@ -250,7 +263,7 @@ def update_product(
         # Canonical V5 and alias SKUs have rich admin metadata. Runtime/dynamic
         # catalog SKUs are intentionally outside Product Master V5, so fall
         # back to their live commerce row instead of reporting a false miss.
-        rich = next((x for x in admin_products() if x['sku'] == sku), None)
+        rich = next((x for x in admin_products(include_inactive=True, include_aliases=True) if x['sku'] == sku), None)
         if rich:
             return rich
         with connect() as con:

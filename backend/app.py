@@ -370,8 +370,13 @@ def admin_order_payment(order_id:str,body:PaymentAdminUpdate,authorization:Optio
     return r
 
 @app.get('/api/v1/admin/products')
-def admin_products_list(authorization:Optional[str]=Header(default=None)):
-    admin_auth(authorization); return {'products':admin_products()}
+def admin_products_list(
+    include_inactive:bool=False,
+    include_aliases:bool=False,
+    authorization:Optional[str]=Header(default=None),
+):
+    admin_auth(authorization)
+    return {'products':admin_products(include_inactive=include_inactive,include_aliases=include_aliases)}
 
 @app.patch('/api/v1/admin/products/{sku}')
 def admin_product_update(sku:str,body:ProductCommerceUpdate,authorization:Optional[str]=Header(default=None)):

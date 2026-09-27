@@ -92,7 +92,7 @@ required = {
     "products": 119,
     "public_products": 115,
     "skus": 310,
-    "public_skus": 302,
+    "public_skus": 298,
     "sku_aliases": 109,
     "media": 434,
 }

@@ -6,6 +6,7 @@ on:
     paths:
       - 'backend/services/product_master_runtime.py'
       - 'backend/services/product_master_feed_v5.py'
+      - 'ops/merchant_feed_guard.json'
       - 'backend/services/catalog_cms.py'
       - 'backend/services/catalog_feeds.py'
       - 'backend/services/sales_channels.py'
@@ -23,6 +24,7 @@ on:
     paths:
       - 'backend/services/product_master_runtime.py'
       - 'backend/services/product_master_feed_v5.py'
+      - 'ops/merchant_feed_guard.json'
       - 'backend/services/catalog_cms.py'
       - 'backend/services/catalog_feeds.py'
       - 'backend/services/sales_channels.py'
@@ -99,6 +101,37 @@ jobs:
           assert "this.catalog().products=mappedProducts" in ds
           assert "this.catalog().skus=mappedSkus.filter" in ds
           print('SINGLE PRODUCT MASTER SOURCE CONTRACT: PASS')
+          PY
+
+      - name: Preserve current Google Merchant SKU images
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from backend.services.product_master_feed_v5 import _CHANNEL_IMAGE_OVERRIDES
+
+          guard=json.loads(Path('ops/merchant_feed_guard.json').read_text(encoding='utf-8'))
+          protected=guard['protected_images']
+          assert guard['expected_active_items']==163
+          assert len(protected)==24
+
+          for sku_id, image_path in protected.items():
+              assert _CHANNEL_IMAGE_OVERRIDES.get(sku_id)==image_path, (
+                  f'Merchant image regression for {sku_id}: '
+                  f'{_CHANNEL_IMAGE_OVERRIDES.get(sku_id)!r} != {image_path!r}'
+              )
+              file_path=Path(image_path.lstrip('/'))
+              assert file_path.is_file(), f'Merchant image file missing: {file_path}'
+
+          stage=json.loads(Path('v5/staging/production-current.json').read_text(encoding='utf-8'))
+          canonical={
+              str(row.get('sku_id') or '')
+              for row in (stage.get('skus') or []) + (stage.get('plantlogic_skus') or [])
+          }
+          missing=sorted(set(protected)-canonical)
+          assert not missing, f'Protected Merchant IDs are no longer canonical V5 SKUs: {missing}'
+
+          print('MERCHANT IMAGE PRESERVATION: PASS', len(protected))
           PY
 
       - name: Product Master hidden category suppression

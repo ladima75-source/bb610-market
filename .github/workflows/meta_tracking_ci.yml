@@ -1,0 +1,48 @@
+name: BB610 Meta Tracking CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/app.py'
+      - 'backend/services/meta_capi.py'
+      - 'js/analytics.js'
+      - '.github/workflows/meta_tracking_ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python syntax
+        run: python -m py_compile backend/app.py backend/services/meta_capi.py
+      - name: Browser analytics syntax
+        run: node --check js/analytics.js
+      - name: Verify Meta matching wiring
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          service=Path('backend/services/meta_capi.py').read_text()
+          app=Path('backend/app.py').read_text()
+          js=Path('js/analytics.js').read_text()
+          checks={
+            'server_fbp': 'user_data["fbp"]' in service,
+            'server_fbc': 'user_data["fbc"]' in service,
+            'server_email_hash': 'user_data["em"]' in service and '_sha256(email_norm)' in service,
+            'server_phone_hash': 'user_data["ph"]' in service and '_sha256(phone_norm)' in service,
+            'server_external_hash': 'user_data["external_id"]' in service,
+            'purchase_lookup': 'customer_email,customer_phone' in app and 'purchase_ready=1' in app,
+            'client_fbp': 'body.fbp=fbp' in js,
+            'client_fbc': 'body.fbc=fbc' in js,
+            'dedup': 'eventID:String(eventId)' in js,
+          }
+          print(checks)
+          failed=[k for k,v in checks.items() if not v]
+          if failed:
+              raise SystemExit('missing Meta matching wiring: '+','.join(failed))
+          PY

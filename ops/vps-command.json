@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "d19ca96a817091b8f74b1fd34882679afb66f3b6",
-  "request_id": "2026-09-27-v5-guard-298-final"
+  "action": "audit",
+  "request_id": "2026-09-28-meta-capi-audit"
 }

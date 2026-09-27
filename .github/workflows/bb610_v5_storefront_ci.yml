@@ -73,13 +73,14 @@ jobs:
                 {id:'protection',name:'Захист рослин',short_name:'Захист рослин',enabled:true,order:4},
                 {id:'other',name:'Інше',short_name:'Інше',enabled:true,order:5},
               ],
-              products:[],skus:[],variants:[],brands:[],solutions:[],bundles:[]
+              products:[{id:'legacy-static-should-disappear'}],skus:[{id:'LEGACY-STATIC-SKU',product_id:'legacy-static-should-disappear'}],variants:[{id:'legacy-variant'}],brands:[],solutions:[],bundles:[]
             },
             BB610_STOREFRONT_V5:true,
           };
           global.location={search:'?v5=1'};
           global.URLSearchParams=URLSearchParams;
           vm.runInThisContext(fs.readFileSync('js/data-source.js','utf8'),{filename:'js/data-source.js'});
+          if(window.BB610_CATALOG.products.length||window.BB610_CATALOG.skus.length||window.BB610_CATALOG.variants.length)throw new Error('static runtime identities entered storefront');
           const d=JSON.parse(fs.readFileSync('/tmp/v5.json','utf8'));
           const DS=window.BB610_DATA_SOURCE;
           DS._applyV5(d);
@@ -92,7 +93,7 @@ jobs:
           const canonical=DS.sku('BB610-32DA4F652F73A1');
           if(!canonical||canonical.price!==220)throw new Error('canonical Kendal price');
           const legacy=DS.sku('BB610-VLG-KENDAL-100ML');
-          if(!legacy||legacy.price!==215||legacy.canonical_sku_id!=='BB610-32DA4F652F73A1')throw new Error('legacy alias commerce');
+          if(!legacy||legacy.price!==220||legacy.canonical_sku_id!=='BB610-32DA4F652F73A1')throw new Error('legacy alias must inherit canonical commerce');
           if((DS.staticProductMedia('kendal')||null)!==null)throw new Error('legacy static media leaked into V5');
           const pots=DS.products().filter(x=>x.category_id==='containers');
           if(pots.length<6)throw new Error('Plantlogic public family count');

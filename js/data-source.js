@@ -1,4 +1,15 @@
 window.BB610_STOREFRONT_V5=true;
+// Product/SKU identity is never bootstrapped from the legacy static runtime.
+// Keep only non-product reference data (categories, brands, solutions, bundles)
+// until Product Master V5 replaces the live product/SKU collections.
+if(window.BB610_CATALOG){
+  window.BB610_CATALOG={
+    ...window.BB610_CATALOG,
+    products:[],
+    skus:[],
+    variants:[]
+  };
+}
 window.BB610_DATA_SOURCE={
   mode:'bb610-product-master-v5',
   _refreshPromise:null,
@@ -45,11 +56,6 @@ window.BB610_DATA_SOURCE={
   _captureStaticSeoRoutes(){
     if(this._staticSeoRoutes)return;
     const map=new Map();
-    (this.catalog().products||[]).forEach(p=>{
-      const id=String(p?.id||'').trim();
-      const slug=String(p?.slug||'').trim();
-      if(id&&slug)map.set(id,'/products/'+slug+'/');
-    });
     Object.entries(window.BB610_SEO_ROUTES||{}).forEach(([id,path])=>{
       id=String(id||'').trim();path=String(path||'').trim();
       if(id&&/^\/products\/[^/]+\/$/.test(path))map.set(id,path);
@@ -58,6 +64,9 @@ window.BB610_DATA_SOURCE={
   },
 
   seoProductUrl(id){
+    const p=this.product(id);
+    const slug=String(p?.slug||'').trim();
+    if(slug)return new URL('/products/'+slug+'/',location.origin).href;
     this._captureStaticSeoRoutes();
     const path=this._staticSeoRoutes?.get(String(id||'').trim());
     return path?new URL(path,location.origin).href:null;

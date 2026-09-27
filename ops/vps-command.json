@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "811a0077be89bde579f3166543b59d9cbf420c14",
-  "request_id": "2026-09-27-merchant-feed-preserve-163"
+  "action": "audit",
+  "request_id": "2026-09-27-vps-guard-locate"
 }

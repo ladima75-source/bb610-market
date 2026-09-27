@@ -29,4 +29,14 @@ require("backend/catalog_provider.py", "resolve_order_sku")
 require("backend/services/product_master_feed_v5.py", "canonical public Product Master V5 only")
 require("backend/services/admin_prices_recovery.py", '"source": "product_master_v5"')
 
+# Active browser/admin entry points must not reopen retired catalog writers.
+for path in ("js/app.js", "admin/dashboard.html", "admin/products.html", "admin/orders.html", "admin/content.html"):
+    forbid(path, "catalog=v4")
+for path in ("admin/product-cards.html", "admin/catalog-workbench.html", "admin/catalog-import.html"):
+    require(path, "location.replace('catalog.html')")
+for path in ("admin/dashboard.html", "admin/products.html", "admin/orders.html", "admin/content.html"):
+    forbid(path, 'href="catalog-workbench.html"')
+    forbid(path, 'href="product-cards.html"')
+    forbid(path, 'href="catalog-import.html"')
+
 print("SINGLE CATALOG SOURCE: PASS")

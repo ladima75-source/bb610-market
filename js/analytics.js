@@ -11,6 +11,9 @@
   function readStoredConsent(){try{const raw=localStorage.getItem(consentKey);if(!raw)return null;const parsed=JSON.parse(raw);return normalizeConsent(parsed?.state||parsed)}catch{return null}}
   function storeConsent(state){try{localStorage.setItem(consentKey,JSON.stringify({version:2,state:normalizeConsent(state),updated_at:new Date().toISOString()}))}catch{}}
   function marketingConsentGranted(){const s=consentState||normalizeConsent(cfg().consent?.defaultState||{});return s.ad_storage==='granted'&&s.ad_user_data==='granted'&&s.ad_personalization==='granted'}
+  function readCookie(name){try{const key=encodeURIComponent(name)+'=';for(const part of String(document.cookie||'').split(';')){const item=part.trim();if(item.startsWith(key))return decodeURIComponent(item.slice(key.length))}}catch{}return ''}
+  function metaFbp(){return readCookie('_fbp')}
+  function metaFbc(){const stored=readCookie('_fbc');if(stored)return stored;try{const clickId=new URL(location.href).searchParams.get('fbclid');if(clickId)return 'fb.1.'+Date.now()+'.'+clickId}catch{}return ''}
   function pageType(){const p=location.pathname.toLowerCase();if(p.includes('/order/success'))return 'order_success';if(p.includes('checkout'))return 'checkout';if(p.includes('cart'))return 'cart';if(p.includes('/products/'))return 'product';if(p.includes('/categories/')||p.includes('catalog'))return 'catalog';if(p.includes('compare'))return 'compare';if(p.includes('favorites'))return 'favorites';if(p==='/'||p.endsWith('/index.html'))return 'home';return 'content'}
   function baseContext(){return {site:cfg().site||location.hostname,page_type:pageType(),page_location:location.href,page_path:location.pathname+location.search,session_id:sessionId()}}
   function push(event,payload={}){
@@ -179,6 +182,9 @@
       currency:String(ecommerce.currency||items[0]?.currency||cfg().currency||'UAH').slice(0,3).toUpperCase(),
       contents
     };
+    const fbp=metaFbp(),fbc=metaFbc();
+    if(fbp)body.fbp=fbp;
+    if(fbc)body.fbc=fbc;
     if(Number.isFinite(value)&&value>=0)body.value=value;
     if(metaName==='Purchase'&&ecommerce.transaction_id)body.order_id=String(ecommerce.transaction_id);
     fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},keepalive:true,body:JSON.stringify(body)}).catch(()=>{});
@@ -217,7 +223,7 @@
     configureGa4();
     configureGoogleAds();
     loadMetaPixel();
-    push('bb610_analytics_ready',{analytics_version:'stage6-v7-consent-v2'});
+    push('bb610_analytics_ready',{analytics_version:'stage6-v8-meta-match'});
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initConsentUi,{once:true});else initConsentUi();
   }
   window.BB610Analytics=Object.freeze({push,updateConsent,sessionId,pageType,config:cfg,init});

@@ -90,7 +90,7 @@ jobs:
           app = Path('backend/app.py').read_text(encoding='utf-8')
           ds = Path('js/data-source.js').read_text(encoding='utf-8')
           cfg = Path('config/commerce-config.js').read_text(encoding='utf-8')
-          assert "/api/v1/catalog/v5" in app
+          assert "product_master_v5_router" in app
           assert "catalogV5" in cfg and "/api/v1/catalog/v5" in cfg
           assert "productMaster" not in cfg
           assert "_applyV5" in ds

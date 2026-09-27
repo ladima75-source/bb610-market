@@ -126,6 +126,7 @@ def ranking_snapshot(window_days: int = WINDOW_DAYS) -> dict:
               AND o.purchase_ready=1
               AND o.status!='cancelled'
               AND COALESCE(o.payment_status,'') NOT IN ('cancelled','failed','refunded')
+              AND oi.product_id NOT LIKE 'bb610-order-test%'
             """,
             (cutoff,),
         ).fetchall()

@@ -107,6 +107,40 @@ document.addEventListener('DOMContentLoaded',async()=>{
     ?p.facets.in_stock
     :(p.stockStatus==='in_stock'||p.stockStatus==='dnipro'||(p.sizes||[]).some(s=>s.availability==='in_stock'));
 
+  // Default merchandising rank: availability first, then commercial priority and card quality.
+  // Optional future override: product.merchandising.priority or product.merchandising_priority.
+  const strategicProductIds=new Set([
+    'kendal','plantafol-npk-10-54-10','plantafol-npk-5-15-45','brexil-mix',
+    'pekacid-npk-0-60-20','master-npk-20-20-20','viva','master-npk-13-40-13',
+    'plantafol-npk-20-20-20','megafol','radifarm','kendal-te'
+  ]);
+
+  function merchandisingScore(p,state){
+    const skus=productSkus(p);
+    const buyable=skus.filter(s=>BB610.canBuySku(s));
+    const inStock=skus.filter(s=>skuInStock(s));
+    const priced=skus.filter(s=>BB610.hasPrice(s));
+    const selectedSku=displaySkuForPackage(p,state.packageGroup);
+    const gallery=Array.isArray(p?.gallery)?p.gallery.filter(Boolean):[];
+    const description=String(p?.shortDescription||p?.short_description||p?.description||'').trim();
+    const manual=Number(p?.merchandising?.priority??p?.merchandising_priority??0);
+
+    let score=0;
+    score+=buyable.length?1000:-1000;
+    if(inStock.length)score+=300;
+    if(priced.length)score+=120;
+    if(selectedSku&&BB610.canBuySku(selectedSku))score+=80;
+    score+=Math.min(buyable.length,4)*20;
+    score+=Math.min(inStock.length,4)*10;
+    if(strategicProductIds.has(String(p?.id||'')))score+=220;
+    if(gallery.length>=2)score+=25;
+    if(gallery.length>=4)score+=10;
+    if(description.length>=180)score+=20;
+    if(applicationTexts(p).length)score+=15;
+    if(Number.isFinite(manual))score+=manual;
+    return score;
+  }
+
   const packageGroups=[
     {id:'small',label:'Мала',hint:'до 50 г/мл · стіки / саше'},
     {id:'medium',label:'Середня',hint:'100 г/мл – 1 кг/л'},
@@ -509,6 +543,10 @@ document.addEventListener('DOMContentLoaded',async()=>{
     syncContainerFacetMode();
     const state=filterState();
     let all=applyFilters([...source]);
+    if(sort.value==='default')all.sort((a,b)=>{
+      const diff=merchandisingScore(b,state)-merchandisingScore(a,state);
+      return diff||natural(String(a.name||''),String(b.name||''));
+    });
     if(sort.value==='price-asc')all.sort((a,b)=>{const ap=displayPriceForPackage(a,state.packageGroup),bp=displayPriceForPackage(b,state.packageGroup);return (ap==null?Infinity:ap)-(bp==null?Infinity:bp)});
     if(sort.value==='price-desc')all.sort((a,b)=>{const ap=displayPriceForPackage(a,state.packageGroup),bp=displayPriceForPackage(b,state.packageGroup);return (bp==null?-Infinity:bp)-(ap==null?-Infinity:ap)});
     if(sort.value==='name')all.sort((a,b)=>a.name.localeCompare(b.name,'uk'));

@@ -114,6 +114,34 @@ document.addEventListener('DOMContentLoaded',async()=>{
     'pekacid-npk-0-60-20','master-npk-20-20-20','viva','master-npk-13-40-13',
     'plantafol-npk-20-20-20','megafol','radifarm','kendal-te'
   ]);
+  const learnedRanking=new Map();
+  let learningReady=false;
+
+  async function loadLearnedRanking(){
+    const endpoint=String(window.BB610_ANALYTICS_CONFIG?.providers?.firstParty?.rankingEndpoint||'').trim();
+    if(!endpoint)return;
+    const ctrl=new AbortController();
+    const timer=setTimeout(()=>ctrl.abort(),1600);
+    try{
+      const response=await fetch(endpoint,{headers:{'Accept':'application/json'},signal:ctrl.signal,cache:'no-store'});
+      if(!response.ok)return;
+      const data=await response.json();
+      learningReady=data?.learning_ready===true;
+      Object.entries(data?.scores||{}).forEach(([productId,row])=>{
+        const score=Number(row?.score);
+        const confidence=Number(row?.confidence);
+        if(Number.isFinite(score))learnedRanking.set(productId,{
+          score:Math.max(0,Math.min(420,score)),
+          confidence:Number.isFinite(confidence)?Math.max(0,Math.min(1,confidence)):0
+        });
+      });
+    }catch(_){
+      // Cold-start/base merchandising remains authoritative when learning API is unavailable.
+    }finally{
+      clearTimeout(timer);
+    }
+  }
+  await loadLearnedRanking();
 
   function merchandisingScore(p,state){
     const skus=productSkus(p);
@@ -132,7 +160,11 @@ document.addEventListener('DOMContentLoaded',async()=>{
     if(selectedSku&&BB610.canBuySku(selectedSku))score+=80;
     score+=Math.min(buyable.length,4)*20;
     score+=Math.min(inStock.length,4)*10;
-    if(strategicProductIds.has(String(p?.id||'')))score+=220;
+    const learned=learnedRanking.get(String(p?.id||''));
+    if(learned)score+=learned.score;
+    if(strategicProductIds.has(String(p?.id||''))){
+      score+=learningReady&&learned?.confidence>=0.6?80:220;
+    }
     if(gallery.length>=2)score+=25;
     if(gallery.length>=4)score+=10;
     if(description.length>=180)score+=20;
@@ -560,6 +592,17 @@ document.addEventListener('DOMContentLoaded',async()=>{
     empty.style.display=visibleCount?'none':'block';
     BB610.bindCards(grid);
     renderChips();
+    scheduleListTracking(all,state);
+  }
+
+  let listTrackTimer=null;
+  function scheduleListTracking(list,state){
+    clearTimeout(listTrackTimer);
+    listTrackTimer=setTimeout(()=>{
+      const listId=state.category.length===1?'category-'+state.category[0]:'catalog';
+      const listName=state.category.length===1?categoryName(state.category[0]):'Каталог';
+      BB610.trackList(list.slice(0,24),listId,listName);
+    },300);
   }
 
   aside.querySelectorAll('[data-facet]').forEach(el=>el.addEventListener('change',render));

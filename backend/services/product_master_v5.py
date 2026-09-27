@@ -377,6 +377,38 @@ def resolve_sku_id(value: str) -> str | None:
     return row["canonical_sku_id"] if row else None
 
 
+def product_ids_for_skus(values) -> dict[str, str]:
+    wanted = list(dict.fromkeys(str(x or "").strip() for x in values if str(x or "").strip()))
+    if not wanted:
+        return {}
+    placeholders = ",".join("?" for _ in wanted)
+    result: dict[str, str] = {}
+    with _connect() as con:
+        for row in con.execute(
+            f"SELECT sku_id,product_id FROM skus WHERE sku_id IN ({placeholders})",
+            tuple(wanted),
+        ).fetchall():
+            result[str(row["sku_id"])] = str(row["product_id"])
+        missing = [x for x in wanted if x not in result]
+        if missing:
+            alias_marks = ",".join("?" for _ in missing)
+            for row in con.execute(
+                f"""
+                SELECT a.alias_sku_id,s.product_id
+                FROM sku_aliases a
+                JOIN skus s ON s.sku_id=a.canonical_sku_id
+                WHERE a.active=1 AND a.alias_sku_id IN ({alias_marks})
+                """,
+                tuple(missing),
+            ).fetchall():
+                result[str(row["alias_sku_id"])] = str(row["product_id"])
+    return result
+
+
+def product_id_for_sku(value: str) -> str | None:
+    return product_ids_for_skus([value]).get(str(value or "").strip())
+
+
 def _media_for_sku(con: sqlite3.Connection, sku_id: str) -> list[dict]:
     rows = con.execute(
         """

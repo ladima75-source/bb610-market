@@ -23,6 +23,7 @@
     trackGoogleAdsEvent(event,data);
     trackMetaEvent(event,data,eventId);
     sendMetaCapi(event,data,eventId);
+    sendCatalogLearningEvent(event,data,eventId);
     if(cfg().debug&&console)console.info('[BB610 analytics]',data);
     document.dispatchEvent(new CustomEvent('bb610:ecommerce',{detail:data}));
     return eventId;
@@ -181,6 +182,30 @@
     if(Number.isFinite(value)&&value>=0)body.value=value;
     if(metaName==='Purchase'&&ecommerce.transaction_id)body.order_id=String(ecommerce.transaction_id);
     fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},keepalive:true,body:JSON.stringify(body)}).catch(()=>{});
+    return true;
+  }
+  function analyticsConsentGranted(){
+    const s=consentState||normalizeConsent(cfg().consent?.defaultState||{});
+    return cfg().consent?.required?s.analytics_storage==='granted':true;
+  }
+  function sendCatalogLearningEvent(event,data,eventId){
+    const p=cfg().providers?.firstParty;
+    const endpoint=String(p?.eventEndpoint||'').trim();
+    const allowed=new Set(['view_item_list','select_item','view_item','add_to_cart','begin_checkout']);
+    if(!p?.enabled||!endpoint||!allowed.has(event)||!analyticsConsentGranted())return false;
+    const items=Array.isArray(data?.ecommerce?.items)?data.ecommerce.items.filter(Boolean):[];
+    const contents=items.slice(0,100).map(item=>({
+      id:String(item.item_id||'').trim(),
+      quantity:Math.max(1,Number(item.quantity)||1),
+      ...(Number.isFinite(Number(item.price))?{item_price:Number(item.price)}:{})
+    })).filter(item=>item.id);
+    if(!contents.length)return false;
+    fetch(endpoint,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      keepalive:true,
+      body:JSON.stringify({event_name:event,event_id:String(eventId),contents})
+    }).catch(()=>{});
     return true;
   }
   function init(){

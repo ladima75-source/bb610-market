@@ -20,6 +20,7 @@ from .services.catalog_cms import (
 )
 from .services.automation import emit,list_rules,set_rule_enabled,list_jobs,list_approvals,decide_approval,list_audit,summary as automation_summary,approval_for_source
 from .services.meta_capi import send_event as send_meta_capi_event
+from .services.catalog_learning import record_behavior, ranking_snapshot
 import json
 
 app=FastAPI(title='BB610 Market Commerce API',version='Stage 12')
@@ -61,6 +62,11 @@ class MetaCapiEventBody(BaseModel):
     currency:str=Field(default='UAH',min_length=3,max_length=3)
     value:Optional[float]=Field(default=None,ge=0)
     order_id:Optional[str]=Field(default=None,max_length=200)
+    contents:list[MetaContentBody]=Field(default_factory=list)
+
+class CatalogLearningEventBody(BaseModel):
+    event_name:str=Field(min_length=1,max_length=64)
+    event_id:str=Field(min_length=8,max_length=200)
     contents:list[MetaContentBody]=Field(default_factory=list)
 
 
@@ -135,6 +141,21 @@ def meta_capi_event(body:MetaCapiEventBody,request:Request):
         contents=[x.model_dump(exclude_none=True) for x in body.contents],currency=body.currency.upper(),
         value=body.value,order_id=body.order_id,client_ip=client_ip,client_user_agent=user_agent
     )
+
+@app.post('/api/v1/analytics/catalog-event')
+def catalog_learning_event(body:CatalogLearningEventBody,request:Request):
+    origin=(request.headers.get('origin') or '').lower().rstrip('/')
+    if origin and origin not in {'https://market.bb610.com.ua','https://www.market.bb610.com.ua'}:
+        return {'accepted':False,'reason':'origin_not_allowed'}
+    return record_behavior(
+        body.event_name,
+        body.event_id,
+        [x.model_dump(exclude_none=True) for x in body.contents],
+    )
+
+@app.get('/api/v1/catalog/ranking')
+def catalog_ranking():
+    return ranking_snapshot()
 
 @app.get('/api/v1/delivery/providers')
 def delivery_providers(): return {'providers':provider_capabilities()}

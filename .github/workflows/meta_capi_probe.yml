@@ -1,4 +1,4 @@
-name: BB610 Meta CAPI Probe
+name: BB610 Meta Tracking Probe
 
 on:
   push:
@@ -13,6 +13,42 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
+      - name: Verify live browser Pixel wiring
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import urllib.request
+          urls={
+            'config':'https://market.bb610.com.ua/config/analytics-config.js',
+            'analytics':'https://market.bb610.com.ua/js/analytics.js',
+          }
+          data={}
+          for key,url in urls.items():
+              req=urllib.request.Request(url,headers={'User-Agent':'BB610-Meta-Tracking-Probe/1.0'})
+              with urllib.request.urlopen(req,timeout=30) as resp:
+                  data[key]=resp.read().decode('utf-8')
+          config=data['config']
+          analytics=data['analytics']
+          checks={
+            'pixel_id': "pixelId: '1103668908981910'" in config,
+            'pixel_enabled': 'metaPixel: { enabled: true' in config,
+            'capi_enabled': 'metaCapi: { enabled: true' in config,
+            'capi_endpoint': 'https://api.market.bb610.com.ua/api/v1/analytics/meta-capi' in config,
+            'fbevents_loader': 'connect.facebook.net/en_US/fbevents.js' in analytics,
+            'pageview': "window.fbq('track','PageView')" in analytics,
+            'view_content': "view_item:'ViewContent'" in analytics,
+            'add_to_cart': "add_to_cart:'AddToCart'" in analytics,
+            'initiate_checkout': "begin_checkout:'InitiateCheckout'" in analytics,
+            'purchase': "purchase:'Purchase'" in analytics,
+            'event_id_dedup': "eventID:String(eventId)" in analytics,
+          }
+          print('LIVE_PIXEL_CHECKS', checks)
+          failed=[k for k,v in checks.items() if not v]
+          if failed:
+              raise SystemExit('Live Pixel wiring missing: '+','.join(failed))
+          PY
+
       - name: Probe live Meta CAPI configuration
         shell: bash
         run: |
@@ -22,7 +58,7 @@ jobs:
           url='https://api.market.bb610.com.ua/api/v1/analytics/meta-capi'
           body={
             'event_name':'ViewContent',
-            'event_id':'bb610-meta-capi-probe-20260928',
+            'event_id':'bb610-meta-capi-probe-20260928-v2',
             'event_source_url':'https://market.bb610.com.ua/?meta_capi_probe=1',
             'currency':'UAH',
             'contents':[]
@@ -45,6 +81,8 @@ jobs:
           if reason=='not_configured':
               raise SystemExit(2)
           if not data.get('accepted'):
-              raise SystemExit('Meta CAPI endpoint is present but upstream/configuration probe failed: '+json.dumps(data,ensure_ascii=False))
+              raise SystemExit('Meta CAPI upstream/configuration probe failed: '+json.dumps(data,ensure_ascii=False))
+          if data.get('events_received') != 1:
+              raise SystemExit('Meta did not confirm exactly one received event: '+json.dumps(data,ensure_ascii=False))
           print('META_CAPI_CONFIGURED', True)
           PY

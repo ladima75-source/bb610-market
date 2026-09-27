@@ -1,0 +1,48 @@
+name: Single Catalog Source CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/services/product_master_v5.py'
+      - 'backend/services/product_commerce.py'
+      - 'backend/services/admin_prices_recovery.py'
+      - 'backend/catalog_provider.py'
+      - 'backend/services/product_master_feed_v5.py'
+      - 'backend/app.py'
+      - 'js/data-source.js'
+      - 'js/app.js'
+      - 'config/commerce-config.js'
+      - 'tools/audit_single_catalog_source.py'
+      - '.github/workflows/single_catalog_source_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/services/product_master_v5.py'
+      - 'backend/services/product_commerce.py'
+      - 'backend/services/admin_prices_recovery.py'
+      - 'backend/catalog_provider.py'
+      - 'backend/services/product_master_feed_v5.py'
+      - 'backend/app.py'
+      - 'js/data-source.js'
+      - 'js/app.js'
+      - 'config/commerce-config.js'
+      - 'tools/audit_single_catalog_source.py'
+  workflow_dispatch:
+
+jobs:
+  invariant:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Verify single canonical catalog source
+        run: python tools/audit_single_catalog_source.py
+      - name: Python syntax
+        run: python -m py_compile backend/services/product_master_v5.py backend/services/product_commerce.py backend/services/admin_prices_recovery.py backend/app.py
+      - name: JavaScript syntax
+        run: |
+          node --check js/data-source.js
+          node --check js/app.js
+          node --check config/commerce-config.js

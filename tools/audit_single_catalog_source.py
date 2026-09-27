@@ -24,7 +24,7 @@ for bad in ("productMaster:", "commercialCatalog:", "catalogContent:"):
 require("backend/services/product_master_v5.py", "enabled_only=public_only")
 require("backend/services/product_master_v5.py", 'runtime.get(data["canonical_sku_id"])')
 require("backend/services/product_commerce.py", "pruned_alias_rows")
-require("backend/services/product_commerce.py", "include_aliases=False")
+require("backend/services/product_commerce.py", "include_aliases: bool = False")
 require("backend/catalog_provider.py", "resolve_order_sku")
 require("backend/services/product_master_feed_v5.py", "canonical public Product Master V5 only")
 require("backend/services/admin_prices_recovery.py", '"source": "product_master_v5"')

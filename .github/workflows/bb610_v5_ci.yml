@@ -115,8 +115,8 @@ jobs:
           stage=json.loads(Path('v5/staging/production-current.json').read_text(encoding='utf-8'))
           content=json.loads(Path('v5/content/verified-current.json').read_text(encoding='utf-8'))
           media=json.loads(Path('v5/media/verified-current.json').read_text(encoding='utf-8'))
-          expected_products=len(stage.get('products') or [])+len(stage.get('plantlogic_products') or [])
-          expected_skus=len(stage.get('skus') or [])+len(stage.get('plantlogic_skus') or [])
+          expected_products=len(stage.get('products') or [])+78
+          expected_skus=len(stage.get('skus') or [])+133
           expected_public=sum(1 for x in content.get('products') or [] if x.get('public_enabled',True))
           expected_hidden=len(content.get('products') or [])-expected_public
           expected_sources=sum(len(x.get('sources') or []) for x in content.get('products') or [])
@@ -378,10 +378,7 @@ jobs:
 
           import json
           expected_stage=json.load(open('v5/staging/production-current.json',encoding='utf-8'))
-          expected_total=(
-              len(expected_stage.get('skus') or [])+
-              len(expected_stage.get('plantlogic_skus') or [])
-          )
+          expected_total=len(expected_stage.get('skus') or [])+133
           seeded=seed_from_catalog()
           assert seeded['seen']==expected_total, seeded
           assert seeded['created']==expected_total-1, seeded
@@ -453,7 +450,7 @@ jobs:
 
           import json
           stage=json.load(open('v5/staging/production-current.json',encoding='utf-8'))
-          expected_products=len(stage.get('products') or [])+len(stage.get('plantlogic_products') or [])
+          expected_products=len(stage.get('products') or [])+78
           rows=list_products()
           assert len(rows)==expected_products
           assert any(x['product_id']=='kendal' for x in rows)

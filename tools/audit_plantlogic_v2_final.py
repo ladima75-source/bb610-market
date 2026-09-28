@@ -219,7 +219,9 @@ def main() -> int:
                 by_id = {x["canonical_product_id"]: x for x in media_audit["products"]}
                 assert set(by_id) == canonical_ids
                 keys = {
-                    "plantlogic-zephyr-1301133",
+                    "plantlogic-blueberry-zephyr-v2-25l-1301144",
+                    "plantlogic-blueberry-zephyr-v2-30l-1301153",
+                    "plantlogic-blueberry-zephyr-v2-40l-1301143",
                     "plantlogic-blueberry-round-30l-u-grooves-1308303",
                     "plantlogic-10l-drainage-1307110",
                     "plantlogic-4-7l-square-cold-storage-13050040",

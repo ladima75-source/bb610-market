@@ -105,13 +105,15 @@ def main() -> int:
                     assert text and not BAN_RE.search(text), (pid, "benefit", text)
                 characteristics = json.loads(row["characteristics_json"] or "[]")
                 assert characteristics, (pid, "characteristics empty")
-                for item in characteristics:
+                internal = [x for x in characteristics if str(x.get("label") or "").strip().startswith("__")]
+                public_characteristics = [x for x in characteristics if x not in internal]
+                assert any(str(x.get("label") or "").strip() == "__plantlogic_sections" for x in internal), (pid, "missing internal section")
+                for item in public_characteristics:
                     label = str(item.get("label") or "").strip()
                     value = str(item.get("value") or "").strip()
-                    assert label in PUBLIC_CHARACTERISTIC_LABELS, (pid, "bad label", label)
-                    assert not label.startswith("__")
+                    assert label in PUBLIC_CHARACTERISTIC_LABELS, (pid, "bad public label", label)
                     assert value and not BAN_RE.search(value), (pid, label, value)
-                labels = {x["label"] for x in characteristics}
+                labels = {x["label"] for x in public_characteristics}
                 assert "Виробник" in labels and "Артикул виробника" in labels, (pid, labels)
 
             sources = con.execute(

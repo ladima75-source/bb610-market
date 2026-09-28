@@ -590,6 +590,7 @@ def _other_unique_content(spec: dict) -> dict | None:
 def _sanitize_characteristics(raw, spec: dict, composition: str) -> list[dict]:
     rows = _json(raw, [])
     output: list[dict] = []
+    internal: list[dict] = []
     seen = set()
     label_map = {
         "Габарити": "Розміри",
@@ -601,9 +602,14 @@ def _sanitize_characteristics(raw, spec: dict, composition: str) -> list[dict]:
         if not isinstance(row, dict):
             continue
         label = str(row.get("label") or "").strip()
-        value = _strip_service_text(str(row.get("value") or ""))
-        if not label or label.startswith("__"):
+        raw_value = str(row.get("value") or "").strip()
+        if not label:
             continue
+        if label.startswith("__"):
+            if raw_value:
+                internal.append({"label": label, "value": raw_value})
+            continue
+        value = _strip_service_text(raw_value)
         if label.lower() in {"офіційне джерело", "джерело", "url", "призначення", "оригінальна назва"}:
             continue
         label = label_map.get(label, label)
@@ -656,7 +662,8 @@ def _sanitize_characteristics(raw, spec: dict, composition: str) -> list[dict]:
         "Висота ніжок", "Сумісність", "Колір", "Матеріал", "Кількість комірок",
         "Довжина", "Ширина", "Щільність", "Артикул виробника",
     ])}
-    return sorted(output, key=lambda x: order.get(x["label"], 999))
+    public = sorted(output, key=lambda x: order.get(x["label"], 999))
+    return public + internal
 
 
 def _content_for(spec: dict) -> dict:

@@ -538,23 +538,34 @@ document.addEventListener('DOMContentLoaded',async()=>{
     return m?Number(m[1]):Number.POSITIVE_INFINITY;
   }
 
-  function containerFamilyKey(p){
-    const sku=productSkus(p)[0]||{};
-    const a=sku.attributes||{};
-    const related=String(a.related_group_id||a.item_group_id||'').trim();
-    if(related)return '10:'+related;
+  function containerFamilyKind(p){
     const name=norm(p?.name||'');
-    if(name.includes('long-cane'))return '20:rubus-square-long-cane';
-    if(name.includes('збором дренажу'))return name.includes('кругл')?'40:drainage-round':'41:drainage';
-    if(name.includes('zephyr'))return '30:zephyr';
-    if(name.includes('u-паз'))return name.includes('квадрат')?'31:square-u':'32:round-u';
-    if(name.includes('квадрат'))return '21:square-standard';
-    if(name.includes('кругл'))return '22:round-standard';
-    return '90:'+name;
+    if(name.includes('long-cane'))return 'long-cane';
+    if(name.includes('збором дренажу'))return 'drainage';
+    if(name.includes('zephyr'))return 'zephyr';
+    if(name.includes('u-паз'))return name.includes('квадрат')?'square-u':'round-u';
+    if(name.includes('квадрат'))return 'square-standard';
+    if(name.includes('кругл'))return 'round-standard';
+    return 'other';
   }
 
-  function containerLogicalSort(a,b){
-    const family=natural(containerFamilyKey(a),containerFamilyKey(b));
+  function containerFamilyRank(p,sectionId=''){
+    const kind=containerFamilyKind(p);
+    const orders={
+      blueberry:['round-standard','round-u','square-standard','square-u','zephyr','drainage','long-cane','other'],
+      rubus:['square-standard','long-cane','drainage','round-standard','round-u','square-u','zephyr','other'],
+      strawberry:['drainage','square-standard','long-cane','round-standard','round-u','square-u','zephyr','other'],
+      vegetable:['drainage','square-standard','round-standard','long-cane','round-u','square-u','zephyr','other'],
+      garden:['square-standard','round-standard','long-cane','drainage','round-u','square-u','zephyr','other'],
+      universal:['drainage','square-standard','round-standard','long-cane','round-u','square-u','zephyr','other'],
+    };
+    const order=orders[sectionId]||orders.universal;
+    const index=order.indexOf(kind);
+    return index<0?order.length:index;
+  }
+
+  function containerLogicalSort(a,b,sectionId=''){
+    const family=containerFamilyRank(a,sectionId)-containerFamilyRank(b,sectionId);
     if(family)return family;
     const volume=containerVolume(a)-containerVolume(b);
     if(Number.isFinite(volume)&&volume)return volume;
@@ -574,7 +585,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
     const chunks=[];
     const shown=new Set();
     plantlogicSectionOrder.forEach(section=>{
-      const rows=list.filter(p=>norm(brandFor(p))==='plantlogic'&&plantlogicSectionsFor(p).includes(section.id)).sort(containerLogicalSort);
+      const rows=list.filter(p=>norm(brandFor(p))==='plantlogic'&&plantlogicSectionsFor(p).includes(section.id)).sort((a,b)=>containerLogicalSort(a,b,section.id));
       if(!rows.length)return;
       rows.forEach(p=>shown.add(p.id));
       const sectionImage=rows.map(plantlogicCardImage).find(Boolean)||'';

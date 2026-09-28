@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const facetList=(p,key)=>Array.isArray(p?.facets?.[key])?p.facets[key].filter(Boolean):[];
   const categoryFor=p=>String(p?.facets?.category||p.category||'').trim();
   const brandFor=p=>String(p?.facets?.brand||p.brand||'').trim();
-  const plantlogicCatalogCategories=new Set(['containers','strawberry','bag_bases','accessories']);
+  const plantlogicCatalogCategories=new Set(['containers','strawberry','accessories']);
   const categoryMatches=(p,value)=>{
     if(value==='containers'&&norm(brandFor(p))==='plantlogic'){
       return plantlogicCatalogCategories.has(categoryFor(p));
@@ -187,31 +187,24 @@ document.addEventListener('DOMContentLoaded',async()=>{
   ];
   const plantlogicSectionOrder=[
     {
-      id:'blueberry',label:'Для лохини',subtitle:'Blueberry Production',titleSuffix:'для лохини',
+      id:'blueberry',label:'Лохина',subtitle:'Blueberry Production',titleSuffix:'',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/05/arandano-blueberry-prodcution-1.jpg?fit=2481%2C815&ssl=1'
     },
     {
-      id:'rubus',label:'Для малини та ожини',subtitle:'Rubus Production',titleSuffix:'для малини та ожини',
+      id:'rubus',label:'Малина + ожина',subtitle:'Rubus Production',titleSuffix:'',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/05/frambuesa-rubus-hidroponia-production-1.jpg?fit=2481%2C815&ssl=1'
     },
     {
-      id:'strawberry',label:'Для полуниці',subtitle:'Strawberry Production',titleSuffix:'для полуниці',
+      id:'strawberry',label:'Полуниця',subtitle:'Strawberry Production',titleSuffix:'',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/02/Strawberry-Tabletop-System-Plantlogic.png?fit=1365%2C769&ssl=1'
     },
     {
-      id:'vegetable',label:'Для овочевих культур',subtitle:'Vegetable Production',titleSuffix:'для овочевих культур',
+      id:'vegetable',label:'Овочі',subtitle:'Vegetable Production',titleSuffix:'',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/06/Vegetable_Header.jpg?fit=2481%2C971&ssl=1'
     },
     {
-      id:'garden',label:'Для саду',subtitle:'BB610 Garden',titleSuffix:'для саду та розсадника',
-      cultureImage:''
-    },
-    {
-      id:'universal',label:'Універсальні',subtitle:'Універсальне застосування',titleSuffix:'універсальний',
+      id:'universal',label:'Універсальні',subtitle:'Універсальне застосування',titleSuffix:'',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/07/hydroponic-system-cover.png?resize=669%2C502'
-    },
-    {
-      id:'bag_bases',label:'Основи для мішків',subtitle:'Bag Bases',titleSuffix:'',cultureImage:''
     },
     {
       id:'accessories',label:'Аксесуари',subtitle:'Accessories',titleSuffix:'',cultureImage:''
@@ -230,19 +223,17 @@ document.addEventListener('DOMContentLoaded',async()=>{
     rubus:'малина малини ожина ожини raspberry blackberry rubus',
     strawberry:'полуниця полуниці strawberry',
     vegetable:'овочі овочеві vegetable',
-    garden:'сад саду розсадник nursery garden',
-    universal:'конопля коноплі cannabis cannabis production універсальний універсальні контейнер контейнери universal',
-    bag_bases:'основи для мішків субстратні мішки grow bag bag base bag bases',
-    accessories:'аксесуари аксесуар accessories accessory анкер лізиметр жолоб ground cover'
+    universal:'конопля коноплі cannabis cannabis production універсальний універсальні universal',
+    accessories:'аксесуари аксесуар accessories accessory анкер лізиметр жолоб основа мішок bag base'
   };
   const plantlogicSectionSearchText=p=>plantlogicSectionsFor(p).map(id=>{
     const section=plantlogicSectionOrder.find(x=>x.id===id);
-    return `${section?.label||''} ${section?.titleSuffix||''} ${plantlogicSearchAliases[id]||''}`;
+    return `${section?.label||''} ${plantlogicSearchAliases[id]||''}`;
   }).join(' ');
   const cleanPlantlogicCatalogTitle=title=>String(title||'')
-    .replace(/\s*[—-]\s*арт\.?\s*[A-ZА-ЯІЇЄ0-9-]+(?=\s*(?:[—-]|$))/giu,'')
-    .replace(/\s{2,}/g,' ')
-    .replace(/\s+[—-]\s*$/u,'')
+    .replace(/s*[—-]s*арт.?s*[A-ZА-ЯІЇЄ0-9-]+(?=s*(?:[—-]|$))/giu,'')
+    .replace(/s{2,}/g,' ')
+    .replace(/s+[—-]s*$/u,'')
     .trim();
   const plantlogicCardImage=p=>{
     const image=p?.image;
@@ -253,26 +244,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
     }
     return String((Array.isArray(p?.gallery)?p.gallery:[]).find(Boolean)||'').trim();
   };
-  const universalPlantlogicTitles={
-    'plantlogic-3l-square-1306003':'Горщик 3 л квадратний для субстратного вирощування',
-    'plantlogic-5l-drainage-1305005':'Горщик 5 л зі збором дренажу для субстратного вирощування',
-    'plantlogic-7l-drainage-1307107':'Горщик 7 л зі збором дренажу для субстратного вирощування',
-    'plantlogic-10l-drainage-1307110':'Горщик 10 л зі збором дренажу для субстратного вирощування',
-    'plantlogic-15l-round-drainage-1304015':'Горщик 15 л круглий зі збором дренажу для субстратного вирощування',
-    'plantlogic-25l-round-drainage-1304125':'Горщик 25 л круглий зі збором дренажу для субстратного вирощування',
-    'plantlogic-30l-drainage-1307133':'Горщик 30 л зі збором дренажу для субстратного вирощування',
-  };
-  const plantlogicCardForSection=(p,section)=>{
-    if(section?.id==='universal'&&universalPlantlogicTitles[p.id]){
-      return {...p,name:universalPlantlogicTitles[p.id],shortDescription:'Для вирощування коноплі'};
-    }
-    const baseName=cleanPlantlogicCatalogTitle(p.name);
-    const suffix=String(section?.titleSuffix||'').trim();
-    const name=!suffix||norm(baseName).includes(norm(suffix))
-      ?baseName
-      :`${baseName} — ${suffix}`;
-    return {...p,name};
-  };
+  const plantlogicCardForSection=(p,_section)=>({...p,name:cleanPlantlogicCatalogTitle(p.name)});
   const methodGroups=[
     {id:'fertigation',label:'Фертигація',hint:'крапельний полив'},
     {id:'foliar',label:'По листу',hint:'позакоренево'},

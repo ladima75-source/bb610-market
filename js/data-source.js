@@ -181,26 +181,24 @@ window.BB610_DATA_SOURCE={
 
   _plantlogicSections(raw){
     const category=String(raw?.category_id||'').trim().toLowerCase();
-    // Non-pot Plantlogic blocks follow the canonical V5 category exactly.
-    if(category==='strawberry'||category==='bag_bases'||category==='accessories')return [category];
-    if(category!=='containers')return [];
     const chars=Array.isArray(raw.characteristics)?raw.characteristics:[];
-    const allowed=new Set(['blueberry','rubus','strawberry','vegetable','garden','universal','bag_bases','accessories']);
+    const allowed=new Set(['blueberry','rubus','strawberry','vegetable','universal','accessories']);
+    // V2 Final stores one canonical public Market section explicitly for every
+    // PlantLogic product. It wins over the technical category (pot/accessory/etc).
     const hidden=chars.find(row=>String(row?.label||'').trim()==='__plantlogic_sections');
     const explicit=String(hidden?.value||'').split('|').map(x=>x.trim()).filter(x=>allowed.has(x));
     if(explicit.length)return [...new Set(explicit)];
+    if(category==='strawberry')return ['strawberry'];
+    if(category==='accessories')return ['accessories'];
+    if(category!=='containers')return [];
     const haystack=[raw.name,raw.short_description,raw.description,raw.application,...chars.flatMap(x=>[x?.label,x?.value])]
       .map(x=>String(x||'').toLowerCase()).join(' ');
-    const out=[];
-    if(/лохин|blueberr|arand/.test(haystack))out.push('blueberry');
-    if(/малин|ожин|rubus|raspberr|blackberr/.test(haystack))out.push('rubus');
-    if(/полуниц|суниц|strawberr/.test(haystack))out.push('strawberry');
-    if(/овоч|vegetable|tomato|pepper|cucumber/.test(haystack))out.push('vegetable');
-    if(/сад|garden|nursery/.test(haystack))out.push('garden');
-    if(/bag[\s_-]*bases?|grow[\s_-]*bags?|основ[аи]\s+для\s+(?:мішк|субстрат)/.test(haystack))out.push('bag_bases');
-    if(/accessor|аксесуар|pot[\s_-]*anchor|ground[\s_-]*cover|drip[\s_-]*stake|лізиметр|lysimeter|plastic[\s_-]*gutter/.test(haystack))out.push('accessories');
-    if(/універс|universal/.test(haystack))out.push('universal');
-    return out.length?[...new Set(out)]:['universal'];
+    if(/лохин|blueberr|arand/.test(haystack))return ['blueberry'];
+    if(/малин|ожин|rubus|raspberr|blackberr/.test(haystack))return ['rubus'];
+    if(/полуниц|суниц|strawberr/.test(haystack))return ['strawberry'];
+    if(/овоч|vegetable|tomato|pepper|cucumber/.test(haystack))return ['vegetable'];
+    if(/універс|universal|cannabis|конопл/.test(haystack))return ['universal'];
+    return ['universal'];
   },
 
   _v5Sku(raw,productRaw){

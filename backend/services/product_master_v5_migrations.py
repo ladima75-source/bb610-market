@@ -2261,6 +2261,48 @@ def _normalize_long_cane_titles_batch_21(con: sqlite3.Connection) -> bool:
     return True
 
 
+
+def _normalize_plantlogic_catalog_sections_batch_22(con: sqlite3.Connection) -> bool:
+    """Keep crop sections aligned with customer-facing pot purpose after the split."""
+    assignments = {
+        "plantlogic-blueberry-round-20l-1308020": "blueberry",
+        "plantlogic-blueberry-round-25l-1308025": "blueberry",
+        "plantlogic-blueberry-round-30l-v-ribs-1308031": "blueberry",
+        "plantlogic-blueberry-round-40l-1308040": "blueberry",
+        "plantlogic-blueberry-round-30l-u-grooves-1308303": "blueberry",
+        "plantlogic-blueberry-round-30l-parallel-u-grooves-1308305": "blueberry",
+        "plantlogic-blueberry-round-35l-u-grooves-13080350": "blueberry",
+        "plantlogic-blueberry-round-40l-u-grooves-1308041": "blueberry",
+        "plantlogic-25l-round-drainage-1304125": "blueberry|vegetable",
+    }
+    for product_id, value in assignments.items():
+        row = con.execute(
+            "SELECT characteristics_json FROM products WHERE product_id=?",
+            (product_id,),
+        ).fetchone()
+        if not row:
+            return False
+        characteristics = json.loads(row["characteristics_json"] or "[]")
+        updated = False
+        for item in characteristics:
+            if isinstance(item, dict) and item.get("label") == "__plantlogic_sections":
+                item["value"] = value
+                updated = True
+                break
+        if not updated:
+            characteristics.append({"label": "__plantlogic_sections", "value": value})
+        _update_product(
+            con,
+            product_id,
+            {
+                "characteristics_json": json.dumps(
+                    characteristics, ensure_ascii=False, separators=(",", ":")
+                )
+            },
+        )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2285,6 +2327,7 @@ _MIGRATIONS = [
     ("20260928_normalize_plantlogic_naming_batch19", _normalize_plantlogic_naming_batch_19),
     ("20260928_split_grouped_blueberry_pots_batch20", _split_grouped_blueberry_pots_batch_20),
     ("20260928_normalize_long_cane_titles_batch21", _normalize_long_cane_titles_batch_21),
+    ("20260928_normalize_plantlogic_catalog_sections_batch22", _normalize_plantlogic_catalog_sections_batch_22),
 ]
 
 

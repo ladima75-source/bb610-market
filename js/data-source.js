@@ -180,7 +180,10 @@ window.BB610_DATA_SOURCE={
   },
 
   _plantlogicSections(raw){
-    if(raw?.category_id!=='containers')return [];
+    const category=String(raw?.category_id||'').trim().toLowerCase();
+    // Non-pot Plantlogic blocks follow the canonical V5 category exactly.
+    if(category==='strawberry'||category==='bag_bases'||category==='accessories')return [category];
+    if(category!=='containers')return [];
     const chars=Array.isArray(raw.characteristics)?raw.characteristics:[];
     const allowed=new Set(['blueberry','rubus','strawberry','vegetable','garden','universal','bag_bases','accessories']);
     const hidden=chars.find(row=>String(row?.label||'').trim()==='__plantlogic_sections');

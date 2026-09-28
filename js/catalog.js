@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const facetList=(p,key)=>Array.isArray(p?.facets?.[key])?p.facets[key].filter(Boolean):[];
   const categoryFor=p=>String(p?.facets?.category||p.category||'').trim();
   const brandFor=p=>String(p?.facets?.brand||p.brand||'').trim();
+  const plantlogicCatalogCategories=new Set(['containers','strawberry','bag_bases','accessories']);
+  const categoryMatches=(p,value)=>{
+    if(value==='containers'&&norm(brandFor(p))==='plantlogic'){
+      return plantlogicCatalogCategories.has(categoryFor(p));
+    }
+    return categoryFor(p)===value;
+  };
   function applicationTexts(p){
     const out=[];
     const app=p?.application;
@@ -212,10 +219,11 @@ document.addEventListener('DOMContentLoaded',async()=>{
   ];
   const plantlogicSectionsFor=p=>{
     const direct=Array.isArray(p?.plantlogic_sections)?p.plantlogic_sections.filter(Boolean):[];
+    if(direct.length)return uniq(direct);
     const hidden=(Array.isArray(p?.characteristics)?p.characteristics:[])
       .find(row=>String(row?.label||'').trim()==='__plantlogic_sections');
     const explicit=String(hidden?.value||'').split('|').map(x=>x.trim()).filter(Boolean);
-    return uniq([...direct,...explicit]);
+    return uniq(explicit);
   };
   const plantlogicSearchAliases={
     blueberry:'лохина лохини blueberry',
@@ -365,7 +373,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
 
   function optionCount(group,value){
     return source.filter(p=>{
-      if(group==='category')return categoryFor(p)===value;
+      if(group==='category')return categoryMatches(p,value);
       if(group==='brand')return brandFor(p)===value;
       if(group==='culture')return categoryFor(p)!=='containers'&&cultureMatches(p,value);
       if(group==='packageGroup')return categoryFor(p)!=='containers'&&hasSkuForPackage(p,[value]);
@@ -443,7 +451,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
 
   function matchesState(p,state,skip=''){
     if(state.qq&&!matchesSearch(p,state.qq))return false;
-    if(skip!=='category'&&!matchesMulti(p,state.category,(x,v)=>categoryFor(x)===v))return false;
+    if(skip!=='category'&&!matchesMulti(p,state.category,(x,v)=>categoryMatches(x,v)))return false;
     if(skip!=='packageGroup'&&state.packageGroup.length&&!hasSkuForPackage(p,state.packageGroup))return false;
     if(skip!=='methodGroup'&&!matchesMulti(p,state.methodGroup,(x,v)=>methodGroupsFor(x).includes(v)))return false;
     if(skip!=='culture'&&!matchesMulti(p,state.culture,(x,v)=>cultureMatches(x,v)))return false;

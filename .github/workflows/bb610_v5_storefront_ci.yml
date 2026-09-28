@@ -11,6 +11,7 @@ on:
       - 'assets/js/product-card-v2.js'
       - 'assets/js/product-card-v3-enhancements.js'
       - 'backend/services/product_master_v5.py'
+      - 'backend/services/product_master_v5_migrations.py'
       - 'v5/**'
       - '.github/workflows/bb610_v5_storefront_ci.yml'
   pull_request:
@@ -22,6 +23,7 @@ on:
       - 'assets/js/product-card-v2.js'
       - 'assets/js/product-card-v3-enhancements.js'
       - 'backend/services/product_master_v5.py'
+      - 'backend/services/product_master_v5_migrations.py'
       - 'v5/**'
       - '.github/workflows/bb610_v5_storefront_ci.yml'
 
@@ -105,6 +107,13 @@ jobs:
           if(strawberry.length!==3)throw new Error('Plantlogic strawberry category');
           const potSkus=pots.flatMap(p=>DS.skusForProduct(p.id));
           if(potSkus.length!==62)throw new Error('Plantlogic pot SKU count');
+          const round20=DS.product('plantlogic-blueberry-round-20l-1308020');
+          if(JSON.stringify(round20?.plantlogic_sections)!==JSON.stringify(['blueberry']))throw new Error('blueberry pot leaked into another crop section');
+          const drain25=DS.product('plantlogic-25l-round-drainage-1304125');
+          if(JSON.stringify(drain25?.plantlogic_sections)!==JSON.stringify(['blueberry','vegetable']))throw new Error('25L blueberry/vegetable section mapping');
+          if(JSON.stringify(DS.product('plantlogic-pot-anchor')?.plantlogic_sections)!==JSON.stringify(['accessories']))throw new Error('accessories section projection');
+          if(JSON.stringify(DS.product('plantlogic-vf-bag-base-12010300')?.plantlogic_sections)!==JSON.stringify(['bag_bases']))throw new Error('bag bases section projection');
+          if(JSON.stringify(DS.product('plantlogic-18l-strawberry-trough-1305909')?.plantlogic_sections)!==JSON.stringify(['strawberry']))throw new Error('strawberry section projection');
           if(DS.product('blueberry-round-pots')?.id!=='plantlogic-blueberry-round-20l-1308020')throw new Error('legacy grouped product alias');
           if(DS.sku('PL-BB-1308031-BK')?.product_id!=='plantlogic-blueberry-round-30l-v-ribs-1308031')throw new Error('split round 30L product identity');
           const anchor=DS.product('plantlogic-pot-anchor');

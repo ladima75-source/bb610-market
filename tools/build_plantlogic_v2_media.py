@@ -591,7 +591,26 @@ def main() -> int:
                 if sample not in candidate_samples:
                     candidate_samples.append(sample)
             for candidate in page_candidates:
-                if not candidate.get("identity_match") or int(candidate.get("score") or 0) < 90:
+                candidate_url = str(candidate.get("url") or "")
+                score = int(candidate.get("score") or 0)
+                identity_ok = bool(candidate.get("identity_match")) and score >= 90
+                # Older PlantLogic galleries often shorten 13xxxxx Product # to the final
+                # four digits in image filenames (e.g. 1305081 -> 5081_1.jpg). Accept
+                # those images only when the official page itself contains the exact full
+                # Product # and the filename carries that unambiguous short code.
+                basename = Path(urllib.parse.urlsplit(candidate_url).path).name.lower()
+                short_code_ok = (
+                    str(candidate.get("source") or "").startswith("img:")
+                    and score >= 55
+                    and "generic_or_foreign_asset" not in (candidate.get("reasons") or [])
+                    and any(
+                        len(number) >= 4
+                        and page_has_number(page_html, number)
+                        and number[-4:] in basename
+                        for number in numbers
+                    )
+                )
+                if not (identity_ok or short_code_ok):
                     continue
                 if any(number in STRICT_NUMBERS for number in numbers):
                     exact = any(
@@ -600,7 +619,7 @@ def main() -> int:
                     )
                     if not exact:
                         continue
-                chosen = localize(str(candidate.get("url") or ""), product["title"] + " — official PlantLogic")
+                chosen = localize(candidate_url, product["title"] + " — official PlantLogic")
                 if chosen:
                     before = len(galleries[pid])
                     bind_product(pid, chosen, "plantlogic_official_page")

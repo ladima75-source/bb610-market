@@ -263,7 +263,13 @@ window.BB610_DATA_SOURCE={
   },
 
   _v5Product(raw,skus){
-    const isPlantlogicContainer=raw?.category_id==='containers'&&String(raw?.brand||'').trim().toLowerCase()==='plantlogic';
+    const isPlantlogic=String(raw?.brand||'').trim().toLowerCase()==='plantlogic';
+    const isPlantlogicContainer=raw?.category_id==='containers'&&isPlantlogic;
+    const publicCharacteristics=(Array.isArray(raw.characteristics)?raw.characteristics:[]).filter(row=>{
+      const label=String(row?.label||'').trim();
+      if(label.startsWith('__'))return false;
+      return !['офіційне джерело','джерело','url','оригінальна назва'].includes(label.toLowerCase());
+    });
     const mediaRows=isPlantlogicContainer?this._orderedPlantlogicMedia(raw.media||[]):(raw.media||[]);
     const media=this._mediaPaths(mediaRows);
     const source=(raw.sources||[])[0]||null;
@@ -289,15 +295,15 @@ window.BB610_DATA_SOURCE={
       composition:raw.composition||'',
       benefits:Array.isArray(raw.benefits)?raw.benefits:[],
       how_it_works:raw.how_it_works||'',
-      characteristics:Array.isArray(raw.characteristics)?raw.characteristics:[],
+      characteristics:publicCharacteristics,
       seo_title:raw.seo_title||'',
       seo_description:raw.seo_description||'',
       image:media[0]||'',
       gallery:media,
-      sources:raw.sources||[],
-      source:source?{title:source.source_label||source.source_type||'Джерело',url:source.source_url||''}:null,
-      documents:sourceRows.map(x=>({title:x.source_label||x.source_type||'Джерело',url:x.source_url})),
-      verification:source?{verifiedAt:source.verified_at||'',status:source.status||'verified'}:null,
+      sources:isPlantlogic?[]:(raw.sources||[]),
+      source:(!isPlantlogic&&source)?{title:source.source_label||source.source_type||'Джерело',url:source.source_url||''}:null,
+      documents:isPlantlogic?[]:sourceRows.map(x=>({title:x.source_label||x.source_type||'Джерело',url:x.source_url})),
+      verification:(!isPlantlogic&&source)?{verifiedAt:source.verified_at||'',status:source.status||'verified'}:null,
       default_sku_id:defaultSku?.id||null,
       public_enabled:raw.public_enabled!==0&&raw.public_enabled!==false,
       status:raw.status||'active',

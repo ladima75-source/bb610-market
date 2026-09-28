@@ -2,31 +2,31 @@ name: Plantlogic readiness audit CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, plantlogic-v2-work]
     paths:
-      - 'backend/tools_audit_plantlogic_readiness_20260918.py'
-      - 'backend/tools_prepare_plantlogic_draft_20260918.py'
-      - 'backend/tools_bind_plantlogic_legacy_commerce_20260918.py'
-      - 'data/product_content/plantlogic_pots_v1_20260918.json'
-      - 'backend/services/product_cards_v3.py'
-      - 'backend/services/product_cards_v3_media.py'
-      - 'backend/services/product_commerce.py'
-      - 'backend/services/catalog_cms.py'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_manifest_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_audit_20260928.json'
+      - 'assets/img/v5/media/**'
+      - 'backend/services/plantlogic_v2_final.py'
+      - 'backend/services/product_master_v5_migrations.py'
+      - 'tools/audit_plantlogic_v2_final.py'
       - '.github/workflows/plantlogic_readiness_audit_ci.yml'
   pull_request:
     paths:
-      - 'backend/tools_audit_plantlogic_readiness_20260918.py'
-      - 'backend/tools_prepare_plantlogic_draft_20260918.py'
-      - 'backend/tools_bind_plantlogic_legacy_commerce_20260918.py'
-      - 'data/product_content/plantlogic_pots_v1_20260918.json'
-      - 'backend/services/product_cards_v3.py'
-      - 'backend/services/product_cards_v3_media.py'
-      - 'backend/services/product_commerce.py'
-      - 'backend/services/catalog_cms.py'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_manifest_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_audit_20260928.json'
+      - 'backend/services/plantlogic_v2_final.py'
+      - 'tools/audit_plantlogic_v2_final.py'
       - '.github/workflows/plantlogic_readiness_audit_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  contract:
+  readiness:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,54 +34,8 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Syntax
+      - name: Full canonical readiness audit
         run: |
-          python -m py_compile backend/tools_audit_plantlogic_readiness_20260918.py
-          python -m py_compile backend/tools_bind_plantlogic_legacy_commerce_20260918.py
-          python -m py_compile backend/tools_prepare_plantlogic_draft_20260918.py
-
-      - name: Validate audit contract
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          from backend import tools_audit_plantlogic_readiness_20260918 as a
-
-          doc=json.loads(Path('data/product_content/plantlogic_pots_v1_20260918.json').read_text())
-          products=doc['products']
-          assert len(products)==34
-          assert sum(len(x.get('skus') or []) for x in products)==37
-          assert a.EXPECTED_PRODUCTS==34
-          assert a.EXPECTED_SKUS==37
-          assert a.KNOWN_LEGACY == {
-              'plantlogic-25l-round-new-1308125': 'plantlogic-25-round-1308125',
-              'plantlogic-40l-round-u-grooves-1308041': 'plantlogic-40-round-ugroove-1308041',
-          }
-          assert all(x.get('product_id') and x.get('slug') for x in products)
-          assert 'commerce_pending_sku' in Path('backend/tools_audit_plantlogic_readiness_20260918.py').read_text(encoding='utf-8')
-          assert 'DRAFT_READY' in Path('backend/tools_audit_plantlogic_readiness_20260918.py').read_text(encoding='utf-8')
-
-          binder=Path('backend/tools_bind_plantlogic_legacy_commerce_20260918.py').read_text(encoding='utf-8')
-          assert 'BB610-PLT-1308125-EA' in binder
-          assert 'BB610-PLT-1308041-EA' in binder
-          assert '_snapshot_tables()' in binder
-          assert 'sku_commerce values changed during legacy mapping bind' in binder
-          assert 'UPDATE sku_commerce' not in binder
-          assert 'INSERT INTO sku_commerce' not in binder
-          assert 'DELETE FROM sku_commerce' not in binder
-
-          runner=Path('backend/tools_prepare_plantlogic_draft_20260918.py').read_text(encoding='utf-8')
-          assert 'EXPECTED_PRODUCTS = 34' in runner
-          assert 'EXPECTED_SKUS = 37' in runner
-          assert 'EXPECTED_LEGACY_BINDINGS = 2' in runner
-          assert 'sync.apply_plan' in runner
-          assert 'media.apply_safe' in runner
-          assert 'binder.apply_plan' in runner
-          assert 'PLANTLOGIC DRAFT READY: PASS' in runner
-          assert 'UKRAINIAN STOREFRONT TITLES: PASS' in runner
-          assert 'UPDATE sku_commerce' not in runner
-          assert 'INSERT INTO sku_commerce' not in runner
-          assert 'DELETE FROM sku_commerce' not in runner
-
-          print('PLANTLOGIC READINESS AUDIT CONTRACT: PASS')
-          PY
+          set -euo pipefail
+          python -m py_compile backend/services/plantlogic_v2_final.py backend/services/product_master_v5_migrations.py tools/audit_plantlogic_v2_final.py
+          python tools/audit_plantlogic_v2_final.py --require-media

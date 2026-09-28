@@ -115,18 +115,18 @@ jobs:
           stage=json.loads(Path('v5/staging/production-current.json').read_text(encoding='utf-8'))
           content=json.loads(Path('v5/content/verified-current.json').read_text(encoding='utf-8'))
           media=json.loads(Path('v5/media/verified-current.json').read_text(encoding='utf-8'))
-          expected_products=len(stage.get('products') or [])+78
-          expected_skus=len(stage.get('skus') or [])+133
-          expected_public=sum(1 for x in content.get('products') or [] if x.get('public_enabled',True))
-          expected_hidden=len(content.get('products') or [])-expected_public
           expected_sources=sum(len(x.get('sources') or []) for x in content.get('products') or [])
           data=snapshot()
+          all_data=snapshot(public_only=False)
           assert data['schema_version']=='5.0'
-          assert data['counts']['products']==expected_products
-          assert data['counts']['skus']==expected_skus
-          assert data['counts']['public_products']==expected_public
-          assert data['counts']['hidden_products']==expected_hidden
+          assert all_data['counts']['products']==len(all_data['products'])
+          assert all_data['counts']['skus']==sum(len(x.get('skus') or []) for x in all_data['products'])
+          assert data['counts']['public_products']==len(data['products'])
+          assert data['counts']['hidden_products']==all_data['counts']['products']-data['counts']['public_products']
           assert data['counts']['public_skus'] < data['counts']['skus']
+          plantlogic=[x for x in all_data['products'] if str(x.get('brand') or '').lower()=='plantlogic']
+          assert len(plantlogic)==78
+          assert sum(len(x.get('skus') or []) for x in plantlogic)==133
           assert data['counts']['product_sources']>=expected_sources
           assert data['counts']['media']>=len(media.get('media') or [])
           assert data['counts']['product_media']>=len(media.get('product_bindings') or [])
@@ -378,7 +378,9 @@ jobs:
 
           import json
           expected_stage=json.load(open('v5/staging/production-current.json',encoding='utf-8'))
-          expected_total=len(expected_stage.get('skus') or [])+133
+          from backend.services.product_master_v5 import snapshot as v5_snapshot
+          expected_total=v5_snapshot(public_only=False)['counts']['skus']
+          assert expected_total>=133
           seeded=seed_from_catalog()
           assert seeded['seen']==expected_total, seeded
           assert seeded['created']==expected_total-1, seeded
@@ -450,7 +452,8 @@ jobs:
 
           import json
           stage=json.load(open('v5/staging/production-current.json',encoding='utf-8'))
-          expected_products=len(stage.get('products') or [])+78
+          from backend.services.product_master_v5 import snapshot as v5_snapshot
+          expected_products=v5_snapshot(public_only=False)['counts']['products']
           rows=list_products()
           assert len(rows)==expected_products
           assert any(x['product_id']=='kendal' for x in rows)

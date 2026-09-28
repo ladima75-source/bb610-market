@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sqlite3
 from datetime import datetime, timezone
 
@@ -2375,6 +2376,7 @@ _MIGRATIONS = [
     ("20260928_restore_cannabis_as_universal_membership_batch23", _restore_cannabis_as_universal_membership_batch_23),
     ("20260928_plantlogic_v2_final_batch24", _plantlogic_v2_final_batch_24),
     ("20260928_plantlogic_v2_customer_content_batch25", _plantlogic_v2_customer_content_batch_25),
+    ("20260929_plantlogic_manual_audit_1_23_batch26", _plantlogic_manual_audit_batch_26),
 ]
 
 

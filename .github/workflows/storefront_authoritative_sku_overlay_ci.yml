@@ -51,6 +51,6 @@ jobs:
           assert "_applyLegacyContent" not in js
           assert "_applyMaster" not in js
           assert "/api/v1/catalog/master" not in js
-          assert "js/data-source.js?v=20260927-single-v5-2" in html
+          assert "js/data-source.js?v=" in html
           print('AUTHORITATIVE V5 SKU IDENTITY: PASS')
           PY

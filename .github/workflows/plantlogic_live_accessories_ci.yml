@@ -7,6 +7,8 @@ on:
       - 'data/product_content/plantlogic_v2_final_20260928.json'
       - 'backend/services/plantlogic_v2_final.py'
       - 'backend/services/product_master_v5_migrations.py'
+      - 'backend/services/plantlogic_v2_customer_content.py'
+      - 'js/data-source.js'
       - 'js/catalog.js'
       - '.github/workflows/plantlogic_live_accessories_ci.yml'
   workflow_dispatch:
@@ -70,6 +72,31 @@ jobs:
               if str(p.get('name') or '').startswith('Горщик'):
                   assert p.get('category_id')!='accessories', p.get('product_id')
 
+          by_id={p.get('product_id') or p.get('id'):p for p in rows}
+          banned=(
+              'Дані та Product # звірені',
+              'Офіційна модель Plantlogic',
+              'Офіційне джерело',
+              'не специфікован',
+              'Bag Bases',
+              'grow bag',
+              'open-top grow bags',
+          )
+          for p in rows:
+              customer=' '.join(str(p.get(k) or '') for k in (
+                  'short_description','description','application','composition','how_it_works'
+              ))
+              customer+=' '+json.dumps(p.get('benefits') or [],ensure_ascii=False)
+              public_chars=[
+                  x for x in (p.get('characteristics') or [])
+                  if not str(x.get('label') or '').strip().startswith('__')
+              ]
+              customer+=' '+json.dumps(public_chars,ensure_ascii=False)
+              assert not any(term.lower() in customer.lower() for term in banned), (p.get('product_id'),'banned customer text')
+              assert not any('http://' in str(x.get('value') or '').lower() or 'https://' in str(x.get('value') or '').lower() for x in public_chars)
+          assert 'Мішок для субстрату з інтегрованою жорсткою основою Culti-base' in str(by_id['plantlogic-culti-base'].get('short_description') or '')
+          assert 'Для контейнерного вирощування лохини у субстраті.' == str(by_id['plantlogic-blueberry-round-25l-u-grooves-1308026'].get('application') or '')
+
           required={
               'plantlogic-pot-anchor',
               'plantlogic-vf-bag-base-12010300',
@@ -79,5 +106,5 @@ jobs:
               'plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440',
           }
           assert required <= ids
-          print('PLANTLOGIC LIVE CANONICAL: 78 PRODUCTS / 133 SKU / 6 SECTIONS PASS')
+          print('PLANTLOGIC LIVE CANONICAL + CUSTOMER CONTENT: 78 PRODUCTS / 133 SKU / 6 SECTIONS PASS')
           PY

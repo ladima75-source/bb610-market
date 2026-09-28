@@ -2,25 +2,51 @@ name: Plantlogic official gallery network smoke
 
 on:
   push:
-    branches: [main]
+    branches: [main, plantlogic-v2-work]
     paths:
-      - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
-      - 'backend/tools_collect_plantlogic_official_media_20260918.py'
-      - 'data/product_content/plantlogic_pots_v1_20260918.json'
+      - 'tools/build_plantlogic_v2_media.py'
+      - 'tools/audit_plantlogic_v2_final.py'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_manifest_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_audit_20260928.json'
       - '.github/workflows/plantlogic_official_gallery_network_smoke.yml'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  gallery-network:
+  gallery-contract:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Seed runtime Product Card v3 fixture
-        run: python backend/update_plantlogic_pots_v3_20260918.py --apply
-      - name: Resolve verified official gallery candidates
+      - name: Verify committed canonical gallery
         run: |
-          python backend/tools_apply_plantlogic_official_gallery_20260919.py
+          set -euo pipefail
+          python tools/audit_plantlogic_v2_final.py --require-media
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          audit=json.loads(Path('data/product_content/plantlogic_v2_media_audit_20260928.json').read_text(encoding='utf-8'))
+          assert len(audit['products'])==78
+          assert sum(audit['distribution'].values())==78
+          keys={
+              'plantlogic-blueberry-zephyr-v2-25l-1301144',
+              'plantlogic-blueberry-zephyr-v2-30l-1301153',
+              'plantlogic-blueberry-zephyr-v2-40l-1301143',
+              'plantlogic-blueberry-round-30l-u-grooves-1308303',
+              'plantlogic-10l-drainage-1307110',
+              'plantlogic-4-7l-square-cold-storage-13050040',
+              'plantlogic-rivus-slab-base',
+              'plantlogic-rivus-end-cap',
+              'plantlogic-9l-strawberry-trough-truss-1305209',
+              'plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400',
+              'plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440',
+          }
+          by={x['canonical_product_id']:x for x in audit['products']}
+          assert all(by[x]['gallery_count']>=1 for x in keys)
+          print('PLANTLOGIC V2 KEY GALLERIES: PASS')
+          PY

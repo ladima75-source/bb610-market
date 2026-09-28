@@ -2,7 +2,7 @@ name: Catalog filters CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, plantlogic-v2-work]
     paths:
       - 'js/catalog.js'
       - 'js/data-source.js'
@@ -204,7 +204,12 @@ jobs:
           assert 'const matchesSearch=(p,value)' in js
           assert 'tokens.every(token=>text.includes(token))' in js
           assert 'plantlogicSectionSearchText(p)' in js
-          assert "id:'bag_bases'" in js
+          section_block=js[js.index('const plantlogicSectionOrder=['):js.index('const plantlogicSectionsFor=')]
+          expected_sections=["id:'blueberry'","id:'rubus'","id:'strawberry'","id:'vegetable'","id:'universal'","id:'accessories'"]
+          assert all(x in section_block for x in expected_sections)
+          assert section_block.count("id:'")==6
+          assert "id:'bag_bases'" not in section_block
+          assert "id:'garden'" not in section_block
           assert "id:'accessories'" in js
           assert "accessories:'аксесуари" in js
           ds=Path('js/data-source.js').read_text(encoding='utf-8')

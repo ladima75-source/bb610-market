@@ -2,59 +2,28 @@ name: Plantlogic pot PDP CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, plantlogic-v2-work]
     paths:
-      - 'product.html'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_manifest_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_audit_20260928.json'
+      - 'assets/img/v5/media/**'
+      - 'tools/audit_plantlogic_v2_final.py'
       - 'js/product.js'
-      - 'js/app.js'
-      - 'catalog.html'
       - 'js/product-pot.js'
-      - 'css/product-pot.css'
-      - 'backend/services/product_cards_v3.py'
-      - 'data/product_cards_v3/product_card_v3.schema.json'
-      - 'backend/services/product_cards_v3_runtime.py'
-      - 'backend/services/product_cards_v3_facets.py'
-      - 'backend/update_plantlogic_blueberry_pots_v3_20260919.py'
-      - 'backend/update_plantlogic_blueberry_pots_r2_20260919.py'
-      - 'backend/rollback_plantlogic_blueberry_pots_to_5card_20260919.py'
-      - 'backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py'
-      - 'backend/tools_verify_plantlogic_blueberry_architecture_20260919.py'
-      - 'data/product_content/plantlogic_blueberry_pots_v2_20260919.json'
-      - 'data/product_content/plantlogic_blueberry_pots_r2_20260919.json'
-      - 'tools/build_plantlogic_blueberry_content_assets.py'
-      - 'assets/plantlogic/blueberry-family-standard.jpg'
-      - 'assets/plantlogic/blueberry-family-u-groove.jpg'
-      - 'assets/plantlogic/blueberry-root-zone.png'
-      - 'assets/plantlogic/blueberry-root-zone-standard.jpg'
-      - '.github/workflows/plantlogic_blueberry_content_assets.yml'
-      - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
+      - 'js/data-source.js'
+      - 'product.html'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
   pull_request:
     paths:
-      - 'product.html'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_manifest_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_audit_20260928.json'
+      - 'tools/audit_plantlogic_v2_final.py'
       - 'js/product.js'
-      - 'js/app.js'
-      - 'catalog.html'
       - 'js/product-pot.js'
-      - 'css/product-pot.css'
-      - 'backend/services/product_cards_v3.py'
-      - 'data/product_cards_v3/product_card_v3.schema.json'
-      - 'backend/services/product_cards_v3_runtime.py'
-      - 'backend/services/product_cards_v3_facets.py'
-      - 'backend/update_plantlogic_blueberry_pots_v3_20260919.py'
-      - 'backend/update_plantlogic_blueberry_pots_r2_20260919.py'
-      - 'backend/rollback_plantlogic_blueberry_pots_to_5card_20260919.py'
-      - 'backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py'
-      - 'backend/tools_verify_plantlogic_blueberry_architecture_20260919.py'
-      - 'data/product_content/plantlogic_blueberry_pots_v2_20260919.json'
-      - 'data/product_content/plantlogic_blueberry_pots_r2_20260919.json'
-      - 'tools/build_plantlogic_blueberry_content_assets.py'
-      - 'assets/plantlogic/blueberry-family-standard.jpg'
-      - 'assets/plantlogic/blueberry-family-u-groove.jpg'
-      - 'assets/plantlogic/blueberry-root-zone.png'
-      - 'assets/plantlogic/blueberry-root-zone-standard.jpg'
-      - '.github/workflows/plantlogic_blueberry_content_assets.yml'
-      - 'backend/tools_apply_plantlogic_official_gallery_20260919.py'
+      - 'js/data-source.js'
+      - 'product.html'
       - '.github/workflows/plantlogic_pot_pdp_ci.yml'
   workflow_dispatch:
 
@@ -62,7 +31,7 @@ permissions:
   contents: read
 
 jobs:
-  contract:
+  pdp-v2:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -73,342 +42,50 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Syntax
+      - name: Syntax and full V2 contract
         run: |
+          set -euo pipefail
           node --check js/product.js
-          node --check js/app.js
           node --check js/product-pot.js
-          python -m py_compile backend/services/product_cards_v3.py backend/services/product_cards_v3_runtime.py backend/services/product_cards_v3_facets.py backend/update_plantlogic_blueberry_pots_v3_20260919.py backend/update_plantlogic_blueberry_pots_r2_20260919.py backend/rollback_plantlogic_blueberry_pots_to_5card_20260919.py backend/tools_verify_plantlogic_blueberry_architecture_20260919.py backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py backend/tools_apply_plantlogic_official_gallery_20260919.py tools/build_plantlogic_blueberry_content_assets.py
+          node --check js/data-source.js
+          python tools/audit_plantlogic_v2_final.py --require-media
 
-      - name: Dedicated PDP contract
+      - name: Required storefront PDP cards
         run: |
           python - <<'PY'
+          import json
           from pathlib import Path
 
-          html=Path('product.html').read_text(encoding='utf-8')
-          product=Path('js/product.js').read_text(encoding='utf-8')
-          pot=Path('js/product-pot.js').read_text(encoding='utf-8')
-          css=Path('css/product-pot.css').read_text(encoding='utf-8')
-          facets=Path('backend/services/product_cards_v3_facets.py').read_text(encoding='utf-8')
-
-          assert 'css/product-pot.css?v=20260920-pot-pdp-22' in html
-          assert 'js/product-pot.js?v=20260928-split-pots-1' in html
-          assert html.index('js/product-pot.js') < html.index('js/product.js')
-          assert 'BB610_POT_PDP?.matches(p)' in product
-          assert 'BB610_POT_PDP.render' in product
-
-          assert "p.category==='containers'" in pot
-          assert "norm(p.brand)==='plantlogic'" in pot
-          assert 'function uniqueMedia(items)' in pot
-          assert 'function potRecolorClass(sku)' in pot
-          assert 'pot-filter-terra-black' in pot
-          assert 'pot-filter-black-white' in pot
-          assert 'pot-filter-black-terra' in pot
-          assert '.pot-recolor-black-white' in css
-          assert '.pot-recolor-black-terra' in css
-          assert '.pot-recolor-terra-black' in css
-          assert 'selectedSku?.image' in pot
-          assert "article==='1303025'" in pot
-          assert 'assets/img/plantlogic/1303025-short-legs-infographic.png?v=20260921-1303025-infographic-3' in pot
-          assert Path('assets/img/plantlogic/1303025-short-legs-infographic.png').exists()
-          assert 'selectedSku?.gallery' in pot
-          assert 'function mediaKey(value)' in pot
-          assert 'if(exact.length||hasStructured)return exact' in pot
-          assert 'Фото обраної моделі готується' in pot
-          assert '.pot-gallery-empty' in css
-          assert 'const failedMedia=new Set()' in pot
-          assert "addEventListener('error'" in pot
-          assert 'mediaForCurrent().filter' in pot
-          print('PLANTLOGIC structured gallery isolation: PASS')
-          assert 'pot-model-options' in pot
-          assert 'related_group_id' in pot
-          assert 'pot-related-variant-picker' in pot
-          assert 'BB610.productUrl(row.product,row.sku)' in pot
-          assert 'data-pot-model' in pot
-          assert 'pot-color-options' in pot
-          assert 'manufacturer_product_no' in pot
-          assert "'gallery': sku_gallery" in facets
-          assert 'pot-main-stage' in pot
-          assert 'pot-benefit-grid' in pot
-          assert 'pot-spec-table' in pot
-          assert 'pot-related-grid' in pot
-          assert 'Відкрити сайт виробника' in pot
-          assert "articleFromSku(selectedSku)!=='1308125'" in pot
-          assert 'Горщик, розроблений для контейнерного вирощування лохини' in pot
-          assert 'pot-metrics' in pot
-          assert '.pot-info-section' in css
-
-          assert '.pot-main-stage{height:560px' in css
-          assert 'overflow:hidden' in css
-          assert 'object-fit:contain!important' in css
-          assert '.pot-thumbs' in css
-          assert '.pot-gallery-count' in css
-          assert '.pot-model-option' in css
-          assert '.pot-explainer-layout' in css
-          assert '.pot-garden-guide' in css
-          assert '.pot-diagram-marker' in css
-          assert '.pot-visual-section' in css
-          assert 'Desktop fold tuning' in css
-          assert 'max-width:88%!important' in css
-          assert 'object-position:center center!important' in css
-          assert 'grid-template-columns:repeat(4,minmax(0,1fr))' in css
-          assert 'min-height:590px' in css
-          assert 'box-shadow:0 18px 42px' in css
-
-          assert 'data-pot-content-image' in pot
-          assert 'Дренаж, вентиляція та робота конструкції' not in pot
-          assert 'function renderTechnologyExplainer(product)' in pot
-          assert 'pot-diagram-marker' in pot
-          assert 'function renderGardenGuide(product)' in pot
-          assert 'technology_explainer' in pot
-          assert 'garden_guide' in pot
-
-          assert "patch['benefits']" in facets
-          assert "patch['how_it_works']" in facets
-          assert "patch['characteristics']" in facets
-          assert "'benefits': deepcopy(content.get('benefits') or [])" in facets
-
-          print('PLANTLOGIC DEDICATED PDP CONTRACT: PASS')
-          PY
-
-      - name: Reversible blueberry architecture R2
-        run: |
-          python backend/update_plantlogic_pots_v3_20260918.py --apply
-          python backend/update_plantlogic_blueberry_pots_v3_20260919.py --apply
-          python backend/tools_verify_plantlogic_blueberry_architecture_20260919.py
-
-          python backend/update_plantlogic_blueberry_pots_r2_20260919.py --apply
-          python backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py
-
-          python backend/rollback_plantlogic_blueberry_pots_to_5card_20260919.py --apply
-          python backend/tools_verify_plantlogic_blueberry_architecture_20260919.py
-
-          python backend/update_plantlogic_blueberry_pots_r2_20260919.py --apply
-          python backend/tools_verify_plantlogic_blueberry_architecture_r2_20260919.py
-
-      - name: Blueberry educational content contract
-        run: |
-          python - <<'PY'
-          from backend.services import product_cards_v3 as pcv3
-          from backend.services.product_cards_v3_facets import market_test_projection
-
-          ids = [
-              'prd_pl_bb_round',
-              'prd_pl_bb_round_short_legs',
-              'prd_pl_bb_square',
-              'prd_pl_bb_round_u',
-              'prd_pl_bb_square_u',
-              'prd_pl_bb_zephyr_v2',
-          ]
-          educational = {
-              '/assets/plantlogic/blueberry-family-standard.jpg',
-              '/assets/plantlogic/blueberry-family-u-groove.jpg',
-              '/assets/plantlogic/blueberry-root-zone.png',
-              '/assets/plantlogic/blueberry-root-zone-standard.jpg',
+          spec=json.loads(Path('data/product_content/plantlogic_v2_final_20260928.json').read_text(encoding='utf-8'))
+          audit=json.loads(Path('data/product_content/plantlogic_v2_media_audit_20260928.json').read_text(encoding='utf-8'))
+          by={x['canonical_product_id']:x for x in spec['canonical_products']}
+          media={x['canonical_product_id']:x for x in audit['products']}
+          expected={
+            'plantlogic-blueberry-zephyr-v2-25l-1301144':('containers','blueberry'),
+            'plantlogic-blueberry-zephyr-v2-30l-1301153':('containers','blueberry'),
+            'plantlogic-blueberry-zephyr-v2-40l-1301143':('containers','blueberry'),
+            'plantlogic-blueberry-round-30l-u-grooves-1308303':('containers','blueberry'),
+            'plantlogic-10l-drainage-1307110':('containers','rubus'),
+            'plantlogic-4-7l-square-cold-storage-13050040':('containers','rubus'),
+            'plantlogic-7l-square-cold-storage-1305071':('containers','rubus'),
+            'plantlogic-rivus-slab-base':('accessories','vegetable'),
+            'plantlogic-rivus-end-cap':('accessories','vegetable'),
+            'plantlogic-9l-strawberry-trough-truss-1305209':('strawberry','strawberry'),
+            'plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400':('containers','blueberry'),
+            'plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440':('containers','blueberry'),
           }
-          for pid in ids:
-              card = pcv3.get(pid)
-              assert card and card['enabled'] is True
-              content = card['content']
-              assert isinstance(content.get('garden_guide'), dict)
-              assert content['garden_guide']['url'] == 'https://garden.bb610.com.ua'
-              if pid == 'prd_pl_bb_zephyr_v2':
-                  assert content.get('family_overview') is None
-                  assert content.get('technology_explainer') is None
-              else:
-                  if pid in {'prd_pl_bb_round','prd_pl_bb_round_short_legs','prd_pl_bb_square','prd_pl_bb_round_u','prd_pl_bb_square_u'}:
-                      assert content.get('family_overview') is None
-                      assert content.get('model_showcase') is None
-                  else:
-                      assert isinstance(content.get('family_overview'), dict)
-                  assert isinstance(content.get('technology_explainer'), dict)
-                  codes = [x['code'] for x in content['technology_explainer']['items']]
-                  if pid in {'prd_pl_bb_round_u','prd_pl_bb_square_u'}:
-                      assert codes == ['A','B','C','D'], (pid,codes)
-                  else:
-                      assert codes == ['B','C','D'], (pid,codes)
-                  image = content['technology_explainer']['image']
-                  if pid in {'prd_pl_bb_round_u','prd_pl_bb_square_u'}:
-                      assert image.endswith('blueberry-root-zone.png'), (pid,image)
-                  else:
-                      assert image.endswith('blueberry-root-zone-standard.jpg'), (pid,image)
-
-              for media in (card.get('sku_media') or {}).get('media') or []:
-                  assert media.get('path') not in educational
-              for sku in (card.get('sku_media') or {}).get('skus') or []:
-                  assert all(str(mid) for mid in sku.get('gallery_media_ids') or [])
-
-          for path in [
-              'assets/plantlogic/blueberry-family-standard.jpg',
-              'assets/plantlogic/blueberry-family-u-groove.jpg',
-              'assets/plantlogic/blueberry-root-zone.png',
-              'assets/plantlogic/blueberry-root-zone-standard.jpg',
-              'assets/plantlogic/zephyr-v2-capacities.jpg',
-              'assets/plantlogic/zephyr-v2-greenhouse.jpg',
-          ]:
-              p = __import__('pathlib').Path(path)
-              assert p.is_file() and p.stat().st_size > 10000, path
-
-          projection = market_test_projection()
-          rows = [x for x in projection['products'] if x.get('v3_product_id') in ids]
-          assert len(rows) == 6
-          assert all(isinstance(x.get('garden_guide'), dict) for x in rows)
-          assert all('blueberry-family-' not in str(x.get('gallery') or '') for x in rows)
-          assert all('blueberry-root-zone' not in str(x.get('gallery') or '') for x in rows)
-          round_card = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_round')
-          media = (round_card.get('sku_media') or {}).get('media') or []
-          paths = [str(x.get('path') or '') for x in media]
-          assert any('20-Liter-Round-Pot_Item_1308020.jpg' in x for x in paths)
-          assert any('8025_4.jpg' in x for x in paths)
-          assert any('30-Liter-Round-Pot-with-V-ribs_Item_1308031.jpg' in x for x in paths)
-          assert any('40-Liter-Round-Pot_Item_1308040-1.jpg' in x for x in paths)
-          assert round_card['content'].get('model_showcase') is None
-          short_card = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_round_short_legs')
-          short_paths = [str(x.get('path') or '') for x in (short_card.get('sku_media') or {}).get('media') or []]
-          assert any('3025_1.jpg' in x for x in short_paths)
-          assert short_card['content'].get('model_showcase') is None
-          print('SHORT LEGS OFFICIAL MEDIA: PASS')
-          square_card = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_square')
-          square_paths = [str(x.get('path') or '') for x in (square_card.get('sku_media') or {}).get('media') or []]
-          assert any('20-Liter-Square-Pot_Item_1309020.jpg' in x for x in square_paths)
-          assert any('25L-SQ-1309025-FRONTAL.jpg' in x for x in square_paths)
-          assert any('30-Liter-Square-Pot_Item_1309030-1.jpg' in x for x in square_paths)
-          assert square_card['content'].get('model_showcase') is None
-          print('SQUARE CARD OFFICIAL MEDIA: PASS')
-          round_u = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_round_u')
-          round_u_paths = [str(x.get('path') or '') for x in (round_u.get('sku_media') or {}).get('media') or []]
-          assert any('1308303-1.jpg' in x for x in round_u_paths)
-          assert any('1308305-FRONT-1.jpg' in x for x in round_u_paths)
-          assert any('Maceta-35-litros-redonda-para-blueberries.jpg' in x for x in round_u_paths)
-          assert any('40-Liter-Round-Pot-with-U-grooves_Item_1308041.jpg' in x for x in round_u_paths)
-          assert round_u['content'].get('model_showcase') is None
-
-          square_u = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_square_u')
-          square_u_paths = [str(x.get('path') or '') for x in (square_u.get('sku_media') or {}).get('media') or []]
-          assert any('1309026.jpg' in x for x in square_u_paths)
-          assert any('13090350_frente.jpg' in x for x in square_u_paths)
-          assert square_u['content'].get('model_showcase') is None
-
-          zephyr = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_zephyr_v2')
-          zephyr_paths = [str(x.get('path') or '') for x in (zephyr.get('sku_media') or {}).get('media') or []]
-          assert any('ZEPHYR-V2-1301144-FRONTAL-1.jpg' in x for x in zephyr_paths)
-          round_u_codes = {str(x.get('sku_code') or '') for x in (round_u.get('sku_media') or {}).get('skus') or []}
-          square_u_codes = {str(x.get('sku_code') or '') for x in (square_u.get('sku_media') or {}).get('skus') or []}
-          assert any('13080350' in x for x in round_u_codes)
-          assert any('1308041' in x for x in round_u_codes)
-          assert any('13090350' in x for x in square_u_codes)
-          assert not any('1308035-' in x or '13080410' in x for x in round_u_codes)
-          assert not any('1309035-' in x for x in square_u_codes)
-          u30 = next(x for x in (round_u.get('sku_media') or {}).get('skus') or [] if x.get('sku_code') == 'PL-BB-1308303-BK')
-          assert (u30.get('attributes') or {}).get('media_source_color') == 'terracotta'
-          print('U-GROOVE COLOR SOURCE: PASS')
-          u35 = next(x for x in (round_u.get('sku_media') or {}).get('skus') or [] if x.get('sku_code') == 'PL-BB-13080350-BK')
-          assert (u35.get('attributes') or {}).get('media_source_color') == 'black'
-          print('BLACK SOURCE COLOR: PASS')
-          print('OFFICIAL U-GROOVE PRODUCT NUMBERS: PASS')
-          print('REMAINING VERIFIED MODEL MEDIA: PASS')
-          zephyr = __import__('backend.services.product_cards_v3', fromlist=['get']).get('prd_pl_bb_zephyr_v2')
-          zskus = (zephyr.get('sku_media') or {}).get('skus') or []
-          zmedia = {str(x.get('media_id') or ''): str(x.get('path') or '') for x in (zephyr.get('sku_media') or {}).get('media') or []}
-          black = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301144-BK')
-          white = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301144-WH')
-          black_paths = [zmedia.get(black.get('primary_media_id'))] + [zmedia.get(x) for x in black.get('gallery_media_ids') or []]
-          white_paths = [zmedia.get(white.get('primary_media_id'))] + [zmedia.get(x) for x in white.get('gallery_media_ids') or []]
-          assert any('FRONTAL-2-2.jpg' in str(x) for x in black_paths)
-          assert any('FRONTAL-1.jpg' in str(x) for x in white_paths)
-          assert not any('FRONTAL-1.jpg' in str(x) or 'BASE.jpg' in str(x) for x in black_paths)
-          assert not any('FRONTAL-2-2.jpg' in str(x) or 'FRONTAL-2-1.jpg' in str(x) or 'BASE-2.jpg' in str(x) or 'CENITAL-1.jpg' in str(x) for x in white_paths)
-          print('ZEPHYR COLOR MEDIA: PASS')
-          z30b = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301153-BK')
-          z30w = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301153-WH')
-          z40b = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301143-BK')
-          z40w = next(x for x in zskus if x.get('sku_code') == 'PL-BB-1301143-WH')
-          for row in (z30b,z30w,z40b,z40w):
-              paths = [zmedia.get(row.get('primary_media_id'))] + [zmedia.get(x) for x in row.get('gallery_media_ids') or []]
-              assert any('/assets/plantlogic/zephyr-v2-capacities.jpg' in str(x) for x in paths)
-              assert any('/assets/plantlogic/zephyr-v2-greenhouse.jpg' in str(x) for x in paths)
-              assert not any('1301144-FRONTAL' in str(x) for x in paths)
-          print('ZEPHYR FALLBACK VISUALS: PASS')
-          assert zephyr['content'].get('family_overview') is None
-          assert zephyr['content'].get('technology_explainer') is None
-          assert 'renderFamilyOverview' not in __import__('pathlib').Path('js/product-pot.js').read_text(encoding='utf-8')
-          print('NO DUPLICATE ZEPHYR VISUALS: PASS')
-          zbenefits = zephyr['content']['benefits']
-          assert [x['title'] for x in zbenefits] == [
-              'Радіальний дренаж',
-              'Аерація кореневої зони',
-              'Ніжки 7 см і стабільна основа',
-              'Керована щільність аерації',
-          ]
-          assert 'ніжках 7 см' in zephyr['content']['how_it_works']
-          print('ZEPHYR TECHNICAL BENEFITS: PASS')
-          assert len(round_card['content']['benefits']) == 3
-          assert len(short_card['content']['benefits']) == 3
-          assert len(square_card['content']['benefits']) == 3
-          assert len(round_u['content']['benefits']) == 4
-          assert len(square_u['content']['benefits']) == 4
-          assert 'renderModelShowcase' not in __import__('pathlib').Path('js/product-pot.js').read_text(encoding='utf-8')
-          print('PDP CONTENT CLEANUP: PASS')
-          all_cards = [__import__('backend.services.product_cards_v3', fromlist=['get']).get(pid) for pid in ids]
-          total_skus = 0
-          for card in all_cards:
-              media_index = {str(x.get('media_id') or ''): x for x in (card.get('sku_media') or {}).get('media') or []}
-              assert media_index, card.get('product_id')
-              for sku in (card.get('sku_media') or {}).get('skus') or []:
-                  total_skus += 1
-                  primary = str(sku.get('primary_media_id') or '')
-                  assert primary and primary in media_index, (card.get('product_id'), sku.get('sku_code'), primary)
-                  gallery_ids = [str(mid) for mid in sku.get('gallery_media_ids') or []]
-                  for mid in gallery_ids:
-                      assert mid in media_index, (card.get('product_id'), sku.get('sku_code'), mid)
-                  ordered_ids = [primary, *gallery_ids]
-                  assert len(ordered_ids) == len(set(ordered_ids)), (card.get('product_id'), sku.get('sku_code'), ordered_ids)
-                  paths = [str(media_index[mid].get('path') or '') for mid in ordered_ids]
-                  assert all(paths), (card.get('product_id'), sku.get('sku_code'))
-                  assert len(paths) == len(set(paths)), (card.get('product_id'), sku.get('sku_code'), paths)
-                  attrs = sku.get('attributes') or {}
-                  assert str(attrs.get('color_code') or '') in {'black','white','terracotta'}, (card.get('product_id'), sku.get('sku_code'))
-                  source_color = str(attrs.get('media_source_color') or '')
-                  assert source_color in {'','black','white','terracotta'}, (card.get('product_id'), sku.get('sku_code'), source_color)
-                  assert media_index[primary].get('path'), (card.get('product_id'), sku.get('sku_code'))
-          assert total_skus == 48, total_skus
-          print('ALL 48 SKU MEDIA: PASS')
-          print('ROUND CARD OFFICIAL MEDIA: PASS')
-          print('PLANTLOGIC EDUCATIONAL CONTENT ISOLATION: PASS')
+          for pid,(category,section) in expected.items():
+              p=by[pid]
+              assert p['title'].strip()
+              assert p['technical_category_id']==category, (pid,p['technical_category_id'])
+              assert p['plantlogic_section']==section, (pid,p['plantlogic_section'])
+              assert p['skus'], pid
+              assert media[pid]['gallery_count']>=1, (pid,media[pid]['gallery_count'])
+          assert '16 мм' in by['plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400']['title']
+          assert '20 мм' in by['plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440']['title']
+          print('PLANTLOGIC V2 PDP TITLE/SKU/CATEGORY/GALLERY: PASS')
           PY
 
-      - name: Official gallery safety contract
-        run: |
-          python - <<'PY'
-          from backend.tools_apply_plantlogic_official_gallery_20260919 import safe_gallery_candidate
-
-          assert safe_gallery_candidate({
-              'identity_match': True,
-              'score': 120,
-              'reasons': ['product_no=1303025'],
-          })
-          assert safe_gallery_candidate({
-              'identity_match': True,
-              'score': 190,
-              'reasons': ['volume_match','shape=round'],
-          })
-          assert safe_gallery_candidate({
-              'identity_match': True,
-              'score': 130,
-              'reasons': ['features=zephyr'],
-          })
-          assert not safe_gallery_candidate({
-              'identity_match': True,
-              'score': 120,
-              'reasons': ['volume_match'],
-          })
-          assert not safe_gallery_candidate({
-              'identity_match': False,
-              'score': 300,
-              'reasons': ['product_no=1303025'],
-          })
-          print('OFFICIAL PLANTLOGIC GALLERY SAFETY: PASS')
-          PY
       - name: Gallery dedupe behavior
         run: |
           node - <<'JS'
@@ -419,12 +96,12 @@ jobs:
           vm.runInContext(code,sandbox);
           const fn=sandbox.window.BB610_POT_PDP.uniqueMedia;
           const got=fn([
-            '/media/products/a.jpg',
-            'https://api.market.bb610.com.ua/media/products/a.jpg?v=1',
-            '/media/products/b.jpg',
-            '/media/products/b.jpg',
+            '/assets/img/v5/media/a.jpg',
+            'https://api.market.bb610.com.ua/assets/img/v5/media/a.jpg?v=1',
+            '/assets/img/v5/media/b.jpg',
+            '/assets/img/v5/media/b.jpg',
             ''
           ]);
-          if(JSON.stringify(got)!==JSON.stringify(['/media/products/a.jpg','/media/products/b.jpg'])) throw new Error(JSON.stringify(got));
-          console.log('PLANTLOGIC GALLERY DEDUPE: PASS');
+          if(JSON.stringify(got)!==JSON.stringify(['/assets/img/v5/media/a.jpg','/assets/img/v5/media/b.jpg'])) throw new Error(JSON.stringify(got));
+          console.log('PLANTLOGIC V2 GALLERY DEDUPE: PASS');
           JS

@@ -1,0 +1,2657 @@
+{
+  "schema_version": "1.0",
+  "source": "PlantLogic_V2_FINAL.xlsx",
+  "generated_date": "2026-09-28",
+  "expected": {
+    "canonical_products": 78,
+    "alias_reference": 15,
+    "new_sku": 27,
+    "to_verify": [
+      "1205018",
+      "1205019"
+    ],
+    "total_sku": 133,
+    "public_sections": [
+      "blueberry",
+      "rubus",
+      "strawberry",
+      "vegetable",
+      "universal",
+      "accessories"
+    ],
+    "action_counts": {
+      "KEEP": 31,
+      "CREATE": 26,
+      "SPLIT": 4,
+      "RENAME": 17
+    },
+    "technical_category_counts": {
+      "containers": 44,
+      "accessories": 28,
+      "strawberry": 6
+    },
+    "section_counts": {
+      "blueberry": 28,
+      "rubus": 14,
+      "strawberry": 6,
+      "vegetable": 6,
+      "universal": 5,
+      "accessories": 19
+    }
+  },
+  "canonical_products": [
+    {
+      "canonical_product_id": "plantlogic-ground-cover-1600201",
+      "title": "Агротканина для контролю бур’янів",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1600201"
+      ],
+      "manufacturer_titles": [
+        "Ground Cover"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1600201",
+          "manufacturer_product_number": "1600201",
+          "manufacturer_title": "Ground Cover"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/malla-ground-cover/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-pot-anchor",
+      "title": "Анкер для фіксації горщика",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [
+        "Лохина",
+        "Малина + ожина",
+        "Овочі",
+        "Полуниця"
+      ],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1700020",
+        "1700034",
+        "1700041"
+      ],
+      "manufacturer_titles": [
+        "Pot Anchor"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1700020",
+          "manufacturer_product_number": "1700020",
+          "manufacturer_title": "Pot Anchor"
+        },
+        {
+          "sku_id": "PL-1700034",
+          "manufacturer_product_number": "1700034",
+          "manufacturer_title": "Pot Anchor"
+        },
+        {
+          "sku_id": "PL-1700041",
+          "manufacturer_product_number": "1700041",
+          "manufacturer_title": "Pot Anchor"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/pot-anchor/"
+      ],
+      "notes": [
+        "V5-only identity; keep because current V5 is source #1.",
+        "V5-only identity; keep because current V5 is source #1.",
+        "V5-only identity; keep because current V5 is source #1."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-hose-clip-12050010",
+      "title": "Багатофункціональна кліпса для фіксації поливного шланга",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "12050010"
+      ],
+      "manufacturer_titles": [
+        "Hose clip"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-12050010",
+          "manufacturer_product_number": "12050010",
+          "manufacturer_title": "Hose clip"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/zh/portfolio-items/%E5%A4%9A%E5%8A%9F%E8%83%BD%E5%A..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-nursery-tray-1302048",
+      "title": "Касета для розсади на 72 комірки",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [
+        "Лохина",
+        "Малина + ожина",
+        "Полуниця",
+        "Овочі"
+      ],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1302048"
+      ],
+      "manufacturer_titles": [
+        "Nursery Tray"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1302048",
+          "manufacturer_product_number": "1302048",
+          "manufacturer_title": "Nursery Tray"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/nurserytray_item_1302048_chi/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-hose-clip-1205001-1205002",
+      "title": "Кліпса для фіксації поливного шланга",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1205001",
+        "1205002"
+      ],
+      "manufacturer_titles": [
+        "Hose Clip"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1205001",
+          "manufacturer_product_number": "1205001",
+          "manufacturer_title": "Hose Clip"
+        },
+        {
+          "sku_id": "PL-1205002",
+          "manufacturer_product_number": "1205002",
+          "manufacturer_title": "Hose Clip"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/clips-multiusos-1205001-y-1205002/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-micro-tube-stake-1205018",
+      "title": "Кілок 18 см для мікротрубки — виконання 1",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [],
+      "action": "SPLIT",
+      "manufacturer_product_numbers": [
+        "1205018"
+      ],
+      "manufacturer_titles": [
+        "Microtube stake"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1205018",
+          "manufacturer_product_number": "1205018",
+          "manufacturer_title": "Microtube stake"
+        }
+      ],
+      "status": "TO_VERIFY",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/micro-tube-stake/"
+      ],
+      "notes": [
+        "manufacturer variant = TO VERIFY. PlantLogic підтверджує O-type і C-type, але не публікує відповідність конкретного Product # до O/C; назву тимчасово нейтралізовано без вигадування типу."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-micro-tube-stake-1205019",
+      "title": "Кілок 18 см для мікротрубки — виконання 2",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [],
+      "action": "SPLIT",
+      "manufacturer_product_numbers": [
+        "1205019"
+      ],
+      "manufacturer_titles": [
+        "Microtube stake"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1205019",
+          "manufacturer_product_number": "1205019",
+          "manufacturer_title": "Microtube stake"
+        }
+      ],
+      "status": "TO_VERIFY",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/micro-tube-stake/"
+      ],
+      "notes": [
+        "manufacturer variant = TO VERIFY. PlantLogic підтверджує O-type і C-type, але не публікує відповідність конкретного Product # до O/C; назву тимчасово нейтралізовано без вигадування типу."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-lysimeter-kit",
+      "title": "Лізиметр для контролю дренажу",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1301010",
+        "1301030"
+      ],
+      "manufacturer_titles": [
+        "Small lysimeter",
+        "Large lysimeter"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1301010",
+          "manufacturer_product_number": "1301010",
+          "manufacturer_title": "Small lysimeter"
+        },
+        {
+          "sku_id": "PL-1301030",
+          "manufacturer_product_number": "1301030",
+          "manufacturer_title": "Large lysimeter"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/kit-lisimetros/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-metal-hose-clip-1205012",
+      "title": "Металева кліпса для фіксації поливного шланга",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1205012"
+      ],
+      "manufacturer_titles": [
+        "Wire clip"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1205012",
+          "manufacturer_product_number": "1205012",
+          "manufacturer_title": "Wire clip"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/metal-hose-clip/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-metal-gutter-30050008",
+      "title": "Металевий дренажний жолоб",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "30050008"
+      ],
+      "manufacturer_titles": [
+        "Metal gutter"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-30050008",
+          "manufacturer_product_number": "30050008",
+          "manufacturer_title": "Metal gutter"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-metal-stakes-gutter",
+      "title": "Металеві скоби для фіксації дренажного жолоба",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1700146",
+        "1700147"
+      ],
+      "manufacturer_titles": [
+        "M-stakes for gutter",
+        "Metal Stakes for Gutter"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1700146",
+          "manufacturer_product_number": "1700146",
+          "manufacturer_title": "M-stakes for gutter"
+        },
+        {
+          "sku_id": "PL-1700147",
+          "manufacturer_product_number": "1700147",
+          "manufacturer_title": "Metal Stakes for Gutter"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/grapas-para-canaleta/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-culti-base",
+      "title": "Мішок для субстрату з інтегрованою основою",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [
+        "Універсальні",
+        "Овочі"
+      ],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "13079250",
+        "13079300"
+      ],
+      "manufacturer_titles": [
+        "25L Culti-base",
+        "30L Culti-base"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-13079250",
+          "manufacturer_product_number": "13079250",
+          "manufacturer_title": "25L Culti-base"
+        },
+        {
+          "sku_id": "PL-13079300",
+          "manufacturer_product_number": "13079300",
+          "manufacturer_title": "30L Culti-base"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/culti-base-bolsa-de-cultivo-con-..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-bag-base-1307040",
+      "title": "Основа Bag Base для мішка з субстратом",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [
+        "Універсальні",
+        "Овочі"
+      ],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1307040"
+      ],
+      "manufacturer_titles": [
+        "Bag Base"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1307040",
+          "manufacturer_product_number": "1307040",
+          "manufacturer_title": "Bag Base"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/1307040_bagbase_spa/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-vf-bag-base-12010300",
+      "title": "Основа VF для мішка з субстратом",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [
+        "Універсальні",
+        "Овочі"
+      ],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "12010300",
+        "12010400"
+      ],
+      "manufacturer_titles": [
+        "VF base - 2828",
+        "VF base - 3333"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-12010300",
+          "manufacturer_product_number": "12010300",
+          "manufacturer_title": "VF base - 2828"
+        },
+        {
+          "sku_id": "PL-12010400",
+          "manufacturer_product_number": "12010400",
+          "manufacturer_title": "VF base - 3333"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/vf-base-for-open-top-grow-bags/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-bag-base-edge-drainage-1307030",
+      "title": "Основа для мішка з крайовим відведенням дренажу",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [
+        "Універсальні",
+        "Овочі"
+      ],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1307030"
+      ],
+      "manufacturer_titles": [
+        "Bag Base with Edge Drainage"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1307030",
+          "manufacturer_product_number": "1307030",
+          "manufacturer_title": "Bag Base with Edge Drainage"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/techsheet_item1307030_bagbase_plantlogic_eng/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-vf-bag-base-hose-fix-12010320",
+      "title": "Основа для мішка з субстратом з фіксацією шланга",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [
+        "Універсальні",
+        "Овочі"
+      ],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "12010320"
+      ],
+      "manufacturer_titles": [
+        "VF base - 3232 - hose fix"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-12010320",
+          "manufacturer_product_number": "12010320",
+          "manufacturer_title": "VF base - 3232 - hose fix"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/vf-base-for-open-top-grow-bags/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-bag-base-drainage-1301036",
+      "title": "Основа для мішка зі збором дренажу",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [
+        "Універсальні",
+        "Овочі"
+      ],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1301036"
+      ],
+      "manufacturer_titles": [
+        "Bag base for drainage collection"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1301036",
+          "manufacturer_product_number": "1301036",
+          "manufacturer_title": "Bag base for drainage collection"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/base-para-bolsa-con-recoleccion-..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-slab-base-bags-slabs-1302809",
+      "title": "Основа для мішків і субстратних плит",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [
+        "Полуниця",
+        "Овочі"
+      ],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1302809"
+      ],
+      "manufacturer_titles": [
+        "Slab base for bags and slabs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1302809",
+          "manufacturer_product_number": "1302809",
+          "manufacturer_title": "Slab base for bags and slabs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-plastic-gutter-drainage",
+      "title": "Пластиковий жолоб для збору та відведення дренажу",
+      "market_category": "Аксесуари",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "accessories",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1200021",
+        "1300010",
+        "1300011"
+      ],
+      "manufacturer_titles": [
+        "Plastic Gutter for Drainage Collection",
+        "Plastic gutter"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1200021",
+          "manufacturer_product_number": "1200021",
+          "manufacturer_title": "Plastic Gutter for Drainage Collection"
+        },
+        {
+          "sku_id": "PL-1300010",
+          "manufacturer_product_number": "1300010",
+          "manufacturer_title": "Plastic gutter"
+        },
+        {
+          "sku_id": "PL-1300011",
+          "manufacturer_product_number": "1300011",
+          "manufacturer_title": "Plastic gutter"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/canaleta-plastica/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-35l-round-anti-leaking-ring-13080359",
+      "title": "Герметизувальне кільце для круглого горщика 35 л",
+      "market_category": "Лохина",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "13080359"
+      ],
+      "manufacturer_titles": [
+        "35L Round pot anti-leaking ring"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-13080359",
+          "manufacturer_product_number": "13080359",
+          "manufacturer_title": "35L Round pot anti-leaking ring"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-square-20l-1309020",
+      "title": "Горщик для лохини 20 л квадратний на стандартних ніжках",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1309020"
+      ],
+      "manufacturer_titles": [
+        "20L Square pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1309020-BK",
+          "manufacturer_product_number": "1309020",
+          "manufacturer_title": "20L Square pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/20-liter-square-pot/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-round-20l-1308020",
+      "title": "Горщик для лохини 20 л круглий на стандартних ніжках",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1308020"
+      ],
+      "manufacturer_titles": [
+        "20L Round pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1308020-BK",
+          "manufacturer_product_number": "1308020",
+          "manufacturer_title": "20L Round pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/20-liter-round-pot/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-zephyr-v2-25l-1301144",
+      "title": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1301144"
+      ],
+      "manufacturer_titles": [
+        "25L Zephyr pot with 7 cm legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1301144-BK",
+          "manufacturer_product_number": "1301144",
+          "manufacturer_title": "25L Zephyr pot with 7 cm legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/zephyr-hydroponic-pot/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-square-25l-u-grooves-1309026",
+      "title": "Горщик для лохини 25 л квадратний з U-пазами",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1309026"
+      ],
+      "manufacturer_titles": [
+        "25L Square pot with U-grooves"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1309026-BK",
+          "manufacturer_product_number": "1309026",
+          "manufacturer_title": "25L Square pot with U-grooves"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-cuadrada-de-25-litros-con..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-square-25l-1309025",
+      "title": "Горщик для лохини 25 л квадратний на стандартних ніжках",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1309025"
+      ],
+      "manufacturer_titles": [
+        "25L Square pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1309025-BK",
+          "manufacturer_product_number": "1309025",
+          "manufacturer_title": "25L Square pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-cuadrada-de-25-litros/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-round-25l-u-grooves-1308026",
+      "title": "Горщик для лохини 25 л круглий з U-пазами",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1308026"
+      ],
+      "manufacturer_titles": [
+        "25 Liter Round Pot with U-Grooves"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1308026-BK",
+          "manufacturer_product_number": "1308026",
+          "manufacturer_title": "25 Liter Round Pot with U-Grooves"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/25-liter-round-pot-with-u-grooves/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-25l-round-drainage-1304125",
+      "title": "Горщик для лохини 25 л круглий зі збором дренажу",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [
+        "Овочі",
+        "Універсальні / вирощування коноплі"
+      ],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1304125"
+      ],
+      "manufacturer_titles": [
+        "25L Round drainage collection pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1304125-BK",
+          "manufacturer_product_number": "1304125",
+          "manufacturer_title": "25L Round drainage collection pot"
+        },
+        {
+          "sku_id": "PL-1304125-WH",
+          "manufacturer_product_number": "1304125",
+          "manufacturer_title": "25L Round drainage collection pot"
+        },
+        {
+          "sku_id": "PL-1304125-TC",
+          "manufacturer_product_number": "1304125",
+          "manufacturer_title": "25L Round drainage collection pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/zh/portfolio-items/25-%E5%8D%87%E8%BD%AE%E6%8E%92%E..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-round-25l-drainage-short-legs-1303125",
+      "title": "Горщик для лохини 25 л круглий зі збором дренажу на коротких ніжках",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1303125"
+      ],
+      "manufacturer_titles": [
+        "25L Drainage collection pot with short legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1303125-BK",
+          "manufacturer_product_number": "1303125",
+          "manufacturer_title": "25L Drainage collection pot with short legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/25-liter-round-drainage-collection-..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "blueberry-round-short-legs-pot",
+      "title": "Горщик для лохини 25 л круглий на коротких ніжках",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1303025"
+      ],
+      "manufacturer_titles": [
+        "25L Round pot with short legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1303025-BK",
+          "manufacturer_product_number": "1303025",
+          "manufacturer_title": "25L Round pot with short legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/25-liter-round-pot-short-legs/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-round-25l-1308025",
+      "title": "Горщик для лохини 25 л круглий на широких ніжках 30 мм",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1308025"
+      ],
+      "manufacturer_titles": [
+        "25L Round pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1308025-BK",
+          "manufacturer_product_number": "1308025",
+          "manufacturer_title": "25L Round pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/25-liter-round-pot-wide-leg/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-25-round-1308125",
+      "title": "Горщик для лохини 25 л круглий покращеної конструкції",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1308125"
+      ],
+      "manufacturer_titles": [
+        "NEW 25 Liter Round Pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1308125-BK",
+          "manufacturer_product_number": "1308125",
+          "manufacturer_title": "NEW 25 Liter Round Pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/new-25-liter-round-pot/"
+      ],
+      "notes": [
+        "Official current product is explicitly 'NEW 25 Liter Round Pot / New improved version'; separate from #1308025 Wide Leg and #1303025 Short Legs."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-zephyr-v2-30l-1301153",
+      "title": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1301153"
+      ],
+      "manufacturer_titles": [
+        "30L Zephyr pot with 7 cm legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1301153-BK",
+          "manufacturer_product_number": "1301153",
+          "manufacturer_title": "30L Zephyr pot with 7 cm legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-square-30l-1309030",
+      "title": "Горщик для лохини 30 л квадратний на стандартних ніжках",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1309030"
+      ],
+      "manufacturer_titles": [
+        "30L Square pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1309030-BK",
+          "manufacturer_product_number": "1309030",
+          "manufacturer_title": "30L Square pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-cuadrada-de-30-litros/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+      "title": "Горщик для лохини 30 л круглий з U-пазами",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [
+        "Малина + ожина"
+      ],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1308303"
+      ],
+      "manufacturer_titles": [
+        "30L Round pot with legs and U-grooves"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1308303-BK",
+          "manufacturer_product_number": "1308303",
+          "manufacturer_title": "30L Round pot with legs and U-grooves"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/zh/portfolio-items/30%E5%8D%87%E5%9C%86%E5%BD%A2%E7..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-round-30l-v-ribs-1308031",
+      "title": "Горщик для лохини 30 л круглий з V-ребрами",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1308031"
+      ],
+      "manufacturer_titles": [
+        "30L Round pot with legs and V-Ribs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1308031-BK",
+          "manufacturer_product_number": "1308031",
+          "manufacturer_title": "30L Round pot with legs and V-Ribs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-redonda-de-30-litros-con-..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-round-30l-parallel-u-grooves-1308305",
+      "title": "Горщик для лохини 30 л круглий з паралельними U-пазами",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1308305"
+      ],
+      "manufacturer_titles": [
+        "30L Round pot with legs and parallel U-grooves"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1308305-BK",
+          "manufacturer_product_number": "1308305",
+          "manufacturer_title": "30L Round pot with legs and parallel U-grooves"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-redonda-de-30-litros-con-..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-square-35l-u-grooves-13090350",
+      "title": "Горщик для лохини 35 л квадратний з U-пазами",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "13090350"
+      ],
+      "manufacturer_titles": [
+        "35 Liter Square Pot with U-grooves"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-13090350-BK",
+          "manufacturer_product_number": "13090350",
+          "manufacturer_title": "35 Liter Square Pot with U-grooves"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/35-litros-maceta-cuadrada-con-ra..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-round-35l-u-grooves-13080350",
+      "title": "Горщик для лохини 35 л круглий з U-пазами",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "13080350"
+      ],
+      "manufacturer_titles": [
+        "35 Liter Round Pot with U-grooves for Irrigation Pipes"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-13080350-BK",
+          "manufacturer_product_number": "13080350",
+          "manufacturer_title": "35 Liter Round Pot with U-grooves for Irrigation Pipes"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/35-liter-round-pot-with-u-grooves-f..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-zephyr-v2-40l-1301143",
+      "title": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1301143"
+      ],
+      "manufacturer_titles": [
+        "40L Zephyr pot with 7 cm legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1301143-BK",
+          "manufacturer_product_number": "1301143",
+          "manufacturer_title": "40L Zephyr pot with 7 cm legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400",
+      "title": "Горщик для лохини 40 л квадратний з U-пазами Ø16 мм та бічними отворами",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "13090400"
+      ],
+      "manufacturer_titles": [
+        "40 Liter Square Pot with U-Grooves & Side Holes"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-13090400-TC",
+          "manufacturer_product_number": "13090400",
+          "manufacturer_title": "40 Liter Square Pot with U-Grooves & Side Holes"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/40l-square-pot-for-blueberries-with-side-holes/",
+        "https://getplantlogic.com/wp-content/uploads/2026/09/Item-1309040_40L-Square-pot-UG_EN.pdf"
+      ],
+      "notes": [
+        "FINAL separate buyer-selectable construction: official tech sheet maps Ø16 мм to Item #13090400."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440",
+      "title": "Горщик для лохини 40 л квадратний з U-пазами Ø20 мм та бічними отворами",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "13090440"
+      ],
+      "manufacturer_titles": [
+        "40 Liter Square Pot with U-Grooves & Side Holes"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-13090440-TC",
+          "manufacturer_product_number": "13090440",
+          "manufacturer_title": "40 Liter Square Pot with U-Grooves & Side Holes"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/40l-square-pot-for-blueberries-with-side-holes/",
+        "https://getplantlogic.com/wp-content/uploads/2026/09/Item-1309040_40L-Square-pot-UG_EN.pdf"
+      ],
+      "notes": [
+        "FINAL separate buyer-selectable construction: official tech sheet maps Ø20 мм to Item #13090440."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+      "title": "Горщик для лохини 40 л круглий з U-пазами",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1308041"
+      ],
+      "manufacturer_titles": [
+        "40 Liter Round Pot with U-grooves"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1308041-TC",
+          "manufacturer_product_number": "1308041",
+          "manufacturer_title": "40 Liter Round Pot with U-grooves"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/40l-round-pot-with-u-grooves/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-blueberry-round-40l-1308040",
+      "title": "Горщик для лохини 40 л круглий на стандартних ніжках",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1308040"
+      ],
+      "manufacturer_titles": [
+        "40L Round pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1308040-TC",
+          "manufacturer_product_number": "1308040",
+          "manufacturer_title": "40L Round pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-redonda-de-40-litros/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-zephyr-1301133",
+      "title": "Горщик для лохини Zephyr першого покоління",
+      "market_category": "Лохина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1301133"
+      ],
+      "manufacturer_titles": [
+        "Zephyr Pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-BB-1301133-BK",
+          "manufacturer_product_number": "1301133",
+          "manufacturer_title": "Zephyr Pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/tech-sheet-1301133-zephyr-pot_eng/"
+      ],
+      "notes": [
+        "Original Zephyr retained as distinct predecessor to Zephyr V2."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-zephyr-v2-hose-clip-1700149",
+      "title": "Кліпса для поливного шланга для Zephyr V2",
+      "market_category": "Лохина",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1700149"
+      ],
+      "manufacturer_titles": [
+        "Hose clip for Zephyr V2"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1700149",
+          "manufacturer_product_number": "1700149",
+          "manufacturer_title": "Hose clip for Zephyr V2"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-pot-cover-1310110",
+      "title": "Кришка для горщика лохини",
+      "market_category": "Лохина",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1310110"
+      ],
+      "manufacturer_titles": [
+        "Pot cover"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1310110",
+          "manufacturer_product_number": "1310110",
+          "manufacturer_title": "Pot cover"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+      ],
+      "notes": [
+        "PlantLogic describes Pot Cover as a product for blueberry production/high solar radiation zones."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-steel-lysimeter",
+      "title": "Сталевий лізиметр для контролю дренажу",
+      "market_category": "Лохина",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "blueberry",
+      "applications": [],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "13046025",
+        "13046026",
+        "13046031",
+        "13046041"
+      ],
+      "manufacturer_titles": [
+        "Stainless steel lysimeter"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-13046025",
+          "manufacturer_product_number": "13046025",
+          "manufacturer_title": "Stainless steel lysimeter"
+        },
+        {
+          "sku_id": "PL-13046026",
+          "manufacturer_product_number": "13046026",
+          "manufacturer_title": "Stainless steel lysimeter"
+        },
+        {
+          "sku_id": "PL-13046031",
+          "manufacturer_product_number": "13046031",
+          "manufacturer_title": "Stainless steel lysimeter"
+        },
+        {
+          "sku_id": "PL-13046041",
+          "manufacturer_product_number": "13046041",
+          "manufacturer_title": "Stainless steel lysimeter"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/steel-lysimeter-for-blueberry-pots/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-10l-drainage-1307110",
+      "title": "Горщик для малини та ожини 10 л квадратний зі збором дренажу",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [
+        "Овочі",
+        "Універсальні / вирощування коноплі"
+      ],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1307110"
+      ],
+      "manufacturer_titles": [
+        "10L Square drainage collection pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1307110-BK",
+          "manufacturer_product_number": "1307110",
+          "manufacturer_title": "10L Square drainage collection pot"
+        },
+        {
+          "sku_id": "PL-1307110-WH",
+          "manufacturer_product_number": "1307110",
+          "manufacturer_title": "10L Square drainage collection pot"
+        },
+        {
+          "sku_id": "PL-1307110-TC",
+          "manufacturer_product_number": "1307110",
+          "manufacturer_title": "10L Square drainage collection pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-de-10-litros-para-recolec..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-10l-square-1306010",
+      "title": "Горщик для малини та ожини 10 л квадратний на ніжках 30 мм",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1306010"
+      ],
+      "manufacturer_titles": [
+        "10L Square pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1306010-BK",
+          "manufacturer_product_number": "1306010",
+          "manufacturer_title": "10L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1306010-WH",
+          "manufacturer_product_number": "1306010",
+          "manufacturer_title": "10L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1306010-TC",
+          "manufacturer_product_number": "1306010",
+          "manufacturer_title": "10L Square pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/10-liter-square-pot/"
+      ],
+      "notes": [
+        "Current #1306010 construction: 30 мм legs."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-rubus-square-10l-legacy-1309010",
+      "title": "Горщик для малини та ожини 10 л квадратний на ніжках 50 мм",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1309010"
+      ],
+      "manufacturer_titles": [
+        "10 Liter Square Pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1309010-BK",
+          "manufacturer_product_number": "1309010",
+          "manufacturer_title": "10 Liter Square Pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/wp-content/uploads/2017/02/Maceta-cuadrada-de-10-litros-1309010.pdf"
+      ],
+      "notes": [
+        "Legacy distinct construction retained as separate canonical: official older tech sheet specifies 50 мм legs; current #1306010 uses 30 мм."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-15l-square-1309015",
+      "title": "Горщик для малини та ожини 15 л квадратний",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1309015"
+      ],
+      "manufacturer_titles": [
+        "15L Square pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1309015-BK",
+          "manufacturer_product_number": "1309015",
+          "manufacturer_title": "15L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1309015-WH",
+          "manufacturer_product_number": "1309015",
+          "manufacturer_title": "15L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1309015-TC",
+          "manufacturer_product_number": "1309015",
+          "manufacturer_title": "15L Square pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-cuadrada-de-15-litros/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-15l-round-drainage-1304015",
+      "title": "Горщик для малини та ожини 15 л круглий зі збором дренажу",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [
+        "Універсальні / вирощування коноплі"
+      ],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1304015"
+      ],
+      "manufacturer_titles": [
+        "15 Liter Round Drainage Collection Pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1304015-BK",
+          "manufacturer_product_number": "1304015",
+          "manufacturer_title": "15 Liter Round Drainage Collection Pot"
+        },
+        {
+          "sku_id": "PL-1304015-WH",
+          "manufacturer_product_number": "1304015",
+          "manufacturer_title": "15 Liter Round Drainage Collection Pot"
+        },
+        {
+          "sku_id": "PL-1304015-TC",
+          "manufacturer_product_number": "1304015",
+          "manufacturer_title": "15 Liter Round Drainage Collection Pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-de-15-litros-para-recolec..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-3l-square-1306003",
+      "title": "Горщик для малини та ожини 3 л квадратний",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [
+        "Універсальні / вирощування коноплі"
+      ],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1306003"
+      ],
+      "manufacturer_titles": [
+        "3L Square pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1306003-BK",
+          "manufacturer_product_number": "1306003",
+          "manufacturer_title": "3L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1306003-WH",
+          "manufacturer_product_number": "1306003",
+          "manufacturer_title": "3L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1306003-TC",
+          "manufacturer_product_number": "1306003",
+          "manufacturer_title": "3L Square pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-cuadrada-de-3-litros/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-4-7l-square-cold-storage-13050040",
+      "title": "Горщик для малини та ожини 4,7 л квадратний для технології long-cane",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "13050040"
+      ],
+      "manufacturer_titles": [
+        "4.7 Liter Square Pot for Cold Storage"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-13050040-BK",
+          "manufacturer_product_number": "13050040",
+          "manufacturer_title": "4.7 Liter Square Pot for Cold Storage"
+        },
+        {
+          "sku_id": "PL-13050040-WH",
+          "manufacturer_product_number": "13050040",
+          "manufacturer_title": "4.7 Liter Square Pot for Cold Storage"
+        },
+        {
+          "sku_id": "PL-13050040-TC",
+          "manufacturer_product_number": "13050040",
+          "manufacturer_title": "4.7 Liter Square Pot for Cold Storage"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/4-7-liter-square-pot-for-cold-storage/"
+      ],
+      "notes": [
+        "Поточна офіційна картка PlantLogic використовує Product #13050040; U-пази 20 мм зазначені як опція цієї ж моделі."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-5l-drainage-1305005",
+      "title": "Горщик для малини та ожини 5 л квадратний зі збором дренажу",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [
+        "Універсальні / вирощування коноплі"
+      ],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1305005"
+      ],
+      "manufacturer_titles": [
+        "5 Liter Drainage Collection Pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1305005-BK",
+          "manufacturer_product_number": "1305005",
+          "manufacturer_title": "5 Liter Drainage Collection Pot"
+        },
+        {
+          "sku_id": "PL-1305005-WH",
+          "manufacturer_product_number": "1305005",
+          "manufacturer_title": "5 Liter Drainage Collection Pot"
+        },
+        {
+          "sku_id": "PL-1305005-TC",
+          "manufacturer_product_number": "1305005",
+          "manufacturer_title": "5 Liter Drainage Collection Pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-de-5-litros-para-recolecc..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-5l-square-short-1306051",
+      "title": "Горщик для малини та ожини 5 л компактний квадратний",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1306051"
+      ],
+      "manufacturer_titles": [
+        "5L Square pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1306051-BK",
+          "manufacturer_product_number": "1306051",
+          "manufacturer_title": "5L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1306051-WH",
+          "manufacturer_product_number": "1306051",
+          "manufacturer_title": "5L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1306051-TC",
+          "manufacturer_product_number": "1306051",
+          "manufacturer_title": "5L Square pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-cuadrada-de-5-litros-corta/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-7l-square-1306007",
+      "title": "Горщик для малини та ожини 7 л квадратний",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1306007"
+      ],
+      "manufacturer_titles": [
+        "7L Square pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1306007-BK",
+          "manufacturer_product_number": "1306007",
+          "manufacturer_title": "7L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1306007-WH",
+          "manufacturer_product_number": "1306007",
+          "manufacturer_title": "7L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1306007-TC",
+          "manufacturer_product_number": "1306007",
+          "manufacturer_title": "7L Square pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-cuadrada-de-7-litros/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-7l-square-cold-storage-1305071",
+      "title": "Горщик для малини та ожини 7 л квадратний для технології long-cane",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1305071"
+      ],
+      "manufacturer_titles": [
+        "7L Square pot for cold storage"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1305071-BK",
+          "manufacturer_product_number": "1305071",
+          "manufacturer_title": "7L Square pot for cold storage"
+        },
+        {
+          "sku_id": "PL-1305071-WH",
+          "manufacturer_product_number": "1305071",
+          "manufacturer_title": "7L Square pot for cold storage"
+        },
+        {
+          "sku_id": "PL-1305071-TC",
+          "manufacturer_product_number": "1305071",
+          "manufacturer_title": "7L Square pot for cold storage"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-cuadrada-de-7-litros-para..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-7l-drainage-1307107",
+      "title": "Горщик для малини та ожини 7 л квадратний зі збором дренажу",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [
+        "Універсальні / вирощування коноплі"
+      ],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1307107"
+      ],
+      "manufacturer_titles": [
+        "7L Square drainage collection pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1307107-BK",
+          "manufacturer_product_number": "1307107",
+          "manufacturer_title": "7L Square drainage collection pot"
+        },
+        {
+          "sku_id": "PL-1307107-WH",
+          "manufacturer_product_number": "1307107",
+          "manufacturer_title": "7L Square drainage collection pot"
+        },
+        {
+          "sku_id": "PL-1307107-TC",
+          "manufacturer_product_number": "1307107",
+          "manufacturer_title": "7L Square drainage collection pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-de-7-litros-para-recolecc..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-8l-square-1309008",
+      "title": "Горщик для малини та ожини 8 л квадратний",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "containers",
+      "plantlogic_section": "rubus",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1309008"
+      ],
+      "manufacturer_titles": [
+        "8L Square pot with legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1309008-BK",
+          "manufacturer_product_number": "1309008",
+          "manufacturer_title": "8L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1309008-WH",
+          "manufacturer_product_number": "1309008",
+          "manufacturer_title": "8L Square pot with legs"
+        },
+        {
+          "sku_id": "PL-1309008-TC",
+          "manufacturer_product_number": "1309008",
+          "manufacturer_title": "8L Square pot with legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/maceta-cuadrada-de-8-litros/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-cold-storage-bin-1702000",
+      "title": "Контейнер для транспортування та холодного зберігання long-cane",
+      "market_category": "Малина + ожина",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "rubus",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1702000"
+      ],
+      "manufacturer_titles": [
+        "Cold Storage Bin"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1702000",
+          "manufacturer_product_number": "1702000",
+          "manufacturer_title": "Cold Storage Bin"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/techsheet_item_1702000_chi/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-17l-drainage-1305117",
+      "title": "Горщик для овочів 17 л зі збором дренажу",
+      "market_category": "Овочі",
+      "technical_category_id": "containers",
+      "plantlogic_section": "vegetable",
+      "applications": [
+        "Полуниця"
+      ],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1305117"
+      ],
+      "manufacturer_titles": [
+        "17L Drainage collection pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1305117-BK",
+          "manufacturer_product_number": "1305117",
+          "manufacturer_title": "17L Drainage collection pot"
+        },
+        {
+          "sku_id": "PL-1305117-WH",
+          "manufacturer_product_number": "1305117",
+          "manufacturer_title": "17L Drainage collection pot"
+        },
+        {
+          "sku_id": "PL-1305117-TC",
+          "manufacturer_product_number": "1305117",
+          "manufacturer_title": "17L Drainage collection pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/17-liter-drainage-collection-pot/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-vegetable-pot-8l-1305008",
+      "title": "Горщик для овочів 8 л",
+      "market_category": "Овочі",
+      "technical_category_id": "containers",
+      "plantlogic_section": "vegetable",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1305008"
+      ],
+      "manufacturer_titles": [
+        "8 Liter Pot for Vegetables"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1305008-BK",
+          "manufacturer_product_number": "1305008",
+          "manufacturer_title": "8 Liter Pot for Vegetables"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/maceta-de-8-litros-para-vegetales-1305008/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-kratos-rivus-grow-bag-8l-1500010",
+      "title": "Мішок для субстрату 8 л для овочевих систем",
+      "market_category": "Овочі",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "vegetable",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1500010"
+      ],
+      "manufacturer_titles": [
+        "8L Bag for Kratos / Rivus"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1500010",
+          "manufacturer_product_number": "1500010",
+          "manufacturer_title": "8L Bag for Kratos / Rivus"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-rivus-slab-base",
+      "title": "Основа Rivus з інтегрованим дренажним жолобом для субстратних плит",
+      "market_category": "Овочі",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "vegetable",
+      "applications": [],
+      "action": "SPLIT",
+      "manufacturer_product_numbers": [
+        "13020500",
+        "13020502"
+      ],
+      "manufacturer_titles": [
+        "Rivus slab base - Black",
+        "Rivus slab base - Black and white"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-13020500",
+          "manufacturer_product_number": "13020500",
+          "manufacturer_title": "Rivus slab base - Black"
+        },
+        {
+          "sku_id": "PL-13020502",
+          "manufacturer_product_number": "13020502",
+          "manufacturer_title": "Rivus slab base - Black and white"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/rivus-slab-base/"
+      ],
+      "notes": [
+        "Rivus slab base; Black і Black&White залишаються SKU-варіантами одного canonical product.",
+        "Rivus slab base; Black і Black&White залишаються SKU-варіантами одного canonical product."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-kratos-slab-base-1301081",
+      "title": "Основа для субстратних плит",
+      "market_category": "Овочі",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "vegetable",
+      "applications": [],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1301081"
+      ],
+      "manufacturer_titles": [
+        "Kratos slab base"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1301081",
+          "manufacturer_product_number": "1301081",
+          "manufacturer_title": "Kratos slab base"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/kratos-base-para-recoleccion-de-..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-rivus-end-cap",
+      "title": "Торцева заглушка Rivus для основи субстратних плит",
+      "market_category": "Овочі",
+      "technical_category_id": "accessories",
+      "plantlogic_section": "vegetable",
+      "applications": [],
+      "action": "SPLIT",
+      "manufacturer_product_numbers": [
+        "13020510",
+        "13020512"
+      ],
+      "manufacturer_titles": [
+        "Rivus end cap - Black",
+        "Rivus end cap - Black and white"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-13020510",
+          "manufacturer_product_number": "13020510",
+          "manufacturer_title": "Rivus end cap - Black"
+        },
+        {
+          "sku_id": "PL-13020512",
+          "manufacturer_product_number": "13020512",
+          "manufacturer_title": "Rivus end cap - Black and white"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/rivus-slab-base/"
+      ],
+      "notes": [
+        "Rivus end cap; Black і Black&White залишаються SKU-варіантами одного canonical product.",
+        "Rivus end cap; Black і Black&White залишаються SKU-варіантами одного canonical product."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-18l-strawberry-trough-1305909",
+      "title": "Жолоб для вирощування полуниці 18 л з опорою для квітконосів",
+      "market_category": "Полуниця",
+      "technical_category_id": "strawberry",
+      "plantlogic_section": "strawberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1305909"
+      ],
+      "manufacturer_titles": [
+        "18L Trough with truss support"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1305909",
+          "manufacturer_product_number": "1305909",
+          "manufacturer_title": "18L Trough with truss support"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/18-liter-strawberry-trough-with-tru..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
+      "title": "Жолоб для вирощування полуниці 8 л з широкою ручкою",
+      "market_category": "Полуниця",
+      "technical_category_id": "strawberry",
+      "plantlogic_section": "strawberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1305082"
+      ],
+      "manufacturer_titles": [
+        "8 Liter Trough with Short Legs with Big Handle"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1305082",
+          "manufacturer_product_number": "1305082",
+          "manufacturer_title": "8 Liter Trough with Short Legs with Big Handle"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/bandeja-de-8-litros-patas-cortas..."
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-strawberry-trough-8l-short-legs-1305081",
+      "title": "Жолоб для вирощування полуниці 8 л на коротких ніжках",
+      "market_category": "Полуниця",
+      "technical_category_id": "strawberry",
+      "plantlogic_section": "strawberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1305081"
+      ],
+      "manufacturer_titles": [
+        "8 Liter Trough with Short Legs"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1305081",
+          "manufacturer_product_number": "1305081",
+          "manufacturer_title": "8 Liter Trough with Short Legs"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/es/portfolio-items/8-litros-bandeja-con-patas-cortas/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-strawberry-trough-9l-1305109",
+      "title": "Жолоб для вирощування полуниці 9 л",
+      "market_category": "Полуниця",
+      "technical_category_id": "strawberry",
+      "plantlogic_section": "strawberry",
+      "applications": [],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1305109"
+      ],
+      "manufacturer_titles": [
+        "9 Liter Trough for Strawberries"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1305109",
+          "manufacturer_product_number": "1305109",
+          "manufacturer_title": "9 Liter Trough for Strawberries"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/9-liter-trough-for-strawberries/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-9l-strawberry-trough-truss-1305209",
+      "title": "Жолоб для вирощування полуниці 9 л з підтримкою квітконосів",
+      "market_category": "Полуниця",
+      "technical_category_id": "strawberry",
+      "plantlogic_section": "strawberry",
+      "applications": [],
+      "action": "KEEP",
+      "manufacturer_product_numbers": [
+        "1305209"
+      ],
+      "manufacturer_titles": [
+        "9L Trough with truss support"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1305209",
+          "manufacturer_product_number": "1305209",
+          "manufacturer_title": "9L Trough with truss support"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/9-liter-trough-with-truss-support/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-trough-cover",
+      "title": "Кришка для полуничного жолоба",
+      "market_category": "Полуниця",
+      "technical_category_id": "strawberry",
+      "plantlogic_section": "strawberry",
+      "applications": [],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "30020012",
+        "C30020012",
+        "30020034",
+        "C30020034",
+        "30020036",
+        "C30020036",
+        "30020037",
+        "C30020037",
+        "30020040",
+        "C30020040",
+        "30020041",
+        "C30020041"
+      ],
+      "manufacturer_titles": [
+        "Trough Cover"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-30020012",
+          "manufacturer_product_number": "30020012",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-C30020012",
+          "manufacturer_product_number": "C30020012",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-30020034",
+          "manufacturer_product_number": "30020034",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-C30020034",
+          "manufacturer_product_number": "C30020034",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-30020036",
+          "manufacturer_product_number": "30020036",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-C30020036",
+          "manufacturer_product_number": "C30020036",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-30020037",
+          "manufacturer_product_number": "30020037",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-C30020037",
+          "manufacturer_product_number": "C30020037",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-30020040",
+          "manufacturer_product_number": "30020040",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-C30020040",
+          "manufacturer_product_number": "C30020040",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-30020041",
+          "manufacturer_product_number": "30020041",
+          "manufacturer_title": "Trough Cover"
+        },
+        {
+          "sku_id": "PL-C30020041",
+          "manufacturer_product_number": "C30020041",
+          "manufacturer_title": "Trough Cover"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/trough-cover/"
+      ],
+      "notes": [
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо. C-prefixed identifier є у V5, але відсутній в audit Excel; зберігаємо до окремої manufacturer-verification.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо. C-prefixed identifier є у V5, але відсутній в audit Excel; зберігаємо до окремої manufacturer-verification.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо. C-prefixed identifier є у V5, але відсутній в audit Excel; зберігаємо до окремої manufacturer-verification.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо. C-prefixed identifier є у V5, але відсутній в audit Excel; зберігаємо до окремої manufacturer-verification.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо. C-prefixed identifier є у V5, але відсутній в audit Excel; зберігаємо до окремої manufacturer-verification.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо.",
+        "Поточний V5: одна family Trough Cover. За правилом Strawberry-specific переносимо public Market category у «Полуниця»; SKU/ID не міняємо. C-prefixed identifier є у V5, але відсутній в audit Excel; зберігаємо до окремої manufacturer-verification."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-universal-round-25l-legacy-1309003",
+      "title": "Горщик 25 л круглий для субстратного вирощування",
+      "market_category": "Універсальні",
+      "technical_category_id": "containers",
+      "plantlogic_section": "universal",
+      "applications": [
+        "Вирощування коноплі"
+      ],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1309003"
+      ],
+      "manufacturer_titles": [
+        "25 Liter Round Pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1309003-BK",
+          "manufacturer_product_number": "1309003",
+          "manufacturer_title": "25 Liter Round Pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/zh/portfolio-items/25l-%E5%9C%86%E5%BD%A2%E7%A7%8D%..."
+      ],
+      "notes": [
+        "Legacy distinct construction: не зливати з #1308025/#1308125. Canonical record окремий; публікацію/commerce status узгодити окремо."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-universal-round-30l-1308030",
+      "title": "Горщик 30 л круглий для субстратного вирощування",
+      "market_category": "Універсальні",
+      "technical_category_id": "containers",
+      "plantlogic_section": "universal",
+      "applications": [
+        "Субстратне вирощування"
+      ],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1308030"
+      ],
+      "manufacturer_titles": [
+        "30 Liter Round Pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1308030-BK",
+          "manufacturer_product_number": "1308030",
+          "manufacturer_title": "30 Liter Round Pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/substrate-pots-gardening/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-30l-drainage-1307133",
+      "title": "Горщик 30 л круглий зі збором дренажу",
+      "market_category": "Універсальні",
+      "technical_category_id": "containers",
+      "plantlogic_section": "universal",
+      "applications": [
+        "Вирощування коноплі"
+      ],
+      "action": "RENAME",
+      "manufacturer_product_numbers": [
+        "1307133"
+      ],
+      "manufacturer_titles": [
+        "30L Square drainage collection pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1307133-BK",
+          "manufacturer_product_number": "1307133",
+          "manufacturer_title": "30L Square drainage collection pot"
+        },
+        {
+          "sku_id": "PL-1307133-WH",
+          "manufacturer_product_number": "1307133",
+          "manufacturer_title": "30L Square drainage collection pot"
+        },
+        {
+          "sku_id": "PL-1307133-TC",
+          "manufacturer_product_number": "1307133",
+          "manufacturer_title": "30L Square drainage collection pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/portfolio-items/30-liter-drainage-collection-pot/"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_product_id": "plantlogic-universal-square-40l-legacy-1309040",
+      "title": "Горщик 40 л квадратний для субстратного вирощування",
+      "market_category": "Універсальні",
+      "technical_category_id": "containers",
+      "plantlogic_section": "universal",
+      "applications": [
+        "Вирощування коноплі"
+      ],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1309040"
+      ],
+      "manufacturer_titles": [
+        "40 Liter Square Pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1309040-BK",
+          "manufacturer_product_number": "1309040",
+          "manufacturer_title": "40 Liter Square Pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/1309040-40-liter-square-pot-english/"
+      ],
+      "notes": [
+        "Legacy distinct 40L Square: не зливати з новими #13090400/#13090440."
+      ]
+    },
+    {
+      "canonical_product_id": "plantlogic-universal-round-5l-1308005",
+      "title": "Горщик 5 л круглий для субстратного вирощування",
+      "market_category": "Універсальні",
+      "technical_category_id": "containers",
+      "plantlogic_section": "universal",
+      "applications": [
+        "Субстратне вирощування"
+      ],
+      "action": "CREATE",
+      "manufacturer_product_numbers": [
+        "1308005"
+      ],
+      "manufacturer_titles": [
+        "5 Liter Round Pot"
+      ],
+      "skus": [
+        {
+          "sku_id": "PL-1308005-BK",
+          "manufacturer_product_number": "1308005",
+          "manufacturer_title": "5 Liter Round Pot"
+        }
+      ],
+      "status": "FINAL",
+      "source_urls": [
+        "https://getplantlogic.com/plantlogic-5-liter-round-1308005-bottom/"
+      ],
+      "notes": []
+    }
+  ],
+  "aliases": [
+    {
+      "alias_manufacturer_product_number": "1302050",
+      "canonical_target": "plantlogic-rivus-slab-base",
+      "note": "Family/reference code Rivus. Не робити commerce-сутністю; canonical base та end cap розділені.",
+      "source": "https://getplantlogic.com/portfolio-items/rivus-slab-base/"
+    },
+    {
+      "alias_manufacturer_product_number": "1304115",
+      "canonical_target": "plantlogic-15l-round-drainage-1304015",
+      "note": "Legacy/catalog/family code → alias only; окремої commerce-сутності не створювати.",
+      "source": "https://getplantlogic.com/portfolio-items/15-liter-round-drainage-collection-..."
+    },
+    {
+      "alias_manufacturer_product_number": "1305004",
+      "canonical_target": "plantlogic-4-7l-square-cold-storage-13050040",
+      "note": "Catalog family/short code; current official web product uses #13050040.",
+      "source": "https://getplantlogic.com/es/portfolio-items/maceta-cuadrada-de-4-7-litros-pa..."
+    },
+    {
+      "alias_manufacturer_product_number": "1305044",
+      "canonical_target": "plantlogic-4-7l-square-cold-storage-13050040",
+      "note": "Catalog/family short code. Direct canonical target set to current #13050040; no alias→alias.",
+      "source": "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+    },
+    {
+      "alias_manufacturer_product_number": "1305051",
+      "canonical_target": "plantlogic-5l-drainage-1305005",
+      "note": "Legacy/catalog/family code → alias only; окремої commerce-сутності не створювати.",
+      "source": "https://getplantlogic.com/portfolio-items/5-liter-drainage-collection-pot/"
+    },
+    {
+      "alias_manufacturer_product_number": "1305091",
+      "canonical_target": "plantlogic-9l-strawberry-trough-truss-1305209",
+      "note": "Назва/файл містять 1305091, але актуальний tech sheet всередині і current page вказують Item #1305209.",
+      "source": "https://getplantlogic.com/9-liter-through-for-strawberries_item_1305091_eng/"
+    },
+    {
+      "alias_manufacturer_product_number": "1307007",
+      "canonical_target": "plantlogic-7l-drainage-1307107",
+      "note": "Legacy/catalog/family code → alias only; окремої commerce-сутності не створювати.",
+      "source": "https://getplantlogic.com/es/maceta-de-7-litros-para-la-recoleccion-de-drenaj..."
+    },
+    {
+      "alias_manufacturer_product_number": "1307010",
+      "canonical_target": "plantlogic-10l-drainage-1307110",
+      "note": "Legacy/catalog/family code → alias only; окремої commerce-сутності не створювати.",
+      "source": "https://getplantlogic.com/plantlogic-10-liter-drainage-1307010-angled/"
+    },
+    {
+      "alias_manufacturer_product_number": "1307033",
+      "canonical_target": "plantlogic-30l-drainage-1307133",
+      "note": "Legacy/catalog/family code → alias only; окремої commerce-сутності не створювати.",
+      "source": "https://getplantlogic.com/es/hoja-tecnica-item-1307033_esp/"
+    },
+    {
+      "alias_manufacturer_product_number": "1308035",
+      "canonical_target": "plantlogic-blueberry-round-35l-u-grooves-13080350",
+      "note": "Legacy/catalog/family code → alias only; окремої commerce-сутності не створювати.",
+      "source": "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+    },
+    {
+      "alias_manufacturer_product_number": "1309035",
+      "canonical_target": "plantlogic-blueberry-square-35l-u-grooves-13090350",
+      "note": "Legacy/catalog/family code → alias only; окремої commerce-сутності не створювати.",
+      "source": "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+    },
+    {
+      "alias_manufacturer_product_number": "1700021",
+      "canonical_target": "plantlogic-pot-anchor",
+      "note": "FINAL family/tech-sheet reference. Technical sheet named 1700021 lists actual Pot Anchor Product #1700020, #1700034 and #1700041; no standalone commerce SKU for 1700021.",
+      "source": "https://getplantlogic.com/portfolio-items/pot-anchor/ | https://getplantlogic.com/wp-content/uploads/2021/01/Technical-sheet-Item-1700021-Eng.pdf"
+    },
+    {
+      "alias_manufacturer_product_number": "13050051",
+      "canonical_target": "plantlogic-5l-drainage-1305005",
+      "note": "Legacy/catalog/family code → alias only; окремої commerce-сутності не створювати.",
+      "source": "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+    },
+    {
+      "alias_manufacturer_product_number": "13050440",
+      "canonical_target": "plantlogic-4-7l-square-cold-storage-13050040",
+      "note": "FINAL alias/reference: current Product page markets #13050040; its linked tech-sheet filename contains 13050440, but PlantLogic does not publish a separate second construction/Product page for #13050440.",
+      "source": "https://getplantlogic.com/portfolio-items/4-7-liter-square-pot-for-cold-storage/"
+    },
+    {
+      "alias_manufacturer_product_number": "13080410",
+      "canonical_target": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+      "note": "Legacy/catalog/family code → alias only; окремої commerce-сутності не створювати.",
+      "source": "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
+    }
+  ]
+}

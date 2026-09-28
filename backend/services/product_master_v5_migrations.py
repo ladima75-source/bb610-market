@@ -2335,6 +2335,12 @@ def _restore_cannabis_as_universal_membership_batch_23(con: sqlite3.Connection) 
     return True
 
 
+
+def _plantlogic_v2_final_batch_24(con: sqlite3.Connection) -> bool:
+    """Apply the approved PlantLogic V2 Final canonical product/SKU/alias structure."""
+    from . import plantlogic_v2_final
+    return plantlogic_v2_final.apply(con)
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2361,6 +2367,7 @@ _MIGRATIONS = [
     ("20260928_normalize_long_cane_titles_batch21", _normalize_long_cane_titles_batch_21),
     ("20260928_normalize_plantlogic_catalog_sections_batch22", _normalize_plantlogic_catalog_sections_batch_22),
     ("20260928_restore_cannabis_as_universal_membership_batch23", _restore_cannabis_as_universal_membership_batch_23),
+    ("20260928_plantlogic_v2_final_batch24", _plantlogic_v2_final_batch_24),
 ]
 
 

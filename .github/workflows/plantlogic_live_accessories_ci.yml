@@ -1,12 +1,12 @@
-name: Plantlogic live accessories CI
+name: Plantlogic live canonical CI
 
 on:
   push:
     branches: [main]
     paths:
-      - 'backend/services/plantlogic_sections_runtime_migration.py'
-      - 'v5/staging/production-current.json'
-      - 'v5/content/verified-current.json'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
+      - 'backend/services/plantlogic_v2_final.py'
+      - 'backend/services/product_master_v5_migrations.py'
       - 'js/catalog.js'
       - '.github/workflows/plantlogic_live_accessories_ci.yml'
   workflow_dispatch:
@@ -15,73 +15,69 @@ permissions:
   contents: read
 
 jobs:
-  live-accessories:
+  live-v2:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-      - name: Verify live V5 accessories and bag bases
-        shell: bash
+      - name: Wait for deployed V2 and verify live canonical catalog
         run: |
           set -euo pipefail
-          curl --fail --silent --show-error --retry 5 --retry-delay 2 \
-            https://api.market.bb610.com.ua/api/v1/catalog/v5 \
-            -o /tmp/catalog-v5.json
           python - <<'PY'
-          import json
+          import json, time, urllib.request
           from pathlib import Path
 
-          live=json.loads(Path('/tmp/catalog-v5.json').read_text(encoding='utf-8'))
-          content=json.loads(Path('v5/content/verified-current.json').read_text(encoding='utf-8'))
-          stage=json.loads(Path('v5/staging/production-current.json').read_text(encoding='utf-8'))
+          spec=json.loads(Path('data/product_content/plantlogic_v2_final_20260928.json').read_text(encoding='utf-8'))
+          expected_ids={x['canonical_product_id'] for x in spec['canonical_products']}
+          expected_skus={s['sku_id'] for x in spec['canonical_products'] for s in x.get('skus') or []}
+          expected_sections={'blueberry','rubus','strawberry','vegetable','universal','accessories'}
 
           def sections(product):
               for row in product.get('characteristics') or []:
-                  if str(row.get('label') or '').strip() == '__plantlogic_sections':
+                  if str(row.get('label') or '').strip()=='__plantlogic_sections':
                       return {x.strip() for x in str(row.get('value') or '').split('|') if x.strip()}
               return set()
 
-          expected_products={
-              p['product_id']: sections(p)
-              for p in content.get('products') or []
-              if str(p.get('brand') or '').strip().lower() == 'plantlogic'
-          }
-          live_products={
-              p['product_id']: sections(p)
-              for p in live.get('products') or []
-              if str(p.get('brand') or '').strip().lower() == 'plantlogic'
-          }
+          last=''
+          live=None
+          for _ in range(40):
+              try:
+                  with urllib.request.urlopen('https://api.market.bb610.com.ua/api/v1/catalog/v5',timeout=20) as r:
+                      candidate=json.load(r)
+                  rows=[p for p in candidate.get('products') or [] if str(p.get('brand') or '').lower()=='plantlogic']
+                  ids={p.get('product_id') or p.get('id') for p in rows}
+                  skus={s.get('sku_id') or s.get('id') for p in rows for s in p.get('skus') or []}
+                  if ids==expected_ids and skus==expected_skus:
+                      live=candidate
+                      break
+                  last=f'products={len(ids)} skus={len(skus)} missing_products={len(expected_ids-ids)} missing_skus={len(expected_skus-skus)}'
+              except Exception as exc:
+                  last=repr(exc)
+              time.sleep(15)
+          if live is None:
+              raise SystemExit('deployed V2 not observed: '+last)
 
-          for section in ('accessories','bag_bases'):
-              expected={pid for pid,sec in expected_products.items() if section in sec}
-              actual={pid for pid,sec in live_products.items() if section in sec}
-              missing=sorted(expected-actual)
-              if missing:
-                  raise SystemExit(f'{section}: missing live products: {missing}')
-              print(f'{section}: {len(actual)} live products')
+          rows=[p for p in live.get('products') or [] if str(p.get('brand') or '').lower()=='plantlogic']
+          ids={p.get('product_id') or p.get('id') for p in rows}
+          skus={s.get('sku_id') or s.get('id') for p in rows for s in p.get('skus') or []}
+          assert ids==expected_ids and len(ids)==78
+          assert skus==expected_skus and len(skus)==133
+
+          for p in rows:
+              sec=sections(p)
+              assert len(sec)==1 and sec <= expected_sections, (p.get('product_id'),sec)
+              assert 'bag_bases' not in sec and 'garden' not in sec
+              if str(p.get('name') or '').startswith('Горщик'):
+                  assert p.get('category_id')!='accessories', p.get('product_id')
 
           required={
-              'plantlogic-hose-clip-12050010',
-              'plantlogic-steel-lysimeter',
-              'plantlogic-metal-hose-clip-1205012',
-              'plantlogic-metal-stakes-gutter',
-              'plantlogic-micro-tube-stake',
-              'plantlogic-plastic-gutter-drainage',
-              'plantlogic-lysimeter-kit',
-              'plantlogic-ground-cover-1600201',
-              'plantlogic-trough-cover',
               'plantlogic-pot-anchor',
+              'plantlogic-vf-bag-base-12010300',
+              'plantlogic-rivus-slab-base',
+              'plantlogic-rivus-end-cap',
+              'plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400',
+              'plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440',
           }
-          live_accessories={pid for pid,sec in live_products.items() if 'accessories' in sec}
-          missing=sorted(required-live_accessories)
-          if missing:
-              raise SystemExit(f'required accessories absent from live API: {missing}')
-
-          counts=live.get('counts') or {}
-          summary=stage.get('summary') or {}
-          # Product count may legitimately differ before the matching source commit is deployed.
-          # SKU identity is the invariant for this live safety check.
-          if counts.get('skus') != summary.get('v5_stage_skus_total'):
-              raise SystemExit(f"sku count mismatch live={counts.get('skus')} stage={summary.get('v5_stage_skus_total')}")
-
-          print('PLANTLOGIC LIVE ACCESSORIES: PASS')
+          assert required <= ids
+          print('PLANTLOGIC LIVE CANONICAL: 78 PRODUCTS / 133 SKU / 6 SECTIONS PASS')
           PY

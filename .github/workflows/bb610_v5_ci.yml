@@ -2,9 +2,11 @@ name: BB610 Product Master V5 CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, plantlogic-v2-work]
     paths:
       - 'v5/**'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
+      - 'tools/audit_plantlogic_v2_final.py'
       - 'backend/services/product_master_v5.py'
       - 'backend/services/product_master_v5_migrations.py'
       - 'ops/ads-hires-media-import.json'
@@ -53,6 +55,11 @@ jobs:
         run: |
           set -euo pipefail
           python v5/bootstrap_db.py --out /tmp/bb610-v5.sqlite3
+
+      - name: PlantLogic V2 canonical contract
+        run: |
+          set -euo pipefail
+          python tools/audit_plantlogic_v2_final.py
 
       - name: V5 contract
         run: |
@@ -236,8 +243,8 @@ jobs:
           assert product('plantlogic-steel-lysimeter')['name']=='Сталевий лізиметр для контролю дренажу'
           long47=product('plantlogic-4-7l-square-cold-storage-13050040')
           long7=product('plantlogic-7l-square-cold-storage-1305071')
-          assert long47['name']=='Горщик для малини 4,7 л квадратний для технології long-cane'
-          assert long7['name']=='Горщик для малини 7 л квадратний для технології long-cane'
+          assert long47['name']=='Горщик для малини та ожини 4,7 л квадратний для технології long-cane'
+          assert long7['name']=='Горщик для малини та ожини 7 л квадратний для технології long-cane'
           assert 'холодного зберігання' not in long47['name'].lower()
           assert long47['short_description']=='Спеціалізований горщик для вирощування long-cane малини. Компактна квадратна форма підвищує ефективність розміщення рослин під час холодного зберігання.'
           assert all(s['attributes']['canonical_title']==long47['name'] for s in long47['skus'])

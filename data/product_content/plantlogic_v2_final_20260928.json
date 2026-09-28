@@ -9,7 +9,35 @@
     "to_verify": [
       "1205018",
       "1205019"
-    ]
+    ],
+    "total_sku": 133,
+    "public_sections": [
+      "blueberry",
+      "rubus",
+      "strawberry",
+      "vegetable",
+      "universal",
+      "accessories"
+    ],
+    "action_counts": {
+      "KEEP": 31,
+      "CREATE": 26,
+      "SPLIT": 4,
+      "RENAME": 17
+    },
+    "technical_category_counts": {
+      "containers": 44,
+      "accessories": 28,
+      "strawberry": 6
+    },
+    "section_counts": {
+      "blueberry": 28,
+      "rubus": 14,
+      "strawberry": 6,
+      "vegetable": 6,
+      "universal": 5,
+      "accessories": 19
+    }
   },
   "canonical_products": [
     {
@@ -997,7 +1025,8 @@
       "plantlogic_section": "blueberry",
       "applications": [],
       "action": "KEEP",
-      "manufacturer_product_numbers": [        "1309030"
+      "manufacturer_product_numbers": [
+        "1309030"
       ],
       "manufacturer_titles": [
         "30L Square pot with legs"
@@ -1996,7 +2025,8 @@
           "sku_id": "PL-1305008-BK",
           "manufacturer_product_number": "1305008",
           "manufacturer_title": "8 Liter Pot for Vegetables"
-        }      ],
+        }
+      ],
       "status": "FINAL",
       "source_urls": [
         "https://getplantlogic.com/es/maceta-de-8-litros-para-vegetales-1305008/"

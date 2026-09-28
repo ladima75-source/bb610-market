@@ -54,6 +54,13 @@ def main() -> int:
         for product in canonical for sku in product.get("skus") or []
     }
     wanted_skus = set(wanted_sku_owner)
+    assert len(wanted_skus) == expected["total_sku"] == 133
+    action_counts = {}
+    for product in canonical:
+        action = str(product.get("action") or "")
+        action_counts[action] = action_counts.get(action, 0) + 1
+    assert action_counts == expected["action_counts"] == {"KEEP": 31, "CREATE": 26, "SPLIT": 4, "RENAME": 17}
+    assert expected["public_sections"] == ["blueberry", "rubus", "strawberry", "vegetable", "universal", "accessories"]
 
     with tempfile.TemporaryDirectory() as td:
         db = Path(td) / "v5.sqlite3"
@@ -142,8 +149,13 @@ def main() -> int:
             titles = [row["name"] for row in product_rows]
             assert len(titles) == len(set(titles)), "duplicate canonical PlantLogic titles"
 
+            category_counts = {}
+            section_counts = {}
             allowed_sections = {"blueberry", "rubus", "strawberry", "vegetable", "universal", "accessories"}
+            assert allowed_sections == set(expected["public_sections"])
             for row in product_rows:
+                category = str(row["category_id"] or "")
+                category_counts[category] = category_counts.get(category, 0) + 1
                 assert str(row["manufacturer_title"] or "").strip(), ("manufacturer_title missing", row["product_id"])
                 assert str(row["manufacturer_product_number"] or "").strip(), ("manufacturer Product # missing", row["product_id"])
                 chars = json.loads(row["characteristics_json"] or "[]")
@@ -152,8 +164,11 @@ def main() -> int:
                     "",
                 )
                 assert section in allowed_sections, ("bad PlantLogic section", row["product_id"], section)
+                section_counts[section] = section_counts.get(section, 0) + 1
                 if str(row["name"]).startswith("Горщик"):
                     assert row["category_id"] != "accessories", ("pot in Accessories", row["product_id"])
+            assert category_counts == expected["technical_category_counts"] == {"containers": 44, "accessories": 28, "strawberry": 6}
+            assert section_counts == expected["section_counts"] == {"blueberry": 28, "rubus": 14, "strawberry": 6, "vegetable": 6, "universal": 5, "accessories": 19}
 
             alias_rows = con.execute(
                 """SELECT alias,product_id FROM product_aliases
@@ -197,6 +212,8 @@ def main() -> int:
             title_by_id = {row["product_id"]: row["name"] for row in product_rows}
             assert "16 мм" in title_by_id["plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400"]
             assert "20 мм" in title_by_id["plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440"]
+            assert title_by_id["plantlogic-4-7l-square-cold-storage-13050040"] == "Горщик для малини та ожини 4,7 л квадратний для технології long-cane"
+            assert title_by_id["plantlogic-7l-square-cold-storage-1305071"] == "Горщик для малини та ожини 7 л квадратний для технології long-cane"
 
             os.environ["BB610_V5_DB_PATH"] = str(db)
             os.environ["BB610_DB_PATH"] = str(Path(td) / "no-live-commerce.sqlite3")
@@ -248,6 +265,9 @@ def main() -> int:
             print("PLANTLOGIC V2 FINAL AUDIT: PASS")
             print("CANONICAL PRODUCTS: 78")
             print("ALIAS/REFERENCE: 15")
+            print("PLANTLOGIC SKU: 133")
+            print("PUBLIC SECTIONS: 6")
+            print("ACTIONS: KEEP 31 / CREATE 26 / SPLIT 4 / RENAME 17")
             print("NEW SKU: 27")
             print("TO_VERIFY: 1205018, 1205019")
             print("EXISTING COMMERCE UNCHANGED: PASS")

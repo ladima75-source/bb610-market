@@ -99,12 +99,14 @@ jobs:
           const accessories=DS.products().filter(x=>x.category_id==='accessories');
           const bagBases=DS.products().filter(x=>x.category_id==='bag_bases');
           const strawberry=DS.products().filter(x=>x.category_id==='strawberry');
-          if(pots.length!==21)throw new Error('Plantlogic pot family count');
+          if(pots.length!==32)throw new Error('Plantlogic pot storefront card count');
           if(accessories.length!==10)throw new Error('Plantlogic accessories category');
           if(bagBases.length!==5)throw new Error('Plantlogic bag bases category');
           if(strawberry.length!==3)throw new Error('Plantlogic strawberry category');
           const potSkus=pots.flatMap(p=>DS.skusForProduct(p.id));
           if(potSkus.length!==62)throw new Error('Plantlogic pot SKU count');
+          if(DS.product('blueberry-round-pots')?.id!=='plantlogic-blueberry-round-20l-1308020')throw new Error('legacy grouped product alias');
+          if(DS.sku('PL-BB-1308031-BK')?.product_id!=='plantlogic-blueberry-round-30l-v-ribs-1308031')throw new Error('split round 30L product identity');
           const anchor=DS.product('plantlogic-pot-anchor');
           if(anchor?.name!=='Анкер для фіксації горщика'||anchor?.model!=='Pot Anchor')throw new Error('model/title projection');
           const parallel=DS.sku('PL-BB-1308305-BK');

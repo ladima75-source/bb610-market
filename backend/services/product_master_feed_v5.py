@@ -129,6 +129,7 @@ def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]
                 "product_id": pid,
                 "variant": _text(source_sku.get("package_label")),
                 "canonical_title": canonical_title,
+                "item_group_id": _identifier(attributes, "item_group_id", "related_group_id") or pid,
                 "feed": {"title": canonical_title} if canonical_title else {},
                 "image": sku_image,
                 "mpn": _text(source_sku.get("manufacturer_sku")),

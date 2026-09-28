@@ -819,56 +819,6 @@
       "public_enabled": true
     },
     {
-      "product_id": "blueberry-round-pots",
-      "name": "Горщик для лохини 20 л круглий на стандартних ніжках",
-      "brand": "Plantlogic",
-      "manufacturer": "Plantlogic",
-      "category_id": "containers",
-      "short_description": "Круглі горщики для лохини. Моделі: 20 / 25 / 30 / 40 л.",
-      "description": "Круглі горщики для лохини — групова картка моделей Plantlogic з розділу «Blueberry production» каталогу виробника. У картці моделі розрізняються за артикулом, об'ємом, виконанням і кольором.",
-      "application": "Контейнерне субстратне вирощування лохини.",
-      "composition": null,
-      "benefits": [],
-      "how_it_works": null,
-      "characteristics": [
-        {
-          "label": "Сімейство",
-          "value": "round"
-        },
-        {
-          "label": "Форма",
-          "value": "round"
-        },
-        {
-          "label": "Об'єми",
-          "value": "20 / 25 / 30 / 40 л"
-        },
-        {
-          "label": "Моделі",
-          "value": "20 л · арт. 1308020 · Стандартні ніжки · A: 303 мм; B: Ø 370 мм; C: 245 мм; D: 30 мм | 25 л · арт. 1308025 · Стандартні ніжки · A: 354 мм; B: Ø 385 мм; C: 268 мм; D: 30 мм | 30 л · арт. 1308031 · V-ребра · A: 383 мм; B: Ø 407 мм; C: 282 мм; D: 30 мм | 40 л · арт. 1308040 · Стандартні ніжки · A: 384 мм; B: Ø 460 мм; C: 330 мм; D: 30 мм"
-        },
-        {
-          "label": "__plantlogic_sections",
-          "value": "blueberry|rubus"
-        }
-      ],
-      "seo_title": null,
-      "seo_description": null,
-      "content_status": "verified_manufacturer_catalog",
-      "sources": [
-        {
-          "source_type": "manufacturer_catalog",
-          "url": "https://getplantlogic.com/",
-          "label": "Plantlogic Catalog 2026",
-          "verified_at": "2026-09-19",
-          "status": "verified",
-          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
-        }
-      ],
-      "public_enabled": true,
-      "model": null
-    },
-    {
       "product_id": "blueberry-round-short-legs-pot",
       "name": "Горщик для лохини 25 л круглий на коротких ніжках",
       "brand": "Plantlogic",
@@ -917,206 +867,6 @@
       ],
       "public_enabled": true,
       "model": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "name": "Горщик для лохини 30 л круглий з U-пазами",
-      "brand": "Plantlogic",
-      "manufacturer": "Plantlogic",
-      "category_id": "containers",
-      "short_description": "Круглі горщики з U-пазами для лохини. Моделі: 30 / 35 / 40 л.",
-      "description": "Круглі горщики з U-пазами для лохини — групова картка моделей Plantlogic з розділу «Blueberry production» каталогу виробника. У картці моделі розрізняються за артикулом, об'ємом, виконанням і кольором.",
-      "application": "Контейнерне субстратне вирощування лохини.",
-      "composition": null,
-      "benefits": [],
-      "how_it_works": null,
-      "characteristics": [
-        {
-          "label": "Сімейство",
-          "value": "u_groove_round"
-        },
-        {
-          "label": "Форма",
-          "value": "round"
-        },
-        {
-          "label": "Об'єми",
-          "value": "30 / 35 / 40 л"
-        },
-        {
-          "label": "Моделі",
-          "value": "30 л · арт. 1308303 · U-пази · A: 380 мм; B: Ø 407 мм; C: 283 мм; D: 30 мм | 30 л · арт. 1308305 · Паралельні U-пази · A: 380 мм; B: Ø 407 мм; C: 283 мм; D: 30 мм | 35 л · арт. 13080350 · U-пази · A: 340 мм; B: Ø 460 мм; C: 341 мм; D: 35 мм | 40 л · арт. 1308041 · U-пази · A: 384 мм; B: Ø 460 мм; C: 330 мм; D: 30 мм"
-        },
-        {
-          "label": "__plantlogic_sections",
-          "value": "blueberry|rubus"
-        }
-      ],
-      "seo_title": null,
-      "seo_description": null,
-      "content_status": "verified_manufacturer_catalog",
-      "sources": [
-        {
-          "source_type": "manufacturer_catalog",
-          "url": "https://getplantlogic.com/",
-          "label": "Plantlogic Catalog 2026",
-          "verified_at": "2026-09-19",
-          "status": "verified",
-          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
-        }
-      ],
-      "public_enabled": true,
-      "model": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "name": "Горщик для лохини 20 л квадратний на стандартних ніжках",
-      "brand": "Plantlogic",
-      "manufacturer": "Plantlogic",
-      "category_id": "containers",
-      "short_description": "Квадратні горщики для лохини. Моделі: 20 / 25 / 30 л.",
-      "description": "Квадратні горщики для лохини — групова картка моделей Plantlogic з розділу «Blueberry production» каталогу виробника. У картці моделі розрізняються за артикулом, об'ємом, виконанням і кольором.",
-      "application": "Контейнерне субстратне вирощування лохини.",
-      "composition": null,
-      "benefits": [],
-      "how_it_works": null,
-      "characteristics": [
-        {
-          "label": "Сімейство",
-          "value": "square"
-        },
-        {
-          "label": "Форма",
-          "value": "square"
-        },
-        {
-          "label": "Об'єми",
-          "value": "20 / 25 / 30 л"
-        },
-        {
-          "label": "Моделі",
-          "value": "20 л · арт. 1309020 · Стандартні ніжки · A: 316 мм; B: 330 × 330 мм; C: 229 мм; D: 30 мм | 25 л · арт. 1309025 · Стандартні ніжки · A: 322 мм; B: 355 × 355 мм; C: 264 мм; D: 30 мм | 30 л · арт. 1309030 · Стандартні ніжки · A: 322 мм; B: 385 × 385 мм; C: 291 мм; D: 30 мм"
-        },
-        {
-          "label": "__plantlogic_sections",
-          "value": "blueberry"
-        }
-      ],
-      "seo_title": null,
-      "seo_description": null,
-      "content_status": "verified_manufacturer_catalog",
-      "sources": [
-        {
-          "source_type": "manufacturer_catalog",
-          "url": "https://getplantlogic.com/",
-          "label": "Plantlogic Catalog 2026",
-          "verified_at": "2026-09-19",
-          "status": "verified",
-          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
-        }
-      ],
-      "public_enabled": true,
-      "model": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "name": "Горщик для лохини 25 л квадратний з U-пазами",
-      "brand": "Plantlogic",
-      "manufacturer": "Plantlogic",
-      "category_id": "containers",
-      "short_description": "Квадратні горщики з U-пазами для лохини. Моделі: 25 / 35 л.",
-      "description": "Квадратні горщики з U-пазами для лохини — групова картка моделей Plantlogic з розділу «Blueberry production» каталогу виробника. У картці моделі розрізняються за артикулом, об'ємом, виконанням і кольором.",
-      "application": "Контейнерне субстратне вирощування лохини.",
-      "composition": null,
-      "benefits": [],
-      "how_it_works": null,
-      "characteristics": [
-        {
-          "label": "Сімейство",
-          "value": "u_groove_square"
-        },
-        {
-          "label": "Форма",
-          "value": "square"
-        },
-        {
-          "label": "Об'єми",
-          "value": "25 / 35 л"
-        },
-        {
-          "label": "Моделі",
-          "value": "25 л · арт. 1309026 · U-пази · A: 322 мм; B: 355 × 355 мм; C: 264 мм; D: 30 мм | 35 л · арт. 13090350 · U-пази · A: 350 мм; B: 425 × 425 мм; C: 290 мм; D: 40 мм"
-        },
-        {
-          "label": "__plantlogic_sections",
-          "value": "blueberry"
-        }
-      ],
-      "seo_title": null,
-      "seo_description": null,
-      "content_status": "verified_manufacturer_catalog",
-      "sources": [
-        {
-          "source_type": "manufacturer_catalog",
-          "url": "https://getplantlogic.com/",
-          "label": "Plantlogic Catalog 2026",
-          "verified_at": "2026-09-19",
-          "status": "verified",
-          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
-        }
-      ],
-      "public_enabled": true,
-      "model": null
-    },
-    {
-      "product_id": "blueberry-zephyr-v2-pots",
-      "name": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
-      "brand": "Plantlogic",
-      "manufacturer": "Plantlogic",
-      "category_id": "containers",
-      "short_description": "Горщики Zephyr V2 для лохини. Моделі: 25 / 30 / 40 л.",
-      "description": "Горщики Zephyr V2 для лохини — групова картка моделей Plantlogic з розділу «Blueberry production» каталогу виробника. У картці моделі розрізняються за артикулом, об'ємом, виконанням і кольором.",
-      "application": "Контейнерне субстратне вирощування лохини.",
-      "composition": null,
-      "benefits": [],
-      "how_it_works": null,
-      "characteristics": [
-        {
-          "label": "Сімейство",
-          "value": "zephyr"
-        },
-        {
-          "label": "Форма",
-          "value": "zephyr"
-        },
-        {
-          "label": "Об'єми",
-          "value": "25 / 30 / 40 л"
-        },
-        {
-          "label": "Моделі",
-          "value": "25 л · арт. 1301144 · Zephyr V2 · ніжки 7 см · A: 369 мм; B: Ø 333 мм; C: 397 мм; D: 70 мм | 30 л · арт. 1301153 · Zephyr V2 · ніжки 7 см · A: 420 мм; B: Ø 333 мм; C: 397 мм; D: 70 мм | 40 л · арт. 1301143 · Zephyr V2 · ніжки 7 см · A: 370 мм; B: Ø 427 мм; C: 500 мм; D: 70 мм"
-        },
-        {
-          "label": "__plantlogic_sections",
-          "value": "blueberry"
-        }
-      ],
-      "seo_title": null,
-      "seo_description": null,
-      "content_status": "verified_manufacturer_catalog",
-      "sources": [
-        {
-          "source_type": "manufacturer_catalog",
-          "url": "https://getplantlogic.com/",
-          "label": "Plantlogic Catalog 2026",
-          "verified_at": "2026-09-19",
-          "status": "verified",
-          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
-        }
-      ],
-      "public_enabled": true,
-      "model": "Zephyr V2"
     },
     {
       "product_id": "boroplus",
@@ -8867,6 +8617,1138 @@
         }
       ],
       "public_enabled": true
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-20l-1308020",
+      "name": "Горщик для лохини 20 л круглий на стандартних ніжках",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 20 л круглий на стандартних ніжках. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 20 л круглий на стандартних ніжках — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Круглий"
+        },
+        {
+          "label": "Об’єм",
+          "value": "20 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "Стандартні ніжки"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1308020"
+        },
+        {
+          "label": "Розмір A",
+          "value": "303 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 370 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "245 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry|rubus"
+        }
+      ],
+      "seo_title": "Горщик для лохини 20 л круглий на стандартних ніжках",
+      "seo_description": "Горщик для лохини 20 л круглий на стандартних ніжках. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-25l-1308025",
+      "name": "Горщик для лохини 25 л круглий на стандартних ніжках",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 25 л круглий на стандартних ніжках. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 25 л круглий на стандартних ніжках — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Круглий"
+        },
+        {
+          "label": "Об’єм",
+          "value": "25 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "Стандартні ніжки"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1308025"
+        },
+        {
+          "label": "Розмір A",
+          "value": "354 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 385 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "268 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry|rubus"
+        }
+      ],
+      "seo_title": "Горщик для лохини 25 л круглий на стандартних ніжках",
+      "seo_description": "Горщик для лохини 25 л круглий на стандартних ніжках. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-v-ribs-1308031",
+      "name": "Горщик для лохини 30 л круглий з V-ребрами",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 30 л круглий з V-ребрами. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 30 л круглий з V-ребрами — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Круглий"
+        },
+        {
+          "label": "Об’єм",
+          "value": "30 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "V-ребра"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1308031"
+        },
+        {
+          "label": "Розмір A",
+          "value": "383 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 407 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "282 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry|rubus"
+        }
+      ],
+      "seo_title": "Горщик для лохини 30 л круглий з V-ребрами",
+      "seo_description": "Горщик для лохини 30 л круглий з V-ребрами. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-40l-1308040",
+      "name": "Горщик для лохини 40 л круглий на стандартних ніжках",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 40 л круглий на стандартних ніжках. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 40 л круглий на стандартних ніжках — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Круглий"
+        },
+        {
+          "label": "Об’єм",
+          "value": "40 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "Стандартні ніжки"
+        },
+        {
+          "label": "Колір",
+          "value": "Теракотовий"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1308040"
+        },
+        {
+          "label": "Розмір A",
+          "value": "384 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 460 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "330 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry|rubus"
+        }
+      ],
+      "seo_title": "Горщик для лохини 40 л круглий на стандартних ніжках",
+      "seo_description": "Горщик для лохини 40 л круглий на стандартних ніжках. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+      "name": "Горщик для лохини 30 л круглий з U-пазами",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 30 л круглий з U-пазами. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 30 л круглий з U-пазами — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Круглий"
+        },
+        {
+          "label": "Об’єм",
+          "value": "30 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "U-пази"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1308303"
+        },
+        {
+          "label": "Розмір A",
+          "value": "380 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 407 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "283 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry|rubus"
+        }
+      ],
+      "seo_title": "Горщик для лохини 30 л круглий з U-пазами",
+      "seo_description": "Горщик для лохини 30 л круглий з U-пазами. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-parallel-u-grooves-1308305",
+      "name": "Горщик для лохини 30 л круглий з паралельними U-пазами",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 30 л круглий з паралельними U-пазами. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 30 л круглий з паралельними U-пазами — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Круглий"
+        },
+        {
+          "label": "Об’єм",
+          "value": "30 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "Паралельні U-пази"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1308305"
+        },
+        {
+          "label": "Розмір A",
+          "value": "380 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 407 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "283 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry|rubus"
+        }
+      ],
+      "seo_title": "Горщик для лохини 30 л круглий з паралельними U-пазами",
+      "seo_description": "Горщик для лохини 30 л круглий з паралельними U-пазами. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-35l-u-grooves-13080350",
+      "name": "Горщик для лохини 35 л круглий з U-пазами",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 35 л круглий з U-пазами. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 35 л круглий з U-пазами — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Круглий"
+        },
+        {
+          "label": "Об’єм",
+          "value": "35 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "U-пази"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "13080350"
+        },
+        {
+          "label": "Розмір A",
+          "value": "340 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 460 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "341 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "35 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry|rubus"
+        }
+      ],
+      "seo_title": "Горщик для лохини 35 л круглий з U-пазами",
+      "seo_description": "Горщик для лохини 35 л круглий з U-пазами. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+      "name": "Горщик для лохини 40 л круглий з U-пазами",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 40 л круглий з U-пазами. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 40 л круглий з U-пазами — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Круглий"
+        },
+        {
+          "label": "Об’єм",
+          "value": "40 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "U-пази"
+        },
+        {
+          "label": "Колір",
+          "value": "Теракотовий"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1308041"
+        },
+        {
+          "label": "Розмір A",
+          "value": "384 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 460 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "330 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry|rubus"
+        }
+      ],
+      "seo_title": "Горщик для лохини 40 л круглий з U-пазами",
+      "seo_description": "Горщик для лохини 40 л круглий з U-пазами. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-20l-1309020",
+      "name": "Горщик для лохини 20 л квадратний на стандартних ніжках",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 20 л квадратний на стандартних ніжках. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 20 л квадратний на стандартних ніжках — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Квадратний"
+        },
+        {
+          "label": "Об’єм",
+          "value": "20 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "Стандартні ніжки"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1309020"
+        },
+        {
+          "label": "Розмір A",
+          "value": "316 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "330 × 330 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "229 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry"
+        }
+      ],
+      "seo_title": "Горщик для лохини 20 л квадратний на стандартних ніжках",
+      "seo_description": "Горщик для лохини 20 л квадратний на стандартних ніжках. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-25l-1309025",
+      "name": "Горщик для лохини 25 л квадратний на стандартних ніжках",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 25 л квадратний на стандартних ніжках. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 25 л квадратний на стандартних ніжках — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Квадратний"
+        },
+        {
+          "label": "Об’єм",
+          "value": "25 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "Стандартні ніжки"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1309025"
+        },
+        {
+          "label": "Розмір A",
+          "value": "322 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "355 × 355 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "264 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry"
+        }
+      ],
+      "seo_title": "Горщик для лохини 25 л квадратний на стандартних ніжках",
+      "seo_description": "Горщик для лохини 25 л квадратний на стандартних ніжках. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-30l-1309030",
+      "name": "Горщик для лохини 30 л квадратний на стандартних ніжках",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 30 л квадратний на стандартних ніжках. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 30 л квадратний на стандартних ніжках — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Квадратний"
+        },
+        {
+          "label": "Об’єм",
+          "value": "30 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "Стандартні ніжки"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1309030"
+        },
+        {
+          "label": "Розмір A",
+          "value": "322 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "385 × 385 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "291 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry"
+        }
+      ],
+      "seo_title": "Горщик для лохини 30 л квадратний на стандартних ніжках",
+      "seo_description": "Горщик для лохини 30 л квадратний на стандартних ніжках. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-25l-u-grooves-1309026",
+      "name": "Горщик для лохини 25 л квадратний з U-пазами",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 25 л квадратний з U-пазами. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 25 л квадратний з U-пазами — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Квадратний"
+        },
+        {
+          "label": "Об’єм",
+          "value": "25 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "U-пази"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1309026"
+        },
+        {
+          "label": "Розмір A",
+          "value": "322 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "355 × 355 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "264 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "30 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry"
+        }
+      ],
+      "seo_title": "Горщик для лохини 25 л квадратний з U-пазами",
+      "seo_description": "Горщик для лохини 25 л квадратний з U-пазами. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-35l-u-grooves-13090350",
+      "name": "Горщик для лохини 35 л квадратний з U-пазами",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 35 л квадратний з U-пазами. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 35 л квадратний з U-пазами — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Квадратний"
+        },
+        {
+          "label": "Об’єм",
+          "value": "35 л"
+        },
+        {
+          "label": "Виконання",
+          "value": "U-пази"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "13090350"
+        },
+        {
+          "label": "Розмір A",
+          "value": "350 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "425 × 425 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "290 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "40 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry"
+        }
+      ],
+      "seo_title": "Горщик для лохини 35 л квадратний з U-пазами",
+      "seo_description": "Горщик для лохини 35 л квадратний з U-пазами. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-zephyr-v2-25l-1301144",
+      "name": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Zephyr V2"
+        },
+        {
+          "label": "Об’єм",
+          "value": "25 л"
+        },
+        {
+          "label": "Модель",
+          "value": "Zephyr V2"
+        },
+        {
+          "label": "Виконання",
+          "value": "Zephyr V2 · ніжки 7 см"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1301144"
+        },
+        {
+          "label": "Розмір A",
+          "value": "369 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 333 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "397 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "70 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry"
+        }
+      ],
+      "seo_title": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
+      "seo_description": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": "Zephyr V2"
+    },
+    {
+      "product_id": "plantlogic-blueberry-zephyr-v2-30l-1301153",
+      "name": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Zephyr V2"
+        },
+        {
+          "label": "Об’єм",
+          "value": "30 л"
+        },
+        {
+          "label": "Модель",
+          "value": "Zephyr V2"
+        },
+        {
+          "label": "Виконання",
+          "value": "Zephyr V2 · ніжки 7 см"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1301153"
+        },
+        {
+          "label": "Розмір A",
+          "value": "420 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 333 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "397 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "70 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry"
+        }
+      ],
+      "seo_title": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см",
+      "seo_description": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": "Zephyr V2"
+    },
+    {
+      "product_id": "plantlogic-blueberry-zephyr-v2-40l-1301143",
+      "name": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см",
+      "brand": "Plantlogic",
+      "manufacturer": "Plantlogic",
+      "category_id": "containers",
+      "short_description": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см. Окрема модель для контейнерного субстратного вирощування лохини.",
+      "description": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см — окрема модель для контейнерного субстратного вирощування лохини. Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання.",
+      "application": "Контейнерне субстратне вирощування лохини.",
+      "composition": null,
+      "benefits": [],
+      "how_it_works": null,
+      "characteristics": [
+        {
+          "label": "Форма",
+          "value": "Zephyr V2"
+        },
+        {
+          "label": "Об’єм",
+          "value": "40 л"
+        },
+        {
+          "label": "Модель",
+          "value": "Zephyr V2"
+        },
+        {
+          "label": "Виконання",
+          "value": "Zephyr V2 · ніжки 7 см"
+        },
+        {
+          "label": "Колір",
+          "value": "Чорний"
+        },
+        {
+          "label": "Артикул виробника",
+          "value": "1301143"
+        },
+        {
+          "label": "Розмір A",
+          "value": "370 мм"
+        },
+        {
+          "label": "Розмір B",
+          "value": "Ø 427 мм"
+        },
+        {
+          "label": "Розмір C",
+          "value": "500 мм"
+        },
+        {
+          "label": "Розмір D",
+          "value": "70 мм"
+        },
+        {
+          "label": "__plantlogic_sections",
+          "value": "blueberry"
+        }
+      ],
+      "seo_title": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см",
+      "seo_description": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см. Характеристики за матеріалами виробника.",
+      "content_status": "verified_manufacturer_catalog",
+      "sources": [
+        {
+          "source_type": "manufacturer_catalog",
+          "url": "https://getplantlogic.com/",
+          "label": "Plantlogic Catalog 2026",
+          "verified_at": "2026-09-19",
+          "status": "verified",
+          "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
+        }
+      ],
+      "public_enabled": true,
+      "model": "Zephyr V2"
     }
   ]
 }

@@ -10,13 +10,13 @@
     "canonical_non_plantlogic_skus": 204,
     "sku_aliases": 109,
     "price_conflicts": 2,
-    "plantlogic_grouped_products": 6,
+    "plantlogic_grouped_products": 1,
     "plantlogic_request_price_skus": 17,
     "plantlogic_retired_color_aliases": 31,
     "plantlogic_legacy_skus": 0,
-    "v5_stage_products_total": 119,
+    "v5_stage_products_total": 130,
     "v5_stage_skus_total": 310,
-    "plantlogic_sectioned_products": 33,
+    "plantlogic_sectioned_products": 50,
     "plantlogic_sectioned_request_price_skus": 89
   },
   "products": [
@@ -760,17 +760,7 @@
     {
       "alias": "master-13-40-13",
       "product_id": "master-npk-13-40-13",
-      "kind": "legacy_product_key"
-    },
-    {
-      "alias": "master-13-40-13",
-      "product_id": "master-npk-13-40-13",
       "kind": "legacy_slug"
-    },
-    {
-      "alias": "master-15-5-30",
-      "product_id": "master-npk-15-5-30",
-      "kind": "legacy_product_key"
     },
     {
       "alias": "master-15-5-30",
@@ -780,17 +770,7 @@
     {
       "alias": "master-20-20-20",
       "product_id": "master-npk-20-20-20",
-      "kind": "legacy_product_key"
-    },
-    {
-      "alias": "master-20-20-20",
-      "product_id": "master-npk-20-20-20",
       "kind": "legacy_slug"
-    },
-    {
-      "alias": "master-3-11-38",
-      "product_id": "master-npk-3-11-38",
-      "kind": "legacy_product_key"
     },
     {
       "alias": "master-3-11-38",
@@ -830,17 +810,7 @@
     {
       "alias": "plantafol-0-25-50",
       "product_id": "plantafol-npk-0-25-50",
-      "kind": "legacy_product_key"
-    },
-    {
-      "alias": "plantafol-0-25-50",
-      "product_id": "plantafol-npk-0-25-50",
       "kind": "legacy_slug"
-    },
-    {
-      "alias": "plantafol-10-54-10",
-      "product_id": "plantafol-npk-10-54-10",
-      "kind": "legacy_product_key"
     },
     {
       "alias": "plantafol-10-54-10",
@@ -850,27 +820,12 @@
     {
       "alias": "plantafol-20-20-20",
       "product_id": "plantafol-npk-20-20-20",
-      "kind": "legacy_product_key"
-    },
-    {
-      "alias": "plantafol-20-20-20",
-      "product_id": "plantafol-npk-20-20-20",
       "kind": "legacy_slug"
     },
     {
       "alias": "plantafol-30-10-10",
       "product_id": "plantafol-npk-30-10-10",
-      "kind": "legacy_product_key"
-    },
-    {
-      "alias": "plantafol-30-10-10",
-      "product_id": "plantafol-npk-30-10-10",
       "kind": "legacy_slug"
-    },
-    {
-      "alias": "plantafol-5-15-45",
-      "product_id": "plantafol-npk-5-15-45",
-      "kind": "legacy_product_key"
     },
     {
       "alias": "plantafol-5-15-45",
@@ -884,12 +839,12 @@
     },
     {
       "alias": "plantlogic-40-round-ugroove-1308041",
-      "product_id": "blueberry-round-u-groove-pots",
+      "product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
       "kind": "legacy_product_reparent"
     },
     {
       "alias": "plantlogic-40l-round-u-grooves-1308041",
-      "product_id": "blueberry-round-u-groove-pots",
+      "product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
       "kind": "legacy_slug_reparent"
     },
     {
@@ -901,6 +856,31 @@
       "alias": "switch-62-5-wg",
       "product_id": "switch-625-wg",
       "kind": "legacy_slug"
+    },
+    {
+      "alias": "blueberry-round-pots",
+      "product_id": "plantlogic-blueberry-round-20l-1308020",
+      "kind": "split_group_legacy"
+    },
+    {
+      "alias": "blueberry-round-u-groove-pots",
+      "product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+      "kind": "split_group_legacy"
+    },
+    {
+      "alias": "blueberry-square-pots",
+      "product_id": "plantlogic-blueberry-square-20l-1309020",
+      "kind": "split_group_legacy"
+    },
+    {
+      "alias": "blueberry-square-u-groove-pots",
+      "product_id": "plantlogic-blueberry-square-25l-u-grooves-1309026",
+      "kind": "split_group_legacy"
+    },
+    {
+      "alias": "blueberry-zephyr-v2-pots",
+      "product_id": "plantlogic-blueberry-zephyr-v2-25l-1301144",
+      "kind": "split_group_legacy"
     }
   ],
   "skus": [
@@ -8136,19 +8116,6 @@
   ],
   "plantlogic_products": [
     {
-      "product_id": "blueberry-round-pots",
-      "slug": "blueberry-round-pots",
-      "name": "Горщик для лохини 20 л круглий на стандартних ніжках",
-      "brand": "Plantlogic",
-      "category_id": "containers",
-      "v3_product_id": "prd_pl_bb_round",
-      "content_state": "candidate_from_v3_verified_plantlogic_work",
-      "plantlogic_sections": [
-        "blueberry",
-        "rubus"
-      ]
-    },
-    {
       "product_id": "blueberry-round-short-legs-pot",
       "slug": "blueberry-round-short-legs-pot",
       "name": "Горщик для лохини 25 л круглий на коротких ніжках",
@@ -8159,56 +8126,6 @@
       "plantlogic_sections": [
         "blueberry"
       ]
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "slug": "blueberry-round-u-groove-pots",
-      "name": "Горщик для лохини 30 л круглий з U-пазами",
-      "brand": "Plantlogic",
-      "category_id": "containers",
-      "v3_product_id": "prd_pl_bb_round_u",
-      "content_state": "candidate_from_v3_verified_plantlogic_work",
-      "plantlogic_sections": [
-        "blueberry",
-        "rubus"
-      ]
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "slug": "blueberry-square-pots",
-      "name": "Горщик для лохини 20 л квадратний на стандартних ніжках",
-      "brand": "Plantlogic",
-      "category_id": "containers",
-      "v3_product_id": "prd_pl_bb_square",
-      "content_state": "candidate_from_v3_verified_plantlogic_work",
-      "plantlogic_sections": [
-        "blueberry"
-      ]
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "slug": "blueberry-square-u-groove-pots",
-      "name": "Горщик для лохини 25 л квадратний з U-пазами",
-      "brand": "Plantlogic",
-      "category_id": "containers",
-      "v3_product_id": "prd_pl_bb_square_u",
-      "content_state": "candidate_from_v3_verified_plantlogic_work",
-      "plantlogic_sections": [
-        "blueberry"
-      ]
-    },
-    {
-      "product_id": "blueberry-zephyr-v2-pots",
-      "slug": "blueberry-zephyr-v2-pots",
-      "name": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
-      "brand": "Plantlogic",
-      "category_id": "containers",
-      "v3_product_id": "prd_pl_bb_zephyr_v2",
-      "content_state": "candidate_from_v3_verified_plantlogic_work",
-      "plantlogic_sections": [
-        "blueberry"
-      ],
-      "model": "Zephyr V2"
     },
     {
       "product_id": "plantlogic-25l-round-drainage-1304125",
@@ -8624,13 +8541,216 @@
         "accessories"
       ],
       "model": "Pot Anchor"
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-20l-1308020",
+      "slug": "plantlogic-blueberry-round-20l-1308020",
+      "name": "Горщик для лохини 20 л круглий на стандартних ніжках",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_round",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry",
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-25l-1308025",
+      "slug": "plantlogic-blueberry-round-25l-1308025",
+      "name": "Горщик для лохини 25 л круглий на стандартних ніжках",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_round",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry",
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-v-ribs-1308031",
+      "slug": "plantlogic-blueberry-round-30l-v-ribs-1308031",
+      "name": "Горщик для лохини 30 л круглий з V-ребрами",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_round",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry",
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-40l-1308040",
+      "slug": "plantlogic-blueberry-round-40l-1308040",
+      "name": "Горщик для лохини 40 л круглий на стандартних ніжках",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_round",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry",
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+      "slug": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+      "name": "Горщик для лохини 30 л круглий з U-пазами",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_round_u",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry",
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-parallel-u-grooves-1308305",
+      "slug": "plantlogic-blueberry-round-30l-parallel-u-grooves-1308305",
+      "name": "Горщик для лохини 30 л круглий з паралельними U-пазами",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_round_u",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry",
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-35l-u-grooves-13080350",
+      "slug": "plantlogic-blueberry-round-35l-u-grooves-13080350",
+      "name": "Горщик для лохини 35 л круглий з U-пазами",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_round_u",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry",
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+      "slug": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+      "name": "Горщик для лохини 40 л круглий з U-пазами",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_round_u",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry",
+        "rubus"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-20l-1309020",
+      "slug": "plantlogic-blueberry-square-20l-1309020",
+      "name": "Горщик для лохини 20 л квадратний на стандартних ніжках",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_square",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-25l-1309025",
+      "slug": "plantlogic-blueberry-square-25l-1309025",
+      "name": "Горщик для лохини 25 л квадратний на стандартних ніжках",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_square",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-30l-1309030",
+      "slug": "plantlogic-blueberry-square-30l-1309030",
+      "name": "Горщик для лохини 30 л квадратний на стандартних ніжках",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_square",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-25l-u-grooves-1309026",
+      "slug": "plantlogic-blueberry-square-25l-u-grooves-1309026",
+      "name": "Горщик для лохини 25 л квадратний з U-пазами",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_square_u",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-35l-u-grooves-13090350",
+      "slug": "plantlogic-blueberry-square-35l-u-grooves-13090350",
+      "name": "Горщик для лохини 35 л квадратний з U-пазами",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_square_u",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry"
+      ]
+    },
+    {
+      "product_id": "plantlogic-blueberry-zephyr-v2-25l-1301144",
+      "slug": "plantlogic-blueberry-zephyr-v2-25l-1301144",
+      "name": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_zephyr_v2",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry"
+      ],
+      "model": "Zephyr V2"
+    },
+    {
+      "product_id": "plantlogic-blueberry-zephyr-v2-30l-1301153",
+      "slug": "plantlogic-blueberry-zephyr-v2-30l-1301153",
+      "name": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_zephyr_v2",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry"
+      ],
+      "model": "Zephyr V2"
+    },
+    {
+      "product_id": "plantlogic-blueberry-zephyr-v2-40l-1301143",
+      "slug": "plantlogic-blueberry-zephyr-v2-40l-1301143",
+      "name": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см",
+      "brand": "Plantlogic",
+      "category_id": "containers",
+      "v3_product_id": "prd_pl_bb_zephyr_v2",
+      "content_state": "verified_split_variant",
+      "plantlogic_sections": [
+        "blueberry"
+      ],
+      "model": "Zephyr V2"
     }
   ],
   "plantlogic_skus": [
     {
       "sku_id": "PL-BB-1308020-BK",
       "v3_sku_id": "sku_pl_bb_1308020_black",
-      "product_id": "blueberry-round-pots",
+      "product_id": "plantlogic-blueberry-round-20l-1308020",
       "package_value": 20,
       "package_unit": "l",
       "package_label": "20 л",
@@ -8651,7 +8771,9 @@
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 20 л круглий на стандартних ніжках"
+        "canonical_title": "Горщик для лохини 20 л круглий на стандартних ніжках",
+        "related_group_id": "blueberry-round-pots",
+        "item_group_id": "blueberry-round-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8691,7 +8813,7 @@
     {
       "sku_id": "PL-BB-1308025-BK",
       "v3_sku_id": "sku_pl_bb_1308025_black",
-      "product_id": "blueberry-round-pots",
+      "product_id": "plantlogic-blueberry-round-25l-1308025",
       "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
@@ -8712,7 +8834,9 @@
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 25 л круглий на стандартних ніжках"
+        "canonical_title": "Горщик для лохини 25 л круглий на стандартних ніжках",
+        "related_group_id": "blueberry-round-pots",
+        "item_group_id": "blueberry-round-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8752,7 +8876,7 @@
     {
       "sku_id": "PL-BB-1308031-BK",
       "v3_sku_id": "sku_pl_bb_1308031_black",
-      "product_id": "blueberry-round-pots",
+      "product_id": "plantlogic-blueberry-round-30l-v-ribs-1308031",
       "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
@@ -8773,7 +8897,9 @@
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 30 л круглий з V-ребрами"
+        "canonical_title": "Горщик для лохини 30 л круглий з V-ребрами",
+        "related_group_id": "blueberry-round-pots",
+        "item_group_id": "blueberry-round-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8813,7 +8939,7 @@
     {
       "sku_id": "PL-BB-1308040-TC",
       "v3_sku_id": "sku_pl_bb_1308040_terracotta",
-      "product_id": "blueberry-round-pots",
+      "product_id": "plantlogic-blueberry-round-40l-1308040",
       "package_value": 40,
       "package_unit": "l",
       "package_label": "40 л",
@@ -8834,7 +8960,9 @@
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 40 л круглий на стандартних ніжках"
+        "canonical_title": "Горщик для лохини 40 л круглий на стандартних ніжках",
+        "related_group_id": "blueberry-round-pots",
+        "item_group_id": "blueberry-round-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8929,7 +9057,7 @@
     {
       "sku_id": "PL-BB-1308303-BK",
       "v3_sku_id": "sku_pl_bb_1308303_black",
-      "product_id": "blueberry-round-u-groove-pots",
+      "product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
       "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
@@ -8950,7 +9078,9 @@
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 30 л круглий з U-пазами"
+        "canonical_title": "Горщик для лохини 30 л круглий з U-пазами",
+        "related_group_id": "blueberry-round-u-groove-pots",
+        "item_group_id": "blueberry-round-u-groove-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8990,7 +9120,7 @@
     {
       "sku_id": "PL-BB-1308305-BK",
       "v3_sku_id": "sku_pl_bb_1308305_black",
-      "product_id": "blueberry-round-u-groove-pots",
+      "product_id": "plantlogic-blueberry-round-30l-parallel-u-grooves-1308305",
       "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
@@ -9011,7 +9141,9 @@
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 30 л круглий з паралельними U-пазами"
+        "canonical_title": "Горщик для лохини 30 л круглий з паралельними U-пазами",
+        "related_group_id": "blueberry-round-u-groove-pots",
+        "item_group_id": "blueberry-round-u-groove-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9045,7 +9177,7 @@
     {
       "sku_id": "PL-BB-13080350-BK",
       "v3_sku_id": "sku_pl_bb_13080350_black",
-      "product_id": "blueberry-round-u-groove-pots",
+      "product_id": "plantlogic-blueberry-round-35l-u-grooves-13080350",
       "package_value": 35,
       "package_unit": "l",
       "package_label": "35 л",
@@ -9066,7 +9198,9 @@
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 35 л круглий з U-пазами"
+        "canonical_title": "Горщик для лохини 35 л круглий з U-пазами",
+        "related_group_id": "blueberry-round-u-groove-pots",
+        "item_group_id": "blueberry-round-u-groove-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9100,7 +9234,7 @@
     {
       "sku_id": "PL-BB-1308041-TC",
       "v3_sku_id": "sku_pl_bb_1308041_terracotta",
-      "product_id": "blueberry-round-u-groove-pots",
+      "product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
       "package_value": 40,
       "package_unit": "l",
       "package_label": "40 л",
@@ -9121,7 +9255,9 @@
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 40 л круглий з U-пазами"
+        "canonical_title": "Горщик для лохини 40 л круглий з U-пазами",
+        "related_group_id": "blueberry-round-u-groove-pots",
+        "item_group_id": "blueberry-round-u-groove-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9161,7 +9297,7 @@
     {
       "sku_id": "PL-BB-1309020-BK",
       "v3_sku_id": "sku_pl_bb_1309020_black",
-      "product_id": "blueberry-square-pots",
+      "product_id": "plantlogic-blueberry-square-20l-1309020",
       "package_value": 20,
       "package_unit": "l",
       "package_label": "20 л",
@@ -9182,7 +9318,9 @@
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 20 л квадратний на стандартних ніжках"
+        "canonical_title": "Горщик для лохини 20 л квадратний на стандартних ніжках",
+        "related_group_id": "blueberry-square-pots",
+        "item_group_id": "blueberry-square-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9222,7 +9360,7 @@
     {
       "sku_id": "PL-BB-1309025-BK",
       "v3_sku_id": "sku_pl_bb_1309025_black",
-      "product_id": "blueberry-square-pots",
+      "product_id": "plantlogic-blueberry-square-25l-1309025",
       "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
@@ -9243,7 +9381,9 @@
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 25 л квадратний на стандартних ніжках"
+        "canonical_title": "Горщик для лохини 25 л квадратний на стандартних ніжках",
+        "related_group_id": "blueberry-square-pots",
+        "item_group_id": "blueberry-square-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9277,7 +9417,7 @@
     {
       "sku_id": "PL-BB-1309030-BK",
       "v3_sku_id": "sku_pl_bb_1309030_black",
-      "product_id": "blueberry-square-pots",
+      "product_id": "plantlogic-blueberry-square-30l-1309030",
       "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
@@ -9298,7 +9438,9 @@
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 30 л квадратний на стандартних ніжках"
+        "canonical_title": "Горщик для лохини 30 л квадратний на стандартних ніжках",
+        "related_group_id": "blueberry-square-pots",
+        "item_group_id": "blueberry-square-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9338,7 +9480,7 @@
     {
       "sku_id": "PL-BB-1309026-BK",
       "v3_sku_id": "sku_pl_bb_1309026_black",
-      "product_id": "blueberry-square-u-groove-pots",
+      "product_id": "plantlogic-blueberry-square-25l-u-grooves-1309026",
       "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
@@ -9359,7 +9501,9 @@
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 25 л квадратний з U-пазами"
+        "canonical_title": "Горщик для лохини 25 л квадратний з U-пазами",
+        "related_group_id": "blueberry-square-u-groove-pots",
+        "item_group_id": "blueberry-square-u-groove-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9399,7 +9543,7 @@
     {
       "sku_id": "PL-BB-13090350-BK",
       "v3_sku_id": "sku_pl_bb_13090350_black",
-      "product_id": "blueberry-square-u-groove-pots",
+      "product_id": "plantlogic-blueberry-square-35l-u-grooves-13090350",
       "package_value": 35,
       "package_unit": "l",
       "package_label": "35 л",
@@ -9420,7 +9564,9 @@
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 35 л квадратний з U-пазами"
+        "canonical_title": "Горщик для лохини 35 л квадратний з U-пазами",
+        "related_group_id": "blueberry-square-u-groove-pots",
+        "item_group_id": "blueberry-square-u-groove-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9460,7 +9606,7 @@
     {
       "sku_id": "PL-BB-1301144-BK",
       "v3_sku_id": "sku_pl_bb_1301144_black",
-      "product_id": "blueberry-zephyr-v2-pots",
+      "product_id": "plantlogic-blueberry-zephyr-v2-25l-1301144",
       "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
@@ -9481,7 +9627,9 @@
         "catalog_page": 7,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см"
+        "canonical_title": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
+        "related_group_id": "blueberry-zephyr-v2-pots",
+        "item_group_id": "blueberry-zephyr-v2-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9515,7 +9663,7 @@
     {
       "sku_id": "PL-BB-1301153-BK",
       "v3_sku_id": "sku_pl_bb_1301153_black",
-      "product_id": "blueberry-zephyr-v2-pots",
+      "product_id": "plantlogic-blueberry-zephyr-v2-30l-1301153",
       "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
@@ -9536,7 +9684,9 @@
         "catalog_page": 7,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см"
+        "canonical_title": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см",
+        "related_group_id": "blueberry-zephyr-v2-pots",
+        "item_group_id": "blueberry-zephyr-v2-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9558,7 +9708,7 @@
     {
       "sku_id": "PL-BB-1301143-BK",
       "v3_sku_id": "sku_pl_bb_1301143_black",
-      "product_id": "blueberry-zephyr-v2-pots",
+      "product_id": "plantlogic-blueberry-zephyr-v2-40l-1301143",
       "package_value": 40,
       "package_unit": "l",
       "package_label": "40 л",
@@ -9579,7 +9729,9 @@
         "catalog_page": 7,
         "assortment_policy": "v5_single_color",
         "assortment_selected": true,
-        "canonical_title": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см"
+        "canonical_title": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см",
+        "related_group_id": "blueberry-zephyr-v2-pots",
+        "item_group_id": "blueberry-zephyr-v2-pots"
       },
       "enabled": true,
       "commerce_state": "request_price",

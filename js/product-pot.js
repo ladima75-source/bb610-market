@@ -324,7 +324,7 @@ function syncSchema(product,selectedSku,images){
 function render({product,root,selectedSkuId}){
   const productSkus=(product.sizes||[]).map(x=>BB610.sku(x.id)).filter(Boolean);
   let selectedSku=productSkus.find(x=>x.id===selectedSkuId)||BB610.defaultSku(product.id)||productSkus[0]||null;
-  const hasStructured=structuredOptions(productSkus);
+  const hasStructured=structuredOptions(productSkus)&&productSkus.length>1;
   document.body.classList.add('pot-pdp-mode');
   document.title=`${product.name} · BB610 Market`;
 
@@ -333,6 +333,26 @@ function render({product,root,selectedSkuId}){
   const purpose=charValue(product,'Культура','Призначення')||(product.cultures||[]).join(' · ');
   const how=typeof product.how_it_works==='string'?product.how_it_works:(product.howItWorks||'');
   const description=product.manufacturerUse||product.shortDescription||'';
+
+  function relatedVariantRows(){
+    const group=text(attrs(selectedSku).related_group_id);
+    if(!group)return [];
+    return BB610.products().flatMap(p=>(p.sizes||[]).map(size=>({product:p,sku:BB610.sku(size.id)})))
+      .filter(row=>row.sku&&text(attrs(row.sku).related_group_id)===group)
+      .sort((a,b)=>
+        Number(attrs(a.sku).volume_l||0)-Number(attrs(b.sku).volume_l||0)||
+        text(attrs(a.sku).execution_label).localeCompare(text(attrs(b.sku).execution_label),'uk')
+      );
+  }
+
+  function relatedVariantPicker(){
+    const rows=relatedVariantRows();
+    if(rows.length<=1)return '';
+    return `<div class="pot-model-picker pot-related-variant-picker"><span>Оберіть розмір / варіант</span><div class="pot-model-option-list">${rows.map(row=>{
+      const a=attrs(row.sku),active=row.product.id===product.id;
+      return `<a class="pot-model-option${active?' active':''}" href="${esc(BB610.productUrl(row.product,row.sku))}"><strong>${esc(volumeLabel(row.sku))}</strong><span>${esc(text(a.execution_label)||text(row.product.model)||'')}</span></a>`;
+    }).join('')}</div></div>`;
+  }
 
   function legacySkuButtons(){
     if(hasStructured||productSkus.length<=1)return '';
@@ -411,6 +431,7 @@ function render({product,root,selectedSkuId}){
           ${purpose?`<div><span>Культура</span><b>${esc(purpose)}</b></div>`:''}
         </div>
 
+        ${relatedVariantPicker()}
         ${hasStructured?`<div class="pot-configurator" id="pot-configurator">
           <div class="pot-option-group"><span>1. Оберіть модель</span><div class="pot-model-option-list" id="pot-model-options"></div></div>
           <div class="pot-option-group"><span>2. Колір</span><div class="pot-option-list pot-color-list" id="pot-color-options"></div></div>

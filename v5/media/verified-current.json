@@ -5,11 +5,11 @@
     "current_skus": 301,
     "exact_current_skus": 256,
     "current_skus_without_exact": 45,
-    "products_with_media": 118,
-    "products_without_media": 1,
+    "products_with_media": 128,
+    "products_without_media": 2,
     "media_assets": 426,
     "sku_bindings": 256,
-    "product_bindings": 429,
+    "product_bindings": 392,
     "organic_planet_source_rows": 187,
     "organic_planet_accepted_exact_rows": 134,
     "organic_planet_rejected_rows": 53,
@@ -6785,146 +6785,6 @@
       "source_url": null
     },
     {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_c87cc4ef3de220447f91cd17",
-      "sort_order": 0,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_1f70146fb087d6015d934efe",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_369ea8cb27bd96284b2d16e8",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_fe1944fcb855ac32364560cf",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_416fb4e46e1dc57768dc263e",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_4194a57e4138550130f777ac",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_71070a9a719fa8aeb97e66d9",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_a4cd857b00172620da5ad60a",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_3c74af970838a89ab383fb3b",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_5ee28c2cd86483f650e67e00",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_9421ca1c6668b9b384e440b8",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_bd837fc79dd67ee5bcab215f",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_45d59502b5eb59ad05822a21",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_50b0f77573f9be1fbe040e5c",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_f9226c70fd8a97e609cfba06",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_fbb5a2e0638d696bad209f04",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_46c13ff382ee9d40ba150fbd",
-      "sort_order": 104,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_495d85ac39c00edec9d6bf88",
-      "sort_order": 104,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_58d348c9d3fc99d288a3fa3b",
-      "sort_order": 104,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-pots",
-      "media_id": "v5m_64419affb068c25e65d8e432",
-      "sort_order": 104,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
       "product_id": "blueberry-round-short-legs-pot",
       "media_id": "v5m_df2ce09e3635de13488fa604",
       "sort_order": 0,
@@ -6948,342 +6808,6 @@
     {
       "product_id": "blueberry-round-short-legs-pot",
       "media_id": "v5m_988e411139cfb58fba17fe48",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_1df1ae08f0d5e08eb3df531c",
-      "sort_order": 0,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_41a504975291f806d8cbca84",
-      "sort_order": 0,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_9467e069dad333335bc2e64b",
-      "sort_order": 0,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_6c0173339316124406dab2c4",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_130fc7e29f378f6f0266db71",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_23eb0dbeb156dcf6e6c32d35",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_8c9fd10ec20dfd1b91c795d7",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_feb7f87c2f591b89afb53d4b",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_3d80f0c28b7fd975bcff3d5a",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_3dc6f9c5d484c3f503c44436",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_7c77ff494faaf342d8f0f287",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_d78d0472f28812296d165ded",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_43027980b902778606b2330c",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_52499dcbc520776d4d307852",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_a3e327473d9a57bdd41aee3d",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_faee2306d0018b2929e0a4db",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_3f923fc6a6d4a702b1a9c785",
-      "sort_order": 104,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-round-u-groove-pots",
-      "media_id": "v5m_d1a12e38b3a47d02be145ea3",
-      "sort_order": 104,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_29bf6988639c45cc15c4a5e9",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_35e3bba08efff1badfb14b8e",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_7f2c1ac0af0245634e72cbbe",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_7dd0cdcdeca629e453da952c",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_7e7e336ff538f07873c363ba",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_9f65bc4d4703f5773ae08f1c",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_2dab08a8de8f38c2c88d80f8",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_b75d383eb8e042f9014547b8",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_feee2f5c0d244d4189c4f0ac",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_0e8a6c7ad114c5d39a7a6ddc",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_386de689074d2aa3920d1485",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_f7c525b8b52e77d36089726d",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_09575badcd30312646ff5946",
-      "sort_order": 104,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-pots",
-      "media_id": "v5m_7ec7c792142f9d7ddc1e64a9",
-      "sort_order": 104,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "media_id": "v5m_4fd3f2967b30bb333ed133a8",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "media_id": "v5m_9a1790cb0d8904cf00af8a90",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "media_id": "v5m_54b3c50ed257f6f844083bf3",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "media_id": "v5m_6dba4ccd27c3aaf203a48667",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "media_id": "v5m_166b3f2be0202ebad881ed18",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "media_id": "v5m_bd9afce99dfd0c0fa1394c9d",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "media_id": "v5m_1403700747478cec35d726a7",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "media_id": "v5m_5a0616d6d3a5c05d6aaa9aef",
-      "sort_order": 103,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "media_id": "v5m_30405972fe1b3b6c9af1a1ad",
-      "sort_order": 104,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-square-u-groove-pots",
-      "media_id": "v5m_fb696a20ef7cf7c7b746b55f",
-      "sort_order": 104,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-zephyr-v2-pots",
-      "media_id": "v5m_5e126950eb44f3b0aee0fa25",
-      "sort_order": 0,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-zephyr-v2-pots",
-      "media_id": "v5m_aaaa485fd58fd917c4fb652e",
-      "sort_order": 30,
-      "source_kind": "exact_sku_rollup",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-zephyr-v2-pots",
-      "media_id": "v5m_1744e3b39c47386b4c9bedec",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-zephyr-v2-pots",
-      "media_id": "v5m_515d9ef4338d870a2f86148b",
-      "sort_order": 101,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-zephyr-v2-pots",
-      "media_id": "v5m_5b0c93fdc993e2b1537eac63",
-      "sort_order": 102,
-      "source_kind": "legacy_product_fallback",
-      "source_url": null
-    },
-    {
-      "product_id": "blueberry-zephyr-v2-pots",
-      "media_id": "v5m_206b3a6dc27a8d90c54d1255",
       "sort_order": 103,
       "source_kind": "legacy_product_fallback",
       "source_url": null
@@ -9590,6 +9114,223 @@
       "sort_order": 20,
       "source_kind": "exact_sku_rollup",
       "source_url": "https://organicplanet.com.ua/katalog/biostymulyatory/viva-viva-organicheskoe-udobrenie-biostimulyator-10-l-valagr"
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-20l-1308020",
+      "media_id": "v5m_1f70146fb087d6015d934efe",
+      "sort_order": 0,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-25l-1308025",
+      "media_id": "v5m_c87cc4ef3de220447f91cd17",
+      "sort_order": 0,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-25l-1308025",
+      "media_id": "v5m_a4cd857b00172620da5ad60a",
+      "sort_order": 101,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-25l-1308025",
+      "media_id": "v5m_9421ca1c6668b9b384e440b8",
+      "sort_order": 102,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-25l-1308025",
+      "media_id": "v5m_45d59502b5eb59ad05822a21",
+      "sort_order": 103,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-25l-1308025",
+      "media_id": "v5m_46c13ff382ee9d40ba150fbd",
+      "sort_order": 104,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-v-ribs-1308031",
+      "media_id": "v5m_369ea8cb27bd96284b2d16e8",
+      "sort_order": 0,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-40l-1308040",
+      "media_id": "v5m_fe1944fcb855ac32364560cf",
+      "sort_order": 0,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+      "media_id": "v5m_41a504975291f806d8cbca84",
+      "sort_order": 0,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+      "media_id": "v5m_feb7f87c2f591b89afb53d4b",
+      "sort_order": 101,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+      "media_id": "v5m_3d80f0c28b7fd975bcff3d5a",
+      "sort_order": 102,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+      "media_id": "v5m_a3e327473d9a57bdd41aee3d",
+      "sort_order": 103,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+      "media_id": "v5m_d1a12e38b3a47d02be145ea3",
+      "sort_order": 104,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-30l-parallel-u-grooves-1308305",
+      "media_id": "v5m_6c0173339316124406dab2c4",
+      "sort_order": 0,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-35l-u-grooves-13080350",
+      "media_id": "v5m_9467e069dad333335bc2e64b",
+      "sort_order": 0,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-35l-u-grooves-13080350",
+      "media_id": "v5m_23eb0dbeb156dcf6e6c32d35",
+      "sort_order": 101,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-35l-u-grooves-13080350",
+      "media_id": "v5m_d78d0472f28812296d165ded",
+      "sort_order": 102,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-35l-u-grooves-13080350",
+      "media_id": "v5m_faee2306d0018b2929e0a4db",
+      "sort_order": 103,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+      "media_id": "v5m_1df1ae08f0d5e08eb3df531c",
+      "sort_order": 0,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+      "media_id": "v5m_8c9fd10ec20dfd1b91c795d7",
+      "sort_order": 101,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+      "media_id": "v5m_3dc6f9c5d484c3f503c44436",
+      "sort_order": 102,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+      "media_id": "v5m_52499dcbc520776d4d307852",
+      "sort_order": 103,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+      "media_id": "v5m_3f923fc6a6d4a702b1a9c785",
+      "sort_order": 104,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-20l-1309020",
+      "media_id": "v5m_35e3bba08efff1badfb14b8e",
+      "sort_order": 0,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-25l-1309025",
+      "media_id": "v5m_7f2c1ac0af0245634e72cbbe",
+      "sort_order": 0,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-30l-1309030",
+      "media_id": "v5m_29bf6988639c45cc15c4a5e9",
+      "sort_order": 0,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-25l-u-grooves-1309026",
+      "media_id": "v5m_9a1790cb0d8904cf00af8a90",
+      "sort_order": 0,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-square-35l-u-grooves-13090350",
+      "media_id": "v5m_4fd3f2967b30bb333ed133a8",
+      "sort_order": 0,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-zephyr-v2-25l-1301144",
+      "media_id": "v5m_aaaa485fd58fd917c4fb652e",
+      "sort_order": 0,
+      "source_kind": "exact_sku_rollup",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-zephyr-v2-30l-1301153",
+      "media_id": "v5m_5e126950eb44f3b0aee0fa25",
+      "sort_order": 0,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
+    },
+    {
+      "product_id": "plantlogic-blueberry-zephyr-v2-30l-1301153",
+      "media_id": "v5m_515d9ef4338d870a2f86148b",
+      "sort_order": 101,
+      "source_kind": "split_variant_fallback",
+      "source_url": null
     }
   ],
   "current_without_exact": [

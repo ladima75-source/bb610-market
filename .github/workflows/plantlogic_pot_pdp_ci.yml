@@ -121,6 +121,9 @@ jobs:
           assert 'mediaForCurrent().filter' in pot
           print('PLANTLOGIC structured gallery isolation: PASS')
           assert 'pot-model-options' in pot
+          assert 'related_group_id' in pot
+          assert 'pot-related-variant-picker' in pot
+          assert 'BB610.productUrl(row.product,row.sku)' in pot
           assert 'data-pot-model' in pot
           assert 'pot-color-options' in pot
           assert 'manufacturer_product_no' in pot

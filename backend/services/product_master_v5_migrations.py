@@ -1879,6 +1879,314 @@ def _normalize_plantlogic_naming_batch_19(con: sqlite3.Connection) -> bool:
     return True
 
 
+
+def _split_grouped_blueberry_pots_batch_20(con: sqlite3.Connection) -> bool:
+    """Split grouped blueberry pots into one public product per volume/construction; keep SKU commerce identities."""
+    specs = [
+    {
+        "old_product_id": "blueberry-round-pots",
+        "new_product_id": "plantlogic-blueberry-round-20l-1308020",
+        "sku_id": "PL-BB-1308020-BK",
+        "title": "Горщик для лохини 20 л круглий на стандартних ніжках",
+        "shape": "Круглий",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-round-pots",
+        "new_product_id": "plantlogic-blueberry-round-25l-1308025",
+        "sku_id": "PL-BB-1308025-BK",
+        "title": "Горщик для лохини 25 л круглий на стандартних ніжках",
+        "shape": "Круглий",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-round-pots",
+        "new_product_id": "plantlogic-blueberry-round-30l-v-ribs-1308031",
+        "sku_id": "PL-BB-1308031-BK",
+        "title": "Горщик для лохини 30 л круглий з V-ребрами",
+        "shape": "Круглий",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-round-pots",
+        "new_product_id": "plantlogic-blueberry-round-40l-1308040",
+        "sku_id": "PL-BB-1308040-TC",
+        "title": "Горщик для лохини 40 л круглий на стандартних ніжках",
+        "shape": "Круглий",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-round-u-groove-pots",
+        "new_product_id": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+        "sku_id": "PL-BB-1308303-BK",
+        "title": "Горщик для лохини 30 л круглий з U-пазами",
+        "shape": "Круглий",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-round-u-groove-pots",
+        "new_product_id": "plantlogic-blueberry-round-30l-parallel-u-grooves-1308305",
+        "sku_id": "PL-BB-1308305-BK",
+        "title": "Горщик для лохини 30 л круглий з паралельними U-пазами",
+        "shape": "Круглий",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-round-u-groove-pots",
+        "new_product_id": "plantlogic-blueberry-round-35l-u-grooves-13080350",
+        "sku_id": "PL-BB-13080350-BK",
+        "title": "Горщик для лохини 35 л круглий з U-пазами",
+        "shape": "Круглий",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-round-u-groove-pots",
+        "new_product_id": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+        "sku_id": "PL-BB-1308041-TC",
+        "title": "Горщик для лохини 40 л круглий з U-пазами",
+        "shape": "Круглий",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-square-pots",
+        "new_product_id": "plantlogic-blueberry-square-20l-1309020",
+        "sku_id": "PL-BB-1309020-BK",
+        "title": "Горщик для лохини 20 л квадратний на стандартних ніжках",
+        "shape": "Квадратний",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-square-pots",
+        "new_product_id": "plantlogic-blueberry-square-25l-1309025",
+        "sku_id": "PL-BB-1309025-BK",
+        "title": "Горщик для лохини 25 л квадратний на стандартних ніжках",
+        "shape": "Квадратний",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-square-pots",
+        "new_product_id": "plantlogic-blueberry-square-30l-1309030",
+        "sku_id": "PL-BB-1309030-BK",
+        "title": "Горщик для лохини 30 л квадратний на стандартних ніжках",
+        "shape": "Квадратний",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-square-u-groove-pots",
+        "new_product_id": "plantlogic-blueberry-square-25l-u-grooves-1309026",
+        "sku_id": "PL-BB-1309026-BK",
+        "title": "Горщик для лохини 25 л квадратний з U-пазами",
+        "shape": "Квадратний",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-square-u-groove-pots",
+        "new_product_id": "plantlogic-blueberry-square-35l-u-grooves-13090350",
+        "sku_id": "PL-BB-13090350-BK",
+        "title": "Горщик для лохини 35 л квадратний з U-пазами",
+        "shape": "Квадратний",
+        "model": None
+    },
+    {
+        "old_product_id": "blueberry-zephyr-v2-pots",
+        "new_product_id": "plantlogic-blueberry-zephyr-v2-25l-1301144",
+        "sku_id": "PL-BB-1301144-BK",
+        "title": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
+        "shape": "Zephyr V2",
+        "model": "Zephyr V2"
+    },
+    {
+        "old_product_id": "blueberry-zephyr-v2-pots",
+        "new_product_id": "plantlogic-blueberry-zephyr-v2-30l-1301153",
+        "sku_id": "PL-BB-1301153-BK",
+        "title": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см",
+        "shape": "Zephyr V2",
+        "model": "Zephyr V2"
+    },
+    {
+        "old_product_id": "blueberry-zephyr-v2-pots",
+        "new_product_id": "plantlogic-blueberry-zephyr-v2-40l-1301143",
+        "sku_id": "PL-BB-1301143-BK",
+        "title": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см",
+        "shape": "Zephyr V2",
+        "model": "Zephyr V2"
+    }
+]
+    default_targets = {
+    "blueberry-round-pots": "plantlogic-blueberry-round-20l-1308020",
+    "blueberry-round-u-groove-pots": "plantlogic-blueberry-round-30l-u-grooves-1308303",
+    "blueberry-square-pots": "plantlogic-blueberry-square-20l-1309020",
+    "blueberry-square-u-groove-pots": "plantlogic-blueberry-square-25l-u-grooves-1309026",
+    "blueberry-zephyr-v2-pots": "plantlogic-blueberry-zephyr-v2-25l-1301144"
+}
+    specific_alias_targets = {
+    "plantlogic-40-round-ugroove-1308041": "plantlogic-blueberry-round-40l-u-grooves-1308041",
+    "plantlogic-40l-round-u-grooves-1308041": "plantlogic-blueberry-round-40l-u-grooves-1308041"
+}
+    old_ids = tuple(default_targets)
+
+    existing = {
+        row["product_id"]: dict(row)
+        for row in con.execute(
+            "SELECT * FROM products WHERE product_id IN (%s)"
+            % ",".join("?" for _ in old_ids),
+            old_ids,
+        ).fetchall()
+    }
+    if not existing:
+        wanted = {row["new_product_id"] for row in specs}
+        found = {
+            row["product_id"]
+            for row in con.execute(
+                "SELECT product_id FROM products WHERE product_id IN (%s)"
+                % ",".join("?" for _ in wanted),
+                tuple(wanted),
+            ).fetchall()
+        }
+        return found == wanted
+    if set(existing) != set(old_ids):
+        return False
+
+    source_cache = {
+        old_id: [
+            dict(row)
+            for row in con.execute(
+                "SELECT * FROM product_sources WHERE product_id=? ORDER BY source_id",
+                (old_id,),
+            ).fetchall()
+        ]
+        for old_id in old_ids
+    }
+    now = _now()
+
+    for index, spec in enumerate(specs):
+        old = existing[spec["old_product_id"]]
+        sku = con.execute(
+            "SELECT attributes_json FROM skus WHERE sku_id=? AND product_id=?",
+            (spec["sku_id"], spec["old_product_id"]),
+        ).fetchone()
+        if not sku:
+            return False
+        attrs = json.loads(sku["attributes_json"] or "{}")
+        attrs["canonical_title"] = spec["title"]
+        attrs["related_group_id"] = spec["old_product_id"]
+        attrs["item_group_id"] = spec["old_product_id"]
+
+        characteristics = [{"label": "Форма", "value": spec["shape"]}]
+        for label, key in (
+            ("Об’єм", "volume_label"), ("Виконання", "execution_label"),
+            ("Колір", "color_label"), ("Артикул виробника", "manufacturer_product_no"),
+            ("Розмір A", "dimension_a"), ("Розмір B", "dimension_b"),
+            ("Розмір C", "dimension_c"), ("Розмір D", "dimension_d"),
+        ):
+            value = attrs.get(key)
+            if value not in (None, ""):
+                characteristics.append({"label": label, "value": str(value)})
+        if spec.get("model"):
+            characteristics.insert(2, {"label": "Модель", "value": spec["model"]})
+        for row in json.loads(old.get("characteristics_json") or "[]"):
+            if isinstance(row, dict) and row.get("label") == "__plantlogic_sections":
+                characteristics.append(row)
+                break
+
+        short_description = spec["title"] + ". Окрема модель для контейнерного субстратного вирощування лохини."
+        description = (
+            spec["title"] + " — окрема модель для контейнерного субстратного вирощування лохини. "
+            "Характеристики картки стосуються тільки цього конкретного об’єму та конструктивного виконання."
+        )
+        con.execute(
+            """
+            INSERT INTO products(
+              product_id,slug,name,brand,manufacturer,model,category_id,
+              short_description,description,application,composition,
+              benefits_json,how_it_works,characteristics_json,
+              seo_title,seo_description,public_enabled,status,created_at,updated_at
+            ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            """,
+            (
+                spec["new_product_id"],spec["new_product_id"],spec["title"],
+                old.get("brand"),old.get("manufacturer"),spec.get("model"),"containers",
+                short_description,description,old.get("application"),old.get("composition"),
+                old.get("benefits_json") or "[]",old.get("how_it_works"),
+                json.dumps(characteristics,ensure_ascii=False,separators=(",",":")),
+                spec["title"],spec["title"],old.get("public_enabled",1),
+                old.get("status") or "active",old.get("created_at") or now,now,
+            ),
+        )
+        for src_index, source in enumerate(source_cache[spec["old_product_id"]]):
+            con.execute(
+                """
+                INSERT INTO product_sources(
+                  source_id,product_id,source_type,source_url,source_label,
+                  verified_at,status,notes
+                ) VALUES(?,?,?,?,?,?,?,?)
+                """,
+                (
+                    "split20_"+str(index)+"_"+str(src_index)+"_"+str(source["source_id"]),
+                    spec["new_product_id"],source.get("source_type"),source.get("source_url"),
+                    source.get("source_label"),source.get("verified_at"),
+                    source.get("status") or "verified",source.get("notes"),
+                ),
+            )
+
+        con.execute(
+            "UPDATE skus SET product_id=?,attributes_json=? WHERE sku_id=?",
+            (spec["new_product_id"],json.dumps(attrs,ensure_ascii=False,separators=(",",":")),spec["sku_id"]),
+        )
+
+        media_rows = con.execute(
+            """
+            SELECT sm.media_id,sm.sort_order,sm.source_url
+            FROM sku_media sm WHERE sm.sku_id=?
+            ORDER BY sm.sort_order,sm.media_id
+            """,
+            (spec["sku_id"],),
+        ).fetchall()
+        if not media_rows:
+            article = str(attrs.get("manufacturer_product_no") or "")
+            media_rows = con.execute(
+                """
+                SELECT pm.media_id,pm.sort_order,pm.source_url
+                FROM product_media pm
+                JOIN media m ON m.media_id=pm.media_id
+                WHERE pm.product_id=? AND m.alt LIKE ?
+                ORDER BY pm.sort_order,pm.media_id
+                """,
+                (spec["old_product_id"], "%" + article + "%"),
+            ).fetchall()
+        for media_row in media_rows:
+            con.execute(
+                """
+                INSERT OR IGNORE INTO product_media(
+                  product_id,media_id,sort_order,source_kind,source_url
+                ) VALUES(?,?,?,'split_variant_media',?)
+                """,
+                (spec["new_product_id"],media_row["media_id"],media_row["sort_order"],media_row["source_url"]),
+            )
+
+    for alias, target in specific_alias_targets.items():
+        con.execute(
+            "UPDATE product_aliases SET product_id=?,alias_kind='split_variant_legacy' WHERE alias=?",
+            (target,alias),
+        )
+    for old_id,target in default_targets.items():
+        con.execute(
+            "UPDATE product_aliases SET product_id=?,alias_kind='split_group_legacy' WHERE product_id=?",
+            (target,old_id),
+        )
+        con.execute(
+            """
+            INSERT INTO product_aliases(alias,product_id,alias_kind,active)
+            VALUES(?,?,'split_group_legacy',1)
+            ON CONFLICT(alias) DO UPDATE SET product_id=excluded.product_id,alias_kind=excluded.alias_kind,active=1
+            """,
+            (old_id,target),
+        )
+    for old_id in old_ids:
+        con.execute("DELETE FROM products WHERE product_id=?",(old_id,))
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -1901,6 +2209,7 @@ _MIGRATIONS = [
     ("20260926_official_video_sources_batch17", _official_video_sources_batch_17),
     ("20260926_ads_hires_exact_package_media_batch18", _ads_hires_exact_package_media_batch_18),
     ("20260928_normalize_plantlogic_naming_batch19", _normalize_plantlogic_naming_batch_19),
+    ("20260928_split_grouped_blueberry_pots_batch20", _split_grouped_blueberry_pots_batch_20),
 ]
 
 

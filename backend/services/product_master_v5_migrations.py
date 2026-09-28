@@ -2341,6 +2341,12 @@ def _plantlogic_v2_final_batch_24(con: sqlite3.Connection) -> bool:
     from . import plantlogic_v2_final
     return plantlogic_v2_final.apply(con)
 
+
+def _plantlogic_v2_customer_content_batch_25(con: sqlite3.Connection) -> bool:
+    """Normalize buyer-facing PlantLogic V2 content without touching sources, media or commerce."""
+    from . import plantlogic_v2_customer_content
+    return plantlogic_v2_customer_content.apply(con)
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2368,6 +2374,7 @@ _MIGRATIONS = [
     ("20260928_normalize_plantlogic_catalog_sections_batch22", _normalize_plantlogic_catalog_sections_batch_22),
     ("20260928_restore_cannabis_as_universal_membership_batch23", _restore_cannabis_as_universal_membership_batch_23),
     ("20260928_plantlogic_v2_final_batch24", _plantlogic_v2_final_batch_24),
+    ("20260928_plantlogic_v2_customer_content_batch25", _plantlogic_v2_customer_content_batch_25),
 ]
 
 

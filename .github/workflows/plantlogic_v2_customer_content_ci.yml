@@ -1,0 +1,41 @@
+name: PlantLogic V2 customer content CI
+
+on:
+  push:
+    branches: [main, plantlogic-content-normalization]
+    paths:
+      - 'backend/services/plantlogic_v2_customer_content.py'
+      - 'backend/services/product_master_v5_migrations.py'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
+      - 'v5/content/verified-current.json'
+      - 'tools/audit_plantlogic_v2_customer_content.py'
+      - '.github/workflows/plantlogic_v2_customer_content_ci.yml'
+  pull_request:
+    paths:
+      - 'backend/services/plantlogic_v2_customer_content.py'
+      - 'backend/services/product_master_v5_migrations.py'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
+      - 'v5/content/verified-current.json'
+      - 'tools/audit_plantlogic_v2_customer_content.py'
+      - '.github/workflows/plantlogic_v2_customer_content_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  customer-content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: |
+          python -m py_compile \
+            backend/services/plantlogic_v2_customer_content.py \
+            backend/services/product_master_v5_migrations.py \
+            tools/audit_plantlogic_v2_customer_content.py
+      - name: Audit all 78 canonical PlantLogic cards
+        run: python tools/audit_plantlogic_v2_customer_content.py

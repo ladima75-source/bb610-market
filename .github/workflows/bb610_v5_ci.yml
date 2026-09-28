@@ -27,7 +27,11 @@ on:
   pull_request:
     paths:
       - 'v5/**'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
       - 'backend/services/product_master_v5.py'
+      - 'backend/services/product_master_v5_migrations.py'
+      - 'backend/services/plantlogic_v2_customer_content.py'
+      - 'tools/audit_plantlogic_v2_customer_content.py'
       - 'backend/catalog_provider.py'
       - 'backend/services/product_commerce.py'
       - 'admin/products.js'
@@ -248,7 +252,7 @@ jobs:
           assert long47['name']=='Горщик для малини та ожини 4,7 л квадратний для технології long-cane'
           assert long7['name']=='Горщик для малини та ожини 7 л квадратний для технології long-cane'
           assert 'холодного зберігання' not in long47['name'].lower()
-          assert long47['short_description']=='Спеціалізований горщик для вирощування long-cane малини. Компактна квадратна форма підвищує ефективність розміщення рослин під час холодного зберігання.'
+          assert long47['short_description']=='Горщик для малини та ожини 4,7 л квадратний для технології long-cane. Призначений для професійного контейнерного вирощування малини та ожини.'
           assert all(s['attributes']['canonical_title']==long47['name'] for s in long47['skus'])
           assert all(s['attributes']['canonical_title']==long7['name'] for s in long7['skus'])
           print('BB610 V5 SHADOW API SERVICE: PASS')

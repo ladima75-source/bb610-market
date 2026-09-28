@@ -1821,6 +1821,14 @@
       "alt": "Plantlogic 1305071 — 7L-Square-pot-for-cold-storage_Item_1305071.jpg"
     },
     {
+      "media_id": "v5m_da754e33c529d18725b119cd",
+      "path": "/assets/img/v5/media/da754e33c529d18725b1.jpg",
+      "sha256": "da754e33c529d18725b119cd7090b294e367ff4b4eb716baefe31e31362be9e7",
+      "kind": "image",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2022/03/sistema-elevado-fresa-1.jpg",
+      "alt": "Горщик для лохини Zephyr першого покоління — official PlantLogic tech sheet"
+    },
+    {
       "media_id": "v5m_da9e77e8e71226b45fe98acc",
       "path": "/assets/img/v5/media/da9e77e8e71226b45fe9.jpg",
       "sha256": "da9e77e8e71226b45fe98acc87904869614bea7bb5262b7f4c1a73638f979c18",
@@ -3136,6 +3144,13 @@
       "sort_order": 5,
       "source_kind": "plantlogic_media_master",
       "source_url": "https://getplantlogic.com/wp-content/uploads/2016/10/Plantlogic-1308040-inside-bottom.jpg"
+    },
+    {
+      "product_id": "plantlogic-zephyr-1301133",
+      "media_id": "v5m_da754e33c529d18725b119cd",
+      "sort_order": 0,
+      "source_kind": "plantlogic_official_tech_sheet_page",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2022/03/sistema-elevado-fresa-1.jpg"
     },
     {
       "product_id": "plantlogic-steel-lysimeter",
@@ -5328,6 +5343,14 @@
       "sort_order": 5,
       "source_kind": "plantlogic_media_master",
       "source_url": "https://getplantlogic.com/wp-content/uploads/2016/10/Plantlogic-1308040-inside-bottom.jpg"
+    },
+    {
+      "sku_id": "PL-BB-1301133-BK",
+      "media_id": "v5m_da754e33c529d18725b119cd",
+      "is_primary": true,
+      "sort_order": 0,
+      "source_kind": "plantlogic_official_tech_sheet_page",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2022/03/sistema-elevado-fresa-1.jpg"
     },
     {
       "sku_id": "PL-13046025",

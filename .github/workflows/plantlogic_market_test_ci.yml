@@ -95,7 +95,7 @@ jobs:
           assert "/api/v1/price-requests" in app
           assert "data-request-price" in app
           assert "const skuName=" in app
-          assert "categoryId==='containers'||!v5Mode()" in app
+          assert "s?.canonical_title" in app
           assert "openPriceRequest" in product
           assert "Ціна за запитом" in product
           assert "Під замовлення" in product

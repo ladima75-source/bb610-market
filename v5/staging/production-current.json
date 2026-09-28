@@ -8157,7 +8157,7 @@
     {
       "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
       "slug": "plantlogic-4-7l-square-cold-storage-13050040",
-      "name": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання",
+      "name": "Горщик для малини 4,7 л квадратний для технології long-cane",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_13050040",
@@ -8207,7 +8207,7 @@
     {
       "product_id": "plantlogic-7l-square-cold-storage-1305071",
       "slug": "plantlogic-7l-square-cold-storage-1305071",
-      "name": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання",
+      "name": "Горщик для малини 7 л квадратний для технології long-cane",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1305071",
@@ -10151,7 +10151,7 @@
         "plantlogic_sections": [
           "rubus"
         ],
-        "canonical_title": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання"
+        "canonical_title": "Горщик для малини 4,7 л квадратний для технології long-cane"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10224,7 +10224,7 @@
         "plantlogic_sections": [
           "rubus"
         ],
-        "canonical_title": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання"
+        "canonical_title": "Горщик для малини 4,7 л квадратний для технології long-cane"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10297,7 +10297,7 @@
         "plantlogic_sections": [
           "rubus"
         ],
-        "canonical_title": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання"
+        "canonical_title": "Горщик для малини 4,7 л квадратний для технології long-cane"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11075,7 +11075,7 @@
         "plantlogic_sections": [
           "rubus"
         ],
-        "canonical_title": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання"
+        "canonical_title": "Горщик для малини 7 л квадратний для технології long-cane"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11162,7 +11162,7 @@
         "plantlogic_sections": [
           "rubus"
         ],
-        "canonical_title": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання"
+        "canonical_title": "Горщик для малини 7 л квадратний для технології long-cane"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11249,7 +11249,7 @@
         "plantlogic_sections": [
           "rubus"
         ],
-        "canonical_title": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання"
+        "canonical_title": "Горщик для малини 7 л квадратний для технології long-cane"
       },
       "enabled": true,
       "commerce_state": "request_price",

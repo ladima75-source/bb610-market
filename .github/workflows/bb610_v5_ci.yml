@@ -234,6 +234,14 @@ jobs:
           parallel=next(x for x in round_u['skus'] if x['sku_id']=='PL-BB-1308305-BK')
           assert parallel['attributes']['canonical_title']=='Горщик для лохини 30 л круглий з паралельними U-пазами'
           assert product('plantlogic-steel-lysimeter')['name']=='Сталевий лізиметр для контролю дренажу'
+          long47=product('plantlogic-4-7l-square-cold-storage-13050040')
+          long7=product('plantlogic-7l-square-cold-storage-1305071')
+          assert long47['name']=='Горщик для малини 4,7 л квадратний для технології long-cane'
+          assert long7['name']=='Горщик для малини 7 л квадратний для технології long-cane'
+          assert 'холодного зберігання' not in long47['name'].lower()
+          assert long47['short_description']=='Спеціалізований горщик для вирощування long-cane малини. Компактна квадратна форма підвищує ефективність розміщення рослин під час холодного зберігання.'
+          assert all(s['attributes']['canonical_title']==long47['name'] for s in long47['skus'])
+          assert all(s['attributes']['canonical_title']==long7['name'] for s in long7['skus'])
           print('BB610 V5 SHADOW API SERVICE: PASS')
           PY
 

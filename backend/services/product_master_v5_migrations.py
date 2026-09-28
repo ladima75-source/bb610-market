@@ -2187,6 +2187,80 @@ def _split_grouped_blueberry_pots_batch_20(con: sqlite3.Connection) -> bool:
     return True
 
 
+
+def _normalize_long_cane_titles_batch_21(con: sqlite3.Connection) -> bool:
+    rows = {
+        "plantlogic-4-7l-square-cold-storage-13050040": {
+            "title": "Горщик для малини 4,7 л квадратний для технології long-cane",
+            "short": "Спеціалізований горщик для вирощування long-cane малини. Компактна квадратна форма підвищує ефективність розміщення рослин під час холодного зберігання.",
+            "description": "Спеціалізований квадратний горщик 4,7 л для вирощування long-cane малини. Компактна форма допомагає ефективно розміщувати рослини на етапі холодного зберігання в межах технології long-cane, а конструкція горщика підтримує керований дренаж і повітрообмін у кореневій зоні.",
+        },
+        "plantlogic-7l-square-cold-storage-1305071": {
+            "title": "Горщик для малини 7 л квадратний для технології long-cane",
+            "short": "Спеціалізований горщик для вирощування long-cane малини. Компактна квадратна форма підвищує ефективність розміщення рослин під час холодного зберігання.",
+            "description": "Спеціалізований квадратний горщик 7 л для вирощування long-cane малини. Компактна форма допомагає ефективно розміщувати рослини на етапі холодного зберігання в межах технології long-cane, а конструкція горщика підтримує керований дренаж і повітрообмін у кореневій зоні.",
+        },
+    }
+    application = (
+        "Для професійного вирощування long-cane малини у субстраті. "
+        "Холодне зберігання є одним з етапів технології long-cane; "
+        "режим зберігання визначають відповідно до технологічного протоколу господарства."
+    )
+    how_it_works = (
+        "Компактна квадратна геометрія підвищує щільність і ефективність розміщення "
+        "long-cane рослин, зокрема на етапі холодного зберігання, а дренажна основа "
+        "та повітряні отвори підтримують водно-повітряний режим кореневої зони."
+    )
+    for product_id, spec in rows.items():
+        product = con.execute(
+            "SELECT characteristics_json,benefits_json FROM products WHERE product_id=?",
+            (product_id,),
+        ).fetchone()
+        if not product:
+            return False
+        characteristics = json.loads(product["characteristics_json"] or "[]")
+        for row in characteristics:
+            if not isinstance(row, dict):
+                continue
+            if row.get("label") == "Тип":
+                row["value"] = "Спеціалізований квадратний горщик для технології long-cane"
+            elif row.get("label") == "Призначення":
+                row["value"] = "малина, технологія long-cane"
+        benefits = json.loads(product["benefits_json"] or "[]")
+        for row in benefits:
+            if isinstance(row, dict) and row.get("title") == "Оптимізовано для long-cane":
+                row["text"] = (
+                    "Компактна квадратна форма підходить для технології long-cane "
+                    "та ефективного розміщення рослин на етапі холодного зберігання."
+                )
+        _update_product(
+            con,
+            product_id,
+            {
+                "name": spec["title"],
+                "short_description": spec["short"],
+                "description": spec["description"],
+                "application": application,
+                "how_it_works": how_it_works,
+                "benefits_json": json.dumps(benefits, ensure_ascii=False, separators=(",", ":")),
+                "characteristics_json": json.dumps(characteristics, ensure_ascii=False, separators=(",", ":")),
+                "seo_title": spec["title"] + " | BB610 Market",
+                "seo_description": spec["short"],
+            },
+        )
+        for sku in con.execute(
+            "SELECT sku_id,attributes_json FROM skus WHERE product_id=?",
+            (product_id,),
+        ).fetchall():
+            attrs = json.loads(sku["attributes_json"] or "{}")
+            attrs["canonical_title"] = spec["title"]
+            con.execute(
+                "UPDATE skus SET attributes_json=? WHERE sku_id=?",
+                (json.dumps(attrs, ensure_ascii=False, separators=(",", ":")), sku["sku_id"]),
+            )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2210,6 +2284,7 @@ _MIGRATIONS = [
     ("20260926_ads_hires_exact_package_media_batch18", _ads_hires_exact_package_media_batch_18),
     ("20260928_normalize_plantlogic_naming_batch19", _normalize_plantlogic_naming_batch_19),
     ("20260928_split_grouped_blueberry_pots_batch20", _split_grouped_blueberry_pots_batch_20),
+    ("20260928_normalize_long_cane_titles_batch21", _normalize_long_cane_titles_batch_21),
 ]
 
 

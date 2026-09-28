@@ -527,6 +527,40 @@ document.addEventListener('DOMContentLoaded',async()=>{
     syncFacet('methodGroup','.facet-pill-option','.facet-pill-count');
   }
 
+  function containerVolume(p){
+    const values=productSkus(p).map(s=>{
+      const a=s?.attributes||{};
+      const raw=Number(a.volume_l??s?.volume_weight?.value??s?.package_value);
+      return Number.isFinite(raw)?raw:NaN;
+    }).filter(Number.isFinite);
+    if(values.length)return Math.min(...values);
+    const m=String(p?.name||'').replace(',','.').match(/(\d+(?:\.\d+)?)\s*л\b/i);
+    return m?Number(m[1]):Number.POSITIVE_INFINITY;
+  }
+
+  function containerFamilyKey(p){
+    const sku=productSkus(p)[0]||{};
+    const a=sku.attributes||{};
+    const related=String(a.related_group_id||a.item_group_id||'').trim();
+    if(related)return '10:'+related;
+    const name=norm(p?.name||'');
+    if(name.includes('long-cane'))return '20:rubus-square-long-cane';
+    if(name.includes('збором дренажу'))return name.includes('кругл')?'40:drainage-round':'41:drainage';
+    if(name.includes('zephyr'))return '30:zephyr';
+    if(name.includes('u-паз'))return name.includes('квадрат')?'31:square-u':'32:round-u';
+    if(name.includes('квадрат'))return '21:square-standard';
+    if(name.includes('кругл'))return '22:round-standard';
+    return '90:'+name;
+  }
+
+  function containerLogicalSort(a,b){
+    const family=natural(containerFamilyKey(a),containerFamilyKey(b));
+    if(family)return family;
+    const volume=containerVolume(a)-containerVolume(b);
+    if(Number.isFinite(volume)&&volume)return volume;
+    return natural(String(a.name||''),String(b.name||''));
+  }
+
   function renderCards(list,state){
     const isContainerView=state.category.length===1&&state.category[0]==='containers';
     const plantlogic=list.filter(p=>norm(brandFor(p))==='plantlogic');
@@ -540,7 +574,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
     const chunks=[];
     const shown=new Set();
     plantlogicSectionOrder.forEach(section=>{
-      const rows=list.filter(p=>norm(brandFor(p))==='plantlogic'&&plantlogicSectionsFor(p).includes(section.id));
+      const rows=list.filter(p=>norm(brandFor(p))==='plantlogic'&&plantlogicSectionsFor(p).includes(section.id)).sort(containerLogicalSort);
       if(!rows.length)return;
       rows.forEach(p=>shown.add(p.id));
       const sectionImage=rows.map(plantlogicCardImage).find(Boolean)||'';

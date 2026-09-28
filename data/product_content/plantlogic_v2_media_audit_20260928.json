@@ -2,14 +2,13 @@
   "schema_version": "1.0",
   "canonical_products": 78,
   "distribution": {
-    "0": 17,
-    "1": 17,
-    "2": 4,
-    "3": 1,
-    "4+": 39
+    "0": 15,
+    "1": 10,
+    "2": 8,
+    "3": 2,
+    "4+": 43
   },
   "without_individual_photo": [
-    "plantlogic-hose-clip-1205001-1205002",
     "plantlogic-micro-tube-stake-1205018",
     "plantlogic-micro-tube-stake-1205019",
     "plantlogic-metal-gutter-30050008",
@@ -17,41 +16,32 @@
     "plantlogic-slab-base-bags-slabs-1302809",
     "plantlogic-blueberry-35l-round-anti-leaking-ring-13080359",
     "plantlogic-blueberry-zephyr-v2-40l-1301143",
+    "plantlogic-zephyr-1301133",
     "plantlogic-zephyr-v2-hose-clip-1700149",
     "plantlogic-pot-cover-1310110",
     "plantlogic-rubus-square-10l-legacy-1309010",
-    "plantlogic-cold-storage-bin-1702000",
     "plantlogic-kratos-rivus-grow-bag-8l-1500010",
     "plantlogic-universal-round-25l-legacy-1309003",
     "plantlogic-universal-round-30l-1308030",
-    "plantlogic-universal-square-40l-legacy-1309040",
-    "plantlogic-universal-round-5l-1308005"
+    "plantlogic-universal-square-40l-legacy-1309040"
   ],
   "one_photo_only": [
-    "plantlogic-ground-cover-1600201",
     "plantlogic-pot-anchor",
-    "plantlogic-nursery-tray-1302048",
     "plantlogic-lysimeter-kit",
-    "plantlogic-metal-hose-clip-1205012",
-    "plantlogic-metal-stakes-gutter",
-    "plantlogic-bag-base-1307040",
-    "plantlogic-vf-bag-base-12010300",
     "plantlogic-bag-base-drainage-1301036",
     "plantlogic-plastic-gutter-drainage",
     "plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400",
     "plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440",
-    "plantlogic-zephyr-1301133",
-    "plantlogic-vegetable-pot-8l-1305008",
     "plantlogic-strawberry-trough-8l-short-legs-1305081",
     "plantlogic-strawberry-trough-9l-1305109",
-    "plantlogic-trough-cover"
+    "plantlogic-trough-cover",
+    "plantlogic-universal-round-5l-1308005"
   ],
   "pdf_only": [
     "plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400",
     "plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440"
   ],
   "product_number_conflicts": [
-    "plantlogic-hose-clip-1205001-1205002",
     "plantlogic-micro-tube-stake-1205018",
     "plantlogic-micro-tube-stake-1205019",
     "plantlogic-metal-gutter-30050008",
@@ -59,14 +49,13 @@
     "plantlogic-slab-base-bags-slabs-1302809",
     "plantlogic-blueberry-35l-round-anti-leaking-ring-13080359",
     "plantlogic-blueberry-zephyr-v2-40l-1301143",
+    "plantlogic-zephyr-1301133",
     "plantlogic-zephyr-v2-hose-clip-1700149",
     "plantlogic-pot-cover-1310110",
-    "plantlogic-cold-storage-bin-1702000",
     "plantlogic-kratos-rivus-grow-bag-8l-1500010",
     "plantlogic-universal-round-25l-legacy-1309003",
     "plantlogic-universal-round-30l-1308030",
-    "plantlogic-universal-square-40l-legacy-1309040",
-    "plantlogic-universal-round-5l-1308005"
+    "plantlogic-universal-square-40l-legacy-1309040"
   ],
   "unused_official_media": [
     "plantlogic-ground-cover-1600201",
@@ -114,15 +103,15 @@
       "canonical_product_id": "plantlogic-ground-cover-1600201",
       "manufacturer_product_number": "1600201",
       "primary": "/assets/img/v5/media/00eb0234d0dc495832f8.jpg",
-      "gallery_count": 1,
-      "media_source": "v5_current",
-      "status": "ONE_PHOTO",
+      "gallery_count": 5,
+      "media_source": "plantlogic_official_page + v5_current",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/es/portfolio-items/malla-ground-cover/",
         "https://getplantlogic.com/portfolio-items/ground-cover/"
       ],
-      "official_candidate_count": 50,
-      "unused_official_media_candidates": 50,
+      "official_candidate_count": 48,
+      "unused_official_media_candidates": 44,
       "official_candidate_samples": [
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2026/07/malla-ground-cover-invernadero.jpg?resize=1024%2C534&ssl=1",
@@ -322,75 +311,82 @@
       "canonical_product_id": "plantlogic-hose-clip-12050010",
       "manufacturer_product_number": "12050010",
       "primary": "/assets/img/v5/media/25e7d6585579476d5cf3.jpg",
-      "gallery_count": 3,
+      "gallery_count": 4,
       "media_source": "plantlogic_official_page + v5_current",
       "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/hose-clip/"
       ],
       "official_candidate_count": 15,
-      "unused_official_media_candidates": 13,
+      "unused_official_media_candidates": 12,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg",
           "source": "img:src",
-          "score": 95,
+          "score": 275,
           "identity_match": true,
           "reasons": [
+            "product_no=12050010",
             "name_tokens=clip,hose"
           ]
         },
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_2.jpg",
           "source": "img:src",
-          "score": 95,
+          "score": 275,
           "identity_match": true,
           "reasons": [
+            "product_no=12050010",
             "name_tokens=clip,hose"
           ]
         },
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_3.jpg",
           "source": "img:src",
-          "score": 95,
+          "score": 275,
           "identity_match": true,
           "reasons": [
+            "product_no=12050010",
             "name_tokens=clip,hose"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_2.jpg?resize=534%2C368&ssl=1",
           "source": "img:src",
-          "score": 95,
+          "score": 275,
           "identity_match": true,
           "reasons": [
+            "product_no=12050010",
             "name_tokens=clip,hose"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_3.jpg?resize=536%2C370&ssl=1",
           "source": "img:src",
-          "score": 95,
+          "score": 275,
           "identity_match": true,
           "reasons": [
+            "product_no=12050010",
             "name_tokens=clip,hose"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_4.jpg?w=669&ssl=1",
           "source": "img:src",
-          "score": 95,
+          "score": 275,
           "identity_match": true,
           "reasons": [
+            "product_no=12050010",
             "name_tokens=clip,hose"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg?fit=738%2C509&ssl=1",
           "source": "og:image",
-          "score": 85,
+          "score": 265,
           "identity_match": true,
           "reasons": [
+            "product_no=12050010",
             "name_tokens=clip,hose"
           ]
         },
@@ -435,14 +431,14 @@
       "canonical_product_id": "plantlogic-nursery-tray-1302048",
       "manufacturer_product_number": "1302048",
       "primary": "/assets/img/v5/media/7304d4d65ec1061f2812.jpg",
-      "gallery_count": 1,
+      "gallery_count": 2,
       "media_source": "plantlogic_official_page",
-      "status": "ONE_PHOTO",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/nurserytray_item_1302048_chi/"
       ],
       "official_candidate_count": 10,
-      "unused_official_media_candidates": 9,
+      "unused_official_media_candidates": 8,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2021/11/NurseryTray_Item_1302048_Chi-pdf-212x300.jpg",
@@ -525,31 +521,33 @@
     {
       "canonical_product_id": "plantlogic-hose-clip-1205001-1205002",
       "manufacturer_product_number": "1205001 / 1205002",
-      "primary": "",
-      "gallery_count": 0,
-      "media_source": "",
-      "status": "MEDIA_CONFLICT_OR_UNVERIFIED",
+      "primary": "/assets/img/v5/media/126d75701ba4e2b6feed.jpg",
+      "gallery_count": 2,
+      "media_source": "plantlogic_official_page",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/es/clips-multiusos-1205001-y-1205002/"
       ],
       "official_candidate_count": 5,
-      "unused_official_media_candidates": 5,
+      "unused_official_media_candidates": 3,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2017/01/Clips-multiusos-1205001-y-1205002-212x300.jpg",
           "source": "img:src",
-          "score": 75,
-          "identity_match": false,
+          "score": 255,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205001,1205002",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2017/01/Clips-multiusos-1205001-y-1205002.jpg?resize=212%2C300&ssl=1",
           "source": "img:src",
-          "score": 75,
-          "identity_match": false,
+          "score": 255,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205001,1205002",
             "name_tokens=clip"
           ]
         },
@@ -586,8 +584,8 @@
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/micro-tube-stake/"
       ],
-      "official_candidate_count": 14,
-      "unused_official_media_candidates": 14,
+      "official_candidate_count": 13,
+      "unused_official_media_candidates": 13,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2021/07/OCStake_2.jpg",
@@ -665,13 +663,6 @@
           "reasons": []
         },
         {
-          "url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg",
-          "source": "img:src",
-          "score": 55,
-          "identity_match": false,
-          "reasons": []
-        },
-        {
           "url": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot-1.jpg",
           "source": "img:src",
           "score": 55,
@@ -680,6 +671,13 @@
         },
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2026/07/best-ground-cover-for-greenhouse.jpg",
+          "source": "img:src",
+          "score": 55,
+          "identity_match": false,
+          "reasons": []
+        },
+        {
+          "url": "https://www.getplantlogic.com/wp-content/uploads/2016/04/pl_logo-2x.png",
           "source": "img:src",
           "score": 55,
           "identity_match": false,
@@ -697,8 +695,8 @@
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/micro-tube-stake/"
       ],
-      "official_candidate_count": 14,
-      "unused_official_media_candidates": 14,
+      "official_candidate_count": 13,
+      "unused_official_media_candidates": 13,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2021/07/OCStake_2.jpg",
@@ -776,13 +774,6 @@
           "reasons": []
         },
         {
-          "url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg",
-          "source": "img:src",
-          "score": 55,
-          "identity_match": false,
-          "reasons": []
-        },
-        {
           "url": "https://getplantlogic.com/wp-content/uploads/2026/07/Trough-cover-for-strawberry-pot-1.jpg",
           "source": "img:src",
           "score": 55,
@@ -791,6 +782,13 @@
         },
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2026/07/best-ground-cover-for-greenhouse.jpg",
+          "source": "img:src",
+          "score": 55,
+          "identity_match": false,
+          "reasons": []
+        },
+        {
+          "url": "https://www.getplantlogic.com/wp-content/uploads/2016/04/pl_logo-2x.png",
           "source": "img:src",
           "score": 55,
           "identity_match": false,
@@ -809,8 +807,8 @@
         "https://getplantlogic.com/es/portfolio-items/lisimetros/",
         "https://getplantlogic.com/portfolio-items/lysimeters/"
       ],
-      "official_candidate_count": 32,
-      "unused_official_media_candidates": 32,
+      "official_candidate_count": 31,
+      "unused_official_media_candidates": 31,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2025/03/Steel-lysimeter-for-blueberry-pots_isometric.jpg",
@@ -913,14 +911,14 @@
           "reasons": []
         },
         {
-          "url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg",
+          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/08/Lys_7.jpg?w=669",
           "source": "img:src",
           "score": 55,
           "identity_match": false,
           "reasons": []
         },
         {
-          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/08/Lys_7.jpg?w=669",
+          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/08/Lys_9.jpg?w=669",
           "source": "img:src",
           "score": 55,
           "identity_match": false,
@@ -931,121 +929,133 @@
     {
       "canonical_product_id": "plantlogic-metal-hose-clip-1205012",
       "manufacturer_product_number": "1205012",
-      "primary": "/assets/img/v5/media/72bb5c94b0e7bf6a89b9.jpg",
-      "gallery_count": 1,
-      "media_source": "v5_current",
-      "status": "ONE_PHOTO",
+      "primary": "/assets/img/v5/media/09cb05477b64c8908b3a.jpg",
+      "gallery_count": 7,
+      "media_source": "plantlogic_official_page + v5_current",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/metal-hose-clip/"
       ],
-      "official_candidate_count": 22,
-      "unused_official_media_candidates": 22,
+      "official_candidate_count": 21,
+      "unused_official_media_candidates": 15,
       "official_candidate_samples": [
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_detail.jpg?resize=300%2C207&ssl=1",
           "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
+          "score": 260,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_detail.jpg?resize=500%2C345&ssl=1",
           "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
+          "score": 260,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_detail.jpg?resize=640%2C441&ssl=1",
           "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
+          "score": 260,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_detail.jpg?w=738&ssl=1",
           "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
+          "score": 260,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_specs.jpg?resize=300%2C207&ssl=1",
           "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
+          "score": 260,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_specs.jpg?resize=500%2C345&ssl=1",
           "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
+          "score": 260,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_specs.jpg?resize=640%2C441&ssl=1",
           "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
+          "score": 260,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_specs.jpg?w=738&ssl=1",
           "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
+          "score": 260,
+          "identity_match": true,
           "reasons": [
-            "name_tokens=clip"
-          ]
-        },
-        {
-          "url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg",
-          "source": "img:src",
-          "score": 75,
-          "identity_match": false,
-          "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012-2.jpg?w=669",
           "source": "img:src",
-          "score": 75,
-          "identity_match": false,
+          "score": 255,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_detail.jpg?resize=546%2C377&ssl=1",
           "source": "img:src",
-          "score": 75,
-          "identity_match": false,
+          "score": 255,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_for-irrigation-pipe.jpg?w=669",
           "source": "img:src",
-          "score": 75,
-          "identity_match": false,
+          "score": 255,
+          "identity_match": true,
           "reasons": [
+            "product_no=1205012",
+            "name_tokens=clip"
+          ]
+        },
+        {
+          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2024/03/Metal-clip_Item_1205012_for-irrigation-pipes.jpg?w=669",
+          "source": "img:src",
+          "score": 255,
+          "identity_match": true,
+          "reasons": [
+            "product_no=1205012",
             "name_tokens=clip"
           ]
         }
@@ -1102,15 +1112,15 @@
       "canonical_product_id": "plantlogic-metal-stakes-gutter",
       "manufacturer_product_number": "1700146 / 1700147",
       "primary": "/assets/img/v5/media/2ede80c5a49bb3f01cd7.jpg",
-      "gallery_count": 1,
-      "media_source": "v5_current",
-      "status": "ONE_PHOTO",
+      "gallery_count": 2,
+      "media_source": "plantlogic_official_page + v5_current",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/es/portfolio-items/grapas-para-canaleta/",
         "https://getplantlogic.com/portfolio-items/metal-stakes-for-gutter/"
       ],
-      "official_candidate_count": 24,
-      "unused_official_media_candidates": 24,
+      "official_candidate_count": 23,
+      "unused_official_media_candidates": 22,
       "official_candidate_samples": [
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2019/10/1700145146-new.jpg?w=669&ssl=1",
@@ -1210,28 +1220,21 @@
           "score": 55,
           "identity_match": false,
           "reasons": []
-        },
-        {
-          "url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg",
-          "source": "img:src",
-          "score": 55,
-          "identity_match": false,
-          "reasons": []
         }
       ]
     },
     {
       "canonical_product_id": "plantlogic-culti-base",
       "manufacturer_product_number": "13079250 / 13079300",
-      "primary": "/assets/img/v5/media/7a4031e2405408ed77b9.jpg",
-      "gallery_count": 2,
+      "primary": "/assets/img/v5/media/03a3e9d7071ea259af7e.png",
+      "gallery_count": 6,
       "media_source": "plantlogic_official_page + v5_current",
       "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/culti-base-grow-bag-with-integrated-base/"
       ],
-      "official_candidate_count": 35,
-      "unused_official_media_candidates": 34,
+      "official_candidate_count": 34,
+      "unused_official_media_candidates": 29,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2025/03/Culti-base-13079300-bolsa-de-cultivo-con-base.jpg",
@@ -1350,14 +1353,14 @@
       "canonical_product_id": "plantlogic-bag-base-1307040",
       "manufacturer_product_number": "1307040",
       "primary": "/assets/img/v5/media/7754eb70dffac4d091e1.jpg",
-      "gallery_count": 1,
+      "gallery_count": 2,
       "media_source": "plantlogic_official_page",
-      "status": "ONE_PHOTO",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/es/1307040_bagbase_spa/"
       ],
       "official_candidate_count": 5,
-      "unused_official_media_candidates": 4,
+      "unused_official_media_candidates": 3,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2017/02/1307040_BagBase_Spa-212x300.jpg",
@@ -1406,15 +1409,55 @@
       "canonical_product_id": "plantlogic-vf-bag-base-12010300",
       "manufacturer_product_number": "12010300 / 12010400",
       "primary": "/assets/img/v5/media/0bf49ae91c067410028a.jpg",
-      "gallery_count": 1,
-      "media_source": "v5_current",
-      "status": "ONE_PHOTO",
+      "gallery_count": 3,
+      "media_source": "plantlogic_official_page + v5_current",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/vf-base-for-open-top-grow-bags/"
       ],
       "official_candidate_count": 29,
-      "unused_official_media_candidates": 29,
+      "unused_official_media_candidates": 27,
       "official_candidate_samples": [
+        {
+          "url": "https://getplantlogic.com/wp-content/uploads/2025/03/VF-BAG-BASE-12010300-CENITAL.jpg",
+          "source": "img:src",
+          "score": 255,
+          "identity_match": true,
+          "reasons": [
+            "product_no=12010300",
+            "name_tokens=base"
+          ]
+        },
+        {
+          "url": "https://getplantlogic.com/wp-content/uploads/2025/03/VF-BAG-BASE-12010300-FRENTE.jpg",
+          "source": "img:src",
+          "score": 255,
+          "identity_match": true,
+          "reasons": [
+            "product_no=12010300",
+            "name_tokens=base"
+          ]
+        },
+        {
+          "url": "https://getplantlogic.com/wp-content/uploads/2025/03/VF-BAG-BASE-12010300-ISOMETRICO.jpg",
+          "source": "img:src",
+          "score": 255,
+          "identity_match": true,
+          "reasons": [
+            "product_no=12010300",
+            "name_tokens=base"
+          ]
+        },
+        {
+          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/03/VF-BAG-BASE-12010300-ISOMETRICO.jpg?fit=738%2C509&ssl=1",
+          "source": "og:image",
+          "score": 245,
+          "identity_match": true,
+          "reasons": [
+            "product_no=12010300",
+            "name_tokens=base"
+          ]
+        },
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/03/Best-base-for-open-top-bags.png?resize=1024%2C711&ssl=1",
           "source": "img:srcset",
@@ -1486,42 +1529,6 @@
           "reasons": [
             "name_tokens=base"
           ]
-        },
-        {
-          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/03/bag-base-for-open-top-grow-bags.png?resize=640%2C539&ssl=1",
-          "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
-          "reasons": [
-            "name_tokens=base"
-          ]
-        },
-        {
-          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/03/bag-base-for-open-top-grow-bags.png?w=659&ssl=1",
-          "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
-          "reasons": [
-            "name_tokens=base"
-          ]
-        },
-        {
-          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/03/economi-open-top-bags-base.png?resize=220%2C161&ssl=1",
-          "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
-          "reasons": [
-            "name_tokens=base"
-          ]
-        },
-        {
-          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/03/economi-open-top-bags-base.png?resize=300%2C218&ssl=1",
-          "source": "img:srcset",
-          "score": 80,
-          "identity_match": false,
-          "reasons": [
-            "name_tokens=base"
-          ]
         }
       ]
     },
@@ -1529,35 +1536,15 @@
       "canonical_product_id": "plantlogic-bag-base-edge-drainage-1307030",
       "manufacturer_product_number": "1307030",
       "primary": "/assets/img/v5/media/bd6d2865214bcf48696e.jpg",
-      "gallery_count": 2,
+      "gallery_count": 3,
       "media_source": "plantlogic_official_page",
       "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/techsheet_item1307030_bagbase_plantlogic_eng/"
       ],
       "official_candidate_count": 10,
-      "unused_official_media_candidates": 8,
+      "unused_official_media_candidates": 7,
       "official_candidate_samples": [
-        {
-          "url": "https://getplantlogic.com/wp-content/uploads/2018/06/techsheet_item1307030_bagbase_plantlogic_Eng-pdf-230x300.jpg",
-          "source": "img:src",
-          "score": 275,
-          "identity_match": true,
-          "reasons": [
-            "product_no=1307030",
-            "name_tokens=bag,base"
-          ]
-        },
-        {
-          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/06/techsheet_item1307030_bagbase_plantlogic_Eng-pdf.jpg?resize=230%2C300&ssl=1",
-          "source": "img:src",
-          "score": 275,
-          "identity_match": true,
-          "reasons": [
-            "product_no=1307030",
-            "name_tokens=bag,base"
-          ]
-        },
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2022/11/Tomatoes-in-grow-bags.jpg",
           "source": "img:src",
@@ -1565,6 +1552,24 @@
           "identity_match": true,
           "reasons": [
             "features=drainage",
+            "name_tokens=bag,base"
+          ]
+        },
+        {
+          "url": "https://getplantlogic.com/wp-content/uploads/2018/06/techsheet_item1307030_bagbase_plantlogic_Eng-pdf-230x300.jpg",
+          "source": "img:src",
+          "score": 95,
+          "identity_match": true,
+          "reasons": [
+            "name_tokens=bag,base"
+          ]
+        },
+        {
+          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/06/techsheet_item1307030_bagbase_plantlogic_Eng-pdf.jpg?resize=230%2C300&ssl=1",
+          "source": "img:src",
+          "score": 95,
+          "identity_match": true,
+          "reasons": [
             "name_tokens=bag,base"
           ]
         },
@@ -1629,8 +1634,8 @@
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/vf-base-for-open-top-grow-bags/"
       ],
-      "official_candidate_count": 29,
-      "unused_official_media_candidates": 29,
+      "official_candidate_count": 25,
+      "unused_official_media_candidates": 25,
       "official_candidate_samples": [
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/03/Best-base-for-open-top-bags.png?resize=1024%2C711&ssl=1",
@@ -1752,8 +1757,8 @@
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/bag-base-drainage-collection/"
       ],
-      "official_candidate_count": 14,
-      "unused_official_media_candidates": 14,
+      "official_candidate_count": 13,
+      "unused_official_media_candidates": 13,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2021/01/product_PotAnchor_01.jpg",
@@ -1771,13 +1776,6 @@
         },
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2025/03/Steel-lysimeter-for-blueberry-pots_isometric.jpg",
-          "source": "img:src",
-          "score": 55,
-          "identity_match": false,
-          "reasons": []
-        },
-        {
-          "url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg",
           "source": "img:src",
           "score": 55,
           "identity_match": false,
@@ -1834,6 +1832,13 @@
         },
         {
           "url": "https://www.getplantlogic.com/wp-content/uploads/2016/04/pl_logo-2x.png",
+          "source": "img:src",
+          "score": 55,
+          "identity_match": false,
+          "reasons": []
+        },
+        {
+          "url": "https://www.getplantlogic.com/wp-content/uploads/2016/04/pl_logo.png",
           "source": "img:src",
           "score": 55,
           "identity_match": false,
@@ -1903,8 +1908,8 @@
         "https://getplantlogic.com/es/portfolio-items/canaleta-plastica/",
         "https://getplantlogic.com/portfolio-items/plastic-gutter/"
       ],
-      "official_candidate_count": 22,
-      "unused_official_media_candidates": 22,
+      "official_candidate_count": 21,
+      "unused_official_media_candidates": 21,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2019/04/1036_3.jpg",
@@ -1993,13 +1998,6 @@
         },
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2021/01/product_PotAnchor_01.jpg",
-          "source": "img:src",
-          "score": 55,
-          "identity_match": false,
-          "reasons": []
-        },
-        {
-          "url": "https://getplantlogic.com/wp-content/uploads/2026/04/Item-12050010_Hose-Clips_1.jpg",
           "source": "img:src",
           "score": 55,
           "identity_match": false,
@@ -2684,10 +2682,10 @@
     {
       "canonical_product_id": "plantlogic-zephyr-1301133",
       "manufacturer_product_number": "1301133",
-      "primary": "/assets/img/v5/media/da754e33c529d18725b1.jpg",
-      "gallery_count": 1,
-      "media_source": "plantlogic_official_tech_sheet_page",
-      "status": "ONE_PHOTO",
+      "primary": "",
+      "gallery_count": 0,
+      "media_source": "",
+      "status": "MEDIA_CONFLICT_OR_UNVERIFIED",
       "official_pages": [
         "https://getplantlogic.com/tech-sheet-1301133-zephyr-pot_eng/"
       ],
@@ -2850,14 +2848,14 @@
       "canonical_product_id": "plantlogic-steel-lysimeter",
       "manufacturer_product_number": "13046025 / 13046026 / 13046031 / 13046041",
       "primary": "/assets/img/v5/media/0d1787affd6a3bbce8e3.jpg",
-      "gallery_count": 4,
+      "gallery_count": 8,
       "media_source": "plantlogic_official_page + v5_current",
       "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/steel-lysimeter-for-blueberry-pots/"
       ],
-      "official_candidate_count": 39,
-      "unused_official_media_candidates": 36,
+      "official_candidate_count": 38,
+      "unused_official_media_candidates": 31,
       "official_candidate_samples": [
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/03/steel-lysimeter-for-bluberries-30L-pots.png?resize=300%2C290&ssl=1",
@@ -3128,22 +3126,33 @@
     {
       "canonical_product_id": "plantlogic-cold-storage-bin-1702000",
       "manufacturer_product_number": "1702000",
-      "primary": "",
-      "gallery_count": 0,
-      "media_source": "",
-      "status": "MEDIA_CONFLICT_OR_UNVERIFIED",
+      "primary": "/assets/img/v5/media/44d5bd8e4a66c27b31dd.jpg",
+      "gallery_count": 2,
+      "media_source": "plantlogic_official_page",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/techsheet_item_1702000_chi/"
       ],
       "official_candidate_count": 10,
-      "unused_official_media_candidates": 10,
+      "unused_official_media_candidates": 8,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2021/06/Techsheet_Item_1702000_Chi-pdf-212x300.jpg",
           "source": "img:src",
-          "score": 55,
-          "identity_match": false,
-          "reasons": []
+          "score": 235,
+          "identity_match": true,
+          "reasons": [
+            "product_no=1702000"
+          ]
+        },
+        {
+          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/06/Techsheet_Item_1702000_Chi-pdf.jpg?resize=212%2C300&ssl=1",
+          "source": "img:src",
+          "score": 235,
+          "identity_match": true,
+          "reasons": [
+            "product_no=1702000"
+          ]
         },
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2022/03/sistema-elevado-fresa-1.jpg",
@@ -3188,13 +3197,6 @@
           "reasons": []
         },
         {
-          "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/06/Techsheet_Item_1702000_Chi-pdf.jpg?resize=212%2C300&ssl=1",
-          "source": "img:src",
-          "score": 55,
-          "identity_match": false,
-          "reasons": []
-        },
-        {
           "url": "https://www.getplantlogic.com/wp-content/uploads/2016/04/pl_logo-2x.png",
           "source": "img:src",
           "score": 55,
@@ -3225,15 +3227,15 @@
     {
       "canonical_product_id": "plantlogic-vegetable-pot-8l-1305008",
       "manufacturer_product_number": "1305008",
-      "primary": "/assets/img/v5/media/9fcce119de428d764284.jpg",
-      "gallery_count": 1,
+      "primary": "/assets/img/v5/media/123b4172a531882ebe7a.jpg",
+      "gallery_count": 2,
       "media_source": "plantlogic_official_page",
-      "status": "ONE_PHOTO",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/es/maceta-de-8-litros-para-vegetales-1305008/"
       ],
       "official_candidate_count": 5,
-      "unused_official_media_candidates": 4,
+      "unused_official_media_candidates": 3,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2017/08/Maceta-de-8-litros-para-Vegetales-1305008-pdf-230x300.jpg",
@@ -4395,15 +4397,15 @@
     {
       "canonical_product_id": "plantlogic-universal-round-5l-1308005",
       "manufacturer_product_number": "1308005",
-      "primary": "",
-      "gallery_count": 0,
-      "media_source": "",
-      "status": "MEDIA_CONFLICT_OR_UNVERIFIED",
+      "primary": "/assets/img/v5/media/344a7a428cdaa21de5e4.jpg",
+      "gallery_count": 1,
+      "media_source": "plantlogic_official_page",
+      "status": "ONE_PHOTO",
       "official_pages": [
         "https://getplantlogic.com/plantlogic-5-liter-round-1308005-bottom/"
       ],
       "official_candidate_count": 12,
-      "unused_official_media_candidates": 12,
+      "unused_official_media_candidates": 11,
       "official_candidate_samples": [
         {
           "url": "https://i0.wp.com/getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-5-liter-round-1308005-bottom.jpg?fit=738%2C509&ssl=1",

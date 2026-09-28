@@ -907,11 +907,11 @@
     {
       "sku_id": "BB610-536EFC906D626F",
       "product_id": "actiwave",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 828.0,
+      "price": 828,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -936,7 +936,7 @@
       "package_unit": "kg",
       "package_label": "22,7 кг",
       "package_group": "large",
-      "price": 4785.0,
+      "price": 4785,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -957,11 +957,11 @@
     {
       "sku_id": "BB610-24D24A6B4EB211",
       "product_id": "agriflex-amino-aminokysloty-50",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 579.0,
+      "price": 579,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -982,11 +982,11 @@
     {
       "sku_id": "BB610-813432FDF29AE4",
       "product_id": "agriflex-amino-aminokysloty-50",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
-      "price": 8306.0,
+      "price": 8306,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1007,11 +1007,11 @@
     {
       "sku_id": "BB610-E72D0A565A6415",
       "product_id": "agriflex-amino-aminokysloty-50",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 2363.0,
+      "price": 2363,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1032,11 +1032,11 @@
     {
       "sku_id": "BB610-021E63CD9734F9",
       "product_id": "agriflex-aminovix",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 646.0,
+      "price": 646,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1057,11 +1057,11 @@
     {
       "sku_id": "BB610-BDD3245D9288CE",
       "product_id": "agriflex-bio",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 327.0,
+      "price": 327,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1082,11 +1082,11 @@
     {
       "sku_id": "BB610-1EBECC896971DC",
       "product_id": "agriflex-fulvix-fulvokysloty-60",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 3487.0,
+      "price": 3487,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1107,11 +1107,11 @@
     {
       "sku_id": "BB610-EAEE397CF0D45E",
       "product_id": "agriflex-fulvix-fulvokysloty-60",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 787.0,
+      "price": 787,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1132,11 +1132,11 @@
     {
       "sku_id": "BB610-34E360AF5C84F3",
       "product_id": "agriflex-humic-humat-kaliyu",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 450.0,
+      "price": 450,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1157,11 +1157,11 @@
     {
       "sku_id": "BB610-47EC10B7783A26",
       "product_id": "agriflex-humic-humat-kaliyu",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 1897.0,
+      "price": 1897,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1182,11 +1182,11 @@
     {
       "sku_id": "BB610-E0BD5873EBDC8F",
       "product_id": "agriflex-humic-humat-kaliyu",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
-      "price": 8306.0,
+      "price": 8306,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1207,11 +1207,11 @@
     {
       "sku_id": "BB610-156A7D639ED836",
       "product_id": "agriflex-zn",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 2761.0,
+      "price": 2761,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1232,11 +1232,11 @@
     {
       "sku_id": "BB610-75B55F8DEAD7C2",
       "product_id": "agriflex-zn",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 619.0,
+      "price": 619,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1257,11 +1257,11 @@
     {
       "sku_id": "BB610-E1BB9E458B9497",
       "product_id": "agroblen-granula-max-14-20-5-te-56m",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "pcs",
       "package_label": "20 шт",
       "package_group": null,
-      "price": 145.0,
+      "price": 145,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1307,11 +1307,11 @@
     {
       "sku_id": "BB610-2E83F80FAD3256",
       "product_id": "benefit-pz",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": "large",
-      "price": 16582.0,
+      "price": 16582,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1332,11 +1332,11 @@
     {
       "sku_id": "BB610-C41483FE05AA9C",
       "product_id": "benefit-pz",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 1810.0,
+      "price": 1810,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1357,11 +1357,11 @@
     {
       "sku_id": "BB610-C5C94B624BD074",
       "product_id": "benefit-pz",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 341.0,
+      "price": 341,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1382,11 +1382,11 @@
     {
       "sku_id": "BB610-VLG-BENEFITPZ-25ML",
       "product_id": "benefit-pz",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "ml",
       "package_label": "25 мл",
       "package_group": "small",
-      "price": 97.0,
+      "price": 97,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1407,11 +1407,11 @@
     {
       "sku_id": "BB610-VLG-BLACKJAK-100ML",
       "product_id": "blackjak",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 203.0,
+      "price": 203,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1432,11 +1432,11 @@
     {
       "sku_id": "BB610-1DF4D3D04DBAE3",
       "product_id": "boroplus",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "ml",
       "package_label": "15 мл",
       "package_group": "small",
-      "price": 27.0,
+      "price": 27,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1457,11 +1457,11 @@
     {
       "sku_id": "BB610-7FF0818B666AA9",
       "product_id": "boroplus",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 504.0,
+      "price": 504,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1482,11 +1482,11 @@
     {
       "sku_id": "BB610-A36BE8DC7FEA3B",
       "product_id": "boroplus",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": "large",
-      "price": 4321.0,
+      "price": 4321,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1507,11 +1507,11 @@
     {
       "sku_id": "BB610-VLG-BOROPLUS-100ML",
       "product_id": "boroplus",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 132.0,
+      "price": 132,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1532,11 +1532,11 @@
     {
       "sku_id": "BB610-3F9DB64A57026D",
       "product_id": "brexil-ca",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 3245.0,
+      "price": 3245,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1557,11 +1557,11 @@
     {
       "sku_id": "BB610-533B10AFDCDBFD",
       "product_id": "brexil-ca",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 724.0,
+      "price": 724,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1582,11 +1582,11 @@
     {
       "sku_id": "BB610-5EF45013492786",
       "product_id": "brexil-ca",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 338.0,
+      "price": 338,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1607,11 +1607,11 @@
     {
       "sku_id": "BB610-VLG-BREXILCA-15G",
       "product_id": "brexil-ca",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "g",
       "package_label": "15 г",
       "package_group": "small",
-      "price": 44.0,
+      "price": 44,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1632,11 +1632,11 @@
     {
       "sku_id": "BB610-8DC5F741DEABD9",
       "product_id": "brexil-combi",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 353.0,
+      "price": 353,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1657,11 +1657,11 @@
     {
       "sku_id": "BB610-D4C53496285F6C",
       "product_id": "brexil-combi",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 734.0,
+      "price": 734,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1682,11 +1682,11 @@
     {
       "sku_id": "BB610-VLG-BREXILCOMBI-15G",
       "product_id": "brexil-combi",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "g",
       "package_label": "15 г",
       "package_group": "small",
-      "price": 42.0,
+      "price": 42,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1707,11 +1707,11 @@
     {
       "sku_id": "BB610-9334FFCFC91A1B",
       "product_id": "brexil-duo",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 3500.0,
+      "price": 3500,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1732,11 +1732,11 @@
     {
       "sku_id": "BB610-3B33A9186F1031",
       "product_id": "brexil-fe",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 2924.0,
+      "price": 2924,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1757,11 +1757,11 @@
     {
       "sku_id": "BB610-6032D279349416",
       "product_id": "brexil-fe",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 630.0,
+      "price": 630,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1782,11 +1782,11 @@
     {
       "sku_id": "BB610-C77C9244C07121",
       "product_id": "brexil-fe",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 304.0,
+      "price": 304,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1807,11 +1807,11 @@
     {
       "sku_id": "BB610-VLG-BREXILFE-15G",
       "product_id": "brexil-fe",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "g",
       "package_label": "15 г",
       "package_group": "small",
-      "price": 36.0,
+      "price": 36,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1832,11 +1832,11 @@
     {
       "sku_id": "BB610-5C50CFED57B2BD",
       "product_id": "brexil-mix",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "g",
       "package_label": "15 г",
       "package_group": "small",
-      "price": 38.0,
+      "price": 38,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1857,11 +1857,11 @@
     {
       "sku_id": "BB610-7CAECCDF081CBB",
       "product_id": "brexil-mix",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 3338.0,
+      "price": 3338,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1882,11 +1882,11 @@
     {
       "sku_id": "BB610-8AF90FA8223437",
       "product_id": "brexil-mix",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 336.0,
+      "price": 336,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1907,11 +1907,11 @@
     {
       "sku_id": "BB610-B1881030364E52",
       "product_id": "brexil-mix",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 740.0,
+      "price": 740,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1932,11 +1932,11 @@
     {
       "sku_id": "BB610-A95A34C5C0DDC6",
       "product_id": "brexil-mn",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 2924.0,
+      "price": 2924,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1957,11 +1957,11 @@
     {
       "sku_id": "BB610-49ED2208211C6C",
       "product_id": "brexil-multi",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 336.0,
+      "price": 336,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -1982,11 +1982,11 @@
     {
       "sku_id": "BB610-8B8227C8D67CA5",
       "product_id": "brexil-multi",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "g",
       "package_label": "15 г",
       "package_group": "small",
-      "price": 38.0,
+      "price": 38,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2007,11 +2007,11 @@
     {
       "sku_id": "BB610-8E31FAB8E0FE6F",
       "product_id": "brexil-multi",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 734.0,
+      "price": 734,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2032,11 +2032,11 @@
     {
       "sku_id": "BB610-C9189CDC21624F",
       "product_id": "brexil-multi",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 3338.0,
+      "price": 3338,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2057,11 +2057,11 @@
     {
       "sku_id": "BB610-26B311DBF9085A",
       "product_id": "brexil-nutre",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 602.0,
+      "price": 602,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2082,11 +2082,11 @@
     {
       "sku_id": "BB610-2D4799F754DF67",
       "product_id": "brexil-nutre",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 2892.0,
+      "price": 2892,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2107,11 +2107,11 @@
     {
       "sku_id": "BB610-722356D3EBEE37",
       "product_id": "brexil-zn",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 3150.0,
+      "price": 3150,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2132,11 +2132,11 @@
     {
       "sku_id": "BB610-94F23ED54CB320",
       "product_id": "brexil-zn",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 696.0,
+      "price": 696,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2157,11 +2157,11 @@
     {
       "sku_id": "BB610-VLG-BREXILZN-15G",
       "product_id": "brexil-zn",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "g",
       "package_label": "15 г",
       "package_group": "small",
-      "price": 39.0,
+      "price": 39,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2182,11 +2182,11 @@
     {
       "sku_id": "BB610-3902115D46542B",
       "product_id": "control-dmp",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 690.0,
+      "price": 690,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2207,11 +2207,11 @@
     {
       "sku_id": "BB610-AC444475AF55EC",
       "product_id": "control-dmp",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": "large",
-      "price": 6376.0,
+      "price": 6376,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2232,11 +2232,11 @@
     {
       "sku_id": "BB610-VLG-CONTROLDMP-100ML",
       "product_id": "control-dmp",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 153.0,
+      "price": 153,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2257,11 +2257,11 @@
     {
       "sku_id": "BB610-FE65B1FD9E0CE0",
       "product_id": "eraiz",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 258.0,
+      "price": 258,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2282,11 +2282,11 @@
     {
       "sku_id": "BB610-590BF7467D814D",
       "product_id": "ferrilen-trium",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 1066.0,
+      "price": 1066,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2307,11 +2307,11 @@
     {
       "sku_id": "BB610-DF30F34C5FA617",
       "product_id": "ferrilen-trium",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 4932.0,
+      "price": 4932,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2332,11 +2332,11 @@
     {
       "sku_id": "BB610-B564059E45AA6A",
       "product_id": "ferrilene-4-8-orto-orto",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "g",
       "package_label": "10 г",
       "package_group": "small",
-      "price": 45.0,
+      "price": 45,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2357,11 +2357,11 @@
     {
       "sku_id": "BB610-D8397E86BED478",
       "product_id": "ferrilene-4-8-orto-orto",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 4820.0,
+      "price": 4820,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2382,11 +2382,11 @@
     {
       "sku_id": "BB610-B2EF37CABF383A",
       "product_id": "haifa-mkp-0-52-34",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "g",
       "package_label": "20 г",
       "package_group": "small",
-      "price": 18.0,
+      "price": 18,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2407,11 +2407,11 @@
     {
       "sku_id": "BB610-HAIFA-MKP005234-200G",
       "product_id": "haifa-mkp-0-52-34",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 117.0,
+      "price": 117,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2432,11 +2432,11 @@
     {
       "sku_id": "BB610-DD74FDE3418D02",
       "product_id": "kemira-balans-nitrate-balancer",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 103.0,
+      "price": 103,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2457,11 +2457,11 @@
     {
       "sku_id": "BB610-06C1C17B9400DC",
       "product_id": "kemira-dlya-hazonu-npk-12-11-18",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 247.0,
+      "price": 247,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2482,11 +2482,11 @@
     {
       "sku_id": "BB610-07C62619489D04",
       "product_id": "kemira-grunt-kropker-npk-11-11-21",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 247.0,
+      "price": 247,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2507,11 +2507,11 @@
     {
       "sku_id": "BB610-6F215068667C21",
       "product_id": "kemira-grunt-kropker-npk-11-11-21",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "g",
       "package_label": "20 г",
       "package_group": "small",
-      "price": 15.0,
+      "price": 15,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2532,11 +2532,11 @@
     {
       "sku_id": "BB610-9A8FA69D941D02",
       "product_id": "kemira-grunt-kropker-npk-11-11-21",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "g",
       "package_label": "100 г",
       "package_group": "medium",
-      "price": 52.0,
+      "price": 52,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2557,11 +2557,11 @@
     {
       "sku_id": "BB610-4EC1D9C30DD192",
       "product_id": "kemira-lyuks-npk-14-11-25",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 367.0,
+      "price": 367,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2582,11 +2582,11 @@
     {
       "sku_id": "BB610-63ECA96E4F51CC",
       "product_id": "kemira-lyuks-npk-14-11-25",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "g",
       "package_label": "20 г",
       "package_group": "small",
-      "price": 18.0,
+      "price": 18,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2607,11 +2607,11 @@
     {
       "sku_id": "BB610-AA3568B6C1B459",
       "product_id": "kemira-lyuks-npk-14-11-25",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "g",
       "package_label": "100 г",
       "package_group": "medium",
-      "price": 60.0,
+      "price": 60,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2632,11 +2632,11 @@
     {
       "sku_id": "BB610-44E83470E508FD",
       "product_id": "kemira-npk-12-46-8",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "g",
       "package_label": "25 г",
       "package_group": "small",
-      "price": 27.0,
+      "price": 27,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2657,11 +2657,11 @@
     {
       "sku_id": "BB610-A5D89C6A24BFB9",
       "product_id": "kemira-npk-12-46-8",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 350.0,
+      "price": 350,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2682,11 +2682,11 @@
     {
       "sku_id": "BB610-B7B6D0D5C66801",
       "product_id": "kemira-npk-12-46-8",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 123.0,
+      "price": 123,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2707,11 +2707,11 @@
     {
       "sku_id": "BB610-3AFFAAF6B8027A",
       "product_id": "kemira-npk-18-18-18",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "g",
       "package_label": "25 г",
       "package_group": "small",
-      "price": 25.0,
+      "price": 25,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2732,11 +2732,11 @@
     {
       "sku_id": "BB610-52AB75F7E35B03",
       "product_id": "kemira-npk-18-18-18",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 319.0,
+      "price": 319,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2757,11 +2757,11 @@
     {
       "sku_id": "BB610-828A6E9188E43E",
       "product_id": "kemira-npk-18-18-18",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 118.0,
+      "price": 118,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2782,11 +2782,11 @@
     {
       "sku_id": "BB610-52EE194023860D",
       "product_id": "kemira-ukorinyuvach",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 141.0,
+      "price": 141,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2807,11 +2807,11 @@
     {
       "sku_id": "BB610-D1D88D2D78CAAF",
       "product_id": "kemira-ukorinyuvach",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "ml",
       "package_label": "20 мл",
       "package_group": "small",
-      "price": 36.0,
+      "price": 36,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2832,11 +2832,11 @@
     {
       "sku_id": "BB610-DE87625B024BCB",
       "product_id": "kemira-ukorinyuvach",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 1027.0,
+      "price": 1027,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2857,11 +2857,11 @@
     {
       "sku_id": "BB610-23D759E37CE6B6",
       "product_id": "kemira-zav-yaz",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "g",
       "package_label": "5 г",
       "package_group": "small",
-      "price": 13.0,
+      "price": 13,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2882,11 +2882,11 @@
     {
       "sku_id": "BB610-0BDAED34128BDA",
       "product_id": "kendal",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 1126.0,
+      "price": 1126,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2907,11 +2907,11 @@
     {
       "sku_id": "BB610-32DA4F652F73A1",
       "product_id": "kendal",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 220.0,
+      "price": 220,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2932,11 +2932,11 @@
     {
       "sku_id": "BB610-VLG-KENDAL-25ML",
       "product_id": "kendal",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "ml",
       "package_label": "25 мл",
       "package_group": "small",
-      "price": 68.0,
+      "price": 68,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2957,11 +2957,11 @@
     {
       "sku_id": "BB610-3CCFA12C27E227",
       "product_id": "kendal-root",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 235.0,
+      "price": 235,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -2982,11 +2982,11 @@
     {
       "sku_id": "BB610-C341BB1842183B",
       "product_id": "kendal-root",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 1259.0,
+      "price": 1259,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3007,11 +3007,11 @@
     {
       "sku_id": "BB610-VLG-KENDALROOT-10L",
       "product_id": "kendal-root",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": "large",
-      "price": 100.0,
+      "price": 100,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": 1,
@@ -3024,11 +3024,11 @@
     {
       "sku_id": "BB610-63DFC68206EF52",
       "product_id": "kendal-te",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 1445.0,
+      "price": 1445,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3049,11 +3049,11 @@
     {
       "sku_id": "BB610-EC1D442D54C6DB",
       "product_id": "kendal-te",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 291.0,
+      "price": 291,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3074,11 +3074,11 @@
     {
       "sku_id": "BB610-VLG-MASTER134013-1KG",
       "product_id": "master-npk-13-40-13",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 408.0,
+      "price": 408,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3099,11 +3099,11 @@
     {
       "sku_id": "BB610-VLG-MASTER134013-20G",
       "product_id": "master-npk-13-40-13",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "g",
       "package_label": "20 г",
       "package_group": "small",
-      "price": 25.0,
+      "price": 25,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3124,11 +3124,11 @@
     {
       "sku_id": "BB610-VLG-MASTER134013-250G",
       "product_id": "master-npk-13-40-13",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 175.0,
+      "price": 175,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3149,11 +3149,11 @@
     {
       "sku_id": "BB610-VLG-MASTER134013-25KG",
       "product_id": "master-npk-13-40-13",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
-      "price": 5218.0,
+      "price": 5218,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3174,11 +3174,11 @@
     {
       "sku_id": "BB610-E44162122D5007",
       "product_id": "master-npk-15-5-30",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "g",
       "package_label": "20 г",
       "package_group": "small",
-      "price": 25.0,
+      "price": 25,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3191,11 +3191,11 @@
     {
       "sku_id": "BB610-VLG-MASTER15530-1KG",
       "product_id": "master-npk-15-5-30",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 390.0,
+      "price": 390,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3216,11 +3216,11 @@
     {
       "sku_id": "BB610-VLG-MASTER15530-250G",
       "product_id": "master-npk-15-5-30",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 170.0,
+      "price": 170,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3241,11 +3241,11 @@
     {
       "sku_id": "BB610-VLG-MASTER15530-25KG",
       "product_id": "master-npk-15-5-30",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
-      "price": 4805.0,
+      "price": 4805,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3266,11 +3266,11 @@
     {
       "sku_id": "BB610-875F839910C32B",
       "product_id": "master-npk-17-6-18",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 154.0,
+      "price": 154,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3291,11 +3291,11 @@
     {
       "sku_id": "BB610-90837EAB185FC0",
       "product_id": "master-npk-17-6-18",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 364.0,
+      "price": 364,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3316,11 +3316,11 @@
     {
       "sku_id": "BB610-DD39796DC4FF76",
       "product_id": "master-npk-17-6-18",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
-      "price": 4308.0,
+      "price": 4308,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3341,11 +3341,11 @@
     {
       "sku_id": "BB610-27C0F2D3BFE84A",
       "product_id": "master-npk-18-18-18",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 399.0,
+      "price": 399,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3366,11 +3366,11 @@
     {
       "sku_id": "BB610-74742C63CC18FA",
       "product_id": "master-npk-18-18-18",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
-      "price": 4996.0,
+      "price": 4996,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3391,11 +3391,11 @@
     {
       "sku_id": "BB610-989A92CC0B422A",
       "product_id": "master-npk-18-18-18",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 177.0,
+      "price": 177,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3416,11 +3416,11 @@
     {
       "sku_id": "BB610-VLG-MASTER202020-10KG",
       "product_id": "master-npk-20-20-20",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "kg",
       "package_label": "10 кг",
       "package_group": "large",
-      "price": 2100.0,
+      "price": 2100,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3441,11 +3441,11 @@
     {
       "sku_id": "BB610-VLG-MASTER202020-1KG",
       "product_id": "master-npk-20-20-20",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 406.0,
+      "price": 406,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3466,11 +3466,11 @@
     {
       "sku_id": "BB610-VLG-MASTER202020-20G",
       "product_id": "master-npk-20-20-20",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "g",
       "package_label": "20 г",
       "package_group": "small",
-      "price": 25.0,
+      "price": 25,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3491,11 +3491,11 @@
     {
       "sku_id": "BB610-VLG-MASTER202020-250G",
       "product_id": "master-npk-20-20-20",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 173.0,
+      "price": 173,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3516,11 +3516,11 @@
     {
       "sku_id": "BB610-VLG-MASTER202020-25KG",
       "product_id": "master-npk-20-20-20",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
-      "price": 5059.0,
+      "price": 5059,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3541,11 +3541,11 @@
     {
       "sku_id": "BB610-VLG-MASTER31138-1KG",
       "product_id": "master-npk-3-11-38",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 397.0,
+      "price": 397,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3566,11 +3566,11 @@
     {
       "sku_id": "BB610-VLG-MASTER31138-20G",
       "product_id": "master-npk-3-11-38",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "g",
       "package_label": "20 г",
       "package_group": "small",
-      "price": 25.0,
+      "price": 25,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3591,11 +3591,11 @@
     {
       "sku_id": "BB610-VLG-MASTER31138-250G",
       "product_id": "master-npk-3-11-38",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 174.0,
+      "price": 174,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3616,11 +3616,11 @@
     {
       "sku_id": "BB610-VLG-MASTER31138-25KG",
       "product_id": "master-npk-3-11-38",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
-      "price": 4823.0,
+      "price": 4823,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3641,11 +3641,11 @@
     {
       "sku_id": "BB610-5761ACCC8C7B11",
       "product_id": "max-600-seasailer",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 1473.0,
+      "price": 1473,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3666,11 +3666,11 @@
     {
       "sku_id": "BB610-906E45D6FF4693",
       "product_id": "max-600-seasailer",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "kg",
       "package_label": "20 кг",
       "package_group": "large",
-      "price": 25250.0,
+      "price": 25250,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3691,11 +3691,11 @@
     {
       "sku_id": "BB610-0F315D28BC4649",
       "product_id": "maxicrop-cream",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 240.0,
+      "price": 240,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3716,11 +3716,11 @@
     {
       "sku_id": "BB610-MAXICROP-CREAM-25ML",
       "product_id": "maxicrop-cream",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "ml",
       "package_label": "25 мл",
       "package_group": "small",
-      "price": 65.0,
+      "price": 65,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3741,11 +3741,11 @@
     {
       "sku_id": "BB610-DAAB8705787527",
       "product_id": "maxicrop-extra",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 1678.0,
+      "price": 1678,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3766,11 +3766,11 @@
     {
       "sku_id": "BB610-DAA94F08BB733F",
       "product_id": "maxicrop-set-maksikrop-zav-yaz",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 189.0,
+      "price": 189,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3791,11 +3791,11 @@
     {
       "sku_id": "BB610-F3A911CFAB9BB1",
       "product_id": "maxicrop-set-maksikrop-zav-yaz",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "ml",
       "package_label": "25 мл",
       "package_group": "small",
-      "price": 51.0,
+      "price": 51,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3816,7 +3816,7 @@
     {
       "sku_id": "BB610-VLG-MEGAFOL-1000L",
       "product_id": "megafol",
-      "package_value": 1000.0,
+      "package_value": 1000,
       "package_unit": "l",
       "package_label": "1000 л",
       "package_group": "large",
@@ -3833,11 +3833,11 @@
     {
       "sku_id": "BB610-VLG-MEGAFOL-100ML",
       "product_id": "megafol",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 175.0,
+      "price": 175,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3858,11 +3858,11 @@
     {
       "sku_id": "BB610-VLG-MEGAFOL-10L",
       "product_id": "megafol",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": "large",
-      "price": 6777.0,
+      "price": 6777,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3883,11 +3883,11 @@
     {
       "sku_id": "BB610-VLG-MEGAFOL-1L",
       "product_id": "megafol",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 768.0,
+      "price": 768,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3908,7 +3908,7 @@
     {
       "sku_id": "BB610-VLG-MEGAFOL-20L",
       "product_id": "megafol",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "l",
       "package_label": "20 л",
       "package_group": "large",
@@ -3925,11 +3925,11 @@
     {
       "sku_id": "BB610-VLG-MEGAFOL-25ML",
       "product_id": "megafol",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "ml",
       "package_label": "25 мл",
       "package_group": "small",
-      "price": 50.0,
+      "price": 50,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3950,11 +3950,11 @@
     {
       "sku_id": "BB610-FF1B81AABCF4B5",
       "product_id": "micro-np",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "kg",
       "package_label": "10 кг",
       "package_group": "large",
-      "price": 2240.0,
+      "price": 2240,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -3975,11 +3975,11 @@
     {
       "sku_id": "BB610-5BE9BCD721960C",
       "product_id": "neocore",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "l",
       "package_label": "20 л",
       "package_group": "large",
-      "price": 7655.0,
+      "price": 7655,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4000,11 +4000,11 @@
     {
       "sku_id": "BB610-F478106178585E",
       "product_id": "neocore",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "l",
       "package_label": "5 л",
       "package_group": "large",
-      "price": 2114.0,
+      "price": 2114,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4025,11 +4025,11 @@
     {
       "sku_id": "BB610-F79E866C9D9AE2",
       "product_id": "neocore",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 509.0,
+      "price": 509,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4050,11 +4050,11 @@
     {
       "sku_id": "BB610-NEOVA-NEOCORE-30ML",
       "product_id": "neocore",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "ml",
       "package_label": "30 мл",
       "package_group": "small",
-      "price": 56.0,
+      "price": 56,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4075,11 +4075,11 @@
     {
       "sku_id": "BB610-66399099EB6E99",
       "product_id": "neoflora",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "ml",
       "package_label": "30 мл",
       "package_group": "small",
-      "price": 54.0,
+      "price": 54,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4100,11 +4100,11 @@
     {
       "sku_id": "BB610-6FF95FED429E58",
       "product_id": "neoflora",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "l",
       "package_label": "5 л",
       "package_group": "large",
-      "price": 2565.0,
+      "price": 2565,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4125,11 +4125,11 @@
     {
       "sku_id": "BB610-78276B9A7244FE",
       "product_id": "neoflora",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 629.0,
+      "price": 629,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4150,11 +4150,11 @@
     {
       "sku_id": "BB610-FB0C462D25C089",
       "product_id": "neoflora",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "l",
       "package_label": "20 л",
       "package_group": "large",
-      "price": 9608.0,
+      "price": 9608,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4175,11 +4175,11 @@
     {
       "sku_id": "BB610-72DEC1F4F0BBF9",
       "product_id": "neoterra-aqua",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
-      "price": 1771.0,
+      "price": 1771,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4200,11 +4200,11 @@
     {
       "sku_id": "BB610-BB10DC4F9FC81D",
       "product_id": "neoterra-organic-c",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
-      "price": 1771.0,
+      "price": 1771,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4225,11 +4225,11 @@
     {
       "sku_id": "BB610-416401891442FE",
       "product_id": "neovivo",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "ml",
       "package_label": "30 мл",
       "package_group": "small",
-      "price": 59.0,
+      "price": 59,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4250,11 +4250,11 @@
     {
       "sku_id": "BB610-4AE93D5CCD3570",
       "product_id": "neovivo",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "l",
       "package_label": "5 л",
       "package_group": "large",
-      "price": 3307.0,
+      "price": 3307,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4275,11 +4275,11 @@
     {
       "sku_id": "BB610-A71F39DAD86B93",
       "product_id": "neovivo",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "l",
       "package_label": "20 л",
       "package_group": "large",
-      "price": 12663.0,
+      "price": 12663,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4300,11 +4300,11 @@
     {
       "sku_id": "BB610-D22F5A8AC22D25",
       "product_id": "neovivo",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 792.0,
+      "price": 792,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4325,11 +4325,11 @@
     {
       "sku_id": "BB610-276F4D8DAC8238",
       "product_id": "osmocote-bloom-12-7-18-23m",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 119.0,
+      "price": 119,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4350,11 +4350,11 @@
     {
       "sku_id": "BB610-FC8EF342DCDA81",
       "product_id": "osmocote-bloom-12-7-18-23m",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 484.0,
+      "price": 484,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4375,11 +4375,11 @@
     {
       "sku_id": "BB610-E251836677BA97",
       "product_id": "osmocote-decor-16-8-12-56m",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 628.0,
+      "price": 628,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4400,11 +4400,11 @@
     {
       "sku_id": "BB610-E270CC1CF3AF25",
       "product_id": "osmocote-decor-16-8-12-56m",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 154.0,
+      "price": 154,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4425,11 +4425,11 @@
     {
       "sku_id": "BB610-F5E76975CC9C19",
       "product_id": "osmocote-granula-max-14-8-11-te-56m",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "pcs",
       "package_label": "10 шт",
       "package_group": null,
-      "price": 149.0,
+      "price": 149,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4450,11 +4450,11 @@
     {
       "sku_id": "BB610-227D5F45C56F17",
       "product_id": "osmocote-landscape-16-9-12-34m",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 149.0,
+      "price": 149,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4475,11 +4475,11 @@
     {
       "sku_id": "BB610-8B0821352513C9",
       "product_id": "osmocote-landscape-16-9-12-34m",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 611.0,
+      "price": 611,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4500,11 +4500,11 @@
     {
       "sku_id": "BB610-55F55C063F4640",
       "product_id": "osmocote-potassium-12-8-19-34m",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 637.0,
+      "price": 637,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4525,11 +4525,11 @@
     {
       "sku_id": "BB610-F61233E6018DC2",
       "product_id": "osmocote-potassium-12-8-19-34m",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 154.0,
+      "price": 154,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4550,11 +4550,11 @@
     {
       "sku_id": "BB610-3B413E62542312",
       "product_id": "osmocote-quick-start-22-5-6-45m",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 476.0,
+      "price": 476,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4575,11 +4575,11 @@
     {
       "sku_id": "BB610-FE83DB399E5BBE",
       "product_id": "osmocote-quick-start-22-5-6-45m",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 119.0,
+      "price": 119,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4600,11 +4600,11 @@
     {
       "sku_id": "BB610-8F1350C978274D",
       "product_id": "osmocote-start-11-11-17-1-5m",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 136.0,
+      "price": 136,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4625,11 +4625,11 @@
     {
       "sku_id": "BB610-EA1A35CD1C5B70",
       "product_id": "osmocote-start-11-11-17-1-5m",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 552.0,
+      "price": 552,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4650,11 +4650,11 @@
     {
       "sku_id": "BB610-02A58A1A393719",
       "product_id": "pekacid-npk-0-60-20",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 461.0,
+      "price": 461,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4675,11 +4675,11 @@
     {
       "sku_id": "BB610-1E396B98D1779E",
       "product_id": "pekacid-npk-0-60-20",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "g",
       "package_label": "100 г",
       "package_group": "medium",
-      "price": 84.0,
+      "price": 84,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4700,11 +4700,11 @@
     {
       "sku_id": "BB610-356BD42689A64D",
       "product_id": "pekacid-npk-0-60-20",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "g",
       "package_label": "15 г",
       "package_group": "small",
-      "price": 22.0,
+      "price": 22,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4725,11 +4725,11 @@
     {
       "sku_id": "BB610-D886B6AD2D6C04",
       "product_id": "pekacid-npk-0-60-20",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 116.0,
+      "price": 116,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4750,11 +4750,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL02550-250G",
       "product_id": "plantafol-npk-0-25-50",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 207.0,
+      "price": 207,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4775,11 +4775,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL02550-25G",
       "product_id": "plantafol-npk-0-25-50",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "g",
       "package_label": "25 г",
       "package_group": "small",
-      "price": 32.0,
+      "price": 32,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4800,11 +4800,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL02550-5KG",
       "product_id": "plantafol-npk-0-25-50",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 2158.0,
+      "price": 2158,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4825,11 +4825,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL105410-1KG",
       "product_id": "plantafol-npk-10-54-10",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 452.0,
+      "price": 452,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4850,11 +4850,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL105410-250G",
       "product_id": "plantafol-npk-10-54-10",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 207.0,
+      "price": 207,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4875,11 +4875,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL105410-25G",
       "product_id": "plantafol-npk-10-54-10",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "g",
       "package_label": "25 г",
       "package_group": "small",
-      "price": 33.0,
+      "price": 33,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4900,11 +4900,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL105410-5KG",
       "product_id": "plantafol-npk-10-54-10",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 2164.0,
+      "price": 2164,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4925,11 +4925,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL202020-1KG",
       "product_id": "plantafol-npk-20-20-20",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 345.0,
+      "price": 345,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4957,11 +4957,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL202020-250G",
       "product_id": "plantafol-npk-20-20-20",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 188.0,
+      "price": 188,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -4982,11 +4982,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL202020-25G",
       "product_id": "plantafol-npk-20-20-20",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "g",
       "package_label": "25 г",
       "package_group": "small",
-      "price": 29.0,
+      "price": 29,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5007,7 +5007,7 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL202020-25KG",
       "product_id": "plantafol-npk-20-20-20",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "kg",
       "package_label": "25 кг",
       "package_group": "large",
@@ -5039,11 +5039,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL202020-5KG",
       "product_id": "plantafol-npk-20-20-20",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 1571.0,
+      "price": 1571,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5071,11 +5071,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL301010-1KG",
       "product_id": "plantafol-npk-30-10-10",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 309.0,
+      "price": 309,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5096,11 +5096,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL301010-250G",
       "product_id": "plantafol-npk-30-10-10",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 179.0,
+      "price": 179,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5121,11 +5121,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL301010-25G",
       "product_id": "plantafol-npk-30-10-10",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "g",
       "package_label": "25 г",
       "package_group": "small",
-      "price": 28.0,
+      "price": 28,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5146,11 +5146,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL301010-5KG",
       "product_id": "plantafol-npk-30-10-10",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 1400.0,
+      "price": 1400,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5171,11 +5171,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL51545-1KG",
       "product_id": "plantafol-npk-5-15-45",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 360.0,
+      "price": 360,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5196,11 +5196,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL51545-250G",
       "product_id": "plantafol-npk-5-15-45",
-      "package_value": 250.0,
+      "package_value": 250,
       "package_unit": "g",
       "package_label": "250 г",
       "package_group": "medium",
-      "price": 188.0,
+      "price": 188,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5221,11 +5221,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL51545-25G",
       "product_id": "plantafol-npk-5-15-45",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "g",
       "package_label": "25 г",
       "package_group": "small",
-      "price": 29.0,
+      "price": 29,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5246,11 +5246,11 @@
     {
       "sku_id": "BB610-VLG-PLANTAFOL51545-5KG",
       "product_id": "plantafol-npk-5-15-45",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 1668.0,
+      "price": 1668,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5271,7 +5271,7 @@
     {
       "sku_id": "BB610-PLT-1308125-EA",
       "product_id": "plantlogic-25-round-1308125",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
       "package_group": "large",
@@ -5288,11 +5288,11 @@
     {
       "sku_id": "BB610-D357BA80A4242C",
       "product_id": "radifarm",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": "large",
-      "price": 16594.0,
+      "price": 16594,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5313,11 +5313,11 @@
     {
       "sku_id": "BB610-E4A0F69C3768B0",
       "product_id": "radifarm",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 1809.0,
+      "price": 1809,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5338,11 +5338,11 @@
     {
       "sku_id": "BB610-EDD4D8789728B8",
       "product_id": "radifarm",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 314.0,
+      "price": 314,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5363,11 +5363,11 @@
     {
       "sku_id": "BB610-VLG-RADIFARM-25ML",
       "product_id": "radifarm",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "ml",
       "package_label": "25 мл",
       "package_group": "small",
-      "price": 88.0,
+      "price": 88,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5388,11 +5388,11 @@
     {
       "sku_id": "BB610-AE230AC4DF943D",
       "product_id": "solupotasse-sulfat-kaliyu",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "g",
       "package_label": "100 г",
       "package_group": "medium",
-      "price": 57.0,
+      "price": 57,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5413,11 +5413,11 @@
     {
       "sku_id": "BB610-CDBF81D3217CCE",
       "product_id": "solupotasse-sulfat-kaliyu",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 242.0,
+      "price": 242,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5438,11 +5438,11 @@
     {
       "sku_id": "BB610-F707CEC45DFC43",
       "product_id": "solupotasse-sulfat-kaliyu",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 77.0,
+      "price": 77,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5463,11 +5463,11 @@
     {
       "sku_id": "BB610-8F1B9C0C9C91CD",
       "product_id": "spidfol-amino-vehetatsiya",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "ml",
       "package_label": "20 мл",
       "package_group": "small",
-      "price": 42.0,
+      "price": 42,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5488,11 +5488,11 @@
     {
       "sku_id": "BB610-9C4DC0580265BE",
       "product_id": "sprei-eid",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 219.0,
+      "price": 219,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5513,11 +5513,11 @@
     {
       "sku_id": "BB610-59240EA4EE9630",
       "product_id": "sulfat-mahniyu",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 155.0,
+      "price": 155,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5538,11 +5538,11 @@
     {
       "sku_id": "BB610-A235B03C3513D5",
       "product_id": "sulfat-mahniyu",
-      "package_value": 200.0,
+      "package_value": 200,
       "package_unit": "g",
       "package_label": "200 г",
       "package_group": "medium",
-      "price": 45.0,
+      "price": 45,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5563,11 +5563,11 @@
     {
       "sku_id": "BB610-DDC0F0BBD389FA",
       "product_id": "sulfat-mahniyu",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "g",
       "package_label": "100 г",
       "package_group": "medium",
-      "price": 32.0,
+      "price": 32,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5588,11 +5588,11 @@
     {
       "sku_id": "BB610-5E066D3BD088DB",
       "product_id": "sweet",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 319.0,
+      "price": 319,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5613,11 +5613,11 @@
     {
       "sku_id": "BB610-6C946D4F833870",
       "product_id": "sweet",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": "large",
-      "price": 15462.0,
+      "price": 15462,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5638,11 +5638,11 @@
     {
       "sku_id": "BB610-6EA5A0676CA52F",
       "product_id": "sweet",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 1666.0,
+      "price": 1666,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5663,11 +5663,11 @@
     {
       "sku_id": "BB610-VLG-SWEET-25ML",
       "product_id": "sweet",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "ml",
       "package_label": "25 мл",
       "package_group": "small",
-      "price": 91.0,
+      "price": 91,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5688,7 +5688,7 @@
     {
       "sku_id": "BB610-SYN-SWITCH625-100G",
       "product_id": "switch-625-wg",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "g",
       "package_label": "100 г",
       "package_group": "medium",
@@ -5713,7 +5713,7 @@
     {
       "sku_id": "BB610-SYN-SWITCH625-10G",
       "product_id": "switch-625-wg",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "g",
       "package_label": "10 г",
       "package_group": "small",
@@ -5738,7 +5738,7 @@
     {
       "sku_id": "BB610-SYN-SWITCH625-1KG",
       "product_id": "switch-625-wg",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
@@ -5763,11 +5763,11 @@
     {
       "sku_id": "BB610-C4EC88C5C7D738",
       "product_id": "terra-sorb",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 147.0,
+      "price": 147,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5788,11 +5788,11 @@
     {
       "sku_id": "BB610-3B882CCA6D419D",
       "product_id": "valagro-edta-5sg",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 4953.0,
+      "price": 4953,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5813,11 +5813,11 @@
     {
       "sku_id": "BB610-ABFF3D6D6901E8",
       "product_id": "valagro-edta-5sg",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "kg",
       "package_label": "1 кг",
       "package_group": "medium",
-      "price": 1049.0,
+      "price": 1049,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5838,11 +5838,11 @@
     {
       "sku_id": "BB610-74DDB26C8BB13D",
       "product_id": "valagro-edta-fe-13",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "kg",
       "package_label": "5 кг",
       "package_group": "large",
-      "price": 5019.0,
+      "price": 5019,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5863,11 +5863,11 @@
     {
       "sku_id": "BB610-75DA86689E220C",
       "product_id": "viva",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "l",
       "package_label": "1 л",
       "package_group": "medium",
-      "price": 594.0,
+      "price": 594,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5888,11 +5888,11 @@
     {
       "sku_id": "BB610-A02CF54E375533",
       "product_id": "viva",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "l",
       "package_label": "20 л",
       "package_group": "large",
-      "price": 10104.0,
+      "price": 10104,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5913,11 +5913,11 @@
     {
       "sku_id": "BB610-CFFC5BB95623B9",
       "product_id": "viva",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": "large",
-      "price": 5380.0,
+      "price": 5380,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5938,11 +5938,11 @@
     {
       "sku_id": "BB610-FDF73DEFF6CCEC",
       "product_id": "viva",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "ml",
       "package_label": "25 мл",
       "package_group": "small",
-      "price": 43.0,
+      "price": 43,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5963,11 +5963,11 @@
     {
       "sku_id": "BB610-VLG-VIVA-100ML",
       "product_id": "viva",
-      "package_value": 100.0,
+      "package_value": 100,
       "package_unit": "ml",
       "package_label": "100 мл",
       "package_group": "medium",
-      "price": 143.0,
+      "price": 143,
       "sale_price": null,
       "availability": "in_stock",
       "stock_qty": null,
@@ -5994,7 +5994,7 @@
       "package_label": "25 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 5059.0,
+        "price": 5059,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6024,7 +6024,7 @@
       "package_label": "5 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 1668.0,
+        "price": 1668,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6039,7 +6039,7 @@
       "package_label": "250 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 188.0,
+        "price": 188,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6114,7 +6114,7 @@
       "package_label": "250 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 207.0,
+        "price": 207,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6129,7 +6129,7 @@
       "package_label": "20 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 25.0,
+        "price": 25,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6144,7 +6144,7 @@
       "package_label": "25 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 4805.0,
+        "price": 4805,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6159,7 +6159,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 309.0,
+        "price": 309,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6189,7 +6189,7 @@
       "package_label": "25 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 28.0,
+        "price": 28,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6219,7 +6219,7 @@
       "package_label": "250 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 170.0,
+        "price": 170,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6249,7 +6249,7 @@
       "package_label": "25 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 29.0,
+        "price": 29,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6279,7 +6279,7 @@
       "package_label": "25 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 33.0,
+        "price": 33,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6294,7 +6294,7 @@
       "package_label": "250 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 179.0,
+        "price": 179,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6309,7 +6309,7 @@
       "package_label": "10 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 2100.0,
+        "price": 2100,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6324,7 +6324,7 @@
       "package_label": "25 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 32.0,
+        "price": 32,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6369,7 +6369,7 @@
       "package_label": "250 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 207.0,
+        "price": 207,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6399,7 +6399,7 @@
       "package_label": "5 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 1400.0,
+        "price": 1400,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6414,7 +6414,7 @@
       "package_label": "25 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 4823.0,
+        "price": 4823,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6429,7 +6429,7 @@
       "package_label": "20 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 25.0,
+        "price": 25,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6474,7 +6474,7 @@
       "package_label": "5 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 1571.0,
+        "price": 1571,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6534,7 +6534,7 @@
       "package_label": "20 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 25.0,
+        "price": 25,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6579,7 +6579,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 390.0,
+        "price": 390,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6639,7 +6639,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 155.0,
+        "price": 155,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6654,7 +6654,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 345.0,
+        "price": 345,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6684,7 +6684,7 @@
       "package_label": "250 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 174.0,
+        "price": 174,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6699,7 +6699,7 @@
       "package_label": "25 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 29.0,
+        "price": 29,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6714,7 +6714,7 @@
       "package_label": "250 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 175.0,
+        "price": 175,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6729,7 +6729,7 @@
       "package_label": "5 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 2158.0,
+        "price": 2158,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6744,7 +6744,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 397.0,
+        "price": 397,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6774,7 +6774,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 406.0,
+        "price": 406,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6819,7 +6819,7 @@
       "package_label": "25 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 5218.0,
+        "price": 5218,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6834,7 +6834,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 408.0,
+        "price": 408,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6864,7 +6864,7 @@
       "package_label": "5 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 2164.0,
+        "price": 2164,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6879,7 +6879,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 452.0,
+        "price": 452,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6894,7 +6894,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 360.0,
+        "price": 360,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6939,7 +6939,7 @@
       "package_label": "250 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 188.0,
+        "price": 188,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6954,7 +6954,7 @@
       "package_label": "250 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 173.0,
+        "price": 173,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6969,7 +6969,7 @@
       "package_label": "200 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 119.0,
+        "price": 119,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6984,7 +6984,7 @@
       "package_label": "200 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 149.0,
+        "price": 149,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -6999,7 +6999,7 @@
       "package_label": "200 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 154.0,
+        "price": 154,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -7014,7 +7014,7 @@
       "package_label": "200 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 119.0,
+        "price": 119,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -7029,7 +7029,7 @@
       "package_label": "100 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 84.0,
+        "price": 84,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -7044,7 +7044,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 461.0,
+        "price": 461,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -7059,7 +7059,7 @@
       "package_label": "100 мл",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 141.0,
+        "price": 141,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -7089,7 +7089,7 @@
       "package_label": "1 кг",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 242.0,
+        "price": 242,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -7104,7 +7104,7 @@
       "package_label": "10 г",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 45.0,
+        "price": 45,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": null,
@@ -7119,7 +7119,7 @@
       "package_label": "100 мл",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 215.0,
+        "price": 215,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": 1,
@@ -7134,7 +7134,7 @@
       "package_label": "1 л",
       "reason": "same_product_same_package",
       "alias_commerce": {
-        "price": 1200.0,
+        "price": 1200,
         "sale_price": null,
         "availability": "in_stock",
         "stock_qty": 1,
@@ -8091,20 +8091,20 @@
   "price_conflicts": [
     {
       "product_id": "kendal",
-      "package_base_value": 100.0,
+      "package_base_value": 100,
       "package_base_unit": "ml",
       "selected_canonical_sku": "BB610-32DA4F652F73A1",
       "candidates": [
         {
           "sku_id": "BB610-VLG-KENDAL-100ML",
-          "price": 215.0,
+          "price": 215,
           "updated_at": "2026-09-04T06:14:17.308178+00:00",
           "source": "commerce_manual_identity",
           "v3_mapped": false
         },
         {
           "sku_id": "BB610-32DA4F652F73A1",
-          "price": 220.0,
+          "price": 220,
           "updated_at": "2026-09-17T20:49:41.030906+00:00",
           "source": "dynamic_sku",
           "v3_mapped": true
@@ -8113,20 +8113,20 @@
     },
     {
       "product_id": "kendal",
-      "package_base_value": 1000.0,
+      "package_base_value": 1000,
       "package_base_unit": "ml",
       "selected_canonical_sku": "BB610-0BDAED34128BDA",
       "candidates": [
         {
           "sku_id": "BB610-VLG-KENDAL-1L",
-          "price": 1200.0,
+          "price": 1200,
           "updated_at": "2026-09-04T06:14:46.457354+00:00",
           "source": "commerce_manual_identity",
           "v3_mapped": false
         },
         {
           "sku_id": "BB610-0BDAED34128BDA",
-          "price": 1126.0,
+          "price": 1126,
           "updated_at": "2026-09-17T20:49:41.030906+00:00",
           "source": "dynamic_sku",
           "v3_mapped": true
@@ -8138,7 +8138,7 @@
     {
       "product_id": "blueberry-round-pots",
       "slug": "blueberry-round-pots",
-      "name": "Круглі горщики для лохини",
+      "name": "Горщик для лохини 20 л круглий на стандартних ніжках",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_round",
@@ -8151,7 +8151,7 @@
     {
       "product_id": "blueberry-round-short-legs-pot",
       "slug": "blueberry-round-short-legs-pot",
-      "name": "Круглий горщик 25 л на коротких ніжках для лохини",
+      "name": "Горщик для лохини 25 л круглий на коротких ніжках",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_round_short_legs",
@@ -8163,7 +8163,7 @@
     {
       "product_id": "blueberry-round-u-groove-pots",
       "slug": "blueberry-round-u-groove-pots",
-      "name": "Круглі горщики з U-пазами для лохини",
+      "name": "Горщик для лохини 30 л круглий з U-пазами",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_round_u",
@@ -8176,7 +8176,7 @@
     {
       "product_id": "blueberry-square-pots",
       "slug": "blueberry-square-pots",
-      "name": "Квадратні горщики для лохини",
+      "name": "Горщик для лохини 20 л квадратний на стандартних ніжках",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_square",
@@ -8188,7 +8188,7 @@
     {
       "product_id": "blueberry-square-u-groove-pots",
       "slug": "blueberry-square-u-groove-pots",
-      "name": "Квадратні горщики з U-пазами для лохини",
+      "name": "Горщик для лохини 25 л квадратний з U-пазами",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_square_u",
@@ -8200,19 +8200,20 @@
     {
       "product_id": "blueberry-zephyr-v2-pots",
       "slug": "blueberry-zephyr-v2-pots",
-      "name": "Горщики Zephyr V2 для лохини",
+      "name": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_bb_zephyr_v2",
       "content_state": "candidate_from_v3_verified_plantlogic_work",
       "plantlogic_sections": [
         "blueberry"
-      ]
+      ],
+      "model": "Zephyr V2"
     },
     {
       "product_id": "plantlogic-25l-round-drainage-1304125",
       "slug": "plantlogic-25l-round-drainage-1304125",
-      "name": "Круглий горщик 25 л зі збором дренажу — арт. 1304125",
+      "name": "Горщик для лохини та овочів 25 л круглий зі збором дренажу",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1304125",
@@ -8225,7 +8226,7 @@
     {
       "product_id": "plantlogic-3l-square-1306003",
       "slug": "plantlogic-3l-square-1306003",
-      "name": "Квадратний горщик 3 л — арт. 1306003",
+      "name": "Горщик для малини та ожини 3 л квадратний",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1306003",
@@ -8239,7 +8240,7 @@
     {
       "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
       "slug": "plantlogic-4-7l-square-cold-storage-13050040",
-      "name": "Квадратний горщик 4,7 л для long-cane та холодного зберігання — арт. 13050040",
+      "name": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_13050040",
@@ -8251,7 +8252,7 @@
     {
       "product_id": "plantlogic-5l-square-short-1306051",
       "slug": "plantlogic-5l-square-short-1306051",
-      "name": "Компактний квадратний горщик 5 л — арт. 1306051",
+      "name": "Горщик для малини та ожини 5 л компактний квадратний",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1306051",
@@ -8264,7 +8265,7 @@
     {
       "product_id": "plantlogic-5l-drainage-1305005",
       "slug": "plantlogic-5l-drainage-1305005",
-      "name": "Горщик 5 л зі збором дренажу — арт. 1305005",
+      "name": "Горщик для малини 5 л зі збором дренажу",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1305005",
@@ -8277,7 +8278,7 @@
     {
       "product_id": "plantlogic-7l-square-1306007",
       "slug": "plantlogic-7l-square-1306007",
-      "name": "Квадратний горщик 7 л — арт. 1306007",
+      "name": "Горщик для малини та ожини 7 л квадратний",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1306007",
@@ -8289,7 +8290,7 @@
     {
       "product_id": "plantlogic-7l-square-cold-storage-1305071",
       "slug": "plantlogic-7l-square-cold-storage-1305071",
-      "name": "Квадратний горщик 7 л для long-cane та холодного зберігання — арт. 1305071",
+      "name": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1305071",
@@ -8301,7 +8302,7 @@
     {
       "product_id": "plantlogic-7l-drainage-1307107",
       "slug": "plantlogic-7l-drainage-1307107",
-      "name": "Горщик 7 л зі збором дренажу — арт. 1307107",
+      "name": "Горщик для малини та ожини 7 л зі збором дренажу",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1307107",
@@ -8314,7 +8315,7 @@
     {
       "product_id": "plantlogic-8l-square-1309008",
       "slug": "plantlogic-8l-square-1309008",
-      "name": "Квадратний горщик 8 л — арт. 1309008",
+      "name": "Горщик для малини та ожини 8 л квадратний",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1309008",
@@ -8326,7 +8327,7 @@
     {
       "product_id": "plantlogic-10l-square-1306010",
       "slug": "plantlogic-10l-square-1306010",
-      "name": "Квадратний горщик 10 л — арт. 1306010",
+      "name": "Горщик для малини та ожини 10 л квадратний",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1306010",
@@ -8338,7 +8339,7 @@
     {
       "product_id": "plantlogic-10l-drainage-1307110",
       "slug": "plantlogic-10l-drainage-1307110",
-      "name": "Горщик 10 л зі збором дренажу — арт. 1307110",
+      "name": "Горщик для малини та овочів 10 л зі збором дренажу",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1307110",
@@ -8352,7 +8353,7 @@
     {
       "product_id": "plantlogic-15l-square-1309015",
       "slug": "plantlogic-15l-square-1309015",
-      "name": "Квадратний горщик 15 л — арт. 1309015",
+      "name": "Горщик для малини та ожини 15 л квадратний",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1309015",
@@ -8364,7 +8365,7 @@
     {
       "product_id": "plantlogic-15l-round-drainage-1304015",
       "slug": "plantlogic-15l-round-drainage-1304015",
-      "name": "Круглий горщик 15 л зі збором дренажу — арт. 1304015",
+      "name": "Горщик для малини 15 л круглий зі збором дренажу",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1304015",
@@ -8377,7 +8378,7 @@
     {
       "product_id": "plantlogic-30l-drainage-1307133",
       "slug": "plantlogic-30l-drainage-1307133",
-      "name": "Горщик 30 л зі збором дренажу — арт. 1307133",
+      "name": "Горщик для субстратного вирощування 30 л зі збором дренажу",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1307133",
@@ -8389,7 +8390,7 @@
     {
       "product_id": "plantlogic-17l-drainage-1305117",
       "slug": "plantlogic-17l-drainage-1305117",
-      "name": "Горщик 17 л зі збором дренажу — арт. 1305117",
+      "name": "Горщик для овочів та полуниці 17 л зі збором дренажу",
       "brand": "Plantlogic",
       "category_id": "containers",
       "v3_product_id": "prd_pl_1305117",
@@ -8402,9 +8403,9 @@
     {
       "product_id": "plantlogic-18l-strawberry-trough-1305909",
       "slug": "plantlogic-18l-strawberry-trough-1305909",
-      "name": "Жолоб для полуниці 18 л з опорою для квітконосів — арт. 1305909",
+      "name": "Жолоб для вирощування полуниці 18 л з опорою для квітконосів",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "strawberry",
       "v3_product_id": "prd_pl_1305909",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8414,33 +8415,35 @@
     {
       "product_id": "plantlogic-culti-base",
       "slug": "plantlogic-culti-base",
-      "name": "Culti-base — мішок для субстрату з інтегрованою основою, 25 та 30 л",
+      "name": "Мішок для субстрату з інтегрованою основою",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "bag_bases",
       "v3_product_id": "prd_pl_culti_base",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
         "bag_bases"
-      ]
+      ],
+      "model": "Culti-base"
     },
     {
       "product_id": "plantlogic-vf-bag-base-12010300",
       "slug": "plantlogic-vf-bag-base-12010300",
-      "name": "VF Bag Base — основа для grow bag, 30 та 40 л",
+      "name": "Основа для мішка з субстратом",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "bag_bases",
       "v3_product_id": "prd_pl_12010300",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
         "bag_bases"
-      ]
+      ],
+      "model": "VF Bag Base"
     },
     {
       "product_id": "plantlogic-bag-base-drainage-1301036",
       "slug": "plantlogic-bag-base-drainage-1301036",
-      "name": "Основа для мішка зі збором дренажу — арт. 1301036",
+      "name": "Основа для мішка зі збором дренажу",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "bag_bases",
       "v3_product_id": "prd_pl_1301036",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8451,9 +8454,9 @@
     {
       "product_id": "plantlogic-hose-clip-12050010",
       "slug": "plantlogic-hose-clip-12050010",
-      "name": "Багатофункціональна кліпса для шланга — арт. 12050010",
+      "name": "Багатофункціональна кліпса для фіксації поливного шланга",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "v3_product_id": "prd_pl_12050010",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8463,9 +8466,9 @@
     {
       "product_id": "plantlogic-steel-lysimeter",
       "slug": "plantlogic-steel-lysimeter",
-      "name": "Сталевий лізиметр Plantlogic",
+      "name": "Сталевий лізиметр для контролю дренажу",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "v3_product_id": "prd_pl_steel_lysimeter",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8475,9 +8478,9 @@
     {
       "product_id": "plantlogic-metal-hose-clip-1205012",
       "slug": "plantlogic-metal-hose-clip-1205012",
-      "name": "Металева кліпса для поливного шланга — арт. 1205012",
+      "name": "Металева кліпса для фіксації поливного шланга",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "v3_product_id": "prd_pl_1205012",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8487,9 +8490,9 @@
     {
       "product_id": "plantlogic-metal-stakes-gutter",
       "slug": "plantlogic-metal-stakes-gutter",
-      "name": "Металеві скоби для дренажного жолоба",
+      "name": "Металеві скоби для фіксації дренажного жолоба",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "v3_product_id": "prd_pl_1700146_1700147",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8499,9 +8502,9 @@
     {
       "product_id": "plantlogic-micro-tube-stake",
       "slug": "plantlogic-micro-tube-stake",
-      "name": "Кілок 18 см для мікротрубки",
+      "name": "Кілок 18 см для позиціонування мікротрубки",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "v3_product_id": "prd_pl_1205018_1205019",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8511,9 +8514,9 @@
     {
       "product_id": "plantlogic-plastic-gutter-drainage",
       "slug": "plantlogic-plastic-gutter-drainage",
-      "name": "Пластиковий жолоб для збору дренажу",
+      "name": "Пластиковий жолоб для збору та відведення дренажу",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "v3_product_id": "prd_pl_plastic_gutter",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8523,9 +8526,9 @@
     {
       "product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
       "slug": "plantlogic-8l-strawberry-trough-big-handle-1305082",
-      "name": "Жолоб для полуниці 8 л з широкою ручкою — арт. 1305082",
+      "name": "Жолоб для вирощування полуниці 8 л з широкою ручкою",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "strawberry",
       "v3_product_id": "prd_pl_1305082",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8535,9 +8538,9 @@
     {
       "product_id": "plantlogic-9l-strawberry-trough-truss-1305209",
       "slug": "plantlogic-9l-strawberry-trough-truss-1305209",
-      "name": "Жолоб для полуниці 9 л з підтримкою квітконосів — арт. 1305209",
+      "name": "Жолоб для вирощування полуниці 9 л з підтримкою квітконосів",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "strawberry",
       "v3_product_id": "prd_pl_1305209",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8547,35 +8550,37 @@
     {
       "product_id": "plantlogic-kratos-slab-base-1301081",
       "slug": "plantlogic-kratos-slab-base-1301081",
-      "name": "Kratos — основа для субстратних плит — арт. 1301081",
+      "name": "Основа для субстратних плит",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "bag_bases",
       "v3_product_id": "prd_pl_1301081",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
         "vegetable",
         "bag_bases"
-      ]
+      ],
+      "model": "Kratos"
     },
     {
       "product_id": "plantlogic-rivus-2in1-slab-base",
       "slug": "plantlogic-rivus-2in1-slab-base",
-      "name": "Rivus 2-in-1 — основа та жолоб для субстратних плит",
+      "name": "Основа та жолоб для субстратних плит",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "bag_bases",
       "v3_product_id": "prd_pl_rivus",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
         "vegetable",
         "bag_bases"
-      ]
+      ],
+      "model": "Rivus 2-in-1"
     },
     {
       "product_id": "plantlogic-lysimeter-kit",
       "slug": "plantlogic-lysimeter-kit",
-      "name": "Лізиметри Plantlogic для контролю дренажу",
+      "name": "Лізиметр для контролю дренажу",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "v3_product_id": "prd_pl_lysimeter_kit",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8585,9 +8590,9 @@
     {
       "product_id": "plantlogic-ground-cover-1600201",
       "slug": "plantlogic-ground-cover-1600201",
-      "name": "Агротканина Ground Cover — арт. 1600201",
+      "name": "Агротканина для контролю бур’янів",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "v3_product_id": "prd_pl_1600201",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
@@ -8597,26 +8602,28 @@
     {
       "product_id": "plantlogic-trough-cover",
       "slug": "plantlogic-trough-cover",
-      "name": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+      "name": "Кришка для полуничного жолоба",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "v3_product_id": "prd_pl_trough_cover",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
         "accessories"
-      ]
+      ],
+      "model": "Trough Cover"
     },
     {
       "product_id": "plantlogic-pot-anchor",
       "slug": "plantlogic-pot-anchor",
-      "name": "Pot Anchor — анкер для стабілізації горщиків Plantlogic",
+      "name": "Анкер для фіксації горщика",
       "brand": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "v3_product_id": "prd_pl_pot_anchor",
       "content_state": "verified_migrated_sectioned",
       "plantlogic_sections": [
         "accessories"
-      ]
+      ],
+      "model": "Pot Anchor"
     }
   ],
   "plantlogic_skus": [
@@ -8624,7 +8631,7 @@
       "sku_id": "PL-BB-1308020-BK",
       "v3_sku_id": "sku_pl_bb_1308020_black",
       "product_id": "blueberry-round-pots",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "l",
       "package_label": "20 л",
       "package_group": "large",
@@ -8643,7 +8650,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 20 л круглий на стандартних ніжках"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8684,7 +8692,7 @@
       "sku_id": "PL-BB-1308025-BK",
       "v3_sku_id": "sku_pl_bb_1308025_black",
       "product_id": "blueberry-round-pots",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
       "package_group": "large",
@@ -8703,7 +8711,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 25 л круглий на стандартних ніжках"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8744,7 +8753,7 @@
       "sku_id": "PL-BB-1308031-BK",
       "v3_sku_id": "sku_pl_bb_1308031_black",
       "product_id": "blueberry-round-pots",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
       "package_group": "large",
@@ -8763,7 +8772,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 30 л круглий з V-ребрами"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8804,7 +8814,7 @@
       "sku_id": "PL-BB-1308040-TC",
       "v3_sku_id": "sku_pl_bb_1308040_terracotta",
       "product_id": "blueberry-round-pots",
-      "package_value": 40.0,
+      "package_value": 40,
       "package_unit": "l",
       "package_label": "40 л",
       "package_group": "large",
@@ -8823,7 +8833,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 40 л круглий на стандартних ніжках"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8864,7 +8875,7 @@
       "sku_id": "PL-BB-1303025-BK",
       "v3_sku_id": "sku_pl_bb_1303025_black",
       "product_id": "blueberry-round-short-legs-pot",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
       "package_group": "large",
@@ -8883,7 +8894,8 @@
         "dimension_d": "13 мм",
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 25 л круглий на коротких ніжках"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8918,7 +8930,7 @@
       "sku_id": "PL-BB-1308303-BK",
       "v3_sku_id": "sku_pl_bb_1308303_black",
       "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
       "package_group": "large",
@@ -8937,7 +8949,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 30 л круглий з U-пазами"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -8978,7 +8991,7 @@
       "sku_id": "PL-BB-1308305-BK",
       "v3_sku_id": "sku_pl_bb_1308305_black",
       "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
       "package_group": "large",
@@ -8997,7 +9010,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 30 л круглий з паралельними U-пазами"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9032,7 +9046,7 @@
       "sku_id": "PL-BB-13080350-BK",
       "v3_sku_id": "sku_pl_bb_13080350_black",
       "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 35.0,
+      "package_value": 35,
       "package_unit": "l",
       "package_label": "35 л",
       "package_group": "large",
@@ -9051,7 +9065,8 @@
         "dimension_d": "35 мм",
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 35 л круглий з U-пазами"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9086,7 +9101,7 @@
       "sku_id": "PL-BB-1308041-TC",
       "v3_sku_id": "sku_pl_bb_1308041_terracotta",
       "product_id": "blueberry-round-u-groove-pots",
-      "package_value": 40.0,
+      "package_value": 40,
       "package_unit": "l",
       "package_label": "40 л",
       "package_group": "large",
@@ -9105,7 +9120,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 40 л круглий з U-пазами"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9146,7 +9162,7 @@
       "sku_id": "PL-BB-1309020-BK",
       "v3_sku_id": "sku_pl_bb_1309020_black",
       "product_id": "blueberry-square-pots",
-      "package_value": 20.0,
+      "package_value": 20,
       "package_unit": "l",
       "package_label": "20 л",
       "package_group": "large",
@@ -9165,7 +9181,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 20 л квадратний на стандартних ніжках"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9206,7 +9223,7 @@
       "sku_id": "PL-BB-1309025-BK",
       "v3_sku_id": "sku_pl_bb_1309025_black",
       "product_id": "blueberry-square-pots",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
       "package_group": "large",
@@ -9225,7 +9242,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 25 л квадратний на стандартних ніжках"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9260,7 +9278,7 @@
       "sku_id": "PL-BB-1309030-BK",
       "v3_sku_id": "sku_pl_bb_1309030_black",
       "product_id": "blueberry-square-pots",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
       "package_group": "large",
@@ -9279,7 +9297,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 5,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 30 л квадратний на стандартних ніжках"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9320,7 +9339,7 @@
       "sku_id": "PL-BB-1309026-BK",
       "v3_sku_id": "sku_pl_bb_1309026_black",
       "product_id": "blueberry-square-u-groove-pots",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
       "package_group": "large",
@@ -9339,7 +9358,8 @@
         "dimension_d": "30 мм",
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 25 л квадратний з U-пазами"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9380,7 +9400,7 @@
       "sku_id": "PL-BB-13090350-BK",
       "v3_sku_id": "sku_pl_bb_13090350_black",
       "product_id": "blueberry-square-u-groove-pots",
-      "package_value": 35.0,
+      "package_value": 35,
       "package_unit": "l",
       "package_label": "35 л",
       "package_group": "large",
@@ -9399,7 +9419,8 @@
         "dimension_d": "40 мм",
         "catalog_page": 6,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 35 л квадратний з U-пазами"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9440,7 +9461,7 @@
       "sku_id": "PL-BB-1301144-BK",
       "v3_sku_id": "sku_pl_bb_1301144_black",
       "product_id": "blueberry-zephyr-v2-pots",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
       "package_group": "large",
@@ -9459,7 +9480,8 @@
         "dimension_d": "70 мм",
         "catalog_page": 7,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9494,7 +9516,7 @@
       "sku_id": "PL-BB-1301153-BK",
       "v3_sku_id": "sku_pl_bb_1301153_black",
       "product_id": "blueberry-zephyr-v2-pots",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
       "package_group": "large",
@@ -9513,7 +9535,8 @@
         "dimension_d": "70 мм",
         "catalog_page": 7,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9536,7 +9559,7 @@
       "sku_id": "PL-BB-1301143-BK",
       "v3_sku_id": "sku_pl_bb_1301143_black",
       "product_id": "blueberry-zephyr-v2-pots",
-      "package_value": 40.0,
+      "package_value": 40,
       "package_unit": "l",
       "package_label": "40 л",
       "package_group": "large",
@@ -9555,7 +9578,8 @@
         "dimension_d": "70 мм",
         "catalog_page": 7,
         "assortment_policy": "v5_single_color",
-        "assortment_selected": true
+        "assortment_selected": true,
+        "canonical_title": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9578,7 +9602,7 @@
       "sku_id": "PL-1304125-BK",
       "v3_sku_id": "sku_pl_1304125_black",
       "product_id": "plantlogic-25l-round-drainage-1304125",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
       "package_group": null,
@@ -9591,7 +9615,8 @@
         "plantlogic_sections": [
           "universal",
           "vegetable"
-        ]
+        ],
+        "canonical_title": "Горщик для лохини та овочів 25 л круглий зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9637,7 +9662,7 @@
       "sku_id": "PL-1304125-WH",
       "v3_sku_id": "sku_pl_1304125_white",
       "product_id": "plantlogic-25l-round-drainage-1304125",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
       "package_group": null,
@@ -9650,7 +9675,8 @@
         "plantlogic_sections": [
           "universal",
           "vegetable"
-        ]
+        ],
+        "canonical_title": "Горщик для лохини та овочів 25 л круглий зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9696,7 +9722,7 @@
       "sku_id": "PL-1304125-TC",
       "v3_sku_id": "sku_pl_1304125_terracotta",
       "product_id": "plantlogic-25l-round-drainage-1304125",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
       "package_group": null,
@@ -9709,7 +9735,8 @@
         "plantlogic_sections": [
           "universal",
           "vegetable"
-        ]
+        ],
+        "canonical_title": "Горщик для лохини та овочів 25 л круглий зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9755,7 +9782,7 @@
       "sku_id": "PL-1306003-BK",
       "v3_sku_id": "sku_pl_1306003_black",
       "product_id": "plantlogic-3l-square-1306003",
-      "package_value": 3.0,
+      "package_value": 3,
       "package_unit": "l",
       "package_label": "3 л",
       "package_group": null,
@@ -9769,7 +9796,8 @@
           "rubus",
           "universal",
           "garden"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 3 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9822,7 +9850,7 @@
       "sku_id": "PL-1306003-WH",
       "v3_sku_id": "sku_pl_1306003_white",
       "product_id": "plantlogic-3l-square-1306003",
-      "package_value": 3.0,
+      "package_value": 3,
       "package_unit": "l",
       "package_label": "3 л",
       "package_group": null,
@@ -9836,7 +9864,8 @@
           "rubus",
           "universal",
           "garden"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 3 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9889,7 +9918,7 @@
       "sku_id": "PL-1306003-TC",
       "v3_sku_id": "sku_pl_1306003_terracotta",
       "product_id": "plantlogic-3l-square-1306003",
-      "package_value": 3.0,
+      "package_value": 3,
       "package_unit": "l",
       "package_label": "3 л",
       "package_group": null,
@@ -9903,7 +9932,8 @@
           "rubus",
           "universal",
           "garden"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 3 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -9968,7 +9998,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10040,7 +10071,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10112,7 +10144,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10172,7 +10205,7 @@
       "sku_id": "PL-1306051-BK",
       "v3_sku_id": "sku_pl_1306051_black",
       "product_id": "plantlogic-5l-square-short-1306051",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "l",
       "package_label": "5 л",
       "package_group": null,
@@ -10185,7 +10218,8 @@
         "plantlogic_sections": [
           "rubus",
           "garden"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 5 л компактний квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10259,7 +10293,7 @@
       "sku_id": "PL-1306051-WH",
       "v3_sku_id": "sku_pl_1306051_white",
       "product_id": "plantlogic-5l-square-short-1306051",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "l",
       "package_label": "5 л",
       "package_group": null,
@@ -10272,7 +10306,8 @@
         "plantlogic_sections": [
           "rubus",
           "garden"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 5 л компактний квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10346,7 +10381,7 @@
       "sku_id": "PL-1306051-TC",
       "v3_sku_id": "sku_pl_1306051_terracotta",
       "product_id": "plantlogic-5l-square-short-1306051",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "l",
       "package_label": "5 л",
       "package_group": null,
@@ -10359,7 +10394,8 @@
         "plantlogic_sections": [
           "rubus",
           "garden"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 5 л компактний квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10433,7 +10469,7 @@
       "sku_id": "PL-1305005-BK",
       "v3_sku_id": "sku_pl_1305005_black",
       "product_id": "plantlogic-5l-drainage-1305005",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "l",
       "package_label": "5 л",
       "package_group": null,
@@ -10446,7 +10482,8 @@
         "plantlogic_sections": [
           "rubus",
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для малини 5 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10513,7 +10550,7 @@
       "sku_id": "PL-1305005-WH",
       "v3_sku_id": "sku_pl_1305005_white",
       "product_id": "plantlogic-5l-drainage-1305005",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "l",
       "package_label": "5 л",
       "package_group": null,
@@ -10526,7 +10563,8 @@
         "plantlogic_sections": [
           "rubus",
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для малини 5 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10593,7 +10631,7 @@
       "sku_id": "PL-1305005-TC",
       "v3_sku_id": "sku_pl_1305005_terracotta",
       "product_id": "plantlogic-5l-drainage-1305005",
-      "package_value": 5.0,
+      "package_value": 5,
       "package_unit": "l",
       "package_label": "5 л",
       "package_group": null,
@@ -10606,7 +10644,8 @@
         "plantlogic_sections": [
           "rubus",
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для малини 5 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10673,7 +10712,7 @@
       "sku_id": "PL-1306007-BK",
       "v3_sku_id": "sku_pl_1306007_black",
       "product_id": "plantlogic-7l-square-1306007",
-      "package_value": 7.0,
+      "package_value": 7,
       "package_unit": "l",
       "package_label": "7 л",
       "package_group": null,
@@ -10685,7 +10724,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 7 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10738,7 +10778,7 @@
       "sku_id": "PL-1306007-WH",
       "v3_sku_id": "sku_pl_1306007_white",
       "product_id": "plantlogic-7l-square-1306007",
-      "package_value": 7.0,
+      "package_value": 7,
       "package_unit": "l",
       "package_label": "7 л",
       "package_group": null,
@@ -10750,7 +10790,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 7 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10803,7 +10844,7 @@
       "sku_id": "PL-1306007-TC",
       "v3_sku_id": "sku_pl_1306007_terracotta",
       "product_id": "plantlogic-7l-square-1306007",
-      "package_value": 7.0,
+      "package_value": 7,
       "package_unit": "l",
       "package_label": "7 л",
       "package_group": null,
@@ -10815,7 +10856,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 7 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10868,7 +10910,7 @@
       "sku_id": "PL-1305071-BK",
       "v3_sku_id": "sku_pl_1305071_black",
       "product_id": "plantlogic-7l-square-cold-storage-1305071",
-      "package_value": 7.0,
+      "package_value": 7,
       "package_unit": "l",
       "package_label": "7 л",
       "package_group": null,
@@ -10880,7 +10922,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -10954,7 +10997,7 @@
       "sku_id": "PL-1305071-WH",
       "v3_sku_id": "sku_pl_1305071_white",
       "product_id": "plantlogic-7l-square-cold-storage-1305071",
-      "package_value": 7.0,
+      "package_value": 7,
       "package_unit": "l",
       "package_label": "7 л",
       "package_group": null,
@@ -10966,7 +11009,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11040,7 +11084,7 @@
       "sku_id": "PL-1305071-TC",
       "v3_sku_id": "sku_pl_1305071_terracotta",
       "product_id": "plantlogic-7l-square-cold-storage-1305071",
-      "package_value": 7.0,
+      "package_value": 7,
       "package_unit": "l",
       "package_label": "7 л",
       "package_group": null,
@@ -11052,7 +11096,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11126,7 +11171,7 @@
       "sku_id": "PL-1307107-BK",
       "v3_sku_id": "sku_pl_1307107_black",
       "product_id": "plantlogic-7l-drainage-1307107",
-      "package_value": 7.0,
+      "package_value": 7,
       "package_unit": "l",
       "package_label": "7 л",
       "package_group": null,
@@ -11139,7 +11184,8 @@
         "plantlogic_sections": [
           "rubus",
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 7 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11199,7 +11245,7 @@
       "sku_id": "PL-1307107-WH",
       "v3_sku_id": "sku_pl_1307107_white",
       "product_id": "plantlogic-7l-drainage-1307107",
-      "package_value": 7.0,
+      "package_value": 7,
       "package_unit": "l",
       "package_label": "7 л",
       "package_group": null,
@@ -11212,7 +11258,8 @@
         "plantlogic_sections": [
           "rubus",
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 7 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11272,7 +11319,7 @@
       "sku_id": "PL-1307107-TC",
       "v3_sku_id": "sku_pl_1307107_terracotta",
       "product_id": "plantlogic-7l-drainage-1307107",
-      "package_value": 7.0,
+      "package_value": 7,
       "package_unit": "l",
       "package_label": "7 л",
       "package_group": null,
@@ -11285,7 +11332,8 @@
         "plantlogic_sections": [
           "rubus",
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 7 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11345,7 +11393,7 @@
       "sku_id": "PL-1309008-BK",
       "v3_sku_id": "sku_pl_1309008_black",
       "product_id": "plantlogic-8l-square-1309008",
-      "package_value": 8.0,
+      "package_value": 8,
       "package_unit": "l",
       "package_label": "8 л",
       "package_group": null,
@@ -11357,7 +11405,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 8 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11431,7 +11480,7 @@
       "sku_id": "PL-1309008-WH",
       "v3_sku_id": "sku_pl_1309008_white",
       "product_id": "plantlogic-8l-square-1309008",
-      "package_value": 8.0,
+      "package_value": 8,
       "package_unit": "l",
       "package_label": "8 л",
       "package_group": null,
@@ -11443,7 +11492,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 8 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11517,7 +11567,7 @@
       "sku_id": "PL-1309008-TC",
       "v3_sku_id": "sku_pl_1309008_terracotta",
       "product_id": "plantlogic-8l-square-1309008",
-      "package_value": 8.0,
+      "package_value": 8,
       "package_unit": "l",
       "package_label": "8 л",
       "package_group": null,
@@ -11529,7 +11579,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 8 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11603,7 +11654,7 @@
       "sku_id": "PL-1306010-BK",
       "v3_sku_id": "sku_pl_1306010_black",
       "product_id": "plantlogic-10l-square-1306010",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": null,
@@ -11615,7 +11666,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 10 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11675,7 +11727,7 @@
       "sku_id": "PL-1306010-WH",
       "v3_sku_id": "sku_pl_1306010_white",
       "product_id": "plantlogic-10l-square-1306010",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": null,
@@ -11687,7 +11739,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 10 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11747,7 +11800,7 @@
       "sku_id": "PL-1306010-TC",
       "v3_sku_id": "sku_pl_1306010_terracotta",
       "product_id": "plantlogic-10l-square-1306010",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": null,
@@ -11759,7 +11812,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 10 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11819,7 +11873,7 @@
       "sku_id": "PL-1307110-BK",
       "v3_sku_id": "sku_pl_1307110_black",
       "product_id": "plantlogic-10l-drainage-1307110",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": null,
@@ -11833,7 +11887,8 @@
           "rubus",
           "universal",
           "vegetable"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та овочів 10 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11886,7 +11941,7 @@
       "sku_id": "PL-1307110-WH",
       "v3_sku_id": "sku_pl_1307110_white",
       "product_id": "plantlogic-10l-drainage-1307110",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": null,
@@ -11900,7 +11955,8 @@
           "rubus",
           "universal",
           "vegetable"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та овочів 10 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -11953,7 +12009,7 @@
       "sku_id": "PL-1307110-TC",
       "v3_sku_id": "sku_pl_1307110_terracotta",
       "product_id": "plantlogic-10l-drainage-1307110",
-      "package_value": 10.0,
+      "package_value": 10,
       "package_unit": "l",
       "package_label": "10 л",
       "package_group": null,
@@ -11967,7 +12023,8 @@
           "rubus",
           "universal",
           "vegetable"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та овочів 10 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12020,7 +12077,7 @@
       "sku_id": "PL-1309015-BK",
       "v3_sku_id": "sku_pl_1309015_black",
       "product_id": "plantlogic-15l-square-1309015",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "l",
       "package_label": "15 л",
       "package_group": null,
@@ -12032,7 +12089,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 15 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12085,7 +12143,7 @@
       "sku_id": "PL-1309015-WH",
       "v3_sku_id": "sku_pl_1309015_white",
       "product_id": "plantlogic-15l-square-1309015",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "l",
       "package_label": "15 л",
       "package_group": null,
@@ -12097,7 +12155,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 15 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12150,7 +12209,7 @@
       "sku_id": "PL-1309015-TC",
       "v3_sku_id": "sku_pl_1309015_terracotta",
       "product_id": "plantlogic-15l-square-1309015",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "l",
       "package_label": "15 л",
       "package_group": null,
@@ -12162,7 +12221,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "rubus"
-        ]
+        ],
+        "canonical_title": "Горщик для малини та ожини 15 л квадратний"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12215,7 +12275,7 @@
       "sku_id": "PL-1304015-BK",
       "v3_sku_id": "sku_pl_1304015_black",
       "product_id": "plantlogic-15l-round-drainage-1304015",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "l",
       "package_label": "15 л",
       "package_group": null,
@@ -12228,7 +12288,8 @@
         "plantlogic_sections": [
           "rubus",
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для малини 15 л круглий зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12274,7 +12335,7 @@
       "sku_id": "PL-1304015-WH",
       "v3_sku_id": "sku_pl_1304015_white",
       "product_id": "plantlogic-15l-round-drainage-1304015",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "l",
       "package_label": "15 л",
       "package_group": null,
@@ -12287,7 +12348,8 @@
         "plantlogic_sections": [
           "rubus",
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для малини 15 л круглий зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12333,7 +12395,7 @@
       "sku_id": "PL-1304015-TC",
       "v3_sku_id": "sku_pl_1304015_terracotta",
       "product_id": "plantlogic-15l-round-drainage-1304015",
-      "package_value": 15.0,
+      "package_value": 15,
       "package_unit": "l",
       "package_label": "15 л",
       "package_group": null,
@@ -12346,7 +12408,8 @@
         "plantlogic_sections": [
           "rubus",
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для малини 15 л круглий зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12392,7 +12455,7 @@
       "sku_id": "PL-1307133-BK",
       "v3_sku_id": "sku_pl_1307133_black",
       "product_id": "plantlogic-30l-drainage-1307133",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
       "package_group": null,
@@ -12404,7 +12467,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для субстратного вирощування 30 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12450,7 +12514,7 @@
       "sku_id": "PL-1307133-WH",
       "v3_sku_id": "sku_pl_1307133_white",
       "product_id": "plantlogic-30l-drainage-1307133",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
       "package_group": null,
@@ -12462,7 +12526,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для субстратного вирощування 30 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12508,7 +12573,7 @@
       "sku_id": "PL-1307133-TC",
       "v3_sku_id": "sku_pl_1307133_terracotta",
       "product_id": "plantlogic-30l-drainage-1307133",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
       "package_group": null,
@@ -12520,7 +12585,8 @@
         "media_source_color": "",
         "plantlogic_sections": [
           "universal"
-        ]
+        ],
+        "canonical_title": "Горщик для субстратного вирощування 30 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12566,7 +12632,7 @@
       "sku_id": "PL-1305117-BK",
       "v3_sku_id": "sku_pl_1305117_black",
       "product_id": "plantlogic-17l-drainage-1305117",
-      "package_value": 17.0,
+      "package_value": 17,
       "package_unit": "l",
       "package_label": "17 л",
       "package_group": null,
@@ -12579,7 +12645,8 @@
         "plantlogic_sections": [
           "vegetable",
           "strawberry"
-        ]
+        ],
+        "canonical_title": "Горщик для овочів та полуниці 17 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12625,7 +12692,7 @@
       "sku_id": "PL-1305117-WH",
       "v3_sku_id": "sku_pl_1305117_white",
       "product_id": "plantlogic-17l-drainage-1305117",
-      "package_value": 17.0,
+      "package_value": 17,
       "package_unit": "l",
       "package_label": "17 л",
       "package_group": null,
@@ -12638,7 +12705,8 @@
         "plantlogic_sections": [
           "vegetable",
           "strawberry"
-        ]
+        ],
+        "canonical_title": "Горщик для овочів та полуниці 17 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12684,7 +12752,7 @@
       "sku_id": "PL-1305117-TC",
       "v3_sku_id": "sku_pl_1305117_terracotta",
       "product_id": "plantlogic-17l-drainage-1305117",
-      "package_value": 17.0,
+      "package_value": 17,
       "package_unit": "l",
       "package_label": "17 л",
       "package_group": null,
@@ -12697,7 +12765,8 @@
         "plantlogic_sections": [
           "vegetable",
           "strawberry"
-        ]
+        ],
+        "canonical_title": "Горщик для овочів та полуниці 17 л зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12743,7 +12812,7 @@
       "sku_id": "PL-1305909",
       "v3_sku_id": "sku_pl_1305909",
       "product_id": "plantlogic-18l-strawberry-trough-1305909",
-      "package_value": 18.0,
+      "package_value": 18,
       "package_unit": "l",
       "package_label": "18 л",
       "package_group": null,
@@ -12751,7 +12820,8 @@
         "manufacturer_product_no": "1305909",
         "plantlogic_sections": [
           "strawberry"
-        ]
+        ],
+        "canonical_title": "Жолоб для вирощування полуниці 18 л з опорою для квітконосів"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12769,7 +12839,7 @@
       "sku_id": "PL-13079250",
       "v3_sku_id": "sku_pl_13079250",
       "product_id": "plantlogic-culti-base",
-      "package_value": 25.0,
+      "package_value": 25,
       "package_unit": "l",
       "package_label": "25 л",
       "package_group": null,
@@ -12777,7 +12847,8 @@
         "manufacturer_product_no": "13079250",
         "plantlogic_sections": [
           "bag_bases"
-        ]
+        ],
+        "canonical_title": "Мішок для субстрату з інтегрованою основою"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12795,7 +12866,7 @@
       "sku_id": "PL-13079300",
       "v3_sku_id": "sku_pl_13079300",
       "product_id": "plantlogic-culti-base",
-      "package_value": 30.0,
+      "package_value": 30,
       "package_unit": "l",
       "package_label": "30 л",
       "package_group": null,
@@ -12803,7 +12874,8 @@
         "manufacturer_product_no": "13079300",
         "plantlogic_sections": [
           "bag_bases"
-        ]
+        ],
+        "canonical_title": "Мішок для субстрату з інтегрованою основою"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12821,7 +12893,7 @@
       "sku_id": "PL-12010300",
       "v3_sku_id": "sku_pl_12010300",
       "product_id": "plantlogic-vf-bag-base-12010300",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -12829,7 +12901,8 @@
         "manufacturer_product_no": "12010300",
         "plantlogic_sections": [
           "bag_bases"
-        ]
+        ],
+        "canonical_title": "Основа для мішка з субстратом"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12847,7 +12920,7 @@
       "sku_id": "PL-12010400",
       "v3_sku_id": "sku_pl_12010400",
       "product_id": "plantlogic-vf-bag-base-12010300",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -12855,7 +12928,8 @@
         "manufacturer_product_no": "12010400",
         "plantlogic_sections": [
           "bag_bases"
-        ]
+        ],
+        "canonical_title": "Основа для мішка з субстратом"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12873,7 +12947,7 @@
       "sku_id": "PL-1301036",
       "v3_sku_id": "sku_pl_1301036",
       "product_id": "plantlogic-bag-base-drainage-1301036",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -12882,7 +12956,8 @@
         "plantlogic_sections": [
           "bag_bases",
           "accessories"
-        ]
+        ],
+        "canonical_title": "Основа для мішка зі збором дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12900,7 +12975,7 @@
       "sku_id": "PL-12050010",
       "v3_sku_id": "sku_pl_12050010",
       "product_id": "plantlogic-hose-clip-12050010",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -12908,7 +12983,8 @@
         "manufacturer_product_no": "12050010",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Багатофункціональна кліпса для фіксації поливного шланга"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12926,7 +13002,7 @@
       "sku_id": "PL-13046025",
       "v3_sku_id": "sku_pl_13046025",
       "product_id": "plantlogic-steel-lysimeter",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -12934,7 +13010,8 @@
         "manufacturer_product_no": "13046025",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Сталевий лізиметр для контролю дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12952,7 +13029,7 @@
       "sku_id": "PL-13046026",
       "v3_sku_id": "sku_pl_13046026",
       "product_id": "plantlogic-steel-lysimeter",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -12960,7 +13037,8 @@
         "manufacturer_product_no": "13046026",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Сталевий лізиметр для контролю дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -12978,7 +13056,7 @@
       "sku_id": "PL-13046031",
       "v3_sku_id": "sku_pl_13046031",
       "product_id": "plantlogic-steel-lysimeter",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -12986,7 +13064,8 @@
         "manufacturer_product_no": "13046031",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Сталевий лізиметр для контролю дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13004,7 +13083,7 @@
       "sku_id": "PL-13046041",
       "v3_sku_id": "sku_pl_13046041",
       "product_id": "plantlogic-steel-lysimeter",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13012,7 +13091,8 @@
         "manufacturer_product_no": "13046041",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Сталевий лізиметр для контролю дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13030,7 +13110,7 @@
       "sku_id": "PL-1205012",
       "v3_sku_id": "sku_pl_1205012",
       "product_id": "plantlogic-metal-hose-clip-1205012",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13038,7 +13118,8 @@
         "manufacturer_product_no": "1205012",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Металева кліпса для фіксації поливного шланга"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13056,7 +13137,7 @@
       "sku_id": "PL-1700146",
       "v3_sku_id": "sku_pl_1700146",
       "product_id": "plantlogic-metal-stakes-gutter",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13064,7 +13145,8 @@
         "manufacturer_product_no": "1700146",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Металеві скоби для фіксації дренажного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13082,7 +13164,7 @@
       "sku_id": "PL-1700147",
       "v3_sku_id": "sku_pl_1700147",
       "product_id": "plantlogic-metal-stakes-gutter",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13090,7 +13172,8 @@
         "manufacturer_product_no": "1700147",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Металеві скоби для фіксації дренажного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13108,7 +13191,7 @@
       "sku_id": "PL-1205018",
       "v3_sku_id": "sku_pl_1205018",
       "product_id": "plantlogic-micro-tube-stake",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13116,7 +13199,8 @@
         "manufacturer_product_no": "1205018",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кілок 18 см для позиціонування мікротрубки"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13134,7 +13218,7 @@
       "sku_id": "PL-1205019",
       "v3_sku_id": "sku_pl_1205019",
       "product_id": "plantlogic-micro-tube-stake",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13142,7 +13226,8 @@
         "manufacturer_product_no": "1205019",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кілок 18 см для позиціонування мікротрубки"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13160,7 +13245,7 @@
       "sku_id": "PL-1200021",
       "v3_sku_id": "sku_pl_1200021",
       "product_id": "plantlogic-plastic-gutter-drainage",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13168,7 +13253,8 @@
         "manufacturer_product_no": "1200021",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Пластиковий жолоб для збору та відведення дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13186,7 +13272,7 @@
       "sku_id": "PL-1300010",
       "v3_sku_id": "sku_pl_1300010",
       "product_id": "plantlogic-plastic-gutter-drainage",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13194,7 +13280,8 @@
         "manufacturer_product_no": "1300010",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Пластиковий жолоб для збору та відведення дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13212,7 +13299,7 @@
       "sku_id": "PL-1300011",
       "v3_sku_id": "sku_pl_1300011",
       "product_id": "plantlogic-plastic-gutter-drainage",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13220,7 +13307,8 @@
         "manufacturer_product_no": "1300011",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Пластиковий жолоб для збору та відведення дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13238,7 +13326,7 @@
       "sku_id": "PL-1305082",
       "v3_sku_id": "sku_pl_1305082",
       "product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
-      "package_value": 8.0,
+      "package_value": 8,
       "package_unit": "l",
       "package_label": "8 л",
       "package_group": null,
@@ -13246,7 +13334,8 @@
         "manufacturer_product_no": "1305082",
         "plantlogic_sections": [
           "strawberry"
-        ]
+        ],
+        "canonical_title": "Жолоб для вирощування полуниці 8 л з широкою ручкою"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13264,7 +13353,7 @@
       "sku_id": "PL-1305209",
       "v3_sku_id": "sku_pl_1305209",
       "product_id": "plantlogic-9l-strawberry-trough-truss-1305209",
-      "package_value": 9.0,
+      "package_value": 9,
       "package_unit": "l",
       "package_label": "9 л",
       "package_group": null,
@@ -13272,7 +13361,8 @@
         "manufacturer_product_no": "1305209",
         "plantlogic_sections": [
           "strawberry"
-        ]
+        ],
+        "canonical_title": "Жолоб для вирощування полуниці 9 л з підтримкою квітконосів"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13290,7 +13380,7 @@
       "sku_id": "PL-1301081",
       "v3_sku_id": "sku_pl_1301081",
       "product_id": "plantlogic-kratos-slab-base-1301081",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13299,7 +13389,8 @@
         "plantlogic_sections": [
           "vegetable",
           "bag_bases"
-        ]
+        ],
+        "canonical_title": "Основа для субстратних плит"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13317,7 +13408,7 @@
       "sku_id": "PL-13020500",
       "v3_sku_id": "sku_pl_13020500",
       "product_id": "plantlogic-rivus-2in1-slab-base",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13326,7 +13417,8 @@
         "plantlogic_sections": [
           "vegetable",
           "bag_bases"
-        ]
+        ],
+        "canonical_title": "Основа та жолоб для субстратних плит"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13386,7 +13478,7 @@
       "sku_id": "PL-13020502",
       "v3_sku_id": "sku_pl_13020502",
       "product_id": "plantlogic-rivus-2in1-slab-base",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13395,7 +13487,8 @@
         "plantlogic_sections": [
           "vegetable",
           "bag_bases"
-        ]
+        ],
+        "canonical_title": "Основа та жолоб для субстратних плит"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13455,7 +13548,7 @@
       "sku_id": "PL-13020510",
       "v3_sku_id": "sku_pl_13020510",
       "product_id": "plantlogic-rivus-2in1-slab-base",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13464,7 +13557,8 @@
         "plantlogic_sections": [
           "vegetable",
           "bag_bases"
-        ]
+        ],
+        "canonical_title": "Основа та жолоб для субстратних плит"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13489,7 +13583,7 @@
       "sku_id": "PL-13020512",
       "v3_sku_id": "sku_pl_13020512",
       "product_id": "plantlogic-rivus-2in1-slab-base",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13498,7 +13592,8 @@
         "plantlogic_sections": [
           "vegetable",
           "bag_bases"
-        ]
+        ],
+        "canonical_title": "Основа та жолоб для субстратних плит"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13523,7 +13618,7 @@
       "sku_id": "PL-1301010",
       "v3_sku_id": "sku_pl_1301010",
       "product_id": "plantlogic-lysimeter-kit",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13531,7 +13626,8 @@
         "manufacturer_product_no": "1301010",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Лізиметр для контролю дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13549,7 +13645,7 @@
       "sku_id": "PL-1301030",
       "v3_sku_id": "sku_pl_1301030",
       "product_id": "plantlogic-lysimeter-kit",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13557,7 +13653,8 @@
         "manufacturer_product_no": "1301030",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Лізиметр для контролю дренажу"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13583,7 +13680,8 @@
         "manufacturer_product_no": "1600201",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Агротканина для контролю бур’янів"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13601,7 +13699,7 @@
       "sku_id": "PL-30020034",
       "v3_sku_id": "sku_pl_30020034",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13609,7 +13707,8 @@
         "manufacturer_product_no": "30020034",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13627,7 +13726,7 @@
       "sku_id": "PL-C30020034",
       "v3_sku_id": "sku_pl_c30020034",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13635,7 +13734,8 @@
         "manufacturer_product_no": "C30020034",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13653,7 +13753,7 @@
       "sku_id": "PL-30020037",
       "v3_sku_id": "sku_pl_30020037",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13661,7 +13761,8 @@
         "manufacturer_product_no": "30020037",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13679,7 +13780,7 @@
       "sku_id": "PL-C30020037",
       "v3_sku_id": "sku_pl_c30020037",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13687,7 +13788,8 @@
         "manufacturer_product_no": "C30020037",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13705,7 +13807,7 @@
       "sku_id": "PL-30020012",
       "v3_sku_id": "sku_pl_30020012",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13713,7 +13815,8 @@
         "manufacturer_product_no": "30020012",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13731,7 +13834,7 @@
       "sku_id": "PL-C30020012",
       "v3_sku_id": "sku_pl_c30020012",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13739,7 +13842,8 @@
         "manufacturer_product_no": "C30020012",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13757,7 +13861,7 @@
       "sku_id": "PL-30020036",
       "v3_sku_id": "sku_pl_30020036",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13765,7 +13869,8 @@
         "manufacturer_product_no": "30020036",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13783,7 +13888,7 @@
       "sku_id": "PL-C30020036",
       "v3_sku_id": "sku_pl_c30020036",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13791,7 +13896,8 @@
         "manufacturer_product_no": "C30020036",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13809,7 +13915,7 @@
       "sku_id": "PL-30020040",
       "v3_sku_id": "sku_pl_30020040",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13817,7 +13923,8 @@
         "manufacturer_product_no": "30020040",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13835,7 +13942,7 @@
       "sku_id": "PL-C30020040",
       "v3_sku_id": "sku_pl_c30020040",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13843,7 +13950,8 @@
         "manufacturer_product_no": "C30020040",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13861,7 +13969,7 @@
       "sku_id": "PL-30020041",
       "v3_sku_id": "sku_pl_30020041",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13869,7 +13977,8 @@
         "manufacturer_product_no": "30020041",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13887,7 +13996,7 @@
       "sku_id": "PL-C30020041",
       "v3_sku_id": "sku_pl_c30020041",
       "product_id": "plantlogic-trough-cover",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13895,7 +14004,8 @@
         "manufacturer_product_no": "C30020041",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Кришка для полуничного жолоба"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13913,7 +14023,7 @@
       "sku_id": "PL-1700020",
       "v3_sku_id": "sku_pl_1700020",
       "product_id": "plantlogic-pot-anchor",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13921,7 +14031,8 @@
         "manufacturer_product_no": "1700020",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Анкер для фіксації горщика"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13939,7 +14050,7 @@
       "sku_id": "PL-1700034",
       "v3_sku_id": "sku_pl_1700034",
       "product_id": "plantlogic-pot-anchor",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13947,7 +14058,8 @@
         "manufacturer_product_no": "1700034",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Анкер для фіксації горщика"
       },
       "enabled": true,
       "commerce_state": "request_price",
@@ -13965,7 +14077,7 @@
       "sku_id": "PL-1700041",
       "v3_sku_id": "sku_pl_1700041",
       "product_id": "plantlogic-pot-anchor",
-      "package_value": 1.0,
+      "package_value": 1,
       "package_unit": "pcs",
       "package_label": "1 шт",
       "package_group": null,
@@ -13973,7 +14085,8 @@
         "manufacturer_product_no": "1700041",
         "plantlogic_sections": [
           "accessories"
-        ]
+        ],
+        "canonical_title": "Анкер для фіксації горщика"
       },
       "enabled": true,
       "commerce_state": "request_price",

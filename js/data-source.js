@@ -202,7 +202,7 @@ window.BB610_DATA_SOURCE={
 
   _v5Sku(raw,productRaw){
     const sourceRows=Array.isArray(raw.media)?raw.media:[];
-    const isPlantlogicContainer=productRaw?.category_id==='containers'&&String(productRaw?.brand||'').trim().toLowerCase()==='plantlogic';
+    const isPlantlogicContainer=['containers','bag_bases','accessories','strawberry'].includes(String(productRaw?.category_id||'').trim().toLowerCase())&&String(productRaw?.brand||'').trim().toLowerCase()==='plantlogic';
     const hasPackageMetric=row=>/\b\d+(?:[.,]\d+)?\s*(?:г|кг|мл|л|шт|pcs)\b/i.test(String(row?.alt||''));
     const genericProductRows=(productRaw?.media||[]).filter(row=>
       row?.source_kind==='legacy_product_fallback'&&!hasPackageMetric(row)
@@ -238,6 +238,7 @@ window.BB610_DATA_SOURCE={
         unit:raw.package_unit||'шт',
       },
       attributes:raw.attributes||{},
+      canonical_title:String(raw?.attributes?.canonical_title||'').trim(),
       sort_order:Number(raw.sort_order||0),
       enabled:identityEnabled,
       base_price:base,
@@ -277,6 +278,7 @@ window.BB610_DATA_SOURCE={
       name:raw.name||raw.product_id,
       brand:raw.brand||'',
       manufacturer:raw.manufacturer||raw.brand||'',
+      model:raw.model||'',
       category_id:raw.category_id||'other',
       category:raw.category_id||'other',
       short_description:raw.short_description||'',
@@ -314,6 +316,16 @@ window.BB610_DATA_SOURCE={
       .filter(p=>p.id&&p.public_enabled!==false&&p.status==='active');
 
     const publicIds=new Set(mappedProducts.map(p=>p.id));
+    const v5CategoryMeta={
+      bag_bases:{id:'bag_bases',slug:'bag-bases',name:'Основи для субстрату',short_name:'Основи для субстрату',order:41,enabled:true},
+      strawberry:{id:'strawberry',slug:'strawberry',name:'Полуниця',short_name:'Полуниця',order:42,enabled:true},
+      accessories:{id:'accessories',slug:'accessories',name:'Аксесуари',short_name:'Аксесуари',order:43,enabled:true},
+    };
+    const existingCategories=new Set((this.catalog().categories||[]).map(c=>String(c?.id||'')));
+    const presentCategories=new Set(mappedProducts.map(p=>String(p?.category_id||'')));
+    Object.entries(v5CategoryMeta).forEach(([id,meta])=>{
+      if(presentCategories.has(id)&&!existingCategories.has(id))this.catalog().categories.push(meta);
+    });
     this.catalog().products=mappedProducts;
     this.catalog().skus=mappedSkus.filter(s=>publicIds.has(s.product_id));
     this.catalog().variants=[];

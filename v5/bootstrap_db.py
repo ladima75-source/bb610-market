@@ -66,12 +66,12 @@ def main():
             con.execute(
                 """
                 INSERT INTO products (
-                    product_id, slug, name, brand, manufacturer, category_id,
+                    product_id, slug, name, brand, manufacturer, model, category_id,
                     short_description, description, application, composition,
                     benefits_json, how_it_works, characteristics_json,
                     seo_title, seo_description, public_enabled,
                     status, created_at, updated_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', ?, ?)
                 """,
                 (
                     stage_row["product_id"],
@@ -79,6 +79,7 @@ def main():
                     row.get("name") or stage_row["name"],
                     row.get("brand") or stage_row.get("brand"),
                     row.get("manufacturer"),
+                    row.get("model") or stage_row.get("model"),
                     row.get("category_id") or stage_row.get("category_id") or "other",
                     row.get("short_description"),
                     row.get("description"),

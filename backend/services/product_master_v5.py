@@ -494,7 +494,7 @@ def product(product_id_or_alias: str, *, public_only: bool = True) -> dict | Non
     with _connect() as con:
         row = con.execute(
             """
-            SELECT product_id,slug,name,brand,manufacturer,category_id,
+            SELECT product_id,slug,name,brand,manufacturer,model,category_id,
                    short_description,description,application,composition,
                    benefits_json,how_it_works,characteristics_json,
                    seo_title,seo_description,public_enabled,status,created_at,updated_at
@@ -535,7 +535,7 @@ def resolve_order_sku(value: str) -> dict | None:
             SELECT s.sku_id,s.product_id,s.manufacturer_sku,
                    s.package_value,s.package_unit,s.package_label,s.package_group,
                    s.attributes_json,s.enabled AS identity_enabled,
-                   p.slug,p.name,p.brand,p.manufacturer,p.category_id,
+                   p.slug,p.name,p.brand,p.manufacturer,p.model,p.category_id,
                    p.public_enabled,p.status
             FROM skus s
             JOIN products p ON p.product_id=s.product_id
@@ -560,7 +560,7 @@ def snapshot(*, public_only: bool = True) -> dict:
             dict(row)
             for row in con.execute(
                 f"""
-                SELECT product_id,slug,name,brand,manufacturer,category_id,
+                SELECT product_id,slug,name,brand,manufacturer,model,category_id,
                        short_description,description,application,composition,
                        benefits_json,how_it_works,characteristics_json,
                        seo_title,seo_description,public_enabled,status,created_at,updated_at

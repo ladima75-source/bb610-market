@@ -26,6 +26,9 @@ def resolve_order_items(lines):
         'nutrition': 'Живлення',
         'biostimulation': 'Біостимуляція',
         'containers': 'Горщики',
+        'bag_bases': 'Основи для субстрату',
+        'strawberry': 'Полуниця',
+        'accessories': 'Аксесуари',
         'protection': 'Захист рослин',
         'other': 'Інше',
     }
@@ -60,6 +63,7 @@ def resolve_order_items(lines):
         product_id = row['product_id']
         category_id = row.get('category_id') or 'other'
         variant = row.get('package_label') or requested_sku
+        canonical_title = (row.get('attributes') or {}).get('canonical_title') or row.get('name') or requested_sku
         snapshot = {
             'requested_sku': requested_sku,
             'canonical_sku': row['canonical_sku_id'],
@@ -85,7 +89,8 @@ def resolve_order_items(lines):
             'product': {
                 'id': product_id,
                 'slug': row.get('slug'),
-                'name': row.get('name'),
+                'name': canonical_title,
+                'base_name': row.get('name'),
                 'brand': row.get('brand'),
                 'manufacturer': row.get('manufacturer'),
                 'category_id': category_id,
@@ -94,7 +99,7 @@ def resolve_order_items(lines):
         result.append({
             'sku': requested_sku,
             'product_id': product_id,
-            'name': row.get('name') or requested_sku,
+            'name': canonical_title,
             'brand': row.get('brand'),
             'category': category_labels.get(category_id, category_id),
             'variant': variant,

@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS products (
   name TEXT NOT NULL,
   brand TEXT,
   manufacturer TEXT,
+  model TEXT,
   category_id TEXT NOT NULL,
   short_description TEXT,
   description TEXT,

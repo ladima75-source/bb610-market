@@ -1530,6 +1530,355 @@ def _ads_hires_exact_package_media_batch_18(con: sqlite3.Connection) -> bool:
         )
     return True
 
+
+def _normalize_plantlogic_naming_batch_19(con: sqlite3.Connection) -> bool:
+    """Normalize Plantlogic customer titles/categories without changing SKU commerce identity."""
+    product_updates = {
+    "plantlogic-5l-drainage-1305005": {
+        "name": "Горщик для малини 5 л зі збором дренажу",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-7l-drainage-1307107": {
+        "name": "Горщик для малини та ожини 7 л зі збором дренажу",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-10l-drainage-1307110": {
+        "name": "Горщик для малини та овочів 10 л зі збором дренажу",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-17l-drainage-1305117": {
+        "name": "Горщик для овочів та полуниці 17 л зі збором дренажу",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-30l-drainage-1307133": {
+        "name": "Горщик для субстратного вирощування 30 л зі збором дренажу",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-3l-square-1306003": {
+        "name": "Горщик для малини та ожини 3 л квадратний",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-5l-square-short-1306051": {
+        "name": "Горщик для малини та ожини 5 л компактний квадратний",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-7l-square-1306007": {
+        "name": "Горщик для малини та ожини 7 л квадратний",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-8l-square-1309008": {
+        "name": "Горщик для малини та ожини 8 л квадратний",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-10l-square-1306010": {
+        "name": "Горщик для малини та ожини 10 л квадратний",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-15l-square-1309015": {
+        "name": "Горщик для малини та ожини 15 л квадратний",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-4-7l-square-cold-storage-13050040": {
+        "name": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-7l-square-cold-storage-1305071": {
+        "name": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-15l-round-drainage-1304015": {
+        "name": "Горщик для малини 15 л круглий зі збором дренажу",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-25l-round-drainage-1304125": {
+        "name": "Горщик для лохини та овочів 25 л круглий зі збором дренажу",
+        "category_id": "containers",
+        "model": None
+    },
+    "blueberry-round-short-legs-pot": {
+        "name": "Горщик для лохини 25 л круглий на коротких ніжках",
+        "category_id": "containers",
+        "model": None
+    },
+    "blueberry-zephyr-v2-pots": {
+        "name": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
+        "category_id": "containers",
+        "model": "Zephyr V2"
+    },
+    "blueberry-square-pots": {
+        "name": "Горщик для лохини 20 л квадратний на стандартних ніжках",
+        "category_id": "containers",
+        "model": None
+    },
+    "blueberry-square-u-groove-pots": {
+        "name": "Горщик для лохини 25 л квадратний з U-пазами",
+        "category_id": "containers",
+        "model": None
+    },
+    "blueberry-round-pots": {
+        "name": "Горщик для лохини 20 л круглий на стандартних ніжках",
+        "category_id": "containers",
+        "model": None
+    },
+    "blueberry-round-u-groove-pots": {
+        "name": "Горщик для лохини 30 л круглий з U-пазами",
+        "category_id": "containers",
+        "model": None
+    },
+    "plantlogic-culti-base": {
+        "name": "Мішок для субстрату з інтегрованою основою",
+        "category_id": "bag_bases",
+        "model": "Culti-base"
+    },
+    "plantlogic-kratos-slab-base-1301081": {
+        "name": "Основа для субстратних плит",
+        "category_id": "bag_bases",
+        "model": "Kratos"
+    },
+    "plantlogic-pot-anchor": {
+        "name": "Анкер для фіксації горщика",
+        "category_id": "accessories",
+        "model": "Pot Anchor"
+    },
+    "plantlogic-rivus-2in1-slab-base": {
+        "name": "Основа та жолоб для субстратних плит",
+        "category_id": "bag_bases",
+        "model": "Rivus 2-in-1"
+    },
+    "plantlogic-trough-cover": {
+        "name": "Кришка для полуничного жолоба",
+        "category_id": "accessories",
+        "model": "Trough Cover"
+    },
+    "plantlogic-vf-bag-base-12010300": {
+        "name": "Основа для мішка з субстратом",
+        "category_id": "bag_bases",
+        "model": "VF Bag Base"
+    },
+    "plantlogic-ground-cover-1600201": {
+        "name": "Агротканина для контролю бур’янів",
+        "category_id": "accessories",
+        "model": None
+    },
+    "plantlogic-hose-clip-12050010": {
+        "name": "Багатофункціональна кліпса для фіксації поливного шланга",
+        "category_id": "accessories",
+        "model": None
+    },
+    "plantlogic-18l-strawberry-trough-1305909": {
+        "name": "Жолоб для вирощування полуниці 18 л з опорою для квітконосів",
+        "category_id": "strawberry",
+        "model": None
+    },
+    "plantlogic-8l-strawberry-trough-big-handle-1305082": {
+        "name": "Жолоб для вирощування полуниці 8 л з широкою ручкою",
+        "category_id": "strawberry",
+        "model": None
+    },
+    "plantlogic-9l-strawberry-trough-truss-1305209": {
+        "name": "Жолоб для вирощування полуниці 9 л з підтримкою квітконосів",
+        "category_id": "strawberry",
+        "model": None
+    },
+    "plantlogic-micro-tube-stake": {
+        "name": "Кілок 18 см для позиціонування мікротрубки",
+        "category_id": "accessories",
+        "model": None
+    },
+    "plantlogic-lysimeter-kit": {
+        "name": "Лізиметр для контролю дренажу",
+        "category_id": "accessories",
+        "model": None
+    },
+    "plantlogic-metal-hose-clip-1205012": {
+        "name": "Металева кліпса для фіксації поливного шланга",
+        "category_id": "accessories",
+        "model": None
+    },
+    "plantlogic-metal-stakes-gutter": {
+        "name": "Металеві скоби для фіксації дренажного жолоба",
+        "category_id": "accessories",
+        "model": None
+    },
+    "plantlogic-bag-base-drainage-1301036": {
+        "name": "Основа для мішка зі збором дренажу",
+        "category_id": "bag_bases",
+        "model": None
+    },
+    "plantlogic-plastic-gutter-drainage": {
+        "name": "Пластиковий жолоб для збору та відведення дренажу",
+        "category_id": "accessories",
+        "model": None
+    },
+    "plantlogic-steel-lysimeter": {
+        "name": "Сталевий лізиметр для контролю дренажу",
+        "category_id": "accessories",
+        "model": None
+    }
+}
+    sku_titles = {
+    "PL-BB-1308020-BK": "Горщик для лохини 20 л круглий на стандартних ніжках",
+    "PL-BB-1308025-BK": "Горщик для лохини 25 л круглий на стандартних ніжках",
+    "PL-BB-1308031-BK": "Горщик для лохини 30 л круглий з V-ребрами",
+    "PL-BB-1308040-TC": "Горщик для лохини 40 л круглий на стандартних ніжках",
+    "PL-BB-1303025-BK": "Горщик для лохини 25 л круглий на коротких ніжках",
+    "PL-BB-1308303-BK": "Горщик для лохини 30 л круглий з U-пазами",
+    "PL-BB-1308305-BK": "Горщик для лохини 30 л круглий з паралельними U-пазами",
+    "PL-BB-13080350-BK": "Горщик для лохини 35 л круглий з U-пазами",
+    "PL-BB-1308041-TC": "Горщик для лохини 40 л круглий з U-пазами",
+    "PL-BB-1309020-BK": "Горщик для лохини 20 л квадратний на стандартних ніжках",
+    "PL-BB-1309025-BK": "Горщик для лохини 25 л квадратний на стандартних ніжках",
+    "PL-BB-1309030-BK": "Горщик для лохини 30 л квадратний на стандартних ніжках",
+    "PL-BB-1309026-BK": "Горщик для лохини 25 л квадратний з U-пазами",
+    "PL-BB-13090350-BK": "Горщик для лохини 35 л квадратний з U-пазами",
+    "PL-BB-1301144-BK": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
+    "PL-BB-1301153-BK": "Горщик для лохини 30 л Zephyr V2 на ніжках 7 см",
+    "PL-BB-1301143-BK": "Горщик для лохини 40 л Zephyr V2 на ніжках 7 см",
+    "PL-1304125-BK": "Горщик для лохини та овочів 25 л круглий зі збором дренажу",
+    "PL-1304125-WH": "Горщик для лохини та овочів 25 л круглий зі збором дренажу",
+    "PL-1304125-TC": "Горщик для лохини та овочів 25 л круглий зі збором дренажу",
+    "PL-1306003-BK": "Горщик для малини та ожини 3 л квадратний",
+    "PL-1306003-WH": "Горщик для малини та ожини 3 л квадратний",
+    "PL-1306003-TC": "Горщик для малини та ожини 3 л квадратний",
+    "PL-13050040-BK": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання",
+    "PL-13050040-WH": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання",
+    "PL-13050040-TC": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання",
+    "PL-1306051-BK": "Горщик для малини та ожини 5 л компактний квадратний",
+    "PL-1306051-WH": "Горщик для малини та ожини 5 л компактний квадратний",
+    "PL-1306051-TC": "Горщик для малини та ожини 5 л компактний квадратний",
+    "PL-1305005-BK": "Горщик для малини 5 л зі збором дренажу",
+    "PL-1305005-WH": "Горщик для малини 5 л зі збором дренажу",
+    "PL-1305005-TC": "Горщик для малини 5 л зі збором дренажу",
+    "PL-1306007-BK": "Горщик для малини та ожини 7 л квадратний",
+    "PL-1306007-WH": "Горщик для малини та ожини 7 л квадратний",
+    "PL-1306007-TC": "Горщик для малини та ожини 7 л квадратний",
+    "PL-1305071-BK": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання",
+    "PL-1305071-WH": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання",
+    "PL-1305071-TC": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання",
+    "PL-1307107-BK": "Горщик для малини та ожини 7 л зі збором дренажу",
+    "PL-1307107-WH": "Горщик для малини та ожини 7 л зі збором дренажу",
+    "PL-1307107-TC": "Горщик для малини та ожини 7 л зі збором дренажу",
+    "PL-1309008-BK": "Горщик для малини та ожини 8 л квадратний",
+    "PL-1309008-WH": "Горщик для малини та ожини 8 л квадратний",
+    "PL-1309008-TC": "Горщик для малини та ожини 8 л квадратний",
+    "PL-1306010-BK": "Горщик для малини та ожини 10 л квадратний",
+    "PL-1306010-WH": "Горщик для малини та ожини 10 л квадратний",
+    "PL-1306010-TC": "Горщик для малини та ожини 10 л квадратний",
+    "PL-1307110-BK": "Горщик для малини та овочів 10 л зі збором дренажу",
+    "PL-1307110-WH": "Горщик для малини та овочів 10 л зі збором дренажу",
+    "PL-1307110-TC": "Горщик для малини та овочів 10 л зі збором дренажу",
+    "PL-1309015-BK": "Горщик для малини та ожини 15 л квадратний",
+    "PL-1309015-WH": "Горщик для малини та ожини 15 л квадратний",
+    "PL-1309015-TC": "Горщик для малини та ожини 15 л квадратний",
+    "PL-1304015-BK": "Горщик для малини 15 л круглий зі збором дренажу",
+    "PL-1304015-WH": "Горщик для малини 15 л круглий зі збором дренажу",
+    "PL-1304015-TC": "Горщик для малини 15 л круглий зі збором дренажу",
+    "PL-1307133-BK": "Горщик для субстратного вирощування 30 л зі збором дренажу",
+    "PL-1307133-WH": "Горщик для субстратного вирощування 30 л зі збором дренажу",
+    "PL-1307133-TC": "Горщик для субстратного вирощування 30 л зі збором дренажу",
+    "PL-1305117-BK": "Горщик для овочів та полуниці 17 л зі збором дренажу",
+    "PL-1305117-WH": "Горщик для овочів та полуниці 17 л зі збором дренажу",
+    "PL-1305117-TC": "Горщик для овочів та полуниці 17 л зі збором дренажу",
+    "PL-1305909": "Жолоб для вирощування полуниці 18 л з опорою для квітконосів",
+    "PL-13079250": "Мішок для субстрату з інтегрованою основою",
+    "PL-13079300": "Мішок для субстрату з інтегрованою основою",
+    "PL-12010300": "Основа для мішка з субстратом",
+    "PL-12010400": "Основа для мішка з субстратом",
+    "PL-1301036": "Основа для мішка зі збором дренажу",
+    "PL-12050010": "Багатофункціональна кліпса для фіксації поливного шланга",
+    "PL-13046025": "Сталевий лізиметр для контролю дренажу",
+    "PL-13046026": "Сталевий лізиметр для контролю дренажу",
+    "PL-13046031": "Сталевий лізиметр для контролю дренажу",
+    "PL-13046041": "Сталевий лізиметр для контролю дренажу",
+    "PL-1205012": "Металева кліпса для фіксації поливного шланга",
+    "PL-1700146": "Металеві скоби для фіксації дренажного жолоба",
+    "PL-1700147": "Металеві скоби для фіксації дренажного жолоба",
+    "PL-1205018": "Кілок 18 см для позиціонування мікротрубки",
+    "PL-1205019": "Кілок 18 см для позиціонування мікротрубки",
+    "PL-1200021": "Пластиковий жолоб для збору та відведення дренажу",
+    "PL-1300010": "Пластиковий жолоб для збору та відведення дренажу",
+    "PL-1300011": "Пластиковий жолоб для збору та відведення дренажу",
+    "PL-1305082": "Жолоб для вирощування полуниці 8 л з широкою ручкою",
+    "PL-1305209": "Жолоб для вирощування полуниці 9 л з підтримкою квітконосів",
+    "PL-1301081": "Основа для субстратних плит",
+    "PL-13020500": "Основа та жолоб для субстратних плит",
+    "PL-13020502": "Основа та жолоб для субстратних плит",
+    "PL-13020510": "Основа та жолоб для субстратних плит",
+    "PL-13020512": "Основа та жолоб для субстратних плит",
+    "PL-1301010": "Лізиметр для контролю дренажу",
+    "PL-1301030": "Лізиметр для контролю дренажу",
+    "PL-1600201": "Агротканина для контролю бур’янів",
+    "PL-30020034": "Кришка для полуничного жолоба",
+    "PL-C30020034": "Кришка для полуничного жолоба",
+    "PL-30020037": "Кришка для полуничного жолоба",
+    "PL-C30020037": "Кришка для полуничного жолоба",
+    "PL-30020012": "Кришка для полуничного жолоба",
+    "PL-C30020012": "Кришка для полуничного жолоба",
+    "PL-30020036": "Кришка для полуничного жолоба",
+    "PL-C30020036": "Кришка для полуничного жолоба",
+    "PL-30020040": "Кришка для полуничного жолоба",
+    "PL-C30020040": "Кришка для полуничного жолоба",
+    "PL-30020041": "Кришка для полуничного жолоба",
+    "PL-C30020041": "Кришка для полуничного жолоба",
+    "PL-1700020": "Анкер для фіксації горщика",
+    "PL-1700034": "Анкер для фіксації горщика",
+    "PL-1700041": "Анкер для фіксації горщика"
+}
+
+    columns = {row["name"] for row in con.execute("PRAGMA table_info(products)").fetchall()}
+    if "model" not in columns:
+        con.execute("ALTER TABLE products ADD COLUMN model TEXT")
+
+    existing_products = {
+        row["product_id"]
+        for row in con.execute(
+            "SELECT product_id FROM products WHERE product_id IN (%s)"
+            % ",".join("?" for _ in product_updates),
+            tuple(product_updates),
+        ).fetchall()
+    }
+    if existing_products != set(product_updates):
+        return False
+
+    existing_skus = {
+        row["sku_id"]
+        for row in con.execute(
+            "SELECT sku_id FROM skus WHERE sku_id IN (%s)"
+            % ",".join("?" for _ in sku_titles),
+            tuple(sku_titles),
+        ).fetchall()
+    }
+    if existing_skus != set(sku_titles):
+        return False
+
+    for product_id, fields in product_updates.items():
+        _update_product(con, product_id, fields)
+
+    for sku_id, title in sku_titles.items():
+        row = con.execute("SELECT attributes_json FROM skus WHERE sku_id=?", (sku_id,)).fetchone()
+        attrs = json.loads(row["attributes_json"] or "{}")
+        attrs["canonical_title"] = title
+        con.execute(
+            "UPDATE skus SET attributes_json=? WHERE sku_id=?",
+            (json.dumps(attrs, ensure_ascii=False, separators=(",", ":")), sku_id),
+        )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -1551,6 +1900,7 @@ _MIGRATIONS = [
     ("20260925_kendal_te_100ml_hires_media_batch16", _kendal_te_100ml_hires_media_batch_16),
     ("20260926_official_video_sources_batch17", _official_video_sources_batch_17),
     ("20260926_ads_hires_exact_package_media_batch18", _ads_hires_exact_package_media_batch_18),
+    ("20260928_normalize_plantlogic_naming_batch19", _normalize_plantlogic_naming_batch_19),
 ]
 
 

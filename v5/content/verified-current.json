@@ -820,7 +820,7 @@
     },
     {
       "product_id": "blueberry-round-pots",
-      "name": "Круглі горщики для лохини",
+      "name": "Горщик для лохини 20 л круглий на стандартних ніжках",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -865,11 +865,12 @@
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "blueberry-round-short-legs-pot",
-      "name": "Круглий горщик 25 л на коротких ніжках для лохини",
+      "name": "Горщик для лохини 25 л круглий на коротких ніжках",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -914,11 +915,12 @@
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "blueberry-round-u-groove-pots",
-      "name": "Круглі горщики з U-пазами для лохини",
+      "name": "Горщик для лохини 30 л круглий з U-пазами",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -963,11 +965,12 @@
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "blueberry-square-pots",
-      "name": "Квадратні горщики для лохини",
+      "name": "Горщик для лохини 20 л квадратний на стандартних ніжках",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -1012,11 +1015,12 @@
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "blueberry-square-u-groove-pots",
-      "name": "Квадратні горщики з U-пазами для лохини",
+      "name": "Горщик для лохини 25 л квадратний з U-пазами",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -1061,11 +1065,12 @@
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "blueberry-zephyr-v2-pots",
-      "name": "Горщики Zephyr V2 для лохини",
+      "name": "Горщик для лохини 25 л Zephyr V2 на ніжках 7 см",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -1110,7 +1115,8 @@
           "provenance": "data/product_content/plantlogic_blueberry_pots_r2_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": "Zephyr V2"
     },
     {
       "product_id": "boroplus",
@@ -5670,7 +5676,7 @@
     },
     {
       "product_id": "plantlogic-10l-drainage-1307110",
-      "name": "Горщик 10 л зі збором дренажу — арт. 1307110",
+      "name": "Горщик для малини та овочів 10 л зі збором дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -5744,11 +5750,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-10l-square-1306010",
-      "name": "Квадратний горщик 10 л — арт. 1306010",
+      "name": "Горщик для малини та ожини 10 л квадратний",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -5822,11 +5829,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-15l-round-drainage-1304015",
-      "name": "Круглий горщик 15 л зі збором дренажу — арт. 1304015",
+      "name": "Горщик для малини 15 л круглий зі збором дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -5900,11 +5908,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-15l-square-1309015",
-      "name": "Квадратний горщик 15 л — арт. 1309015",
+      "name": "Горщик для малини та ожини 15 л квадратний",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -5978,11 +5987,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-17l-drainage-1305117",
-      "name": "Горщик 17 л зі збором дренажу — арт. 1305117",
+      "name": "Горщик для овочів та полуниці 17 л зі збором дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6056,14 +6066,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-18l-strawberry-trough-1305909",
-      "name": "Жолоб для полуниці 18 л з опорою для квітконосів — арт. 1305909",
+      "name": "Жолоб для вирощування полуниці 18 л з опорою для квітконосів",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "strawberry",
       "short_description": "1-метровий жорсткий жолоб Plantlogic для вирощування полуниці у субстраті. Широкі борти підтримують квітконоси; конструкція сумісна з Hi-Grow System.",
       "description": "1-метровий жорсткий жолоб Plantlogic для вирощування полуниці у субстраті. Широкі борти підтримують квітконоси; конструкція сумісна з Hi-Grow System. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Полуниця; субстратне вирощування; система Hi-Grow",
@@ -6122,7 +6133,8 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-25-round-1308125",
@@ -6167,7 +6179,7 @@
     },
     {
       "product_id": "plantlogic-25l-round-drainage-1304125",
-      "name": "Круглий горщик 25 л зі збором дренажу — арт. 1304125",
+      "name": "Горщик для лохини та овочів 25 л круглий зі збором дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6241,11 +6253,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-30l-drainage-1307133",
-      "name": "Горщик 30 л зі збором дренажу — арт. 1307133",
+      "name": "Горщик для субстратного вирощування 30 л зі збором дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6319,11 +6332,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-3l-square-1306003",
-      "name": "Квадратний горщик 3 л — арт. 1306003",
+      "name": "Горщик для малини та ожини 3 л квадратний",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6397,11 +6411,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-4-7l-square-cold-storage-13050040",
-      "name": "Квадратний горщик 4,7 л для long-cane та холодного зберігання — арт. 13050040",
+      "name": "Горщик для малини та ожини 4,7 л квадратний для long-cane і холодного зберігання",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6475,11 +6490,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-5l-drainage-1305005",
-      "name": "Горщик 5 л зі збором дренажу — арт. 1305005",
+      "name": "Горщик для малини 5 л зі збором дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6553,11 +6569,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-5l-square-short-1306051",
-      "name": "Компактний квадратний горщик 5 л — арт. 1306051",
+      "name": "Горщик для малини та ожини 5 л компактний квадратний",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6631,11 +6648,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-7l-drainage-1307107",
-      "name": "Горщик 7 л зі збором дренажу — арт. 1307107",
+      "name": "Горщик для малини та ожини 7 л зі збором дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6709,11 +6727,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-7l-square-1306007",
-      "name": "Квадратний горщик 7 л — арт. 1306007",
+      "name": "Горщик для малини та ожини 7 л квадратний",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6787,11 +6806,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-7l-square-cold-storage-1305071",
-      "name": "Квадратний горщик 7 л для long-cane та холодного зберігання — арт. 1305071",
+      "name": "Горщик для малини та ожини 7 л квадратний для long-cane і холодного зберігання",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6865,11 +6885,12 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-8l-square-1309008",
-      "name": "Квадратний горщик 8 л — арт. 1309008",
+      "name": "Горщик для малини та ожини 8 л квадратний",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
       "category_id": "containers",
@@ -6943,14 +6964,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-8l-strawberry-trough-big-handle-1305082",
-      "name": "Жолоб для полуниці 8 л з широкою ручкою — арт. 1305082",
+      "name": "Жолоб для вирощування полуниці 8 л з широкою ручкою",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "strawberry",
       "short_description": "8-літровий жолоб Plantlogic з широкою ручкою/бортиком для підтримки квітконосів. Модель призначена для гідропонного вирощування полуниці.",
       "description": "8-літровий жолоб Plantlogic з широкою ручкою/бортиком для підтримки квітконосів. Модель призначена для гідропонного вирощування полуниці. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Полуниця; субстратне вирощування; підтримка квітконосів",
@@ -7009,14 +7031,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-9l-strawberry-trough-truss-1305209",
-      "name": "Жолоб для полуниці 9 л з підтримкою квітконосів — арт. 1305209",
+      "name": "Жолоб для вирощування полуниці 9 л з підтримкою квітконосів",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "strawberry",
       "short_description": "50-сантиметровий 9-літровий жолоб Plantlogic з підтримкою квітконосів. Модель розроблена для системи Hi-Grow та збору дренажу.",
       "description": "50-сантиметровий 9-літровий жолоб Plantlogic з підтримкою квітконосів. Модель розроблена для системи Hi-Grow та збору дренажу. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Полуниця; субстратне вирощування; Hi-Grow",
@@ -7075,14 +7098,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-bag-base-drainage-1301036",
-      "name": "Основа для мішка зі збором дренажу — арт. 1301036",
+      "name": "Основа для мішка зі збором дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "bag_bases",
       "short_description": "Основа Plantlogic для grow bags із внутрішніми каналами, що спрямовують дренаж до центрального жолоба. Широка опорна поверхня розрахована на м'який ґрунт.",
       "description": "Основа Plantlogic для grow bags із внутрішніми каналами, що спрямовують дренаж до центрального жолоба. Широка опорна поверхня розрахована на м'який ґрунт. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Bag Bases; збір дренажу",
@@ -7141,14 +7165,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-culti-base",
-      "name": "Culti-base — мішок для субстрату з інтегрованою основою, 25 та 30 л",
+      "name": "Мішок для субстрату з інтегрованою основою",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "bag_bases",
       "short_description": "Система Plantlogic, що поєднує grow bag та жорстку інтегровану основу. Основа має пірамідальну геометрію, центральну аерацію та ніжки 5 см.",
       "description": "Система Plantlogic, що поєднує grow bag та жорстку інтегровану основу. Основа має пірамідальну геометрію, центральну аерацію та ніжки 5 см. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Вирощування у субстраті; Bag Bases",
@@ -7207,14 +7232,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": "Culti-base"
     },
     {
       "product_id": "plantlogic-ground-cover-1600201",
-      "name": "Агротканина Ground Cover — арт. 1600201",
+      "name": "Агротканина для контролю бур’янів",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "short_description": "Ground Cover Plantlogic для покриття ґрунту у виробничих насадженнях. Офіційний tech sheet вказує PP, ширину 0,4–8 м, довжину 50–200 м, щільність 90–280 г/м² та ресурс 5–10 років.",
       "description": "Ground Cover Plantlogic для покриття ґрунту у виробничих насадженнях. Офіційний tech sheet вказує PP, ширину 0,4–8 м, довжину 50–200 м, щільність 90–280 г/м² та ресурс 5–10 років. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Accessories; контроль бур'янів; зниження ризику ґрунтових хвороб",
@@ -7273,14 +7299,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-hose-clip-12050010",
-      "name": "Багатофункціональна кліпса для шланга — арт. 12050010",
+      "name": "Багатофункціональна кліпса для фіксації поливного шланга",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "short_description": "Багатофункціональна кліпса Plantlogic для фіксації елементів на горщику. Поточна сторінка виробника вказує діапазони 17–22 мм і 14–16 мм.",
       "description": "Багатофункціональна кліпса Plantlogic для фіксації елементів на горщику. Поточна сторінка виробника вказує діапазони 17–22 мм і 14–16 мм. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Accessories; фіксація поливного шланга, cooling skirt і дроту",
@@ -7339,14 +7366,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-kratos-slab-base-1301081",
-      "name": "Kratos — основа для субстратних плит — арт. 1301081",
+      "name": "Основа для субстратних плит",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "bag_bases",
       "short_description": "Kratos Plantlogic — V-подібна основа для субстратних плит і grow bags з вузьким центральним жолобом для збору дренажу та відкритим повітряним простором під кореневою зоною.",
       "description": "Kratos Plantlogic — V-подібна основа для субстратних плит і grow bags з вузьким центральним жолобом для збору дренажу та відкритим повітряним простором під кореневою зоною. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Овочеві культури; Bag Bases; збір дренажу",
@@ -7401,14 +7429,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": "Kratos"
     },
     {
       "product_id": "plantlogic-lysimeter-kit",
-      "name": "Лізиметри Plantlogic для контролю дренажу",
+      "name": "Лізиметр для контролю дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "short_description": "Лізиметри Plantlogic для точного збору дренажу та порівняння поливного об'єму, pH і EC. Виробник пропонує малий і великий типорозміри.",
       "description": "Лізиметри Plantlogic для точного збору дренажу та порівняння поливного об'єму, pH і EC. Виробник пропонує малий і великий типорозміри. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Accessories; контроль об'єму дренажу, pH та EC",
@@ -7467,14 +7496,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-metal-hose-clip-1205012",
-      "name": "Металева кліпса для поливного шланга — арт. 1205012",
+      "name": "Металева кліпса для фіксації поливного шланга",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "short_description": "Металева кліпса Plantlogic для утримання поливної труби на горщику. Офіційна сторінка вказує сумісність із трубою 16 і 18 мм.",
       "description": "Металева кліпса Plantlogic для утримання поливної труби на горщику. Офіційна сторінка вказує сумісність із трубою 16 і 18 мм. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Accessories; фіксація поливної труби",
@@ -7533,14 +7563,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-metal-stakes-gutter",
-      "name": "Металеві скоби для дренажного жолоба",
+      "name": "Металеві скоби для фіксації дренажного жолоба",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "short_description": "Оцинковані металеві скоби Plantlogic для утримання пластикового дренажного жолоба на нерівній поверхні.",
       "description": "Оцинковані металеві скоби Plantlogic для утримання пластикового дренажного жолоба на нерівній поверхні. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Accessories; фіксація дренажного жолоба",
@@ -7599,14 +7630,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-micro-tube-stake",
-      "name": "Кілок 18 см для мікротрубки",
+      "name": "Кілок 18 см для позиціонування мікротрубки",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "short_description": "Кілок Plantlogic висотою 18 см для позиціонування мікротрубки з крапельницею або без неї. Виробник пропонує O-type та C-type виконання.",
       "description": "Кілок Plantlogic висотою 18 см для позиціонування мікротрубки з крапельницею або без неї. Виробник пропонує O-type та C-type виконання. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Accessories; позиціонування мікротрубки або крапельниці",
@@ -7665,14 +7697,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-plastic-gutter-drainage",
-      "name": "Пластиковий жолоб для збору дренажу",
+      "name": "Пластиковий жолоб для збору та відведення дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "short_description": "Вузький пластиковий жолоб Plantlogic для відведення дренажу від контейнерів і систем збору. Поточна сторінка виробника вказує три Product # та три типорозміри.",
       "description": "Вузький пластиковий жолоб Plantlogic для відведення дренажу від контейнерів і систем збору. Поточна сторінка виробника вказує три Product # та три типорозміри. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Accessories; збір і відведення дренажу",
@@ -7731,14 +7764,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-pot-anchor",
-      "name": "Pot Anchor — анкер для стабілізації горщиків Plantlogic",
+      "name": "Анкер для фіксації горщика",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "short_description": "Pot Anchor Plantlogic фіксує контейнер до ґрунту та допомагає запобігати перекиданню під дією вітру або механічного збору. Офіційний tech sheet містить три Product #; точну прив'язку кожного номера до конкретної моделі горщика не вигадуємо.",
       "description": "Pot Anchor Plantlogic фіксує контейнер до ґрунту та допомагає запобігати перекиданню під дією вітру або механічного збору. Офіційний tech sheet містить три Product #; точну прив'язку кожного номера до конкретної моделі горщика не вигадуємо. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Accessories; стабілізація контейнерів від вітру та механічного впливу",
@@ -7797,14 +7831,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": "Pot Anchor"
     },
     {
       "product_id": "plantlogic-rivus-2in1-slab-base",
-      "name": "Rivus 2-in-1 — основа та жолоб для субстратних плит",
+      "name": "Основа та жолоб для субстратних плит",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "bag_bases",
       "short_description": "Rivus Plantlogic поєднує основу та дренажний жолоб. Платформа висотою 60 мм підтримує повітряний зазор під субстратною плитою, а бічні канали збирають дренаж.",
       "description": "Rivus Plantlogic поєднує основу та дренажний жолоб. Платформа висотою 60 мм підтримує повітряний зазор під субстратною плитою, а бічні канали збирають дренаж. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Овочеві культури; Bag Bases; збір дренажу",
@@ -7863,14 +7898,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": "Rivus 2-in-1"
     },
     {
       "product_id": "plantlogic-steel-lysimeter",
-      "name": "Сталевий лізиметр Plantlogic",
+      "name": "Сталевий лізиметр для контролю дренажу",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "short_description": "Сталевий лізиметр Plantlogic для точного збору дренажу. Виробник вказує сумісність із круглими горщиками Plantlogic 25, 30 та 40 л і чотири Product #.",
       "description": "Сталевий лізиметр Plantlogic для точного збору дренажу. Виробник вказує сумісність із круглими горщиками Plantlogic 25, 30 та 40 л і чотири Product #. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Accessories; моніторинг дренажу та вилуговування",
@@ -7929,14 +7965,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": null
     },
     {
       "product_id": "plantlogic-trough-cover",
-      "name": "Trough Cover — накриття для полуничного жолоба Plantlogic",
+      "name": "Кришка для полуничного жолоба",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "accessories",
       "short_description": "Trough Cover Plantlogic для 18-літрового полуничного жолоба. Доступне у PE та biodegradable виконанні, без отворів або з різною кількістю посадкових отворів.",
       "description": "Trough Cover Plantlogic для 18-літрового полуничного жолоба. Доступне у PE та biodegradable виконанні, без отворів або з різною кількістю посадкових отворів. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Accessories; полуниця; зменшення випаровування; захист субстрату",
@@ -7995,14 +8032,15 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": "Trough Cover"
     },
     {
       "product_id": "plantlogic-vf-bag-base-12010300",
-      "name": "VF Bag Base — основа для grow bag, 30 та 40 л",
+      "name": "Основа для мішка з субстратом",
       "brand": "Plantlogic",
       "manufacturer": "Plantlogic",
-      "category_id": "containers",
+      "category_id": "bag_bases",
       "short_description": "Низькопрофільна основа Plantlogic для open-top grow bags. Платформа висотою 5 см створює повітряний зазор під мішком і допомагає відводити дренаж.",
       "description": "Низькопрофільна основа Plantlogic для open-top grow bags. Платформа висотою 5 см створює повітряний зазор під мішком і допомагає відводити дренаж. Дані та Product # звірені з поточною офіційною сторінкою Plantlogic.",
       "application": "Вирощування у субстраті; Bag Bases",
@@ -8061,7 +8099,8 @@
           "provenance": "production V3 + data/product_content/plantlogic_sections_20260919.json"
         }
       ],
-      "public_enabled": true
+      "public_enabled": true,
+      "model": "VF Bag Base"
     },
     {
       "product_id": "radifarm",

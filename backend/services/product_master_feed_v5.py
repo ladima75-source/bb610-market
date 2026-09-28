@@ -123,10 +123,13 @@ def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]
 
             attributes = source_sku.get("attributes")
             sku_image = _CHANNEL_IMAGE_OVERRIDES.get(sid) or _primary_media(source_sku.get("media")) or product_image
+            canonical_title = _identifier(attributes, "canonical_title")
             sku = {
                 "id": sid,
                 "product_id": pid,
                 "variant": _text(source_sku.get("package_label")),
+                "canonical_title": canonical_title,
+                "feed": {"title": canonical_title} if canonical_title else {},
                 "image": sku_image,
                 "mpn": _text(source_sku.get("manufacturer_sku")),
                 "gtin_ean": _identifier(attributes, "gtin_ean", "gtin", "ean", "barcode"),

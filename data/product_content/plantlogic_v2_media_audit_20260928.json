@@ -3,10 +3,10 @@
   "canonical_products": 78,
   "distribution": {
     "0": 13,
-    "1": 12,
+    "1": 9,
     "2": 8,
     "3": 2,
-    "4+": 43
+    "4+": 46
   },
   "without_individual_photo": [
     "plantlogic-micro-tube-stake-1205018",
@@ -26,14 +26,11 @@
   "one_photo_only": [
     "plantlogic-pot-anchor",
     "plantlogic-lysimeter-kit",
-    "plantlogic-bag-base-drainage-1301036",
     "plantlogic-plastic-gutter-drainage",
     "plantlogic-blueberry-zephyr-v2-40l-1301143",
     "plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400",
     "plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440",
     "plantlogic-zephyr-1301133",
-    "plantlogic-strawberry-trough-8l-short-legs-1305081",
-    "plantlogic-strawberry-trough-9l-1305109",
     "plantlogic-trough-cover",
     "plantlogic-universal-round-5l-1308005"
   ],
@@ -1749,15 +1746,15 @@
     {
       "canonical_product_id": "plantlogic-bag-base-drainage-1301036",
       "manufacturer_product_number": "1301036",
-      "primary": "/assets/img/v5/media/7589faad4063064aa7ef.jpg",
-      "gallery_count": 1,
-      "media_source": "v5_current",
-      "status": "ONE_PHOTO",
+      "primary": "/assets/img/v5/media/10ed9a85d20bfbb314c8.jpg",
+      "gallery_count": 6,
+      "media_source": "plantlogic_official_page + v5_current",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/bag-base-drainage-collection/"
       ],
       "official_candidate_count": 13,
-      "unused_official_media_candidates": 13,
+      "unused_official_media_candidates": 8,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2021/01/product_PotAnchor_01.jpg",
@@ -3726,15 +3723,14 @@
       "canonical_product_id": "plantlogic-strawberry-trough-8l-short-legs-1305081",
       "manufacturer_product_number": "1305081",
       "primary": "/assets/img/v5/media/026d011a0d4fa0794b06.jpg",
-      "gallery_count": 1,
+      "gallery_count": 7,
       "media_source": "plantlogic_official_page",
-      "status": "ONE_PHOTO",
+      "status": "COMPLETE",
       "official_pages": [
-        "https://getplantlogic.com/es/portfolio-items/8-litros-bandeja-con-patas-cortas/",
-        "https://getplantlogic.com/portfolio-items/8-liter-trough-with-short-legs/"
+        "https://getplantlogic.com/es/portfolio-items/8-litros-bandeja-con-patas-cortas/"
       ],
-      "official_candidate_count": 30,
-      "unused_official_media_candidates": 29,
+      "official_candidate_count": 15,
+      "unused_official_media_candidates": 8,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2020/05/product_8LVG_A.jpg",
@@ -3825,42 +3821,6 @@
           "score": 55,
           "identity_match": false,
           "reasons": []
-        },
-        {
-          "url": "https://getplantlogic.com/wp-content/uploads/2020/05/product_8LVG_A.jpg",
-          "source": "img:src",
-          "score": 180,
-          "identity_match": true,
-          "reasons": [
-            "volume_match",
-            "features=short",
-            "name_tokens=legs,trough"
-          ]
-        },
-        {
-          "url": "https://getplantlogic.com/wp-content/uploads/2019/04/5109_1.jpg",
-          "source": "img:src",
-          "score": 75,
-          "identity_match": false,
-          "reasons": [
-            "name_tokens=trough"
-          ]
-        },
-        {
-          "url": "https://getplantlogic.com/wp-content/uploads/2019/04/5209_1.jpg",
-          "source": "img:src",
-          "score": 75,
-          "identity_match": false,
-          "reasons": [
-            "name_tokens=trough"
-          ]
-        },
-        {
-          "url": "https://getplantlogic.com/wp-content/uploads/2024/03/17-liter-drainage-collection-pot.jpg",
-          "source": "img:src",
-          "score": 55,
-          "identity_match": false,
-          "reasons": []
         }
       ]
     },
@@ -3868,14 +3828,14 @@
       "canonical_product_id": "plantlogic-strawberry-trough-9l-1305109",
       "manufacturer_product_number": "1305109",
       "primary": "/assets/img/v5/media/0ae48fce77a5a882b757.jpg",
-      "gallery_count": 1,
+      "gallery_count": 5,
       "media_source": "plantlogic_official_page",
-      "status": "ONE_PHOTO",
+      "status": "COMPLETE",
       "official_pages": [
         "https://getplantlogic.com/portfolio-items/9-liter-trough-for-strawberries/"
       ],
       "official_candidate_count": 13,
-      "unused_official_media_candidates": 12,
+      "unused_official_media_candidates": 8,
       "official_candidate_samples": [
         {
           "url": "https://getplantlogic.com/wp-content/uploads/2019/04/5209_1.jpg",

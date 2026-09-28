@@ -1,2 +1,2 @@
-2026-09-27T10:38:00Z
-steady-cadence-13-14-15
+2026-09-28T22:25:00+03:00
+transparent-logo-v3-large

@@ -44,9 +44,10 @@ TECH_SHEET_40L_SQUARE_PRODUCTS = {
     "plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440",
 }
 
-EXACT_TECH_SHEET_PAGE_FALLBACKS = {
-    "plantlogic-zephyr-1301133": "https://getplantlogic.com/tech-sheet-1301133-zephyr-pot_eng/",
-}
+OFFICIAL_CATALOG_URL = (
+    "https://getplantlogic.com/wp-content/uploads/2025/07/"
+    "Plantlogic_Catalog_2025_EN_Email.pdf"
+)
 
 
 def load(path: Path):
@@ -182,6 +183,78 @@ def localize_pdf_page(url: str, alt: str) -> dict | None:
         "source_document_sha256": document_sha,
         "derivation": "official_pdf_page_1_raster_150dpi",
     }
+
+
+def catalog_page_media(url: str, products: list[dict]) -> dict[str, list[dict]]:
+    """Rasterize only official catalog pages that contain an exact PlantLogic Product #."""
+    try:
+        data, resolved = download(url)
+    except Exception:
+        return {}
+    if not data.startswith(b"%PDF-"):
+        return {}
+    text_bin = shutil.which("pdftotext")
+    renderer = shutil.which("pdftoppm")
+    if not text_bin or not renderer:
+        raise RuntimeError("poppler pdftotext/pdftoppm is required for PlantLogic catalog media")
+    document_sha = hashlib.sha256(data).hexdigest()
+    result: dict[str, list[dict]] = defaultdict(list)
+    with tempfile.TemporaryDirectory(prefix="bb610-pl-catalog-") as td:
+        pdf_path = Path(td) / "catalog.pdf"
+        txt_path = Path(td) / "catalog.txt"
+        pdf_path.write_bytes(data)
+        subprocess.run(
+            [text_bin, "-layout", str(pdf_path), str(txt_path)],
+            check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=60,
+        )
+        pages = txt_path.read_text(encoding="utf-8", errors="replace").split("\f")
+        raster_cache: dict[int, tuple[bytes, str]] = {}
+        for product in products:
+            if product.get("status") == "TO_VERIFY":
+                continue
+            pid = str(product["canonical_product_id"])
+            numbers = [str(x) for x in product.get("manufacturer_product_numbers") or [] if str(x)]
+            matched_pages = []
+            for number in numbers:
+                rx = re.compile(r"(?<!\d)" + re.escape(number) + r"(?!\d)")
+                for page_index, page_text in enumerate(pages, start=1):
+                    if rx.search(page_text):
+                        matched_pages.append(page_index)
+                        break
+            for page_index in sorted(set(matched_pages))[:3]:
+                if page_index not in raster_cache:
+                    prefix = Path(td) / ("catalog-page-" + str(page_index))
+                    subprocess.run(
+                        [renderer, "-f", str(page_index), "-l", str(page_index), "-singlefile",
+                         "-png", "-r", "150", str(pdf_path), str(prefix)],
+                        check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=60,
+                    )
+                    raster_path = Path(str(prefix) + ".png")
+                    if not raster_path.is_file():
+                        continue
+                    raster = raster_path.read_bytes()
+                    if len(raster) < 2500 or not raster.startswith(b"\x89PNG\r\n\x1a\n"):
+                        continue
+                    raster_cache[page_index] = (raster, hashlib.sha256(raster).hexdigest())
+                raster, digest = raster_cache[page_index]
+                ASSETS.mkdir(parents=True, exist_ok=True)
+                filename = digest[:20] + ".png"
+                local_path = ASSETS / filename
+                if not local_path.is_file():
+                    local_path.write_bytes(raster)
+                elif hashlib.sha256(local_path.read_bytes()).hexdigest() != digest:
+                    raise RuntimeError("asset hash collision: " + filename)
+                result[pid].append({
+                    "media_id": "v5m_" + digest[:24],
+                    "path": "/assets/img/v5/media/" + filename,
+                    "sha256": digest,
+                    "kind": "image",
+                    "source_url": resolved + "#page=" + str(page_index),
+                    "alt": product["title"] + " — official PlantLogic catalog, Product # " + " / ".join(numbers),
+                    "source_document_sha256": document_sha,
+                    "derivation": "official_catalog_page_" + str(page_index) + "_raster_150dpi",
+                })
+    return result
 
 
 def source_map() -> dict[str, list[str]]:
@@ -412,37 +485,15 @@ def main() -> int:
         for pid in TECH_SHEET_40L_SQUARE_PRODUCTS:
             bind_product(pid, tech_sheet_40l, "plantlogic_official_tech_sheet")
 
-    # Exact official HTML tech-sheet pages may contain a product-specific sheet image whose
-    # filename/alt does not repeat the Product #. Page identity is sufficient only for these
-    # explicit, narrowly enumerated fallbacks; family/product pages remain on strict matching.
-    for pid, url in EXACT_TECH_SHEET_PAGE_FALLBACKS.items():
-        product = next(x for x in spec["canonical_products"] if x["canonical_product_id"] == pid)
-        numbers = [str(x) for x in product.get("manufacturer_product_numbers") or []]
-        if galleries[pid]:
+    # Official catalog technical media. Binding is exact Product #-to-page only.
+    catalog_media = catalog_page_media(OFFICIAL_CATALOG_URL, spec["canonical_products"])
+    for product in spec["canonical_products"]:
+        pid = product["canonical_product_id"]
+        if product.get("status") == "TO_VERIFY" or len(galleries[pid]) >= 2:
             continue
-        try:
-            final, page_html = fetch_html(url)
-        except Exception:
-            continue
-        if not all(page_has_number(page_html, number) for number in numbers):
-            continue
-        candidates = img_candidates(
-            final, page_html, numbers,
-            " / ".join(product.get("manufacturer_titles") or []) or product["title"],
-        )
-        safe = [
-            candidate for candidate in candidates
-            if str(candidate.get("source") or "").startswith("img:")
-            and "generic_or_foreign_asset" not in (candidate.get("reasons") or [])
-            and int(candidate.get("score") or 0) >= 40
-        ]
-        for candidate in safe:
-            chosen = localize(
-                str(candidate.get("url") or ""),
-                product["title"] + " — official PlantLogic tech sheet",
-            )
-            if chosen:
-                bind_product(pid, chosen, "plantlogic_official_tech_sheet_page")
+        for row in catalog_media.get(pid, []):
+            bind_product(pid, row, "plantlogic_official_catalog")
+            if len(galleries[pid]) >= 2:
                 break
 
     # Live official page completion for every card still below two images.
@@ -590,6 +641,8 @@ def main() -> int:
         status = "COMPLETE" if count >= 2 else ("ONE_PHOTO" if count == 1 else "NO_MEDIA")
         if count == 1 and sources == ["plantlogic_official_tech_sheet"]:
             status = "TECH_SHEET_ONLY"
+        if count == 1 and sources == ["plantlogic_official_catalog"]:
+            status = "CATALOG_ONLY"
         if product.get("status") == "TO_VERIFY" and count == 0:
             status = "TO_VERIFY_NO_EXACT_MEDIA"
         if count == 0 and page_meta.get(pid, {}).get("candidate_count", 0):
@@ -622,7 +675,10 @@ def main() -> int:
         "distribution": distribution,
         "without_individual_photo": [x["canonical_product_id"] for x in audit_rows if x["gallery_count"] == 0],
         "one_photo_only": [x["canonical_product_id"] for x in audit_rows if x["gallery_count"] == 1],
-        "pdf_only": [x["canonical_product_id"] for x in audit_rows if x["status"] == "TECH_SHEET_ONLY"],
+        "pdf_only": [
+            x["canonical_product_id"] for x in audit_rows
+            if x["status"] in {"TECH_SHEET_ONLY", "CATALOG_ONLY"}
+        ],
         "product_number_conflicts": [x["canonical_product_id"] for x in audit_rows if x["status"] == "MEDIA_CONFLICT_OR_UNVERIFIED"],
         "unused_official_media": [x["canonical_product_id"] for x in audit_rows if x["unused_official_media_candidates"] > 0],
         "products": audit_rows,

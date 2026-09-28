@@ -53,6 +53,8 @@ ZEPHYR_V2_TECH_SHEET_URL = (
     "Techsheet_Item_Zephyr_2024_ENG.pdf"
 )
 ZEPHYR_V2_40L_PRODUCT = "plantlogic-blueberry-zephyr-v2-40l-1301143"
+ZEPHYR_V1_TECH_SHEET_PAGE = "https://getplantlogic.com/tech-sheet-1301133-zephyr-pot_eng/"
+ZEPHYR_V1_PRODUCT = "plantlogic-zephyr-1301133"
 
 
 def load(path: Path):
@@ -512,6 +514,27 @@ def main() -> int:
             bind_product(pid, row, "plantlogic_official_catalog")
             if len(galleries[pid]) >= 2:
                 break
+
+    # The first-generation Zephyr has an exact official Product #1301133 tech-sheet page.
+    # Keep this narrow fallback because the current catalog PDF does not expose that legacy card.
+    if not galleries[ZEPHYR_V1_PRODUCT]:
+        try:
+            final, page_html = fetch_html(ZEPHYR_V1_TECH_SHEET_PAGE)
+        except Exception:
+            final, page_html = "", ""
+        if final and page_has_number(page_html, "1301133"):
+            candidates = img_candidates(final, page_html, ["1301133"], "Zephyr Pot")
+            for candidate in candidates:
+                if not str(candidate.get("source") or "").startswith("img:"):
+                    continue
+                if "generic_or_foreign_asset" in (candidate.get("reasons") or []):
+                    continue
+                if int(candidate.get("score") or 0) < 40:
+                    continue
+                chosen = localize(str(candidate.get("url") or ""), "PlantLogic Zephyr #1301133 — official tech sheet")
+                if chosen:
+                    bind_product(ZEPHYR_V1_PRODUCT, chosen, "plantlogic_official_tech_sheet_page")
+                    break
 
     # Live official page completion for every card still below two images.
     for product in spec["canonical_products"]:

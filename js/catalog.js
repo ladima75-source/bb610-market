@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
       cultureImage:''
     },
     {
-      id:'universal',label:'Універсальні',subtitle:'Універсальне застосування',titleSuffix:'універсальний',
+      id:'universal',label:'Горщики для вирощування коноплі',subtitle:'Cannabis Production',titleSuffix:'для вирощування коноплі',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/07/hydroponic-system-cover.png?resize=669%2C502'
     },
     {
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
     strawberry:'полуниця полуниці strawberry',
     vegetable:'овочі овочеві vegetable',
     garden:'сад саду розсадник nursery garden',
-    universal:'універсальний універсальні контейнер контейнери universal',
+    universal:'конопля коноплі cannabis cannabis production універсальний універсальні контейнер контейнери universal',
     bag_bases:'основи для мішків субстратні мішки grow bag bag base bag bases',
     accessories:'аксесуари аксесуар accessories accessory анкер лізиметр жолоб ground cover'
   };
@@ -254,13 +254,13 @@ document.addEventListener('DOMContentLoaded',async()=>{
     return String((Array.isArray(p?.gallery)?p.gallery:[]).find(Boolean)||'').trim();
   };
   const universalPlantlogicTitles={
-    'plantlogic-3l-square-1306003':'Горщик 3 л квадратний для субстратного вирощування',
-    'plantlogic-5l-drainage-1305005':'Горщик 5 л зі збором дренажу для субстратного вирощування',
-    'plantlogic-7l-drainage-1307107':'Горщик 7 л зі збором дренажу для субстратного вирощування',
-    'plantlogic-10l-drainage-1307110':'Горщик 10 л зі збором дренажу для субстратного вирощування',
-    'plantlogic-15l-round-drainage-1304015':'Горщик 15 л круглий зі збором дренажу для субстратного вирощування',
-    'plantlogic-25l-round-drainage-1304125':'Горщик 25 л круглий зі збором дренажу для субстратного вирощування',
-    'plantlogic-30l-drainage-1307133':'Горщик 30 л зі збором дренажу для субстратного вирощування',
+    'plantlogic-3l-square-1306003':'Горщик 3 л квадратний для вирощування коноплі',
+    'plantlogic-5l-drainage-1305005':'Горщик 5 л зі збором дренажу для вирощування коноплі',
+    'plantlogic-7l-drainage-1307107':'Горщик 7 л зі збором дренажу для вирощування коноплі',
+    'plantlogic-10l-drainage-1307110':'Горщик 10 л зі збором дренажу для вирощування коноплі',
+    'plantlogic-15l-round-drainage-1304015':'Горщик 15 л круглий зі збором дренажу для вирощування коноплі',
+    'plantlogic-25l-round-drainage-1304125':'Горщик 25 л круглий зі збором дренажу для вирощування коноплі',
+    'plantlogic-30l-drainage-1307133':'Горщик 30 л зі збором дренажу для вирощування коноплі',
   };
   const plantlogicCardForSection=(p,section)=>{
     if(section?.id==='universal'&&universalPlantlogicTitles[p.id]){

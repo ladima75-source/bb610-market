@@ -173,6 +173,14 @@ def main() -> int:
                 "SELECT 1 FROM products WHERE product_id IN (?,?)",
                 ("plantlogic-micro-tube-stake", "plantlogic-rivus-2in1-slab-base"),
             ).fetchone()
+            assert not con.execute(
+                "SELECT 1 FROM skus WHERE sku_id='BB610-PLT-1308125-EA'"
+            ).fetchone()
+            legacy_sku_alias = con.execute(
+                """SELECT canonical_sku_id FROM sku_aliases
+                   WHERE alias_sku_id='BB610-PLT-1308125-EA' AND active=1"""
+            ).fetchone()
+            assert legacy_sku_alias and legacy_sku_alias["canonical_sku_id"] == "PL-BB-1308125-BK"
 
             to_verify = set()
             for row in rows:

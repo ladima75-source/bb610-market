@@ -15,6 +15,10 @@ OLD_SPLIT_DEFAULTS = {
     "plantlogic-rivus-2in1-slab-base": "plantlogic-rivus-slab-base",
 }
 
+LEGACY_SKU_ALIASES = {
+    "BB610-PLT-1308125-EA": "PL-BB-1308125-BK",
+}
+
 COLOR_MAP = {
     "BK": ("black", "Чорний"),
     "WH": ("white", "Білий"),
@@ -308,6 +312,25 @@ def _upsert_sources(con: sqlite3.Connection, spec: dict) -> None:
         )
 
 
+def _migrate_legacy_sku_aliases(con: sqlite3.Connection) -> None:
+    """Collapse obsolete commerce SKU identities into V2 compatibility aliases."""
+    for alias_sku, canonical_sku in LEGACY_SKU_ALIASES.items():
+        if not con.execute("SELECT 1 FROM skus WHERE sku_id=?", (canonical_sku,)).fetchone():
+            raise RuntimeError("missing canonical SKU for legacy alias: " + canonical_sku)
+        con.execute("DELETE FROM skus WHERE sku_id=?", (alias_sku,))
+        con.execute(
+            """
+            INSERT INTO sku_aliases(alias_sku_id,canonical_sku_id,alias_kind,active)
+            VALUES(?,?,'plantlogic_v2_legacy',1)
+            ON CONFLICT(alias_sku_id) DO UPDATE SET
+              canonical_sku_id=excluded.canonical_sku_id,
+              alias_kind=excluded.alias_kind,
+              active=1
+            """,
+            (alias_sku, canonical_sku),
+        )
+
+
 def _rebind_legacy_product_aliases(con: sqlite3.Connection) -> None:
     for old_id, target in OLD_SPLIT_DEFAULTS.items():
         con.execute(
@@ -417,6 +440,7 @@ def apply(con: sqlite3.Connection) -> bool:
             sort_order += 1
         _upsert_sources(con, spec)
 
+    _migrate_legacy_sku_aliases(con)
     _rebind_legacy_product_aliases(con)
     for old_id in OLD_SPLIT_DEFAULTS:
         if old_id not in canonical_ids:

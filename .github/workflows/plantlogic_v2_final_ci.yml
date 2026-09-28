@@ -1,0 +1,96 @@
+name: PlantLogic V2 Final preflight
+
+on:
+  push:
+    branches: [plantlogic-v2-work]
+    paths:
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
+      - 'data/product_content/plantlogic_v2_media_manifest_20260928.json'
+      - 'backend/services/plantlogic_v2_final.py'
+      - 'backend/services/product_master_v5.py'
+      - 'backend/services/product_master_v5_migrations.py'
+      - 'tools/audit_plantlogic_v2_final.py'
+      - 'tools/build_plantlogic_v2_media.py'
+      - 'js/data-source.js'
+      - 'js/catalog.js'
+      - 'v5/schema.sql'
+      - '.github/workflows/plantlogic_v2_final_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: plantlogic-v2-final-preflight
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Syntax
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            backend/services/plantlogic_v2_final.py \
+            backend/services/product_master_v5.py \
+            backend/services/product_master_v5_migrations.py \
+            tools/audit_plantlogic_v2_final.py \
+            tools/build_plantlogic_v2_media.py
+          node --check js/data-source.js
+          node --check js/catalog.js
+
+      - name: Structural V2 audit before media build
+        run: python tools/audit_plantlogic_v2_final.py
+
+      - name: Build official PlantLogic V2 media manifest
+        run: python tools/build_plantlogic_v2_media.py
+
+      - name: Full V2 audit with media and feed
+        run: python tools/audit_plantlogic_v2_final.py --require-media
+
+      - name: Media audit summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('data/product_content/plantlogic_v2_media_audit_20260928.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          print('MEDIA DISTRIBUTION:', d['distribution'])
+          print('NO MEDIA:', len(d['without_individual_photo']))
+          print('ONE PHOTO:', len(d['one_photo_only']))
+          print('CONFLICT:', len(d['product_number_conflicts']))
+          print('UNUSED OFFICIAL CANDIDATES:', len(d['unused_official_media']))
+          print('NO MEDIA IDS:', ', '.join(d['without_individual_photo']))
+          print('ONE PHOTO IDS:', ', '.join(d['one_photo_only']))
+          PY
+
+      - name: Commit generated official media to work branch
+        run: |
+          set -euo pipefail
+          git config user.name "bb610-ci"
+          git config user.email "bb610-ci@users.noreply.github.com"
+          git add assets/img/v5/media \
+            data/product_content/plantlogic_v2_media_manifest_20260928.json \
+            data/product_content/plantlogic_v2_media_audit_20260928.json \
+            data/product_content/plantlogic_v2_media_audit_20260928.csv
+          if git diff --cached --quiet; then
+            echo "No generated media changes"
+            exit 0
+          fi
+          git commit -m "Generate PlantLogic V2 official media"
+          git push origin HEAD:${GITHUB_REF_NAME}

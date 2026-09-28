@@ -45,8 +45,8 @@ TECH_SHEET_40L_SQUARE_PRODUCTS = {
 }
 
 OFFICIAL_CATALOG_URL = (
-    "https://getplantlogic.com/wp-content/uploads/2025/07/"
-    "Plantlogic_Catalog_2025_EN_Email.pdf"
+    "https://getplantlogic.com/wp-content/uploads/2026/03/"
+    "Plantlogic_Catalog_2026_ENG_Email.pdf"
 )
 ZEPHYR_V2_TECH_SHEET_URL = (
     "https://getplantlogic.com/wp-content/uploads/2024/06/"

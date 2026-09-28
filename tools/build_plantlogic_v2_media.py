@@ -44,6 +44,10 @@ TECH_SHEET_40L_SQUARE_PRODUCTS = {
     "plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440",
 }
 
+EXACT_TECH_SHEET_PAGE_FALLBACKS = {
+    "plantlogic-zephyr-1301133": "https://getplantlogic.com/tech-sheet-1301133-zephyr-pot_eng/",
+}
+
 
 def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
@@ -390,6 +394,39 @@ def main() -> int:
         for pid in TECH_SHEET_40L_SQUARE_PRODUCTS:
             bind_product(pid, tech_sheet_40l, "plantlogic_official_tech_sheet")
 
+    # Exact official HTML tech-sheet pages may contain a product-specific sheet image whose
+    # filename/alt does not repeat the Product #. Page identity is sufficient only for these
+    # explicit, narrowly enumerated fallbacks; family/product pages remain on strict matching.
+    for pid, url in EXACT_TECH_SHEET_PAGE_FALLBACKS.items():
+        product = next(x for x in spec["canonical_products"] if x["canonical_product_id"] == pid)
+        numbers = [str(x) for x in product.get("manufacturer_product_numbers") or []]
+        if galleries[pid]:
+            continue
+        try:
+            final, page_html = fetch_html(url)
+        except Exception:
+            continue
+        if not all(page_has_number(page_html, number) for number in numbers):
+            continue
+        candidates = img_candidates(
+            final, page_html, numbers,
+            " / ".join(product.get("manufacturer_titles") or []) or product["title"],
+        )
+        safe = [
+            candidate for candidate in candidates
+            if str(candidate.get("source") or "").startswith("img:")
+            and "generic_or_foreign_asset" not in (candidate.get("reasons") or [])
+            and int(candidate.get("score") or 0) >= 40
+        ]
+        for candidate in safe:
+            chosen = localize(
+                str(candidate.get("url") or ""),
+                product["title"] + " — official PlantLogic tech sheet",
+            )
+            if chosen:
+                bind_product(pid, chosen, "plantlogic_official_tech_sheet_page")
+                break
+
     # Live official page completion for every card still below two images.
     for product in spec["canonical_products"]:
         pid = product["canonical_product_id"]
@@ -417,6 +454,7 @@ def main() -> int:
 
         total_candidates = 0
         accepted = 0
+        candidate_samples = []
         for url in candidates_urls:
             if url in seen_pages:
                 continue
@@ -433,6 +471,16 @@ def main() -> int:
                 " / ".join(product.get("manufacturer_titles") or []) or product["title"],
             )
             total_candidates += len(page_candidates)
+            for candidate in page_candidates[:12]:
+                sample = {
+                    "url": candidate.get("url"),
+                    "source": candidate.get("source"),
+                    "score": candidate.get("score"),
+                    "identity_match": bool(candidate.get("identity_match")),
+                    "reasons": list(candidate.get("reasons") or []),
+                }
+                if sample not in candidate_samples:
+                    candidate_samples.append(sample)
             for candidate in page_candidates:
                 if not candidate.get("identity_match") or int(candidate.get("score") or 0) < 90:
                     continue
@@ -452,7 +500,12 @@ def main() -> int:
             if len(galleries[pid]) >= 6:
                 break
 
-        page_meta[pid] = {"candidate_count": total_candidates, "accepted": accepted, "pages": pages}
+        page_meta[pid] = {
+            "candidate_count": total_candidates,
+            "accepted": accepted,
+            "pages": pages,
+            "candidate_samples": candidate_samples[:20],
+        }
 
     # Exact split/card product gallery is inherited by each SKU only when no exact SKU gallery is present.
     for product in spec["canonical_products"]:
@@ -535,6 +588,7 @@ def main() -> int:
             "unused_official_media_candidates": max(
                 0, page_meta.get(pid, {}).get("candidate_count", 0) - page_meta.get(pid, {}).get("accepted", 0)
             ),
+            "official_candidate_samples": page_meta.get(pid, {}).get("candidate_samples", []),
         })
 
     manifest = {

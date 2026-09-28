@@ -2,8 +2,8 @@
   "schema_version": "1.0",
   "canonical_products": 78,
   "distribution": {
-    "0": 14,
-    "1": 11,
+    "0": 13,
+    "1": 12,
     "2": 8,
     "3": 2,
     "4+": 43
@@ -15,7 +15,6 @@
     "plantlogic-vf-bag-base-hose-fix-12010320",
     "plantlogic-slab-base-bags-slabs-1302809",
     "plantlogic-blueberry-35l-round-anti-leaking-ring-13080359",
-    "plantlogic-zephyr-1301133",
     "plantlogic-zephyr-v2-hose-clip-1700149",
     "plantlogic-pot-cover-1310110",
     "plantlogic-rubus-square-10l-legacy-1309010",
@@ -32,6 +31,7 @@
     "plantlogic-blueberry-zephyr-v2-40l-1301143",
     "plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400",
     "plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440",
+    "plantlogic-zephyr-1301133",
     "plantlogic-strawberry-trough-8l-short-legs-1305081",
     "plantlogic-strawberry-trough-9l-1305109",
     "plantlogic-trough-cover",
@@ -49,7 +49,6 @@
     "plantlogic-vf-bag-base-hose-fix-12010320",
     "plantlogic-slab-base-bags-slabs-1302809",
     "plantlogic-blueberry-35l-round-anti-leaking-ring-13080359",
-    "plantlogic-zephyr-1301133",
     "plantlogic-zephyr-v2-hose-clip-1700149",
     "plantlogic-pot-cover-1310110",
     "plantlogic-kratos-rivus-grow-bag-8l-1500010",
@@ -2682,10 +2681,10 @@
     {
       "canonical_product_id": "plantlogic-zephyr-1301133",
       "manufacturer_product_number": "1301133",
-      "primary": "",
-      "gallery_count": 0,
-      "media_source": "",
-      "status": "MEDIA_CONFLICT_OR_UNVERIFIED",
+      "primary": "/assets/img/v5/media/da754e33c529d18725b1.jpg",
+      "gallery_count": 1,
+      "media_source": "plantlogic_official_tech_sheet_page",
+      "status": "ONE_PHOTO",
       "official_pages": [
         "https://getplantlogic.com/tech-sheet-1301133-zephyr-pot_eng/"
       ],

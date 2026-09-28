@@ -635,6 +635,16 @@
       "alt": "Plantlogic 1308125 — 1308125_C.jpg"
     },
     {
+      "media_id": "v5m_40c9fb5ac7728d09d53c5bbb",
+      "path": "/assets/img/v5/media/40c9fb5ac7728d09d53c.png",
+      "sha256": "40c9fb5ac7728d09d53c5bbb8e4154ba7092c85b9df523eee30297066f23ad7e",
+      "kind": "image",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2024/06/Techsheet_Item_Zephyr_2024_ENG.pdf",
+      "alt": "PlantLogic Zephyr V2 — official tech sheet; 40L Item #1301143",
+      "source_document_sha256": "7905b2f96c1bf0ef2f334beeaed041f03883eb1fe59d8f1a598eb462800e6ebe",
+      "derivation": "official_pdf_page_1_raster_150dpi"
+    },
+    {
       "media_id": "v5m_416fb4e46e1dc57768dc263e",
       "path": "/assets/img/v5/media/416fb4e46e1dc57768dc.jpg",
       "sha256": "416fb4e46e1dc57768dc263eff21e62a344699c6af1dedd68428170d2d8662e0",
@@ -3428,6 +3438,13 @@
       "source_url": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg"
     },
     {
+      "product_id": "plantlogic-blueberry-zephyr-v2-40l-1301143",
+      "media_id": "v5m_40c9fb5ac7728d09d53c5bbb",
+      "sort_order": 0,
+      "source_kind": "plantlogic_official_tech_sheet",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2024/06/Techsheet_Item_Zephyr_2024_ENG.pdf"
+    },
+    {
       "product_id": "plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400",
       "media_id": "v5m_a2e83f0f87548738ce629df7",
       "sort_order": 0,
@@ -5913,6 +5930,14 @@
       "sort_order": 4,
       "source_kind": "v5_exact_sku",
       "source_url": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg"
+    },
+    {
+      "sku_id": "PL-BB-1301143-BK",
+      "media_id": "v5m_40c9fb5ac7728d09d53c5bbb",
+      "is_primary": true,
+      "sort_order": 0,
+      "source_kind": "plantlogic_official_tech_sheet",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2024/06/Techsheet_Item_Zephyr_2024_ENG.pdf"
     },
     {
       "sku_id": "PL-BB-13090400-TC",

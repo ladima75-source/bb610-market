@@ -36,6 +36,10 @@ BANNED = [
     r"не вигадуємо",
     r"поточна сторінка виробника",
     r"\btech sheet\b",
+    r"офіційні матеріали",
+    r"підтверджен",
+    r"не публіку",
+    r"публічній картці",
 ]
 BAN_RE = re.compile("|".join(BANNED), re.I)
 
@@ -68,6 +72,8 @@ def main() -> int:
         con = sqlite3.connect(db)
         con.row_factory = sqlite3.Row
         try:
+            from backend.services.product_master_v5_migrations import apply_runtime_migrations
+            apply_runtime_migrations(con)
             rows = con.execute(
                 """
                 SELECT product_id,short_description,description,application,composition,

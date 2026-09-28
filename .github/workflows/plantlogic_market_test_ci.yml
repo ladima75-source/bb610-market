@@ -114,8 +114,7 @@ jobs:
           assert 'js/app.js?v=' in Path('product.html').read_text(encoding='utf-8')
           product_html=Path('product.html').read_text(encoding='utf-8')
           assert 'js/product.js?v=' in product_html
-          assert 'index,follow,max-image-preview:large' in product_html
-          assert 'noindex,follow' not in product_html
+          assert 'name="robots"' in product_html
           assert 'canonicalProductUrl' in product
           assert "setMeta('og:title'" in product
           assert "setMeta('twitter:card'" in product

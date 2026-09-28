@@ -48,6 +48,11 @@ OFFICIAL_CATALOG_URL = (
     "https://getplantlogic.com/wp-content/uploads/2025/07/"
     "Plantlogic_Catalog_2025_EN_Email.pdf"
 )
+ZEPHYR_V2_TECH_SHEET_URL = (
+    "https://getplantlogic.com/wp-content/uploads/2024/06/"
+    "Techsheet_Item_Zephyr_2024_ENG.pdf"
+)
+ZEPHYR_V2_40L_PRODUCT = "plantlogic-blueberry-zephyr-v2-40l-1301143"
 
 
 def load(path: Path):
@@ -485,8 +490,20 @@ def main() -> int:
         for pid in TECH_SHEET_40L_SQUARE_PRODUCTS:
             bind_product(pid, tech_sheet_40l, "plantlogic_official_tech_sheet")
 
-    # Official catalog technical media. Binding is exact Product #-to-page only.
-    catalog_media = catalog_page_media(OFFICIAL_CATALOG_URL, spec["canonical_products"])
+    zephyr_v2_sheet = localize_pdf_page(
+        ZEPHYR_V2_TECH_SHEET_URL,
+        "PlantLogic Zephyr V2 — official tech sheet; 40L Item #1301143",
+    )
+    if zephyr_v2_sheet:
+        bind_product(ZEPHYR_V2_40L_PRODUCT, zephyr_v2_sheet, "plantlogic_official_tech_sheet")
+
+    # Official catalog technical media. Only current zero/one-media gaps are scanned.
+    catalog_targets = [
+        product for product in spec["canonical_products"]
+        if product.get("status") != "TO_VERIFY"
+        and len(galleries[product["canonical_product_id"]]) < 2
+    ]
+    catalog_media = catalog_page_media(OFFICIAL_CATALOG_URL, catalog_targets)
     for product in spec["canonical_products"]:
         pid = product["canonical_product_id"]
         if product.get("status") == "TO_VERIFY" or len(galleries[pid]) >= 2:

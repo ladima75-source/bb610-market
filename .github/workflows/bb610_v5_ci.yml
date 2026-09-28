@@ -27,7 +27,11 @@ on:
   pull_request:
     paths:
       - 'v5/**'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
       - 'backend/services/product_master_v5.py'
+      - 'backend/services/product_master_v5_migrations.py'
+      - 'backend/services/plantlogic_v2_customer_content.py'
+      - 'tools/audit_plantlogic_v2_customer_content.py'
       - 'backend/catalog_provider.py'
       - 'backend/services/product_commerce.py'
       - 'admin/products.js'

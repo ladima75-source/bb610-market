@@ -2303,6 +2303,38 @@ def _normalize_plantlogic_catalog_sections_batch_22(con: sqlite3.Connection) -> 
     return True
 
 
+
+def _restore_cannabis_as_universal_membership_batch_23(con: sqlite3.Connection) -> bool:
+    """Restore official Cannabis Production membership under the public Universal label."""
+    product_id = "plantlogic-25l-round-drainage-1304125"
+    row = con.execute(
+        "SELECT characteristics_json FROM products WHERE product_id=?",
+        (product_id,),
+    ).fetchone()
+    if not row:
+        return False
+    characteristics = json.loads(row["characteristics_json"] or "[]")
+    wanted = "blueberry|universal|vegetable"
+    updated = False
+    for item in characteristics:
+        if isinstance(item, dict) and item.get("label") == "__plantlogic_sections":
+            item["value"] = wanted
+            updated = True
+            break
+    if not updated:
+        characteristics.append({"label": "__plantlogic_sections", "value": wanted})
+    _update_product(
+        con,
+        product_id,
+        {
+            "characteristics_json": json.dumps(
+                characteristics, ensure_ascii=False, separators=(",", ":")
+            )
+        },
+    )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2328,6 +2360,7 @@ _MIGRATIONS = [
     ("20260928_split_grouped_blueberry_pots_batch20", _split_grouped_blueberry_pots_batch_20),
     ("20260928_normalize_long_cane_titles_batch21", _normalize_long_cane_titles_batch_21),
     ("20260928_normalize_plantlogic_catalog_sections_batch22", _normalize_plantlogic_catalog_sections_batch_22),
+    ("20260928_restore_cannabis_as_universal_membership_batch23", _restore_cannabis_as_universal_membership_batch_23),
 ]
 
 

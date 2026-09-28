@@ -253,7 +253,19 @@ document.addEventListener('DOMContentLoaded',async()=>{
     }
     return String((Array.isArray(p?.gallery)?p.gallery:[]).find(Boolean)||'').trim();
   };
+  const universalPlantlogicTitles={
+    'plantlogic-3l-square-1306003':'Горщик 3 л квадратний для субстратного вирощування',
+    'plantlogic-5l-drainage-1305005':'Горщик 5 л зі збором дренажу для субстратного вирощування',
+    'plantlogic-7l-drainage-1307107':'Горщик 7 л зі збором дренажу для субстратного вирощування',
+    'plantlogic-10l-drainage-1307110':'Горщик 10 л зі збором дренажу для субстратного вирощування',
+    'plantlogic-15l-round-drainage-1304015':'Горщик 15 л круглий зі збором дренажу для субстратного вирощування',
+    'plantlogic-25l-round-drainage-1304125':'Горщик 25 л круглий зі збором дренажу для субстратного вирощування',
+    'plantlogic-30l-drainage-1307133':'Горщик 30 л зі збором дренажу для субстратного вирощування',
+  };
   const plantlogicCardForSection=(p,section)=>{
+    if(section?.id==='universal'&&universalPlantlogicTitles[p.id]){
+      return {...p,name:universalPlantlogicTitles[p.id]};
+    }
     const baseName=cleanPlantlogicCatalogTitle(p.name);
     const suffix=String(section?.titleSuffix||'').trim();
     const name=!suffix||norm(baseName).includes(norm(suffix))

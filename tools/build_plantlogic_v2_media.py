@@ -6,7 +6,10 @@ import hashlib
 import html
 import json
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
 import urllib.parse
 import urllib.request
 from collections import defaultdict
@@ -31,6 +34,15 @@ AUDIT_CSV = ROOT / "data" / "product_content" / "plantlogic_v2_media_audit_20260
 ALLOWED_HOSTS = {"getplantlogic.com", "www.getplantlogic.com", "i0.wp.com", "i1.wp.com", "i2.wp.com"}
 STRICT_NUMBERS = {"1205018", "1205019", "13090400", "13090440"}
 MAX_BYTES = 20 * 1024 * 1024
+
+TECH_SHEET_40L_SQUARE_URL = (
+    "https://getplantlogic.com/wp-content/uploads/2026/09/"
+    "Item-1309040_40L-Square-pot-UG_EN.pdf"
+)
+TECH_SHEET_40L_SQUARE_PRODUCTS = {
+    "plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400",
+    "plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440",
+}
 
 
 def load(path: Path):
@@ -98,6 +110,55 @@ def localize(url: str, alt: str, expected_sha: str | None = None) -> dict | None
         "kind": "image",
         "source_url": resolved,
         "alt": alt,
+    }
+
+
+def localize_pdf_page(url: str, alt: str) -> dict | None:
+    """Rasterize page 1 of an official PlantLogic PDF into deterministic local gallery media."""
+    try:
+        data, resolved = download(url)
+    except Exception:
+        return None
+    if not data.startswith(b"%PDF-"):
+        return None
+    renderer = shutil.which("pdftoppm")
+    if not renderer:
+        raise RuntimeError("pdftoppm is required to rasterize official PlantLogic tech sheets")
+    document_sha = hashlib.sha256(data).hexdigest()
+    with tempfile.TemporaryDirectory(prefix="bb610-pl-techsheet-") as td:
+        pdf_path = Path(td) / "source.pdf"
+        out_prefix = Path(td) / "page1"
+        pdf_path.write_bytes(data)
+        subprocess.run(
+            [renderer, "-f", "1", "-singlefile", "-png", "-r", "150", str(pdf_path), str(out_prefix)],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+            timeout=60,
+        )
+        raster_path = Path(str(out_prefix) + ".png")
+        if not raster_path.is_file():
+            raise RuntimeError("PlantLogic tech-sheet raster was not created")
+        raster = raster_path.read_bytes()
+    if len(raster) < 2500 or not raster.startswith(b"\x89PNG\r\n\x1a\n"):
+        raise RuntimeError("invalid PlantLogic tech-sheet raster")
+    digest = hashlib.sha256(raster).hexdigest()
+    ASSETS.mkdir(parents=True, exist_ok=True)
+    filename = digest[:20] + ".png"
+    path = ASSETS / filename
+    if not path.is_file():
+        path.write_bytes(raster)
+    elif hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+        raise RuntimeError("asset hash collision: " + filename)
+    return {
+        "media_id": "v5m_" + digest[:24],
+        "path": "/assets/img/v5/media/" + filename,
+        "sha256": digest,
+        "kind": "image",
+        "source_url": resolved,
+        "alt": alt,
+        "source_document_sha256": document_sha,
+        "derivation": "official_pdf_page_1_raster_150dpi",
     }
 
 
@@ -318,6 +379,17 @@ def main() -> int:
         }
         bind_product(pid, row, "rivus_split_verified")
 
+    # Official one-page tech sheet explicitly distinguishes the two 40L variants:
+    # #13090400 = Ø16 mm U-groove; #13090440 = Ø20 mm U-groove.
+    # Use it as technical media for both cards instead of assigning an ambiguous product photo.
+    tech_sheet_40l = localize_pdf_page(
+        TECH_SHEET_40L_SQUARE_URL,
+        "PlantLogic 40 л квадратний U-groove: #13090400 Ø16 мм / #13090440 Ø20 мм — official tech sheet",
+    )
+    if tech_sheet_40l:
+        for pid in TECH_SHEET_40L_SQUARE_PRODUCTS:
+            bind_product(pid, tech_sheet_40l, "plantlogic_official_tech_sheet")
+
     # Live official page completion for every card still below two images.
     for product in spec["canonical_products"]:
         pid = product["canonical_product_id"]
@@ -445,6 +517,8 @@ def main() -> int:
         distribution[str(count) if count < 4 else "4+"] += 1
         sources = sorted({x["source_kind"] for x in gallery})
         status = "COMPLETE" if count >= 2 else ("ONE_PHOTO" if count == 1 else "NO_MEDIA")
+        if count == 1 and sources == ["plantlogic_official_tech_sheet"]:
+            status = "TECH_SHEET_ONLY"
         if product.get("status") == "TO_VERIFY" and count == 0:
             status = "TO_VERIFY_NO_EXACT_MEDIA"
         if count == 0 and page_meta.get(pid, {}).get("candidate_count", 0):
@@ -476,7 +550,7 @@ def main() -> int:
         "distribution": distribution,
         "without_individual_photo": [x["canonical_product_id"] for x in audit_rows if x["gallery_count"] == 0],
         "one_photo_only": [x["canonical_product_id"] for x in audit_rows if x["gallery_count"] == 1],
-        "pdf_only": [],
+        "pdf_only": [x["canonical_product_id"] for x in audit_rows if x["status"] == "TECH_SHEET_ONLY"],
         "product_number_conflicts": [x["canonical_product_id"] for x in audit_rows if x["status"] == "MEDIA_CONFLICT_OR_UNVERIFIED"],
         "unused_official_media": [x["canonical_product_id"] for x in audit_rows if x["unused_official_media_candidates"] > 0],
         "products": audit_rows,

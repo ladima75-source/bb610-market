@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sqlite3
@@ -12,6 +13,11 @@ PUBLIC_CHARACTERISTIC_LABELS = {
     "Виробник", "Модель", "Об'єм", "Форма", "Розміри", "Діаметр U-пазів",
     "Висота ніжок", "Сумісність", "Колір", "Матеріал", "Артикул виробника",
     "Кількість комірок", "Довжина", "Ширина", "Щільність",
+}
+
+SOURCE_URL_OVERRIDES = {
+    "plantlogic-blueberry-round-25l-drainage-short-legs-1303125": "https://getplantlogic.com/portfolio-items/25-liter-round-drainage-collection-pot-short-legs/",
+    "plantlogic-universal-round-25l-legacy-1309003": "https://getplantlogic.com/wp-content/uploads/2017/11/hoja-Tecnica-Item-1309003_25L_esp.pdf",
 }
 
 LIMITED_OFFICIAL_DATA = {
@@ -706,4 +712,22 @@ def apply(con: sqlite3.Connection) -> bool:
                 pid,
             ),
         )
+        source_url = SOURCE_URL_OVERRIDES.get(pid)
+        if source_url:
+            digest = hashlib.sha1((pid + "|" + source_url).encode("utf-8")).hexdigest()[:16]
+            con.execute(
+                """
+                INSERT INTO product_sources(
+                  source_id,product_id,source_type,source_url,source_label,
+                  verified_at,status,notes
+                ) VALUES(?,?,'plantlogic_customer_content',?,'PlantLogic official product source',
+                         '2026-09-28','verified','Customer content normalization source')
+                ON CONFLICT(source_id) DO UPDATE SET
+                  product_id=excluded.product_id,
+                  source_url=excluded.source_url,
+                  status='verified',
+                  notes=excluded.notes
+                """,
+                ("plcopy_" + digest, pid, source_url),
+            )
     return True

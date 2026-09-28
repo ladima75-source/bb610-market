@@ -123,7 +123,8 @@ def main() -> int:
                 GROUP BY p.product_id
                 """
             ).fetchall()
-            assert all(int(x["n"]) >= 1 for x in sources), "source metadata was lost"
+            missing_sources = [x["product_id"] for x in sources if int(x["n"]) < 1]
+            assert not missing_sources, ("source metadata missing", missing_sources)
 
             print("PLANTLOGIC CUSTOMER CONTENT: PASS")
             print("CANONICAL NORMALIZED: 78")

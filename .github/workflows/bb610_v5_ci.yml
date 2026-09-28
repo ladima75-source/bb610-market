@@ -138,8 +138,8 @@ jobs:
           assert resolve_sku_id('BB610-VLG-KENDAL-100ML')=='BB610-32DA4F652F73A1'
           legacy=resolve_sku('BB610-VLG-KENDAL-100ML')
           assert legacy['is_alias'] is True
-          assert legacy['commerce_source']=='preserved_alias_snapshot'
-          assert legacy['price']==215.0
+          assert legacy['commerce_source']=='canonical_v5_snapshot'
+          assert legacy['price']==220.0
           assert legacy['canonical_sku_id']=='BB610-32DA4F652F73A1'
           assert resolve_sku('BB610-32DA4F652F73A1')['price']==220.0
           fulvix=product('agriflex-fulvix-fulvokysloty-60')
@@ -226,6 +226,14 @@ jobs:
               assert sku['media'][0]['verification_status']=='verified'
               assert sku['media'][0]['binding_kind']=='exact'
               assert sku['media'][0].get('source_url')
+          pot_anchor=product('plantlogic-pot-anchor')
+          assert pot_anchor['name']=='Анкер для фіксації горщика'
+          assert pot_anchor['category_id']=='accessories'
+          assert pot_anchor['model']=='Pot Anchor'
+          round_u=product('blueberry-round-u-groove-pots')
+          parallel=next(x for x in round_u['skus'] if x['sku_id']=='PL-BB-1308305-BK')
+          assert parallel['attributes']['canonical_title']=='Горщик для лохини 30 л круглий з паралельними U-пазами'
+          assert product('plantlogic-steel-lysimeter')['name']=='Сталевий лізиметр для контролю дренажу'
           print('BB610 V5 SHADOW API SERVICE: PASS')
           PY
 
@@ -260,7 +268,6 @@ jobs:
               'INSERT INTO sku_commerce VALUES(?,?,?,?,?,?,?)',
               [
                   ('BB610-32DA4F652F73A1',333.0,None,'in_stock',7,1,'live-canonical'),
-                  ('BB610-VLG-KENDAL-100ML',222.0,None,'in_stock',3,1,'live-alias'),
               ],
           )
           con.commit()
@@ -277,8 +284,8 @@ jobs:
           assert canonical['commerce_source']=='runtime_sku_commerce'
 
           legacy=resolve_sku('BB610-VLG-KENDAL-100ML')
-          assert legacy['price']==222.0
-          assert legacy['commerce_source']=='runtime_sku_commerce'
+          assert legacy['price']==333.0
+          assert legacy['commerce_source']=='canonical_runtime_sku_commerce'
           assert legacy['canonical_sku_id']=='BB610-32DA4F652F73A1'
 
           data=snapshot()
@@ -288,8 +295,8 @@ jobs:
           assert ksku['stock_qty']==7
           assert ksku['commerce_source']=='runtime_sku_commerce'
           kalias=next(x for x in data['sku_aliases'] if x['alias_sku_id']=='BB610-VLG-KENDAL-100ML')
-          assert kalias['price']==222.0
-          assert kalias['stock_qty']==3
+          assert kalias['price']==333.0
+          assert kalias['stock_qty']==7
 
           rows=resolve_order_items([{'sku':'BB610-32DA4F652F73A1','quantity':2}])
           assert len(rows)==1
@@ -301,7 +308,7 @@ jobs:
 
           rows=resolve_order_items([{'sku':'BB610-VLG-KENDAL-100ML','quantity':1}])
           assert rows[0]['sku']=='BB610-VLG-KENDAL-100ML'
-          assert rows[0]['unit_price']==222.0
+          assert rows[0]['unit_price']==333.0
           assert rows[0]['snapshot']['canonical_sku']=='BB610-32DA4F652F73A1'
 
           con=sqlite3.connect(live)
@@ -358,29 +365,25 @@ jobs:
           expected_stage=json.load(open('v5/staging/production-current.json',encoding='utf-8'))
           expected_total=(
               len(expected_stage.get('skus') or [])+
-              len(expected_stage.get('plantlogic_skus') or [])+
-              len(expected_stage.get('sku_aliases') or [])
+              len(expected_stage.get('plantlogic_skus') or [])
           )
           seeded=seed_from_catalog()
           assert seeded['seen']==expected_total, seeded
           assert seeded['created']==expected_total-1, seeded
+          assert seeded['pruned_alias_rows']==0, seeded
 
           cm=commerce_map()
           assert len(cm)==expected_total, len(cm)
           assert cm['BB610-32DA4F652F73A1']['price']==999.0
           assert cm['BB610-32DA4F652F73A1']['updated_at']=='preexisting-live'
-          assert 'BB610-VLG-KENDAL-100ML' in cm
+          assert 'BB610-VLG-KENDAL-100ML' not in cm
 
-          rows=admin_products()
+          rows=admin_products(include_inactive=True, include_aliases=False)
           assert len(rows)==expected_total, len(rows)
           canonical=next(x for x in rows if x['sku']=='BB610-32DA4F652F73A1')
-          alias=next(x for x in rows if x['sku']=='BB610-VLG-KENDAL-100ML')
           assert canonical['source']=='product-master-v5'
           assert canonical['legacy_alias'] is False
           assert canonical['price']==999.0
-          assert alias['source']=='product-master-v5-alias'
-          assert alias['legacy_alias'] is True
-          assert alias['canonical_sku_id']=='BB610-32DA4F652F73A1'
 
           updated=update_product(
               'BB610-32DA4F652F73A1',

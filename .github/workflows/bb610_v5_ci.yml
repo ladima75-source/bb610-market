@@ -138,7 +138,7 @@ jobs:
           assert hidden_switch is not None and hidden_switch['public_enabled']==0
           legacy_25=product('plantlogic-25-round-1308125')
           assert legacy_25 is not None and legacy_25['product_id']=='plantlogic-25-round-1308125'
-          assert legacy_25['slug']=='plantlogic-25l-round-new-1308125'
+          assert legacy_25['slug']=='plantlogic-25-round-1308125'
           grouped=product('plantlogic-40-round-ugroove-1308041')
           assert grouped is not None and grouped['product_id']=='plantlogic-blueberry-round-40l-u-grooves-1308041'
           assert all(m.get('binding_kind')=='exact' for s in grouped['skus'] for m in s.get('media',[]))

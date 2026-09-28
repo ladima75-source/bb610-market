@@ -85,11 +85,29 @@ def image_ext(data: bytes, url: str) -> str | None:
     return suffix if suffix in {"jpg", "jpeg", "png", "webp", "avif"} else None
 
 
+def canonical_official_image_url(url: str) -> str:
+    """Prefer the original getplantlogic.com upload over WordPress resize-proxy variants."""
+    parsed = urllib.parse.urlsplit(url)
+    if parsed.netloc.lower() in {"i0.wp.com", "i1.wp.com", "i2.wp.com"}:
+        prefix = "/getplantlogic.com"
+        if parsed.path.startswith(prefix + "/wp-content/uploads/"):
+            return urllib.parse.urlunsplit((
+                "https", "getplantlogic.com", parsed.path[len(prefix):], "", ""
+            ))
+    return url
+
+
 def localize(url: str, alt: str, expected_sha: str | None = None) -> dict | None:
+    preferred = canonical_official_image_url(url)
     try:
-        data, resolved = download(url)
+        data, resolved = download(preferred)
     except Exception:
-        return None
+        if preferred == url:
+            return None
+        try:
+            data, resolved = download(url)
+        except Exception:
+            return None
     if len(data) < 2500:
         return None
     digest = hashlib.sha256(data).hexdigest()

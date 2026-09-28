@@ -51,7 +51,7 @@ SOURCE_OVERRIDES = {
 }
 
 IMAGE_EXT_RE = re.compile(r"\.(?:jpe?g|png|webp|avif)(?:\?|$)", re.I)
-PRODUCT_NO_RE = re.compile(r"(?<!\d)(13\d{5,6})(?!\d)")
+PRODUCT_NO_RE = re.compile(r"(?<![A-Z0-9])(?:1[23567]\d{5,6}|30\d{5,6})(?!\d)", re.I)
 GENERIC_IMAGE_MARKERS = (
     "/logo", "favicon", "icon_", "/icons/", "sprite", "site-logo",
     "plantlogic-8-liter-square-1309008-side-1", "lysimeter-clipped",

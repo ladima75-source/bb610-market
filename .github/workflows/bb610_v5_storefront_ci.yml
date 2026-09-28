@@ -96,13 +96,19 @@ jobs:
           if(!legacy||legacy.price!==220||legacy.canonical_sku_id!=='BB610-32DA4F652F73A1')throw new Error('legacy alias must inherit canonical commerce');
           if((DS.staticProductMedia('kendal')||null)!==null)throw new Error('legacy static media leaked into V5');
           const pots=DS.products().filter(x=>x.category_id==='containers');
-          if(pots.length<6)throw new Error('Plantlogic public family count');
-          const accessories=pots.filter(p=>(p.plantlogic_sections||[]).includes('accessories'));
-          const bagBases=pots.filter(p=>(p.plantlogic_sections||[]).includes('bag_bases'));
-          if(accessories.length<11)throw new Error('Plantlogic accessories section');
-          if(bagBases.length<5)throw new Error('Plantlogic bag bases section');
+          const accessories=DS.products().filter(x=>x.category_id==='accessories');
+          const bagBases=DS.products().filter(x=>x.category_id==='bag_bases');
+          const strawberry=DS.products().filter(x=>x.category_id==='strawberry');
+          if(pots.length!==21)throw new Error('Plantlogic pot family count');
+          if(accessories.length!==10)throw new Error('Plantlogic accessories category');
+          if(bagBases.length!==5)throw new Error('Plantlogic bag bases category');
+          if(strawberry.length!==3)throw new Error('Plantlogic strawberry category');
           const potSkus=pots.flatMap(p=>DS.skusForProduct(p.id));
-          if(potSkus.length<17)throw new Error('Plantlogic model count');
+          if(potSkus.length!==62)throw new Error('Plantlogic pot SKU count');
+          const anchor=DS.product('plantlogic-pot-anchor');
+          if(anchor?.name!=='Анкер для фіксації горщика'||anchor?.model!=='Pot Anchor')throw new Error('model/title projection');
+          const parallel=DS.sku('PL-BB-1308305-BK');
+          if(parallel?.canonical_title!=='Горщик для лохини 30 л круглий з паралельними U-пазами')throw new Error('canonical SKU title');
           const ordered=DS._orderedPlantlogicMedia([
             {path:'/media/1309008-bottom.jpg',alt:'bottom view',is_primary:true,sort_order:0},
             {path:'/media/1309008-front.jpg',alt:'front hero',is_primary:false,sort_order:9},

@@ -135,7 +135,14 @@ def main() -> int:
             print("EMPTY COMPOSITION IDS:", ", ".join(empty_fields["composition"]))
             print("BANNED PUBLIC TEXT: 0")
             print("PUBLIC SOURCE URLS IN CUSTOMER FIELDS: 0")
+            ds = (ROOT / "js" / "data-source.js").read_text(encoding="utf-8")
+            assert "const isPlantlogic=String(raw?.brand||'').trim().toLowerCase()==='plantlogic'" in ds
+            assert "if(label.startsWith('__'))return false" in ds
+            assert "sources:isPlantlogic?[]:(raw.sources||[])" in ds
+            assert "documents:isPlantlogic?[]:" in ds
+            assert "verification:(!isPlantlogic&&source)?" in ds
             print("SOURCE METADATA PRESERVED: PASS")
+            print("PUBLIC PLANTLOGIC PROVENANCE HIDDEN: PASS")
             print("BEFORE / AFTER EXAMPLES:")
             by_id = {row["product_id"]: row for row in rows}
             for pid in EXAMPLES:

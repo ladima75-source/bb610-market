@@ -3,12 +3,12 @@
   "summary": {
     "all_skus": 310,
     "current_skus": 301,
-    "exact_current_skus": 258,
-    "current_skus_without_exact": 43,
+    "exact_current_skus": 259,
+    "current_skus_without_exact": 42,
     "products_with_media": 128,
     "products_without_media": 2,
     "media_assets": 426,
-    "sku_bindings": 265,
+    "sku_bindings": 269,
     "product_bindings": 392,
     "organic_planet_source_rows": 187,
     "organic_planet_accepted_exact_rows": 134,
@@ -885,9 +885,9 @@
       "path": "/assets/img/v5/media/2ef98dad9582747aca2f.jpg",
       "sha256": "2ef98dad9582747aca2f5ca73dc6fe540cac329b4998dd0f76d076ae81f404c1",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_2-1.jpg",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source_reviewed",
       "alt": "Plantlogic 1303025 — angle"
     },
     {
@@ -2435,9 +2435,9 @@
       "path": "/assets/img/v5/media/8d449af52d78b7e64342.jpg",
       "sha256": "8d449af52d78b7e64342a631b6f52f36273931733dd4310baef1bfad01a1e894",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_3.jpg",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source_reviewed",
       "alt": "Plantlogic 1303025 — top"
     },
     {
@@ -2605,9 +2605,9 @@
       "path": "/assets/img/v5/media/988e411139cfb58fba17.jpg",
       "sha256": "988e411139cfb58fba17fe482f85224df02225358d77c6143fd3a8a99e58dfbb",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2021/06/3025_4-1.jpg",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source_reviewed",
       "alt": "Plantlogic 1303025 — base"
     },
     {
@@ -3755,9 +3755,9 @@
       "path": "/assets/img/v5/media/df2ce09e3635de13488f.jpg",
       "sha256": "df2ce09e3635de13488fa60461dcc5c61c809e0de43101f395fb3309c84390b0",
       "kind": "image",
-      "source_url": null,
-      "verification_status": "candidate",
-      "verification_detail": "representative",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg",
+      "verification_status": "verified",
+      "verification_detail": "manufacturer_model_source_reviewed",
       "alt": "Plantlogic 1303025 — hero"
     },
     {
@@ -6666,6 +6666,42 @@
       "binding_kind": "exact",
       "source_kind": "manufacturer_model_source_reviewed",
       "source_url": "https://getplantlogic.com/wp-content/uploads/2025/11/Maceta-35-litros-para-hidroponia.jpg"
+    },
+    {
+      "sku_id": "PL-BB-1303025-BK",
+      "media_id": "v5m_df2ce09e3635de13488fa604",
+      "is_primary": true,
+      "sort_order": 0,
+      "binding_kind": "exact",
+      "source_kind": "manufacturer_model_source_reviewed",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_1.jpg"
+    },
+    {
+      "sku_id": "PL-BB-1303025-BK",
+      "media_id": "v5m_2ef98dad9582747aca2f5ca7",
+      "is_primary": false,
+      "sort_order": 1,
+      "binding_kind": "exact",
+      "source_kind": "manufacturer_model_source_reviewed",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_2-1.jpg"
+    },
+    {
+      "sku_id": "PL-BB-1303025-BK",
+      "media_id": "v5m_8d449af52d78b7e64342a631",
+      "is_primary": false,
+      "sort_order": 2,
+      "binding_kind": "exact",
+      "source_kind": "manufacturer_model_source_reviewed",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2018/04/3025_3.jpg"
+    },
+    {
+      "sku_id": "PL-BB-1303025-BK",
+      "media_id": "v5m_988e411139cfb58fba17fe48",
+      "is_primary": false,
+      "sort_order": 3,
+      "binding_kind": "exact",
+      "source_kind": "manufacturer_model_source_reviewed",
+      "source_url": "https://getplantlogic.com/wp-content/uploads/2021/06/3025_4-1.jpg"
     }
   ],
   "product_bindings": [

@@ -2400,6 +2400,138 @@ def _plantlogic_public_copy_cleanup_batch_27(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _plantlogic_zephyr_v2_media_cleanup_batch_28(con: sqlite3.Connection) -> bool:
+    """Remove 25L Zephyr packshots from 30/40L and enforce an official family/application primary."""
+    z30 = "plantlogic-blueberry-zephyr-v2-30l-1301153"
+    z40 = "plantlogic-blueberry-zephyr-v2-40l-1301143"
+    family_path = "/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp"
+    family_alt = "Zephyr V2 — офіційне family/application фото з PlantLogic Catalog 2026"
+    now = _now()
+
+    media_id = "manual_zephyr_v2_family_application"
+    con.execute(
+        """
+        INSERT INTO media(media_id,path,sha256,kind,source_url,verification_status,alt,created_at)
+        VALUES(?,?,NULL,'image',NULL,'verified',?,?)
+        ON CONFLICT(path) DO UPDATE SET
+          verification_status='verified',
+          alt=excluded.alt
+        """,
+        (media_id, family_path, family_alt, now),
+    )
+    media_id = con.execute("SELECT media_id FROM media WHERE path=?", (family_path,)).fetchone()[0]
+
+    for pid in (z30, z40):
+        sku_ids = [row[0] for row in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (pid,)).fetchall()]
+        if not sku_ids:
+            raise RuntimeError(f"Zephyr V2 media target has no SKU: {pid}")
+        marks = ",".join("?" for _ in sku_ids)
+
+        # 1301144 is the 25L packshot and must never be bound to 30L/40L.
+        con.execute(
+            f"""
+            DELETE FROM sku_media
+            WHERE sku_id IN ({marks})
+              AND media_id IN (
+                SELECT media_id FROM media
+                WHERE lower(COALESCE(path,'')) LIKE '%1301144%'
+                   OR lower(COALESCE(source_url,'')) LIKE '%1301144%'
+                   OR lower(COALESCE(alt,'')) LIKE '%1301144%'
+              )
+            """,
+            sku_ids,
+        )
+        con.execute(
+            """
+            DELETE FROM product_media
+            WHERE product_id=?
+              AND media_id IN (
+                SELECT media_id FROM media
+                WHERE lower(COALESCE(path,'')) LIKE '%1301144%'
+                   OR lower(COALESCE(source_url,'')) LIKE '%1301144%'
+                   OR lower(COALESCE(alt,'')) LIKE '%1301144%'
+              )
+            """,
+            (pid,),
+        )
+
+        # Whole Zephyr tech-sheet rasters are not customer-facing product photos.
+        if pid == z40:
+            con.execute(
+                f"""
+                DELETE FROM sku_media
+                WHERE sku_id IN ({marks})
+                  AND media_id IN (
+                    SELECT media_id FROM media
+                    WHERE lower(COALESCE(source_url,'')) LIKE '%techsheet_item_zephyr%'
+                       OR lower(COALESCE(alt,'')) LIKE '%tech sheet%'
+                  )
+                """,
+                sku_ids,
+            )
+            con.execute(
+                """
+                DELETE FROM product_media
+                WHERE product_id=?
+                  AND media_id IN (
+                    SELECT media_id FROM media
+                    WHERE lower(COALESCE(source_url,'')) LIKE '%techsheet_item_zephyr%'
+                       OR lower(COALESCE(alt,'')) LIKE '%tech sheet%'
+                  )
+                """,
+                (pid,),
+            )
+
+        make_primary = pid == z40
+        product_order = 0 if make_primary else 50
+        con.execute(
+            """
+            INSERT INTO product_media(product_id,media_id,sort_order,source_kind,source_url)
+            VALUES(?,?,?,'plantlogic_catalog_2026_family_application',NULL)
+            ON CONFLICT(product_id,media_id) DO UPDATE SET
+              sort_order=excluded.sort_order,
+              source_kind=excluded.source_kind,
+              source_url=NULL
+            """,
+            (pid, media_id, product_order),
+        )
+        for sku_id in sku_ids:
+            if make_primary:
+                con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+            con.execute(
+                """
+                INSERT INTO sku_media(
+                  sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+                ) VALUES(?,?,?,?, 'exact','plantlogic_catalog_2026_family_application',NULL)
+                ON CONFLICT(sku_id,media_id) DO UPDATE SET
+                  is_primary=excluded.is_primary,
+                  sort_order=excluded.sort_order,
+                  source_kind=excluded.source_kind,
+                  source_url=NULL
+                """,
+                (sku_id, media_id, 1 if make_primary else 0, product_order),
+            )
+
+        # Premium size visual is supporting media, always after real photos.
+        visual_path = (
+            "/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg"
+            if pid == z40
+            else "/assets/img/v5/manual/plantlogic-1301153-zephyr-v2-30l.svg"
+        )
+        visual = con.execute("SELECT media_id FROM media WHERE path=?", (visual_path,)).fetchone()
+        if visual:
+            con.execute(
+                "UPDATE product_media SET sort_order=90 WHERE product_id=? AND media_id=?",
+                (pid, visual[0]),
+            )
+            con.execute(
+                f"UPDATE sku_media SET is_primary=0,sort_order=90 WHERE sku_id IN ({marks}) AND media_id=?",
+                (*sku_ids, visual[0]),
+            )
+
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2430,6 +2562,7 @@ _MIGRATIONS = [
     ("20260928_plantlogic_v2_customer_content_batch25", _plantlogic_v2_customer_content_batch_25),
     ("20260929_plantlogic_manual_audit_1_23_batch26", _plantlogic_manual_audit_batch_26),
     ("20260929_plantlogic_public_copy_cleanup_batch27", _plantlogic_public_copy_cleanup_batch_27),
+    ("20260929_plantlogic_zephyr_v2_media_cleanup_batch28", _plantlogic_zephyr_v2_media_cleanup_batch_28),
 ]
 
 

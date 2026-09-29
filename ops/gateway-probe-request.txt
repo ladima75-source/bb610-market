@@ -1,1 +1,1 @@
-Apply TwoFamily deploy-user gateway upgrade — 2026-09-29T22:37:00+03:00
+Apply hardened TwoFamily deploy-user gateway — 2026-09-29T22:44:00+03:00

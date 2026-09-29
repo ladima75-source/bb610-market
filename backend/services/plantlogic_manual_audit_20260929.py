@@ -675,6 +675,46 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
     _bind_local_visual(con, p, skus, "/assets/img/v5/manual/plantlogic-1302809-slab-base.svg", "PlantLogic 1302809 — premium dimension visual, 210 × 1000 мм", order=90)
 
 
+
+def _apply_exact_zero_media(con: sqlite3.Connection) -> None:
+    # Exact legacy #1309010 product photos extracted from the official PlantLogic EN tech sheet.
+    p = "plantlogic-rubus-square-10l-legacy-1309010"
+    skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (p,)).fetchall()]
+    _bind_local_photo(
+        con,
+        p,
+        skus,
+        "/assets/img/v5/manual/plantlogic-1309010-view1.webp",
+        "PlantLogic 1309010 — квадратний горщик 10 л, офіційне фото з EN Tech Sheet",
+        primary=True,
+        order=0,
+    )
+    _bind_local_photo(
+        con,
+        p,
+        skus,
+        "/assets/img/v5/manual/plantlogic-1309010-view2.webp",
+        "PlantLogic 1309010 — квадратний горщик 10 л на ніжках 50 мм, офіційне фото з EN Tech Sheet",
+        primary=False,
+        order=1,
+    )
+
+    # Exact current official hero for Product #1308030.
+    p = "plantlogic-universal-round-30l-1308030"
+    skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (p,)).fetchall()]
+    _remote_media(
+        con,
+        p,
+        skus,
+        [
+            (
+                "https://www.getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-30-liter-round-1308030-Hero.jpg",
+                "PlantLogic 1308030 — круглий горщик 30 л, офіційне hero photo",
+            ),
+        ],
+        "plantlogic_official_exact_product",
+    )
+
 def apply(con: sqlite3.Connection) -> dict:
     # Archive the 10 explicit REMOVE / LEGACY decisions.
     for product_id in sorted(REMOVE_PRODUCTS):
@@ -697,6 +737,7 @@ def apply(con: sqlite3.Connection) -> dict:
     _ensure_cooling_cover(con)
     _clean_unsafe_primary_media(con)
     _apply_keep_corrections(con)
+    _apply_exact_zero_media(con)
 
     # Cooling Skirt: official real product/application images, no Product #1310110.
     cooling_images = [

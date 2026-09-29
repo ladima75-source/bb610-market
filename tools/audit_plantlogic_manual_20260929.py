@@ -282,6 +282,18 @@ def main() -> int:
             assert nc.get("Кількість комірок") == "72"
             assert nc.get("Об'єм") == "48 мл/комірка"
             assert nc.get("Розміри") == "545 × 280 × 70 мм"
+            nursery_primary = con.execute(
+                """
+                SELECT m.path FROM sku_media sm
+                JOIN skus s ON s.sku_id=sm.sku_id
+                JOIN media m ON m.media_id=sm.media_id
+                WHERE s.product_id='plantlogic-nursery-tray-1302048'
+                  AND sm.is_primary=1
+                """
+            ).fetchall()
+            assert [r["path"] for r in nursery_primary] == [
+                "/assets/img/v5/manual/plantlogic-1302048-exact-primary.jpg"
+            ]
 
             # Exact/current hose clip.
             clip = con.execute(

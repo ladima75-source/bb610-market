@@ -73,7 +73,11 @@ def main() -> int:
         if any(str(number) in hidden_numbers for number in product.get("manufacturer_product_numbers") or [])
     }
     assert hidden_numbers == {"1700149", "1305008", "1302048"}
-    assert hidden_product_ids == {\n        "plantlogic-zephyr-v2-hose-clip-1700149",\n        "plantlogic-vegetable-pot-8l-1305008",\n        "plantlogic-nursery-tray-1302048",\n    }
+    assert hidden_product_ids == {
+        "plantlogic-zephyr-v2-hose-clip-1700149",
+        "plantlogic-vegetable-pot-8l-1305008",
+        "plantlogic-nursery-tray-1302048",
+    }
     public_canonical_ids = canonical_ids - hidden_product_ids
     public_wanted_skus = {
         sku["sku_id"]

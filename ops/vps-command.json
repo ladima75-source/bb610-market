@@ -1,5 +1,5 @@
 {
-  "action": "deploy",
-  "ref": "31a7685d409198297d9a95b9d65c6587ac68d503",
-  "request_id": "2026-09-29-pots-video-hero-redesign"
+  "action": "audit",
+  "ref": "",
+  "request_id": "2026-09-29-twofamily-vps-access-audit"
 }

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   facetCss.href='assets/css/catalog-facets.css?v=2';
   const plantlogicCss=document.createElement('link');
   plantlogicCss.rel='stylesheet';
-  plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=3';
+  plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=4';
   document.head.appendChild(plantlogicCss);
   document.head.appendChild(facetCss);
 
@@ -19,6 +19,34 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const fixedCategory=window.BB610_CATEGORY_ID||'';
   const initialCategory=fixedCategory||params.get('category')||'';
   const source=[...BB610.products()];
+
+  const potsVideoBanner=document.querySelector('[data-pots-video-banner]');
+  const potsVideo=potsVideoBanner?.querySelector('video')||null;
+  const isPotsPage=initialCategory==='containers';
+  document.body.classList.toggle('pots-catalog-page',isPotsPage);
+  if(potsVideoBanner){
+    potsVideoBanner.hidden=!isPotsPage;
+    if(isPotsPage&&potsVideo){
+      const setPlayback=visible=>{
+        if(visible){
+          const playback=potsVideo.play();
+          if(playback&&typeof playback.catch==='function')playback.catch(()=>{});
+        }else{
+          potsVideo.pause();
+        }
+      };
+      if('IntersectionObserver' in window){
+        const videoObserver=new IntersectionObserver(entries=>{
+          entries.forEach(entry=>setPlayback(entry.isIntersecting&&entry.intersectionRatio>0.05));
+        },{threshold:[0,.05,.25]});
+        videoObserver.observe(potsVideoBanner);
+      }else{
+        setPlayback(true);
+      }
+    }else if(potsVideo){
+      potsVideo.pause();
+    }
+  }
 
   function updatePlantlogicStickyOffset(){
     const header=document.querySelector('.market-header');

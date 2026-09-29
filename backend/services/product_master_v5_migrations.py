@@ -2710,6 +2710,56 @@ def _plantlogic_zephyr_context_media_batch_34(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _plantlogic_primary_quality_batch_35(con: sqlite3.Connection) -> bool:
+    """Promote real hero/product views over bottom/top-down views for public PlantLogic cards."""
+    if os.getenv("BB610_SKIP_PLANTLOGIC_MANUAL_1_23") == "1":
+        return True
+    targets = {
+        "plantlogic-10l-drainage-1307110": "/assets/img/v5/media/6a01ef0585f82073b168.jpg",
+        "plantlogic-8l-square-1309008": "/assets/img/v5/media/26631f70e8d140f613c5.jpg",
+    }
+    for product_id, path in targets.items():
+        media = con.execute("SELECT media_id FROM media WHERE path=?", (path,)).fetchone()
+        if not media:
+            raise RuntimeError(f"Preferred PlantLogic primary missing: {product_id} {path}")
+        media_id = media[0]
+        sku_ids = [
+            row[0]
+            for row in con.execute(
+                "SELECT sku_id FROM skus WHERE product_id=? AND enabled=1 ORDER BY sku_id",
+                (product_id,),
+            ).fetchall()
+        ]
+        if not sku_ids:
+            raise RuntimeError(f"PlantLogic primary target has no enabled SKU: {product_id}")
+        con.execute(
+            """
+            INSERT INTO product_media(product_id,media_id,sort_order,source_kind,source_url)
+            VALUES(?,?,0,'plantlogic_official_exact_product',NULL)
+            ON CONFLICT(product_id,media_id) DO UPDATE SET
+              sort_order=0,
+              source_kind='plantlogic_official_exact_product'
+            """,
+            (product_id, media_id),
+        )
+        for sku_id in sku_ids:
+            con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+            con.execute(
+                """
+                INSERT INTO sku_media(
+                  sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+                ) VALUES(?,?,1,0,'exact','plantlogic_official_exact_product',NULL)
+                ON CONFLICT(sku_id,media_id) DO UPDATE SET
+                  is_primary=1,
+                  sort_order=0,
+                  binding_kind='exact',
+                  source_kind='plantlogic_official_exact_product'
+                """,
+                (sku_id, media_id),
+            )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2747,6 +2797,7 @@ _MIGRATIONS = [
     ("20260929_plantlogic_zephyr_v2_40l_exact_primary_batch32", _plantlogic_zephyr_v2_40l_exact_primary_batch_32),
     ("20260929_plantlogic_public_media_alt_cleanup_batch33", _plantlogic_public_media_alt_cleanup_batch_33),
     ("20260929_plantlogic_zephyr_context_media_batch34", _plantlogic_zephyr_context_media_batch_34),
+    ("20260929_plantlogic_primary_quality_batch35", _plantlogic_primary_quality_batch_35),
 ]
 
 

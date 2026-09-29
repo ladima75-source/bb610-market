@@ -14,6 +14,11 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+PREFERRED_REAL_PRIMARY = {
+    "plantlogic-10l-drainage-1307110": "/assets/img/v5/media/6a01ef0585f82073b168.jpg",
+    "plantlogic-8l-square-1309008": "/assets/img/v5/media/26631f70e8d140f613c5.jpg",
+}
+
 ALLOWED_TECHNICAL_PRIMARY = {
     "plantlogic-kratos-rivus-grow-bag-8l-1500010",
     "plantlogic-blueberry-zephyr-v2-40l-1301143",
@@ -139,6 +144,12 @@ def main() -> int:
                     ).fetchall()
                     assert len(primaries) == 1, (pid, sku["sku_id"], "primary_count", len(primaries))
                     primary = primaries[0]
+                    preferred_primary = PREFERRED_REAL_PRIMARY.get(pid)
+                    if preferred_primary:
+                        assert normalized_path(primary["path"]) == normalized_path(preferred_primary), (
+                            pid, sku["sku_id"], "weak primary replaced expected",
+                            primary["path"], preferred_primary
+                        )
                     try:
                         attrs = json.loads(sku["attributes_json"] or "{}")
                     except Exception:
@@ -222,6 +233,7 @@ def main() -> int:
             print("MIN MEDIA: 2")
             print("PRIMARY PER SKU: 1")
             print("PRIMARY ARTICLE IDENTITY: CLEAN")
+            print("WEAK PRIMARY VIEWS: REPLACED")
             print("COLOR SKU MEDIA: VERIFIED / SHARED MODEL PHOTO DISCLOSED")
             print("SHARED COLOR REFERENCE PRODUCTS:", len(shared_color_reference_products))
             print("PUBLIC TITLES: NO PRODUCT #")

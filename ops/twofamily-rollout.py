@@ -310,7 +310,19 @@ server {{
 
 def install_packages():
     if shutil.which("dnf"):
-        run(["dnf", "-y", "install", "nodejs", "npm", "postgresql-server", "postgresql-contrib"])
+        run(["dnf", "-y", "install", "postgresql-server", "postgresql-contrib"])
+        node_major = 0
+        if shutil.which("node"):
+            try:
+                node_major = int(output(["node", "--version"]).lstrip("v").split(".", 1)[0])
+            except Exception:
+                node_major = 0
+        if node_major < 20:
+            subprocess.run(["dnf", "-y", "module", "reset", "nodejs"])
+            run(["dnf", "-y", "module", "enable", "nodejs:20"])
+            run(["dnf", "-y", "install", "nodejs", "npm", "--allowerasing"])
+        else:
+            run(["dnf", "-y", "install", "nodejs", "npm"])
         if not shutil.which("python3.12"):
             rc = subprocess.run(["dnf", "-y", "install", "python3.12", "python3.12-pip"]).returncode
             if rc != 0:
@@ -352,6 +364,20 @@ def ensure_postgres(env):
             run(["postgresql-setup", "--initdb", "--unit", "postgresql"])
     run(["systemctl", "enable", "--now", "postgresql"])
 
+    hba_file = output(["runuser", "-u", "postgres", "--", "psql", "-tAc", "SHOW hba_file"]).strip()
+    hba = Path(hba_file)
+    if not hba.is_file():
+        raise SystemExit(f"REFUSED: PostgreSQL pg_hba.conf not found: {hba_file}")
+    rules = [
+        "host twofamily_social twofamily 127.0.0.1/32 scram-sha-256",
+        "host twofamily_social twofamily ::1/128 scram-sha-256",
+    ]
+    existing_hba = hba.read_text(encoding="utf-8")
+    prefix = "\n".join(rule for rule in rules if rule not in existing_hba)
+    if prefix:
+        hba.write_text(prefix + "\n" + existing_hba, encoding="utf-8")
+        run(["systemctl", "reload", "postgresql"])
+
     password = env.get("POSTGRES_PASSWORD", "")
     if not re.fullmatch(r"[A-Za-z0-9_-]{16,}", password):
         raise SystemExit("REFUSED: unsafe/missing PostgreSQL password")
@@ -360,10 +386,10 @@ def ensure_postgres(env):
                      "SELECT 1 FROM pg_roles WHERE rolname='twofamily'"])
     if "1" not in exists:
         run(["runuser", "-u", "postgres", "--", "psql", "-v", "ON_ERROR_STOP=1",
-             "-c", f"CREATE ROLE twofamily LOGIN PASSWORD '{password}';"])
+             "-c", f"SET password_encryption='scram-sha-256'; CREATE ROLE twofamily LOGIN PASSWORD '{password}';"])
     else:
         run(["runuser", "-u", "postgres", "--", "psql", "-v", "ON_ERROR_STOP=1",
-             "-c", f"ALTER ROLE twofamily WITH LOGIN PASSWORD '{password}';"])
+             "-c", f"SET password_encryption='scram-sha-256'; ALTER ROLE twofamily WITH LOGIN PASSWORD '{password}';"])
 
     db_exists = output(["runuser", "-u", "postgres", "--", "psql", "-tAc",
                         "SELECT 1 FROM pg_database WHERE datname='twofamily_social'"])
@@ -487,6 +513,11 @@ def install_bundle(expected: str):
     run([APP / "backend/.venv/bin/alembic", "-c", "alembic.ini", "upgrade", "head"],
         cwd=APP / "backend", env=proc_env)
 
+    node_version = output(["node", "--version"])
+    node_major = int(node_version.lstrip("v").split(".", 1)[0])
+    if node_major < 20:
+        raise SystemExit(f"REFUSED: Node.js 20+ required, found {node_version}")
+    print(f"TWOFAMILY_NODE={node_version}")
     run(["npm", "install"], cwd=APP / "frontend")
     run(["npm", "run", "build"], cwd=APP / "frontend")
 

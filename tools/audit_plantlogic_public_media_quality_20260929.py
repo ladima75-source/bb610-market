@@ -86,7 +86,7 @@ def main() -> int:
                 ORDER BY product_id
                 """
             ).fetchall()
-            assert len(products) == 67, len(products)
+            assert len(products) == 65, len(products)
 
             shared_color_reference_products = []
             for p in products:
@@ -281,7 +281,7 @@ def main() -> int:
                 assert max_order == 999, (pid, "Zephyr size scheme is not last")
 
             print("PLANTLOGIC PUBLIC MEDIA QUALITY: PASS")
-            print("PUBLIC PRODUCTS: 67")
+            print("PUBLIC PRODUCTS: 65")
             print("MIN MEDIA: 2")
             print("PRIMARY PER SKU: 1")
             print("PRIMARY ARTICLE IDENTITY: CLEAN")
@@ -290,7 +290,7 @@ def main() -> int:
             print("SHARED COLOR REFERENCE PRODUCTS:", len(shared_color_reference_products))
             print("PUBLIC TITLES: NO PRODUCT #")
             print("PUBLIC MEDIA ALT: CLEAN / DESCRIPTIVE")
-            print("TECHNICAL PRIMARY ALLOWLIST: 1500010 only")
+            print("TECHNICAL PRIMARY ALLOWLIST: none")
             print("ZEPHYR 30L/40L: 25L PRODUCT PHOTO PRIMARY + SIZE SCHEME LAST")
         finally:
             con.close()

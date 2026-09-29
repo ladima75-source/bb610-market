@@ -1,0 +1,34 @@
+name: PlantLogic manual audit 1-23 CI
+
+on:
+  push:
+    branches:
+      - plantlogic-manual-audit-1-23
+    paths:
+      - 'backend/services/plantlogic_manual_audit_20260929.py'
+      - 'backend/services/product_master_v5_migrations.py'
+      - 'tools/audit_plantlogic_manual_20260929.py'
+      - 'assets/img/v5/manual/**'
+      - '.github/workflows/plantlogic_manual_audit_ci.yml'
+      - '.github/workflows/bb610_v5_ci.yml'
+      - '.github/workflows/bb610_v5_storefront_ci.yml'
+      - '.github/workflows/plantlogic_live_accessories_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  manual-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile manual override
+        run: |
+          python -m py_compile             backend/services/plantlogic_manual_audit_20260929.py             backend/services/product_master_v5_migrations.py             tools/audit_plantlogic_manual_20260929.py
+      - name: Run PlantLogic manual audit
+        run: python tools/audit_plantlogic_manual_20260929.py

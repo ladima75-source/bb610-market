@@ -90,8 +90,11 @@ jobs:
               'Офіційне джерело',
               'не специфікован',
               'Bag Bases',
+              'Bag Base',
+              'Slab base',
               'grow bag',
               'open-top grow bags',
+              'Hose fix',
           )
           for p in rows:
               customer=' '.join(str(p.get(k) or '') for k in (

@@ -96,6 +96,26 @@ jobs:
                   assert p.get('category_id')!='accessories', p.get('product_id')
 
           by_id={p.get('product_id') or p.get('id'):p for p in rows}
+          def media_paths(pid):
+              return [str(x.get('path') or '') for x in (by_id[pid].get('media') or [])]
+
+          assert media_paths('plantlogic-cold-storage-bin-1702000') == [
+              '/assets/img/v5/manual/plantlogic-1702000-product-crop.svg',
+              '/assets/img/v5/manual/plantlogic-1702000-folded-crop.svg',
+          ], media_paths('plantlogic-cold-storage-bin-1702000')
+
+          growbag_media=media_paths('plantlogic-kratos-rivus-grow-bag-8l-1500010')
+          assert growbag_media == [
+              'https://getplantlogic.com/wp-content/uploads/2025/08/growing-hydroponic-tomatoes.png',
+              'https://getplantlogic.com/wp-content/uploads/2025/08/growing-hydroponic-peppers.png',
+          ], growbag_media
+          assert not any(path.lower().endswith('.svg') for path in growbag_media), growbag_media
+
+          base_media=media_paths('plantlogic-bag-base-edge-drainage-1307030')
+          assert base_media == [
+              '/assets/img/v5/manual/plantlogic-1307030-product-crop.svg',
+              '/assets/img/v5/media/bd6d2865214bcf48696e.jpg',
+          ], base_media
           banned=(
               'Дані та Product # звірені',
               'Офіційна модель Plantlogic',

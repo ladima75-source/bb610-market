@@ -3011,6 +3011,212 @@ def _plantlogic_stage1_media_policy_batch_39(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _plantlogic_user_photo_cleanup_batch_40(con: sqlite3.Connection) -> bool:
+    """Apply user-approved real-photo cleanup and hide unresolved PlantLogic identities."""
+    now = _now()
+
+    def sku_ids(product_id: str) -> list[str]:
+        return [
+            row[0]
+            for row in con.execute(
+                "SELECT sku_id FROM skus WHERE product_id=? ORDER BY sku_id",
+                (product_id,),
+            ).fetchall()
+        ]
+
+    def clear_gallery(product_id: str) -> list[str]:
+        ids = sku_ids(product_id)
+        for sku_id in ids:
+            con.execute("DELETE FROM sku_media WHERE sku_id=?", (sku_id,))
+        con.execute("DELETE FROM product_media WHERE product_id=?", (product_id,))
+        return ids
+
+    def bind_local(
+        product_id: str,
+        path: str,
+        alt: str,
+        media_id: str,
+        *,
+        order: int = 0,
+        primary: bool = True,
+        source_kind: str = "plantlogic_user_verified_product_photo",
+    ) -> None:
+        ids = sku_ids(product_id)
+        if not ids:
+            raise RuntimeError(f"PlantLogic media target missing SKU: {product_id}")
+        con.execute(
+            """
+            INSERT INTO media(media_id,path,sha256,kind,source_url,verification_status,alt,created_at)
+            VALUES(?,?,NULL,'image',NULL,'verified',?,?)
+            ON CONFLICT(path) DO UPDATE SET
+              verification_status='verified',
+              alt=excluded.alt
+            """,
+            (media_id, path, alt, now),
+        )
+        actual = con.execute("SELECT media_id FROM media WHERE path=?", (path,)).fetchone()[0]
+        con.execute(
+            """
+            INSERT INTO product_media(product_id,media_id,sort_order,source_kind,source_url)
+            VALUES(?,?,?,?,NULL)
+            ON CONFLICT(product_id,media_id) DO UPDATE SET
+              sort_order=excluded.sort_order,
+              source_kind=excluded.source_kind,
+              source_url=NULL
+            """,
+            (product_id, actual, order, source_kind),
+        )
+        for sku_id in ids:
+            if primary:
+                con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+            con.execute(
+                """
+                INSERT INTO sku_media(
+                  sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+                ) VALUES(?,?,?,?, 'exact',?,NULL)
+                ON CONFLICT(sku_id,media_id) DO UPDATE SET
+                  is_primary=excluded.is_primary,
+                  sort_order=excluded.sort_order,
+                  binding_kind='exact',
+                  source_kind=excluded.source_kind,
+                  source_url=NULL
+                """,
+                (sku_id, actual, 1 if primary else 0, order, source_kind),
+            )
+
+    def bind_remote(
+        product_id: str,
+        url: str,
+        alt: str,
+        media_id: str,
+        *,
+        order: int = 0,
+        primary: bool = True,
+    ) -> None:
+        ids = sku_ids(product_id)
+        if not ids:
+            raise RuntimeError(f"PlantLogic media target missing SKU: {product_id}")
+        source_kind = "plantlogic_official_application_photo"
+        con.execute(
+            """
+            INSERT INTO media(media_id,path,sha256,kind,source_url,verification_status,alt,created_at)
+            VALUES(?,?,NULL,'image',?,'verified',?,?)
+            ON CONFLICT(path) DO UPDATE SET
+              source_url=excluded.source_url,
+              verification_status='verified',
+              alt=excluded.alt
+            """,
+            (media_id, url, url, alt, now),
+        )
+        actual = con.execute("SELECT media_id FROM media WHERE path=?", (url,)).fetchone()[0]
+        con.execute(
+            """
+            INSERT INTO product_media(product_id,media_id,sort_order,source_kind,source_url)
+            VALUES(?,?,?,?,?)
+            ON CONFLICT(product_id,media_id) DO UPDATE SET
+              sort_order=excluded.sort_order,
+              source_kind=excluded.source_kind,
+              source_url=excluded.source_url
+            """,
+            (product_id, actual, order, source_kind, url),
+        )
+        for sku_id in ids:
+            if primary:
+                con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+            con.execute(
+                """
+                INSERT INTO sku_media(
+                  sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+                ) VALUES(?,?,?,?, 'exact',?,?)
+                ON CONFLICT(sku_id,media_id) DO UPDATE SET
+                  is_primary=excluded.is_primary,
+                  sort_order=excluded.sort_order,
+                  binding_kind='exact',
+                  source_kind=excluded.source_kind,
+                  source_url=excluded.source_url
+                """,
+                (sku_id, actual, 1 if primary else 0, order, source_kind, url),
+            )
+
+    # Cold Storage Bin #1702000: show only the product itself, not full tech-sheet pages.
+    p = "plantlogic-cold-storage-bin-1702000"
+    clear_gallery(p)
+    bind_local(
+        p,
+        "/assets/img/v5/manual/plantlogic-1702000-product-crop.svg",
+        "Контейнер для транспортування та холодного зберігання long-cane — вигляд виробу",
+        "manual_user_photo_1702000",
+    )
+
+    # 8L vegetable pot #1305008: existing source is identity-conflicted.
+    # Keep canonical product/SKU internally, remove misleading media and hide publicly.
+    p = "plantlogic-vegetable-pot-8l-1305008"
+    clear_gallery(p)
+    con.execute(
+        "UPDATE products SET public_enabled=0,status='active',updated_at=? WHERE product_id=?",
+        (now, p),
+    )
+
+    # 8L Kratos/Rivus bag #1500010: remove generated SVGs and use real official crop/application photos.
+    p = "plantlogic-kratos-rivus-grow-bag-8l-1500010"
+    clear_gallery(p)
+    bind_remote(
+        p,
+        "https://getplantlogic.com/wp-content/uploads/2025/08/growing-hydroponic-tomatoes.png",
+        "Мішок для субстрату 8 л у системі PlantLogic — фото застосування",
+        "manual_user_photo_1500010_tomatoes",
+        order=0,
+        primary=True,
+    )
+    bind_remote(
+        p,
+        "https://getplantlogic.com/wp-content/uploads/2025/08/growing-hydroponic-peppers.png",
+        "Мішок для субстрату 8 л у системі PlantLogic — додаткове фото застосування",
+        "manual_user_photo_1500010_peppers",
+        order=1,
+        primary=False,
+    )
+
+    # Bag base #1307030: exact product view first; application photo second.
+    p = "plantlogic-bag-base-edge-drainage-1307030"
+    clear_gallery(p)
+    bind_local(
+        p,
+        "/assets/img/v5/manual/plantlogic-1307030-product-crop.svg",
+        "Основа для мішка з крайовим відведенням дренажу — вигляд виробу",
+        "manual_user_photo_1307030",
+        order=0,
+        primary=True,
+    )
+    bind_local(
+        p,
+        "/assets/img/v5/media/bd6d2865214bcf48696e.jpg",
+        "Основа для мішка з крайовим відведенням дренажу — фото застосування",
+        "manual_user_photo_1307030_application",
+        order=1,
+        primary=False,
+        source_kind="plantlogic_official_application_photo",
+    )
+
+    # Nursery Tray #1302048: exact identity is documented in an older official
+    # tech sheet, but it is absent from the current 2026 catalog/portfolio.
+    # Preserve canonical product/SKU and a clean product-only crop internally;
+    # keep it out of public commerce pending supplier confirmation.
+    p = "plantlogic-nursery-tray-1302048"
+    clear_gallery(p)
+    bind_local(
+        p,
+        "/assets/img/v5/manual/plantlogic-1302048-product-crop.svg",
+        "Касета для розсади на 72 комірки — вигляд виробу",
+        "manual_user_photo_1302048",
+    )
+    con.execute(
+        "UPDATE products SET public_enabled=0,status='active',updated_at=? WHERE product_id=?",
+        (now, p),
+    )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -3053,6 +3259,7 @@ _MIGRATIONS = [
     ("20260929_plantlogic_storefront_media_integrity_batch37", _plantlogic_storefront_media_integrity_batch_37),
     ("20260929_plantlogic_zephyr_v2_user_media_rule_batch38", _plantlogic_zephyr_v2_user_media_rule_batch_38),
     ("20260929_plantlogic_stage1_media_policy_batch39", _plantlogic_stage1_media_policy_batch_39),
+    ("20260929_plantlogic_user_photo_cleanup_batch40", _plantlogic_user_photo_cleanup_batch_40),
 ]
 
 

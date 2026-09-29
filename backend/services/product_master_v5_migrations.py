@@ -2348,6 +2348,14 @@ def _plantlogic_v2_customer_content_batch_25(con: sqlite3.Connection) -> bool:
     from . import plantlogic_v2_customer_content
     return plantlogic_v2_customer_content.apply(con)
 
+
+def _plantlogic_manual_audit_batch_26(con: sqlite3.Connection) -> bool:
+    """Apply the approved manual PlantLogic decisions 1-23 after V2/customer content."""
+    from . import plantlogic_manual_audit_20260929
+    plantlogic_manual_audit_20260929.apply(con)
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),

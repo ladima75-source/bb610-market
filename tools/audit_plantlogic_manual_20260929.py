@@ -274,6 +274,23 @@ def main() -> int:
                 "SELECT category_id FROM products WHERE product_id='plantlogic-kratos-rivus-grow-bag-8l-1500010'"
             ).fetchone()[0] == "containers"
 
+            vegetable8 = con.execute(
+                "SELECT * FROM products WHERE product_id='plantlogic-vegetable-pot-8l-1305008'"
+            ).fetchone()
+            assert vegetable8["manufacturer_product_number"] == "1305008"
+            vegetable8_primary = con.execute(
+                """
+                SELECT m.path FROM sku_media sm
+                JOIN skus s ON s.sku_id=sm.sku_id
+                JOIN media m ON m.media_id=sm.media_id
+                WHERE s.product_id='plantlogic-vegetable-pot-8l-1305008'
+                  AND sm.is_primary=1
+                """
+            ).fetchall()
+            assert [r["path"] for r in vegetable8_primary] == [
+                "/assets/img/v5/manual/plantlogic-1305008-exact-primary.jpg"
+            ]
+
             # Nursery Tray exact specs.
             nursery = con.execute(
                 "SELECT * FROM products WHERE product_id='plantlogic-nursery-tray-1302048'"

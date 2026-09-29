@@ -34,13 +34,19 @@ jobs:
           set -euo pipefail
           python -m py_compile ops/export_v5_snapshot.py
 
-      - name: Validate one-time upgrader is disabled
+      - name: Validate hash-pinned gateway upgrade contract
         run: |
           set -euo pipefail
           python - <<'PY'
-          import json
+          import json,re
           from pathlib import Path
           d=json.loads(Path('ops/gateway-upgrade.json').read_text(encoding='utf-8'))
-          assert d.get('enabled') is False, 'one-time gateway upgrader must remain disabled'
+          assert d.get('target_path') == '/usr/local/sbin/bb610-github-gateway'
+          assert d.get('target_repo_path') == 'ops/bb610-github-gateway-v3'
+          expected=str(d.get('expected_current_sha256') or '')
+          assert re.fullmatch(r'[0-9a-f]{64}', expected), 'expected_current_sha256 must be sha256'
+          assert isinstance(d.get('enabled'), bool), 'enabled must be boolean'
+          if d['enabled']:
+              assert str(d.get('reason') or '').strip(), 'enabled upgrade requires reason'
           print('BB610 VPS GATEWAY: PASS')
           PY

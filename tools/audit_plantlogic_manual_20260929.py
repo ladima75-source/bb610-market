@@ -69,9 +69,45 @@ def main() -> int:
                 """
             ).fetchall()
 
+            all_skus = con.execute(
+                """
+                SELECT s.sku_id
+                FROM skus s
+                JOIN products p ON p.product_id=s.product_id
+                WHERE lower(p.brand)='plantlogic'
+                """
+            ).fetchall()
             assert len(all_products) == 79, len(all_products)
+            assert len(all_skus) == 131, len(all_skus)
             assert len(public_products) == 68, len(public_products)
             assert len(public_skus) == 122, len(public_skus)
+
+            category_products = {
+                row["category_id"]: row["n"]
+                for row in con.execute(
+                    """
+                    SELECT category_id,COUNT(*) AS n
+                    FROM products
+                    WHERE lower(brand)='plantlogic' AND public_enabled=1 AND status='active'
+                    GROUP BY category_id
+                    """
+                ).fetchall()
+            }
+            category_skus = {
+                row["category_id"]: row["n"]
+                for row in con.execute(
+                    """
+                    SELECT p.category_id,COUNT(*) AS n
+                    FROM skus s
+                    JOIN products p ON p.product_id=s.product_id
+                    WHERE lower(p.brand)='plantlogic'
+                      AND p.public_enabled=1 AND p.status='active' AND s.enabled=1
+                    GROUP BY p.category_id
+                    """
+                ).fetchall()
+            }
+            assert category_products == {"accessories": 20, "containers": 42, "strawberry": 6}, category_products
+            assert category_skus == {"accessories": 33, "containers": 72, "strawberry": 17}, category_skus
 
             hidden = set(REMOVE_PRODUCTS) | set(REFERENCE_ONLY_PRODUCTS)
             assert not (hidden & public_ids), sorted(hidden & public_ids)
@@ -268,6 +304,8 @@ def main() -> int:
             print("PUBLIC PRODUCTS: 68")
             print("PUBLIC SKU: 122")
             print("BACKEND PRODUCTS: 79")
+            print("BACKEND SKU: 131")
+            print("CATEGORY PRODUCTS: accessories=20 containers=42 strawberry=6")
             print("REMOVED/REFERENCE: 11")
             print("SKU REPLACEMENT ALIASES: 3")
         finally:

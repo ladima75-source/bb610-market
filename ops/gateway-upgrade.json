@@ -5,5 +5,5 @@
   "target_repo_path": "ops/bb610-github-gateway-v3",
   "expected_current_sha256": "51d8aa5fb008690367a04bbc5d7ab6e031a8ef049985be9fd7c7f6fe237b7ebf",
   "mode": "0700",
-  "reason": "Install CI-validated TwoFamily SSH diagnostic command."
+  "reason": "Install CI-validated TwoFamily key-only deploy-login fix."
 }

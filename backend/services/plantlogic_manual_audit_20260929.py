@@ -613,7 +613,7 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
     con.execute("UPDATE products SET category_id='containers',updated_at=? WHERE product_id=?", (_now(), p))
     _set_char(con, p, "__plantlogic_sections", "vegetable")
     _set_char(con, p, "__market_category", "Овочі")
-    _set_char(con, p, "Модель", "8L Bag for Kratos / Rivus")
+    _set_char(con, p, "Модель", "Kratos / Rivus · 8 л")
 
     # #16 Nursery Tray.
     p = "plantlogic-nursery-tray-1302048"
@@ -632,7 +632,7 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
     # #19 exact VF Bag Base 3232 Hose fix.
     p = "plantlogic-vf-bag-base-hose-fix-12010320"
     _sync_article(con, p, "12010320")
-    _set_char(con, p, "Модель", "VF Bag Base 3232 — Hose fix")
+    _set_char(con, p, "Модель", "VF 3232 · фіксація шланга")
     _set_char(con, p, "Розміри", "360 × 360 мм · висота 50 мм · робоча зона 320 мм")
     _set_char(con, p, "Висота ніжок", "50 мм")
     skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (p,)).fetchall()]
@@ -641,7 +641,7 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
     # #20 exact long perforated base.
     p = "plantlogic-slab-base-bags-slabs-1302809"
     _sync_article(con, p, "1302809")
-    _set_char(con, p, "Модель", "Slab base for bags and slabs")
+    _drop_char(con, p, "Модель")
     _set_char(con, p, "Розміри", "210 × 1000 мм")
     skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (p,)).fetchall()]
     _remote_media(

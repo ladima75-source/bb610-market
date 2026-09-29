@@ -1,11 +1,9 @@
 {
   "schema_version": "1.0",
-  "enabled": false,
+  "enabled": true,
   "target_path": "/usr/local/sbin/bb610-github-gateway",
   "target_repo_path": "ops/bb610-github-gateway-v3",
-  "expected_current_sha256": "2a0718409ae05a1da495c4f02d5b0c4dbb2743967129733065436021179759fe",
+  "expected_current_sha256": "990cabf40866f1d17f2ef612ddb662039334fd5cb03766230e9542f9ebbec5a9",
   "mode": "0700",
-  "reason": "Local TwoFamily deploy key controls installed; one-time gateway upgrade disabled.",
-  "completed_sha256": "2a0718409ae05a1da495c4f02d5b0c4dbb2743967129733065436021179759fe",
-  "completed_note": "Local TwoFamily authorize/revoke commands installed and gateway hash verified."
+  "reason": "Install CI-validated TwoFamily deploy-user gateway command."
 }

@@ -501,6 +501,14 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
     p = "plantlogic-zephyr-v2-hose-clip-1700149"
     _sync_article(con, p, "1700149")
     _set_char(con, p, "Сумісність", "Zephyr V2")
+    skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (p,)).fetchall()]
+    _bind_local_photo(
+        con,
+        p,
+        skus,
+        "/assets/img/v5/manual/plantlogic-1700149-hose-clip.jpg",
+        "PlantLogic 1700149 — Hose clip for Zephyr V2, фото з офіційного каталогу",
+    )
 
     # #6 / #7 Zephyr V2 variant dimensions. Do not reuse 25L exact packshots.
     z30 = "plantlogic-blueberry-zephyr-v2-30l-1301153"

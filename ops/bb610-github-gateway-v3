@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT=/opt/bb610-market
 MAGELLE_ROOT=/opt/magelle
-TWOFAMILY_EPHEMERAL_PUBKEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEbc4THlSp1mQ/Jy3jwMziCnjExardCw9NlbdnthmJ8h twofamily-ephemeral-2026-09-29"\nTWOFAMILY_LOCAL_PUBKEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAQiW/epQia1NShVNGNTXIPkI8lB9x/0A+auuTpe4VQv twofamily-social-control"
+TWOFAMILY_EPHEMERAL_PUBKEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEbc4THlSp1mQ/Jy3jwMziCnjExardCw9NlbdnthmJ8h twofamily-ephemeral-2026-09-29"
 CMD="${SSH_ORIGINAL_COMMAND:-}"
 
 # These legacy files are mutated by the running application on production.
@@ -435,32 +435,6 @@ twofamily_revoke_ephemeral() {
   echo "TWOFAMILY_EPHEMERAL=REVOKED"
 }
 
-
-twofamily_authorize_local() {
-  install -d -m 0700 /root/.ssh
-  touch /root/.ssh/authorized_keys
-  chmod 0600 /root/.ssh/authorized_keys
-  local tmp
-  tmp="$(mktemp)"
-  grep -v 'twofamily-social-control' /root/.ssh/authorized_keys > "$tmp" || true
-  printf '%s\\n' "$TWOFAMILY_LOCAL_PUBKEY" >> "$tmp"
-  cat "$tmp" > /root/.ssh/authorized_keys
-  rm -f "$tmp"
-  chmod 0600 /root/.ssh/authorized_keys
-  echo "TWOFAMILY_LOCAL=AUTHORIZED"
-}
-
-twofamily_revoke_local() {
-  [ -f /root/.ssh/authorized_keys ] || { echo "TWOFAMILY_LOCAL=ABSENT"; return 0; }
-  local tmp
-  tmp="$(mktemp)"
-  grep -v 'twofamily-social-control' /root/.ssh/authorized_keys > "$tmp" || true
-  cat "$tmp" > /root/.ssh/authorized_keys
-  rm -f "$tmp"
-  chmod 0600 /root/.ssh/authorized_keys
-  echo "TWOFAMILY_LOCAL=REVOKED"
-}
-
 case "$CMD" in
   audit) audit ;;
   health) health ;;
@@ -476,7 +450,7 @@ case "$CMD" in
   magelle-deploy\ *) magelle_deploy "${CMD#magelle-deploy }" ;;
   twofamily-audit) twofamily_audit ;;
   twofamily-authorize-ephemeral) twofamily_authorize_ephemeral ;;
-  twofamily-revoke-ephemeral) twofamily_revoke_ephemeral ;;\n  twofamily-authorize-local) twofamily_authorize_local ;;\n  twofamily-revoke-local) twofamily_revoke_local ;;
+  twofamily-revoke-ephemeral) twofamily_revoke_ephemeral ;;
   deploy\ *) deploy "${CMD#deploy }" ;;
   *) echo "DENIED"; exit 126 ;;
 esac

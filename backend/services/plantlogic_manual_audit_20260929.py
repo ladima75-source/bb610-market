@@ -633,7 +633,24 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
     _set_char(con, p, "Розміри", "360 × 360 мм · висота 50 мм · робоча зона 320 мм")
     _set_char(con, p, "Висота ніжок", "50 мм")
     skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (p,)).fetchall()]
-    _bind_local_visual(con, p, skus, "/assets/img/v5/manual/plantlogic-12010320-vf-base.svg", "PlantLogic 12010320 — premium dimension/function visual")
+    _bind_local_photo(
+        con,
+        p,
+        skus,
+        "/assets/img/v5/manual/plantlogic-12010320-exact-catalog.webp",
+        "PlantLogic 12010320 — VF 3232 з фіксацією шланга, офіційне фото Catalog 2026",
+        primary=True,
+        order=0,
+    )
+    _bind_local_visual(
+        con,
+        p,
+        skus,
+        "/assets/img/v5/manual/plantlogic-12010320-vf-base.svg",
+        "PlantLogic 12010320 — premium dimension/function visual",
+        order=90,
+        primary=False,
+    )
 
     # #20 exact long perforated base.
     p = "plantlogic-slab-base-bags-slabs-1302809"

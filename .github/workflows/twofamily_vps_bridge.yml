@@ -1,0 +1,58 @@
+name: TwoFamily VPS Bridge Install
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/twofamily-vps-command.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: twofamily-vps-bridge-install
+  cancel-in-progress: false
+
+jobs:
+  vps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate request
+        id: req
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          d=json.loads(Path("ops/twofamily-vps-command.json").read_text(encoding="utf-8"))
+          action=str(d.get("action") or "").strip()
+          if action != "install-bridge":
+              raise SystemExit(f"unsupported action: {action}")
+          print(f"action={action}")
+          PY
+      - name: Configure SSH
+        shell: bash
+        env:
+          KEY: ${{ secrets.BB610_VPS_SSH_KEY }}
+          HOSTS: ${{ secrets.BB610_VPS_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          test -n "$KEY"; test -n "$HOSTS"
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/vps
+          chmod 600 ~/.ssh/vps
+          printf '%s\n' "$HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+      - name: Install restricted TwoFamily bridge
+        shell: bash
+        env:
+          HOST: ${{ secrets.BB610_VPS_HOST }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/vps \
+            -o BatchMode=yes \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            root@"$HOST" twofamily-install-bridge

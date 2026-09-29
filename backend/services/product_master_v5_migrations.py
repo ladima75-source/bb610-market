@@ -3147,6 +3147,14 @@ def _plantlogic_user_photo_cleanup_batch_40(con: sqlite3.Connection) -> bool:
         "Контейнер для транспортування та холодного зберігання long-cane — вигляд виробу",
         "manual_user_photo_1702000",
     )
+    bind_local(
+        p,
+        "/assets/img/v5/manual/plantlogic-1702000-folded-crop.svg",
+        "Контейнер для транспортування та холодного зберігання long-cane — складений вигляд",
+        "manual_user_photo_1702000_folded",
+        order=1,
+        primary=False,
+    )
 
     # 8L vegetable pot #1305008: existing source is identity-conflicted.
     # Keep canonical product/SKU internally, remove misleading media and hide publicly.

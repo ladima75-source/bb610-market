@@ -1,9 +1,11 @@
 {
   "schema_version": "1.0",
-  "enabled": true,
+  "enabled": false,
   "target_path": "/usr/local/sbin/bb610-github-gateway",
   "target_repo_path": "ops/bb610-github-gateway-v3",
   "expected_current_sha256": "4e32d85614c3f24da82acb1b6779f5a87e57b0da7469072b768f94958323fc93",
   "mode": "0700",
-  "reason": "Apply SELinux/home-permission hardening for TwoFamily deploy user."
+  "reason": "Apply SELinux/home-permission hardening for TwoFamily deploy user.",
+  "completed_sha256": "51d8aa5fb008690367a04bbc5d7ab6e031a8ef049985be9fd7c7f6fe237b7ebf",
+  "completed_note": "TwoFamily deploy-user SSH home/SELinux hardening installed and verified."
 }

@@ -1,9 +1,11 @@
 {
   "schema_version": "1.0",
-  "enabled": true,
+  "enabled": false,
   "target_path": "/usr/local/sbin/bb610-github-gateway",
   "target_repo_path": "ops/bb610-github-gateway-v3",
-  "expected_current_sha256": "4d09961ad7e357c870a3c2db7ad41c9ebb28939819ab56a9c09679cd32c13f29",
+  "expected_current_sha256": "990cabf40866f1d17f2ef612ddb662039334fd5cb03766230e9542f9ebbec5a9",
   "mode": "0700",
-  "reason": "Temporary hash-pinned gateway upgrade to authorize and revoke the one-time TwoFamily rollout key."
+  "reason": "TwoFamily temporary rollout commands installed; one-time gateway upgrade disabled.",
+  "completed_sha256": "990cabf40866f1d17f2ef612ddb662039334fd5cb03766230e9542f9ebbec5a9",
+  "completed_note": "Temporary TwoFamily rollout authorize/audit/revoke commands installed; gateway hash verified."
 }

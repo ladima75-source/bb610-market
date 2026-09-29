@@ -9,6 +9,7 @@ on:
       - 'backend/services/plantlogic_manual_audit_20260929.py'
       - 'backend/services/product_master_v5_migrations.py'
       - 'tools/audit_plantlogic_manual_20260929.py'
+      - 'tools/audit_plantlogic_public_media_20260929.py'
       - 'tools/audit_plantlogic_v2_final.py'
       - 'tools/audit_plantlogic_v2_customer_content.py'
       - 'backend/services/plantlogic_v2_customer_content.py'
@@ -35,6 +36,7 @@ jobs:
       - name: Compile manual override
         run: |
           python -m py_compile             backend/services/plantlogic_manual_audit_20260929.py             backend/services/product_master_v5_migrations.py             tools/audit_plantlogic_manual_20260929.py \
+            tools/audit_plantlogic_public_media_20260929.py \
             tools/audit_plantlogic_v2_final.py \
             tools/audit_plantlogic_v2_customer_content.py
       - name: Verify base PlantLogic V2 structural layer
@@ -43,3 +45,5 @@ jobs:
         run: python tools/audit_plantlogic_v2_customer_content.py
       - name: Run PlantLogic manual audit
         run: python tools/audit_plantlogic_manual_20260929.py
+      - name: Report public PlantLogic media gaps
+        run: python tools/audit_plantlogic_public_media_20260929.py

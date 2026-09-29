@@ -2591,6 +2591,12 @@ def _plantlogic_12010320_exact_media_batch_29(con: sqlite3.Connection) -> bool:
     return True
 
 
+
+def _plantlogic_one_media_gallery_batch_30(con: sqlite3.Connection) -> bool:
+    """Expand exact official galleries for selected PlantLogic one-media public cards."""
+    from . import plantlogic_manual_audit_20260929
+    return plantlogic_manual_audit_20260929.apply_one_media_gallery_expansion(con)
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2623,6 +2629,7 @@ _MIGRATIONS = [
     ("20260929_plantlogic_public_copy_cleanup_batch27", _plantlogic_public_copy_cleanup_batch_27),
     ("20260929_plantlogic_zephyr_v2_media_cleanup_batch28", _plantlogic_zephyr_v2_media_cleanup_batch_28),
     ("20260929_plantlogic_12010320_exact_media_batch29", _plantlogic_12010320_exact_media_batch_29),
+    ("20260929_plantlogic_one_media_gallery_batch30", _plantlogic_one_media_gallery_batch_30),
 ]
 
 

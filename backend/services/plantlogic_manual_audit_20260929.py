@@ -602,7 +602,21 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
     _set_char(con, p, "Модель", "Slab base for bags and slabs")
     _set_char(con, p, "Розміри", "210 × 1000 мм")
     skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (p,)).fetchall()]
-    _bind_local_visual(con, p, skus, "/assets/img/v5/manual/plantlogic-1302809-slab-base.svg", "PlantLogic 1302809 — premium dimension visual, 210 × 1000 мм")
+    _remote_media(
+        con,
+        p,
+        skus,
+        [
+            ("https://getplantlogic.com/wp-content/uploads/2025/08/hanging-gutter-system-for-slabs.png",
+             "PlantLogic Slab base — офіційне application photo для субстратних плит"),
+            ("https://getplantlogic.com/wp-content/uploads/2025/08/growing-hydroponic-tomatoes.png",
+             "PlantLogic Slab base — офіційне application photo у томатній системі"),
+            ("https://getplantlogic.com/wp-content/uploads/2025/08/growing-hydroponic-peppers.png",
+             "PlantLogic Slab base — офіційне application photo у перцевій системі"),
+        ],
+        "plantlogic_official_slab_base_application",
+    )
+    _bind_local_visual(con, p, skus, "/assets/img/v5/manual/plantlogic-1302809-slab-base.svg", "PlantLogic 1302809 — premium dimension visual, 210 × 1000 мм", order=90)
 
 
 def apply(con: sqlite3.Connection) -> dict:

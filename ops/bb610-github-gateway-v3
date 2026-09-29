@@ -445,10 +445,15 @@ twofamily_enable_deploy_user() {
     useradd --create-home --shell /bin/bash twofamily-deploy
   fi
 
+  chown twofamily-deploy:twofamily-deploy /home/twofamily-deploy
+  chmod 0700 /home/twofamily-deploy
   install -d -m 0700 -o twofamily-deploy -g twofamily-deploy /home/twofamily-deploy/.ssh
   printf '%s\n' "$key_line" > /home/twofamily-deploy/.ssh/authorized_keys
   chown twofamily-deploy:twofamily-deploy /home/twofamily-deploy/.ssh/authorized_keys
   chmod 0600 /home/twofamily-deploy/.ssh/authorized_keys
+  if command -v restorecon >/dev/null 2>&1; then
+    restorecon -RF /home/twofamily-deploy >/dev/null 2>&1 || true
+  fi
 
   install -d -m 0750 -o twofamily-deploy -g twofamily-deploy /home/twofamily-deploy/upload
   echo "TWOFAMILY_DEPLOY_USER=READY"

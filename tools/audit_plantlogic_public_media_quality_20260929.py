@@ -88,6 +88,17 @@ def main() -> int:
                 ).fetchall()
                 assert len(media) >= 2, (pid, "media<2", len(media))
 
+                banned_alt_terms = (
+                    "premium", "exact", "official", "application photo",
+                    "catalog 2026", "tech sheet", "офіційн", "дані підтверджені",
+                    "source url", "audit note",
+                )
+                for row in media:
+                    alt_lower = str(row["alt"] or "").lower()
+                    assert not any(term in alt_lower for term in banned_alt_terms), (
+                        pid, "customer-facing media alt contains provenance/audit wording", row["alt"]
+                    )
+
                 normalized = [normalized_path(row["path"]) for row in media]
                 assert len(normalized) == len(set(normalized)), (pid, "duplicate media path")
 
@@ -123,6 +134,7 @@ def main() -> int:
             print("PUBLIC PRODUCTS: 68")
             print("MIN MEDIA: 2")
             print("PRIMARY PER SKU: 1")
+            print("PUBLIC MEDIA ALT: CLEAN")
             print("TECHNICAL PRIMARY ALLOWLIST: 1500010 + Zephyr V2 40L 1301143")
         finally:
             con.close()

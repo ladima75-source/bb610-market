@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sqlite3
 from datetime import datetime, timezone
 
@@ -838,6 +839,50 @@ def apply_remaining_media_visuals(con: sqlite3.Connection) -> bool:
     return True
 
 
+
+def normalize_public_media_alt(con: sqlite3.Connection) -> bool:
+    """Keep public PlantLogic image alt text descriptive; provenance stays in source metadata."""
+    rows = con.execute(
+        """
+        SELECT DISTINCT m.media_id,m.alt
+        FROM media m
+        JOIN (
+          SELECT pm.media_id
+          FROM product_media pm
+          JOIN products p ON p.product_id=pm.product_id
+          WHERE lower(p.brand)='plantlogic' AND p.public_enabled=1 AND p.status='active'
+          UNION
+          SELECT sm.media_id
+          FROM sku_media sm
+          JOIN skus s ON s.sku_id=sm.sku_id
+          JOIN products p ON p.product_id=s.product_id
+          WHERE lower(p.brand)='plantlogic' AND p.public_enabled=1 AND p.status='active' AND s.enabled=1
+        ) x ON x.media_id=m.media_id
+        """
+    ).fetchall()
+    for media_id, alt in rows:
+        value = str(alt or "").strip()
+        if not value:
+            continue
+        value = re.sub(r"\bapplication photo\b", "фото застосування", value, flags=re.I)
+        value = re.sub(r"\bfamily/application фото\b", "фото застосування сімейства", value, flags=re.I)
+        value = re.sub(r"\bexact\b\s*", "", value, flags=re.I)
+        value = re.sub(r"\bpremium\b\s*", "", value, flags=re.I)
+        value = re.sub(r"\bofficial\b\s*", "", value, flags=re.I)
+        value = re.sub(r"\btech sheet\b", "", value, flags=re.I)
+        value = re.sub(r"\s+from\s+", " ", value, flags=re.I)
+        value = re.sub(r"\s+з\s+(?:PlantLogic\s+)?Catalog\s+2026\b", "", value, flags=re.I)
+        value = re.sub(r"\s+з\s+EN\s*$", "", value, flags=re.I)
+        value = value.replace("офіційне фото", "фото")
+        value = value.replace("офіційний вигляд", "вигляд")
+        value = value.replace("офіційна схема", "схема")
+        value = value.replace("офіційна графіка", "схема")
+        value = value.replace("офіційне фото застосування", "фото застосування")
+        value = re.sub(r"\s{2,}", " ", value).strip(" ·—-")
+        con.execute("UPDATE media SET alt=? WHERE media_id=?", (value, media_id))
+    return True
+
+
 def apply(con: sqlite3.Connection) -> dict:
     # Archive the 10 explicit REMOVE / LEGACY decisions.
     for product_id in sorted(REMOVE_PRODUCTS):
@@ -880,6 +925,7 @@ def apply(con: sqlite3.Connection) -> dict:
         ),
     ]
     _remote_media(con, COOLING_PRODUCT_ID, [COOLING_SKU_ID], cooling_images, "plantlogic_official_cooling_skirt")
+    normalize_public_media_alt(con)
 
     return {
         "version": MANUAL_AUDIT_VERSION,

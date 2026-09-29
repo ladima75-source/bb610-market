@@ -2674,6 +2674,14 @@ def _plantlogic_zephyr_v2_40l_exact_primary_batch_32(con: sqlite3.Connection) ->
     return True
 
 
+def _plantlogic_public_media_alt_cleanup_batch_33(con: sqlite3.Connection) -> bool:
+    """Remove source/audit wording from buyer-facing PlantLogic image alt text."""
+    if os.getenv("BB610_SKIP_PLANTLOGIC_MANUAL_1_23") == "1":
+        return True
+    from . import plantlogic_manual_audit_20260929
+    return plantlogic_manual_audit_20260929.normalize_public_media_alt(con)
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2709,6 +2717,7 @@ _MIGRATIONS = [
     ("20260929_plantlogic_one_media_gallery_batch30", _plantlogic_one_media_gallery_batch_30),
     ("20260929_plantlogic_remaining_media_visuals_batch31", _plantlogic_remaining_media_visuals_batch_31),
     ("20260929_plantlogic_zephyr_v2_40l_exact_primary_batch32", _plantlogic_zephyr_v2_40l_exact_primary_batch_32),
+    ("20260929_plantlogic_public_media_alt_cleanup_batch33", _plantlogic_public_media_alt_cleanup_batch_33),
 ]
 
 

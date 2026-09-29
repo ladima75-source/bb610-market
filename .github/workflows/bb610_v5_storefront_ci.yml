@@ -114,7 +114,9 @@ jobs:
           if(DS.product('plantlogic-universal-square-40l-legacy-1309040'))throw new Error('legacy 40L square leaked');
           if(DS.product('plantlogic-universal-round-25l-legacy-1309003')?.id!=='plantlogic-25-round-1308125')throw new Error('legacy 25L round must resolve to 1308125');
           if(!DS.product('plantlogic-blueberry-cooling-cover'))throw new Error('Cooling Skirt missing');
-          if(DS.product('plantlogic-kratos-rivus-grow-bag-8l-1500010')?.category_id!=='containers')throw new Error('1500010 must be product/container');\n          if(DS.product('plantlogic-vegetable-pot-8l-1305008'))throw new Error('unverified 1305008 leaked to storefront');\n          if(DS.product('plantlogic-nursery-tray-1302048'))throw new Error('unverified 1302048 leaked to storefront');
+          if(DS.product('plantlogic-kratos-rivus-grow-bag-8l-1500010')?.category_id!=='containers')throw new Error('1500010 must be product/container');
+          if(DS.product('plantlogic-vegetable-pot-8l-1305008'))throw new Error('unverified 1305008 leaked to storefront');
+          if(DS.product('plantlogic-nursery-tray-1302048'))throw new Error('unverified 1302048 leaked to storefront');
           const potSkus=pots.flatMap(p=>DS.skusForProduct(p.id));
           if(potSkus.length!==71)throw new Error('Plantlogic pot SKU count');
           const round20=DS.product('plantlogic-blueberry-round-20l-1308020');

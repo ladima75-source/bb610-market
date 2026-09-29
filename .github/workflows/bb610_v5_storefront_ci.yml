@@ -154,6 +154,19 @@ jobs:
           }
           const colorSkus=DS.skusForProduct('plantlogic-10l-drainage-1307110');
           if(colorSkus.filter(x=>x.attributes?.color_label).length!==3)throw new Error('Plantlogic 1307110 color SKU projection');
+          for(const label of [
+            'Горщики та рішення для контейнерного вирощування',
+            'Горщики та рішення для long-cane і субстрату',
+            'Жолоби та системи для субстратного вирощування',
+            'Горщики, мішки та основи для субстрату',
+            'Рішення для різних культур і технологій',
+            'Основи, кліпси, лізиметри та комплектуючі'
+          ]){
+            if(!catalogSource.includes(label))throw new Error('Plantlogic section buyer copy: '+label);
+          }
+          for(const legacySubtitle of ['Blueberry Production','Rubus Production','Strawberry Production','Vegetable Production','Accessories']){
+            if(catalogSource.includes("subtitle:'"+legacySubtitle+"'"))throw new Error('Legacy English Plantlogic section subtitle: '+legacySubtitle);
+          }
           if(!catalogSource.includes('containerLogicalSort'))throw new Error('container logical sorting');
           for(const marker of [
             "blueberry:[",

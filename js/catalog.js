@@ -187,27 +187,27 @@ document.addEventListener('DOMContentLoaded',async()=>{
   ];
   const plantlogicSectionOrder=[
     {
-      id:'blueberry',label:'Лохина',subtitle:'Blueberry Production',titleSuffix:'',
+      id:'blueberry',label:'Лохина',subtitle:'Горщики та рішення для контейнерного вирощування',titleSuffix:'',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/05/arandano-blueberry-prodcution-1.jpg?fit=2481%2C815&ssl=1'
     },
     {
-      id:'rubus',label:'Малина + ожина',subtitle:'Rubus Production',titleSuffix:'',
+      id:'rubus',label:'Малина + ожина',subtitle:'Горщики та рішення для long-cane і субстрату',titleSuffix:'',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/05/frambuesa-rubus-hidroponia-production-1.jpg?fit=2481%2C815&ssl=1'
     },
     {
-      id:'strawberry',label:'Полуниця',subtitle:'Strawberry Production',titleSuffix:'',
+      id:'strawberry',label:'Полуниця',subtitle:'Жолоби та системи для субстратного вирощування',titleSuffix:'',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2025/02/Strawberry-Tabletop-System-Plantlogic.png?fit=1365%2C769&ssl=1'
     },
     {
-      id:'vegetable',label:'Овочі',subtitle:'Vegetable Production',titleSuffix:'',
+      id:'vegetable',label:'Овочі',subtitle:'Горщики, мішки та основи для субстрату',titleSuffix:'',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2021/06/Vegetable_Header.jpg?fit=2481%2C971&ssl=1'
     },
     {
-      id:'universal',label:'Універсальні',subtitle:'Універсальне застосування',titleSuffix:'',
+      id:'universal',label:'Універсальні',subtitle:'Рішення для різних культур і технологій',titleSuffix:'',
       cultureImage:'https://i0.wp.com/getplantlogic.com/wp-content/uploads/2018/07/hydroponic-system-cover.png?resize=669%2C502'
     },
     {
-      id:'accessories',label:'Аксесуари',subtitle:'Accessories',titleSuffix:'',cultureImage:''
+      id:'accessories',label:'Аксесуари',subtitle:'Основи, кліпси, лізиметри та комплектуючі',titleSuffix:'',cultureImage:''
     }
   ];
   const plantlogicSectionsFor=p=>{

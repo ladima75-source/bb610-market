@@ -578,6 +578,14 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
             primary=False,
             order=50,
         )
+        # Family/application media is contextual product media, never an exact SKU binding.
+        family_media = con.execute("SELECT media_id FROM media WHERE path=?", (zephyr_family_photo,)).fetchone()
+        if family_media:
+            for sku_id in skus:
+                con.execute(
+                    "DELETE FROM sku_media WHERE sku_id=? AND media_id=?",
+                    (sku_id, family_media[0]),
+                )
 
     # #9: manual correction 50 mm -> 30 mm.
     p = "plantlogic-10l-square-1306010"

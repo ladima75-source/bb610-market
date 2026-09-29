@@ -241,18 +241,33 @@ def main() -> int:
             assert z40_primary[0]["sort_order"] == 0
             assert z40_primary[0]["source_kind"] == "manual_premium_visual"
 
-            z40_family = con.execute(
-                """
-                SELECT sm.is_primary,sm.sort_order
-                FROM sku_media sm
-                JOIN skus s ON s.sku_id=sm.sku_id
-                JOIN media m ON m.media_id=sm.media_id
-                WHERE s.product_id='plantlogic-blueberry-zephyr-v2-40l-1301143'
-                  AND m.path='/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp'
-                """
-            ).fetchone()
-            assert z40_family is not None
-            assert z40_family["is_primary"] == 0 and z40_family["sort_order"] >= 50
+            for pid in (
+                "plantlogic-blueberry-zephyr-v2-30l-1301153",
+                "plantlogic-blueberry-zephyr-v2-40l-1301143",
+            ):
+                family_product = con.execute(
+                    """
+                    SELECT pm.sort_order
+                    FROM product_media pm
+                    JOIN media m ON m.media_id=pm.media_id
+                    WHERE pm.product_id=?
+                      AND m.path='/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp'
+                    """,
+                    (pid,),
+                ).fetchone()
+                assert family_product is not None and family_product["sort_order"] >= 50
+                family_sku = con.execute(
+                    """
+                    SELECT 1
+                    FROM sku_media sm
+                    JOIN skus s ON s.sku_id=sm.sku_id
+                    JOIN media m ON m.media_id=sm.media_id
+                    WHERE s.product_id=?
+                      AND m.path='/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp'
+                    """,
+                    (pid,),
+                ).fetchone()
+                assert family_sku is None, (pid, "family/application media must not be exact SKU media")
 
             # 10L square manual correction: 30 mm, never 50 mm.
             p10 = con.execute(

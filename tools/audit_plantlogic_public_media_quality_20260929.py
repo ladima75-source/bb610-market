@@ -130,6 +130,23 @@ def main() -> int:
                         host = urlsplit(url).netloc.lower()
                         assert "getplantlogic.com" in host, (pid, "non-official remote media", url)
 
+            zephyr_family_path = "/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp"
+            for pid in (
+                "plantlogic-blueberry-zephyr-v2-30l-1301153",
+                "plantlogic-blueberry-zephyr-v2-40l-1301143",
+            ):
+                bad_family_sku = con.execute(
+                    """
+                    SELECT sm.sku_id
+                    FROM sku_media sm
+                    JOIN skus s ON s.sku_id=sm.sku_id
+                    JOIN media m ON m.media_id=sm.media_id
+                    WHERE s.product_id=? AND m.path=?
+                    """,
+                    (pid, zephyr_family_path),
+                ).fetchall()
+                assert not bad_family_sku, (pid, "contextual Zephyr family media bound as exact SKU media")
+
             print("PLANTLOGIC PUBLIC MEDIA QUALITY: PASS")
             print("PUBLIC PRODUCTS: 68")
             print("MIN MEDIA: 2")

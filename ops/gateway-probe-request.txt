@@ -1,1 +1,1 @@
-twofamily-gateway-upgrade 2026-09-29T18:21:06.649Z
+TwoFamily gateway upgrade apply — 2026-09-29T21:24:00+03:00

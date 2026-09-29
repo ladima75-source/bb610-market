@@ -42,7 +42,7 @@ def main() -> int:
                 """
             ).fetchall()
 
-            assert len(rows) == 68, len(rows)
+            assert len(rows) == 67, len(rows)
             zero, one, two_plus, no_primary = [], [], [], []
             for row in rows:
                 count = max(int(row["product_media"] or 0), int(row["sku_media"] or 0))

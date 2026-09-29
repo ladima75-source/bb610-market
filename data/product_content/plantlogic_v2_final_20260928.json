@@ -39,7 +39,9 @@
       "accessories": 19
     },
     "public_hidden": [
-      "1700149"
+      "1700149",
+      "1305008",
+      "1302048"
     ]
   },
   "canonical_products": [
@@ -175,7 +177,11 @@
       "source_urls": [
         "https://getplantlogic.com/nurserytray_item_1302048_chi/"
       ],
-      "notes": []
+      "notes": [
+        "Офіційний tech sheet підтверджує Nursery Tray Product #1302048, але товар не знайдено в актуальному Plantlogic Catalog 2026 та поточному portfolio. Тимчасово приховано до підтвердження актуальності постачальником."
+      ],
+      "public_enabled": false,
+      "public_hide_reason": "not_in_current_catalog_pending_supplier_confirmation"
     },
     {
       "canonical_product_id": "plantlogic-hose-clip-1205001-1205002",
@@ -2038,7 +2044,11 @@
       "source_urls": [
         "https://getplantlogic.com/es/maceta-de-8-litros-para-vegetales-1305008/"
       ],
-      "notes": []
+      "notes": [
+        "Тимчасово приховано з публічної вітрини: поточний офіційний 8 Liter Square Pot має Product #1309008, а раніше прив'язане зображення показує Product #1305081. Product #1305008 потребує підтвердження виробника."
+      ],
+      "public_enabled": false,
+      "public_hide_reason": "manufacturer_identity_conflict_pending_verification"
     },
     {
       "canonical_product_id": "plantlogic-kratos-rivus-grow-bag-8l-1500010",

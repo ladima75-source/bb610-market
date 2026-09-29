@@ -6,5 +6,5 @@
 <text x="80" y="242" font-size="27" fill="#667085" font-family="Arial, sans-serif">Артикул виробника 1500010</text>
 <text x="80" y="340" font-size="28" fill="#1f2933" font-family="Arial, sans-serif"><tspan fill="#36b44a">●</tspan><tspan dx="14">Сумісність: Kratos / Rivus</tspan></text><text x="80" y="398" font-size="28" fill="#1f2933" font-family="Arial, sans-serif"><tspan fill="#36b44a">●</tspan><tspan dx="14">Для овочевих систем субстратного вирощування</tspan></text><text x="80" y="456" font-size="28" fill="#1f2933" font-family="Arial, sans-serif"><tspan fill="#36b44a">●</tspan><tspan dx="14">Окрема коренева зона у субстраті</tspan></text>
 <path d="M850 300 L1160 300 L1120 650 L890 650 Z" fill="white" stroke="#1f2933" stroke-width="12"/><path d="M875 345 Q1000 300 1135 345 L1120 650 L890 650 Z" fill="#d8b087" opacity=".65"/><path d="M1005 345 C1010 300 1010 270 1015 225 M1015 270 C960 250 935 220 920 185 M1015 270 C1070 245 1100 215 1120 180" fill="none" stroke="#36b44a" stroke-width="10" stroke-linecap="round"/>
-<text x="80" y="815" font-size="22" fill="#667085" font-family="Arial, sans-serif">Дані підтверджені офіційними матеріалами PlantLogic</text>
+<text x="80" y="815" font-size="22" fill="#667085" font-family="Arial, sans-serif">Мішок для субстрату в системах Kratos / Rivus</text>
 </svg>

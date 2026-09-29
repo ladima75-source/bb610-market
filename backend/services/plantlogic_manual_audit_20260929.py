@@ -729,6 +729,51 @@ def _apply_exact_zero_media(con: sqlite3.Connection) -> None:
         "plantlogic_official_exact_product",
     )
 
+
+def apply_one_media_gallery_expansion(con: sqlite3.Connection) -> bool:
+    """Expand exact official galleries for safe one-media public PlantLogic cards."""
+    galleries = {
+        "plantlogic-lysimeter-kit": [
+            ("https://getplantlogic.com/wp-content/uploads/2018/08/Lys_2.jpg",
+             "PlantLogic Lysimeter — офіційне фото лізиметра"),
+            ("https://getplantlogic.com/wp-content/uploads/2018/08/Lys_3.jpg",
+             "PlantLogic Lysimeter — офіційне фото конструкції"),
+            ("https://getplantlogic.com/wp-content/uploads/2018/08/Lys_4.jpg",
+             "PlantLogic Lysimeter — офіційний вигляд конструкції"),
+            ("https://getplantlogic.com/wp-content/uploads/2018/08/Lys_5.jpg",
+             "PlantLogic Lysimeter — офіційне фото комплекту"),
+            ("https://getplantlogic.com/wp-content/uploads/2018/08/Lys_9.jpg",
+             "PlantLogic Lysimeter Kit — офіційне application photo з IN/OUT buckets"),
+        ],
+        "plantlogic-pot-anchor": [
+            ("https://getplantlogic.com/wp-content/uploads/2021/01/product_PotAnchor_03.jpg",
+             "PlantLogic Pot Anchor — офіційна схема встановлення в контейнері"),
+            ("https://getplantlogic.com/wp-content/uploads/2021/01/product_PotAnchor_Graphic.jpg",
+             "PlantLogic Pot Anchor — офіційна графіка монтажу"),
+        ],
+        "plantlogic-plastic-gutter-drainage": [
+            ("https://getplantlogic.com/wp-content/uploads/2018/08/Gutter_1.jpg",
+             "PlantLogic Plastic Gutter — офіційне фото жолобів для збору дренажу"),
+        ],
+    }
+    for pid, rows in galleries.items():
+        sku_ids = [x[0] for x in con.execute(
+            "SELECT sku_id FROM skus WHERE product_id=? AND enabled=1", (pid,)
+        ).fetchall()]
+        if not sku_ids:
+            raise RuntimeError(f"PlantLogic gallery target missing enabled SKU: {pid}")
+        _remote_media(
+            con,
+            pid,
+            sku_ids,
+            rows,
+            "plantlogic_official_exact_gallery",
+            primary_first=False,
+            start_order=10,
+        )
+    return True
+
+
 def apply(con: sqlite3.Connection) -> dict:
     # Archive the 10 explicit REMOVE / LEGACY decisions.
     for product_id in sorted(REMOVE_PRODUCTS):
@@ -752,6 +797,7 @@ def apply(con: sqlite3.Connection) -> dict:
     _clean_unsafe_primary_media(con)
     _apply_keep_corrections(con)
     _apply_exact_zero_media(con)
+    apply_one_media_gallery_expansion(con)
 
     # Cooling Skirt: official real product/application images, no Product #1310110.
     cooling_images = [

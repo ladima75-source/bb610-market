@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "c233b8fba9918b6081a528ad186f189c4092215a",
-  "request_id": "2026-09-29-plantlogic-zephyr-context-media"
+  "action": "audit",
+  "request_id": "2026-09-29-plantlogic-post-deploy-live-audit"
 }

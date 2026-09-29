@@ -255,6 +255,22 @@ def main() -> int:
             assert product_master_v5.product(
                 "plantlogic-zephyr-v2-hose-clip-1700149", public_only=True
             ) is None
+            assert product_master_v5.resolve_sku("PL-1700149") is None
+            hidden_sku_internal = product_master_v5.resolve_sku(
+                "PL-1700149", public_only=False
+            )
+            assert hidden_sku_internal is not None
+            assert hidden_sku_internal["canonical_sku_id"] == "PL-1700149"
+            assert product_master_v5.resolve_order_sku("PL-1700149") is None
+            public_snapshot = product_master_v5.snapshot(public_only=True)
+            assert not any(
+                x.get("product_id") == "plantlogic-zephyr-v2-hose-clip-1700149"
+                for x in public_snapshot.get("product_aliases") or []
+            )
+            assert not any(
+                x.get("canonical_sku_id") == "PL-1700149"
+                for x in public_snapshot.get("sku_aliases") or []
+            )
             feed = product_master_feed_v5.snapshot()
             feed_products = {
                 x["id"] for x in feed["products"]

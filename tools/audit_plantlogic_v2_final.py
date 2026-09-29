@@ -72,8 +72,8 @@ def main() -> int:
         for product in canonical
         if any(str(number) in hidden_numbers for number in product.get("manufacturer_product_numbers") or [])
     }
-    assert hidden_numbers == {"1700149"}
-    assert hidden_product_ids == {"plantlogic-zephyr-v2-hose-clip-1700149"}
+    assert hidden_numbers == {"1700149", "1305008", "1302048"}
+    assert hidden_product_ids == {\n        "plantlogic-zephyr-v2-hose-clip-1700149",\n        "plantlogic-vegetable-pot-8l-1305008",\n        "plantlogic-nursery-tray-1302048",\n    }
     public_canonical_ids = canonical_ids - hidden_product_ids
     public_wanted_skus = {
         sku["sku_id"]
@@ -262,6 +262,15 @@ def main() -> int:
             assert hidden_sku_internal is not None
             assert hidden_sku_internal["canonical_sku_id"] == "PL-1700149"
             assert product_master_v5.resolve_order_sku("PL-1700149") is None
+            for pid, sid in (
+                ("plantlogic-vegetable-pot-8l-1305008", "PL-1305008-BK"),
+                ("plantlogic-nursery-tray-1302048", "PL-1302048"),
+            ):
+                assert product_master_v5.product(pid, public_only=False) is not None
+                assert product_master_v5.product(pid, public_only=True) is None
+                assert product_master_v5.resolve_sku(sid) is None
+                assert product_master_v5.resolve_sku(sid, public_only=False) is not None
+                assert product_master_v5.resolve_order_sku(sid) is None
             public_snapshot = product_master_v5.snapshot(public_only=True)
             assert not any(
                 x.get("product_id") == "plantlogic-zephyr-v2-hose-clip-1700149"

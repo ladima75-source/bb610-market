@@ -129,8 +129,11 @@ jobs:
           assert data['counts']['hidden_products']==all_data['counts']['products']-data['counts']['public_products']
           assert data['counts']['public_skus'] < data['counts']['skus']
           plantlogic=[x for x in all_data['products'] if str(x.get('brand') or '').lower()=='plantlogic']
-          assert len(plantlogic)==78
-          assert sum(len(x.get('skus') or []) for x in plantlogic)==133
+          assert len(plantlogic)==79
+          assert sum(len(x.get('skus') or []) for x in plantlogic)==134
+          public_plantlogic=[x for x in data['products'] if str(x.get('brand') or '').lower()=='plantlogic']
+          assert len(public_plantlogic)==68
+          assert sum(len(x.get('skus') or []) for x in public_plantlogic)==122
           assert data['counts']['product_sources']>=expected_sources
           assert data['counts']['media']>=len(media.get('media') or [])
           assert data['counts']['product_media']>=len(media.get('product_bindings') or [])

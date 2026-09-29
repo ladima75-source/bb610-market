@@ -20,6 +20,8 @@ PREFERRED_REAL_PRIMARY = {
     "plantlogic-universal-round-30l-1308030": "https://www.getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-30-liter-round-1308030-Hero.jpg",
     "plantlogic-rubus-square-10l-legacy-1309010": "/assets/img/v5/manual/plantlogic-1309010-view1.webp",
     "plantlogic-8l-strawberry-trough-big-handle-1305082": "/assets/img/v5/media/375fa47472d8901aca1a.jpg",
+    "plantlogic-blueberry-zephyr-v2-30l-1301153": "/assets/img/v5/media/aaaa485fd58fd917c4fb.jpg",
+    "plantlogic-blueberry-zephyr-v2-40l-1301143": "/assets/img/v5/media/aaaa485fd58fd917c4fb.jpg",
 }
 
 FORBIDDEN_PRODUCT_MEDIA = {
@@ -34,7 +36,6 @@ FORBIDDEN_PRODUCT_MEDIA = {
 
 ALLOWED_TECHNICAL_PRIMARY = {
     "plantlogic-kratos-rivus-grow-bag-8l-1500010",
-    "plantlogic-blueberry-zephyr-v2-40l-1301143",
 }
 
 
@@ -237,10 +238,13 @@ def main() -> int:
                         assert "getplantlogic.com" in host, (pid, "non-official remote media", url)
 
             zephyr_family_path = "/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp"
-            for pid in (
-                "plantlogic-blueberry-zephyr-v2-30l-1301153",
-                "plantlogic-blueberry-zephyr-v2-40l-1301143",
-            ):
+            zephyr_schemes = {
+                "plantlogic-blueberry-zephyr-v2-30l-1301153":
+                    "/assets/img/v5/manual/plantlogic-1301153-zephyr-v2-30l.svg",
+                "plantlogic-blueberry-zephyr-v2-40l-1301143":
+                    "/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg",
+            }
+            for pid, scheme_path in zephyr_schemes.items():
                 bad_family_sku = con.execute(
                     """
                     SELECT sm.sku_id
@@ -253,6 +257,29 @@ def main() -> int:
                 ).fetchall()
                 assert not bad_family_sku, (pid, "contextual Zephyr family media bound as exact SKU media")
 
+                scheme = con.execute(
+                    """
+                    SELECT sm.is_primary,sm.sort_order
+                    FROM sku_media sm
+                    JOIN skus s ON s.sku_id=sm.sku_id
+                    JOIN media m ON m.media_id=sm.media_id
+                    WHERE s.product_id=? AND s.enabled=1 AND m.path=?
+                    """,
+                    (pid, scheme_path),
+                ).fetchone()
+                assert scheme is not None, (pid, "Zephyr size scheme missing")
+                assert scheme["is_primary"] == 0, (pid, "Zephyr size scheme must not be primary")
+                assert scheme["sort_order"] == 999, (pid, "Zephyr size scheme must be last")
+                max_order = con.execute(
+                    """
+                    SELECT MAX(sm.sort_order)
+                    FROM sku_media sm JOIN skus s ON s.sku_id=sm.sku_id
+                    WHERE s.product_id=? AND s.enabled=1
+                    """,
+                    (pid,),
+                ).fetchone()[0]
+                assert max_order == 999, (pid, "Zephyr size scheme is not last")
+
             print("PLANTLOGIC PUBLIC MEDIA QUALITY: PASS")
             print("PUBLIC PRODUCTS: 68")
             print("MIN MEDIA: 2")
@@ -263,7 +290,8 @@ def main() -> int:
             print("SHARED COLOR REFERENCE PRODUCTS:", len(shared_color_reference_products))
             print("PUBLIC TITLES: NO PRODUCT #")
             print("PUBLIC MEDIA ALT: CLEAN / DESCRIPTIVE")
-            print("TECHNICAL PRIMARY ALLOWLIST: 1500010 + Zephyr V2 40L 1301143")
+            print("TECHNICAL PRIMARY ALLOWLIST: 1500010 only")
+            print("ZEPHYR 30L/40L: 25L PRODUCT PHOTO PRIMARY + SIZE SCHEME LAST")
         finally:
             con.close()
     return 0

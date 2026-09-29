@@ -2603,6 +2603,74 @@ def _plantlogic_remaining_media_visuals_batch_31(con: sqlite3.Connection) -> boo
     from . import plantlogic_manual_audit_20260929
     return plantlogic_manual_audit_20260929.apply_remaining_media_visuals(con)
 
+def _plantlogic_zephyr_v2_40l_exact_primary_batch_32(con: sqlite3.Connection) -> bool:
+    """Use the exact-size 40L Zephyr V2 visual as primary when no exact real 40L photo is confirmed."""
+    pid = "plantlogic-blueberry-zephyr-v2-40l-1301143"
+    visual_path = "/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg"
+    family_path = "/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp"
+
+    sku_ids = [
+        row[0]
+        for row in con.execute(
+            "SELECT sku_id FROM skus WHERE product_id=? AND enabled=1",
+            (pid,),
+        ).fetchall()
+    ]
+    if not sku_ids:
+        raise RuntimeError("PlantLogic Zephyr V2 40L enabled SKU missing")
+
+    visual = con.execute("SELECT media_id FROM media WHERE path=?", (visual_path,)).fetchone()
+    if not visual:
+        raise RuntimeError("PlantLogic Zephyr V2 40L exact-size visual missing")
+    visual_id = visual[0]
+
+    con.execute(
+        """
+        INSERT INTO product_media(product_id,media_id,sort_order,source_kind,source_url)
+        VALUES(?,?,0,'manual_premium_visual',NULL)
+        ON CONFLICT(product_id,media_id) DO UPDATE SET
+          sort_order=0,
+          source_kind='manual_premium_visual',
+          source_url=NULL
+        """,
+        (pid, visual_id),
+    )
+
+    family = con.execute("SELECT media_id FROM media WHERE path=?", (family_path,)).fetchone()
+    if family:
+        con.execute(
+            "UPDATE product_media SET sort_order=50 WHERE product_id=? AND media_id=?",
+            (pid, family[0]),
+        )
+
+    for sku_id in sku_ids:
+        con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+        con.execute(
+            """
+            INSERT INTO sku_media(
+              sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+            ) VALUES(?,?,1,0,'exact','manual_premium_visual',NULL)
+            ON CONFLICT(sku_id,media_id) DO UPDATE SET
+              is_primary=1,
+              sort_order=0,
+              binding_kind='exact',
+              source_kind='manual_premium_visual',
+              source_url=NULL
+            """,
+            (sku_id, visual_id),
+        )
+        if family:
+            con.execute(
+                """
+                UPDATE sku_media
+                SET is_primary=0,sort_order=50
+                WHERE sku_id=? AND media_id=?
+                """,
+                (sku_id, family[0]),
+            )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2637,6 +2705,7 @@ _MIGRATIONS = [
     ("20260929_plantlogic_12010320_exact_media_batch29", _plantlogic_12010320_exact_media_batch_29),
     ("20260929_plantlogic_one_media_gallery_batch30", _plantlogic_one_media_gallery_batch_30),
     ("20260929_plantlogic_remaining_media_visuals_batch31", _plantlogic_remaining_media_visuals_batch_31),
+    ("20260929_plantlogic_zephyr_v2_40l_exact_primary_batch32", _plantlogic_zephyr_v2_40l_exact_primary_batch_32),
 ]
 
 

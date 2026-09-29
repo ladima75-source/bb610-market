@@ -165,7 +165,7 @@ def _upsert_product(con: sqlite3.Connection, spec: dict) -> None:
     numbers = _manufacturer_numbers(spec)
     now = _now()
     public_enabled = 0 if spec.get("public_enabled") is False else 1
-    public_status = "active" if public_enabled else "hidden"
+    public_status = "active"
     fields = {
         "slug": pid,
         "name": title,

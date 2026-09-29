@@ -877,9 +877,9 @@ def normalize_public_media_alt(con: sqlite3.Connection) -> bool:
         value = re.sub(r"\bproduct photo\b", "фото виробу", value, flags=re.I)
         value = re.sub(r"\bCatalog\s+2026\b", "", value, flags=re.I)
         value = value.replace("офіційне фото застосування", "фото застосування")
-        value = re.sub(r"\bофіційне\s+", "", value, flags=re.I)
-        value = re.sub(r"\bофіційний\s+", "", value, flags=re.I)
-        value = re.sub(r"\bофіційна\s+", "", value, flags=re.I)
+        value = value.replace("Hose clip for Zephyr V2", "кліпса для поливного шланга Zephyr V2")
+        value = re.sub(r"\bофіційн\w*\s*", "", value, flags=re.I)
+        value = re.sub(r"\s+з\s+каталогу\b", "", value, flags=re.I)
         value = re.sub(r"\s{2,}", " ", value).strip(" ·—-")
         con.execute("UPDATE media SET alt=? WHERE media_id=?", (value, media_id))
     return True

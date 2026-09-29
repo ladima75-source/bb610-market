@@ -2715,7 +2715,7 @@ def _plantlogic_primary_quality_batch_35(con: sqlite3.Connection) -> bool:
     if os.getenv("BB610_SKIP_PLANTLOGIC_MANUAL_1_23") == "1":
         return True
     targets = {
-        "plantlogic-10l-drainage-1307110": "/assets/img/v5/media/6a01ef0585f82073b168.jpg",
+        "plantlogic-10l-drainage-1307110": "/assets/img/v5/media/eda248272cd50199e413.jpg",
         "plantlogic-8l-square-1309008": "/assets/img/v5/media/26631f70e8d140f613c5.jpg",
     }
     for product_id, path in targets.items():

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<rect width="1400" height="900" fill="white"/>
+<rect x="40" y="40" width="1320" height="820" rx="36" fill="#f5f7f4" stroke="#e4e8e4" stroke-width="3"/>
+<text x="80" y="118" font-size="26" font-weight="700" fill="#36b44a" font-family="Arial, sans-serif">PLANTLOGIC</text>
+<text x="80" y="190" font-size="46" font-weight="700" fill="#1f2933" font-family="Arial, sans-serif">Кліпса для Zephyr V2</text>
+<text x="80" y="242" font-size="27" fill="#667085" font-family="Arial, sans-serif">Артикул виробника 1700149</text>
+<text x="80" y="340" font-size="28" fill="#1f2933" font-family="Arial, sans-serif"><tspan fill="#36b44a">●</tspan><tspan dx="14">Утримує поливний шланг у заданому положенні</tspan></text><text x="80" y="398" font-size="28" fill="#1f2933" font-family="Arial, sans-serif"><tspan fill="#36b44a">●</tspan><tspan dx="14">Має підтримку для направляючого дроту</tspan></text><text x="80" y="456" font-size="28" fill="#1f2933" font-family="Arial, sans-serif"><tspan fill="#36b44a">●</tspan><tspan dx="14">Піднімає мікротрубку та емітери над зоною проходу</tspan></text>
+<path d="M880 610 V360 Q880 305 935 305 H1070 Q1125 305 1125 360 V610" fill="none" stroke="#1f2933" stroke-width="14"/><path d="M930 435 H1080" stroke="#36b44a" stroke-width="18" stroke-linecap="round"/><circle cx="930" cy="435" r="25" fill="white" stroke="#36b44a" stroke-width="10"/><circle cx="1080" cy="435" r="25" fill="white" stroke="#36b44a" stroke-width="10"/><path d="M1005 305 V235" stroke="#667085" stroke-width="8"/><circle cx="1005" cy="220" r="22" fill="white" stroke="#667085" stroke-width="8"/>
+<text x="80" y="815" font-size="22" fill="#667085" font-family="Arial, sans-serif">Дані підтверджені офіційними матеріалами PlantLogic</text>
+</svg>

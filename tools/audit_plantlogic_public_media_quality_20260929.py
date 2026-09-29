@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
+import re
 import sqlite3
 import subprocess
 import sys
@@ -58,7 +60,7 @@ def main() -> int:
 
             products = con.execute(
                 """
-                SELECT product_id,name
+                SELECT product_id,name,manufacturer_product_number
                 FROM products
                 WHERE lower(brand)='plantlogic'
                   AND public_enabled=1 AND status='active'
@@ -102,8 +104,23 @@ def main() -> int:
                 normalized = [normalized_path(row["path"]) for row in media]
                 assert len(normalized) == len(set(normalized)), (pid, "duplicate media path")
 
+                manufacturer_numbers = [
+                    x.strip()
+                    for x in str(p["manufacturer_product_number"] or "").split("/")
+                    if x.strip()
+                ]
+                for article in manufacturer_numbers:
+                    assert article not in str(p["name"] or ""), (
+                        pid, "manufacturer Product # leaked into public title", p["name"]
+                    )
+
                 skus = con.execute(
-                    "SELECT sku_id FROM skus WHERE product_id=? AND enabled=1 ORDER BY sku_id",
+                    """
+                    SELECT sku_id,manufacturer_sku,attributes_json
+                    FROM skus
+                    WHERE product_id=? AND enabled=1
+                    ORDER BY sku_id
+                    """,
                     (pid,),
                 ).fetchall()
                 assert skus, (pid, "no enabled SKU")
@@ -119,6 +136,35 @@ def main() -> int:
                     ).fetchall()
                     assert len(primaries) == 1, (pid, sku["sku_id"], "primary_count", len(primaries))
                     primary = primaries[0]
+                    try:
+                        attrs = json.loads(sku["attributes_json"] or "{}")
+                    except Exception:
+                        attrs = {}
+                    canonical_no = str(
+                        (attrs.get("manufacturer_product_no") if isinstance(attrs, dict) else "")
+                        or sku["manufacturer_sku"]
+                        or ""
+                    ).strip()
+                    primary_blob = " ".join(
+                        str(x or "") for x in (
+                            primary["path"], primary["alt"], primary["source_kind"]
+                        )
+                    )
+                    media_articles = set(re.findall(r"(?<!\d)\d{7,8}(?!\d)", primary_blob))
+                    if canonical_no and media_articles:
+                        assert media_articles == {canonical_no}, (
+                            pid, sku["sku_id"], "primary media article mismatch",
+                            canonical_no, sorted(media_articles), primary["path"], primary["alt"]
+                        )
+                    retired_articles = {
+                        "13080359","1301133","1309040","1309003","1600201",
+                        "1205001","1205002","30050008","1307040","1205018",
+                        "1205019","1310110",
+                    }
+                    assert not (media_articles & retired_articles), (
+                        pid, sku["sku_id"], "retired article leaked into primary media",
+                        sorted(media_articles & retired_articles), primary["path"]
+                    )
                     if technical_media(primary["path"], primary["alt"], primary["source_kind"]):
                         assert pid in ALLOWED_TECHNICAL_PRIMARY, (
                             pid, sku["sku_id"], "technical primary not allowed", primary["path"]
@@ -151,6 +197,8 @@ def main() -> int:
             print("PUBLIC PRODUCTS: 68")
             print("MIN MEDIA: 2")
             print("PRIMARY PER SKU: 1")
+            print("PRIMARY ARTICLE IDENTITY: CLEAN")
+            print("PUBLIC TITLES: NO PRODUCT #")
             print("PUBLIC MEDIA ALT: CLEAN")
             print("TECHNICAL PRIMARY ALLOWLIST: 1500010 + Zephyr V2 40L 1301143")
         finally:

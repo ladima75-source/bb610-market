@@ -15,7 +15,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 PREFERRED_REAL_PRIMARY = {
-    "plantlogic-10l-drainage-1307110": "/assets/img/v5/media/6a01ef0585f82073b168.jpg",
+    "plantlogic-10l-drainage-1307110": "/assets/img/v5/media/eda248272cd50199e413.jpg",
     "plantlogic-8l-square-1309008": "/assets/img/v5/media/26631f70e8d140f613c5.jpg",
     "plantlogic-universal-round-30l-1308030": "https://www.getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-30-liter-round-1308030-Hero.jpg",
     "plantlogic-rubus-square-10l-legacy-1309010": "/assets/img/v5/manual/plantlogic-1309010-view1.webp",
@@ -86,7 +86,7 @@ def main() -> int:
                 ORDER BY product_id
                 """
             ).fetchall()
-            assert len(products) == 68, len(products)
+            assert len(products) == 67, len(products)
 
             shared_color_reference_products = []
             for p in products:
@@ -281,7 +281,7 @@ def main() -> int:
                 assert max_order == 999, (pid, "Zephyr size scheme is not last")
 
             print("PLANTLOGIC PUBLIC MEDIA QUALITY: PASS")
-            print("PUBLIC PRODUCTS: 68")
+            print("PUBLIC PRODUCTS: 67")
             print("MIN MEDIA: 2")
             print("PRIMARY PER SKU: 1")
             print("PRIMARY ARTICLE IDENTITY: CLEAN")

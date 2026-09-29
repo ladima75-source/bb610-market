@@ -619,6 +619,13 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
     _set_char(con, p, "Об'єм", "48 мл/комірка")
     _set_char(con, p, "Розміри", "545 × 280 × 70 мм")
     skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (p,)).fetchall()]
+    _bind_local_photo(
+        con,
+        p,
+        skus,
+        "/assets/img/v5/manual/plantlogic-1302048-exact-primary.jpg",
+        "PlantLogic 1302048 — exact Nursery Tray product photo from official tech sheet",
+    )
     _bind_local_visual(con, p, skus, "/assets/img/v5/manual/plantlogic-1302048-nursery-tray.svg", "PlantLogic 1302048 — 72 комірки, 48 мл, premium technical visual")
 
     # #17 current hose clip.

@@ -231,9 +231,9 @@ document.addEventListener('DOMContentLoaded',async()=>{
     return `${section?.label||''} ${plantlogicSearchAliases[id]||''}`;
   }).join(' ');
   const cleanPlantlogicCatalogTitle=title=>String(title||'')
-    .replace(/s*[—-]s*арт.?s*[A-ZА-ЯІЇЄ0-9-]+(?=s*(?:[—-]|$))/giu,'')
-    .replace(/s{2,}/g,' ')
-    .replace(/s+[—-]s*$/u,'')
+    .replace(/\s*[—-]\s*арт\.?\s*[A-ZА-ЯІЇЄ0-9-]+(?=\s*(?:[—-]|$))/giu,'')
+    .replace(/\s{2,}/g,' ')
+    .replace(/\s+[—-]\s*$/u,'')
     .trim();
   const plantlogicCardImage=p=>{
     const image=p?.image;
@@ -532,24 +532,44 @@ document.addEventListener('DOMContentLoaded',async()=>{
 
   function containerFamilyKind(p){
     const name=norm(p?.name||'');
+    // Support items must never interrupt the core growing-container sequence.
+    if(
+      name.includes('кліпс')||name.includes('анкер')||name.includes('лізиметр')||
+      name.includes('скоб')||name.includes('заглушк')||name.includes('кришк')||
+      name.includes('охолоджуваль')||name.includes('касет')
+    )return 'support';
+    if(name.includes('контейнер для транспортування')||name.includes('cold storage bin'))return 'logistics';
+    if(name.includes('основа'))return 'base';
+    if(name.includes('мішок'))return 'grow-bag';
+    if(name.includes('жолоб'))return 'trough';
     if(name.includes('long-cane'))return 'long-cane';
     if(name.includes('збором дренажу'))return 'drainage';
     if(name.includes('zephyr'))return 'zephyr';
     if(name.includes('u-паз'))return name.includes('квадрат')?'square-u':'round-u';
     if(name.includes('квадрат'))return 'square-standard';
     if(name.includes('кругл'))return 'round-standard';
+    if(name.includes('горщик'))return 'pot-other';
     return 'other';
   }
 
   function containerFamilyRank(p,sectionId=''){
     const kind=containerFamilyKind(p);
     const orders={
-      blueberry:['round-standard','round-u','square-standard','square-u','zephyr','drainage','long-cane','other'],
-      rubus:['square-standard','long-cane','drainage','round-standard','round-u','square-u','zephyr','other'],
-      strawberry:['drainage','square-standard','long-cane','round-standard','round-u','square-u','zephyr','other'],
-      vegetable:['drainage','square-standard','round-standard','long-cane','round-u','square-u','zephyr','other'],
-      garden:['square-standard','round-standard','long-cane','drainage','round-u','square-u','zephyr','other'],
-      universal:['drainage','square-standard','round-standard','long-cane','round-u','square-u','zephyr','other'],
+      blueberry:[
+        'round-standard','round-u','square-standard','square-u','zephyr','drainage',
+        'pot-other','long-cane','grow-bag','trough','base','logistics','support','other'
+      ],
+      rubus:[
+        'square-standard','long-cane','drainage','pot-other',
+        'logistics','grow-bag','base','support','other'
+      ],
+      strawberry:['trough','grow-bag','base','drainage','pot-other','support','other'],
+      vegetable:['pot-other','drainage','grow-bag','base','trough','support','logistics','other'],
+      universal:[
+        'round-standard','square-standard','pot-other','drainage',
+        'grow-bag','base','trough','support','logistics','other'
+      ],
+      accessories:['grow-bag','base','trough','support','logistics','drainage','other'],
     };
     const order=orders[sectionId]||orders.universal;
     const index=order.indexOf(kind);

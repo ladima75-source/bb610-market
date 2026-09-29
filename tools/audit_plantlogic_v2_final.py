@@ -18,6 +18,10 @@ SPEC = ROOT / "data" / "product_content" / "plantlogic_v2_final_20260928.json"
 MANIFEST = ROOT / "data" / "product_content" / "plantlogic_v2_media_manifest_20260928.json"
 MEDIA_AUDIT = ROOT / "data" / "product_content" / "plantlogic_v2_media_audit_20260928.json"
 
+PUBLIC_HIDDEN_PRODUCT_IDS = {
+    "plantlogic-zephyr-v2-hose-clip-1700149",
+}
+
 
 def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))

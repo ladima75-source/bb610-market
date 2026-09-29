@@ -25,6 +25,13 @@ COLOR_MAP = {
     "TC": ("terracotta", "Теракотовий"),
 }
 
+# Canonical identities remain in Product Master V5, but these products are
+# intentionally withheld from all public projections until storefront-ready
+# media is available.
+PUBLIC_HIDDEN_PRODUCT_IDS = {
+    "plantlogic-zephyr-v2-hose-clip-1700149",
+}
+
 
 def _now() -> str:
     from datetime import datetime, timezone

@@ -191,7 +191,7 @@ def main() -> int:
                 blob = " ".join(str(primary[k] or "") for k in primary.keys()).lower()
                 assert ".pdf" not in blob and "tech sheet" not in blob and "techsheet" not in blob, (pid, dict(primary))
 
-            # Zephyr V2: exact sizes, no 25L reuse; 40L primary is a real family/application photo.
+            # Zephyr V2: exact sizes, no 25L reuse; 40L uses the exact-size premium visual as primary.
             z30 = con.execute(
                 "SELECT * FROM products WHERE product_id='plantlogic-blueberry-zephyr-v2-30l-1301153'"
             ).fetchone()
@@ -237,21 +237,22 @@ def main() -> int:
                 """
             ).fetchall()
             assert len(z40_primary) == 1
-            assert z40_primary[0]["path"] == "/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp"
-            assert not z40_primary[0]["path"].lower().endswith(".svg")
+            assert z40_primary[0]["path"] == "/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg"
+            assert z40_primary[0]["sort_order"] == 0
+            assert z40_primary[0]["source_kind"] == "manual_premium_visual"
 
-            z40_visual = con.execute(
+            z40_family = con.execute(
                 """
                 SELECT sm.is_primary,sm.sort_order
                 FROM sku_media sm
                 JOIN skus s ON s.sku_id=sm.sku_id
                 JOIN media m ON m.media_id=sm.media_id
                 WHERE s.product_id='plantlogic-blueberry-zephyr-v2-40l-1301143'
-                  AND m.path='/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg'
+                  AND m.path='/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp'
                 """
             ).fetchone()
-            assert z40_visual is not None
-            assert z40_visual["is_primary"] == 0 and z40_visual["sort_order"] >= 90
+            assert z40_family is not None
+            assert z40_family["is_primary"] == 0 and z40_family["sort_order"] >= 50
 
             # 10L square manual correction: 30 mm, never 50 mm.
             p10 = con.execute(

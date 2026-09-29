@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "71a4aa39cdde2271ccb19e72ad07e783c0d28547",
-  "request_id": "2026-09-29-plantlogic-final-storefront-polish"
+  "action": "audit",
+  "request_id": "2026-09-29-plantlogic-final-live-audit"
 }

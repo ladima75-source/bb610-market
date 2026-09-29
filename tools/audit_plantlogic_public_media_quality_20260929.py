@@ -145,9 +145,12 @@ def main() -> int:
                         or sku["manufacturer_sku"]
                         or ""
                     ).strip()
+                    readable_path = str(primary["path"] or "")
+                    if "/assets/img/v5/manual/" not in readable_path:
+                        readable_path = ""
                     primary_blob = " ".join(
                         str(x or "") for x in (
-                            primary["path"], primary["alt"], primary["source_kind"]
+                            readable_path, primary["alt"], primary["source_kind"]
                         )
                     )
                     media_articles = set(re.findall(r"(?<!\d)\d{7,8}(?!\d)", primary_blob))

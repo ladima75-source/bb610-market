@@ -2605,6 +2605,9 @@ def _plantlogic_remaining_media_visuals_batch_31(con: sqlite3.Connection) -> boo
 
 def _plantlogic_zephyr_v2_40l_exact_primary_batch_32(con: sqlite3.Connection) -> bool:
     """Use the exact-size 40L Zephyr V2 visual as primary when no exact real 40L photo is confirmed."""
+    if os.getenv("BB610_SKIP_PLANTLOGIC_MANUAL_1_23") == "1":
+        return True
+
     pid = "plantlogic-blueberry-zephyr-v2-40l-1301143"
     visual_path = "/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg"
     family_path = "/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp"

@@ -318,7 +318,7 @@ def resolve_product_id(value: str) -> str | None:
         return row["product_id"] if row else None
 
 
-def resolve_sku(value: str) -> dict | None:
+def resolve_sku(value: str, *, public_only: bool = True) -> dict | None:
     runtime = _runtime_commerce_map()
     with _connect() as con:
         row = con.execute(
@@ -327,11 +327,13 @@ def resolve_sku(value: str) -> dict | None:
                    c.price,c.sale_price,c.availability,c.stock_qty,
                    c.enabled,c.updated_at
             FROM skus s
+            JOIN products p ON p.product_id=s.product_id
             LEFT JOIN sku_commerce c ON c.sku_id=s.sku_id
             WHERE s.sku_id=?
+              AND (?=0 OR (s.enabled=1 AND p.public_enabled=1 AND p.status='active'))
             LIMIT 1
             """,
-            (value,),
+            (value, 1 if public_only else 0),
         ).fetchone()
         if row:
             data = dict(row)
@@ -352,11 +354,14 @@ def resolve_sku(value: str) -> dict | None:
                    c.price,c.sale_price,c.availability,c.stock_qty,
                    c.enabled,c.updated_at
             FROM sku_aliases a
+            JOIN skus s ON s.sku_id=a.canonical_sku_id
+            JOIN products p ON p.product_id=s.product_id
             LEFT JOIN sku_commerce c ON c.sku_id=a.canonical_sku_id
             WHERE a.alias_sku_id=? AND a.active=1
+              AND (?=0 OR (s.enabled=1 AND p.public_enabled=1 AND p.status='active'))
             LIMIT 1
             """,
-            (value,),
+            (value, 1 if public_only else 0),
         ).fetchone()
         if not row:
             return None
@@ -372,8 +377,8 @@ def resolve_sku(value: str) -> dict | None:
         })
         return data
 
-def resolve_sku_id(value: str) -> str | None:
-    row = resolve_sku(value)
+def resolve_sku_id(value: str, *, public_only: bool = True) -> str | None:
+    row = resolve_sku(value, public_only=public_only)
     return row["canonical_sku_id"] if row else None
 
 
@@ -547,6 +552,12 @@ def resolve_order_sku(value: str) -> dict | None:
         if not row:
             return None
         item = dict(row)
+        if (
+            not bool(item.get("identity_enabled"))
+            or not bool(item.get("public_enabled"))
+            or item.get("status") != "active"
+        ):
+            return None
         item["attributes"] = _json(item.pop("attributes_json", None), {})
         item.update(commerce)
         return item
@@ -591,31 +602,62 @@ def snapshot(*, public_only: bool = True) -> dict:
             WHERE p.public_enabled=1 AND p.status='active' AND s.enabled=1
             """
         ).fetchone()[0]
-        product_aliases = [
-            dict(row)
-            for row in con.execute(
-                """
-                SELECT alias,product_id,alias_kind,active
-                FROM product_aliases
-                WHERE active=1
-                ORDER BY alias
-                """
-            )
-        ]
-        sku_aliases = [
-            dict(row)
-            for row in con.execute(
-                """
-                SELECT a.alias_sku_id,a.canonical_sku_id,a.alias_kind,a.active,
-                       c.price,c.sale_price,c.availability,c.stock_qty,
-                       c.enabled,c.updated_at
-                FROM sku_aliases a
-                LEFT JOIN sku_commerce c ON c.sku_id=a.canonical_sku_id
-                WHERE a.active=1
-                ORDER BY a.alias_sku_id
-                """
-            )
-        ]
+        if public_only:
+            product_aliases = [
+                dict(row)
+                for row in con.execute(
+                    """
+                    SELECT a.alias,a.product_id,a.alias_kind,a.active
+                    FROM product_aliases a
+                    JOIN products p ON p.product_id=a.product_id
+                    WHERE a.active=1 AND p.public_enabled=1 AND p.status='active'
+                    ORDER BY a.alias
+                    """
+                )
+            ]
+            sku_aliases = [
+                dict(row)
+                for row in con.execute(
+                    """
+                    SELECT a.alias_sku_id,a.canonical_sku_id,a.alias_kind,a.active,
+                           c.price,c.sale_price,c.availability,c.stock_qty,
+                           c.enabled,c.updated_at
+                    FROM sku_aliases a
+                    JOIN skus s ON s.sku_id=a.canonical_sku_id
+                    JOIN products p ON p.product_id=s.product_id
+                    LEFT JOIN sku_commerce c ON c.sku_id=a.canonical_sku_id
+                    WHERE a.active=1 AND s.enabled=1
+                      AND p.public_enabled=1 AND p.status='active'
+                    ORDER BY a.alias_sku_id
+                    """
+                )
+            ]
+        else:
+            product_aliases = [
+                dict(row)
+                for row in con.execute(
+                    """
+                    SELECT alias,product_id,alias_kind,active
+                    FROM product_aliases
+                    WHERE active=1
+                    ORDER BY alias
+                    """
+                )
+            ]
+            sku_aliases = [
+                dict(row)
+                for row in con.execute(
+                    """
+                    SELECT a.alias_sku_id,a.canonical_sku_id,a.alias_kind,a.active,
+                           c.price,c.sale_price,c.availability,c.stock_qty,
+                           c.enabled,c.updated_at
+                    FROM sku_aliases a
+                    LEFT JOIN sku_commerce c ON c.sku_id=a.canonical_sku_id
+                    WHERE a.active=1
+                    ORDER BY a.alias_sku_id
+                    """
+                )
+            ]
         for item in sku_aliases:
             live = runtime_commerce.get(item["canonical_sku_id"])
             if live:

@@ -2760,6 +2760,14 @@ def _plantlogic_primary_quality_batch_35(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _plantlogic_public_media_alt_quality_batch_36(con: sqlite3.Connection) -> bool:
+    """Normalize legacy/file-like PlantLogic media alt text for the public storefront."""
+    if os.getenv("BB610_SKIP_PLANTLOGIC_MANUAL_1_23") == "1":
+        return True
+    from . import plantlogic_manual_audit_20260929
+    return plantlogic_manual_audit_20260929.normalize_public_media_alt(con)
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2798,6 +2806,7 @@ _MIGRATIONS = [
     ("20260929_plantlogic_public_media_alt_cleanup_batch33", _plantlogic_public_media_alt_cleanup_batch_33),
     ("20260929_plantlogic_zephyr_context_media_batch34", _plantlogic_zephyr_context_media_batch_34),
     ("20260929_plantlogic_primary_quality_batch35", _plantlogic_primary_quality_batch_35),
+    ("20260929_plantlogic_public_media_alt_quality_batch36", _plantlogic_public_media_alt_quality_batch_36),
 ]
 
 

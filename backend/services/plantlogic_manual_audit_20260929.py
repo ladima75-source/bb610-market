@@ -852,26 +852,57 @@ def normalize_public_media_alt(con: sqlite3.Connection) -> bool:
     """Keep public PlantLogic image alt text descriptive; provenance stays in source metadata."""
     rows = con.execute(
         """
-        SELECT DISTINCT m.media_id,m.alt
+        SELECT DISTINCT m.media_id,m.path,m.alt,
+                        COALESCE(pm.source_kind,sm.source_kind,'') AS source_kind
         FROM media m
-        JOIN (
-          SELECT pm.media_id
-          FROM product_media pm
-          JOIN products p ON p.product_id=pm.product_id
-          WHERE lower(p.brand)='plantlogic' AND p.public_enabled=1 AND p.status='active'
-          UNION
-          SELECT sm.media_id
-          FROM sku_media sm
-          JOIN skus s ON s.sku_id=sm.sku_id
-          JOIN products p ON p.product_id=s.product_id
-          WHERE lower(p.brand)='plantlogic' AND p.public_enabled=1 AND p.status='active' AND s.enabled=1
-        ) x ON x.media_id=m.media_id
+        LEFT JOIN product_media pm ON pm.media_id=m.media_id
+        LEFT JOIN sku_media sm ON sm.media_id=m.media_id
+        LEFT JOIN skus s ON s.sku_id=sm.sku_id
+        LEFT JOIN products pp ON pp.product_id=pm.product_id
+        LEFT JOIN products ps ON ps.product_id=s.product_id
+        WHERE (
+          lower(COALESCE(pp.brand,''))='plantlogic'
+          AND pp.public_enabled=1 AND pp.status='active'
+        ) OR (
+          lower(COALESCE(ps.brand,''))='plantlogic'
+          AND ps.public_enabled=1 AND ps.status='active'
+          AND s.enabled=1
+        )
         """
     ).fetchall()
-    for media_id, alt in rows:
+    for media_id, path, alt, source_kind in rows:
         value = str(alt or "").strip()
         if not value:
             continue
+        original = value
+        product_names = [
+            row[0]
+            for row in con.execute(
+                """
+                SELECT DISTINCT name
+                FROM (
+                  SELECT p.name AS name
+                  FROM product_media pm
+                  JOIN products p ON p.product_id=pm.product_id
+                  WHERE pm.media_id=? AND lower(p.brand)='plantlogic'
+                    AND p.public_enabled=1 AND p.status='active'
+                  UNION
+                  SELECT p.name AS name
+                  FROM sku_media sm
+                  JOIN skus s ON s.sku_id=sm.sku_id
+                  JOIN products p ON p.product_id=s.product_id
+                  WHERE sm.media_id=? AND lower(p.brand)='plantlogic'
+                    AND p.public_enabled=1 AND p.status='active' AND s.enabled=1
+                )
+                ORDER BY name
+                """,
+                (media_id, media_id),
+            ).fetchall()
+        ]
+
+        value = re.sub(r"\bopen-top grow bags?\b", "відкриті мішки із субстратом", value, flags=re.I)
+        value = re.sub(r"\bgrow bags?\b", "мішки із субстратом", value, flags=re.I)
+        value = re.sub(r"\bBag Base\b", "основа для мішка із субстратом", value, flags=re.I)
         value = re.sub(r"\bapplication photo\b", "фото застосування", value, flags=re.I)
         value = re.sub(r"\bfamily/application фото\b", "фото застосування сімейства", value, flags=re.I)
         value = re.sub(r"\bexact\b\s*", "", value, flags=re.I)
@@ -888,6 +919,35 @@ def normalize_public_media_alt(con: sqlite3.Connection) -> bool:
         value = value.replace("Hose clip for Zephyr V2", "кліпса для поливного шланга Zephyr V2")
         value = re.sub(r"\bофіційн\w*\s*", "", value, flags=re.I)
         value = re.sub(r"\s+з\s+каталогу\b", "", value, flags=re.I)
+
+        low = " ".join((original, str(path or ""), str(source_kind or ""))).lower()
+        source_style = bool(
+            re.search(r"^plantlogic\s+\d{7,8}\s*[—-]", original, flags=re.I)
+            or re.search(r"\.(?:jpe?g|png|webp)\b", original, flags=re.I)
+            or "grow bag" in original.lower()
+            or "bag base" in original.lower()
+        )
+        if source_style and len(product_names) == 1:
+            if any(token in low for token in ("technical", "premium_visual", ".svg", "dimension")):
+                role = "технічна схема"
+            elif any(token in low for token in ("front", "frontal", "frente")):
+                role = "вигляд спереду"
+            elif any(token in low for token in ("top-view", "top view", "topdown", "cenital")):
+                role = "вигляд зверху"
+            elif any(token in low for token in ("bottom", "base")):
+                role = "вигляд основи"
+            elif any(token in low for token in ("hero", "isometrico", "isometric")):
+                role = "загальний вигляд"
+            elif "gutter" in low:
+                role = "вигляд із дренажним жолобом"
+            else:
+                role = "фото товару"
+            value = f"{product_names[0]} — {role}"
+        else:
+            value = re.sub(r"^PlantLogic\s+\d{7,8}\s*[—-]\s*", "", value, flags=re.I)
+            value = re.sub(r"\.(?:jpe?g|png|webp)\b", "", value, flags=re.I)
+            value = value.replace("_", " ")
+
         value = re.sub(r"\s{2,}", " ", value).strip(" ·—-")
         con.execute("UPDATE media SET alt=? WHERE media_id=?", (value, media_id))
     return True

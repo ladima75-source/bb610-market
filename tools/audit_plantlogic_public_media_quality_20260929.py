@@ -99,12 +99,18 @@ def main() -> int:
                 banned_alt_terms = (
                     "premium", "exact", "official", "application photo",
                     "catalog 2026", "tech sheet", "офіційн", "дані підтверджені",
-                    "source url", "audit note",
+                    "source url", "audit note", "grow bag", "bag base",
                 )
                 for row in media:
                     alt_lower = str(row["alt"] or "").lower()
                     assert not any(term in alt_lower for term in banned_alt_terms), (
                         pid, "customer-facing media alt contains provenance/audit wording", row["alt"]
+                    )
+                    assert not re.search(r"\.(?:jpe?g|png|webp)\b", alt_lower), (
+                        pid, "customer-facing media alt contains source filename", row["alt"]
+                    )
+                    assert not re.search(r"^plantlogic\s+\d{7,8}\s*[—-]", alt_lower), (
+                        pid, "customer-facing media alt contains source-style Product # prefix", row["alt"]
                     )
 
                 normalized = [normalized_path(row["path"]) for row in media]
@@ -237,7 +243,7 @@ def main() -> int:
             print("COLOR SKU MEDIA: VERIFIED / SHARED MODEL PHOTO DISCLOSED")
             print("SHARED COLOR REFERENCE PRODUCTS:", len(shared_color_reference_products))
             print("PUBLIC TITLES: NO PRODUCT #")
-            print("PUBLIC MEDIA ALT: CLEAN")
+            print("PUBLIC MEDIA ALT: CLEAN / DESCRIPTIVE")
             print("TECHNICAL PRIMARY ALLOWLIST: 1500010 + Zephyr V2 40L 1301143")
         finally:
             con.close()

@@ -141,6 +141,19 @@ jobs:
           if(parallel?.canonical_title!=='Горщик для лохини 30 л круглий з паралельними U-пазами')throw new Error('canonical SKU title');
           if(DS.product('plantlogic-4-7l-square-cold-storage-13050040')?.name!=='Горщик для малини та ожини 4,7 л квадратний для технології long-cane')throw new Error('4.7L long-cane title');
           if(DS.product('plantlogic-7l-square-cold-storage-1305071')?.name!=='Горщик для малини та ожини 7 л квадратний для технології long-cane')throw new Error('7L long-cane title');
+          const productSource=fs.readFileSync('js/product.js','utf8');
+          for(const marker of [
+            'hasColorVariants',
+            'skuColorLabel',
+            'colorOnlySelector',
+            "selectorLabel=hasColorVariants",
+            'Фото показує конструкцію моделі; окреме фото цього кольору виробник не надав.',
+            'hasColorVariants?clicked:'
+          ]){
+            if(!productSource.includes(marker))throw new Error('Plantlogic color SKU selector contract: '+marker);
+          }
+          const colorSkus=DS.skusForProduct('plantlogic-10l-drainage-1307110');
+          if(colorSkus.filter(x=>x.attributes?.color_label).length!==3)throw new Error('Plantlogic 1307110 color SKU projection');
           if(!catalogSource.includes('containerLogicalSort'))throw new Error('container logical sorting');
           for(const marker of [
             "blueberry:[",

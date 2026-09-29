@@ -69,6 +69,7 @@ def main() -> int:
             ).fetchall()
             assert len(products) == 68, len(products)
 
+            shared_color_reference_products = []
             for p in products:
                 pid = p["product_id"]
                 media = con.execute(
@@ -125,6 +126,7 @@ def main() -> int:
                 ).fetchall()
                 assert skus, (pid, "no enabled SKU")
                 color_primaries = {}
+                color_source_evidence = {}
                 for sku in skus:
                     primaries = con.execute(
                         """
@@ -174,6 +176,9 @@ def main() -> int:
                     ).strip().lower()
                     if color_code:
                         color_primaries[color_code] = normalized_path(primary["path"])
+                        color_source_evidence[color_code] = str(
+                            (attrs.get("media_source_color") if isinstance(attrs, dict) else "") or ""
+                        ).strip().lower()
 
                     if technical_media(primary["path"], primary["alt"], primary["source_kind"]):
                         assert pid in ALLOWED_TECHNICAL_PRIMARY, (
@@ -181,9 +186,13 @@ def main() -> int:
                         )
 
                 if len(color_primaries) > 1:
-                    assert len(set(color_primaries.values())) == len(color_primaries), (
-                        pid, "color SKU primary media is not color-specific", color_primaries
-                    )
+                    distinct_primary_count = len(set(color_primaries.values()))
+                    if distinct_primary_count < len(color_primaries):
+                        assert not any(color_source_evidence.values()), (
+                            pid, "color-specific source evidence exists but primary media is shared",
+                            color_primaries, color_source_evidence
+                        )
+                        shared_color_reference_products.append(pid)
 
                 for row in media:
                     url = str(row["source_url"] or row["path"] or "")
@@ -213,7 +222,8 @@ def main() -> int:
             print("MIN MEDIA: 2")
             print("PRIMARY PER SKU: 1")
             print("PRIMARY ARTICLE IDENTITY: CLEAN")
-            print("COLOR SKU PRIMARY: COLOR-SPECIFIC")
+            print("COLOR SKU MEDIA: VERIFIED / SHARED MODEL PHOTO DISCLOSED")
+            print("SHARED COLOR REFERENCE PRODUCTS:", len(shared_color_reference_products))
             print("PUBLIC TITLES: NO PRODUCT #")
             print("PUBLIC MEDIA ALT: CLEAN")
             print("TECHNICAL PRIMARY ALLOWLIST: 1500010 + Zephyr V2 40L 1301143")

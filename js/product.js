@@ -47,7 +47,13 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   const runtimeSkus=(BB610_DATA_SOURCE.skusForProduct?.(p.id)||[]).filter(Boolean);
   const legacySkus=(p.sizes||[]).map(x=>BB610.sku(x.id)).filter(Boolean);
   const skuMap=new Map([...runtimeSkus,...legacySkus].map(x=>[x.id||x.sku,x]));
+  const skuColorLabel=s=>String(s?.attributes?.color_label||s?.color_label||'').trim();
+  const skuColorCode=s=>String(s?.attributes?.color_code||s?.color_code||'').trim().toLowerCase();
+  const runtimeColorSkus=runtimeSkus.filter(s=>skuColorLabel(s));
+  const colorLabels=[...new Set(runtimeColorSkus.map(s=>skuColorLabel(s)))];
+  const hasColorVariants=colorLabels.length>1;
   const packageLabels=[...new Set([...runtimeSkus,...legacySkus].map(x=>String(x?.variant||x?.package||x?.label||'').trim()).filter(Boolean))];
+  const colorOnlySelector=hasColorVariants&&packageLabels.length===1;
   const packageSortValue=s=>{
     const value=Number(s?.package_value??s?.volume_weight?.value);
     const unit=String(s?.package_unit??s?.volume_weight?.unit??'').trim().toLowerCase();
@@ -59,12 +65,27 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     if(unit==='pcs'||unit==='шт')return value;
     return value;
   };
-  const skuList=packageLabels
-    .map(label=>BB610.skuForPackage?.(p.id,label)||[...skuMap.values()].find(x=>BB610.sameSkuPackage?.(label,x)))
-    .filter(Boolean)
-    .sort((a,b)=>packageSortValue(a)-packageSortValue(b)||String(a.variant||'').localeCompare(String(b.variant||''),'uk'));
+  const colorSortValue=s=>({black:0,white:1,terracotta:2}[skuColorCode(s)]??9);
+  const skuList=(hasColorVariants
+    ?[...runtimeColorSkus]
+    :packageLabels
+      .map(label=>BB610.skuForPackage?.(p.id,label)||[...skuMap.values()].find(x=>BB610.sameSkuPackage?.(label,x)))
+      .filter(Boolean)
+  ).sort((a,b)=>
+    packageSortValue(a)-packageSortValue(b)||
+    colorSortValue(a)-colorSortValue(b)||
+    String(a.variant||'').localeCompare(String(b.variant||''),'uk')
+  );
+  const skuOptionLabel=s=>{
+    const pack=String(s?.variant||s?.package||s?.label||'').trim();
+    const color=skuColorLabel(s);
+    if(hasColorVariants)return colorOnlySelector?(color||pack):[pack,color].filter(Boolean).join(' · ');
+    return pack;
+  };
   let selectedSku=selectedFromUrl
-    ?(BB610.skuForPackage?.(p.id,selectedFromUrl.variant||selectedFromUrl.package||selectedFromUrl.label,selectedFromUrl.id)||selectedFromUrl)
+    ?(hasColorVariants
+      ?(skuMap.get(selectedFromUrl.id||selectedFromUrl.sku)||selectedFromUrl)
+      :(BB610.skuForPackage?.(p.id,selectedFromUrl.variant||selectedFromUrl.package||selectedFromUrl.label,selectedFromUrl.id)||selectedFromUrl))
     :(BB610.defaultSku(p.id)||skuList[0]||null);
   const displayName=()=>BB610.skuName?.(rawProduct,selectedSku)||p.name;
 
@@ -108,7 +129,8 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   trackView();
   syncSeoMeta();
 
-  const packCards=skuList.length?skuList.map(s=>`<button class="pack${selectedSku?.id===s.id?' active':''}" type="button" data-sku-select="${s.id}"><b>${s.variant}</b><span class="pack-price">${BB610.isPriceRequestSku?.(s)?'Ціна за запитом':BB610.money(s.price)}</span></button>`).join(''):(p.factoryPacks||[]).map(s=>`<div class="pack"><b>${s}</b></div>`).join('');
+  const packCards=skuList.length?skuList.map(s=>`<button class="pack${selectedSku?.id===s.id?' active':''}" type="button" data-sku-select="${s.id}"><b>${escValue(skuOptionLabel(s))}</b><span class="pack-price">${BB610.isPriceRequestSku?.(s)?'Ціна за запитом':BB610.money(s.price)}</span></button>`).join(''):(p.factoryPacks||[]).map(s=>`<div class="pack"><b>${s}</b></div>`).join('');
+  const selectorLabel=hasColorVariants?(colorOnlySelector?'Колір':'Варіант / колір'):'Фасування';
 
   const szr=p.category==='protection'?`<div class="info-card product-detail-card szr-card"><h2>ДАНІ ДЛЯ ЗЗР / СЗР</h2><div class="kv"><span>Діюча речовина</span><b>${richValue(p.activeIngredient)}</b></div><div class="kv"><span>Концентрація</span><b>${richValue(p.concentration)}</b></div><div class="kv"><span>Шкідник / хвороба</span><b>${richValue(p.target)}</b></div><div class="kv"><span>Строк очікування</span><b>${richValue(p.waitingPeriod)}</b></div><div class="kv"><span>Клас небезпеки</span><b>${richValue(p.hazardClass)}</b></div></div>`:'';
 
@@ -119,6 +141,18 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
       s?.image||
       BB610.fallbackImage?.(p.category)||
       'assets/img/product-npk.svg';
+  };
+
+  const sharedColorPhotoFor=s=>{
+    if(!hasColorVariants||!s)return false;
+    const current=productImageFor(s);
+    if(!current)return false;
+    return runtimeColorSkus.filter(x=>productImageFor(x)===current).length>1;
+  };
+  const colorPhotoNote=s=>{
+    if(!sharedColorPhotoFor(s))return '';
+    const color=skuColorLabel(s);
+    return `${color?`Обраний колір: ${color}. `:''}Фото показує конструкцію моделі; окреме фото цього кольору виробник не надав.`;
   };
 
   const galleryImages=[...new Set([
@@ -233,9 +267,9 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
 
   const initialName=displayName();
   root.innerHTML=`<div class="breadcrumbs">BB610 MARKET / ${String(p.categoryLabel||p.category||'Каталог').toUpperCase()} / ${escValue(initialName)}</div>
-  <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${productImageFor(selectedSku)}" alt="${escValue(initialName)}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div>${galleryImages.length>1?`<div class="product-gallery-thumbs">${galleryImages.map((im,i)=>`<button type="button" class="gallery-thumb${i===0?' active':''}" data-gallery-img="${im}"><img src="${im}" alt="${escValue(initialName)} ${i+1}"></button>`).join('')}</div>`:''}</div>
+  <div class="product-layout"><div class="product-gallery"><div class="product-main-photo"><img id="product-main-image" data-photo-zoom src="${productImageFor(selectedSku)}" alt="${escValue(initialName)}"><span class="photo-zoom-hint">⌕ Збільшити фото</span></div><div class="product-media-note" id="product-media-note">${escValue(colorPhotoNote(selectedSku))}</div>${galleryImages.length>1?`<div class="product-gallery-thumbs">${galleryImages.map((im,i)=>`<button type="button" class="gallery-thumb${i===0?' active':''}" data-gallery-img="${im}"><img src="${im}" alt="${escValue(initialName)} ${i+1}"></button>`).join('')}</div>`:''}</div>
   <div class="product-summary"><div class="eyebrow">${p.categoryLabel}</div><h1 id="product-title">${escValue(initialName)}</h1><div class="brand">${p.brand}</div><p class="product-lead">${richValue(p.shortDescription||p.productType||'')}</p><div class="product-keyfacts">${p.productType?`<span><small>Тип</small><b>${richValue(p.productType)}</b></span>`:''}${p.npk&&p.npk!=='—'?`<span><small>NPK</small><b>${richValue(p.npk)}</b></span>`:''}${p.activeIngredient&&p.activeIngredient!=='—'?`<span><small>Діюча речовина</small><b>${richValue(p.activeIngredient)}</b></span>`:''}</div>
-  ${packCards?`<div class="product-pack-selector"><div class="product-pack-label">Фасування</div><div class="pack-grid">${packCards}</div></div>`:''}
+  ${packCards?`<div class="product-pack-selector"><div class="product-pack-label">${selectorLabel}</div><div class="pack-grid">${packCards}</div></div>`:''}
   <div class="selected-variant" id="selected-variant"></div>
   <div class="price" id="selected-price"></div><div class="unit-price" id="selected-unit"></div><div class="stock" id="selected-stock" style="margin-top:10px"></div>
   ${p.verified?'<div class="verified-line">✓ <b>BB610 VERIFIED</b><small>Дані продукту звірено з первинним джерелом виробника</small></div>':''}
@@ -279,7 +313,12 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     mainImage.src=productImageFor(selectedSku);
     mainImage.alt=liveName;
     syncSeoMeta();
-    variant.textContent=selectedSku.variant||'';
+    variant.textContent=hasColorVariants?`Колір: ${skuColorLabel(selectedSku)||'—'}`:(selectedSku.variant||'');
+    const mediaNote=document.getElementById('product-media-note');
+    if(mediaNote){
+      mediaNote.textContent=colorPhotoNote(selectedSku);
+      mediaNote.hidden=!mediaNote.textContent;
+    }
     price.textContent=requestPrice?'Ціна за запитом':BB610.money(selectedSku.price);
     unit.textContent=requestPrice?'Ціна залежить від моделі, кількості та умов постачання':(selectedSku.price==null?'Комерційна ціна BB610 ще не визначена':BB610.unitPrice({...p,unit:selectedSku.volume_weight?.unit},selectedSku.price,selectedSku.volume_weight?.value));
     stock.textContent=requestPrice?'Під замовлення':(selectedSku.stock_label||'Наявність уточнюється');
@@ -293,7 +332,7 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
   }
   document.querySelectorAll('[data-sku-select]').forEach(b=>b.onclick=()=>{
     const clicked=skuMap.get(b.dataset.skuSelect)||BB610.sku(b.dataset.skuSelect);
-    selectedSku=clicked?(BB610.skuForPackage?.(p.id,clicked.variant||clicked.package||clicked.label,clicked.id)||clicked):null;
+    selectedSku=clicked?(hasColorVariants?clicked:(BB610.skuForPackage?.(p.id,clicked.variant||clicked.package||clicked.label,clicked.id)||clicked)):null;
     updateSkuUI();
     trackView();
     if(selectedSku&&location.protocol!=='file:'){

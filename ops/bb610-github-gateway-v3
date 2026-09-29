@@ -3,6 +3,7 @@ set -euo pipefail
 
 ROOT=/opt/bb610-market
 MAGELLE_ROOT=/opt/magelle
+TWOFAMILY_EPHEMERAL_PUBKEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEbc4THlSp1mQ/Jy3jwMziCnjExardCw9NlbdnthmJ8h twofamily-ephemeral-2026-09-29"
 CMD="${SSH_ORIGINAL_COMMAND:-}"
 
 # These legacy files are mutated by the running application on production.
@@ -389,6 +390,51 @@ magelle_deploy() {
   magelle_health
 }
 
+
+twofamily_audit() {
+  echo "========== TWOFAMILY VPS =========="
+  echo "DNS: $(getent ahostsv4 social.bb610.com.ua | awk 'NR==1{print $1}' || true)"
+  for cmd in git python3 npm curl psql pg_dump ffmpeg ffprobe nginx systemctl certbot; do
+    if command -v "$cmd" >/dev/null 2>&1; then
+      printf '%s: ' "$cmd"
+      command -v "$cmd"
+    else
+      echo "$cmd: MISSING"
+    fi
+  done
+  echo "--- PORTS ---"
+  ss -lntp | grep -E ':(80|443|8100)\\b' || true
+  echo "--- TWOFAMILY ---"
+  [ -d /opt/twofamily-social-control ] && echo "app_dir: PRESENT" || echo "app_dir: ABSENT"
+  systemctl is-active twofamily-social-api.service 2>/dev/null || true
+  echo "========== END =========="
+}
+
+twofamily_authorize_ephemeral() {
+  install -d -m 0700 /root/.ssh
+  touch /root/.ssh/authorized_keys
+  chmod 0600 /root/.ssh/authorized_keys
+  local tmp
+  tmp="$(mktemp)"
+  grep -v 'twofamily-ephemeral-2026-09-29' /root/.ssh/authorized_keys > "$tmp" || true
+  printf '%s\\n' "$TWOFAMILY_EPHEMERAL_PUBKEY" >> "$tmp"
+  cat "$tmp" > /root/.ssh/authorized_keys
+  rm -f "$tmp"
+  chmod 0600 /root/.ssh/authorized_keys
+  echo "TWOFAMILY_EPHEMERAL=AUTHORIZED"
+}
+
+twofamily_revoke_ephemeral() {
+  [ -f /root/.ssh/authorized_keys ] || { echo "TWOFAMILY_EPHEMERAL=ABSENT"; return 0; }
+  local tmp
+  tmp="$(mktemp)"
+  grep -v 'twofamily-ephemeral-2026-09-29' /root/.ssh/authorized_keys > "$tmp" || true
+  cat "$tmp" > /root/.ssh/authorized_keys
+  rm -f "$tmp"
+  chmod 0600 /root/.ssh/authorized_keys
+  echo "TWOFAMILY_EPHEMERAL=REVOKED"
+}
+
 case "$CMD" in
   audit) audit ;;
   health) health ;;
@@ -402,6 +448,9 @@ case "$CMD" in
   magelle-public) magelle_public ;;
   magelle-tls) magelle_tls ;;
   magelle-deploy\ *) magelle_deploy "${CMD#magelle-deploy }" ;;
+  twofamily-audit) twofamily_audit ;;
+  twofamily-authorize-ephemeral) twofamily_authorize_ephemeral ;;
+  twofamily-revoke-ephemeral) twofamily_revoke_ephemeral ;;
   deploy\ *) deploy "${CMD#deploy }" ;;
   *) echo "DENIED"; exit 126 ;;
 esac

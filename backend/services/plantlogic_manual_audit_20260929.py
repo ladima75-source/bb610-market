@@ -561,12 +561,12 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
         _bind_local_visual(
             con, pid, skus, svg,
             f"PlantLogic Zephyr V2 {article} — premium size visual",
-            order=90,
-            primary=False,
+            order=0 if pid == z40 else 90,
+            primary=pid == z40,
         )
 
     zephyr_family_photo = "/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp"
-    for pid, make_primary in ((z30, False), (z40, True)):
+    for pid in (z30, z40):
         skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (pid,)).fetchall()]
         _bind_local_photo(
             con,
@@ -574,8 +574,8 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
             skus,
             zephyr_family_photo,
             "Zephyr V2 — офіційне family/application фото з PlantLogic Catalog 2026",
-            primary=make_primary,
-            order=0 if make_primary else 50,
+            primary=False,
+            order=50,
         )
 
     # #9: manual correction 50 mm -> 30 mm.

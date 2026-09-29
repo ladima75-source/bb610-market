@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import base64
 import hashlib
+import json
 import os
 import re
+import secrets
 import shutil
 import socket
 import subprocess
 import sys
 import tarfile
+import tempfile
 import textwrap
 from pathlib import Path, PurePosixPath
 
@@ -21,6 +25,17 @@ BUNDLE = STAGE / "twofamily-social-control.production.tar.gz"
 UPLOAD_PORT = 18100
 UPLOAD_SCRIPT = Path("/usr/local/sbin/twofamily-upload-receiver.py")
 UPLOAD_SERVICE = Path("/etc/systemd/system/twofamily-upload.service")
+
+OWNER_PUBLIC_KEY = """-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqSj610Sv8dmcsOsZyUEg
+6V90oN22PKCXvVewocZ7N7S04jbYkSSYjfbbrKbjqCm5zOPRKV1Y7yR3bU9JnKnJ
+ERD/FOpX/Y2UIYjKWxwYvswBFr7HutsG0YRgwZ2y9BkkRkqIGP8w75LD8/wNR35G
+1/sD645/8IvLSgDyMfI/dGMpEQUb10rXvtTeAra9WT/RpNuGakAyA6cv39hd2GTf
+L9rqt1sX4cGd+r//OiBfw8lKfSjQ3YrhJMSp9j4VfEgzjKpcZJ7B514y/mDj9iTw
+gG/krcKmOXinWaamvUrvmyCTyaBaN2+gF//97nr8V+/4Sf3Il9sQb0wOYXrghebV
+VwIDAQAB
+-----END PUBLIC KEY-----
+"""
 
 
 def run(args, *, check=True, env=None, cwd=None):
@@ -78,6 +93,58 @@ def parse_env(path: Path):
         key, value = line.split("=", 1)
         data[key] = value
     return data
+
+
+def create_production_env(path: Path):
+    db_password = secrets.token_urlsafe(24)
+    app_secret = secrets.token_urlsafe(48)
+    owner_password = secrets.token_urlsafe(18)
+    values = {
+        "APP_ENV": "production",
+        "DATABASE_URL": f"postgresql+psycopg://twofamily:{db_password}@127.0.0.1:5432/twofamily_social",
+        "POSTGRES_DB": "twofamily_social",
+        "POSTGRES_USER": "twofamily",
+        "POSTGRES_PASSWORD": db_password,
+        "PGHOST": "127.0.0.1",
+        "PGPORT": "5432",
+        "CORS_ORIGINS": f"https://{DOMAIN}",
+        "PUBLIC_BASE_URL": f"https://{DOMAIN}",
+        "APP_SECRET_KEY": app_secret,
+        "BOOTSTRAP_OWNER_EMAIL": "owner@twofamily.local",
+        "BOOTSTRAP_OWNER_PASSWORD": owner_password,
+        "MEDIA_ROOT": "/var/lib/twofamily-social-control/media",
+        "META_APP_ID": "",
+        "META_APP_SECRET": "",
+        "META_REDIRECT_URI": f"https://{DOMAIN}/api/meta/oauth/callback",
+        "META_GRAPH_VERSION": "v26.0",
+        "GEMINI_API_KEY": "",
+        "OLLAMA_BASE_URL": "",
+        "GA4_CREDENTIALS_FILE": "/opt/twofamily-social-control/secrets/ga4-service-account.json",
+        "ANALYTICS_SYNC_SECONDS": "21600",
+        "BACKUP_DIR": "/var/backups/twofamily-social-control",
+        "BACKUP_RETENTION_DAYS": "14",
+    }
+    path.write_text("\n".join(f"{k}={v}" for k, v in values.items()) + "\n", encoding="utf-8")
+    os.chmod(path, 0o600)
+    return values
+
+
+def encrypt_owner_credentials(email: str, password: str) -> str:
+    payload = json.dumps({"email": email, "password": password}, separators=(",", ":")).encode("utf-8")
+    with tempfile.TemporaryDirectory(prefix="twofamily-owner-") as td:
+        base = Path(td)
+        pub = base / "pub.pem"
+        plain = base / "plain.bin"
+        cipher = base / "cipher.bin"
+        pub.write_text(OWNER_PUBLIC_KEY, encoding="utf-8")
+        plain.write_bytes(payload)
+        run([
+            "openssl", "pkeyutl", "-encrypt", "-pubin",
+            "-inkey", pub, "-in", plain, "-out", cipher,
+            "-pkeyopt", "rsa_padding_mode:oaep",
+            "-pkeyopt", "rsa_oaep_md:sha256",
+        ])
+        return base64.b64encode(cipher.read_bytes()).decode("ascii")
 
 
 def prepare_upload(expected: str):
@@ -336,10 +403,11 @@ def install_bundle(expected: str):
         tf.extractall(APP)
 
     env_path = APP / ".env"
-    if not env_path.is_file():
-        raise SystemExit("REFUSED: production .env missing from bundle")
-    os.chmod(env_path, 0o600)
-    env_data = parse_env(env_path)
+    if env_path.is_file():
+        os.chmod(env_path, 0o600)
+        env_data = parse_env(env_path)
+    else:
+        env_data = create_production_env(env_path)
     ensure_postgres(env_data)
     ensure_www_data()
 
@@ -402,6 +470,8 @@ def install_bundle(expected: str):
     owner_password = env_data.get("BOOTSTRAP_OWNER_PASSWORD", "")
     write_file(Path("/root/twofamily-initial-owner.txt"),
                f"OWNER_EMAIL={owner_email}\\nOWNER_PASSWORD={owner_password}\\n", 0o600)
+    encrypted = encrypt_owner_credentials(owner_email, owner_password)
+    print(f"OWNER_CREDENTIALS_RSA_OAEP_SHA256={encrypted}")
 
     lines = []
     for raw in env_path.read_text(encoding="utf-8").splitlines():

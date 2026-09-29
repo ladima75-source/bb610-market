@@ -136,6 +136,32 @@ def _product_alias(con: sqlite3.Connection, alias: str, target: str) -> None:
     )
 
 
+def _replace_legacy_sku(con: sqlite3.Connection, alias_sku_id: str, canonical_sku_id: str) -> None:
+    target = con.execute(
+        "SELECT sku_id,enabled FROM skus WHERE sku_id=?",
+        (canonical_sku_id,),
+    ).fetchone()
+    if not target or not bool(target[1]):
+        raise RuntimeError(f"Canonical replacement SKU missing or disabled: {canonical_sku_id}")
+
+    # Remove the retired commerce identity so resolve_sku cannot prefer it over
+    # the compatibility alias. Historical evidence remains in the V2 source spec.
+    if alias_sku_id != canonical_sku_id:
+        con.execute("DELETE FROM skus WHERE sku_id=?", (alias_sku_id,))
+
+    con.execute(
+        """
+        INSERT INTO sku_aliases(alias_sku_id,canonical_sku_id,alias_kind,active)
+        VALUES(?,?, 'manual_replacement',1)
+        ON CONFLICT(alias_sku_id) DO UPDATE SET
+          canonical_sku_id=excluded.canonical_sku_id,
+          alias_kind=excluded.alias_kind,
+          active=1
+        """,
+        (alias_sku_id, canonical_sku_id),
+    )
+
+
 def _source(con: sqlite3.Connection, product_id: str, url: str, label: str, note: str = "") -> None:
     source_id = "pls-manual-" + hashlib.sha1(f"{product_id}|{url}|{label}".encode()).hexdigest()[:16]
     con.execute(
@@ -633,6 +659,10 @@ def apply(con: sqlite3.Connection) -> dict:
     _product_alias(con, "plantlogic-universal-round-25l-legacy-1309003", "plantlogic-25-round-1308125")
     for alias in ("1205001", "1205002", "plantlogic-hose-clip-1205001-1205002"):
         _product_alias(con, alias, "plantlogic-hose-clip-12050010")
+
+    _replace_legacy_sku(con, "PL-1309003-BK", "PL-BB-1308125-BK")
+    _replace_legacy_sku(con, "PL-1205001", "PL-12050010")
+    _replace_legacy_sku(con, "PL-1205002", "PL-12050010")
 
     _ensure_cooling_cover(con)
     _clean_unsafe_primary_media(con)

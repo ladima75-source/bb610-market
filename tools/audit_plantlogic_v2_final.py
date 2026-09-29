@@ -86,7 +86,15 @@ def main() -> int:
             }
 
             from backend.services import product_master_v5_migrations
-            product_master_v5_migrations.apply_runtime_migrations(con)
+            previous = os.environ.get("BB610_SKIP_PLANTLOGIC_MANUAL_1_23")
+            os.environ["BB610_SKIP_PLANTLOGIC_MANUAL_1_23"] = "1"
+            try:
+                product_master_v5_migrations.apply_runtime_migrations(con)
+            finally:
+                if previous is None:
+                    os.environ.pop("BB610_SKIP_PLANTLOGIC_MANUAL_1_23", None)
+                else:
+                    os.environ["BB610_SKIP_PLANTLOGIC_MANUAL_1_23"] = previous
 
             actual_products = {
                 row["product_id"]

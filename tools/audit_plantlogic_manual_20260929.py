@@ -191,7 +191,8 @@ def main() -> int:
                 blob = " ".join(str(primary[k] or "") for k in primary.keys()).lower()
                 assert ".pdf" not in blob and "tech sheet" not in blob and "techsheet" not in blob, (pid, dict(primary))
 
-            # Zephyr V2: exact sizes, no 25L reuse; 40L uses the exact-size premium visual as primary.
+            # Zephyr V2: exact dimensions; approved 25L #1301144 photo is the
+            # product photo for 30L/40L, while each size scheme is last and non-primary.
             z30 = con.execute(
                 "SELECT * FROM products WHERE product_id='plantlogic-blueberry-zephyr-v2-30l-1301153'"
             ).fetchone()
@@ -201,50 +202,70 @@ def main() -> int:
             assert chars(z30).get("Розміри") == "A 420 мм · B Ø333 мм · C 397 мм · D 70 мм"
             assert chars(z40).get("Розміри") == "A 370 мм · B Ø427 мм · C 500 мм · D 70 мм"
 
-            for pid in (
-                "plantlogic-blueberry-zephyr-v2-30l-1301153",
-                "plantlogic-blueberry-zephyr-v2-40l-1301143",
-            ):
-                bad_25l = con.execute(
+            approved_photo = "/assets/img/v5/media/aaaa485fd58fd917c4fb.jpg"
+            schemes = {
+                "plantlogic-blueberry-zephyr-v2-30l-1301153":
+                    "/assets/img/v5/manual/plantlogic-1301153-zephyr-v2-30l.svg",
+                "plantlogic-blueberry-zephyr-v2-40l-1301143":
+                    "/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg",
+            }
+            for pid, scheme_path in schemes.items():
+                primary = con.execute(
                     """
-                    SELECT m.path,m.source_url,m.alt
-                    FROM media m
-                    WHERE m.media_id IN (
-                      SELECT pm.media_id FROM product_media pm WHERE pm.product_id=?
-                      UNION
-                      SELECT sm.media_id FROM sku_media sm
-                      JOIN skus s ON s.sku_id=sm.sku_id
-                      WHERE s.product_id=?
-                    )
-                    AND (
-                      lower(COALESCE(m.path,'')) LIKE '%1301144%'
-                      OR lower(COALESCE(m.source_url,'')) LIKE '%1301144%'
-                      OR lower(COALESCE(m.alt,'')) LIKE '%1301144%'
-                    )
+                    SELECT m.path,sm.sort_order,sm.source_kind
+                    FROM sku_media sm
+                    JOIN skus s ON s.sku_id=sm.sku_id
+                    JOIN media m ON m.media_id=sm.media_id
+                    WHERE s.product_id=? AND s.enabled=1 AND sm.is_primary=1
                     """,
-                    (pid, pid),
+                    (pid,),
                 ).fetchall()
-                assert not bad_25l, (pid, [dict(x) for x in bad_25l])
+                assert len(primary) == 1, (pid, [dict(x) for x in primary])
+                assert primary[0]["path"] == approved_photo, (pid, dict(primary[0]))
+                assert primary[0]["sort_order"] == 0
+                assert primary[0]["source_kind"] == "user_approved_zephyr_v2_25l_product_photo"
 
-            z40_primary = con.execute(
-                """
-                SELECT m.path,sm.sort_order,sm.source_kind
-                FROM sku_media sm
-                JOIN skus s ON s.sku_id=sm.sku_id
-                JOIN media m ON m.media_id=sm.media_id
-                WHERE s.product_id='plantlogic-blueberry-zephyr-v2-40l-1301143'
-                  AND sm.is_primary=1
-                """
-            ).fetchall()
-            assert len(z40_primary) == 1
-            assert z40_primary[0]["path"] == "/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg"
-            assert z40_primary[0]["sort_order"] == 0
-            assert z40_primary[0]["source_kind"] == "manual_premium_visual"
+                scheme_product = con.execute(
+                    """
+                    SELECT pm.sort_order
+                    FROM product_media pm
+                    JOIN media m ON m.media_id=pm.media_id
+                    WHERE pm.product_id=? AND m.path=?
+                    """,
+                    (pid, scheme_path),
+                ).fetchone()
+                assert scheme_product is not None
+                assert scheme_product["sort_order"] == 999
 
-            for pid in (
-                "plantlogic-blueberry-zephyr-v2-30l-1301153",
-                "plantlogic-blueberry-zephyr-v2-40l-1301143",
-            ):
+                scheme_sku = con.execute(
+                    """
+                    SELECT sm.is_primary,sm.sort_order
+                    FROM sku_media sm
+                    JOIN skus s ON s.sku_id=sm.sku_id
+                    JOIN media m ON m.media_id=sm.media_id
+                    WHERE s.product_id=? AND s.enabled=1 AND m.path=?
+                    """,
+                    (pid, scheme_path),
+                ).fetchone()
+                assert scheme_sku is not None
+                assert scheme_sku["is_primary"] == 0
+                assert scheme_sku["sort_order"] == 999
+
+                max_product_order = con.execute(
+                    "SELECT MAX(sort_order) FROM product_media WHERE product_id=?",
+                    (pid,),
+                ).fetchone()[0]
+                max_sku_order = con.execute(
+                    """
+                    SELECT MAX(sm.sort_order)
+                    FROM sku_media sm JOIN skus s ON s.sku_id=sm.sku_id
+                    WHERE s.product_id=? AND s.enabled=1
+                    """,
+                    (pid,),
+                ).fetchone()[0]
+                assert max_product_order == 999, (pid, "scheme must be last product media")
+                assert max_sku_order == 999, (pid, "scheme must be last SKU media")
+
                 family_product = con.execute(
                     """
                     SELECT pm.sort_order
@@ -267,7 +288,7 @@ def main() -> int:
                     """,
                     (pid,),
                 ).fetchone()
-                assert family_sku is None, (pid, "family/application media must not be exact SKU media")
+                assert family_sku is None, (pid, "family/application media must remain contextual")
 
             # 10L square manual correction: 30 mm, never 50 mm.
             p10 = con.execute(

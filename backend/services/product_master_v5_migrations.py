@@ -2768,6 +2768,90 @@ def _plantlogic_public_media_alt_quality_batch_36(con: sqlite3.Connection) -> bo
     return plantlogic_manual_audit_20260929.normalize_public_media_alt(con)
 
 
+def _plantlogic_storefront_media_integrity_batch_37(con: sqlite3.Connection) -> bool:
+    """Repair live-only PlantLogic media gaps and remove cross-model exact bindings."""
+    if os.getenv("BB610_SKIP_PLANTLOGIC_MANUAL_1_23") == "1":
+        return True
+
+    from . import plantlogic_manual_audit_20260929
+
+    # These exact assets were added to the manual-audit implementation after
+    # batch 26 had already been recorded on the persistent live database.
+    plantlogic_manual_audit_20260929._apply_exact_zero_media(con)
+
+    # #1305082 must never inherit #1305081 short-leg trough media.
+    strawberry_pid = "plantlogic-8l-strawberry-trough-big-handle-1305082"
+    wrong_strawberry_paths = (
+        "/assets/img/v5/media/026d011a0d4fa0794b06.jpg",
+        "/assets/img/v5/media/df98880a572f1d0114c8.jpg",
+    )
+    for wrong_path in wrong_strawberry_paths:
+        media = con.execute("SELECT media_id FROM media WHERE path=?", (wrong_path,)).fetchone()
+        if not media:
+            continue
+        con.execute(
+            "DELETE FROM sku_media WHERE media_id=? AND sku_id IN "
+            "(SELECT sku_id FROM skus WHERE product_id=?)",
+            (media[0], strawberry_pid),
+        )
+        con.execute(
+            "DELETE FROM product_media WHERE product_id=? AND media_id=?",
+            (strawberry_pid, media[0]),
+        )
+
+    preferred_strawberry = "/assets/img/v5/media/375fa47472d8901aca1a.jpg"
+    preferred = con.execute(
+        "SELECT media_id FROM media WHERE path=?", (preferred_strawberry,)
+    ).fetchone()
+    if not preferred:
+        raise RuntimeError("PlantLogic 1305082 exact product view missing")
+    preferred_id = preferred[0]
+    con.execute(
+        "UPDATE product_media SET sort_order=0 WHERE product_id=? AND media_id=?",
+        (strawberry_pid, preferred_id),
+    )
+    strawberry_skus = [
+        row[0] for row in con.execute(
+            "SELECT sku_id FROM skus WHERE product_id=? AND enabled=1",
+            (strawberry_pid,),
+        ).fetchall()
+    ]
+    if not strawberry_skus:
+        raise RuntimeError("PlantLogic 1305082 enabled SKU missing")
+    for sku_id in strawberry_skus:
+        con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+        con.execute(
+            "UPDATE sku_media SET is_primary=1,sort_order=0,binding_kind='exact' "
+            "WHERE sku_id=? AND media_id=?",
+            (sku_id, preferred_id),
+        )
+        found = con.execute(
+            "SELECT 1 FROM sku_media WHERE sku_id=? AND media_id=?",
+            (sku_id, preferred_id),
+        ).fetchone()
+        if not found:
+            raise RuntimeError("PlantLogic 1305082 exact primary SKU binding missing")
+
+    # Kratos #1301081 had one Rivus image in its exact gallery. Keep Rivus
+    # media only on the Rivus product; the remaining Kratos views are exact.
+    kratos_pid = "plantlogic-kratos-slab-base-1301081"
+    rivus_path = "/assets/img/v5/media/62af4a9b396a5e84d3a2.jpg"
+    rivus_media = con.execute("SELECT media_id FROM media WHERE path=?", (rivus_path,)).fetchone()
+    if rivus_media:
+        con.execute(
+            "DELETE FROM sku_media WHERE media_id=? AND sku_id IN "
+            "(SELECT sku_id FROM skus WHERE product_id=?)",
+            (rivus_media[0], kratos_pid),
+        )
+        con.execute(
+            "DELETE FROM product_media WHERE product_id=? AND media_id=?",
+            (kratos_pid, rivus_media[0]),
+        )
+
+    plantlogic_manual_audit_20260929.normalize_public_media_alt(con)
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2807,6 +2891,7 @@ _MIGRATIONS = [
     ("20260929_plantlogic_zephyr_context_media_batch34", _plantlogic_zephyr_context_media_batch_34),
     ("20260929_plantlogic_primary_quality_batch35", _plantlogic_primary_quality_batch_35),
     ("20260929_plantlogic_public_media_alt_quality_batch36", _plantlogic_public_media_alt_quality_batch_36),
+    ("20260929_plantlogic_storefront_media_integrity_batch37", _plantlogic_storefront_media_integrity_batch_37),
 ]
 
 

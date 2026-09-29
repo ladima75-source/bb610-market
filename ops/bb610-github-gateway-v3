@@ -459,6 +459,25 @@ twofamily_enable_deploy_user() {
   echo "TWOFAMILY_DEPLOY_USER=READY"
 }
 
+
+twofamily_ssh_diag() {
+  echo "--- USER ---"
+  id twofamily-deploy || true
+  getent passwd twofamily-deploy || true
+  passwd -S twofamily-deploy 2>/dev/null || true
+  echo "--- PATHS ---"
+  stat -c '%U:%G %a %n' /home/twofamily-deploy /home/twofamily-deploy/.ssh /home/twofamily-deploy/.ssh/authorized_keys 2>/dev/null || true
+  if command -v ls >/dev/null 2>&1; then
+    ls -Zd /home/twofamily-deploy /home/twofamily-deploy/.ssh /home/twofamily-deploy/.ssh/authorized_keys 2>/dev/null || true
+  fi
+  echo "--- KEY TAG ---"
+  grep -c 'twofamily-social-control' /home/twofamily-deploy/.ssh/authorized_keys 2>/dev/null || true
+  echo "--- SSHD EFFECTIVE ---"
+  /usr/sbin/sshd -T 2>/dev/null | grep -E '^(pubkeyauthentication|passwordauthentication|authorizedkeysfile|allowusers|denyusers|strictmodes|usepam|permitrootlogin)' || true
+  echo "--- RECENT SSHD ---"
+  journalctl -u sshd -n 40 --no-pager 2>/dev/null | tail -n 25 || true
+}
+
 case "$CMD" in
   audit) audit ;;
   health) health ;;
@@ -476,6 +495,7 @@ case "$CMD" in
   twofamily-authorize-ephemeral) twofamily_authorize_ephemeral ;;
   twofamily-revoke-ephemeral) twofamily_revoke_ephemeral ;;
   twofamily-enable-deploy-user) twofamily_enable_deploy_user ;;
+  twofamily-ssh-diag) twofamily_ssh_diag ;;
   deploy\ *) deploy "${CMD#deploy }" ;;
   *) echo "DENIED"; exit 126 ;;
 esac

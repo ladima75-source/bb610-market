@@ -2351,6 +2351,8 @@ def _plantlogic_v2_customer_content_batch_25(con: sqlite3.Connection) -> bool:
 
 def _plantlogic_manual_audit_batch_26(con: sqlite3.Connection) -> bool:
     """Apply the approved manual PlantLogic decisions 1-23 after V2/customer content."""
+    if os.getenv("BB610_SKIP_PLANTLOGIC_MANUAL_1_23") == "1":
+        return True
     from . import plantlogic_manual_audit_20260929
     plantlogic_manual_audit_20260929.apply(con)
     return True

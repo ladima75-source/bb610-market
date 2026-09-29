@@ -2358,6 +2358,48 @@ def _plantlogic_manual_audit_batch_26(con: sqlite3.Connection) -> bool:
     return True
 
 
+def _plantlogic_public_copy_cleanup_batch_27(con: sqlite3.Connection) -> bool:
+    """Apply post-audit buyer-facing terminology fixes to an already migrated live DB."""
+    fixes = {
+        "plantlogic-kratos-rivus-grow-bag-8l-1500010": ("set", "Kratos / Rivus · 8 л"),
+        "plantlogic-vf-bag-base-hose-fix-12010320": ("set", "VF 3232 · фіксація шланга"),
+        "plantlogic-slab-base-bags-slabs-1302809": ("drop", None),
+    }
+    for product_id, (action, value) in fixes.items():
+        row = con.execute(
+            "SELECT characteristics_json FROM products WHERE product_id=?",
+            (product_id,),
+        ).fetchone()
+        if not row:
+            raise RuntimeError(f"PlantLogic public-copy target missing: {product_id}")
+        try:
+            items = json.loads(row[0] or "[]")
+        except Exception:
+            items = []
+        if not isinstance(items, list):
+            items = []
+        cleaned = []
+        model_seen = False
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            label = str(item.get("label") or "").strip()
+            if label == "Модель":
+                if action == "drop":
+                    continue
+                item = dict(item)
+                item["value"] = value
+                model_seen = True
+            cleaned.append(item)
+        if action == "set" and not model_seen:
+            cleaned.append({"label": "Модель", "value": value})
+        con.execute(
+            "UPDATE products SET characteristics_json=?,updated_at=? WHERE product_id=?",
+            (json.dumps(cleaned, ensure_ascii=False, separators=(",", ":")), _now(), product_id),
+        )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2387,6 +2429,7 @@ _MIGRATIONS = [
     ("20260928_plantlogic_v2_final_batch24", _plantlogic_v2_final_batch_24),
     ("20260928_plantlogic_v2_customer_content_batch25", _plantlogic_v2_customer_content_batch_25),
     ("20260929_plantlogic_manual_audit_1_23_batch26", _plantlogic_manual_audit_batch_26),
+    ("20260929_plantlogic_public_copy_cleanup_batch27", _plantlogic_public_copy_cleanup_batch_27),
 ]
 
 

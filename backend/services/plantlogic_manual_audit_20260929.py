@@ -558,27 +558,24 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
         _set_char(con, pid, "Розміри", dims)
         _set_char(con, pid, "Висота ніжок", "70 мм")
         skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (pid,)).fetchall()]
-        visual_order = 0 if article == "1301143" else 90
         _bind_local_visual(
             con, pid, skus, svg,
             f"PlantLogic Zephyr V2 {article} — premium size visual",
-            order=visual_order,
-            primary=(article == "1301143"),
+            order=90,
+            primary=False,
         )
 
-    zephyr_family = [
-        ("https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-1.jpg",
-         "Zephyr V2 — офіційне family/application photo; не exact фото 30/40 л"),
-        ("https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-2-2.jpg",
-         "Zephyr V2 — офіційне family/application photo; не exact фото 30/40 л"),
-        ("https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-BASE-2.jpg",
-         "Zephyr V2 — офіційне family/application photo конструкції"),
-    ]
-    for pid in (z30, z40):
+    zephyr_family_photo = "/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp"
+    for pid, make_primary in ((z30, False), (z40, True)):
         skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (pid,)).fetchall()]
-        _remote_media(
-            con, pid, skus, zephyr_family, "plantlogic_official_family_context",
-            primary_first=False, start_order=50,
+        _bind_local_photo(
+            con,
+            pid,
+            skus,
+            zephyr_family_photo,
+            "Zephyr V2 — офіційне family/application фото з PlantLogic Catalog 2026",
+            primary=make_primary,
+            order=0 if make_primary else 50,
         )
 
     # #9: manual correction 50 mm -> 30 mm.

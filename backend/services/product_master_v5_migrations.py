@@ -2597,6 +2597,12 @@ def _plantlogic_one_media_gallery_batch_30(con: sqlite3.Connection) -> bool:
     from . import plantlogic_manual_audit_20260929
     return plantlogic_manual_audit_20260929.apply_one_media_gallery_expansion(con)
 
+
+def _plantlogic_remaining_media_visuals_batch_31(con: sqlite3.Connection) -> bool:
+    """Close the remaining public PlantLogic media gaps with exact technical visuals."""
+    from . import plantlogic_manual_audit_20260929
+    return plantlogic_manual_audit_20260929.apply_remaining_media_visuals(con)
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2630,6 +2636,7 @@ _MIGRATIONS = [
     ("20260929_plantlogic_zephyr_v2_media_cleanup_batch28", _plantlogic_zephyr_v2_media_cleanup_batch_28),
     ("20260929_plantlogic_12010320_exact_media_batch29", _plantlogic_12010320_exact_media_batch_29),
     ("20260929_plantlogic_one_media_gallery_batch30", _plantlogic_one_media_gallery_batch_30),
+    ("20260929_plantlogic_remaining_media_visuals_batch31", _plantlogic_remaining_media_visuals_batch_31),
 ]
 
 

@@ -7,6 +7,7 @@ on:
       - 'ops/bb610-github-gateway-v3'
       - 'ops/export_v5_snapshot.py'
       - 'ops/gateway-upgrade.json'
+      - 'ops/twofamily-rollout.py'
       - '.github/workflows/bb610_gateway_ci.yml'
   pull_request:
     paths:
@@ -33,6 +34,11 @@ jobs:
         run: |
           set -euo pipefail
           python -m py_compile ops/export_v5_snapshot.py
+
+      - name: Validate TwoFamily rollout syntax
+        run: |
+          set -euo pipefail
+          python -m py_compile ops/twofamily-rollout.py
 
       - name: Validate hash-pinned gateway upgrade contract
         run: |

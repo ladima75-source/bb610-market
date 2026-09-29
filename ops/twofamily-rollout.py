@@ -251,6 +251,9 @@ WantedBy=multi-user.target
             enabled.unlink()
         enabled.symlink_to(conf)
 
+    if shutil.which("getenforce") and output(["getenforce"]) == "Enforcing" and shutil.which("setsebool"):
+        run(["setsebool", "-P", "httpd_can_network_connect", "1"])
+
     run(["nginx", "-t"])
     run(["systemctl", "reload", "nginx"])
 

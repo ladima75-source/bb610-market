@@ -1,11 +1,9 @@
 {
   "schema_version": "1.0",
-  "enabled": false,
+  "enabled": true,
   "target_path": "/usr/local/sbin/bb610-github-gateway",
   "target_repo_path": "ops/bb610-github-gateway-v3",
-  "expected_current_sha256": "851350f0225218ae8a540d3e7c25e6271dbbc1299069ae3c7fc0692ac0cfcc86",
+  "expected_current_sha256": "77e28222dee3921fd3a9242026a7548131995396de5e99b6306391e7a1d69960",
   "mode": "0700",
-  "reason": "Install CI-validated TwoFamily hash-verified rollout dispatcher.",
-  "completed_sha256": "77e28222dee3921fd3a9242026a7548131995396de5e99b6306391e7a1d69960",
-  "completed_note": "TwoFamily hash-verified rollout dispatcher installed and verified."
+  "reason": "Install CI-validated focused TwoFamily SSH diagnostics."
 }

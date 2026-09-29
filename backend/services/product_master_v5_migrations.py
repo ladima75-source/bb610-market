@@ -2852,6 +2852,14 @@ def _plantlogic_storefront_media_integrity_batch_37(con: sqlite3.Connection) -> 
     return True
 
 
+def _plantlogic_zephyr_v2_user_media_rule_batch_38(con: sqlite3.Connection) -> bool:
+    """Use the approved 25L Zephyr V2 product photo on 30L/40L and keep schemes last."""
+    if os.getenv("BB610_SKIP_PLANTLOGIC_MANUAL_1_23") == "1":
+        return True
+    from . import plantlogic_manual_audit_20260929
+    return plantlogic_manual_audit_20260929.apply_zephyr_v2_user_media_rule(con)
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2892,6 +2900,7 @@ _MIGRATIONS = [
     ("20260929_plantlogic_primary_quality_batch35", _plantlogic_primary_quality_batch_35),
     ("20260929_plantlogic_public_media_alt_quality_batch36", _plantlogic_public_media_alt_quality_batch_36),
     ("20260929_plantlogic_storefront_media_integrity_batch37", _plantlogic_storefront_media_integrity_batch_37),
+    ("20260929_plantlogic_zephyr_v2_user_media_rule_batch38", _plantlogic_zephyr_v2_user_media_rule_batch_38),
 ]
 
 

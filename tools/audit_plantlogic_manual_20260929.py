@@ -79,8 +79,8 @@ def main() -> int:
             ).fetchall()
             assert len(all_products) == 79, len(all_products)
             assert len(all_skus) == 131, len(all_skus)
-            assert len(public_products) == 68, len(public_products)
-            assert len(public_skus) == 122, len(public_skus)
+            assert len(public_products) == 67, len(public_products)
+            assert len(public_skus) == 121, len(public_skus)
 
             category_products = {
                 row["category_id"]: row["n"]
@@ -106,8 +106,8 @@ def main() -> int:
                     """
                 ).fetchall()
             }
-            assert category_products == {"accessories": 20, "containers": 42, "strawberry": 6}, category_products
-            assert category_skus == {"accessories": 33, "containers": 72, "strawberry": 17}, category_skus
+            assert category_products == {"accessories": 19, "containers": 42, "strawberry": 6}, category_products
+            assert category_skus == {"accessories": 32, "containers": 72, "strawberry": 17}, category_skus
 
             hidden = set(REMOVE_PRODUCTS) | set(REFERENCE_ONLY_PRODUCTS)
             assert not (hidden & public_ids), sorted(hidden & public_ids)

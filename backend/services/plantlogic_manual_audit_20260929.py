@@ -769,6 +769,113 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
 
 
 
+def apply_zephyr_v2_user_media_rule(con: sqlite3.Connection) -> bool:
+    """Apply the approved Zephyr V2 30L/40L gallery rule.
+
+    The official 25L #1301144 product photo is the primary product photo for
+    both cards. Each model-specific size scheme is non-primary and last.
+    """
+    z30 = "plantlogic-blueberry-zephyr-v2-30l-1301153"
+    z40 = "plantlogic-blueberry-zephyr-v2-40l-1301143"
+    photo_path = "/assets/img/v5/media/aaaa485fd58fd917c4fb.jpg"
+    schemes = {
+        z30: "/assets/img/v5/manual/plantlogic-1301153-zephyr-v2-30l.svg",
+        z40: "/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg",
+    }
+
+    photo = con.execute("SELECT media_id FROM media WHERE path=?", (photo_path,)).fetchone()
+    if not photo:
+        raise RuntimeError("Approved Zephyr V2 25L product photo missing")
+    photo_id = photo[0]
+
+    for pid in (z30, z40):
+        sku_ids = [
+            row[0]
+            for row in con.execute(
+                "SELECT sku_id FROM skus WHERE product_id=? AND enabled=1 ORDER BY sku_id",
+                (pid,),
+            ).fetchall()
+        ]
+        if not sku_ids:
+            raise RuntimeError(f"Zephyr V2 enabled SKU missing: {pid}")
+
+        # Keep existing product views as supplementary media, but put the
+        # approved 25L product photo first.
+        con.execute(
+            "UPDATE product_media SET sort_order=sort_order+10 "
+            "WHERE product_id=? AND media_id<>? AND sort_order<10",
+            (pid, photo_id),
+        )
+        con.execute(
+            """
+            INSERT INTO product_media(product_id,media_id,sort_order,source_kind,source_url)
+            VALUES(?,?,0,'user_approved_zephyr_v2_25l_product_photo',NULL)
+            ON CONFLICT(product_id,media_id) DO UPDATE SET
+              sort_order=0,
+              source_kind='user_approved_zephyr_v2_25l_product_photo',
+              source_url=NULL
+            """,
+            (pid, photo_id),
+        )
+
+        for sku_id in sku_ids:
+            con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+            con.execute(
+                "UPDATE sku_media SET sort_order=sort_order+10 "
+                "WHERE sku_id=? AND media_id<>? AND sort_order<10",
+                (sku_id, photo_id),
+            )
+            con.execute(
+                """
+                INSERT INTO sku_media(
+                  sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+                ) VALUES(?,?,1,0,'exact','user_approved_zephyr_v2_25l_product_photo',NULL)
+                ON CONFLICT(sku_id,media_id) DO UPDATE SET
+                  is_primary=1,
+                  sort_order=0,
+                  binding_kind='exact',
+                  source_kind='user_approved_zephyr_v2_25l_product_photo',
+                  source_url=NULL
+                """,
+                (sku_id, photo_id),
+            )
+
+        scheme_path = schemes[pid]
+        scheme = con.execute("SELECT media_id FROM media WHERE path=?", (scheme_path,)).fetchone()
+        if not scheme:
+            raise RuntimeError(f"Zephyr V2 size scheme missing: {pid}")
+        scheme_id = scheme[0]
+        con.execute(
+            """
+            INSERT INTO product_media(product_id,media_id,sort_order,source_kind,source_url)
+            VALUES(?,?,999,'manual_premium_visual',NULL)
+            ON CONFLICT(product_id,media_id) DO UPDATE SET
+              sort_order=999,
+              source_kind='manual_premium_visual',
+              source_url=NULL
+            """,
+            (pid, scheme_id),
+        )
+        for sku_id in sku_ids:
+            con.execute(
+                """
+                INSERT INTO sku_media(
+                  sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+                ) VALUES(?,?,0,999,'exact','manual_premium_visual',NULL)
+                ON CONFLICT(sku_id,media_id) DO UPDATE SET
+                  is_primary=0,
+                  sort_order=999,
+                  binding_kind='exact',
+                  source_kind='manual_premium_visual',
+                  source_url=NULL
+                """,
+                (sku_id, scheme_id),
+            )
+
+    normalize_public_media_alt(con)
+    return True
+
+
 def _apply_exact_zero_media(con: sqlite3.Connection) -> None:
     # Exact legacy #1309010 product photos extracted from the official PlantLogic EN tech sheet.
     p = "plantlogic-rubus-square-10l-legacy-1309010"

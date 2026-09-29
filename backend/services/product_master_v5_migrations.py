@@ -2860,6 +2860,157 @@ def _plantlogic_zephyr_v2_user_media_rule_batch_38(con: sqlite3.Connection) -> b
     return plantlogic_manual_audit_20260929.apply_zephyr_v2_user_media_rule(con)
 
 
+def _plantlogic_stage1_media_policy_batch_39(con: sqlite3.Connection) -> bool:
+    """Enforce approved Stage 1 visibility and gallery policy after all earlier PlantLogic migrations."""
+    hidden_product_id = "plantlogic-zephyr-v2-hose-clip-1700149"
+    hidden = con.execute(
+        "SELECT product_id FROM products WHERE product_id=?",
+        (hidden_product_id,),
+    ).fetchone()
+    if not hidden:
+        raise RuntimeError("PlantLogic Stage 1 hidden product missing: " + hidden_product_id)
+    con.execute(
+        "UPDATE products SET public_enabled=0,status='active',updated_at=? WHERE product_id=?",
+        (_now(), hidden_product_id),
+    )
+    hidden_sku = con.execute(
+        "SELECT 1 FROM skus WHERE product_id=? AND sku_id='PL-1700149'",
+        (hidden_product_id,),
+    ).fetchone()
+    if not hidden_sku:
+        raise RuntimeError("PlantLogic Stage 1 canonical SKU PL-1700149 missing")
+
+    orders = {
+        "plantlogic-5l-square-short-1306051": [
+            "/assets/img/v5/media/f2d73a9c31896314fbe3.jpg",
+            "/assets/img/v5/media/5694cfc6cc9861d6ecf1.jpg",
+            "/assets/img/v5/media/ad5eb9600f6b9b1ddf57.jpg",
+            "/assets/img/v5/media/e8098376716b4a4a4844.jpg",
+            "/assets/img/v5/media/36680dee8c75ae499074.jpg",
+            "/assets/img/v5/media/948afb31f5979772caf1.jpg",
+            "/assets/img/v5/media/182d39324dfd950ac906.jpg",
+            "/assets/img/v5/media/92ae6b0dcd7893919bac.jpg",
+            "/assets/img/v5/media/9e9a57f266a53598a39b.jpg",
+        ],
+        "plantlogic-4-7l-square-cold-storage-13050040": [
+            "/assets/img/v5/media/4740222530a05f2c173b.jpg",
+            "/assets/img/v5/media/26647ee081fb54c040fe.jpg",
+            "/assets/img/v5/media/a1f100c9afa871029001.jpg",
+            "/assets/img/v5/media/cec90c50bc824f85fea1.jpg",
+            "/assets/img/v5/media/2c8102c5b66586d35e6b.jpg",
+            "/assets/img/v5/media/135ab90eacc6e99dcdab.jpg",
+            "/assets/img/v5/media/a58cd4087edf2e133faf.jpg",
+        ],
+        "plantlogic-7l-square-cold-storage-1305071": [
+            "/assets/img/v5/media/9a3e43da6829d390d1d7.jpg",
+            "/assets/img/v5/media/8d78f3a113ee4f7bf996.jpg",
+            "/assets/img/v5/media/d94101c081ec6d1c26f4.jpg",
+            "/assets/img/v5/media/44aadf7c402a06ecde93.jpg",
+            "/assets/img/v5/media/21047b973e8ef4ef323b.jpg",
+            "/assets/img/v5/media/743f8f77235f36a4e3af.png",
+            "/assets/img/v5/media/f0dc40fb71cb13a184f4.png",
+            "/assets/img/v5/media/e258940b3096c95ca88e.png",
+            "/assets/img/v5/media/f024e4f573809f46cc06.png",
+        ],
+        "plantlogic-5l-drainage-1305005": [
+            "/assets/img/v5/media/4c726f7797ab62d3875c.jpg",
+            "/assets/img/v5/media/898936ea92a11243d273.jpg",
+            "/assets/img/v5/media/dab703ab6da8305d5cae.jpg",
+            "/assets/img/v5/media/088846d0baf538295ac2.jpg",
+            "/assets/img/v5/media/75a81f56b51e7600ee8c.jpg",
+            "/assets/img/v5/media/6ff41931b8befa0799e6.jpg",
+            "/assets/img/v5/media/818e77a152620aaf3055.jpg",
+            "/assets/img/v5/media/9c55f097f60c4c2ed714.jpg",
+        ],
+        "plantlogic-7l-drainage-1307107": [
+            "/assets/img/v5/media/2a774324644075eed958.jpg",
+            "/assets/img/v5/media/f95f669cd448623e6ff9.jpg",
+            "/assets/img/v5/media/378beb4207c811c48fd2.jpg",
+            "/assets/img/v5/media/96a081cd60baa328ae59.jpg",
+            "/assets/img/v5/media/fbb794cab8ba49047edd.jpg",
+            "/assets/img/v5/media/7f30c00a1d28564f72e5.jpg",
+            "/assets/img/v5/media/ff4f724efccaba870c59.png",
+        ],
+        "plantlogic-10l-drainage-1307110": [
+            "/assets/img/v5/media/eda248272cd50199e413.jpg",
+            "/assets/img/v5/media/4f612bf0f1e828d63729.jpg",
+            "/assets/img/v5/media/6a01ef0585f82073b168.jpg",
+            "/assets/img/v5/media/f0cc601284b2c224ca2c.jpg",
+            "/assets/img/v5/media/236a6f180bc4ec0dc977.jpg",
+            "/assets/img/v5/media/b64f66624c5bd0033d99.jpg",
+        ],
+        "plantlogic-15l-round-drainage-1304015": [
+            "/assets/img/v5/media/594926c56dcb98faa098.jpg",
+            "/assets/img/v5/media/d361bb3f9df16c17ef37.jpg",
+            "/assets/img/v5/media/e58f0d89484c891ea4f4.jpg",
+            "/assets/img/v5/media/a9273c493be54bb012ae.jpg",
+            "/assets/img/v5/media/5b41887d51fb75532238.png",
+        ],
+    }
+
+    for product_id, paths in orders.items():
+        sku_ids = [
+            row[0] for row in con.execute(
+                "SELECT sku_id FROM skus WHERE product_id=? AND enabled=1 ORDER BY sku_id",
+                (product_id,),
+            ).fetchall()
+        ]
+        if not sku_ids:
+            raise RuntimeError("PlantLogic Stage 1 product has no enabled SKU: " + product_id)
+
+        path_to_media = {}
+        for path in paths:
+            row = con.execute("SELECT media_id FROM media WHERE path=?", (path,)).fetchone()
+            if not row:
+                raise RuntimeError(f"PlantLogic Stage 1 media missing: {product_id} {path}")
+            path_to_media[path] = row[0]
+
+        for order, path in enumerate(paths):
+            media_id = path_to_media[path]
+            con.execute(
+                "UPDATE product_media SET sort_order=? WHERE product_id=? AND media_id=?",
+                (order, product_id, media_id),
+            )
+
+        primary_media_id = path_to_media[paths[0]]
+        for sku_id in sku_ids:
+            con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+            for order, path in enumerate(paths):
+                media_id = path_to_media[path]
+                exists = con.execute(
+                    "SELECT 1 FROM sku_media WHERE sku_id=? AND media_id=?",
+                    (sku_id, media_id),
+                ).fetchone()
+                if not exists:
+                    con.execute(
+                        """
+                        INSERT INTO sku_media(
+                          sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+                        ) VALUES(?,?,0,?,'exact','plantlogic_stage1_media_policy',NULL)
+                        """,
+                        (sku_id, media_id, order),
+                    )
+                else:
+                    con.execute(
+                        """
+                        UPDATE sku_media
+                        SET sort_order=?,binding_kind='exact'
+                        WHERE sku_id=? AND media_id=?
+                        """,
+                        (order, sku_id, media_id),
+                    )
+            con.execute(
+                """
+                UPDATE sku_media
+                SET is_primary=1,sort_order=0,binding_kind='exact',
+                    source_kind='plantlogic_stage1_media_policy'
+                WHERE sku_id=? AND media_id=?
+                """,
+                (sku_id, primary_media_id),
+            )
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2901,6 +3052,7 @@ _MIGRATIONS = [
     ("20260929_plantlogic_public_media_alt_quality_batch36", _plantlogic_public_media_alt_quality_batch_36),
     ("20260929_plantlogic_storefront_media_integrity_batch37", _plantlogic_storefront_media_integrity_batch_37),
     ("20260929_plantlogic_zephyr_v2_user_media_rule_batch38", _plantlogic_zephyr_v2_user_media_rule_batch_38),
+    ("20260929_plantlogic_stage1_media_policy_batch39", _plantlogic_stage1_media_policy_batch_39),
 ]
 
 

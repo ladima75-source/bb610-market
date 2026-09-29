@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   facetCss.href='assets/css/catalog-facets.css?v=2';
   const plantlogicCss=document.createElement('link');
   plantlogicCss.rel='stylesheet';
-  plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=4';
+  plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=5';
   document.head.appendChild(plantlogicCss);
   document.head.appendChild(facetCss);
 
@@ -21,9 +21,11 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const source=[...BB610.products()];
 
   const potsVideoBanner=document.querySelector('[data-pots-video-banner]');
+  const defaultCatalogHero=document.querySelector('[data-default-catalog-hero]');
   const potsVideo=potsVideoBanner?.querySelector('video')||null;
   const isPotsPage=initialCategory==='containers';
   document.body.classList.toggle('pots-catalog-page',isPotsPage);
+  if(defaultCatalogHero)defaultCatalogHero.hidden=isPotsPage;
   if(potsVideoBanner){
     potsVideoBanner.hidden=!isPotsPage;
     if(isPotsPage&&potsVideo){

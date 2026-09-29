@@ -1,10 +1,11 @@
 {
   "schema_version": "1.0",
-  "enabled": true,
+  "enabled": false,
   "target_path": "/usr/local/sbin/bb610-github-gateway",
   "target_repo_path": "ops/bb610-github-gateway-v3",
-  "expected_current_sha256": "4d09961ad7e357c870a3c2db7ad41c9ebb28939819ab56a9c09679cd32c13f29",
+  "expected_current_sha256": "59ff17de1aaa68acb6c143a986f4cf2eee2ff769759e79a6545b601c904079d1",
   "mode": "0700",
-  "reason": "Install restricted TwoFamily Social Control deploy bridge command while preserving the existing forced-command SSH entry point.",
-  "completed_note": "PENDING: restricted TwoFamily bridge command installation."
+  "reason": "Align V5 deploy guard with the verified canonical public SKU baseline after intentional retirement of four non-public identities: 302 -> 298.",
+  "completed_sha256": "4d09961ad7e357c870a3c2db7ad41c9ebb28939819ab56a9c09679cd32c13f29",
+  "completed_note": "V5 public SKU baseline corrected from 302 to verified canonical 298; gateway backup created and installed hash verified."
 }

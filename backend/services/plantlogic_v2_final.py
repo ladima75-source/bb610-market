@@ -30,6 +30,8 @@ COLOR_MAP = {
 # media is available.
 PUBLIC_HIDDEN_PRODUCT_IDS = {
     "plantlogic-zephyr-v2-hose-clip-1700149",
+    "plantlogic-vegetable-pot-8l-1305008",
+    "plantlogic-nursery-tray-1302048",
 }
 
 

@@ -1,4 +1,5 @@
 {
-  "action": "audit",
-  "request_id": "2026-09-29-plantlogic-final-live-audit"
+  "action": "deploy",
+  "ref": "88eac51cb1fd794bea387a58bd89e0aeb231e725",
+  "request_id": "2026-09-29-plantlogic-storefront-media-integrity"
 }

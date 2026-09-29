@@ -112,7 +112,7 @@ jobs:
           if(DS.product('plantlogic-ground-cover-1600201'))throw new Error('manual REMOVE ground cover leaked');
           if(DS.product('plantlogic-zephyr-1301133'))throw new Error('legacy Zephyr leaked');
           if(DS.product('plantlogic-universal-square-40l-legacy-1309040'))throw new Error('legacy 40L square leaked');
-          if(DS.product('plantlogic-universal-round-25l-legacy-1309003'))throw new Error('legacy 25L round leaked');
+          if(DS.product('plantlogic-universal-round-25l-legacy-1309003')?.id!=='plantlogic-25-round-1308125')throw new Error('legacy 25L round must resolve to 1308125');
           if(!DS.product('plantlogic-blueberry-cooling-cover'))throw new Error('Cooling Skirt missing');
           if(DS.product('plantlogic-kratos-rivus-grow-bag-8l-1500010')?.category_id!=='containers')throw new Error('1500010 must be product/container');
           const potSkus=pots.flatMap(p=>DS.skusForProduct(p.id));

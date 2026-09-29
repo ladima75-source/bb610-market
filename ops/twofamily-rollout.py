@@ -266,6 +266,34 @@ WantedBy=multi-user.target
             "--register-unsafely-without-email", "--redirect",
         ])
 
+    https_nginx = f"""server {{
+    listen 80;
+    server_name {DOMAIN};
+    return 301 https://$host$request_uri;
+}}
+
+server {{
+    listen 443 ssl;
+    server_name {DOMAIN};
+    client_max_body_size 10m;
+    server_tokens off;
+    ssl_certificate /etc/letsencrypt/live/{DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{DOMAIN}/privkey.pem;
+    add_header X-Robots-Tag "noindex, nofollow, noarchive" always;
+
+    location = /__twofamily_upload/{expected} {{
+        proxy_pass http://127.0.0.1:{UPLOAD_PORT}/upload;
+        proxy_request_buffering off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }}
+
+    location / {{
+        return 503;
+    }}
+}}
+"""
+    write_file(conf, https_nginx)
     run(["nginx", "-t"])
     run(["systemctl", "reload", "nginx"])
     run(["systemctl", "daemon-reload"])

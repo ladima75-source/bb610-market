@@ -1,16 +1,18 @@
-name: TwoFamily VPS Bridge Install
+name: TwoFamily VPS Bridge
 
 on:
   push:
     branches: [main]
     paths:
       - 'ops/twofamily-vps-command.json'
+      - '.github/workflows/twofamily_vps_bridge.yml'
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: twofamily-vps-bridge-install
+  group: twofamily-vps-bridge
   cancel-in-progress: false
 
 jobs:
@@ -28,7 +30,8 @@ jobs:
           from pathlib import Path
           d=json.loads(Path("ops/twofamily-vps-command.json").read_text(encoding="utf-8"))
           action=str(d.get("action") or "").strip()
-          if action != "install-bridge":
+          allowed={"audit","authorize-ephemeral","revoke-ephemeral"}
+          if action not in allowed:
               raise SystemExit(f"unsupported action: {action}")
           print(f"action={action}")
           PY
@@ -45,14 +48,20 @@ jobs:
           chmod 600 ~/.ssh/vps
           printf '%s\n' "$HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
-      - name: Install restricted TwoFamily bridge
+      - name: Execute TwoFamily operation
         shell: bash
         env:
           HOST: ${{ secrets.BB610_VPS_HOST }}
+          ACTION: ${{ steps.req.outputs.action }}
         run: |
           set -euo pipefail
+          case "$ACTION" in
+            audit) remote="twofamily-audit" ;;
+            authorize-ephemeral) remote="twofamily-authorize-ephemeral" ;;
+            revoke-ephemeral) remote="twofamily-revoke-ephemeral" ;;
+          esac
           ssh -i ~/.ssh/vps \
             -o BatchMode=yes \
             -o IdentitiesOnly=yes \
             -o StrictHostKeyChecking=yes \
-            root@"$HOST" twofamily-install-bridge
+            root@"$HOST" "$remote"

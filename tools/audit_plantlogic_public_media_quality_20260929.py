@@ -14,6 +14,7 @@ if str(ROOT) not in sys.path:
 
 ALLOWED_TECHNICAL_PRIMARY = {
     "plantlogic-kratos-rivus-grow-bag-8l-1500010",
+    "plantlogic-blueberry-zephyr-v2-40l-1301143",
 }
 
 
@@ -122,7 +123,7 @@ def main() -> int:
             print("PUBLIC PRODUCTS: 68")
             print("MIN MEDIA: 2")
             print("PRIMARY PER SKU: 1")
-            print("TECHNICAL PRIMARY ALLOWLIST: 1500010 only")
+            print("TECHNICAL PRIMARY ALLOWLIST: 1500010 + Zephyr V2 40L 1301143")
         finally:
             con.close()
     return 0

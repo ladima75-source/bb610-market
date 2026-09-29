@@ -298,6 +298,10 @@ server {{
     run(["systemctl", "reload", "nginx"])
     run(["systemctl", "daemon-reload"])
     run(["systemctl", "restart", "twofamily-upload.service"])
+    status = subprocess.run(["systemctl", "is-active", "--quiet", "twofamily-upload.service"])
+    if status.returncode != 0:
+        subprocess.run(["journalctl", "-u", "twofamily-upload.service", "-n", "40", "--no-pager"])
+        raise SystemExit("REFUSED: upload receiver failed to start")
     print(f"TWOFAMILY_UPLOAD_READY=https://{DOMAIN}/__twofamily_upload/{expected}")
 
 

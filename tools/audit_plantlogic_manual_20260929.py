@@ -277,8 +277,11 @@ def main() -> int:
                 "Офіційне джерело",
                 "не специфікован",
                 "Bag Bases",
+                "Bag Base",
+                "Slab base",
                 "grow bag",
                 "open-top grow bags",
+                "Hose fix",
             )
             for p in public_products:
                 pc = chars(p)
@@ -299,6 +302,21 @@ def main() -> int:
                 assert not any(term.lower() in text_blob.lower() for term in banned), (p["product_id"], text_blob)
 
             assert sections == {"blueberry","rubus","strawberry","vegetable","universal","accessories"}, sections
+
+            # Customer-facing manual SVGs must not contain audit/process language.
+            manual_svg_dir = ROOT / "assets" / "img" / "v5" / "manual"
+            svg_banned = (
+                "TECHNICAL VISUAL",
+                "primary product photo",
+                "підготовлена за офіційними даними",
+                "Square Pot",
+                "Nursery Tray",
+                "Pot for Vegetables",
+                "Slab base for bags and slabs",
+            )
+            for svg in manual_svg_dir.glob("plantlogic-*.svg"):
+                visual = svg.read_text(encoding="utf-8")
+                assert not any(term.lower() in visual.lower() for term in svg_banned), (svg.name, "customer-facing visual copy")
 
             print("PLANTLOGIC MANUAL AUDIT 1-23: PASS")
             print("PUBLIC PRODUCTS: 68")

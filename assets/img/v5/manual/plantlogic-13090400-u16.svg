@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<rect width="1400" height="900" fill="white"/>
+<rect x="42" y="42" width="1316" height="816" rx="38" fill="#f4f7f4" stroke="#e3e9e3" stroke-width="3"/>
+<text x="72" y="125" font-size="28" font-weight="700" fill="#36b44a" font-family="Arial, sans-serif">PLANTLOGIC · TECHNICAL VISUAL</text>
+<text x="72" y="190" font-size="46" font-weight="700" fill="#1f2933" font-family="Arial, sans-serif">40 л Square Pot · U-паз Ø16 мм</text>
+<text x="72" y="240" font-size="26" fill="#667085" font-family="Arial, sans-serif">Артикул виробника 13090400</text>
+<text x="72" y="315" font-size="28" fill="#1f2933" font-family="Arial, sans-serif"><tspan fill="#36b44a">●</tspan><tspan dx="14">444 × 459 × 345 мм</tspan></text><text x="72" y="367" font-size="28" fill="#1f2933" font-family="Arial, sans-serif"><tspan fill="#36b44a">●</tspan><tspan dx="14">Ніжки 30 мм</tspan></text><text x="72" y="419" font-size="28" fill="#1f2933" font-family="Arial, sans-serif"><tspan fill="#36b44a">●</tspan><tspan dx="14">U-паз Ø16 мм · бічні отвори</tspan></text>
+<path d="M790 280 H1140 L1090 520 H840 Z" fill="none" stroke="#1f2933" stroke-width="12"/><rect x="820" y="520" width="300" height="70" rx="12" fill="none" stroke="#1f2933" stroke-width="12"/><line x1="840" y1="555" x2="1100" y2="555" stroke="#36b44a" stroke-width="10"/>
+<line x1="745" y1="675" x2="1210" y2="675" stroke="#36b44a" stroke-width="4"/>
+<text x="760" y="730" font-size="24" fill="#667085" font-family="Arial, sans-serif">Схема BB610 підготовлена за офіційними даними PlantLogic.</text>
+<text x="760" y="770" font-size="22" fill="#667085" font-family="Arial, sans-serif">Не використовується як primary product photo.</text>
+</svg>

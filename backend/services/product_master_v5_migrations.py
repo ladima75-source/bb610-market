@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sqlite3
 from datetime import datetime, timezone
 
@@ -2347,6 +2348,16 @@ def _plantlogic_v2_customer_content_batch_25(con: sqlite3.Connection) -> bool:
     from . import plantlogic_v2_customer_content
     return plantlogic_v2_customer_content.apply(con)
 
+
+def _plantlogic_manual_audit_batch_26(con: sqlite3.Connection) -> bool:
+    """Apply the approved manual PlantLogic decisions 1-23 after V2/customer content."""
+    if os.getenv("BB610_SKIP_PLANTLOGIC_MANUAL_1_23") == "1":
+        return True
+    from . import plantlogic_manual_audit_20260929
+    plantlogic_manual_audit_20260929.apply(con)
+    return True
+
+
 _MIGRATIONS = [
     ("20260921_catalog_content_batch01", _content_batch_01),
     ("20260921_plantlogic_exact_media_batch01", _plantlogic_exact_media_batch_01),
@@ -2375,6 +2386,7 @@ _MIGRATIONS = [
     ("20260928_restore_cannabis_as_universal_membership_batch23", _restore_cannabis_as_universal_membership_batch_23),
     ("20260928_plantlogic_v2_final_batch24", _plantlogic_v2_final_batch_24),
     ("20260928_plantlogic_v2_customer_content_batch25", _plantlogic_v2_customer_content_batch_25),
+    ("20260929_plantlogic_manual_audit_1_23_batch26", _plantlogic_manual_audit_batch_26),
 ]
 
 

@@ -73,7 +73,15 @@ def main() -> int:
         con.row_factory = sqlite3.Row
         try:
             from backend.services.product_master_v5_migrations import apply_runtime_migrations
-            apply_runtime_migrations(con)
+            previous = os.environ.get("BB610_SKIP_PLANTLOGIC_MANUAL_1_23")
+            os.environ["BB610_SKIP_PLANTLOGIC_MANUAL_1_23"] = "1"
+            try:
+                apply_runtime_migrations(con)
+            finally:
+                if previous is None:
+                    os.environ.pop("BB610_SKIP_PLANTLOGIC_MANUAL_1_23", None)
+                else:
+                    os.environ["BB610_SKIP_PLANTLOGIC_MANUAL_1_23"] = previous
             rows = con.execute(
                 """
                 SELECT product_id,short_description,description,application,composition,

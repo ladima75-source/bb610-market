@@ -17,6 +17,19 @@ if str(ROOT) not in sys.path:
 PREFERRED_REAL_PRIMARY = {
     "plantlogic-10l-drainage-1307110": "/assets/img/v5/media/6a01ef0585f82073b168.jpg",
     "plantlogic-8l-square-1309008": "/assets/img/v5/media/26631f70e8d140f613c5.jpg",
+    "plantlogic-universal-round-30l-1308030": "https://www.getplantlogic.com/wp-content/uploads/2016/04/Plantlogic-30-liter-round-1308030-Hero.jpg",
+    "plantlogic-rubus-square-10l-legacy-1309010": "/assets/img/v5/manual/plantlogic-1309010-view1.webp",
+    "plantlogic-8l-strawberry-trough-big-handle-1305082": "/assets/img/v5/media/375fa47472d8901aca1a.jpg",
+}
+
+FORBIDDEN_PRODUCT_MEDIA = {
+    "plantlogic-8l-strawberry-trough-big-handle-1305082": {
+        "/assets/img/v5/media/026d011a0d4fa0794b06.jpg",
+        "/assets/img/v5/media/df98880a572f1d0114c8.jpg",
+    },
+    "plantlogic-kratos-slab-base-1301081": {
+        "/assets/img/v5/media/62af4a9b396a5e84d3a2.jpg",
+    },
 }
 
 ALLOWED_TECHNICAL_PRIMARY = {
@@ -115,6 +128,12 @@ def main() -> int:
 
                 normalized = [normalized_path(row["path"]) for row in media]
                 assert len(normalized) == len(set(normalized)), (pid, "duplicate media path")
+                forbidden = {
+                    normalized_path(path)
+                    for path in FORBIDDEN_PRODUCT_MEDIA.get(pid, set())
+                }
+                leaked = forbidden.intersection(normalized)
+                assert not leaked, (pid, "cross-model exact media leaked", sorted(leaked))
 
                 manufacturer_numbers = [
                     x.strip()

@@ -194,7 +194,7 @@ class Handler(BaseHTTPRequestHandler):
             os.chmod(dest, 0o600)
             self.send_response(201)
             self.end_headers()
-            self.wfile.write(b"STAGED\n")
+            self.wfile.write(b"STAGED\\n")
             threading.Thread(target=self.server.shutdown, daemon=True).start()
         except Exception:
             try:
@@ -311,22 +311,37 @@ server {{
 def install_packages():
     if shutil.which("dnf"):
         run(["dnf", "-y", "install", "nodejs", "npm", "postgresql-server", "postgresql-contrib"])
+        if not shutil.which("python3.12"):
+            rc = subprocess.run(["dnf", "-y", "install", "python3.12", "python3.12-pip"]).returncode
+            if rc != 0:
+                run(["dnf", "-y", "install", "python3.11", "python3.11-pip"])
         if not shutil.which("ffmpeg"):
             if subprocess.run(["dnf", "-y", "install", "ffmpeg"]).returncode != 0:
                 subprocess.run(["dnf", "-y", "install", "ffmpeg-free"])
     elif shutil.which("yum"):
         run(["yum", "-y", "install", "nodejs", "npm", "postgresql-server", "postgresql-contrib"])
+        if not shutil.which("python3.12"):
+            rc = subprocess.run(["yum", "-y", "install", "python3.12", "python3.12-pip"]).returncode
+            if rc != 0:
+                run(["yum", "-y", "install", "python3.11", "python3.11-pip"])
         if not shutil.which("ffmpeg"):
             subprocess.run(["yum", "-y", "install", "ffmpeg"])
     elif shutil.which("apt-get"):
         run(["apt-get", "update"])
         run([
             "apt-get", "install", "-y", "nodejs", "npm", "postgresql",
-            "postgresql-client", "python3-venv", "ffmpeg",
+            "postgresql-client", "python3.12", "python3.12-venv", "ffmpeg",
         ])
     else:
         raise SystemExit("REFUSED: unsupported package manager")
 
+
+def backend_python() -> str:
+    for exe in ("python3.12", "python3.11", "python3.10"):
+        found = shutil.which(exe)
+        if found:
+            return found
+    raise SystemExit("REFUSED: TwoFamily requires Python >=3.10; no supported runtime installed")
 
 def ensure_postgres(env):
     if not shutil.which("psql"):
@@ -460,7 +475,9 @@ def install_bundle(expected: str):
     backups.mkdir(parents=True, exist_ok=True)
     os.chmod(backups, 0o750)
 
-    run(["python3", "-m", "venv", APP / "backend/.venv"])
+    py = backend_python()
+    print(f"TWOFAMILY_PYTHON={output([py, '--version'])}")
+    run([py, "-m", "venv", APP / "backend/.venv"])
     pip = APP / "backend/.venv/bin/pip"
     run([pip, "install", "--upgrade", "pip"])
     run([pip, "install", "-r", APP / "backend/requirements.txt"])

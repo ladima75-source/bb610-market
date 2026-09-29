@@ -164,6 +164,8 @@ def _upsert_product(con: sqlite3.Connection, spec: dict) -> None:
     titles = _manufacturer_titles(spec)
     numbers = _manufacturer_numbers(spec)
     now = _now()
+    public_enabled = 0 if spec.get("public_enabled") is False else 1
+    public_status = "active" if public_enabled else "hidden"
     fields = {
         "slug": pid,
         "name": title,
@@ -181,8 +183,8 @@ def _upsert_product(con: sqlite3.Connection, spec: dict) -> None:
         "characteristics_json": _product_characteristics(base, spec),
         "seo_title": title + " | BB610 Market",
         "seo_description": title,
-        "public_enabled": 1,
-        "status": "active",
+        "public_enabled": public_enabled,
+        "status": public_status,
         "updated_at": now,
     }
     exists = con.execute("SELECT 1 FROM products WHERE product_id=?", (pid,)).fetchone()
@@ -210,7 +212,8 @@ def _upsert_product(con: sqlite3.Connection, spec: dict) -> None:
             fields["short_description"], fields["description"], fields["application"],
             fields["composition"], fields["benefits_json"], fields["how_it_works"],
             fields["characteristics_json"], fields["seo_title"], fields["seo_description"],
-            1, "active", (base["created_at"] if base and base["created_at"] else now), now,
+            fields["public_enabled"], fields["status"],
+            (base["created_at"] if base and base["created_at"] else now), now,
         ),
     )
 

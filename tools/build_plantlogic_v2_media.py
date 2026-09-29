@@ -56,6 +56,76 @@ ZEPHYR_V2_40L_PRODUCT = "plantlogic-blueberry-zephyr-v2-40l-1301143"
 ZEPHYR_V1_TECH_SHEET_PAGE = "https://getplantlogic.com/tech-sheet-1301133-zephyr-pot_eng/"
 ZEPHYR_V1_PRODUCT = "plantlogic-zephyr-1301133"
 
+# Stage 1 storefront media policy: real product view first, technical/feature media last.
+# These exact local media IDs are audited official PlantLogic assets already present in V5.
+MEDIA_ORDER_OVERRIDES = {
+    "plantlogic-5l-square-short-1306051": [
+        "v5m_f2d73a9c31896314fbe3836a",
+        "v5m_5694cfc6cc9861d6ecf193ec",
+        "v5m_ad5eb9600f6b9b1ddf57c5c6",
+        "v5m_e8098376716b4a4a4844200f",
+        "v5m_36680dee8c75ae4990744300",
+        "v5m_948afb31f5979772caf17596",
+        "v5m_182d39324dfd950ac9069d99",
+        "v5m_92ae6b0dcd7893919bac4d76",
+        "v5m_9e9a57f266a53598a39bec79"
+    ],
+    "plantlogic-4-7l-square-cold-storage-13050040": [
+        "v5m_4740222530a05f2c173b64fa",
+        "v5m_26647ee081fb54c040fed30f",
+        "v5m_a1f100c9afa87102900110ac",
+        "v5m_cec90c50bc824f85fea1439d",
+        "v5m_2c8102c5b66586d35e6b6397",
+        "v5m_135ab90eacc6e99dcdab1363",
+        "v5m_a58cd4087edf2e133faf4711"
+    ],
+    "plantlogic-7l-square-cold-storage-1305071": [
+        "v5m_9a3e43da6829d390d1d752c9",
+        "v5m_8d78f3a113ee4f7bf99668b6",
+        "v5m_d94101c081ec6d1c26f4f137",
+        "v5m_44aadf7c402a06ecde933d24",
+        "v5m_21047b973e8ef4ef323b9aad",
+        "v5m_743f8f77235f36a4e3afb386",
+        "v5m_f0dc40fb71cb13a184f4e136",
+        "v5m_e258940b3096c95ca88e1ba5",
+        "v5m_f024e4f573809f46cc06f102"
+    ],
+    "plantlogic-5l-drainage-1305005": [
+        "v5m_4c726f7797ab62d3875cdab1",
+        "v5m_898936ea92a11243d273712d",
+        "v5m_dab703ab6da8305d5caee0f2",
+        "v5m_088846d0baf538295ac297cb",
+        "v5m_75a81f56b51e7600ee8cc2c2",
+        "v5m_6ff41931b8befa0799e62b43",
+        "v5m_818e77a152620aaf30553ffa",
+        "v5m_9c55f097f60c4c2ed7146eb5"
+    ],
+    "plantlogic-7l-drainage-1307107": [
+        "v5m_2a774324644075eed9584e2b",
+        "v5m_f95f669cd448623e6ff92db7",
+        "v5m_378beb4207c811c48fd2bde4",
+        "v5m_96a081cd60baa328ae599045",
+        "v5m_fbb794cab8ba49047eddee90",
+        "v5m_7f30c00a1d28564f72e5c9ea",
+        "v5m_ff4f724efccaba870c59ec88"
+    ],
+    "plantlogic-10l-drainage-1307110": [
+        "v5m_eda248272cd50199e413917f",
+        "v5m_4f612bf0f1e828d637296e33",
+        "v5m_6a01ef0585f82073b16813fe",
+        "v5m_f0cc601284b2c224ca2ce0d8",
+        "v5m_236a6f180bc4ec0dc9772cb8",
+        "v5m_b64f66624c5bd0033d99c14b"
+    ],
+    "plantlogic-15l-round-drainage-1304015": [
+        "v5m_594926c56dcb98faa0989aee",
+        "v5m_d361bb3f9df16c17ef373cb4",
+        "v5m_e58f0d89484c891ea4f4d629",
+        "v5m_a9273c493be54bb012ae6c42",
+        "v5m_5b41887d51fb75532238f764"
+    ]
+}
+
 
 def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
@@ -673,7 +743,15 @@ def main() -> int:
             if "detail" in text:
                 return 50
             return 15
-        gallery.sort(key=lambda x: (rank(x), x["media_id"]))
+        override = MEDIA_ORDER_OVERRIDES.get(pid) or []
+        if override:
+            override_order = {media_id: index for index, media_id in enumerate(override)}
+            gallery.sort(key=lambda x: (
+                override_order.get(x["media_id"], len(override) + rank(x)),
+                x["media_id"],
+            ))
+        else:
+            gallery.sort(key=lambda x: (rank(x), x["media_id"]))
         for order, row in enumerate(gallery):
             product_rows.append({
                 "product_id": pid, "media_id": row["media_id"], "sort_order": order,
@@ -683,10 +761,18 @@ def main() -> int:
         for sku in product.get("skus") or []:
             sid = sku["sku_id"]
             rows = sku_galleries[sid]
-            # Reorder to product gallery order but preserve an exact color primary if present.
+            # Reorder to product gallery order. For audited Stage 1 overrides, the clean
+            # real product view is authoritative and legacy exact-SKU primary flags must not win.
             primary_ids = [x["media_id"] for x in rows if x.get("is_primary")]
             order_map = {x["media_id"]: i for i, x in enumerate(gallery)}
-            rows.sort(key=lambda x: (0 if x["media_id"] in primary_ids else 1, order_map.get(x["media_id"], 999), x["media_id"]))
+            if pid in MEDIA_ORDER_OVERRIDES:
+                rows.sort(key=lambda x: (order_map.get(x["media_id"], 999), x["media_id"]))
+            else:
+                rows.sort(key=lambda x: (
+                    0 if x["media_id"] in primary_ids else 1,
+                    order_map.get(x["media_id"], 999),
+                    x["media_id"],
+                ))
             for index, row in enumerate(rows):
                 sku_rows.append({
                     "sku_id": sid, "media_id": row["media_id"],

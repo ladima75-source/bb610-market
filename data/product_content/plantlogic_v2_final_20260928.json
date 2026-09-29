@@ -37,7 +37,10 @@
       "vegetable": 6,
       "universal": 5,
       "accessories": 19
-    }
+    },
+    "public_hidden": [
+      "1700149"
+    ]
   },
   "canonical_products": [
     {
@@ -1376,7 +1379,11 @@
       "source_urls": [
         "https://drive.google.com/file/d/1AyBtHK7D-sYY2c90lTZ9NJmWy_dlvc0Z/view"
       ],
-      "notes": []
+      "notes": [
+        "Тимчасово приховано з публічної вітрини до появи якісного офіційного фото товару."
+      ],
+      "public_enabled": false,
+      "public_hide_reason": "temporary_no_approved_product_photo"
     },
     {
       "canonical_product_id": "plantlogic-pot-cover-1310110",

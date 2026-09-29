@@ -62,6 +62,22 @@ def main() -> int:
     assert action_counts == expected["action_counts"] == {"KEEP": 31, "CREATE": 26, "SPLIT": 4, "RENAME": 17}
     assert expected["public_sections"] == ["blueberry", "rubus", "strawberry", "vegetable", "universal", "accessories"]
 
+    hidden_numbers = set(expected.get("public_hidden") or [])
+    hidden_product_ids = {
+        product["canonical_product_id"]
+        for product in canonical
+        if any(str(number) in hidden_numbers for number in product.get("manufacturer_product_numbers") or [])
+    }
+    assert hidden_numbers == {"1700149"}
+    assert hidden_product_ids == {"plantlogic-zephyr-v2-hose-clip-1700149"}
+    public_canonical_ids = canonical_ids - hidden_product_ids
+    public_wanted_skus = {
+        sku["sku_id"]
+        for product in canonical
+        if product["canonical_product_id"] in public_canonical_ids
+        for sku in product.get("skus") or []
+    }
+
     with tempfile.TemporaryDirectory() as td:
         db = Path(td) / "v5.sqlite3"
         con = build_db(db)
@@ -225,15 +241,26 @@ def main() -> int:
 
             os.environ["BB610_V5_DB_PATH"] = str(db)
             os.environ["BB610_DB_PATH"] = str(Path(td) / "no-live-commerce.sqlite3")
-            from backend.services import product_master_feed_v5
+            from backend.services import product_master_v5, product_master_feed_v5
+            hidden_internal = product_master_v5.product(
+                "plantlogic-zephyr-v2-hose-clip-1700149", public_only=False
+            )
+            assert hidden_internal is not None
+            assert hidden_internal["manufacturer_product_number"] == "1700149"
+            assert any(x["sku_id"] == "PL-1700149" for x in hidden_internal["skus"])
+            assert product_master_v5.product(
+                "plantlogic-zephyr-v2-hose-clip-1700149", public_only=True
+            ) is None
             feed = product_master_feed_v5.snapshot()
             feed_products = {
                 x["id"] for x in feed["products"]
                 if str(x.get("brand") or "").lower() == "plantlogic"
             }
             feed_skus = {x["id"] for x in feed["skus"] if x["product_id"] in canonical_ids}
-            assert feed_products == canonical_ids
-            assert feed_skus == wanted_skus
+            assert feed_products == public_canonical_ids
+            assert feed_skus == public_wanted_skus
+            assert "plantlogic-zephyr-v2-hose-clip-1700149" not in feed_products
+            assert "PL-1700149" not in feed_skus
             assert not any(x["id"] in alias_map for x in feed["products"])
             assert not any(x["id"] in alias_map for x in feed["skus"])
 

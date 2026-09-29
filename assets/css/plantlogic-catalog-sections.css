@@ -159,41 +159,35 @@
 }
 
 
-/* Pots landing video banner — normal document flow, never sticky/fixed. */
-.catalog-hero-side{
-  margin-left:auto;
-  min-width:0;
-}
+/* Pots catalog hero video — normal flow, never sticky/fixed. */
 .pots-video-banner[hidden]{
   display:none !important;
 }
-body.design-v2.pots-catalog-page .page-title-row{
-  align-items:stretch;
+
+body.design-v2.pots-catalog-page .page-hero{
+  padding:16px 0 18px;
+  background:#0b0d0f;
 }
-body.design-v2.pots-catalog-page .page-title-row>div:first-child{
-  flex:0 0 230px;
-  align-self:flex-end;
-  padding-bottom:4px;
+
+body.design-v2.pots-catalog-page [data-default-catalog-hero]{
+  display:none !important;
 }
-body.design-v2.pots-catalog-page .catalog-hero-side{
-  flex:1 1 auto;
-  width:min(820px,calc(100% - 260px));
-  max-width:820px;
-}
-body.design-v2.pots-catalog-page .catalog-hero-copy{
-  display:none;
-}
+
 .pots-video-banner{
   position:relative;
   width:100%;
-  aspect-ratio:8/3;
+  height:clamp(190px,18vw,225px);
   overflow:hidden;
-  border:1px solid #2d3438;
+  border:0;
   border-radius:10px;
   background:#0a0c0d;
-  box-shadow:0 10px 28px rgba(0,0,0,.24);
+  isolation:isolate;
 }
+
 .pots-video-banner video{
+  position:absolute;
+  inset:0;
+  z-index:0;
   display:block;
   width:100%;
   height:100%;
@@ -201,20 +195,107 @@ body.design-v2.pots-catalog-page .catalog-hero-copy{
   object-position:center;
   background:#0a0c0d;
 }
+
+.pots-video-shade{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      rgba(7,9,10,.94) 0%,
+      rgba(7,9,10,.82) 22%,
+      rgba(7,9,10,.58) 40%,
+      rgba(7,9,10,.20) 62%,
+      rgba(7,9,10,.04) 100%),
+    linear-gradient(0deg,rgba(7,9,10,.28),rgba(7,9,10,0) 58%);
+}
+
+.pots-video-copy{
+  position:absolute;
+  z-index:2;
+  left:clamp(22px,3.4vw,48px);
+  top:50%;
+  width:min(520px,52%);
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  padding-left:18px;
+  border-left:3px solid #d89b2d;
+  text-shadow:0 2px 16px rgba(0,0,0,.68);
+}
+
+.pots-video-kicker{
+  color:#d7a84f;
+  font-size:10px;
+  font-weight:750;
+  letter-spacing:.13em;
+  line-height:1.25;
+}
+
+.pots-video-copy strong{
+  color:#fff;
+  font-size:clamp(24px,2.2vw,32px);
+  font-weight:680;
+  line-height:1.06;
+  letter-spacing:-.025em;
+}
+
+.pots-video-subtitle{
+  color:#d1d6d8;
+  font-size:12px;
+  font-weight:520;
+  letter-spacing:.02em;
+}
+
 @media(max-width:900px){
-  body.design-v2.pots-catalog-page .page-title-row{
-    display:block;
+  body.design-v2.pots-catalog-page .page-hero{
+    padding:12px 0 14px;
   }
-  body.design-v2.pots-catalog-page .page-title-row>div:first-child{
-    padding-bottom:14px;
+  .pots-video-banner{
+    height:180px;
+    border-radius:8px;
   }
-  body.design-v2.pots-catalog-page .catalog-hero-side{
-    width:100%;
-    max-width:none;
+  .pots-video-copy{
+    left:20px;
+    width:min(500px,66%);
+  }
+  .pots-video-copy strong{
+    font-size:24px;
   }
 }
+
 @media(max-width:560px){
   .pots-video-banner{
+    height:150px;
     border-radius:7px;
   }
+  .pots-video-shade{
+    background:
+      linear-gradient(90deg,
+        rgba(7,9,10,.94) 0%,
+        rgba(7,9,10,.78) 42%,
+        rgba(7,9,10,.26) 78%,
+        rgba(7,9,10,.08) 100%);
+  }
+  .pots-video-copy{
+    left:14px;
+    width:76%;
+    gap:6px;
+    padding-left:12px;
+    border-left-width:2px;
+  }
+  .pots-video-kicker{
+    font-size:8px;
+    letter-spacing:.10em;
+  }
+  .pots-video-copy strong{
+    font-size:19px;
+    line-height:1.08;
+  }
+  .pots-video-subtitle{
+    font-size:10px;
+  }
 }
+

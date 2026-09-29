@@ -774,6 +774,70 @@ def apply_one_media_gallery_expansion(con: sqlite3.Connection) -> bool:
     return True
 
 
+
+def apply_remaining_media_visuals(con: sqlite3.Connection) -> bool:
+    """Close the remaining public PlantLogic media gaps with exact technical visuals."""
+    primary_pid = "plantlogic-kratos-rivus-grow-bag-8l-1500010"
+    sku_ids = [x[0] for x in con.execute(
+        "SELECT sku_id FROM skus WHERE product_id=? AND enabled=1", (primary_pid,)
+    ).fetchall()]
+    if not sku_ids:
+        raise RuntimeError("PlantLogic 1500010 enabled SKU missing")
+    _bind_local_visual(
+        con,
+        primary_pid,
+        sku_ids,
+        "/assets/img/v5/manual/plantlogic-1500010-8l-bag.svg",
+        "PlantLogic 1500010 — мішок для субстрату 8 л для систем Kratos / Rivus",
+        order=0,
+        primary=True,
+    )
+    _bind_local_visual(
+        con,
+        primary_pid,
+        sku_ids,
+        "/assets/img/v5/manual/plantlogic-1500010-systems.svg",
+        "PlantLogic 1500010 — схема використання мішка 8 л у системах Kratos та Rivus",
+        order=1,
+        primary=False,
+    )
+
+    secondary = {
+        "plantlogic-trough-cover": (
+            "/assets/img/v5/manual/plantlogic-trough-cover-function.svg",
+            "PlantLogic — кришка для полуничного жолоба Hi-Grow, функціональна схема",
+        ),
+        "plantlogic-universal-round-30l-1308030": (
+            "/assets/img/v5/manual/plantlogic-1308030-round-30l.svg",
+            "PlantLogic 1308030 — круглий горщик 30 л, технічна схема",
+        ),
+        "plantlogic-universal-round-5l-1308005": (
+            "/assets/img/v5/manual/plantlogic-1308005-round-5l.svg",
+            "PlantLogic 1308005 — круглий горщик 5 л, технічна схема",
+        ),
+        "plantlogic-zephyr-v2-hose-clip-1700149": (
+            "/assets/img/v5/manual/plantlogic-1700149-zephyr-v2-clip.svg",
+            "PlantLogic 1700149 — кліпса для поливного шланга Zephyr V2, функціональна схема",
+        ),
+    }
+    for pid, (path, alt) in secondary.items():
+        sku_ids = [x[0] for x in con.execute(
+            "SELECT sku_id FROM skus WHERE product_id=? AND enabled=1", (pid,)
+        ).fetchall()]
+        if not sku_ids:
+            raise RuntimeError(f"PlantLogic enabled SKU missing: {pid}")
+        _bind_local_visual(
+            con,
+            pid,
+            sku_ids,
+            path,
+            alt,
+            order=90,
+            primary=False,
+        )
+    return True
+
+
 def apply(con: sqlite3.Connection) -> dict:
     # Archive the 10 explicit REMOVE / LEGACY decisions.
     for product_id in sorted(REMOVE_PRODUCTS):
@@ -798,6 +862,7 @@ def apply(con: sqlite3.Connection) -> dict:
     _apply_keep_corrections(con)
     _apply_exact_zero_media(con)
     apply_one_media_gallery_expansion(con)
+    apply_remaining_media_visuals(con)
 
     # Cooling Skirt: official real product/application images, no Product #1310110.
     cooling_images = [

@@ -602,6 +602,13 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
     p = "plantlogic-vegetable-pot-8l-1305008"
     _sync_article(con, p, "1305008")
     skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (p,)).fetchall()]
+    _bind_local_photo(
+        con,
+        p,
+        skus,
+        "/assets/img/v5/manual/plantlogic-1305008-exact-primary.jpg",
+        "PlantLogic 1305008 — exact 8L Pot product photo from official tech sheet",
+    )
     _bind_local_visual(con, p, skus, "/assets/img/v5/manual/plantlogic-1305008-8l-vegetable.svg", "PlantLogic 1305008 — premium dimension visual")
 
     # #12: product, not an accessory.

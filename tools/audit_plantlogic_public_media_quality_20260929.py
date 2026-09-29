@@ -124,6 +124,7 @@ def main() -> int:
                     (pid,),
                 ).fetchall()
                 assert skus, (pid, "no enabled SKU")
+                color_primaries = {}
                 for sku in skus:
                     primaries = con.execute(
                         """
@@ -168,10 +169,21 @@ def main() -> int:
                         pid, sku["sku_id"], "retired article leaked into primary media",
                         sorted(media_articles & retired_articles), primary["path"]
                     )
+                    color_code = str(
+                        (attrs.get("color_code") if isinstance(attrs, dict) else "") or ""
+                    ).strip().lower()
+                    if color_code:
+                        color_primaries[color_code] = normalized_path(primary["path"])
+
                     if technical_media(primary["path"], primary["alt"], primary["source_kind"]):
                         assert pid in ALLOWED_TECHNICAL_PRIMARY, (
                             pid, sku["sku_id"], "technical primary not allowed", primary["path"]
                         )
+
+                if len(color_primaries) > 1:
+                    assert len(set(color_primaries.values())) == len(color_primaries), (
+                        pid, "color SKU primary media is not color-specific", color_primaries
+                    )
 
                 for row in media:
                     url = str(row["source_url"] or row["path"] or "")
@@ -201,6 +213,7 @@ def main() -> int:
             print("MIN MEDIA: 2")
             print("PRIMARY PER SKU: 1")
             print("PRIMARY ARTICLE IDENTITY: CLEAN")
+            print("COLOR SKU PRIMARY: COLOR-SPECIFIC")
             print("PUBLIC TITLES: NO PRODUCT #")
             print("PUBLIC MEDIA ALT: CLEAN")
             print("TECHNICAL PRIMARY ALLOWLIST: 1500010 + Zephyr V2 40L 1301143")

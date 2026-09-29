@@ -3,11 +3,16 @@ name: PlantLogic manual audit 1-23 CI
 on:
   push:
     branches:
+      - main
       - plantlogic-manual-audit-1-23
     paths:
       - 'backend/services/plantlogic_manual_audit_20260929.py'
       - 'backend/services/product_master_v5_migrations.py'
       - 'tools/audit_plantlogic_manual_20260929.py'
+      - 'tools/audit_plantlogic_v2_final.py'
+      - 'tools/audit_plantlogic_v2_customer_content.py'
+      - 'backend/services/plantlogic_v2_customer_content.py'
+      - 'data/product_content/plantlogic_v2_final_20260928.json'
       - 'assets/img/v5/manual/**'
       - '.github/workflows/plantlogic_manual_audit_ci.yml'
       - '.github/workflows/bb610_v5_ci.yml'
@@ -29,6 +34,12 @@ jobs:
           python-version: '3.12'
       - name: Compile manual override
         run: |
-          python -m py_compile             backend/services/plantlogic_manual_audit_20260929.py             backend/services/product_master_v5_migrations.py             tools/audit_plantlogic_manual_20260929.py
+          python -m py_compile             backend/services/plantlogic_manual_audit_20260929.py             backend/services/product_master_v5_migrations.py             tools/audit_plantlogic_manual_20260929.py \
+            tools/audit_plantlogic_v2_final.py \
+            tools/audit_plantlogic_v2_customer_content.py
+      - name: Verify base PlantLogic V2 structural layer
+        run: python tools/audit_plantlogic_v2_final.py
+      - name: Verify base PlantLogic customer content
+        run: python tools/audit_plantlogic_v2_customer_content.py
       - name: Run PlantLogic manual audit
         run: python tools/audit_plantlogic_manual_20260929.py

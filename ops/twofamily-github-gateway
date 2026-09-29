@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+APP_DIR=/opt/twofamily-social-control
+CMD="${SSH_ORIGINAL_COMMAND:-}"
+
+audit() {
+  echo "========== TWOFAMILY VPS =========="
+  echo "HOST: $(hostname)"
+  if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    echo "OS: ${PRETTY_NAME:-unknown}"
+  fi
+  echo "--- TOOLS ---"
+  for bin in git python3 node npm psql pg_dump nginx ffmpeg ffprobe certbot curl systemctl; do
+    if command -v "$bin" >/dev/null 2>&1; then
+      printf "%-10s %s\n" "$bin" "$(command -v "$bin")"
+    else
+      printf "%-10s MISSING\n" "$bin"
+    fi
+  done
+  echo "--- APP ---"
+  if [ -d "$APP_DIR/.git" ]; then
+    cd "$APP_DIR"
+    echo "APP: PRESENT"
+    echo "HEAD: $(git rev-parse HEAD 2>/dev/null || echo unknown)"
+    echo "BRANCH: $(git branch --show-current 2>/dev/null || echo unknown)"
+    git status --short --untracked-files=no || true
+  else
+    echo "APP: ABSENT"
+  fi
+  echo "--- SERVICES ---"
+  for svc in twofamily-social-api twofamily-social-worker twofamily-social-visual-worker twofamily-social-meta-health twofamily-social-analytics; do
+    printf "%-34s " "$svc"
+    systemctl is-active "$svc" 2>/dev/null || true
+  done
+  echo "--- LISTENERS ---"
+  ss -lnt 2>/dev/null | awk 'NR==1 || /:(80|443|8100)[[:space:]]/' || true
+  echo "========== END =========="
+}
+
+health() {
+  echo "API_LOCAL:"
+  curl -fsS --max-time 10 http://127.0.0.1:8100/api/health || true
+  echo
+  echo "PUBLIC:"
+  curl -fsS --max-time 15 https://social.bb610.com.ua/api/health || true
+  echo
+}
+
+receive_bundle() {
+  local sha="${1:-}"
+  [[ "$sha" =~ ^[0-9a-fA-F]{40}$ ]] || { echo "REFUSED: full commit SHA required"; exit 64; }
+
+  local tmp
+  tmp="$(mktemp -d)"
+  trap 'rm -rf "$tmp"' RETURN
+  cat > "$tmp/source.bundle"
+  test -s "$tmp/source.bundle" || { echo "REFUSED: empty bundle"; exit 65; }
+
+  git bundle verify "$tmp/source.bundle" >/dev/null
+  git bundle list-heads "$tmp/source.bundle" | grep -Eq "^$sha[[:space:]]" || {
+    echo "REFUSED: requested SHA absent from bundle"
+    exit 66
+  }
+
+  if [ ! -d "$APP_DIR/.git" ]; then
+    rm -rf "$APP_DIR"
+    git clone "$tmp/source.bundle" "$APP_DIR"
+  else
+    cd "$APP_DIR"
+    if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+      echo "REFUSED: tracked working tree is not clean"
+      git status --short --untracked-files=no
+      exit 67
+    fi
+    git fetch "$tmp/source.bundle" "refs/heads/main:refs/remotes/bundle/main"
+    git cat-file -e "${sha}^{commit}"
+    local current
+    current="$(git rev-parse HEAD)"
+    if ! git merge-base --is-ancestor "$current" "$sha"; then
+      echo "REFUSED: non-fast-forward source update"
+      exit 68
+    fi
+    git checkout -B main "$sha"
+  fi
+
+  cd "$APP_DIR"
+  git checkout -B main "$sha"
+  git remote remove origin 2>/dev/null || true
+  git remote add origin https://github.com/ladima75-source/twofamily-social-control.git
+  echo "SOURCE_INSTALLED: $(git rev-parse HEAD)"
+}
+
+case "$CMD" in
+  audit) audit ;;
+  health) health ;;
+  receive-bundle\ *) receive_bundle "${CMD#receive-bundle }" ;;
+  *) echo "DENIED"; exit 126 ;;
+esac

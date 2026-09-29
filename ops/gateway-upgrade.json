@@ -3,7 +3,7 @@
   "enabled": true,
   "target_path": "/usr/local/sbin/bb610-github-gateway",
   "target_repo_path": "ops/bb610-github-gateway-v3",
-  "expected_current_sha256": "51d8aa5fb008690367a04bbc5d7ab6e031a8ef049985be9fd7c7f6fe237b7ebf",
+  "expected_current_sha256": "5ae76321c22bdf42d69fc772558ca991ee6c25097fdf1e1047aca71676cce93d",
   "mode": "0700",
-  "reason": "Install CI-validated TwoFamily key-only deploy-login fix."
+  "reason": "Install CI-validated TwoFamily key-only deploy-login fix from current diagnostic gateway."
 }

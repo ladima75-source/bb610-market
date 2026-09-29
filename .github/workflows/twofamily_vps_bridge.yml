@@ -30,10 +30,18 @@ jobs:
           from pathlib import Path
           d=json.loads(Path("ops/twofamily-vps-command.json").read_text(encoding="utf-8"))
           action=str(d.get("action") or "").strip()
-          allowed={"audit","authorize-ephemeral","revoke-ephemeral","authorize-local","revoke-local","enable-deploy-user","ssh-diag","fix-deploy-login"}
+          allowed={"audit","authorize-ephemeral","revoke-ephemeral","authorize-local","revoke-local","enable-deploy-user","ssh-diag","fix-deploy-login","prepare-upload","install-bundle"}
           if action not in allowed:
               raise SystemExit(f"unsupported action: {action}")
+          sha=str(d.get("sha") or "").strip()
+          if action in {"prepare-upload","install-bundle"}:
+              import re
+              if not re.fullmatch(r"[0-9a-f]{64}", sha):
+                  raise SystemExit("rollout action requires sha256")
+          elif sha:
+              raise SystemExit("sha only valid for rollout actions")
           print(f"action={action}")
+          print(f"sha={sha}")
           PY
       - name: Configure SSH
         shell: bash
@@ -53,6 +61,7 @@ jobs:
         env:
           HOST: ${{ secrets.BB610_VPS_HOST }}
           ACTION: ${{ steps.req.outputs.action }}
+          SHA: ${{ steps.req.outputs.sha }}
         run: |
           set -euo pipefail
           case "$ACTION" in
@@ -64,6 +73,8 @@ jobs:
             enable-deploy-user) remote="twofamily-enable-deploy-user" ;;
             ssh-diag) remote="twofamily-ssh-diag" ;;
             fix-deploy-login) remote="twofamily-fix-deploy-login" ;;
+            prepare-upload) remote="twofamily-rollout prepare-upload $SHA" ;;
+            install-bundle) remote="twofamily-rollout install $SHA" ;;
           esac
           ssh -i ~/.ssh/vps \
             -o BatchMode=yes \

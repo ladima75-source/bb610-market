@@ -357,6 +357,39 @@ magelle_tls() {
   echo
 }
 
+twofamily_install_bridge() {
+  local bridge_src="$ROOT/ops/twofamily-github-gateway"
+  local key_src="$ROOT/ops/twofamily-deploy-key.pub"
+  local bridge_dst="/usr/local/sbin/twofamily-github-gateway"
+  local auth="/root/.ssh/authorized_keys"
+
+  [ -f "$bridge_src" ] || { echo "REFUSED: TwoFamily bridge source missing"; exit 72; }
+  [ -f "$key_src" ] || { echo "REFUSED: TwoFamily public key missing"; exit 73; }
+  bash -n "$bridge_src"
+
+  install -m 0700 "$bridge_src" "$bridge_dst"
+  install -d -m 0700 /root/.ssh
+  touch "$auth"
+  chmod 0600 "$auth"
+
+  local pub
+  pub="$(tr -d '\r\n' < "$key_src")"
+  [[ "$pub" == ssh-ed25519\ *\ twofamily-social-control ]] || {
+    echo "REFUSED: unexpected TwoFamily public key format"
+    exit 74
+  }
+
+  local tmp
+  tmp="$(mktemp)"
+  awk '!/twofamily-social-control$/' "$auth" > "$tmp"
+  printf '%s %s\n' 'restrict,command="/usr/local/sbin/twofamily-github-gateway"' "$pub" >> "$tmp"
+  install -m 0600 "$tmp" "$auth"
+  rm -f "$tmp"
+
+  echo "TWOFAMILY_BRIDGE: INSTALLED"
+  sha256sum "$bridge_dst"
+}
+
 magelle_deploy() {
   local sha="${1:-}"
   [[ "$sha" =~ ^[0-9a-fA-F]{7,40}$ ]] || { echo "Invalid commit SHA"; exit 64; }
@@ -402,6 +435,7 @@ case "$CMD" in
   magelle-public) magelle_public ;;
   magelle-tls) magelle_tls ;;
   magelle-deploy\ *) magelle_deploy "${CMD#magelle-deploy }" ;;
+  twofamily-install-bridge) twofamily_install_bridge ;;
   deploy\ *) deploy "${CMD#deploy }" ;;
   *) echo "DENIED"; exit 126 ;;
 esac

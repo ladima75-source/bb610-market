@@ -307,13 +307,67 @@ const BB610 = (() => {
     </article>`;
   }
   const card=cardV2;
-  function bindCards(scope=document){scope.querySelectorAll('.product-media img[data-fallback]').forEach(img=>img.onerror=()=>{img.onerror=null;img.src=img.dataset.fallback||'assets/img/product-npk.svg';img.closest('.product-media')?.classList.add('is-fallback')});scope.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addCart(b.dataset.add));scope.querySelectorAll('[data-request-price]').forEach(b=>b.onclick=()=>openPriceRequest(b.dataset.requestPrice));scope.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const on=toggleFav(b.dataset.fav);b.textContent=on?'♥':'♡'});scope.querySelectorAll('[data-compare]').forEach(b=>b.onclick=()=>{const on=toggleCompare(b.dataset.compare);if(on!==false)b.textContent=on?'✓':'⇄'});scope.querySelectorAll('[data-select-product]').forEach(a=>a.addEventListener('click',()=>{const card=a.closest('[data-display-sku]');trackSelect(a.dataset.selectProduct,a.closest('#home-products')?'home-popular':'catalog',a.closest('#home-products')?'Популярні товари':'Каталог',card?.dataset.displaySku||null)}))}
+  const PHOTO_IMAGE_SELECTOR='.product-card-v2 .product-media img,.product-main-photo img,.gallery-thumb img,.pot-main-stage>img,.pot-thumb img,.compare-product-image img,.cart-thumb img';
+  function photoStageFor(img){
+    return img.closest('.product-media,.product-main-photo,.gallery-thumb,.pot-main-stage,.pot-thumb,.compare-product-image,.cart-thumb');
+  }
+  function sampledPhotoEdgeColor(img){
+    if(!img?.complete||!img.naturalWidth||!img.naturalHeight)return null;
+    try{
+      const size=24,canvas=document.createElement('canvas');
+      canvas.width=size;canvas.height=size;
+      const ctx=canvas.getContext('2d',{willReadFrequently:true});
+      if(!ctx)return null;
+      ctx.drawImage(img,0,0,size,size);
+      const data=ctx.getImageData(0,0,size,size).data;
+      const buckets=new Map();
+      let valid=0;
+      const add=(x,y)=>{
+        const i=(y*size+x)*4,a=data[i+3];
+        if(a<96)return;
+        const r=data[i],g=data[i+1],b=data[i+2];
+        const key=((r>>4)<<8)|((g>>4)<<4)|(b>>4);
+        const row=buckets.get(key)||{n:0,r:0,g:0,b:0};
+        row.n++;row.r+=r;row.g+=g;row.b+=b;buckets.set(key,row);valid++;
+      };
+      for(let x=0;x<size;x++){add(x,0);add(x,size-1)}
+      for(let y=1;y<size-1;y++){add(0,y);add(size-1,y)}
+      if(valid<12)return null;
+      let best=null;
+      for(const row of buckets.values())if(!best||row.n>best.n)best=row;
+      if(!best||best.n<Math.max(6,Math.round(valid*.16)))return null;
+      const r=Math.round(best.r/best.n),g=Math.round(best.g/best.n),b=Math.round(best.b/best.n);
+      return `rgb(${r} ${g} ${b})`;
+    }catch(_){
+      return null;
+    }
+  }
+  function harmonizePhotoBackground(img){
+    if(!(img instanceof HTMLImageElement)||!img.matches(PHOTO_IMAGE_SELECTOR))return;
+    const stage=photoStageFor(img);
+    if(!stage||stage.classList.contains('is-fallback'))return;
+    const color=sampledPhotoEdgeColor(img)||'#e9e8e2';
+    stage.style.setProperty('--bb610-photo-bg',color);
+    stage.style.setProperty('background',color,'important');
+    img.style.setProperty('background',color,'important');
+  }
+  function harmonizeMediaBackgrounds(scope=document){
+    const root=scope?.querySelectorAll?scope:document;
+    root.querySelectorAll(PHOTO_IMAGE_SELECTOR).forEach(img=>{
+      if(img.complete&&img.naturalWidth)harmonizePhotoBackground(img);
+      if(img.dataset.bb610PhotoBgBound!=='1'){
+        img.dataset.bb610PhotoBgBound='1';
+        img.addEventListener('load',()=>harmonizePhotoBackground(img));
+      }
+    });
+  }
+  function bindCards(scope=document){scope.querySelectorAll('.product-media img[data-fallback]').forEach(img=>img.onerror=()=>{img.onerror=null;img.src=img.dataset.fallback||'assets/img/product-npk.svg';img.closest('.product-media')?.classList.add('is-fallback')});harmonizeMediaBackgrounds(scope);scope.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addCart(b.dataset.add));scope.querySelectorAll('[data-request-price]').forEach(b=>b.onclick=()=>openPriceRequest(b.dataset.requestPrice));scope.querySelectorAll('[data-fav]').forEach(b=>b.onclick=()=>{const on=toggleFav(b.dataset.fav);b.textContent=on?'♥':'♡'});scope.querySelectorAll('[data-compare]').forEach(b=>b.onclick=()=>{const on=toggleCompare(b.dataset.compare);if(on!==false)b.textContent=on?'✓':'⇄'});scope.querySelectorAll('[data-select-product]').forEach(a=>a.addEventListener('click',()=>{const card=a.closest('[data-display-sku]');trackSelect(a.dataset.selectProduct,a.closest('#home-products')?'home-popular':'catalog',a.closest('#home-products')?'Популярні товари':'Каталог',card?.dataset.displaySku||null)}))}
   function updateCompareBar(){const arr=get(LS.compare,[]),bar=document.querySelector('.compare-bar');if(!bar)return;bar.classList.toggle('show',arr.length>0);bar.querySelector('[data-compare-bar-count]').textContent=arr.length}
   function searchSubmit(form){const q=form.querySelector('input').value.trim();pushEvent('search',{search_term:q});const qs=new URLSearchParams({q});location.href='catalog.html?'+qs.toString();return false}
   function renderCategoryNav(){document.querySelectorAll('.nav .container').forEach(nav=>{nav.querySelectorAll('a[href*="#verified"]').forEach(a=>a.remove());const catLinks=[...nav.querySelectorAll('a[href*="category="]')];if(!catLinks.length)return;const first=catLinks[0];const visibleCategories=C().categories.filter(c=>c.enabled&&!categoryHidden(c.id)).sort((a,b)=>(a.order||0)-(b.order||0));visibleCategories.forEach((c,i)=>{let a=catLinks[i];if(!a){a=document.createElement('a');first.parentNode.insertBefore(a,catLinks[catLinks.length-1]?.nextSibling||null)}{const qs=new URLSearchParams({category:c.id});a.href='catalog.html?'+qs.toString()}a.textContent=c.id==='containers'?'Горщики':(c.short_name||c.name)});catLinks.slice(visibleCategories.length).forEach(a=>a.remove())})}
   function migrateLegacyCart(){if(localStorage.getItem(LS.cart))return;const legacy=get('bb610_market_cart',[]);const migrated=[];legacy.forEach(x=>{const s=displaySku(x.id);if(s&&canBuySku(s))migrated.push({sku:s.id,qty:x.qty||1})});if(migrated.length)set(LS.cart,migrated)}
   function ensureStorefrontCardCss(){if(document.querySelector('link[data-bb610-storefront-cards]'))return;const link=document.createElement('link');link.rel='stylesheet';link.href='/assets/css/storefront-product-cards.css?v=20260918-catalog-cleanup-1';link.dataset.bb610StorefrontCards='1';document.head.appendChild(link)}
-  function init(){ensureStorefrontCardCss();migrateLegacyCart();renderCategoryNav();document.querySelectorAll('.footer-seller-static').forEach(x=>x.remove());updateBadges();updateCompareBar();document.querySelectorAll('[data-search-form]').forEach(f=>f.onsubmit=e=>{e.preventDefault();searchSubmit(f)});document.querySelectorAll('[data-mobile-filter]').forEach(b=>b.onclick=()=>document.querySelector('.filters')?.classList.toggle('open'))}
+  function init(){ensureStorefrontCardCss();migrateLegacyCart();renderCategoryNav();document.querySelectorAll('.footer-seller-static').forEach(x=>x.remove());updateBadges();updateCompareBar();harmonizeMediaBackgrounds(document);document.addEventListener('load',e=>{if(e.target instanceof HTMLImageElement)harmonizePhotoBackground(e.target)},true);document.querySelectorAll('[data-search-form]').forEach(f=>f.onsubmit=e=>{e.preventDefault();searchSubmit(f)});document.querySelectorAll('[data-mobile-filter]').forEach(b=>b.onclick=()=>document.querySelector('.filters')?.classList.toggle('open'))}
   function openPriceRequest(skuId,initialQty=1){
     const s=sku(skuId);
     if(!s||!isPriceRequestSku(s)){toast('Запит ціни для цього варіанта недоступний');return false}
@@ -406,7 +460,7 @@ const BB610 = (() => {
     const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
     if(typeof d.showModal==='function')d.showModal();
   }
-  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,skuForPackage,sameSkuPackage,imageForPackage,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,skuName,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,updateCompareBar,openPhoto,init};
+  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,skuForPackage,sameSkuPackage,imageForPackage,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,skuName,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,harmonizeMediaBackgrounds,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);
 
 function bb610LoadProductCardV3Enhancements(){

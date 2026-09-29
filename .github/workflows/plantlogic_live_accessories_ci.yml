@@ -35,6 +35,12 @@ jobs:
               REMOVE_PRODUCTS, REFERENCE_ONLY_PRODUCTS, COOLING_PRODUCT_ID, COOLING_SKU_ID
           )
           hidden=set(REMOVE_PRODUCTS)|set(REFERENCE_ONLY_PRODUCTS)
+          public_hidden_numbers=set(str(x) for x in (spec.get('expected') or {}).get('public_hidden') or [])
+          public_hidden_ids={
+              x['canonical_product_id'] for x in spec['canonical_products']
+              if any(str(n) in public_hidden_numbers for n in x.get('manufacturer_product_numbers') or [])
+          }
+          hidden |= public_hidden_ids
           expected_ids={x['canonical_product_id'] for x in spec['canonical_products'] if x['canonical_product_id'] not in hidden}
           expected_ids.add(COOLING_PRODUCT_ID)
           expected_skus={
@@ -73,8 +79,10 @@ jobs:
           rows=[p for p in live.get('products') or [] if str(p.get('brand') or '').lower()=='plantlogic']
           ids={p.get('product_id') or p.get('id') for p in rows}
           skus={s.get('sku_id') or s.get('id') for p in rows for s in p.get('skus') or []}
-          assert ids==expected_ids and len(ids)==68
-          assert skus==expected_skus and len(skus)==122
+          assert ids==expected_ids and len(ids)==67
+          assert skus==expected_skus and len(skus)==121
+          assert 'plantlogic-zephyr-v2-hose-clip-1700149' not in ids
+          assert 'PL-1700149' not in skus
 
           for p in rows:
               sec=sections(p)
@@ -120,5 +128,5 @@ jobs:
               'plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440',
           }
           assert required <= ids
-          print('PLANTLOGIC LIVE MANUAL OVERRIDE: 68 PRODUCTS / 122 SKU / 6 SECTIONS PASS')
+          print('PLANTLOGIC LIVE MANUAL OVERRIDE: 67 PRODUCTS / 121 SKU / 6 SECTIONS PASS; 1700149 HIDDEN')
           PY

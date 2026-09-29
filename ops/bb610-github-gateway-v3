@@ -467,15 +467,17 @@ twofamily_ssh_diag() {
   passwd -S twofamily-deploy 2>/dev/null || true
   echo "--- PATHS ---"
   stat -c '%U:%G %a %n' /home/twofamily-deploy /home/twofamily-deploy/.ssh /home/twofamily-deploy/.ssh/authorized_keys 2>/dev/null || true
-  if command -v ls >/dev/null 2>&1; then
-    ls -Zd /home/twofamily-deploy /home/twofamily-deploy/.ssh /home/twofamily-deploy/.ssh/authorized_keys 2>/dev/null || true
-  fi
-  echo "--- KEY TAG ---"
-  grep -c 'twofamily-social-control' /home/twofamily-deploy/.ssh/authorized_keys 2>/dev/null || true
-  echo "--- SSHD EFFECTIVE ---"
-  /usr/sbin/sshd -T 2>/dev/null | grep -E '^(pubkeyauthentication|passwordauthentication|authorizedkeysfile|allowusers|denyusers|strictmodes|usepam|permitrootlogin)' || true
-  echo "--- RECENT SSHD ---"
-  journalctl -u sshd -n 40 --no-pager 2>/dev/null | tail -n 25 || true
+  ls -Zd /home/twofamily-deploy /home/twofamily-deploy/.ssh /home/twofamily-deploy/.ssh/authorized_keys 2>/dev/null || true
+  echo "--- KEY ---"
+  ssh-keygen -lf /home/twofamily-deploy/.ssh/authorized_keys 2>/dev/null || true
+  echo "--- SSHD GLOBAL ---"
+  /usr/sbin/sshd -T 2>/dev/null | grep -E '^(pubkeyauthentication|passwordauthentication|kbdinteractiveauthentication|authorizedkeysfile|allowusers|denyusers|strictmodes|usepam|permitrootlogin)' || true
+  echo "--- SSHD USER MATCH ---"
+  /usr/sbin/sshd -T -C user=twofamily-deploy,host=vps-59918,addr=127.0.0.1 2>/dev/null | grep -E '^(pubkeyauthentication|passwordauthentication|kbdinteractiveauthentication|authorizedkeysfile|allowusers|denyusers|strictmodes|usepam|authenticationmethods)' || true
+  echo "--- TWOFAMILY SSH EVENTS ---"
+  journalctl -u sshd --since '-30 minutes' --no-pager 2>/dev/null | grep -F 'twofamily-deploy' | tail -n 50 || true
+  echo "--- SSH CONFIG MATCHES ---"
+  grep -RniE '^(Match|AllowUsers|DenyUsers|AuthorizedKeysFile|PubkeyAuthentication|AuthenticationMethods)' /etc/ssh/sshd_config /etc/ssh/sshd_config.d 2>/dev/null || true
 }
 
 

@@ -8,6 +8,7 @@ on:
       - 'backend/services/plantlogic_v2_final.py'
       - 'backend/services/product_master_v5_migrations.py'
       - 'backend/services/plantlogic_v2_customer_content.py'
+      - 'backend/services/plantlogic_manual_audit_20260929.py'
       - 'js/data-source.js'
       - 'js/catalog.js'
       - '.github/workflows/plantlogic_live_accessories_ci.yml'
@@ -30,8 +31,18 @@ jobs:
           from pathlib import Path
 
           spec=json.loads(Path('data/product_content/plantlogic_v2_final_20260928.json').read_text(encoding='utf-8'))
-          expected_ids={x['canonical_product_id'] for x in spec['canonical_products']}
-          expected_skus={s['sku_id'] for x in spec['canonical_products'] for s in x.get('skus') or []}
+          from backend.services.plantlogic_manual_audit_20260929 import (
+              REMOVE_PRODUCTS, REFERENCE_ONLY_PRODUCTS, COOLING_PRODUCT_ID, COOLING_SKU_ID
+          )
+          hidden=set(REMOVE_PRODUCTS)|set(REFERENCE_ONLY_PRODUCTS)
+          expected_ids={x['canonical_product_id'] for x in spec['canonical_products'] if x['canonical_product_id'] not in hidden}
+          expected_ids.add(COOLING_PRODUCT_ID)
+          expected_skus={
+              s['sku_id'] for x in spec['canonical_products']
+              if x['canonical_product_id'] not in hidden
+              for s in x.get('skus') or []
+          }
+          expected_skus.add(COOLING_SKU_ID)
           expected_sections={'blueberry','rubus','strawberry','vegetable','universal','accessories'}
 
           def sections(product):
@@ -62,8 +73,8 @@ jobs:
           rows=[p for p in live.get('products') or [] if str(p.get('brand') or '').lower()=='plantlogic']
           ids={p.get('product_id') or p.get('id') for p in rows}
           skus={s.get('sku_id') or s.get('id') for p in rows for s in p.get('skus') or []}
-          assert ids==expected_ids and len(ids)==78
-          assert skus==expected_skus and len(skus)==133
+          assert ids==expected_ids and len(ids)==68
+          assert skus==expected_skus and len(skus)==122
 
           for p in rows:
               sec=sections(p)
@@ -106,5 +117,5 @@ jobs:
               'plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440',
           }
           assert required <= ids
-          print('PLANTLOGIC LIVE CANONICAL + CUSTOMER CONTENT: 78 PRODUCTS / 133 SKU / 6 SECTIONS PASS')
+          print('PLANTLOGIC LIVE MANUAL OVERRIDE: 68 PRODUCTS / 122 SKU / 6 SECTIONS PASS')
           PY

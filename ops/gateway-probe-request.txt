@@ -1,1 +1,1 @@
-Apply hardened TwoFamily deploy-user gateway — 2026-09-29T22:44:00+03:00
+Apply TwoFamily SSH diagnostic gateway — 2026-09-29T22:49:00+03:00

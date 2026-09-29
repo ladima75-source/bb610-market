@@ -79,10 +79,14 @@ jobs:
           rows=[p for p in live.get('products') or [] if str(p.get('brand') or '').lower()=='plantlogic']
           ids={p.get('product_id') or p.get('id') for p in rows}
           skus={s.get('sku_id') or s.get('id') for p in rows for s in p.get('skus') or []}
-          assert ids==expected_ids and len(ids)==67
-          assert skus==expected_skus and len(skus)==121
+          assert ids==expected_ids and len(ids)==65
+          assert skus==expected_skus and len(skus)==119
           assert 'plantlogic-zephyr-v2-hose-clip-1700149' not in ids
           assert 'PL-1700149' not in skus
+          assert 'plantlogic-vegetable-pot-8l-1305008' not in ids
+          assert 'PL-1305008-BK' not in skus
+          assert 'plantlogic-nursery-tray-1302048' not in ids
+          assert 'PL-1302048' not in skus
 
           for p in rows:
               sec=sections(p)
@@ -128,5 +132,5 @@ jobs:
               'plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440',
           }
           assert required <= ids
-          print('PLANTLOGIC LIVE MANUAL OVERRIDE: 67 PRODUCTS / 121 SKU / 6 SECTIONS PASS; 1700149 HIDDEN')
+          print('PLANTLOGIC LIVE MANUAL OVERRIDE: 65 PRODUCTS / 119 SKU / 6 SECTIONS PASS; 1700149, 1305008, 1302048 HIDDEN')
           PY

@@ -506,6 +506,24 @@ EOF
   echo "TWOFAMILY_DEPLOY_LOGIN=READY"
 }
 
+
+twofamily_rollout() {
+  local action="${1:-}"
+  local sha="${2:-}"
+  case "$action" in
+    prepare-upload|install) ;;
+    *) echo "REFUSED: unsupported TwoFamily rollout action"; exit 64 ;;
+  esac
+  [[ "$sha" =~ ^[0-9a-f]{64}$ ]] || { echo "REFUSED: invalid SHA256"; exit 64; }
+  cd "$ROOT"
+  git fetch -q origin main
+  local tmp
+  tmp="$(mktemp)"
+  git show origin/main:ops/twofamily-rollout.py > "$tmp"
+  python3 "$tmp" "$action" "$sha"
+  rm -f "$tmp"
+}
+
 case "$CMD" in
   audit) audit ;;
   health) health ;;
@@ -525,6 +543,7 @@ case "$CMD" in
   twofamily-enable-deploy-user) twofamily_enable_deploy_user ;;
   twofamily-ssh-diag) twofamily_ssh_diag ;;
   twofamily-fix-deploy-login) twofamily_fix_deploy_login ;;
+  twofamily-rollout\ *) set -- ${CMD#twofamily-rollout }; twofamily_rollout "$1" "$2" ;;
   deploy\ *) deploy "${CMD#deploy }" ;;
   *) echo "DENIED"; exit 126 ;;
 esac

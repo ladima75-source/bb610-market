@@ -418,7 +418,16 @@ def _remote_media(
             )
 
 
-def _bind_local_visual(con: sqlite3.Connection, product_id: str, sku_ids: list[str], path: str, alt: str, order: int = 90) -> None:
+def _bind_local_visual(
+    con: sqlite3.Connection,
+    product_id: str,
+    sku_ids: list[str],
+    path: str,
+    alt: str,
+    order: int = 90,
+    *,
+    primary: bool = False,
+) -> None:
     now = _now()
     media_id = "manual_" + hashlib.sha1(path.encode()).hexdigest()[:20]
     con.execute(
@@ -439,13 +448,15 @@ def _bind_local_visual(con: sqlite3.Connection, product_id: str, sku_ids: list[s
         (product_id, actual, order),
     )
     for sku_id in sku_ids:
+        if primary:
+            con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
         con.execute(
             """
             INSERT INTO sku_media(sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url)
-            VALUES(?,?,0,?,'exact','manual_premium_visual',NULL)
-            ON CONFLICT(sku_id,media_id) DO UPDATE SET is_primary=0,sort_order=excluded.sort_order,source_kind=excluded.source_kind
+            VALUES(?,?,?,?, 'exact','manual_premium_visual',NULL)
+            ON CONFLICT(sku_id,media_id) DO UPDATE SET is_primary=excluded.is_primary,sort_order=excluded.sort_order,source_kind=excluded.source_kind
             """,
-            (sku_id, actual, order),
+            (sku_id, actual, 1 if primary else 0, order),
         )
 
 
@@ -548,7 +559,12 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
         _set_char(con, pid, "Висота ніжок", "70 мм")
         skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (pid,)).fetchall()]
         visual_order = 0 if article == "1301143" else 90
-        _bind_local_visual(con, pid, skus, svg, f"PlantLogic Zephyr V2 {article} — premium size visual", order=visual_order)
+        _bind_local_visual(
+            con, pid, skus, svg,
+            f"PlantLogic Zephyr V2 {article} — premium size visual",
+            order=visual_order,
+            primary=(article == "1301143"),
+        )
 
     zephyr_family = [
         ("https://getplantlogic.com/wp-content/uploads/2024/04/ZEPHYR-V2-1301144-FRONTAL-1.jpg",

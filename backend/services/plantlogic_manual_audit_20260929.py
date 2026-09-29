@@ -304,9 +304,6 @@ def _clean_unsafe_primary_media(con: sqlite3.Connection) -> None:
         "plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400",
         "plantlogic-blueberry-square-40l-u-grooves-side-holes-20mm-13090440",
         "plantlogic-blueberry-zephyr-v2-40l-1301143",
-        "plantlogic-cold-storage-bin-1702000",
-        "plantlogic-vegetable-pot-8l-1305008",
-        "plantlogic-nursery-tray-1302048",
     ]
     for pid in targets:
         sku_ids = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (pid,)).fetchall()]

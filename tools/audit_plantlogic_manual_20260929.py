@@ -305,6 +305,38 @@ def main() -> int:
             ).fetchone()
             assert vf["manufacturer_product_number"] == "12010320"
             assert "360 × 360" in chars(vf).get("Розміри", "")
+            vf_primary = con.execute(
+                """
+                SELECT m.path,sm.is_primary,sm.sort_order
+                FROM sku_media sm
+                JOIN skus s ON s.sku_id=sm.sku_id
+                JOIN media m ON m.media_id=sm.media_id
+                WHERE s.product_id='plantlogic-vf-bag-base-hose-fix-12010320'
+                  AND sm.is_primary=1
+                """
+            ).fetchall()
+            assert len(vf_primary) == 1
+            assert vf_primary[0]["path"] == "/assets/img/v5/manual/plantlogic-12010320-exact-catalog.webp"
+            vf_wrong_neighbor = con.execute(
+                """
+                SELECT m.path,m.source_url,m.alt
+                FROM media m
+                WHERE m.media_id IN (
+                  SELECT pm.media_id FROM product_media pm
+                  WHERE pm.product_id='plantlogic-vf-bag-base-hose-fix-12010320'
+                  UNION
+                  SELECT sm.media_id FROM sku_media sm
+                  JOIN skus s ON s.sku_id=sm.sku_id
+                  WHERE s.product_id='plantlogic-vf-bag-base-hose-fix-12010320'
+                )
+                AND (
+                  lower(COALESCE(m.path,'')) LIKE '%12010300%'
+                  OR lower(COALESCE(m.source_url,'')) LIKE '%12010300%'
+                  OR lower(COALESCE(m.alt,'')) LIKE '%12010300%'
+                )
+                """
+            ).fetchall()
+            assert not vf_wrong_neighbor, [dict(x) for x in vf_wrong_neighbor]
             slab = con.execute(
                 "SELECT * FROM products WHERE product_id='plantlogic-slab-base-bags-slabs-1302809'"
             ).fetchone()

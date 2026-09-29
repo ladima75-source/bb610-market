@@ -30,7 +30,7 @@ jobs:
           from pathlib import Path
           d=json.loads(Path("ops/twofamily-vps-command.json").read_text(encoding="utf-8"))
           action=str(d.get("action") or "").strip()
-          allowed={"audit","authorize-ephemeral","revoke-ephemeral"}
+          allowed={"audit","authorize-ephemeral","revoke-ephemeral","authorize-local","revoke-local"}
           if action not in allowed:
               raise SystemExit(f"unsupported action: {action}")
           print(f"action={action}")
@@ -58,7 +58,7 @@ jobs:
           case "$ACTION" in
             audit) remote="twofamily-audit" ;;
             authorize-ephemeral) remote="twofamily-authorize-ephemeral" ;;
-            revoke-ephemeral) remote="twofamily-revoke-ephemeral" ;;
+            revoke-ephemeral) remote="twofamily-revoke-ephemeral" ;;\n            authorize-local) remote="twofamily-authorize-local" ;;\n            revoke-local) remote="twofamily-revoke-local" ;;
           esac
           ssh -i ~/.ssh/vps \
             -o BatchMode=yes \

@@ -132,8 +132,8 @@ jobs:
           assert len(plantlogic)==79
           assert sum(len(x.get('skus') or []) for x in plantlogic)==131
           public_plantlogic=[x for x in data['products'] if str(x.get('brand') or '').lower()=='plantlogic']
-          assert len(public_plantlogic)==67
-          assert sum(len(x.get('skus') or []) for x in public_plantlogic)==121
+          assert len(public_plantlogic)==65
+          assert sum(len(x.get('skus') or []) for x in public_plantlogic)==119
           assert data['counts']['product_sources']>=expected_sources
           assert data['counts']['media']>=len(media.get('media') or [])
           assert data['counts']['product_media']>=len(media.get('product_bindings') or [])

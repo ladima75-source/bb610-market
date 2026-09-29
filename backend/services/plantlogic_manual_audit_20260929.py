@@ -423,6 +423,48 @@ def _bind_local_visual(con: sqlite3.Connection, product_id: str, sku_ids: list[s
         )
 
 
+def _bind_local_photo(
+    con: sqlite3.Connection,
+    product_id: str,
+    sku_ids: list[str],
+    path: str,
+    alt: str,
+    *,
+    primary: bool = True,
+    order: int = 0,
+) -> None:
+    now = _now()
+    media_id = "manual_" + hashlib.sha1(path.encode()).hexdigest()[:20]
+    con.execute(
+        """
+        INSERT INTO media(media_id,path,sha256,kind,source_url,verification_status,alt,created_at)
+        VALUES(?,?,NULL,'image',NULL,'verified',?,?)
+        ON CONFLICT(path) DO UPDATE SET verification_status='verified',alt=excluded.alt
+        """,
+        (media_id, path, alt, now),
+    )
+    actual = con.execute("SELECT media_id FROM media WHERE path=?", (path,)).fetchone()[0]
+    con.execute(
+        """
+        INSERT INTO product_media(product_id,media_id,sort_order,source_kind,source_url)
+        VALUES(?,?,?,'manual_exact_catalog_photo',NULL)
+        ON CONFLICT(product_id,media_id) DO UPDATE SET sort_order=excluded.sort_order,source_kind=excluded.source_kind
+        """,
+        (product_id, actual, order),
+    )
+    for sku_id in sku_ids:
+        if primary:
+            con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+        con.execute(
+            """
+            INSERT INTO sku_media(sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url)
+            VALUES(?,?,?,?,'exact','manual_exact_catalog_photo',NULL)
+            ON CONFLICT(sku_id,media_id) DO UPDATE SET is_primary=excluded.is_primary,sort_order=excluded.sort_order,source_kind=excluded.source_kind
+            """,
+            (sku_id, actual, 1 if primary else 0, order),
+        )
+
+
 def _apply_keep_corrections(con: sqlite3.Connection) -> None:
     # #2 / #3 exact U-groove variants.
     p16 = "plantlogic-blueberry-square-40l-u-grooves-side-holes-16mm-13090400"

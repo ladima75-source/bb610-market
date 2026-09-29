@@ -337,10 +337,19 @@ def _clean_unsafe_primary_media(con: sqlite3.Connection) -> None:
         )
 
 
-def _remote_media(con: sqlite3.Connection, product_id: str, sku_ids: list[str], rows: list[tuple[str, str]], source_kind: str) -> None:
-    # rows: [(official_url, alt), ...]. First row is primary.
+def _remote_media(
+    con: sqlite3.Connection,
+    product_id: str,
+    sku_ids: list[str],
+    rows: list[tuple[str, str]],
+    source_kind: str,
+    *,
+    primary_first: bool = True,
+    start_order: int = 0,
+) -> None:
     now = _now()
-    for order, (url, alt) in enumerate(rows):
+    for idx, (url, alt) in enumerate(rows):
+        order = start_order + idx
         media_id = "manual_" + hashlib.sha1(url.encode()).hexdigest()[:20]
         con.execute(
             """
@@ -366,7 +375,8 @@ def _remote_media(con: sqlite3.Connection, product_id: str, sku_ids: list[str], 
             (product_id, actual, order, source_kind, url),
         )
         for sku_id in sku_ids:
-            if order == 0:
+            make_primary = primary_first and idx == 0
+            if make_primary:
                 con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
             con.execute(
                 """
@@ -378,7 +388,7 @@ def _remote_media(con: sqlite3.Connection, product_id: str, sku_ids: list[str], 
                   source_kind=excluded.source_kind,
                   source_url=excluded.source_url
                 """,
-                (sku_id, actual, 1 if order == 0 else 0, order, source_kind, url),
+                (sku_id, actual, 1 if make_primary else 0, order, source_kind, url),
             )
 
 

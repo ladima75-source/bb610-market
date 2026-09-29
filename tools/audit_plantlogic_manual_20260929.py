@@ -79,8 +79,8 @@ def main() -> int:
             ).fetchall()
             assert len(all_products) == 79, len(all_products)
             assert len(all_skus) == 131, len(all_skus)
-            assert len(public_products) == 67, len(public_products)
-            assert len(public_skus) == 121, len(public_skus)
+            assert len(public_products) == 65, len(public_products)
+            assert len(public_skus) == 119, len(public_skus)
 
             category_products = {
                 row["category_id"]: row["n"]
@@ -106,8 +106,8 @@ def main() -> int:
                     """
                 ).fetchall()
             }
-            assert category_products == {"accessories": 19, "containers": 42, "strawberry": 6}, category_products
-            assert category_skus == {"accessories": 32, "containers": 72, "strawberry": 17}, category_skus
+            assert category_products == {"accessories": 18, "containers": 41, "strawberry": 6}, category_products
+            assert category_skus == {"accessories": 31, "containers": 71, "strawberry": 17}, category_skus
 
             hidden = set(REMOVE_PRODUCTS) | set(REFERENCE_ONLY_PRODUCTS)
             assert not (hidden & public_ids), sorted(hidden & public_ids)
@@ -315,18 +315,20 @@ def main() -> int:
                 "SELECT * FROM products WHERE product_id='plantlogic-vegetable-pot-8l-1305008'"
             ).fetchone()
             assert vegetable8["manufacturer_product_number"] == "1305008"
-            vegetable8_primary = con.execute(
+            assert vegetable8["public_enabled"] == 0
+            assert vegetable8["status"] == "active"
+            vegetable8_media = con.execute(
                 """
                 SELECT m.path FROM sku_media sm
                 JOIN skus s ON s.sku_id=sm.sku_id
                 JOIN media m ON m.media_id=sm.media_id
                 WHERE s.product_id='plantlogic-vegetable-pot-8l-1305008'
-                  AND sm.is_primary=1
                 """
             ).fetchall()
-            assert [r["path"] for r in vegetable8_primary] == [
-                "/assets/img/v5/manual/plantlogic-1305008-exact-primary.jpg"
-            ]
+            assert not vegetable8_media, [r["path"] for r in vegetable8_media]
+            assert con.execute(
+                "SELECT 1 FROM skus WHERE product_id='plantlogic-vegetable-pot-8l-1305008' AND sku_id='PL-1305008-BK'"
+            ).fetchone() is not None
 
             # Nursery Tray exact specs.
             nursery = con.execute(
@@ -336,6 +338,8 @@ def main() -> int:
             assert nc.get("Кількість комірок") == "72"
             assert nc.get("Об'єм") == "48 мл/комірка"
             assert nc.get("Розміри") == "545 × 280 × 70 мм"
+            assert nursery["public_enabled"] == 0
+            assert nursery["status"] == "active"
             nursery_primary = con.execute(
                 """
                 SELECT m.path FROM sku_media sm
@@ -346,7 +350,7 @@ def main() -> int:
                 """
             ).fetchall()
             assert [r["path"] for r in nursery_primary] == [
-                "/assets/img/v5/manual/plantlogic-1302048-exact-primary.jpg"
+                "/assets/img/v5/manual/plantlogic-1302048-product-crop.svg"
             ]
 
             # Exact/current hose clip.
@@ -459,8 +463,8 @@ def main() -> int:
                 assert not any(term.lower() in visual.lower() for term in svg_banned), (svg.name, "customer-facing visual copy")
 
             print("PLANTLOGIC MANUAL AUDIT 1-23: PASS")
-            print("PUBLIC PRODUCTS: 68")
-            print("PUBLIC SKU: 122")
+            print("PUBLIC PRODUCTS: 65")
+            print("PUBLIC SKU: 119")
             print("BACKEND PRODUCTS: 79")
             print("BACKEND SKU: 131")
             print("CATEGORY PRODUCTS: accessories=20 containers=42 strawberry=6")

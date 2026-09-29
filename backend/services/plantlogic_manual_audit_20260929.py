@@ -548,23 +548,93 @@ def _apply_keep_corrections(con: sqlite3.Connection) -> None:
         "PlantLogic 1700149 — Hose clip for Zephyr V2, фото з офіційного каталогу",
     )
 
-    # #6 / #7 Zephyr V2 variant dimensions. Do not reuse 25L exact packshots.
+    # #6 / #7 Zephyr V2. User-approved media rule:
+    # use the official 25L Zephyr V2 (#1301144) product photo as the card/product
+    # photo for 30L and 40L; keep each model's size scheme last and non-primary.
     z30 = "plantlogic-blueberry-zephyr-v2-30l-1301153"
     z40 = "plantlogic-blueberry-zephyr-v2-40l-1301143"
-    for pid, article, dims, svg in [
-        (z30, "1301153", "A 420 мм · B Ø333 мм · C 397 мм · D 70 мм", "/assets/img/v5/manual/plantlogic-1301153-zephyr-v2-30l.svg"),
-        (z40, "1301143", "A 370 мм · B Ø427 мм · C 500 мм · D 70 мм", "/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg"),
+    zephyr_25l_photo = "/assets/img/v5/media/aaaa485fd58fd917c4fb.jpg"
+    scheme_by_product = {
+        z30: "/assets/img/v5/manual/plantlogic-1301153-zephyr-v2-30l.svg",
+        z40: "/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg",
+    }
+    for pid, article, dims in [
+        (z30, "1301153", "A 420 мм · B Ø333 мм · C 397 мм · D 70 мм"),
+        (z40, "1301143", "A 370 мм · B Ø427 мм · C 500 мм · D 70 мм"),
     ]:
         _sync_article(con, pid, article)
         _set_char(con, pid, "Розміри", dims)
         _set_char(con, pid, "Висота ніжок", "70 мм")
         skus = [x[0] for x in con.execute("SELECT sku_id FROM skus WHERE product_id=?", (pid,)).fetchall()]
-        _bind_local_visual(
-            con, pid, skus, svg,
-            f"PlantLogic Zephyr V2 {article} — premium size visual",
-            order=0 if pid == z40 else 90,
-            primary=pid == z40,
+
+        photo = con.execute("SELECT media_id FROM media WHERE path=?", (zephyr_25l_photo,)).fetchone()
+        if not photo:
+            raise RuntimeError("Approved Zephyr V2 25L product photo missing")
+        photo_id = photo[0]
+
+        # Demote existing SKU primaries but keep them as supplementary gallery media.
+        for sku_id in skus:
+            con.execute("UPDATE sku_media SET is_primary=0 WHERE sku_id=?", (sku_id,))
+            con.execute(
+                "UPDATE sku_media SET sort_order=sort_order+10 "
+                "WHERE sku_id=? AND media_id<>? AND sort_order<10",
+                (sku_id, photo_id),
+            )
+            con.execute(
+                """
+                INSERT INTO sku_media(
+                  sku_id,media_id,is_primary,sort_order,binding_kind,source_kind,source_url
+                ) VALUES(?,?,1,0,'exact','user_approved_zephyr_v2_25l_product_photo',NULL)
+                ON CONFLICT(sku_id,media_id) DO UPDATE SET
+                  is_primary=1,
+                  sort_order=0,
+                  binding_kind='exact',
+                  source_kind='user_approved_zephyr_v2_25l_product_photo',
+                  source_url=NULL
+                """,
+                (sku_id, photo_id),
+            )
+
+        con.execute(
+            "UPDATE product_media SET sort_order=sort_order+10 "
+            "WHERE product_id=? AND media_id<>? AND sort_order<10",
+            (pid, photo_id),
         )
+        con.execute(
+            """
+            INSERT INTO product_media(product_id,media_id,sort_order,source_kind,source_url)
+            VALUES(?,?,0,'user_approved_zephyr_v2_25l_product_photo',NULL)
+            ON CONFLICT(product_id,media_id) DO UPDATE SET
+              sort_order=0,
+              source_kind='user_approved_zephyr_v2_25l_product_photo',
+              source_url=NULL
+            """,
+            (pid, photo_id),
+        )
+
+        scheme = scheme_by_product[pid]
+        _bind_local_visual(
+            con,
+            pid,
+            skus,
+            scheme,
+            f"PlantLogic Zephyr V2 {article} — premium size visual",
+            order=999,
+            primary=False,
+        )
+        scheme_row = con.execute("SELECT media_id FROM media WHERE path=?", (scheme,)).fetchone()
+        if not scheme_row:
+            raise RuntimeError(f"Zephyr V2 size scheme missing: {pid}")
+        scheme_id = scheme_row[0]
+        con.execute(
+            "UPDATE product_media SET sort_order=999 WHERE product_id=? AND media_id=?",
+            (pid, scheme_id),
+        )
+        for sku_id in skus:
+            con.execute(
+                "UPDATE sku_media SET is_primary=0,sort_order=999 WHERE sku_id=? AND media_id=?",
+                (sku_id, scheme_id),
+            )
 
     zephyr_family_photo = "/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp"
     for pid in (z30, z40):

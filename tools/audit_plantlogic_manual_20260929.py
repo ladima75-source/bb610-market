@@ -191,7 +191,7 @@ def main() -> int:
                 blob = " ".join(str(primary[k] or "") for k in primary.keys()).lower()
                 assert ".pdf" not in blob and "tech sheet" not in blob and "techsheet" not in blob, (pid, dict(primary))
 
-            # Zephyr V2: exact sizes, no 25L reuse, and 40L size visual is primary.
+            # Zephyr V2: exact sizes, no 25L reuse; 40L primary is a real family/application photo.
             z30 = con.execute(
                 "SELECT * FROM products WHERE product_id='plantlogic-blueberry-zephyr-v2-30l-1301153'"
             ).fetchone()
@@ -200,16 +200,58 @@ def main() -> int:
             ).fetchone()
             assert chars(z30).get("Розміри") == "A 420 мм · B Ø333 мм · C 397 мм · D 70 мм"
             assert chars(z40).get("Розміри") == "A 370 мм · B Ø427 мм · C 500 мм · D 70 мм"
+
+            for pid in (
+                "plantlogic-blueberry-zephyr-v2-30l-1301153",
+                "plantlogic-blueberry-zephyr-v2-40l-1301143",
+            ):
+                bad_25l = con.execute(
+                    """
+                    SELECT m.path,m.source_url,m.alt
+                    FROM media m
+                    WHERE m.media_id IN (
+                      SELECT pm.media_id FROM product_media pm WHERE pm.product_id=?
+                      UNION
+                      SELECT sm.media_id FROM sku_media sm
+                      JOIN skus s ON s.sku_id=sm.sku_id
+                      WHERE s.product_id=?
+                    )
+                    AND (
+                      lower(COALESCE(m.path,'')) LIKE '%1301144%'
+                      OR lower(COALESCE(m.source_url,'')) LIKE '%1301144%'
+                      OR lower(COALESCE(m.alt,'')) LIKE '%1301144%'
+                    )
+                    """,
+                    (pid, pid),
+                ).fetchall()
+                assert not bad_25l, (pid, [dict(x) for x in bad_25l])
+
             z40_primary = con.execute(
                 """
-                SELECT m.path FROM sku_media sm
+                SELECT m.path,sm.sort_order,sm.source_kind
+                FROM sku_media sm
                 JOIN skus s ON s.sku_id=sm.sku_id
                 JOIN media m ON m.media_id=sm.media_id
                 WHERE s.product_id='plantlogic-blueberry-zephyr-v2-40l-1301143'
                   AND sm.is_primary=1
                 """
             ).fetchall()
-            assert [r["path"] for r in z40_primary] == ["/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg"]
+            assert len(z40_primary) == 1
+            assert z40_primary[0]["path"] == "/assets/img/v5/manual/plantlogic-zephyr-v2-family-application.webp"
+            assert not z40_primary[0]["path"].lower().endswith(".svg")
+
+            z40_visual = con.execute(
+                """
+                SELECT sm.is_primary,sm.sort_order
+                FROM sku_media sm
+                JOIN skus s ON s.sku_id=sm.sku_id
+                JOIN media m ON m.media_id=sm.media_id
+                WHERE s.product_id='plantlogic-blueberry-zephyr-v2-40l-1301143'
+                  AND m.path='/assets/img/v5/manual/plantlogic-1301143-zephyr-v2-40l.svg'
+                """
+            ).fetchone()
+            assert z40_visual is not None
+            assert z40_visual["is_primary"] == 0 and z40_visual["sort_order"] >= 90
 
             # 10L square manual correction: 30 mm, never 50 mm.
             p10 = con.execute(

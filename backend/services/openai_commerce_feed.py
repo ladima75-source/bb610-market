@@ -47,7 +47,7 @@ def _variant_token(value: str) -> str:
     s = str(value or "").strip().lower().replace(",", ".")
     for src, dst in (("мл", "ml"), ("кг", "kg"), ("шт.", "pcs"), ("шт", "pcs"), ("л", "l"), ("г", "g")):
         s = s.replace(src, dst)
-    s = re.sub(r"\\s+", "", s)
+    s = "".join(s.split())
     s = re.sub(r"[^a-z0-9.]+", "-", s).replace(".", "-")
     return re.sub(r"-+", "-", s).strip("-")
 

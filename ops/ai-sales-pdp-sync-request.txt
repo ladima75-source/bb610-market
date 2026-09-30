@@ -1,2 +1,2 @@
-2026-09-30T10:22:00+03:00
-reason=stage5-entity-schema-and-sitemap-refresh
+2026-09-30T10:31:00+03:00
+reason=stage5-comparison-guides-sitemap-refresh

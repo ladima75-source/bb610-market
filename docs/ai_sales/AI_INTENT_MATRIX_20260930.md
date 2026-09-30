@@ -22,8 +22,8 @@ Status: Stage 2 validated; used for Stage 4/5 discovery tests.
 | AI-15 | price | ціна Megafol 100 мл Україна | Gemini / ChatGPT | exact offer | /products/megafol-100ml/ | OPTIMIZED · UNVERIFIED | current discovery test returned competitors, not BB610 |
 | AI-16 | price | ціна Radifarm 25 мл | Gemini / ChatGPT | exact offer | /products/radifarm-25ml/ | OPTIMIZED · UNVERIFIED | current discovery test returned no BB610 exact result |
 | AI-17 | price | MASTER 13-40-13 1 кг ціна | Gemini / ChatGPT | exact offer | /products/master-13-40-13-1kg/ | OPTIMIZED · UNVERIFIED | current discovery test returned competitors, not BB610 |
-| AI-18 | local | де купити професійні добрива у Дніпрі | ChatGPT / Gemini | local seller | / + /contacts.html | OPTIMIZED | verify local entity citation |
-| AI-19 | local | магазин добрив Дніпро доставка по Україні | ChatGPT / Gemini | local seller | /contacts.html | OPTIMIZED | verify local entity citation |
+| AI-18 | local | де купити професійні добрива у Дніпрі | ChatGPT / Gemini | local seller | /dnipro/ + /contacts.html | OPTIMIZED · UNVERIFIED | dedicated factual Dnipro landing live; verify local citation/indexing |
+| AI-19 | local | магазин добрив Дніпро доставка по Україні | ChatGPT / Gemini | local seller | /dnipro/ + /delivery.html | OPTIMIZED · UNVERIFIED | local pickup/delivery facts live; verify local citation/indexing |
 | AI-20 | alternative | аналог MASTER 13-40-13 з високим фосфором | ChatGPT / Claude | alternatives with non-equivalence caveat | /guides/high-phosphorus-alternatives-master-13-40-13/ | OPTIMIZED | verify citation/indexing |
 | AI-21 | best-fit | яке добриво вибрати перед посадкою саджанців | ChatGPT / Claude | educational decision support | /guides/before-planting-seedlings-product-selection/ | OPTIMIZED | verify citation/indexing |
 | AI-22 | best-fit | як вибрати фасування добрива для кількох рослин | ChatGPT / Claude | educational + exact SKU paths | /guides/how-to-choose-pack-size/ | OPTIMIZED | verify citation/indexing + exact SKU landing |

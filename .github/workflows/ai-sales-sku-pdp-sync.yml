@@ -1,0 +1,44 @@
+name: BB610 AI Sales Exact SKU PDP Sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/ai-sales-pdp-sync-request.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate exact SKU pages from live V5
+        run: python ops/build_ai_sku_pages.py
+      - name: Validate generated pages
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('docs/ai_sales/AI_SALES_STAGE1_PDP_SYNC_REPORT.json').read_text())
+          assert r['status']=='PASS'
+          assert r['generated']>0
+          print('AI SKU PDP PASS',r['generated'])
+          PY
+          git diff --check
+      - name: Commit synced PDPs
+        run: |
+          set -euo pipefail
+          git add products sitemap.xml docs/ai_sales/AI_SALES_STAGE1_PDP_SYNC_REPORT.json
+          if git diff --cached --quiet; then
+            echo "No PDP changes"
+            exit 0
+          fi
+          git config user.name "bb610-ai-sales-bot"
+          git config user.email "bb610-ai-sales-bot@users.noreply.github.com"
+          git commit -m "Sync exact SKU PDPs from live Product Master V5"
+          git push origin HEAD:main

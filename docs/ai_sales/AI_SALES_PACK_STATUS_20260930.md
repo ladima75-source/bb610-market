@@ -578,3 +578,24 @@ Large cross-engine expansion completed for ChatGPT / Gemini / Claude:
 
 Commercial purpose:
 Increase the number of pre-purchase questions for which ChatGPT, Gemini or Claude can retrieve a BB610-owned factual comparison and route a user to a current sellable product or exact SKU before the user already knows the product name.
+
+
+### Stage 5 AI commercial coverage wave 6 — 2026-09-30
+
+Large cross-engine expansion completed for ChatGPT / Gemini / Claude:
+- AI Intent Matrix expanded from 88 to 108 commercial intents.
+- 108/108 intents explicitly target ChatGPT / Gemini / Claude.
+- Guide hub expanded from 21 to 26 crawlable AI-oriented materials.
+- Added five new decision-support guides:
+  - /guides/neova-biostimulants-comparison/
+  - /guides/seaweed-biostimulants-comparison/
+  - /guides/soil-conditioners-neoterra-comparison/
+  - /guides/acidifier-vs-pk-fertilizer-comparison/
+  - /guides/controlled-release-5-6m-comparison/
+- Added 20 new commercial intents covering Neova product selection, seaweed biostimulants, soil conditioners, acidification/adjuvant vs PK fertilizer, and 5–6 month controlled-release fertilizers.
+- Added direct-product paths for NeoFlora, MAX 600 SeaSailer, NeoTerra Organic-C, NeoTerra Aquafix, Spray-Aide, Agroblen Granula-MAX, Osmocote 5, Micro NP, Actiwin 20-5-10 and Nitrate Balancer.
+- Final cross-check: 108 intents, 108 top-3 mappings, 26 guide cards, 27 guide URLs including the hub, 0 duplicate guide URLs, 0 missing intent targets.
+- No paid ads, social media or non-AI marketing work was added.
+
+Commercial purpose:
+Extend BB610-owned answer coverage into additional high-intent buyer questions where products are easy to confuse by family name or shared function, so ChatGPT, Gemini and Claude can route users toward the correct current product or exact SKU.

@@ -174,3 +174,28 @@ Observed:
 
 Conclusion:
 Stage 5 on-site intent coverage has materially improved, but Stage 4 remains IN PROGRESS. No organic AI/search visibility is claimed yet.
+
+
+### GA4 AI-referral checkpoint — 2026-09-30
+
+Connected GA4 property: 555339130.
+
+Today (2026-09-30):
+- AI/referral source rows matching ChatGPT, OpenAI, Gemini, Claude, Perplexity, Copilot or Grok: none returned.
+
+September 2026 source/medium rows returned:
+- (direct) / (none): 27 sessions
+- tagassistant.google.com / referral: 12
+- instagram / organic: 6
+- eventsmanager.facebook.com / referral: 2
+- facebook.com / referral: 1
+- google / cpc: 1
+- (not set): 2
+
+No AI source/medium row was returned for the month at this checkpoint.
+Interpretation: record as "no matching GA4 rows returned", not as proof of zero AI impressions or zero AI citations.
+
+### New guide indexing checkpoint
+
+Exact site-scoped searches for all four newly deployed Stage 5 guide titles returned no indexed results immediately after deployment.
+This is expected as a first checkpoint; do not claim indexing until an external search/index source returns the pages.

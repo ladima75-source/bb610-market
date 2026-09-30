@@ -150,6 +150,7 @@ def main():
     sitemap_status='FAIL'
     sitemap_exact_sku_lastmod=0
     sitemap_guides_lastmod=0
+    sitemap_dnipro_lastmod=False
     try:
         scode,sbody=get(SITE+'/sitemap.xml')
         if scode!=200:
@@ -173,14 +174,43 @@ def main():
                         1 for u in guide_urls
                         if f'<loc>{u}</loc><lastmod>2026-09-30</lastmod>' in sbody
                     )
+                    sitemap_dnipro_lastmod=(
+                        f'<loc>{SITE}/dnipro/</loc><lastmod>2026-09-30</lastmod>' in sbody
+                    )
                     if sitemap_exact_sku_lastmod!=len(expected_exact):
                         errors.append(f'sitemap_exact_sku_lastmod={sitemap_exact_sku_lastmod}/{len(expected_exact)}')
                     elif sitemap_guides_lastmod!=len(guide_urls):
                         errors.append(f'sitemap_guides_lastmod={sitemap_guides_lastmod}/{len(guide_urls)}')
+                    elif not sitemap_dnipro_lastmod:
+                        errors.append('sitemap_dnipro_lastmod_missing')
                     else:
                         sitemap_status='PASS'
     except Exception as e:
         errors.append('sitemap_fetch:'+str(e))
+
+    local_landing='FAIL'
+    try:
+        lurl=SITE+'/dnipro/'
+        lcode,lbody=get(lurl)
+        ltypes=jsonld_types(lbody)
+        if lcode!=200:
+            errors.append(f'local_landing_http={lcode}')
+        elif f'<link rel="canonical" href="{lurl}">' not in lbody:
+            errors.append('local_landing_canonical')
+        elif 'index,follow' not in lbody:
+            errors.append('local_landing_noindex')
+        elif any(t not in ltypes for t in ('WebPage','Store','BreadcrumbList')):
+            errors.append('local_landing_schema_missing')
+        elif 'вул. М. Рильського, 106' not in lbody:
+            errors.append('local_landing_address_missing')
+        elif '+380 (77) 017 97 70' not in lbody:
+            errors.append('local_landing_phone_missing')
+        elif 'від 2 000 грн' not in lbody:
+            errors.append('local_landing_delivery_threshold_missing')
+        else:
+            local_landing='PASS'
+    except Exception as e:
+        errors.append('local_landing_fetch:'+str(e))
 
     merchant_return_policy='FAIL'
     try:
@@ -400,6 +430,8 @@ def main():
         'sitemap_status':sitemap_status,
         'sitemap_exact_sku_lastmod':sitemap_exact_sku_lastmod,
         'sitemap_guides_lastmod':sitemap_guides_lastmod,
+        'sitemap_dnipro_lastmod':sitemap_dnipro_lastmod,
+        'local_landing':local_landing,
         'merchant_return_policy':merchant_return_policy,
         'sitemap_lastmod':sitemap_lastmod,
         'sitemap_discovery_urls_checked':sitemap_urls_checked,

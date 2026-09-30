@@ -100,6 +100,32 @@ def main():
     for bot in ('OAI-SearchBot','OAI-AdsBot','Claude-SearchBot','Claude-User'):
         if bot not in robots:errors.append('robots_missing:'+bot)
 
+    merchant_return_policy='FAIL'
+    try:
+        home_code,home_body=get(SITE+'/')
+        home_blocks=re.findall(r'<script type="application/ld\+json">(.*?)</script>',home_body,re.S|re.I)
+        home_nodes=[]
+        for block in home_blocks:
+            try:obj=json.loads(block)
+            except Exception:continue
+            if isinstance(obj,dict):
+                home_nodes.append(obj)
+                graph=obj.get('@graph')
+                if isinstance(graph,list):
+                    home_nodes.extend(x for x in graph if isinstance(x,dict))
+        org=next((x for x in home_nodes if x.get('@type')=='Organization'),None)
+        policy=(org or {}).get('hasMerchantReturnPolicy') or {}
+        if home_code!=200:
+            errors.append(f'home_http={home_code}')
+        elif not isinstance(policy,dict) or policy.get('@type')!='MerchantReturnPolicy':
+            errors.append('merchant_return_policy_missing')
+        elif str(policy.get('merchantReturnLink') or '').strip()!=SITE+'/returns.html':
+            errors.append('merchant_return_policy_link_mismatch')
+        else:
+            merchant_return_policy='PASS'
+    except Exception as e:
+        errors.append('merchant_return_policy_fetch:'+str(e))
+
     guide_pages_checked=0
     guide_hub_status='FAIL'
     try:
@@ -257,6 +283,7 @@ def main():
         'expected_rows':expected,
         'pages_checked':checked,
         'grouped_pages_checked':grouped_pages_checked,
+        'merchant_return_policy':merchant_return_policy,
         'guide_hub':guide_hub_status,
         'guide_pages_expected':len(GUIDE_PATHS),
         'guide_pages_checked':guide_pages_checked,

@@ -467,3 +467,20 @@ External discovery:
 - immediate public site-search retest still does not return the new BB610 guide/PDP URLs;
 - public local business search did not identify a BB610 Market business result in Dnipro;
 - Google Business Profile, Search Console and Bing Webmaster accounts are not connected to the available Windsor connectors, so direct cabinet-level crawl/index diagnostics remain externally unavailable.
+
+
+### Stage 4 VERIFY checkpoint — 2026-09-30 19:05 Europe/Kyiv
+
+Rechecked from connected production sources:
+- Google Merchant account 5858266688: 163 product rows; datasource remains accounts/5858266688/dataSources/10742663120.
+- Merchant exact-SKU migration remains stale: 163/163 product_link values still use legacy product.html?id=...; 0/163 expose the current /products/<exact-sku>/ URLs.
+- product_canonical_link remains empty in the connected Merchant read-back.
+- Merchant last-update dates remain 2026-09-29T21:00:00Z for the current main cohort, confirming no new datasource ingestion cycle has been observed yet.
+- GA4 property 555339130 rechecked for 2026-09-29..2026-09-30: no ChatGPT/OpenAI/Gemini/Claude/Perplexity/Copilot referral rows observed.
+- Public exact site/title searches for the guide hub, Megafol 100 ml, MASTER 13-40-13 1 kg and Radifarm 25 ml still return no BB610 indexed result in the tested search provider.
+
+Interpretation:
+- on-site exact-SKU feed/PDP preparation remains PASS;
+- current blocker is still external discovery / Merchant datasource ingestion, not Product Master, pricing, feed generation or PDP correctness;
+- Stage 4 remains IN PROGRESS / UNVERIFIED;
+- Stage 6 SCALE remains blocked until an independent indexing, citation, referral or Merchant exact-link ingestion signal appears.

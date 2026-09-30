@@ -11,6 +11,11 @@ KEY_LOCATION=f"{SITE}/{KEY}.txt"
 ENDPOINT="https://api.indexnow.org/indexnow"
 REPORT=ROOT/"docs/ai_sales/INDEXNOW_SUBMISSION_20260930.json"
 
+LOCAL_DISCOVERY=[
+    f"{SITE}/dnipro/",
+    f"{SITE}/contacts.html",
+]
+
 GUIDES=[
     f"{SITE}/guides/",
     f"{SITE}/guides/abiotic-stress-and-megafol/",
@@ -27,7 +32,7 @@ def changed_urls():
     stage1=json.loads((ROOT/"docs/ai_sales/AI_SALES_STAGE1_PDP_SYNC_REPORT.json").read_text(encoding="utf-8"))
     exact=[str(x.get("url") or "").strip() for x in stage1.get("items") or []]
     exact=[u for u in exact if u.startswith(SITE+"/products/")]
-    urls=[SITE+"/",*GUIDES,*exact]
+    urls=[SITE+"/",*LOCAL_DISCOVERY,*GUIDES,*exact]
     return list(dict.fromkeys(urls))
 
 def fetch(url, method="GET", data=None, headers=None):

@@ -25,14 +25,32 @@ def main():
     if google_status!=200:errors.append(f'google_feed_http={google_status}')
     if len(rows)!=expected:errors.append(f'feed_count={len(rows)} expected={expected}')
     if len(google_rows)!=expected:errors.append(f'google_feed_count={len(google_rows)} expected={expected}')
+    required_openai_fields={
+        'item_id','title','description','url','brand','seller_name','image_url',
+        'availability','price','is_eligible_search','is_eligible_checkout'
+    }
+    actual_fields=set(rows[0].keys()) if rows else set()
+    missing_fields=sorted(required_openai_fields-actual_fields)
+    if missing_fields:errors.append('openai_required_fields_missing:'+','.join(missing_fields))
+    if 'is_ads_eligible' not in actual_fields:
+        errors.append('openai_ads_policy_field_missing:is_ads_eligible')
     google_by_id={str(x.get('id') or ''):x for x in google_rows}
     robots_status,robots=get(SITE+'/robots.txt')
     for bot in ('OAI-SearchBot','OAI-AdsBot','Claude-SearchBot','Claude-User'):
         if bot not in robots:errors.append('robots_missing:'+bot)
     checked=0
     for row in rows:
-        url=(row.get('url') or '').strip()
         item_id=str(row.get('item_id') or '')
+        for field in required_openai_fields:
+            if str(row.get(field) or '').strip()=='':
+                errors.append('openai_required_value_missing:'+item_id+':'+field)
+        if str(row.get('is_eligible_search') or '').strip().lower()!='true':
+            errors.append('openai_search_eligibility_invalid:'+item_id)
+        if str(row.get('is_eligible_checkout') or '').strip().lower()!='false':
+            errors.append('openai_checkout_must_be_false:'+item_id)
+        if str(row.get('is_ads_eligible') or '').strip().lower()!='false':
+            errors.append('openai_ads_must_be_false:'+item_id)
+        url=(row.get('url') or '').strip()
         if not url.startswith(SITE+'/products/'):errors.append('bad_url:'+item_id);continue
         if 'utm_source=chatgpt' not in url or 'utm_medium=product_feed' not in url:
             errors.append('openai_attribution_missing:'+item_id)
@@ -79,6 +97,10 @@ def main():
         'robots_http':robots_status,
         'openai_attribution':'PASS' if all('utm_source=chatgpt' in str(x.get('url') or '') for x in rows) else 'FAIL',
         'google_exact_sku_links':'PASS' if all(str(x.get('link') or '').startswith(SITE+'/products/') for x in google_rows) else 'FAIL',
+        'openai_required_fields':'PASS' if not missing_fields else 'FAIL',
+        'openai_search_eligibility':'PASS' if all(str(x.get('is_eligible_search') or '').lower()=='true' for x in rows) else 'FAIL',
+        'openai_checkout_eligibility':'PASS' if all(str(x.get('is_eligible_checkout') or '').lower()=='false' for x in rows) else 'FAIL',
+        'openai_ads_policy':'PASS' if all(str(x.get('is_ads_eligible') or '').lower()=='false' for x in rows) else 'FAIL',
         'errors':errors
     }
     REPORT.parent.mkdir(parents=True,exist_ok=True)

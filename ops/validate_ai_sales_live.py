@@ -102,6 +102,7 @@ def main():
         image_ext_counts[ext]=image_ext_counts.get(ext,0)+1
         if ext not in {'.jpg','.jpeg','.png'}:
             unsupported_images.append(str(x.get('item_id') or '')+':'+image_url)
+    unsupported_image_magic={item.split(':',1)[0]:image_magic(item.split(':',1)[1]) for item in unsupported_images}
     quality={
         'seller_url':sum(1 for x in rows if str(x.get('seller_url') or '').strip()),
         'product_category':sum(1 for x in rows if str(x.get('product_category') or '').strip()),
@@ -114,6 +115,7 @@ def main():
         'image_extension_counts':image_ext_counts,
         'openai_image_format_supported':len(rows)-len(unsupported_images),
         'openai_image_format_unsupported':len(unsupported_images),
+        'unsupported_image_magic':unsupported_image_magic,
     }
     report={
         'status':'PASS' if not errors else 'FAIL',

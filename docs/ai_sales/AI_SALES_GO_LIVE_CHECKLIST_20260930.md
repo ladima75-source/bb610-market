@@ -30,6 +30,7 @@ Updated: 2026-09-30
 - [x] Applicant last name confirmed.
 - [x] Applicant LinkedIn URL confirmed.
 - [ ] Applicant work title confirmed.
+- [ ] Supported target market confirmed by OpenAI for BB610; do not fabricate US/UA.
 - [ ] Merchant application submitted.
 - [ ] Submission confirmation/waitlist recorded.
 - [ ] Feed onboarding/approval confirmed.

@@ -289,3 +289,17 @@ Merchant ingestion remains externally unresolved:
 - product_last_update_date remains 2026-09-29T21:00:00Z;
 - the available Merchant connector does not expose datasource fetch URL or fetch schedule fields;
 - no Gmail notification containing datasource id 10742663120 or recent Merchant Center feed configuration details was found.
+
+
+### Stage 4/5 external discovery acceleration — IndexNow
+
+Implemented and verified:
+- IndexNow ownership key is hosted on market.bb610.com.ua and returns HTTP 200 with exact key match.
+- Bing single-URL prime request: HTTP 200.
+- IndexNow bulk submission: HTTP 200.
+- submitted URLs: 202.
+- submission scope: homepage, guide hub, 8 AI-intent guides and 192 exact-SKU PDPs changed/generated on 2026-09-30.
+- submission report: docs/ai_sales/INDEXNOW_SUBMISSION_20260930.json.
+- IndexNow is treated as a discovery notification only; it is not counted as proof of indexing, ranking or AI citation.
+
+This adds an active discovery path for Bing and other participating IndexNow engines, including faster change discovery relevant to Bing/Copilot surfaces.

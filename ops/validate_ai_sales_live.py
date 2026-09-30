@@ -100,6 +100,38 @@ def main():
     for bot in ('OAI-SearchBot','OAI-AdsBot','Claude-SearchBot','Claude-User'):
         if bot not in robots:errors.append('robots_missing:'+bot)
 
+    sitemap_lastmod='FAIL'
+    sitemap_urls_checked=0
+    try:
+        sitemap_code,sitemap_body=get(SITE+'/sitemap.xml')
+        entries=re.findall(r'<url>\s*<loc>(.*?)</loc>(?:\s*<lastmod>([^<]+)</lastmod>)?\s*</url>',sitemap_body,re.S|re.I)
+        sitemap_map={loc.strip():lastmod.strip() for loc,lastmod in entries}
+        discovery_urls={SITE+'/',SITE+'/guides/'}
+        discovery_urls.update(f'{SITE}/guides/{slug}/' for slug in GUIDE_PATHS)
+        for row in rows:
+            parsed=urlparse(str(row.get('url') or '').strip())
+            if parsed.scheme and parsed.netloc and parsed.path:
+                discovery_urls.add(f'{parsed.scheme}://{parsed.netloc}{parsed.path}')
+        missing_sitemap=sorted(u for u in discovery_urls if u not in sitemap_map)
+        stale_lastmod=sorted(
+            u for u in discovery_urls
+            if u in sitemap_map and (
+                not re.fullmatch(r'\d{4}-\d{2}-\d{2}',sitemap_map.get(u,''))
+                or sitemap_map.get(u,'')<'2026-09-30'
+            )
+        )
+        sitemap_urls_checked=len(discovery_urls)-len(missing_sitemap)
+        if sitemap_code!=200:
+            errors.append(f'sitemap_http={sitemap_code}')
+        if missing_sitemap:
+            errors.append('sitemap_missing_urls:'+','.join(missing_sitemap[:20]))
+        if stale_lastmod:
+            errors.append('sitemap_lastmod_missing_or_stale:'+','.join(stale_lastmod[:20]))
+        if not missing_sitemap and not stale_lastmod:
+            sitemap_lastmod='PASS'
+    except Exception as e:
+        errors.append('sitemap_validation:'+str(e))
+
     merchant_return_policy='FAIL'
     try:
         home_code,home_body=get(SITE+'/')
@@ -284,6 +316,8 @@ def main():
         'pages_checked':checked,
         'grouped_pages_checked':grouped_pages_checked,
         'merchant_return_policy':merchant_return_policy,
+        'sitemap_lastmod':sitemap_lastmod,
+        'sitemap_discovery_urls_checked':sitemap_urls_checked,
         'guide_hub':guide_hub_status,
         'guide_pages_expected':len(GUIDE_PATHS),
         'guide_pages_checked':guide_pages_checked,

@@ -1,1 +1,2 @@
 2026-09-30T17:35:00+03:00 Submit today's AI Sales changed URLs to IndexNow
+2026-09-30T17:40:00+03:00 Retry after ownership preflight and Bing prime

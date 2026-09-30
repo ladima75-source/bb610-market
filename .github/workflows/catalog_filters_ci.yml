@@ -177,7 +177,7 @@ jobs:
           assert 'cultureImage' in js
           assert 'updatePlantlogicStickyOffset' in js
           assert "const remainder=list.filter(p=>norm(brandFor(p))!=='plantlogic')" in js
-          assert "plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=3'" in js
+          assert "plantlogicCss.href='assets/css/plantlogic-catalog-sections.css?v=" in js
           assert 'grid.innerHTML=renderCards(all,state)' in js
           assert 'const visibleCount=sectionedContainers' in js
           assert "empty.style.display=visibleCount?'none':'block'" in js

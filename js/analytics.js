@@ -15,7 +15,22 @@
   function metaFbp(){return readCookie('_fbp')}
   function metaFbc(){const stored=readCookie('_fbc');if(stored)return stored;try{const cached=sessionStorage.getItem('bb610_meta_fbc');if(cached)return cached;const clickId=new URL(location.href).searchParams.get('fbclid');if(clickId){const value='fb.1.'+Date.now()+'.'+clickId;sessionStorage.setItem('bb610_meta_fbc',value);return value}}catch{}return ''}
   function pageType(){const p=location.pathname.toLowerCase();if(p.includes('/order/success'))return 'order_success';if(p.includes('checkout'))return 'checkout';if(p.includes('cart'))return 'cart';if(p.includes('/products/'))return 'product';if(p.includes('/categories/')||p.includes('catalog'))return 'catalog';if(p.includes('compare'))return 'compare';if(p.includes('favorites'))return 'favorites';if(p==='/'||p.endsWith('/index.html'))return 'home';return 'content'}
-  function baseContext(){return {site:cfg().site||location.hostname,page_type:pageType(),page_location:location.href,page_path:location.pathname+location.search,session_id:sessionId()}}
+  function aiReferralSource(){
+    try{
+      const utm=String(new URL(location.href).searchParams.get('utm_source')||'').trim().toLowerCase();
+      const utmMap={'chatgpt':'chatgpt','chatgpt.com':'chatgpt','openai':'chatgpt','gemini':'gemini','claude':'claude','perplexity':'perplexity','copilot':'copilot','grok':'grok'};
+      if(utmMap[utm])return utmMap[utm];
+      const host=new URL(document.referrer||'https://invalid.local').hostname.toLowerCase().replace(/^www\./,'');
+      if(host==='chatgpt.com'||host==='chat.openai.com'||host.endsWith('.openai.com'))return 'chatgpt';
+      if(host==='gemini.google.com')return 'gemini';
+      if(host==='claude.ai'||host.endsWith('.claude.ai'))return 'claude';
+      if(host==='perplexity.ai'||host.endsWith('.perplexity.ai'))return 'perplexity';
+      if(host==='copilot.microsoft.com')return 'copilot';
+      if(host==='grok.com'||host.endsWith('.grok.com'))return 'grok';
+    }catch{}
+    return '';
+  }
+  function baseContext(){const ai=aiReferralSource();return {site:cfg().site||location.hostname,page_type:pageType(),page_location:location.href,page_path:location.pathname+location.search,session_id:sessionId(),...(ai?{ai_source:ai}:{})}}
   function push(event,payload={}){
     if(cfg().enabled===false)return null;
     const eventId=payload.event_id||uuid();
@@ -89,11 +104,15 @@
     const ecommerceEvents=new Set(['view_item_list','select_item','view_item','add_to_cart','view_cart','begin_checkout','purchase']);
     if(ecommerceEvents.has(event)){
       const ecommerce=data?.ecommerce||{};
-      window.gtag('event',event,{...ecommerce,send_to:id});
+      window.gtag('event',event,{...ecommerce,...(data?.ai_source?{ai_source:String(data.ai_source)}:{}),send_to:id});
       return true;
     }
     if(event==='search'&&data?.search_term){
-      window.gtag('event','search',{search_term:String(data.search_term),send_to:id});
+      window.gtag('event','search',{search_term:String(data.search_term),...(data?.ai_source?{ai_source:String(data.ai_source)}:{}),send_to:id});
+      return true;
+    }
+    if(event==='ai_referral_visit'&&data?.ai_source){
+      window.gtag('event','ai_referral_visit',{ai_source:String(data.ai_source),landing_page:String(data.page_location||location.href),send_to:id});
       return true;
     }
     return false;
@@ -223,7 +242,12 @@
     configureGa4();
     configureGoogleAds();
     loadMetaPixel();
-    push('bb610_analytics_ready',{analytics_version:'stage6-v8-meta-match'});
+    push('bb610_analytics_ready',{analytics_version:'stage6-v9-ai-attribution'});
+    const ai=aiReferralSource();
+    if(ai&&!sessionStorage.getItem('bb610_ai_referral_reported')){
+      sessionStorage.setItem('bb610_ai_referral_reported','1');
+      push('ai_referral_visit',{ai_source:ai});
+    }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initConsentUi,{once:true});else initConsentUi();
   }
   window.BB610Analytics=Object.freeze({push,updateConsent,sessionId,pageType,config:cfg,init});

@@ -205,3 +205,20 @@ Current OpenAI Stable geo schema documents target_countries as required and curr
 
 Action:
 Keep merchant application/waitlist preparation active, but do not claim live Stable-feed submission readiness until OpenAI confirms a legitimate BB610 target market.
+
+
+### Stage 4 verification checkpoint — 2026-09-30 14:26 Europe/Kyiv
+
+Verified current live state:
+- Merchant Center account 5858266688: 163 active / 0 disapproved / 0 pending for both FREE_LISTINGS and SHOPPING_ADS in UA.
+- Full Merchant connector read: 163 product rows.
+- Merchant exact-SKU link migration is still UNVERIFIED: current product_link values remain legacy product.html?id=... and product_last_update_date remains 2026-09-29T21:00:00Z.
+- Merchant September product-performance query returned no rows.
+- GA4 property 555339130: September session-source/medium + landing-page query returned 20 rows; 0 matched ChatGPT/OpenAI/Gemini/Claude/Perplexity/Copilot/Grok.
+- Four new intent guides are still not returned by exact public site/title searches.
+- Sample exact-product title searches for MASTER 13-40-13 1 kg, Megafol 100 ml, Radifarm 25 ml and Brexil Fe 15 g still do not return BB610 in the tested public search provider.
+
+Decision:
+- STAGE 4 remains IN PROGRESS / UNVERIFIED.
+- STAGE 5 on-site preparation remains PASS for the implemented blocks.
+- Do not start STAGE 6 SCALE until an independent discovery/citation/referral/ingestion signal is observed.

@@ -266,3 +266,26 @@ Completed:
   - errors: 0
 
 Google Product Variant structured-data guidance was used for the ProductGroup/isVariantOf implementation; no fabricated GTIN/MPN values were introduced.
+
+
+### Stage 5 merchant-trust entity block — 2026-09-30
+
+Completed:
+- Organization structured data now links the official BB610 return policy through hasMerchantReturnPolicy / MerchantReturnPolicy.
+- merchantReturnLink points to https://market.bb610.com.ua/returns.html.
+- The structured data intentionally does not flatten the published return policy into a universal return rule; category, condition and legal exceptions remain on the policy page.
+- Production live validation run 36729501801: SUCCESS.
+- merchant_return_policy: PASS.
+- 163/163 PDPs: PASS.
+- 139/139 grouped variant pages: PASS.
+- guide hub: PASS.
+- 8/8 guide pages: PASS.
+- OpenAI image format: PASS.
+- errors: 0.
+
+Merchant ingestion remains externally unresolved:
+- connected Merchant data still exposes datasource accounts/5858266688/dataSources/10742663120;
+- sampled product_link values remain legacy product.html?id=...;
+- product_last_update_date remains 2026-09-29T21:00:00Z;
+- the available Merchant connector does not expose datasource fetch URL or fetch schedule fields;
+- no Gmail notification containing datasource id 10742663120 or recent Merchant Center feed configuration details was found.

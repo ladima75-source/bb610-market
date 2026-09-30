@@ -1,10 +1,10 @@
 {
-  "status": "FAIL",
+  "status": "PASS",
   "openai_feed_rows": 163,
   "google_feed_rows": 163,
   "expected_rows": 163,
   "pages_checked": 163,
-  "guide_hub": "FAIL",
+  "guide_hub": "PASS",
   "guide_pages_expected": 8,
   "guide_pages_checked": 8,
   "robots_http": 200,
@@ -43,23 +43,5 @@
     "BB610-0BDAED34128BDA:https://market.bb610.com.ua/assets/img/v5/media/146dbd278150498ae157.webp",
     "BB610-32DA4F652F73A1:https://market.bb610.com.ua/assets/img/v5/media/ad3434331aae65aec38d.webp"
   ],
-  "errors": [
-    "guide_hub_schema_missing:CollectionPage",
-    "guide_schema_missing:abiotic-stress-and-megafol:Article",
-    "guide_schema_missing:abiotic-stress-and-megafol:BreadcrumbList",
-    "guide_schema_missing:before-planting-seedlings-product-selection:Article",
-    "guide_schema_missing:before-planting-seedlings-product-selection:BreadcrumbList",
-    "guide_schema_missing:blueberry-pot-25l-vs-40l:Article",
-    "guide_schema_missing:blueberry-pot-25l-vs-40l:BreadcrumbList",
-    "guide_schema_missing:ferrilene-vs-brexil-fe:Article",
-    "guide_schema_missing:ferrilene-vs-brexil-fe:BreadcrumbList",
-    "guide_schema_missing:high-phosphorus-alternatives-master-13-40-13:Article",
-    "guide_schema_missing:high-phosphorus-alternatives-master-13-40-13:BreadcrumbList",
-    "guide_schema_missing:how-to-choose-pack-size:Article",
-    "guide_schema_missing:how-to-choose-pack-size:BreadcrumbList",
-    "guide_schema_missing:master-13-40-13-vs-20-20-20:Article",
-    "guide_schema_missing:master-13-40-13-vs-20-20-20:BreadcrumbList",
-    "guide_schema_missing:plantafol-20-20-20-vs-master-20-20-20:Article",
-    "guide_schema_missing:plantafol-20-20-20-vs-master-20-20-20:BreadcrumbList"
-  ]
+  "errors": []
 }

@@ -312,6 +312,16 @@ def main():
         'status':'PASS' if not errors else 'FAIL',
         'openai_feed_rows':len(rows),
         'google_feed_rows':len(google_rows),
+        'google_feed_inventory':[
+            {
+                'id':str(x.get('id') or ''),
+                'title':str(x.get('title') or ''),
+                'link':str(x.get('link') or ''),
+                'price':str(x.get('price') or ''),
+                'availability':str(x.get('availability') or ''),
+            }
+            for x in sorted(google_rows,key=lambda row:str(row.get('id') or ''))
+        ],
         'expected_rows':expected,
         'pages_checked':checked,
         'grouped_pages_checked':grouped_pages_checked,

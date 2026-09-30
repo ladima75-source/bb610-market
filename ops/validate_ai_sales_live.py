@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 import csv,io,json,re,urllib.request
+from urllib.parse import urlparse
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -92,6 +93,15 @@ def main():
             checked+=1
         except Exception as e:
             errors.append(f'fetch:{row.get("item_id")}:{e}')
+    image_ext_counts={}
+    unsupported_images=[]
+    for x in rows:
+        image_url=str(x.get('image_url') or '').strip()
+        path=urlparse(image_url).path.lower()
+        ext=Path(path).suffix
+        image_ext_counts[ext]=image_ext_counts.get(ext,0)+1
+        if ext not in {'.jpg','.jpeg','.png'}:
+            unsupported_images.append(str(x.get('item_id') or '')+':'+image_url)
     quality={
         'seller_url':sum(1 for x in rows if str(x.get('seller_url') or '').strip()),
         'product_category':sum(1 for x in rows if str(x.get('product_category') or '').strip()),
@@ -101,6 +111,9 @@ def main():
         'group_id':sum(1 for x in rows if str(x.get('group_id') or '').strip()),
         'variant_dict':sum(1 for x in rows if str(x.get('variant_dict') or '').strip()),
         'listing_has_variations_true':sum(1 for x in rows if str(x.get('listing_has_variations') or '').strip().lower()=='true'),
+        'image_extension_counts':image_ext_counts,
+        'openai_image_format_supported':len(rows)-len(unsupported_images),
+        'openai_image_format_unsupported':len(unsupported_images),
     }
     report={
         'status':'PASS' if not errors else 'FAIL',
@@ -120,6 +133,8 @@ def main():
         'openai_checkout_eligibility':'PASS' if all(str(x.get('is_eligible_checkout') or '').lower()=='false' for x in rows) else 'FAIL',
         'openai_ads_policy':'PASS' if all(str(x.get('is_ads_eligible') or '').lower()=='false' for x in rows) else 'FAIL',
         'openai_quality_coverage':quality,
+        'openai_image_format':'PASS' if not unsupported_images else 'BLOCKED_UNSUPPORTED_IMAGE_FORMAT',
+        'openai_unsupported_images':unsupported_images[:50],
         'errors':errors
     }
     REPORT.parent.mkdir(parents=True,exist_ok=True)

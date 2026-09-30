@@ -189,7 +189,7 @@ def main():
     sitemap.write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{esc(u)}</loc></url>\n' for u in urls)+'</urlset>\n',encoding='utf-8')
     report={'status':'PASS' if not errors else 'FAIL','generated':len(made),'family_pages_checked':family_total,'family_pages_changed':family_changed,'errors':errors,'items':made}
     rp=ROOT/'docs/ai_sales/AI_SALES_STAGE1_PDP_SYNC_REPORT.json';rp.parent.mkdir(parents=True,exist_ok=True);rp.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
-    print(json.dumps({'status':report['status'],'generated':len(made),'family_pages_checked':family_total,'family_pages_changed':family_changed,'errors':len(errors)},ensure_ascii=False))
+    print(json.dumps({'status':report['status'],'generated':len(made),'family_pages_checked':family_total,'family_pages_changed':family_changed,'errors':len(errors),'error_details':errors[:50]},ensure_ascii=False))
     if errors:raise SystemExit(1)
 
 if __name__=='__main__':main()

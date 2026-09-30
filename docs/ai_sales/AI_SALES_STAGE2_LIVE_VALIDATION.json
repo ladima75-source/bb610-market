@@ -1182,6 +1182,8 @@
     "listing_has_variations_true": 139,
     "offer_id": 163,
     "return_policy": 163,
+    "accepts_returns": 163,
+    "return_deadline_in_days": 163,
     "image_extension_counts": {
       ".jpg": 86,
       ".png": 77

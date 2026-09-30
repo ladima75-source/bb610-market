@@ -143,6 +143,7 @@ def main():
             errors.append(f'guide_fetch:{slug}:{e}')
 
     checked=0
+    grouped_pages_checked=0
     for row in rows:
         item_id=str(row.get('item_id') or '')
         for field in required_openai_core_fields:
@@ -176,12 +177,45 @@ def main():
             if 'index,follow,max-image-preview:large' not in body:errors.append('noindex:'+row.get('item_id',''))
             blocks=re.findall(r'<script type="application/ld\+json">(.*?)</script>',body,re.S|re.I)
             product=None
+            product_group=None
             for block in blocks:
                 try:obj=json.loads(block)
                 except Exception:continue
-                if obj.get('@type')=='Product':product=obj;break
+                if obj.get('@type')=='Product' and product is None:
+                    product=obj
+                elif obj.get('@type')=='ProductGroup' and product_group is None:
+                    product_group=obj
             if not product:errors.append('schema_missing:'+row.get('item_id',''));continue
             if str(product.get('sku') or '')!=str(row.get('item_id') or ''):errors.append('sku_mismatch:'+row.get('item_id',''))
+
+            group_id=str(row.get('group_id') or '').strip()
+            if group_id:
+                if str(product.get('inProductGroupWithID') or '').strip()!=group_id:
+                    errors.append('product_group_id_mismatch:'+item_id)
+                is_variant=product.get('isVariantOf') or {}
+                if not isinstance(is_variant,dict) or is_variant.get('@type')!='ProductGroup' or not str(is_variant.get('@id') or '').strip():
+                    errors.append('product_is_variant_of_missing:'+item_id)
+                try:
+                    variant_dict=json.loads(str(row.get('variant_dict') or '{}'))
+                except Exception:
+                    variant_dict={}
+                expected_size=str(variant_dict.get('package') or '').strip()
+                if expected_size and str(product.get('size') or '').strip()!=expected_size:
+                    errors.append('product_variant_size_mismatch:'+item_id)
+                if not product_group:
+                    errors.append('product_group_schema_missing:'+item_id)
+                else:
+                    if str(product_group.get('productGroupID') or '').strip()!=group_id:
+                        errors.append('product_group_schema_id_mismatch:'+item_id)
+                    varies=product_group.get('variesBy') or []
+                    if isinstance(varies,str):varies=[varies]
+                    if 'https://schema.org/size' not in varies:
+                        errors.append('product_group_variesby_missing:'+item_id)
+                    variants=product_group.get('hasVariant') or []
+                    if not isinstance(variants,list) or len(variants)<2:
+                        errors.append('product_group_variants_missing:'+item_id)
+                grouped_pages_checked+=1
+
             offer=product.get('offers') or {}
             feed_price=str(row.get('price') or '').split()[0]
             try:
@@ -222,6 +256,7 @@ def main():
         'google_feed_rows':len(google_rows),
         'expected_rows':expected,
         'pages_checked':checked,
+        'grouped_pages_checked':grouped_pages_checked,
         'guide_hub':guide_hub_status,
         'guide_pages_expected':len(GUIDE_PATHS),
         'guide_pages_checked':guide_pages_checked,

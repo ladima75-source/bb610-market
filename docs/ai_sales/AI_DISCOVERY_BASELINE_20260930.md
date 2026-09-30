@@ -116,3 +116,61 @@ Implemented:
 
 Current sitemap size after refresh: 246 URLs.
 Post-change live validation: PASS.
+
+
+## Checkpoint 2026-09-30 11:35–11:50 Europe/Kyiv
+
+### Stage 5 intent optimization live
+
+Deployed and health-checked on production:
+- /guides/high-phosphorus-alternatives-master-13-40-13/
+- /guides/before-planting-seedlings-product-selection/
+- /guides/how-to-choose-pack-size/
+- /guides/blueberry-pot-25l-vs-40l/
+
+Internal links were added from relevant MASTER / PLANTAFOL / PeKacid / Radifarm / Megafol / Plantlogic product-family pages.
+Sitemap now contains 250 URLs.
+
+AI intent state:
+- AI-20: OPTIMIZED
+- AI-21: OPTIMIZED
+- AI-22: OPTIMIZED
+- AI-25: OPTIMIZED
+- AI-23 / AI-24: LEAD-GEN READY (Plantlogic public price/availability are not active)
+
+Stage 2 live validation workflow run 36691595757: SUCCESS.
+VPS deploy workflow run 36691832128: SUCCESS.
+Post-deploy health workflow run 36691918914: SUCCESS.
+Production service: active.
+Production API: {"ok":true,"service":"bb610-commerce","stage":12}.
+
+### Merchant ingestion retest
+
+Connected Google Merchant account 5858266688 still reports:
+- SHOPPING_ADS UA: 163 active / 0 disapproved / 0 pending / 0 expiring
+- FREE_LISTINGS UA: 163 active / 0 disapproved / 0 pending / 0 expiring
+
+Sampled live Merchant rows still expose legacy links:
+- BB610-VLG-MEGAFOL-100ML -> https://market.bb610.com.ua/product.html?id=megafol
+- BB610-VLG-RADIFARM-25ML -> https://market.bb610.com.ua/product.html?id=radifarm
+
+For both sampled rows:
+- product_data_source: accounts/5858266688/dataSources/10742663120
+- product_last_update_date: 2026-09-29T21:00:00Z
+
+Therefore the newest exact-SKU feed link version is still NOT confirmed as ingested by Merchant.
+
+### Public discovery retest
+
+Retested current public search for:
+- site:market.bb610.com.ua MASTER 13-40-13 BB610 Market
+- site:market.bb610.com.ua Radifarm BB610 Market
+- MASTER 13-40-13 купити Україна
+- Radifarm 25 мл купити Україна
+
+Observed:
+- site-scoped BB610 queries returned no indexed results in the tested search provider;
+- generic commercial queries returned established marketplaces/shops, not BB610 Market.
+
+Conclusion:
+Stage 5 on-site intent coverage has materially improved, but Stage 4 remains IN PROGRESS. No organic AI/search visibility is claimed yet.

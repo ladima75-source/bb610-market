@@ -1,2 +1,2 @@
-2026-09-30T09:57:00+03:00
-reason=stage2-live-validation-price-fix
+2026-09-30T10:18:00+03:00
+reason=stage2-google-openai-exact-link-parity

@@ -10,6 +10,7 @@ from .catalog_feeds import channel_snapshot
 
 SELLER_NAME = "BB610 Market"
 SELLER_URL = "https://market.bb610.com.ua/"
+RETURN_POLICY_URL = "https://market.bb610.com.ua/returns.html"
 
 OPENAI_FIELDS = [
     "item_id",
@@ -25,10 +26,12 @@ OPENAI_FIELDS = [
     "group_id",
     "listing_has_variations",
     "variant_dict",
+    "offer_id",
     "gtin",
     "mpn",
     "condition",
     "product_category",
+    "return_policy",
     "is_eligible_search",
     "is_eligible_checkout",
     "is_ads_eligible",
@@ -117,15 +120,18 @@ def rows(commerce_override: dict | None = None) -> list[dict]:
                 if has_variations and variant
                 else ""
             ),
+            "offer_id": f"bb610-{item_id}" if item_id else "",
             "gtin": str(base.get("gtin") or "").strip(),
             "mpn": str(base.get("mpn") or "").strip(),
             "condition": "new",
             "product_category": str(base.get("product_type") or "").strip(),
+            "return_policy": RETURN_POLICY_URL,
             "is_eligible_search": "true",
             "is_eligible_checkout": "false",
             "is_ads_eligible": "false",
-            # Intentionally blank until OpenAI confirms a supported BB610 target market.
-            # Current Stable docs list US; BB610 sells in Ukraine, so we do not fabricate US.
+            # Market setup is integration-specific. Standard uploads do not turn a blank
+            # country into worldwide distribution, so BB610 must not fabricate US/UA here.
+            # Keep blank until OpenAI confirms the registered market configuration.
             "target_countries": "",
         }
         out.append(row)

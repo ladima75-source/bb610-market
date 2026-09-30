@@ -4,6 +4,10 @@
   "host": "market.bb610.com.ua",
   "key_location": "https://market.bb610.com.ua/dc14a3d3e97280bc468bc205ba0fabf5e9945c6594b23c1df9e54fc3bba85665.txt",
   "submitted_urls": 202,
+  "submission_mode": "manual_full",
+  "changed_files": [
+    "ops/indexnow-submit-request.txt"
+  ],
   "key_http_code": 200,
   "key_body_match": true,
   "key_error": null,

@@ -1,2 +1,2 @@
-2026-09-30T10:18:00+03:00
-reason=stage2-google-openai-exact-link-parity
+2026-09-30T10:24:00+03:00
+reason=post-entity-schema-sitemap-regression-check

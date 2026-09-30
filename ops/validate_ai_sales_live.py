@@ -25,13 +25,17 @@ def main():
     if google_status!=200:errors.append(f'google_feed_http={google_status}')
     if len(rows)!=expected:errors.append(f'feed_count={len(rows)} expected={expected}')
     if len(google_rows)!=expected:errors.append(f'google_feed_count={len(google_rows)} expected={expected}')
-    required_openai_fields={
+    required_openai_core_fields={
         'item_id','title','description','url','brand','seller_name','image_url',
         'availability','price','is_eligible_search','is_eligible_checkout'
     }
     actual_fields=set(rows[0].keys()) if rows else set()
-    missing_fields=sorted(required_openai_fields-actual_fields)
-    if missing_fields:errors.append('openai_required_fields_missing:'+','.join(missing_fields))
+    missing_fields=sorted(required_openai_core_fields-actual_fields)
+    if missing_fields:errors.append('openai_core_fields_missing:'+','.join(missing_fields))
+    market_field_present='target_countries' in actual_fields
+    market_targets=sorted({str(x.get('target_countries') or '').strip() for x in rows if str(x.get('target_countries') or '').strip()})
+    openai_market_gate='READY' if market_field_present and market_targets else 'BLOCKED_MARKET_TARGET'
+
     if 'is_ads_eligible' not in actual_fields:
         errors.append('openai_ads_policy_field_missing:is_ads_eligible')
     google_by_id={str(x.get('id') or ''):x for x in google_rows}
@@ -41,7 +45,7 @@ def main():
     checked=0
     for row in rows:
         item_id=str(row.get('item_id') or '')
-        for field in required_openai_fields:
+        for field in required_openai_core_fields:
             if str(row.get(field) or '').strip()=='':
                 errors.append('openai_required_value_missing:'+item_id+':'+field)
         if str(row.get('is_eligible_search') or '').strip().lower()!='true':
@@ -97,7 +101,11 @@ def main():
         'robots_http':robots_status,
         'openai_attribution':'PASS' if all('utm_source=chatgpt' in str(x.get('url') or '') for x in rows) else 'FAIL',
         'google_exact_sku_links':'PASS' if all(str(x.get('link') or '').startswith(SITE+'/products/') for x in google_rows) else 'FAIL',
-        'openai_required_fields':'PASS' if not missing_fields else 'FAIL',
+                'openai_core_fields':'PASS' if not missing_fields else 'FAIL',
+        'openai_market_targeting':openai_market_gate,
+        'openai_target_countries':market_targets,
+        'openai_stable_submission':'READY' if openai_market_gate=='READY' and not missing_fields else 'BLOCKED_MARKET_TARGET' if openai_market_gate!='READY' else 'FAIL',
+
         'openai_search_eligibility':'PASS' if all(str(x.get('is_eligible_search') or '').lower()=='true' for x in rows) else 'FAIL',
         'openai_checkout_eligibility':'PASS' if all(str(x.get('is_eligible_checkout') or '').lower()=='false' for x in rows) else 'FAIL',
         'openai_ads_policy':'PASS' if all(str(x.get('is_ads_eligible') or '').lower()=='false' for x in rows) else 'FAIL',

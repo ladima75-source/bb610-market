@@ -10,10 +10,45 @@ FEED='https://api.market.bb610.com.ua/api/v1/catalog/feeds/openai-products.csv'
 GOOGLE_FEED='https://api.market.bb610.com.ua/api/v1/catalog/feeds/google-merchant.csv'
 REPORT=ROOT/'docs/ai_sales/AI_SALES_STAGE2_LIVE_VALIDATION.json'
 
+GUIDE_PATHS=[
+    'abiotic-stress-and-megafol',
+    'before-planting-seedlings-product-selection',
+    'blueberry-pot-25l-vs-40l',
+    'ferrilene-vs-brexil-fe',
+    'high-phosphorus-alternatives-master-13-40-13',
+    'how-to-choose-pack-size',
+    'master-13-40-13-vs-20-20-20',
+    'plantafol-20-20-20-vs-master-20-20-20',
+]
+
 def get(url):
     req=urllib.request.Request(url,headers={'User-Agent':'BB610-AI-Sales-Validator/1.0'})
     with urllib.request.urlopen(req,timeout=30) as r:
         return r.status,r.read().decode('utf-8-sig','replace')
+
+def jsonld_types(body):
+    types=set()
+    blocks=re.findall(r'<script type="application/ld\\+json">(.*?)</script>',body,re.S|re.I)
+    for block in blocks:
+        try:
+            obj=json.loads(block)
+        except Exception:
+            continue
+        nodes=[]
+        if isinstance(obj,dict):
+            nodes.append(obj)
+            graph=obj.get('@graph')
+            if isinstance(graph,list):
+                nodes.extend(x for x in graph if isinstance(x,dict))
+        elif isinstance(obj,list):
+            nodes.extend(x for x in obj if isinstance(x,dict))
+        for node in nodes:
+            value=node.get('@type')
+            if isinstance(value,list):
+                types.update(str(x) for x in value)
+            elif value:
+                types.add(str(value))
+    return types
 
 def image_magic(url):
     try:
@@ -64,6 +99,49 @@ def main():
     robots_status,robots=get(SITE+'/robots.txt')
     for bot in ('OAI-SearchBot','OAI-AdsBot','Claude-SearchBot','Claude-User'):
         if bot not in robots:errors.append('robots_missing:'+bot)
+
+    guide_pages_checked=0
+    guide_hub_status='FAIL'
+    try:
+        hub_code,hub_body=get(SITE+'/guides/')
+        hub_types=jsonld_types(hub_body)
+        if hub_code!=200:
+            errors.append(f'guide_hub_http={hub_code}')
+        elif 'CollectionPage' not in hub_types:
+            errors.append('guide_hub_schema_missing:CollectionPage')
+        elif 'index,follow' not in hub_body:
+            errors.append('guide_hub_noindex')
+        else:
+            missing_links=[slug for slug in GUIDE_PATHS if f'href="{slug}/"' not in hub_body]
+            if missing_links:
+                errors.append('guide_hub_missing_links:'+','.join(missing_links))
+            else:
+                guide_hub_status='PASS'
+    except Exception as e:
+        errors.append('guide_hub_fetch:'+str(e))
+
+    for slug in GUIDE_PATHS:
+        guide_url=f'{SITE}/guides/{slug}/'
+        try:
+            code,body=get(guide_url)
+            if code!=200:
+                errors.append(f'guide_http:{slug}={code}')
+                continue
+            canonical=f'<link rel="canonical" href="{guide_url}">'
+            if canonical not in body:
+                errors.append('guide_canonical:'+slug)
+            if 'index,follow' not in body:
+                errors.append('guide_noindex:'+slug)
+            types=jsonld_types(body)
+            for required_type in ('Article','BreadcrumbList'):
+                if required_type not in types:
+                    errors.append(f'guide_schema_missing:{slug}:{required_type}')
+            if 'Усі матеріали довідника' not in body:
+                errors.append('guide_hub_backlink_missing:'+slug)
+            guide_pages_checked+=1
+        except Exception as e:
+            errors.append(f'guide_fetch:{slug}:{e}')
+
     checked=0
     for row in rows:
         item_id=str(row.get('item_id') or '')
@@ -144,6 +222,9 @@ def main():
         'google_feed_rows':len(google_rows),
         'expected_rows':expected,
         'pages_checked':checked,
+        'guide_hub':guide_hub_status,
+        'guide_pages_expected':len(GUIDE_PATHS),
+        'guide_pages_checked':guide_pages_checked,
         'robots_http':robots_status,
         'openai_attribution':'PASS' if all('utm_source=chatgpt' in str(x.get('url') or '') for x in rows) else 'FAIL',
         'google_exact_sku_links':'PASS' if all(str(x.get('link') or '').startswith(SITE+'/products/') for x in google_rows) else 'FAIL',

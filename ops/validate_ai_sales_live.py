@@ -291,6 +291,7 @@ def main():
             blocks=re.findall(r'<script type="application/ld\+json">(.*?)</script>',body,re.S|re.I)
             product=None
             product_group=None
+            breadcrumb_schema=None
             for block in blocks:
                 try:obj=json.loads(block)
                 except Exception:continue
@@ -298,8 +299,23 @@ def main():
                     product=obj
                 elif obj.get('@type')=='ProductGroup' and product_group is None:
                     product_group=obj
+                elif obj.get('@type')=='BreadcrumbList' and breadcrumb_schema is None:
+                    breadcrumb_schema=obj
             if not product:errors.append('schema_missing:'+row.get('item_id',''));continue
             if str(product.get('sku') or '')!=str(row.get('item_id') or ''):errors.append('sku_mismatch:'+row.get('item_id',''))
+            if not breadcrumb_schema:
+                errors.append('breadcrumb_schema_missing:'+item_id)
+            else:
+                items=breadcrumb_schema.get('itemListElement') or []
+                if not isinstance(items,list) or len(items)<2:
+                    errors.append('breadcrumb_items_invalid:'+item_id)
+                else:
+                    positions=[x.get('position') for x in items if isinstance(x,dict)]
+                    if positions!=list(range(1,len(items)+1)):
+                        errors.append('breadcrumb_positions_invalid:'+item_id)
+                    last=items[-1] if items else {}
+                    if str(last.get('item') or '').strip()!=url.split('?',1)[0]:
+                        errors.append('breadcrumb_current_url_mismatch:'+item_id)
 
             group_id=str(row.get('group_id') or '').strip()
             if group_id:

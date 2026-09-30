@@ -15,6 +15,7 @@ Ready:
 - AI referral attribution implemented
 - merchant application draft prepared
 - applicant first name, last name and LinkedIn URL confirmed
+- production OpenAI-format CSV validated with explicit search=true / checkout=false / ads=false policy
 
 Open:
 - applicant work title must be real and confirmed
@@ -73,3 +74,14 @@ DeepSeek / Grok / other AI search are covered through:
 - measured referral attribution where identifiable
 
 No extra account should be created solely to claim AI presence.
+
+
+## Current OpenAI documentation note
+
+Current OpenAI merchant guidance prioritizes product discovery and merchant-owned checkout. Product feed onboarding is available to approved partners/applicants; shopping is currently live in the U.S. and expansion is planned.
+
+For BB610:
+- discovery feed is enabled;
+- checkout stays on the BB610 site;
+- Ads eligibility is explicitly disabled in the feed;
+- no claim of product visibility is made until OpenAI onboarding/serving is independently confirmed.

@@ -243,3 +243,26 @@ OpenAI documentation recheck:
 - current file-upload product schema still documents target_countries as required with supported value US in the Stable geo table;
 - BB610 remains a UA/UAH merchant, so no false US targeting is inserted;
 - merchant application/waitlist preparation stays valid, while production Stable-feed target-market readiness remains externally blocked.
+
+
+### Stage 5 variant + image semantics block — 2026-09-30
+
+Completed:
+- OpenAI image-format gap closed: 163/163 product images now use supported .jpg/.png URLs in the production OpenAI feed.
+- Two mislabeled source assets were preserved byte-for-byte and exposed through correctly suffixed aliases; Google Merchant/Product Master source identities were not changed.
+- Exact-SKU PDP generator now emits ProductGroup semantics for grouped variants.
+- Product variants use the same group identity as the channel feed (item_group_id, fallback product_id).
+- Grouped exact-SKU Product markup includes size, inProductGroupWithID and isVariantOf.
+- ProductGroup markup includes productGroupID, variesBy=size and hasVariant URLs.
+- Exact SKU sync: 192 generated, errors 0.
+- Production live validation:
+  - status: PASS
+  - pages_checked: 163
+  - grouped_pages_checked: 139
+  - guide_hub: PASS
+  - guide_pages_checked: 8/8
+  - OpenAI image format: PASS
+  - supported image URLs: 163/163
+  - errors: 0
+
+Google Product Variant structured-data guidance was used for the ProductGroup/isVariantOf implementation; no fabricated GTIN/MPN values were introduced.

@@ -80,6 +80,27 @@ Cross-engine rule: every commercial intent is prepared for ChatGPT, Google Gemin
 | AI-67 | technical selection | сульфат калію чи монокалійфосфат що вибрати | ChatGPT / Gemini / Claude | distinguish K+S vs P+K products | /guides/pk-potassium-phosphorus-comparison/ | OPTIMIZED | non-equivalent selection source |
 | AI-68 | direct product | сульфат магнію водорозчинний купити Україна | ChatGPT / Gemini / Claude | exact product offer | /products/sulfat-mahniyu-1kg/ | READY | uncovered direct-product intent |
 
+| AI-69 | comparison | Brexil Mix чи Combi чи Multi чи Nutre різниця | ChatGPT / Gemini / Claude | compare complex micronutrient products | /guides/brexil-complex-products-comparison/ | OPTIMIZED | new cross-engine Brexil source |
+| AI-70 | technical selection | яке комплексне мікродобриво Brexil вибрати | ChatGPT / Gemini / Claude | shortlist by declared product type | /guides/brexil-complex-products-comparison/ | OPTIMIZED | task-oriented micronutrient selection |
+| AI-71 | direct product | Brexil Mix купити Україна | ChatGPT / Gemini / Claude | product + seller + offers | /products/brexil-mix/ | READY | direct purchase intent |
+| AI-72 | direct product | Brexil Combi купити Україна | ChatGPT / Gemini / Claude | product + seller + offers | /products/brexil-combi/ | READY | direct purchase intent |
+| AI-73 | direct product | Brexil Nutre купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/brexil-nutre-1kg/ | READY | direct purchase intent |
+| AI-74 | direct product | Brexil Mn купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/brexil-mn-5kg/ | READY | direct purchase intent |
+| AI-75 | comparison | Megafol чи NeoVivo чи Terra-Sorb чи Speedfol Amino різниця | ChatGPT / Gemini / Claude | compare declared anti-stress/amino contexts | /guides/antistress-amino-seaweed-comparison/ | OPTIMIZED | new cross-engine anti-stress source |
+| AI-76 | technical selection | амінокислотний біостимулятор для листкового внесення купити | ChatGPT / Gemini / Claude | shortlist with application-method caveat | /guides/antistress-amino-seaweed-comparison/ | OPTIMIZED | task-oriented amino selection |
+| AI-77 | direct product | Terra-Sorb купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/terra-sorb-100ml/ | READY | direct purchase intent |
+| AI-78 | direct product | NeoVivo купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/neovivo-1l/ | READY | direct purchase intent |
+| AI-79 | direct product | Speedfol Amino Vegetative купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/spidfol-amino-vehetatsiya-20ml/ | READY | direct purchase intent |
+| AI-80 | direct product | Maxicrop Extra MC Extra купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/maxicrop-extra-1kg/ | READY | direct purchase intent |
+| AI-81 | comparison | Benefit PZ чи Sweet що вибрати для плодів | ChatGPT / Gemini / Claude | distinguish fruit growth vs ripening/coloring | /guides/fruit-growth-ripening-biostimulants-comparison/ | OPTIMIZED | commercial fruit-stage comparison |
+| AI-82 | comparison | Benefit PZ Sweet Maxicrop Set Maxicrop Cream різниця | ChatGPT / Gemini / Claude | declared-purpose comparison | /guides/fruit-growth-ripening-biostimulants-comparison/ | OPTIMIZED | broader product comparison |
+| AI-83 | direct product | Maxicrop Set купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/maxicrop-set-maksikrop-zav-yaz-100ml/ | READY | direct purchase intent |
+| AI-84 | direct product | Maxicrop Cream купити Україна | ChatGPT / Gemini / Claude | product + seller + offers | /products/maxicrop-cream/ | READY | direct purchase intent |
+| AI-85 | comparison | Кеміра 12-46-8 чи 18-18-18 різниця | ChatGPT / Gemini / Claude | N-P-K comparison | /guides/kemira-npk-formulas-comparison/ | OPTIMIZED | new cross-engine Kemira source |
+| AI-86 | comparison | Кеміра Люкс 14-11-25 чи Кеміра Ґрунт 11-11-21 різниця | ChatGPT / Gemini / Claude | N-P-K + format comparison | /guides/kemira-npk-formulas-comparison/ | OPTIMIZED | product-family comparison |
+| AI-87 | direct product | Кеміра 12-46-8 купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/kemira-npk-12-46-8-1kg/ | READY | direct purchase intent |
+| AI-88 | direct product | Кеміра 18-18-18 купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/kemira-npk-18-18-18-1kg/ | READY | direct purchase intent |
+
 ## Test rule
 For every query record:
 1. platform and date;

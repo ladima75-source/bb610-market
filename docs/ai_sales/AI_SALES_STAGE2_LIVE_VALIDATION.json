@@ -7,5 +7,9 @@
   "robots_http": 200,
   "openai_attribution": "PASS",
   "google_exact_sku_links": "PASS",
+  "openai_required_fields": "PASS",
+  "openai_search_eligibility": "PASS",
+  "openai_checkout_eligibility": "PASS",
+  "openai_ads_policy": "PASS",
   "errors": []
 }

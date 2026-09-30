@@ -1,2 +1,2 @@
-stage5-intent-guides-20260930
-requested_at=2026-09-30T11:35:00+03:00
+stage5-commercial-intents-block2
+requested_at=2026-09-30T12:00:00+03:00

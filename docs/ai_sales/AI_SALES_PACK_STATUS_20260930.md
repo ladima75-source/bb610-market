@@ -500,3 +500,25 @@ Implemented without reopening audit or adding non-AI work:
 
 Commercial purpose:
 Increase the number of independent AI questions for which BB610 has a precise, crawlable answer source that can lead directly to a current sellable product or product family.
+
+
+### Stage 5 cross-engine Ukraine top-3 expansion — 2026-09-30
+
+Ukraine channel rule updated from per-intent platform preference to mandatory cross-engine coverage.
+Current top-3 working targets for Ukraine:
+- ChatGPT
+- Google Gemini
+- Claude
+
+Implementation:
+- AI Intent Matrix expanded to 42 commercial intents.
+- 42/42 intents now explicitly target ChatGPT / Gemini / Claude.
+- Guide hub expanded to 12 AI-oriented crawlable materials.
+- Added /guides/brexil-fe-ca-zn-multi-comparison/.
+- Added /guides/master-formulas-comparison/.
+- New cross-engine intents cover Brexil element selection, MASTER formula selection, Brexil Multi direct purchase and generic Osmocote purchase/selection.
+- Sitemap contains both new guides with no duplicate guide URLs.
+- No social, paid ads or non-AI marketing work was added in this block.
+
+Commercial purpose:
+Make the same BB610 factual answer surfaces usable across the three largest AI assistant channels in Ukraine rather than optimizing the project around ChatGPT alone.

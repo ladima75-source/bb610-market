@@ -87,6 +87,12 @@ Implemented:
 - internal product-to-guide links
 - guide URLs in sitemap
 - post-change Stage 2 live validation PASS
+- high-phosphorus alternatives guide for AI-20 (MASTER 13-40-13 / PLANTAFOL 10-54-10 / PeKacid 0-60-20), explicitly not presented as direct equivalents
+- pre-planting decision-support guide for AI-21
+- pack-size selection guide with exact-SKU paths for AI-22
+- Plantlogic 25 L vs 40 L technical comparison for AI-25; kept lead-gen because public price/availability are not active
+- AI-20, AI-21, AI-22 and AI-25 moved to OPTIMIZED
+- Plantlogic AI-23/AI-24 classified as LEAD-GEN READY rather than e-commerce READY
 
 ## STAGE 6 — SCALE
 Blocked until measured discovery/conversion evidence exists.

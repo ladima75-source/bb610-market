@@ -1,8 +1,11 @@
 {
   "status": "PASS",
-  "feed_rows": 163,
+  "openai_feed_rows": 163,
+  "google_feed_rows": 163,
   "expected_rows": 163,
   "pages_checked": 163,
   "robots_http": 200,
+  "openai_attribution": "PASS",
+  "google_exact_sku_links": "PASS",
   "errors": []
 }

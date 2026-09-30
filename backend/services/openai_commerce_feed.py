@@ -56,8 +56,13 @@ def _exact_sku_url(base: dict) -> str:
     slug = str(base.get("product_slug") or "").strip()
     variant = _variant_token(str(base.get("variant") or ""))
     if slug and variant:
-        return f"https://market.bb610.com.ua/products/{slug}-{variant}/"
-    return str(base.get("link") or "").strip()
+        url = f"https://market.bb610.com.ua/products/{slug}-{variant}/"
+    else:
+        url = str(base.get("link") or "").strip()
+    if not url:
+        return ""
+    sep = "&" if "?" in url else "?"
+    return url + sep + "utm_source=chatgpt&utm_medium=product_feed&utm_campaign=product_discovery"
 
 
 def rows(commerce_override: dict | None = None) -> list[dict]:

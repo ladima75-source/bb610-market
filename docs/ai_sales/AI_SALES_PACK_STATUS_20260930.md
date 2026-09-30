@@ -558,3 +558,23 @@ Large cross-engine expansion completed for ChatGPT / Gemini / Claude:
 
 Commercial purpose:
 Broaden the number of buyer questions for which any of the three main AI assistants in Ukraine can retrieve a BB610-owned factual comparison or direct purchasable product path, especially before the buyer knows the exact product name.
+
+
+### Stage 5 AI commercial coverage wave 5 — 2026-09-30
+
+Large cross-engine expansion completed for ChatGPT / Gemini / Claude:
+- AI Intent Matrix expanded from 68 to 88 commercial intents.
+- 88/88 intents explicitly target ChatGPT / Gemini / Claude.
+- Guide hub expanded from 17 to 21 crawlable AI-oriented materials.
+- Added four new decision-support guides:
+  - /guides/brexil-complex-products-comparison/
+  - /guides/antistress-amino-seaweed-comparison/
+  - /guides/fruit-growth-ripening-biostimulants-comparison/
+  - /guides/kemira-npk-formulas-comparison/
+- Added 20 new commercial intents covering complex Brexil micronutrients, anti-stress/amino/seaweed products, fruit growth/ripening biostimulants and Kemira NPK formulas.
+- Added direct-product paths for Brexil Mix/Combi/Nutre/Mn, Terra-Sorb, NeoVivo, Speedfol Amino Vegetative, MC Extra, Maxicrop Set, Maxicrop Cream, Kemira 12-46-8 and Kemira 18-18-18.
+- Final cross-check after expansion: 88 intents, 88 top-3 mappings, 21 guide cards, 22 guide URLs including the hub, 0 duplicate guide URLs, 0 missing intent targets.
+- No paid ads, social media or non-AI marketing work was added.
+
+Commercial purpose:
+Increase the number of pre-purchase questions for which ChatGPT, Gemini or Claude can retrieve a BB610-owned factual comparison and route a user to a current sellable product or exact SKU before the user already knows the product name.

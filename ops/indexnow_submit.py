@@ -29,6 +29,18 @@ GUIDES=[
 ]
 
 def changed_urls():
+    # Full/manual discovery must follow the current public sitemap instead of a
+    # hard-coded guide list. This automatically includes every newly published
+    # AI guide, exact-SKU PDP and other indexable storefront URL.
+    sitemap_path=ROOT/"sitemap.xml"
+    if sitemap_path.is_file():
+        sitemap=sitemap_path.read_text(encoding="utf-8")
+        urls=re.findall(r"<loc>\s*(https://market\.bb610\.com\.ua/[^<\s]*)\s*</loc>",sitemap)
+        urls=[u.strip() for u in urls if u.strip().startswith(SITE+"/")]
+        if urls:
+            return list(dict.fromkeys(urls))
+
+    # Conservative fallback if sitemap parsing is unavailable.
     stage1=json.loads((ROOT/"docs/ai_sales/AI_SALES_STAGE1_PDP_SYNC_REPORT.json").read_text(encoding="utf-8"))
     exact=[str(x.get("url") or "").strip() for x in stage1.get("items") or []]
     exact=[u for u in exact if u.startswith(SITE+"/products/")]

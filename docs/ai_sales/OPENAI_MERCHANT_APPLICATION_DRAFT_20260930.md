@@ -2,7 +2,7 @@
 
 Updated: 2026-09-30
 Application page: https://chatgpt.com/merchants/
-Status: READY TO SUBMIT AFTER APPLICANT WORK TITLE IS CONFIRMED
+Status: APPLICATION/WAIТLIST DRAFT READY; LIVE FEED SUBMISSION BLOCKED ON WORK TITLE + SUPPORTED TARGET MARKET
 
 ## Current application fields
 
@@ -18,7 +18,7 @@ Status: READY TO SUBMIT AFTER APPLICANT WORK TITLE IS CONFIRMED
 | Merchant website | https://market.bb610.com.ua/ | READY |
 | Primary Product Categories | Home, Garden & Improvement | READY |
 | Interested in | Integrating my product feed so my products show up in search results on ChatGPT / Product Feed | READY |
-| Feed ready to OpenAI spec | Yes | READY |
+| Feed ready to OpenAI spec | Core product data/eligibility ready; Stable submission blocked pending supported BB610 target market | BLOCKED_MARKET_TARGET |
 | Feed Size — Unique SKU Count | 163 channel-eligible SKU now | SELECT MATCHING RANGE IN FORM |
 | Anything else | see proposed note below | READY |
 
@@ -81,11 +81,27 @@ Rationale:
 
 Latest strict live validation:
 - rows: 163 / expected 163
-- required discovery fields: PASS
+- core discovery fields: PASS
 - search eligibility: PASS
 - checkout disabled: PASS
 - Ads opt-out: PASS
 - exact SKU URLs: PASS
-- errors: 0
+- target_countries: []
+- Stable submission: BLOCKED_MARKET_TARGET
+- infrastructure errors: 0
 
-OpenAI's current product feed documentation treats search eligibility as optional/default-enabled and checkout as a separate integration; the explicit false flags are a BB610 policy choice, not a claim that checkout or Ads fields are mandatory for discovery.
+OpenAI's current Stable non-Ads schema marks both is_eligible_search and is_eligible_checkout as required. BB610 sends search=true and checkout=false. Ads eligibility is optional for a non-Ads feed; BB610 sends ads=false explicitly. The current Stable geo table lists target_countries as required and currently exposes US as the supported value, so BB610 does not fabricate a target country for its Ukrainian market.
+
+
+## Target-market gate
+
+Current Stable OpenAI feed documentation includes target_countries as a required geo field and currently documents US as the supported value. BB610 Market is a Ukrainian merchant using UAH and selling in Ukraine.
+
+Therefore:
+- target_countries is intentionally left blank in the pre-onboarding feed;
+- BB610 will not claim US targeting;
+- BB610 will not invent UA support before OpenAI confirms it;
+- live Stable feed submission remains BLOCKED_MARKET_TARGET;
+- the merchant application can still be used as an onboarding/waitlist request for future region support.
+
+Once OpenAI confirms Ukraine or another legitimate BB610 processing market, populate target_countries with the confirmed value and rerun the strict Stage 2 validator before sharing the production feed.

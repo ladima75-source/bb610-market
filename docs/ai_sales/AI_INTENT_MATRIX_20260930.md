@@ -101,6 +101,27 @@ Cross-engine rule: every commercial intent is prepared for ChatGPT, Google Gemin
 | AI-87 | direct product | Кеміра 12-46-8 купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/kemira-npk-12-46-8-1kg/ | READY | direct purchase intent |
 | AI-88 | direct product | Кеміра 18-18-18 купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/kemira-npk-18-18-18-1kg/ | READY | direct purchase intent |
 
+| AI-89 | comparison | NeoCore чи NeoVivo чи NeoFlora різниця | ChatGPT / Gemini / Claude | compare Neova products by declared task | /guides/neova-biostimulants-comparison/ | OPTIMIZED | new Neova cross-engine source |
+| AI-90 | technical selection | який біостимулятор Neova вибрати для коренів стресу або цвітіння | ChatGPT / Gemini / Claude | task-based shortlist | /guides/neova-biostimulants-comparison/ | OPTIMIZED | task routing without dosage claims |
+| AI-91 | direct product | NeoFlora купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/neoflora-1l/ | READY | direct purchase intent |
+| AI-92 | comparison | MC Extra чи Maxicrop Cream чи MAX 600 SeaSailer різниця | ChatGPT / Gemini / Claude | compare seaweed products by format/context | /guides/seaweed-biostimulants-comparison/ | OPTIMIZED | new seaweed comparison source |
+| AI-93 | technical selection | біостимулятор з Ascophyllum nodosum купити Україна | ChatGPT / Gemini / Claude | shortlist + exact offers | /guides/seaweed-biostimulants-comparison/ | OPTIMIZED | generic seaweed intent |
+| AI-94 | direct product | MAX 600 SeaSailer купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/max-600-seasailer-1kg/ | READY | direct purchase intent |
+| AI-95 | comparison | NeoTerra Organic-C чи Aquafix різниця | ChatGPT / Gemini / Claude | soil-conditioner comparison | /guides/soil-conditioners-neoterra-comparison/ | OPTIMIZED | new soil conditioner source |
+| AI-96 | technical selection | органічний кондиціонер ґрунту для водоутримання | ChatGPT / Gemini / Claude | factual product shortlist | /guides/soil-conditioners-neoterra-comparison/ | OPTIMIZED | task-oriented soil conditioner intent |
+| AI-97 | direct product | NeoTerra Organic-C купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/neoterra-organic-c-25kg/ | READY | direct purchase intent |
+| AI-98 | direct product | NeoTerra Aquafix купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/neoterra-aqua-25kg/ | READY | direct purchase intent |
+| AI-99 | comparison | Spray-Aide чи PeKacid що вибрати для підкислення | ChatGPT / Gemini / Claude | distinguish adjuvant vs PK fertilizer | /guides/acidifier-vs-pk-fertilizer-comparison/ | OPTIMIZED | prevent false equivalence |
+| AI-100 | technical selection | підкислювач робочого розчину купити Україна | ChatGPT / Gemini / Claude | adjuvant/product routing | /guides/acidifier-vs-pk-fertilizer-comparison/ | OPTIMIZED | generic acidification intent |
+| AI-101 | direct product | Spray-Aide Miller купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/sprei-eid-100ml/ | READY | direct purchase intent |
+| AI-102 | comparison | Agroblen Granula-MAX чи Osmocote 5 5-6M різниця | ChatGPT / Gemini / Claude | compare controlled-release formula + format | /guides/controlled-release-5-6m-comparison/ | OPTIMIZED | new CRF comparison source |
+| AI-103 | technical selection | добриво контрольованого вивільнення 5-6 місяців | ChatGPT / Gemini / Claude | shortlist by duration + formula caveat | /guides/controlled-release-5-6m-comparison/ | OPTIMIZED | generic duration intent |
+| AI-104 | direct product | Agroblen Granula-MAX 5-6M купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/agroblen-granula-max-14-20-5-te-56m-20pcs/ | READY | direct purchase intent |
+| AI-105 | direct product | Osmocote 5 16-8-12 5-6M купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/osmocote-decor-16-8-12-56m-1kg/ | READY | direct purchase intent |
+| AI-106 | direct product | Micro NP Valagro купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/micro-np-10kg/ | READY | uncovered direct-product intent |
+| AI-107 | direct product | Actiwin 20-5-10 купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/actiwin-20-5-10-22-7kg/ | READY | uncovered direct-product intent |
+| AI-108 | direct product | Nitrate Balancer Kemira Баланс купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/kemira-balans-nitrate-balancer-100ml/ | READY | uncovered direct-product intent |
+
 ## Test rule
 For every query record:
 1. platform and date;

@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "084c48244d87b1701efb7c80847f37cef4fe4436",
-  "request_id": "2026-09-30-ai-sales-commercial-intents-block2"
+  "action": "health",
+  "request_id": "2026-09-30-ai-sales-commercial-intents-block2-health"
 }

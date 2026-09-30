@@ -32,6 +32,17 @@ Status: Stage 2 validated; used for Stage 4/5 discovery tests.
 | AI-25 | comparison | горщик 25 л чи 40 л для лохини різниця | ChatGPT / Claude | technical comparison + inquiry | /guides/blueberry-pot-25l-vs-40l/ | OPTIMIZED | verify citation/indexing |
 | AI-26 | where to buy | де замовити професійні товари для вирощування в Україні | ChatGPT / Gemini | seller + catalog | /catalog.html + / | OPTIMIZED · UNVERIFIED | Organization + WebSite entity ready; verify generic brand discovery |
 
+| AI-27 | technical selection | PLANTAFOL 30-10-10 чи 20-20-20 чи 10-54-10 яку формулу вибрати | ChatGPT / Gemini | formula comparison + exact offers | /guides/plantafol-formulas-comparison/ | OPTIMIZED | new comparison source; verify citation/indexing |
+| AI-28 | technical selection | PLANTAFOL з високим калієм 5-15-45 чи 0-25-50 | ChatGPT / Gemini | compare N-P-K ratios + exact offers | /guides/plantafol-formulas-comparison/ | OPTIMIZED | new comparison source; verify citation/indexing |
+| AI-29 | comparison | Osmocote 1.5M 2-3M 3-4M 4-5M 5-6M різниця | ChatGPT / Gemini | release-duration + N-P-K comparison | /guides/osmocote-release-duration-comparison/ | OPTIMIZED | new comparison source; verify citation/indexing |
+| AI-30 | technical selection | яке Osmocote вибрати за строком дії | ChatGPT / Gemini | shortlist by declared duration | /guides/osmocote-release-duration-comparison/ | OPTIMIZED | new comparison source; verify citation/indexing |
+| AI-31 | direct product | борне мікродобриво Boroplus купити Україна | ChatGPT / Gemini | product + seller + exact offers | /products/boroplus/ | READY | strengthen direct-product discovery |
+| AI-32 | direct product | Brexil Ca кальцій купити Україна | ChatGPT / Gemini | product + seller + exact offers | /products/brexil-ca/ | READY | strengthen direct-product discovery |
+| AI-33 | direct product | Brexil Zn цинк купити Україна | ChatGPT / Gemini | product + seller + exact offers | /products/brexil-zn/ | READY | strengthen direct-product discovery |
+| AI-34 | direct product | Sweet Valagro купити Україна | ChatGPT / Gemini | product + seller + exact offers | /products/sweet/ | READY | add uncovered commercial product intent |
+| AI-35 | direct product | Viva Valagro купити Україна | ChatGPT / Gemini | product + seller + exact offers | /products/viva/ | READY | add uncovered commercial product intent |
+| AI-36 | direct product | MASTER 3-11-38 купити Україна | ChatGPT / Gemini | product + seller + exact offers | /products/master-3-11-38/ | READY | add uncovered commercial NPK intent |
+
 ## Test rule
 For every query record:
 1. platform and date;

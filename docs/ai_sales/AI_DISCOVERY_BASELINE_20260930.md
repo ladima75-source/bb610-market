@@ -312,3 +312,21 @@ Observed:
 
 Interpretation:
 This immediate retest is expected to be too early to prove indexing. IndexNow receipt is a crawl/discovery notification, not an indexing guarantee. Stage 4 remains UNVERIFIED until an external index, AI citation/product result, or AI referral is independently observed.
+
+
+## Merchant set-to-set verification — 2026-09-30
+
+A full current-production comparison was performed between the 163-row Google feed and the 163 products exposed by connected Merchant Center account 5858266688.
+
+Result:
+- ID set parity: 163/163
+- missing IDs: 0
+- extra IDs: 0
+- price mismatches: 0
+- link mismatches: 163
+- Merchant links are all still legacy product.html?id=... while the live production feed is exact-SKU /products/... for every channel row.
+- title mismatches: 1 (NeoTerra Aquafix™ trademark punctuation only)
+- Merchant snapshot dates remain 2026-09-29T21:00:00Z for 162 rows and 2026-09-28T21:00:00Z for Benefit PZ 100 ml.
+
+Interpretation:
+Merchant has not ingested the current exact-SKU link revision. Stage 4 Merchant exact-SKU ingestion remains UNVERIFIED/STALE even though feed parity itself is PASS.

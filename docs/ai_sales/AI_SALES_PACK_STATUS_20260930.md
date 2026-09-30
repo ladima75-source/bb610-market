@@ -303,3 +303,45 @@ Implemented and verified:
 - IndexNow is treated as a discovery notification only; it is not counted as proof of indexing, ranking or AI citation.
 
 This adds an active discovery path for Bing and other participating IndexNow engines, including faster change discovery relevant to Bing/Copilot surfaces.
+
+
+### Stage 4 Merchant datasource diff + sitemap discovery checkpoint — 2026-09-30
+
+Sitemap:
+- truthful <lastmod> 2026-09-30 added only to the 202 URLs actually changed in the AI Sales block:
+  - homepage;
+  - guide hub;
+  - 8 guide pages;
+  - 192 exact-SKU PDPs.
+- exact-SKU generator now preserves existing lastmod values and updates lastmod only when generated page content really changes.
+- robots.txt already publishes https://market.bb610.com.ua/sitemap.xml.
+- live validator now requires all 202 discovery URLs to exist in the sitemap with a valid lastmod >= 2026-09-30.
+
+Google Merchant account vs current production Google feed:
+- production feed IDs: 163
+- Merchant Center IDs: 163
+- common IDs: 163
+- missing in Merchant: 0
+- extra in Merchant: 0
+- price mismatches: 0
+- link mismatches: 163/163
+- current production feed uses exact-SKU /products/... URLs for all 163 rows.
+- Merchant Center still exposes legacy product.html?id=... URLs for all 163 rows.
+- one title-only mismatch: BB610-72DEC1F4F0BBF9, where current feed contains the Aquafix™ trademark mark and Merchant shows Aquafix without ™.
+- Merchant product_last_update_date distribution:
+  - 162 rows: 2026-09-29T21:00:00Z
+  - 1 row (Benefit PZ 100 ml, BB610-C5C94B624BD074): 2026-09-28T21:00:00Z.
+- datasource remains accounts/5858266688/dataSources/10742663120.
+
+Conclusion:
+The Merchant assortment and prices are in parity with the current channel feed. The unresolved issue is datasource ingestion of updated links/content, not SKU membership, price, Product Master V5, or feed generation.
+
+Connector capability:
+- connected Google Merchant connector is read-only for this account and exposes no datasource refresh/write action;
+- plugin search did not surface a Merchant Center datasource refresh/write integration;
+- no refresh is claimed as performed.
+
+External identity source checkpoint:
+- Instagram BB610 Market connector token is invalidated after a password/session security change.
+- Facebook BB610 Market connector token is invalidated for the same reason.
+- Organization.sameAs is not changed from these failed connector reads.

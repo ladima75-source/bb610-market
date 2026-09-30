@@ -108,8 +108,9 @@ def main():
         sitemap_map={loc.strip():lastmod.strip() for loc,lastmod in entries}
         discovery_urls={SITE+'/',SITE+'/guides/'}
         discovery_urls.update(f'{SITE}/guides/{slug}/' for slug in GUIDE_PATHS)
-        for row in rows:
-            parsed=urlparse(str(row.get('url') or '').strip())
+        stage1=json.loads((ROOT/'docs/ai_sales/AI_SALES_STAGE1_PDP_SYNC_REPORT.json').read_text(encoding='utf-8'))
+        for item in stage1.get('items') or []:
+            parsed=urlparse(str(item.get('url') or '').strip())
             if parsed.scheme and parsed.netloc and parsed.path:
                 discovery_urls.add(f'{parsed.scheme}://{parsed.netloc}{parsed.path}')
         missing_sitemap=sorted(u for u in discovery_urls if u not in sitemap_map)

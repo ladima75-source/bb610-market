@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json, urllib.request, urllib.error
+import json, urllib.request, urllib.error, urllib.parse, time
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -30,8 +30,29 @@ def changed_urls():
     urls=[SITE+"/",*GUIDES,*exact]
     return list(dict.fromkeys(urls))
 
+def fetch(url, method="GET", data=None, headers=None):
+    req=urllib.request.Request(url,data=data,headers=headers or {},method=method)
+    try:
+        with urllib.request.urlopen(req,timeout=45) as r:
+            return r.status,r.read().decode("utf-8","replace"),None
+    except urllib.error.HTTPError as e:
+        return e.code,e.read().decode("utf-8","replace"),f"HTTP {e.code}"
+    except Exception as e:
+        return None,"",str(e)
+
 def main():
     urls=changed_urls()
+
+    key_code,key_body,key_error=fetch(KEY_LOCATION,headers={"User-Agent":"BB610-AI-Sales-IndexNow/1.0"})
+    key_verified=(key_code==200 and key_body.strip()==KEY)
+
+    prime_url="https://www.bing.com/indexnow?"+urllib.parse.urlencode({
+        "url":SITE+"/",
+        "key":KEY,
+        "keyLocation":KEY_LOCATION,
+    })
+    prime_code,prime_body,prime_error=fetch(prime_url,headers={"User-Agent":"BB610-AI-Sales-IndexNow/1.0"})
+
     payload={"host":HOST,"key":KEY,"keyLocation":KEY_LOCATION,"urlList":urls}
     req=urllib.request.Request(
         ENDPOINT,
@@ -39,19 +60,20 @@ def main():
         headers={"Content-Type":"application/json; charset=utf-8","User-Agent":"BB610-AI-Sales-IndexNow/1.0"},
         method="POST",
     )
-    code=None
-    body=""
-    error=None
-    try:
-        with urllib.request.urlopen(req,timeout=45) as r:
-            code=r.status
-            body=r.read().decode("utf-8","replace")
-    except urllib.error.HTTPError as e:
-        code=e.code
-        body=e.read().decode("utf-8","replace")
-        error=f"HTTP {e.code}"
-    except Exception as e:
-        error=str(e)
+    code,body,error=fetch(
+        ENDPOINT,
+        method="POST",
+        data=json.dumps(payload,ensure_ascii=False).encode("utf-8"),
+        headers={"Content-Type":"application/json; charset=utf-8","User-Agent":"BB610-AI-Sales-IndexNow/1.0"},
+    )
+    if code==403 and "SiteVerificationNotCompleted" in body and key_verified and prime_code in (200,202):
+        time.sleep(5)
+        code,body,error=fetch(
+            ENDPOINT,
+            method="POST",
+            data=json.dumps(payload,ensure_ascii=False).encode("utf-8"),
+            headers={"Content-Type":"application/json; charset=utf-8","User-Agent":"BB610-AI-Sales-IndexNow/1.0"},
+        )
 
     accepted=code in (200,202)
     report={
@@ -60,6 +82,12 @@ def main():
         "host":HOST,
         "key_location":KEY_LOCATION,
         "submitted_urls":len(urls),
+        "key_http_code":key_code,
+        "key_body_match":key_verified,
+        "key_error":key_error,
+        "bing_prime_http_code":prime_code,
+        "bing_prime_response":prime_body[:500],
+        "bing_prime_error":prime_error,
         "http_code":code,
         "response_body":body[:1000],
         "accepted":accepted,

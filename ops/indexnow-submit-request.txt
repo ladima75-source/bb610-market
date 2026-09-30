@@ -3,3 +3,4 @@
 2026-09-30T18:18:00+03:00 Verify automatic changed-URL IndexNow workflow; manual full test
 2026-09-30T18:22:00+03:00 Retry automatic IndexNow after mapper import fix
 2026-09-30T19:03:00+03:00 Submit Breadcrumb + Dnipro local discovery delta
+2026-09-30T20:19:00+03:00 Full AI discovery submit after dynamic sitemap upgrade

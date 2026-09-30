@@ -1,0 +1,32 @@
+name: BB610 AI Sales Stage 2 Live Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/ai-sales-live-validate-request.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate live AI sales surface
+        run: python ops/validate_ai_sales_live.py
+      - name: Commit validation report
+        if: always()
+        run: |
+          set -euo pipefail
+          git add docs/ai_sales/AI_SALES_STAGE2_LIVE_VALIDATION.json || true
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name "bb610-ai-sales-bot"
+          git config user.email "bb610-ai-sales-bot@users.noreply.github.com"
+          git commit -m "Record AI Sales Stage 2 live validation"
+          git push origin HEAD:main

@@ -54,6 +54,12 @@ Confirmed:
 
 Still required:
 1. applicant work title
-2. applicant LinkedIn URL
 
 After these are confirmed, the application can be submitted.
+
+
+## LinkedIn profile verification
+Public profile matched to applicant:
+https://www.linkedin.com/in/dmytro-lakhno-228b7756
+
+The profile matches the confirmed applicant name Dmytro Lakhno and publicly shows the Dneprotyazhmash affiliation in Ukraine/Dnipro context. Work title is still not entered because the public result does not expose a reliable title.

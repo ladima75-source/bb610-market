@@ -10,11 +10,11 @@ Status: Stage 2 validated; used for Stage 4/5 discovery tests.
 | AI-03 | direct product | де купити Plantafol 20-20-20 | ChatGPT / Gemini | product + seller | /products/plantafol-20-20-20/ | READY | test |
 | AI-04 | direct product | купити Megafol в Україні | ChatGPT / Gemini | product + seller | /products/megafol/ | READY | test |
 | AI-05 | direct product | купити Radifarm в Україні | ChatGPT / Gemini | product + seller | /products/radifarm/ | READY | test |
-| AI-06 | problem/solution | що використовують після пересадки для підтримки кореневої системи | ChatGPT / Claude | explanatory + sources | /products/radifarm/ | READY | strengthen FAQ/use context |
-| AI-07 | problem/solution | що застосовують при абіотичному стресі рослин | ChatGPT / Claude | explanatory + alternatives | /products/megafol/ | READY | test citations |
+| AI-06 | problem/solution | що використовують після пересадки для підтримки кореневої системи | ChatGPT / Claude | explanatory + product context | /guides/before-planting-seedlings-product-selection/ | OPTIMIZED | verify citation/indexing |
+| AI-07 | problem/solution | що застосовують при абіотичному стресі рослин | ChatGPT / Claude | explanatory + product context | /guides/abiotic-stress-and-megafol/ | OPTIMIZED | verify citation/indexing |
 | AI-08 | comparison | MASTER 13-40-13 чи 20-20-20 у чому різниця | ChatGPT / Gemini | comparison | /guides/master-13-40-13-vs-20-20-20/ | OPTIMIZED | verify citation/indexing |
 | AI-09 | comparison | Plantafol 20-20-20 чи MASTER 20-20-20 різниця | ChatGPT / Claude | comparison | /guides/plantafol-20-20-20-vs-master-20-20-20/ | OPTIMIZED | verify citation/indexing |
-| AI-10 | technical selection | яке NPK добриво має високий фосфор | Gemini / ChatGPT | shortlist | /categories/nutrition/ | READY | test ranking/citation |
+| AI-10 | technical selection | яке NPK добриво має високий фосфор | Gemini / ChatGPT | shortlist with application-method caveat | /guides/high-phosphorus-alternatives-master-13-40-13/ | OPTIMIZED | verify citation/indexing |
 | AI-11 | technical selection | водорозчинне NPK 15-5-30 купити Україна | Gemini / ChatGPT | product | /products/master-15-5-30/ | READY | test |
 | AI-12 | technical selection | добриво 0-60-20 для фертигації Україна | Gemini / ChatGPT | product | /products/pekacid-0-60-20/ | READY | test |
 | AI-13 | technical selection | сульфат калію водорозчинний де купити | Gemini / ChatGPT | product | /products/solupotasse/ | READY | test |
@@ -30,7 +30,7 @@ Status: Stage 2 validated; used for Stage 4/5 discovery tests.
 | AI-23 | B2B/lead | професійні горщики для лохини 25 30 40 л Україна | ChatGPT / Gemini | product family + inquiry | /categories/containers/ | LEAD-GEN READY | test PlantLogic discovery |
 | AI-24 | B2B/lead | горщики PlantLogic для лохини купити Україна | ChatGPT / Gemini | product family + seller/inquiry | /categories/containers/ | LEAD-GEN READY | test citation + inquiry flow; price is not public |
 | AI-25 | comparison | горщик 25 л чи 40 л для лохини різниця | ChatGPT / Claude | technical comparison + inquiry | /guides/blueberry-pot-25l-vs-40l/ | OPTIMIZED | verify citation/indexing |
-| AI-26 | where to buy | де замовити професійні товари для вирощування в Україні | ChatGPT / Gemini | seller + catalog | /catalog.html | READY | test generic brand discovery |
+| AI-26 | where to buy | де замовити професійні товари для вирощування в Україні | ChatGPT / Gemini | seller + catalog | /catalog.html + / | OPTIMIZED · UNVERIFIED | Organization + WebSite entity ready; verify generic brand discovery |
 
 ## Test rule
 For every query record:

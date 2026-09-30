@@ -96,3 +96,19 @@ Implemented:
 
 ## STAGE 6 — SCALE
 Blocked until measured discovery/conversion evidence exists.
+
+
+### Stage 5 live checkpoint — 2026-09-30
+
+PASS:
+- AI-20 / AI-21 / AI-22 / AI-25 intent pages created
+- internal discovery links added
+- sitemap expanded to 250 URLs
+- Stage 2 live validation SUCCESS (run 36691595757)
+- VPS deployment SUCCESS (run 36691832128)
+- post-deploy health SUCCESS (run 36691918914)
+
+Still open:
+- Merchant still exposes legacy product.html?id=... links for sampled products; newest exact-SKU link ingestion is not confirmed
+- public search/index retest still does not surface BB610 Market for sampled MASTER / Radifarm commercial intents
+- OpenAI merchant application remains blocked on real applicant identity fields

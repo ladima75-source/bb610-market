@@ -327,6 +327,7 @@ def channel_snapshot(commerce_override: dict | None = None) -> dict:
             "item_group_id": _text(sku.get("item_group_id") or sku.get("product_id")),
             "variant": _text(sku.get("variant")),
             "product_type": _text(product.get("product_type")),
+            "product_slug": _text(product.get("product_slug") or product.get("id")),
             "custom_label_0": (
                 "warehouse"
                 if sku.get("launch_matrix_priority") == "A"

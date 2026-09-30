@@ -71,3 +71,48 @@ An AI channel becomes VERIFIED only when at least one of these is independently 
 - connected platform diagnostics explicitly confirm feed ingestion/serving.
 
 Prepared feed/schema alone is not counted as visibility.
+
+
+## Checkpoint 2026-09-30 10:00–10:35 Europe/Kyiv
+
+### Search/discovery retest
+
+Retested:
+- site:market.bb610.com.ua MASTER 13-40-13 1kg BB610
+- site:market.bb610.com.ua Megafol 100ml BB610
+- site:market.bb610.com.ua Radifarm 25ml BB610
+- MASTER 13-40-13 купити Україна
+- Megafol купити Україна
+
+Observed:
+- BB610 Market still was not returned in the tested public search results.
+- Competing merchant/marketplace pages were returned for generic purchase queries.
+- This remains an indexing/discovery lag, not a feed/PDP validation failure.
+
+### Google Merchant checkpoint
+
+Connected Merchant account still reports:
+- 163 products available in the connector
+- FREE_LISTINGS UA: 163 active / 0 disapproved / 0 pending
+- SHOPPING_ADS UA: 163 active / 0 disapproved / 0 pending
+- current-month product performance query returned no rows
+
+Important ingestion state:
+- Merchant product_link values currently still point to legacy product.html?id=... URLs.
+- connector product_last_update_date is 2026-09-29T21:00:00Z for the sampled rows.
+- repository Google/OpenAI feeds already generate exact SKU PDP links and Stage 2 exact-link validation passes.
+- therefore Merchant has not yet demonstrated ingestion of the newest exact-SKU link version at this checkpoint.
+
+### Stage 5 optimization started
+
+Implemented:
+- Organization + WebSite JSON-LD on homepage
+- Store entity JSON-LD on contacts page
+- contacts/delivery/payment/returns preserved in sitemap
+- comparison-ready guide: MASTER 13-40-13 vs MASTER 20-20-20
+- comparison-ready guide: PLANTAFOL 20-20-20 vs MASTER 20-20-20
+- internal links from the three relevant product pages
+- guide URLs included in sitemap
+
+Current sitemap size after refresh: 246 URLs.
+Post-change live validation: PASS.

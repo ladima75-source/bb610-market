@@ -181,3 +181,27 @@ Important:
 - ads=false is an explicit BB610 opt-out from OpenAI Ads processing;
 - neither flag is used to claim onboarding or visibility;
 - production submission artifact is the OpenAI-format CSV; JSONL remains an internal engineering representation.
+
+
+### OpenAI target-market gate
+
+Latest live validation run 36705971770: SUCCESS for infrastructure, with explicit external market block.
+
+Result:
+- status: PASS
+- OpenAI rows: 163
+- Google rows: 163
+- pages checked: 163
+- core fields: PASS
+- search eligibility: PASS
+- checkout eligibility: PASS (disabled)
+- Ads policy: PASS (disabled)
+- target_countries: []
+- openai_stable_submission: BLOCKED_MARKET_TARGET
+- errors: 0
+
+Reason:
+Current OpenAI Stable geo schema documents target_countries as required and currently lists US. BB610 is a Ukrainian/UAH merchant. No false US target and no unsupported UA value is inserted.
+
+Action:
+Keep merchant application/waitlist preparation active, but do not claim live Stable-feed submission readiness until OpenAI confirms a legitimate BB610 target market.

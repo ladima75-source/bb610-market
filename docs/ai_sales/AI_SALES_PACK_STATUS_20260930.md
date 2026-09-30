@@ -599,3 +599,22 @@ Large cross-engine expansion completed for ChatGPT / Gemini / Claude:
 
 Commercial purpose:
 Extend BB610-owned answer coverage into additional high-intent buyer questions where products are easy to confuse by family name or shared function, so ChatGPT, Gemini and Claude can route users toward the correct current product or exact SKU.
+
+
+### Stage 5 AI commercial coverage wave 7 — 2026-09-30
+
+Large cross-engine expansion completed for ChatGPT / Gemini / Claude:
+- AI Intent Matrix expanded from 108 to 128 commercial intents.
+- 128/128 intents explicitly target ChatGPT / Gemini / Claude.
+- Guide hub expanded from 26 to 29 crawlable AI-oriented materials.
+- Added three new decision-support guides:
+  - /guides/specialized-micronutrients-comparison/
+  - /guides/npk-0-52-34-comparison/
+  - /guides/controlled-release-tablets-5-6m-comparison/
+- Added 20 new commercial intents covering specialized micronutrients, same-formula 0-52-34 comparison, controlled-release tablets and remaining high-value direct-product gaps.
+- Added direct-product paths for Brexil Duo, Kendal TE, Valagro EDTA 5SG, Kemira Zaviaz 0-52-34, Osmocote Granula-MAX, MASTER 18-18-18, MASTER 17-6-18, PLANTAFOL 10-54-10 / 5-15-45 / 0-25-50, Osmocote Potassium / Landscape / Start / Bloom / Quick Start, Kemira lawn 12-11-18 and Eraiz.
+- Final cross-check: 128 intents, 128 top-3 mappings, 29 guide cards, 30 guide URLs including the hub, 0 duplicate guide URLs, 0 missing intent targets.
+- Expansion is now intentionally shifting from breadth to verification and measured AI discovery; no more content should be added merely to increase intent count.
+
+Commercial purpose:
+Close the remaining meaningful gaps in active sellable assortment while keeping every AI path grounded in current BB610 product pages and exact SKU targets.

@@ -297,3 +297,18 @@ Verified:
 
 Interpretation:
 The submission confirms that the discovery notification was received. It does not prove crawl, indexing, ranking, product appearance or AI citation. Stage 4 remains UNVERIFIED until an independent retrieval/citation/referral signal appears.
+
+
+## Post-IndexNow immediate public-search retest — 2026-09-30
+
+Retested exact site/title queries after successful IndexNow receipt for:
+- Довідник BB610 Market
+- Megafol 100 мл exact SKU PDP
+- MASTER 13-40-13 1 кг exact SKU PDP
+- Radifarm 25 мл exact SKU PDP
+
+Observed:
+- no result returned for the four exact BB610 searches in the tested public search provider.
+
+Interpretation:
+This immediate retest is expected to be too early to prove indexing. IndexNow receipt is a crawl/discovery notification, not an indexing guarantee. Stage 4 remains UNVERIFIED until an external index, AI citation/product result, or AI referral is independently observed.

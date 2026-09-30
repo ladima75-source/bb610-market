@@ -1,2 +1,2 @@
-stage5-family-commerce-parity-final
-requested_at=2026-09-30T13:59:00+03:00
+openai-stable-feed-spec-20260930
+requested_at=2026-09-30T14:01:00+03:00

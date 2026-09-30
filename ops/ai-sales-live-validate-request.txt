@@ -1,2 +1,2 @@
-2026-09-30T10:24:00+03:00
-reason=post-entity-schema-sitemap-regression-check
+2026-09-30T10:35:00+03:00
+reason=post-stage5-comparison-guides-regression-check

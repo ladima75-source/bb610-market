@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import io
 import json
+import re
 from collections import Counter
 
 from .catalog_feeds import channel_snapshot
@@ -41,6 +42,24 @@ def _availability(value: str) -> str:
     }.get(value, "unknown")
 
 
+
+def _variant_token(value: str) -> str:
+    s = str(value or "").strip().lower().replace(",", ".")
+    for src, dst in (("мл", "ml"), ("кг", "kg"), ("шт.", "pcs"), ("шт", "pcs"), ("л", "l"), ("г", "g")):
+        s = s.replace(src, dst)
+    s = re.sub(r"\\s+", "", s)
+    s = re.sub(r"[^a-z0-9.]+", "-", s).replace(".", "-")
+    return re.sub(r"-+", "-", s).strip("-")
+
+
+def _exact_sku_url(base: dict) -> str:
+    slug = str(base.get("product_slug") or "").strip()
+    variant = _variant_token(str(base.get("variant") or ""))
+    if slug and variant:
+        return f"https://market.bb610.com.ua/products/{slug}-{variant}/"
+    return str(base.get("link") or "").strip()
+
+
 def rows(commerce_override: dict | None = None) -> list[dict]:
     snap = channel_snapshot(commerce_override)
     feed_rows = snap["feed_rows"]
@@ -65,7 +84,7 @@ def rows(commerce_override: dict | None = None) -> list[dict]:
             "item_id": item_id,
             "title": str(base.get("title") or "").strip(),
             "description": str(base.get("description") or "").strip(),
-            "url": str(base.get("link") or "").strip(),
+            "url": _exact_sku_url(base),
             "brand": str(base.get("brand") or "").strip(),
             "seller_name": SELLER_NAME,
             "seller_url": SELLER_URL,

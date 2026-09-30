@@ -27,21 +27,14 @@
     "variant_dict": 139,
     "listing_has_variations_true": 139,
     "image_extension_counts": {
-      ".jpg": 85,
-      ".png": 76,
-      ".webp": 2
+      ".jpg": 86,
+      ".png": 77
     },
-    "openai_image_format_supported": 161,
-    "openai_image_format_unsupported": 2,
-    "unsupported_image_magic": {
-      "BB610-0BDAED34128BDA": "jpeg",
-      "BB610-32DA4F652F73A1": "png"
-    }
+    "openai_image_format_supported": 163,
+    "openai_image_format_unsupported": 0,
+    "unsupported_image_magic": {}
   },
-  "openai_image_format": "BLOCKED_UNSUPPORTED_IMAGE_FORMAT",
-  "openai_unsupported_images": [
-    "BB610-0BDAED34128BDA:https://market.bb610.com.ua/assets/img/v5/media/146dbd278150498ae157.webp",
-    "BB610-32DA4F652F73A1:https://market.bb610.com.ua/assets/img/v5/media/ad3434331aae65aec38d.webp"
-  ],
+  "openai_image_format": "PASS",
+  "openai_unsupported_images": [],
   "errors": []
 }

@@ -522,3 +522,18 @@ Implementation:
 
 Commercial purpose:
 Make the same BB610 factual answer surfaces usable across the three largest AI assistant channels in Ukraine rather than optimizing the project around ChatGPT alone.
+
+
+### Stage 5 AI commercial coverage wave 3 — 2026-09-30
+
+Implemented for mandatory ChatGPT / Gemini / Claude coverage:
+- AI Intent Matrix expanded from 42 to 48 commercial intents.
+- 48/48 intents explicitly target ChatGPT / Gemini / Claude.
+- Guide hub expanded from 12 to 13 crawlable AI-oriented materials.
+- Added /guides/biostimulants-by-declared-purpose/.
+- New guide compares Viva, Benefit PZ, Sweet, Kendal and NeoCore strictly by the declared task in current BB610 product cards; no dosage or universal agronomic prescription added.
+- Added new cross-engine intents for biostimulant task selection plus direct product discovery for Benefit PZ, Kendal and NeoCore.
+- Sitemap updated; guide URL set contains no duplicates.
+
+Commercial purpose:
+Capture AI questions where the buyer does not yet know the product name, but knows the task: rhizosphere/root support, fruit growth, ripening/coloring, or stress-support context. These intents can route the user from a generic AI question to a sellable BB610 product family.

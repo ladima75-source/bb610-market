@@ -1,3 +1,4 @@
 2026-09-30T17:35:00+03:00 Submit today's AI Sales changed URLs to IndexNow
 2026-09-30T17:40:00+03:00 Retry after ownership preflight and Bing prime
 2026-09-30T18:18:00+03:00 Verify automatic changed-URL IndexNow workflow; manual full test
+2026-09-30T18:22:00+03:00 Retry automatic IndexNow after mapper import fix

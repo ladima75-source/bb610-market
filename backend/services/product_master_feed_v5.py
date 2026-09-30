@@ -109,6 +109,7 @@ def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]
             "how_it_works": _text(source_product.get("how_it_works")),
             "seo_description": _text(source_product.get("seo_description")),
             "canonical_product_url": "/product.html?id=" + pid,
+            "product_slug": _text(source_product.get("slug")) or pid,
             "image": {"local": product_image} if product_image else {},
             "feed_policy": "allowed",
         }
@@ -128,6 +129,7 @@ def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]
                 "id": sid,
                 "product_id": pid,
                 "variant": _text(source_sku.get("package_label")),
+                "package_label": _text(source_sku.get("package_label")),
                 "canonical_title": canonical_title,
                 "item_group_id": _identifier(attributes, "item_group_id", "related_group_id") or pid,
                 "feed": {"title": canonical_title} if canonical_title else {},

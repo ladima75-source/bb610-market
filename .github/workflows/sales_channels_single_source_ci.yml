@@ -9,6 +9,7 @@ on:
       - 'ops/merchant_feed_guard.json'
       - 'backend/services/catalog_cms.py'
       - 'backend/services/catalog_feeds.py'
+      - 'backend/services/openai_commerce_feed.py'
       - 'backend/services/sales_channels.py'
       - 'backend/feed_api.py'
       - 'backend/sales_channels_api.py'
@@ -27,6 +28,7 @@ on:
       - 'ops/merchant_feed_guard.json'
       - 'backend/services/catalog_cms.py'
       - 'backend/services/catalog_feeds.py'
+      - 'backend/services/openai_commerce_feed.py'
       - 'backend/services/sales_channels.py'
       - 'backend/feed_api.py'
       - 'backend/sales_channels_api.py'
@@ -54,6 +56,7 @@ jobs:
             backend/services/product_master_feed_v5.py \
             backend/services/catalog_cms.py \
             backend/services/catalog_feeds.py \
+            backend/services/openai_commerce_feed.py \
             backend/services/sales_channels.py \
             backend/feed_api.py \
             backend/sales_channels_api.py \
@@ -271,4 +274,44 @@ jobs:
           assert google_rows[0]['image_link'] == 'https://api.market.bb610.com.ua/media/products/megafol.jpg'
 
           print('CHANNEL ADMIN / GOOGLE / META SNAPSHOT PARITY: PASS')
+          PY
+
+      - name: OpenAI commerce feed contract
+        run: |
+          python - <<'PY'
+          from backend.services import openai_commerce_feed as ocf
+
+          fixture = {
+              'source': 'bb610-product-master-v5',
+              'feed_rows': [
+                  ({
+                      'id':'SKU-1',
+                      'title':'MEGAFOL 1 л',
+                      'description':'Test',
+                      'link':'https://market.bb610.com.ua/product.html?id=megafol',
+                      'image_link':'https://market.bb610.com.ua/assets/img/megafol.jpg',
+                      'brand':'Valagro',
+                      'item_group_id':'megafol',
+                      'variant':'1 л',
+                      'product_type':'biostimulation',
+                      'product_slug':'megafol',
+                      'gtin':'',
+                      'mpn':'',
+                      'price':'999.00 UAH',
+                  }, 'in_stock')
+              ]
+          }
+          ocf.channel_snapshot=lambda commerce_override=None: fixture
+          rows=ocf.rows()
+          assert len(rows)==1
+          row=rows[0]
+          assert row['item_id']=='SKU-1'
+          assert row['url']=='https://market.bb610.com.ua/products/megafol-1l/'
+          assert row['availability']=='in_stock'
+          assert row['price']=='999.00 UAH'
+          assert row['seller_name']=='BB610 Market'
+          assert row['is_eligible_search']=='true'
+          assert 'SKU-1' in ocf.csv_feed()
+          assert '"item_id":"SKU-1"' in ocf.jsonl_feed()
+          print('OPENAI COMMERCE FEED CONTRACT: PASS')
           PY

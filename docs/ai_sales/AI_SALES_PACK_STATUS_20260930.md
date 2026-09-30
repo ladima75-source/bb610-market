@@ -618,3 +618,24 @@ Large cross-engine expansion completed for ChatGPT / Gemini / Claude:
 
 Commercial purpose:
 Close the remaining meaningful gaps in active sellable assortment while keeping every AI path grounded in current BB610 product pages and exact SKU targets.
+
+
+### Stage 4/5 discovery infrastructure correction — 2026-09-30
+
+Revenue-oriented discovery work completed after the 128-intent expansion:
+- Public search retest still returned no BB610 guide results for representative new AI-intent pages; this was treated as a discovery/indexing problem, not a reason to create more content.
+- Latest GitHub Pages deployment for the 128-intent wave completed successfully, so the blocker is not missing production deployment.
+- Found and fixed a real IndexNow design defect: manual/full submission still used a hard-coded list of only the original 8 guides.
+- ops/indexnow_submit.py now builds manual/full discovery from the current sitemap.xml, automatically covering every indexable AI guide, exact-SKU PDP and storefront URL.
+- Triggered a new manual_full submission through ops/indexnow-submit-request.txt.
+- Result: PASS, 271 sitemap URLs submitted, IndexNow HTTP 200 accepted, ownership key HTTP 200/exact match, Bing prime HTTP 200.
+- robots.txt already allowed OAI-SearchBot, ChatGPT-User, Claude-SearchBot and Claude-User. Googlebot/Google-Extended are now explicitly allowed as the Gemini discovery/grounding policy, while the existing User-agent:* fallback remains permissive for public indexable pages.
+- Current connected analytics stack still has Google Merchant + GA4 but no Google Search Console connector, so direct Google URL Inspection/index coverage remains unavailable.
+
+Top-3 discovery interpretation:
+- ChatGPT: OAI-SearchBot access is explicitly allowed; search inclusion remains externally unverified.
+- Gemini: Googlebot access is allowed and pages are snippet-eligible; Google Search indexing is required for AI Search features, but cannot yet be inspected directly without Search Console.
+- Claude: Claude-SearchBot and Claude-User are explicitly allowed; search visibility remains externally unverified.
+
+Next stage principle:
+Do not create more AI content merely to increase intent count. Prioritize independent indexing/citation/referral evidence and only modify pages when that evidence points to a specific weakness.

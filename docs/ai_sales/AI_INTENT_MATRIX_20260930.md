@@ -5,19 +5,19 @@ Status: Stage 2 validated; used for Stage 4/5 discovery tests.
 
 | ID | Intent type | Example query | Priority platform | Expected answer | Target source | Readiness | Next action |
 |---|---|---|---|---|---|---|---|
-| AI-01 | direct product | де купити MASTER 13-40-13 в Україні | ChatGPT / Gemini | product + seller | /products/master-13-40-13/ | READY | test citation + product appearance |
-| AI-02 | direct product | купити MASTER 20-20-20 з доставкою по Україні | ChatGPT / Gemini | product + price/availability | /products/master-20-20-20/ | READY | test |
-| AI-03 | direct product | де купити Plantafol 20-20-20 | ChatGPT / Gemini | product + seller | /products/plantafol-20-20-20/ | READY | test |
-| AI-04 | direct product | купити Megafol в Україні | ChatGPT / Gemini | product + seller | /products/megafol/ | READY | test |
-| AI-05 | direct product | купити Radifarm в Україні | ChatGPT / Gemini | product + seller | /products/radifarm/ | READY | test |
+| AI-01 | direct product | де купити MASTER 13-40-13 в Україні | ChatGPT / Gemini | product + seller + offer range | /products/master-13-40-13/ | OPTIMIZED · UNVERIFIED | AggregateOffer live; verify citation/product appearance |
+| AI-02 | direct product | купити MASTER 20-20-20 з доставкою по Україні | ChatGPT / Gemini | product + price/availability | /products/master-20-20-20/ | OPTIMIZED · UNVERIFIED | family commerce parity live; verify discovery |
+| AI-03 | direct product | де купити Plantafol 20-20-20 | ChatGPT / Gemini | product + seller + offer range | /products/plantafol-20-20-20/ | OPTIMIZED · UNVERIFIED | family commerce parity live; verify discovery |
+| AI-04 | direct product | купити Megafol в Україні | ChatGPT / Gemini | product + seller + offer range | /products/megafol/ | OPTIMIZED · UNVERIFIED | AggregateOffer + intent guides live; verify discovery |
+| AI-05 | direct product | купити Radifarm в Україні | ChatGPT / Gemini | product + seller + offer range | /products/radifarm/ | OPTIMIZED · UNVERIFIED | AggregateOffer + intent guides live; verify discovery |
 | AI-06 | problem/solution | що використовують після пересадки для підтримки кореневої системи | ChatGPT / Claude | explanatory + product context | /guides/before-planting-seedlings-product-selection/ | OPTIMIZED | verify citation/indexing |
 | AI-07 | problem/solution | що застосовують при абіотичному стресі рослин | ChatGPT / Claude | explanatory + product context | /guides/abiotic-stress-and-megafol/ | OPTIMIZED | verify citation/indexing |
 | AI-08 | comparison | MASTER 13-40-13 чи 20-20-20 у чому різниця | ChatGPT / Gemini | comparison | /guides/master-13-40-13-vs-20-20-20/ | OPTIMIZED | verify citation/indexing |
 | AI-09 | comparison | Plantafol 20-20-20 чи MASTER 20-20-20 різниця | ChatGPT / Claude | comparison | /guides/plantafol-20-20-20-vs-master-20-20-20/ | OPTIMIZED | verify citation/indexing |
 | AI-10 | technical selection | яке NPK добриво має високий фосфор | Gemini / ChatGPT | shortlist with application-method caveat | /guides/high-phosphorus-alternatives-master-13-40-13/ | OPTIMIZED | verify citation/indexing |
-| AI-11 | technical selection | водорозчинне NPK 15-5-30 купити Україна | Gemini / ChatGPT | product | /products/master-15-5-30/ | READY | test |
-| AI-12 | technical selection | добриво 0-60-20 для фертигації Україна | Gemini / ChatGPT | product | /products/pekacid-0-60-20/ | READY | test |
-| AI-13 | technical selection | сульфат калію водорозчинний де купити | Gemini / ChatGPT | product | /products/solupotasse/ | READY | test |
+| AI-11 | technical selection | водорозчинне NPK 15-5-30 купити Україна | Gemini / ChatGPT | product + offer range | /products/master-15-5-30/ | OPTIMIZED · UNVERIFIED | family V5 parity fixed: from 170 UAH, 3 active offers; verify discovery |
+| AI-12 | technical selection | добриво 0-60-20 для фертигації Україна | Gemini / ChatGPT | product + offer range | /products/pekacid-0-60-20/ | OPTIMIZED · UNVERIFIED | commerce family page + comparison context ready; verify discovery |
+| AI-13 | technical selection | сульфат калію водорозчинний де купити | Gemini / ChatGPT | exact purchasable offer | /products/solupotasse-sulfat-kaliyu-1kg/ | OPTIMIZED · UNVERIFIED | canonical V5 product is solupotasse-sulfat-kaliyu; legacy /solupotasse/ is not the commerce source |
 | AI-14 | technical selection | хелат заліза для рослин купити Україна | ChatGPT / Gemini | product options by application method | /guides/ferrilene-vs-brexil-fe/ | OPTIMIZED | verify citation/indexing |
 | AI-15 | price | ціна Megafol 100 мл Україна | Gemini / ChatGPT | exact offer | /products/megafol-100ml/ | OPTIMIZED · UNVERIFIED | current discovery test returned competitors, not BB610 |
 | AI-16 | price | ціна Radifarm 25 мл | Gemini / ChatGPT | exact offer | /products/radifarm-25ml/ | OPTIMIZED · UNVERIFIED | current discovery test returned no BB610 exact result |

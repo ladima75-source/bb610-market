@@ -4,7 +4,7 @@ Updated: 2026-09-30
 
 ## ChatGPT / OpenAI
 
-Current state: PREPARED, NOT ONBOARDED.
+Current state: CORE FEED READY, NOT ONBOARDED, STABLE SUBMISSION BLOCKED ON TARGET MARKET.
 
 Ready:
 - OpenAI-compatible product feed
@@ -22,6 +22,7 @@ Open:
 - merchant application not yet submitted
 - direct feed onboarding/approval not confirmed
 - no BB610 product appearance/citation observed yet
+- Stable target-market field is blocked because the current documented market value is US while BB610 sells in Ukraine; no false target is inserted
 
 Rule:
 Do not claim OpenAI product visibility until a product result, citation, referral, or platform confirmation is independently observed.

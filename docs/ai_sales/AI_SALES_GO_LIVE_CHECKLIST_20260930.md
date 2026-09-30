@@ -25,6 +25,7 @@ Updated: 2026-09-30
 ## ChatGPT / OpenAI
 - [x] OpenAI feed generated.
 - [x] OpenAI feed live validation PASS.
+- [x] OpenAI-format discovery policy validated: search=true, checkout=false, ads=false on 163 rows.
 - [x] Applicant first name confirmed.
 - [x] Applicant last name confirmed.
 - [x] Applicant LinkedIn URL confirmed.

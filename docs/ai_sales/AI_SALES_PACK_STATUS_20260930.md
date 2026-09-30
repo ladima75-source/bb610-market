@@ -66,11 +66,27 @@ Claude:
 - organic discovery path is ready through crawlable pages and explicit bot access
 
 ## STAGE 4 — VERIFY
-NEXT.
-Run the AI intent matrix against current ChatGPT/Gemini/Claude discovery and record real citations/product appearances.
+IN PROGRESS.
+
+Current evidence:
+- public search retest still does not surface BB610 Market for the tested product intents
+- ChatGPT product discovery baseline still has no observed BB610 product result
+- Merchant Center remains healthy at 163 active / 0 disapproved
+- Merchant connector has not yet shown ingestion of the new exact-SKU product_link values; sampled rows still expose legacy product.html?id=... links with last update 2026-09-29T21:00:00Z
+- no current-month Merchant product-performance rows were returned
+- no organic AI visibility is claimed yet
 
 ## STAGE 5 — OPTIMIZE
-Pending Stage 4 evidence.
+STARTED.
+
+Implemented:
+- Organization + WebSite structured entity data on homepage
+- Store structured entity data on contacts page
+- commercial/contact pages preserved in sitemap
+- two comparison-ready intent guides for AI-08 and AI-09
+- internal product-to-guide links
+- guide URLs in sitemap
+- post-change Stage 2 live validation PASS
 
 ## STAGE 6 — SCALE
 Blocked until measured discovery/conversion evidence exists.

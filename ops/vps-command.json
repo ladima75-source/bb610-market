@@ -1,5 +1,5 @@
 {
-  "action": "audit",
-  "ref": "",
-  "request_id": "2026-09-29-twofamily-vps-access-audit"
+  "action": "deploy",
+  "ref": "4487d4b88b0753165c15c5bfdb1815be72ca2862",
+  "request_id": "2026-09-30-ai-sales-openai-feed-stage1"
 }

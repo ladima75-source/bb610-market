@@ -1,0 +1,32 @@
+name: BB610 Sitemap Indexability CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sitemap.xml'
+      - 'index.html'
+      - 'categories/**/index.html'
+      - 'products/**/index.html'
+      - 'guides/**/index.html'
+      - 'ops/audit_sitemap_indexability.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit sitemap indexability contract
+        run: python ops/audit_sitemap_indexability.py
+      - name: Upload sitemap audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitemap-indexability-${{ github.run_id }}
+          path: docs/ai_sales/SITEMAP_INDEXABILITY_AUDIT_20260930.json
+          if-no-files-found: ignore
+          retention-days: 14

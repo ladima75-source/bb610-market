@@ -431,3 +431,39 @@ Internal discovery:
 Current external discovery state:
 - exact public searches for BB610 Market + Megafol 100 ml, Radifarm 25 ml, MASTER 13-40-13 1 kg and the BB610 guide hub still did not return BB610 in the tested public search provider.
 - this keeps Stage 4 external discovery UNVERIFIED; IndexNow acceptance is not treated as indexing proof.
+
+
+### Stage 4/5 checkpoint — local entity, breadcrumb discovery, Merchant cadence, OpenAI waitlist
+
+Completed in the latest block:
+- exact-SKU PDP generator now emits BreadcrumbList structured data;
+- BreadcrumbList is mandatory in production live validation;
+- live validation PASS: 163/163 feed-eligible exact-SKU PDPs, 139 grouped variants, errors 0;
+- Google verification file is live and validated;
+- sitemap freshness is validated for exact-SKU and guide discovery URLs;
+- dedicated factual local landing is live at https://market.bb610.com.ua/dnipro/;
+- local landing validation PASS: WebPage + Store + BreadcrumbList, exact seller address/phone, local-delivery facts and sitemap lastmod;
+- AI-18 / AI-19 now route to /dnipro/ plus supporting contact/delivery pages;
+- second IndexNow delta accepted: 204 URLs, HTTP 200, including /dnipro/, /contacts.html and all regenerated exact-SKU PDPs.
+
+Merchant ingestion observation:
+- account: 5858266688;
+- datasource: accounts/5858266688/dataSources/10742663120;
+- current Merchant connector still exposes legacy product.html?id=... product_link values;
+- 162/163 products share product_last_update_date = 2026-09-29T21:00:00Z;
+- 1 product (BB610-C5C94B624BD074 / Benefit PZ 100 ml) is one day older at 2026-09-28T21:00:00Z;
+- this distribution strongly indicates a scheduled daily datasource refresh around 21:00 UTC;
+- Benefit PZ exact BB610 PDP itself is valid and feed-ready, so its one-day lag is treated as Merchant-side ingestion state until the next scheduled refresh.
+
+OpenAI merchant application — current authoritative state:
+- official merchant page allows merchants to apply for product-feed onboarding/waitlist now;
+- Shopping in ChatGPT is currently live in the U.S.;
+- BB610 must not fabricate U.S. targeting or unsupported Ukraine market activation;
+- application draft is technically ready except for four real applicant fields: First name, Last name, Work title, LinkedIn;
+- any earlier draft text that treated a guessed applicant name or LinkedIn profile as confirmed is superseded and removed;
+- company/feed fields remain ready: BB610 Market, Ukraine, market.bb610.com.ua, Home/Garden/Improvement, 163 channel-eligible SKUs.
+
+External discovery:
+- immediate public site-search retest still does not return the new BB610 guide/PDP URLs;
+- public local business search did not identify a BB610 Market business result in Dnipro;
+- Google Business Profile, Search Console and Bing Webmaster accounts are not connected to the available Windsor connectors, so direct cabinet-level crawl/index diagnostics remain externally unavailable.

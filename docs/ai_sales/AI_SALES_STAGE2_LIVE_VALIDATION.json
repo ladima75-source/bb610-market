@@ -1,9 +1,9 @@
 {
-  "status": "PASS",
+  "status": "FAIL",
   "openai_feed_rows": 163,
   "google_feed_rows": 163,
   "expected_rows": 163,
-  "pages_checked": 163,
+  "pages_checked": 162,
   "robots_http": 200,
   "openai_attribution": "PASS",
   "google_exact_sku_links": "PASS",
@@ -40,5 +40,7 @@
     "BB610-0BDAED34128BDA:https://market.bb610.com.ua/assets/img/v5/media/146dbd278150498ae157.webp",
     "BB610-32DA4F652F73A1:https://market.bb610.com.ua/assets/img/v5/media/ad3434331aae65aec38d.webp"
   ],
-  "errors": []
+  "errors": [
+    "fetch:BB610-DDC0F0BBD389FA:HTTP Error 503: Service Unavailable"
+  ]
 }

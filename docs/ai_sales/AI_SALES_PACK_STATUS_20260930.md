@@ -672,3 +672,30 @@ Current top-3 bottlenecks:
 3. Claude: external crawl/search pickup, not robots eligibility.
 
 Do not add more generic AI content until these external discovery signals justify a specific change.
+
+
+### Gemini / Google AI-shopping evidence refresh — 2026-09-30
+
+Official Google Merchant guidance now explicitly ties Merchant Center product data to discovery on AI Mode, AI Overviews and the Gemini app. Google also states that the Shopping Graph powers product discovery in Gemini.
+
+BB610 current Merchant/AI state:
+- Merchant account: 163 active product rows.
+- Product type coverage in the production feed: 163/163.
+- Variant grouping coverage: 139/163 grouped SKU variants.
+- Verified GTIN coverage: 0/163.
+- Verified MPN coverage: 0/163.
+- Do not fabricate GTIN/MPN or declare identifiers absent without product-level evidence.
+- Merchant `product_shipping_label`: blank on 163/163; this is not treated as an error by itself because shipping can be configured at account level.
+- Merchant read-back still exposes legacy `product.html?id=...` links rather than current exact-SKU `/products/...` links; this remains a real ingestion-quality issue for AI-shopping surfaces.
+- Current BB610-side Google feed already emits exact-SKU links; the mismatch is downstream Merchant ingestion state.
+- Search Console connector exists in Windsor but is not yet OAuth-authorized, preventing direct URL Inspection/index coverage checks.
+
+Google AI-generated product-data note:
+- Google requires `structured_title` / `structured_description` for text known to be created by generative AI.
+- BB610 must not blanket-label or rewrite the live Merchant feed until provenance is known at product-field level; current active feed should not be destabilized without a controlled migration plan.
+
+Priority order for Gemini:
+1. Authorize Search Console and inspect indexing of guide + exact-SKU URLs.
+2. Confirm next Merchant datasource refresh ingests exact-SKU links.
+3. Recover verified product identifiers only from trustworthy product/manufacturer evidence; never invent them.
+4. Enrich Merchant media/attributes only where Product Master has verified source data.

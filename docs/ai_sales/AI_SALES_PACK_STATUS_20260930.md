@@ -699,3 +699,27 @@ Priority order for Gemini:
 2. Confirm next Merchant datasource refresh ingests exact-SKU links.
 3. Recover verified product identifiers only from trustworthy product/manufacturer evidence; never invent them.
 4. Enrich Merchant media/attributes only where Product Master has verified source data.
+
+
+### Search Console / Gemini setup — 2026-09-30
+
+Manual Google step completed:
+- URL-prefix Search Console property verified: https://market.bb610.com.ua/
+- Search Console connector authorized in Windsor for the same property.
+- sitemap.xml manually submitted in Search Console.
+
+Current API state immediately after setup:
+- Search Analytics rows: not available yet.
+- Sitemap table rows through Windsor: not available yet.
+- This is treated as Google processing delay for the newly verified/submitted property, not as a failed submission.
+
+Current Gemini/Google commercial evidence:
+- Merchant Center still exposes 163 active products.
+- 163/163 Merchant product links still resolve to legacy product.html?id=... URLs.
+- product_canonical_link is empty in Merchant read-back.
+- BB610-generated Google feed already emits exact-SKU /products/... URLs, so the mismatch remains downstream in Merchant ingestion.
+
+Next action when Search Console data appears:
+1. Check sitemap accepted/submitted/error/warning state.
+2. Inspect impressions/clicks/pages for /guides/ and /products/.
+3. Use the first real indexing/search evidence to decide whether any page or feed changes are needed.

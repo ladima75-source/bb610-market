@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "038781d885dfb361ef6cafa7da4bc66ac1bc7de2",
-  "request_id": "2026-09-30-ai-sales-family-commerce-parity-final"
+  "action": "health",
+  "request_id": "2026-09-30-ai-sales-family-commerce-parity-health"
 }

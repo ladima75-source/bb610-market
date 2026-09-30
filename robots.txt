@@ -1,4 +1,12 @@
 # BB610 Market crawler policy — AI discovery enabled
+# Top-3 Ukraine AI discovery: ChatGPT / Gemini / Claude
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 User-agent: OAI-SearchBot
 Allow: /
 

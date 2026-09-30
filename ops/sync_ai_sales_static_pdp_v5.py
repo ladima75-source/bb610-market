@@ -84,7 +84,7 @@ def replace_div(text: str, class_name: str, inner_html: str) -> str:
         rf'(<div\s+class=["\']{re.escape(class_name)}["\']>).*?(</div>)',
         re.I | re.S,
     )
-    return pat.sub(r"\1" + inner_html + r"\2", text, count=1)
+    return pat.sub(lambda m: m.group(1) + inner_html + m.group(2), text, count=1)
 
 
 def product_schema_patch(text: str, product: dict, page_url: str, sku: dict | None) -> str:

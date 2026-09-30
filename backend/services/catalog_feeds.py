@@ -325,6 +325,7 @@ def channel_snapshot(commerce_override: dict | None = None) -> dict:
             "gtin": status["gtin"],
             "mpn": status["mpn"],
             "item_group_id": _text(sku.get("item_group_id") or sku.get("product_id")),
+            "variant": _text(sku.get("variant")),
             "product_type": _text(product.get("product_type")),
             "custom_label_0": (
                 "warehouse"

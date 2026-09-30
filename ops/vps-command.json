@@ -1,4 +1,5 @@
 {
-  "action": "health",
-  "request_id": "2026-09-30-openai-stable-feed-health"
+  "action": "deploy",
+  "ref": "c2e19222180c2f436bb52084799c1eb159d3a0f4",
+  "request_id": "2026-09-30-openai-market-target-gate"
 }

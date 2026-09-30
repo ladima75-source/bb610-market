@@ -484,3 +484,19 @@ Interpretation:
 - current blocker is still external discovery / Merchant datasource ingestion, not Product Master, pricing, feed generation or PDP correctness;
 - Stage 4 remains IN PROGRESS / UNVERIFIED;
 - Stage 6 SCALE remains blocked until an independent indexing, citation, referral or Merchant exact-link ingestion signal appears.
+
+
+### Stage 5 AI commercial coverage wave 2 — 2026-09-30
+
+Implemented without reopening audit or adding non-AI work:
+- AI Intent Matrix expanded from 26 to 36 commercial intents.
+- New comparison source: /guides/plantafol-formulas-comparison/ for PLANTAFOL 30-10-10, 20-20-20, 10-54-10, 5-15-45 and 0-25-50.
+- New comparison source: /guides/osmocote-release-duration-comparison/ for declared 1.5M, 2-3M, 3-4M, 4-5M and 5-6M Osmocote durations and N-P-K formulas.
+- Guide hub expanded from 8 to 10 crawlable AI-oriented materials and ItemList structured data updated.
+- Both new guide URLs added to sitemap with truthful 2026-09-30 lastmod.
+- New direct-product AI intents added for Boroplus, Brexil Ca, Brexil Zn, Sweet, Viva and MASTER 3-11-38; these products are already present in the connected Merchant assortment with active price/availability.
+- No PlantLogic promotion added in this wave.
+- No unsupported crop-specific dosage or agronomic prescription was introduced; comparisons are limited to published product identity, N-P-K ratios and declared duration labels.
+
+Commercial purpose:
+Increase the number of independent AI questions for which BB610 has a precise, crawlable answer source that can lead directly to a current sellable product or product family.

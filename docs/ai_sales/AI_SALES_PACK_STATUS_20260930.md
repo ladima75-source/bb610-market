@@ -138,3 +138,16 @@ Additional Stage 4 evidence:
 - Megafol product family linked to the abiotic-stress guide
 - Sitemap: 252 URLs
 - Syngenta Biologicals / Valagro official materials were used to verify the abiotic-stress context for Megafol before publishing the guide
+
+
+### Family PDP live V5 parity
+- Single AI Sales PDP sync now maintains both exact-SKU PDPs and existing family-PDP commerce fields from the same live Product Master V5 snapshot.
+- Sync run 36704476583: PASS.
+- generated exact SKU pages: 192
+- family pages checked: 27
+- family pages changed: 16
+- errors: 0
+- MASTER 15-5-30 family page corrected from stale "price/availability уточнюється" to live AggregateOffer: low 170 UAH, high 4805 UAH, 3 offers, in stock.
+- Lead-gen controls remain without fabricated Offer: Plantlogic 25 L and Ferrilene.
+- AI guide internal links survived the sync.
+- SoluPotasse identity clarified: canonical V5 product is solupotasse-sulfat-kaliyu; legacy /products/solupotasse/ is not used as the AI-13 commerce target.

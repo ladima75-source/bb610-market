@@ -1,2 +1,2 @@
-2026-09-30T10:31:00+03:00
-reason=stage5-comparison-guides-sitemap-refresh
+2026-09-30T13:40:00+03:00
+reason=stage5-family-pdp-live-v5-parity

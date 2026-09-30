@@ -1152,6 +1152,8 @@
   "sitemap_status": "PASS",
   "sitemap_exact_sku_lastmod": 163,
   "sitemap_guides_lastmod": 9,
+  "sitemap_dnipro_lastmod": true,
+  "local_landing": "PASS",
   "merchant_return_policy": "PASS",
   "sitemap_lastmod": "PASS",
   "sitemap_discovery_urls_checked": 202,

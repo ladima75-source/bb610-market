@@ -177,6 +177,18 @@ def page(template,p,s):
     if gtin:schema['gtin']=gtin
     if s.get('manufacturer_sku'):schema['mpn']=text(s.get('manufacturer_sku'))
 
+    family_slug=text(p.get('slug') or p.get('product_id'))
+    family_url=f'{SITE}/products/{family_slug}/'
+    breadcrumb_schema={
+        '@context':'https://schema.org',
+        '@type':'BreadcrumbList',
+        'itemListElement':[
+            {'@type':'ListItem','position':1,'name':'BB610 Market','item':SITE+'/'},
+            {'@type':'ListItem','position':2,'name':name,'item':family_url},
+            {'@type':'ListItem','position':3,'name':f'{name} {pkg}'.strip(),'item':url},
+        ],
+    }
+
     t=template
     t=re.sub(r'<base href="[^"]*">','',t,count=1)
     t=t.replace('<head>','<head><base href="../../">',1)
@@ -186,6 +198,7 @@ def page(template,p,s):
     schema_html='<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False,separators=(',',':'))+'</script>'
     if group_schema:
         schema_html+='<script type="application/ld+json">'+json.dumps(group_schema,ensure_ascii=False,separators=(',',':'))+'</script>'
+    schema_html+='<script type="application/ld+json">'+json.dumps(breadcrumb_schema,ensure_ascii=False,separators=(',',':'))+'</script>'
     meta=f'<meta name="description" content="{esc(desc[:300])}"><link rel="canonical" href="{esc(url)}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="product"><meta property="og:title" content="{esc(title)}"><meta property="og:url" content="{esc(url)}">'+(f'<meta property="og:image" content="{esc(img)}">' if img else '')+schema_html
     t=t.replace('</title>','</title>'+meta,1)
     static=f'<div class="product-layout seo-static-product"><div class="product-gallery"><img src="{esc(img)}" alt="{esc(name)}" width="900" height="900"></div><div class="product-summary"><h1>{esc(name)}</h1><div class="brand">{esc(brand)}</div><div class="selected-variant">{esc(pkg)}</div><div class="price">{esc(money(pr))}</div><div class="stock">{esc(stock(av))}</div><div class="verified-line">✓ <b>BB610 VERIFIED</b><small>Product Master V5</small></div><p>{esc(desc)}</p></div></div>'

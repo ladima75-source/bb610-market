@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "d2244326070b21e0f961a23caffb5f325d45fbdf",
-  "request_id": "2026-09-30-ai-sales-stage5-intent-guides"
+  "action": "health",
+  "request_id": "2026-09-30-ai-sales-stage5-postdeploy-health"
 }

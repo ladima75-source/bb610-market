@@ -348,3 +348,24 @@ Independent public search retest after IndexNow:
 
 Interpretation:
 The public search layer still has not surfaced the new BB610 discovery URLs. This is external indexing latency/state, not evidence of a current on-site crawl/indexability failure.
+
+
+## Checkpoint — local discovery + Merchant cadence
+
+Public local search for BB610 Market in Dnipro did not return an identifiable BB610 Market business result in the tested local search provider. Generic market entities were returned instead.
+
+BB610 response:
+- created https://market.bb610.com.ua/dnipro/ as a factual local commerce landing;
+- linked it from homepage and contacts;
+- added Store/WebPage/BreadcrumbList structured data;
+- added it to sitemap with 2026-09-30 lastmod;
+- live validation: PASS;
+- submitted the updated discovery set through IndexNow; second delta accepted with HTTP 200 and 204 URLs.
+
+Merchant cadence:
+- 162/163 connected Merchant products show 2026-09-29T21:00:00Z as last update;
+- BB610-C5C94B624BD074 / Benefit PZ 100 ml shows 2026-09-28T21:00:00Z;
+- the exact BB610 Benefit PZ 100 ml PDP is valid, priced at 341 UAH and InStock in the current BB610 source layer;
+- next Merchant verification should check whether the datasource refresh moves legacy links to exact-SKU URLs after the next 21:00 UTC cycle.
+
+This remains external Stage 4 evidence only; no indexing/citation/referral is claimed until independently observed.

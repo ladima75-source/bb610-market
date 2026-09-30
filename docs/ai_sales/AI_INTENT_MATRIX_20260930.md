@@ -24,12 +24,12 @@ Status: Stage 2 validated; used for Stage 4/5 discovery tests.
 | AI-17 | price | MASTER 13-40-13 1 кг ціна | Gemini / ChatGPT | exact offer | exact SKU PDP from ACP feed | READY | verify exact variant in AI |
 | AI-18 | local | де купити професійні добрива у Дніпрі | ChatGPT / Gemini | local seller | / + /contacts.html | OPTIMIZED | verify local entity citation |
 | AI-19 | local | магазин добрив Дніпро доставка по Україні | ChatGPT / Gemini | local seller | /contacts.html | OPTIMIZED | verify local entity citation |
-| AI-20 | alternative | аналог MASTER 13-40-13 з високим фосфором | ChatGPT / Claude | alternatives | nutrition category + product pages | PARTIAL | add fact-based alternatives page |
-| AI-21 | best-fit | яке добриво вибрати перед посадкою саджанців | ChatGPT / Claude | educational decision support | /categories/nutrition/ + Radifarm | PARTIAL | create intent landing/FAQ |
-| AI-22 | best-fit | як вибрати фасування добрива для кількох рослин | ChatGPT / Claude | educational | catalog/product pages | PARTIAL | add packaging guidance |
-| AI-23 | B2B/lead | професійні горщики для лохини 25 30 40 л Україна | ChatGPT / Gemini | product family + inquiry | /categories/containers/ | READY | test PlantLogic discovery |
-| AI-24 | B2B/lead | горщики PlantLogic для лохини купити Україна | ChatGPT / Gemini | product family + seller | /categories/containers/ | READY | test citation + request-price flow |
-| AI-25 | comparison | горщик 25 л чи 40 л для лохини різниця | ChatGPT / Claude | comparison | PlantLogic product pages | PARTIAL | add comparison table |
+| AI-20 | alternative | аналог MASTER 13-40-13 з високим фосфором | ChatGPT / Claude | alternatives with non-equivalence caveat | /guides/high-phosphorus-alternatives-master-13-40-13/ | OPTIMIZED | verify citation/indexing |
+| AI-21 | best-fit | яке добриво вибрати перед посадкою саджанців | ChatGPT / Claude | educational decision support | /guides/before-planting-seedlings-product-selection/ | OPTIMIZED | verify citation/indexing |
+| AI-22 | best-fit | як вибрати фасування добрива для кількох рослин | ChatGPT / Claude | educational + exact SKU paths | /guides/how-to-choose-pack-size/ | OPTIMIZED | verify citation/indexing + exact SKU landing |
+| AI-23 | B2B/lead | професійні горщики для лохини 25 30 40 л Україна | ChatGPT / Gemini | product family + inquiry | /categories/containers/ | LEAD-GEN READY | test PlantLogic discovery |
+| AI-24 | B2B/lead | горщики PlantLogic для лохини купити Україна | ChatGPT / Gemini | product family + seller/inquiry | /categories/containers/ | LEAD-GEN READY | test citation + inquiry flow; price is not public |
+| AI-25 | comparison | горщик 25 л чи 40 л для лохини різниця | ChatGPT / Claude | technical comparison + inquiry | /guides/blueberry-pot-25l-vs-40l/ | OPTIMIZED | verify citation/indexing |
 | AI-26 | where to buy | де замовити професійні товари для вирощування в Україні | ChatGPT / Gemini | seller + catalog | /catalog.html | READY | test generic brand discovery |
 
 ## Test rule

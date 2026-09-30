@@ -199,3 +199,19 @@ Interpretation: record as "no matching GA4 rows returned", not as proof of zero 
 
 Exact site-scoped searches for all four newly deployed Stage 5 guide titles returned no indexed results immediately after deployment.
 This is expected as a first checkpoint; do not claim indexing until an external search/index source returns the pages.
+
+
+### Exact-price discovery checkpoint
+Tested:
+- MASTER 13-40-13 1 kg
+- Megafol 100 ml
+- Radifarm 25 ml
+
+BB610 Market was not returned in the tested exact-price discovery results. Established marketplaces and stores were returned for sampled commercial queries.
+
+Exact-SKU targets remain technically ready:
+- /products/master-13-40-13-1kg/
+- /products/megafol-100ml/
+- /products/radifarm-25ml/
+
+Interpretation: discovery/indexing gap; no price/schema/PDP parity failure observed.

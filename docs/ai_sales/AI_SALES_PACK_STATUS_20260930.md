@@ -56,7 +56,7 @@ Google:
 - SHOPPING_ADS UA: 163 active, 0 disapproved, 0 pending
 
 OpenAI:
-- feed is technically ready
+- feed is technically ready and current-spec policy validated
 - onboarding product feeds is currently limited to approved partners
 - merchant application can now be prepared/submitted using real merchant identity only
 - do not invent applicant fields
@@ -151,3 +151,33 @@ Additional Stage 4 evidence:
 - Lead-gen controls remain without fabricated Offer: Plantlogic 25 L and Ferrilene.
 - AI guide internal links survived the sync.
 - SoluPotasse identity clarified: canonical V5 product is solupotasse-sulfat-kaliyu; legacy /products/solupotasse/ is not used as the AI-13 commerce target.
+
+
+### OpenAI current-spec feed checkpoint
+
+OpenAI product-feed implementation was rechecked against the current documented OpenAI-format product feed controls.
+
+Production feed policy:
+- is_eligible_search = true
+- is_eligible_checkout = false
+- is_ads_eligible = false
+
+Latest strict live validation run 36705473875: SUCCESS.
+Validated:
+- openai_feed_rows: 163
+- google_feed_rows: 163
+- expected_rows: 163
+- pages_checked: 163
+- robots_http: 200
+- OpenAI required discovery fields: PASS
+- search eligibility: PASS
+- checkout disabled: PASS
+- Ads opt-out: PASS
+- Google exact-SKU links: PASS
+- errors: 0
+
+Important:
+- checkout=false is an explicit BB610 merchant-owned-checkout policy;
+- ads=false is an explicit BB610 opt-out from OpenAI Ads processing;
+- neither flag is used to claim onboarding or visibility;
+- production submission artifact is the OpenAI-format CSV; JSONL remains an internal engineering representation.

@@ -12,8 +12,8 @@ Status: Stage 2 validated; used for Stage 4/5 discovery tests.
 | AI-05 | direct product | купити Radifarm в Україні | ChatGPT / Gemini | product + seller | /products/radifarm/ | READY | test |
 | AI-06 | problem/solution | що використовують після пересадки для підтримки кореневої системи | ChatGPT / Claude | explanatory + sources | /products/radifarm/ | READY | strengthen FAQ/use context |
 | AI-07 | problem/solution | що застосовують при абіотичному стресі рослин | ChatGPT / Claude | explanatory + alternatives | /products/megafol/ | READY | test citations |
-| AI-08 | comparison | MASTER 13-40-13 чи 20-20-20 у чому різниця | ChatGPT / Gemini | comparison | /products/master-13-40-13/ + /products/master-20-20-20/ | READY | add comparison-ready block |
-| AI-09 | comparison | Plantafol 20-20-20 чи MASTER 20-20-20 різниця | ChatGPT / Claude | comparison | product pages | READY | add use-method distinction |
+| AI-08 | comparison | MASTER 13-40-13 чи 20-20-20 у чому різниця | ChatGPT / Gemini | comparison | /guides/master-13-40-13-vs-20-20-20/ | OPTIMIZED | verify citation/indexing |
+| AI-09 | comparison | Plantafol 20-20-20 чи MASTER 20-20-20 різниця | ChatGPT / Claude | comparison | /guides/plantafol-20-20-20-vs-master-20-20-20/ | OPTIMIZED | verify citation/indexing |
 | AI-10 | technical selection | яке NPK добриво має високий фосфор | Gemini / ChatGPT | shortlist | /categories/nutrition/ | READY | test ranking/citation |
 | AI-11 | technical selection | водорозчинне NPK 15-5-30 купити Україна | Gemini / ChatGPT | product | /products/master-15-5-30/ | READY | test |
 | AI-12 | technical selection | добриво 0-60-20 для фертигації Україна | Gemini / ChatGPT | product | /products/pekacid-0-60-20/ | READY | test |
@@ -22,8 +22,8 @@ Status: Stage 2 validated; used for Stage 4/5 discovery tests.
 | AI-15 | price | ціна Megafol 100 мл Україна | Gemini / ChatGPT | exact offer | exact SKU PDP from ACP feed | READY | verify exact variant in AI |
 | AI-16 | price | ціна Radifarm 25 мл | Gemini / ChatGPT | exact offer | exact SKU PDP from ACP feed | READY | verify exact variant in AI |
 | AI-17 | price | MASTER 13-40-13 1 кг ціна | Gemini / ChatGPT | exact offer | exact SKU PDP from ACP feed | READY | verify exact variant in AI |
-| AI-18 | local | де купити професійні добрива у Дніпрі | ChatGPT / Gemini | local seller | / + /contacts.html | READY | strengthen Organization/LocalBusiness schema |
-| AI-19 | local | магазин добрив Дніпро доставка по Україні | ChatGPT / Gemini | local seller | /contacts.html | READY | test local discovery |
+| AI-18 | local | де купити професійні добрива у Дніпрі | ChatGPT / Gemini | local seller | / + /contacts.html | OPTIMIZED | verify local entity citation |
+| AI-19 | local | магазин добрив Дніпро доставка по Україні | ChatGPT / Gemini | local seller | /contacts.html | OPTIMIZED | verify local entity citation |
 | AI-20 | alternative | аналог MASTER 13-40-13 з високим фосфором | ChatGPT / Claude | alternatives | nutrition category + product pages | PARTIAL | add fact-based alternatives page |
 | AI-21 | best-fit | яке добриво вибрати перед посадкою саджанців | ChatGPT / Claude | educational decision support | /categories/nutrition/ + Radifarm | PARTIAL | create intent landing/FAQ |
 | AI-22 | best-fit | як вибрати фасування добрива для кількох рослин | ChatGPT / Claude | educational | catalog/product pages | PARTIAL | add packaging guidance |

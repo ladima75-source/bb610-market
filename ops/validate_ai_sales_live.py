@@ -92,6 +92,16 @@ def main():
             checked+=1
         except Exception as e:
             errors.append(f'fetch:{row.get("item_id")}:{e}')
+    quality={
+        'seller_url':sum(1 for x in rows if str(x.get('seller_url') or '').strip()),
+        'product_category':sum(1 for x in rows if str(x.get('product_category') or '').strip()),
+        'gtin':sum(1 for x in rows if str(x.get('gtin') or '').strip()),
+        'mpn':sum(1 for x in rows if str(x.get('mpn') or '').strip()),
+        'gtin_or_mpn':sum(1 for x in rows if str(x.get('gtin') or '').strip() or str(x.get('mpn') or '').strip()),
+        'group_id':sum(1 for x in rows if str(x.get('group_id') or '').strip()),
+        'variant_dict':sum(1 for x in rows if str(x.get('variant_dict') or '').strip()),
+        'listing_has_variations_true':sum(1 for x in rows if str(x.get('listing_has_variations') or '').strip().lower()=='true'),
+    }
     report={
         'status':'PASS' if not errors else 'FAIL',
         'openai_feed_rows':len(rows),
@@ -109,6 +119,7 @@ def main():
         'openai_search_eligibility':'PASS' if all(str(x.get('is_eligible_search') or '').lower()=='true' for x in rows) else 'FAIL',
         'openai_checkout_eligibility':'PASS' if all(str(x.get('is_eligible_checkout') or '').lower()=='false' for x in rows) else 'FAIL',
         'openai_ads_policy':'PASS' if all(str(x.get('is_ads_eligible') or '').lower()=='false' for x in rows) else 'FAIL',
+        'openai_quality_coverage':quality,
         'errors':errors
     }
     REPORT.parent.mkdir(parents=True,exist_ok=True)

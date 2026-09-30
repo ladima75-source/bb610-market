@@ -54,11 +54,11 @@ def money(v):
     return (f'{int(v):,}'.replace(',',' ') if float(v).is_integer() else f'{v:,.2f}'.replace(',',' ').replace('.',','))+' грн'
 
 def replace_div(body,class_name,value):
-    pat=re.compile(rf'(<div\\s+class=["\\']{re.escape(class_name)}["\\']>).*?(</div>)',re.I|re.S)
+    pat=re.compile(r"(<div\\s+class=[\"']"+re.escape(class_name)+r"[\"']>).*?(</div>)",re.I|re.S)
     return pat.sub(lambda m:m.group(1)+value+m.group(2),body,count=1)
 
 def patch_product_schema(body,mutator):
-    pat=re.compile(r'<script[^>]+type=["\\']application/ld\\+json["\\'][^>]*>(.*?)</script>',re.I|re.S)
+    pat=re.compile(r"<script[^>]+type=[\"']application/ld\\+json[\"'][^>]*>(.*?)</script>",re.I|re.S)
     found=False
     def repl(m):
         nonlocal found
@@ -106,7 +106,7 @@ def family_patch(body,p):
 def family_assert(body,p):
     active=[s for s in (p.get('skus') or []) if is_saleable(s)]
     schemas=[]
-    for raw in re.findall(r'<script[^>]+type=["\\']application/ld\\+json["\\'][^>]*>(.*?)</script>',body,re.I|re.S):
+    for raw in re.findall(r"<script[^>]+type=[\"']application/ld\\+json[\"'][^>]*>(.*?)</script>",body,re.I|re.S):
         try:schemas.append(json.loads(raw))
         except Exception:pass
     product=next((x for x in schemas if x.get('@type')=='Product'),None)

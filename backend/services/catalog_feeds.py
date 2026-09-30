@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import io
+import re
 import time
 from typing import Any
 
@@ -137,7 +138,24 @@ def _description(product: dict, sku: dict) -> str:
     return " ".join(parts)[:5000]
 
 
+def _variant_token(value: str) -> str:
+    s = _text(value).lower().replace(",", ".")
+    for src, dst in (("мл", "ml"), ("кг", "kg"), ("шт.", "pcs"), ("шт", "pcs"), ("л", "l"), ("г", "g")):
+        s = s.replace(src, dst)
+    s = "".join(s.split())
+    s = re.sub(r"[^a-z0-9.]+", "-", s).replace(".", "-")
+    return re.sub(r"-+", "-", s).strip("-")
+
+
 def _link(product: dict, sku: dict) -> str:
+    # Prefer the exact, crawlable SKU PDP when V5 provides a stable product slug
+    # and a user-facing package/variant label. This keeps Google/Meta/OpenAI
+    # channel links aligned with the static Product + Offer page.
+    slug = _text(product.get("product_slug") or product.get("slug"))
+    variant = _variant_token(_text(sku.get("variant") or sku.get("package_label")))
+    if slug and variant:
+        return f"{SITE}/products/{slug}-{variant}/"
+
     value = _text(
         sku.get("url")
         or product.get("canonical_product_url")

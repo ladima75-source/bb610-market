@@ -306,7 +306,7 @@ jobs:
           assert len(rows)==1
           row=rows[0]
           assert row['item_id']=='SKU-1'
-          assert row['url']=='https://market.bb610.com.ua/products/megafol-1l/'
+          assert row['url']=='https://market.bb610.com.ua/products/megafol-1l/?utm_source=chatgpt&utm_medium=product_feed&utm_campaign=product_discovery'
           assert row['availability']=='in_stock'
           assert row['price']=='999.00 UAH'
           assert row['seller_name']=='BB610 Market'

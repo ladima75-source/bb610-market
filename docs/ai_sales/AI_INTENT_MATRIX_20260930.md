@@ -122,6 +122,27 @@ Cross-engine rule: every commercial intent is prepared for ChatGPT, Google Gemin
 | AI-107 | direct product | Actiwin 20-5-10 купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/actiwin-20-5-10-22-7kg/ | READY | uncovered direct-product intent |
 | AI-108 | direct product | Nitrate Balancer Kemira Баланс купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/kemira-balans-nitrate-balancer-100ml/ | READY | uncovered direct-product intent |
 
+| AI-109 | comparison | Brexil Duo чи Kendal TE чи Valagro EDTA 5SG різниця | ChatGPT / Gemini / Claude | compare specialized micronutrient products | /guides/specialized-micronutrients-comparison/ | OPTIMIZED | new specialized micronutrient source |
+| AI-110 | direct product | Brexil Duo купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/brexil-duo-5kg/ | READY | direct purchase intent |
+| AI-111 | direct product | Kendal TE купити Україна | ChatGPT / Gemini / Claude | product + seller | /products/kendal-te/ | READY | direct purchase intent |
+| AI-112 | direct product | Valagro EDTA 5SG купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/valagro-edta-5sg-1kg/ | READY | direct purchase intent |
+| AI-113 | comparison | Кеміра Зав'язь 0-52-34 чи Haifa MKP 0-52-34 різниця | ChatGPT / Gemini / Claude | same-formula product comparison | /guides/npk-0-52-34-comparison/ | OPTIMIZED | new 0-52-34 comparison source |
+| AI-114 | direct product | Кеміра Зав'язь 0-52-34 купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/kemira-zav-yaz-5g/ | READY | direct purchase intent |
+| AI-115 | comparison | Osmocote Granula-MAX чи Agroblen Granula-MAX 5-6M різниця | ChatGPT / Gemini / Claude | compare formula + portion format | /guides/controlled-release-tablets-5-6m-comparison/ | OPTIMIZED | new controlled-release tablet source |
+| AI-116 | direct product | Osmocote Granula-MAX 14-8-11 5-6M купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/osmocote-granula-max-14-8-11-te-56m-10pcs/ | READY | direct purchase intent |
+| AI-117 | direct product | MASTER 18-18-18 купити Україна | ChatGPT / Gemini / Claude | product + seller + offers | /products/master-npk-18-18-18-1kg/ | READY | direct purchase intent |
+| AI-118 | direct product | MASTER 17-6-18 купити Україна | ChatGPT / Gemini / Claude | product + seller + offers | /products/master-npk-17-6-18-1kg/ | READY | direct purchase intent |
+| AI-119 | direct product | PLANTAFOL 10-54-10 купити Україна | ChatGPT / Gemini / Claude | product + seller + offers | /products/plantafol-10-54-10-1kg/ | READY | direct purchase intent |
+| AI-120 | direct product | PLANTAFOL 5-15-45 купити Україна | ChatGPT / Gemini / Claude | product + seller + offers | /products/plantafol-5-15-45-1kg/ | READY | direct purchase intent |
+| AI-121 | direct product | PLANTAFOL 0-25-50 купити Україна | ChatGPT / Gemini / Claude | product + seller + offers | /products/plantafol-0-25-50-25g/ | READY | direct purchase intent |
+| AI-122 | direct product | Osmocote Potassium 12-8-19 3-4M купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/osmocote-potassium-12-8-19-34m-1kg/ | READY | direct purchase intent |
+| AI-123 | direct product | Osmocote Landscape 16-9-12 3-4M купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/osmocote-landscape-16-9-12-34m-1kg/ | READY | direct purchase intent |
+| AI-124 | direct product | Osmocote Start 11-11-17 1.5M купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/osmocote-start-11-11-17-1-5m-1kg/ | READY | direct purchase intent |
+| AI-125 | direct product | Osmocote Bloom 12-7-18 2-3M купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/osmocote-bloom-12-7-18-23m-1kg/ | READY | direct purchase intent |
+| AI-126 | direct product | Osmocote Quick Start 22-5-6 4-5M купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/osmocote-quick-start-22-5-6-45m-1kg/ | READY | direct purchase intent |
+| AI-127 | direct product | Кеміра для газону 12-11-18 купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/kemira-dlya-hazonu-npk-12-11-18-1kg/ | READY | direct purchase intent |
+| AI-128 | direct product | Ерайз Miller регулятор росту купити Україна | ChatGPT / Gemini / Claude | exact sellable offer with label caveat | /products/eraiz-100ml/ | READY | direct purchase intent |
+
 ## Test rule
 For every query record:
 1. platform and date;

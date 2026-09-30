@@ -1,2 +1,2 @@
-openai-market-target-gate-20260930
-requested_at=2026-09-30T14:04:00+03:00
+openai-feed-quality-coverage-20260930
+requested_at=2026-09-30T14:08:00+03:00

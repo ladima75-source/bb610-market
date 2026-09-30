@@ -55,6 +55,17 @@ def _variant_token(value: str) -> str:
     return re.sub(r"-+", "-", s).strip("-")
 
 
+def _openai_image_url(value: str) -> str:
+    url = str(value or "").strip()
+    aliases = {
+        "https://market.bb610.com.ua/assets/img/v5/media/146dbd278150498ae157.webp":
+            "https://market.bb610.com.ua/assets/img/v5/media/146dbd278150498ae157.jpg",
+        "https://market.bb610.com.ua/assets/img/v5/media/ad3434331aae65aec38d.webp":
+            "https://market.bb610.com.ua/assets/img/v5/media/ad3434331aae65aec38d.png",
+    }
+    return aliases.get(url, url)
+
+
 def _exact_sku_url(base: dict) -> str:
     slug = str(base.get("product_slug") or "").strip()
     variant = _variant_token(str(base.get("variant") or ""))
@@ -96,7 +107,7 @@ def rows(commerce_override: dict | None = None) -> list[dict]:
             "brand": str(base.get("brand") or "").strip(),
             "seller_name": SELLER_NAME,
             "seller_url": SELLER_URL,
-            "image_url": str(base.get("image_link") or "").strip(),
+            "image_url": _openai_image_url(base.get("image_link")),
             "availability": _availability(str(availability_raw or "")),
             "price": str(base.get("price") or "").strip(),
             "group_id": group_id if has_variations else "",

@@ -1,4 +1,5 @@
 {
-  "action": "health",
-  "request_id": "2026-09-30-ai-sales-family-commerce-parity-health"
+  "action": "deploy",
+  "ref": "3a6faff13377d1840a07f4d60d82f6a8539943fa",
+  "request_id": "2026-09-30-openai-stable-feed-spec"
 }

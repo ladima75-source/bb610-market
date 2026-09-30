@@ -41,7 +41,11 @@ def main():
             if str(product.get('sku') or '')!=str(row.get('item_id') or ''):errors.append('sku_mismatch:'+row.get('item_id',''))
             offer=product.get('offers') or {}
             feed_price=str(row.get('price') or '').split()[0]
-            if str(offer.get('price') or '')!=feed_price:errors.append('price_mismatch:'+row.get('item_id',''))
+            try:
+                same_price=float(offer.get('price'))==float(feed_price)
+            except Exception:
+                same_price=False
+            if not same_price:errors.append('price_mismatch:'+row.get('item_id',''))
             checked+=1
         except Exception as e:
             errors.append(f'fetch:{row.get("item_id")}:{e}')

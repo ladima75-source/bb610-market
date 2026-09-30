@@ -15,6 +15,27 @@ def get(url):
     with urllib.request.urlopen(req,timeout=30) as r:
         return r.status,r.read().decode('utf-8-sig','replace')
 
+def image_magic(url):
+    try:
+        req=urllib.request.Request(
+            url,
+            headers={
+                'Range':'bytes=0-31',
+                'User-Agent':'BB610-AI-Sales-Validator/1.0',
+            },
+        )
+        with urllib.request.urlopen(req,timeout=20) as r:
+            raw=r.read(32)
+        if raw.startswith(bytes.fromhex('ffd8ff')):
+            return 'jpeg'
+        if raw.startswith(bytes.fromhex('89504e470d0a1a0a')):
+            return 'png'
+        if raw.startswith(b'RIFF') and raw[8:12]==b'WEBP':
+            return 'webp'
+        return 'unknown'
+    except Exception as e:
+        return 'error:'+str(e)[:80]
+
 def main():
     errors=[]
     status,raw=get(FEED)

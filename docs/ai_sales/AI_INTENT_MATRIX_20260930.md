@@ -52,6 +52,13 @@ Cross-engine rule: every commercial intent is prepared for ChatGPT, Google Gemin
 | AI-41 | direct product | Brexil Multi купити Україна | ChatGPT / Gemini / Claude | product + seller + exact offers | /products/brexil-multi/ | READY | uncovered direct-product intent |
 | AI-42 | direct product | Osmocote купити Україна 200 г 1 кг | ChatGPT / Gemini / Claude | product family + exact offers | /guides/osmocote-release-duration-comparison/ | READY | connect generic product query to comparison + offers |
 
+| AI-43 | comparison | Viva чи Benefit PZ чи Sweet чи Kendal чи NeoCore різниця | ChatGPT / Gemini / Claude | compare declared purpose + product paths | /guides/biostimulants-by-declared-purpose/ | OPTIMIZED | new cross-engine comparison source |
+| AI-44 | technical selection | який біостимулятор вибрати для кореневої системи чи ризосфери | ChatGPT / Gemini / Claude | shortlist by declared purpose | /guides/biostimulants-by-declared-purpose/ | OPTIMIZED | routes to Viva / NeoCore without dosage claims |
+| AI-45 | technical selection | який біостимулятор для росту плодів чи достигання | ChatGPT / Gemini / Claude | distinguish Benefit PZ vs Sweet | /guides/biostimulants-by-declared-purpose/ | OPTIMIZED | new fruit-stage selection source |
+| AI-46 | direct product | Benefit PZ купити Україна | ChatGPT / Gemini / Claude | product + seller + exact offers | /products/benefit-pz/ | READY | uncovered direct-product intent |
+| AI-47 | direct product | Kendal Valagro купити Україна | ChatGPT / Gemini / Claude | product + seller + exact offers | /products/kendal/ | READY | uncovered direct-product intent |
+| AI-48 | direct product | NeoCore купити Україна | ChatGPT / Gemini / Claude | product + seller + exact offers | /products/neocore/ | READY | uncovered direct-product intent |
+
 ## Test rule
 For every query record:
 1. platform and date;

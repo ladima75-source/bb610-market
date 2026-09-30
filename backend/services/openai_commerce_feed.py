@@ -30,6 +30,8 @@ OPENAI_FIELDS = [
     "condition",
     "product_category",
     "is_eligible_search",
+    "is_eligible_checkout",
+    "is_ads_eligible",
 ]
 
 
@@ -108,6 +110,8 @@ def rows(commerce_override: dict | None = None) -> list[dict]:
             "condition": "new",
             "product_category": str(base.get("product_type") or "").strip(),
             "is_eligible_search": "true",
+            "is_eligible_checkout": "false",
+            "is_ads_eligible": "false",
         }
         out.append(row)
 
@@ -131,6 +135,10 @@ def jsonl_feed(commerce_override: dict | None = None) -> str:
             item["listing_has_variations"] = item["listing_has_variations"] == "true"
         if "is_eligible_search" in item:
             item["is_eligible_search"] = item["is_eligible_search"] == "true"
+        if "is_eligible_checkout" in item:
+            item["is_eligible_checkout"] = item["is_eligible_checkout"] == "true"
+        if "is_ads_eligible" in item:
+            item["is_ads_eligible"] = item["is_ads_eligible"] == "true"
         if "variant_dict" in item and isinstance(item["variant_dict"], str):
             item["variant_dict"] = json.loads(item["variant_dict"])
         normalized.append(item)

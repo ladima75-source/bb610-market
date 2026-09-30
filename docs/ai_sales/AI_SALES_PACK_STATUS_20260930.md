@@ -118,3 +118,13 @@ Additional Stage 4 evidence:
 - GA4 property 555339130 returns no ChatGPT/OpenAI/Gemini/Claude/Perplexity/Copilot/Grok session-source rows for 2026-09-30 or September to date
 - exact title/site searches for the four new Stage 5 guides return no indexed results immediately after deployment
 - therefore AI visibility/indexing remains UNVERIFIED
+
+
+### Stage 5 commercial-intent block 2
+- AI-14: comparison guide /guides/ferrilene-vs-brexil-fe/
+- Ferrilene remains lead-gen where public offer is absent.
+- Brexil Fe keeps exact-SKU commerce where Offer is active.
+- AI-15/AI-16/AI-17: OPTIMIZED · UNVERIFIED.
+- Exact targets: /products/megafol-100ml/, /products/radifarm-25ml/, /products/master-13-40-13-1kg/.
+- Current external discovery tests did not return BB610 for these sampled exact-price intents.
+- Sitemap: 251 URLs.

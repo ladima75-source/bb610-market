@@ -396,3 +396,38 @@ Current external blockers:
 2. Google Search Console property is not connected to the available connector, so URL Inspection/index coverage cannot yet be queried directly.
 3. OpenAI merchant application cannot be truthfully submitted without the real applicant identity fields and, separately, Ukraine shopping/feed market availability remains unsupported for standard onboarding.
 4. BB610 Market Meta connector sessions for Instagram/Facebook are invalidated after a password/session security change; no entity data is changed from failed reads.
+
+
+### Stage 4/5 crawl-surface cleanup checkpoint — 2026-09-30
+
+Sitemap indexability contract:
+- final sitemap URL count: 249.
+- local targets checked: 249/249.
+- duplicate URLs: 0.
+- missing local targets: 0.
+- noindex URLs in sitemap: 0.
+- Sitemap Indexability CI: PASS.
+
+Resolved crawl conflicts:
+- removed noindex category /categories/protection/ from sitemap.
+- removed noindex family PDPs /products/switch-62-5-wg/, /products/aktara-25-wg/ and /products/control-dmp/ from sitemap.
+- product/category data were not deleted; only contradictory sitemap discovery entries were removed.
+
+Crawlable category surface audit:
+- indexable categories audited: nutrition, biostimulation, containers.
+- static product links checked: 37.
+- missing product targets: 0.
+- noindex product targets: 0.
+- canonical mismatches: 0.
+- test artifacts: 0.
+- stale crawlable BB610 TEST ORDER entry was removed from biostimulation category while BB610-TEST-ORDER-001 remains correctly excluded in Product Master V5 as exclude_test.
+
+Internal discovery:
+- nutrition category links to MASTER comparison, high-phosphorus comparison and pack-size guides.
+- biostimulation category links to abiotic-stress/Megafol, pre-planting selection and pack-size guides.
+- changed-only IndexNow submissions for both category updates were accepted with HTTP 200.
+- automatic changed-only IndexNow reports are retained as workflow artifacts and no longer create follow-up commits.
+
+Current external discovery state:
+- exact public searches for BB610 Market + Megafol 100 ml, Radifarm 25 ml, MASTER 13-40-13 1 kg and the BB610 guide hub still did not return BB610 in the tested public search provider.
+- this keeps Stage 4 external discovery UNVERIFIED; IndexNow acceptance is not treated as indexing proof.

@@ -330,3 +330,21 @@ Result:
 
 Interpretation:
 Merchant has not ingested the current exact-SKU link revision. Stage 4 Merchant exact-SKU ingestion remains UNVERIFIED/STALE even though feed parity itself is PASS.
+
+
+## Crawl-surface + post-IndexNow retest checkpoint — 2026-09-30
+
+Crawl surface:
+- sitemap indexability audit PASS: 249 URLs, 0 duplicates, 0 missing local targets, 0 noindex URLs.
+- indexable category static-link audit PASS: 37 links, 0 missing, 0 noindex targets, 0 canonical mismatches, 0 test artifacts.
+- stale BB610 TEST ORDER crawl entry removed from biostimulation category.
+- noindex protection/control pages removed from sitemap only; underlying internal/test data was not deleted.
+
+Independent public search retest after IndexNow:
+- "BB610 Market" Megafol 100 мл: no BB610 result observed.
+- "BB610 Market" Radifarm 25 мл: no BB610 result observed.
+- "BB610 Market" MASTER 13-40-13 1 кг: no BB610 result observed.
+- "Довідник BB610 Market": no BB610 result observed.
+
+Interpretation:
+The public search layer still has not surfaced the new BB610 discovery URLs. This is external indexing latency/state, not evidence of a current on-site crawl/indexability failure.

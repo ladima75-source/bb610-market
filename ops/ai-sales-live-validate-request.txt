@@ -8,3 +8,4 @@ requested_at=2026-09-30T14:20:00+03:00
 2026-09-30T17:31:00+03:00 Validate merchant return policy entity on production
 2026-09-30T18:06:00+03:00 Validate sitemap lastmod and expose live Google feed inventory
 2026-09-30T18:12:00+03:00 Validate all 202 sitemap discovery URLs after Merchant set-diff
+2026-09-30T18:28:00+03:00 Final validation after sitemap/category crawl-surface cleanup

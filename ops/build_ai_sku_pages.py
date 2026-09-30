@@ -97,7 +97,7 @@ def main():
                 made.append({'sku_id':s.get('sku_id'),'url':url,'price':price(s),'availability':s.get('availability')})
             except Exception as e:errors.append({'sku_id':s.get('sku_id'),'error':str(e)})
     sitemap=ROOT/'sitemap.xml'; old=re.findall(r'<loc>(.*?)</loc>',sitemap.read_text(encoding='utf-8'))
-    core=[SITE+'/',SITE+'/catalog.html',SITE+'/about.html',SITE+'/contacts.html',SITE+'/delivery.html',SITE+'/payment.html',SITE+'/returns.html']
+    core=[SITE+'/',SITE+'/catalog.html',SITE+'/about.html',SITE+'/contacts.html',SITE+'/delivery.html',SITE+'/payment.html',SITE+'/returns.html',SITE+'/guides/master-13-40-13-vs-20-20-20/',SITE+'/guides/plantafol-20-20-20-vs-master-20-20-20/']
     urls=list(dict.fromkeys(core+old+[x['url'] for x in made]))
     sitemap.write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{esc(u)}</loc></url>\n' for u in urls)+'</urlset>\n',encoding='utf-8')
     report={'status':'PASS' if not errors else 'FAIL','generated':len(made),'errors':errors,'items':made}

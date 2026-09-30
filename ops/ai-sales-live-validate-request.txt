@@ -1,2 +1,2 @@
-openai-image-format-audit-20260930
-requested_at=2026-09-30T14:12:00+03:00
+openai-image-magic-audit-20260930
+requested_at=2026-09-30T14:16:00+03:00

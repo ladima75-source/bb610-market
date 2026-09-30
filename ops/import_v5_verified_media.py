@@ -38,7 +38,11 @@ def resolve_image_url(row: dict) -> str:
 
     req = urllib.request.Request(
         source_page,
-        headers={"User-Agent": "BB610-V5-verified-media-import/1.0"},
+        headers={
+            "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/154 Safari/537.36",
+            "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+            "Accept-Language":"uk-UA,uk;q=0.9,en;q=0.8",
+        },
     )
     with urllib.request.urlopen(req, timeout=45) as response:
         raw = response.read(4 * 1024 * 1024 + 1)
@@ -96,7 +100,11 @@ def main() -> None:
         image_url = resolve_image_url(row)
         req = urllib.request.Request(
             image_url,
-            headers={"User-Agent": "BB610-V5-verified-media-import/1.0"},
+            headers={
+            "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/154 Safari/537.36",
+            "Accept":"image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+            "Referer":source_page,
+        },
         )
         with urllib.request.urlopen(req, timeout=45) as response:
             data = response.read(8 * 1024 * 1024 + 1)

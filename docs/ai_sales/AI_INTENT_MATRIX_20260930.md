@@ -18,10 +18,10 @@ Status: Stage 2 validated; used for Stage 4/5 discovery tests.
 | AI-11 | technical selection | водорозчинне NPK 15-5-30 купити Україна | Gemini / ChatGPT | product | /products/master-15-5-30/ | READY | test |
 | AI-12 | technical selection | добриво 0-60-20 для фертигації Україна | Gemini / ChatGPT | product | /products/pekacid-0-60-20/ | READY | test |
 | AI-13 | technical selection | сульфат калію водорозчинний де купити | Gemini / ChatGPT | product | /products/solupotasse/ | READY | test |
-| AI-14 | technical selection | хелат заліза для рослин купити Україна | ChatGPT / Gemini | category/product options | /products/ferrilene/ + /products/brexil-fe/ | READY | add comparison context |
-| AI-15 | price | ціна Megafol 100 мл Україна | Gemini / ChatGPT | exact offer | exact SKU PDP from ACP feed | READY | verify exact variant in AI |
-| AI-16 | price | ціна Radifarm 25 мл | Gemini / ChatGPT | exact offer | exact SKU PDP from ACP feed | READY | verify exact variant in AI |
-| AI-17 | price | MASTER 13-40-13 1 кг ціна | Gemini / ChatGPT | exact offer | exact SKU PDP from ACP feed | READY | verify exact variant in AI |
+| AI-14 | technical selection | хелат заліза для рослин купити Україна | ChatGPT / Gemini | product options by application method | /guides/ferrilene-vs-brexil-fe/ | OPTIMIZED | verify citation/indexing |
+| AI-15 | price | ціна Megafol 100 мл Україна | Gemini / ChatGPT | exact offer | /products/megafol-100ml/ | OPTIMIZED · UNVERIFIED | current discovery test returned competitors, not BB610 |
+| AI-16 | price | ціна Radifarm 25 мл | Gemini / ChatGPT | exact offer | /products/radifarm-25ml/ | OPTIMIZED · UNVERIFIED | current discovery test returned no BB610 exact result |
+| AI-17 | price | MASTER 13-40-13 1 кг ціна | Gemini / ChatGPT | exact offer | /products/master-13-40-13-1kg/ | OPTIMIZED · UNVERIFIED | current discovery test returned competitors, not BB610 |
 | AI-18 | local | де купити професійні добрива у Дніпрі | ChatGPT / Gemini | local seller | / + /contacts.html | OPTIMIZED | verify local entity citation |
 | AI-19 | local | магазин добрив Дніпро доставка по Україні | ChatGPT / Gemini | local seller | /contacts.html | OPTIMIZED | verify local entity citation |
 | AI-20 | alternative | аналог MASTER 13-40-13 з високим фосфором | ChatGPT / Claude | alternatives with non-equivalence caveat | /guides/high-phosphorus-alternatives-master-13-40-13/ | OPTIMIZED | verify citation/indexing |

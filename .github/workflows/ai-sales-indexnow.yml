@@ -27,9 +27,34 @@ jobs:
           INDEXNOW_BEFORE: ${{ github.event.before }}
           INDEXNOW_AFTER: ${{ github.sha }}
         run: python ops/indexnow_submit.py
+      - name: Upload IndexNow report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: indexnow-submission-${{ github.run_id }}
+          path: docs/ai_sales/INDEXNOW_SUBMISSION_20260930.json
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Commit submission report
         if: always()
         run: |
+          mode="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('docs/ai_sales/INDEXNOW_SUBMISSION_20260930.json')
+          if not p.is_file():
+              print('')
+          else:
+              try:
+                  print(json.loads(p.read_text(encoding='utf-8')).get('submission_mode',''))
+              except Exception:
+                  print('')
+          PY
+          )"
+          if [ "$mode" = "changed_only" ]; then
+            echo "Automatic changed-only submission report retained as workflow artifact; no repository commit."
+            exit 0
+          fi
           set -euo pipefail
           git add docs/ai_sales/INDEXNOW_SUBMISSION_20260930.json || true
           if git diff --cached --quiet; then

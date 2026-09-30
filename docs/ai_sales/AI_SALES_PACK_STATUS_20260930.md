@@ -345,3 +345,54 @@ External identity source checkpoint:
 - Instagram BB610 Market connector token is invalidated after a password/session security change.
 - Facebook BB610 Market connector token is invalidated for the same reason.
 - Organization.sameAs is not changed from these failed connector reads.
+
+
+### Stage 4/5 checkpoint — sitemap, Merchant ingestion, IndexNow automation, OpenAI onboarding
+
+Production validation:
+- full live validation: PASS
+- exact-SKU PDPs checked: 163
+- grouped ProductGroup variants checked: 139
+- guide hub: PASS
+- guide pages: 8/8
+- merchant return policy: PASS
+- OpenAI image format: PASS
+- sitemap lastmod: PASS
+- sitemap discovery URLs checked: 202/202
+- validation errors: 0
+
+Google Merchant exact set comparison:
+- current production Google feed: 163 IDs
+- connected Merchant Center: 163 IDs
+- common IDs: 163
+- missing/extra IDs: 0/0
+- price mismatches: 0
+- Merchant link mismatches: 163/163
+- production feed links: exact-SKU /products/... URLs
+- Merchant links: legacy product.html?id=... URLs
+- Merchant update dates: 162 rows at 2026-09-29T21:00:00Z; Benefit PZ 100 ml at 2026-09-28T21:00:00Z
+- conclusion: datasource 10742663120 has stale link ingestion; assortment and price parity are intact.
+
+IndexNow:
+- ownership key HTTP 200 and exact key-body match
+- Bing prime HTTP 200
+- manual full submission: 202 URLs, HTTP 200, accepted
+- automatic changed-only test after updating /categories/nutrition/: 1 URL submitted, HTTP 200, accepted
+- Catalog filters CI for the category change: PASS
+- deployed nutrition category now links to three relevant AI intent guides
+- automatic changed-only reports are retained as workflow artifacts instead of committing to main, preventing unnecessary Pages deploy churn
+- manual/full control submissions continue to persist the report in the repository
+
+OpenAI merchant/product feed status rechecked against official current documentation on 2026-09-30:
+- product-feed onboarding in ChatGPT is available to approved partners;
+- the merchant application still requires First name, Last name, Work title, LinkedIn, Work email, Company, Headquarter country, merchant website, primary product category and feed size;
+- Shopping is currently live for users in the U.S.;
+- standard product-feed upload documentation currently targets the U.S.; market columns do not independently activate Ukraine without an approved market setup;
+- BB610 target_countries therefore remains intentionally blank and openai_market_targeting remains BLOCKED_MARKET_TARGET;
+- no fake UA/US market declaration is allowed.
+
+Current external blockers:
+1. Google Merchant datasource must ingest the already-correct exact-SKU links.
+2. Google Search Console property is not connected to the available connector, so URL Inspection/index coverage cannot yet be queried directly.
+3. OpenAI merchant application cannot be truthfully submitted without the real applicant identity fields and, separately, Ukraine shopping/feed market availability remains unsupported for standard onboarding.
+4. BB610 Market Meta connector sessions for Instagram/Facebook are invalidated after a password/session security change; no entity data is changed from failed reads.

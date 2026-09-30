@@ -1,0 +1,33 @@
+name: BB610 AI Sales IndexNow Submit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/indexnow-submit-request.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Submit changed AI Sales URLs to IndexNow
+        run: python ops/indexnow_submit.py
+      - name: Commit submission report
+        if: always()
+        run: |
+          set -euo pipefail
+          git add docs/ai_sales/INDEXNOW_SUBMISSION_20260930.json || true
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name "bb610-ai-sales-bot"
+          git config user.email "bb610-ai-sales-bot@users.noreply.github.com"
+          git commit -m "Record IndexNow submission result"
+          git push origin HEAD:main

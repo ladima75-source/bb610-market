@@ -1,4 +1,4 @@
 {
-  "action": "health",
-  "request_id": "2026-09-30-openai-market-target-health"
+  "action": "deploy",
+  "ref": "ce0371ff03fbf50c53a40be9b7b63b1a967b508a"
 }

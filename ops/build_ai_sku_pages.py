@@ -30,6 +30,19 @@ def price(s):
 def is_saleable(s):
     return bool(s.get('commerce_enabled')) and price(s) is not None and text(s.get('availability')) in SELLABLE
 
+def sku_group_id(p,s):
+    attrs=s.get('attributes') if isinstance(s.get('attributes'),dict) else {}
+    lowered={str(k).strip().casefold():v for k,v in attrs.items()}
+    for key in ('item_group_id','related_group_id'):
+        value=text(lowered.get(key))
+        if value:return value
+    return text(p.get('product_id'))
+
+def grouped_saleable_variants(p,s):
+    gid=sku_group_id(p,s)
+    rows=[x for x in (p.get('skus') or []) if is_saleable(x) and sku_group_id(p,x)==gid]
+    return gid,rows
+
 def image_url(p,s):
     rows=(s.get('media') or [])+(p.get('media') or [])
     m=next((x for x in rows if x.get('is_primary') and x.get('path')),None) or next((x for x in rows if x.get('path')),None)
@@ -135,6 +148,30 @@ def page(template,p,s):
     attrs=s.get('attributes') if isinstance(s.get('attributes'),dict) else {}
     schema={'@context':'https://schema.org','@type':'Product','name':f'{name} {pkg}'.strip(),'description':desc,'url':url,'sku':sid,'image':[img] if img else [],'brand':{'@type':'Brand','name':brand},'offers':{'@type':'Offer','url':url,'priceCurrency':'UAH','price':f'{pr:g}','availability':availability(av),'itemCondition':'https://schema.org/NewCondition'}}
     if manufacturer:schema['manufacturer']={'@type':'Organization','name':manufacturer}
+    gid,group_rows=grouped_saleable_variants(p,s)
+    group_schema=None
+    if gid and len(group_rows)>1:
+        slug=text(p.get('slug') or p.get('product_id'))
+        group_anchor=f'{SITE}/products/{slug}/#product-group'
+        schema['size']=pkg
+        schema['inProductGroupWithID']=gid
+        schema['isVariantOf']={'@type':'ProductGroup','@id':group_anchor}
+        group_schema={
+            '@context':'https://schema.org',
+            '@type':'ProductGroup',
+            '@id':group_anchor,
+            'name':name,
+            'description':desc,
+            'brand':{'@type':'Brand','name':brand},
+            'productGroupID':gid,
+            'variesBy':['https://schema.org/size'],
+            'hasVariant':[
+                {'@type':'Product','url':SITE+route(p,row)}
+                for row in group_rows
+            ],
+        }
+        if manufacturer:
+            group_schema['manufacturer']={'@type':'Organization','name':manufacturer}
     gtin=text(attrs.get('gtin_ean') or attrs.get('gtin') or attrs.get('ean') or attrs.get('barcode'))
     if gtin:schema['gtin']=gtin
     if s.get('manufacturer_sku'):schema['mpn']=text(s.get('manufacturer_sku'))
@@ -145,7 +182,10 @@ def page(template,p,s):
     t=re.sub(r'<title>.*?</title>',f'<title>{esc(title)}</title>',t,count=1,flags=re.S|re.I)
     for pat in (r'<meta name="description"[^>]*>',r'<link rel="canonical"[^>]*>',r'<meta name="robots"[^>]*>',r'<meta property="og:[^"]+"[^>]*>',r'<script type="application/ld\+json">.*?</script>'):
         t=re.sub(pat,'',t,flags=re.S|re.I)
-    meta=f'<meta name="description" content="{esc(desc[:300])}"><link rel="canonical" href="{esc(url)}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="product"><meta property="og:title" content="{esc(title)}"><meta property="og:url" content="{esc(url)}">'+(f'<meta property="og:image" content="{esc(img)}">' if img else '')+'<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False,separators=(',',':'))+'</script>'
+    schema_html='<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False,separators=(',',':'))+'</script>'
+    if group_schema:
+        schema_html+='<script type="application/ld+json">'+json.dumps(group_schema,ensure_ascii=False,separators=(',',':'))+'</script>'
+    meta=f'<meta name="description" content="{esc(desc[:300])}"><link rel="canonical" href="{esc(url)}"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="product"><meta property="og:title" content="{esc(title)}"><meta property="og:url" content="{esc(url)}">'+(f'<meta property="og:image" content="{esc(img)}">' if img else '')+schema_html
     t=t.replace('</title>','</title>'+meta,1)
     static=f'<div class="product-layout seo-static-product"><div class="product-gallery"><img src="{esc(img)}" alt="{esc(name)}" width="900" height="900"></div><div class="product-summary"><h1>{esc(name)}</h1><div class="brand">{esc(brand)}</div><div class="selected-variant">{esc(pkg)}</div><div class="price">{esc(money(pr))}</div><div class="stock">{esc(stock(av))}</div><div class="verified-line">✓ <b>BB610 VERIFIED</b><small>Product Master V5</small></div><p>{esc(desc)}</p></div></div>'
     t=t.replace('<div class="container" id="product-root"></div>',f'<div class="container" id="product-root">{static}</div>',1)

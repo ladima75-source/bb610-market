@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json, urllib.request, urllib.error, urllib.parse, time
+import json, urllib.request, urllib.error, urllib.parse, time, os, subprocess
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -40,8 +40,60 @@ def fetch(url, method="GET", data=None, headers=None):
     except Exception as e:
         return None,"",str(e)
 
+def event_changed_urls():
+    event=os.getenv("INDEXNOW_EVENT","").strip()
+    before=os.getenv("INDEXNOW_BEFORE","").strip()
+    after=os.getenv("INDEXNOW_AFTER","").strip()
+    if event=="workflow_dispatch":
+        return changed_urls(),"manual_full",[]
+    if not before or not after or set(before)=={"0"}:
+        return changed_urls(),"fallback_full",[]
+    try:
+        out=subprocess.check_output(
+            ["git","diff","--name-only",before,after],
+            cwd=ROOT,
+            text=True,
+            stderr=subprocess.STDOUT,
+        )
+        changed=[line.strip() for line in out.splitlines() if line.strip()]
+    except Exception:
+        return changed_urls(),"fallback_full",[]
+
+    urls=[]
+    for path in changed:
+        if path=="ops/indexnow-submit-request.txt":
+            return changed_urls(),"manual_full",changed
+        if path=="index.html":
+            urls.append(SITE+"/")
+            continue
+        m=re.match(r"^(products|guides|categories)/(.+)/index\.html$",path)
+        if m:
+            urls.append(f"{SITE}/{m.group(1)}/{m.group(2)}/")
+            continue
+        if path=="guides/index.html":
+            urls.append(SITE+"/guides/")
+    urls=list(dict.fromkeys(urls))
+    return urls,"changed_only",changed
+
 def main():
-    urls=changed_urls()
+    urls,submission_mode,changed_files=event_changed_urls()
+    if not urls:
+        report={
+            "status":"PASS",
+            "endpoint":ENDPOINT,
+            "host":HOST,
+            "key_location":KEY_LOCATION,
+            "submitted_urls":0,
+            "accepted":True,
+            "submission_mode":submission_mode,
+            "changed_files":changed_files,
+            "note":"No IndexNow-eligible page URLs changed in this push.",
+            "urls":[],
+        }
+        REPORT.parent.mkdir(parents=True,exist_ok=True)
+        REPORT.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
+        print(json.dumps({k:v for k,v in report.items() if k not in {"urls","changed_files"}},ensure_ascii=False))
+        return
 
     key_code,key_body,key_error=fetch(KEY_LOCATION,headers={"User-Agent":"BB610-AI-Sales-IndexNow/1.0"})
     key_verified=(key_code==200 and key_body.strip()==KEY)
@@ -82,6 +134,8 @@ def main():
         "host":HOST,
         "key_location":KEY_LOCATION,
         "submitted_urls":len(urls),
+        "submission_mode":submission_mode,
+        "changed_files":changed_files,
         "key_http_code":key_code,
         "key_body_match":key_verified,
         "key_error":key_error,

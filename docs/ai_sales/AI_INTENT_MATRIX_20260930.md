@@ -59,6 +59,27 @@ Cross-engine rule: every commercial intent is prepared for ChatGPT, Google Gemin
 | AI-47 | direct product | Kendal Valagro купити Україна | ChatGPT / Gemini / Claude | product + seller + exact offers | /products/kendal/ | READY | uncovered direct-product intent |
 | AI-48 | direct product | NeoCore купити Україна | ChatGPT / Gemini / Claude | product + seller + exact offers | /products/neocore/ | READY | uncovered direct-product intent |
 
+| AI-49 | comparison | Radifarm чи Kendal Root чи NeoCore що вибрати для кореневої системи | ChatGPT / Gemini / Claude | compare declared root-zone purpose + product paths | /guides/root-biostimulants-comparison/ | OPTIMIZED | new cross-engine root-zone comparison |
+| AI-50 | technical selection | що використовують після пересадки для коренів Radifarm чи інше | ChatGPT / Gemini / Claude | distinguish transplant vs general root support | /guides/root-biostimulants-comparison/ | OPTIMIZED | intent linked to active products |
+| AI-51 | technical selection | біостимулятор для кореневої системи при стресових умовах | ChatGPT / Gemini / Claude | Kendal Root / NeoCore context | /guides/root-biostimulants-comparison/ | OPTIMIZED | factual task routing |
+| AI-52 | direct product | Кеміра Укорінювач купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/kemira-ukorinyuvach-100ml/ | READY | direct purchase intent |
+| AI-53 | direct product | Actiwave Valagro купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/actiwave-1l/ | READY | direct purchase intent |
+| AI-54 | direct product | Kendal Root купити Україна | ChatGPT / Gemini / Claude | product + seller + offers | /products/kendal-root/ | READY | direct purchase intent |
+| AI-55 | direct product | BlackJak купити Україна | ChatGPT / Gemini / Claude | product + seller + offers | /products/blackjak/ | READY | direct purchase intent |
+| AI-56 | comparison | гумінові чи фульвові кислоти Agriflex Humic Fulvix Bio різниця | ChatGPT / Gemini / Claude | composition comparison + product paths | /guides/humic-fulvic-products-comparison/ | OPTIMIZED | new cross-engine humic/fulvic source |
+| AI-57 | direct product | Agriflex Humic гумат калію купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/agriflex-humic-humat-kaliyu-1kg/ | READY | direct purchase intent |
+| AI-58 | direct product | Agriflex Fulvix купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/agriflex-fulvix-fulvokysloty-50-1kg/ | READY | direct purchase intent |
+| AI-59 | direct product | Agriflex Bio купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/agriflex-bio-1kg/ | READY | direct purchase intent |
+| AI-60 | comparison | Ferrilene 4.8 чи Ferrilene Trium чи EDTA Fe чи Brexil Fe різниця | ChatGPT / Gemini / Claude | iron-form comparison + product paths | /guides/iron-chelates-comparison/ | OPTIMIZED | new cross-engine iron source |
+| AI-61 | direct product | Ferrilene Trium купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/ferrilen-trium-1kg/ | READY | direct purchase intent |
+| AI-62 | direct product | Valagro EDTA Fe 13 купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/valagro-edta-fe-13-5kg/ | READY | direct purchase intent |
+| AI-63 | direct product | Ferrilene 4.8 ortho ortho купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/ferrilene-4-8-orto-orto-10g/ | READY | direct purchase intent |
+| AI-64 | comparison | Haifa MKP чи PeKacid чи сульфат калію SoluPotasse різниця | ChatGPT / Gemini / Claude | P/K composition comparison with non-equivalence caveat | /guides/pk-potassium-phosphorus-comparison/ | OPTIMIZED | new cross-engine PK source |
+| AI-65 | direct product | Haifa MKP 0-52-34 купити Україна | ChatGPT / Gemini / Claude | exact sellable offer | /products/haifa-mkp-0-52-34-200g/ | READY | direct purchase intent |
+| AI-66 | comparison | MKP 0-52-34 чи PeKacid 0-60-20 що відрізняється | ChatGPT / Gemini / Claude | PK comparison + acidification caveat | /guides/pk-potassium-phosphorus-comparison/ | OPTIMIZED | task-oriented comparison |
+| AI-67 | technical selection | сульфат калію чи монокалійфосфат що вибрати | ChatGPT / Gemini / Claude | distinguish K+S vs P+K products | /guides/pk-potassium-phosphorus-comparison/ | OPTIMIZED | non-equivalent selection source |
+| AI-68 | direct product | сульфат магнію водорозчинний купити Україна | ChatGPT / Gemini / Claude | exact product offer | /products/sulfat-mahniyu-1kg/ | READY | uncovered direct-product intent |
+
 ## Test rule
 For every query record:
 1. platform and date;

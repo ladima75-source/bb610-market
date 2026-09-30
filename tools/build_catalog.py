@@ -318,7 +318,7 @@ urls += [SITE+'/products/'+p['slug']+'/' for p in seo_products if not p.get('int
 urls += [SITE+s['url'] for s in master['skus'] if sku_indexable(s) and not s.get('internal_only') and not prod[s['product_id']].get('internal_only')]
 sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{esc(u)}</loc></url>\n' for u in urls)+'</urlset>\n'
 (ROOT/'sitemap.xml').write_text(sitemap,encoding='utf-8')
-(ROOT/'robots.txt').write_text(f'''User-agent: *\nAllow: /\nDisallow: /cart.html\nDisallow: /checkout.html\nDisallow: /compare.html\nDisallow: /favorites.html\nDisallow: /tools/\n\nSitemap: {SITE}/sitemap.xml\n''',encoding='utf-8')
+(ROOT/'robots.txt').write_text(f'''# BB610 Market crawler policy — AI discovery enabled\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: OAI-AdsBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: Claude-SearchBot\nAllow: /\n\nUser-agent: Claude-User\nAllow: /\n\nUser-agent: *\nAllow: /\nDisallow: /cart.html\nDisallow: /checkout.html\nDisallow: /compare.html\nDisallow: /favorites.html\nDisallow: /tools/\n\nSitemap: {SITE}/sitemap.xml\n''',encoding='utf-8')
 
 # ---------- page-level SEO defaults ----------
 def inject_once(path, needle, replacement):

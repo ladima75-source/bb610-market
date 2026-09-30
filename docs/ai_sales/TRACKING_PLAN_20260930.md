@@ -60,3 +60,28 @@ CI passed:
 Next:
 - create GA4 custom dimension for event parameter ai_source if not already configured in GA4 UI
 - verify first real referral from ChatGPT/Gemini/Claude after Stage 4 discovery tests
+
+
+## Checkpoint 2026-09-30 — AI referral robustness
+
+Verified:
+- domain-form UTM sources are normalized in addition to short source names:
+  chatgpt.com / chat.openai.com / openai.com,
+  gemini.google.com,
+  claude.ai,
+  perplexity.ai,
+  copilot.microsoft.com,
+  grok.com.
+- referrer fallback remains unchanged.
+- analytics version: stage6-v10-ai-attribution.
+- Meta Tracking CI: PASS.
+- Google Ads launch gate: PASS.
+- Google Ads campaigns/settings were not changed.
+
+GA4 connector state:
+- ai_source is not exposed as a registered custom-dimension field in the connected GA4 schema, so custom-dimension registration is not confirmed.
+- event query for ai_referral_visit on 2026-09-30 returned no rows.
+- standard session source/medium remains the fallback verification path for real AI referrals.
+
+Search Console:
+- Windsor exposes the searchconsole connector, but no Search Console account/property is currently connected through it.

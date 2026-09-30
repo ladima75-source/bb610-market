@@ -9,6 +9,8 @@ SITE='https://market.bb610.com.ua'
 FEED='https://api.market.bb610.com.ua/api/v1/catalog/feeds/openai-products.csv'
 GOOGLE_FEED='https://api.market.bb610.com.ua/api/v1/catalog/feeds/google-merchant.csv'
 REPORT=ROOT/'docs/ai_sales/AI_SALES_STAGE2_LIVE_VALIDATION.json'
+GOOGLE_VERIFICATION_PATH='/google61cfaf68d12ddac6.html'
+GOOGLE_VERIFICATION_BODY='google-site-verification: google61cfaf68d12ddac6.html'
 
 GUIDE_PATHS=[
     'abiotic-stress-and-megafol',
@@ -132,6 +134,53 @@ def main():
             sitemap_lastmod='PASS'
     except Exception as e:
         errors.append('sitemap_validation:'+str(e))
+
+    google_site_verification='FAIL'
+    try:
+        gcode,gbody=get(SITE+GOOGLE_VERIFICATION_PATH)
+        if gcode!=200:
+            errors.append(f'google_site_verification_http={gcode}')
+        elif gbody.strip()!=GOOGLE_VERIFICATION_BODY:
+            errors.append('google_site_verification_body_mismatch')
+        else:
+            google_site_verification='PASS'
+    except Exception as e:
+        errors.append('google_site_verification_fetch:'+str(e))
+
+    sitemap_status='FAIL'
+    sitemap_exact_sku_lastmod=0
+    sitemap_guides_lastmod=0
+    try:
+        scode,sbody=get(SITE+'/sitemap.xml')
+        if scode!=200:
+            errors.append(f'sitemap_http={scode}')
+        else:
+            expected_exact=[str(row.get('url') or '').split('?',1)[0] for row in rows]
+            missing=[u for u in expected_exact if f'<loc>{u}</loc>' not in sbody]
+            if missing:
+                errors.append('sitemap_missing_exact_sku:'+','.join(missing[:10]))
+            else:
+                sitemap_exact_sku_lastmod=sum(
+                    1 for u in expected_exact
+                    if f'<loc>{u}</loc><lastmod>2026-09-30</lastmod>' in sbody
+                )
+                guide_urls=[SITE+'/guides/']+[f'{SITE}/guides/{slug}/' for slug in GUIDE_PATHS]
+                gmissing=[u for u in guide_urls if f'<loc>{u}</loc>' not in sbody]
+                if gmissing:
+                    errors.append('sitemap_missing_guides:'+','.join(gmissing))
+                else:
+                    sitemap_guides_lastmod=sum(
+                        1 for u in guide_urls
+                        if f'<loc>{u}</loc><lastmod>2026-09-30</lastmod>' in sbody
+                    )
+                    if sitemap_exact_sku_lastmod!=len(expected_exact):
+                        errors.append(f'sitemap_exact_sku_lastmod={sitemap_exact_sku_lastmod}/{len(expected_exact)}')
+                    elif sitemap_guides_lastmod!=len(guide_urls):
+                        errors.append(f'sitemap_guides_lastmod={sitemap_guides_lastmod}/{len(guide_urls)}')
+                    else:
+                        sitemap_status='PASS'
+    except Exception as e:
+        errors.append('sitemap_fetch:'+str(e))
 
     merchant_return_policy='FAIL'
     try:
@@ -331,6 +380,10 @@ def main():
         'expected_rows':expected,
         'pages_checked':checked,
         'grouped_pages_checked':grouped_pages_checked,
+        'google_site_verification':google_site_verification,
+        'sitemap_status':sitemap_status,
+        'sitemap_exact_sku_lastmod':sitemap_exact_sku_lastmod,
+        'sitemap_guides_lastmod':sitemap_guides_lastmod,
         'merchant_return_policy':merchant_return_policy,
         'sitemap_lastmod':sitemap_lastmod,
         'sitemap_discovery_urls_checked':sitemap_urls_checked,

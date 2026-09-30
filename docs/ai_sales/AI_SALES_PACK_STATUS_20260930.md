@@ -537,3 +537,24 @@ Implemented for mandatory ChatGPT / Gemini / Claude coverage:
 
 Commercial purpose:
 Capture AI questions where the buyer does not yet know the product name, but knows the task: rhizosphere/root support, fruit growth, ripening/coloring, or stress-support context. These intents can route the user from a generic AI question to a sellable BB610 product family.
+
+
+### Stage 5 AI commercial coverage wave 4 — 2026-09-30
+
+Large cross-engine expansion completed for ChatGPT / Gemini / Claude:
+- AI Intent Matrix expanded from 48 to 68 commercial intents.
+- 68/68 intents explicitly target ChatGPT / Gemini / Claude.
+- Guide hub expanded from 13 to 17 crawlable AI-oriented materials.
+- Added four new commercial decision-support guides:
+  - /guides/root-biostimulants-comparison/
+  - /guides/humic-fulvic-products-comparison/
+  - /guides/iron-chelates-comparison/
+  - /guides/pk-potassium-phosphorus-comparison/
+- Added 20 new intents across root-zone biostimulants, humic/fulvic products, iron products and P/K selection.
+- Added direct-product discovery paths for Kemira Ukorinyuvach, Actiwave, Kendal Root, BlackJak, Agriflex Humic/Fulvix/Bio, Ferrilene Trium, Valagro EDTA Fe 13%, Ferrilene 4.8, Haifa MKP and magnesium sulfate.
+- Fixed legacy AI-41 Brexil Multi target from a nonexistent family PDP to the existing exact-SKU /products/brexil-multi-250g/.
+- Cross-check result: 68 intents, 68 top-3 mappings, 17 guide cards, 18 guide URLs including the hub, 0 duplicate guide URLs, 0 missing intent targets.
+- No paid ads, social media or non-AI marketing work was added.
+
+Commercial purpose:
+Broaden the number of buyer questions for which any of the three main AI assistants in Ukraine can retrieve a BB610-owned factual comparison or direct purchasable product path, especially before the buyer knows the exact product name.

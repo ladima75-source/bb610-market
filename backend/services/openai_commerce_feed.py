@@ -32,6 +32,7 @@ OPENAI_FIELDS = [
     "is_eligible_search",
     "is_eligible_checkout",
     "is_ads_eligible",
+    "target_countries",
 ]
 
 
@@ -112,6 +113,9 @@ def rows(commerce_override: dict | None = None) -> list[dict]:
             "is_eligible_search": "true",
             "is_eligible_checkout": "false",
             "is_ads_eligible": "false",
+            # Intentionally blank until OpenAI confirms a supported BB610 target market.
+            # Current Stable docs list US; BB610 sells in Ukraine, so we do not fabricate US.
+            "target_countries": "",
         }
         out.append(row)
 

@@ -18,7 +18,7 @@
   function aiReferralSource(){
     try{
       const utm=String(new URL(location.href).searchParams.get('utm_source')||'').trim().toLowerCase();
-      const utmMap={'chatgpt':'chatgpt','chatgpt.com':'chatgpt','openai':'chatgpt','gemini':'gemini','claude':'claude','perplexity':'perplexity','copilot':'copilot','grok':'grok'};
+      const utmMap={'chatgpt':'chatgpt','chatgpt.com':'chatgpt','chat.openai.com':'chatgpt','openai':'chatgpt','openai.com':'chatgpt','gemini':'gemini','gemini.google.com':'gemini','claude':'claude','claude.ai':'claude','perplexity':'perplexity','perplexity.ai':'perplexity','copilot':'copilot','copilot.microsoft.com':'copilot','grok':'grok','grok.com':'grok'};
       if(utmMap[utm])return utmMap[utm];
       const host=new URL(document.referrer||'https://invalid.local').hostname.toLowerCase().replace(/^www\./,'');
       if(host==='chatgpt.com'||host==='chat.openai.com'||host.endsWith('.openai.com'))return 'chatgpt';
@@ -242,7 +242,7 @@
     configureGa4();
     configureGoogleAds();
     loadMetaPixel();
-    push('bb610_analytics_ready',{analytics_version:'stage6-v9-ai-attribution'});
+    push('bb610_analytics_ready',{analytics_version:'stage6-v10-ai-attribution'});
     const ai=aiReferralSource();
     if(ai&&!sessionStorage.getItem('bb610_ai_referral_reported')){
       sessionStorage.setItem('bb610_ai_referral_reported','1');

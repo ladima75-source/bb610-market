@@ -1,3 +1,4 @@
 2026-09-30T13:55:00+03:00
 reason=stage5-family-pdp-live-v5-parity-retry5
 2026-09-30T17:25:00+03:00 Regenerate exact SKU PDPs with ProductGroup semantics
+2026-09-30T18:50:00+03:00 Regenerate exact SKU PDPs with BreadcrumbList semantics

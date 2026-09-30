@@ -53,6 +53,75 @@ def stock(v):
 def money(v):
     return (f'{int(v):,}'.replace(',',' ') if float(v).is_integer() else f'{v:,.2f}'.replace(',',' ').replace('.',','))+' грн'
 
+def replace_div(body,class_name,value):
+    pat=re.compile(rf'(<div\\s+class=["\\']{re.escape(class_name)}["\\']>).*?(</div>)',re.I|re.S)
+    return pat.sub(lambda m:m.group(1)+value+m.group(2),body,count=1)
+
+def patch_product_schema(body,mutator):
+    pat=re.compile(r'<script[^>]+type=["\\']application/ld\\+json["\\'][^>]*>(.*?)</script>',re.I|re.S)
+    found=False
+    def repl(m):
+        nonlocal found
+        try:o=json.loads(m.group(1))
+        except Exception:return m.group(0)
+        if found or o.get('@type')!='Product':return m.group(0)
+        found=True
+        mutator(o)
+        return '<script type="application/ld+json">'+json.dumps(o,ensure_ascii=False,separators=(',',':'))+'</script>'
+    out=pat.sub(repl,body)
+    if not found:raise RuntimeError('Product JSON-LD not found')
+    return out
+
+def family_patch(body,p):
+    active=[s for s in (p.get('skus') or []) if is_saleable(s)]
+    prices=[price(s) for s in active]
+    if prices:
+        low=min(prices); high=max(prices)
+        label=money(low) if low==high else 'від '+money(low)
+        body=replace_div(body,'price',esc(label))
+        states={text(s.get('availability')) for s in active}
+        if 'in_stock' in states:stock_label='В наявності'
+        elif states & {'preorder','backorder'}:stock_label='Під замовлення'
+        elif states=={'out_of_stock'}:stock_label='Немає в наявності'
+        else:stock_label='Наявність уточнюється'
+        body=replace_div(body,'stock',esc(stock_label))
+    else:
+        body=replace_div(body,'price','Ціна уточнюється')
+        body=replace_div(body,'stock','Наявність уточнюється')
+
+    def mutate(o):
+        o['url']=SITE+'/products/'+text(p.get('slug') or p.get('product_id'))+'/'
+        if prices:
+            o['offers']={
+                '@type':'AggregateOffer',
+                'priceCurrency':text(active[0].get('currency') or 'UAH'),
+                'lowPrice':f'{min(prices):g}',
+                'highPrice':f'{max(prices):g}',
+                'offerCount':len(active),
+                'url':o['url'],
+            }
+        else:o.pop('offers',None)
+    return patch_product_schema(body,mutate)
+
+def family_assert(body,p):
+    active=[s for s in (p.get('skus') or []) if is_saleable(s)]
+    schemas=[]
+    for raw in re.findall(r'<script[^>]+type=["\\']application/ld\\+json["\\'][^>]*>(.*?)</script>',body,re.I|re.S):
+        try:schemas.append(json.loads(raw))
+        except Exception:pass
+    product=next((x for x in schemas if x.get('@type')=='Product'),None)
+    if not product:raise RuntimeError('family Product JSON-LD missing')
+    offer=product.get('offers')
+    if active:
+        if not offer or offer.get('@type')!='AggregateOffer':raise RuntimeError('family AggregateOffer missing')
+        expected=[price(s) for s in active]
+        if float(offer.get('lowPrice'))!=min(expected):raise RuntimeError('family lowPrice mismatch')
+        if float(offer.get('highPrice'))!=max(expected):raise RuntimeError('family highPrice mismatch')
+        if int(offer.get('offerCount'))!=len(active):raise RuntimeError('family offerCount mismatch')
+        if 'Ціна уточнюється' in body:raise RuntimeError('family visible price stale')
+    else:
+        if offer:raise RuntimeError('lead-gen family must not expose Offer')
+
 def fetch():
     req=urllib.request.Request(API,headers={'User-Agent':'BB610-AI-Sales/1.0'})
     with urllib.request.urlopen(req,timeout=45) as r:return json.load(r)
@@ -96,13 +165,31 @@ def main():
                 out.parent.mkdir(parents=True,exist_ok=True);out.write_text(body,encoding='utf-8')
                 made.append({'sku_id':s.get('sku_id'),'url':url,'price':price(s),'availability':s.get('availability')})
             except Exception as e:errors.append({'sku_id':s.get('sku_id'),'error':str(e)})
+    family_total=0; family_changed=0; family_errors=[]
+    for p in data.get('products') or []:
+        slug=text(p.get('slug') or p.get('product_id'))
+        if not slug:continue
+        fp=ROOT/'products'/slug/'index.html'
+        if not fp.is_file():continue
+        family_total+=1
+        try:
+            original=fp.read_text(encoding='utf-8')
+            updated=family_patch(original,p)
+            family_assert(updated,p)
+            if updated!=original:
+                fp.write_text(updated,encoding='utf-8')
+                family_changed+=1
+        except Exception as e:
+            family_errors.append({'product_id':p.get('product_id'),'slug':slug,'error':str(e)})
+    errors.extend(family_errors)
+
     sitemap=ROOT/'sitemap.xml'; old=re.findall(r'<loc>(.*?)</loc>',sitemap.read_text(encoding='utf-8'))
     core=[SITE+'/',SITE+'/catalog.html',SITE+'/about.html',SITE+'/contacts.html',SITE+'/delivery.html',SITE+'/payment.html',SITE+'/returns.html',SITE+'/guides/master-13-40-13-vs-20-20-20/',SITE+'/guides/plantafol-20-20-20-vs-master-20-20-20/']
     urls=list(dict.fromkeys(core+old+[x['url'] for x in made]))
     sitemap.write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{esc(u)}</loc></url>\n' for u in urls)+'</urlset>\n',encoding='utf-8')
-    report={'status':'PASS' if not errors else 'FAIL','generated':len(made),'errors':errors,'items':made}
+    report={'status':'PASS' if not errors else 'FAIL','generated':len(made),'family_pages_checked':family_total,'family_pages_changed':family_changed,'errors':errors,'items':made}
     rp=ROOT/'docs/ai_sales/AI_SALES_STAGE1_PDP_SYNC_REPORT.json';rp.parent.mkdir(parents=True,exist_ok=True);rp.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
-    print(json.dumps({'status':report['status'],'generated':len(made),'errors':len(errors)},ensure_ascii=False))
+    print(json.dumps({'status':report['status'],'generated':len(made),'family_pages_checked':family_total,'family_pages_changed':family_changed,'errors':len(errors)},ensure_ascii=False))
     if errors:raise SystemExit(1)
 
 if __name__=='__main__':main()

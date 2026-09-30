@@ -29,7 +29,11 @@
       ".webp": 2
     },
     "openai_image_format_supported": 161,
-    "openai_image_format_unsupported": 2
+    "openai_image_format_unsupported": 2,
+    "unsupported_image_magic": {
+      "BB610-0BDAED34128BDA": "jpeg",
+      "BB610-32DA4F652F73A1": "png"
+    }
   },
   "openai_image_format": "BLOCKED_UNSUPPORTED_IMAGE_FORMAT",
   "openai_unsupported_images": [

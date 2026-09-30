@@ -2,10 +2,1155 @@
   "status": "PASS",
   "openai_feed_rows": 163,
   "google_feed_rows": 163,
+  "google_feed_inventory": [
+    {
+      "id": "BB610-0176ADFA127216",
+      "title": "Actiwin 20-5-10 — гранульоване NPK-добриво Valagro 22,7 кг",
+      "link": "https://market.bb610.com.ua/products/actiwin-20-5-10-22-7kg/",
+      "price": "4785.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-02A58A1A393719",
+      "title": "Nova PeKacid 0-60-20 — водорозчинне PK-добриво ICL 1 кг",
+      "link": "https://market.bb610.com.ua/products/pekacid-npk-0-60-20-1kg/",
+      "price": "461.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-06C1C17B9400DC",
+      "title": "Кеміра для газону NPK 12-11-18 — гранульоване NPK-добриво 1 кг",
+      "link": "https://market.bb610.com.ua/products/kemira-dlya-hazonu-npk-12-11-18-1kg/",
+      "price": "247.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-07C62619489D04",
+      "title": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — гранульоване NPK-добриво 1 кг",
+      "link": "https://market.bb610.com.ua/products/kemira-grunt-kropker-npk-11-11-21-1kg/",
+      "price": "247.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-0BDAED34128BDA",
+      "title": "Kendal — біостимулятор захисних реакцій рослин Valagro 1 л",
+      "link": "https://market.bb610.com.ua/products/kendal-1l/",
+      "price": "1126.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-0F315D28BC4649",
+      "title": "Maxicrop Cream — біостимулятор Valagro 100 мл",
+      "link": "https://market.bb610.com.ua/products/maxicrop-cream-100ml/",
+      "price": "240.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-1DF4D3D04DBAE3",
+      "title": "Boroplus — борне мікродобриво Valagro 15 мл",
+      "link": "https://market.bb610.com.ua/products/boroplus-15ml/",
+      "price": "27.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-1E396B98D1779E",
+      "title": "Nova PeKacid 0-60-20 — водорозчинне PK-добриво ICL 100 г",
+      "link": "https://market.bb610.com.ua/products/pekacid-npk-0-60-20-100g/",
+      "price": "84.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-1EBECC896971DC",
+      "title": "Agriflex Fulvix (Фульвокислоти 50%) — фульвокислотний біостимулятор CityMax 5 кг",
+      "link": "https://market.bb610.com.ua/products/agriflex-fulvix-fulvokysloty-50-5kg/",
+      "price": "3487.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-227D5F45C56F17",
+      "title": "Osmocote Landscape 16-9-12 (3–4M) — добриво контрольованого вивільнення ICL 200 г",
+      "link": "https://market.bb610.com.ua/products/osmocote-landscape-16-9-12-34m-200g/",
+      "price": "149.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-23D759E37CE6B6",
+      "title": "Кеміра Зав'язь — фосфорно-калійне добриво 5 г",
+      "link": "https://market.bb610.com.ua/products/kemira-zav-yaz-5g/",
+      "price": "13.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-26B311DBF9085A",
+      "title": "Brexil Nutre — комплексне мікродобриво Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-nutre-1kg/",
+      "price": "602.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-276F4D8DAC8238",
+      "title": "Osmocote Bloom 12-7-18 (2–3M) — добриво контрольованого вивільнення ICL 200 г",
+      "link": "https://market.bb610.com.ua/products/osmocote-bloom-12-7-18-23m-200g/",
+      "price": "119.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-27C0F2D3BFE84A",
+      "title": "MASTER 18-18-18 — водорозчинне NPK-добриво Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/master-npk-18-18-18-1kg/",
+      "price": "399.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-2D4799F754DF67",
+      "title": "Brexil Nutre — комплексне мікродобриво Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-nutre-5kg/",
+      "price": "2892.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-2E83F80FAD3256",
+      "title": "Benefit PZ — біостимулятор Valagro 10 л",
+      "link": "https://market.bb610.com.ua/products/benefit-pz-10l/",
+      "price": "16582.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-32DA4F652F73A1",
+      "title": "Kendal — біостимулятор захисних реакцій рослин Valagro 100 мл",
+      "link": "https://market.bb610.com.ua/products/kendal-100ml/",
+      "price": "220.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-34E360AF5C84F3",
+      "title": "Agriflex Humic (Гумат калію) — гуміновий біостимулятор CityMax 1 кг",
+      "link": "https://market.bb610.com.ua/products/agriflex-humic-humat-kaliyu-1kg/",
+      "price": "450.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-356BD42689A64D",
+      "title": "Nova PeKacid 0-60-20 — водорозчинне PK-добриво ICL 15 г",
+      "link": "https://market.bb610.com.ua/products/pekacid-npk-0-60-20-15g/",
+      "price": "22.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-3AFFAAF6B8027A",
+      "title": "Кеміра NPK 18-18-18 — водорозчинне NPK-добриво 25 г",
+      "link": "https://market.bb610.com.ua/products/kemira-npk-18-18-18-25g/",
+      "price": "25.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-3B33A9186F1031",
+      "title": "Brexil Fe — хелатне мікродобриво із залізом Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-fe-5kg/",
+      "price": "2924.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-3B413E62542312",
+      "title": "Osmocote Quick Start 22-5-6 (4–5M) — добриво контрольованого вивільнення ICL 1 кг",
+      "link": "https://market.bb610.com.ua/products/osmocote-quick-start-22-5-6-45m-1kg/",
+      "price": "476.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-3CCFA12C27E227",
+      "title": "Kendal Root — кореневий біостимулятор Valagro 100 мл",
+      "link": "https://market.bb610.com.ua/products/kendal-root-100ml/",
+      "price": "235.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-3F9DB64A57026D",
+      "title": "Brexil Ca — хелатне мікродобриво з кальцієм Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-ca-5kg/",
+      "price": "3245.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-416401891442FE",
+      "title": "NeoVivo — антистресовий біостимулятор Neova 30 мл",
+      "link": "https://market.bb610.com.ua/products/neovivo-30ml/",
+      "price": "59.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-44E83470E508FD",
+      "title": "Кеміра NPK 12-46-8 — водорозчинне NPK-добриво 25 г",
+      "link": "https://market.bb610.com.ua/products/kemira-npk-12-46-8-25g/",
+      "price": "27.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-47EC10B7783A26",
+      "title": "Agriflex Humic (Гумат калію) — гуміновий біостимулятор CityMax 5 кг",
+      "link": "https://market.bb610.com.ua/products/agriflex-humic-humat-kaliyu-5kg/",
+      "price": "1897.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-49ED2208211C6C",
+      "title": "Brexil Multi — комплексне хелатне мікродобриво Valagro 250 г",
+      "link": "https://market.bb610.com.ua/products/brexil-multi-250g/",
+      "price": "336.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-4AE93D5CCD3570",
+      "title": "NeoVivo — антистресовий біостимулятор Neova 5 л",
+      "link": "https://market.bb610.com.ua/products/neovivo-5l/",
+      "price": "3307.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-4EC1D9C30DD192",
+      "title": "Кеміра Люкс NPK 14-11-25 — водорозчинне NPK-добриво 1 кг",
+      "link": "https://market.bb610.com.ua/products/kemira-lyuks-npk-14-11-25-1kg/",
+      "price": "367.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-52AB75F7E35B03",
+      "title": "Кеміра NPK 18-18-18 — водорозчинне NPK-добриво 1 кг",
+      "link": "https://market.bb610.com.ua/products/kemira-npk-18-18-18-1kg/",
+      "price": "319.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-52EE194023860D",
+      "title": "Кеміра Укорінювач — біостимулятор коренеутворення Organic Planet 100 мл",
+      "link": "https://market.bb610.com.ua/products/kemira-ukorinyuvach-100ml/",
+      "price": "141.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-533B10AFDCDBFD",
+      "title": "Brexil Ca — хелатне мікродобриво з кальцієм Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-ca-1kg/",
+      "price": "724.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-536EFC906D626F",
+      "title": "Actiwave — кореневий біостимулятор Valagro 1 л",
+      "link": "https://market.bb610.com.ua/products/actiwave-1l/",
+      "price": "828.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-55F55C063F4640",
+      "title": "Osmocote Potassium 12-8-19 (3–4M) — добриво контрольованого вивільнення ICL 1 кг",
+      "link": "https://market.bb610.com.ua/products/osmocote-potassium-12-8-19-34m-1kg/",
+      "price": "637.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-5761ACCC8C7B11",
+      "title": "MAX 600 SeaSailer — біостимулятор з екстрактом водоростей CityMax 1 кг",
+      "link": "https://market.bb610.com.ua/products/max-600-seasailer-1kg/",
+      "price": "1473.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-590BF7467D814D",
+      "title": "Ferrilene Trium — хелат заліза Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/ferrilen-trium-1kg/",
+      "price": "1066.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-59240EA4EE9630",
+      "title": "Сульфат магнію — водорозчинне магнієве добриво Alventa 1 кг",
+      "link": "https://market.bb610.com.ua/products/sulfat-mahniyu-1kg/",
+      "price": "155.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-5BE9BCD721960C",
+      "title": "NeoCore — кореневий біостимулятор Neova 20 л",
+      "link": "https://market.bb610.com.ua/products/neocore-20l/",
+      "price": "7655.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-5C50CFED57B2BD",
+      "title": "Brexil Mix — комплексне хелатне мікродобриво Valagro 15 г",
+      "link": "https://market.bb610.com.ua/products/brexil-mix-15g/",
+      "price": "38.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-5E066D3BD088DB",
+      "title": "Sweet — біостимулятор дозрівання Valagro 100 мл",
+      "link": "https://market.bb610.com.ua/products/sweet-100ml/",
+      "price": "319.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-5EF45013492786",
+      "title": "Brexil Ca — хелатне мікродобриво з кальцієм Valagro 250 г",
+      "link": "https://market.bb610.com.ua/products/brexil-ca-250g/",
+      "price": "338.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-6032D279349416",
+      "title": "Brexil Fe — хелатне мікродобриво із залізом Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-fe-1kg/",
+      "price": "630.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-63DFC68206EF52",
+      "title": "Kendal TE — мікроелементний біостимулятор Valagro 1 л",
+      "link": "https://market.bb610.com.ua/products/kendal-te-1l/",
+      "price": "1445.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-63ECA96E4F51CC",
+      "title": "Кеміра Люкс NPK 14-11-25 — водорозчинне NPK-добриво 20 г",
+      "link": "https://market.bb610.com.ua/products/kemira-lyuks-npk-14-11-25-20g/",
+      "price": "18.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-66399099EB6E99",
+      "title": "NeoFlora — біостимулятор Neova 30 мл",
+      "link": "https://market.bb610.com.ua/products/neoflora-30ml/",
+      "price": "54.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-6C946D4F833870",
+      "title": "Sweet — біостимулятор дозрівання Valagro 10 л",
+      "link": "https://market.bb610.com.ua/products/sweet-10l/",
+      "price": "15462.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-6EA5A0676CA52F",
+      "title": "Sweet — біостимулятор дозрівання Valagro 1 л",
+      "link": "https://market.bb610.com.ua/products/sweet-1l/",
+      "price": "1666.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-6F215068667C21",
+      "title": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — гранульоване NPK-добриво 20 г",
+      "link": "https://market.bb610.com.ua/products/kemira-grunt-kropker-npk-11-11-21-20g/",
+      "price": "15.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-6FF95FED429E58",
+      "title": "NeoFlora — біостимулятор Neova 5 л",
+      "link": "https://market.bb610.com.ua/products/neoflora-5l/",
+      "price": "2565.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-722356D3EBEE37",
+      "title": "Brexil Zn — хелатне мікродобриво з цинком Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-zn-5kg/",
+      "price": "3150.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-72DEC1F4F0BBF9",
+      "title": "NeoTerra Aquafix™ — органічний кондиціонер ґрунту Neova 25 кг",
+      "link": "https://market.bb610.com.ua/products/neoterra-aqua-25kg/",
+      "price": "1771.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-74742C63CC18FA",
+      "title": "MASTER 18-18-18 — водорозчинне NPK-добриво Valagro 25 кг",
+      "link": "https://market.bb610.com.ua/products/master-npk-18-18-18-25kg/",
+      "price": "4996.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-75DA86689E220C",
+      "title": "Viva — біостимулятор ризосфери Valagro 1 л",
+      "link": "https://market.bb610.com.ua/products/viva-1l/",
+      "price": "594.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-78276B9A7244FE",
+      "title": "NeoFlora — біостимулятор Neova 1 л",
+      "link": "https://market.bb610.com.ua/products/neoflora-1l/",
+      "price": "629.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-7CAECCDF081CBB",
+      "title": "Brexil Mix — комплексне хелатне мікродобриво Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-mix-5kg/",
+      "price": "3338.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-7FF0818B666AA9",
+      "title": "Boroplus — борне мікродобриво Valagro 1 л",
+      "link": "https://market.bb610.com.ua/products/boroplus-1l/",
+      "price": "504.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-828A6E9188E43E",
+      "title": "Кеміра NPK 18-18-18 — водорозчинне NPK-добриво 200 г",
+      "link": "https://market.bb610.com.ua/products/kemira-npk-18-18-18-200g/",
+      "price": "118.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-875F839910C32B",
+      "title": "MASTER 17-6-18 — водорозчинне NPK-добриво Valagro 250 г",
+      "link": "https://market.bb610.com.ua/products/master-npk-17-6-18-250g/",
+      "price": "154.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-8AF90FA8223437",
+      "title": "Brexil Mix — комплексне хелатне мікродобриво Valagro 250 г",
+      "link": "https://market.bb610.com.ua/products/brexil-mix-250g/",
+      "price": "336.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-8B0821352513C9",
+      "title": "Osmocote Landscape 16-9-12 (3–4M) — добриво контрольованого вивільнення ICL 1 кг",
+      "link": "https://market.bb610.com.ua/products/osmocote-landscape-16-9-12-34m-1kg/",
+      "price": "611.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-8B8227C8D67CA5",
+      "title": "Brexil Multi — комплексне хелатне мікродобриво Valagro 15 г",
+      "link": "https://market.bb610.com.ua/products/brexil-multi-15g/",
+      "price": "38.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-8DC5F741DEABD9",
+      "title": "Brexil Combi — комплексне хелатне мікродобриво Valagro 250 г",
+      "link": "https://market.bb610.com.ua/products/brexil-combi-250g/",
+      "price": "353.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-8E31FAB8E0FE6F",
+      "title": "Brexil Multi — комплексне хелатне мікродобриво Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-multi-1kg/",
+      "price": "734.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-8F1350C978274D",
+      "title": "Osmocote Start 11-11-17 (1,5M) — добриво контрольованого вивільнення ICL 200 г",
+      "link": "https://market.bb610.com.ua/products/osmocote-start-11-11-17-1-5m-200g/",
+      "price": "136.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-8F1B9C0C9C91CD",
+      "title": "Speedfol Amino Vegetative — амінокислотний коректор живлення Terral Tarsa 20 мл",
+      "link": "https://market.bb610.com.ua/products/spidfol-amino-vehetatsiya-20ml/",
+      "price": "42.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-906E45D6FF4693",
+      "title": "MAX 600 SeaSailer — біостимулятор з екстрактом водоростей CityMax 20 кг",
+      "link": "https://market.bb610.com.ua/products/max-600-seasailer-20kg/",
+      "price": "25250.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-90837EAB185FC0",
+      "title": "MASTER 17-6-18 — водорозчинне NPK-добриво Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/master-npk-17-6-18-1kg/",
+      "price": "364.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-9334FFCFC91A1B",
+      "title": "Brexil Duo — кальцієво-магнієве мікродобриво Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-duo-5kg/",
+      "price": "3500.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-94F23ED54CB320",
+      "title": "Brexil Zn — хелатне мікродобриво з цинком Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-zn-1kg/",
+      "price": "696.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-989A92CC0B422A",
+      "title": "MASTER 18-18-18 — водорозчинне NPK-добриво Valagro 250 г",
+      "link": "https://market.bb610.com.ua/products/master-npk-18-18-18-250g/",
+      "price": "177.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-9A8FA69D941D02",
+      "title": "Кеміра Ґрунт (Кропкер) NPK 11-11-21 — гранульоване NPK-добриво 100 г",
+      "link": "https://market.bb610.com.ua/products/kemira-grunt-kropker-npk-11-11-21-100g/",
+      "price": "52.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-9C4DC0580265BE",
+      "title": "Спрей-Ейд (Spray-Aide) — ад'ювант-підкислювач Miller 100 мл",
+      "link": "https://market.bb610.com.ua/products/sprei-eid-100ml/",
+      "price": "219.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-A02CF54E375533",
+      "title": "Viva — біостимулятор ризосфери Valagro 20 л",
+      "link": "https://market.bb610.com.ua/products/viva-20l/",
+      "price": "10104.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-A235B03C3513D5",
+      "title": "Сульфат магнію — водорозчинне магнієве добриво Alventa 200 г",
+      "link": "https://market.bb610.com.ua/products/sulfat-mahniyu-200g/",
+      "price": "45.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-A36BE8DC7FEA3B",
+      "title": "Boroplus — борне мікродобриво Valagro 10 л",
+      "link": "https://market.bb610.com.ua/products/boroplus-10l/",
+      "price": "4321.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-A5D89C6A24BFB9",
+      "title": "Кеміра NPK 12-46-8 — водорозчинне NPK-добриво 1 кг",
+      "link": "https://market.bb610.com.ua/products/kemira-npk-12-46-8-1kg/",
+      "price": "350.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-A71F39DAD86B93",
+      "title": "NeoVivo — антистресовий біостимулятор Neova 20 л",
+      "link": "https://market.bb610.com.ua/products/neovivo-20l/",
+      "price": "12663.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-A95A34C5C0DDC6",
+      "title": "Brexil Mn — хелатне мікродобриво з марганцем Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-mn-5kg/",
+      "price": "2924.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-AA3568B6C1B459",
+      "title": "Кеміра Люкс NPK 14-11-25 — водорозчинне NPK-добриво 100 г",
+      "link": "https://market.bb610.com.ua/products/kemira-lyuks-npk-14-11-25-100g/",
+      "price": "60.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-ABFF3D6D6901E8",
+      "title": "Valagro EDTA 5SG — комплексне хелатне мікродобриво Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/valagro-edta-5sg-1kg/",
+      "price": "1049.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-AE230AC4DF943D",
+      "title": "SoluPotasse — водорозчинний сульфат калію Tessenderlo Kerley 100 г",
+      "link": "https://market.bb610.com.ua/products/solupotasse-sulfat-kaliyu-100g/",
+      "price": "57.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-B1881030364E52",
+      "title": "Brexil Mix — комплексне хелатне мікродобриво Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-mix-1kg/",
+      "price": "740.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-B2EF37CABF383A",
+      "title": "Haifa MKP 0-52-34 — водорозчинне PK-добриво Haifa Group 20 г",
+      "link": "https://market.bb610.com.ua/products/haifa-mkp-0-52-34-20g/",
+      "price": "18.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-B564059E45AA6A",
+      "title": "Ferrilene 4.8 Orto-Orto — хелат заліза Valagro 10 г",
+      "link": "https://market.bb610.com.ua/products/ferrilene-4-8-orto-orto-10g/",
+      "price": "45.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-B7B6D0D5C66801",
+      "title": "Кеміра NPK 12-46-8 — водорозчинне NPK-добриво 200 г",
+      "link": "https://market.bb610.com.ua/products/kemira-npk-12-46-8-200g/",
+      "price": "123.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-BB10DC4F9FC81D",
+      "title": "NeoTerra Organic-C — органічний кондиціонер ґрунту Neova 25 кг",
+      "link": "https://market.bb610.com.ua/products/neoterra-organic-c-25kg/",
+      "price": "1771.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-BDD3245D9288CE",
+      "title": "Agriflex Bio — фульвокислотний біостимулятор CityMax 1 кг",
+      "link": "https://market.bb610.com.ua/products/agriflex-bio-1kg/",
+      "price": "327.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-C341BB1842183B",
+      "title": "Kendal Root — кореневий біостимулятор Valagro 1 л",
+      "link": "https://market.bb610.com.ua/products/kendal-root-1l/",
+      "price": "1259.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-C41483FE05AA9C",
+      "title": "Benefit PZ — біостимулятор Valagro 1 л",
+      "link": "https://market.bb610.com.ua/products/benefit-pz-1l/",
+      "price": "1810.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-C4EC88C5C7D738",
+      "title": "Terra-Sorb — амінокислотний біостимулятор Bioiberica 100 мл",
+      "link": "https://market.bb610.com.ua/products/terra-sorb-100ml/",
+      "price": "147.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-C5C94B624BD074",
+      "title": "Benefit PZ — біостимулятор Valagro 100 мл",
+      "link": "https://market.bb610.com.ua/products/benefit-pz-100ml/",
+      "price": "341.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-C77C9244C07121",
+      "title": "Brexil Fe — хелатне мікродобриво із залізом Valagro 250 г",
+      "link": "https://market.bb610.com.ua/products/brexil-fe-250g/",
+      "price": "304.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-C9189CDC21624F",
+      "title": "Brexil Multi — комплексне хелатне мікродобриво Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-multi-5kg/",
+      "price": "3338.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-CDBF81D3217CCE",
+      "title": "SoluPotasse — водорозчинний сульфат калію Tessenderlo Kerley 1 кг",
+      "link": "https://market.bb610.com.ua/products/solupotasse-sulfat-kaliyu-1kg/",
+      "price": "242.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-CFFC5BB95623B9",
+      "title": "Viva — біостимулятор ризосфери Valagro 10 л",
+      "link": "https://market.bb610.com.ua/products/viva-10l/",
+      "price": "5380.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-D1D88D2D78CAAF",
+      "title": "Кеміра Укорінювач — біостимулятор коренеутворення Organic Planet 20 мл",
+      "link": "https://market.bb610.com.ua/products/kemira-ukorinyuvach-20ml/",
+      "price": "36.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-D22F5A8AC22D25",
+      "title": "NeoVivo — антистресовий біостимулятор Neova 1 л",
+      "link": "https://market.bb610.com.ua/products/neovivo-1l/",
+      "price": "792.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-D357BA80A4242C",
+      "title": "Radifarm — кореневий біостимулятор Valagro 10 л",
+      "link": "https://market.bb610.com.ua/products/radifarm-10l/",
+      "price": "16594.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-D4C53496285F6C",
+      "title": "Brexil Combi — комплексне хелатне мікродобриво Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/brexil-combi-1kg/",
+      "price": "734.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-D8397E86BED478",
+      "title": "Ferrilene 4.8 Orto-Orto — хелат заліза Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/ferrilene-4-8-orto-orto-5kg/",
+      "price": "4820.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-D886B6AD2D6C04",
+      "title": "Nova PeKacid 0-60-20 — водорозчинне PK-добриво ICL 200 г",
+      "link": "https://market.bb610.com.ua/products/pekacid-npk-0-60-20-200g/",
+      "price": "116.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-DAA94F08BB733F",
+      "title": "Maxicrop Set — біостимулятор Valagro 100 мл",
+      "link": "https://market.bb610.com.ua/products/maxicrop-set-maksikrop-zav-yaz-100ml/",
+      "price": "189.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-DAAB8705787527",
+      "title": "MC Extra (Maxicrop Extra) — біостимулятор Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/maxicrop-extra-1kg/",
+      "price": "1678.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-DD39796DC4FF76",
+      "title": "MASTER 17-6-18 — водорозчинне NPK-добриво Valagro 25 кг",
+      "link": "https://market.bb610.com.ua/products/master-npk-17-6-18-25kg/",
+      "price": "4308.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-DD74FDE3418D02",
+      "title": "Кеміра Баланс / Nitrate Balancer — борно-молібденовий продукт Organic Planet 100 мл",
+      "link": "https://market.bb610.com.ua/products/kemira-balans-nitrate-balancer-100ml/",
+      "price": "103.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-DDC0F0BBD389FA",
+      "title": "Сульфат магнію — водорозчинне магнієве добриво Alventa 100 г",
+      "link": "https://market.bb610.com.ua/products/sulfat-mahniyu-100g/",
+      "price": "32.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-DE87625B024BCB",
+      "title": "Кеміра Укорінювач — біостимулятор коренеутворення Organic Planet 1 л",
+      "link": "https://market.bb610.com.ua/products/kemira-ukorinyuvach-1l/",
+      "price": "1027.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-DF30F34C5FA617",
+      "title": "Ferrilene Trium — хелат заліза Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/ferrilen-trium-5kg/",
+      "price": "4932.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-E0BD5873EBDC8F",
+      "title": "Agriflex Humic (Гумат калію) — гуміновий біостимулятор CityMax 25 кг",
+      "link": "https://market.bb610.com.ua/products/agriflex-humic-humat-kaliyu-25kg/",
+      "price": "8306.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-E1BB9E458B9497",
+      "title": "Agroblen Granula-MAX 14-20-5+TE (5–6M) — добриво контрольованого вивільнення ICL 20 шт",
+      "link": "https://market.bb610.com.ua/products/agroblen-granula-max-14-20-5-te-56m-20pcs/",
+      "price": "145.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-E251836677BA97",
+      "title": "Osmocote 5 16-8-12 (5–6M) — добриво контрольованого вивільнення ICL 1 кг",
+      "link": "https://market.bb610.com.ua/products/osmocote-decor-16-8-12-56m-1kg/",
+      "price": "628.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-E270CC1CF3AF25",
+      "title": "Osmocote 5 16-8-12 (5–6M) — добриво контрольованого вивільнення ICL 200 г",
+      "link": "https://market.bb610.com.ua/products/osmocote-decor-16-8-12-56m-200g/",
+      "price": "154.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-E4A0F69C3768B0",
+      "title": "Radifarm — кореневий біостимулятор Valagro 1 л",
+      "link": "https://market.bb610.com.ua/products/radifarm-1l/",
+      "price": "1809.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-EA1A35CD1C5B70",
+      "title": "Osmocote Start 11-11-17 (1,5M) — добриво контрольованого вивільнення ICL 1 кг",
+      "link": "https://market.bb610.com.ua/products/osmocote-start-11-11-17-1-5m-1kg/",
+      "price": "552.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-EDD4D8789728B8",
+      "title": "Radifarm — кореневий біостимулятор Valagro 100 мл",
+      "link": "https://market.bb610.com.ua/products/radifarm-100ml/",
+      "price": "314.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-F3A911CFAB9BB1",
+      "title": "Maxicrop Set — біостимулятор Valagro 25 мл",
+      "link": "https://market.bb610.com.ua/products/maxicrop-set-maksikrop-zav-yaz-25ml/",
+      "price": "51.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-F478106178585E",
+      "title": "NeoCore — кореневий біостимулятор Neova 5 л",
+      "link": "https://market.bb610.com.ua/products/neocore-5l/",
+      "price": "2114.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-F5E76975CC9C19",
+      "title": "Osmocote Granula-MAX 14-8-11+TE (5–6M) — добриво контрольованого вивільнення ICL 10 шт",
+      "link": "https://market.bb610.com.ua/products/osmocote-granula-max-14-8-11-te-56m-10pcs/",
+      "price": "149.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-F61233E6018DC2",
+      "title": "Osmocote Potassium 12-8-19 (3–4M) — добриво контрольованого вивільнення ICL 200 г",
+      "link": "https://market.bb610.com.ua/products/osmocote-potassium-12-8-19-34m-200g/",
+      "price": "154.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-F707CEC45DFC43",
+      "title": "SoluPotasse — водорозчинний сульфат калію Tessenderlo Kerley 200 г",
+      "link": "https://market.bb610.com.ua/products/solupotasse-sulfat-kaliyu-200g/",
+      "price": "77.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-F79E866C9D9AE2",
+      "title": "NeoCore — кореневий біостимулятор Neova 1 л",
+      "link": "https://market.bb610.com.ua/products/neocore-1l/",
+      "price": "509.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-FB0C462D25C089",
+      "title": "NeoFlora — біостимулятор Neova 20 л",
+      "link": "https://market.bb610.com.ua/products/neoflora-20l/",
+      "price": "9608.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-FC8EF342DCDA81",
+      "title": "Osmocote Bloom 12-7-18 (2–3M) — добриво контрольованого вивільнення ICL 1 кг",
+      "link": "https://market.bb610.com.ua/products/osmocote-bloom-12-7-18-23m-1kg/",
+      "price": "484.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-FDF73DEFF6CCEC",
+      "title": "Viva — біостимулятор ризосфери Valagro 25 мл",
+      "link": "https://market.bb610.com.ua/products/viva-25ml/",
+      "price": "43.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-FE65B1FD9E0CE0",
+      "title": "Ерайз — регулятор росту Miller 100 мл",
+      "link": "https://market.bb610.com.ua/products/eraiz-100ml/",
+      "price": "258.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-FE83DB399E5BBE",
+      "title": "Osmocote Quick Start 22-5-6 (4–5M) — добриво контрольованого вивільнення ICL 200 г",
+      "link": "https://market.bb610.com.ua/products/osmocote-quick-start-22-5-6-45m-200g/",
+      "price": "119.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-FF1B81AABCF4B5",
+      "title": "Micro NP — мікрогранульоване NP-добриво Valagro 10 кг",
+      "link": "https://market.bb610.com.ua/products/micro-np-10kg/",
+      "price": "2240.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-HAIFA-MKP005234-200G",
+      "title": "Haifa MKP 0-52-34 — водорозчинне PK-добриво Haifa Group 200 г",
+      "link": "https://market.bb610.com.ua/products/haifa-mkp-0-52-34-200g/",
+      "price": "117.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-MAXICROP-CREAM-25ML",
+      "title": "Maxicrop Cream — біостимулятор Valagro 25 мл",
+      "link": "https://market.bb610.com.ua/products/maxicrop-cream-25ml/",
+      "price": "65.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-NEOVA-NEOCORE-30ML",
+      "title": "NeoCore — кореневий біостимулятор Neova 30 мл",
+      "link": "https://market.bb610.com.ua/products/neocore-30ml/",
+      "price": "56.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-BENEFITPZ-25ML",
+      "title": "Benefit PZ — біостимулятор Valagro 25 мл",
+      "link": "https://market.bb610.com.ua/products/benefit-pz-25ml/",
+      "price": "97.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-BLACKJAK-100ML",
+      "title": "BlackJak — гуміновий біостимулятор Sofbey 100 мл",
+      "link": "https://market.bb610.com.ua/products/blackjak-100ml/",
+      "price": "203.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-BOROPLUS-100ML",
+      "title": "Boroplus — борне мікродобриво Valagro 100 мл",
+      "link": "https://market.bb610.com.ua/products/boroplus-100ml/",
+      "price": "132.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-BREXILCA-15G",
+      "title": "Brexil Ca — хелатне мікродобриво з кальцієм Valagro 15 г",
+      "link": "https://market.bb610.com.ua/products/brexil-ca-15g/",
+      "price": "44.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-BREXILCOMBI-15G",
+      "title": "Brexil Combi — комплексне хелатне мікродобриво Valagro 15 г",
+      "link": "https://market.bb610.com.ua/products/brexil-combi-15g/",
+      "price": "42.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-BREXILFE-15G",
+      "title": "Brexil Fe — хелатне мікродобриво із залізом Valagro 15 г",
+      "link": "https://market.bb610.com.ua/products/brexil-fe-15g/",
+      "price": "36.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-BREXILZN-15G",
+      "title": "Brexil Zn — хелатне мікродобриво з цинком Valagro 15 г",
+      "link": "https://market.bb610.com.ua/products/brexil-zn-15g/",
+      "price": "39.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-MASTER134013-20G",
+      "title": "MASTER 13-40-13 — водорозчинне NPK-добриво Valagro 20 г",
+      "link": "https://market.bb610.com.ua/products/master-13-40-13-20g/",
+      "price": "25.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-MASTER134013-25KG",
+      "title": "MASTER 13-40-13 — водорозчинне NPK-добриво Valagro 25 кг",
+      "link": "https://market.bb610.com.ua/products/master-13-40-13-25kg/",
+      "price": "5218.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-MASTER15530-25KG",
+      "title": "MASTER 15-5-30+2 — водорозчинне NPK-добриво Valagro 25 кг",
+      "link": "https://market.bb610.com.ua/products/master-15-5-30-25kg/",
+      "price": "4805.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-MASTER202020-10KG",
+      "title": "MASTER 20-20-20 — водорозчинне NPK-добриво Valagro 10 кг",
+      "link": "https://market.bb610.com.ua/products/master-20-20-20-10kg/",
+      "price": "2100.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-MASTER202020-20G",
+      "title": "MASTER 20-20-20 — водорозчинне NPK-добриво Valagro 20 г",
+      "link": "https://market.bb610.com.ua/products/master-20-20-20-20g/",
+      "price": "25.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-MASTER202020-25KG",
+      "title": "MASTER 20-20-20 — водорозчинне NPK-добриво Valagro 25 кг",
+      "link": "https://market.bb610.com.ua/products/master-20-20-20-25kg/",
+      "price": "5059.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-MASTER31138-20G",
+      "title": "MASTER 3-11-38 — водорозчинне NPK-добриво Valagro 20 г",
+      "link": "https://market.bb610.com.ua/products/master-3-11-38-20g/",
+      "price": "25.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-MASTER31138-25KG",
+      "title": "MASTER 3-11-38 — водорозчинне NPK-добриво Valagro 25 кг",
+      "link": "https://market.bb610.com.ua/products/master-3-11-38-25kg/",
+      "price": "4823.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-MEGAFOL-100ML",
+      "title": "Megafol — антистресовий біостимулятор Valagro 100 мл",
+      "link": "https://market.bb610.com.ua/products/megafol-100ml/",
+      "price": "175.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-MEGAFOL-25ML",
+      "title": "Megafol — антистресовий біостимулятор Valagro 25 мл",
+      "link": "https://market.bb610.com.ua/products/megafol-25ml/",
+      "price": "50.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL02550-25G",
+      "title": "PLANTAFOL 0-25-50 — водорозчинне листкове NPK-добриво Valagro 25 г",
+      "link": "https://market.bb610.com.ua/products/plantafol-0-25-50-25g/",
+      "price": "32.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL02550-5KG",
+      "title": "PLANTAFOL 0-25-50 — водорозчинне листкове NPK-добриво Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/plantafol-0-25-50-5kg/",
+      "price": "2158.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL105410-1KG",
+      "title": "PLANTAFOL 10-54-10 — водорозчинне листкове NPK-добриво Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/plantafol-10-54-10-1kg/",
+      "price": "452.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL105410-25G",
+      "title": "PLANTAFOL 10-54-10 — водорозчинне листкове NPK-добриво Valagro 25 г",
+      "link": "https://market.bb610.com.ua/products/plantafol-10-54-10-25g/",
+      "price": "33.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL105410-5KG",
+      "title": "PLANTAFOL 10-54-10 — водорозчинне листкове NPK-добриво Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/plantafol-10-54-10-5kg/",
+      "price": "2164.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL202020-25G",
+      "title": "PLANTAFOL 20-20-20 — водорозчинне листкове NPK-добриво Valagro 25 г",
+      "link": "https://market.bb610.com.ua/products/plantafol-20-20-20-25g/",
+      "price": "29.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL301010-1KG",
+      "title": "PLANTAFOL 30-10-10 — водорозчинне листкове NPK-добриво Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/plantafol-30-10-10-1kg/",
+      "price": "309.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL301010-25G",
+      "title": "PLANTAFOL 30-10-10 — водорозчинне листкове NPK-добриво Valagro 25 г",
+      "link": "https://market.bb610.com.ua/products/plantafol-30-10-10-25g/",
+      "price": "28.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL301010-5KG",
+      "title": "PLANTAFOL 30-10-10 — водорозчинне листкове NPK-добриво Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/plantafol-30-10-10-5kg/",
+      "price": "1400.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL51545-1KG",
+      "title": "PLANTAFOL 5-15-45 — водорозчинне листкове NPK-добриво Valagro 1 кг",
+      "link": "https://market.bb610.com.ua/products/plantafol-5-15-45-1kg/",
+      "price": "360.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL51545-25G",
+      "title": "PLANTAFOL 5-15-45 — водорозчинне листкове NPK-добриво Valagro 25 г",
+      "link": "https://market.bb610.com.ua/products/plantafol-5-15-45-25g/",
+      "price": "29.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-PLANTAFOL51545-5KG",
+      "title": "PLANTAFOL 5-15-45 — водорозчинне листкове NPK-добриво Valagro 5 кг",
+      "link": "https://market.bb610.com.ua/products/plantafol-5-15-45-5kg/",
+      "price": "1668.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-RADIFARM-25ML",
+      "title": "Radifarm — кореневий біостимулятор Valagro 25 мл",
+      "link": "https://market.bb610.com.ua/products/radifarm-25ml/",
+      "price": "88.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-SWEET-25ML",
+      "title": "Sweet — біостимулятор дозрівання Valagro 25 мл",
+      "link": "https://market.bb610.com.ua/products/sweet-25ml/",
+      "price": "91.00 UAH",
+      "availability": "in_stock"
+    },
+    {
+      "id": "BB610-VLG-VIVA-100ML",
+      "title": "Viva — біостимулятор ризосфери Valagro 100 мл",
+      "link": "https://market.bb610.com.ua/products/viva-100ml/",
+      "price": "143.00 UAH",
+      "availability": "in_stock"
+    }
+  ],
   "expected_rows": 163,
   "pages_checked": 163,
   "grouped_pages_checked": 139,
   "merchant_return_policy": "PASS",
+  "sitemap_lastmod": "PASS",
+  "sitemap_discovery_urls_checked": 173,
   "guide_hub": "PASS",
   "guide_pages_expected": 8,
   "guide_pages_checked": 8,

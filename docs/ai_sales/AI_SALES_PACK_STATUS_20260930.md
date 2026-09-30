@@ -639,3 +639,36 @@ Top-3 discovery interpretation:
 
 Next stage principle:
 Do not create more AI content merely to increase intent count. Prioritize independent indexing/citation/referral evidence and only modify pages when that evidence points to a specific weakness.
+
+
+### Stage 3/4 top-3 AI production readiness refresh — 2026-09-30
+
+ChatGPT / OpenAI ACP:
+- Current OpenAI Stable product-feed documentation rechecked against the production BB610 feed.
+- Production feed remains 163 channel-eligible exact-SKU rows.
+- Added stable `offer_id` on 163/163 rows.
+- Added public `return_policy` on 163/163 rows.
+- Added `accepts_returns=true` and `return_deadline_in_days=14` on 163/163 rows, grounded in the public BB610 returns policy.
+- Shipping price intentionally remains omitted because there is no single truthful fixed shipping charge for every BB610 order.
+- Current live validation PASS: 163/163 product rows, 163/163 exact PDPs, 139 grouped variants, 29/29 AI guide pages, 0 errors.
+- Technical status is now `READY_FOR_ONBOARDING_VALIDATION`.
+- Market status remains `REQUIRES_OPENAI_MARKET_SETUP`: standard OpenAI-format uploads currently target the U.S.; Ukraine must not be fabricated via row-level market fields.
+- Merchant application draft refreshed to current ACP terminology and current production evidence.
+
+Gemini / Google:
+- robots explicitly allows Googlebot and Google-Extended; sitemap and structured product surfaces are production-ready.
+- Merchant Center remains connected; exact-SKU feed is generated correctly on BB610 side.
+- Direct Google Search index/URL Inspection evidence is still unavailable because the Windsor Search Console connector has not yet been authorized.
+- Windsor exposes an OAuth Search Console connector, so this blocker can be removed by authorizing the Google account that owns the BB610 Search Console property.
+
+Claude:
+- robots explicitly allows Claude-SearchBot and Claude-User.
+- Anthropic's current public crawler guidance confirms Claude-SearchBot is used to improve search result quality and Claude-User supports user-directed web retrieval.
+- No separate merchant-feed or submission surface is currently used for BB610; discovery remains organic/crawler based.
+
+Current top-3 bottlenecks:
+1. ChatGPT: OpenAI partner/market onboarding for Ukraine, not feed quality.
+2. Gemini: Search Console authorization for direct index diagnostics, not page/feed generation.
+3. Claude: external crawl/search pickup, not robots eligibility.
+
+Do not add more generic AI content until these external discovery signals justify a specific change.

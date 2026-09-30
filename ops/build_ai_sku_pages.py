@@ -2,6 +2,7 @@
 from __future__ import annotations
 import html,json,re,urllib.request
 from pathlib import Path
+from datetime import date
 
 ROOT=Path(__file__).resolve().parents[1]
 SITE='https://market.bb610.com.ua'
@@ -196,13 +197,17 @@ def page(template,p,s):
 
 def main():
     data=fetch(); template=(ROOT/'product.html').read_text(encoding='utf-8')
-    made=[]; errors=[]
+    made=[]; changed_urls=set(); errors=[]
     for p in data.get('products') or []:
         for s in p.get('skus') or []:
             if not is_saleable(s):continue
             try:
                 body,url=page(template,p,s); out=ROOT/route(p,s).lstrip('/')/'index.html'
-                out.parent.mkdir(parents=True,exist_ok=True);out.write_text(body,encoding='utf-8')
+                out.parent.mkdir(parents=True,exist_ok=True)
+                previous=out.read_text(encoding='utf-8') if out.is_file() else None
+                if previous!=body:
+                    out.write_text(body,encoding='utf-8')
+                    changed_urls.add(url)
                 made.append({'sku_id':s.get('sku_id'),'url':url,'price':price(s),'availability':s.get('availability')})
             except Exception as e:errors.append({'sku_id':s.get('sku_id'),'error':str(e)})
     family_total=0; family_changed=0; family_errors=[]
@@ -223,13 +228,22 @@ def main():
             family_errors.append({'product_id':p.get('product_id'),'slug':slug,'error':str(e)})
     errors.extend(family_errors)
 
-    sitemap=ROOT/'sitemap.xml'; old=re.findall(r'<loc>(.*?)</loc>',sitemap.read_text(encoding='utf-8'))
+    sitemap=ROOT/'sitemap.xml'; sitemap_text=sitemap.read_text(encoding='utf-8')
+    old_blocks=re.findall(r'<url>\s*<loc>(.*?)</loc>(?:\s*<lastmod>([^<]+)</lastmod>)?\s*</url>',sitemap_text,re.S)
+    old=[u for u,_ in old_blocks]
+    old_lastmod={u:lm.strip() for u,lm in old_blocks if lm.strip()}
     core=[SITE+'/',SITE+'/catalog.html',SITE+'/about.html',SITE+'/contacts.html',SITE+'/delivery.html',SITE+'/payment.html',SITE+'/returns.html',SITE+'/guides/master-13-40-13-vs-20-20-20/',SITE+'/guides/plantafol-20-20-20-vs-master-20-20-20/']
     urls=list(dict.fromkeys(core+old+[x['url'] for x in made]))
-    sitemap.write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{esc(u)}</loc></url>\n' for u in urls)+'</urlset>\n',encoding='utf-8')
-    report={'status':'PASS' if not errors else 'FAIL','generated':len(made),'family_pages_checked':family_total,'family_pages_changed':family_changed,'errors':errors,'items':made}
+    today=date.today().isoformat()
+    sitemap_rows=[]
+    for u in urls:
+        lm=today if u in changed_urls else old_lastmod.get(u,'')
+        suffix=f'<lastmod>{esc(lm)}</lastmod>' if lm else ''
+        sitemap_rows.append(f'  <url><loc>{esc(u)}</loc>{suffix}</url>\n')
+    sitemap.write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(sitemap_rows)+'</urlset>\n',encoding='utf-8')
+    report={'status':'PASS' if not errors else 'FAIL','generated':len(made),'pages_changed':len(changed_urls),'family_pages_checked':family_total,'family_pages_changed':family_changed,'errors':errors,'items':made}
     rp=ROOT/'docs/ai_sales/AI_SALES_STAGE1_PDP_SYNC_REPORT.json';rp.parent.mkdir(parents=True,exist_ok=True);rp.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
-    print(json.dumps({'status':report['status'],'generated':len(made),'family_pages_checked':family_total,'family_pages_changed':family_changed,'errors':len(errors),'error_details':errors[:50]},ensure_ascii=False))
+    print(json.dumps({'status':report['status'],'generated':len(made),'pages_changed':len(changed_urls),'family_pages_checked':family_total,'family_pages_changed':family_changed,'errors':len(errors),'error_details':errors[:50]},ensure_ascii=False))
     if errors:raise SystemExit(1)
 
 if __name__=='__main__':main()

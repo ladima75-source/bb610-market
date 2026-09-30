@@ -8,8 +8,8 @@ Status: READY TO SUBMIT AFTER APPLICANT IDENTITY FIELDS ARE CONFIRMED
 
 | Field | Proposed value | Status |
 |---|---|---|
-| First name | — | REQUIRED FROM APPLICANT |
-| Last name | — | REQUIRED FROM APPLICANT |
+| First name | Dmytro | CONFIRMED FROM APPLICANT ACCOUNT RECORDS |
+| Last name | Lakhno | CONFIRMED FROM APPLICANT ACCOUNT RECORDS |
 | Work title | — | REQUIRED FROM APPLICANT |
 | LinkedIn | — | REQUIRED FROM APPLICANT |
 | Work email | market.bb610@gmail.com | READY, confirm if applicant wants another address |
@@ -48,10 +48,12 @@ OpenAI's merchant page currently states that Shopping in ChatGPT is live in the 
 ## Submission gate
 
 Do NOT submit with invented applicant information.
-Need exactly:
-1. applicant first name
-2. applicant last name
-3. applicant work title
-4. applicant LinkedIn URL
+Confirmed:
+1. applicant first name: Dmytro
+2. applicant last name: Lakhno
+
+Still required:
+1. applicant work title
+2. applicant LinkedIn URL
 
 After these are confirmed, the application can be submitted.

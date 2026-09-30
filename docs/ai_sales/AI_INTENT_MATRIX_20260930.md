@@ -49,7 +49,7 @@ Cross-engine rule: every commercial intent is prepared for ChatGPT, Google Gemin
 | AI-38 | technical selection | яке мікродобриво Brexil вибрати Fe Ca Zn Multi | ChatGPT / Gemini / Claude | shortlist by declared element focus | /guides/brexil-fe-ca-zn-multi-comparison/ | OPTIMIZED | new cross-engine selection source |
 | AI-39 | comparison | MASTER 3-11-38 чи 15-5-30 чи 17-6-18 чи 18-18-18 | ChatGPT / Gemini / Claude | N-P-K comparison + exact offers | /guides/master-formulas-comparison/ | OPTIMIZED | new cross-engine comparison source |
 | AI-40 | technical selection | MASTER з високим калієм яку формулу вибрати | ChatGPT / Gemini / Claude | formula shortlist with caveat | /guides/master-formulas-comparison/ | OPTIMIZED | new cross-engine selection source |
-| AI-41 | direct product | Brexil Multi купити Україна | ChatGPT / Gemini / Claude | product + seller + exact offers | /products/brexil-multi/ | READY | uncovered direct-product intent |
+| AI-41 | direct product | Brexil Multi купити Україна | ChatGPT / Gemini / Claude | product + seller + exact offers | /products/brexil-multi-250g/ | READY | exact-SKU target; family PDP absent |
 | AI-42 | direct product | Osmocote купити Україна 200 г 1 кг | ChatGPT / Gemini / Claude | product family + exact offers | /guides/osmocote-release-duration-comparison/ | READY | connect generic product query to comparison + offers |
 
 | AI-43 | comparison | Viva чи Benefit PZ чи Sweet чи Kendal чи NeoCore різниця | ChatGPT / Gemini / Claude | compare declared purpose + product paths | /guides/biostimulants-by-declared-purpose/ | OPTIMIZED | new cross-engine comparison source |

@@ -28,7 +28,7 @@ def get(url):
 
 def jsonld_types(body):
     types=set()
-    blocks=re.findall(r'<script type="application/ld\\+json">(.*?)</script>',body,re.S|re.I)
+    blocks=re.findall(r'<script type="application/ld\+json">(.*?)</script>',body,re.S|re.I)
     for block in blocks:
         try:
             obj=json.loads(block)

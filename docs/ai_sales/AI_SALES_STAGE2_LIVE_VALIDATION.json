@@ -22,7 +22,19 @@
     "gtin_or_mpn": 0,
     "group_id": 139,
     "variant_dict": 139,
-    "listing_has_variations_true": 139
+    "listing_has_variations_true": 139,
+    "image_extension_counts": {
+      ".jpg": 85,
+      ".png": 76,
+      ".webp": 2
+    },
+    "openai_image_format_supported": 161,
+    "openai_image_format_unsupported": 2
   },
+  "openai_image_format": "BLOCKED_UNSUPPORTED_IMAGE_FORMAT",
+  "openai_unsupported_images": [
+    "BB610-0BDAED34128BDA:https://market.bb610.com.ua/assets/img/v5/media/146dbd278150498ae157.webp",
+    "BB610-32DA4F652F73A1:https://market.bb610.com.ua/assets/img/v5/media/ad3434331aae65aec38d.webp"
+  ],
   "errors": []
 }

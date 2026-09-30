@@ -128,3 +128,13 @@ Additional Stage 4 evidence:
 - Exact targets: /products/megafol-100ml/, /products/radifarm-25ml/, /products/master-13-40-13-1kg/.
 - Current external discovery tests did not return BB610 for these sampled exact-price intents.
 - Sitemap: 251 URLs.
+
+
+### Stage 5 problem-solution block 3
+- AI-06 -> OPTIMIZED using pre-planting decision guide
+- AI-07 -> OPTIMIZED using /guides/abiotic-stress-and-megafol/
+- AI-10 -> OPTIMIZED using high-phosphorus comparison guide
+- AI-26 -> OPTIMIZED · UNVERIFIED using Organization + WebSite entity and catalog path
+- Megafol product family linked to the abiotic-stress guide
+- Sitemap: 252 URLs
+- Syngenta Biologicals / Valagro official materials were used to verify the abiotic-stress context for Megafol before publishing the guide

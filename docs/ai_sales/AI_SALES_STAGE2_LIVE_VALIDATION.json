@@ -14,5 +14,15 @@
   "openai_search_eligibility": "PASS",
   "openai_checkout_eligibility": "PASS",
   "openai_ads_policy": "PASS",
+  "openai_quality_coverage": {
+    "seller_url": 163,
+    "product_category": 163,
+    "gtin": 0,
+    "mpn": 0,
+    "gtin_or_mpn": 0,
+    "group_id": 139,
+    "variant_dict": 139,
+    "listing_has_variations_true": 139
+  },
   "errors": []
 }

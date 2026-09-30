@@ -146,10 +146,15 @@ def main():
                 graph=obj.get('@graph')
                 if isinstance(graph,list):
                     home_nodes.extend(x for x in graph if isinstance(x,dict))
-        org=next((x for x in home_nodes if x.get('@type')=='Organization'),None)
+        def has_type(node,value):
+            current=node.get('@type') if isinstance(node,dict) else None
+            return value in current if isinstance(current,list) else current==value
+        org=next((x for x in home_nodes if has_type(x,'OnlineStore') and x.get('@id')==SITE+'/#organization'),None)
         policy=(org or {}).get('hasMerchantReturnPolicy') or {}
         if home_code!=200:
             errors.append(f'home_http={home_code}')
+        elif str((org or {}).get('taxID') or '').strip()!='2560502404':
+            errors.append('merchant_tax_id_missing_or_mismatch')
         elif not isinstance(policy,dict) or policy.get('@type')!='MerchantReturnPolicy':
             errors.append('merchant_return_policy_missing')
         elif str(policy.get('merchantReturnLink') or '').strip()!=SITE+'/returns.html':

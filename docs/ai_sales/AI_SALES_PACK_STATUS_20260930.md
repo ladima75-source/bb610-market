@@ -112,3 +112,9 @@ Still open:
 - Merchant still exposes legacy product.html?id=... links for sampled products; newest exact-SKU link ingestion is not confirmed
 - public search/index retest still does not surface BB610 Market for sampled MASTER / Radifarm commercial intents
 - OpenAI merchant application remains blocked on real applicant identity fields
+
+
+Additional Stage 4 evidence:
+- GA4 property 555339130 returns no ChatGPT/OpenAI/Gemini/Claude/Perplexity/Copilot/Grok session-source rows for 2026-09-30 or September to date
+- exact title/site searches for the four new Stage 5 guides return no indexed results immediately after deployment
+- therefore AI visibility/indexing remains UNVERIFIED

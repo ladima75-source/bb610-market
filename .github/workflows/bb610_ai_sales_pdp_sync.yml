@@ -1,0 +1,40 @@
+name: BB610 AI Sales Static PDP V5 Sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/ai-sales-pdp-sync-request.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync static PDP commercial state from Product Master V5
+        run: python ops/sync_ai_sales_static_pdp_v5.py
+
+      - name: Validate synchronized PDP state
+        run: |
+          set -euo pipefail
+          python ops/sync_ai_sales_static_pdp_v5.py --check
+          git diff --check
+
+      - name: Commit synchronized PDP pages
+        run: |
+          set -euo pipefail
+          git add -f products/*/index.html sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No AI Sales PDP sync changes required"
+            exit 0
+          fi
+          git config user.name "bb610-ai-sales-bot"
+          git config user.email "bb610-ai-sales-bot@users.noreply.github.com"
+          git commit -m "Sync AI Sales PDP commerce state from V5"
+          git push origin HEAD:main

@@ -33,7 +33,7 @@ jobs:
       - name: Commit synced PDPs
         run: |
           set -euo pipefail
-          git add products sitemap.xml docs/ai_sales/AI_SALES_STAGE1_PDP_SYNC_REPORT.json
+          git add -f products sitemap.xml docs/ai_sales/AI_SALES_STAGE1_PDP_SYNC_REPORT.json
           if git diff --cached --quiet; then
             echo "No PDP changes"
             exit 0

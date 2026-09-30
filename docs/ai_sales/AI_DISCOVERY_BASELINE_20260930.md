@@ -281,3 +281,19 @@ Observed:
 - no BB610 result for the four exact product-title searches in the tested public search provider
 
 Stage 4 remains IN PROGRESS / UNVERIFIED.
+
+
+## Checkpoint — IndexNow external discovery submission
+
+On 2026-09-30 the current AI Sales changed-URL set was submitted through IndexNow after live ownership verification.
+
+Verified:
+- key file HTTP: 200
+- key body match: true
+- Bing prime: HTTP 200
+- bulk IndexNow: HTTP 200
+- URLs submitted: 202
+- scope: homepage + guide hub + 8 guides + 192 exact-SKU PDPs
+
+Interpretation:
+The submission confirms that the discovery notification was received. It does not prove crawl, indexing, ranking, product appearance or AI citation. Stage 4 remains UNVERIFIED until an independent retrieval/citation/referral signal appears.

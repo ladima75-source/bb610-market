@@ -222,3 +222,24 @@ Decision:
 - STAGE 4 remains IN PROGRESS / UNVERIFIED.
 - STAGE 5 on-site preparation remains PASS for the implemented blocks.
 - Do not start STAGE 6 SCALE until an independent discovery/citation/referral/ingestion signal is observed.
+
+
+### Stage 5 discovery-hub block — 2026-09-30 14:31 Europe/Kyiv
+
+Implemented:
+- created /guides/ as a single crawlable BB610 Market knowledge/discovery hub;
+- linked all eight current AI-intent guides from the hub;
+- added CollectionPage structured data, canonical, index/follow and factual description;
+- added /guides/ to sitemap.xml;
+- linked the hub from the main storefront navigation/footer;
+- GitHub Pages deployment run 36709059030: SUCCESS;
+- storefront CI run 36709060166: SUCCESS.
+
+Immediate public search check:
+- exact site/title query for the new guide hub returned no indexed result immediately after deployment;
+- indexing therefore remains UNVERIFIED.
+
+OpenAI documentation recheck:
+- current file-upload product schema still documents target_countries as required with supported value US in the Stable geo table;
+- BB610 remains a UA/UAH merchant, so no false US targeting is inserted;
+- merchant application/waitlist preparation stays valid, while production Stable-feed target-market readiness remains externally blocked.

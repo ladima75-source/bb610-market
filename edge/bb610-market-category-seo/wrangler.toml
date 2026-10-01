@@ -1,0 +1,8 @@
+name = "bb610-market-category-seo"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+
+[[routes]]
+pattern = "market.bb610.com.ua/catalog.html*"
+zone_name = "bb610.com.ua"

@@ -1,0 +1,32 @@
+name: BB610 Category SEO Edge Source CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'edge/bb610-market-category-seo/**'
+      - 'tools/audit_category_seo_edge.py'
+      - '.github/workflows/bb610_category_seo_edge_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Static contract audit
+        run: python tools/audit_category_seo_edge.py
+      - name: JavaScript syntax
+        run: node --check edge/bb610-market-category-seo/src/index.js
+      - name: Wrangler dry run
+        working-directory: edge/bb610-market-category-seo
+        run: npx --yes wrangler@latest deploy --dry-run --outdir /tmp/bb610-worker

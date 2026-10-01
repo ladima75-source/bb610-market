@@ -20,6 +20,38 @@ document.addEventListener('DOMContentLoaded',async()=>{
   const initialCategory=fixedCategory||params.get('category')||'';
   const source=[...BB610.products()];
 
+  const categoryLandingMeta={
+    nutrition:{
+      title:'Професійні добрива для рослин — BB610 Market',
+      description:'Професійні добрива для рослин у BB610 Market. Ціни, фасування, характеристики та дані виробника. Доставка по Україні та самовивіз у Дніпрі.',
+      h1:'Професійні добрива для рослин',
+      canonical:'https://market.bb610.com.ua/catalog.html?category=nutrition',
+      breadcrumb:'BB610 MARKET / ПРОФЕСІЙНІ ДОБРИВА'
+    },
+    biostimulation:{
+      title:'Біостимулятори для рослин — BB610 Market',
+      description:'Біостимулятори для рослин у BB610 Market. Ціни, фасування, характеристики та дані виробника. Доставка по Україні та самовивіз у Дніпрі.',
+      h1:'Біостимулятори для рослин',
+      canonical:'https://market.bb610.com.ua/catalog.html?category=biostimulation',
+      breadcrumb:'BB610 MARKET / БІОСТИМУЛЯТОРИ'
+    }
+  };
+  const landingMeta=categoryLandingMeta[initialCategory]||null;
+  if(landingMeta){
+    document.title=landingMeta.title;
+    const descriptionMeta=document.querySelector('meta[name="description"]');
+    if(descriptionMeta)descriptionMeta.setAttribute('content',landingMeta.description);
+    const canonicalLink=document.querySelector('link[rel="canonical"]');
+    if(canonicalLink)canonicalLink.setAttribute('href',landingMeta.canonical);
+    const hero=document.querySelector('[data-default-catalog-hero]');
+    const h1=hero?.querySelector('h1');
+    const breadcrumb=hero?.querySelector('.breadcrumbs');
+    if(h1)h1.textContent=landingMeta.h1;
+    if(breadcrumb)breadcrumb.textContent=landingMeta.breadcrumb;
+  }
+
+
+
   const potsVideoBanner=document.querySelector('[data-pots-video-banner]');
   const defaultCatalogHero=document.querySelector('[data-default-catalog-hero]');
   const potsVideo=potsVideoBanner?.querySelector('video')||null;

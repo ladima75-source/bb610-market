@@ -29,5 +29,7 @@ Disallow: /checkout.html
 Disallow: /compare.html
 Disallow: /favorites.html
 Disallow: /tools/
+Disallow: /catalog-nutrition.html
+Disallow: /catalog-biostimulation.html
 
 Sitemap: https://market.bb610.com.ua/sitemap.xml

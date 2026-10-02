@@ -744,3 +744,26 @@ Step 2 conclusion:
 - Claude-side technical setup is complete on BB610.
 - No separate merchant-feed onboarding is currently required for Claude.
 - The next meaningful signal is first Claude/Anthropic referral or external search pickup; adding more content now is not justified.
+
+
+### Step 3 — ChatGPT organic / ChatGPT Search — 2026-10-02
+
+Goal: organic discovery, citation and referral traffic from ChatGPT Search, separate from Merchant/Shopping onboarding.
+
+Current OpenAI guidance verified 2026-10-02:
+- OAI-SearchBot is the crawler that controls eligibility for ChatGPT Search discovery.
+- ChatGPT-User is for user-directed fetches and is not the crawler used to determine Search inclusion.
+- GPTBot is for model-development crawling and is independent of Search eligibility.
+- ChatGPT referral links include utm_source=chatgpt.com, so GA4 is the primary measurable conversion signal.
+
+BB610 implementation verified:
+- robots.txt explicitly allows OAI-SearchBot and ChatGPT-User; wildcard policy also does not block GPTBot.
+- representative guide and exact-SKU pages have index,follow, correct canonical URLs, and no noindex.
+- both representative URLs are present in sitemap.xml.
+- public web discovery currently finds the BB610 Market homepage, while the representative new guide/exact-SKU URLs do not yet have independent pickup evidence.
+- GA4 last-30-day check currently shows 0 ChatGPT/OpenAI referral sessions.
+
+Step 3 conclusion:
+- on-site technical setup for ChatGPT organic discovery is complete.
+- no additional generic content or crawler changes are justified now.
+- next meaningful signals: first ChatGPT citation/search pickup and first GA4 session carrying chatgpt.com / OpenAI referral evidence.

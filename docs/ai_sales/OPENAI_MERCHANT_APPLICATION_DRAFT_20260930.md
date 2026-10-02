@@ -1,7 +1,7 @@
 # BB610 Market — OpenAI Merchant / ACP Application Draft
 
 Updated: 2026-10-02
-Status: TECHNICALLY READY FOR ONBOARDING VALIDATION · APPLICATION FIELDS STILL REQUIRED
+Status: SUBMITTED / WAITING FOR OPENAI
 
 ## Current OpenAI state
 
@@ -101,3 +101,12 @@ Applicant identity fields are now complete:
 - LinkedIn: https://www.linkedin.com/in/dmytro-lakhno-228b7756
 
 Everything required for the merchant/feed portion is prepared. Next action: submit the live OpenAI merchant application and retain the submission confirmation.
+
+
+## Submission confirmation — 2026-10-02
+
+Status: SUBMITTED / WAITING FOR OPENAI.
+
+OpenAI confirmation received: the merchant application was accepted for review. OpenAI states it will review submissions and contact applicants if/when selected; no immediate response is guaranteed.
+
+BB610 action now: no further manual submission work. Continue monitoring for OpenAI outreach, regional availability changes, merchant-platform/self-service availability, and ChatGPT referral/discovery signals.

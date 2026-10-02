@@ -17,10 +17,10 @@ jobs:
           check_code https://api.magelle.com.ua/api/health 200
           grep -q '"ok": true' /tmp/out
           for sku in MG-AS-DEL-CHO MG-OF-DEL-CHO MG-OF-VYR-MLK; do
-            code="$(curl -L -sS -o "/tmp/$sku" -w '%{http_code}' "https://api.magelle.com.ua/media/$sku.jpg")"
+            code="$(curl -L -sS -o "/tmp/$sku" -w '%{http_code}' "https://api.magelle.com.ua/media/$sku.png")"
             type="$(file -b --mime-type "/tmp/$sku")"
             size="$(wc -c < "/tmp/$sku")"
-            echo "$code $type $size https://api.magelle.com.ua/media/$sku.jpg"
+            echo "$code $type $size https://api.magelle.com.ua/media/$sku.png"
             test "$code" = "200"
             test "$size" -gt 10000
           done

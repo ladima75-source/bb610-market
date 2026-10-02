@@ -34,3 +34,12 @@ jobs:
           check_code https://magelle.com.ua/checkout.html 200
           check_code https://magelle.com.ua/organic-flare-vyraznyi-molochnyi.html 200
           grep -q 'Product' /tmp/out
+          echo "HEADLESS PDP"
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -n "$CHROME" ]; then
+            "$CHROME" --headless=new --no-sandbox --disable-gpu --virtual-time-budget=6000 --dump-dom https://magelle.com.ua/organic-flare-vyraznyi-molochnyi.html > /tmp/pdp-dom.html
+            grep -q 'Додати в кошик' /tmp/pdp-dom.html
+            grep -q 'В наявності' /tmp/pdp-dom.html
+          else
+            echo "Chrome unavailable; JS DOM check skipped"
+          fi

@@ -767,3 +767,21 @@ Step 3 conclusion:
 - on-site technical setup for ChatGPT organic discovery is complete.
 - no additional generic content or crawler changes are justified now.
 - next meaningful signals: first ChatGPT citation/search pickup and first GA4 session carrying chatgpt.com / OpenAI referral evidence.
+
+
+### Step 5 — AI revenue measurement — 2026-10-02
+
+Goal: measure AI traffic through the full commercial funnel rather than only count crawler/index pickup.
+
+Implemented:
+- GA4 funnel already covers view_item, add_to_cart, begin_checkout and backend-confirmed purchase.
+- AI source detection already covers ChatGPT, Gemini and Claude plus secondary AI sources.
+- fixed attribution loss on internal navigation: the detected AI source now persists for the browser session and is propagated into downstream ecommerce events through checkout/purchase.
+- standard GA4 source/medium remains available as an independent attribution path.
+
+Current baseline:
+- 0 ChatGPT/OpenAI referrals;
+- 0 Claude/Anthropic referrals;
+- no AI-attributed purchases yet.
+
+Step 5 status: TECHNICALLY COMPLETE / WAITING FOR FIRST AI TRAFFIC.

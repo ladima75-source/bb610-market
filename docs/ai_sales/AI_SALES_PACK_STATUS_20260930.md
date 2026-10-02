@@ -785,3 +785,24 @@ Current baseline:
 - no AI-attributed purchases yet.
 
 Step 5 status: TECHNICALLY COMPLETE / WAITING FOR FIRST AI TRAFFIC.
+
+
+### Step 6 — Evidence-driven scale gate — 2026-10-02
+
+Goal: scale only after independent discovery/traffic evidence; do not create more generic content or increase spend before signal.
+
+Current production evidence at start of Step 6:
+- Search Console sitemap row: 271 submitted URLs, 1 reported error, 0 warnings; search analytics still has 0 rows.
+- Repository validation of sitemap.xml: 271 URLs, 0 duplicate URLs, 0 malformed BB610 URLs, 0 invalid lastmod values, 0 sitemap URLs missing a corresponding repository file.
+- External public search checks for site:market.bb610.com.ua and representative guide/product queries currently return no indexed BB610 result.
+- GA4 last 7 days: no ChatGPT/OpenAI, Claude/Anthropic or Gemini referral rows yet.
+- Merchant Center: 163/163 current products still use exact /products/ SKU links; 0 legacy product.html?id= links; latest product update 2026-10-01T21:00:00Z.
+
+Scale gate:
+1. Discovery gate — at least one priority URL independently indexed/discovered or Search Console begins reporting impressions.
+2. AI traffic gate — first measurable ChatGPT / Gemini / Claude referral session.
+3. Commerce gate — first AI-attributed add_to_cart, begin_checkout or purchase.
+
+Current status: HOLD SCALE / WAIT FOR DISCOVERY SIGNAL.
+
+Immediate issue to resolve: Search Console reports one sitemap error although repository-level sitemap structure/content checks pass. The exact Search Console error message is required before changing sitemap generation; do not rewrite a structurally valid sitemap blindly.

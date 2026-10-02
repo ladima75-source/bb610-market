@@ -16,17 +16,21 @@
   function metaFbc(){const stored=readCookie('_fbc');if(stored)return stored;try{const cached=sessionStorage.getItem('bb610_meta_fbc');if(cached)return cached;const clickId=new URL(location.href).searchParams.get('fbclid');if(clickId){const value='fb.1.'+Date.now()+'.'+clickId;sessionStorage.setItem('bb610_meta_fbc',value);return value}}catch{}return ''}
   function pageType(){const p=location.pathname.toLowerCase();if(p.includes('/order/success'))return 'order_success';if(p.includes('checkout'))return 'checkout';if(p.includes('cart'))return 'cart';if(p.includes('/products/'))return 'product';if(p.includes('/categories/')||p.includes('catalog'))return 'catalog';if(p.includes('compare'))return 'compare';if(p.includes('favorites'))return 'favorites';if(p==='/'||p.endsWith('/index.html'))return 'home';return 'content'}
   function aiReferralSource(){
+    const key='bb610_ai_source';
+    const remember=value=>{try{if(value)sessionStorage.setItem(key,value)}catch{}return value||''};
     try{
       const utm=String(new URL(location.href).searchParams.get('utm_source')||'').trim().toLowerCase();
       const utmMap={'chatgpt':'chatgpt','chatgpt.com':'chatgpt','chat.openai.com':'chatgpt','openai':'chatgpt','openai.com':'chatgpt','gemini':'gemini','gemini.google.com':'gemini','claude':'claude','claude.ai':'claude','perplexity':'perplexity','perplexity.ai':'perplexity','copilot':'copilot','copilot.microsoft.com':'copilot','grok':'grok','grok.com':'grok'};
-      if(utmMap[utm])return utmMap[utm];
+      if(utmMap[utm])return remember(utmMap[utm]);
       const host=new URL(document.referrer||'https://invalid.local').hostname.toLowerCase().replace(/^www\./,'');
-      if(host==='chatgpt.com'||host==='chat.openai.com'||host.endsWith('.openai.com'))return 'chatgpt';
-      if(host==='gemini.google.com')return 'gemini';
-      if(host==='claude.ai'||host.endsWith('.claude.ai'))return 'claude';
-      if(host==='perplexity.ai'||host.endsWith('.perplexity.ai'))return 'perplexity';
-      if(host==='copilot.microsoft.com')return 'copilot';
-      if(host==='grok.com'||host.endsWith('.grok.com'))return 'grok';
+      if(host==='chatgpt.com'||host==='chat.openai.com'||host.endsWith('.openai.com'))return remember('chatgpt');
+      if(host==='gemini.google.com')return remember('gemini');
+      if(host==='claude.ai'||host.endsWith('.claude.ai'))return remember('claude');
+      if(host==='perplexity.ai'||host.endsWith('.perplexity.ai'))return remember('perplexity');
+      if(host==='copilot.microsoft.com')return remember('copilot');
+      if(host==='grok.com'||host.endsWith('.grok.com'))return remember('grok');
+      const cached=String(sessionStorage.getItem(key)||'').trim().toLowerCase();
+      if(cached)return cached;
     }catch{}
     return '';
   }
@@ -242,7 +246,7 @@
     configureGa4();
     configureGoogleAds();
     loadMetaPixel();
-    push('bb610_analytics_ready',{analytics_version:'stage6-v10-ai-attribution'});
+    push('bb610_analytics_ready',{analytics_version:'stage6-v11-ai-session-attribution'});
     const ai=aiReferralSource();
     if(ai&&!sessionStorage.getItem('bb610_ai_referral_reported')){
       sessionStorage.setItem('bb610_ai_referral_reported','1');

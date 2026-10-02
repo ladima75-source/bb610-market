@@ -85,3 +85,20 @@ GA4 connector state:
 
 Search Console:
 - Windsor exposes the searchconsole connector, but no Search Console account/property is currently connected through it.
+
+
+## Checkpoint 2026-10-02 — AI session attribution
+
+Implemented:
+- detected AI source is persisted in sessionStorage as `bb610_ai_source`;
+- ChatGPT / Gemini / Claude attribution now survives internal navigation from guide → product → cart → checkout → purchase;
+- existing GA4 ecommerce events automatically receive the persisted `ai_source` parameter;
+- standard GA4 session source/medium remains the independent reporting fallback;
+- analytics version: `stage6-v11-ai-session-attribution`.
+
+Current GA4 baseline before first AI traffic:
+- AI referral rows: 0;
+- add_to_cart: 0;
+- begin_checkout: 0;
+- purchase: 0;
+- therefore there is no AI conversion evidence yet; this is the clean pre-launch baseline, not a tracking failure by itself.

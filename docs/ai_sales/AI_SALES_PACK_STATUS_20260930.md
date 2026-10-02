@@ -723,3 +723,24 @@ Next action when Search Console data appears:
 1. Check sitemap accepted/submitted/error/warning state.
 2. Inspect impressions/clicks/pages for /guides/ and /products/.
 3. Use the first real indexing/search evidence to decide whether any page or feed changes are needed.
+
+
+### Step 2 — Claude discovery readiness — 2026-10-02
+
+Goal: maximize organic visibility in Claude with the fastest low-risk actions, without creating more generic content.
+
+Verified against current Anthropic crawler guidance:
+- Claude-SearchBot is used to improve Claude search result quality.
+- Claude-User is used for user-directed retrieval.
+- ClaudeBot is used for model-development crawling.
+
+BB610 implementation:
+- robots.txt now explicitly allows all three Anthropic agents: ClaudeBot, Claude-SearchBot and Claude-User.
+- Public AI guides and exact-SKU pages remain indexable and listed in sitemap.xml.
+- Current GA4 check across the last 30 days shows no Claude/Anthropic referral sessions yet.
+- External exact-URL search checks for representative new guide/SKU pages still show no discovery result at this moment, so the bottleneck remains external crawl/index pickup rather than on-site eligibility.
+
+Step 2 conclusion:
+- Claude-side technical setup is complete on BB610.
+- No separate merchant-feed onboarding is currently required for Claude.
+- The next meaningful signal is first Claude/Anthropic referral or external search pickup; adding more content now is not justified.

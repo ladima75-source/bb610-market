@@ -16,6 +16,12 @@ jobs:
           check_code() { u="$1"; want="$2"; got="$(curl -L -sS -o /tmp/out -w '%{http_code}' "$u")"; echo "$got $u"; test "$got" = "$want"; }
           check_code https://api.magelle.com.ua/api/health 200
           grep -q '"ok": true' /tmp/out
+          echo "PUBLIC PRODUCTS"
+          curl -sS https://api.magelle.com.ua/api/products > /tmp/products.json
+          for sku in MG-AS-DEL-CHO MG-OF-DEL-CHO MG-OF-VYR-MLK; do grep -q "$sku" /tmp/products.json; done
+          bad_order="$(curl -sS -o /tmp/order-error -w '%{http_code}' -H 'Content-Type: application/json' -d '{"items":[]}' https://api.magelle.com.ua/api/orders)"
+          echo "$bad_order invalid-order validation"
+          test "$bad_order" = "400"
           for sku in MG-AS-DEL-CHO MG-OF-DEL-CHO MG-OF-VYR-MLK; do
             code="$(curl -L -sS -o "/tmp/$sku" -w '%{http_code}' "https://api.magelle.com.ua/media/$sku.png")"
             type="$(file -b --mime-type "/tmp/$sku")"

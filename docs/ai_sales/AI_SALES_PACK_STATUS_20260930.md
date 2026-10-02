@@ -806,3 +806,17 @@ Scale gate:
 Current status: HOLD SCALE / WAIT FOR DISCOVERY SIGNAL.
 
 Immediate issue to resolve: Search Console reports one sitemap error although repository-level sitemap structure/content checks pass. The exact Search Console error message is required before changing sitemap generation; do not rewrite a structurally valid sitemap blindly.
+
+
+#### Search Console sitemap error diagnosis — 2026-10-02
+
+User-confirmed Search Console detail for https://market.bb610.com.ua/sitemap.xml:
+- Last processing shown: 2026-09-30
+- Status: Could not process sitemap
+- Error class: General HTTP error
+- HTTP status observed by Google: 403
+- Discovered pages: 271
+
+Repository-side validation remains clean (271 URLs, no duplicates, malformed URLs, invalid lastmod values, or missing target files). Therefore this is an HTTP fetch/access problem at the time of Google's sitemap retrieval, not an XML/content-format error.
+
+Immediate remediation: re-submit the same sitemap now to force a fresh fetch. If Search Console again records HTTP 403 with a new processing time, escalate to hosting/DNS/bot-access investigation; do not rewrite sitemap content blindly.

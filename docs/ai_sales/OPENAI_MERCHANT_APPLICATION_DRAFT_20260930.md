@@ -18,10 +18,10 @@ Status: TECHNICALLY READY FOR ONBOARDING VALIDATION · APPLICATION FIELDS STILL 
 
 | Field | Proposed value | Status |
 |---|---|---|
-| First name | — | REQUIRED FROM APPLICANT |
-| Last name | — | REQUIRED FROM APPLICANT |
-| Work title | — | REQUIRED FROM APPLICANT |
-| LinkedIn | — | REQUIRED FROM APPLICANT |
+| First name | Dmytro | READY |
+| Last name | Lakhno | READY |
+| Work title | Owner | READY |
+| LinkedIn | https://www.linkedin.com/in/dmytro-lakhno-228b7756 | READY |
 | Work email | market.bb610@gmail.com | READY |
 | Company | BB610 Market | READY |
 | Headquarter country | Ukraine | READY |
@@ -94,10 +94,10 @@ Current Stable feed spec recheck: BB610 has all 9 required discovery fields on a
 
 Do not submit guessed identity data.
 
-Still required from the real applicant:
-1. First name
-2. Last name
-3. Work title
-4. LinkedIn URL
+Applicant identity fields are now complete:
+- First name: Dmytro
+- Last name: Lakhno
+- Work title: Owner
+- LinkedIn: https://www.linkedin.com/in/dmytro-lakhno-228b7756
 
-Everything else required for the merchant/feed portion is prepared.
+Everything required for the merchant/feed portion is prepared. Next action: submit the live OpenAI merchant application and retain the submission confirmation.

@@ -1,12 +1,14 @@
 # BB610 Market — OpenAI Merchant / ACP Application Draft
 
-Updated: 2026-09-30
+Updated: 2026-10-02
 Status: TECHNICALLY READY FOR ONBOARDING VALIDATION · APPLICATION FIELDS STILL REQUIRED
 
 ## Current OpenAI state
 
-- Merchant product-feed onboarding is available to approved partners through the merchant application / waitlist.
-- ChatGPT shopping is currently live for users in the U.S.; OpenAI states that more merchants and regions are planned.
+- Live merchant application rechecked 2026-10-02 at https://chatgpt.com/merchants/.
+
+- Merchant product-feed onboarding is available to approved partners through the live merchant application / waitlist; the form is open now.
+- ChatGPT shopping is currently live for users in the U.S.; OpenAI states that more merchants and regions are planned and that a self-service merchant platform is planned later in 2026.
 - Stable OpenAI-format uploads currently use the U.S. as the standard market. Row-level `target_countries` does not independently activate Ukraine; additional markets require OpenAI-confirmed market setup.
 - BB610 therefore keeps `target_countries` blank until OpenAI confirms the registered market configuration. Blank is not treated as worldwide.
 - Checkout stays on the merchant-owned BB610 Market site.
@@ -81,6 +83,12 @@ Result: PASS.
 - errors: 0
 - technical status: READY_FOR_ONBOARDING_VALIDATION
 - market status: REQUIRES_OPENAI_MARKET_SETUP
+
+## Application form recheck — 2026-10-02
+
+The live OpenAI form currently asks for: First name, Last name, Work title, LinkedIn, Work email, Company, Headquarter country, Merchant website, Primary Product Categories, Product Feed interest/readiness, Feed Size, and an optional notes field. The prepared BB610 answers still match this form.
+
+Current Stable feed spec recheck: BB610 has all 9 required discovery fields on all 163 rows; target_countries stays blank because standard OpenAI-format uploads currently target the U.S. and additional markets require OpenAI-confirmed market setup.
 
 ## Submission gate
 

@@ -450,7 +450,7 @@ function render({product,root,selectedSkuId}){
           <button class="btn ghost" id="pot-fav" aria-label="Додати в обране">♡</button>
           <button class="btn ghost" id="pot-cmp" aria-label="Додати до порівняння">⇄</button>
         </div>
-        <div class="pot-trust">Професійна модель Plantlogic · характеристики звірені з матеріалами виробника</div>
+        <div class="pot-trust">Модель Plantlogic · характеристики наведені за матеріалами виробника</div>
       </div>
     </section>
 
@@ -461,9 +461,10 @@ function render({product,root,selectedSkuId}){
       <div class="pot-tech-grid">
         <div class="pot-spec-table" id="pot-spec-table"></div>
         <aside class="pot-source-card pot-doc-card">
-          <span>ДОКУМЕНТАЦІЯ</span><strong>Plantlogic</strong>
-          <p>Технічні параметри та конструктивні особливості звірені з офіційними матеріалами виробника для вибраного Product #.</p>
+          <span>ТЕХНІЧНІ МАТЕРІАЛИ ВИРОБНИКА</span><strong>Plantlogic</strong>
+          <p>Технічні параметри та конструктивні особливості наведені за матеріалами виробника для вибраного Product #.</p>
           ${sourceUrl?`<a href="${esc(sourceUrl)}" target="_blank" rel="noopener">Відкрити сайт виробника ↗</a>`:''}
+          <p class="pot-source-disclaimer">BB610 Market є незалежним продавцем. Посилання на виробника наведене лише як джерело технічної інформації.</p>
         </aside>
       </div>
     </section>

@@ -1,4 +1,5 @@
 {
-  "action": "audit",
-  "nonce": "audit-20261001-2"
+  "action": "deploy",
+  "ref": "30e98ecd2b82086aa2f70ac9ced16061502e9830",
+  "nonce": "merchant-shipping-weight-20261003"
 }

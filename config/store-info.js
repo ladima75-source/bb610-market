@@ -18,6 +18,6 @@ window.BB610_STORE_INFO = {
   seller_notice:"Продавець: ФОП Лахно Марина Анатоліївна, РНОКПП 2560502404, м. Дніпро.",
   data_retention_years:5,
   returns:{window_days:14, return_method:"після погодження з BB610 MARKET", return_shipping_payer:"buyer", refund_timing:"3 банківські дні після прийняття та перевірки повернення"},
-  delivery:{nova_poshta:true, ukrposhta:true, local_dnipro:true},
-  payment:{cod:true, online_card:false, online_provider:"mono", fiscal_provider:"Checkbox"}
+  delivery:{nova_poshta:true, ukrposhta:true, local_dnipro:false},
+  payment:{cod:true, online_card:true, online_provider:"mono", fiscal_provider:"Checkbox"}
 };

@@ -11,12 +11,13 @@ from .product_master_feed_v5 import SOURCE_ID, snapshot as master_snapshot
 SITE = "https://market.bb610.com.ua"
 API = "https://api.market.bb610.com.ua"
 
-GOOGLE_FIELDS = [
+BASE_FEED_FIELDS = [
     "id", "title", "description", "availability", "condition", "price",
     "link", "image_link", "brand", "gtin", "mpn", "item_group_id",
     "product_type", "custom_label_0",
 ]
-META_FIELDS = list(GOOGLE_FIELDS)
+GOOGLE_FIELDS = BASE_FEED_FIELDS + ["shipping_weight"]
+META_FIELDS = list(BASE_FEED_FIELDS)
 
 REASON_LABELS = {
     "sale_disabled": "Продаж вимкнено",
@@ -222,6 +223,56 @@ def _availability_meta(value: str) -> str:
     }.get(value, "")
 
 
+def _shipping_weight(product: dict, sku: dict, title: str) -> str:
+    """Conservative shipment weight for Merchant shipping tables.
+
+    Prefer canonical SKU volume_weight. If it is absent, derive from the
+    customer-facing package label/title. Add a small packaging allowance so
+    Merchant never understates the chargeable parcel weight around the 10 kg
+    free-shipping boundary.
+    """
+    raw = sku.get("volume_weight")
+    value = None
+    unit = ""
+    if isinstance(raw, dict):
+        try:
+            value = float(raw.get("value"))
+        except (TypeError, ValueError):
+            value = None
+        unit = _text(raw.get("unit")).lower()
+
+    if value is None or value <= 0:
+        source = _text(sku.get("variant") or sku.get("package_label") or title).lower().replace(",", ".")
+        matches = re.findall(r"(?<!\d)(\d+(?:\.\d+)?)\s*(кг|kg|г|g|л|l|мл|ml|шт|pcs)\b", source, re.I)
+        if matches:
+            value = float(matches[-1][0])
+            unit = matches[-1][1].lower()
+
+    if value is None or value <= 0:
+        return ""
+
+    if unit in {"кг", "kg"}:
+        kg = value
+    elif unit in {"г", "g"}:
+        kg = value / 1000.0
+    elif unit in {"л", "l"}:
+        kg = value
+    elif unit in {"мл", "ml"}:
+        kg = value / 1000.0
+    elif unit in {"шт", "pcs"}:
+        # Granula-MAX piece packs are small retail packs; 1 kg is a deliberate
+        # conservative shipping estimate until a source-backed gross weight is
+        # added to Product Master.
+        kg = 1.0
+    else:
+        return ""
+
+    if kg < 1000:
+        kg = min(1000.0, kg + max(0.10, kg * 0.05))
+    kg = max(0.001, kg)
+    return f"{kg:.3f} kg"
+
+
 def _status_row(product: dict, sku: dict, commerce: dict) -> dict:
     sid = _text(sku.get("id") or sku.get("sku"))
     policy = _effective_policy(product, sku)
@@ -351,6 +402,7 @@ def channel_snapshot(commerce_override: dict | None = None) -> dict:
                 if sku.get("launch_matrix_priority") == "A"
                 else ("test" if sku.get("launch_matrix_priority") == "B" else "")
             ),
+            "shipping_weight": _shipping_weight(product, sku, status["title"]),
         }
         feed_rows.append((base, status["availability"]))
 

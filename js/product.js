@@ -336,8 +336,28 @@ document.addEventListener('DOMContentLoaded',async()=>{await BB610_DATA_SOURCE.r
     updateSkuUI();
     trackView();
     if(selectedSku&&location.protocol!=='file:'){
-      const skuUrl=/^\/products\/[^/]+\/?$/.test(location.pathname)
-        ?location.pathname.replace(/\/?$/,'/')+'?sku='+encodeURIComponent(selectedSku.id)
+      const variantToken=value=>String(value||'').trim().toLowerCase()
+        .replace(/,/g,'.')
+        .replace(/мл/g,'ml')
+        .replace(/кг/g,'kg')
+        .replace(/шт\.?/g,'pcs')
+        .replace(/л/g,'l')
+        .replace(/г/g,'g')
+        .replace(/\s+/g,'')
+        .replace(/[^a-z0-9.]+/g,'-')
+        .replace(/\./g,'-')
+        .replace(/-+/g,'-')
+        .replace(/^-|-$/g,'');
+      const productSlug=String(p.slug||p.id||'').trim();
+      const packToken=variantToken(selectedSku.variant||selectedSku.package||selectedSku.label);
+      const canonicalPath=productSlug&&packToken?'/products/'+productSlug+'-'+packToken+'/':'';
+      const onSkuPdp=/^\/products\/[^/]+\/?$/.test(location.pathname);
+      if(onSkuPdp&&canonicalPath&&canonicalPath!==location.pathname){
+        location.assign(canonicalPath);
+        return;
+      }
+      const skuUrl=onSkuPdp
+        ?(canonicalPath||location.pathname.replace(/\/?$/,'/'))
         :'product.html?id='+encodeURIComponent(p.id)+'&sku='+encodeURIComponent(selectedSku.id);
       history.replaceState({sku:selectedSku.id},'',skuUrl);
     }

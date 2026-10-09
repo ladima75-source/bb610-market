@@ -40,6 +40,19 @@ _CHANNEL_IMAGE_OVERRIDES = {
 }
 
 
+# Exact SKUs with verified, package-specific media under assets/img/v5/verified/.
+# These files are channel-safe even though that directory is not part of the
+# generic image-prefix allowlist in catalog_feeds._real_image_ready().
+_CHANNEL_IMAGE_READY_SKUS = {
+    "BB610-VLG-MEGAFOL-1L",
+    "BB610-VLG-MASTER134013-1KG",
+    "BB610-VLG-MASTER134013-250G",
+    "BB610-VLG-MASTER202020-1KG",
+    "BB610-VLG-MASTER202020-250G",
+    "BB610-VLG-MASTER31138-1KG",
+    "BB610-VLG-MASTER31138-250G",
+}
+
 def _text(value: Any) -> str:
     return str(value or "").strip()
 
@@ -137,6 +150,7 @@ def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]
                 "mpn": _text(source_sku.get("manufacturer_sku")),
                 "gtin_ean": _identifier(attributes, "gtin_ean", "gtin", "ean", "barcode"),
                 "feed_policy": "allowed",
+                "feed_image_ready": sid in _CHANNEL_IMAGE_READY_SKUS,
             }
             skus.append(sku)
 

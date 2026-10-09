@@ -17,7 +17,7 @@ BASE_FEED_FIELDS = [
     "product_type", "custom_label_0",
 ]
 GOOGLE_FIELDS = BASE_FEED_FIELDS + ["shipping_weight"]
-META_FIELDS = list(BASE_FEED_FIELDS)
+META_FIELDS = list(BASE_FEED_FIELDS) + ["custom_label_1"]
 
 REASON_LABELS = {
     "sale_disabled": "Продаж вимкнено",
@@ -36,6 +36,29 @@ REASON_LABELS = {
 WARNING_LABELS = {
     "gtin_mpn_unverified": "GTIN/MPN не вказано",
     "identifiers_require_source_check": "Ідентифікатори потребують перевірки джерела",
+}
+
+# Meta launch cohort for the first autumn campaign. Keep this SKU-exact:
+# 100 ml/250 g and 1 l/1 kg retail/pro packs only; large packs are excluded.
+_META_CUSTOM_LABEL_1_SKUS = {
+    "BB610-0BDAED34128BDA",       # Kendal 1 l
+    "BB610-32DA4F652F73A1",       # Kendal 100 ml
+    "BB610-C341BB1842183B",       # Kendal Root 1 l
+    "BB610-3CCFA12C27E227",       # Kendal Root 100 ml
+    "BB610-VLG-MASTER134013-1KG", # MASTER 13-40-13 1 kg
+    "BB610-VLG-MASTER134013-250G",# MASTER 13-40-13 250 g
+    "BB610-VLG-MASTER202020-1KG", # MASTER 20-20-20 1 kg
+    "BB610-VLG-MASTER202020-250G",# MASTER 20-20-20 250 g
+    "BB610-VLG-MASTER31138-1KG",  # MASTER 3-11-38 1 kg
+    "BB610-VLG-MASTER31138-250G", # MASTER 3-11-38 250 g
+    "BB610-VLG-MEGAFOL-1L",       # Megafol 1 l
+    "BB610-VLG-MEGAFOL-100ML",    # Megafol 100 ml
+    "BB610-02A58A1A393719",        # Pekacid 1 kg
+    "BB610-D886B6AD2D6C04",        # Pekacid 200 g
+    "BB610-E4A0F69C3768B0",        # Radifarm 1 l
+    "BB610-EDD4D8789728B8",        # Radifarm 100 ml
+    "BB610-75DA86689E220C",        # Viva 1 l
+    "BB610-VLG-VIVA-100ML",        # Viva 100 ml
 }
 
 
@@ -402,6 +425,7 @@ def channel_snapshot(commerce_override: dict | None = None) -> dict:
                 if sku.get("launch_matrix_priority") == "A"
                 else ("test" if sku.get("launch_matrix_priority") == "B" else "")
             ),
+            "custom_label_1": "meta_autumn_core" if sid in _META_CUSTOM_LABEL_1_SKUS else "",
             "shipping_weight": _shipping_weight(product, sku, status["title"]),
         }
         feed_rows.append((base, status["availability"]))

@@ -257,22 +257,46 @@ def _catalog_metrics():
     }
 
 def _integrations():
-    env=os.environ
-    def present(*names):
-        return any(bool(env.get(n)) for n in names)
+    # Overview must use the same canonical status sources as the Integrations
+    # page. Secrets may live in the encrypted store, so checking legacy env
+    # variable names here produces false "Не налаштовано" states.
+    try:
+        from .integrations import nova_poshta_status
+        nova_poshta_configured=bool(nova_poshta_status().get('configured'))
+    except Exception:
+        try:
+            from .integration_secrets import configured
+            nova_poshta_configured=bool(configured('nova_poshta.api_key'))
+        except Exception:
+            nova_poshta_configured=False
+
+    try:
+        from .payment_settings import payment_settings_status
+        payment_status=payment_settings_status()
+        online_payment_configured=bool((payment_status.get('online_card') or {}).get('enabled'))
+    except Exception:
+        try:
+            from .integration_secrets import configured
+            online_payment_configured=bool(configured('payments.mono_token'))
+        except Exception:
+            online_payment_configured=False
+
     try:
         from .telegram_notifications import telegram_status
         telegram_configured=bool(telegram_status().get('configured'))
     except Exception:
-        # Keep Overview available even if an integration-specific status probe
-        # fails; legacy env detection remains a safe fallback.
-        telegram_configured=present('TELEGRAM_BOT_TOKEN','BB610_TELEGRAM_BOT_TOKEN')
+        try:
+            from .integration_secrets import configured
+            telegram_configured=bool(configured('telegram.bot_token'))
+        except Exception:
+            telegram_configured=False
+
     return {
-      'nova_poshta':{'configured':present('NOVA_POSHTA_API_KEY','NP_API_KEY'),'label':'Нова пошта'},
+      'nova_poshta':{'configured':nova_poshta_configured,'label':'Нова пошта'},
       'telegram':{'configured':telegram_configured,'label':'Telegram'},
       'google_feed':{'configured':True,'label':'Google Merchant feed','path':'/api/v1/catalog/feeds/google-merchant.csv'},
       'meta_feed':{'configured':True,'label':'Meta Catalog feed','path':'/api/v1/catalog/feeds/meta-catalog.csv'},
-      'online_payment':{'configured':present('MONOBANK_TOKEN','MONO_TOKEN','WAYFORPAY_MERCHANT_ACCOUNT'),'label':'Онлайн-оплата'},
+      'online_payment':{'configured':online_payment_configured,'label':'Онлайн-оплата'},
     }
 
 def _recent_activity():

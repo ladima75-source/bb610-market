@@ -36,7 +36,7 @@ async function load(){
   $('#alerts').innerHTML=attentionAlerts.length?attentionAlerts.map(a=>`<a class="alert ${a.level||''}" href="${a.href||'#'}"><span>${a.label}</span><b>${a.count}</b></a>`).join(''):'<div class=empty>Критичних зауважень немає.</div>';
   const stats=[
     ['Товарів',c.products],['SKU',c.skus],['SKU з ціною',c.priced_skus],['SKU без ціни',c.no_price_skus],
-    ['Продаж увімкнено',c.sale_enabled_skus],['В наявності',c.in_stock_skus],['Допущено у фіди',c.feed_allowed_skus],['Не допущено',c.feed_blocked_skus]
+    ['Продаж увімкнено',c.sale_enabled_skus],['В наявності',c.in_stock_skus],['У Google Merchant feed',c.feed_allowed_skus],['Потребують уваги · Google feed',c.feed_blocked_skus],['Ціна за запитом · поза фідом',c.feed_expected_excluded_skus]
   ];
   $('#catalogStats').innerHTML=stats.map(s=>`<div class=stat><span>${s[0]}</span><b>${fmt(s[1])}</b></div>`).join('');
 

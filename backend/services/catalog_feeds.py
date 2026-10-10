@@ -86,7 +86,7 @@ def _image(product: dict, sku: dict) -> str:
     return SITE + "/" + raw.lstrip("/")
 
 
-def _real_image_ready(product: dict, sku: dict) -> bool:
+def _real_image_ready(product: dict, sku: dict, channel: str = "google") -> bool:
     raw = _image_raw(product, sku)
     low = raw.lower()
     if not raw or low.endswith(".svg"):
@@ -108,7 +108,20 @@ def _real_image_ready(product: dict, sku: dict) -> bool:
     explicit = sku.get("feed_image_ready")
     if explicit is None:
         explicit = product.get("feed_image_ready")
-    return bool(explicit) if explicit is not None else False
+    if explicit is not None:
+        return bool(explicit)
+
+    # Meta may use package-specific verified creative that is intentionally
+    # excluded from the protected Google Merchant baseline. Never let a
+    # Meta-only media decision silently expand the Google feed.
+    if channel == "meta":
+        meta_explicit = sku.get("meta_feed_image_ready")
+        if meta_explicit is None:
+            meta_explicit = product.get("meta_feed_image_ready")
+        if meta_explicit is not None:
+            return bool(meta_explicit)
+
+    return False
 
 
 def _title(product: dict, sku: dict) -> str:
@@ -296,7 +309,7 @@ def _shipping_weight(product: dict, sku: dict, title: str) -> str:
     return f"{kg:.3f} kg"
 
 
-def _status_row(product: dict, sku: dict, commerce: dict) -> dict:
+def _status_row(product: dict, sku: dict, commerce: dict, channel: str = "google") -> dict:
     sid = _text(sku.get("id") or sku.get("sku"))
     policy = _effective_policy(product, sku)
     title = _title(product, sku)
@@ -321,7 +334,7 @@ def _status_row(product: dict, sku: dict, commerce: dict) -> dict:
         reason_codes.append("title_missing")
     if not brand:
         reason_codes.append("brand_missing")
-    if not _real_image_ready(product, sku):
+    if not _real_image_ready(product, sku, channel):
         reason_codes.append("real_product_image_missing")
     if not image:
         reason_codes.append("image_missing")
@@ -372,7 +385,7 @@ def _status_row(product: dict, sku: dict, commerce: dict) -> dict:
     }
 
 
-def channel_snapshot(commerce_override: dict | None = None) -> dict:
+def channel_snapshot(commerce_override: dict | None = None, channel: str = "google") -> dict:
     master = master_snapshot(commerce_override)
     products = {
         _text(row.get("id")): row
@@ -398,7 +411,7 @@ def channel_snapshot(commerce_override: dict | None = None) -> dict:
             continue
 
         current = commerce.get(sid) if isinstance(commerce.get(sid), dict) else {}
-        status = _status_row(product, sku, current)
+        status = _status_row(product, sku, current, channel)
         audit_rows.append(status)
 
         if status["state"] != "eligible":
@@ -474,8 +487,8 @@ def channel_audit_from_snapshot(snap: dict) -> dict:
     }
 
 
-def channel_audit(commerce_override: dict | None = None) -> dict:
-    return channel_audit_from_snapshot(channel_snapshot(commerce_override))
+def channel_audit(commerce_override: dict | None = None, channel: str = "google") -> dict:
+    return channel_audit_from_snapshot(channel_snapshot(commerce_override, channel=channel))
 
 
 def _csv(fields: list[str], rows: list[dict]) -> str:
@@ -496,7 +509,7 @@ def google_csv_from_snapshot(snap: dict) -> str:
 
 
 def google_csv(commerce_override: dict | None = None) -> str:
-    return google_csv_from_snapshot(channel_snapshot(commerce_override))
+    return google_csv_from_snapshot(channel_snapshot(commerce_override, channel="google"))
 
 
 def meta_csv_from_snapshot(snap: dict) -> str:
@@ -509,7 +522,7 @@ def meta_csv_from_snapshot(snap: dict) -> str:
 
 
 def meta_csv(commerce_override: dict | None = None) -> str:
-    return meta_csv_from_snapshot(channel_snapshot(commerce_override))
+    return meta_csv_from_snapshot(channel_snapshot(commerce_override, channel="meta"))
 
 
 def feed_status_from_snapshot(snap: dict) -> dict:
@@ -533,4 +546,6 @@ def feed_status_from_snapshot(snap: dict) -> dict:
 
 
 def feed_status(commerce_override: dict | None = None) -> dict:
-    return feed_status_from_snapshot(channel_snapshot(commerce_override))
+    # Feed status is the Google Merchant guard view by default. Meta has a
+    # deliberately separate creative-readiness overlay.
+    return feed_status_from_snapshot(channel_snapshot(commerce_override, channel="google"))

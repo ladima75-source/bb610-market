@@ -240,19 +240,43 @@ def _catalog_metrics():
         if isinstance(im,dict):im=im.get('local') or im.get('url')
         if not im:sku_no_photo+=1
 
+    # Dashboard feed health must follow the live Google Merchant guard, not
+    # legacy catalog.master feed_policy flags. "request_price" SKUs are an
+    # expected exclusion; only sale-ready SKUs blocked by feed guards are
+    # actionable.
+    feed_expected_excluded=0
+    try:
+        from .catalog_feeds import feed_status
+        current_feed=feed_status()
+        feed_allowed=int(current_feed.get('eligible_count') or 0)
+        feed_blocked=0
+        for row in (current_feed.get('items') or []):
+            if row.get('state')=='eligible':
+                continue
+            price=row.get('price')
+            availability=str(row.get('availability') or '')
+            if price not in (None,'',0,0.0) and availability in {'in_stock','out_of_stock','preorder','backorder'}:
+                feed_blocked+=1
+            else:
+                feed_expected_excluded+=1
+    except Exception:
+        # Fall back to the legacy counters only if the canonical feed guard
+        # cannot be evaluated, so Overview itself remains available.
+        pass
+
     alerts=[]
     if no_price:alerts.append({'level':'warn','label':'SKU без ціни','count':no_price,'href':'products.html'})
     if sku_no_photo:alerts.append({'level':'warn','label':'SKU без фото','count':sku_no_photo,'href':'catalog.html'})
     if out_stock:alerts.append({'level':'info','label':'Немає в наявності','count':out_stock,'href':'products.html'})
     if review:alerts.append({'level':'warn','label':'Картки на перевірці','count':review,'href':'catalog.html'})
-    if feed_blocked:alerts.append({'level':'info','label':'Не допущено у фіди','count':feed_blocked,'href':'catalog-import.html'})
+    if feed_blocked:alerts.append({'level':'warn','label':'Google feed · потребують уваги','count':feed_blocked,'href':'catalog-import.html'})
 
     return {
       'products':len(products),'skus':len(skus),'published_products':published,
       'priced_skus':priced,'no_price_skus':no_price,'in_stock_skus':in_stock,
       'out_stock_skus':out_stock,'sale_enabled_skus':sale_enabled,
       'no_photo_products':no_photo,'no_photo_skus':sku_no_photo,
-      'review_products':review,'feed_allowed_skus':feed_allowed,'feed_blocked_skus':feed_blocked,
+      'review_products':review,'feed_allowed_skus':feed_allowed,'feed_blocked_skus':feed_blocked,'feed_expected_excluded_skus':feed_expected_excluded,
       'categories':categories,'alerts':alerts
     }
 

@@ -1,6 +1,6 @@
 window.BB610_DELIVERY_CONFIG = Object.freeze({
   orderRules: Object.freeze({
-    minOrderUah: 500,
+    codMinOrderUah: 500,
     freeShippingThresholdUah: 2500,
     freeShippingMaxChargeableWeightKg: 10,
     freeShippingProvider: 'nova_poshta'

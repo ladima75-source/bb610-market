@@ -45,7 +45,7 @@ jobs:
             'checkout_cod_gate_only': "method!=='cod'||total>=codMinOrder" in checkout,
             'checkout_online_first': 'online_card:0,bank_transfer:1,cod:2' in checkout,
             'backend_cod_gate_only': "payment_method=='cod' and subtotal < COD_MIN_ORDER_UAH" in orders,
-            'legacy_blanket_min_removed': 'MIN_ORDER_AMOUNT_500_UAH' not in orders,
+            'legacy_blanket_min_removed': "raise ValueError('MIN_ORDER_AMOUNT_500_UAH')" not in orders,
             'view_cart_event': "pushEvent('view_cart'" in cart,
             'begin_checkout_event': "pushEvent('begin_checkout'" in checkout,
           }

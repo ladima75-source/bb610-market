@@ -1,5 +1,4 @@
 {
-  "action": "deploy",
-  "ref": "6870ce5de18c5ad7c8f636ab7ddce430f1a93f5e",
-  "request_id": "2026-10-13-checkout-conversion-deploy"
+  "action": "audit",
+  "request_id": "2026-10-13-vps-dirty-audit"
 }

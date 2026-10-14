@@ -66,8 +66,10 @@ def _text(value: Any) -> str:
     return str(value or "").strip()
 
 
-def _image_raw(product: dict, sku: dict) -> str:
-    raw = sku.get("image")
+def _image_raw(product: dict, sku: dict, channel: str = "google") -> str:
+    raw = sku.get("meta_image") if channel == "meta" else None
+    if not raw:
+        raw = sku.get("image")
     if not raw:
         raw = product.get("image")
         if isinstance(raw, dict):
@@ -75,8 +77,8 @@ def _image_raw(product: dict, sku: dict) -> str:
     return _text(raw)
 
 
-def _image(product: dict, sku: dict) -> str:
-    raw = _image_raw(product, sku)
+def _image(product: dict, sku: dict, channel: str = "google") -> str:
+    raw = _image_raw(product, sku, channel)
     if not raw:
         return ""
     if raw.startswith("http://") or raw.startswith("https://"):
@@ -87,7 +89,7 @@ def _image(product: dict, sku: dict) -> str:
 
 
 def _real_image_ready(product: dict, sku: dict, channel: str = "google") -> bool:
-    raw = _image_raw(product, sku)
+    raw = _image_raw(product, sku, channel)
     low = raw.lower()
     if not raw or low.endswith(".svg"):
         return False
@@ -313,7 +315,7 @@ def _status_row(product: dict, sku: dict, commerce: dict, channel: str = "google
     sid = _text(sku.get("id") or sku.get("sku"))
     policy = _effective_policy(product, sku)
     title = _title(product, sku)
-    image = _image(product, sku)
+    image = _image(product, sku, channel)
     brand = _text(sku.get("brand") or product.get("brand"))
     gtin = _gtin(product, sku)
     mpn = _mpn(product, sku)

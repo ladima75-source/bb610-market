@@ -9,6 +9,7 @@ from typing import Any
 from .product_master_feed_v5 import SOURCE_ID, snapshot as master_snapshot
 
 SITE = "https://market.bb610.com.ua"
+META_IMAGE_REV = "20261014a"
 API = "https://api.market.bb610.com.ua"
 
 BASE_FEED_FIELDS = [
@@ -82,11 +83,19 @@ def _image(product: dict, sku: dict, channel: str = "google") -> str:
     if not raw:
         return ""
     if raw.startswith("http://") or raw.startswith("https://"):
-        return raw
-    if raw.startswith("/media/") or raw.startswith("media/"):
-        return API + "/" + raw.lstrip("/")
-    return SITE + "/" + raw.lstrip("/")
+        url = raw
+    elif raw.startswith("/media/") or raw.startswith("media/"):
+        url = API + "/" + raw.lstrip("/")
+    else:
+        url = SITE + "/" + raw.lstrip("/")
 
+    # Meta had stale/never-fetched image states on part of the catalog.
+    # Version Meta image URLs once to force a fresh fetch without changing
+    # Google Merchant image URLs.
+    if channel == "meta":
+        sep = "&" if "?" in url else "?"
+        url = f"{url}{sep}meta_rev={META_IMAGE_REV}"
+    return url
 
 def _real_image_ready(product: dict, sku: dict, channel: str = "google") -> bool:
     raw = _image_raw(product, sku, channel)

@@ -39,12 +39,34 @@ _CHANNEL_IMAGE_OVERRIDES = {
     "BB610-906E45D6FF4693": "/assets/img/v5/channel/seasailer-20kg.jpg",
 }
 
+# Meta-only image overrides. These match the verified package-specific
+# images already used by the public SKU pages, while keeping the Google
+# Merchant feed unchanged.
+_META_IMAGE_OVERRIDES = {
+    "BB610-0BDAED34128BDA": "/assets/img/v5/verified/ads-hires/bb610-0bdaed34128bda.webp",
+    "BB610-E4A0F69C3768B0": "/assets/img/v5/verified/ads-hires/bb610-e4a0f69c3768b0.webp",
+    "BB610-EDD4D8789728B8": "/assets/img/v5/verified/ads-hires/bb610-edd4d8789728b8.webp",
+    "BB610-75DA86689E220C": "/assets/img/v5/verified/ads-hires/bb610-75da86689e220c.webp",
+    "BB610-VLG-VIVA-100ML": "/assets/img/v5/verified/ads-hires/bb610-vlg-viva-100ml.webp",
+    "BB610-02A58A1A393719": "/assets/img/v5/verified/ads-hires/bb610-02a58a1a393719.webp",
+    "BB610-D886B6AD2D6C04": "/assets/img/v5/verified/ads-hires/bb610-d886b6ad2d6c04.webp",
+    "BB610-VLG-MASTER134013-25KG": "/assets/img/v5/verified/ads-hires/bb610-vlg-master134013-25kg.webp",
+}
+
 
 # Exact SKUs with verified, package-specific media prepared for the Meta
 # autumn cohort. Keep this override Meta-only: Google Merchant has its own
 # protected 163-item baseline and must not expand when Meta creative media is
 # enabled.
 _META_IMAGE_READY_SKUS = {
+    "BB610-0BDAED34128BDA",
+    "BB610-E4A0F69C3768B0",
+    "BB610-EDD4D8789728B8",
+    "BB610-75DA86689E220C",
+    "BB610-VLG-VIVA-100ML",
+    "BB610-02A58A1A393719",
+    "BB610-D886B6AD2D6C04",
+    "BB610-VLG-MASTER134013-25KG",
     "BB610-VLG-MEGAFOL-1L",
     "BB610-VLG-MASTER134013-1KG",
     "BB610-VLG-MASTER134013-250G",
@@ -148,6 +170,7 @@ def snapshot(commerce_override: dict[str, dict] | None = None) -> dict[str, Any]
                 "item_group_id": _identifier(attributes, "item_group_id", "related_group_id") or pid,
                 "feed": {"title": canonical_title} if canonical_title else {},
                 "image": sku_image,
+                "meta_image": _META_IMAGE_OVERRIDES.get(sid) or "",
                 "mpn": _text(source_sku.get("manufacturer_sku")),
                 "gtin_ean": _identifier(attributes, "gtin_ean", "gtin", "ean", "barcode"),
                 "feed_policy": "allowed",

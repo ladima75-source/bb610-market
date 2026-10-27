@@ -486,3 +486,36 @@ function bb610LoadProductCardV3Enhancements(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bb610LoadProductCardV3Enhancements);
 else bb610LoadProductCardV3Enhancements();
+
+/* BB610 Market public contacts: preserve main phone and add second direct-dial number. */
+(() => {
+  const SECOND_HREF = 'tel:+380972920104';
+  const SECOND_LABEL = '+380 (97) 292-01-04';
+  const syncPublicPhones = () => {
+    document.querySelectorAll('a[href="tel:+380770179770"]').forEach(primary => {
+      if (primary.dataset.secondaryPhoneReady === '1') return;
+      primary.dataset.secondaryPhoneReady = '1';
+      const box = primary.parentElement;
+      if (!box || box.querySelector('a[href="' + SECOND_HREF + '"]')) return;
+      const second = document.createElement('a');
+      second.href = SECOND_HREF;
+      second.textContent = SECOND_LABEL;
+      second.className = 'bb610-secondary-phone';
+      if (primary.classList.contains('footer-phone')) {
+        second.classList.add('footer-phone');
+        second.style.display = 'block';
+        second.style.marginTop = '5px';
+        primary.after(second);
+      } else if (primary.closest('.seller-grid')) {
+        primary.after(document.createElement('br'), second);
+      } else {
+        primary.after(document.createTextNode(' · '), second);
+      }
+    });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', syncPublicPhones, {once:true});
+  } else {
+    syncPublicPhones();
+  }
+})();

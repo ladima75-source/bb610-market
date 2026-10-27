@@ -401,7 +401,7 @@ const BB610 = (() => {
         '<label>Коментар<textarea name="comment" maxlength="2000" rows="3" placeholder="Наприклад: 610 шт., доставка у Київ"></textarea></label>'+
         '<button class="btn price-request-submit" type="submit">НАДІСЛАТИ ЗАПИТ</button>'+
         '<div class="price-request-status" data-pr-status></div>'+
-        '<div class="price-request-alt">Або: <a data-pr-mail>Email</a> · <a href="https://t.me/bb610_market_bot" target="_blank" rel="noopener">Telegram</a></div>'+
+        '<div class="price-request-alt">Або: <a data-pr-mail>Email</a></div>'+
         '</form>';
       document.body.appendChild(d);
       d.querySelector('.price-request-close').onclick=()=>d.close();

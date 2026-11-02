@@ -251,6 +251,12 @@ window.BB610_DATA_SOURCE={
       commercial_status:requestPrice?'request-price':(commerceEnabled?'active':'paused'),
       offer_status:requestPrice?'request-price':(commerceEnabled?'active':'draft'),
       price_request:requestPrice,
+      price_tiers:Array.isArray(raw.price_tiers)?raw.price_tiers.map(x=>({
+        min_qty:Number(x.min_qty||1),
+        max_qty:x.max_qty===null||x.max_qty===undefined?null:Number(x.max_qty),
+        unit_price:Number(x.unit_price),
+        currency:x.currency||'UAH',
+      })).filter(x=>Number.isFinite(x.unit_price)):[],
       stock_label:this._stockLabel(availability),
       image:primary,
       gallery:media,

@@ -258,6 +258,37 @@ def _json(value: str | None, default):
         return default
 
 
+def _runtime_quantity_price_tiers() -> dict[str, list[dict]]:
+    """Read quantity-based unit prices from the operational commerce DB."""
+    if not LIVE_DB_PATH.is_file():
+        return {}
+    con = None
+    try:
+        con = sqlite3.connect(f"file:{LIVE_DB_PATH}?mode=ro", uri=True)
+        con.row_factory = sqlite3.Row
+        table = con.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='quantity_price_tiers'"
+        ).fetchone()
+        if not table:
+            return {}
+        out: dict[str, list[dict]] = {}
+        for row in con.execute(
+            """
+            SELECT sku,min_qty,max_qty,unit_price,currency
+            FROM quantity_price_tiers
+            WHERE active=1
+            ORDER BY sku,min_qty ASC
+            """
+        ).fetchall():
+            out.setdefault(str(row["sku"]), []).append(dict(row))
+        return out
+    except sqlite3.Error:
+        return {}
+    finally:
+        if con is not None:
+            con.close()
+
+
 def _runtime_commerce_map() -> dict[str, dict]:
     """Read the operational sku_commerce table without creating/mutating it.
 
@@ -449,6 +480,7 @@ def _sku_rows(
     con: sqlite3.Connection,
     product_id: str,
     runtime_commerce: dict[str, dict] | None = None,
+    runtime_price_tiers: dict[str, list[dict]] | None = None,
     *,
     enabled_only: bool = False,
 ) -> list[dict]:
@@ -467,6 +499,7 @@ def _sku_rows(
         (product_id,),
     ).fetchall()
     runtime_commerce = runtime_commerce if runtime_commerce is not None else _runtime_commerce_map()
+    runtime_price_tiers = runtime_price_tiers if runtime_price_tiers is not None else _runtime_quantity_price_tiers()
     result = []
     for row in rows:
         item = dict(row)
@@ -475,6 +508,7 @@ def _sku_rows(
         item["attributes"] = _json(item.pop("attributes_json", None), {})
         item["media"] = _media_for_sku(con, item["sku_id"])
         item = _overlay_commerce(item, item["sku_id"], runtime_commerce)
+        item["price_tiers"] = runtime_price_tiers.get(item["sku_id"], [])
         result.append(item)
     return result
 
@@ -517,7 +551,8 @@ def product(product_id_or_alias: str, *, public_only: bool = True) -> dict | Non
         item["sources"] = _sources_for_product(con, canonical)
         item["media"] = _media_for_product(con, canonical)
         runtime_commerce = _runtime_commerce_map()
-        item["skus"] = _sku_rows(con, canonical, runtime_commerce, enabled_only=public_only)
+        runtime_price_tiers = _runtime_quantity_price_tiers()
+        item["skus"] = _sku_rows(con, canonical, runtime_commerce, runtime_price_tiers, enabled_only=public_only)
         item["aliases"] = [
             r["alias"]
             for r in con.execute(
@@ -560,11 +595,13 @@ def resolve_order_sku(value: str) -> dict | None:
             return None
         item["attributes"] = _json(item.pop("attributes_json", None), {})
         item.update(commerce)
+        item["price_tiers"] = _runtime_quantity_price_tiers().get(canonical, [])
         return item
 
 
 def snapshot(*, public_only: bool = True) -> dict:
     runtime_commerce = _runtime_commerce_map()
+    runtime_price_tiers = _runtime_quantity_price_tiers()
     with _connect() as con:
         where = "WHERE public_enabled=1 AND status='active'" if public_only else ""
         products = [
@@ -586,7 +623,7 @@ def snapshot(*, public_only: bool = True) -> dict:
             item["characteristics"] = _json(item.pop("characteristics_json", None), [])
             item["sources"] = _sources_for_product(con, item["product_id"])
             item["media"] = _media_for_product(con, item["product_id"])
-            item["skus"] = _sku_rows(con, item["product_id"], runtime_commerce, enabled_only=public_only)
+            item["skus"] = _sku_rows(con, item["product_id"], runtime_commerce, runtime_price_tiers, enabled_only=public_only)
 
         public_product_ids = {
             row["product_id"]

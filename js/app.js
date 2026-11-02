@@ -397,11 +397,11 @@ const BB610 = (() => {
         '<p class="price-request-note">Ціна залежить від моделі, кількості та умов постачання. Надішліть запит — ми уточнимо актуальні умови.</p>'+
         '<label>Кількість, шт.<input name="quantity" type="number" min="1" max="100000" value="1" required></label>'+
         '<label>Ваше ім’я<input name="customer_name" type="text" minlength="2" maxlength="160" autocomplete="name" required></label>'+
-        '<label>Телефон / Telegram / e-mail<input name="contact" type="text" minlength="3" maxlength="240" autocomplete="tel" required></label>'+
+        '<label>Телефон<input name="contact" type="tel" minlength="10" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="+380…" required></label>'+
         '<label>Коментар<textarea name="comment" maxlength="2000" rows="3" placeholder="Наприклад: 610 шт., доставка у Київ"></textarea></label>'+
+        '<p class="price-request-consent">Надсилаючи запит, Ви погоджуєтесь отримати сервісне повідомлення від BB610 Market у Viber; якщо Viber недоступний — SMS.</p>'+
         '<button class="btn price-request-submit" type="submit">НАДІСЛАТИ ЗАПИТ</button>'+
         '<div class="price-request-status" data-pr-status></div>'+
-        '<div class="price-request-alt">Або: <a data-pr-mail>Email</a></div>'+
         '</form>';
       document.body.appendChild(d);
       d.querySelector('.price-request-close').onclick=()=>d.close();
@@ -429,14 +429,17 @@ const BB610 = (() => {
         try{
           const base=window.BB610_COMMERCE_CONFIG?.apiBaseUrl||'https://api.market.bb610.com.ua';
           const r=await fetch(base.replace(/\/$/,'')+'/api/v1/price-requests',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
-          if(!r.ok)throw new Error('HTTP '+r.status);
-          const result=await r.json();
-          status.textContent='Запит '+result.request_code+' прийнято. Ми зв’яжемося з вами для уточнення ціни та постачання.';
+          const result=await r.json().catch(()=>({}));
+          if(!r.ok)throw new Error(result.detail||('HTTP '+r.status));
+          const customerStatus=result.customer_notification?.status||'';
+          status.textContent=(customerStatus==='accepted'||customerStatus==='sent')
+            ?'Запит '+result.request_code+' прийнято. Підтвердження відправлено на Ваш номер у Viber або SMS. Відповідь щодо ціни та доставки отримаєте там же.'
+            :'Запит '+result.request_code+' прийнято. Ми зв’яжемося з Вами за вказаним номером.';
           pushEvent('request_price',{sku:currentSku.id,product_id:currentProduct.id,quantity:payload.quantity,request_code:result.request_code});
           submit.textContent='ЗАПИТ НАДІСЛАНО';
           form.querySelectorAll('input,textarea').forEach(x=>x.disabled=true);
         }catch(err){
-          status.textContent='Не вдалося надіслати форму. Напишіть нам у Telegram або e-mail.';
+          status.textContent=err?.message||'Не вдалося надіслати запит. Перевірте номер телефону та спробуйте ще раз.';
           submit.disabled=false;
         }
       });
@@ -450,9 +453,6 @@ const BB610 = (() => {
     form.querySelector('.price-request-submit').textContent='НАДІСЛАТИ ЗАПИТ';
     d.querySelector('[data-pr-status]').textContent='';
     d.querySelector('[data-pr-product]').textContent=p.name+(s.variant?' · '+s.variant:'');
-    const subject='Запит ціни BB610 Market: '+p.name;
-    const body='Товар: '+p.name+'\nSKU: '+s.id+'\nВаріант: '+(s.variant||'')+'\nКількість: '+Math.max(1,Number(initialQty)||1);
-    d.querySelector('[data-pr-mail]').href='mailto:market.bb610@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
     pushEvent('request_price_open',{sku:s.id,product_id:p.id});
     if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');
     return true;

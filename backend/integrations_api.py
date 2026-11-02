@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 from .services.delivery.base import DeliveryNotConfigured, DeliveryUpstreamError
 from .services.integrations import nova_poshta_status, save_nova_poshta_settings, test_nova_poshta, nova_poshta_sender_options, nova_poshta_sender_cities
 from .services.telegram_notifications import telegram_status, save_telegram_settings, test_telegram, discover_telegram_chats
+from .services.customer_messaging import customer_messaging_status, save_customer_messaging_settings, test_customer_messaging
 from .services.payment_settings import payment_settings_status, save_payment_settings
 from .services.integration_secrets import set_values, configured, source_for
 from .services.payment.mono import MonoPaymentAdapter
@@ -31,6 +32,11 @@ class TelegramSettingsPatch(BaseModel):
     bot_token:Optional[str]=Field(default=None,min_length=8,max_length=512)
     chat_id:Optional[str]=Field(default=None,max_length=128)
 
+class CustomerMessagingSettingsPatch(BaseModel):
+    api_token:Optional[str]=Field(default=None,min_length=8,max_length=1024)
+    viber_sender:Optional[str]=Field(default=None,max_length=80)
+    sms_sender:Optional[str]=Field(default=None,max_length=25)
+
 class NovaPoshtaSettingsPatch(BaseModel):
     api_key:Optional[str]=Field(default=None,min_length=8,max_length=512)
     api_url:Optional[str]=Field(default=None,min_length=8,max_length=500)
@@ -47,7 +53,7 @@ def _admin_auth(authorization:Optional[str]):
     if not expected:raise HTTPException(503,'Admin API is disabled until BB610_ADMIN_TOKEN is configured')
     if not authorization or authorization!='Bearer '+expected:raise HTTPException(401,'Unauthorized')
 @router.get('')
-def list_integrations(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return {'integrations':[nova_poshta_status(),payment_settings_status(),telegram_status()]}
+def list_integrations(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return {'integrations':[nova_poshta_status(),payment_settings_status(),telegram_status(),customer_messaging_status()]}
 @router.get('/payments')
 def get_payments(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return payment_settings_status()
 @router.patch('/payments')
@@ -116,6 +122,27 @@ def telegram_chats(authorization:Optional[str]=Header(default=None)):
     _admin_auth(authorization)
     try:return discover_telegram_chats()
     except RuntimeError as e:raise HTTPException(502,str(e))
+
+@router.get('/customer-messaging')
+def get_customer_messaging(authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    return customer_messaging_status()
+
+@router.patch('/customer-messaging')
+def patch_customer_messaging(body:CustomerMessagingSettingsPatch,authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    try:
+        return save_customer_messaging_settings(**body.model_dump(exclude_unset=True))
+    except RuntimeError as e:
+        raise HTTPException(500,str(e))
+
+@router.post('/customer-messaging/test')
+def customer_messaging_test(authorization:Optional[str]=Header(default=None)):
+    _admin_auth(authorization)
+    try:
+        return test_customer_messaging()
+    except RuntimeError as e:
+        raise HTTPException(502,str(e))
 
 @router.get('/nova-poshta')
 def get_np(authorization:Optional[str]=Header(default=None)):_admin_auth(authorization);return nova_poshta_status()

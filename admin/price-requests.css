@@ -4,3 +4,11 @@
 .badge.notify-not_configured{background:#634915;color:#ffd47c}
 .badge.notify-not_attempted{background:#343c40;color:#c5ced1}
 .notify-error{display:inline-block;margin-top:6px;color:#ffabab;word-break:break-word;font-size:12px}
+
+.badge.notify-accepted{background:#1f4a35;color:#8cf0b5}
+.badge.notify-invalid_phone{background:#522d2d;color:#ffabab}
+.customer-reply{display:grid;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid #30383b}
+.customer-reply label{display:grid;gap:6px;font-weight:700}
+.customer-reply textarea{width:100%;resize:vertical;min-height:94px;background:#111516;border:1px solid #3b4448;color:#fff;border-radius:8px;padding:10px 12px;font:inherit}
+.customer-reply button{justify-self:start;border:0;border-radius:8px;padding:10px 14px;background:#f0b24c;color:#111;font-weight:800;cursor:pointer}
+.customer-reply button:disabled{opacity:.55;cursor:wait}

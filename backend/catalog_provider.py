@@ -59,7 +59,10 @@ def resolve_order_items(lines):
         if availability in (None, 'unknown', 'out_of_stock', 'request_price', 'legacy_disabled'):
             raise CatalogError(f'SKU is unavailable: {requested_sku}')
 
-        price = float(effective)
+        from .services.quantity_pricing import price_for_quantity
+        price = price_for_quantity(row['canonical_sku_id'], qty, float(effective))
+        if price is None:
+            raise CatalogError(f'Price is not configured: {requested_sku}')
         product_id = row['product_id']
         category_id = row.get('category_id') or 'other'
         variant = row.get('package_label') or requested_sku

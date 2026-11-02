@@ -1,5 +1,5 @@
 (()=>{
- const cfg=window.BB610_ADMIN_CONFIG||{},base=(cfg.apiBaseUrl||'').replace(/\/$/,''),ep='/api/v1/admin/integrations/nova-poshta',payEp='/api/v1/admin/integrations/payments',tgEp='/api/v1/admin/integrations/telegram',cbEp='/api/v1/admin/integrations/checkbox',metaEp='/api/v1/admin/integrations/meta-capi',$=id=>document.getElementById(id),token=$('token');token.value=localStorage.getItem('bb610_admin_token')||sessionStorage.getItem('bb610_admin_token')||'';
+ const cfg=window.BB610_ADMIN_CONFIG||{},base=(cfg.apiBaseUrl||'').replace(/\/$/,''),ep='/api/v1/admin/integrations/nova-poshta',payEp='/api/v1/admin/integrations/payments',tgEp='/api/v1/admin/integrations/telegram',cmEp='/api/v1/admin/integrations/customer-messaging',cbEp='/api/v1/admin/integrations/checkbox',metaEp='/api/v1/admin/integrations/meta-capi',$=id=>document.getElementById(id),token=$('token');token.value=localStorage.getItem('bb610_admin_token')||sessionStorage.getItem('bb610_admin_token')||'';
  const H=()=>({'Authorization':'Bearer '+token.value.trim(),'Content-Type':'application/json','Accept':'application/json'});
  async function req(path,opt={}){const c=new AbortController(),t=setTimeout(()=>c.abort(),cfg.requestTimeoutMs||12000);try{const r=await fetch(base+path,{...opt,signal:c.signal,headers:{...H(),...(opt.headers||{})}});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.detail||`HTTP ${r.status}`);return d}finally{clearTimeout(t)}}
  const mark=(id,ok,yes='Готово',no='Не готово')=>{const e=$(id);e.textContent=ok?yes:no;e.className=ok?'ok':'warn'};
@@ -11,7 +11,7 @@
    $('sender-select').dataset.current=s.sender?.sender_ref||'';$('contact-select').dataset.current=s.sender?.sender_contact_ref||'';$('sender-city-select').dataset.current=s.sender?.sender_city_ref||'';$('address-select').dataset.current=s.sender?.sender_address_ref||'';
    const sh=s.shipping||{};$('shipment-weight').value=sh.weight||'1.0';$('shipment-description').value=sh.description||'Товари для вирощування';$('payer-type').value=sh.payer_type||'Recipient';$('payment-method').value=sh.payment_method||'Cash';
  }
- async function load(){localStorage.setItem('bb610_admin_token',token.value.trim());sessionStorage.setItem('bb610_admin_token',token.value.trim());$('state').textContent='Завантаження…';const [s,p,tg,cb,meta]=await Promise.all([req(ep),req(payEp),req(tgEp),req(cbEp),req(metaEp)]);paint(s);paintPayments(p);paintTelegram(tg);paintCheckbox(cb);paintMeta(meta);if(s.api_ready){try{await loadSenderOptions(true)}catch(_){}}$('state').textContent=''}
+ async function load(){localStorage.setItem('bb610_admin_token',token.value.trim());sessionStorage.setItem('bb610_admin_token',token.value.trim());$('state').textContent='Завантаження…';const [s,p,tg,cm,cb,meta]=await Promise.all([req(ep),req(payEp),req(tgEp),req(cmEp),req(cbEp),req(metaEp)]);paint(s);paintPayments(p);paintTelegram(tg);paintCustomerMessaging(cm);paintCheckbox(cb);paintMeta(meta);if(s.api_ready){try{await loadSenderOptions(true)}catch(_){}}$('state').textContent=''}
  function paintPayments(p){const cod=!!p.cod?.enabled,bank=!!p.bank_transfer?.ready,bankEnabled=!!p.bank_transfer?.enabled,card=!!p.online_card?.enabled;mark('pay-cod-state',cod,'Активна','Вимкнена');mark('pay-bank-state',bank,'Готова',bankEnabled?'Не завершено':'Вимкнена');$('pay-bank-note').textContent=bank?'Реквізити заповнені.':(bankEnabled?'Заповніть отримувача та IBAN.':'');mark('pay-card-state',card,card?'mono':'Не підключено','Не підключено');$('pay-card-note').textContent=card?'Token збережено · webhook готовий':'mono Еквайринг';$('pay-mono-webhook').value=p.online_card?.webhook_url||'https://api.market.bb610.com.ua/api/v1/payments/webhooks/mono';$('pay-status').textContent=(cod||bank||card)?'Налаштовано':'Не налаштовано';$('pay-status').className='badge '+((cod||bank||card)?'live':'draft');$('pay-cod-enabled').checked=cod;$('pay-bank-enabled').checked=bankEnabled;$('pay-bank-recipient').value=p.bank_transfer?.recipient||'';$('pay-bank-iban').value=p.bank_transfer?.iban||'';$('pay-bank-purpose').value=p.bank_transfer?.purpose||'Оплата замовлення {order_number}'}
  async function savePayments(){const body={cod_enabled:$('pay-cod-enabled').checked,bank_transfer_enabled:$('pay-bank-enabled').checked,bank_recipient:$('pay-bank-recipient').value.trim(),bank_iban:$('pay-bank-iban').value.trim(),bank_purpose:$('pay-bank-purpose').value.trim()};const mt=$('pay-mono-token').value.trim();if(mt)body.mono_token=mt;$('pay-state').textContent='Збереження…';const p=await req(payEp,{method:'PATCH',body:JSON.stringify(body)});$('pay-mono-token').value='';paintPayments(p);$('pay-state').textContent='✓ Збережено'}
  async function testMono(){const b=$('pay-mono-test');b.disabled=true;$('pay-state').textContent='Перевірка mono…';try{await req(payEp+'/mono/test',{method:'POST',body:'{}'});$('pay-state').textContent='✓ mono API доступний';await load()}catch(e){$('pay-state').textContent='✕ '+e.message}finally{b.disabled=false}}
@@ -43,6 +43,32 @@
    const b=$('tg-test');b.disabled=true;$('tg-state').textContent='Надсилаємо тест…';
    try{const r=await req(tgEp+'/test',{method:'POST',body:'{}'});$('tg-state').textContent='✓ Тестове повідомлення надіслано · message '+(r.message_id||'');await load()}
    catch(e){$('tg-state').textContent='✕ '+e.message}
+   finally{b.disabled=false}
+ }
+
+ function paintCustomerMessaging(m){
+   const tokenReady=!!m.api_token?.configured,viber=!!m.viber?.configured,sms=!!m.sms?.configured,ready=!!m.configured;
+   mark('cm-api-state',tokenReady,'Збережено','Не налаштовано');
+   mark('cm-viber-state',viber,'Готовий','Не налаштовано');
+   mark('cm-sms-state',sms,'Готовий','Не налаштовано');
+   $('cm-token-source').textContent=tokenReady?`Token: ${m.api_token?.source==='secure_store'?'захищене сховище':'поточний .env'}`:'';
+   $('cm-viber-sender').value=m.viber?.sender||'';
+   $('cm-sms-sender').value=m.sms?.sender||'';
+   $('cm-status').textContent=m.hybrid_ready?'Viber → SMS готово':(ready?'Частково налаштовано':'Не підключено');
+   $('cm-status').className='badge '+(m.hybrid_ready?'live':'draft');
+ }
+ async function saveCustomerMessaging(){
+   const body={viber_sender:$('cm-viber-sender').value.trim(),sms_sender:$('cm-sms-sender').value.trim()};
+   const k=$('cm-api-token').value.trim();if(k)body.api_token=k;
+   $('cm-state').textContent='Збереження…';
+   const m=await req(cmEp,{method:'PATCH',body:JSON.stringify(body)});
+   $('cm-api-token').value='';paintCustomerMessaging(m);
+   $('cm-state').textContent=m.hybrid_ready?'✓ Viber → SMS fallback готовий':'✓ Налаштування збережено';
+ }
+ async function testCustomerMessaging(){
+   const b=$('cm-test');b.disabled=true;$('cm-state').textContent='Перевірка TurboSMS…';
+   try{const r=await req(cmEp+'/test',{method:'POST',body:'{}'});$('cm-state').textContent='✓ TurboSMS API доступний'+(r.balance!==undefined&&r.balance!==null?' · баланс '+r.balance+' грн':'');await load()}
+   catch(e){$('cm-state').textContent='✕ '+e.message}
    finally{b.disabled=false}
  }
 
@@ -102,7 +128,7 @@
    paint(s);if(s.sender?.sender_ref)await loadSenderOptions(true);$('state').textContent=s.sender_ready?'✓ Відправник, контакт, місто та відділення збережені':'✓ Налаштування збережено';
  }
  async function test(){const b=$('test');b.disabled=true;$('state').textContent='Перевірка Nova Poshta…';try{const r=await req(ep+'/test',{method:'POST',body:'{}'});$('state').textContent=`✓ API працює · знайдено ${r.results} результатів`;await load()}catch(e){$('state').textContent='✕ '+e.message}finally{b.disabled=false}}
- $('meta-save').onclick=()=>saveMeta().catch(e=>$('meta-state').textContent='✕ '+e.message);$('meta-toggle-token').onclick=()=>{const x=$('meta-access-token');x.type=x.type==='password'?'text':'password'};$('cb-save').onclick=()=>saveCheckbox().catch(e=>$('cb-state').textContent='✕ '+e.message);$('cb-test').onclick=testCheckbox;$('cb-toggle-password').onclick=()=>{const x=$('cb-password');x.type=x.type==='password'?'text':'password'};$('connect').onclick=()=>load().catch(e=>$('state').textContent='✕ '+e.message);$('pay-save').onclick=()=>savePayments().catch(e=>$('pay-state').textContent='✕ '+e.message);$('pay-mono-test').onclick=testMono;$('pay-toggle-mono').onclick=()=>{const x=$('pay-mono-token');x.type=x.type==='password'?'text':'password'};$('tg-save').onclick=()=>saveTelegram().catch(e=>$('tg-state').textContent='✕ '+e.message);$('tg-test').onclick=testTelegram;$('save').onclick=()=>save().catch(e=>$('state').textContent='✕ '+e.message);$('test').onclick=test;$('load-senders').onclick=()=>loadSenderOptions(false);
+ $('cm-save').onclick=()=>saveCustomerMessaging().catch(e=>$('cm-state').textContent='✕ '+e.message);$('cm-test').onclick=testCustomerMessaging;$('cm-toggle-token').onclick=()=>{const x=$('cm-api-token');x.type=x.type==='password'?'text':'password'};$('meta-save').onclick=()=>saveMeta().catch(e=>$('meta-state').textContent='✕ '+e.message);$('meta-toggle-token').onclick=()=>{const x=$('meta-access-token');x.type=x.type==='password'?'text':'password'};$('cb-save').onclick=()=>saveCheckbox().catch(e=>$('cb-state').textContent='✕ '+e.message);$('cb-test').onclick=testCheckbox;$('cb-toggle-password').onclick=()=>{const x=$('cb-password');x.type=x.type==='password'?'text':'password'};$('connect').onclick=()=>load().catch(e=>$('state').textContent='✕ '+e.message);$('pay-save').onclick=()=>savePayments().catch(e=>$('pay-state').textContent='✕ '+e.message);$('pay-mono-test').onclick=testMono;$('pay-toggle-mono').onclick=()=>{const x=$('pay-mono-token');x.type=x.type==='password'?'text':'password'};$('tg-save').onclick=()=>saveTelegram().catch(e=>$('tg-state').textContent='✕ '+e.message);$('tg-test').onclick=testTelegram;$('save').onclick=()=>save().catch(e=>$('state').textContent='✕ '+e.message);$('test').onclick=test;$('load-senders').onclick=()=>loadSenderOptions(false);
  $('sender-select').onchange=()=>{$('sender-select').dataset.current=$('sender-select').value;$('contact-select').dataset.current='';$('sender-city-select').dataset.current='';$('address-select').dataset.current='';$('sender-city-select').innerHTML='<option value="">Спочатку знайдіть місто</option>';$('address-select').innerHTML='<option value="">Спочатку оберіть місто</option>';if($('sender-select').value)loadContacts($('sender-select').value).catch(e=>$('state').textContent='✕ '+e.message)};
  $('contact-select').onchange=()=>{$('contact-select').dataset.current=$('contact-select').value};$('search-sender-city').onclick=()=>searchCities().catch(e=>$('state').textContent='✕ '+e.message);
  $('sender-city-select').onchange=()=>{const v=$('sender-city-select').value;$('sender-city-select').dataset.current=v;$('address-select').dataset.current='';if(v&&$('sender-select').value)loadBranches($('sender-select').value,v).catch(()=>{})};

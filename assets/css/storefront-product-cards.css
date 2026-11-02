@@ -271,3 +271,10 @@
   opacity:.72;
   object-fit:contain;
 }
+
+.price-request-consent{
+  margin:0;
+  color:#7f898d;
+  font-size:12px;
+  line-height:1.45;
+}

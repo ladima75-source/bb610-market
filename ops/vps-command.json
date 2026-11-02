@@ -1,4 +1,5 @@
 {
-  "action": "audit",
-  "request_id": "2026-10-13-vps-dirty-audit"
+  "action": "deploy",
+  "ref": "f42a886ad491cb08c8bd29b9acb4b24abafebce4",
+  "request_id": "2026-11-02-customer-viber-sms-price-requests"
 }

@@ -43,18 +43,18 @@ def _record_notification(request_code: str, result: dict) -> None:
         con.commit()
 
 
-def _notification_snapshot(request_code: str) -> dict:
+def _notification_snapshot(request_code: str, channel: str = "telegram") -> dict:
     with connect() as con:
         row = con.execute(
             """
             SELECT channel,status,error,provider_message_id,attempts,last_attempt_at
             FROM price_request_notifications
-            WHERE request_code=? AND channel='telegram'
+            WHERE request_code=? AND channel=?
             """,
-            (request_code,),
+            (request_code, channel),
         ).fetchone()
     return dict(row) if row else {
-        "channel": "telegram",
+        "channel": channel,
         "status": "not_attempted",
         "error": "",
         "provider_message_id": "",
@@ -130,6 +130,11 @@ def create_price_request(payload: dict) -> dict:
         raise ValueError("Customer name is required")
     if len(contact) < 3:
         raise ValueError("Contact is required")
+    from .customer_messaging import normalize_phone
+    normalized_phone = normalize_phone(contact)
+    if not normalized_phone:
+        raise ValueError("Вкажіть коректний номер телефону")
+    contact = "+" + normalized_phone
     if quantity < 1 or quantity > 100000:
         raise ValueError("Invalid quantity")
     if len(comment) > 2000:
@@ -172,6 +177,24 @@ def create_price_request(payload: dict) -> dict:
                 "updated_at": now,
             }
             notification = _send_notification_for_row(row)
+            from .customer_messaging import notify_price_request_customer
+            try:
+                customer_notification = notify_price_request_customer(row)
+            except Exception as exc:
+                customer_notification = {
+                    "channel": "customer_message",
+                    "provider": "turbosms",
+                    "mode": "",
+                    "status": "failed",
+                    "error": f"{type(exc).__name__}: {exc}",
+                    "provider_message_id": "",
+                }
+            try:
+                _record_notification(code, customer_notification)
+            except Exception:
+                # The lead itself must never be lost because a delivery log
+                # could not be persisted.
+                pass
             return {
                 "request_code": code,
                 "status": "new",
@@ -182,6 +205,12 @@ def create_price_request(payload: dict) -> dict:
                 "notification": {
                     "channel": notification.get("channel") or "telegram",
                     "status": notification.get("status") or "failed",
+                },
+                "customer_notification": {
+                    "channel": customer_notification.get("channel") or "customer_message",
+                    "provider": customer_notification.get("provider") or "turbosms",
+                    "mode": customer_notification.get("mode") or "",
+                    "status": customer_notification.get("status") or "failed",
                 },
             }
         except Exception as exc:
@@ -199,10 +228,17 @@ def list_price_requests(*, limit: int = 200, status: str | None = None) -> list[
            n.error AS telegram_error,
            n.provider_message_id AS telegram_message_id,
            n.attempts AS telegram_attempts,
-           n.last_attempt_at AS telegram_last_attempt_at
+           n.last_attempt_at AS telegram_last_attempt_at,
+           c.status AS customer_message_status,
+           c.error AS customer_message_error,
+           c.provider_message_id AS customer_message_id,
+           c.attempts AS customer_message_attempts,
+           c.last_attempt_at AS customer_message_last_attempt_at
     FROM price_requests pr
     LEFT JOIN price_request_notifications n
       ON n.request_code=pr.request_code AND n.channel='telegram'
+    LEFT JOIN price_request_notifications c
+      ON c.request_code=pr.request_code AND c.channel='customer_message'
     """
     if status:
         status = str(status).strip().lower()
@@ -257,3 +293,48 @@ def resend_price_request_notification(request_code: str) -> dict | None:
         },
     }
 
+
+
+def send_price_request_customer_message(
+    request_code: str,
+    *,
+    message: str,
+    client_request_id: str,
+) -> dict | None:
+    request_code = str(request_code or "").strip()
+    message = str(message or "").strip()
+    client_request_id = str(client_request_id or "").strip()
+    if not message:
+        raise ValueError("Повідомлення не може бути порожнім")
+    if len(message) > 1000:
+        raise ValueError("Повідомлення занадто довге")
+    if len(client_request_id) < 8:
+        raise ValueError("Invalid client request id")
+    with connect() as con:
+        row = con.execute(
+            "SELECT * FROM price_requests WHERE request_code=?",
+            (request_code,),
+        ).fetchone()
+    if not row:
+        return None
+
+    from .customer_messaging import reply_price_request_customer
+    payload = dict(row)
+    result = reply_price_request_customer(
+        payload,
+        message=message,
+        client_request_id=client_request_id,
+    )
+    try:
+        _record_notification(request_code, result)
+    except Exception:
+        pass
+    return {
+        "request_code": request_code,
+        "customer_notification": {
+            **_notification_snapshot(request_code, "customer_message"),
+            "provider": result.get("provider") or "turbosms",
+            "mode": result.get("mode") or "",
+            "status": result.get("status") or "failed",
+        },
+    }

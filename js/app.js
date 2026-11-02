@@ -181,6 +181,22 @@ const BB610 = (() => {
   const isCommercialActive=s=>!!s&&(s.commercial_status==='active'||s.offer_status==='active');
   const isPriceRequestSku=s=>!!s&&(s.price_request===true||s.commercial_status==='request-price'||s.offer_status==='request-price');
   const canBuySku=s=>!!s&&hasPrice(s)&&!isPriceRequestSku(s)&&s.availability!=='out_of_stock';
+  const priceTiers=s=>(Array.isArray(s?.price_tiers)?s.price_tiers:[])
+    .map(x=>({min_qty:Math.max(1,Number(x?.min_qty||1)),max_qty:x?.max_qty===null||x?.max_qty===undefined?null:Number(x.max_qty),unit_price:Number(x?.unit_price),currency:x?.currency||s?.currency||'UAH'}))
+    .filter(x=>Number.isFinite(x.unit_price)&&Number.isFinite(x.min_qty))
+    .sort((a,b)=>a.min_qty-b.min_qty);
+  function priceForQty(s,quantity=1){
+    if(!s)return null;
+    const qty=Math.max(1,Math.floor(Number(quantity)||1));
+    const tiers=priceTiers(s);
+    const tier=[...tiers].reverse().find(x=>qty>=x.min_qty&&(x.max_qty===null||qty<=x.max_qty));
+    if(tier)return tier.unit_price;
+    return s.price===null||s.price===undefined||!Number.isFinite(Number(s.price))?null:Number(s.price);
+  }
+  function lowestTierPrice(s){
+    const values=priceTiers(s).map(x=>x.unit_price).filter(Number.isFinite);
+    return values.length?Math.min(...values):priceForQty(s,1);
+  }
   function skuForPackage(productId,wanted,preferredId=''){
     const rows=productSkus(productId).filter(s=>sameSkuPackage(wanted,s));
     if(!rows.length)return null;
@@ -233,7 +249,7 @@ const BB610 = (() => {
   const view=p=>{const s=displaySku(p.id),categoryId=p.category_id||p.category||'';return {...p,name:storefrontName(p),officialName:p.official_name,category:categoryId,categoryLabel:C().categories.find(c=>c.id===categoryId)?.short_name||categoryId||'Каталог',manufacturer:p.manufacturer,country:p.country,npk:p.npk,activeIngredient:p.active_ingredient,composition:p.composition||[],cultures:p.cultures||[],purposes:p.purposes||[],manufacturerUse:p.manufacturer_use,application:p.application,rate:p.rate,restrictions:p.restrictions,target:p.target,waitingPeriod:p.waiting_period,hazardClass:p.hazard_class,registration:p.registration,factoryPacks:p.factory_packs||[],documents:p.documents||[],instruction:(p.documents&&p.documents[0]?.title)||'Джерело технічних даних',source:p.source?.title||'',sourceUrl:p.source?.url||'',verifiedAt:p.verification?.verifiedAt||'',verified:!!p.verification,shortDescription:p.short_description||'',productType:p.product_type||'',image:productImage(p,s),gallery:p.gallery||[],sku:s?.id||null,pack:s?.variant||'',price:s?.price??null,currency:s?.currency||'UAH',unit:s?.volume_weight?.unit||'шт',unitQty:s?.volume_weight?.value||1,stockStatus:s?.availability||'unknown',stockLabel:publicStockLabel(s),shipping:s?.shipping||[],supplier:s?.supplier||'',importer:s?.importer||'',packer:s?.packer||'',sizes:productSkus(p.id).map(x=>({id:x.id,label:x.variant,price:x.price,qty:x.volume_weight?.value,unit:x.volume_weight?.unit,status:x.offer_status,commercialStatus:x.commercial_status||'not-configured',priceRequest:isPriceRequestSku(x),marketTest:!!x.market_test,stockLabel:publicStockLabel(x),availability:x.availability||'unknown',packSourceStatus:x.pack_source_status||'unknown',attributes:x.attributes||{}}))}};
   const products=()=>rawProducts().map(view);
   const byId=id=>{const p=BB610_DATA_SOURCE.product(id);if(p)return categoryHidden(p.category_id||p.category)?null:view(p);const s=sku(id);if(!s)return null;const owner=BB610_DATA_SOURCE.product(s.product_id);return owner&&!categoryHidden(owner.category_id||owner.category)?view(owner):null};
-  function commerceItem(s,quantity=1){if(!s)return null;const p=BB610_DATA_SOURCE.product(s.product_id);const categoryId=p?.category_id||p?.category||'';const item={item_id:s.id,item_name:skuName(p,s)||p?.name||s.product_id||s.id,item_brand:p?.brand||'',item_category:C().categories.find(c=>c.id===categoryId)?.name||categoryId,item_variant:s.variant,quantity:Number(quantity)||1,currency:s.currency||'UAH'};if(s.price!==null&&s.price!==undefined)item.price=Number(s.price);return item}
+  function commerceItem(s,quantity=1){if(!s)return null;const p=BB610_DATA_SOURCE.product(s.product_id);const categoryId=p?.category_id||p?.category||'';const qty=Math.max(1,Number(quantity)||1);const item={item_id:s.id,item_name:skuName(p,s)||p?.name||s.product_id||s.id,item_brand:p?.brand||'',item_category:C().categories.find(c=>c.id===categoryId)?.name||categoryId,item_variant:s.variant,quantity:qty,currency:s.currency||'UAH'};const unit=priceForQty(s,qty);if(unit!==null)item.price=unit;return item}
   function pushEvent(event,payload={}){if(window.BB610Analytics?.push)return window.BB610Analytics.push(event,payload);window.dataLayer=window.dataLayer||[];if(payload.ecommerce)window.dataLayer.push({ecommerce:null});const data={event,...payload};window.dataLayer.push(data);document.dispatchEvent(new CustomEvent('bb610:ecommerce',{detail:data}));return null;}
   function trackList(list,listId='catalog',listName='Каталог'){const items=list.map((p,i)=>{const s=displaySku(p.id);return s?{...commerceItem(s,1),index:i+1,item_list_id:listId,item_list_name:listName}:null}).filter(Boolean);if(items.length)pushEvent('view_item_list',{ecommerce:{item_list_id:listId,item_list_name:listName,items}})}
   function trackSelect(productId,listId='catalog',listName='Каталог',skuId=null){const s=(skuId&&sku(skuId))||displaySku(productId);if(s)pushEvent('select_item',{ecommerce:{item_list_id:listId,item_list_name:listName,items:[commerceItem(s,1)]}})}
@@ -241,8 +257,8 @@ const BB610 = (() => {
   function cartNotice(){
     const cart=get(LS.cart,[]),items=cart.map(x=>({row:x,sku:sku(x.sku)})).filter(x=>x.sku);
     const count=items.reduce((n,x)=>n+Number(x.row.qty||0),0);
-    const allPriced=items.length&&items.every(x=>x.sku.price!=null);
-    const total=items.reduce((sum,x)=>sum+(x.sku.price==null?0:Number(x.sku.price)*Number(x.row.qty||0)),0);
+    const allPriced=items.length&&items.every(x=>priceForQty(x.sku,x.row.qty)!=null);
+    const total=items.reduce((sum,x)=>{const unit=priceForQty(x.sku,x.row.qty);return sum+(unit==null?0:unit*Number(x.row.qty||0))},0);
     let box=document.querySelector('.cart-added-notice');
     if(!box){box=document.createElement('div');box.className='cart-added-notice';Object.assign(box.style,{position:'fixed',right:'16px',bottom:'16px',width:'min(390px,calc(100vw - 32px))',background:'#171d21',color:'#fff',padding:'16px',borderRadius:'14px',zIndex:120,boxShadow:'0 18px 48px #0008',border:'1px solid #30383e'});document.body.appendChild(box)}
     box.innerHTML=`<div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between"><div><b style="display:block;font-size:17px;margin-bottom:4px">Додано до кошика</b><span style="color:#c8d0d5">${count} ${count===1?'товар':'товари'} · ${allPriced?money(total):'сума уточнюється'}</span></div><button type="button" data-cart-close aria-label="Закрити" style="border:0;background:transparent;color:#fff;font-size:24px;line-height:1;cursor:pointer">×</button></div><a href="checkout.html" class="btn" style="display:block;text-align:center;margin-top:14px">ОФОРМИТИ ЗАМОВЛЕННЯ</a><div style="display:flex;justify-content:space-between;gap:12px;margin-top:10px"><a href="cart.html" style="color:#f0b24c;font-weight:700">Переглянути кошик</a><button type="button" data-cart-close style="border:0;background:transparent;color:#c8d0d5;cursor:pointer;padding:0">Продовжити покупки</button></div>`;
@@ -307,7 +323,7 @@ const BB610 = (() => {
         </div>
         <div class="product-card-commerce">
           <div class="stock">${displayStock}</div>
-          <div class="price-row"><div><div class="price">${priceRequest?'Ціна за запитом':money(cardPrice)}</div></div></div>
+          <div class="price-row"><div><div class="price">${priceRequest?'Ціна за запитом':money(cardPrice)}</div>${!priceRequest&&priceTiers(s).length>1?`<div class="price-tier-teaser">Опт від ${money(lowestTierPrice(s))} / шт.</div>`:''}</div></div>
           <div class="card-actions">
             ${priceRequest?`<button class="btn buy-btn price-request-btn" data-request-price="${s?.id||''}">ЗАПРОСИТИ ЦІНУ</button>`:`<button class="btn buy-btn" data-add="${s?.id||p.id}" ${buyEnabled?'':'disabled'}>КУПИТИ</button>`}
             <button class="btn ghost fav-toggle" data-fav="${p.id}" aria-label="Додати в обране">${fav?'♥':'♡'}</button>
@@ -471,7 +487,7 @@ const BB610 = (() => {
     const im=d.querySelector('img');im.src=src;im.alt=alt||'Фото товару';
     if(typeof d.showModal==='function')d.showModal();
   }
-  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,skuForPackage,sameSkuPackage,imageForPackage,hasPrice,isPriceRequestSku,canBuySku,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,skuName,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,harmonizeMediaBackgrounds,updateCompareBar,openPhoto,init};
+  return {LS,money,get,set,products,byId,sku,defaultSku,displaySku,skuForPackage,sameSkuPackage,imageForPackage,hasPrice,isPriceRequestSku,canBuySku,priceTiers,priceForQty,lowestTierPrice,categoryHidden,fallbackImage,isFallbackImage,approvedSkuImage,packageMediaRequired,productImage,skuName,commerceItem,pushEvent,trackList,trackSelect,unitPrice,addCart,openPriceRequest,toggleFav,toggleCompare,updateBadges,toast,productUrl,card,cardV2,bindCards,harmonizeMediaBackgrounds,updateCompareBar,openPhoto,init};
 })(); document.addEventListener('DOMContentLoaded',BB610.init);
 
 function bb610LoadProductCardV3Enhancements(){

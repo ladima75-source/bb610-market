@@ -193,3 +193,17 @@
   .pot-approved-infographic{margin-top:20px}
   .pot-approved-infographic img{border-radius:12px}
 }
+
+.pot-tier-pricing{margin-top:14px;border:1px solid #d8d3c8;border-radius:12px;overflow:hidden;background:#f7f5ef}
+.pot-tier-title{padding:10px 12px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#626a6d;border-bottom:1px solid #ded9ce}
+.pot-tier-row{display:flex;justify-content:space-between;gap:16px;padding:9px 12px;border-bottom:1px solid #e4dfd5;font-size:14px}
+.pot-tier-row:last-child{border-bottom:0}
+.pot-tier-row b{white-space:nowrap}
+.pot-tier-row.active{background:#fff1d3}
+.pot-quantity-pricing{display:grid;grid-template-columns:minmax(140px,180px) 1fr;gap:12px;align-items:end;margin-top:14px}
+.pot-quantity-pricing label{display:grid;gap:5px;font-size:12px;font-weight:800;color:#626a6d}
+.pot-quantity-pricing input{width:100%;border:1px solid #c7c1b7;border-radius:10px;padding:11px 12px;font:inherit;background:#fff;color:#17191a}
+.pot-line-total{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid #d8d3c8;border-radius:10px;padding:11px 12px;background:#fff}
+.pot-line-total span{font-size:12px;color:#626a6d}
+.pot-line-total b{font-size:18px}
+@media(max-width:640px){.pot-quantity-pricing{grid-template-columns:1fr}.pot-tier-row{font-size:13px}}

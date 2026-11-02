@@ -443,6 +443,11 @@ function render({product,root,selectedSkuId}){
           <div class="pot-price" id="pot-price">Ціна за запитом</div>
           <div class="pot-status" id="pot-status">Під замовлення</div>
           <small id="pot-price-note">Ціна залежить від моделі, кількості та умов постачання.</small>
+          <div class="pot-tier-pricing" id="pot-tier-pricing" hidden></div>
+          <div class="pot-quantity-pricing" id="pot-quantity-pricing" hidden>
+            <label>Кількість, шт.<input id="pot-qty" type="number" min="1" step="1" value="1" inputmode="numeric"></label>
+            <div class="pot-line-total"><span>Сума</span><b id="pot-line-total">—</b></div>
+          </div>
         </div>
 
         <div class="pot-actions">
@@ -593,6 +598,49 @@ function render({product,root,selectedSkuId}){
     });
   }
 
+  function tierRangeLabel(row){
+    const min=Math.max(1,Number(row?.min_qty||1));
+    const max=row?.max_qty===null||row?.max_qty===undefined?null:Number(row.max_qty);
+    const fmt=n=>Number(n).toLocaleString('uk-UA');
+    return max===null?`Від ${fmt(min)} шт.`:`${fmt(min)}–${fmt(max)} шт.`;
+  }
+
+  function syncQuantityPricing(){
+    if(!selectedSku)return;
+    const request=BB610.isPriceRequestSku?.(selectedSku)===true;
+    const tiers=BB610.priceTiers?.(selectedSku)||[];
+    const tierBox=document.getElementById('pot-tier-pricing');
+    const qtyBox=document.getElementById('pot-quantity-pricing');
+    const qtyInput=document.getElementById('pot-qty');
+    const total=document.getElementById('pot-line-total');
+    const price=document.getElementById('pot-price');
+    const note=document.getElementById('pot-price-note');
+    if(request||!tiers.length){
+      if(tierBox){tierBox.hidden=true;tierBox.innerHTML='';}
+      if(qtyBox)qtyBox.hidden=true;
+      if(!request&&selectedSku.price!=null){
+        price.textContent=BB610.money(selectedSku.price);
+        note.textContent='';
+      }
+      return;
+    }
+    const qty=Math.max(1,Math.floor(Number(qtyInput?.value)||1));
+    if(qtyInput)qtyInput.value=String(qty);
+    const unit=BB610.priceForQty?.(selectedSku,qty);
+    const lowest=BB610.lowestTierPrice?.(selectedSku);
+    price.textContent=unit==null?'Ціна уточнюється':BB610.money(unit)+' / шт.';
+    note.textContent=lowest!=null?`Роздрібна ціна — ${BB610.money(selectedSku.price)} / шт. · опт від ${BB610.money(lowest)} / шт.`:'Ціна залежить від кількості.';
+    if(tierBox){
+      tierBox.hidden=false;
+      tierBox.innerHTML='<div class="pot-tier-title">Ціна залежно від кількості</div>'+tiers.map(row=>{
+        const active=qty>=row.min_qty&&(row.max_qty===null||qty<=row.max_qty);
+        return `<div class="pot-tier-row${active?' active':''}"><span>${tierRangeLabel(row)}</span><b>${BB610.money(row.unit_price)} / шт.</b></div>`;
+      }).join('');
+    }
+    if(qtyBox)qtyBox.hidden=false;
+    if(total)total.textContent=unit==null?'—':BB610.money(unit*qty);
+  }
+
   function syncSku(){
     if(!selectedSku)return;
     document.querySelectorAll('[data-pot-sku]').forEach(x=>x.classList.toggle('active',x.dataset.potSku===selectedSku.id));
@@ -600,6 +648,7 @@ function render({product,root,selectedSkuId}){
     document.getElementById('pot-price').textContent=request?'Ціна за запитом':BB610.money(selectedSku.price);
     document.getElementById('pot-status').textContent=request?'Під замовлення':(selectedSku.stock_label||'Наявність уточнюється');
     document.getElementById('pot-price-note').textContent=request?'Ціна залежить від вибраного варіанта, кількості та умов постачання.':'';
+    syncQuantityPricing();
     document.getElementById('pot-volume').textContent=volumeLabel(selectedSku)||'—';
     document.getElementById('pot-product-no').textContent=articleFromSku(selectedSku);
     document.getElementById('pot-dimensions').textContent=dimensionsLabel(selectedSku)||'—';
@@ -623,10 +672,12 @@ function render({product,root,selectedSkuId}){
     const src=el.dataset.potContentImage,alt=el.dataset.potContentAlt||product.name;
     if(src)BB610.openPhoto?.(src,alt);
   }));
+  document.getElementById('pot-qty')?.addEventListener('input',syncQuantityPricing);
   document.getElementById('pot-cta').onclick=()=>{
     if(!selectedSku)return;
-    if(BB610.isPriceRequestSku?.(selectedSku))BB610.openPriceRequest(selectedSku.id,1);
-    else BB610.addCart(selectedSku.id,1);
+    const qty=Math.max(1,Math.floor(Number(document.getElementById('pot-qty')?.value)||1));
+    if(BB610.isPriceRequestSku?.(selectedSku))BB610.openPriceRequest(selectedSku.id,qty);
+    else BB610.addCart(selectedSku.id,qty);
   };
   document.getElementById('pot-fav').onclick=e=>e.currentTarget.textContent=BB610.toggleFav(product.id)?'♥':'♡';
   document.getElementById('pot-cmp').onclick=e=>{const on=BB610.toggleCompare(product.id);if(on!==false)e.currentTarget.textContent=on?'✓':'⇄'};

@@ -12,7 +12,7 @@ from .services.delivery import DeliveryNotConfigured,DeliveryUpstreamError
 from .services.payment_service import methods as payment_methods,admin_update_cod,process_webhook
 from .services.payment import PaymentNotConfigured,PaymentSignatureError
 from .services.product_commerce import seed_from_catalog, public_catalog, admin_products, update_product
-from .services.price_requests import create_price_request, list_price_requests, update_price_request_status, resend_price_request_notification
+from .services.price_requests import create_price_request, list_price_requests, update_price_request_status, resend_price_request_notification, send_price_request_customer_message
 from .services.catalog_cms import (
     public_content, admin_list_products, admin_detail as admin_catalog_detail,
     save_product, create_product, create_sku, save_upload, MEDIA_DIR,
@@ -98,12 +98,16 @@ class PriceRequestBody(BaseModel):
     variant:Optional[str]=Field(default='',max_length=240)
     quantity:int=Field(default=1,ge=1,le=100000)
     customer_name:str=Field(min_length=2,max_length=160)
-    contact:str=Field(min_length=3,max_length=240)
+    contact:str=Field(min_length=7,max_length=40)
     comment:Optional[str]=Field(default='',max_length=2000)
     source_url:Optional[str]=Field(default='',max_length=500)
 
 class PriceRequestStatusBody(BaseModel):
     status:str=Field(min_length=2,max_length=40)
+
+class PriceRequestCustomerMessageBody(BaseModel):
+    message:str=Field(min_length=1,max_length=1000)
+    client_request_id:str=Field(min_length=8,max_length=80)
 
 class ProductCommerceUpdate(BaseModel):
     price:Optional[float]=Field(default=None,ge=0)
@@ -241,6 +245,22 @@ def price_request_admin_status(request_code:str,body:PriceRequestStatusBody,auth
 def price_request_admin_notify(request_code:str,authorization:Optional[str]=Header(default=None)):
     admin_auth(authorization)
     row=resend_price_request_notification(request_code)
+    if not row:
+        raise HTTPException(404,'Price request not found')
+    return row
+
+
+@app.post('/api/v1/admin/price-requests/{request_code}/customer-message')
+def price_request_admin_customer_message(request_code:str,body:PriceRequestCustomerMessageBody,authorization:Optional[str]=Header(default=None)):
+    admin_auth(authorization)
+    try:
+        row=send_price_request_customer_message(
+            request_code,
+            message=body.message,
+            client_request_id=body.client_request_id,
+        )
+    except ValueError as e:
+        raise HTTPException(422,str(e))
     if not row:
         raise HTTPException(404,'Price request not found')
     return row

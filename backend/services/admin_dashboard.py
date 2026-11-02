@@ -315,9 +315,16 @@ def _integrations():
         except Exception:
             telegram_configured=False
 
+    try:
+        from .customer_messaging import customer_messaging_status
+        customer_messaging_configured=bool(customer_messaging_status().get('hybrid_ready'))
+    except Exception:
+        customer_messaging_configured=False
+
     return {
       'nova_poshta':{'configured':nova_poshta_configured,'label':'Нова пошта'},
-      'telegram':{'configured':telegram_configured,'label':'Telegram'},
+      'telegram':{'configured':telegram_configured,'label':'Telegram · внутрішні сповіщення'},
+      'customer_messaging':{'configured':customer_messaging_configured,'label':'Клієнтам · Viber → SMS'},
       'google_feed':{'configured':True,'label':'Google Merchant feed','path':'/api/v1/catalog/feeds/google-merchant.csv'},
       'meta_feed':{'configured':True,'label':'Meta Catalog feed','path':'/api/v1/catalog/feeds/meta-catalog.csv'},
       'online_payment':{'configured':online_payment_configured,'label':'Онлайн-оплата'},

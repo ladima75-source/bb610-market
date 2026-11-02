@@ -20,6 +20,15 @@
 </div>
 <div class="integration-actions"><button id="tg-save">Зберегти Telegram</button><button id="tg-test" class="secondary">Тест Telegram</button><span id="tg-state" class="muted"></span></div></section>
 
+<section class="integration-card customer-messaging-card"><div class="integration-head"><div><div class="provider-title">Клієнтські повідомлення · Viber + SMS</div><div class="muted">Підтвердження запиту та відповіді клієнту без другого кліку</div></div><span id="cm-status" class="badge draft">Не перевірено</span></div>
+<div class="status-grid status-grid-3"><div class="status-box"><span>TurboSMS API</span><b id="cm-api-state">—</b><small id="cm-token-source" class="muted"></small></div><div class="status-box"><span>Viber</span><b id="cm-viber-state">—</b></div><div class="status-box"><span>SMS fallback</span><b id="cm-sms-state">—</b></div></div>
+<div class="formgrid integrations-form"><div class="section-title full">Автоматичний контакт з клієнтом</div>
+<div class="field full"><label>TurboSMS API token</label><div class="secret-row"><input id="cm-api-token" type="password" autocomplete="new-password" placeholder="Залиште порожнім, щоб не змінювати збережений token"><button id="cm-toggle-token" type="button" class="secondary">Показати при вводі</button></div><small class="muted">Token зберігається у захищеному сховищі та не повертається браузеру.</small></div>
+<div class="field"><label>Viber sender</label><input id="cm-viber-sender" placeholder="BB610 Market"><small class="muted">Для повноцінного двостороннього чату потрібен власний 2-way Viber sender.</small></div>
+<div class="field"><label>SMS sender</label><input id="cm-sms-sender" placeholder="BB610"><small class="muted">Якщо Viber не доставить повідомлення, система автоматично використає SMS.</small></div>
+</div>
+<div class="integration-actions"><button id="cm-save">Зберегти клієнтські повідомлення</button><button id="cm-test" type="button" class="secondary">Перевірити TurboSMS</button><span id="cm-state" class="muted"></span></div></section>
+
 <section class="integration-card payment-integration-card"><div class="integration-head"><div><div class="provider-title">Оплата</div><div class="muted">Commerce Stage 14A</div></div><span id="pay-status" class="badge draft">Не перевірено</span></div>
 <div class="status-grid status-grid-3"><div class="status-box"><span>Післяплата</span><b id="pay-cod-state">—</b></div><div class="status-box"><span>Оплата на рахунок</span><b id="pay-bank-state">—</b><small id="pay-bank-note" class="muted"></small></div><div class="status-box"><span>Картка онлайн</span><b id="pay-card-state">Не підключено</b><small id="pay-card-note" class="muted">mono Еквайринг</small></div></div>
 <div class="formgrid integrations-form"><div class="section-title full">Активні способи оплати</div><div class="field"><label class="toggle-line"><input id="pay-cod-enabled" type="checkbox"> <span>Післяплата</span></label><small class="muted">Для Nova Poshta сума замовлення передається як AfterpaymentOnGoodsCost.</small></div><div class="field"><label class="toggle-line"><input id="pay-bank-enabled" type="checkbox"> <span>Оплата на рахунок</span></label><small class="muted">Активується лише коли заповнені отримувач та IBAN.</small></div>
@@ -35,6 +44,6 @@
 <div class="status-grid status-grid-3"><div class="status-box"><span>Dataset</span><b id="meta-pixel-state">1103668908981910</b></div><div class="status-box"><span>Access token</span><b id="meta-token-state">—</b><small id="meta-token-source" class="muted"></small></div><div class="status-box"><span>Дедуплікація</span><b id="meta-dedupe-state">event_id</b></div></div>
 <div class="formgrid integrations-form"><div class="section-title full">Пряме підключення Meta CAPI</div><div class="field full"><label>Access token</label><div class="secret-row"><input id="meta-access-token" type="password" autocomplete="new-password" placeholder="Вставте згенерований Access Token Meta"><button id="meta-toggle-token" type="button" class="secondary">Показати при вводі</button></div><small class="muted">Token шифрується на сервері, зберігається поза GitHub і не повертається браузеру.</small></div></div>
 <div class="integration-actions"><button id="meta-save">Зберегти Meta CAPI</button><span id="meta-state" class="muted"></span></div></section>
-</main><script src="../config/admin-config.js"></script><script src="integrations.js?v=20260923-meta-token-1"></script><script src="admin-shell.js?v=18i"></script>
+</main><script src="../config/admin-config.js"></script><script src="integrations.js?v=20261102-customer-messaging-1"></script><script src="admin-shell.js?v=18i"></script>
 <script src="admin-master-nav.js?v=20260918-attention-2"></script>
 </body></html>

@@ -491,6 +491,10 @@ app.include_router(catalog_import_router)
 from .product_maintenance_api import router as product_maintenance_router
 app.include_router(product_maintenance_router)
 
+# BB610_ADMIN_AUTH
+from .admin_auth_api import router as admin_auth_router
+app.include_router(admin_auth_router)
+
 # BB610_STAGE18A_ADMIN_DASHBOARD
 from .admin_dashboard_api import router as admin_dashboard_router
 app.include_router(admin_dashboard_router)

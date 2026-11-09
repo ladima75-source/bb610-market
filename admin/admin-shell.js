@@ -37,7 +37,7 @@ if(document.querySelector('.bb610-admin-sidebar'))return;
 const aside=document.createElement('aside');aside.className='bb610-admin-sidebar';
 aside.innerHTML=`<div class="bb610-shell-brand"><b><span>BB610</span> MARKET</b><small>ADMIN</small></div><nav>${pages.map(([group,links])=>`<section><h4>${group}</h4>${links.map(([href,label,icon])=>`<a href="${href}" class="${here===href?'active':''}">${svg(icon)}<span>${label}</span></a>`).join('')}</section>`).join('')}</nav><div class="bb610-shell-foot"><span class="bb610-shell-badge">CONTROL CENTER</span></div>`;
 document.body.prepend(aside);
-const btn=document.createElement('button');btn.className='bb610-menu-toggle';btn.innerHTML=svg('layers');btn.title='Меню';btn.onclick=()=>document.body.classList.toggle('bb610-menu-open');document.body.appendChild(btn);
+const btn=document.createElement('button');btn.className='bb610-menu-toggle';btn.innerHTML=svg('layers')+'<span>Меню</span>';btn.title='Меню';btn.setAttribute('aria-label','Відкрити головне меню');btn.onclick=()=>document.body.classList.toggle('bb610-menu-open');document.body.appendChild(btn);
 const overlay=document.createElement('div');overlay.className='bb610-menu-overlay';overlay.onclick=()=>document.body.classList.remove('bb610-menu-open');document.body.appendChild(overlay);
 // Old horizontal nav remains in DOM as fallback, but is visually suppressed by shell CSS.
 })();

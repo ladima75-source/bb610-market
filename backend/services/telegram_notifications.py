@@ -165,6 +165,38 @@ def format_price_request_message(row: dict[str, Any]) -> str:
     return "\n".join(parts)
 
 
+
+def send_admin_login_code(code: str) -> dict[str, Any]:
+    code = str(code or "").strip()
+    if len(code) != 6 or not code.isdigit():
+        raise ValueError("Invalid login code")
+    status = telegram_status()
+    if not status["price_request_notifications_ready"]:
+        raise RuntimeError("Telegram notification settings are not configured")
+    chat_id = get_value("telegram.chat_id", OPERATIONS_CHAT_ID) or OPERATIONS_CHAT_ID
+    result = _api(
+        "sendMessage",
+        {
+            "chat_id": chat_id,
+            "text": (
+                "🔐 Вхід у BB610 Market Admin\n\n"
+                f"Код: {code}\n"
+                "Дійсний 5 хвилин.\n\n"
+                "Якщо Ви не входите в адмінку — просто ігноруйте це повідомлення."
+            ),
+            "disable_web_page_preview": "true",
+        },
+    )
+    if not isinstance(result, dict):
+        raise RuntimeError("Telegram sendMessage returned an unexpected response")
+    return {
+        "ok": True,
+        "chat_id": str(result.get("chat", {}).get("id") or chat_id),
+        "message_id": str(result.get("message_id") or ""),
+        "sent_at": _now(),
+    }
+
+
 def notify_price_request(row: dict[str, Any]) -> dict[str, Any]:
     status = telegram_status()
     if not status["price_request_notifications_ready"]:

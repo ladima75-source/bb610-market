@@ -4,6 +4,16 @@
 <link rel="stylesheet" href="admin-shell.css?v=20261109-mobile-nav-2">
 <link rel="stylesheet" href="admin-master-nav.css?v=20260918-attention-1">
 <link rel="stylesheet" href="price-requests.css?v=20261109-mobile-nav-2">
+<style>
+@media(max-width:950px){
+  .pr-head{flex-wrap:wrap;gap:10px;padding:10px 12px 10px 96px}
+  .pr-head .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .pr-head nav{display:none}
+  .pr-head .auth{display:grid;grid-template-columns:minmax(0,1fr) auto;width:100%;gap:8px}
+  .pr-head .auth input{min-width:0;width:100%}
+  .pr-head .auth button{white-space:nowrap}
+}
+</style>
 </head><body>
 <header class="pr-head"><a class="brand" href="dashboard.html"><span>BB610</span> MARKET ADMIN</a><nav><a href="dashboard.html">Огляд</a><a href="orders-center.html">Замовлення</a><a class="on" href="price-requests.html">Запити ціни</a><a href="catalog-workbench.html">Каталог</a></nav><div class="auth"><input id="token" type="password" placeholder="Admin token"><button id="connect">Підключити</button></div></header>
 <main class="pr-main">

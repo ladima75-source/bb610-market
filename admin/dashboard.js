@@ -56,5 +56,5 @@ async function load(){
   const m=e?.detail||e?.message||JSON.stringify(e);set('updated','Помилка: '+m);
  }
 }
-if(token())load();
+if(token())load();else set('updated','Для входу введіть Admin token і натисніть «Підключити».');
 })();

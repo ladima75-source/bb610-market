@@ -12,3 +12,11 @@
 .customer-reply textarea{width:100%;resize:vertical;min-height:94px;background:#111516;border:1px solid #3b4448;color:#fff;border-radius:8px;padding:10px 12px;font:inherit}
 .customer-reply button{justify-self:start;border:0;border-radius:8px;padding:10px 14px;background:#f0b24c;color:#111;font-weight:800;cursor:pointer}
 .customer-reply button:disabled{opacity:.55;cursor:wait}
+
+.customer-reply{display:grid;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid #30383b}
+.reply-head small{display:block;color:#8e9a9e;margin-bottom:3px}.reply-head b{display:block}
+.customer-reply textarea{width:100%;resize:vertical;min-height:180px;background:#111516;border:1px solid #3b4448;color:#fff;border-radius:8px;padding:10px 12px;font:inherit;line-height:1.45}
+.contact-actions{display:flex;flex-wrap:wrap;gap:8px}
+.contact-action{display:inline-flex;align-items:center;justify-content:center;border:1px solid #465156;background:#242a2c;color:#fff;text-decoration:none;border-radius:8px;padding:9px 11px;font-weight:800;cursor:pointer}
+.contact-action:hover{border-color:#f0b24c;color:#f0b24c}.contact-action.secondary{background:#f0b24c;color:#111;border-color:#f0b24c}
+.contact-action-note{color:#ffabab;font-size:12px;align-self:center}

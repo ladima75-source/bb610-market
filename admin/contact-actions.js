@@ -37,5 +37,28 @@ function buttonHtml(phone,message,idPrefix='contact'){
     '<a class="contact-action" data-contact-telegram="'+safe(idPrefix)+'" href="'+safe(l.telegram)+'" target="_blank" rel="noopener noreferrer">Telegram</a>'+
     '<a class="contact-action" data-contact-sms="'+safe(idPrefix)+'" href="'+safe(l.sms)+'">SMS</a>';
 }
-window.BB610_CONTACT={normalizePhone,links,copy,buttonHtml};
+function bindComposer(root,{phone,textareaSelector='[data-contact-message]',stateSelector='[data-contact-state]',prefix='contact'}={}){
+  const ta=root?.querySelector(textareaSelector);
+  const state=root?.querySelector(stateSelector);
+  if(!ta)return;
+  const refresh=()=>{
+    const l=links(phone,ta.value);
+    const wa=root.querySelector('[data-contact-whatsapp="'+prefix+'"]');
+    const tg=root.querySelector('[data-contact-telegram="'+prefix+'"]');
+    const sms=root.querySelector('[data-contact-sms="'+prefix+'"]');
+    if(wa)wa.href=l.whatsapp||'#';
+    if(tg)tg.href=l.telegram||'#';
+    if(sms)sms.href=l.sms||'#';
+  };
+  ta.addEventListener('input',refresh);refresh();
+  const copyBtn=root.querySelector('[data-contact-copy="'+prefix+'"]');
+  if(copyBtn)copyBtn.onclick=async()=>{
+    const ok=await copy(ta.value);
+    if(state)state.textContent=ok?'✓ Текст скопійовано. Не відправлено.':'Не вдалося скопіювати текст.';
+  };
+  root.querySelectorAll('[data-contact-whatsapp="'+prefix+'"],[data-contact-telegram="'+prefix+'"],[data-contact-sms="'+prefix+'"]').forEach(a=>{
+    a.addEventListener('click',()=>{if(state)state.textContent='Відкрито зовнішній канал. Надсилання підтвердіть у месенджері.'});
+  });
+}
+window.BB610_CONTACT={normalizePhone,links,copy,buttonHtml,bindComposer};
 })();

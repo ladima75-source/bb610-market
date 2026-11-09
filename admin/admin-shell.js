@@ -40,4 +40,114 @@ document.body.prepend(aside);
 const btn=document.createElement('button');btn.className='bb610-menu-toggle';btn.innerHTML=svg('layers')+'<span>Меню</span>';btn.title='Меню';btn.setAttribute('aria-label','Відкрити головне меню');btn.onclick=()=>document.body.classList.toggle('bb610-menu-open');document.body.appendChild(btn);
 const overlay=document.createElement('div');overlay.className='bb610-menu-overlay';overlay.onclick=()=>document.body.classList.remove('bb610-menu-open');document.body.appendChild(overlay);
 // Old horizontal nav remains in DOM as fallback, but is visually suppressed by shell CSS.
+
+const AUTH_API='https://api.market.bb610.com.ua';
+
+function storedAdminToken(){
+  try{return localStorage.getItem('bb610_admin_token')||sessionStorage.getItem('bb610_admin_token')||''}
+  catch(_){return ''}
+}
+function clearAdminToken(){
+  try{localStorage.removeItem('bb610_admin_token');sessionStorage.removeItem('bb610_admin_token')}catch(_){}
+}
+function authModal(){
+  let modal=document.querySelector('.bb610-login-modal');
+  if(modal)return modal;
+  modal=document.createElement('div');
+  modal.className='bb610-login-modal';
+  modal.innerHTML=`
+    <div class="bb610-login-backdrop" data-login-close></div>
+    <section class="bb610-login-card" role="dialog" aria-modal="true" aria-labelledby="bb610-login-title">
+      <button class="bb610-login-x" type="button" data-login-close aria-label="Закрити">×</button>
+      <div class="bb610-login-mark">BB610 MARKET ADMIN</div>
+      <h2 id="bb610-login-title">Вхід в адмінку</h2>
+      <p>Одноразовий код буде надіслано у Telegram <b>BB610 Market — Operations</b>.</p>
+      <label>Код з Telegram
+        <input id="bb610-login-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000">
+      </label>
+      <div class="bb610-login-actions">
+        <button type="button" id="bb610-login-resend" class="secondary">Надіслати код ще раз</button>
+        <button type="button" id="bb610-login-submit">Увійти</button>
+      </div>
+      <div id="bb610-login-status" class="bb610-login-status"></div>
+      <small>Після входу цей браузер буде запам’ятано. Вийти можна кнопкою у верхній панелі.</small>
+    </section>`;
+  document.body.appendChild(modal);
+  modal.querySelectorAll('[data-login-close]').forEach(x=>x.onclick=()=>modal.classList.remove('open'));
+  modal.querySelector('#bb610-login-code').addEventListener('keydown',e=>{if(e.key==='Enter')verifyAdminCode(modal)});
+  modal.querySelector('#bb610-login-submit').onclick=()=>verifyAdminCode(modal);
+  modal.querySelector('#bb610-login-resend').onclick=()=>requestAdminCode(modal,true);
+  return modal;
+}
+async function authFetch(path,body){
+  const r=await fetch(AUTH_API+path,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:body?JSON.stringify(body):'{}'
+  });
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(typeof data.detail==='string'?data.detail:'Помилка входу');
+  return data;
+}
+async function requestAdminCode(modal,resend=false){
+  const status=modal.querySelector('#bb610-login-status');
+  const resendBtn=modal.querySelector('#bb610-login-resend');
+  const submit=modal.querySelector('#bb610-login-submit');
+  resendBtn.disabled=true;submit.disabled=true;
+  status.textContent=resend?'Надсилаю новий код…':'Надсилаю код у Telegram…';
+  status.className='bb610-login-status';
+  try{
+    await authFetch('/api/v1/admin/auth/request-code');
+    status.textContent='Код надіслано у BB610 Market — Operations. Він дійсний 5 хвилин.';
+    status.className='bb610-login-status ok';
+    const input=modal.querySelector('#bb610-login-code');input.value='';input.focus();
+  }catch(e){
+    status.textContent=e.message;
+    status.className='bb610-login-status error';
+  }finally{
+    resendBtn.disabled=false;submit.disabled=false;
+  }
+}
+async function verifyAdminCode(modal){
+  const input=modal.querySelector('#bb610-login-code');
+  const code=(input.value||'').replace(/\D/g,'').slice(0,6);
+  const status=modal.querySelector('#bb610-login-status');
+  if(code.length!==6){status.textContent='Введіть 6 цифр із Telegram.';status.className='bb610-login-status error';input.focus();return}
+  const submit=modal.querySelector('#bb610-login-submit');
+  submit.disabled=true;status.textContent='Перевіряю код…';status.className='bb610-login-status';
+  try{
+    const data=await authFetch('/api/v1/admin/auth/verify-code',{code});
+    if(!data.token)throw new Error('Сервер не повернув сесію адміністратора');
+    localStorage.setItem('bb610_admin_token',data.token);
+    status.textContent='Готово. Вхід виконано.';
+    status.className='bb610-login-status ok';
+    location.reload();
+  }catch(e){
+    status.textContent=e.message;
+    status.className='bb610-login-status error';
+    input.select();
+  }finally{submit.disabled=false}
+}
+function setupAdminLogin(){
+  const input=document.querySelector('#token');
+  const connect=document.querySelector('#connect');
+  if(!input||!connect)return;
+  input.style.display='none';
+  input.setAttribute('aria-hidden','true');
+  if(storedAdminToken()){
+    connect.textContent='Вийти';
+    connect.title='Вийти з BB610 Market Admin';
+    connect.onclick=e=>{e.preventDefault();if(confirm('Вийти з адмінки на цьому пристрої?')){clearAdminToken();location.reload()}};
+    return;
+  }
+  connect.textContent='Увійти';
+  connect.title='Увійти в BB610 Market Admin';
+  connect.onclick=e=>{
+    e.preventDefault();
+    const modal=authModal();
+    modal.classList.add('open');
+    requestAdminCode(modal,false);
+  };
+}
+setupAdminLogin();
 })();
